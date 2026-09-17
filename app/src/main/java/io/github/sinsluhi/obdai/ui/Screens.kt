@@ -132,25 +132,30 @@ fun HomeScreen(
             SquareIconButton(Icons.Default.Settings, "Настройки", onSettings)
         }
 
-        // статус адаптера
-        Card(radius = 14.dp, padding = 0.dp, onClick = onAdapterClick) {
-            Row(
-                Modifier.padding(horizontal = 14.dp, vertical = 12.dp),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Dot(if (state.connected) accent else Palette.muted)
-                HSpace(10.dp)
-                Text(
-                    if (state.connected) "Адаптер подключён" else "Адаптер не подключён",
-                    style = Type.strong(14),
-                    modifier = Modifier.weight(1f)
-                )
-                Text(
-                    if (state.connected) state.adapterName else "нажми, чтобы выбрать",
-                    style = Type.label()
-                )
+        // связь: адаптер и блок двигателя
+        Card(radius = 16.dp, padding = 14.dp, onClick = onAdapterClick) {
+            ConnRow("Адаптер", state.connected, if (state.connected) state.adapterName else "нажми, чтобы выбрать")
+            VSpace(10.dp)
+            ConnRow(
+                "Блок двигателя", state.ecuOnline,
+                when {
+                    state.ecuOnline -> fullProtocol(state.protocol)
+                    state.connected -> "не отвечает, включи зажигание"
+                    else -> "—"
+                }
+            )
+            if (state.ecuName.isNotBlank() || state.calibration.isNotBlank()) {
+                VSpace(10.dp)
+                Box(Modifier.fillMaxWidth().height(1.dp).background(Palette.border))
+                VSpace(10.dp)
+                if (state.ecuName.isNotBlank()) KeyValue("Имя ЭБУ", state.ecuName)
+                if (state.calibration.isNotBlank()) {
+                    if (state.ecuName.isNotBlank()) VSpace(6.dp)
+                    KeyValue("Прошивка", state.calibration)
+                }
             }
         }
+
 
         // карточка машины
         Card {
@@ -261,6 +266,18 @@ fun ResultScreen(
                     "Показаны названия ошибок из встроенного справочника. Проверь интернет и запусти проверку ещё раз, чтобы получить объяснения, опыт владельцев и цены.",
                     style = Type.body(13, Palette.text2)
                 )
+            }
+        }
+
+        val modules = state.lastSnapshot?.modules.orEmpty()
+        if (modules.isNotEmpty() || state.lastSnapshot != null) {
+            SectionTitle("Блоки машины", if (modules.isEmpty()) "ответил только двигатель" else plural(modules.size + 1, "блок", "блока", "блоков"))
+            Card(padding = 14.dp) {
+                ModuleRow("Двигатель", (state.lastSnapshot?.stored.orEmpty() + state.lastSnapshot?.pending.orEmpty()).distinct(), accent)
+                modules.forEach { m ->
+                    Box(Modifier.fillMaxWidth().height(1.dp).background(Palette.border))
+                    ModuleRow(m.name, m.codes, accent)
+                }
             }
         }
 
@@ -1039,5 +1056,57 @@ fun TripStat(label: String, value: String, unit: String, modifier: Modifier = Mo
                 Text(unit, style = Type.body(11, Palette.muted), modifier = Modifier.padding(bottom = 3.dp))
             }
         }
+    }
+}
+
+@Composable
+private fun ModuleRow(name: String, codes: List<String>, accent: Color) {
+    Row(Modifier.padding(vertical = 10.dp), verticalAlignment = Alignment.CenterVertically) {
+        Dot(if (codes.isEmpty()) accent else Palette.warn)
+        HSpace(10.dp)
+        Text(name, style = Type.body(14, Palette.text, FontWeight.SemiBold), modifier = Modifier.weight(1f))
+        Text(
+            if (codes.isEmpty()) "ошибок нет" else codes.joinToString(),
+            style = if (codes.isEmpty()) Type.label(12) else Type.mono(12, Palette.warn)
+        )
+    }
+}
+
+@Composable
+private fun ConnRow(label: String, ok: Boolean, value: String) {
+    val accent = LocalAccent.current
+    Row(verticalAlignment = Alignment.CenterVertically) {
+        Dot(if (ok) accent else Palette.muted)
+        HSpace(10.dp)
+        Text(label, style = Type.strong(14), modifier = Modifier.weight(1f))
+        HSpace(8.dp)
+        Text(
+            value,
+            style = Type.body(12, if (ok) accent else Palette.muted, FontWeight.SemiBold),
+            textAlign = TextAlign.End,
+            maxLines = 2
+        )
+    }
+}
+
+@Composable
+private fun KeyValue(label: String, value: String) {
+    Row(verticalAlignment = Alignment.Top) {
+        Text(label, style = Type.label(12), modifier = Modifier.width(96.dp))
+        Text(value, style = Type.mono(12), modifier = Modifier.weight(1f), textAlign = TextAlign.End)
+    }
+}
+
+/** Полное имя протокола для карточки связи. */
+fun fullProtocol(p: String): String {
+    val u = p.uppercase()
+    return when {
+        u.contains("15765") && u.contains("11") -> "ISO 15765-4 CAN, 11-бит ID, ${if (u.contains("250")) "250" else "500"} кбит/с"
+        u.contains("15765") && u.contains("29") -> "ISO 15765-4 CAN, 29-бит ID, ${if (u.contains("250")) "250" else "500"} кбит/с"
+        u.contains("15765") -> "ISO 15765-4 CAN"
+        u.contains("14230") || u.contains("KWP") -> "ISO 14230-4 KWP2000 (K-line)"
+        u.contains("9141") -> "ISO 9141-2 (K-line)"
+        u.contains("J1850") -> "SAE J1850"
+        else -> p.ifBlank { "—" }
     }
 }

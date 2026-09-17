@@ -58,7 +58,7 @@ object AiClient {
 Перед ответом обязательно поищи в интернете по каждому коду вместе с моделью машины (например «P0171 Kia Rio drive2»), прочитай, как владельцы решали проблему, и только потом отвечай."""
 
     fun diagnose(cfg: AiConfig, snap: CarSnapshot, progress: (String) -> Unit, log: (String) -> Unit): Diagnosis {
-        val hasCodes = snap.stored.isNotEmpty() || snap.pending.isNotEmpty() || snap.permanent.isNotEmpty()
+        val hasCodes = snap.allCodes.isNotEmpty()
         return when {
             cfg.provider == Provider.ANTHROPIC -> anthropic(cfg, snap, hasCodes, progress, log)
             cfg.provider.builtInSearch -> groq(cfg, snap, hasCodes, progress, log)
@@ -108,7 +108,7 @@ object AiClient {
             val decoded = VinDecoder.decode(snap.vin)
             val car = if (decoded.brand != null) decoded.title() else snap.vin?.let { identifyCar(cfg, it, log) }.orEmpty()
             progress("Ищу опыт владельцев на форумах")
-            notes = runCatching { ForumSearch.research((snap.stored + snap.pending + snap.permanent).distinct(), car, log) }
+            notes = runCatching { ForumSearch.research(snap.allCodes, car, log) }
                 .onFailure { log("Поиск по форумам не удался: ${it.message}") }
                 .getOrDefault("")
         }
@@ -290,6 +290,10 @@ object AiClient {
         appendLine("Сохранённые ошибки: ${snap.stored.joinToString().ifEmpty { "нет" }}")
         appendLine("Неподтверждённые ошибки: ${snap.pending.joinToString().ifEmpty { "нет" }}")
         if (snap.permanent.isNotEmpty()) appendLine("Постоянные ошибки (не стираются до починки): ${snap.permanent.joinToString()}")
+        if (snap.modules.isNotEmpty()) {
+            appendLine("Другие блоки (опрос по заводскому протоколу, ответили только эти):")
+            snap.modules.forEach { m -> appendLine("- ${m.name} [${m.addrHex}]: ${m.codes.joinToString().ifEmpty { "ошибок нет" }}") }
+        }
         val known = snap.sensors.filter { it.value != null }
         if (known.isNotEmpty()) {
             appendLine("Датчики (зажигание включено, снимок в момент проверки):")

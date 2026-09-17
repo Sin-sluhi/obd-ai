@@ -16,8 +16,12 @@ data class CarSnapshot(
     val stored: List<String>,
     val pending: List<String>,
     val sensors: List<SensorReading>,
-    val permanent: List<String> = emptyList()
-)
+    val permanent: List<String> = emptyList(),
+    val modules: List<ModuleScan> = emptyList()
+) {
+    /** Все коды из всех блоков. */
+    val allCodes: List<String> get() = (stored + pending + permanent + modules.flatMap { it.codes }).distinct()
+}
 
 /** Карточка одной ошибки в результате. */
 data class DtcCard(
@@ -120,7 +124,7 @@ data class Diagnosis(
 
         /** Вердикт без нейронки: по кодам и встроенному справочнику. */
         fun local(snap: CarSnapshot): Diagnosis {
-            val all = (snap.stored + snap.pending + snap.permanent).distinct()
+            val all = snap.allCodes
             if (all.isEmpty()) {
                 val milNote = if (snap.milOn == true) " Лампа Check Engine при этом горит: возможно, ошибка в блоке, который адаптер не читает." else ""
                 return Diagnosis(
@@ -312,4 +316,9 @@ data class TripLive(
 fun formatDuration(ms: Long): String {
     val m = ms / 60_000
     return if (m < 60) "$m мин" else "${m / 60} ч ${m % 60} мин"
+}
+
+/** Результат опроса одного блока по заводскому протоколу. */
+data class ModuleScan(val name: String, val addr: Int, val codes: List<String>, val via: String) {
+    val addrHex: String get() = "%03X".format(addr)
 }

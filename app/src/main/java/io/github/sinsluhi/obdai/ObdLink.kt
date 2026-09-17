@@ -8,6 +8,11 @@ interface ObdLink {
     val isConnected: Boolean
     val protocol: String
     val name: String
+    /** Ответил ли блок двигателя на стандартный запрос. */
+    val ecuOnline: Boolean
+    /** Имя ЭБУ (09 0A) и версия калибровки (09 04), если машина отдаёт. */
+    val ecuName: String
+    val calibration: String
     fun readMil(): Pair<Boolean, Int>?
     fun readCodes(mode: Int): List<String>
     fun readVin(): String?
@@ -15,6 +20,8 @@ interface ObdLink {
     fun readVoltage(): String
     fun clearCodes(): Boolean
     fun send(cmd: String, timeoutMs: Long = 3000): String
+    /** Опрос блоков по заводским протоколам; progress получает «сколько из скольких». */
+    fun scanModules(brand: String?, progress: (Int, Int) -> Unit): List<ModuleScan>
     fun disconnect()
 }
 
@@ -27,6 +34,9 @@ class DemoLink : ObdLink {
     override val isConnected get() = connected
     override val protocol = "ISO 15765-4 (CAN 11/500)"
     override val name = "Демо-машина"
+    override val ecuOnline = true
+    override val ecuName = "ECM"
+    override val calibration = "2190-E4-1.6-M74"
 
     private fun t() = (System.currentTimeMillis() - start) / 1000.0
 
@@ -63,6 +73,17 @@ class DemoLink : ObdLink {
     override fun readVoltage(): String = "%.1fV".format(13.9 + 0.05 * sin(t()))
 
     override fun clearCodes(): Boolean { cleared = true; return true }
+
+    override fun scanModules(brand: String?, progress: (Int, Int) -> Unit): List<ModuleScan> {
+        val list = listOf(
+            ModuleScan("ABS / ESC", 0x7D1, if (cleared) emptyList() else listOf("C1259"), "UDS"),
+            ModuleScan("Подушки безопасности", 0x7D2, emptyList(), "UDS"),
+            ModuleScan("Приборная панель", 0x7C6, emptyList(), "UDS"),
+            ModuleScan("Кузовной блок (BCM)", 0x7A0, if (cleared) emptyList() else listOf("B1602"), "UDS")
+        )
+        for (i in 1..4) { progress(i, 4); Thread.sleep(300) }
+        return list
+    }
 
     override fun send(cmd: String, timeoutMs: Long): String = when (cmd.uppercase()) {
         "ATZ" -> "ELM327 v1.5 (демо)"

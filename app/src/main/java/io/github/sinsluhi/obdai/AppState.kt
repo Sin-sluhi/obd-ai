@@ -38,6 +38,9 @@ class AppState private constructor(context: Context) {
     var adapterName by mutableStateOf("")
     var protocol by mutableStateOf("")
     var voltage by mutableStateOf("")
+    var ecuOnline by mutableStateOf(false)
+    var ecuName by mutableStateOf("")
+    var calibration by mutableStateOf("")
     var vin by mutableStateOf<String?>(null)
     var milOn by mutableStateOf<Boolean?>(null)
     var dtcCount by mutableStateOf<Int?>(null)
@@ -120,6 +123,9 @@ class AppState private constructor(context: Context) {
                 adapterName = elm.name
                 protocol = elm.protocol
                 voltage = volt
+                ecuOnline = elm.ecuOnline
+                ecuName = elm.ecuName
+                calibration = elm.calibration
             }
             addLog("✅ Подключено")
         }
@@ -132,6 +138,9 @@ class AppState private constructor(context: Context) {
         adapterName = d.name
         protocol = d.protocol
         voltage = d.readVoltage()
+        ecuOnline = d.ecuOnline
+        ecuName = d.ecuName
+        calibration = d.calibration
         addLog("Демо-режим: подключена выдуманная машина")
     }
 
@@ -141,6 +150,7 @@ class AppState private constructor(context: Context) {
         link = null
         connected = false
         adapterName = ""
+        ecuOnline = false
         worker.execute { runCatching { l?.disconnect() } }
         addLog("Отключено")
     }
@@ -177,7 +187,14 @@ class AppState private constructor(context: Context) {
             val volt = l.readVoltageSafe()
             ui { sensors = s; voltage = volt; protocol = l.protocol }
 
-            val snap = CarSnapshot(v, l.protocol, volt, mil?.first, mil?.second, stored, pending, s, permanent)
+            ui { busy = "Опрашиваю блоки" }
+            val brand = VinDecoder.decode(v).brand
+            val modules = runCatching {
+                l.scanModules(brand) { i, n -> ui { busy = "Опрашиваю блоки $i/$n" } }
+            }.onFailure { addLog("Опрос блоков не удался: ${it.message}") }.getOrDefault(emptyList())
+            addLog("Ответило блоков: ${modules.size}, с ошибками: ${modules.count { it.codes.isNotEmpty() }}")
+
+            val snap = CarSnapshot(v, l.protocol, volt, mil?.first, mil?.second, stored, pending, s, permanent, modules)
             ui { lastSnapshot = snap }
 
             val cfg = aiConfig()

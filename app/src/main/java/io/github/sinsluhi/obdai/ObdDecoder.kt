@@ -93,6 +93,21 @@ object ObdDecoder {
         return null
     }
 
+    /** Режим 09: текстовые PID (04 = версия калибровки, 0A = имя ЭБУ). */
+    fun parseInfoText(raw: String, pid: Int): String? {
+        val sb = StringBuilder()
+        for (msg in messages(raw)) {
+            for (i in 0 until msg.size - 1) {
+                if (msg[i] == 0x49 && msg[i + 1] == pid) {
+                    msg.drop(i + 3).filter { it in 0x20..0x7E }.forEach { sb.append(it.toChar()) }
+                    break
+                }
+            }
+        }
+        val text = sb.toString().trim().trim('0000')
+        return text.ifBlank { null }
+    }
+
     /** PID 01: горит ли Check Engine и сколько ошибок. */
     fun parseMilStatus(raw: String): Pair<Boolean, Int>? {
         val a = pidData(raw, 0x01)?.firstOrNull() ?: return null
@@ -123,3 +138,90 @@ object ObdDecoder {
     )
 }
 
+
+/** Разбор ответов заводских протоколов (UDS 19 02 и KWP 18 00) при опросе блоков. */
+object ModuleDecoder {
+    /** UDS: 59 02 <маска> затем группы по 4 байта: DTC(3) + статус. null, если ответа 59 02 нет. */
+    fun parseUds(msgs: List<List<Int>>): List<String>? {
+        var found = false
+        val codes = linkedSetOf<String>()
+        for (msg in msgs) {
+            val i = msg.indexOf(0x59)
+            if (i < 0 || i + 1 >= msg.size || msg[i + 1] != 0x02) continue
+            found = true
+            val data = msg.drop(i + 3)
+            for (g in data.chunked(4)) {
+                if (g.size < 3) continue
+                if (g[0] == 0 && g[1] == 0 && g[2] == 0) continue
+                val base = ObdDecoder.dtc(g[0], g[1])
+                codes.add(if (g[2] != 0) "%s-%02X".format(base, g[2]) else base)
+            }
+        }
+        return if (found) codes.toList() else null
+    }
+
+    /** KWP: 58 <кол-во> затем группы по 3 байта: DTC(2) + статус. */
+    fun parseKwp(msgs: List<List<Int>>): List<String>? {
+        var found = false
+        val codes = linkedSetOf<String>()
+        for (msg in msgs) {
+            val i = msg.indexOf(0x58)
+            if (i < 0 || i + 1 >= msg.size) continue
+            found = true
+            val data = msg.drop(i + 2)
+            for (g in data.chunked(3)) {
+                if (g.size < 2 || (g[0] == 0 && g[1] == 0)) continue
+                codes.add(ObdDecoder.dtc(g[0], g[1]))
+            }
+        }
+        return if (found) codes.toList() else null
+    }
+
+    /** Отрицательный ответ 7F <сервис> <код>: блок есть, но так спрашивать нельзя. */
+    fun isNegative(msgs: List<List<Int>>, service: Int) =
+        msgs.any { it.size >= 2 && it[0] == 0x7F && it[1] == service }
+}
+
+/** Адреса блоков (запрос/ответ, 11-битный CAN). Имена зависят от марки, список общий. */
+object ModuleMap {
+    data class Target(val addr: Int, val rx: Int, val generic: String)
+
+    val candidates = listOf(
+        Target(0x7E1, 0x7E9, "Коробка передач"),
+        Target(0x7E2, 0x7EA, "Блок 7E2"), Target(0x7E3, 0x7EB, "Блок 7E3"),
+        Target(0x7D1, 0x7D9, "Блок 7D1"), Target(0x7D2, 0x7DA, "Блок 7D2"), Target(0x7D4, 0x7DC, "Блок 7D4"),
+        Target(0x7D5, 0x7DD, "Блок 7D5"), Target(0x7C6, 0x7CE, "Блок 7C6"), Target(0x7C4, 0x7CC, "Блок 7C4"),
+        Target(0x7A0, 0x7A8, "Блок 7A0"), Target(0x7A5, 0x7AD, "Блок 7A5"), Target(0x7B3, 0x7BB, "Блок 7B3"),
+        Target(0x7B6, 0x7BE, "Блок 7B6"), Target(0x7C0, 0x7C8, "Блок 7C0"), Target(0x7B0, 0x7B8, "Блок 7B0"),
+        Target(0x780, 0x788, "Блок 780"), Target(0x7A1, 0x7A9, "Блок 7A1"),
+        Target(0x713, 0x77D, "Блок 713"), Target(0x715, 0x77F, "Блок 715"), Target(0x714, 0x77E, "Блок 714"),
+        Target(0x712, 0x77C, "Блок 712"), Target(0x710, 0x77A, "Блок 710"), Target(0x70E, 0x778, "Блок 70E"),
+        Target(0x746, 0x7B0, "Блок 746"), Target(0x7E4, 0x7EC, "Блок 7E4"), Target(0x7E5, 0x7ED, "Блок 7E5"),
+        Target(0x7E6, 0x7EE, "Блок 7E6"), Target(0x7E7, 0x7EF, "Блок 7E7")
+    )
+
+    private val hyundaiKia = mapOf(
+        0x7E1 to "Коробка передач", 0x7D1 to "ABS / ESC", 0x7D2 to "Подушки безопасности", 0x7D4 to "Электроусилитель руля",
+        0x7D5 to "Стояночный тормоз", 0x7C6 to "Приборная панель", 0x7C4 to "Парктроники", 0x7A0 to "Кузовной блок (BCM)",
+        0x7A5 to "Смарт-ключ", 0x7B3 to "Климат", 0x7B6 to "Полный привод"
+    )
+    private val vag = mapOf(
+        0x7E1 to "Коробка передач", 0x713 to "ABS / ESP", 0x715 to "Подушки безопасности", 0x714 to "Приборная панель",
+        0x712 to "Электроусилитель руля", 0x710 to "Шлюз CAN", 0x70E to "Кузовной блок", 0x746 to "Климат"
+    )
+    private val toyota = mapOf(
+        0x7E1 to "Коробка передач", 0x7B0 to "ABS / VSC", 0x780 to "Подушки безопасности", 0x7C0 to "Приборная панель",
+        0x7A1 to "Электроусилитель руля"
+    )
+
+    fun name(brand: String?, target: Target): String {
+        val b = brand.orEmpty().lowercase()
+        val map = when {
+            b.contains("hyundai") || b.contains("kia") -> hyundaiKia
+            b.contains("volkswagen") || b.contains("audi") || b.contains("skoda") || b.contains("seat") || b.contains("porsche") -> vag
+            b.contains("toyota") || b.contains("lexus") -> toyota
+            else -> emptyMap()
+        }
+        return map[target.addr] ?: target.generic
+    }
+}
