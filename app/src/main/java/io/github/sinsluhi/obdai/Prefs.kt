@@ -44,6 +44,20 @@ class Prefs(context: Context) {
         get() = sp.getString("last_device", null)
         set(v) = sp.edit().putString("last_device", v).apply()
 
+    fun loadTrips(): List<Trip> {
+        val raw = sp.getString("trips", null) ?: return emptyList()
+        return runCatching {
+            val arr = JSONArray(raw)
+            (0 until arr.length()).map { Trip.fromJson(arr.getJSONObject(it)) }
+        }.getOrDefault(emptyList())
+    }
+
+    fun saveTrips(list: List<Trip>) {
+        val arr = JSONArray()
+        list.take(300).forEach { arr.put(it.toJson()) }
+        sp.edit().putString("trips", arr.toString()).apply()
+    }
+
     fun loadHistory(): List<HistoryEntry> {
         val raw = sp.getString("history", null) ?: return emptyList()
         return runCatching {

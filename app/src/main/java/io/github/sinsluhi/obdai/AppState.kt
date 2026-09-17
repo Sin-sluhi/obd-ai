@@ -15,8 +15,16 @@ import java.util.Locale
 import java.util.concurrent.Executors
 
 /** Состояние приложения для Compose плюс вся работа с адаптером и ИИ в фоновом потоке. */
-class AppState(context: Context) {
+class AppState private constructor(context: Context) {
     val prefs = Prefs(context.applicationContext)
+
+    companion object {
+        @Volatile private var instance: AppState? = null
+        /** Одно состояние на процесс: его делят Activity и сервис записи поездки. */
+        fun get(context: Context): AppState = instance ?: synchronized(this) {
+            instance ?: AppState(context.applicationContext).also { instance = it }
+        }
+    }
 
     private val worker = Executors.newSingleThreadExecutor()
     private val poller = Executors.newSingleThreadExecutor()
@@ -41,6 +49,8 @@ class AppState(context: Context) {
     var toast by mutableStateOf<String?>(null)
     val log = mutableStateListOf<String>()
     var history by mutableStateOf(prefs.loadHistory())
+    var trips by mutableStateOf(prefs.loadTrips())
+    var trip by mutableStateOf<TripLive?>(null)     // текущая поездка или null
     var provider by mutableStateOf(Provider.byId(prefs.providerId))
     var apiKey by mutableStateOf(prefs.apiKey(provider))
     var model by mutableStateOf(prefs.model(provider))
@@ -236,7 +246,19 @@ class AppState(context: Context) {
                 try {
                     val s = l.readSensors()
                     val volt = l.readVoltageSafe()
-                    ui { sensors = s; voltage = volt }
+                    val now = System.currentTimeMillis()
+                    ui {
+                        sensors = s
+                        voltage = volt
+                        trip?.let { t ->
+                            trip = t.advance(
+                                now,
+                                s.firstOrNull { it.key == "speed" }?.value,
+                                s.firstOrNull { it.key == "rpm" }?.value,
+                                s.firstOrNull { it.key == "maf" }?.value
+                            )
+                        }
+                    }
                 } catch (e: Exception) {
                     addLog("Датчики: ${e.message}")
                     Thread.sleep(1000)
@@ -247,6 +269,35 @@ class AppState(context: Context) {
     }
 
     fun stopPolling() { polling = false }
+
+    // ---- поездки ----
+
+    fun startTrip() {
+        if (trip != null) return
+        trip = TripLive(System.currentTimeMillis())
+        startPolling()
+        addLog("▶ Запись поездки")
+    }
+
+    fun stopTrip() {
+        val t = trip ?: return
+        val done = t.finish(System.currentTimeMillis())
+        trip = null
+        if (done.distanceKm >= 0.05 || done.durationMs >= 60_000) {
+            trips = (listOf(done) + trips).take(300)
+            prefs.saveTrips(trips)
+            addLog("Поездка записана: %.1f км".format(done.distanceKm))
+            toast = "Поездка сохранена: %.1f км".format(done.distanceKm)
+        } else {
+            addLog("Поездка слишком короткая, не сохраняю")
+            toast = "Поездка слишком короткая"
+        }
+    }
+
+    fun deleteTrip(t: Trip) {
+        trips = trips.filter { it !== t }
+        prefs.saveTrips(trips)
+    }
 
     // ---- служебное ----
 

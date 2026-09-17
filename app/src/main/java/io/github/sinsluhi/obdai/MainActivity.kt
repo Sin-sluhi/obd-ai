@@ -34,6 +34,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.core.content.ContextCompat
 import io.github.sinsluhi.obdai.ui.BottomBar
 import io.github.sinsluhi.obdai.ui.ConfirmDialog
 import io.github.sinsluhi.obdai.ui.DevicePickerDialog
@@ -61,9 +62,11 @@ class MainActivity : ComponentActivity() {
 
     private val permissionLauncher =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) { granted ->
-            if (granted) afterPermission?.invoke()
-            else state.toast = "Без разрешения Bluetooth работать не получится"
+            val pending = afterPermission
             afterPermission = null
+            if (granted) pending?.invoke()
+            else if (pending != null && state.trip == null && !state.connected) state.toast = "Без разрешения Bluetooth работать не получится"
+            else pending?.invoke()
         }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -72,7 +75,7 @@ class MainActivity : ComponentActivity() {
             statusBarStyle = SystemBarStyle.dark(android.graphics.Color.TRANSPARENT),
             navigationBarStyle = SystemBarStyle.dark(android.graphics.Color.TRANSPARENT)
         )
-        state = AppState(this)
+        state = AppState.get(this)
         if (state.demo) state.connectDemo()
         setContent { App() }
     }
@@ -139,7 +142,7 @@ class MainActivity : ComponentActivity() {
                         onClear = { confirmClear = true },
                         onSettings = { page = Page.Settings }
                     )
-                    Page.Sensors -> SensorsScreen(state, tabBar)
+                    Page.Sensors -> SensorsScreen(state, onStartTrip = { startTrip() }, onStopTrip = { stopTrip() }, bottom = tabBar)
                     Page.History -> HistoryScreen(
                         state,
                         onOpen = { e ->
@@ -259,12 +262,39 @@ class MainActivity : ComponentActivity() {
         return true
     }
 
+    // ---------- поездки ----------
+
+    private fun startTrip() {
+        if (!state.connected) { state.toast = "Сначала подключи адаптер"; return }
+        if (Build.VERSION.SDK_INT >= 33 &&
+            checkSelfPermission(PERM_NOTIFY) != PackageManager.PERMISSION_GRANTED
+        ) {
+            afterPermission = { beginTrip() }
+            permissionLauncher.launch(PERM_NOTIFY)
+            return
+        }
+        beginTrip()
+    }
+
+    private fun beginTrip() {
+        state.startTrip()
+        runCatching { ContextCompat.startForegroundService(this, Intent(this, TripService::class.java)) }
+            .onFailure { state.addLog("Сервис поездки не запустился: ${it.message}") }
+    }
+
+    private fun stopTrip() {
+        state.stopTrip()
+        stopService(Intent(this, TripService::class.java))
+    }
+
     override fun onDestroy() {
-        if (::state.isInitialized) state.shutdown()
+        // соединение и запись поездки живут в AppState и не зависят от экрана
+        if (::state.isInitialized && state.trip == null) state.stopPolling()
         super.onDestroy()
     }
 
     companion object {
         private const val PERM_CONNECT = "android.permission.BLUETOOTH_CONNECT"
+        private const val PERM_NOTIFY = "android.permission.POST_NOTIFICATIONS"
     }
 }

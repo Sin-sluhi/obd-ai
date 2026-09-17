@@ -42,14 +42,19 @@ class DemoLink : ObdLink {
     override fun readVin(): String = "XTA219010D0123456"
 
     override fun readSensors(): List<SensorReading> {
-        val rpm = 812 + 25 * sin(t() * 1.3) + Random.nextInt(-8, 9)
+        // первые 15 секунд стоим на холостых, потом «едем» по городу
+        val driving = t() > 15
+        val speed = if (driving) (42 + 38 * sin(t() / 25)).coerceAtLeast(0.0) else 0.0
+        val rpm = if (driving) 900 + speed * 42 + Random.nextInt(-30, 31) else 812 + 25 * sin(t() * 1.3) + Random.nextInt(-8, 9)
+        val maf = if (driving) 3.0 + speed * 0.22 else 3.2 + 0.2 * sin(t())
         return listOf(
             SensorReading("rpm", "Обороты", rpm, "об/мин"),
-            SensorReading("speed", "Скорость", 0.0, "км/ч"),
+            SensorReading("speed", "Скорость", speed, "км/ч"),
+            SensorReading("maf", "Расход воздуха", maf, "г/с"),
             SensorReading("coolant", "Температура ОЖ", 87.0 + (t() / 30).coerceAtMost(4.0), "°C"),
-            SensorReading("load", "Нагрузка двигателя", 23 + 2 * sin(t()), "%"),
+            SensorReading("load", "Нагрузка двигателя", if (driving) 30 + speed * 0.5 else 23 + 2 * sin(t()), "%"),
             SensorReading("iat", "Температура на впуске", 31.0, "°C"),
-            SensorReading("throttle", "Дроссель", 14 + sin(t() * 0.7), "%"),
+            SensorReading("throttle", "Дроссель", if (driving) 12 + speed * 0.3 else 14 + sin(t() * 0.7), "%"),
             SensorReading("stft", "Кратк. топл. коррекция", 7.8 + 1.5 * sin(t() * 2), "%"),
             SensorReading("ltft", "Долг. топл. коррекция", 12.5, "%")
         )

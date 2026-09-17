@@ -245,3 +245,71 @@ object DtcCatalog {
         }
     }
 }
+
+/** Завершённая поездка. */
+data class Trip(
+    val start: Long,
+    val end: Long,
+    val distanceKm: Double,
+    val fuelL: Double?,          // null, если машина не отдаёт расход воздуха
+    val maxSpeed: Double,
+    val movingMs: Long,
+    val maxRpm: Double,
+    val samples: Int
+) {
+    val durationMs: Long get() = end - start
+    val avgSpeed: Double get() = if (movingMs > 0) distanceKm / (movingMs / 3_600_000.0) else 0.0
+    val avgConsumption: Double? get() = fuelL?.takeIf { distanceKm > 0.3 }?.let { it / distanceKm * 100 }
+
+    fun toJson(): JSONObject = JSONObject()
+        .put("start", start).put("end", end).put("km", distanceKm).put("fuel", fuelL ?: JSONObject.NULL)
+        .put("vmax", maxSpeed).put("moving", movingMs).put("rpmmax", maxRpm).put("n", samples)
+
+    companion object {
+        fun fromJson(o: JSONObject) = Trip(
+            start = o.optLong("start"), end = o.optLong("end"), distanceKm = o.optDouble("km", 0.0),
+            fuelL = if (o.isNull("fuel")) null else o.optDouble("fuel"),
+            maxSpeed = o.optDouble("vmax", 0.0), movingMs = o.optLong("moving"),
+            maxRpm = o.optDouble("rpmmax", 0.0), samples = o.optInt("n")
+        )
+    }
+}
+
+/** Поездка, которая записывается прямо сейчас. */
+data class TripLive(
+    val start: Long,
+    val distanceKm: Double = 0.0,
+    val fuelL: Double? = null,
+    val maxSpeed: Double = 0.0,
+    val movingMs: Long = 0,
+    val maxRpm: Double = 0.0,
+    val samples: Int = 0,
+    val lastTs: Long = start,
+    val speed: Double = 0.0
+) {
+    fun advance(now: Long, speedKmh: Double?, rpm: Double?, mafGs: Double?): TripLive {
+        val dtMs = (now - lastTs).coerceIn(0, 5_000)
+        val dtH = dtMs / 3_600_000.0
+        val v = speedKmh ?: 0.0
+        val km = distanceKm + v * dtH
+        // расход: воздух / 14.7 = бензин в г/с; 745 г в литре
+        val fuel = if (mafGs != null) (fuelL ?: 0.0) + mafGs / 14.7 / 745.0 * (dtMs / 1000.0) else fuelL
+        return copy(
+            distanceKm = km,
+            fuelL = fuel,
+            maxSpeed = maxOf(maxSpeed, v),
+            movingMs = movingMs + if (v > 2) dtMs else 0,
+            maxRpm = maxOf(maxRpm, rpm ?: 0.0),
+            samples = samples + 1,
+            lastTs = now,
+            speed = v
+        )
+    }
+
+    fun finish(now: Long) = Trip(start, now, distanceKm, fuelL, maxSpeed, movingMs, maxRpm, samples)
+}
+
+fun formatDuration(ms: Long): String {
+    val m = ms / 60_000
+    return if (m < 60) "$m мин" else "${m / 60} ч ${m % 60} мин"
+}

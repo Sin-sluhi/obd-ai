@@ -67,6 +67,7 @@ import io.github.sinsluhi.obdai.DtcCard
 import io.github.sinsluhi.obdai.HistoryEntry
 import io.github.sinsluhi.obdai.Provider
 import io.github.sinsluhi.obdai.R
+import io.github.sinsluhi.obdai.formatDuration
 import io.github.sinsluhi.obdai.formatPrice
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -413,7 +414,12 @@ private fun CodeCard(c: DtcCard) {
 // ======================= Датчики =======================
 
 @Composable
-fun SensorsScreen(state: AppState, bottom: @Composable () -> Unit) {
+fun SensorsScreen(
+    state: AppState,
+    onStartTrip: () -> Unit,
+    onStopTrip: () -> Unit,
+    bottom: @Composable () -> Unit
+) {
     val accent = LocalAccent.current
     DisposableEffect(state.connected) {
         if (state.connected) state.startPolling()
@@ -444,6 +450,32 @@ fun SensorsScreen(state: AppState, bottom: @Composable () -> Unit) {
             HSpace(8.dp)
             Pill(skin.name, skin.glow, skin.glow.copy(alpha = 0.12f))
         }
+        val t = state.trip
+        if (t == null) {
+            SecondaryButton(
+                "Начать запись поездки", Modifier.fillMaxWidth(),
+                color = if (state.connected) accent else Palette.muted, enabled = state.connected, onClick = onStartTrip
+            )
+        } else {
+            Card(border = accent.copy(alpha = 0.5f), glow = accent) {
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Dot(accent)
+                    HSpace(8.dp)
+                    Text("Поездка записывается", style = Type.strong(14))
+                    Spacer(Modifier.weight(1f))
+                    Text(formatDuration(System.currentTimeMillis() - t.start), style = Type.mono(13, Palette.muted))
+                }
+                VSpace(12.dp)
+                Row {
+                    TripStat("Путь", "%.1f".format(t.distanceKm), "км", Modifier.weight(1f))
+                    TripStat("Расход", t.fuelL?.takeIf { t.distanceKm > 0.3 }?.let { "%.1f".format(it / t.distanceKm * 100) } ?: "—", "л/100", Modifier.weight(1f))
+                    TripStat("Макс", "%.0f".format(t.maxSpeed), "км/ч", Modifier.weight(1f))
+                }
+                VSpace(12.dp)
+                PrimaryButton("Завершить поездку", onClick = onStopTrip)
+            }
+        }
+
 
         Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
             RoundGauge("Скорость", v("speed"), "км/ч", 0f, 240f, skin, Modifier.weight(1f), majorStep = 40f)
@@ -529,6 +561,41 @@ fun HistoryScreen(state: AppState, onOpen: (HistoryEntry) -> Unit, bottom: @Comp
     val fmt = remember { SimpleDateFormat("d MMMM, HH:mm", Locale("ru")) }
     Screen(bottom = bottom) {
         Header("История")
+        if (state.trips.isNotEmpty()) {
+            val month = state.trips.filter { it.start > System.currentTimeMillis() - 30L * 86_400_000 }
+            val fuel = month.mapNotNull { it.fuelL }
+            SectionTitle("Поездки", "за 30 дней")
+            Card(glow = accent) {
+                Row {
+                    TripStat("Поездок", "${month.size}", "", Modifier.weight(1f))
+                    TripStat("Путь", "%.0f".format(month.sumOf { it.distanceKm }), "км", Modifier.weight(1f))
+                    TripStat("Топливо", if (fuel.isEmpty()) "—" else "%.1f".format(fuel.sum()), "л", Modifier.weight(1f))
+                }
+            }
+            state.trips.take(30).forEach { t ->
+                Card(padding = 16.dp) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Dot(accent, 10.dp)
+                        HSpace(10.dp)
+                        Text(fmt.format(Date(t.start)), style = Type.label(), modifier = Modifier.weight(1f))
+                        Text(formatDuration(t.durationMs), style = Type.mono(12, Palette.muted))
+                        HSpace(10.dp)
+                        Icon(
+                            Icons.Default.Delete, "Удалить", tint = Palette.muted,
+                            modifier = Modifier.size(20.dp).clickable { state.deleteTrip(t) }
+                        )
+                    }
+                    VSpace(10.dp)
+                    Row {
+                        TripStat("Путь", "%.1f".format(t.distanceKm), "км", Modifier.weight(1f))
+                        TripStat("Расход", t.avgConsumption?.let { "%.1f".format(it) } ?: "—", "л/100", Modifier.weight(1f))
+                        TripStat("Средняя", "%.0f".format(t.avgSpeed), "км/ч", Modifier.weight(1f))
+                        TripStat("Макс", "%.0f".format(t.maxSpeed), "км/ч", Modifier.weight(1f))
+                    }
+                }
+            }
+            SectionTitle("Проверки")
+        }
         if (state.history.isEmpty()) {
             VSpace(40.dp)
             Text(
@@ -721,7 +788,7 @@ fun SettingsScreen(
         }
 
         Text(
-            "OBD AI 0.3",
+            "OBD AI 0.4",
             style = Type.body(12, Palette.muted),
             textAlign = TextAlign.Center,
             modifier = Modifier
@@ -959,4 +1026,18 @@ fun SettingField(
         shape = RoundedCornerShape(12.dp),
         modifier = Modifier.fillMaxWidth()
     )
+}
+
+@Composable
+fun TripStat(label: String, value: String, unit: String, modifier: Modifier = Modifier) {
+    Column(modifier) {
+        Text(label, style = Type.label(11))
+        Row(verticalAlignment = Alignment.Bottom) {
+            Text(value, style = Type.mono(20))
+            if (unit.isNotBlank()) {
+                HSpace(3.dp)
+                Text(unit, style = Type.body(11, Palette.muted), modifier = Modifier.padding(bottom = 3.dp))
+            }
+        }
+    }
 }
