@@ -73,12 +73,14 @@ def ask(key, car, code):
     body = {
         "model": MODEL,
         "temperature": 0.2,
-        "max_tokens": 1000,
+        "max_tokens": 800,
         "messages": [
             {"role": "system", "content": SYSTEM},
-            {"role": "user", "content": "Машина: %s. Код: %s. Поищи «%s %s drive2» и «%s %s drom», прочитай записи и ответь JSON." % (car, code, code, car, code, car)},
+            {"role": "user", "content": "Машина: %s. Код: %s. Поищи «%s %s» (drive2, drom), по найденным сниппетам записей владельцев ответь JSON. В sources — только адреса из результатов поиска." % (car, code, code, car)},
         ],
         "search_settings": {"country": "Russia", "include_domains": ["drive2.ru", "*.drive2.ru", "drom.ru", "*.drom.ru"]},
+        # только поиск, без скачивания страниц: иначе один запрос съедает ~40 тыс. токенов и не влезает в минутный лимит
+        "compound_custom": {"tools": {"enabled_tools": ["web_search"]}},
     }
     # Cloudflare перед Groq режет стандартный User-Agent urllib (error code 1010): представляемся по-человечески
     req = urllib.request.Request(API, data=json.dumps(body).encode("utf-8"), method="POST",
