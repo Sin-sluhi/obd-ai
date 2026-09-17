@@ -80,7 +80,7 @@ def ask(key, car, code):
     # Cloudflare перед Groq режет стандартный User-Agent urllib (error code 1010): представляемся по-человечески
     req = urllib.request.Request(API, data=json.dumps(body).encode("utf-8"), method="POST",
                                  headers={"Content-Type": "application/json", "Authorization": "Bearer " + key,
-                                          "User-Agent": "Mozilla/5.0 (compatible; obd-ai-kb/1.0; +https://github.com/Sin-sluhi/obd-ai)",
+                                          "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36",
                                           "Accept": "application/json"})
     with urllib.request.urlopen(req, timeout=240) as resp:
         return json.loads(resp.read().decode("utf-8"))
