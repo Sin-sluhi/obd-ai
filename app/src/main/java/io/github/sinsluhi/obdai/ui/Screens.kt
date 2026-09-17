@@ -959,9 +959,8 @@ fun shortProtocol(p: String): String {
     if (p.isBlank()) return "—"
     val u = p.uppercase()
     return when {
-        u.contains("15765") && u.contains("11") && u.contains("500") -> "CAN 11/500"
-        u.contains("15765") && u.contains("29") && u.contains("500") -> "CAN 29/500"
-        u.contains("15765") && u.contains("250") -> "CAN 250"
+        u.contains("15765") && u.contains("500") -> "CAN 500 кбит/с"
+        u.contains("15765") && u.contains("250") -> "CAN 250 кбит/с"
         u.contains("15765") -> "CAN"
         u.contains("14230") || u.contains("KWP") -> "K-line KWP2000"
         u.contains("9141") -> "K-line ISO 9141"
