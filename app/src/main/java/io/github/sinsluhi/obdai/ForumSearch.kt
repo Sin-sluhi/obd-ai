@@ -18,7 +18,8 @@ object ForumSearch {
     fun research(codes: List<String>, car: String, log: (String) -> Unit): String {
         val sb = StringBuilder()
         var total = 0
-        for (code in codes.take(4)) {
+        for (raw in codes.take(4)) {
+            val code = raw.substringBefore(' ')
             val base = if (car.isBlank()) code else "$code $car"
             val queries = listOf("$base site:drive2.ru", "$base site:drom.ru", "$base ошибка форум")
             val links = linkedSetOf<String>()

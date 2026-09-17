@@ -138,12 +138,23 @@ data class Diagnosis(
                     fromAi = false
                 )
             }
-            val cards = all.map { code ->
+            val cards = all.map { raw ->
+                val code = raw.substringBefore(' ')
+                val status = raw.substringAfter(' ', "").trim('(', ')')
+                val module = snap.modules.firstOrNull { m -> m.codes.contains(raw) }?.name
                 DtcCard(
                     code = code,
                     title = DtcCatalog.title(code),
-                    explanation = if (snap.pending.contains(code) && !snap.stored.contains(code))
-                        "Неподтверждённая ошибка: блок заметил проблему, но пока не уверен." else "",
+                    explanation = listOfNotNull(
+                        module?.let { "Блок: $it." },
+                        when {
+                            status == "история" -> "Ошибка из истории блока: сейчас не активна, но когда-то была."
+                            status == "активная" -> "Ошибка активна прямо сейчас."
+                            status == "неподтверждённая" || (snap.pending.contains(code) && !snap.stored.contains(code)) ->
+                                "Неподтверждённая ошибка: блок заметил проблему, но пока не уверен."
+                            else -> null
+                        }
+                    ).joinToString(" "),
                     causes = emptyList(),
                     severity = "medium",
                     priceFrom = 0,

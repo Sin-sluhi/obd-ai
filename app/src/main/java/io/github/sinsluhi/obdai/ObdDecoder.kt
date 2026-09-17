@@ -151,13 +151,22 @@ object ModuleDecoder {
             found = true
             val data = msg.drop(i + 3)
             for (g in data.chunked(4)) {
-                if (g.size < 3) continue
+                if (g.size < 4) continue
                 if (g[0] == 0 && g[1] == 0 && g[2] == 0) continue
                 val base = ObdDecoder.dtc(g[0], g[1])
-                codes.add(if (g[2] != 0) "%s-%02X".format(base, g[2]) else base)
+                val code = if (g[2] != 0) "%s-%02X".format(base, g[2]) else base
+                codes.add(code + statusSuffix(g[3]))
             }
         }
         return if (found) codes.toList() else null
+    }
+
+    /** Байт статуса UDS: бит0 — активна сейчас, бит3 — подтверждена, бит2 — неподтверждена, иначе история. */
+    fun statusSuffix(status: Int): String = when {
+        status and 0x01 != 0 -> " (активная)"
+        status and 0x08 != 0 -> ""
+        status and 0x04 != 0 -> " (неподтверждённая)"
+        else -> " (история)"
     }
 
     /** KWP: 58 <кол-во> затем группы по 3 байта: DTC(2) + статус. */
@@ -186,6 +195,9 @@ object ModuleDecoder {
 object ModuleMap {
     data class Target(val addr: Int, val rx: Int, val generic: String)
 
+    /** Диапазон полного перебора для Hyundai/Kia: 7A0–7DF, где живут все их блоки. */
+    val hyundaiSweep: List<Target> = (0x7A0..0x7DF).map { Target(it, it + 8, "Блок %03X".format(it)) }
+
     val candidates = listOf(
         Target(0x7E1, 0x7E9, "Коробка передач"),
         Target(0x7E2, 0x7EA, "Блок 7E2"), Target(0x7E3, 0x7EB, "Блок 7E3"),
@@ -203,8 +215,15 @@ object ModuleMap {
     private val hyundaiKia = mapOf(
         0x7E1 to "Коробка передач", 0x7D1 to "ABS / ESC", 0x7D2 to "Подушки безопасности", 0x7D4 to "Электроусилитель руля",
         0x7D5 to "Стояночный тормоз", 0x7C6 to "Приборная панель", 0x7C4 to "Парктроники", 0x7A0 to "Кузовной блок (BCM)",
-        0x7A5 to "Смарт-ключ", 0x7B3 to "Климат", 0x7B6 to "Полный привод"
+        0x7A5 to "Смарт-ключ", 0x7B3 to "Климат", 0x7B6 to "Полный привод", 0x7B7 to "Камера / ассистенты", 0x7B1 to "Радар",
+        0x7C7 to "Датчики давления шин", 0x7A2 to "Люк / стёкла", 0x7A3 to "Сиденья", 0x7C5 to "Мультимедиа (AVN)",
+        0x7D0 to "Двигатель (дополнительно)", 0x7D3 to "Иммобилайзер", 0x7D6 to "Полный привод (4WD)", 0x7B2 to "Задняя камера", 0x7B4 to "Слепые зоны"
     )
+
+    fun isHyundaiKia(brand: String?): Boolean {
+        val b = brand.orEmpty().lowercase()
+        return b.contains("hyundai") || b.contains("kia")
+    }
     private val vag = mapOf(
         0x7E1 to "Коробка передач", 0x713 to "ABS / ESP", 0x715 to "Подушки безопасности", 0x714 to "Приборная панель",
         0x712 to "Электроусилитель руля", 0x710 to "Шлюз CAN", 0x70E to "Кузовной блок", 0x746 to "Климат"

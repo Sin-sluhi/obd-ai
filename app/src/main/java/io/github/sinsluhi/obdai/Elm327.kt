@@ -143,7 +143,9 @@ class Elm327(private val log: (String) -> Unit) : ObdLink {
             return emptyList()
         }
         val found = mutableListOf<ModuleScan>()
-        val targets = ModuleMap.candidates
+        val known = ModuleMap.candidates
+        val extra = if (ModuleMap.isHyundaiKia(brand)) ModuleMap.hyundaiSweep.filter { s -> known.none { it.addr == s.addr } } else emptyList()
+        val targets = known + extra
         try {
             send("ATAT0")
             send("ATST 32")       // 200 мс ожидания на ответ, чтобы молчащие адреса не тормозили
@@ -151,7 +153,7 @@ class Elm327(private val log: (String) -> Unit) : ObdLink {
             targets.forEachIndexed { i, t ->
                 progress(i + 1, targets.size)
                 val name = ModuleMap.name(brand, t)
-                val scan = queryModule(t, name) ?: return@forEachIndexed
+                val scan = queryModule(t, name, tryKwp = i < known.size) ?: return@forEachIndexed
                 found.add(scan)
                 log("$name (${t.addr.toString(16).uppercase()}): ${if (scan.codes.isEmpty()) "ошибок нет" else scan.codes.joinToString()}")
             }
@@ -163,14 +165,14 @@ class Elm327(private val log: (String) -> Unit) : ObdLink {
         return found
     }
 
-    private fun queryModule(t: ModuleMap.Target, name: String): ModuleScan? {
+    private fun queryModule(t: ModuleMap.Target, name: String, tryKwp: Boolean = true): ModuleScan? {
         val hex = "%03X".format(t.addr)
         send("ATSH $hex")
         send("ATCRA %03X".format(t.rx))
         send("ATFCSH $hex")
         send("ATFCSM 1")
 
-        val uds = send("190209", 1500)
+        val uds = send("1902FF", 1500)
         if (!silent(uds)) {
             val msgs = ObdDecoder.messages(uds)
             ModuleDecoder.parseUds(msgs)?.let { return ModuleScan(name, t.addr, it, "UDS") }
@@ -179,6 +181,7 @@ class Elm327(private val log: (String) -> Unit) : ObdLink {
                 return ModuleScan(name, t.addr, emptyList(), "?")
             }
         }
+        if (!tryKwp) return null
         val kwp = send("1800FF00", 1500)
         if (!silent(kwp)) {
             val msgs = ObdDecoder.messages(kwp)
