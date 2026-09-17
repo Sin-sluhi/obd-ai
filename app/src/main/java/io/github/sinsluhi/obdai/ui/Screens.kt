@@ -66,6 +66,7 @@ import io.github.sinsluhi.obdai.Diagnosis
 import io.github.sinsluhi.obdai.DtcCard
 import io.github.sinsluhi.obdai.HistoryEntry
 import io.github.sinsluhi.obdai.Provider
+import io.github.sinsluhi.obdai.VinDecoder
 import io.github.sinsluhi.obdai.R
 import io.github.sinsluhi.obdai.formatDuration
 import io.github.sinsluhi.obdai.formatPrice
@@ -155,7 +156,7 @@ fun HomeScreen(
         Card {
             Text("Ваша машина", style = Type.label())
             VSpace(10.dp)
-            val car = state.diagnosis?.car.orEmpty()
+            val car = state.diagnosis?.car.orEmpty().ifBlank { VinDecoder.decode(state.vin).title() }
             if (car.isNotBlank()) {
                 Text(car, style = Type.strong(16))
                 VSpace(4.dp)

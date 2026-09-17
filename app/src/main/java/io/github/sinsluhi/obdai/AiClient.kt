@@ -43,7 +43,8 @@ object AiClient {
 Пиши по-русски, простыми словами, без воды. Не пугай зря, но и не приукрашивай: если ехать опасно, скажи прямо.
 Главный источник причин и решений — реальный опыт владельцев такой же машины с форумов drive2.ru и drom.ru: что у людей оказалось причиной и что реально помогло, ставь первым. Одиночные догадки без результата не считай.
 Правила:
-- Определи марку, модель и год по VIN (WMI, 10-й символ — год). Если VIN нет, работай по коду.
+- Если в отчёте есть «Расшифровка VIN», это точные данные: марка, модель и год бери оттуда и не меняй. Если расшифровки нет, определи по VIN сам (WMI, 10-й символ — год), а если VIN нет, работай по коду.
+- car: марка, модель и год из расшифровки VIN (или что смог определить), иначе пустая строка.
 - Для каждого кода: короткое название, объяснение в 1–2 фразы, 2–4 частые причины (сначала подтверждённые владельцами), серьёзность, что делать.
 - owner_experience: что писали владельцы: причина, что помогло, чего делать не стоит. Если ничего не нашёл, пустая строка.
 - sources: только реальные адреса записей, которые ты видел. Не придумывай ссылки.
@@ -104,7 +105,8 @@ object AiClient {
         var notes = ""
         if (hasCodes) {
             progress("Определяю машину по VIN")
-            val car = snap.vin?.let { identifyCar(cfg, it, log) }.orEmpty()
+            val decoded = VinDecoder.decode(snap.vin)
+            val car = if (decoded.brand != null) decoded.title() else snap.vin?.let { identifyCar(cfg, it, log) }.orEmpty()
             progress("Ищу опыт владельцев на форумах")
             notes = runCatching { ForumSearch.research((snap.stored + snap.pending + snap.permanent).distinct(), car, log) }
                 .onFailure { log("Поиск по форумам не удался: ${it.message}") }
@@ -280,6 +282,8 @@ object AiClient {
         appendLine("Результаты OBD-II диагностики:")
         appendLine("Протокол: ${snap.protocol.ifBlank { "неизвестно" }}")
         appendLine("VIN: ${snap.vin ?: "не прочитан"}")
+        val decoded = VinDecoder.decode(snap.vin)
+        if (!decoded.isEmpty) appendLine("Расшифровка VIN (точные данные, не меняй их): ${decoded.describe()}")
         appendLine("Напряжение бортсети: ${snap.voltage.ifBlank { "неизвестно" }}")
         snap.milOn?.let { appendLine("Лампа Check Engine: ${if (it) "горит" else "не горит"}") }
         snap.dtcCount?.let { appendLine("Ошибок по данным ЭБУ: $it") }
