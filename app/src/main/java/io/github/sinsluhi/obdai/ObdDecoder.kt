@@ -104,7 +104,7 @@ object ObdDecoder {
                 }
             }
         }
-        val text = sb.toString().trim().trim('0000')
+        val text = sb.toString().trim().trim()
         return text.ifBlank { null }
     }
 
