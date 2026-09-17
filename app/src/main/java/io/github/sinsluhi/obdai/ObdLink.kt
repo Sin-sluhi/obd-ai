@@ -20,8 +20,8 @@ interface ObdLink {
     fun readMil(): Pair<Boolean, Int>?
     fun readCodes(mode: Int): List<String>
     fun readVin(): String?
-    /** live = только быстрые датчики для экрана; иначе всё, что поддерживает машина. */
-    fun readSensors(live: Boolean = true): List<SensorReading>
+    /** live = только быстрые датчики для экрана; иначе всё, что поддерживает машина. keys — ещё уже: только эти. */
+    fun readSensors(live: Boolean = true, keys: Set<String>? = null): List<SensorReading>
     fun readVoltage(): String
     fun clearCodes(): Boolean
     fun send(cmd: String, timeoutMs: Long = 3000): String
@@ -65,12 +65,23 @@ class DemoLink : ObdLink {
 
     override fun readVin(): String = "XTA219010D0123456"
 
-    override fun readSensors(live: Boolean): List<SensorReading> {
-        // первые 15 секунд стоим на холостых, потом «едем» по городу
+    override fun readSensors(live: Boolean, keys: Set<String>?): List<SensorReading> {
+        // первые 5 секунд машина заглушена, потом заводится; с 15-й секунды «едем» по городу
         val driving = driving()
+        val running = t() > 5
         val speed = if (driving) (42 + 38 * sin(t() / 25)).coerceAtLeast(0.0) else 0.0
-        val rpm = if (driving) 900 + speed * 42 + Random.nextInt(-30, 31) else 812 + 25 * sin(t() * 1.3) + Random.nextInt(-8, 9)
+        val rpm = when {
+            !running -> 0.0
+            driving -> 900 + speed * 42 + Random.nextInt(-30, 31)
+            else -> 812 + 25 * sin(t() * 1.3) + Random.nextInt(-8, 9)
+        }
         val maf = if (driving) 3.0 + speed * 0.22 else 3.2 + 0.2 * sin(t())
+        val all = readAll(running, driving, speed, rpm, maf, live)
+        return if (keys == null) all else all.filter { it.key in keys }
+    }
+
+    private fun readAll(running: Boolean, driving: Boolean, speed: Double, rpm: Double, maf: Double, live: Boolean): List<SensorReading> {
+        val volt = if (!running) 12.4 else if (t() < 5.6) 9.9 else 13.9 + 0.05 * sin(t())
         val base = listOf(
             SensorReading("rpm", "Обороты", rpm, "об/мин"),
             SensorReading("speed", "Скорость", speed, "км/ч"),
@@ -81,19 +92,21 @@ class DemoLink : ObdLink {
             SensorReading("throttle", "Дроссель", if (driving) 12 + speed * 0.3 else 14 + sin(t() * 0.7), "%"),
             SensorReading("stft", "Кратк. топл. коррекция", 7.8 + 1.5 * sin(t() * 2), "%"),
             SensorReading("ltft", "Долг. топл. коррекция", 12.5, "%"),
-            SensorReading("map", "Давление во впуске", if (driving) 45 + speed * 0.4 else 33.0, "кПа"),
-            SensorReading("volt", "Напряжение на ЭБУ", 13.9 + 0.05 * sin(t()), "В"),
-            SensorReading("fuelrate", "Расход топлива", maf / 14.7 / 745.0 * 3600, "л/ч")
+            SensorReading("map", "Давление во впуске", if (!running) 99.0 else if (driving) 45 + speed * 0.4 else 33.0, "кПа"),
+            SensorReading("volt", "Напряжение на ЭБУ", volt, "В"),
+            SensorReading("fuelrate", "Расход топлива", if (running) maf / 14.7 / 745.0 * 3600 else 0.0, "л/ч")
         )
         if (live) return base
         return base + listOf(
             SensorReading("fuel", "Уровень топлива", 41.0, "%"),
             SensorReading("ambient", "Температура за бортом", 17.0, "°C"),
+            SensorReading("baro", "Атмосферное давление", 99.0, "кПа"),
+            SensorReading("runtime", "Двигатель работает", if (running) t() - 5 else 0.0, "с"),
             SensorReading("oil", "Температура масла", 91.0, "°C")
         )
     }
 
-    override fun readVoltage(): String = "%.1fV".format(13.9 + 0.05 * sin(t()))
+    override fun readVoltage(): String = "%.1fV".format(if (t() <= 5) 12.4 else 13.9 + 0.05 * sin(t()))
 
     override fun clearCodes(): Boolean { cleared = true; return true }
 

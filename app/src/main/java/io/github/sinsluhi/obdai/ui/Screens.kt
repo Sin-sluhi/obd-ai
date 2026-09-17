@@ -121,6 +121,7 @@ fun HomeScreen(
     onSettings: () -> Unit,
     onAdapterClick: () -> Unit,
     onPhoto: () -> Unit,
+    onUseWeather: () -> Unit,
     bottom: @Composable () -> Unit
 ) {
     val accent = LocalAccent.current
@@ -160,7 +161,22 @@ fun HomeScreen(
                 val ok = state.adapterInfo.fullFeatured && !state.adapterInfo.suspicious
                 Text(state.adapterInfo.grade(), style = Type.body(12, if (ok) Palette.muted else Palette.warn))
             }
+            if (state.connected && state.ecuOnline) {
+                VSpace(6.dp)
+                val t = state.trip
+                Text(
+                    when {
+                        t != null && state.tripAuto -> "Двигатель работает · поездка пишется сама, %.1f км".format(t.distanceKm)
+                        t != null -> "Поездка записывается, %.1f км".format(t.distanceKm)
+                        state.engineOn -> "Двигатель работает"
+                        else -> "Двигатель заглушен · жду запуска"
+                    },
+                    style = Type.body(12, if (state.engineOn) accent else Palette.muted)
+                )
+            }
         }
+
+        state.forecast?.let { ForecastCard(it, onUseWeather = if (state.hasLocation) null else onUseWeather) }
 
 
         // карточка машины
@@ -182,6 +198,12 @@ fun HomeScreen(
                 VSpace(10.dp)
                 val color = when (b.level) { "danger" -> Palette.danger; "warning" -> Palette.warn; else -> Palette.muted }
                 Text(b.title, style = Type.body(12, color, FontWeight.SemiBold))
+            }
+            state.warmups.lastOrNull()?.let { w ->
+                if (w.level == "warning" || w.level == "danger") {
+                    VSpace(4.dp)
+                    Text("Прогрев: " + w.text.substringBefore('.') + ".", style = Type.body(12, Palette.warn, FontWeight.SemiBold))
+                }
             }
         }
 
@@ -274,7 +296,10 @@ fun ResultScreen(
         VerdictCard(d)
         snap?.repair?.let { RepairCard(it) }
         if (snap != null && snap.trend.isNotEmpty()) TrendCard(snap.trend)
+        if (snap != null && snap.checks.isNotEmpty()) ChecksCard(snap.checks)
         if (snap != null && snap.flags.isNotEmpty()) FlagsCard(snap.flags)
+        snap?.warmup?.let { WarmupCard(it) }
+        snap?.starts?.let { StartsCard(it) }
         snap?.battery?.let { BatteryCard(it) }
 
         if (!d.fromAi) {
@@ -490,9 +515,9 @@ fun SensorsScreen(
     bottom: @Composable () -> Unit
 ) {
     val accent = LocalAccent.current
-    DisposableEffect(state.connected) {
-        if (state.connected) state.startPolling()
-        onDispose { state.stopPolling() }
+    DisposableEffect(Unit) {
+        state.watchLive(true)
+        onDispose { state.watchLive(false) }
     }
     fun v(key: String) = state.sensors.firstOrNull { it.key == key }?.value
     val car = state.diagnosis?.car.orEmpty()
@@ -521,7 +546,9 @@ fun SensorsScreen(
         }
         val t = state.trip
         if (t == null) {
-            SecondaryButton(
+            if (state.autoTrip && state.connected) {
+                Text("Поездка начнётся сама, когда заведёшь двигатель", style = Type.body(13, Palette.muted), textAlign = TextAlign.Center, modifier = Modifier.fillMaxWidth())
+            } else SecondaryButton(
                 "Начать запись поездки", Modifier.fillMaxWidth(),
                 color = if (state.connected) accent else Palette.muted, enabled = state.connected, onClick = onStartTrip
             )
@@ -530,7 +557,7 @@ fun SensorsScreen(
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Dot(accent)
                     HSpace(8.dp)
-                    Text("Поездка записывается", style = Type.strong(14))
+                    Text(if (state.tripAuto) "Поездка пишется сама" else "Поездка записывается", style = Type.strong(14))
                     Spacer(Modifier.weight(1f))
                     Text(formatDuration(System.currentTimeMillis() - t.start), style = Type.mono(13, Palette.muted))
                 }
@@ -738,24 +765,17 @@ fun SettingsScreen(
             }
         }
 
-        SectionTitle("В поездке")
+        SectionTitle("Пока адаптер подключён")
         Card {
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                Column(Modifier.weight(1f)) {
-                    Text("Голосовые предупреждения", style = Type.strong(15))
-                    Text("Перегрев, нет зарядки, перезаряд: приложение скажет вслух во время записи поездки", style = Type.label(12))
-                }
-                HSpace(8.dp)
-                Switch(
-                    checked = state.voice,
-                    onCheckedChange = { state.updateVoice(it) },
-                    colors = SwitchDefaults.colors(
-                        checkedThumbColor = Palette.bg, checkedTrackColor = accent,
-                        uncheckedThumbColor = Palette.muted, uncheckedTrackColor = Palette.surface2,
-                        uncheckedBorderColor = Palette.border
-                    )
-                )
-            }
+            ToggleRow("Поездки сами", "Завёл двигатель — запись началась, заглушил — сохранилась", state.autoTrip) { state.updateAutoTrip(it) }
+            VSpace(10.dp)
+            Box(Modifier.fillMaxWidth().height(1.dp).background(Palette.border))
+            VSpace(10.dp)
+            ToggleRow("Новая ошибка в пути", "Раз в полторы минуты проверяю коды. Появился новый — скажу и разберу сразу", state.watchDtc) { state.updateWatchDtc(it) }
+            VSpace(10.dp)
+            Box(Modifier.fillMaxWidth().height(1.dp).background(Palette.border))
+            VSpace(10.dp)
+            ToggleRow("Голосовые предупреждения", "Перегрев, нет зарядки, перезаряд, новая ошибка: скажу вслух", state.voice) { state.updateVoice(it) }
         }
 
         SectionTitle("Цвет акцента")
@@ -880,7 +900,7 @@ fun SettingsScreen(
         }
 
         Text(
-            "OBD AI 0.5",
+            "OBD AI 0.6",
             style = Type.body(12, Palette.muted),
             textAlign = TextAlign.Center,
             modifier = Modifier
@@ -1122,6 +1142,27 @@ fun SettingField(
         shape = RoundedCornerShape(12.dp),
         modifier = Modifier.fillMaxWidth()
     )
+}
+
+@Composable
+fun ToggleRow(title: String, hint: String, checked: Boolean, onChange: (Boolean) -> Unit) {
+    val accent = LocalAccent.current
+    Row(verticalAlignment = Alignment.CenterVertically) {
+        Column(Modifier.weight(1f)) {
+            Text(title, style = Type.strong(15))
+            Text(hint, style = Type.label(12))
+        }
+        HSpace(8.dp)
+        Switch(
+            checked = checked,
+            onCheckedChange = onChange,
+            colors = SwitchDefaults.colors(
+                checkedThumbColor = Palette.bg, checkedTrackColor = accent,
+                uncheckedThumbColor = Palette.muted, uncheckedTrackColor = Palette.surface2,
+                uncheckedBorderColor = Palette.border
+            )
+        )
+    }
 }
 
 @Composable

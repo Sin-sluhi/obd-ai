@@ -96,6 +96,35 @@ class Prefs(context: Context) {
         sp.edit().putString("volts", arr.toString()).apply()
     }
 
+    // ---- поездки сами, слежение за ошибками, прогревы, пуски, погода ----
+
+    var autoTrip: Boolean
+        get() = sp.getBoolean("auto_trip", true)
+        set(v) = sp.edit().putBoolean("auto_trip", v).apply()
+
+    var watchDtc: Boolean
+        get() = sp.getBoolean("watch_dtc", true)
+        set(v) = sp.edit().putBoolean("watch_dtc", v).apply()
+
+    fun loadWarmups(): List<WarmupResult> = DriveLog.warmupsFromJson(sp.getString("warmups", null))
+    fun saveWarmups(list: List<WarmupResult>) = sp.edit().putString("warmups", DriveLog.warmupsToJson(list)).apply()
+
+    fun loadStarts(): List<StartEvent> = DriveLog.startsFromJson(sp.getString("starts", null))
+    fun saveStarts(list: List<StartEvent>) = sp.edit().putString("starts", DriveLog.startsToJson(list)).apply()
+
+    /** Координаты для прогноза погоды (грубые, с разрешения пользователя). NaN — нет. */
+    var lat: Double
+        get() = sp.getFloat("lat", Float.NaN).toDouble()
+        set(v) = sp.edit().putFloat("lat", v.toFloat()).apply()
+    var lon: Double
+        get() = sp.getFloat("lon", Float.NaN).toDouble()
+        set(v) = sp.edit().putFloat("lon", v.toFloat()).apply()
+
+    /** День, за который уже показывали вечерний прогноз, чтобы не дёргать дважды. */
+    var forecastDay: String
+        get() = sp.getString("forecast_day", "") ?: ""
+        set(v) = sp.edit().putString("forecast_day", v).apply()
+
     // ---- последнее стирание ошибок: чтобы проверить, помог ли ремонт ----
 
     var lastClear: ClearEvent?

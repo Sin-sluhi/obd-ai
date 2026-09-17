@@ -26,10 +26,15 @@ import io.github.sinsluhi.obdai.AppState
 import io.github.sinsluhi.obdai.BatteryReport
 import io.github.sinsluhi.obdai.DashReport
 import io.github.sinsluhi.obdai.Flag
-import io.github.sinsluhi.obdai.Mode06
+import io.github.sinsluhi.obdai.MorningForecast
 import io.github.sinsluhi.obdai.Readiness
 import io.github.sinsluhi.obdai.RepairCheck
+import io.github.sinsluhi.obdai.StartAnalysis
 import io.github.sinsluhi.obdai.TypicalIssue
+import io.github.sinsluhi.obdai.WarmupResult
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 /** Карточки результата и экраны, появившиеся в 0.5: аккумулятор, проверка после ремонта, флаги, подробности, фото. */
 
@@ -144,6 +149,98 @@ fun ServiceCard(text: String) {
         Text("Что сказать в сервисе", style = Type.strong(15))
         VSpace(6.dp)
         Text(text, style = Type.body(13, Palette.text2))
+    }
+}
+
+@Composable
+fun ChecksCard(checks: List<Flag>) {
+    val accent = LocalAccent.current
+    val bad = checks.filter { it.level != "ok" }
+    val worst = when {
+        bad.any { it.level == "danger" } -> "danger"
+        bad.any { it.level == "warning" } -> "warning"
+        else -> "ok"
+    }
+    val (bg, border, main) = levelColors(worst, accent)
+    Card(background = bg, border = border, radius = 18.dp, padding = 16.dp) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Dot(main)
+            HSpace(10.dp)
+            Text(if (bad.isEmpty()) "Датчики согласованы" else "Датчики: есть расхождения", style = Type.strong(15))
+        }
+        VSpace(8.dp)
+        (if (bad.isEmpty()) checks else bad).forEach { f ->
+            val c = when (f.level) { "danger" -> Palette.danger; "warning" -> Palette.warn; "ok" -> accent; else -> Palette.muted }
+            Row(Modifier.padding(vertical = 4.dp)) {
+                Box(Modifier.padding(top = 6.dp)) { Dot(c, 7.dp) }
+                HSpace(10.dp)
+                Text(f.text, style = Type.body(13, Palette.text2), modifier = Modifier.weight(1f))
+            }
+        }
+    }
+}
+
+@Composable
+fun WarmupCard(w: WarmupResult) {
+    val accent = LocalAccent.current
+    val (bg, border, main) = levelColors(if (w.level == "info") "ok" else w.level, accent)
+    Card(background = bg, border = border, radius = 18.dp, padding = 16.dp) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Dot(if (w.level == "info") Palette.muted else main)
+            HSpace(10.dp)
+            Text("Прогрев и термостат", style = Type.strong(15), modifier = Modifier.weight(1f))
+            Text(SimpleDateFormat("d MMM", Locale("ru")).format(Date(w.t)), style = Type.label(12))
+        }
+        VSpace(10.dp)
+        Row {
+            TripStat("До 80°", w.minutesTo80?.let { "%.0f".format(it) } ?: "—", "мин", Modifier.weight(1f))
+            TripStat("Максимум", "%.0f".format(w.maxTemp), "°C", Modifier.weight(1f))
+            TripStat("За бортом", w.ambient?.let { "%.0f".format(it) } ?: "—", "°C", Modifier.weight(1f))
+        }
+        VSpace(8.dp)
+        Text(w.text, style = Type.body(13, Palette.text2))
+    }
+}
+
+@Composable
+fun StartsCard(a: StartAnalysis) {
+    val accent = LocalAccent.current
+    val (bg, border, main) = levelColors(a.level, accent)
+    Card(background = bg, border = border, radius = 18.dp, padding = 16.dp) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Dot(main)
+            HSpace(10.dp)
+            Text(a.title, style = Type.strong(15))
+        }
+        VSpace(10.dp)
+        Row {
+            TripStat("Последний", "%.1f".format(a.lastMs / 1000.0), "с", Modifier.weight(1f))
+            TripStat("Обычно", "%.1f".format(a.medianMs / 1000.0), "с", Modifier.weight(1f))
+            TripStat("Тренд", a.trendPct?.let { "%+d".format(it) } ?: "—", "%", Modifier.weight(1f))
+        }
+        VSpace(8.dp)
+        Text(a.text, style = Type.body(13, Palette.text2))
+    }
+}
+
+@Composable
+fun ForecastCard(f: MorningForecast, onUseWeather: (() -> Unit)?) {
+    val accent = LocalAccent.current
+    val (bg, border, main) = levelColors(f.level, accent)
+    Card(background = bg, border = border, radius = 18.dp, padding = 16.dp, glow = main) {
+        Text("ЗАВТРА УТРОМ", style = Type.body(12, main, FontWeight.SemiBold))
+        VSpace(6.dp)
+        Text(f.title, style = Type.strong(17))
+        VSpace(6.dp)
+        Text(f.text, style = Type.body(13, Palette.text2))
+        if (onUseWeather != null && !f.fromWeather) {
+            VSpace(10.dp)
+            Text(
+                "Уточнить по прогнозу погоды",
+                style = Type.body(13, accent, FontWeight.SemiBold),
+                modifier = Modifier.clickable(onClick = onUseWeather).padding(vertical = 4.dp)
+            )
+        }
     }
 }
 

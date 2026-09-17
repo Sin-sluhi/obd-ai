@@ -26,7 +26,11 @@ data class CarSnapshot(
     val repair: RepairCheck? = null,
     val trend: List<String> = emptyList(),
     val flags: List<Flag> = emptyList(),
-    val adapter: AdapterInfo? = null
+    val adapter: AdapterInfo? = null,
+    val checks: List<Flag> = emptyList(),          // согласованность датчиков
+    val warmup: WarmupResult? = null,              // последний прогрев
+    val starts: StartAnalysis? = null,             // холодные пуски
+    val forecast: MorningForecast? = null          // заведётся ли утром
 ) {
     /** Все коды из всех блоков. */
     val allCodes: List<String> get() = (stored + pending + permanent + modules.flatMap { it.codes }).distinct()

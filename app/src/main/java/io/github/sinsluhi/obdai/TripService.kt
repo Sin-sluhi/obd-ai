@@ -14,22 +14,30 @@ import android.os.Looper
 import androidx.core.app.NotificationCompat
 import androidx.core.app.ServiceCompat
 
-/** Держит приложение живым, пока пишется поездка, и показывает прогресс в уведомлении. */
+/**
+ * Держит приложение живым, пока подключён адаптер: опрос датчиков, поездки сами, прогрев, пуски,
+ * новые ошибки в пути. В уведомлении — состояние машины или поездка.
+ */
 class TripService : Service() {
 
     private val handler = Handler(Looper.getMainLooper())
     private val tick = object : Runnable {
         override fun run() {
             val state = AppState.get(this@TripService)
-            val t = state.trip
-            if (t == null) {
+            if (!state.connected) {
                 stopSelf()
                 return
             }
-            val text = buildString {
+            val t = state.trip
+            val text = if (t != null) buildString {
+                append(if (state.tripAuto) "Поездка · " else "Запись · ")
                 append("%.1f км".format(t.distanceKm))
                 append(" · ").append(formatDuration(System.currentTimeMillis() - t.start))
                 t.fuelL?.let { if (t.distanceKm > 0.3) append(" · %.1f л/100".format(it / t.distanceKm * 100)) }
+            } else buildString {
+                append(if (state.engineOn) "Двигатель работает" else "Двигатель заглушен")
+                val v = state.voltage
+                if (v.isNotBlank()) append(" · ").append(v.replace("V", " В"))
             }
             manager().notify(ID, build(text))
             handler.postDelayed(this, 3_000)
@@ -40,12 +48,12 @@ class TripService : Service() {
         super.onCreate()
         if (Build.VERSION.SDK_INT >= 26) {
             manager().createNotificationChannel(
-                NotificationChannel(CHANNEL, "Запись поездки", NotificationManager.IMPORTANCE_LOW).apply {
-                    description = "Показывается, пока OBD AI записывает поездку"
+                NotificationChannel(CHANNEL, "Связь с машиной", NotificationManager.IMPORTANCE_LOW).apply {
+                    description = "Показывается, пока OBD AI подключён к адаптеру"
                 }
             )
         }
-        ServiceCompat.startForeground(this, ID, build("Поездка началась"), ServiceInfo.FOREGROUND_SERVICE_TYPE_CONNECTED_DEVICE)
+        ServiceCompat.startForeground(this, ID, build("На связи с машиной"), ServiceInfo.FOREGROUND_SERVICE_TYPE_CONNECTED_DEVICE)
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
@@ -70,7 +78,7 @@ class TripService : Service() {
         )
         return NotificationCompat.Builder(this, CHANNEL)
             .setSmallIcon(R.drawable.ic_logo)
-            .setContentTitle("OBD AI записывает поездку")
+            .setContentTitle("OBD AI следит за машиной")
             .setContentText(text)
             .setOngoing(true)
             .setOnlyAlertOnce(true)

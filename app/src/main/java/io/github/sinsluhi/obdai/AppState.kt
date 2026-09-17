@@ -1,7 +1,12 @@
 package io.github.sinsluhi.obdai
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.app.PendingIntent
 import android.bluetooth.BluetoothDevice
 import android.content.Context
+import android.content.Intent
+import android.os.Build
 import android.os.Handler
 import android.os.Looper
 import android.speech.tts.TextToSpeech
@@ -9,8 +14,10 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+import androidx.core.app.NotificationCompat
 import java.io.IOException
 import java.text.SimpleDateFormat
+import java.util.Calendar
 import java.util.Date
 import java.util.Locale
 import java.util.concurrent.Executors
@@ -22,10 +29,14 @@ class AppState private constructor(context: Context) {
 
     companion object {
         @Volatile private var instance: AppState? = null
-        /** Одно состояние на процесс: его делят Activity и сервис записи поездки. */
+        /** Одно состояние на процесс: его делят Activity и сервис. */
         fun get(context: Context): AppState = instance ?: synchronized(this) {
             instance ?: AppState(context.applicationContext).also { instance = it }
         }
+        private val QUICK_KEYS = setOf("rpm", "volt")
+        private const val NOTIF_DTC = 51
+        private const val NOTIF_FORECAST = 52
+        private const val NOTIF_WARMUP = 53
     }
 
     private val worker = Executors.newSingleThreadExecutor()
@@ -34,6 +45,9 @@ class AppState private constructor(context: Context) {
 
     @Volatile private var link: ObdLink? = null
     @Volatile private var polling = false
+    @Volatile private var paused = false
+    @Volatile private var pollBusy = false
+    @Volatile private var liveViewers = 0
 
     // ---- наблюдаемое состояние ----
     var connected by mutableStateOf(false)
@@ -52,6 +66,10 @@ class AppState private constructor(context: Context) {
     var lastSnapshot by mutableStateOf<CarSnapshot?>(null)
     var battery by mutableStateOf<BatteryReport?>(null)
     var dash by mutableStateOf<DashReport?>(null)
+    var engineOn by mutableStateOf(false)
+    var warmups by mutableStateOf(prefs.loadWarmups())
+    var starts by mutableStateOf(prefs.loadStarts())
+    var forecast by mutableStateOf<MorningForecast?>(null)
     var busy by mutableStateOf<String?>(null)      // текст текущего шага или null
     var error by mutableStateOf<String?>(null)
     var toast by mutableStateOf<String?>(null)
@@ -59,6 +77,7 @@ class AppState private constructor(context: Context) {
     var history by mutableStateOf(prefs.loadHistory())
     var trips by mutableStateOf(prefs.loadTrips())
     var trip by mutableStateOf<TripLive?>(null)     // текущая поездка или null
+    var tripAuto by mutableStateOf(false)           // поездка началась сама
     var provider by mutableStateOf(Provider.byId(prefs.providerId))
     var apiKey by mutableStateOf(prefs.apiKey(provider))
     var model by mutableStateOf(prefs.model(provider))
@@ -68,6 +87,12 @@ class AppState private constructor(context: Context) {
     var demo by mutableStateOf(prefs.demo)
     var devMode by mutableStateOf(prefs.devMode)
     var voice by mutableStateOf(prefs.voice)
+    var autoTrip by mutableStateOf(prefs.autoTrip)
+    var watchDtc by mutableStateOf(prefs.watchDtc)
+    val hasLocation: Boolean get() = !prefs.lat.isNaN()
+
+    /** Подключён живой адаптер (а не демо): тогда нужен сервис, чтобы держать связь в фоне. */
+    val realLink: Boolean get() = link is Elm327
 
     /** Накопленные измерения напряжения (30 дней) для оценки аккумулятора. */
     @Volatile private var volts: List<VoltSample> = prefs.loadVolts()
@@ -75,6 +100,21 @@ class AppState private constructor(context: Context) {
     private val alarmSpoken = mutableMapOf<String, Long>()
     private var tts: TextToSpeech? = null
     @Volatile private var ttsReady = false
+
+    // ---- машина состояний двигателя (только в потоке опроса) ----
+    private var engineRunning = false
+    private var engineOnSince = 0L
+    private var offSince = 0L
+    private var lastOffSample = 0L
+    private var crankStart = 0L
+    private var crankMinV: Double? = null
+    private var noDataSince = 0L
+    private var warmupTracker: WarmupTracker? = null
+    @Volatile private var lastAmbient: Double? = null
+    private var lastCoolant: Double? = null
+    private var dtcBaseline: Int? = null
+    private var lastDtcPoll = 0L
+    @Volatile private var knownCodes: Set<String> = emptySet()
 
     /** Ключ, встроенный в сборку через секрет GitHub (пустой, если секрета нет или он для другого провайдера). */
     val builtInKey: Boolean get() = BuildConfig.AI_API_KEY.isNotBlank() && provider.id == BuildConfig.AI_PROVIDER
@@ -117,10 +157,17 @@ class AppState private constructor(context: Context) {
     fun updateDevMode(v: Boolean) { devMode = v; prefs.devMode = v }
     fun updateAccent(i: Int) { accentIndex = i; prefs.accentIndex = i }
     fun updateVoice(v: Boolean) { voice = v; prefs.voice = v }
+    fun updateAutoTrip(v: Boolean) { autoTrip = v; prefs.autoTrip = v }
+    fun updateWatchDtc(v: Boolean) { watchDtc = v; prefs.watchDtc = v }
     fun updateDemo(v: Boolean) {
         demo = v
         prefs.demo = v
         if (!v && link is DemoLink) disconnect()
+    }
+    fun updateLocation(lat: Double, lon: Double) {
+        prefs.lat = lat; prefs.lon = lon
+        addLog("Координаты для прогноза погоды сохранены")
+        computeForecast(alert = false)
     }
 
     // ---- подключение ----
@@ -144,6 +191,8 @@ class AppState private constructor(context: Context) {
                 calibration = elm.calibration
             }
             addLog("✅ Подключено")
+            resetEngineState()
+            startPolling()
         }
     }
 
@@ -159,6 +208,8 @@ class AppState private constructor(context: Context) {
         ecuName = d.ecuName
         calibration = d.calibration
         addLog("Демо-режим: подключена выдуманная машина")
+        resetEngineState()
+        startPolling()
     }
 
     fun disconnect() {
@@ -169,6 +220,8 @@ class AppState private constructor(context: Context) {
         adapterName = ""
         adapterInfo = AdapterInfo()
         ecuOnline = false
+        engineOn = false
+        if (trip != null) stopTrip()
         worker.execute { runCatching { l?.disconnect() } }
         addLog("Отключено")
     }
@@ -181,6 +234,7 @@ class AppState private constructor(context: Context) {
         if (busy != null) return
         runTask("Проверка машины") {
             val l = link ?: throw IOException("Нет подключения к адаптеру")
+            pausePolling()
 
             ui { busy = "Читаю блок двигателя" }
             val mil = l.readMil()
@@ -210,6 +264,7 @@ class AppState private constructor(context: Context) {
             val s = l.readSensors(live = false)
             val volt = l.readVoltageSafe()
             ui { sensors = s; voltage = volt; protocol = l.protocol }
+            s.firstOrNull { it.key == "ambient" }?.value?.let { lastAmbient = it }
             recordVolt(s, volt, force = true)
 
             ui { busy = "Читаю самотесты ЭБУ" }
@@ -225,6 +280,7 @@ class AppState private constructor(context: Context) {
                 l.scanModules(brand) { i, n -> ui { busy = "Опрашиваю блоки $i/$n" } }
             }.onFailure { addLog("Опрос блоков не удался: ${it.message}") }.getOrDefault(emptyList())
             addLog("Ответило блоков: ${modules.size}, с ошибками: ${modules.count { it.codes.isNotEmpty() }}")
+            resumePolling()
 
             ui { busy = "Сверяю с прошлыми проверками" }
             val batteryNow = BatteryReport.build(volts)
@@ -237,7 +293,11 @@ class AppState private constructor(context: Context) {
             val prev = history.firstOrNull { it.vin == v || (it.vin == null && v == null) }
             val trend = Trend.compare(prev, base)
             val flags = Inspection.flags(base)
-            val snap = base.copy(repair = repair, trend = trend, flags = flags)
+            val checks = SensorCheck.run(base, ready?.compression ?: false)
+            checks.filter { it.level != "ok" }.forEach { addLog("Датчики: ${it.text}") }
+            val snap = base.copy(repair = repair, trend = trend, flags = flags, checks = checks,
+                warmup = warmups.lastOrNull(), starts = StartAnalysis.build(starts), forecast = forecast)
+            knownCodes = snap.allCodes.map { it.substringBefore(' ') }.toSet()
             ui { lastSnapshot = snap; battery = batteryNow }
 
             val cfg = aiConfig()
@@ -270,9 +330,14 @@ class AppState private constructor(context: Context) {
     fun clearCodes(onDone: (Boolean) -> Unit) {
         runTask("Сброс ошибок") {
             val codes = lastSnapshot?.allCodes.orEmpty()
-            val ok = link?.clearCodes() ?: false
+            pausePolling()
+            val ok = try { link?.clearCodes() ?: false } finally { resumePolling() }
             addLog(if (ok) "✅ Ошибки стёрты" else "Машина не подтвердила сброс")
-            if (ok) prefs.lastClear = ClearEvent(System.currentTimeMillis(), vin, codes)
+            if (ok) {
+                prefs.lastClear = ClearEvent(System.currentTimeMillis(), vin, codes)
+                knownCodes = emptySet()
+                dtcBaseline = null
+            }
             ui {
                 if (ok) { milOn = false; dtcCount = 0 }
                 onDone(ok)
@@ -285,7 +350,8 @@ class AppState private constructor(context: Context) {
         if (c.isEmpty()) return
         runTask("> $c") {
             val l = link ?: throw IOException("Нет подключения к адаптеру")
-            addLog(l.send(c, 8000).replace("\r", "\n"))
+            pausePolling()
+            try { addLog(l.send(c, 8000).replace("\r", "\n")) } finally { resumePolling() }
         }
     }
 
@@ -323,12 +389,27 @@ class AppState private constructor(context: Context) {
         prefs.saveVolts(volts)
     }
 
-    // ---- голосовые предупреждения в поездке ----
+    // ---- уведомления и голос ----
 
-    private fun speak(key: String, text: String) {
+    private fun notify(id: Int, title: String, text: String) {
+        val nm = appContext.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        if (Build.VERSION.SDK_INT >= 26) {
+            nm.createNotificationChannel(NotificationChannel("alerts", "Предупреждения о машине", NotificationManager.IMPORTANCE_HIGH).apply {
+                description = "Новая ошибка в пути, прогрев, запуск утром"
+            })
+        }
+        val open = PendingIntent.getActivity(appContext, 0, Intent(appContext, MainActivity::class.java), PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
+        val n = NotificationCompat.Builder(appContext, "alerts")
+            .setSmallIcon(R.drawable.ic_logo).setContentTitle(title).setContentText(text)
+            .setStyle(NotificationCompat.BigTextStyle().bigText(text))
+            .setContentIntent(open).setAutoCancel(true).build()
+        runCatching { nm.notify(id, n) }
+    }
+
+    private fun speak(key: String, text: String, minGapMs: Long = 5 * 60_000) {
         val now = System.currentTimeMillis()
         val last = alarmSpoken[key] ?: 0L
-        if (now - last < 5 * 60_000) return
+        if (now - last < minGapMs) return
         alarmSpoken[key] = now
         addLog("🔊 $text")
         ui { toast = text }
@@ -358,23 +439,52 @@ class AppState private constructor(context: Context) {
         }
     }
 
-    // ---- живые датчики ----
+    // ---- постоянный опрос: датчики, двигатель, поездки, прогрев, пуски, новые ошибки ----
+
+    fun watchLive(on: Boolean) { liveViewers = (liveViewers + if (on) 1 else -1).coerceAtLeast(0) }
+
+    private fun pausePolling() {
+        paused = true
+        val deadline = System.currentTimeMillis() + 6000
+        while (pollBusy && System.currentTimeMillis() < deadline) Thread.sleep(50)
+    }
+
+    private fun resumePolling() { paused = false }
+
+    private fun resetEngineState() {
+        engineRunning = false; engineOnSince = 0L; offSince = 0L; lastOffSample = 0L
+        crankStart = 0L; crankMinV = null; noDataSince = 0L; warmupTracker = null
+        dtcBaseline = null; lastDtcPoll = 0L
+        knownCodes = lastSnapshot?.allCodes?.map { it.substringBefore(' ') }?.toSet().orEmpty()
+    }
 
     fun startPolling() {
         if (polling) return
         polling = true
         poller.execute {
             while (polling) {
+                if (paused) { Thread.sleep(200); continue }
                 val l = link
                 if (l == null || !l.isConnected) { Thread.sleep(500); continue }
+                pollBusy = true
+                var delay = 400L
                 try {
-                    val s = l.readSensors(live = true)
-                    val volt = l.readVoltageSafe()
                     val now = System.currentTimeMillis()
+                    // двигатель стоит и на приборы никто не смотрит: опрашиваем только обороты и напряжение, часто,
+                    // чтобы не пропустить прокрутку стартера
+                    val quick = !engineRunning && liveViewers == 0 && trip == null
+                    val s = l.readSensors(live = true, keys = if (quick) QUICK_KEYS else null)
+                    val ecuV = s.firstOrNull { it.key == "volt" }?.value
+                    val volt = if (quick && ecuV != null) "%.1fV".format(ecuV) else l.readVoltageSafe()
+                    val vNow = ecuV ?: Regex("[0-9]+(\\.[0-9]+)?").find(volt)?.value?.toDoubleOrNull()
+                    handleEngine(l, now, s.firstOrNull { it.key == "rpm" }?.value, vNow, s)
                     recordVolt(s, volt, force = false)
-                    if (trip != null) checkAlarms(s, volt)
+                    if (trip != null) {
+                        checkAlarms(s, volt)
+                        if (watchDtc && now - lastDtcPoll > 90_000) watchCodes(l, now, s)
+                    }
                     ui {
-                        sensors = s
+                        sensors = if (quick && sensors.isNotEmpty()) sensors.map { old -> s.firstOrNull { it.key == old.key } ?: old } else s
                         voltage = volt
                         trip?.let { t ->
                             trip = t.advance(
@@ -386,22 +496,191 @@ class AppState private constructor(context: Context) {
                             )
                         }
                     }
+                    delay = if (quick) 150L else 400L
                 } catch (e: Exception) {
                     addLog("Датчики: ${e.message}")
-                    Thread.sleep(1000)
+                    delay = 1000L
+                } finally {
+                    pollBusy = false
                 }
-                Thread.sleep(400)
+                Thread.sleep(delay)
             }
         }
     }
 
     fun stopPolling() { polling = false }
 
+    /** Что делает двигатель: стоит, крутится стартером или работает. Отсюда пуски, прогрев и поездки. */
+    private fun handleEngine(l: ObdLink, now: Long, rpm: Double?, v: Double?, s: List<SensorReading>) {
+        if (rpm == null) {
+            if (noDataSince == 0L) noDataSince = now
+            if (trip != null && tripAuto && now - noDataSince > 60_000) autoStopTrip("нет данных с машины")
+            return
+        }
+        noDataSince = 0L
+        s.firstOrNull { it.key == "coolant" }?.value?.let { lastCoolant = it }
+        when {
+            rpm < 50 -> {
+                if (engineRunning) {
+                    engineRunning = false
+                    offSince = now
+                    engineStopped(now)
+                }
+                lastOffSample = now
+                if (crankStart != 0L && now - crankStart > 15_000) { crankStart = 0L; crankMinV = null }
+                if (v != null && v < 10.8) {
+                    if (crankStart == 0L) crankStart = now
+                    crankMinV = minOf(crankMinV ?: v, v)
+                }
+                if (trip != null && tripAuto && offSince != 0L && now - offSince > 45_000) autoStopTrip("двигатель заглушен")
+            }
+            rpm < 400 -> {
+                if (crankStart == 0L) crankStart = if (lastOffSample != 0L) lastOffSample else now
+                if (v != null) crankMinV = minOf(crankMinV ?: v, v)
+            }
+            else -> {
+                if (!engineRunning) {
+                    engineRunning = true
+                    engineOnSince = now
+                    engineStarted(l, now, v)
+                }
+                val coolant = s.firstOrNull { it.key == "coolant" }?.value
+                if (warmupTracker == null && coolant != null && coolant < 50 && now - engineOnSince < 60_000) {
+                    warmupTracker = WarmupTracker(now, lastAmbient)
+                    addLog("Слежу за прогревом с ${coolant.toInt()}°")
+                }
+                warmupTracker?.let { w ->
+                    w.add(now, coolant, s.firstOrNull { it.key == "speed" }?.value)
+                    if (w.done(now)) finishWarmup(now)
+                }
+                if (autoTrip && trip == null) autoStartTrip()
+            }
+        }
+    }
+
+    private fun engineStarted(l: ObdLink, now: Long, v: Double?) {
+        ui { engineOn = true }
+        val start = if (crankStart != 0L) crankStart else lastOffSample
+        val sawOff = lastOffSample != 0L && now - lastOffSample < 20_000
+        if (start != 0L && sawOff) {
+            val crankMs = (now - start).coerceIn(100, 15_000)
+            val minV = listOfNotNull(crankMinV, v).minOrNull()
+            val ev = StartEvent(now, crankMs, minV, lastCoolant, lastAmbient)
+            val list = (starts + ev).takeLast(StartEvent.MAX)
+            prefs.saveStarts(list)
+            ui { starts = list }
+            addLog("Запуск: стартер %.1f с, просадка до %s".format(crankMs / 1000.0, minV?.let { "%.1f В".format(it) } ?: "?"))
+        }
+        crankStart = 0L; crankMinV = null
+        dtcBaseline = null
+        runCatching { l.readSensors(live = false, keys = setOf("ambient")).firstOrNull()?.value }.getOrNull()?.let { lastAmbient = it }
+    }
+
+    private fun engineStopped(now: Long) {
+        ui { engineOn = false }
+        finishWarmup(now)
+        val hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY)
+        if (hour >= 15) computeForecast(alert = true)
+    }
+
+    private fun finishWarmup(now: Long) {
+        val w = warmupTracker ?: return
+        warmupTracker = null
+        val r = w.result(now) ?: return
+        val list = (warmups + r).takeLast(20)
+        prefs.saveWarmups(list)
+        ui { warmups = list }
+        addLog("Прогрев: ${r.text}")
+        if (r.level == "warning" || r.level == "danger") notify(NOTIF_WARMUP, if (r.level == "danger") "Перегрев" else "Похоже на термостат", r.text)
+    }
+
+    private fun autoStartTrip() {
+        ui {
+            if (trip == null) {
+                trip = TripLive(System.currentTimeMillis())
+                tripAuto = true
+            }
+        }
+        addLog("▶ Поездка началась сама: двигатель работает")
+    }
+
+    private fun autoStopTrip(reason: String) {
+        addLog("⏹ Поездка закончилась сама: $reason")
+        ui { stopTrip() }
+    }
+
+    /** Раз в полторы минуты в поездке: не появилось ли новых кодов. Появились — сразу голос, уведомление и вердикт. */
+    private fun watchCodes(l: ObdLink, now: Long, s: List<SensorReading>) {
+        lastDtcPoll = now
+        val mil = runCatching { l.readMil() }.getOrNull() ?: return
+        val base = dtcBaseline
+        if (base == null) {
+            dtcBaseline = mil.second
+            val seed = runCatching { l.readCodes(0x03) }.getOrDefault(emptyList()).map { it.substringBefore(' ') }
+            knownCodes = knownCodes + seed
+            return
+        }
+        if (mil.second <= base) return
+        dtcBaseline = mil.second
+        val codes = (runCatching { l.readCodes(0x03) }.getOrDefault(emptyList()) + runCatching { l.readCodes(0x07) }.getOrDefault(emptyList()))
+            .map { it.substringBefore(' ') }.distinct()
+        val fresh = codes.filter { it !in knownCodes }
+        if (fresh.isEmpty()) return
+        knownCodes = knownCodes + fresh
+        ui { milOn = mil.first; dtcCount = mil.second }
+        val first = fresh.first()
+        addLog("⚠️ Новая ошибка в пути: ${fresh.joinToString()}")
+        speak("dtc_$first", "Новая ошибка ${first.toCharArray().joinToString(" ")}: ${DtcCatalog.title(first)}", minGapMs = 0)
+        notify(NOTIF_DTC, "Новая ошибка: ${fresh.joinToString()}", DtcCatalog.title(first) + ". Готовлю разбор…")
+        val cfg = aiConfig()
+        if (!cfg.ready) return
+        worker.execute {
+            val snap = CarSnapshot(vin, protocol, voltage, mil.first, mil.second, fresh, emptyList(), s)
+            runCatching { AiClient.diagnose(cfg, snap, {}, { addLog(it) }) }
+                .onSuccess { d ->
+                    val drive = when (d.canDrive) { "yes" -> "Ехать можно." ; "no" -> "Лучше остановиться." ; else -> "Ехать осторожно." }
+                    notify(NOTIF_DTC, "${fresh.joinToString()}: ${d.title}", "$drive ${d.text}")
+                    speak("dtcv_$first", "${d.title}. $drive", minGapMs = 0)
+                    ui {
+                        diagnosis = d
+                        history = (listOf(HistoryEntry(System.currentTimeMillis(), vin, d, emptyMap())) + history).take(50)
+                        prefs.saveHistory(history)
+                    }
+                }
+                .onFailure { addLog("Разбор новой ошибки не удался: ${it.message}") }
+        }
+    }
+
+    /** Заведётся ли утром: напряжение покоя против ночной температуры. Погода, если есть координаты, иначе датчик за бортом. */
+    fun computeForecast(alert: Boolean) {
+        worker.execute {
+            val now = System.currentTimeMillis()
+            val restV = volts.filter { it.rest && !it.crank && now - it.t < 12 * 3_600_000L }.lastOrNull()?.v
+            var temp: Double? = null
+            var fromWeather = false
+            if (hasLocation) runCatching { Weather.nightMin(prefs.lat, prefs.lon) }.getOrNull()?.let { temp = it; fromWeather = true }
+            if (temp == null) lastAmbient?.let { temp = it - 4 }
+            val t = temp
+            val f = if (t != null && t < 5) MorningForecast.build(restV, t, fromWeather, StartAnalysis.build(starts)?.medianMs) else null
+            ui { forecast = f }
+            if (f == null) return@execute
+            addLog("Утро: ${f.title}. ${f.text}")
+            if (alert && f.level != "ok") {
+                val day = SimpleDateFormat("yyyy-MM-dd", Locale.US).format(Date())
+                if (prefs.forecastDay != day) {
+                    prefs.forecastDay = day
+                    notify(NOTIF_FORECAST, f.title, f.text)
+                }
+            }
+        }
+    }
+
     // ---- поездки ----
 
     fun startTrip() {
         if (trip != null) return
         trip = TripLive(System.currentTimeMillis())
+        tripAuto = false
         startPolling()
         addLog("▶ Запись поездки")
     }
@@ -410,6 +689,8 @@ class AppState private constructor(context: Context) {
         val t = trip ?: return
         val done = t.finish(System.currentTimeMillis())
         trip = null
+        tripAuto = false
+        dtcBaseline = null
         if (done.distanceKm >= 0.05 || done.durationMs >= 60_000) {
             trips = (listOf(done) + trips).take(300)
             prefs.saveTrips(trips)
@@ -417,7 +698,6 @@ class AppState private constructor(context: Context) {
             toast = "Поездка сохранена: %.1f км".format(done.distanceKm)
         } else {
             addLog("Поездка слишком короткая, не сохраняю")
-            toast = "Поездка слишком короткая"
         }
     }
 
@@ -442,6 +722,7 @@ class AppState private constructor(context: Context) {
                 addLog("❌ $msg")
                 ui { error = msg }
             } finally {
+                resumePolling()
                 ui { busy = null }
             }
         }

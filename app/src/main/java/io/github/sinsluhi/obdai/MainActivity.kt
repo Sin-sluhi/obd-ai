@@ -9,6 +9,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.location.LocationManager
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -138,6 +139,10 @@ class MainActivity : ComponentActivity() {
                 state.toast = null
             }
         }
+        // живой адаптер подключён — поднимаем сервис, чтобы связь, поездки и слежение жили в фоне
+        LaunchedEffect(state.connected) {
+            if (state.connected && state.realLink) ensureService()
+        }
 
         val tabBar: @Composable () -> Unit = {
             val current = when (page) {
@@ -173,6 +178,7 @@ class MainActivity : ComponentActivity() {
                         onSettings = { page = Page.Settings },
                         onAdapterClick = { if (state.connected) page = Page.Settings else pickDevice() },
                         onPhoto = { page = Page.Dash; takePhoto { page = Page.Dash } },
+                        onUseWeather = { useLocationForForecast() },
                         bottom = tabBar
                     )
                     Page.Result -> ResultScreen(
@@ -326,39 +332,74 @@ class MainActivity : ComponentActivity() {
         return true
     }
 
+    // ---------- сервис связи с машиной ----------
+
+    /** Сервис нужен, пока подключён живой адаптер. На Android 13+ сначала просим разрешение на уведомления. */
+    private fun ensureService() {
+        if (Build.VERSION.SDK_INT >= 33 &&
+            checkSelfPermission(PERM_NOTIFY) != PackageManager.PERMISSION_GRANTED
+        ) {
+            afterPermission = { startCarService() }
+            permissionLauncher.launch(PERM_NOTIFY)
+            return
+        }
+        startCarService()
+    }
+
+    private fun startCarService() {
+        if (!state.connected || !state.realLink) return
+        runCatching { ContextCompat.startForegroundService(this, Intent(this, TripService::class.java)) }
+            .onFailure { state.addLog("Сервис не запустился: ${it.message}") }
+    }
+
     // ---------- поездки ----------
 
     private fun startTrip() {
         if (!state.connected) { state.toast = "Сначала подключи адаптер"; return }
-        if (Build.VERSION.SDK_INT >= 33 &&
-            checkSelfPermission(PERM_NOTIFY) != PackageManager.PERMISSION_GRANTED
-        ) {
-            afterPermission = { beginTrip() }
-            permissionLauncher.launch(PERM_NOTIFY)
-            return
-        }
-        beginTrip()
-    }
-
-    private fun beginTrip() {
         state.startTrip()
-        runCatching { ContextCompat.startForegroundService(this, Intent(this, TripService::class.java)) }
-            .onFailure { state.addLog("Сервис поездки не запустился: ${it.message}") }
+        ensureService()
     }
 
     private fun stopTrip() {
         state.stopTrip()
-        stopService(Intent(this, TripService::class.java))
+    }
+
+    // ---------- погода для прогноза запуска ----------
+
+    private val locationLauncher =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { granted ->
+            if (granted) readLocation() else state.toast = "Без геопозиции прогноз считается по датчику за бортом"
+        }
+
+    private fun useLocationForForecast() {
+        if (checkSelfPermission(PERM_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            locationLauncher.launch(PERM_LOCATION)
+            return
+        }
+        readLocation()
+    }
+
+    @SuppressLint("MissingPermission")
+    private fun readLocation() {
+        val lm = getSystemService(LOCATION_SERVICE) as LocationManager
+        val loc = listOf(LocationManager.NETWORK_PROVIDER, LocationManager.GPS_PROVIDER, LocationManager.PASSIVE_PROVIDER)
+            .mapNotNull { p -> runCatching { lm.getLastKnownLocation(p) }.getOrNull() }
+            .maxByOrNull { it.time }
+        if (loc == null) {
+            state.toast = "Телефон ещё не знает, где он. Открой карты на минуту и попробуй снова"
+            return
+        }
+        state.updateLocation(loc.latitude, loc.longitude)
     }
 
     override fun onDestroy() {
-        // соединение и запись поездки живут в AppState и не зависят от экрана
-        if (::state.isInitialized && state.trip == null) state.stopPolling()
+        // соединение, опрос и поездки живут в AppState и сервисе, экран им не нужен
         super.onDestroy()
     }
 
     companion object {
         private const val PERM_CONNECT = "android.permission.BLUETOOTH_CONNECT"
         private const val PERM_NOTIFY = "android.permission.POST_NOTIFICATIONS"
+        private const val PERM_LOCATION = "android.permission.ACCESS_COARSE_LOCATION"
     }
 }
