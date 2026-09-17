@@ -17,10 +17,50 @@ data class CarSnapshot(
     val pending: List<String>,
     val sensors: List<SensorReading>,
     val permanent: List<String> = emptyList(),
-    val modules: List<ModuleScan> = emptyList()
+    val modules: List<ModuleScan> = emptyList(),
+    val readiness: Readiness? = null,          // мониторы с момента сброса
+    val readinessCycle: Readiness? = null,     // мониторы в этой поездке
+    val stats: DtcStats = DtcStats(),
+    val tests: List<TestResult> = emptyList(), // режим 06
+    val battery: BatteryReport? = null,
+    val repair: RepairCheck? = null,
+    val trend: List<String> = emptyList(),
+    val flags: List<Flag> = emptyList(),
+    val adapter: AdapterInfo? = null
 ) {
     /** Все коды из всех блоков. */
     val allCodes: List<String> get() = (stored + pending + permanent + modules.flatMap { it.codes }).distinct()
+
+    /** Показания датчиков для истории: ключ → значение, плюс пробег. */
+    fun sensorMap(): Map<String, Double> = buildMap {
+        sensors.forEach { s -> s.value?.let { put(s.key, it) } }
+        stats.odometerKm?.let { put("odometer", it) }
+    }
+}
+
+/** Типичная болячка модели по опыту владельцев. */
+data class TypicalIssue(val issue: String, val mileage: String, val source: String) {
+    fun toJson(): JSONObject = JSONObject().put("issue", issue).put("mileage", mileage).put("source", source)
+    companion object {
+        fun fromJson(o: JSONObject) = TypicalIssue(o.optString("issue"), o.optString("mileage"), o.optString("source"))
+    }
+}
+
+/** Разбор фотографии приборной панели: какие лампы горят и что это значит. */
+data class DashLamp(val name: String, val meaning: String, val severity: String, val action: String)
+
+data class DashReport(val canDrive: String, val text: String, val lamps: List<DashLamp>) {
+    companion object {
+        fun fromJson(o: JSONObject): DashReport {
+            val lamps = mutableListOf<DashLamp>()
+            val arr = o.optJSONArray("lamps")
+            if (arr != null) for (i in 0 until arr.length()) {
+                val l = arr.optJSONObject(i) ?: continue
+                lamps.add(DashLamp(l.optString("name"), l.optString("meaning"), l.optString("severity", "medium"), l.optString("action")))
+            }
+            return DashReport(o.optString("can_drive", "careful"), o.optString("text"), lamps)
+        }
+    }
 }
 
 /** Карточка одной ошибки в результате. */
@@ -68,13 +108,21 @@ data class Diagnosis(
     val codes: List<DtcCard>,
     val summary: String,
     val nextSteps: List<String>,
-    val fromAi: Boolean
+    val fromAi: Boolean,
+    val typicalIssues: List<TypicalIssue> = emptyList(),
+    val forService: String = ""
 ) {
+    /** Сумма ремонта по всем кодам, где цена известна. */
+    val totalFrom: Int get() = codes.sumOf { it.priceFrom }
+    val totalTo: Int get() = codes.sumOf { maxOf(it.priceTo, it.priceFrom) }
+
     fun toJson(): JSONObject = JSONObject()
         .put("car", car).put("verdict_level", level).put("verdict_title", title).put("verdict_text", text)
         .put("can_drive", canDrive)
         .put("codes", JSONArray().also { arr -> codes.forEach { arr.put(it.toJson()) } })
         .put("summary", summary).put("next_steps", JSONArray(nextSteps)).put("from_ai", fromAi)
+        .put("typical_issues", JSONArray().also { arr -> typicalIssues.forEach { arr.put(it.toJson()) } })
+        .put("for_service", forService)
 
     /** Текст для кнопки «Поделиться». */
     fun shareText(vin: String?): String = buildString {
@@ -102,6 +150,22 @@ data class Diagnosis(
             appendLine("Что делать:")
             nextSteps.forEachIndexed { i, s -> appendLine("${i + 1}. $s") }
         }
+        if (totalTo > 0) {
+            appendLine()
+            appendLine("Итого ремонт: ${formatPrice(totalFrom, totalTo)}")
+        }
+        if (forService.isNotBlank()) {
+            appendLine()
+            appendLine("Что сказать в сервисе: $forService")
+        }
+        if (typicalIssues.isNotEmpty()) {
+            appendLine()
+            appendLine("Типичные болячки модели по опыту владельцев:")
+            typicalIssues.forEach { t ->
+                appendLine("• ${t.issue}" + (if (t.mileage.isNotBlank()) " (${t.mileage})" else ""))
+                if (t.source.isNotBlank()) appendLine("  ${t.source}")
+            }
+        }
     }
 
     companion object {
@@ -109,6 +173,9 @@ data class Diagnosis(
             val codes = mutableListOf<DtcCard>()
             val arr = o.optJSONArray("codes")
             if (arr != null) for (i in 0 until arr.length()) codes.add(DtcCard.fromJson(arr.getJSONObject(i)))
+            val issues = mutableListOf<TypicalIssue>()
+            val iarr = o.optJSONArray("typical_issues")
+            if (iarr != null) for (i in 0 until iarr.length()) iarr.optJSONObject(i)?.let { issues.add(TypicalIssue.fromJson(it)) }
             return Diagnosis(
                 car = o.optString("car"),
                 level = o.optString("verdict_level", "warning"),
@@ -118,7 +185,9 @@ data class Diagnosis(
                 codes = codes,
                 summary = o.optString("summary"),
                 nextSteps = o.optJSONArray("next_steps").toStringList(),
-                fromAi = fromAi
+                fromAi = fromAi,
+                typicalIssues = issues.filter { it.issue.isNotBlank() },
+                forService = o.optString("for_service")
             )
         }
 
@@ -184,15 +253,26 @@ data class Diagnosis(
     }
 }
 
-data class HistoryEntry(val time: Long, val vin: String?, val diagnosis: Diagnosis) {
+data class HistoryEntry(
+    val time: Long,
+    val vin: String?,
+    val diagnosis: Diagnosis,
+    val sensors: Map<String, Double> = emptyMap()
+) {
     fun toJson(): JSONObject = JSONObject().put("time", time).put("vin", vin ?: JSONObject.NULL).put("d", diagnosis.toJson())
+        .put("s", JSONObject().also { o -> sensors.forEach { (k, v) -> o.put(k, v) } })
 
     companion object {
-        fun fromJson(o: JSONObject) = HistoryEntry(
-            time = o.optLong("time"),
-            vin = if (o.isNull("vin")) null else o.optString("vin"),
-            diagnosis = Diagnosis.fromJson(o.getJSONObject("d"))
-        )
+        fun fromJson(o: JSONObject): HistoryEntry {
+            val s = mutableMapOf<String, Double>()
+            o.optJSONObject("s")?.let { so -> so.keys().forEach { k -> s[k] = so.optDouble(k) } }
+            return HistoryEntry(
+                time = o.optLong("time"),
+                vin = if (o.isNull("vin")) null else o.optString("vin"),
+                diagnosis = Diagnosis.fromJson(o.getJSONObject("d")),
+                sensors = s
+            )
+        }
     }
 }
 
@@ -310,13 +390,17 @@ data class TripLive(
     val lastTs: Long = start,
     val speed: Double = 0.0
 ) {
-    fun advance(now: Long, speedKmh: Double?, rpm: Double?, mafGs: Double?): TripLive {
+    fun advance(now: Long, speedKmh: Double?, rpm: Double?, mafGs: Double?, fuelRateLh: Double? = null): TripLive {
         val dtMs = (now - lastTs).coerceIn(0, 5_000)
         val dtH = dtMs / 3_600_000.0
         val v = speedKmh ?: 0.0
         val km = distanceKm + v * dtH
-        // расход: воздух / 14.7 = бензин в г/с; 745 г в литре
-        val fuel = if (mafGs != null) (fuelL ?: 0.0) + mafGs / 14.7 / 745.0 * (dtMs / 1000.0) else fuelL
+        // расход: если ЭБУ отдаёт л/ч (PID 5E), берём его; иначе воздух / 14.7 = бензин в г/с, 745 г в литре
+        val fuel = when {
+            fuelRateLh != null -> (fuelL ?: 0.0) + fuelRateLh * dtH
+            mafGs != null -> (fuelL ?: 0.0) + mafGs / 14.7 / 745.0 * (dtMs / 1000.0)
+            else -> fuelL
+        }
         return copy(
             distanceKm = km,
             fuelL = fuel,
@@ -338,6 +422,20 @@ fun formatDuration(ms: Long): String {
 }
 
 /** Результат опроса одного блока по заводскому протоколу. */
-data class ModuleScan(val name: String, val addr: Int, val codes: List<String>, val via: String) {
+data class ModuleScan(
+    val name: String,
+    val addr: Int,
+    val codes: List<String>,
+    val via: String,
+    val statuses: List<Int> = emptyList(),   // сырой байт статуса UDS на каждый код (если UDS)
+    val vin: String? = null,                 // VIN, записанный в блоке (22 F190)
+    val part: String? = null                 // заводской номер блока (22 F187)
+) {
     val addrHex: String get() = "%03X".format(addr)
+
+    /** Подробности по коду: полный статус UDS словами. */
+    fun statusOf(code: String): List<String> {
+        val i = codes.indexOf(code)
+        return if (i >= 0 && i < statuses.size) UdsStatus.describe(statuses[i]) else emptyList()
+    }
 }

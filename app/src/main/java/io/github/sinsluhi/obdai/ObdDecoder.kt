@@ -120,31 +120,73 @@ object ObdDecoder {
         val cmd: String,
         val pid: Int,
         val unit: String,
+        val live: Boolean = false,     // опрашивать постоянно на экране датчиков (остальные — только при проверке)
         val formula: (List<Int>) -> Double?
     )
 
     private fun oneByte(d: List<Int>, f: (Int) -> Double) = d.firstOrNull()?.let(f)
+    private fun word(d: List<Int>): Int? = if (d.size >= 2) d[0] * 256 + d[1] else null
 
+    /** Стандартные датчики SAE J1979. Формулы по стандарту, ничего марочного. */
     val sensors = listOf(
-        Sensor("rpm", "Обороты", "010C", 0x0C, "об/мин") { d -> if (d.size >= 2) (d[0] * 256 + d[1]) / 4.0 else null },
-        Sensor("speed", "Скорость", "010D", 0x0D, "км/ч") { d -> oneByte(d) { it.toDouble() } },
-        Sensor("coolant", "Температура ОЖ", "0105", 0x05, "°C") { d -> oneByte(d) { it - 40.0 } },
-        Sensor("load", "Нагрузка двигателя", "0104", 0x04, "%") { d -> oneByte(d) { it * 100.0 / 255 } },
-        Sensor("iat", "Температура на впуске", "010F", 0x0F, "°C") { d -> oneByte(d) { it - 40.0 } },
-        Sensor("throttle", "Дроссель", "0111", 0x11, "%") { d -> oneByte(d) { it * 100.0 / 255 } },
-        Sensor("stft", "Кратк. топл. коррекция", "0106", 0x06, "%") { d -> oneByte(d) { (it - 128) * 100.0 / 128 } },
-        Sensor("ltft", "Долг. топл. коррекция", "0107", 0x07, "%") { d -> oneByte(d) { (it - 128) * 100.0 / 128 } },
-        Sensor("maf", "Расход воздуха", "0110", 0x10, "г/с") { d -> if (d.size >= 2) (d[0] * 256 + d[1]) / 100.0 else null },
+        Sensor("rpm", "Обороты", "010C", 0x0C, "об/мин", live = true) { d -> word(d)?.let { it / 4.0 } },
+        Sensor("speed", "Скорость", "010D", 0x0D, "км/ч", live = true) { d -> oneByte(d) { it.toDouble() } },
+        Sensor("coolant", "Температура ОЖ", "0105", 0x05, "°C", live = true) { d -> oneByte(d) { it - 40.0 } },
+        Sensor("load", "Нагрузка двигателя", "0104", 0x04, "%", live = true) { d -> oneByte(d) { it * 100.0 / 255 } },
+        Sensor("iat", "Температура на впуске", "010F", 0x0F, "°C", live = true) { d -> oneByte(d) { it - 40.0 } },
+        Sensor("throttle", "Дроссель", "0111", 0x11, "%", live = true) { d -> oneByte(d) { it * 100.0 / 255 } },
+        Sensor("stft", "Кратк. топл. коррекция", "0106", 0x06, "%", live = true) { d -> oneByte(d) { (it - 128) * 100.0 / 128 } },
+        Sensor("ltft", "Долг. топл. коррекция", "0107", 0x07, "%", live = true) { d -> oneByte(d) { (it - 128) * 100.0 / 128 } },
+        Sensor("maf", "Расход воздуха", "0110", 0x10, "г/с", live = true) { d -> word(d)?.let { it / 100.0 } },
+        Sensor("map", "Давление во впуске", "010B", 0x0B, "кПа", live = true) { d -> oneByte(d) { it.toDouble() } },
+        Sensor("volt", "Напряжение на ЭБУ", "0142", 0x42, "В", live = true) { d -> word(d)?.let { it / 1000.0 } },
+        Sensor("fuelrate", "Расход топлива", "015E", 0x5E, "л/ч", live = true) { d -> word(d)?.let { it / 20.0 } },
+        Sensor("timing", "Угол опережения", "010E", 0x0E, "°") { d -> oneByte(d) { (it - 128) / 2.0 } },
+        Sensor("fuel", "Уровень топлива", "012F", 0x2F, "%") { d -> oneByte(d) { it * 100.0 / 255 } },
+        Sensor("baro", "Атмосферное давление", "0133", 0x33, "кПа") { d -> oneByte(d) { it.toDouble() } },
+        Sensor("ambient", "Температура за бортом", "0146", 0x46, "°C") { d -> oneByte(d) { it - 40.0 } },
+        Sensor("oil", "Температура масла", "015C", 0x5C, "°C") { d -> oneByte(d) { it - 40.0 } },
+        Sensor("runtime", "Двигатель работает", "011F", 0x1F, "с") { d -> word(d)?.toDouble() },
+        Sensor("cat", "Температура катализатора", "013C", 0x3C, "°C") { d -> word(d)?.let { it / 10.0 - 40 } },
+        Sensor("torque", "Фактический момент", "0162", 0x62, "%") { d -> oneByte(d) { it - 125.0 } },
+        Sensor("o2b1s1", "Лямбда-зонд 1", "0114", 0x14, "В") { d -> oneByte(d) { it / 200.0 } },
+        Sensor("o2b1s2", "Лямбда-зонд 2", "0115", 0x15, "В") { d -> oneByte(d) { it / 200.0 } },
+        Sensor("egr", "Ошибка EGR", "012D", 0x2D, "%") { d -> oneByte(d) { (it - 128) * 100.0 / 128 } },
+        Sensor("evap", "Давление в баке (EVAP)", "0132", 0x32, "Па") { d -> word(d)?.let { (if (it >= 0x8000) it - 0x10000 else it) / 4.0 } },
     )
+
+    /**
+     * Ответ на 01 00 / 01 20 / … — битовая маска поддерживаемых PID. Объединяем ответы всех блоков.
+     * Возвращает номера поддерживаемых PID из диапазона base+1…base+32.
+     */
+    fun supportedMask(raw: String, base: Int): Set<Int> {
+        val out = mutableSetOf<Int>()
+        for (msg in messages(raw)) {
+            for (i in 0 until msg.size - 1) {
+                if (msg[i] == 0x41 && msg[i + 1] == base) {
+                    val d = msg.drop(i + 2).take(4)
+                    if (d.size < 4) break
+                    for (b in 0 until 4) for (bit in 0 until 8) {
+                        if (d[b] and (0x80 shr bit) != 0) out.add(base + b * 8 + bit + 1)
+                    }
+                    break
+                }
+            }
+        }
+        return out
+    }
 }
 
 
 /** Разбор ответов заводских протоколов (UDS 19 02 и KWP 18 00) при опросе блоков. */
 object ModuleDecoder {
     /** UDS: 59 02 <маска> затем группы по 4 байта: DTC(3) + статус. null, если ответа 59 02 нет. */
-    fun parseUds(msgs: List<List<Int>>): List<String>? {
+    fun parseUds(msgs: List<List<Int>>): List<String>? = parseUdsDetailed(msgs)?.map { it.first }
+
+    /** То же, но с сырым байтом статуса на каждый код. */
+    fun parseUdsDetailed(msgs: List<List<Int>>): List<Pair<String, Int>>? {
         var found = false
-        val codes = linkedSetOf<String>()
+        val codes = linkedMapOf<String, Int>()
         for (msg in msgs) {
             val i = msg.indexOf(0x59)
             if (i < 0 || i + 1 >= msg.size || msg[i + 1] != 0x02) continue
@@ -155,10 +197,11 @@ object ModuleDecoder {
                 if (g[0] == 0 && g[1] == 0 && g[2] == 0) continue
                 val base = ObdDecoder.dtc(g[0], g[1])
                 val code = if (g[2] != 0) "%s-%02X".format(base, g[2]) else base
-                codes.add(code + statusSuffix(g[3]))
+                val key = code + UdsStatus.suffix(g[3])
+                if (!codes.containsKey(key)) codes[key] = g[3]
             }
         }
-        return if (found) codes.toList() else null
+        return if (found) codes.entries.map { it.key to it.value } else null
     }
 
     /** Байт статуса UDS: бит0 — активна сейчас, бит3 — подтверждена, бит2 — неподтверждена, иначе история. */

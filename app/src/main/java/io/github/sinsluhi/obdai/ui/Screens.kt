@@ -78,7 +78,7 @@ import kotlin.math.abs
 private val screenPadding = 20.dp
 
 @Composable
-private fun Screen(
+internal fun Screen(
     bottom: (@Composable () -> Unit)? = null,
     scroll: Boolean = true,
     content: @Composable ColumnScope.() -> Unit
@@ -99,7 +99,7 @@ private fun Screen(
 }
 
 @Composable
-private fun Header(title: String, onBack: (() -> Unit)? = null, trailing: (@Composable () -> Unit)? = null) {
+internal fun Header(title: String, onBack: (() -> Unit)? = null, trailing: (@Composable () -> Unit)? = null) {
     Row(Modifier.fillMaxWidth().height(44.dp), verticalAlignment = Alignment.CenterVertically) {
         if (onBack != null) {
             SquareIconButton(Icons.AutoMirrored.Filled.ArrowBack, "Назад", onBack)
@@ -120,6 +120,7 @@ fun HomeScreen(
     onOpenResult: () -> Unit,
     onSettings: () -> Unit,
     onAdapterClick: () -> Unit,
+    onPhoto: () -> Unit,
     bottom: @Composable () -> Unit
 ) {
     val accent = LocalAccent.current
@@ -154,6 +155,11 @@ fun HomeScreen(
                     KeyValue("Прошивка", state.calibration)
                 }
             }
+            if (state.connected && state.adapterInfo.version.isNotBlank()) {
+                VSpace(8.dp)
+                val ok = state.adapterInfo.fullFeatured && !state.adapterInfo.suspicious
+                Text(state.adapterInfo.grade(), style = Type.body(12, if (ok) Palette.muted else Palette.warn))
+            }
         }
 
 
@@ -172,7 +178,14 @@ fun HomeScreen(
                 InfoTile("Протокол", shortProtocol(state.protocol), Modifier.weight(1f))
                 InfoTile("Аккумулятор", formatVolt(state.voltage), Modifier.weight(1f))
             }
+            state.battery?.let { b ->
+                VSpace(10.dp)
+                val color = when (b.level) { "danger" -> Palette.danger; "warning" -> Palette.warn; else -> Palette.muted }
+                Text(b.title, style = Type.body(12, color, FontWeight.SemiBold))
+            }
         }
+
+        SecondaryButton("Сфотографировать приборку", Modifier.fillMaxWidth(), onClick = onPhoto)
 
         // большая кнопка
         Column(
@@ -245,10 +258,12 @@ fun ResultScreen(
     onShare: () -> Unit,
     onFindService: () -> Unit,
     onClear: () -> Unit,
-    onSettings: () -> Unit
+    onSettings: () -> Unit,
+    onDetails: () -> Unit
 ) {
     val accent = LocalAccent.current
     val d = state.diagnosis
+    val snap = state.lastSnapshot
     Screen {
         Header("Результат", onBack = onBack)
         if (d == null) {
@@ -257,6 +272,10 @@ fun ResultScreen(
         }
 
         VerdictCard(d)
+        snap?.repair?.let { RepairCard(it) }
+        if (snap != null && snap.trend.isNotEmpty()) TrendCard(snap.trend)
+        if (snap != null && snap.flags.isNotEmpty()) FlagsCard(snap.flags)
+        snap?.battery?.let { BatteryCard(it) }
 
         if (!d.fromAi) {
             Card(background = Palette.surface2, border = Palette.border, radius = 16.dp, padding = 14.dp) {
@@ -278,15 +297,17 @@ fun ResultScreen(
                 ModuleRow("Двигатель", (state.lastSnapshot?.stored.orEmpty() + state.lastSnapshot?.pending.orEmpty() + engineExtra).distinct(), accent)
                 modules.forEach { m ->
                     Box(Modifier.fillMaxWidth().height(1.dp).background(Palette.border))
-                    ModuleRow(m.name, m.codes, accent)
+                    ModuleRow(m.name, m.codes, accent, vinMismatch = m.vin != null && state.vin != null && m.vin != state.vin)
                 }
             }
         }
 
         if (d.codes.isNotEmpty()) {
             SectionTitle("Что нашли", plural(d.codes.size, "ошибка", "ошибки", "ошибок"))
-            d.codes.forEach { CodeCard(it) }
+            d.codes.forEach { CodeCard(it, statusLines(snap, it.code)) }
         }
+
+        if (d.typicalIssues.isNotEmpty()) TypicalIssuesCard(d.typicalIssues)
 
         if (d.summary.isNotBlank()) {
             Row(
@@ -312,8 +333,20 @@ fun ResultScreen(
                         Text(step, style = Type.body(14, Palette.text2), modifier = Modifier.weight(1f))
                     }
                 }
+                if (d.totalTo > 0) {
+                    VSpace(10.dp)
+                    Box(Modifier.fillMaxWidth().height(1.dp).background(Palette.border))
+                    VSpace(10.dp)
+                    Row {
+                        Text("Итого ремонт", style = Type.label())
+                        Spacer(Modifier.weight(1f))
+                        Text(formatPrice(d.totalFrom, d.totalTo), style = Type.strong(15))
+                    }
+                }
             }
         }
+
+        if (d.forService.isNotBlank()) ServiceCard(d.forService)
 
         Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
             PrimaryButton("Найти сервис рядом", onClick = onFindService)
@@ -324,9 +357,21 @@ fun ResultScreen(
                     enabled = state.connected && d.codes.isNotEmpty(), onClick = onClear
                 )
             }
+            if (snap != null) SecondaryButton("Подробные данные с машины", Modifier.fillMaxWidth(), color = Palette.muted, onClick = onDetails)
         }
         VSpace(8.dp)
     }
+}
+
+/** Полный статус кода по UDS из того блока, где он найден. */
+private fun statusLines(snap: io.github.sinsluhi.obdai.CarSnapshot?, code: String): List<String> {
+    if (snap == null) return emptyList()
+    for (m in snap.modules) {
+        val raw = m.codes.firstOrNull { it.substringBefore(' ') == code } ?: continue
+        val st = m.statusOf(raw)
+        if (st.isNotEmpty()) return st
+    }
+    return emptyList()
 }
 
 @Composable
@@ -361,7 +406,7 @@ private data class VerdictColors(
 )
 
 @Composable
-private fun CodeCard(c: DtcCard) {
+private fun CodeCard(c: DtcCard, status: List<String> = emptyList()) {
     val accent = LocalAccent.current
     val (sevText, sevColor, sevBg) = when (c.severity) {
         "high" -> Triple("Серьёзно", Palette.danger, Palette.dangerBg)
@@ -383,6 +428,10 @@ private fun CodeCard(c: DtcCard) {
         }
         VSpace(10.dp)
         Text(c.title, style = Type.strong(17))
+        if (status.isNotEmpty()) {
+            VSpace(4.dp)
+            Text("Статус в блоке: ${status.joinToString()}", style = Type.body(12, Palette.muted))
+        }
         if (c.explanation.isNotBlank()) {
             VSpace(6.dp)
             Text(c.explanation, style = Type.body(14, Palette.text2))
@@ -511,8 +560,11 @@ fun SensorsScreen(
         }
         Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
             RoundGauge("Впуск", v("iat"), "°C", -40f, 140f, skin, Modifier.weight(1f), majorStep = 30f, redFrom = 80f)
-            Box(Modifier.weight(1f))
+            if (v("fuelrate") != null) RoundGauge("Расход", v("fuelrate"), "л/ч", 0f, 40f, skin, Modifier.weight(1f), majorStep = 10f, decimals = 1)
+            else if (v("map") != null) RoundGauge("Впуск, кПа", v("map"), "кПа", 0f, 250f, skin, Modifier.weight(1f), majorStep = 50f)
+            else Box(Modifier.weight(1f))
         }
+        state.battery?.let { BatteryCard(it) }
 
         val stft = v("stft")
         val ltft = v("ltft")
@@ -686,6 +738,26 @@ fun SettingsScreen(
             }
         }
 
+        SectionTitle("В поездке")
+        Card {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Column(Modifier.weight(1f)) {
+                    Text("Голосовые предупреждения", style = Type.strong(15))
+                    Text("Перегрев, нет зарядки, перезаряд: приложение скажет вслух во время записи поездки", style = Type.label(12))
+                }
+                HSpace(8.dp)
+                Switch(
+                    checked = state.voice,
+                    onCheckedChange = { state.updateVoice(it) },
+                    colors = SwitchDefaults.colors(
+                        checkedThumbColor = Palette.bg, checkedTrackColor = accent,
+                        uncheckedThumbColor = Palette.muted, uncheckedTrackColor = Palette.surface2,
+                        uncheckedBorderColor = Palette.border
+                    )
+                )
+            }
+        }
+
         SectionTitle("Цвет акцента")
         Row(horizontalArrangement = Arrangement.spacedBy(14.dp)) {
             Palette.accents.forEachIndexed { i, (name, color) ->
@@ -808,7 +880,7 @@ fun SettingsScreen(
         }
 
         Text(
-            "OBD AI 0.4",
+            "OBD AI 0.5",
             style = Type.body(12, Palette.muted),
             textAlign = TextAlign.Center,
             modifier = Modifier
@@ -1067,11 +1139,14 @@ fun TripStat(label: String, value: String, unit: String, modifier: Modifier = Mo
 }
 
 @Composable
-private fun ModuleRow(name: String, codes: List<String>, accent: Color) {
+private fun ModuleRow(name: String, codes: List<String>, accent: Color, vinMismatch: Boolean = false) {
     Row(Modifier.padding(vertical = 10.dp), verticalAlignment = Alignment.CenterVertically) {
-        Dot(if (codes.isEmpty()) accent else Palette.warn)
+        Dot(if (vinMismatch) Palette.danger else if (codes.isEmpty()) accent else Palette.warn)
         HSpace(10.dp)
-        Text(name, style = Type.body(14, Palette.text, FontWeight.SemiBold), modifier = Modifier.weight(1f))
+        Column(Modifier.weight(1f)) {
+            Text(name, style = Type.body(14, Palette.text, FontWeight.SemiBold))
+            if (vinMismatch) Text("другой VIN в блоке", style = Type.body(11, Palette.danger))
+        }
         Text(
             if (codes.isEmpty()) "ошибок нет" else codes.joinToString(),
             style = if (codes.isEmpty()) Type.label(12) else Type.mono(12, Palette.warn),

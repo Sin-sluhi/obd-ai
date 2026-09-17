@@ -35,8 +35,12 @@ object AiClient {
       "sources": ["https://..."]
     }
   ],
-  "summary": "как ошибки связаны между собой и что говорят датчики",
-  "next_steps": ["шаг 1", "шаг 2"]
+  "summary": "как ошибки связаны между собой и что говорят датчики, самотесты, аккумулятор",
+  "next_steps": ["шаг 1", "шаг 2"],
+  "for_service": "что сказать в сервисе: какие узлы проверить первыми и что не менять, пока не проверили; 1–3 предложения",
+  "typical_issues": [
+    {"issue": "типичная болячка этой модели по опыту владельцев", "mileage": "на каком пробеге обычно", "source": "https://..."}
+  ]
 }"""
 
     private const val ROLE = """Ты — опытный автодиагност, который объясняет обычному водителю результаты проверки через OBD-II.
@@ -53,7 +57,12 @@ object AiClient {
 - Пометки у кодов: (активная) — неисправность есть прямо сейчас, это главное; (история) — блок запомнил сбой в прошлом, сейчас его нет: из-за одних только архивных кодов вердикт не поднимай выше ok/warning и напиши, что это архив и стоит ли за ним следить; (неподтверждённая) — блок заметил проблему один раз.
 - verdict_level: ok — ошибок нет или несущественны; warning — ехать можно, но нужно заняться; danger — ехать нельзя или очень рискованно.
 - next_steps — 2–5 конкретных шагов по порядку, дешёвое и частое раньше.
-- Если ошибок нет, оцени состояние по датчикам и дай 1–3 совета."""
+- Если ошибок нет, оцени состояние по датчикам и дай 1–3 совета.
+- Разделы «Самотесты ЭБУ», «Счётчики», «Аккумулятор», «Изменения с прошлой проверки», «Факты для покупателя» — это измерения, а не догадки. Опирайся на них: проваленный самотест или пропуски в конкретном цилиндре важнее общих рассуждений (пропуски в цилиндре 3 → свеча, катушка или форсунка именно этого цилиндра, сначала поменять местами с соседним).
+- Если память ошибок стирали недавно (мало км и прогревов после сброса), скажи об этом прямо в verdict_text: часть неисправностей могла ещё не проявиться.
+- Если есть раздел «Проверка после ремонта», начни verdict_text с ответа, помог ли ремонт.
+- for_service: коротко, что сказать мастеру, чтобы не менять лишнего.
+- typical_issues: 2–4 типичные болячки именно этой модели и поколения, которые владельцы описывают на форумах (что и на каком пробеге). Только то, что реально нашёл, с адресом записи; если ничего — пустой массив."""
 
     private const val GROQ_SEARCH = """
 Перед ответом обязательно поищи в интернете по каждому коду вместе с моделью машины (например «P0171 Kia Rio drive2»), прочитай, как владельцы решали проблему, и только потом отвечай."""
@@ -290,12 +299,17 @@ object AiClient {
                 .put("what_to_do", str()).put("owner_experience", str()).put("sources", arr(str())))
             .put("required", JSONArray(listOf("code", "title", "explanation", "causes", "severity", "price_from", "price_to", "what_to_do", "owner_experience", "sources")))
             .put("additionalProperties", false)
+        val issue = JSONObject().put("type", "object")
+            .put("properties", JSONObject().put("issue", str()).put("mileage", str()).put("source", str()))
+            .put("required", JSONArray(listOf("issue", "mileage", "source")))
+            .put("additionalProperties", false)
         return JSONObject().put("type", "object")
             .put("properties", JSONObject()
                 .put("car", str()).put("verdict_level", strEnum("ok", "warning", "danger"))
                 .put("verdict_title", str()).put("verdict_text", str()).put("can_drive", strEnum("yes", "careful", "no"))
-                .put("codes", arr(code)).put("summary", str()).put("next_steps", arr(str())))
-            .put("required", JSONArray(listOf("car", "verdict_level", "verdict_title", "verdict_text", "can_drive", "codes", "summary", "next_steps")))
+                .put("codes", arr(code)).put("summary", str()).put("next_steps", arr(str()))
+                .put("for_service", str()).put("typical_issues", arr(issue)))
+            .put("required", JSONArray(listOf("car", "verdict_level", "verdict_title", "verdict_text", "can_drive", "codes", "summary", "next_steps", "for_service", "typical_issues")))
             .put("additionalProperties", false)
     }
 
@@ -316,13 +330,87 @@ object AiClient {
         if (snap.permanent.isNotEmpty()) appendLine("Постоянные ошибки (не стираются до починки): ${snap.permanent.joinToString()}")
         if (snap.modules.isNotEmpty()) {
             appendLine("Другие блоки (опрос по заводскому протоколу, ответили только эти):")
-            snap.modules.forEach { m -> appendLine("- ${m.name} [${m.addrHex}]: ${m.codes.joinToString().ifEmpty { "ошибок нет" }}") }
+            snap.modules.forEach { m ->
+                appendLine("- ${m.name} [${m.addrHex}]: ${m.codes.joinToString().ifEmpty { "ошибок нет" }}")
+                m.codes.forEach { c ->
+                    val st = m.statusOf(c)
+                    if (st.isNotEmpty()) appendLine("    ${c.substringBefore(' ')}: статус по UDS — ${st.joinToString()}")
+                }
+            }
         }
         val known = snap.sensors.filter { it.value != null }
         if (known.isNotEmpty()) {
             appendLine("Датчики (зажигание включено, снимок в момент проверки):")
             known.forEach { appendLine("- ${it.name}: ${"%.1f".format(it.value)} ${it.unit}") }
         }
+        snap.readiness?.let { r -> appendLine("Мониторы готовности с момента сброса ошибок: ${r.describe()}") }
+        snap.readinessCycle?.let { r -> if (r.monitors.isNotEmpty()) appendLine("Мониторы в текущей поездке: ${r.describe()}") }
+        val stats = snap.stats.lines()
+        if (stats.isNotEmpty()) {
+            appendLine("Счётчики ЭБУ:")
+            stats.forEach { appendLine("- $it") }
+        }
+        val tests = Mode06.summary(snap.tests)
+        if (tests.isNotEmpty()) {
+            appendLine("Самотесты ЭБУ (режим 06, значение против порогов производителя):")
+            tests.forEach { appendLine("- $it") }
+        }
+        snap.battery?.let { b -> appendLine("Аккумулятор и генератор (по напряжению): ${b.reportText()}") }
+        snap.repair?.let { r -> appendLine("Проверка после ремонта: ${r.title}. ${r.text()}") }
+        if (snap.trend.isNotEmpty()) {
+            appendLine("Изменения с прошлой проверки:")
+            snap.trend.forEach { appendLine("- $it") }
+        }
+        if (snap.flags.isNotEmpty()) {
+            appendLine("Факты для покупателя / владельца:")
+            snap.flags.forEach { appendLine("- ${it.text}") }
+        }
+    }
+
+    // ---------- фото приборной панели ----------
+
+    private const val DASH_ROLE = """Ты — опытный автомеханик. На фото приборная панель автомобиля. Найди все горящие контрольные лампы и значки
+(жёлтые, красные, зелёные, синие) и объясни водителю по-русски, что каждая значит, насколько это серьёзно и что делать.
+Не выдумывай ламп, которых на фото нет. Если лампы не горят или это не приборная панель, так и скажи в text и оставь lamps пустым.
+Ответ строго в JSON без пояснений:
+{
+  "lamps": [{"name": "название лампы", "meaning": "что значит, 1–2 фразы", "severity": "low | medium | high", "action": "что делать"}],
+  "can_drive": "yes | careful | no",
+  "text": "общий вывод в 1–3 предложениях"
+}"""
+
+    /** Модели со зрением у Groq; у остальных провайдеров используем модель из настроек. */
+    private val groqVision = listOf("qwen/qwen3.8-27b", "qwen/qwen3.6-27b")
+
+    fun dashboard(cfg: AiConfig, jpegBase64: String, log: (String) -> Unit): DashReport {
+        if (cfg.provider == Provider.ANTHROPIC) return dashboardAnthropic(cfg, jpegBase64)
+        val models = if (cfg.provider == Provider.GROQ) groqVision else listOf(cfg.wireModel)
+        var last: Exception? = null
+        for (m in models) {
+            try {
+                val reply = OpenAiClient.chat(cfg, DASH_ROLE, "Что горит на приборке?", imageJpegBase64 = jpegBase64, modelOverride = m, maxTokens = 3000)
+                val json = extractJson(reply.content) ?: throw IOException("Модель вернула не JSON")
+                return DashReport.fromJson(json)
+            } catch (e: Exception) {
+                last = e
+                log("Фото: модель $m не справилась: ${e.message}")
+            }
+        }
+        throw last ?: IOException("Разбор фото недоступен")
+    }
+
+    private fun dashboardAnthropic(cfg: AiConfig, jpegBase64: String): DashReport {
+        val endpoint = cfg.baseUrl.trimEnd('/') + "/v1/messages"
+        val content = JSONArray()
+            .put(JSONObject().put("type", "image").put("source", JSONObject().put("type", "base64").put("media_type", "image/jpeg").put("data", jpegBase64)))
+            .put(JSONObject().put("type", "text").put("text", "Что горит на приборке?"))
+        val body = JSONObject()
+            .put("model", cfg.wireModel).put("max_tokens", 4000).put("fallbacks", "default")
+            .put("system", DASH_ROLE)
+            .put("messages", JSONArray().put(JSONObject().put("role", "user").put("content", content)))
+        val resp = anthropicPost(cfg, endpoint, body)
+        val text = firstText(resp.getJSONArray("content")) ?: throw IOException("Пустой ответ модели")
+        return DashReport.fromJson(extractJson(text) ?: throw IOException("Модель вернула не JSON"))
     }
 
     /** Вытаскивает первый JSON-объект из ответа, даже если модель обернула его в текст или ```json. */

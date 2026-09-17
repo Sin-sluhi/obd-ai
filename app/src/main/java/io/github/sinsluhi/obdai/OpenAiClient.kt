@@ -26,15 +26,21 @@ object OpenAiClient {
         json: Boolean = false,
         search: Boolean = false,
         anySite: Boolean = false,
-        maxTokens: Int = 6000
+        maxTokens: Int = 6000,
+        imageJpegBase64: String? = null,
+        modelOverride: String? = null
     ): Reply {
+        // с картинкой содержимое сообщения — массив блоков (текст + image_url с data-URL)
+        val userContent: Any = if (imageJpegBase64 == null) user else JSONArray()
+            .put(JSONObject().put("type", "text").put("text", user))
+            .put(JSONObject().put("type", "image_url").put("image_url", JSONObject().put("url", "data:image/jpeg;base64,$imageJpegBase64")))
         val body = JSONObject()
-            .put("model", cfg.wireModel)
+            .put("model", modelOverride ?: cfg.wireModel)
             .put("temperature", 0.2)
             .put("max_tokens", maxTokens)
             .put("messages", JSONArray()
                 .put(JSONObject().put("role", "system").put("content", system))
-                .put(JSONObject().put("role", "user").put("content", user)))
+                .put(JSONObject().put("role", "user").put("content", userContent)))
         if (json) body.put("response_format", JSONObject().put("type", "json_object"))
         if (search && cfg.provider == Provider.GROQ && cfg.model.startsWith("groq/compound")) {
             val settings = JSONObject().put("country", "Russia")

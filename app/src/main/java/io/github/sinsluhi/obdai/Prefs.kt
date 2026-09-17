@@ -2,6 +2,7 @@ package io.github.sinsluhi.obdai
 
 import android.content.Context
 import org.json.JSONArray
+import org.json.JSONObject
 
 /** Настройки и история в SharedPreferences. Ключи API хранятся только на телефоне. */
 class Prefs(context: Context) {
@@ -71,4 +72,33 @@ class Prefs(context: Context) {
         list.take(50).forEach { arr.put(it.toJson()) }
         sp.edit().putString("history", arr.toString()).apply()
     }
+
+    /** Голосовые предупреждения в поездке (перегрев, нет зарядки). */
+    var voice: Boolean
+        get() = sp.getBoolean("voice", true)
+        set(v) = sp.edit().putBoolean("voice", v).apply()
+
+    // ---- измерения напряжения для оценки аккумулятора ----
+
+    fun loadVolts(): List<VoltSample> {
+        val raw = sp.getString("volts", null) ?: return emptyList()
+        return runCatching {
+            val arr = JSONArray(raw)
+            (0 until arr.length()).map { VoltSample.fromJson(arr.getJSONObject(it)) }
+        }.getOrDefault(emptyList())
+    }
+
+    fun saveVolts(list: List<VoltSample>) {
+        val now = System.currentTimeMillis()
+        val keep = list.filter { now - it.t <= VoltSample.KEEP_MS }.takeLast(VoltSample.MAX)
+        val arr = JSONArray()
+        keep.forEach { arr.put(it.toJson()) }
+        sp.edit().putString("volts", arr.toString()).apply()
+    }
+
+    // ---- последнее стирание ошибок: чтобы проверить, помог ли ремонт ----
+
+    var lastClear: ClearEvent?
+        get() = sp.getString("last_clear", null)?.let { runCatching { ClearEvent.fromJson(JSONObject(it)) }.getOrNull() }
+        set(v) = sp.edit().putString("last_clear", v?.toJson()?.toString()).apply()
 }

@@ -7,10 +7,14 @@ import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.util.Base64
 import android.widget.Toast
+import java.io.ByteArrayOutputStream
 import androidx.activity.ComponentActivity
 import androidx.activity.SystemBarStyle
 import androidx.activity.compose.BackHandler
@@ -37,6 +41,8 @@ import androidx.compose.ui.Modifier
 import androidx.core.content.ContextCompat
 import io.github.sinsluhi.obdai.ui.BottomBar
 import io.github.sinsluhi.obdai.ui.ConfirmDialog
+import io.github.sinsluhi.obdai.ui.DashScreen
+import io.github.sinsluhi.obdai.ui.DetailsScreen
 import io.github.sinsluhi.obdai.ui.DevicePickerDialog
 import io.github.sinsluhi.obdai.ui.HistoryScreen
 import io.github.sinsluhi.obdai.ui.HomeScreen
@@ -50,7 +56,7 @@ import io.github.sinsluhi.obdai.ui.SettingsScreen
 import io.github.sinsluhi.obdai.ui.Tab
 import io.github.sinsluhi.obdai.ui.reportText
 
-enum class Page { Home, Result, Sensors, History, Settings, Log }
+enum class Page { Home, Result, Sensors, History, Settings, Log, Details, Dash }
 
 class MainActivity : ComponentActivity() {
 
@@ -68,6 +74,39 @@ class MainActivity : ComponentActivity() {
             else if (pending != null && state.trip == null && !state.connected) state.toast = "Без разрешения Bluetooth работать не получится"
             else pending?.invoke()
         }
+
+    /** Куда перейти после разбора фото (экран приборки). */
+    private var afterPhoto: (() -> Unit)? = null
+
+    private val cameraLauncher =
+        registerForActivityResult(ActivityResultContracts.TakePicturePreview()) { bmp ->
+            if (bmp != null) analyzeBitmap(bmp) else state.toast = "Фото не сделано"
+        }
+
+    private val galleryLauncher =
+        registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
+            if (uri == null) return@registerForActivityResult
+            val bmp = runCatching {
+                contentResolver.openInputStream(uri)?.use { input ->
+                    val opts = BitmapFactory.Options().apply { inSampleSize = 2 }
+                    BitmapFactory.decodeStream(input, null, opts)
+                }
+            }.getOrNull()
+            if (bmp != null) analyzeBitmap(bmp) else state.toast = "Не удалось открыть картинку"
+        }
+
+    /** Ужимаем до 1280 px по длинной стороне, JPEG, base64 — и отдаём нейронке. */
+    private fun analyzeBitmap(src: Bitmap) {
+        val max = 1280f
+        val scale = minOf(1f, max / maxOf(src.width, src.height))
+        val bmp = if (scale < 1f) Bitmap.createScaledBitmap(src, (src.width * scale).toInt(), (src.height * scale).toInt(), true) else src
+        val out = ByteArrayOutputStream()
+        bmp.compress(Bitmap.CompressFormat.JPEG, 82, out)
+        val b64 = Base64.encodeToString(out.toByteArray(), Base64.NO_WRAP)
+        val done = afterPhoto
+        afterPhoto = null
+        state.analyzePhoto(b64) { done?.invoke() }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -89,6 +128,7 @@ class MainActivity : ComponentActivity() {
         BackHandler(enabled = page != Page.Home) {
             page = when (page) {
                 Page.Log -> Page.Settings
+                Page.Details -> Page.Result
                 else -> Page.Home
             }
         }
@@ -132,6 +172,7 @@ class MainActivity : ComponentActivity() {
                         onOpenResult = { page = Page.Result },
                         onSettings = { page = Page.Settings },
                         onAdapterClick = { if (state.connected) page = Page.Settings else pickDevice() },
+                        onPhoto = { page = Page.Dash; takePhoto { page = Page.Dash } },
                         bottom = tabBar
                     )
                     Page.Result -> ResultScreen(
@@ -140,7 +181,15 @@ class MainActivity : ComponentActivity() {
                         onShare = { share() },
                         onFindService = { findService() },
                         onClear = { confirmClear = true },
-                        onSettings = { page = Page.Settings }
+                        onSettings = { page = Page.Settings },
+                        onDetails = { page = Page.Details }
+                    )
+                    Page.Details -> DetailsScreen(state, onBack = { page = Page.Result })
+                    Page.Dash -> DashScreen(
+                        state,
+                        onBack = { page = Page.Home },
+                        onCamera = { takePhoto { page = Page.Dash } },
+                        onGallery = { afterPhoto = { page = Page.Dash }; galleryLauncher.launch("image/*") }
                     )
                     Page.Sensors -> SensorsScreen(state, onStartTrip = { startTrip() }, onStopTrip = { stopTrip() }, bottom = tabBar)
                     Page.History -> HistoryScreen(
@@ -228,6 +277,15 @@ class MainActivity : ComponentActivity() {
                 (if (d.address == last) 2 else 0) +
                     (if (listOf("OBD", "ELM", "LINK", "VGATE", "KONNWEI", "VIECAR").any { n.contains(it) }) 1 else 0)
             }
+    }
+
+    // ---------- фото приборки ----------
+
+    private fun takePhoto(onDone: () -> Unit) {
+        if (!state.hasAiKey) { state.toast = "Разбор фото временно недоступен"; return }
+        afterPhoto = onDone
+        runCatching { cameraLauncher.launch(null) }
+            .onFailure { state.toast = "Камера недоступна: ${it.message}" }
     }
 
     // ---------- действия с результатом ----------

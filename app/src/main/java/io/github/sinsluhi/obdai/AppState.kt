@@ -4,6 +4,7 @@ import android.bluetooth.BluetoothDevice
 import android.content.Context
 import android.os.Handler
 import android.os.Looper
+import android.speech.tts.TextToSpeech
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
@@ -16,7 +17,8 @@ import java.util.concurrent.Executors
 
 /** Состояние приложения для Compose плюс вся работа с адаптером и ИИ в фоновом потоке. */
 class AppState private constructor(context: Context) {
-    val prefs = Prefs(context.applicationContext)
+    private val appContext = context.applicationContext
+    val prefs = Prefs(appContext)
 
     companion object {
         @Volatile private var instance: AppState? = null
@@ -36,6 +38,7 @@ class AppState private constructor(context: Context) {
     // ---- наблюдаемое состояние ----
     var connected by mutableStateOf(false)
     var adapterName by mutableStateOf("")
+    var adapterInfo by mutableStateOf(AdapterInfo())
     var protocol by mutableStateOf("")
     var voltage by mutableStateOf("")
     var ecuOnline by mutableStateOf(false)
@@ -47,6 +50,8 @@ class AppState private constructor(context: Context) {
     var sensors by mutableStateOf<List<SensorReading>>(emptyList())
     var diagnosis by mutableStateOf<Diagnosis?>(null)
     var lastSnapshot by mutableStateOf<CarSnapshot?>(null)
+    var battery by mutableStateOf<BatteryReport?>(null)
+    var dash by mutableStateOf<DashReport?>(null)
     var busy by mutableStateOf<String?>(null)      // текст текущего шага или null
     var error by mutableStateOf<String?>(null)
     var toast by mutableStateOf<String?>(null)
@@ -62,6 +67,14 @@ class AppState private constructor(context: Context) {
     var accentIndex by mutableStateOf(prefs.accentIndex)
     var demo by mutableStateOf(prefs.demo)
     var devMode by mutableStateOf(prefs.devMode)
+    var voice by mutableStateOf(prefs.voice)
+
+    /** Накопленные измерения напряжения (30 дней) для оценки аккумулятора. */
+    @Volatile private var volts: List<VoltSample> = prefs.loadVolts()
+    @Volatile private var lastVoltSample = 0L
+    private val alarmSpoken = mutableMapOf<String, Long>()
+    private var tts: TextToSpeech? = null
+    @Volatile private var ttsReady = false
 
     /** Ключ, встроенный в сборку через секрет GitHub (пустой, если секрета нет или он для другого провайдера). */
     val builtInKey: Boolean get() = BuildConfig.AI_API_KEY.isNotBlank() && provider.id == BuildConfig.AI_PROVIDER
@@ -78,6 +91,7 @@ class AppState private constructor(context: Context) {
         addLog("1. Воткни адаптер в OBD-разъём, включи зажигание")
         addLog("2. Спарь адаптер в настройках Bluetooth (PIN обычно 1234 или 0000)")
         addLog("3. Жми на статус адаптера или на большую кнопку")
+        battery = BatteryReport.build(volts)
     }
 
     private fun ui(block: () -> Unit) {
@@ -102,6 +116,7 @@ class AppState private constructor(context: Context) {
     fun updateFolder(v: String) { folder = v; prefs.folder = v }
     fun updateDevMode(v: Boolean) { devMode = v; prefs.devMode = v }
     fun updateAccent(i: Int) { accentIndex = i; prefs.accentIndex = i }
+    fun updateVoice(v: Boolean) { voice = v; prefs.voice = v }
     fun updateDemo(v: Boolean) {
         demo = v
         prefs.demo = v
@@ -121,6 +136,7 @@ class AppState private constructor(context: Context) {
             ui {
                 connected = true
                 adapterName = elm.name
+                adapterInfo = elm.adapter
                 protocol = elm.protocol
                 voltage = volt
                 ecuOnline = elm.ecuOnline
@@ -136,6 +152,7 @@ class AppState private constructor(context: Context) {
         link = d
         connected = true
         adapterName = d.name
+        adapterInfo = d.adapter
         protocol = d.protocol
         voltage = d.readVoltage()
         ecuOnline = d.ecuOnline
@@ -150,6 +167,7 @@ class AppState private constructor(context: Context) {
         link = null
         connected = false
         adapterName = ""
+        adapterInfo = AdapterInfo()
         ecuOnline = false
         worker.execute { runCatching { l?.disconnect() } }
         addLog("Отключено")
@@ -177,15 +195,29 @@ class AppState private constructor(context: Context) {
             addLog(if (pending.isEmpty()) "Неподтверждённых ошибок нет" else "Неподтверждённые: ${pending.joinToString()}")
             if (permanent.isNotEmpty()) addLog("Постоянные: ${permanent.joinToString()}")
 
+            ui { busy = "Читаю мониторы и счётчики" }
+            val (ready, readyCycle) = runCatching { l.readReadiness() }.getOrDefault(Pair(null, null))
+            ready?.let { addLog("Мониторы готовности: ${it.describe()}") }
+            val stats = runCatching { l.readStats() }.getOrDefault(DtcStats())
+            stats.lines().forEach { addLog(it) }
+
             ui { busy = "Читаю VIN" }
             val v = runCatching { l.readVin() }.getOrNull()
             ui { vin = v }
             addLog(if (v == null) "Машина не отдала VIN (на старых авто это нормально)" else "VIN: $v")
 
             ui { busy = "Снимаю датчики" }
-            val s = l.readSensors()
+            val s = l.readSensors(live = false)
             val volt = l.readVoltageSafe()
             ui { sensors = s; voltage = volt; protocol = l.protocol }
+            recordVolt(s, volt, force = true)
+
+            ui { busy = "Читаю самотесты ЭБУ" }
+            val tests = runCatching { l.readTests() }.onFailure { addLog("Режим 06 не прочитался: ${it.message}") }.getOrDefault(emptyList())
+            if (tests.isNotEmpty()) {
+                addLog("Самотестов: ${tests.size}, провалено: ${tests.count { !it.passed }}")
+                Mode06.summary(tests).forEach { addLog(it) }
+            }
 
             ui { busy = "Опрашиваю блоки" }
             val brand = VinDecoder.decode(v).brand
@@ -194,8 +226,19 @@ class AppState private constructor(context: Context) {
             }.onFailure { addLog("Опрос блоков не удался: ${it.message}") }.getOrDefault(emptyList())
             addLog("Ответило блоков: ${modules.size}, с ошибками: ${modules.count { it.codes.isNotEmpty() }}")
 
-            val snap = CarSnapshot(v, l.protocol, volt, mil?.first, mil?.second, stored, pending, s, permanent, modules)
-            ui { lastSnapshot = snap }
+            ui { busy = "Сверяю с прошлыми проверками" }
+            val batteryNow = BatteryReport.build(volts)
+            val base = CarSnapshot(v, l.protocol, volt, mil?.first, mil?.second, stored, pending, s, permanent, modules,
+                readiness = ready, readinessCycle = readyCycle, stats = stats, tests = tests, battery = batteryNow, adapter = l.adapter)
+            val clear = prefs.lastClear?.takeIf { it.vin == null || v == null || it.vin == v }
+            val repair = clear?.let { RepairCheck.build(it, base.allCodes, ready, stats.distanceSinceClearKm) }
+            repair?.let { addLog("После ремонта: ${it.title}") }
+            if (repair != null && repair.status != "pending") prefs.lastClear = null
+            val prev = history.firstOrNull { it.vin == v || (it.vin == null && v == null) }
+            val trend = Trend.compare(prev, base)
+            val flags = Inspection.flags(base)
+            val snap = base.copy(repair = repair, trend = trend, flags = flags)
+            ui { lastSnapshot = snap; battery = batteryNow }
 
             val cfg = aiConfig()
             val result = if (!cfg.ready) {
@@ -217,10 +260,8 @@ class AppState private constructor(context: Context) {
             }
             ui {
                 diagnosis = result
-                if (result.fromAi || result.codes.isNotEmpty()) {
-                    history = (listOf(HistoryEntry(System.currentTimeMillis(), v, result)) + history).take(50)
-                    prefs.saveHistory(history)
-                }
+                history = (listOf(HistoryEntry(System.currentTimeMillis(), v, result, snap.sensorMap())) + history).take(50)
+                prefs.saveHistory(history)
                 onDone()
             }
         }
@@ -228,8 +269,10 @@ class AppState private constructor(context: Context) {
 
     fun clearCodes(onDone: (Boolean) -> Unit) {
         runTask("Сброс ошибок") {
+            val codes = lastSnapshot?.allCodes.orEmpty()
             val ok = link?.clearCodes() ?: false
             addLog(if (ok) "✅ Ошибки стёрты" else "Машина не подтвердила сброс")
+            if (ok) prefs.lastClear = ClearEvent(System.currentTimeMillis(), vin, codes)
             ui {
                 if (ok) { milOn = false; dtcCount = 0 }
                 onDone(ok)
@@ -251,6 +294,70 @@ class AppState private constructor(context: Context) {
         prefs.saveHistory(history)
     }
 
+    // ---- фото приборной панели ----
+
+    fun analyzePhoto(jpegBase64: String, onDone: () -> Unit) {
+        val cfg = aiConfig()
+        if (!cfg.ready) { toast = "Разбор фото временно недоступен"; return }
+        runTask("Фото приборки", needLink = false) {
+            ui { busy = "Смотрю на приборку" }
+            val r = AiClient.dashboard(cfg, jpegBase64) { addLog(it) }
+            addLog("Фото: ${if (r.lamps.isEmpty()) "ламп не найдено" else r.lamps.joinToString { it.name }}")
+            ui { dash = r; onDone() }
+        }
+    }
+
+    // ---- аккумулятор: копим измерения ----
+
+    private fun recordVolt(s: List<SensorReading>, voltStr: String, force: Boolean) {
+        val now = System.currentTimeMillis()
+        val ecuV = s.firstOrNull { it.key == "volt" }?.value
+        val v = ecuV ?: Regex("[0-9]+(\\.[0-9]+)?").find(voltStr)?.value?.toDoubleOrNull() ?: return
+        if (v < 5.0 || v > 20.0) return
+        val rpm = s.firstOrNull { it.key == "rpm" }?.value
+        val sample = VoltSample(now, v, rpm)
+        // просадку при запуске пишем всегда, обычные измерения — не чаще раза в минуту
+        if (!force && !sample.crank && now - lastVoltSample < 60_000) return
+        lastVoltSample = now
+        volts = (volts + sample).filter { now - it.t <= VoltSample.KEEP_MS }.takeLast(VoltSample.MAX)
+        prefs.saveVolts(volts)
+    }
+
+    // ---- голосовые предупреждения в поездке ----
+
+    private fun speak(key: String, text: String) {
+        val now = System.currentTimeMillis()
+        val last = alarmSpoken[key] ?: 0L
+        if (now - last < 5 * 60_000) return
+        alarmSpoken[key] = now
+        addLog("🔊 $text")
+        ui { toast = text }
+        if (!voice) return
+        if (tts == null) {
+            tts = TextToSpeech(appContext) { status ->
+                if (status == TextToSpeech.SUCCESS) {
+                    tts?.setLanguage(Locale("ru"))
+                    ttsReady = true
+                    tts?.speak(text, TextToSpeech.QUEUE_ADD, null, key)
+                }
+            }
+        } else if (ttsReady) {
+            tts?.speak(text, TextToSpeech.QUEUE_ADD, null, key)
+        }
+    }
+
+    private fun checkAlarms(s: List<SensorReading>, voltStr: String) {
+        fun v(k: String) = s.firstOrNull { it.key == k }?.value
+        val coolant = v("coolant")
+        val rpm = v("rpm")
+        val volt = v("volt") ?: Regex("[0-9]+(\\.[0-9]+)?").find(voltStr)?.value?.toDoubleOrNull()
+        if (coolant != null && coolant >= 108) speak("heat", "Перегрев двигателя: температура ${coolant.toInt()} градусов. Остановись и заглуши")
+        if (volt != null && rpm != null && rpm > 1000) {
+            if (volt < 12.3) speak("charge", "Нет зарядки: напряжение %.1f вольта. Генератор не заряжает".format(volt))
+            if (volt > 15.2) speak("over", "Перезаряд: напряжение %.1f вольта. Проверь регулятор".format(volt))
+        }
+    }
+
     // ---- живые датчики ----
 
     fun startPolling() {
@@ -261,9 +368,11 @@ class AppState private constructor(context: Context) {
                 val l = link
                 if (l == null || !l.isConnected) { Thread.sleep(500); continue }
                 try {
-                    val s = l.readSensors()
+                    val s = l.readSensors(live = true)
                     val volt = l.readVoltageSafe()
                     val now = System.currentTimeMillis()
+                    recordVolt(s, volt, force = false)
+                    if (trip != null) checkAlarms(s, volt)
                     ui {
                         sensors = s
                         voltage = volt
@@ -272,7 +381,8 @@ class AppState private constructor(context: Context) {
                                 now,
                                 s.firstOrNull { it.key == "speed" }?.value,
                                 s.firstOrNull { it.key == "rpm" }?.value,
-                                s.firstOrNull { it.key == "maf" }?.value
+                                s.firstOrNull { it.key == "maf" }?.value,
+                                s.firstOrNull { it.key == "fuelrate" }?.value
                             )
                         }
                     }
@@ -342,5 +452,6 @@ class AppState private constructor(context: Context) {
         worker.execute { runCatching { link?.disconnect() } }
         worker.shutdown()
         poller.shutdownNow()
+        tts?.shutdown()
     }
 }
