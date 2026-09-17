@@ -174,7 +174,7 @@ class Elm327(private val log: (String) -> Unit) : ObdLink {
 
         val uds = send("1902FF", 1500)
         if (!silent(uds)) {
-            log("↩ $hex UDS: ${uds.replace("", " | ").take(220)}")
+            log("↩ $hex UDS: ${uds.replace("\r", " | ").take(220)}")
             val msgs = ObdDecoder.messages(uds)
             ModuleDecoder.parseUds(msgs)?.let { return ModuleScan(name, t.addr, it, "UDS") }
             if (!ModuleDecoder.isNegative(msgs, 0x19) && msgs.isNotEmpty()) {
@@ -185,7 +185,7 @@ class Elm327(private val log: (String) -> Unit) : ObdLink {
         if (!tryKwp) return null
         val kwp = send("1800FF00", 1500)
         if (!silent(kwp)) {
-            log("↩ $hex KWP: ${kwp.replace("", " | ").take(220)}")
+            log("↩ $hex KWP: ${kwp.replace("\r", " | ").take(220)}")
             val msgs = ObdDecoder.messages(kwp)
             ModuleDecoder.parseKwp(msgs)?.let { return ModuleScan(name, t.addr, it, "KWP") }
             if (msgs.isNotEmpty()) return ModuleScan(name, t.addr, emptyList(), "?")

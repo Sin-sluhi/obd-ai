@@ -69,6 +69,16 @@ object AiClient {
     // ---------- Groq compound: поиск и вердикт одним вызовом ----------
 
     private fun groq(cfg: AiConfig, snap: CarSnapshot, hasCodes: Boolean, progress: (String) -> Unit, log: (String) -> Unit): Diagnosis {
+        return try {
+            groqCompound(cfg, snap, hasCodes, progress, log)
+        } catch (e: IOException) {
+            log("Основной путь не сработал: ${e.message}. Пробую запасную модель")
+            progress("Готовлю разбор")
+            groqFallback(cfg, snap, log)
+        }
+    }
+
+    private fun groqCompound(cfg: AiConfig, snap: CarSnapshot, hasCodes: Boolean, progress: (String) -> Unit, log: (String) -> Unit): Diagnosis {
         progress(if (hasCodes) "Ищу опыт владельцев на форумах" else "Нейронка оценивает состояние")
         val system = ROLE + (if (hasCodes) GROQ_SEARCH else "") + "\n\n" + SCHEMA_TEXT
         var reply = OpenAiClient.chat(cfg, system, report(snap), search = hasCodes)
@@ -78,10 +88,26 @@ object AiClient {
             reply = OpenAiClient.chat(cfg, system, report(snap), search = true, anySite = true)
             json = extractJson(reply.content)
         }
-        if (json == null) throw IOException("Модель вернула не JSON")
+        if (json == null) {
+            log("Ответ compound не разобрался, пробую запасную модель без поиска")
+            return groqFallback(cfg, snap, log)
+        }
         log("Источников из поиска: ${reply.sources.size}")
         val d = Diagnosis.fromJson(json, fromAi = true)
         return attachSources(d, reply.sources)
+    }
+
+    /** Запасной путь для Groq: обычная модель, строгий JSON, без поиска. */
+    private fun groqFallback(cfg: AiConfig, snap: CarSnapshot, log: (String) -> Unit): Diagnosis {
+        val plain = cfg.copy(model = "openai/gpt-oss-120b")
+        val user = report(snap) + "
+Заметок с форумов нет: опирайся на общие знания, owner_experience и sources оставь пустыми."
+        val reply = OpenAiClient.chat(plain, ROLE + "
+
+" + SCHEMA_TEXT, user, json = true)
+        val json = extractJson(reply.content) ?: throw IOException("Модель вернула не JSON")
+        log("Разбор сделала запасная модель")
+        return Diagnosis.fromJson(json, fromAi = true)
     }
 
     /** Если модель не проставила ссылки в карточке, подставляем найденные поиском записи с этим кодом. */
