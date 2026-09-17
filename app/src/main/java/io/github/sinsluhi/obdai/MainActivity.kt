@@ -252,8 +252,7 @@ class MainActivity : ComponentActivity() {
 
     private fun copyLog() {
         val clipboard = getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
-        clipboard.setPrimaryClip(ClipData.newPlainText("OBD лог", state.log.joinToString("
-")))
+        clipboard.setPrimaryClip(ClipData.newPlainText("OBD лог", state.log.joinToString("\n")))
         state.toast = "Лог скопирован, вставь его в чат"
     }
 
