@@ -183,12 +183,14 @@ def main():
         except urllib.error.HTTPError as ex:
             if ex.code == 429:
                 errors429 += 1
-                wait = int(ex.headers.get("retry-after") or 60)
-                print("429, жду %d с" % wait)
-                if errors429 >= 3:
-                    print("лимит исчерпан, останавливаюсь")
+                body = ex.read()[:300].decode("utf-8", "replace")
+                limits = {k: v for k, v in ex.headers.items() if k.lower().startswith("x-ratelimit") or k.lower() == "retry-after"}
+                wait = float(ex.headers.get("retry-after") or 60)
+                print("429 для %s %s: %s | %s" % (car, code, body, limits))
+                if errors429 >= 3 or wait > 900 or "per day" in body or "TPD" in body or "RPD" in body:
+                    print("дневной лимит или слишком долгое ожидание, останавливаюсь")
                     break
-                time.sleep(min(wait, 300))
+                time.sleep(min(wait + 1, 900))
                 continue
             print("ошибка %s для %s %s: %s" % (ex.code, car, code, ex.read()[:200]))
             failed += 1
