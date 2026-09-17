@@ -14,8 +14,13 @@ android {
         targetSdk = 35
         versionCode = 2
         versionName = "0.2"
+        // Ключ ИИ из секрета GitHub ANTHROPIC_API_KEY; пустая строка, если секрета нет
+        buildConfigField("String", "DEFAULT_API_KEY", "\"" + (System.getenv("ANTHROPIC_API_KEY") ?: "") + "\"")
     }
-    buildFeatures { compose = true }
+    buildFeatures {
+        compose = true
+        buildConfig = true
+    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17

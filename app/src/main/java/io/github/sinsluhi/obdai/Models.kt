@@ -15,7 +15,8 @@ data class CarSnapshot(
     val dtcCount: Int?,
     val stored: List<String>,
     val pending: List<String>,
-    val sensors: List<SensorReading>
+    val sensors: List<SensorReading>,
+    val permanent: List<String> = emptyList()
 )
 
 /** Карточка одной ошибки в результате. */
@@ -119,7 +120,7 @@ data class Diagnosis(
 
         /** Вердикт без нейронки: по кодам и встроенному справочнику. */
         fun local(snap: CarSnapshot): Diagnosis {
-            val all = (snap.stored + snap.pending).distinct()
+            val all = (snap.stored + snap.pending + snap.permanent).distinct()
             if (all.isEmpty()) {
                 val milNote = if (snap.milOn == true) " Лампа Check Engine при этом горит: возможно, ошибка в блоке, который адаптер не читает." else ""
                 return Diagnosis(
@@ -149,7 +150,7 @@ data class Diagnosis(
             return Diagnosis(
                 level = "warning",
                 title = if (all.size == 1) "Найдена 1 ошибка" else "Найдено ошибок: ${all.size}",
-                text = "Добавь API-ключ в настройках, и ИИ объяснит каждую ошибку простыми словами, оценит серьёзность и стоимость ремонта.",
+                text = "Разбор с объяснениями, опытом владельцев и ценой ремонта появится, когда в приложении настроен ключ ИИ.",
                 canDrive = "careful",
                 codes = cards,
                 summary = "",

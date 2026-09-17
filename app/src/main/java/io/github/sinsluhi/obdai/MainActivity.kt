@@ -124,8 +124,7 @@ class MainActivity : ComponentActivity() {
                         onShare = { share() },
                         onFindService = { findService() },
                         onClear = { confirmClear = true },
-                        onSettings = { page = Page.Settings },
-                        onAskClaude = { askClaude() }
+                        onSettings = { page = Page.Settings }
                     )
                     Page.Sensors -> SensorsScreen(state, tabBar)
                     Page.History -> HistoryScreen(
@@ -243,18 +242,6 @@ class MainActivity : ComponentActivity() {
         clipboard.setPrimaryClip(ClipData.newPlainText("OBD отчёт", text))
         state.toast = "Отчёт скопирован"
         return true
-    }
-
-    /** Бесплатный путь: отчёт в буфер и открыть приложение Claude (или сайт), чтобы вставить его в чат. */
-    private fun askClaude() {
-        if (!copyReport()) return
-        state.toast = "Отчёт скопирован. Вставь его в чат"
-        val app = packageManager.getLaunchIntentForPackage("com.anthropic.claude")
-        try {
-            startActivity(app ?: Intent(Intent.ACTION_VIEW, Uri.parse("https://claude.ai/new")))
-        } catch (e: Exception) {
-            state.toast = "Отчёт скопирован, открой чат с ИИ и вставь его"
-        }
     }
 
     override fun onDestroy() {

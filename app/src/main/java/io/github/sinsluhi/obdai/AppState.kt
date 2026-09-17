@@ -45,6 +45,11 @@ class AppState(context: Context) {
     var accentIndex by mutableStateOf(prefs.accentIndex)
     var demo by mutableStateOf(prefs.demo)
 
+    /** Ключ, встроенный в сборку через секрет GitHub (пустой, если секрета нет). */
+    val builtInKey: Boolean get() = BuildConfig.DEFAULT_API_KEY.isNotBlank()
+    val hasAiKey: Boolean get() = apiKey.isNotBlank() || builtInKey
+    private fun effectiveKey(): String = prefs.apiKey.ifBlank { BuildConfig.DEFAULT_API_KEY }
+
     init {
         addLog("1. Воткни адаптер в OBD-разъём, включи зажигание")
         addLog("2. Спарь адаптер в настройках Bluetooth (PIN обычно 1234 или 0000)")
@@ -126,8 +131,10 @@ class AppState(context: Context) {
             ui { busy = "Читаю коды ошибок" }
             val stored = l.readCodes(0x03)
             val pending = l.readCodes(0x07)
+            val permanent = runCatching { l.readCodes(0x0A) }.getOrDefault(emptyList())
             addLog(if (stored.isEmpty()) "Сохранённых ошибок нет" else "Ошибки: ${stored.joinToString()}")
             addLog(if (pending.isEmpty()) "Неподтверждённых ошибок нет" else "Неподтверждённые: ${pending.joinToString()}")
+            if (permanent.isNotEmpty()) addLog("Постоянные: ${permanent.joinToString()}")
 
             ui { busy = "Читаю VIN" }
             val v = runCatching { l.readVin() }.getOrNull()
@@ -139,12 +146,12 @@ class AppState(context: Context) {
             val volt = l.readVoltageSafe()
             ui { sensors = s; voltage = volt; protocol = l.protocol }
 
-            val snap = CarSnapshot(v, l.protocol, volt, mil?.first, mil?.second, stored, pending, s)
+            val snap = CarSnapshot(v, l.protocol, volt, mil?.first, mil?.second, stored, pending, s, permanent)
             ui { lastSnapshot = snap }
 
-            val key = prefs.apiKey
+            val key = effectiveKey()
             val result = if (key.isBlank()) {
-                addLog("Ключ API не задан, показываю результат без ИИ")
+                addLog("Ключ ИИ не задан, показываю результат по справочнику")
                 Diagnosis.local(snap)
             } else {
                 ui { busy = "Нейронка разбирает результаты" }

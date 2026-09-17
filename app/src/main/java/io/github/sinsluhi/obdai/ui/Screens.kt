@@ -272,8 +272,7 @@ fun ResultScreen(
     onShare: () -> Unit,
     onFindService: () -> Unit,
     onClear: () -> Unit,
-    onSettings: () -> Unit,
-    onAskClaude: () -> Unit
+    onSettings: () -> Unit
 ) {
     val accent = LocalAccent.current
     val d = state.diagnosis
@@ -288,22 +287,19 @@ fun ResultScreen(
 
         if (!d.fromAi) {
             Card(background = Palette.surface2, border = Palette.border, radius = 16.dp, padding = 14.dp) {
-                Text("Без нейронки", style = Type.body(13, accent, FontWeight.SemiBold))
+                Text("Разбор ИИ не выполнен", style = Type.body(13, Palette.warn, FontWeight.SemiBold))
                 VSpace(4.dp)
                 Text(
-                    if (state.apiKey.isBlank()) "Нажми кнопку ниже: отчёт скопируется и откроется чат с ИИ, вставь его туда. Или добавь ключ API в настройках, тогда разбор будет приходить прямо сюда."
-                    else "ИИ не ответил, показан результат по встроенному справочнику. Попробуй ещё раз или спроси OBIDI AI вручную.",
+                    if (!state.hasAiKey) "В этой сборке нет ключа ИИ. Показаны названия ошибок из встроенного справочника."
+                    else "ИИ не ответил, показан результат по встроенному справочнику. Проверь интернет и запусти проверку ещё раз.",
                     style = Type.body(13, Palette.text2)
                 )
-                VSpace(12.dp)
-                PrimaryButton("Спросить OBIDI AI", onClick = onAskClaude)
-                if (state.apiKey.isBlank()) {
+                if (!state.hasAiKey) {
                     VSpace(8.dp)
                     Text(
-                        "Настроить ключ API",
+                        "Настройки ИИ",
                         style = Type.body(13, accent, FontWeight.SemiBold),
-                        textAlign = TextAlign.Center,
-                        modifier = Modifier.fillMaxWidth().clickable(onClick = onSettings).padding(6.dp)
+                        modifier = Modifier.clickable(onClick = onSettings).padding(vertical = 6.dp)
                     )
                 }
             }
@@ -651,7 +647,7 @@ fun SettingsScreen(
 
         SectionTitle("Нейронка")
         Card {
-            Text("Ключ API нейронки", style = Type.label())
+            Text(if (state.builtInKey) "Ключ API нейронки (в сборке уже есть свой)" else "Ключ API нейронки", style = Type.label())
             VSpace(8.dp)
             OutlinedTextField(
                 value = keyDraft,
@@ -681,7 +677,8 @@ fun SettingsScreen(
             )
             VSpace(8.dp)
             Text(
-                "Ключ хранится только на телефоне. Получить: console.anthropic.com → API keys. С ключом разбор ошибок приходит прямо в приложение.",
+                if (state.builtInKey) "Ключ уже встроен в приложение, поле можно оставить пустым. Свой ключ здесь его заменит."
+                else "Ключ хранится только на телефоне. Получить: console.anthropic.com → API keys. Без ключа разбор ошибок от ИИ не работает.",
                 style = Type.body(12, Palette.muted)
             )
         }

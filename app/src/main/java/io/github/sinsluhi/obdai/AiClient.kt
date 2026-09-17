@@ -49,7 +49,7 @@ object AiClient {
 - Если ошибок нет, всё равно оцени состояние по датчикам и дай 1–3 совета."""
 
     fun diagnose(apiKey: String, snap: CarSnapshot, progress: (String) -> Unit, log: (String) -> Unit): Diagnosis {
-        val hasCodes = snap.stored.isNotEmpty() || snap.pending.isNotEmpty()
+        val hasCodes = snap.stored.isNotEmpty() || snap.pending.isNotEmpty() || snap.permanent.isNotEmpty()
         var notes = ""
         if (hasCodes) {
             progress("Ищу решения на форумах")
@@ -193,6 +193,7 @@ object AiClient {
         snap.dtcCount?.let { appendLine("Ошибок по данным ЭБУ: $it") }
         appendLine("Сохранённые ошибки: ${snap.stored.joinToString().ifEmpty { "нет" }}")
         appendLine("Неподтверждённые ошибки: ${snap.pending.joinToString().ifEmpty { "нет" }}")
+        if (snap.permanent.isNotEmpty()) appendLine("Постоянные ошибки (не стираются до починки): ${snap.permanent.joinToString()}")
         val known = snap.sensors.filter { it.value != null }
         if (known.isNotEmpty()) {
             appendLine("Датчики (зажигание включено, снимок в момент проверки):")
