@@ -53,6 +53,18 @@ object VinDecoder {
         "2129" to "XRAY", "GAB1" to "XRAY", "GFL1" to "Vesta", "GFK1" to "Vesta SW", "RS0" to "Largus", "KS0" to "Largus", "FS0" to "Largus фургон"
     )
 
+    /** Hyundai (KMH…): 4-й символ VIN — линейка. */
+    private val hyundaiLines = mapOf(
+        'C' to "Accent", 'D' to "Elantra", 'E' to "Sonata", 'H' to "i30", 'J' to "Tucson",
+        'S' to "Santa Fe", 'L' to "Grandeur", 'T' to "Genesis", 'G' to "i40", 'N' to "Kona"
+    )
+
+    /** Kia (KNA…): 4-й символ VIN — линейка. */
+    private val kiaLines = mapOf(
+        'D' to "Rio", 'P' to "Sportage", 'F' to "Cerato", 'K' to "Optima", 'M' to "Sorento",
+        'B' to "Picanto", 'J' to "Soul", 'H' to "Ceed", 'C' to "Carnival", 'R' to "Mohave"
+    )
+
     private const val YEAR_CODES = "ABCDEFGHJKLMNPRSTVWXY123456789"
 
     fun decode(vin: String?): Info {
@@ -60,9 +72,14 @@ object VinDecoder {
         if (v.length < 3) return Info(null, null, null)
         val brand = wmi.firstOrNull { (prefixes, _) -> prefixes.any { v.startsWith(it) } }?.second
         var model: String? = null
-        if (brand != null && brand.startsWith("Lada") && v.length >= 7) {
+        if (brand != null && v.length >= 7) {
             val vds = v.substring(3, 7)
-            model = ladaModels[vds] ?: ladaModels[vds.take(3)]
+            model = when {
+                brand.startsWith("Lada") -> ladaModels[vds] ?: ladaModels[vds.take(3)]
+                v.startsWith("KMH") -> hyundaiLines[v[3]]
+                v.startsWith("KNA") -> kiaLines[v[3]]
+                else -> null
+            }
         }
         val year = if (v.length >= 10) yearFrom(v[9]) else null
         return Info(brand, model, year)
