@@ -5,6 +5,8 @@ on:
       - "**.md"
       - "**.txt"
       - "docs/**"
+      - "tools/**"
+      - ".github/workflows/kb.yml"
   workflow_dispatch:
 permissions:
   contents: write

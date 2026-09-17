@@ -77,8 +77,11 @@ def ask(key, car, code):
         ],
         "search_settings": {"country": "Russia", "include_domains": ["drive2.ru", "*.drive2.ru", "drom.ru", "*.drom.ru"]},
     }
+    # Cloudflare перед Groq режет стандартный User-Agent urllib (error code 1010): представляемся по-человечески
     req = urllib.request.Request(API, data=json.dumps(body).encode("utf-8"), method="POST",
-                                 headers={"Content-Type": "application/json", "Authorization": "Bearer " + key})
+                                 headers={"Content-Type": "application/json", "Authorization": "Bearer " + key,
+                                          "User-Agent": "Mozilla/5.0 (compatible; obd-ai-kb/1.0; +https://github.com/Sin-sluhi/obd-ai)",
+                                          "Accept": "application/json"})
     with urllib.request.urlopen(req, timeout=240) as resp:
         return json.loads(resp.read().decode("utf-8"))
 
@@ -213,6 +216,8 @@ def main():
 
     save_kb(kb)
     print("обработано %d, сохранено %d, ошибок %d, всего записей %d" % (done, added, failed, len(kb["entries"])))
+    if queue and done == 0:
+        sys.exit(1)   # ни одного ответа — ключ, сеть или блокировка; пусть запуск будет красным
 
 
 if __name__ == "__main__":
