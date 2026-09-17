@@ -100,6 +100,7 @@ object ObdDecoder {
     }
 
     class Sensor(
+        val key: String,
         val name: String,
         val cmd: String,
         val pid: Int,
@@ -110,14 +111,14 @@ object ObdDecoder {
     private fun oneByte(d: List<Int>, f: (Int) -> Double) = d.firstOrNull()?.let(f)
 
     val sensors = listOf(
-        Sensor("Обороты", "010C", 0x0C, "об/мин") { d -> if (d.size >= 2) (d[0] * 256 + d[1]) / 4.0 else null },
-        Sensor("Скорость", "010D", 0x0D, "км/ч") { d -> oneByte(d) { it.toDouble() } },
-        Sensor("Температура ОЖ", "0105", 0x05, "°C") { d -> oneByte(d) { it - 40.0 } },
-        Sensor("Нагрузка двигателя", "0104", 0x04, "%") { d -> oneByte(d) { it * 100.0 / 255 } },
-        Sensor("Температура на впуске", "010F", 0x0F, "°C") { d -> oneByte(d) { it - 40.0 } },
-        Sensor("Дроссель", "0111", 0x11, "%") { d -> oneByte(d) { it * 100.0 / 255 } },
-        Sensor("Кратк. топл. коррекция", "0106", 0x06, "%") { d -> oneByte(d) { (it - 128) * 100.0 / 128 } },
-        Sensor("Долг. топл. коррекция", "0107", 0x07, "%") { d -> oneByte(d) { (it - 128) * 100.0 / 128 } },
+        Sensor("rpm", "Обороты", "010C", 0x0C, "об/мин") { d -> if (d.size >= 2) (d[0] * 256 + d[1]) / 4.0 else null },
+        Sensor("speed", "Скорость", "010D", 0x0D, "км/ч") { d -> oneByte(d) { it.toDouble() } },
+        Sensor("coolant", "Температура ОЖ", "0105", 0x05, "°C") { d -> oneByte(d) { it - 40.0 } },
+        Sensor("load", "Нагрузка двигателя", "0104", 0x04, "%") { d -> oneByte(d) { it * 100.0 / 255 } },
+        Sensor("iat", "Температура на впуске", "010F", 0x0F, "°C") { d -> oneByte(d) { it - 40.0 } },
+        Sensor("throttle", "Дроссель", "0111", 0x11, "%") { d -> oneByte(d) { it * 100.0 / 255 } },
+        Sensor("stft", "Кратк. топл. коррекция", "0106", 0x06, "%") { d -> oneByte(d) { (it - 128) * 100.0 / 128 } },
+        Sensor("ltft", "Долг. топл. коррекция", "0107", 0x07, "%") { d -> oneByte(d) { (it - 128) * 100.0 / 128 } },
     )
 }
 

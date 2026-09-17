@@ -4,12 +4,13 @@
     <uses-permission android:name="android.permission.BLUETOOTH" android:maxSdkVersion="30" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" android:maxSdkVersion="30" />
     <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
-    <uses-feature android:name="android.hardware.bluetooth" android:required="true" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-feature android:name="android.hardware.bluetooth" android:required="false" />
 
     <application
         android:label="OBD AI"
-        android:icon="@android:drawable/ic_menu_search"
-        android:theme="@android:style/Theme.Material.Light.DarkActionBar">
+        android:icon="@mipmap/ic_launcher"
+        android:theme="@style/Theme.ObdAi">
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -21,4 +22,3 @@
         </activity>
     </application>
 </manifest>
-

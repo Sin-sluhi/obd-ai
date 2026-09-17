@@ -1,267 +1,268 @@
 package io.github.sinsluhi.obdai
 
 import android.annotation.SuppressLint
-import android.app.Activity
-import android.app.AlertDialog
 import android.bluetooth.BluetoothDevice
 import android.bluetooth.BluetoothManager
 import android.content.ClipData
 import android.content.ClipboardManager
+import android.content.Intent
 import android.content.pm.PackageManager
-import android.graphics.Typeface
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.view.View
-import android.view.ViewGroup.LayoutParams.MATCH_PARENT
-import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
-import android.widget.Button
-import android.widget.EditText
-import android.widget.LinearLayout
-import android.widget.ScrollView
-import android.widget.TextView
 import android.widget.Toast
-import java.util.concurrent.Executors
+import androidx.activity.ComponentActivity
+import androidx.activity.SystemBarStyle
+import androidx.activity.compose.BackHandler
+import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
+import io.github.sinsluhi.obdai.ui.BottomBar
+import io.github.sinsluhi.obdai.ui.ConfirmDialog
+import io.github.sinsluhi.obdai.ui.DevicePickerDialog
+import io.github.sinsluhi.obdai.ui.HistoryScreen
+import io.github.sinsluhi.obdai.ui.HomeScreen
+import io.github.sinsluhi.obdai.ui.LocalAccent
+import io.github.sinsluhi.obdai.ui.LogScreen
+import io.github.sinsluhi.obdai.ui.MessageDialog
+import io.github.sinsluhi.obdai.ui.Palette
+import io.github.sinsluhi.obdai.ui.ResultScreen
+import io.github.sinsluhi.obdai.ui.SensorsScreen
+import io.github.sinsluhi.obdai.ui.SettingsScreen
+import io.github.sinsluhi.obdai.ui.Tab
+import io.github.sinsluhi.obdai.ui.reportText
 
-class MainActivity : Activity() {
+enum class Page { Home, Result, Sensors, History, Settings, Log }
 
-    private lateinit var logView: TextView
-    private lateinit var scroll: ScrollView
-    private lateinit var console: EditText
+class MainActivity : ComponentActivity() {
 
-    private val worker = Executors.newSingleThreadExecutor()
-    private val elm = Elm327 { log(it) }
+    private lateinit var state: AppState
 
-    // Последние результаты — для отчёта
-    @Volatile private var vin: String? = null
-    @Volatile private var mil: Pair<Boolean, Int>? = null
-    @Volatile private var stored: List<String>? = null
-    @Volatile private var pending: List<String>? = null
-    @Volatile private var sensorValues: List<String> = emptyList()
+    /** Список спаренных устройств для диалога выбора; null = диалог закрыт. */
+    private var pickerDevices by mutableStateOf<List<BluetoothDevice>?>(null)
+    private var afterPermission: (() -> Unit)? = null
+
+    private val permissionLauncher =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { granted ->
+            if (granted) afterPermission?.invoke()
+            else state.toast = "Без разрешения Bluetooth работать не получится"
+            afterPermission = null
+        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val pad = dp(8)
-
-        val root = LinearLayout(this).apply {
-            orientation = LinearLayout.VERTICAL
-            setPadding(pad, pad, pad, pad)
-            fitsSystemWindows = true
-        }
-
-        root.addView(row(
-            button("🔌 Подключить") { pickDevice() },
-            button("⏏ Отключить") { runTask("Отключение") { elm.disconnect(); log("Отключено") } }
-        ))
-        root.addView(row(
-            button("🔍 Ошибки") { readCodes() },
-            button("📊 Датчики") { readSensors() }
-        ))
-        root.addView(row(
-            button("🚗 VIN") { readVin() },
-            button("🧹 Стереть ошибки") { confirmClear() }
-        ))
-        root.addView(row(
-            button("📋 Отчёт для ИИ") { copyReport() },
-            button("🗑 Очистить лог") { logView.text = "" }
-        ))
-
-        logView = TextView(this).apply {
-            typeface = Typeface.MONOSPACE
-            textSize = 13f
-            setTextIsSelectable(true)
-        }
-        scroll = ScrollView(this).apply { addView(logView) }
-        root.addView(scroll, LinearLayout.LayoutParams(MATCH_PARENT, 0, 1f))
-
-        console = EditText(this).apply {
-            hint = "Команда адаптеру, напр. 0105"
-            setSingleLine(true)
-        }
-        val consoleRow = LinearLayout(this).apply {
-            orientation = LinearLayout.HORIZONTAL
-            addView(console, LinearLayout.LayoutParams(0, WRAP_CONTENT, 1f))
-            addView(button("➤") { sendRaw() }, LinearLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT))
-        }
-        root.addView(consoleRow)
-
-        setContentView(root)
-        log("1. Воткни адаптер в OBD-разъём, включи зажигание")
-        log("2. Спарь адаптер в настройках Bluetooth (PIN обычно 1234 или 0000)")
-        log("3. Жми «Подключить»")
+        enableEdgeToEdge(
+            statusBarStyle = SystemBarStyle.dark(android.graphics.Color.TRANSPARENT),
+            navigationBarStyle = SystemBarStyle.dark(android.graphics.Color.TRANSPARENT)
+        )
+        state = AppState(this)
+        if (state.demo) state.connectDemo()
+        setContent { App() }
     }
 
-    // ---------- UI-помощники ----------
+    @Composable
+    private fun App() {
+        var page by remember { mutableStateOf(Page.Home) }
+        var confirmClear by remember { mutableStateOf(false) }
+        val accent = Palette.accent(state.accentIndex)
 
-    private fun dp(v: Int) = (v * resources.displayMetrics.density).toInt()
+        BackHandler(enabled = page != Page.Home) {
+            page = when (page) {
+                Page.Log -> Page.Settings
+                else -> Page.Home
+            }
+        }
+        LaunchedEffect(state.toast) {
+            state.toast?.let {
+                Toast.makeText(this@MainActivity, it, Toast.LENGTH_LONG).show()
+                state.toast = null
+            }
+        }
 
-    private fun button(label: String, action: () -> Unit) = Button(this).apply {
-        text = label
-        isAllCaps = false
-        setOnClickListener { action() }
-    }
-
-    private fun row(vararg views: View) = LinearLayout(this).apply {
-        orientation = LinearLayout.HORIZONTAL
-        views.forEach { addView(it, LinearLayout.LayoutParams(0, WRAP_CONTENT, 1f)) }
-    }
-
-    private fun log(msg: String) = runOnUiThread {
-        logView.append(msg + "\n")
-        scroll.post { scroll.fullScroll(View.FOCUS_DOWN) }
-    }
-
-    private fun runTask(title: String, needConnection: Boolean = true, block: () -> Unit) {
-        worker.execute {
-            log("\n▶ $title")
-            try {
-                if (needConnection && !elm.isConnected) {
-                    log("Сначала подключись к адаптеру")
-                } else {
-                    block()
+        val tabBar: @Composable () -> Unit = {
+            val current = when (page) {
+                Page.Sensors -> Tab.Sensors
+                Page.History -> Tab.History
+                else -> Tab.Check
+            }
+            BottomBar(current) { tab ->
+                page = when (tab) {
+                    Tab.Check -> Page.Home
+                    Tab.Sensors -> Page.Sensors
+                    Tab.History -> Page.History
                 }
-            } catch (e: Exception) {
-                log("❌ ${e.message ?: e.javaClass.simpleName}")
+            }
+        }
+
+        CompositionLocalProvider(LocalAccent provides accent) {
+            Box(Modifier.fillMaxSize().background(Palette.bg)) {
+                when (page) {
+                    Page.Home -> HomeScreen(
+                        state,
+                        onCheck = {
+                            if (state.connected) state.runCheck { page = Page.Result } else pickDevice()
+                        },
+                        onOpenResult = { page = Page.Result },
+                        onSettings = { page = Page.Settings },
+                        onAdapterClick = { if (state.connected) page = Page.Settings else pickDevice() },
+                        bottom = tabBar
+                    )
+                    Page.Result -> ResultScreen(
+                        state,
+                        onBack = { page = Page.Home },
+                        onShare = { share() },
+                        onFindService = { findService() },
+                        onClear = { confirmClear = true },
+                        onSettings = { page = Page.Settings },
+                        onAskClaude = { askClaude() }
+                    )
+                    Page.Sensors -> SensorsScreen(state, tabBar)
+                    Page.History -> HistoryScreen(
+                        state,
+                        onOpen = { e ->
+                            state.diagnosis = e.diagnosis
+                            state.vin = e.vin
+                            page = Page.Result
+                        },
+                        bottom = tabBar
+                    )
+                    Page.Settings -> SettingsScreen(
+                        state,
+                        onBack = { page = Page.Home },
+                        onPickDevice = { pickDevice() },
+                        onOpenLog = { page = Page.Log }
+                    )
+                    Page.Log -> LogScreen(state, onBack = { page = Page.Settings }, onCopyReport = { copyReport() })
+                }
+
+                pickerDevices?.let { devices ->
+                    DevicePickerDialog(
+                        devices = devices.map { deviceLabel(it) },
+                        onPick = { i ->
+                            pickerDevices = null
+                            state.connect(devices[i])
+                        },
+                        onDemo = {
+                            pickerDevices = null
+                            state.setDemo(true)
+                            state.connectDemo()
+                        },
+                        onDismiss = { pickerDevices = null }
+                    )
+                }
+                state.error?.let { MessageDialog("Не получилось", it) { state.error = null } }
+                if (confirmClear) ConfirmDialog(
+                    title = "Стереть ошибки?",
+                    text = "Зажигание включено, двигатель заглушен. Check Engine погаснет, но если неисправность осталась, ошибка вернётся.",
+                    confirm = "Стереть",
+                    onConfirm = {
+                        confirmClear = false
+                        state.clearCodes { ok ->
+                            state.toast = if (ok) "Ошибки стёрты" else "Машина не подтвердила сброс"
+                            if (ok) page = Page.Home
+                        }
+                    },
+                    onDismiss = { confirmClear = false }
+                )
             }
         }
     }
 
-    // ---------- Подключение ----------
+    // ---------- Bluetooth ----------
+
+    @SuppressLint("MissingPermission")
+    private fun deviceLabel(d: BluetoothDevice): Pair<String, String> = Pair(d.name ?: "Без имени", d.address)
 
     @SuppressLint("MissingPermission")
     private fun pickDevice() {
         if (Build.VERSION.SDK_INT >= 31 &&
             checkSelfPermission(PERM_CONNECT) != PackageManager.PERMISSION_GRANTED
         ) {
-            requestPermissions(arrayOf(PERM_CONNECT), REQ_BT)
+            afterPermission = { pickDevice() }
+            permissionLauncher.launch(PERM_CONNECT)
             return
         }
         val adapter = (getSystemService(BLUETOOTH_SERVICE) as BluetoothManager).adapter
         if (adapter == null) {
-            log("На телефоне нет Bluetooth")
+            state.toast = "На телефоне нет Bluetooth"
+            pickerDevices = emptyList()
             return
         }
         if (!adapter.isEnabled) {
-            log("Включи Bluetooth")
+            state.toast = "Включи Bluetooth"
+            pickerDevices = emptyList()
             return
         }
-        val devices: List<BluetoothDevice> = adapter.bondedDevices
+        val last = state.prefs.lastDevice
+        pickerDevices = adapter.bondedDevices
             .sortedByDescending { d ->
                 val n = (d.name ?: "").uppercase()
-                listOf("OBD", "ELM", "LINK", "VGATE").any { n.contains(it) }
+                (if (d.address == last) 2 else 0) +
+                    (if (listOf("OBD", "ELM", "LINK", "VGATE", "KONNWEI", "VIECAR").any { n.contains(it) }) 1 else 0)
             }
-        if (devices.isEmpty()) {
-            log("Нет спаренных устройств — сначала спарь адаптер в настройках Bluetooth")
-            return
-        }
-        val names = devices.map { "${it.name ?: "Без имени"}\n${it.address}" }.toTypedArray()
-        AlertDialog.Builder(this)
-            .setTitle("Выбери адаптер")
-            .setItems(names) { _, i ->
-                runTask("Подключение к ${devices[i].name}", needConnection = false) {
-                    elm.connect(devices[i])
-                    log("✅ Подключено")
-                }
-            }
-            .show()
     }
 
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (requestCode == REQ_BT && grantResults.firstOrNull() == PackageManager.PERMISSION_GRANTED) {
-            pickDevice()
-        } else if (requestCode == REQ_BT) {
-            log("Без разрешения Bluetooth работать не получится")
+    // ---------- действия с результатом ----------
+
+    private fun share() {
+        val d = state.diagnosis ?: return
+        val intent = Intent(Intent.ACTION_SEND).apply {
+            type = "text/plain"
+            putExtra(Intent.EXTRA_TEXT, d.shareText(state.vin))
+        }
+        startActivity(Intent.createChooser(intent, "Поделиться результатом"))
+    }
+
+    private fun findService() {
+        val geo = Intent(Intent.ACTION_VIEW, Uri.parse("geo:0,0?q=" + Uri.encode("автосервис")))
+        try {
+            startActivity(geo)
+        } catch (e: Exception) {
+            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://yandex.ru/maps/?text=" + Uri.encode("автосервис"))))
         }
     }
 
-    // ---------- Диагностика ----------
-
-    private fun readCodes() = runTask("Чтение ошибок") {
-        elm.readMil()?.let { (on, count) ->
-            mil = Pair(on, count)
-            log("Check Engine: ${if (on) "ГОРИТ" else "не горит"}, ошибок по данным ЭБУ: $count")
-        }
-        val s = elm.readCodes(0x03)
-        val p = elm.readCodes(0x07)
-        stored = s
-        pending = p
-        log(if (s.isEmpty()) "Сохранённых ошибок нет" else "Ошибки: ${s.joinToString()}")
-        log(if (p.isEmpty()) "Неподтверждённых ошибок нет" else "Неподтверждённые: ${p.joinToString()}")
-    }
-
-    private fun readSensors() = runTask("Датчики") {
-        val values = mutableListOf<String>()
-        for (sensor in ObdDecoder.sensors) {
-            val data = ObdDecoder.pidData(elm.send(sensor.cmd), sensor.pid)
-            val value = data?.let { sensor.formula(it) }
-            val line = if (value == null) "${sensor.name}: нет данных"
-            else "${sensor.name}: ${"%.1f".format(value)} ${sensor.unit}"
-            log(line)
-            if (value != null) values.add(line)
-        }
-        val voltage = elm.readVoltage()
-        log("Напряжение: $voltage")
-        values.add("Напряжение сети: $voltage")
-        sensorValues = values
-    }
-
-    private fun readVin() = runTask("VIN") {
-        val v = elm.readVin()
-        vin = v
-        log(if (v == null) "Машина не отдала VIN (на старых авто это нормально)" else "VIN: $v")
-    }
-
-    private fun confirmClear() {
-        AlertDialog.Builder(this)
-            .setTitle("Стереть ошибки?")
-            .setMessage("Зажигание включено, двигатель заглушен. Check Engine погаснет, но если неисправность осталась — ошибка вернётся.")
-            .setPositiveButton("Стереть") { _, _ ->
-                runTask("Сброс ошибок") {
-                    log(if (elm.clearCodes()) "✅ Ошибки стёрты" else "Машина не подтвердила сброс")
-                }
-            }
-            .setNegativeButton("Отмена", null)
-            .show()
-    }
-
-    private fun sendRaw() {
-        val cmd = console.text.toString().trim().uppercase()
-        if (cmd.isEmpty()) return
-        console.setText("")
-        runTask("> $cmd") { log(elm.send(cmd, 8000).replace("\r", "\n")) }
-    }
-
-    private fun copyReport() {
-        val sb = StringBuilder()
-        sb.appendLine("Расшифруй диагностику машины простыми словами: что сломано, можно ли ехать, что сделать и примерно сколько стоит ремонт.")
-        sb.appendLine()
-        sb.appendLine("Протокол: ${elm.protocol.ifEmpty { "неизвестно" }}")
-        vin?.let { sb.appendLine("VIN: $it") }
-        mil?.let { sb.appendLine("Check Engine: ${if (it.first) "горит" else "не горит"}") }
-        stored?.let { sb.appendLine("Ошибки: ${it.joinToString().ifEmpty { "нет" }}") }
-        pending?.let { sb.appendLine("Неподтверждённые ошибки: ${it.joinToString().ifEmpty { "нет" }}") }
-        if (sensorValues.isNotEmpty()) {
-            sb.appendLine("Датчики на момент проверки:")
-            sensorValues.forEach { sb.appendLine("- $it") }
-        }
-        if (stored == null && sensorValues.isEmpty()) {
-            Toast.makeText(this, "Сначала прочитай ошибки или датчики", Toast.LENGTH_SHORT).show()
-            return
+    private fun copyReport(): Boolean {
+        val text = reportText(state)
+        if (text == null) {
+            state.toast = "Сначала проверь машину"
+            return false
         }
         val clipboard = getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
-        clipboard.setPrimaryClip(ClipData.newPlainText("OBD отчёт", sb.toString()))
-        Toast.makeText(this, "Отчёт скопирован", Toast.LENGTH_SHORT).show()
+        clipboard.setPrimaryClip(ClipData.newPlainText("OBD отчёт", text))
+        state.toast = "Отчёт скопирован"
+        return true
+    }
+
+    /** Бесплатный путь: отчёт в буфер и открыть приложение Claude (или сайт), чтобы вставить его в чат. */
+    private fun askClaude() {
+        if (!copyReport()) return
+        state.toast = "Отчёт скопирован. Вставь его в чат Claude"
+        val app = packageManager.getLaunchIntentForPackage("com.anthropic.claude")
+        try {
+            startActivity(app ?: Intent(Intent.ACTION_VIEW, Uri.parse("https://claude.ai/new")))
+        } catch (e: Exception) {
+            state.toast = "Отчёт скопирован, открой Claude и вставь его в чат"
+        }
     }
 
     override fun onDestroy() {
-        worker.execute { elm.disconnect() }
-        worker.shutdown()
+        if (::state.isInitialized) state.shutdown()
         super.onDestroy()
     }
 
     companion object {
         private const val PERM_CONNECT = "android.permission.BLUETOOTH_CONNECT"
-        private const val REQ_BT = 1
     }
 }
-

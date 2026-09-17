@@ -1,0 +1,938 @@
+package io.github.sinsluhi.obdai.ui
+
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.imePadding
+import androidx.compose.foundation.layout.navigationBarsPadding
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.Check
+import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material.icons.automirrored.filled.Send
+import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.Icon
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
+import androidx.compose.material3.Switch
+import androidx.compose.material3.SwitchDefaults
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalUriHandler
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
+import io.github.sinsluhi.obdai.AiClient
+import io.github.sinsluhi.obdai.AppState
+import io.github.sinsluhi.obdai.Diagnosis
+import io.github.sinsluhi.obdai.DtcCard
+import io.github.sinsluhi.obdai.HistoryEntry
+import io.github.sinsluhi.obdai.R
+import io.github.sinsluhi.obdai.formatPrice
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
+import kotlin.math.abs
+
+private val screenPadding = 20.dp
+
+@Composable
+private fun Screen(
+    bottom: (@Composable () -> Unit)? = null,
+    scroll: Boolean = true,
+    content: @Composable ColumnScope.() -> Unit
+) {
+    Column(Modifier.fillMaxSize().background(Palette.bg)) {
+        val base = Modifier
+            .weight(1f)
+            .fillMaxWidth()
+            .statusBarsPadding()
+        val m = if (scroll) base.verticalScroll(rememberScrollState()) else base
+        Column(
+            m.padding(start = screenPadding, end = screenPadding, top = 20.dp, bottom = 20.dp),
+            verticalArrangement = Arrangement.spacedBy(18.dp),
+            content = content
+        )
+        if (bottom != null) bottom() else Spacer(Modifier.navigationBarsPadding())
+    }
+}
+
+@Composable
+private fun Header(title: String, onBack: (() -> Unit)? = null, trailing: (@Composable () -> Unit)? = null) {
+    Row(Modifier.fillMaxWidth().height(44.dp), verticalAlignment = Alignment.CenterVertically) {
+        if (onBack != null) {
+            SquareIconButton(Icons.AutoMirrored.Filled.ArrowBack, "Назад", onBack)
+            HSpace(12.dp)
+        }
+        Text(title, style = Type.display(20))
+        Spacer(Modifier.weight(1f))
+        trailing?.invoke()
+    }
+}
+
+// ======================= Главный =======================
+
+@Composable
+fun HomeScreen(
+    state: AppState,
+    onCheck: () -> Unit,
+    onOpenResult: () -> Unit,
+    onSettings: () -> Unit,
+    onAdapterClick: () -> Unit,
+    bottom: @Composable () -> Unit
+) {
+    val accent = LocalAccent.current
+    Screen(bottom = bottom) {
+        Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+            Box(
+                Modifier.size(34.dp).background(accent, RoundedCornerShape(10.dp)),
+                contentAlignment = Alignment.Center
+            ) {
+                Icon(painterResource(R.drawable.ic_car), null, tint = Palette.bg, modifier = Modifier.size(20.dp))
+            }
+            HSpace(10.dp)
+            Text("OBD AI", style = Type.display(20))
+            Spacer(Modifier.weight(1f))
+            SquareIconButton(Icons.Default.Settings, "Настройки", onSettings)
+        }
+
+        // статус адаптера
+        Card(radius = 14.dp, padding = 0.dp, onClick = onAdapterClick) {
+            Row(
+                Modifier.padding(horizontal = 14.dp, vertical = 12.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Dot(if (state.connected) accent else Palette.muted)
+                HSpace(10.dp)
+                Text(
+                    if (state.connected) "Адаптер подключён" else "Адаптер не подключён",
+                    style = Type.strong(14),
+                    modifier = Modifier.weight(1f)
+                )
+                Text(
+                    if (state.connected) state.adapterName else "нажми, чтобы выбрать",
+                    style = Type.label()
+                )
+            }
+        }
+
+        // карточка машины
+        Card {
+            Text("Ваша машина", style = Type.label())
+            VSpace(10.dp)
+            val car = state.diagnosis?.car.orEmpty()
+            if (car.isNotBlank()) {
+                Text(car, style = Type.strong(16))
+                VSpace(4.dp)
+            }
+            Text(state.vin ?: "VIN появится после проверки", style = if (state.vin != null) Type.mono(17) else Type.body(15, Palette.muted))
+            VSpace(14.dp)
+            Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+                InfoTile("Протокол", shortProtocol(state.protocol), Modifier.weight(1f))
+                InfoTile("Аккумулятор", formatVolt(state.voltage), Modifier.weight(1f))
+            }
+        }
+
+        // большая кнопка
+        Column(
+            Modifier.fillMaxWidth().padding(vertical = 12.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.spacedBy(18.dp)
+        ) {
+            BigCheckButton(busy = state.busy, onClick = onCheck)
+            Text(
+                state.busy ?: if (state.connected) "Включи зажигание. Двигатель можно не заводить"
+                else "Сначала подключи адаптер или включи демо в настройках",
+                style = Type.body(14, Palette.muted),
+                textAlign = TextAlign.Center,
+                modifier = Modifier.width(280.dp)
+            )
+        }
+
+        // плашка Check Engine / последний результат
+        val d = state.diagnosis
+        if (state.milOn == true || (d != null && d.codes.isNotEmpty())) {
+            val count = d?.codes?.size ?: state.dtcCount ?: 0
+            Card(background = Palette.warnBg, border = Palette.warnBorder, radius = 16.dp, padding = 14.dp, onClick = onOpenResult) {
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    WarningIcon(Palette.warn)
+                    HSpace(12.dp)
+                    Column(Modifier.weight(1f)) {
+                        Text(if (state.milOn == true) "Горит Check Engine" else "Есть ошибки", style = Type.body(14, Palette.warnText, FontWeight.SemiBold))
+                        Text(
+                            if (count > 0) "Последняя проверка: ${plural(count, "ошибка", "ошибки", "ошибок")}" else "Нажми, чтобы посмотреть результат",
+                            style = Type.body(12, Palette.warnMuted)
+                        )
+                    }
+                    Text("Открыть", style = Type.body(13, Palette.warn, FontWeight.SemiBold))
+                }
+            }
+        } else if (d != null) {
+            Card(background = Palette.okBg, border = Palette.border, radius = 16.dp, padding = 14.dp, onClick = onOpenResult) {
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Icon(Icons.Default.Check, null, tint = accent, modifier = Modifier.size(22.dp))
+                    HSpace(12.dp)
+                    Column(Modifier.weight(1f)) {
+                        Text(d.title, style = Type.body(14, Palette.text, FontWeight.SemiBold))
+                        Text("Последняя проверка без ошибок", style = Type.body(12, Palette.muted))
+                    }
+                    Text("Открыть", style = Type.body(13, accent, FontWeight.SemiBold))
+                }
+            }
+        }
+    }
+}
+
+@Composable
+private fun InfoTile(label: String, value: String, modifier: Modifier = Modifier) {
+    Column(
+        modifier
+            .background(Palette.surface2, RoundedCornerShape(12.dp))
+            .padding(horizontal = 12.dp, vertical = 10.dp)
+    ) {
+        Text(label, style = Type.label(12))
+        Text(value, style = Type.strong(14), maxLines = 1)
+    }
+}
+
+@Composable
+private fun BigCheckButton(busy: String?, onClick: () -> Unit) {
+    val accent = LocalAccent.current
+    Box(
+        Modifier
+            .size(212.dp)
+            .border(2.dp, Palette.border, CircleShape)
+            .clip(CircleShape)
+            .clickable(enabled = busy == null, onClick = onClick),
+        contentAlignment = Alignment.Center
+    ) {
+        Box(
+            Modifier.size(176.dp).background(if (busy == null) accent else Palette.surface, CircleShape),
+            contentAlignment = Alignment.Center
+        ) {
+            if (busy != null) {
+                CircularProgressIndicator(color = accent, strokeWidth = 4.dp, modifier = Modifier.size(56.dp))
+            } else {
+                Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(6.dp)) {
+                    SearchIcon(Palette.bg, Modifier.size(34.dp))
+                    Text(
+                        "Проверить\nмашину",
+                        style = Type.display(17).copy(color = Palette.bg),
+                        textAlign = TextAlign.Center
+                    )
+                }
+            }
+        }
+    }
+}
+
+// ======================= Результат =======================
+
+@Composable
+fun ResultScreen(
+    state: AppState,
+    onBack: () -> Unit,
+    onShare: () -> Unit,
+    onFindService: () -> Unit,
+    onClear: () -> Unit,
+    onSettings: () -> Unit,
+    onAskClaude: () -> Unit
+) {
+    val accent = LocalAccent.current
+    val d = state.diagnosis
+    Screen {
+        Header("Результат", onBack = onBack)
+        if (d == null) {
+            Text("Сначала проверь машину", style = Type.body(14, Palette.muted))
+            return@Screen
+        }
+
+        VerdictCard(d)
+
+        if (!d.fromAi) {
+            Card(background = Palette.surface2, border = Palette.border, radius = 16.dp, padding = 14.dp) {
+                Text("Без нейронки", style = Type.body(13, accent, FontWeight.SemiBold))
+                VSpace(4.dp)
+                Text(
+                    if (state.apiKey.isBlank()) "Нажми кнопку ниже: отчёт скопируется, откроется Claude, и ты вставишь его в чат. Или добавь ключ API в настройках, тогда разбор будет приходить прямо сюда."
+                    else "ИИ не ответил, показан результат по встроенному справочнику. Попробуй ещё раз или спроси Claude вручную.",
+                    style = Type.body(13, Palette.text2)
+                )
+                VSpace(12.dp)
+                PrimaryButton("Спросить Claude", onClick = onAskClaude)
+                if (state.apiKey.isBlank()) {
+                    VSpace(8.dp)
+                    Text(
+                        "Настроить ключ API",
+                        style = Type.body(13, accent, FontWeight.SemiBold),
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier.fillMaxWidth().clickable(onClick = onSettings).padding(6.dp)
+                    )
+                }
+            }
+        }
+
+        if (d.codes.isNotEmpty()) {
+            SectionTitle("Что нашли", plural(d.codes.size, "ошибка", "ошибки", "ошибок"))
+            d.codes.forEach { CodeCard(it) }
+        }
+
+        if (d.summary.isNotBlank()) {
+            Row(
+                Modifier
+                    .fillMaxWidth()
+                    .background(Palette.surface2, RoundedCornerShape(16.dp))
+                    .padding(horizontal = 16.dp, vertical = 14.dp)
+            ) {
+                Text("i", style = Type.mono(13, Palette.muted), modifier = Modifier
+                    .size(20.dp)
+                    .border(1.5.dp, Palette.muted, CircleShape), textAlign = TextAlign.Center)
+                HSpace(12.dp)
+                Text(d.summary, style = Type.body(13, Palette.text2), modifier = Modifier.weight(1f))
+            }
+        }
+
+        if (d.nextSteps.isNotEmpty()) {
+            SectionTitle("Что делать")
+            Card {
+                d.nextSteps.forEachIndexed { i, step ->
+                    Row(Modifier.padding(vertical = 6.dp)) {
+                        Text("${i + 1}", style = Type.mono(13, accent), modifier = Modifier.width(24.dp))
+                        Text(step, style = Type.body(14, Palette.text2), modifier = Modifier.weight(1f))
+                    }
+                }
+            }
+        }
+
+        Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
+            PrimaryButton("Найти сервис рядом", onClick = onFindService)
+            Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+                SecondaryButton("Поделиться", Modifier.weight(1f), onClick = onShare)
+                SecondaryButton(
+                    "Стереть ошибки", Modifier.weight(1f), color = Palette.danger,
+                    enabled = state.connected && d.codes.isNotEmpty(), onClick = onClear
+                )
+            }
+        }
+        VSpace(8.dp)
+    }
+}
+
+@Composable
+private fun VerdictCard(d: Diagnosis) {
+    val accent = LocalAccent.current
+    val (bg, border, main, text, muted, label) = when (d.level) {
+        "ok" -> VerdictColors(Palette.okBg, Palette.border, accent, Palette.text, Palette.text2, "ВСЁ В ПОРЯДКЕ")
+        "danger" -> VerdictColors(Palette.dangerBg, Palette.dangerBorder, Palette.danger, Palette.dangerText, Palette.dangerMuted, "ОПАСНО")
+        else -> VerdictColors(Palette.warnBg, Palette.warnBorder, Palette.warn, Palette.warnText, Palette.warnMuted, "ВНИМАНИЕ")
+    }
+    Card(background = bg, border = border, radius = 22.dp, padding = 20.dp) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Box(Modifier.size(40.dp).background(main, RoundedCornerShape(12.dp)), contentAlignment = Alignment.Center) {
+                if (d.level == "ok") Icon(Icons.Default.Check, null, tint = bg, modifier = Modifier.size(22.dp))
+                else WarningIcon(bg)
+            }
+            HSpace(10.dp)
+            Text(label, style = Type.body(13, main, FontWeight.SemiBold))
+            Spacer(Modifier.weight(1f))
+            val drive = when (d.canDrive) { "yes" -> "Ехать можно"; "no" -> "Не ехать"; else -> "Ехать осторожно" }
+            Pill(drive, main, Palette.bg.copy(alpha = 0.35f))
+        }
+        VSpace(12.dp)
+        Text(d.title, style = Type.display(22).copy(color = text))
+        VSpace(8.dp)
+        Text(d.text, style = Type.body(14, muted))
+    }
+}
+
+private data class VerdictColors(
+    val bg: Color, val border: Color, val main: Color, val text: Color, val muted: Color, val label: String
+)
+
+@Composable
+private fun CodeCard(c: DtcCard) {
+    val accent = LocalAccent.current
+    val (sevText, sevColor, sevBg) = when (c.severity) {
+        "high" -> Triple("Серьёзно", Palette.danger, Palette.dangerBg)
+        "low" -> Triple("Низко", accent, Palette.okBg)
+        else -> Triple("Средне", Palette.warn, Palette.warnBg)
+    }
+    Card {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Text(
+                c.code,
+                style = Type.mono(13),
+                modifier = Modifier
+                    .background(Palette.surface2, RoundedCornerShape(8.dp))
+                    .border(1.dp, Palette.border, RoundedCornerShape(8.dp))
+                    .padding(horizontal = 8.dp, vertical = 4.dp)
+            )
+            Spacer(Modifier.weight(1f))
+            Pill(sevText, sevColor, sevBg)
+        }
+        VSpace(10.dp)
+        Text(c.title, style = Type.strong(17))
+        if (c.explanation.isNotBlank()) {
+            VSpace(6.dp)
+            Text(c.explanation, style = Type.body(14, Palette.text2))
+        }
+        if (c.causes.isNotEmpty()) {
+            VSpace(6.dp)
+            Text("Частые причины: ${c.causes.joinToString()}", style = Type.body(13, Palette.muted))
+        }
+        if (c.whatToDo.isNotBlank()) {
+            VSpace(6.dp)
+            Text(c.whatToDo, style = Type.body(13, Palette.text2))
+        }
+        if (c.ownerExperience.isNotBlank()) {
+            VSpace(10.dp)
+            Column(
+                Modifier
+                    .fillMaxWidth()
+                    .background(Palette.surface2, RoundedCornerShape(12.dp))
+                    .padding(12.dp)
+            ) {
+                Text("Опыт владельцев", style = Type.body(12, accent, FontWeight.SemiBold))
+                VSpace(4.dp)
+                Text(c.ownerExperience, style = Type.body(13, Palette.text2))
+                if (c.sources.isNotEmpty()) {
+                    VSpace(6.dp)
+                    val uri = LocalUriHandler.current
+                    c.sources.take(4).forEach { url ->
+                        Text(
+                            shortUrl(url),
+                            style = Type.body(12, Palette.muted).copy(textDecoration = androidx.compose.ui.text.style.TextDecoration.Underline),
+                            maxLines = 1,
+                            modifier = Modifier.clickable { runCatching { uri.openUri(url) } }.padding(vertical = 3.dp)
+                        )
+                    }
+                }
+            }
+        }
+        VSpace(10.dp)
+        Box(Modifier.fillMaxWidth().height(1.dp).background(Palette.border))
+        VSpace(10.dp)
+        Row {
+            Text("Ремонт", style = Type.label())
+            Spacer(Modifier.weight(1f))
+            Text(formatPrice(c.priceFrom, c.priceTo), style = Type.strong(14))
+        }
+    }
+}
+
+// ======================= Датчики =======================
+
+@Composable
+fun SensorsScreen(state: AppState, bottom: @Composable () -> Unit) {
+    val accent = LocalAccent.current
+    DisposableEffect(state.connected) {
+        if (state.connected) state.startPolling()
+        onDispose { state.stopPolling() }
+    }
+    fun v(key: String) = state.sensors.firstOrNull { it.key == key }?.value
+
+    Screen(bottom = bottom) {
+        Header("Датчики") {
+            Row(
+                Modifier
+                    .background(Palette.surface, RoundedCornerShape(20.dp))
+                    .border(1.dp, Palette.border, RoundedCornerShape(20.dp))
+                    .padding(horizontal = 12.dp, vertical = 6.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Dot(if (state.connected) accent else Palette.muted)
+                HSpace(8.dp)
+                Text(if (state.connected) "Обновляется" else "Нет связи", style = Type.body(12, Palette.text2, FontWeight.SemiBold))
+            }
+        }
+
+        val rpm = v("rpm")
+        Card(radius = 22.dp) {
+            Row {
+                Text("Обороты", style = Type.label())
+                Spacer(Modifier.weight(1f))
+                Text(
+                    when { rpm == null -> ""; rpm < 50 -> "двигатель заглушен"; rpm < 1100 -> "холостой ход"; else -> "" },
+                    style = Type.label(12)
+                )
+            }
+            VSpace(14.dp)
+            Row(verticalAlignment = Alignment.Bottom) {
+                Text(rpm?.let { "%.0f".format(it) } ?: "—", style = Type.mono(48))
+                HSpace(8.dp)
+                Text("об/мин", style = Type.body(15, Palette.muted), modifier = Modifier.padding(bottom = 6.dp))
+            }
+            VSpace(14.dp)
+            Box(Modifier.fillMaxWidth().height(8.dp).background(Palette.surface2, RoundedCornerShape(4.dp))) {
+                val frac = ((rpm ?: 0.0) / 7000.0).coerceIn(0.0, 1.0).toFloat()
+                if (frac > 0f) Box(
+                    Modifier.fillMaxWidth(frac).height(8.dp).background(accent, RoundedCornerShape(4.dp))
+                )
+            }
+        }
+
+        val coolant = v("coolant")
+        val volt = parseVolt(state.voltage)
+        Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+            SensorTile(
+                "Температура ОЖ", coolant, "°C", Modifier.weight(1f),
+                note = coolant?.let { when { it < 60 -> "Прогревается"; it <= 105 -> "В норме"; else -> "Перегрев!" } },
+                noteColor = if (coolant != null && coolant > 105) Palette.danger else accent
+            )
+            SensorTile(
+                "Напряжение", volt, "В", Modifier.weight(1f), decimals = 1,
+                note = volt?.let { when { it >= 13.2 -> "Генератор заряжает"; it >= 12.2 -> "Норма"; else -> "Разряжен" } },
+                noteColor = if (volt != null && volt < 12.2) Palette.warn else accent
+            )
+        }
+        Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+            SensorTile("Скорость", v("speed"), "км/ч", Modifier.weight(1f))
+            SensorTile("Нагрузка", v("load"), "%", Modifier.weight(1f))
+        }
+        Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+            SensorTile("Дроссель", v("throttle"), "%", Modifier.weight(1f))
+            SensorTile("Темп. впуска", v("iat"), "°C", Modifier.weight(1f))
+        }
+
+        val stft = v("stft")
+        val ltft = v("ltft")
+        val high = (stft != null && abs(stft) > 10) || (ltft != null && abs(ltft) > 10)
+        Card(
+            background = if (high) Palette.warnBg else Palette.surface,
+            border = if (high) Palette.warnBorder else Palette.border,
+            radius = 18.dp, padding = 16.dp
+        ) {
+            Row {
+                Text("Коррекция топлива", style = Type.body(13, if (high) Palette.warnMuted else Palette.muted))
+                Spacer(Modifier.weight(1f))
+                Text(
+                    if (stft == null && ltft == null) "нет данных" else if (high) "Выше нормы" else "В норме",
+                    style = Type.body(12, if (high) Palette.warn else accent, FontWeight.SemiBold)
+                )
+            }
+            VSpace(10.dp)
+            Row {
+                TrimValue("Краткосрочная", stft, high, Modifier.weight(1f))
+                TrimValue("Долгосрочная", ltft, high, Modifier.weight(1f))
+            }
+        }
+        if (!state.connected) {
+            Text("Подключи адаптер, и значения будут обновляться в реальном времени", style = Type.body(13, Palette.muted), textAlign = TextAlign.Center, modifier = Modifier.fillMaxWidth())
+        }
+    }
+}
+
+@Composable
+private fun SensorTile(
+    label: String, value: Double?, unit: String, modifier: Modifier = Modifier,
+    decimals: Int = 0, note: String? = null, noteColor: Color = LocalAccent.current
+) {
+    Card(modifier = modifier, radius = 18.dp, padding = 16.dp) {
+        Text(label, style = Type.label())
+        VSpace(8.dp)
+        Row(verticalAlignment = Alignment.Bottom) {
+            Text(value?.let { "%.${decimals}f".format(it) } ?: "—", style = Type.mono(26))
+            HSpace(4.dp)
+            Text(unit, style = Type.body(14, Palette.muted), modifier = Modifier.padding(bottom = 3.dp))
+        }
+        if (note != null) {
+            VSpace(4.dp)
+            Text(note, style = Type.body(12, noteColor))
+        }
+    }
+}
+
+@Composable
+private fun TrimValue(label: String, value: Double?, high: Boolean, modifier: Modifier) {
+    Column(modifier) {
+        Text(label, style = Type.body(12, if (high) Palette.warnMuted else Palette.muted))
+        Text(
+            value?.let { "%+.1f%%".format(it) } ?: "—",
+            style = Type.mono(22, if (high) Palette.warnText else Palette.text)
+        )
+    }
+}
+
+// ======================= История =======================
+
+@Composable
+fun HistoryScreen(state: AppState, onOpen: (HistoryEntry) -> Unit, bottom: @Composable () -> Unit) {
+    val accent = LocalAccent.current
+    val fmt = remember { SimpleDateFormat("d MMMM, HH:mm", Locale("ru")) }
+    Screen(bottom = bottom) {
+        Header("История")
+        if (state.history.isEmpty()) {
+            VSpace(40.dp)
+            Text(
+                "Здесь будут прошлые проверки.\nПока ни одной.",
+                style = Type.body(14, Palette.muted), textAlign = TextAlign.Center, modifier = Modifier.fillMaxWidth()
+            )
+        }
+        state.history.forEach { e ->
+            val d = e.diagnosis
+            val color = when (d.level) { "ok" -> accent; "danger" -> Palette.danger; else -> Palette.warn }
+            Card(padding = 16.dp, onClick = { onOpen(e) }) {
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Dot(color, 10.dp)
+                    HSpace(10.dp)
+                    Text(fmt.format(Date(e.time)), style = Type.label(), modifier = Modifier.weight(1f))
+                    Icon(
+                        Icons.Default.Delete, "Удалить", tint = Palette.muted,
+                        modifier = Modifier.size(20.dp).clickable { state.deleteHistory(e) }
+                    )
+                }
+                VSpace(8.dp)
+                Text(d.title, style = Type.strong(16))
+                VSpace(4.dp)
+                Text(
+                    buildString {
+                        e.vin?.let { append(it); append("  ·  ") }
+                        append(if (d.codes.isEmpty()) "без ошибок" else d.codes.joinToString { it.code })
+                    },
+                    style = Type.mono(12, Palette.muted)
+                )
+            }
+        }
+    }
+}
+
+// ======================= Настройки =======================
+
+@Composable
+fun SettingsScreen(
+    state: AppState,
+    onBack: () -> Unit,
+    onPickDevice: () -> Unit,
+    onOpenLog: () -> Unit
+) {
+    val accent = LocalAccent.current
+    var showKey by remember { mutableStateOf(false) }
+    var keyDraft by remember { mutableStateOf(state.apiKey) }
+
+    Screen {
+        Header("Настройки", onBack = onBack)
+
+        SectionTitle("Нейронка")
+        Card {
+            Text("Ключ Claude API", style = Type.label())
+            VSpace(8.dp)
+            OutlinedTextField(
+                value = keyDraft,
+                onValueChange = { keyDraft = it; state.setApiKey(it) },
+                placeholder = { Text("sk-ant-…", style = Type.body(14, Palette.muted)) },
+                singleLine = true,
+                visualTransformation = if (showKey) VisualTransformation.None else PasswordVisualTransformation(),
+                textStyle = Type.mono(13),
+                trailingIcon = {
+                    Text(
+                        if (showKey) "скрыть" else "показать",
+                        style = Type.body(12, accent, FontWeight.SemiBold),
+                        modifier = Modifier.clickable { showKey = !showKey }.padding(8.dp)
+                    )
+                },
+                colors = OutlinedTextFieldDefaults.colors(
+                    focusedBorderColor = accent,
+                    unfocusedBorderColor = Palette.border,
+                    focusedTextColor = Palette.text,
+                    unfocusedTextColor = Palette.text,
+                    cursorColor = accent,
+                    focusedContainerColor = Palette.surface2,
+                    unfocusedContainerColor = Palette.surface2
+                ),
+                shape = RoundedCornerShape(12.dp),
+                modifier = Modifier.fillMaxWidth()
+            )
+            VSpace(8.dp)
+            Text(
+                "Ключ хранится только на телефоне и уходит напрямую в api.anthropic.com. Получить: console.anthropic.com → API keys.",
+                style = Type.body(12, Palette.muted)
+            )
+        }
+
+        SectionTitle("Адаптер")
+        Card {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Column(Modifier.weight(1f)) {
+                    Text(if (state.connected) state.adapterName else "Не подключён", style = Type.strong(15))
+                    Text(if (state.connected) shortProtocol(state.protocol) else "ELM327 по Bluetooth", style = Type.label(12))
+                }
+                SecondaryButton(
+                    if (state.connected) "Отключить" else "Выбрать",
+                    Modifier.width(120.dp),
+                    onClick = { if (state.connected) state.disconnect() else onPickDevice() }
+                )
+            }
+            VSpace(14.dp)
+            Box(Modifier.fillMaxWidth().height(1.dp).background(Palette.border))
+            VSpace(12.dp)
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Column(Modifier.weight(1f)) {
+                    Text("Демо-режим", style = Type.strong(15))
+                    Text("Выдуманная машина с двумя ошибками, чтобы посмотреть приложение без адаптера", style = Type.label(12))
+                }
+                HSpace(8.dp)
+                Switch(
+                    checked = state.demo,
+                    onCheckedChange = { state.setDemo(it); if (it) state.connectDemo() },
+                    colors = SwitchDefaults.colors(
+                        checkedThumbColor = Palette.bg, checkedTrackColor = accent,
+                        uncheckedThumbColor = Palette.muted, uncheckedTrackColor = Palette.surface2,
+                        uncheckedBorderColor = Palette.border
+                    )
+                )
+            }
+        }
+
+        SectionTitle("Цвет акцента")
+        Row(horizontalArrangement = Arrangement.spacedBy(14.dp)) {
+            Palette.accents.forEachIndexed { i, (name, color) ->
+                val selected = i == state.accentIndex
+                Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.weight(1f)) {
+                    Box(
+                        Modifier
+                            .size(48.dp)
+                            .border(2.dp, if (selected) Palette.text else Color.Transparent, CircleShape)
+                            .padding(4.dp)
+                            .background(color, CircleShape)
+                            .clip(CircleShape)
+                            .clickable { state.setAccent(i) },
+                        contentAlignment = Alignment.Center
+                    ) {
+                        if (selected) Icon(Icons.Default.Check, null, tint = Palette.bg, modifier = Modifier.size(20.dp))
+                    }
+                    VSpace(6.dp)
+                    Text(name, style = Type.body(11, if (selected) Palette.text else Palette.muted), textAlign = TextAlign.Center)
+                }
+            }
+        }
+
+        SectionTitle("Для отладки")
+        SecondaryButton("Консоль и лог адаптера", Modifier.fillMaxWidth(), onClick = onOpenLog)
+        Text("OBD AI 0.2", style = Type.body(12, Palette.muted), textAlign = TextAlign.Center, modifier = Modifier.fillMaxWidth())
+    }
+}
+
+// ======================= Консоль =======================
+
+@Composable
+fun LogScreen(state: AppState, onBack: () -> Unit, onCopyReport: () -> Unit) {
+    val accent = LocalAccent.current
+    var cmd by remember { mutableStateOf("") }
+    val listState = rememberLazyListState()
+    LaunchedEffect(state.log.size) {
+        if (state.log.isNotEmpty()) listState.animateScrollToItem(state.log.size - 1)
+    }
+    Column(Modifier.fillMaxSize().background(Palette.bg).statusBarsPadding().imePadding()) {
+        Column(Modifier.padding(horizontal = screenPadding).padding(top = 20.dp)) {
+            Header("Консоль", onBack = onBack) {
+                Text(
+                    "Отчёт в буфер",
+                    style = Type.body(13, accent, FontWeight.SemiBold),
+                    modifier = Modifier.clickable(onClick = onCopyReport).padding(8.dp)
+                )
+            }
+        }
+        VSpace(12.dp)
+        LazyColumn(
+            state = listState,
+            modifier = Modifier
+                .weight(1f)
+                .padding(horizontal = screenPadding)
+                .background(Palette.surface2, RoundedCornerShape(16.dp))
+                .padding(12.dp)
+        ) {
+            items(state.log) { line ->
+                Text(line, style = Type.mono(12, Palette.text2))
+            }
+        }
+        Row(
+            Modifier.padding(screenPadding).navigationBarsPadding(),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            OutlinedTextField(
+                value = cmd,
+                onValueChange = { cmd = it },
+                placeholder = { Text("Команда адаптеру, напр. 0105", style = Type.body(14, Palette.muted)) },
+                singleLine = true,
+                textStyle = Type.mono(14),
+                colors = OutlinedTextFieldDefaults.colors(
+                    focusedBorderColor = accent, unfocusedBorderColor = Palette.border,
+                    focusedTextColor = Palette.text, unfocusedTextColor = Palette.text, cursorColor = accent,
+                    focusedContainerColor = Palette.surface, unfocusedContainerColor = Palette.surface
+                ),
+                shape = RoundedCornerShape(12.dp),
+                modifier = Modifier.weight(1f)
+            )
+            HSpace(10.dp)
+            Box(
+                Modifier
+                    .size(50.dp)
+                    .background(accent, RoundedCornerShape(12.dp))
+                    .clip(RoundedCornerShape(12.dp))
+                    .clickable { state.sendRaw(cmd); cmd = "" },
+                contentAlignment = Alignment.Center
+            ) {
+                Icon(Icons.AutoMirrored.Filled.Send, "Отправить", tint = Palette.bg)
+            }
+        }
+    }
+}
+
+// ======================= Диалоги =======================
+
+@Composable
+fun DevicePickerDialog(
+    devices: List<Pair<String, String>>,   // имя, адрес
+    onPick: (Int) -> Unit,
+    onDemo: () -> Unit,
+    onDismiss: () -> Unit
+) {
+    val accent = LocalAccent.current
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        containerColor = Palette.surface,
+        titleContentColor = Palette.text,
+        textContentColor = Palette.text2,
+        title = { Text("Выбери адаптер", style = Type.display(18)) },
+        text = {
+            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                if (devices.isEmpty()) {
+                    Text(
+                        "Нет спаренных устройств. Сначала спарь адаптер в настройках Bluetooth телефона (PIN обычно 1234 или 0000).",
+                        style = Type.body(14, Palette.text2)
+                    )
+                }
+                LazyColumn(verticalArrangement = Arrangement.spacedBy(8.dp), modifier = Modifier.heightIn(max = 320.dp)) {
+                    items(devices.size) { i ->
+                        val (name, addr) = devices[i]
+                        Column(
+                            Modifier
+                                .fillMaxWidth()
+                                .background(Palette.surface2, RoundedCornerShape(12.dp))
+                                .clip(RoundedCornerShape(12.dp))
+                                .clickable { onPick(i) }
+                                .padding(12.dp)
+                        ) {
+                            Text(name, style = Type.strong(15))
+                            Text(addr, style = Type.mono(12, Palette.muted))
+                        }
+                    }
+                }
+                Text(
+                    "Или попробовать демо-режим",
+                    style = Type.body(13, accent, FontWeight.SemiBold),
+                    modifier = Modifier.clickable(onClick = onDemo).padding(vertical = 8.dp)
+                )
+            }
+        },
+        confirmButton = { TextButton(onClick = onDismiss) { Text("Отмена", color = Palette.muted) } }
+    )
+}
+
+@Composable
+fun MessageDialog(title: String, text: String, onDismiss: () -> Unit) {
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        containerColor = Palette.surface,
+        titleContentColor = Palette.text,
+        textContentColor = Palette.text2,
+        title = { Text(title, style = Type.display(18)) },
+        text = { Text(text, style = Type.body(14, Palette.text2)) },
+        confirmButton = { TextButton(onClick = onDismiss) { Text("Понятно", color = LocalAccent.current) } }
+    )
+}
+
+@Composable
+fun ConfirmDialog(title: String, text: String, confirm: String, onConfirm: () -> Unit, onDismiss: () -> Unit) {
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        containerColor = Palette.surface,
+        titleContentColor = Palette.text,
+        textContentColor = Palette.text2,
+        title = { Text(title, style = Type.display(18)) },
+        text = { Text(text, style = Type.body(14, Palette.text2)) },
+        confirmButton = { TextButton(onClick = onConfirm) { Text(confirm, color = Palette.danger) } },
+        dismissButton = { TextButton(onClick = onDismiss) { Text("Отмена", color = Palette.muted) } }
+    )
+}
+
+// ======================= помощники =======================
+
+fun shortProtocol(p: String): String {
+    if (p.isBlank()) return "—"
+    val u = p.uppercase()
+    return when {
+        u.contains("15765") && u.contains("11") && u.contains("500") -> "CAN 11/500"
+        u.contains("15765") && u.contains("29") && u.contains("500") -> "CAN 29/500"
+        u.contains("15765") && u.contains("250") -> "CAN 250"
+        u.contains("15765") -> "CAN"
+        u.contains("14230") || u.contains("KWP") -> "K-line KWP2000"
+        u.contains("9141") -> "K-line ISO 9141"
+        u.contains("J1850") -> "J1850"
+        u.contains("AUTO") -> "Авто"
+        else -> p.take(14)
+    }
+}
+
+fun shortUrl(url: String): String = url.removePrefix("https://").removePrefix("http://").removePrefix("www.").let { if (it.length > 48) it.take(45) + "…" else it }
+
+fun parseVolt(s: String): Double? =
+    Regex("[0-9]+(\\.[0-9]+)?").find(s)?.value?.toDoubleOrNull()
+
+fun formatVolt(s: String): String = parseVolt(s)?.let { "%.1f В".format(it) } ?: "—"
+
+fun plural(n: Int, one: String, few: String, many: String): String {
+    val m10 = n % 10
+    val m100 = n % 100
+    val word = when {
+        m10 == 1 && m100 != 11 -> one
+        m10 in 2..4 && m100 !in 12..14 -> few
+        else -> many
+    }
+    return "$n $word"
+}
+
+/** Текст отчёта для ручной вставки в чат, как в первой версии. */
+fun reportText(state: AppState): String? {
+    val snap = state.lastSnapshot ?: return null
+    return "Расшифруй диагностику машины простыми словами: что сломано, можно ли ехать, что сделать и примерно сколько стоит ремонт. " +
+        "Определи модель по VIN и найди на drive2.ru и drom.ru, как владельцы такой машины решали каждую из этих ошибок, со ссылками на записи.\n\n" +
+        AiClient.report(snap)
+}
