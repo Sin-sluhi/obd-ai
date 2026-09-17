@@ -43,6 +43,11 @@ class AppState private constructor(context: Context) {
     private val poller = Executors.newSingleThreadExecutor()
     private val main = Handler(Looper.getMainLooper())
 
+    init {
+        // Справочник кодов и болячки моделей: ~1 МБ JSON, читаем в фоне один раз на процесс
+        worker.execute { DtcCatalog.load(appContext); KnownIssues.load(appContext) }
+    }
+
     @Volatile private var link: ObdLink? = null
     @Volatile private var polling = false
     @Volatile private var paused = false

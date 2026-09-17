@@ -49,6 +49,17 @@ Android-приложение (Kotlin, Jetpack Compose) для диагности
 - `ObdLink.kt` — интерфейс источника данных + `DemoLink` (выдуманная Lada Granta, через 15 с «едет», с мониторами,
   самотестами и блоками для проверки экранов).
 - `VinDecoder.kt` — марка по WMI, год по 10-му символу, модели Lada/Hyundai/Kia. Результат уходит нейронке как факт.
+- `Catalog.kt` — встроенный справочник кодов (0.7): `DtcCatalog` читает `assets/dtc_ru.json` (семейства неисправностей
+  с человеческим объяснением и цепочками, 2250 стандартных кодов SAE, марочные таблицы hyundai_kia/lada/toyota/vag/ford/gm/
+  nissan/honda), `info(code, brandKey)` → `DtcInfo` (название, что увидел блок, рассказ, причины, что делать, серьёзность,
+  `stop`), `links(code, others)` — связи между кодами одной проверки (явные `r` и через `links` семейств), `ftbText` — байт
+  типа отказа UDS («P2400-20») словами по ISO 14229. `KnownIssues` читает `assets/known_issues.json` — болячки моделей по
+  марке/модели/годам/VIN-префиксу; в карточке кода плашка «Болячка модели»/«Болячка марки». Загружается в фоне в `AppState.init`.
+  **Источник — не JSON, а `tools/dtc/*.py`** (families, codes_p0, codes_p2, codes_bcu, brands, issues); после правки
+  `python tools/dtc/gen.py` пересобирает оба JSON. Нумерация SAE десятичная (P0136…P0141), буквенные диапазоны — строкой
+  (`block("P0A00", …)`). Правило: только уверенные расшифровки; чужие заводские коды получают семейство `generic_*`.
+  `Diagnosis.local` (без сети) строит полноценный вердикт по справочнику; `AiClient.report()` отдаёт нейронке раздел
+  «Справочник по кодам» и болячки как факты, ROLE велит не пересказывать их, а дополнять опытом владельцев.
 - `AiConfig.kt` — провайдеры: groq (по умолчанию, `groq/compound` со встроенным поиском), yandex, openrouter,
   mistral, anthropic, custom.
 - `OpenAiClient.kt` — любой OpenAI-совместимый `/chat/completions`; для Groq compound `search_settings`

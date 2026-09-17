@@ -63,7 +63,8 @@ object AiClient {
 - Если есть раздел «Проверка после ремонта», начни verdict_text с ответа, помог ли ремонт.
 - Разделы «Согласованность датчиков», «Последний прогрев», «Запуски двигателя» — измерения приложения. Если они указывают на термостат, датчик или аккумулятор, включи это в вердикт и next_steps даже без кода ошибки.
 - for_service: коротко, что сказать мастеру, чтобы не менять лишнего.
-- typical_issues: 2–4 типичные болячки именно этой модели и поколения, которые владельцы описывают на форумах (что и на каком пробеге). Только то, что реально нашёл, с адресом записи; если ничего — пустой массив."""
+- typical_issues: 2–4 типичные болячки именно этой модели и поколения, которые владельцы описывают на форумах (что и на каком пробеге). Только то, что реально нашёл, с адресом записи; если ничего — пустой массив.
+- Если в отчёте есть раздел «Справочник по кодам», расшифровка, частые причины и связи между кодами там уже верные — не пересказывай их. В explanation напиши, что код значит именно для этой машины с учётом датчиков и остальных кодов (1–2 фразы). В causes первыми поставь причины, которые подтвердили владельцы этой модели. Если справочник называет известную болячку модели, ищи на форумах именно её и подтверди или опровергни для этой машины."""
 
     private const val GROQ_SEARCH = """
 Перед ответом обязательно поищи в интернете по каждому коду вместе с моделью машины (например «P0171 Kia Rio drive2»), прочитай, как владельцы решали проблему, и только потом отвечай."""
@@ -337,6 +338,25 @@ object AiClient {
                     val st = m.statusOf(c)
                     if (st.isNotEmpty()) appendLine("    ${c.substringBefore(' ')}: статус по UDS — ${st.joinToString()}")
                 }
+            }
+        }
+        val allCodes = snap.allCodes
+        if (allCodes.isNotEmpty()) {
+            val brandKey = DtcCatalog.brandKey(decoded.brand)
+            val bases = allCodes.map { DtcCatalog.base(it) }
+            val lines = ArrayList<String>()
+            allCodes.forEach { raw ->
+                val info = DtcCatalog.info(raw, brandKey) ?: return@forEach
+                lines.add("- ${info.code} — ${info.title}. ${info.meaning}")
+                if (info.causes.isNotEmpty()) lines.add("  Частые причины: ${info.causes.take(4).joinToString("; ")}.")
+                DtcCatalog.links(raw, bases, brandKey).forEach { l -> lines.add("  Связь с ${l.code}: ${l.reason}.") }
+            }
+            if (lines.isNotEmpty()) {
+                appendLine("Справочник по кодам (точная расшифровка из встроенной базы; не пересказывай, а дополняй опытом владельцев этой модели):")
+                lines.forEach { appendLine(it) }
+            }
+            KnownIssues.forCodes(decoded, snap.vin, allCodes).forEach { i ->
+                appendLine("Известная болячка (${i.badge.lowercase()}, коды ${i.codes.joinToString()}): ${i.title}. ${i.note.take(500)}")
             }
         }
         val known = snap.sensors.filter { it.value != null }

@@ -64,6 +64,11 @@ import io.github.sinsluhi.obdai.AiClient
 import io.github.sinsluhi.obdai.AppState
 import io.github.sinsluhi.obdai.Diagnosis
 import io.github.sinsluhi.obdai.DtcCard
+import io.github.sinsluhi.obdai.DtcCatalog
+import io.github.sinsluhi.obdai.DtcInfo
+import io.github.sinsluhi.obdai.DtcLink
+import io.github.sinsluhi.obdai.KnownIssue
+import io.github.sinsluhi.obdai.KnownIssues
 import io.github.sinsluhi.obdai.HistoryEntry
 import io.github.sinsluhi.obdai.Provider
 import io.github.sinsluhi.obdai.VinDecoder
@@ -304,10 +309,10 @@ fun ResultScreen(
 
         if (!d.fromAi) {
             Card(background = Palette.surface2, border = Palette.border, radius = 16.dp, padding = 14.dp) {
-                Text("Подробный разбор временно недоступен", style = Type.body(13, Palette.warn, FontWeight.SemiBold))
+                Text("Опыт владельцев временно недоступен", style = Type.body(13, Palette.warn, FontWeight.SemiBold))
                 VSpace(4.dp)
                 Text(
-                    "Показаны названия ошибок из встроенного справочника. Проверь интернет и запусти проверку ещё раз, чтобы получить объяснения, опыт владельцев и цены.",
+                    "Объяснения и цепочки ниже — из встроенного справочника. Опыт владельцев именно этой модели, ссылки и цены появятся, когда будет интернет: запусти проверку ещё раз.",
                     style = Type.body(13, Palette.text2)
                 )
             }
@@ -329,7 +334,19 @@ fun ResultScreen(
 
         if (d.codes.isNotEmpty()) {
             SectionTitle("Что нашли", plural(d.codes.size, "ошибка", "ошибки", "ошибок"))
-            d.codes.forEach { CodeCard(it, statusLines(snap, it.code)) }
+            val vin = state.vin ?: snap?.vin
+            val car = VinDecoder.decode(vin)
+            val bkey = DtcCatalog.brandKey(car.brand)
+            val present = snap?.allCodes.orEmpty() + d.codes.map { it.code }
+            d.codes.forEach { c ->
+                CodeCard(
+                    c, statusLines(snap, c.code),
+                    info = DtcCatalog.info(c.code, bkey) ?: DtcCatalog.genericInfo(c.code),
+                    issue = KnownIssues.find(car, vin, c.code),
+                    links = DtcCatalog.links(c.code, present, bkey),
+                    ftb = DtcCatalog.ftbText(c.code)
+                )
+            }
         }
 
         if (d.typicalIssues.isNotEmpty()) TypicalIssuesCard(d.typicalIssues)
@@ -392,7 +409,7 @@ fun ResultScreen(
 private fun statusLines(snap: io.github.sinsluhi.obdai.CarSnapshot?, code: String): List<String> {
     if (snap == null) return emptyList()
     for (m in snap.modules) {
-        val raw = m.codes.firstOrNull { it.substringBefore(' ') == code } ?: continue
+        val raw = m.codes.firstOrNull { DtcCatalog.base(it) == DtcCatalog.base(code) } ?: continue
         val st = m.statusOf(raw)
         if (st.isNotEmpty()) return st
     }
@@ -431,13 +448,22 @@ private data class VerdictColors(
 )
 
 @Composable
-private fun CodeCard(c: DtcCard, status: List<String> = emptyList()) {
+private fun CodeCard(
+    c: DtcCard,
+    status: List<String> = emptyList(),
+    info: DtcInfo? = null,          // объяснение из встроенного справочника
+    issue: KnownIssue? = null,      // известная болячка этой модели
+    links: List<DtcLink> = emptyList(),   // связи с другими кодами этой проверки
+    ftb: String? = null             // тип отказа по UDS («P2400-20»)
+) {
     val accent = LocalAccent.current
-    val (sevText, sevColor, sevBg) = when (c.severity) {
+    val severity = issue?.severity ?: c.severity
+    val (sevText, sevColor, sevBg) = when (severity) {
         "high" -> Triple("Серьёзно", Palette.danger, Palette.dangerBg)
         "low" -> Triple("Низко", accent, Palette.okBg)
         else -> Triple("Средне", Palette.warn, Palette.warnBg)
     }
+    var more by remember(c.code) { mutableStateOf(false) }
     Card {
         Row(verticalAlignment = Alignment.CenterVertically) {
             Text(
@@ -448,26 +474,84 @@ private fun CodeCard(c: DtcCard, status: List<String> = emptyList()) {
                     .border(1.dp, Palette.border, RoundedCornerShape(8.dp))
                     .padding(horizontal = 8.dp, vertical = 4.dp)
             )
+            if (issue != null) {
+                HSpace(8.dp)
+                Pill(issue.badge, Palette.warn, Palette.warnBg)
+            }
             Spacer(Modifier.weight(1f))
             Pill(sevText, sevColor, sevBg)
         }
         VSpace(10.dp)
-        Text(c.title, style = Type.strong(17))
+        Text(info?.title?.takeIf { it.isNotBlank() } ?: c.title, style = Type.strong(17))
         if (status.isNotEmpty()) {
             VSpace(4.dp)
             Text("Статус в блоке: ${status.joinToString()}", style = Type.body(12, Palette.muted))
+        }
+        if (ftb != null && !c.explanation.contains(ftb)) {
+            VSpace(4.dp)
+            Text(ftb, style = Type.body(12, Palette.muted))
+        }
+        val meaning = info?.meaning.orEmpty()
+        if (meaning.isNotBlank() && !c.explanation.contains(meaning)) {
+            VSpace(6.dp)
+            Text(meaning, style = Type.body(14, Palette.text2))
         }
         if (c.explanation.isNotBlank()) {
             VSpace(6.dp)
             Text(c.explanation, style = Type.body(14, Palette.text2))
         }
-        if (c.causes.isNotEmpty()) {
-            VSpace(6.dp)
-            Text("Частые причины: ${c.causes.joinToString()}", style = Type.body(13, Palette.muted))
+        if (issue != null) {
+            VSpace(10.dp)
+            Column(
+                Modifier
+                    .fillMaxWidth()
+                    .background(Palette.warnBg, RoundedCornerShape(12.dp))
+                    .border(1.dp, Palette.warnBorder, RoundedCornerShape(12.dp))
+                    .padding(12.dp)
+            ) {
+                Text(issue.title, style = Type.body(13, Palette.warn, FontWeight.SemiBold))
+                if (issue.mileage.isNotBlank()) Text(issue.mileage, style = Type.body(12, Palette.warnMuted))
+                VSpace(4.dp)
+                Text(issue.note, style = Type.body(13, Palette.warnText))
+            }
         }
-        if (c.whatToDo.isNotBlank()) {
+        if (links.isNotEmpty()) {
+            VSpace(8.dp)
+            Text("Связано с другими кодами в этой проверке", style = Type.label(12))
+            links.forEach { l ->
+                Row(Modifier.padding(top = 3.dp)) {
+                    Text(l.code, style = Type.mono(12, accent), modifier = Modifier.width(64.dp))
+                    Text(l.reason, style = Type.body(13, Palette.text2), modifier = Modifier.weight(1f))
+                }
+            }
+        }
+        val causes = if (c.causes.isNotEmpty()) c.causes else info?.causes.orEmpty()
+        if (causes.isNotEmpty()) {
             VSpace(6.dp)
-            Text(c.whatToDo, style = Type.body(13, Palette.text2))
+            Text("Частые причины: ${causes.joinToString()}", style = Type.body(13, Palette.muted))
+        }
+        val todo = c.whatToDo.ifBlank { info?.whatToDo.orEmpty() }
+        if (todo.isNotBlank()) {
+            VSpace(6.dp)
+            Text(todo, style = Type.body(13, Palette.text2))
+        }
+        if (info != null && info.story.isNotBlank()) {
+            VSpace(8.dp)
+            Text(
+                if (more) "Скрыть подробности" else "Как это устроено и к чему ведёт",
+                style = Type.body(13, accent, FontWeight.SemiBold),
+                modifier = Modifier.clickable { more = !more }.padding(vertical = 2.dp)
+            )
+            if (more) {
+                VSpace(4.dp)
+                if (info.familyTitle.isNotBlank()) Text(info.familyTitle, style = Type.body(12, Palette.muted))
+                VSpace(4.dp)
+                Text(info.story, style = Type.body(13, Palette.text2))
+                if (info.confirm.isNotBlank()) {
+                    VSpace(6.dp)
+                    Text("По датчикам: ${info.confirm}", style = Type.body(12, Palette.muted))
+                }
+            }
         }
         if (c.ownerExperience.isNotBlank()) {
             VSpace(10.dp)
@@ -900,7 +984,7 @@ fun SettingsScreen(
         }
 
         Text(
-            "OBD AI 0.6",
+            "OBD AI 0.7",
             style = Type.body(12, Palette.muted),
             textAlign = TextAlign.Center,
             modifier = Modifier

@@ -195,12 +195,15 @@ data class Diagnosis(
             )
         }
 
-        /** Вердикт без нейронки: по кодам и встроенному справочнику. */
+        /** Вердикт без нейронки: по кодам и встроенному справочнику (объяснения, цепочки, болячки модели). */
         fun local(snap: CarSnapshot): Diagnosis {
             val all = snap.allCodes
+            val car = VinDecoder.decode(snap.vin)
+            val bkey = DtcCatalog.brandKey(car.brand)
             if (all.isEmpty()) {
                 val milNote = if (snap.milOn == true) " Лампа Check Engine при этом горит: возможно, ошибка в блоке, который адаптер не читает." else ""
                 return Diagnosis(
+                    car = car.title(),
                     level = "ok",
                     title = "Ошибок не найдено",
                     text = "Блок двигателя не хранит кодов неисправностей.$milNote",
@@ -211,46 +214,99 @@ data class Diagnosis(
                     fromAi = false
                 )
             }
+            val bases = all.map { DtcCatalog.base(it) }
+            var stopActive = false
+            var highActive = false
+            val steps = LinkedHashMap<String, String>()   // семейство → что делать
             val cards = all.map { raw ->
                 val code = raw.substringBefore(' ')
                 val status = raw.substringAfter(' ', "").trim('(', ')')
                 val module = snap.modules.firstOrNull { m -> m.codes.contains(raw) }?.name
+                val info = DtcCatalog.info(code, bkey) ?: DtcCatalog.genericInfo(code)
+                val issue = KnownIssues.find(car, snap.vin, code)
+                val active = status == "активная" || (status.isEmpty() && snap.stored.contains(raw))
+                val pending = status == "неподтверждённая" || (snap.pending.contains(raw) && !snap.stored.contains(raw))
+                val severity = issue?.severity ?: info?.severity ?: "medium"
+                if (active && info?.stop == true) stopActive = true
+                if (active && severity == "high") highActive = true
+                if (active && info != null && info.whatToDo.isNotBlank()) steps.putIfAbsent(info.family, info.whatToDo)
                 DtcCard(
                     code = code,
-                    title = DtcCatalog.title(code),
+                    title = info?.title ?: DtcCatalog.title(code),
                     explanation = listOfNotNull(
                         module?.let { "Блок: $it." },
                         when {
-                            status == "история" -> "Ошибка из истории блока: сейчас не активна, но когда-то была."
-                            status == "активная" -> "Ошибка активна прямо сейчас."
-                            status == "неподтверждённая" || (snap.pending.contains(code) && !snap.stored.contains(code)) ->
-                                "Неподтверждённая ошибка: блок заметил проблему, но пока не уверен."
+                            status == "история" -> "Код из истории блока: сейчас не активен, но когда-то был."
+                            active -> "Код активен прямо сейчас."
+                            pending -> "Неподтверждённый код: блок заметил проблему, но пока не уверен."
                             else -> null
-                        }
+                        },
+                        DtcCatalog.ftbText(code)?.let { "$it." },
+                        info?.meaning?.takeIf { it.isNotBlank() }
                     ).joinToString(" "),
-                    causes = emptyList(),
-                    severity = "medium",
+                    causes = info?.causes.orEmpty(),
+                    severity = severity,
                     priceFrom = 0,
                     priceTo = 0,
-                    whatToDo = ""
+                    whatToDo = info?.whatToDo.orEmpty()
                 )
             }
-            val active = all.count { it.contains("(активная)") }
+            val activeCount = all.count { it.contains("(активная)") }
             val archiveOnly = all.all { it.contains("(история)") }
+            // связи между кодами этой проверки — в итог
+            val chains = LinkedHashSet<String>()
+            for (raw in all) {
+                val me = DtcCatalog.base(raw)
+                DtcCatalog.links(raw, bases, bkey).forEach { l ->
+                    val key = listOf(me, l.code).sorted().joinToString("+")
+                    if (chains.none { it.startsWith("$key|") }) chains.add("$key|$me и ${l.code}: ${l.reason}.")
+                }
+            }
+            val issues = KnownIssues.forCodes(car, snap.vin, all)
+            val summary = buildString {
+                if (chains.isNotEmpty()) {
+                    append("Как коды связаны между собой: ")
+                    append(chains.take(5).joinToString(" ") { it.substringAfter('|') })
+                }
+                if (issues.isNotEmpty()) {
+                    if (isNotEmpty()) append(" ")
+                    append("Для этой машины это известная история: ")
+                    append(issues.joinToString("; ") { it.title.lowercase() })
+                    append(".")
+                }
+            }
+            val level = when {
+                stopActive -> "danger"
+                archiveOnly -> "ok"
+                else -> "warning"
+            }
+            val canDrive = when {
+                stopActive -> "no"
+                archiveOnly -> "yes"
+                highActive -> "careful"
+                activeCount > 0 -> "careful"
+                else -> "yes"
+            }
+            val stopCodes = cards.filter { c -> all.any { it.startsWith(c.code) && it.contains("(активная)") } && (DtcCatalog.info(c.code, bkey)?.stop == true) }
             return Diagnosis(
-                level = if (archiveOnly) "ok" else "warning",
+                car = car.title(),
+                level = level,
                 title = when {
+                    stopActive -> "Лучше не ехать"
                     archiveOnly -> "Только архивные ошибки"
-                    active > 0 -> "Активных ошибок: $active"
+                    activeCount > 0 -> "Активных ошибок: $activeCount"
                     all.size == 1 -> "Найдена 1 ошибка"
                     else -> "Найдено ошибок: ${all.size}"
                 },
-                text = (if (archiveOnly) "Блоки помнят прошлые сбои, сейчас они не активны. " else "") +
-                    "Подробный разбор с объяснениями, опытом владельцев и ценой ремонта временно недоступен. Попробуй ещё раз чуть позже.",
-                canDrive = if (archiveOnly) "yes" else "careful",
+                text = buildString {
+                    if (stopActive) append("Есть код, с которым ехать опасно: ${stopCodes.joinToString { it.code }}. ")
+                    else if (archiveOnly) append("Блоки помнят прошлые сбои, сейчас они не активны. ")
+                    append("Объяснения ниже — из встроенного справочника. Опыт владельцев именно этой модели, ссылки и цены подтянутся при следующей проверке с интернетом.")
+                },
+                canDrive = canDrive,
                 codes = cards,
-                summary = "",
-                nextSteps = emptyList(),
+                summary = summary,
+                nextSteps = steps.values.take(5),
                 fromAi = false
             )
         }
@@ -293,63 +349,6 @@ fun formatPrice(from: Int, to: Int): String {
         from <= 0 && to <= 0 -> "уточняется"
         to > from -> "${f(from)}–${f(to)} ₽"
         else -> "от ${f(from)} ₽"
-    }
-}
-
-/** Небольшой встроенный справочник, чтобы без ИИ показывать хоть какое-то название. */
-object DtcCatalog {
-    private val known = mapOf(
-        "P0100" to "Датчик массового расхода воздуха: цепь", "P0101" to "ДМРВ: показания вне диапазона",
-        "P0102" to "ДМРВ: низкий сигнал", "P0103" to "ДМРВ: высокий сигнал",
-        "P0110" to "Датчик температуры впуска: цепь", "P0112" to "Датчик температуры впуска: низкий сигнал",
-        "P0113" to "Датчик температуры впуска: высокий сигнал",
-        "P0115" to "Датчик температуры ОЖ: цепь", "P0117" to "Датчик температуры ОЖ: низкий сигнал",
-        "P0118" to "Датчик температуры ОЖ: высокий сигнал",
-        "P0120" to "Датчик положения дросселя: цепь", "P0121" to "Датчик дросселя: показания вне диапазона",
-        "P0122" to "Датчик дросселя: низкий сигнал", "P0123" to "Датчик дросселя: высокий сигнал",
-        "P0130" to "Лямбда-зонд 1: цепь", "P0131" to "Лямбда-зонд 1: низкое напряжение",
-        "P0132" to "Лямбда-зонд 1: высокое напряжение", "P0133" to "Лямбда-зонд 1 отвечает медленно",
-        "P0134" to "Лямбда-зонд 1 не активен", "P0135" to "Подогрев лямбда-зонда 1: неисправность",
-        "P0136" to "Лямбда-зонд 2: цепь", "P0141" to "Подогрев лямбда-зонда 2: неисправность",
-        "P0171" to "Бедная топливная смесь", "P0172" to "Богатая топливная смесь",
-        "P0174" to "Бедная смесь (банк 2)", "P0175" to "Богатая смесь (банк 2)",
-        "P0200" to "Форсунки: цепь", "P0201" to "Форсунка 1: цепь", "P0202" to "Форсунка 2: цепь",
-        "P0203" to "Форсунка 3: цепь", "P0204" to "Форсунка 4: цепь",
-        "P0300" to "Случайные пропуски зажигания", "P0301" to "Пропуски зажигания в цилиндре 1",
-        "P0302" to "Пропуски зажигания в цилиндре 2", "P0303" to "Пропуски зажигания в цилиндре 3",
-        "P0304" to "Пропуски зажигания в цилиндре 4", "P0305" to "Пропуски зажигания в цилиндре 5",
-        "P0306" to "Пропуски зажигания в цилиндре 6",
-        "P0325" to "Датчик детонации: цепь", "P0327" to "Датчик детонации: низкий сигнал",
-        "P0335" to "Датчик положения коленвала: цепь", "P0336" to "Датчик коленвала: сигнал вне диапазона",
-        "P0340" to "Датчик положения распредвала: цепь", "P0341" to "Датчик распредвала: сигнал вне диапазона",
-        "P0400" to "Система EGR: неисправность", "P0401" to "EGR: недостаточный поток",
-        "P0420" to "Катализатор работает неэффективно", "P0430" to "Катализатор (банк 2) неэффективен",
-        "P0440" to "Система улавливания паров топлива", "P0441" to "EVAP: неверный поток продувки",
-        "P0442" to "EVAP: небольшая утечка", "P0455" to "EVAP: крупная утечка (крышка бака?)",
-        "P0456" to "EVAP: очень малая утечка",
-        "P0500" to "Датчик скорости: неисправность", "P0505" to "Регулятор холостого хода",
-        "P0506" to "Обороты ХХ ниже нормы", "P0507" to "Обороты ХХ выше нормы",
-        "P0560" to "Напряжение бортсети: неисправность", "P0562" to "Низкое напряжение бортсети",
-        "P0563" to "Высокое напряжение бортсети",
-        "P0600" to "Связь между блоками: ошибка", "P0601" to "ЭБУ: ошибка памяти",
-        "P0700" to "Блок управления КПП сообщил об ошибке", "P0705" to "Датчик положения селектора КПП",
-        "P0715" to "Датчик оборотов входного вала КПП", "P0720" to "Датчик оборотов выходного вала КПП",
-        "P0730" to "Неверное передаточное число КПП",
-        "U0100" to "Нет связи с блоком двигателя", "U0101" to "Нет связи с блоком КПП",
-        "U0121" to "Нет связи с блоком ABS", "U0155" to "Нет связи с приборной панелью"
-    )
-
-    fun title(code: String): String {
-        known[code]?.let { return it }
-        val c = code.uppercase()
-        return when {
-            c.startsWith("P1") || c.startsWith("P3") -> "Двигатель, заводской код"
-            c.startsWith("P0") || c.startsWith("P2") -> "Двигатель / топливная система"
-            c.startsWith("C") -> "Шасси: ABS, подвеска, рулевое"
-            c.startsWith("B") -> "Кузов: подушки, свет, климат"
-            c.startsWith("U") -> "Связь между блоками"
-            else -> "Неизвестная ошибка"
-        }
     }
 }
 
