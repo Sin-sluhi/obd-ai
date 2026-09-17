@@ -92,6 +92,7 @@ object Palette {
 val LocalAccent = compositionLocalOf { Palette.accents[0].second }
 
 /** Шрифты: Unbounded для заголовков, Manrope для текста, JetBrains Mono для цифр (переменные, из res/font). */
+@OptIn(androidx.compose.ui.text.ExperimentalTextApi::class)
 object Fonts {
     private fun variable(res: Int, vararg weights: Int) = FontFamily(
         weights.map { w -> Font(res, FontWeight(w), variationSettings = FontVariation.Settings(FontVariation.weight(w))) }
