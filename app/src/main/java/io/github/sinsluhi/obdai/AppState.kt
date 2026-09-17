@@ -61,9 +61,9 @@ class AppState(context: Context) {
         if (log.size > 500) log.removeAt(0)
     }
 
-    fun setApiKey(v: String) { apiKey = v; prefs.apiKey = v }
-    fun setAccent(i: Int) { accentIndex = i; prefs.accentIndex = i }
-    fun setDemo(v: Boolean) {
+    fun updateApiKey(v: String) { apiKey = v; prefs.apiKey = v }
+    fun updateAccent(i: Int) { accentIndex = i; prefs.accentIndex = i }
+    fun updateDemo(v: Boolean) {
         demo = v
         prefs.demo = v
         if (!v && link is DemoLink) disconnect()

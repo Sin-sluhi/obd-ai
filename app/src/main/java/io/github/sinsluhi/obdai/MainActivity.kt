@@ -155,7 +155,7 @@ class MainActivity : ComponentActivity() {
                         },
                         onDemo = {
                             pickerDevices = null
-                            state.setDemo(true)
+                            state.updateDemo(true)
                             state.connectDemo()
                         },
                         onDismiss = { pickerDevices = null }
@@ -248,12 +248,12 @@ class MainActivity : ComponentActivity() {
     /** Бесплатный путь: отчёт в буфер и открыть приложение Claude (или сайт), чтобы вставить его в чат. */
     private fun askClaude() {
         if (!copyReport()) return
-        state.toast = "Отчёт скопирован. Вставь его в чат Claude"
+        state.toast = "Отчёт скопирован. Вставь его в чат"
         val app = packageManager.getLaunchIntentForPackage("com.anthropic.claude")
         try {
             startActivity(app ?: Intent(Intent.ACTION_VIEW, Uri.parse("https://claude.ai/new")))
         } catch (e: Exception) {
-            state.toast = "Отчёт скопирован, открой Claude и вставь его в чат"
+            state.toast = "Отчёт скопирован, открой чат с ИИ и вставь его"
         }
     }
 

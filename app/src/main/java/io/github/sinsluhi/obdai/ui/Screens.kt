@@ -291,12 +291,12 @@ fun ResultScreen(
                 Text("Без нейронки", style = Type.body(13, accent, FontWeight.SemiBold))
                 VSpace(4.dp)
                 Text(
-                    if (state.apiKey.isBlank()) "Нажми кнопку ниже: отчёт скопируется, откроется Claude, и ты вставишь его в чат. Или добавь ключ API в настройках, тогда разбор будет приходить прямо сюда."
-                    else "ИИ не ответил, показан результат по встроенному справочнику. Попробуй ещё раз или спроси Claude вручную.",
+                    if (state.apiKey.isBlank()) "Нажми кнопку ниже: отчёт скопируется и откроется чат с ИИ, вставь его туда. Или добавь ключ API в настройках, тогда разбор будет приходить прямо сюда."
+                    else "ИИ не ответил, показан результат по встроенному справочнику. Попробуй ещё раз или спроси OBIDI AI вручную.",
                     style = Type.body(13, Palette.text2)
                 )
                 VSpace(12.dp)
-                PrimaryButton("Спросить Claude", onClick = onAskClaude)
+                PrimaryButton("Спросить OBIDI AI", onClick = onAskClaude)
                 if (state.apiKey.isBlank()) {
                     VSpace(8.dp)
                     Text(
@@ -651,11 +651,11 @@ fun SettingsScreen(
 
         SectionTitle("Нейронка")
         Card {
-            Text("Ключ Claude API", style = Type.label())
+            Text("Ключ API нейронки", style = Type.label())
             VSpace(8.dp)
             OutlinedTextField(
                 value = keyDraft,
-                onValueChange = { keyDraft = it; state.setApiKey(it) },
+                onValueChange = { keyDraft = it; state.updateApiKey(it) },
                 placeholder = { Text("sk-ant-…", style = Type.body(14, Palette.muted)) },
                 singleLine = true,
                 visualTransformation = if (showKey) VisualTransformation.None else PasswordVisualTransformation(),
@@ -681,7 +681,7 @@ fun SettingsScreen(
             )
             VSpace(8.dp)
             Text(
-                "Ключ хранится только на телефоне и уходит напрямую в api.anthropic.com. Получить: console.anthropic.com → API keys.",
+                "Ключ хранится только на телефоне. Получить: console.anthropic.com → API keys. С ключом разбор ошибок приходит прямо в приложение.",
                 style = Type.body(12, Palette.muted)
             )
         }
@@ -710,7 +710,7 @@ fun SettingsScreen(
                 HSpace(8.dp)
                 Switch(
                     checked = state.demo,
-                    onCheckedChange = { state.setDemo(it); if (it) state.connectDemo() },
+                    onCheckedChange = { state.updateDemo(it); if (it) state.connectDemo() },
                     colors = SwitchDefaults.colors(
                         checkedThumbColor = Palette.bg, checkedTrackColor = accent,
                         uncheckedThumbColor = Palette.muted, uncheckedTrackColor = Palette.surface2,
@@ -732,7 +732,7 @@ fun SettingsScreen(
                             .padding(4.dp)
                             .background(color, CircleShape)
                             .clip(CircleShape)
-                            .clickable { state.setAccent(i) },
+                            .clickable { state.updateAccent(i) },
                         contentAlignment = Alignment.Center
                     ) {
                         if (selected) Icon(Icons.Default.Check, null, tint = Palette.bg, modifier = Modifier.size(20.dp))
