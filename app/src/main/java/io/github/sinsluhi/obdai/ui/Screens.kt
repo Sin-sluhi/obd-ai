@@ -51,6 +51,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.painterResource
@@ -64,6 +65,7 @@ import io.github.sinsluhi.obdai.AppState
 import io.github.sinsluhi.obdai.Diagnosis
 import io.github.sinsluhi.obdai.DtcCard
 import io.github.sinsluhi.obdai.HistoryEntry
+import io.github.sinsluhi.obdai.Provider
 import io.github.sinsluhi.obdai.R
 import io.github.sinsluhi.obdai.formatPrice
 import java.text.SimpleDateFormat
@@ -79,7 +81,7 @@ private fun Screen(
     scroll: Boolean = true,
     content: @Composable ColumnScope.() -> Unit
 ) {
-    Column(Modifier.fillMaxSize().background(Palette.bg)) {
+    Column(Modifier.fillMaxSize().background(Palette.background)) {
         val base = Modifier
             .weight(1f)
             .fillMaxWidth()
@@ -121,12 +123,7 @@ fun HomeScreen(
     val accent = LocalAccent.current
     Screen(bottom = bottom) {
         Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
-            Box(
-                Modifier.size(34.dp).background(accent, RoundedCornerShape(10.dp)),
-                contentAlignment = Alignment.Center
-            ) {
-                Icon(painterResource(R.drawable.ic_car), null, tint = Palette.bg, modifier = Modifier.size(20.dp))
-            }
+            LogoBadge()
             HSpace(10.dp)
             Text("OBD AI", style = Type.display(20))
             Spacer(Modifier.weight(1f))
@@ -179,7 +176,7 @@ fun HomeScreen(
             BigCheckButton(busy = state.busy, onClick = onCheck)
             Text(
                 state.busy ?: if (state.connected) "Включи зажигание. Двигатель можно не заводить"
-                else "Сначала подключи адаптер или включи демо в настройках",
+                else "Сначала подключи адаптер",
                 style = Type.body(14, Palette.muted),
                 textAlign = TextAlign.Center,
                 modifier = Modifier.width(280.dp)
@@ -238,13 +235,23 @@ private fun BigCheckButton(busy: String?, onClick: () -> Unit) {
     Box(
         Modifier
             .size(212.dp)
-            .border(2.dp, Palette.border, CircleShape)
+            .border(2.dp, if (busy == null) accent.copy(alpha = 0.35f) else Palette.border, CircleShape)
             .clip(CircleShape)
             .clickable(enabled = busy == null, onClick = onClick),
         contentAlignment = Alignment.Center
     ) {
         Box(
-            Modifier.size(176.dp).background(if (busy == null) accent else Palette.surface, CircleShape),
+            Modifier
+                .size(176.dp)
+                .shadow(if (busy == null) 30.dp else 8.dp, CircleShape, ambientColor = accent, spotColor = accent)
+                .background(
+                    if (busy == null) androidx.compose.ui.graphics.Brush.radialGradient(
+                        listOf(accent.copy(red = minOf(1f, accent.red + 0.12f), green = minOf(1f, accent.green + 0.08f)), accent),
+                        radius = 260f
+                    ) else androidx.compose.ui.graphics.Brush.verticalGradient(listOf(Palette.surfaceTop, Palette.surface)),
+                    CircleShape
+                )
+                .border(1.dp, if (busy == null) androidx.compose.ui.graphics.Color.White.copy(alpha = 0.35f) else Palette.border, CircleShape),
             contentAlignment = Alignment.Center
         ) {
             if (busy != null) {
@@ -287,21 +294,12 @@ fun ResultScreen(
 
         if (!d.fromAi) {
             Card(background = Palette.surface2, border = Palette.border, radius = 16.dp, padding = 14.dp) {
-                Text("Разбор ИИ не выполнен", style = Type.body(13, Palette.warn, FontWeight.SemiBold))
+                Text("Подробный разбор временно недоступен", style = Type.body(13, Palette.warn, FontWeight.SemiBold))
                 VSpace(4.dp)
                 Text(
-                    if (!state.hasAiKey) "В этой сборке нет ключа ИИ. Показаны названия ошибок из встроенного справочника."
-                    else "ИИ не ответил, показан результат по встроенному справочнику. Проверь интернет и запусти проверку ещё раз.",
+                    "Показаны названия ошибок из встроенного справочника. Проверь интернет и запусти проверку ещё раз, чтобы получить объяснения, опыт владельцев и цены.",
                     style = Type.body(13, Palette.text2)
                 )
-                if (!state.hasAiKey) {
-                    VSpace(8.dp)
-                    Text(
-                        "Настройки ИИ",
-                        style = Type.body(13, accent, FontWeight.SemiBold),
-                        modifier = Modifier.clickable(onClick = onSettings).padding(vertical = 6.dp)
-                    )
-                }
             }
         }
 
@@ -640,48 +638,14 @@ fun SettingsScreen(
 ) {
     val accent = LocalAccent.current
     var showKey by remember { mutableStateOf(false) }
-    var keyDraft by remember { mutableStateOf(state.apiKey) }
+    var keyDraft by remember(state.provider) { mutableStateOf(state.apiKey) }
+    var modelDraft by remember(state.provider) { mutableStateOf(state.model) }
+    var folderDraft by remember { mutableStateOf(state.folder) }
+    var baseDraft by remember { mutableStateOf(state.customBaseUrl) }
+    var versionTaps by remember { mutableStateOf(0) }
 
     Screen {
         Header("Настройки", onBack = onBack)
-
-        SectionTitle("Нейронка")
-        Card {
-            Text(if (state.builtInKey) "Ключ API нейронки (в сборке уже есть свой)" else "Ключ API нейронки", style = Type.label())
-            VSpace(8.dp)
-            OutlinedTextField(
-                value = keyDraft,
-                onValueChange = { keyDraft = it; state.updateApiKey(it) },
-                placeholder = { Text("sk-ant-…", style = Type.body(14, Palette.muted)) },
-                singleLine = true,
-                visualTransformation = if (showKey) VisualTransformation.None else PasswordVisualTransformation(),
-                textStyle = Type.mono(13),
-                trailingIcon = {
-                    Text(
-                        if (showKey) "скрыть" else "показать",
-                        style = Type.body(12, accent, FontWeight.SemiBold),
-                        modifier = Modifier.clickable { showKey = !showKey }.padding(8.dp)
-                    )
-                },
-                colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = accent,
-                    unfocusedBorderColor = Palette.border,
-                    focusedTextColor = Palette.text,
-                    unfocusedTextColor = Palette.text,
-                    cursorColor = accent,
-                    focusedContainerColor = Palette.surface2,
-                    unfocusedContainerColor = Palette.surface2
-                ),
-                shape = RoundedCornerShape(12.dp),
-                modifier = Modifier.fillMaxWidth()
-            )
-            VSpace(8.dp)
-            Text(
-                if (state.builtInKey) "Ключ уже встроен в приложение, поле можно оставить пустым. Свой ключ здесь его заменит."
-                else "Ключ хранится только на телефоне. Получить: console.anthropic.com → API keys. Без ключа разбор ошибок от ИИ не работает.",
-                style = Type.body(12, Palette.muted)
-            )
-        }
 
         SectionTitle("Адаптер")
         Card {
@@ -696,25 +660,6 @@ fun SettingsScreen(
                     onClick = { if (state.connected) state.disconnect() else onPickDevice() }
                 )
             }
-            VSpace(14.dp)
-            Box(Modifier.fillMaxWidth().height(1.dp).background(Palette.border))
-            VSpace(12.dp)
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                Column(Modifier.weight(1f)) {
-                    Text("Демо-режим", style = Type.strong(15))
-                    Text("Выдуманная машина с двумя ошибками, чтобы посмотреть приложение без адаптера", style = Type.label(12))
-                }
-                HSpace(8.dp)
-                Switch(
-                    checked = state.demo,
-                    onCheckedChange = { state.updateDemo(it); if (it) state.connectDemo() },
-                    colors = SwitchDefaults.colors(
-                        checkedThumbColor = Palette.bg, checkedTrackColor = accent,
-                        uncheckedThumbColor = Palette.muted, uncheckedTrackColor = Palette.surface2,
-                        uncheckedBorderColor = Palette.border
-                    )
-                )
-            }
         }
 
         SectionTitle("Цвет акцента")
@@ -725,6 +670,7 @@ fun SettingsScreen(
                     Box(
                         Modifier
                             .size(48.dp)
+                            .shadow(if (selected) 14.dp else 4.dp, CircleShape, ambientColor = color, spotColor = color)
                             .border(2.dp, if (selected) Palette.text else Color.Transparent, CircleShape)
                             .padding(4.dp)
                             .background(color, CircleShape)
@@ -740,9 +686,120 @@ fun SettingsScreen(
             }
         }
 
-        SectionTitle("Для отладки")
-        SecondaryButton("Консоль и лог адаптера", Modifier.fillMaxWidth(), onClick = onOpenLog)
-        Text("OBD AI 0.2", style = Type.body(12, Palette.muted), textAlign = TextAlign.Center, modifier = Modifier.fillMaxWidth())
+        if (state.devMode) {
+            SectionTitle("Режим разработчика")
+            Card {
+                Text("Провайдер разбора", style = Type.label())
+                VSpace(8.dp)
+                Provider.entries.forEach { p ->
+                    val selected = p == state.provider
+                    Row(
+                        Modifier
+                            .fillMaxWidth()
+                            .clip(RoundedCornerShape(12.dp))
+                            .background(if (selected) accent.copy(alpha = 0.10f) else Color.Transparent, RoundedCornerShape(12.dp))
+                            .clickable { state.updateProvider(p) }
+                            .padding(horizontal = 10.dp, vertical = 9.dp),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Box(
+                            Modifier
+                                .size(18.dp)
+                                .border(2.dp, if (selected) accent else Palette.border, CircleShape)
+                                .padding(4.dp)
+                                .background(if (selected) accent else Color.Transparent, CircleShape)
+                        )
+                        HSpace(10.dp)
+                        Text(p.title, style = if (selected) Type.strong(14) else Type.body(14, Palette.text2))
+                    }
+                }
+                VSpace(6.dp)
+                Text(state.provider.hint, style = Type.body(12, Palette.muted))
+                VSpace(12.dp)
+
+                Text(if (state.builtInKey) "Ключ API (в сборке уже есть свой)" else "Ключ API", style = Type.label())
+                VSpace(6.dp)
+                SettingField(
+                    value = keyDraft,
+                    onChange = { keyDraft = it; state.updateApiKey(it) },
+                    placeholder = if (state.builtInKey) "пусто = встроенный ключ" else "вставь ключ",
+                    mono = true,
+                    secret = !showKey,
+                    trailing = {
+                        Text(
+                            if (showKey) "скрыть" else "показать",
+                            style = Type.body(12, accent, FontWeight.SemiBold),
+                            modifier = Modifier.clickable { showKey = !showKey }.padding(8.dp)
+                        )
+                    }
+                )
+                VSpace(10.dp)
+                Text("Модель", style = Type.label())
+                VSpace(6.dp)
+                SettingField(
+                    value = modelDraft,
+                    onChange = { modelDraft = it; state.updateModel(it) },
+                    placeholder = state.provider.defaultModel.ifBlank { "имя модели" },
+                    mono = true
+                )
+                if (state.provider.needsFolder) {
+                    VSpace(10.dp)
+                    Text("ID каталога Yandex Cloud", style = Type.label())
+                    VSpace(6.dp)
+                    SettingField(value = folderDraft, onChange = { folderDraft = it; state.updateFolder(it) }, placeholder = "b1g…", mono = true)
+                }
+                if (state.provider == Provider.CUSTOM) {
+                    VSpace(10.dp)
+                    Text("Адрес API", style = Type.label())
+                    VSpace(6.dp)
+                    SettingField(value = baseDraft, onChange = { baseDraft = it; state.updateCustomBaseUrl(it) }, placeholder = "https://host/v1", mono = true)
+                }
+                VSpace(10.dp)
+                Text(
+                    if (state.hasAiKey) "Готово: разбор приходит прямо в приложение." else "Ключа нет: показывается только встроенный справочник.",
+                    style = Type.body(12, if (state.hasAiKey) accent else Palette.warn)
+                )
+            }
+
+            Card {
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Column(Modifier.weight(1f)) {
+                        Text("Демо-машина", style = Type.strong(15))
+                        Text("Выдуманная машина с двумя ошибками, чтобы проверить приложение без адаптера", style = Type.label(12))
+                    }
+                    HSpace(8.dp)
+                    Switch(
+                        checked = state.demo,
+                        onCheckedChange = { state.updateDemo(it); if (it) state.connectDemo() },
+                        colors = SwitchDefaults.colors(
+                            checkedThumbColor = Palette.bg, checkedTrackColor = accent,
+                            uncheckedThumbColor = Palette.muted, uncheckedTrackColor = Palette.surface2,
+                            uncheckedBorderColor = Palette.border
+                        )
+                    )
+                }
+            }
+            SecondaryButton("Консоль и лог адаптера", Modifier.fillMaxWidth(), onClick = onOpenLog)
+            SecondaryButton("Выключить режим разработчика", Modifier.fillMaxWidth(), color = Palette.muted, onClick = { state.updateDevMode(false) })
+        }
+
+        Text(
+            "OBD AI 0.3",
+            style = Type.body(12, Palette.muted),
+            textAlign = TextAlign.Center,
+            modifier = Modifier
+                .fillMaxWidth()
+                .clickable {
+                    versionTaps++
+                    if (!state.devMode && versionTaps >= 7) {
+                        state.updateDevMode(true)
+                        state.toast = "Режим разработчика включён"
+                    } else if (!state.devMode && versionTaps >= 4) {
+                        state.toast = "Ещё ${7 - versionTaps}…"
+                    }
+                }
+                .padding(12.dp)
+        )
     }
 }
 
@@ -756,7 +813,7 @@ fun LogScreen(state: AppState, onBack: () -> Unit, onCopyReport: () -> Unit) {
     LaunchedEffect(state.log.size) {
         if (state.log.isNotEmpty()) listState.animateScrollToItem(state.log.size - 1)
     }
-    Column(Modifier.fillMaxSize().background(Palette.bg).statusBarsPadding().imePadding()) {
+    Column(Modifier.fillMaxSize().background(Palette.background).statusBarsPadding().imePadding()) {
         Column(Modifier.padding(horizontal = screenPadding).padding(top = 20.dp)) {
             Header("Консоль", onBack = onBack) {
                 Text(
@@ -819,7 +876,8 @@ fun DevicePickerDialog(
     devices: List<Pair<String, String>>,   // имя, адрес
     onPick: (Int) -> Unit,
     onDemo: () -> Unit,
-    onDismiss: () -> Unit
+    onDismiss: () -> Unit,
+    showDemo: Boolean = false
 ) {
     val accent = LocalAccent.current
     AlertDialog(
@@ -852,8 +910,8 @@ fun DevicePickerDialog(
                         }
                     }
                 }
-                Text(
-                    "Или попробовать демо-режим",
+                if (showDemo) Text(
+                    "Или попробовать демо-машину",
                     style = Type.body(13, accent, FontWeight.SemiBold),
                     modifier = Modifier.clickable(onClick = onDemo).padding(vertical = 8.dp)
                 )
@@ -932,4 +990,36 @@ fun reportText(state: AppState): String? {
     return "Расшифруй диагностику машины простыми словами: что сломано, можно ли ехать, что сделать и примерно сколько стоит ремонт. " +
         "Определи модель по VIN и найди на drive2.ru и drom.ru, как владельцы такой машины решали каждую из этих ошибок, со ссылками на записи.\n\n" +
         AiClient.report(snap)
+}
+
+@Composable
+fun SettingField(
+    value: String,
+    onChange: (String) -> Unit,
+    placeholder: String,
+    mono: Boolean = false,
+    secret: Boolean = false,
+    trailing: (@Composable () -> Unit)? = null
+) {
+    val accent = LocalAccent.current
+    OutlinedTextField(
+        value = value,
+        onValueChange = onChange,
+        placeholder = { Text(placeholder, style = Type.body(13, Palette.muted)) },
+        singleLine = true,
+        visualTransformation = if (secret) PasswordVisualTransformation() else VisualTransformation.None,
+        textStyle = if (mono) Type.mono(13) else Type.body(14),
+        trailingIcon = trailing,
+        colors = OutlinedTextFieldDefaults.colors(
+            focusedBorderColor = accent,
+            unfocusedBorderColor = Palette.border,
+            focusedTextColor = Palette.text,
+            unfocusedTextColor = Palette.text,
+            cursorColor = accent,
+            focusedContainerColor = Palette.surface2,
+            unfocusedContainerColor = Palette.surface2
+        ),
+        shape = RoundedCornerShape(12.dp),
+        modifier = Modifier.fillMaxWidth()
+    )
 }

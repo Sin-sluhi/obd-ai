@@ -18,7 +18,9 @@ jobs:
           gradle-version: "8.9"
       - run: gradle assembleDebug
         env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          AI_PROVIDER: ${{ vars.AI_PROVIDER }}
+          AI_API_KEY: ${{ secrets.AI_API_KEY }}
+          AI_MODEL: ${{ vars.AI_MODEL }}
       - uses: softprops/action-gh-release@v2
         with:
           tag_name: latest

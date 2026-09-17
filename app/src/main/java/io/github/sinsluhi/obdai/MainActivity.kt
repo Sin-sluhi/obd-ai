@@ -157,7 +157,8 @@ class MainActivity : ComponentActivity() {
                             state.updateDemo(true)
                             state.connectDemo()
                         },
-                        onDismiss = { pickerDevices = null }
+                        onDismiss = { pickerDevices = null },
+                        showDemo = state.devMode
                     )
                 }
                 state.error?.let { MessageDialog("Не получилось", it) { state.error = null } }

@@ -12,10 +12,13 @@ android {
         applicationId = "io.github.sinsluhi.obdai"
         minSdk = 26
         targetSdk = 35
-        versionCode = 2
-        versionName = "0.2"
-        // Ключ ИИ из секрета GitHub ANTHROPIC_API_KEY; пустая строка, если секрета нет
-        buildConfigField("String", "DEFAULT_API_KEY", "\"" + (System.getenv("ANTHROPIC_API_KEY") ?: "") + "\"")
+        versionCode = 3
+        versionName = "0.3"
+        // Провайдер и ключ ИИ из секретов GitHub (AI_PROVIDER, AI_API_KEY, AI_MODEL); пусто, если не заданы
+        fun env(name: String) = System.getenv(name)?.trim().orEmpty()
+        buildConfigField("String", "AI_PROVIDER", "\"" + env("AI_PROVIDER").ifBlank { "groq" } + "\"")
+        buildConfigField("String", "AI_API_KEY", "\"" + env("AI_API_KEY").ifBlank { env("ANTHROPIC_API_KEY") } + "\"")
+        buildConfigField("String", "AI_MODEL", "\"" + env("AI_MODEL") + "\"")
     }
     buildFeatures {
         compose = true

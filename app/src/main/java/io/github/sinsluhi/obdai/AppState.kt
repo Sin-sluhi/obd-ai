@@ -41,14 +41,25 @@ class AppState(context: Context) {
     var toast by mutableStateOf<String?>(null)
     val log = mutableStateListOf<String>()
     var history by mutableStateOf(prefs.loadHistory())
-    var apiKey by mutableStateOf(prefs.apiKey)
+    var provider by mutableStateOf(Provider.byId(prefs.providerId))
+    var apiKey by mutableStateOf(prefs.apiKey(provider))
+    var model by mutableStateOf(prefs.model(provider))
+    var customBaseUrl by mutableStateOf(prefs.customBaseUrl)
+    var folder by mutableStateOf(prefs.folder)
     var accentIndex by mutableStateOf(prefs.accentIndex)
     var demo by mutableStateOf(prefs.demo)
+    var devMode by mutableStateOf(prefs.devMode)
 
-    /** Ключ, встроенный в сборку через секрет GitHub (пустой, если секрета нет). */
-    val builtInKey: Boolean get() = BuildConfig.DEFAULT_API_KEY.isNotBlank()
-    val hasAiKey: Boolean get() = apiKey.isNotBlank() || builtInKey
-    private fun effectiveKey(): String = prefs.apiKey.ifBlank { BuildConfig.DEFAULT_API_KEY }
+    /** Ключ, встроенный в сборку через секрет GitHub (пустой, если секрета нет или он для другого провайдера). */
+    val builtInKey: Boolean get() = BuildConfig.AI_API_KEY.isNotBlank() && provider.id == BuildConfig.AI_PROVIDER
+    val hasAiKey: Boolean get() = aiConfig().ready
+
+    fun aiConfig(): AiConfig {
+        val p = provider
+        val key = prefs.apiKey(p).ifBlank { if (p.id == BuildConfig.AI_PROVIDER) BuildConfig.AI_API_KEY else "" }
+        val base = if (p == Provider.CUSTOM) prefs.customBaseUrl else p.baseUrl
+        return AiConfig(p, key, prefs.model(p), base, prefs.folder)
+    }
 
     init {
         addLog("1. Воткни адаптер в OBD-разъём, включи зажигание")
@@ -66,7 +77,17 @@ class AppState(context: Context) {
         if (log.size > 500) log.removeAt(0)
     }
 
-    fun updateApiKey(v: String) { apiKey = v; prefs.apiKey = v }
+    fun updateProvider(p: Provider) {
+        provider = p
+        prefs.providerId = p.id
+        apiKey = prefs.apiKey(p)
+        model = prefs.model(p)
+    }
+    fun updateApiKey(v: String) { apiKey = v; prefs.setApiKey(provider, v) }
+    fun updateModel(v: String) { model = v; prefs.setModel(provider, v) }
+    fun updateCustomBaseUrl(v: String) { customBaseUrl = v; prefs.customBaseUrl = v }
+    fun updateFolder(v: String) { folder = v; prefs.folder = v }
+    fun updateDevMode(v: Boolean) { devMode = v; prefs.devMode = v }
     fun updateAccent(i: Int) { accentIndex = i; prefs.accentIndex = i }
     fun updateDemo(v: Boolean) {
         demo = v
@@ -123,7 +144,7 @@ class AppState(context: Context) {
         runTask("Проверка машины") {
             val l = link ?: throw IOException("Нет подключения к адаптеру")
 
-            ui { busy = "Читаю статус двигателя" }
+            ui { busy = "Читаю блок двигателя" }
             val mil = l.readMil()
             ui { milOn = mil?.first; dtcCount = mil?.second }
             addLog("Check Engine: ${if (mil?.first == true) "ГОРИТ" else "не горит"}, ошибок по данным ЭБУ: ${mil?.second ?: "?"}")
@@ -149,21 +170,21 @@ class AppState(context: Context) {
             val snap = CarSnapshot(v, l.protocol, volt, mil?.first, mil?.second, stored, pending, s, permanent)
             ui { lastSnapshot = snap }
 
-            val key = effectiveKey()
-            val result = if (key.isBlank()) {
-                addLog("Ключ ИИ не задан, показываю результат по справочнику")
+            val cfg = aiConfig()
+            val result = if (!cfg.ready) {
+                addLog("Разбор не настроен, показываю результат по справочнику")
                 Diagnosis.local(snap)
             } else {
-                ui { busy = "Нейронка разбирает результаты" }
+                ui { busy = "Готовлю разбор" }
                 try {
                     AiClient.diagnose(
-                        key, snap,
+                        cfg, snap,
                         progress = { stage -> ui { busy = stage } },
                         log = { addLog(it) }
                     ).also { addLog("ИИ: ${it.title}") }
                 } catch (e: Exception) {
-                    addLog("❌ ИИ недоступен: ${e.message}")
-                    ui { toast = "ИИ недоступен: ${e.message}" }
+                    addLog("❌ Разбор не удался: ${e.message}")
+                    ui { toast = "Подробный разбор временно недоступен" }
                     Diagnosis.local(snap)
                 }
             }
