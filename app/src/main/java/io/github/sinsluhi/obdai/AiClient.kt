@@ -94,7 +94,14 @@ object AiClient {
     private fun groqCompound(cfg: AiConfig, snap: CarSnapshot, hasCodes: Boolean, progress: (String) -> Unit, log: (String) -> Unit): Diagnosis {
         progress(if (hasCodes) "Ищу опыт владельцев на форумах" else "Нейронка оценивает состояние")
         val system = ROLE + (if (hasCodes) GROQ_SEARCH else "") + "\n\n" + SCHEMA_TEXT
-        var reply = OpenAiClient.chat(cfg, system, report(snap), search = hasCodes)
+        var reply = try {
+            OpenAiClient.chat(cfg, system, report(snap), search = hasCodes)
+        } catch (e: OpenAiClient.ApiException) {
+            // 429 на бесплатном тарифе: поиск со скачиванием страниц не влезает в минутный лимит — пробуем только сниппеты
+            if (e.status != 429 || !hasCodes) throw e
+            log("Лимит токенов на полном поиске, пробую облегчённый")
+            OpenAiClient.chat(cfg, system, report(snap), search = true, searchLite = true)
+        }
         var json = extractJson(reply.content)
         if (json == null && hasCodes) {
             log("Первый ответ не разобрался, пробую без ограничения по сайтам")

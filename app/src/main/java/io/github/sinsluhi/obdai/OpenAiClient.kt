@@ -12,12 +12,17 @@ object OpenAiClient {
     data class Source(val title: String, val url: String, val snippet: String)
     class Reply(val content: String, val sources: List<Source>)
 
+    /** Ошибка API с HTTP-статусом: по нему решаем, есть ли смысл повторять облегчённым запросом. */
+    class ApiException(val status: Int, message: String) : IOException(message)
+
     private val forumDomains = listOf("drive2.ru", "*.drive2.ru", "drom.ru", "*.drom.ru")
 
     /**
      * @param json      просить строгий JSON через response_format (при 400 повторяем без него)
      * @param search    для Groq compound: включить веб-поиск, ограниченный форумами
      * @param anySite   для Groq compound: не ограничивать домены
+     * @param searchLite для Groq compound: только поиск по сниппетам, без скачивания страниц — в разы меньше токенов,
+     *                  спасает при минутном лимите бесплатного тарифа (compound со скачиванием ест ~40 тыс. токенов)
      */
     fun chat(
         cfg: AiConfig,
@@ -28,7 +33,8 @@ object OpenAiClient {
         anySite: Boolean = false,
         maxTokens: Int = 6000,
         imageJpegBase64: String? = null,
-        modelOverride: String? = null
+        modelOverride: String? = null,
+        searchLite: Boolean = false
     ): Reply {
         // с картинкой содержимое сообщения — массив блоков (текст + image_url с data-URL)
         val userContent: Any = if (imageJpegBase64 == null) user else JSONArray()
@@ -46,6 +52,7 @@ object OpenAiClient {
             val settings = JSONObject().put("country", "Russia")
             if (!anySite) settings.put("include_domains", JSONArray(forumDomains))
             body.put("search_settings", settings)
+            if (searchLite) body.put("compound_custom", JSONObject().put("tools", JSONObject().put("enabled_tools", JSONArray(listOf("web_search")))))
         }
 
         var (status, text) = post(cfg, body)
@@ -56,7 +63,7 @@ object OpenAiClient {
             status = again.first
             text = again.second
         }
-        if (status !in 200..299) throw IOException(describeError(cfg, status, text))
+        if (status !in 200..299) throw ApiException(status, describeError(cfg, status, text))
 
         val resp = JSONObject(text)
         val choice = resp.optJSONArray("choices")?.optJSONObject(0)

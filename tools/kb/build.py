@@ -184,7 +184,7 @@ def main():
     for _, car, code in queue:
         entry = None
         ok = False
-        for attempt in range(5):
+        for attempt in range(3):
             try:
                 entry = research(key, car, code)
                 ok = True
@@ -196,9 +196,15 @@ def main():
                         print("дневной лимит: %s" % body[:200])
                         stop = True
                         break
+                    if attempt == 0:
+                        print("429 для %s %s: %s" % (car, code, body[:300]))
+                    lim = re.search(r"Limit (\d+), Used (\d+), Requested (\d+)", body)
+                    if lim and int(lim.group(3)) > int(lim.group(1)):
+                        print("запрос %s токенов больше минутного лимита %s — пара пропущена" % (lim.group(3), lim.group(1)))
+                        break
                     m = re.search(r"try again in ([0-9.]+)s", body)
                     wait = float(m.group(1)) if m else float(ex.headers.get("retry-after") or 30)
-                    wait = min(wait + 2, 180)
+                    wait = min(max(wait + 2, 60), 180)   # каждая попытка сама тратит токены: ждём полную минуту
                     print("429 для %s %s, жду %.0f с (попытка %d)" % (car, code, wait, attempt + 1))
                     time.sleep(wait)
                     continue
