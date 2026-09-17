@@ -26,7 +26,8 @@ from targets import TARGETS  # noqa: E402
 ROOT = os.path.normpath(os.path.join(HERE, "..", ".."))
 KB_PATH = os.path.join(ROOT, "docs", "kb.json")
 API = "https://api.groq.com/openai/v1/chat/completions"
-MODEL = "groq/compound"
+# compound-mini делает один вызов поиска за запрос: в разы меньше токенов, влезает в минутный лимит бесплатного тарифа
+MODEL = os.environ.get("KB_MODEL") or "groq/compound-mini"
 FORUMS = ("drive2.ru", "drom.ru")
 
 SYSTEM = """Ты — опытный автодиагност. Тебе дают марку/модель машины и код ошибки OBD-II.
@@ -70,7 +71,7 @@ def ask(key, car, code):
     body = {
         "model": MODEL,
         "temperature": 0.2,
-        "max_tokens": 1500,
+        "max_tokens": 1000,
         "messages": [
             {"role": "system", "content": SYSTEM},
             {"role": "user", "content": "Машина: %s. Код: %s. Поищи «%s %s drive2» и «%s %s drom», прочитай записи и ответь JSON." % (car, code, code, car, code, car)},
@@ -142,7 +143,7 @@ def main():
     ap.add_argument("--limit", type=int, default=60, help="сколько пар обработать за запуск")
     ap.add_argument("--max-age-days", type=int, default=90, help="обновлять записи старше N дней")
     ap.add_argument("--car", default=None, help="только эта машина")
-    ap.add_argument("--pause", type=float, default=4.0, help="пауза между запросами, с")
+    ap.add_argument("--pause", type=float, default=20.0, help="пауза между парами, с (минутный лимит токенов)")
     args = ap.parse_args()
 
     key = os.environ.get("GROQ_API_KEY") or os.environ.get("AI_API_KEY")
@@ -175,29 +176,36 @@ def main():
     print("в очереди пар: %d (всего в базе %d)" % (len(queue), len(kb["entries"])))
 
     done = added = failed = 0
-    errors429 = 0
+    stop = False
     for _, car, code in queue:
-        try:
-            entry = research(key, car, code)
-            errors429 = 0
-        except urllib.error.HTTPError as ex:
-            if ex.code == 429:
-                errors429 += 1
-                body = ex.read()[:300].decode("utf-8", "replace")
-                limits = {k: v for k, v in ex.headers.items() if k.lower().startswith("x-ratelimit") or k.lower() == "retry-after"}
-                wait = float(ex.headers.get("retry-after") or 60)
-                print("429 для %s %s: %s | %s" % (car, code, body, limits))
-                if errors429 >= 3 or wait > 900 or "per day" in body or "TPD" in body or "RPD" in body:
-                    print("дневной лимит или слишком долгое ожидание, останавливаюсь")
-                    break
-                time.sleep(min(wait + 1, 900))
-                continue
-            print("ошибка %s для %s %s: %s" % (ex.code, car, code, ex.read()[:200]))
-            failed += 1
-            time.sleep(args.pause)
-            continue
-        except Exception as ex:  # noqa: BLE001
-            print("ошибка для %s %s: %s" % (car, code, ex))
+        entry = None
+        ok = False
+        for attempt in range(5):
+            try:
+                entry = research(key, car, code)
+                ok = True
+                break
+            except urllib.error.HTTPError as ex:
+                body = ex.read()[:400].decode("utf-8", "replace")
+                if ex.code == 429:
+                    if "per day" in body or "TPD" in body or "RPD" in body:
+                        print("дневной лимит: %s" % body[:200])
+                        stop = True
+                        break
+                    m = re.search(r"try again in ([0-9.]+)s", body)
+                    wait = float(m.group(1)) if m else float(ex.headers.get("retry-after") or 30)
+                    wait = min(wait + 2, 180)
+                    print("429 для %s %s, жду %.0f с (попытка %d)" % (car, code, wait, attempt + 1))
+                    time.sleep(wait)
+                    continue
+                print("ошибка %s для %s %s: %s" % (ex.code, car, code, body[:200]))
+                break
+            except Exception as ex:  # noqa: BLE001
+                print("ошибка для %s %s: %s" % (car, code, ex))
+                break
+        if stop:
+            break
+        if not ok:
             failed += 1
             time.sleep(args.pause)
             continue
