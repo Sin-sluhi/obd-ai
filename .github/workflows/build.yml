@@ -4,6 +4,7 @@ on:
     paths-ignore:
       - "**.md"
       - "**.txt"
+      - "docs/**"
   workflow_dispatch:
 permissions:
   contents: write
