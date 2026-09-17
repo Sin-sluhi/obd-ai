@@ -269,11 +269,13 @@ fun ResultScreen(
             }
         }
 
-        val modules = state.lastSnapshot?.modules.orEmpty()
+        val allModules = state.lastSnapshot?.modules.orEmpty()
+        val engineExtra = allModules.firstOrNull { it.addr == 0x7E0 }?.codes.orEmpty()
+        val modules = allModules.filter { it.addr != 0x7E0 }
         if (modules.isNotEmpty() || state.lastSnapshot != null) {
             SectionTitle("Блоки машины", if (modules.isEmpty()) "ответил только двигатель" else plural(modules.size + 1, "блок", "блока", "блоков"))
             Card(padding = 14.dp) {
-                ModuleRow("Двигатель", (state.lastSnapshot?.stored.orEmpty() + state.lastSnapshot?.pending.orEmpty()).distinct(), accent)
+                ModuleRow("Двигатель", (state.lastSnapshot?.stored.orEmpty() + state.lastSnapshot?.pending.orEmpty() + engineExtra).distinct(), accent)
                 modules.forEach { m ->
                     Box(Modifier.fillMaxWidth().height(1.dp).background(Palette.border))
                     ModuleRow(m.name, m.codes, accent)
@@ -1067,7 +1069,9 @@ private fun ModuleRow(name: String, codes: List<String>, accent: Color) {
         Text(name, style = Type.body(14, Palette.text, FontWeight.SemiBold), modifier = Modifier.weight(1f))
         Text(
             if (codes.isEmpty()) "ошибок нет" else codes.joinToString(),
-            style = if (codes.isEmpty()) Type.label(12) else Type.mono(12, Palette.warn)
+            style = if (codes.isEmpty()) Type.label(12) else Type.mono(12, Palette.warn),
+            textAlign = TextAlign.End,
+            modifier = Modifier.weight(1.4f)
         )
     }
 }

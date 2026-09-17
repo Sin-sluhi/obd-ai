@@ -199,6 +199,7 @@ object ModuleMap {
     val hyundaiSweep: List<Target> = (0x7A0..0x7DF).map { Target(it, it + 8, "Блок %03X".format(it)) }
 
     val candidates = listOf(
+        Target(0x7E0, 0x7E8, "Двигатель"),
         Target(0x7E1, 0x7E9, "Коробка передач"),
         Target(0x7E2, 0x7EA, "Блок 7E2"), Target(0x7E3, 0x7EB, "Блок 7E3"),
         Target(0x7D1, 0x7D9, "Блок 7D1"), Target(0x7D2, 0x7DA, "Блок 7D2"), Target(0x7D4, 0x7DC, "Блок 7D4"),
@@ -213,7 +214,7 @@ object ModuleMap {
     )
 
     private val hyundaiKia = mapOf(
-        0x7E1 to "Коробка передач", 0x7D1 to "ABS / ESC", 0x7D2 to "Подушки безопасности", 0x7D4 to "Электроусилитель руля",
+        0x7E0 to "Двигатель", 0x7E1 to "Коробка передач", 0x7D1 to "ABS / ESC", 0x7D2 to "Подушки безопасности", 0x7D4 to "Электроусилитель руля",
         0x7D5 to "Стояночный тормоз", 0x7C6 to "Приборная панель", 0x7C4 to "Парктроники", 0x7A0 to "Кузовной блок (BCM)",
         0x7A5 to "Смарт-ключ", 0x7B3 to "Климат", 0x7B6 to "Полный привод", 0x7B7 to "Камера / ассистенты", 0x7B1 to "Радар",
         0x7C7 to "Датчики давления шин", 0x7A2 to "Люк / стёкла", 0x7A3 to "Сиденья", 0x7C5 to "Мультимедиа (AVN)",
