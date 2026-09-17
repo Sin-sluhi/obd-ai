@@ -1,5 +1,13 @@
 package io.github.sinsluhi.obdai.ui
 
+import androidx.compose.animation.core.FastOutSlowInEasing
+import androidx.compose.animation.core.LinearEasing
+import androidx.compose.animation.core.RepeatMode
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.rememberInfiniteTransition
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -23,9 +31,11 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.compositionLocalOf
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
@@ -35,6 +45,7 @@ import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.StrokeJoin
 import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.graphics.drawscope.rotate
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
@@ -46,6 +57,8 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import io.github.sinsluhi.obdai.R
+import kotlin.math.cos
+import kotlin.math.sin
 
 /** Палитра «приборная панель ночью». */
 object Palette {
@@ -152,6 +165,7 @@ fun Card(
     radius: Dp = 22.dp,
     padding: Dp = 18.dp,
     elevation: Dp = 10.dp,
+    glow: Color? = null,
     onClick: (() -> Unit)? = null,
     content: @Composable ColumnScope.() -> Unit
 ) {
@@ -162,6 +176,13 @@ fun Card(
         .shadow(elevation, shape, ambientColor = Color.Black, spotColor = Color.Black)
         .clip(shape)
         .background(brush, shape)
+        .drawBehind {
+            if (glow != null) {
+                val center = Offset(size.width, 0f)
+                val radius = size.width * 0.7f
+                drawCircle(Brush.radialGradient(listOf(glow.copy(alpha = 0.28f), Color.Transparent), center = center, radius = radius), radius, center)
+            }
+        }
         .border(1.dp, border, shape)
     if (onClick != null) m = m.clickable(onClick = onClick)
     Box(m) {
@@ -405,3 +426,128 @@ fun VSpace(h: Dp) = Spacer(Modifier.height(h))
 
 @Composable
 fun HSpace(w: Dp) = Spacer(Modifier.width(w))
+
+// ---------- живые элементы ----------
+
+/** Мягкое свечение акцента в верхней части экрана. */
+@Composable
+fun Modifier.glowTop(): Modifier {
+    val accent = LocalAccent.current
+    return this.then(
+        Modifier.drawBehind {
+            val center = Offset(size.width * 0.5f, -size.width * 0.2f)
+            val radius = size.width * 0.9f
+            drawCircle(
+                brush = Brush.radialGradient(listOf(accent.copy(alpha = 0.14f), Color.Transparent), center = center, radius = radius),
+                radius = radius,
+                center = center
+            )
+        }
+    )
+}
+
+/** Большая кнопка проверки: пульсирующее свечение в покое, вращающаяся дуга в работе. */
+@Composable
+fun BigCheckButton(busy: String?, onClick: () -> Unit) {
+    val accent = LocalAccent.current
+    val transition = rememberInfiniteTransition(label = "check")
+    val pulse by transition.animateFloat(
+        initialValue = 0f, targetValue = 1f,
+        animationSpec = infiniteRepeatable(tween(1600, easing = FastOutSlowInEasing), RepeatMode.Reverse),
+        label = "pulse"
+    )
+    val spin by transition.animateFloat(
+        initialValue = 0f, targetValue = 360f,
+        animationSpec = infiniteRepeatable(tween(1300, easing = LinearEasing)),
+        label = "spin"
+    )
+    val idle = busy == null
+    Box(Modifier.size(236.dp), contentAlignment = Alignment.Center) {
+        Canvas(Modifier.size(236.dp)) {
+            val stroke = 3.dp.toPx()
+            val inset = stroke * 1.5f
+            val arcSize = Size(size.width - inset * 2, size.height - inset * 2)
+            drawCircle(
+                color = if (idle) accent.copy(alpha = 0.15f + 0.25f * pulse) else Palette.border,
+                radius = size.minDimension / 2 - inset,
+                style = Stroke(stroke)
+            )
+            if (!idle) {
+                rotate(spin) {
+                    drawArc(
+                        brush = Brush.sweepGradient(
+                            0f to Color.Transparent, 0.3f to accent, 0.301f to Color.Transparent, 1f to Color.Transparent
+                        ),
+                        startAngle = 0f, sweepAngle = 108f, useCenter = false,
+                        topLeft = Offset(inset, inset), size = arcSize,
+                        style = Stroke(stroke * 1.4f, cap = StrokeCap.Round)
+                    )
+                }
+            }
+        }
+        val brush = if (idle) Brush.radialGradient(listOf(lighten(accent, 0.18f), accent), radius = 300f)
+        else Brush.verticalGradient(listOf(Palette.surfaceTop, Palette.surface))
+        Box(
+            Modifier
+                .size(176.dp)
+                .shadow(if (idle) (14 + 22 * pulse).dp else 6.dp, CircleShape, ambientColor = accent, spotColor = accent)
+                .background(brush, CircleShape)
+                .border(1.dp, if (idle) Color.White.copy(alpha = 0.35f) else Palette.border, CircleShape)
+                .clip(CircleShape)
+                .clickable(enabled = idle, onClick = onClick),
+            contentAlignment = Alignment.Center
+        ) {
+            if (!idle) {
+                Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                    GaugeIcon(accent, Modifier.size(34.dp))
+                    Text("Проверяю", style = Type.display(15))
+                }
+            } else {
+                Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(6.dp)) {
+                    SearchIcon(Palette.bg, Modifier.size(34.dp))
+                    Text("Проверить\nмашину", style = Type.display(17).copy(color = Palette.bg), textAlign = TextAlign.Center)
+                }
+            }
+        }
+    }
+}
+
+/** Стрелочный спидометр оборотов: дуга 240°, деления, стрелка, плавная анимация. */
+@Composable
+fun RpmGauge(rpm: Double?, max: Float = 7000f, modifier: Modifier = Modifier) {
+    val accent = LocalAccent.current
+    val target = ((rpm ?: 0.0).toFloat() / max).coerceIn(0f, 1f)
+    val value by animateFloatAsState(targetValue = target, animationSpec = tween(450), label = "rpm")
+    Canvas(modifier) {
+        val stroke = 14.dp.toPx()
+        val r = minOf(size.width / 2 - stroke, (size.height - stroke * 2) / 1.5f)
+        val c = Offset(size.width / 2, stroke + r)
+        val topLeft = Offset(c.x - r, c.y - r)
+        val arcSize = Size(r * 2, r * 2)
+        drawArc(Palette.surface2, 150f, 240f, false, topLeft, arcSize, style = Stroke(stroke, cap = StrokeCap.Round))
+        for (i in 0..12) {
+            val a = Math.toRadians((150 + 20 * i).toDouble())
+            val long = i % 3 == 0
+            val r1 = r - stroke * (if (long) 1.6f else 1.3f)
+            val r2 = r - stroke * 0.95f
+            drawLine(
+                if (long) Palette.muted else Palette.border,
+                Offset(c.x + cos(a).toFloat() * r1, c.y + sin(a).toFloat() * r1),
+                Offset(c.x + cos(a).toFloat() * r2, c.y + sin(a).toFloat() * r2),
+                if (long) 2.dp.toPx() else 1.5f.dp.toPx(), StrokeCap.Round
+            )
+        }
+        if (value > 0.005f) {
+            drawArc(
+                brush = Brush.sweepGradient(listOf(accent.copy(alpha = 0.45f), accent, lighten(accent, 0.3f)), center = c),
+                startAngle = 150f, sweepAngle = 240f * value, useCenter = false,
+                topLeft = topLeft, size = arcSize, style = Stroke(stroke, cap = StrokeCap.Round)
+            )
+        }
+        val a = Math.toRadians((150 + 240 * value).toDouble())
+        val tip = Offset(c.x + cos(a).toFloat() * (r - stroke * 1.9f), c.y + sin(a).toFloat() * (r - stroke * 1.9f))
+        drawLine(Palette.text, c, tip, 4.dp.toPx(), StrokeCap.Round)
+        drawCircle(accent, 9.dp.toPx(), c)
+        drawCircle(Palette.bg, 3.5f.dp.toPx(), c)
+    }
+}

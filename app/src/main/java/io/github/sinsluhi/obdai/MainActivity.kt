@@ -17,6 +17,12 @@ import androidx.activity.compose.BackHandler
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.slideInVertically
+import androidx.compose.animation.togetherWith
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -107,7 +113,14 @@ class MainActivity : ComponentActivity() {
 
         CompositionLocalProvider(LocalAccent provides accent) {
             Box(Modifier.fillMaxSize().background(Palette.bg)) {
-                when (page) {
+                AnimatedContent(
+                    targetState = page,
+                    transitionSpec = {
+                        (fadeIn(tween(220)) + slideInVertically(tween(220)) { it / 30 }).togetherWith(fadeOut(tween(150)))
+                    },
+                    label = "page"
+                ) { p ->
+                when (p) {
                     Page.Home -> HomeScreen(
                         state,
                         onCheck = {
@@ -143,6 +156,7 @@ class MainActivity : ComponentActivity() {
                         onOpenLog = { page = Page.Log }
                     )
                     Page.Log -> LogScreen(state, onBack = { page = Page.Settings }, onCopyReport = { copyReport() })
+                }
                 }
 
                 pickerDevices?.let { devices ->

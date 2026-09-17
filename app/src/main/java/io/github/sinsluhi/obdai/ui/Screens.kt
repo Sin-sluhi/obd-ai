@@ -81,7 +81,7 @@ private fun Screen(
     scroll: Boolean = true,
     content: @Composable ColumnScope.() -> Unit
 ) {
-    Column(Modifier.fillMaxSize().background(Palette.background)) {
+    Column(Modifier.fillMaxSize().background(Palette.background).glowTop()) {
         val base = Modifier
             .weight(1f)
             .fillMaxWidth()
@@ -229,47 +229,6 @@ private fun InfoTile(label: String, value: String, modifier: Modifier = Modifier
     }
 }
 
-@Composable
-private fun BigCheckButton(busy: String?, onClick: () -> Unit) {
-    val accent = LocalAccent.current
-    Box(
-        Modifier
-            .size(212.dp)
-            .border(2.dp, if (busy == null) accent.copy(alpha = 0.35f) else Palette.border, CircleShape)
-            .clip(CircleShape)
-            .clickable(enabled = busy == null, onClick = onClick),
-        contentAlignment = Alignment.Center
-    ) {
-        Box(
-            Modifier
-                .size(176.dp)
-                .shadow(if (busy == null) 30.dp else 8.dp, CircleShape, ambientColor = accent, spotColor = accent)
-                .background(
-                    if (busy == null) androidx.compose.ui.graphics.Brush.radialGradient(
-                        listOf(accent.copy(red = minOf(1f, accent.red + 0.12f), green = minOf(1f, accent.green + 0.08f)), accent),
-                        radius = 260f
-                    ) else androidx.compose.ui.graphics.Brush.verticalGradient(listOf(Palette.surfaceTop, Palette.surface)),
-                    CircleShape
-                )
-                .border(1.dp, if (busy == null) androidx.compose.ui.graphics.Color.White.copy(alpha = 0.35f) else Palette.border, CircleShape),
-            contentAlignment = Alignment.Center
-        ) {
-            if (busy != null) {
-                CircularProgressIndicator(color = accent, strokeWidth = 4.dp, modifier = Modifier.size(56.dp))
-            } else {
-                Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(6.dp)) {
-                    SearchIcon(Palette.bg, Modifier.size(34.dp))
-                    Text(
-                        "Проверить\nмашину",
-                        style = Type.display(17).copy(color = Palette.bg),
-                        textAlign = TextAlign.Center
-                    )
-                }
-            }
-        }
-    }
-}
-
 // ======================= Результат =======================
 
 @Composable
@@ -357,7 +316,7 @@ private fun VerdictCard(d: Diagnosis) {
         "danger" -> VerdictColors(Palette.dangerBg, Palette.dangerBorder, Palette.danger, Palette.dangerText, Palette.dangerMuted, "ОПАСНО")
         else -> VerdictColors(Palette.warnBg, Palette.warnBorder, Palette.warn, Palette.warnText, Palette.warnMuted, "ВНИМАНИЕ")
     }
-    Card(background = bg, border = border, radius = 22.dp, padding = 20.dp) {
+    Card(background = bg, border = border, radius = 22.dp, padding = 20.dp, glow = main) {
         Row(verticalAlignment = Alignment.CenterVertically) {
             Box(Modifier.size(40.dp).background(main, RoundedCornerShape(12.dp)), contentAlignment = Alignment.Center) {
                 if (d.level == "ok") Icon(Icons.Default.Check, null, tint = bg, modifier = Modifier.size(22.dp))
@@ -487,18 +446,16 @@ fun SensorsScreen(state: AppState, bottom: @Composable () -> Unit) {
                     style = Type.label(12)
                 )
             }
-            VSpace(14.dp)
-            Row(verticalAlignment = Alignment.Bottom) {
-                Text(rpm?.let { "%.0f".format(it) } ?: "—", style = Type.mono(48))
-                HSpace(8.dp)
-                Text("об/мин", style = Type.body(15, Palette.muted), modifier = Modifier.padding(bottom = 6.dp))
-            }
-            VSpace(14.dp)
-            Box(Modifier.fillMaxWidth().height(8.dp).background(Palette.surface2, RoundedCornerShape(4.dp))) {
-                val frac = ((rpm ?: 0.0) / 7000.0).coerceIn(0.0, 1.0).toFloat()
-                if (frac > 0f) Box(
-                    Modifier.fillMaxWidth(frac).height(8.dp).background(accent, RoundedCornerShape(4.dp))
-                )
+            VSpace(6.dp)
+            Box(Modifier.fillMaxWidth().height(200.dp)) {
+                RpmGauge(rpm, modifier = Modifier.fillMaxSize())
+                Column(
+                    Modifier.align(Alignment.BottomCenter).padding(bottom = 2.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Text(rpm?.let { "%.0f".format(it) } ?: "—", style = Type.mono(44))
+                    Text("об/мин", style = Type.body(13, Palette.muted))
+                }
             }
         }
 
