@@ -420,6 +420,9 @@ fun SensorsScreen(state: AppState, bottom: @Composable () -> Unit) {
         onDispose { state.stopPolling() }
     }
     fun v(key: String) = state.sensors.firstOrNull { it.key == key }?.value
+    val car = state.diagnosis?.car.orEmpty()
+    val skin = remember(state.vin, car, accent) { Skins.forCar(state.vin, car, accent) }
+    val volt = parseVolt(state.voltage)
 
     Screen(bottom = bottom) {
         Header("Датчики") {
@@ -436,50 +439,27 @@ fun SensorsScreen(state: AppState, bottom: @Composable () -> Unit) {
             }
         }
 
-        val rpm = v("rpm")
-        Card(radius = 22.dp) {
-            Row {
-                Text("Обороты", style = Type.label())
-                Spacer(Modifier.weight(1f))
-                Text(
-                    when { rpm == null -> ""; rpm < 50 -> "двигатель заглушен"; rpm < 1100 -> "холостой ход"; else -> "" },
-                    style = Type.label(12)
-                )
-            }
-            VSpace(6.dp)
-            Box(Modifier.fillMaxWidth().height(200.dp)) {
-                RpmGauge(rpm, modifier = Modifier.fillMaxSize())
-                Column(
-                    Modifier.align(Alignment.BottomCenter).padding(bottom = 2.dp),
-                    horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-                    Text(rpm?.let { "%.0f".format(it) } ?: "—", style = Type.mono(44))
-                    Text("об/мин", style = Type.body(13, Palette.muted))
-                }
-            }
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Text("Приборка в стиле", style = Type.label())
+            HSpace(8.dp)
+            Pill(skin.name, skin.glow, skin.glow.copy(alpha = 0.12f))
         }
 
-        val coolant = v("coolant")
-        val volt = parseVolt(state.voltage)
         Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-            SensorTile(
-                "Температура ОЖ", coolant, "°C", Modifier.weight(1f),
-                note = coolant?.let { when { it < 60 -> "Прогревается"; it <= 105 -> "В норме"; else -> "Перегрев!" } },
-                noteColor = if (coolant != null && coolant > 105) Palette.danger else accent
-            )
-            SensorTile(
-                "Напряжение", volt, "В", Modifier.weight(1f), decimals = 1,
-                note = volt?.let { when { it >= 13.2 -> "Генератор заряжает"; it >= 12.2 -> "Норма"; else -> "Разряжен" } },
-                noteColor = if (volt != null && volt < 12.2) Palette.warn else accent
-            )
+            RoundGauge("Скорость", v("speed"), "км/ч", 0f, 240f, skin, Modifier.weight(1f), majorStep = 40f)
+            RoundGauge("Обороты", v("rpm"), "об/мин", 0f, 8000f, skin, Modifier.weight(1f), majorStep = 1000f, labelDivisor = 1000f, redFrom = 6500f)
         }
         Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-            SensorTile("Скорость", v("speed"), "км/ч", Modifier.weight(1f))
-            SensorTile("Нагрузка", v("load"), "%", Modifier.weight(1f))
+            RoundGauge("Температура", v("coolant"), "°C", -40f, 140f, skin, Modifier.weight(1f), majorStep = 30f, redFrom = 105f, coldTo = 50f)
+            RoundGauge("Напряжение", volt, "В", 8f, 16f, skin, Modifier.weight(1f), majorStep = 1f, decimals = 1, redFrom = 15f, coldTo = 11.5f)
         }
         Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-            SensorTile("Дроссель", v("throttle"), "%", Modifier.weight(1f))
-            SensorTile("Темп. впуска", v("iat"), "°C", Modifier.weight(1f))
+            RoundGauge("Нагрузка", v("load"), "%", 0f, 100f, skin, Modifier.weight(1f), majorStep = 20f)
+            RoundGauge("Дроссель", v("throttle"), "%", 0f, 100f, skin, Modifier.weight(1f), majorStep = 20f)
+        }
+        Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+            RoundGauge("Впуск", v("iat"), "°C", -40f, 140f, skin, Modifier.weight(1f), majorStep = 30f, redFrom = 80f)
+            Box(Modifier.weight(1f))
         }
 
         val stft = v("stft")
@@ -505,7 +485,7 @@ fun SensorsScreen(state: AppState, bottom: @Composable () -> Unit) {
             }
         }
         if (!state.connected) {
-            Text("Подключи адаптер, и значения будут обновляться в реальном времени", style = Type.body(13, Palette.muted), textAlign = TextAlign.Center, modifier = Modifier.fillMaxWidth())
+            Text("Подключи адаптер, и стрелки оживут", style = Type.body(13, Palette.muted), textAlign = TextAlign.Center, modifier = Modifier.fillMaxWidth())
         }
     }
 }
