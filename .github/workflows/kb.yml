@@ -1,14 +1,15 @@
 name: Knowledge base
 # Наполняет docs/kb.json опытом владельцев с drive2/drom через Groq (см. tools/kb/build.py).
-# Раз в неделю по расписанию или вручную. Правки docs/ сборку APK не запускают.
+# Каждую ночь по 8 пар (ключ Groq общий с приложением: дневной лимит ~500 тыс. токенов, пара ≈ 25 тыс.) или вручную.
+# Правки docs/ сборку APK не запускают.
 on:
   schedule:
-    - cron: "0 3 * * 1"
+    - cron: "0 2 * * *"
   workflow_dispatch:
     inputs:
       limit:
         description: "Сколько пар машина×код обработать"
-        default: "60"
+        default: "8"
       car:
         description: "Только эта машина (пусто = все)"
         default: ""
@@ -26,7 +27,7 @@ jobs:
         with:
           python-version: "3.12"
       - run: |
-          python tools/kb/build.py --limit "${{ github.event.inputs.limit || '60' }}" ${{ github.event.inputs.car && format('--car "{0}"', github.event.inputs.car) || '' }}
+          python tools/kb/build.py --limit "${{ github.event.inputs.limit || '8' }}" ${{ github.event.inputs.car && format('--car "{0}"', github.event.inputs.car) || '' }}
         env:
           GROQ_API_KEY: ${{ secrets.AI_API_KEY }}
       - run: |

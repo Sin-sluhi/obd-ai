@@ -26,8 +26,10 @@ from targets import TARGETS  # noqa: E402
 ROOT = os.path.normpath(os.path.join(HERE, "..", ".."))
 KB_PATH = os.path.join(ROOT, "docs", "kb.json")
 API = "https://api.groq.com/openai/v1/chat/completions"
-# compound-mini делает один вызов поиска за запрос: в разы меньше токенов, влезает в минутный лимит бесплатного тарифа
-MODEL = os.environ.get("KB_MODEL") or "groq/compound-mini"
+# Только groq/compound: у compound-mini окно маленькое, результаты поиска не влезают (413).
+# Один запрос с поиском ≈ 25 тыс. токенов при лимите 30 тыс. в минуту и ~500 тыс. в день на бесплатном тарифе,
+# поэтому между парами пауза ~минута, а за запуск берём немного пар — ключ общий с приложением.
+MODEL = os.environ.get("KB_MODEL") or "groq/compound"
 FORUMS = ("drive2.ru", "drom.ru")
 
 SYSTEM = """Ты — опытный автодиагност. Тебе дают марку/модель машины и код ошибки OBD-II.
@@ -143,7 +145,7 @@ def main():
     ap.add_argument("--limit", type=int, default=60, help="сколько пар обработать за запуск")
     ap.add_argument("--max-age-days", type=int, default=90, help="обновлять записи старше N дней")
     ap.add_argument("--car", default=None, help="только эта машина")
-    ap.add_argument("--pause", type=float, default=20.0, help="пауза между парами, с (минутный лимит токенов)")
+    ap.add_argument("--pause", type=float, default=60.0, help="пауза между парами, с (минутный лимит токенов)")
     args = ap.parse_args()
 
     key = os.environ.get("GROQ_API_KEY") or os.environ.get("AI_API_KEY")
