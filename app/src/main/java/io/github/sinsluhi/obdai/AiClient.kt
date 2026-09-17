@@ -50,6 +50,7 @@ object AiClient {
 - sources: только реальные адреса записей, которые ты видел. Не придумывай ссылки.
 - Цены ремонта ориентировочно для России в рублях (запчасть плюс работа); если владельцы называли цены, опирайся на них. Не знаешь — 0.
 - Смотри на датчики: топливные коррекции, температура, напряжение подтверждают или опровергают причину. Упомяни это в summary.
+- Пометки у кодов: (активная) — неисправность есть прямо сейчас, это главное; (история) — блок запомнил сбой в прошлом, сейчас его нет: из-за одних только архивных кодов вердикт не поднимай выше ok/warning и напиши, что это архив и стоит ли за ним следить; (неподтверждённая) — блок заметил проблему один раз.
 - verdict_level: ok — ошибок нет или несущественны; warning — ехать можно, но нужно заняться; danger — ехать нельзя или очень рискованно.
 - next_steps — 2–5 конкретных шагов по порядку, дешёвое и частое раньше.
 - Если ошибок нет, оцени состояние по датчикам и дай 1–3 совета."""
@@ -100,11 +101,8 @@ object AiClient {
     /** Запасной путь для Groq: обычная модель, строгий JSON, без поиска. */
     private fun groqFallback(cfg: AiConfig, snap: CarSnapshot, log: (String) -> Unit): Diagnosis {
         val plain = cfg.copy(model = "openai/gpt-oss-120b")
-        val user = report(snap) + "
-Заметок с форумов нет: опирайся на общие знания, owner_experience и sources оставь пустыми."
-        val reply = OpenAiClient.chat(plain, ROLE + "
-
-" + SCHEMA_TEXT, user, json = true)
+        val user = report(snap) + "\nЗаметок с форумов нет: опирайся на общие знания, owner_experience и sources оставь пустыми."
+        val reply = OpenAiClient.chat(plain, ROLE + "\n\n" + SCHEMA_TEXT, user, json = true)
         val json = extractJson(reply.content) ?: throw IOException("Модель вернула не JSON")
         log("Разбор сделала запасная модель")
         return Diagnosis.fromJson(json, fromAi = true)

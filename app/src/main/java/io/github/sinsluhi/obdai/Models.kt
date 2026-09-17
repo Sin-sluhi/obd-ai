@@ -162,11 +162,19 @@ data class Diagnosis(
                     whatToDo = ""
                 )
             }
+            val active = all.count { it.contains("(активная)") }
+            val archiveOnly = all.all { it.contains("(история)") }
             return Diagnosis(
-                level = "warning",
-                title = if (all.size == 1) "Найдена 1 ошибка" else "Найдено ошибок: ${all.size}",
-                text = "Подробный разбор с объяснениями, опытом владельцев и ценой ремонта временно недоступен. Попробуй ещё раз чуть позже.",
-                canDrive = "careful",
+                level = if (archiveOnly) "ok" else "warning",
+                title = when {
+                    archiveOnly -> "Только архивные ошибки"
+                    active > 0 -> "Активных ошибок: $active"
+                    all.size == 1 -> "Найдена 1 ошибка"
+                    else -> "Найдено ошибок: ${all.size}"
+                },
+                text = (if (archiveOnly) "Блоки помнят прошлые сбои, сейчас они не активны. " else "") +
+                    "Подробный разбор с объяснениями, опытом владельцев и ценой ремонта временно недоступен. Попробуй ещё раз чуть позже.",
+                canDrive = if (archiveOnly) "yes" else "careful",
                 codes = cards,
                 summary = "",
                 nextSteps = emptyList(),
