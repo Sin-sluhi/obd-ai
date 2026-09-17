@@ -70,6 +70,8 @@ import io.github.sinsluhi.obdai.DtcLink
 import io.github.sinsluhi.obdai.KnownIssue
 import io.github.sinsluhi.obdai.KnownIssues
 import io.github.sinsluhi.obdai.HistoryEntry
+import io.github.sinsluhi.obdai.Kb
+import io.github.sinsluhi.obdai.KbEntry
 import io.github.sinsluhi.obdai.Provider
 import io.github.sinsluhi.obdai.VinDecoder
 import io.github.sinsluhi.obdai.R
@@ -335,7 +337,8 @@ fun ResultScreen(
         if (d.codes.isNotEmpty()) {
             SectionTitle("Что нашли", plural(d.codes.size, "ошибка", "ошибки", "ошибок"))
             val vin = state.vin ?: snap?.vin
-            val car = VinDecoder.decode(vin)
+            val decoded = VinDecoder.decode(vin)
+            val car = decoded.withCar(d.car)
             val bkey = DtcCatalog.brandKey(car.brand)
             val present = snap?.allCodes.orEmpty() + d.codes.map { it.code }
             d.codes.forEach { c ->
@@ -344,7 +347,8 @@ fun ResultScreen(
                     info = DtcCatalog.info(c.code, bkey) ?: DtcCatalog.genericInfo(c.code),
                     issue = KnownIssues.find(car, vin, c.code),
                     links = DtcCatalog.links(c.code, present, bkey),
-                    ftb = DtcCatalog.ftbText(c.code)
+                    ftb = DtcCatalog.ftbText(c.code),
+                    kb = if (c.ownerExperience.isBlank()) Kb.find(decoded, d.car, c.code) else null
                 )
             }
         }
@@ -454,7 +458,8 @@ private fun CodeCard(
     info: DtcInfo? = null,          // объяснение из встроенного справочника
     issue: KnownIssue? = null,      // известная болячка этой модели
     links: List<DtcLink> = emptyList(),   // связи с другими кодами этой проверки
-    ftb: String? = null             // тип отказа по UDS («P2400-20»)
+    ftb: String? = null,            // тип отказа по UDS («P2400-20»)
+    kb: KbEntry? = null             // опыт владельцев из базы, когда нейронка его не дала
 ) {
     val accent = LocalAccent.current
     val severity = issue?.severity ?: c.severity
@@ -553,7 +558,9 @@ private fun CodeCard(
                 }
             }
         }
-        if (c.ownerExperience.isNotBlank()) {
+        val experience = c.ownerExperience.ifBlank { kb?.summary.orEmpty() }
+        val sources = if (c.ownerExperience.isNotBlank()) c.sources else kb?.sources.orEmpty()
+        if (experience.isNotBlank()) {
             VSpace(10.dp)
             Column(
                 Modifier
@@ -561,13 +568,23 @@ private fun CodeCard(
                     .background(Palette.surface2, RoundedCornerShape(12.dp))
                     .padding(12.dp)
             ) {
-                Text("Опыт владельцев", style = Type.body(12, accent, FontWeight.SemiBold))
+                Row {
+                    Text("Опыт владельцев", style = Type.body(12, accent, FontWeight.SemiBold))
+                    if (c.ownerExperience.isBlank() && kb != null) {
+                        Spacer(Modifier.weight(1f))
+                        Text(if (kb.local) "прошлая проверка" else "база OBIDI, ${kb.car}", style = Type.body(11, Palette.muted))
+                    }
+                }
                 VSpace(4.dp)
-                Text(c.ownerExperience, style = Type.body(13, Palette.text2))
-                if (c.sources.isNotEmpty()) {
+                Text(experience, style = Type.body(13, Palette.text2))
+                if (c.ownerExperience.isBlank() && kb != null && kb.fixes.isNotEmpty()) {
+                    VSpace(4.dp)
+                    Text("Что помогло: ${kb.fixes.joinToString("; ")}", style = Type.body(13, Palette.text2))
+                }
+                if (sources.isNotEmpty()) {
                     VSpace(6.dp)
                     val uri = LocalUriHandler.current
-                    c.sources.take(4).forEach { url ->
+                    sources.take(4).forEach { url ->
                         Text(
                             shortUrl(url),
                             style = Type.body(12, Palette.muted).copy(textDecoration = androidx.compose.ui.text.style.TextDecoration.Underline),
@@ -584,7 +601,9 @@ private fun CodeCard(
         Row {
             Text("Ремонт", style = Type.label())
             Spacer(Modifier.weight(1f))
-            Text(formatPrice(c.priceFrom, c.priceTo), style = Type.strong(14))
+            val pf = if (c.priceFrom > 0) c.priceFrom else kb?.priceFrom ?: 0
+            val pt = if (c.priceFrom > 0) c.priceTo else kb?.priceTo ?: 0
+            Text(formatPrice(pf, pt), style = Type.strong(14))
         }
     }
 }

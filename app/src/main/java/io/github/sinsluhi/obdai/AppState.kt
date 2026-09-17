@@ -45,7 +45,11 @@ class AppState private constructor(context: Context) {
 
     init {
         // Справочник кодов и болячки моделей: ~1 МБ JSON, читаем в фоне один раз на процесс
-        worker.execute { DtcCatalog.load(appContext); KnownIssues.load(appContext) }
+        worker.execute {
+            DtcCatalog.load(appContext); KnownIssues.load(appContext)
+            Kb.init(appContext, prefs)
+            runCatching { if (Kb.refresh(appContext, prefs)) addLog("База опыта владельцев обновлена: ${Kb.size} записей") }
+        }
     }
 
     @Volatile private var link: ObdLink? = null
@@ -301,7 +305,8 @@ class AppState private constructor(context: Context) {
             val checks = SensorCheck.run(base, ready?.compression ?: false)
             checks.filter { it.level != "ok" }.forEach { addLog("Датчики: ${it.text}") }
             val snap = base.copy(repair = repair, trend = trend, flags = flags, checks = checks,
-                warmup = warmups.lastOrNull(), starts = StartAnalysis.build(starts), forecast = forecast)
+                warmup = warmups.lastOrNull(), starts = StartAnalysis.build(starts), forecast = forecast,
+                carHint = prev?.diagnosis?.car?.takeIf { it.isNotBlank() })
             knownCodes = snap.allCodes.map { it.substringBefore(' ') }.toSet()
             ui { lastSnapshot = snap; battery = batteryNow }
 
@@ -316,7 +321,10 @@ class AppState private constructor(context: Context) {
                         cfg, snap,
                         progress = { stage -> ui { busy = stage } },
                         log = { addLog(it) }
-                    ).also { addLog("ИИ: ${it.title}") }
+                    ).also {
+                        addLog("ИИ: ${it.title}")
+                        runCatching { Kb.remember(VinDecoder.decode(v), snap.carHint, it, prefs) }
+                    }
                 } catch (e: Exception) {
                     addLog("❌ Разбор не удался: ${e.message}")
                     ui { toast = "Подробный разбор временно недоступен" }

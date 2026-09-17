@@ -9,6 +9,14 @@ object VinDecoder {
         /** Короткое название: «Lada Granta 2013» или «Hyundai 2019». */
         fun title(): String = listOfNotNull(brand, model, year?.toString()).joinToString(" ")
 
+        /** Дополнить тем, как машину назвала нейронка («Hyundai Tucson 2019»): модель и год, если VIN их не дал. */
+        fun withCar(text: String?): Info {
+            val t = text?.trim().orEmpty()
+            if (t.isBlank()) return this
+            val y = year ?: Regex("\\b(19|20)\\d{2}\\b").find(t)?.value?.toIntOrNull()
+            return Info(brand ?: t.substringBefore(' '), model ?: t, y)
+        }
+
         /** Строка для отчёта нейронке. */
         fun describe(): String = buildString {
             brand?.let { append("марка $it") }

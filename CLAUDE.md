@@ -60,6 +60,17 @@ Android-приложение (Kotlin, Jetpack Compose) для диагности
   (`block("P0A00", …)`). Правило: только уверенные расшифровки; чужие заводские коды получают семейство `generic_*`.
   `Diagnosis.local` (без сети) строит полноценный вердикт по справочнику; `AiClient.report()` отдаёт нейронке раздел
   «Справочник по кодам» и болячки как факты, ROLE велит не пересказывать их, а дополнять опытом владельцев.
+- `Kb.kt` — база опыта владельцев «машина × код». Общая часть: `docs/kb.json` в репозитории, наполняет workflow
+  `.github/workflows/kb.yml` (раз в неделю и вручную `gh workflow run kb.yml -f limit=60`) скриптом `tools/kb/build.py`
+  по парам из `tools/kb/targets.py` через Groq compound с поиском по drive2/drom; в базу попадают только записи со
+  ссылками, которые реально были в результатах поиска (executed_tools). Приложение скачивает `raw.githubusercontent.com/
+  Sin-sluhi/obd-ai/main/docs/kb.json` раз в сутки (`Kb.refresh` в `AppState.init`, файл в filesDir, `Prefs.kbFetched`).
+  Своя часть: `Kb.remember` после каждого удачного разбора кладёт карточки с опытом и ссылками в `Prefs.kbLocal`
+  (ключ «текст машины|код»). `Kb.find(decoded, carHint, code)` — сначала своё, потом общее; сопоставление по подстрокам
+  марки/модели в тексте «марка модель из VIN + как назвала нейронка». Используется в карточке кода (когда нейронка не дала
+  опыт), в `Diagnosis.local` (опыт, ссылки, цены без сети) и в `report()` для нейронки («Опыт владельцев из базы»,
+  ROLE велит брать оттуда owner_experience/sources). `CarSnapshot.carHint` — строка `car` из прошлого разбора той же
+  машины: с ней `VinDecoder.Info.withCar()` даёт модель и год для болячек и базы, когда VIN их не раскрывает.
 - `AiConfig.kt` — провайдеры: groq (по умолчанию, `groq/compound` со встроенным поиском), yandex, openrouter,
   mistral, anthropic, custom.
 - `OpenAiClient.kt` — любой OpenAI-совместимый `/chat/completions`; для Groq compound `search_settings`

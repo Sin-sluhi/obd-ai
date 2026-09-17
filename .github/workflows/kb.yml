@@ -1,0 +1,37 @@
+name: Knowledge base
+# Наполняет docs/kb.json опытом владельцев с drive2/drom через Groq (см. tools/kb/build.py).
+# Раз в неделю по расписанию или вручную. Правки docs/ сборку APK не запускают.
+on:
+  schedule:
+    - cron: "0 3 * * 1"
+  workflow_dispatch:
+    inputs:
+      limit:
+        description: "Сколько пар машина×код обработать"
+        default: "60"
+      car:
+        description: "Только эта машина (пусто = все)"
+        default: ""
+permissions:
+  contents: write
+concurrency:
+  group: kb
+  cancel-in-progress: false
+jobs:
+  kb:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: |
+          python tools/kb/build.py --limit "${{ github.event.inputs.limit || '60' }}" ${{ github.event.inputs.car && format('--car "{0}"', github.event.inputs.car) || '' }}
+        env:
+          GROQ_API_KEY: ${{ secrets.AI_API_KEY }}
+      - run: |
+          git config user.name "obd-ai-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add docs/kb.json
+          git diff --cached --quiet || git commit -m "kb: обновление базы опыта владельцев"
+          git push

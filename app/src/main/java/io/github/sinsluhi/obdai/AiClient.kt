@@ -64,6 +64,7 @@ object AiClient {
 - Разделы «Согласованность датчиков», «Последний прогрев», «Запуски двигателя» — измерения приложения. Если они указывают на термостат, датчик или аккумулятор, включи это в вердикт и next_steps даже без кода ошибки.
 - for_service: коротко, что сказать мастеру, чтобы не менять лишнего.
 - typical_issues: 2–4 типичные болячки именно этой модели и поколения, которые владельцы описывают на форумах (что и на каком пробеге). Только то, что реально нашёл, с адресом записи; если ничего — пустой массив.
+- Если в отчёте есть раздел «Опыт владельцев из базы», это проверенные записи с настоящими адресами: используй их в owner_experience и sources как есть, а поиск трать на то, чего в базе нет, и на подтверждение.
 - Если в отчёте есть раздел «Справочник по кодам», расшифровка, частые причины и связи между кодами там уже верные — не пересказывай их. В explanation напиши, что код значит именно для этой машины с учётом датчиков и остальных кодов (1–2 фразы). В causes первыми поставь причины, которые подтвердили владельцы этой модели. Если справочник называет известную болячку модели, ищи на форумах именно её и подтверди или опровергни для этой машины."""
 
     private const val GROQ_SEARCH = """
@@ -324,6 +325,7 @@ object AiClient {
         appendLine("VIN: ${snap.vin ?: "не прочитан"}")
         val decoded = VinDecoder.decode(snap.vin)
         if (!decoded.isEmpty) appendLine("Расшифровка VIN (точные данные, не меняй их): ${decoded.describe()}")
+        snap.carHint?.takeIf { it.isNotBlank() }?.let { appendLine("В прошлую проверку машина была определена как: $it") }
         appendLine("Напряжение бортсети: ${snap.voltage.ifBlank { "неизвестно" }}")
         snap.milOn?.let { appendLine("Лампа Check Engine: ${if (it) "горит" else "не горит"}") }
         snap.dtcCount?.let { appendLine("Ошибок по данным ЭБУ: $it") }
@@ -355,8 +357,20 @@ object AiClient {
                 appendLine("Справочник по кодам (точная расшифровка из встроенной базы; не пересказывай, а дополняй опытом владельцев этой модели):")
                 lines.forEach { appendLine(it) }
             }
-            KnownIssues.forCodes(decoded, snap.vin, allCodes).forEach { i ->
+            KnownIssues.forCodes(decoded.withCar(snap.carHint), snap.vin, allCodes).forEach { i ->
                 appendLine("Известная болячка (${i.badge.lowercase()}, коды ${i.codes.joinToString()}): ${i.title}. ${i.note.take(500)}")
+            }
+            val kbLines = ArrayList<String>()
+            allCodes.forEach { raw ->
+                val k = Kb.find(decoded, snap.carHint, raw) ?: return@forEach
+                kbLines.add("- ${k.code} (${k.car}${if (k.local) ", прошлая проверка этой машины" else ""}, ${k.updated}): ${k.summary}" +
+                    (if (k.fixes.isNotEmpty()) " Что помогло: ${k.fixes.joinToString("; ")}." else "") +
+                    (if (k.priceFrom > 0) " Цена: ${k.priceFrom}–${k.priceTo} ₽." else "") +
+                    " Ссылки: ${k.sources.joinToString(" ")}")
+            }
+            if (kbLines.isNotEmpty()) {
+                appendLine("Опыт владельцев из базы (проверенные записи с drive2/drom, ссылки настоящие):")
+                kbLines.forEach { appendLine(it) }
             }
         }
         val known = snap.sensors.filter { it.value != null }

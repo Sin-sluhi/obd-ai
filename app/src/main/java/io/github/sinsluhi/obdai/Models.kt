@@ -30,7 +30,8 @@ data class CarSnapshot(
     val checks: List<Flag> = emptyList(),          // согласованность датчиков
     val warmup: WarmupResult? = null,              // последний прогрев
     val starts: StartAnalysis? = null,             // холодные пуски
-    val forecast: MorningForecast? = null          // заведётся ли утром
+    val forecast: MorningForecast? = null,         // заведётся ли утром
+    val carHint: String? = null                    // как машину назвала нейронка в прошлый раз («Hyundai Tucson 2019»)
 ) {
     /** Все коды из всех блоков. */
     val allCodes: List<String> get() = (stored + pending + permanent + modules.flatMap { it.codes }).distinct()
@@ -198,12 +199,14 @@ data class Diagnosis(
         /** Вердикт без нейронки: по кодам и встроенному справочнику (объяснения, цепочки, болячки модели). */
         fun local(snap: CarSnapshot): Diagnosis {
             val all = snap.allCodes
-            val car = VinDecoder.decode(snap.vin)
+            val decoded = VinDecoder.decode(snap.vin)
+            val car = decoded.withCar(snap.carHint)
+            val carName = snap.carHint?.takeIf { it.isNotBlank() } ?: decoded.title()
             val bkey = DtcCatalog.brandKey(car.brand)
             if (all.isEmpty()) {
                 val milNote = if (snap.milOn == true) " Лампа Check Engine при этом горит: возможно, ошибка в блоке, который адаптер не читает." else ""
                 return Diagnosis(
-                    car = car.title(),
+                    car = carName,
                     level = "ok",
                     title = "Ошибок не найдено",
                     text = "Блок двигателя не хранит кодов неисправностей.$milNote",
@@ -224,6 +227,7 @@ data class Diagnosis(
                 val module = snap.modules.firstOrNull { m -> m.codes.contains(raw) }?.name
                 val info = DtcCatalog.info(code, bkey) ?: DtcCatalog.genericInfo(code)
                 val issue = KnownIssues.find(car, snap.vin, code)
+                val kb = Kb.find(decoded, snap.carHint, code)
                 val active = status == "активная" || (status.isEmpty() && snap.stored.contains(raw))
                 val pending = status == "неподтверждённая" || (snap.pending.contains(raw) && !snap.stored.contains(raw))
                 val severity = issue?.severity ?: info?.severity ?: "medium"
@@ -244,11 +248,16 @@ data class Diagnosis(
                         DtcCatalog.ftbText(code)?.let { "$it." },
                         info?.meaning?.takeIf { it.isNotBlank() }
                     ).joinToString(" "),
-                    causes = info?.causes.orEmpty(),
+                    causes = if (kb != null && kb.causes.isNotEmpty()) kb.causes else info?.causes.orEmpty(),
                     severity = severity,
-                    priceFrom = 0,
-                    priceTo = 0,
-                    whatToDo = info?.whatToDo.orEmpty()
+                    priceFrom = kb?.priceFrom ?: 0,
+                    priceTo = kb?.priceTo ?: 0,
+                    whatToDo = info?.whatToDo.orEmpty(),
+                    ownerExperience = kb?.let { k ->
+                        listOf(k.summary, if (k.fixes.isNotEmpty()) "Что помогло: ${k.fixes.joinToString("; ")}." else "",
+                            if (k.wasted.isNotEmpty()) "Меняли зря: ${k.wasted.joinToString("; ")}." else "").filter { it.isNotBlank() }.joinToString(" ")
+                    }.orEmpty(),
+                    sources = kb?.sources.orEmpty()
                 )
             }
             val activeCount = all.count { it.contains("(активная)") }
@@ -288,8 +297,9 @@ data class Diagnosis(
                 else -> "yes"
             }
             val stopCodes = cards.filter { c -> all.any { it.startsWith(c.code) && it.contains("(активная)") } && (DtcCatalog.info(c.code, bkey)?.stop == true) }
+            val fromKb = cards.count { it.ownerExperience.isNotBlank() }
             return Diagnosis(
-                car = car.title(),
+                car = carName,
                 level = level,
                 title = when {
                     stopActive -> "Лучше не ехать"
@@ -301,7 +311,9 @@ data class Diagnosis(
                 text = buildString {
                     if (stopActive) append("Есть код, с которым ехать опасно: ${stopCodes.joinToString { it.code }}. ")
                     else if (archiveOnly) append("Блоки помнят прошлые сбои, сейчас они не активны. ")
-                    append("Объяснения ниже — из встроенного справочника. Опыт владельцев именно этой модели, ссылки и цены подтянутся при следующей проверке с интернетом.")
+                    append("Объяснения ниже — из встроенного справочника")
+                    append(if (fromKb > 0) ", опыт владельцев — из базы OBIDI и прошлых проверок. " else ". ")
+                    if (fromKb < cards.size) append("Остальной опыт владельцев именно этой модели, ссылки и цены подтянутся при следующей проверке с интернетом.")
                 },
                 canDrive = canDrive,
                 codes = cards,

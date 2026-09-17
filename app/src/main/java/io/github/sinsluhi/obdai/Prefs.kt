@@ -125,6 +125,16 @@ class Prefs(context: Context) {
         get() = sp.getString("forecast_day", "") ?: ""
         set(v) = sp.edit().putString("forecast_day", v).apply()
 
+    // ---- база опыта владельцев: свой кэш и время последней загрузки общей ----
+
+    var kbLocal: String?
+        get() = sp.getString("kb_local", null)
+        set(v) = sp.edit().putString("kb_local", v).apply()
+
+    var kbFetched: Long
+        get() = sp.getLong("kb_fetched", 0L)
+        set(v) = sp.edit().putLong("kb_fetched", v).apply()
+
     // ---- последнее стирание ошибок: чтобы проверить, помог ли ремонт ----
 
     var lastClear: ClearEvent?
