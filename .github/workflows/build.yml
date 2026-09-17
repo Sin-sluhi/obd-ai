@@ -1,9 +1,16 @@
 name: Build APK
 on:
   push:
+    paths-ignore:
+      - "**.md"
+      - "**.txt"
   workflow_dispatch:
 permissions:
   contents: write
+# Две сборки подряд не должны одновременно перезаписывать APK в релизе
+concurrency:
+  group: release-latest
+  cancel-in-progress: false
 jobs:
   build:
     runs-on: ubuntu-latest
