@@ -830,7 +830,7 @@ fun SettingsScreen(
 // ======================= Консоль =======================
 
 @Composable
-fun LogScreen(state: AppState, onBack: () -> Unit, onCopyReport: () -> Unit) {
+fun LogScreen(state: AppState, onBack: () -> Unit, onCopyReport: () -> Unit, onCopyLog: () -> Unit) {
     val accent = LocalAccent.current
     var cmd by remember { mutableStateOf("") }
     val listState = rememberLazyListState()
@@ -841,7 +841,12 @@ fun LogScreen(state: AppState, onBack: () -> Unit, onCopyReport: () -> Unit) {
         Column(Modifier.padding(horizontal = screenPadding).padding(top = 20.dp)) {
             Header("Консоль", onBack = onBack) {
                 Text(
-                    "Отчёт в буфер",
+                    "Лог",
+                    style = Type.body(13, accent, FontWeight.SemiBold),
+                    modifier = Modifier.clickable(onClick = onCopyLog).padding(8.dp)
+                )
+                Text(
+                    "Отчёт",
                     style = Type.body(13, accent, FontWeight.SemiBold),
                     modifier = Modifier.clickable(onClick = onCopyReport).padding(8.dp)
                 )

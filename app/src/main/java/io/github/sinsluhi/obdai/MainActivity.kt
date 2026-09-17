@@ -158,7 +158,7 @@ class MainActivity : ComponentActivity() {
                         onPickDevice = { pickDevice() },
                         onOpenLog = { page = Page.Log }
                     )
-                    Page.Log -> LogScreen(state, onBack = { page = Page.Settings }, onCopyReport = { copyReport() })
+                    Page.Log -> LogScreen(state, onBack = { page = Page.Settings }, onCopyReport = { copyReport() }, onCopyLog = { copyLog() })
                 }
                 }
 
@@ -248,6 +248,13 @@ class MainActivity : ComponentActivity() {
         } catch (e: Exception) {
             startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://yandex.ru/maps/?text=" + Uri.encode("автосервис"))))
         }
+    }
+
+    private fun copyLog() {
+        val clipboard = getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
+        clipboard.setPrimaryClip(ClipData.newPlainText("OBD лог", state.log.joinToString("
+")))
+        state.toast = "Лог скопирован, вставь его в чат"
     }
 
     private fun copyReport(): Boolean {
