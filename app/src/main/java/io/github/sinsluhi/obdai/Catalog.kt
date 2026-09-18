@@ -23,7 +23,8 @@ data class DtcInfo(
     val family: String,
     val familyTitle: String,
     val related: Map<String, String>, // код → почему связан
-    val brand: String?                // ключ марочной таблицы, если код из неё
+    val brand: String?,               // ключ марочной таблицы, если код из неё
+    val priceFrom: Int = 0            // ремонт «от», рублей (запчасть + работа, РФ 2026, нижняя граница)
 )
 
 /** Связь двух кодов из одной проверки. */
@@ -204,7 +205,8 @@ object DtcCatalog {
             family = famKey,
             familyTitle = fam.optString("t"),
             related = related,
-            brand = brand
+            brand = brand,
+            priceFrom = if (e.has("p")) e.optInt("p") else fam.optInt("p")
         )
     }
 
@@ -234,7 +236,7 @@ object DtcCatalog {
         }
         val fam = families?.optJSONObject(famKey) ?: return null
         return DtcInfo(c, title(c), "", fam.optString("s"), fam.optJSONArray("c").toStringList(), fam.optString("d"),
-            "", fam.optString("sev").ifBlank { "medium" }, false, famKey, fam.optString("t"), emptyMap(), null)
+            "", fam.optString("sev").ifBlank { "medium" }, false, famKey, fam.optString("t"), emptyMap(), null, 0)
     }
 
     /** Связи кода с другими кодами из той же проверки: явные (по коду) и через семейства. */
@@ -267,13 +269,15 @@ data class KnownIssue(
     val mileage: String,
     val codes: List<String>,
     val badge: String,        // «Болячка модели» / «Болячка марки»
-    val severity: String?     // переопределение серьёзности или null
+    val severity: String?,    // переопределение серьёзности или null
+    val price: Int = 0        // типичный ремонт «от», рублей
 )
 
 object KnownIssues {
     private class Issue(
         val brands: List<String>, val models: List<String>, val years: IntRange?, val vin: List<String>,
-        val codes: Set<String>, val title: String, val note: String, val mileage: String, val severity: String?
+        val codes: Set<String>, val title: String, val note: String, val mileage: String, val severity: String?,
+        val price: Int
     )
 
     @Volatile private var issues: List<Issue> = emptyList()
@@ -291,7 +295,7 @@ object KnownIssues {
                     o.optJSONArray("brands").toStringList(), o.optJSONArray("models").toStringList(), years,
                     o.optJSONArray("vin").toStringList(), o.optJSONArray("codes").toStringList().toSet(),
                     o.optString("title"), o.optString("note"), o.optString("mileage"),
-                    o.optString("severity").ifBlank { null }
+                    o.optString("severity").ifBlank { null }, o.optInt("price")
                 ))
             }
             issues = out
@@ -321,7 +325,7 @@ object KnownIssues {
         for (iss in issues) {
             if (c !in iss.codes) continue
             val badge = matches(iss, car, vin) ?: continue
-            val k = KnownIssue(iss.title, iss.note, iss.mileage, iss.codes.toList(), badge, iss.severity)
+            val k = KnownIssue(iss.title, iss.note, iss.mileage, iss.codes.toList(), badge, iss.severity, iss.price)
             if (badge == "Болячка модели") return k
             if (best == null) best = k
         }
@@ -335,7 +339,7 @@ object KnownIssues {
         for (iss in issues) {
             if (iss.codes.none { c -> c in present }) continue
             val badge = matches(iss, car, vin) ?: continue
-            out.add(KnownIssue(iss.title, iss.note, iss.mileage, iss.codes.filter { c -> c in present }, badge, iss.severity))
+            out.add(KnownIssue(iss.title, iss.note, iss.mileage, iss.codes.filter { c -> c in present }, badge, iss.severity, iss.price))
         }
         return out
     }

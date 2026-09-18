@@ -40,13 +40,19 @@ object VinDecoder {
         listOf("JA3", "JA4", "JMB", "MMC", "MMB", "JMY") to "Mitsubishi",
         listOf("1FA", "1FM", "1FT", "WF0", "X9F", "Z6F", "3FA", "MAJ") to "Ford",
         listOf("VF1", "VF2", "X7L", "VNV") to "Renault", listOf("UU1") to "Dacia / Renault",
-        listOf("LVV", "L6T") to "Chery", listOf("LZW", "LGX") to "Haval / Great Wall", listOf("LSG", "L6T") to "Geely",
-        listOf("LB3", "LDC") to "Changan", listOf("LFV") to "FAW", listOf("LJD", "LRW") to "Dongfeng", listOf("LMG", "LNB") to "GAC / BYD",
+        listOf("LVV", "LVT") to "Chery / Exeed / Omoda", listOf("LGW") to "Haval / Great Wall / Tank", listOf("L6T") to "Geely",
+        listOf("LS5", "LS4") to "Changan", listOf("LFP") to "FAW", listOf("LFV") to "Volkswagen (FAW-VW)", listOf("LSG") to "Chevrolet (SAIC-GM)",
+        listOf("LGJ", "LDC") to "Dongfeng", listOf("LMG") to "GAC", listOf("LGX") to "BYD", listOf("LLV") to "Lifan", listOf("LJ1") to "JAC / Москвич",
         listOf("YV1", "YV4", "LYV") to "Volvo", listOf("W0L", "W0V", "XUF", "XWF") to "Opel",
         listOf("VF3", "VR3") to "Peugeot", listOf("VF7", "VR7") to "Citroën", listOf("VR1", "VXK") to "DS / Opel",
         listOf("1G1", "KL1", "XUU", "X9L", "2G1", "3G1", "KL4", "KL8") to "Chevrolet",
         listOf("ZFA", "ZFF") to "Fiat", listOf("ZAR") to "Alfa Romeo", listOf("SAL", "SAJ") to "Land Rover / Jaguar",
-        listOf("TRU", "WVZ") to "Audi", listOf("KPT", "X7M") to "SsangYong", listOf("MA3", "MAL") to "Hyundai (Индия)"
+        listOf("TRU", "WVZ") to "Audi", listOf("KPT", "X7M") to "SsangYong", listOf("MAL") to "Hyundai (Индия)",
+        listOf("JS", "TSM", "MA3") to "Suzuki", listOf("JNK", "JNR", "JNZ") to "Infiniti", listOf("JH4") to "Acura",
+        listOf("1J4", "1J8", "1C4", "ZAC") to "Jeep", listOf("1C3", "2C3") to "Chrysler", listOf("1B3", "2B3", "1D7", "3D4") to "Dodge",
+        listOf("1G6", "1GY") to "Cadillac", listOf("KMT") to "Genesis", listOf("XWB", "KLA", "KLY") to "Daewoo / Ravon",
+        listOf("WME") to "Smart", listOf("SCC") to "Lotus", listOf("ZLA") to "Lancia", listOf("VSK") to "Nissan",
+        listOf("5YJ", "7SA", "LRW") to "Tesla", listOf("L6T") to "Geely / Zeekr"
     )
 
     /** Модели АвтоВАЗа по символам 4–7. */

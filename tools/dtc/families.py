@@ -16,7 +16,7 @@ F = {}
 def fam(key, title, story, causes, do, severity="medium", confirm="", stop=False, links=None):
     assert key not in F, key
     F[key] = dict(title=title, story=story.strip(), causes=causes, do=do.strip(), severity=severity,
-                  confirm=confirm.strip(), stop=stop, links=links or {})
+                  confirm=confirm.strip(), stop=stop, links=links or {}, price=0)
 
 
 # ---------------------------------------------------------------- впуск и воздух
@@ -1130,3 +1130,39 @@ fam("generic_u", "Код сети (обмен между блоками)",
     "Проверить питание. Прочитать коды в других блоках.",
     severity="medium",
     links={"can": "шина", "lost_comm": "потеря связи"})
+
+
+# Цена ремонта «от», рублей: запчасть + работа для массовой машины по ценам РФ на сентябрь 2026
+# (нормочас в регионах 1500–2500 ₽, в Москве 2500–4000 ₽; ориентиры: катушка с работой от 2500, лямбда с работой от 5000,
+# пламегаситель с работой от 6000, новый катализатор от 70 000, цепь ГРМ TSI от 28 000, мехатроник DSG от 35 000).
+# Это нижняя граница: реальный счёт почти всегда выше, поэтому в интерфейсе только «от».
+PRICE = {
+    "maf": 4000, "map": 2500, "iat": 1500, "ect": 1500, "thermostat": 4000, "tps": 3000, "app": 6000, "etc": 2500,
+    "tps_corr": 2500, "idle": 1500, "iac": 2000, "sensor_ref": 2000,
+    "lambda1": 5000, "lambda2": 5000, "lambda_heater": 5000, "afr": 8000, "lean": 2000, "rich": 2000,
+    "fuel_low": 3000, "fuel_high": 4000, "fuel_rail": 5000, "fuel_pump": 5000, "fuel_temp": 2500,
+    "injector": 4000, "injector_balance": 6000, "misfire": 2500, "misfire_random": 2500, "coil": 2500, "knock": 2500,
+    "ckp": 2500, "cmp": 2500, "ckp_cmp": 15000, "vvt_sol": 3500, "vvt_perf": 3500, "ignition_module": 4000,
+    "egr": 4000, "egr_pos": 4000, "sai": 3000, "catalyst": 6000, "exhaust_leak": 2500,
+    "evap": 1500, "evap_purge": 2500, "evap_leak": 1500, "evap_vent": 3000, "evap_pressure": 3500, "evap_pump": 8000,
+    "fuel_level": 4000, "exhaust_pressure": 4000, "fan": 3000, "vss": 2500, "oil_pressure": 2000, "oil_temp": 2500,
+    "ac_pressure": 4000, "egt": 5000, "ps_pressure": 3000, "system_voltage": 1500, "alternator": 5000, "battery": 6000,
+    "cruise": 2000, "brake_switch": 1500, "clutch_switch": 1500, "glow": 4000, "intake_heater": 3000, "starter": 5000,
+    "ac_clutch": 4000, "ecu": 8000, "ecu_config": 5000, "immo": 4000, "mil": 1000, "can": 3000, "lost_comm": 2500,
+    "invalid_data": 2500, "turbo_under": 5000, "turbo_over": 5000, "boost_ctrl": 5000, "boost_sensor": 4000, "cac": 5000,
+    "imrc": 8000, "dpf": 8000, "dpf_pressure": 4000, "scr": 10000, "nox": 25000, "egr_cooler": 15000,
+    "crankcase_vent": 3000, "oil_level": 3000, "oil_consumption": 0, "cooling_leak": 25000, "overtemp": 5000,
+    "trans_overtemp": 6000, "overspeed": 0, "tcm": 3000, "trans_range": 4000, "trans_temp": 6000, "trans_iss": 6000,
+    "trans_oss": 6000, "trans_engine_speed": 2000, "trans_ratio": 15000, "tcc": 15000, "trans_sol": 12000,
+    "trans_pressure": 8000, "trans_slip": 30000, "pnp": 3000, "trans_general": 4000, "awd": 8000,
+    "hv_battery": 40000, "hv_inverter": 30000, "hv_isolation": 10000, "hv_cooling": 8000, "hv_motor": 30000,
+    "hv_contactor": 10000, "hv_charge": 10000, "hybrid_engine": 3000,
+    "wss": 3000, "brake_pressure": 8000, "steering_angle": 2000, "yaw": 3000, "abs_module": 8000, "srs_loop": 2500,
+    "srs_occupant": 5000, "srs_module": 8000, "crash_sensor": 4000, "body_generic": 1500, "tpms": 3000, "eps": 8000,
+    "climate": 3000, "park_assist": 2500, "cluster": 3000, "generic_p1": 0, "generic_c": 0, "generic_b": 0, "generic_u": 0,
+}
+for _k, _p in PRICE.items():
+    assert _k in F, _k
+    F[_k]["price"] = _p
+for _k in F:
+    assert _k in PRICE, "нет цены для семейства " + _k

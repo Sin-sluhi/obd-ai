@@ -54,7 +54,7 @@ def main():
     families = {}
     for k, f in F.items():
         families[k] = {"t": f["title"], "s": f["story"], "c": f["causes"], "d": f["do"], "sev": f["severity"],
-                       "cf": f["confirm"], "stop": f["stop"], "l": f["links"]}
+                       "cf": f["confirm"], "stop": f["stop"], "l": f["links"], "p": f["price"]}
     data = {"version": 1, "families": families, "codes": CODES, "brands": BRANDS}
     os.makedirs(ASSETS, exist_ok=True)
     out = os.path.join(ASSETS, "dtc_ru.json")

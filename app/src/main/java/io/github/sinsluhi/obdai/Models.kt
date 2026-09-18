@@ -155,9 +155,9 @@ data class Diagnosis(
             appendLine("Что делать:")
             nextSteps.forEachIndexed { i, s -> appendLine("${i + 1}. $s") }
         }
-        if (totalTo > 0) {
+        if (totalFrom > 0) {
             appendLine()
-            appendLine("Итого ремонт: ${formatPrice(totalFrom, totalTo)}")
+            appendLine("Итого ремонт: ${formatPrice(totalFrom)} (нижняя граница)")
         }
         if (forService.isNotBlank()) {
             appendLine()
@@ -250,8 +250,8 @@ data class Diagnosis(
                     ).joinToString(" "),
                     causes = if (kb != null && kb.causes.isNotEmpty()) kb.causes else info?.causes.orEmpty(),
                     severity = severity,
-                    priceFrom = kb?.priceFrom ?: 0,
-                    priceTo = kb?.priceTo ?: 0,
+                    priceFrom = kb?.priceFrom?.takeIf { it > 0 } ?: issue?.price?.takeIf { it > 0 } ?: info?.priceFrom ?: 0,
+                    priceTo = 0,
                     whatToDo = info?.whatToDo.orEmpty(),
                     ownerExperience = kb?.let { k ->
                         listOf(k.summary, if (k.fixes.isNotEmpty()) "Что помогло: ${k.fixes.joinToString("; ")}." else "",
@@ -355,13 +355,10 @@ fun JSONArray?.toStringList(): List<String> {
     return out
 }
 
-fun formatPrice(from: Int, to: Int): String {
+/** Цены только «от»: рынок ремонта серый, диапазон обманывает — показываем нижнюю границу и никогда верхнюю. */
+fun formatPrice(from: Int, to: Int = 0): String {
     fun f(v: Int) = "%,d".format(v).replace(',', ' ')
-    return when {
-        from <= 0 && to <= 0 -> "уточняется"
-        to > from -> "${f(from)}–${f(to)} ₽"
-        else -> "от ${f(from)} ₽"
-    }
+    return if (from <= 0) "уточняется" else "от ${f(from)} ₽"
 }
 
 /** Завершённая поездка. */

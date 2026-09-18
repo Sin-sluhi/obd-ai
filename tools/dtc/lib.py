@@ -10,7 +10,7 @@ from families import F
 CODES = {}
 
 
-def code(c, t, f, m="", e="", causes=None, s=None, d=None, r=None, stop=None):
+def code(c, t, f, m="", e="", causes=None, s=None, d=None, r=None, stop=None, p=None):
     """c код, t короткое название, f семейство, m что именно увидел блок (одна фраза),
     e добавка к рассказу семейства, causes/s/d — переопределение семейства, r — связи с конкретными кодами."""
     assert f in F, (c, f)
@@ -23,6 +23,7 @@ def code(c, t, f, m="", e="", causes=None, s=None, d=None, r=None, stop=None):
     if d: entry["d"] = d
     if r: entry["r"] = r
     if stop is not None: entry["stop"] = stop
+    if p: entry["p"] = p
     CODES[c] = entry
     return entry
 

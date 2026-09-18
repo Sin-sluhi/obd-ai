@@ -53,6 +53,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.asImageBitmap
+import io.github.sinsluhi.obdai.CarImage
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -134,7 +136,7 @@ fun HomeScreen(
     val accent = LocalAccent.current
     Screen(bottom = bottom) {
         Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
-            LogoBadge()
+            CarPhotoOrLogo(state.diagnosis?.car.orEmpty().ifBlank { VinDecoder.decode(state.vin).title() })
             HSpace(10.dp)
             Text("OBD AI", style = Type.display(20))
             Spacer(Modifier.weight(1f))
@@ -341,15 +343,32 @@ fun ResultScreen(
             val car = decoded.withCar(d.car)
             val bkey = DtcCatalog.brandKey(car.brand)
             val present = snap?.allCodes.orEmpty() + d.codes.map { it.code }
+            var total = 0
             d.codes.forEach { c ->
+                val info = DtcCatalog.info(c.code, bkey) ?: DtcCatalog.genericInfo(c.code)
+                val issue = KnownIssues.find(car, vin, c.code)
+                val kb = Kb.find(decoded, d.car, c.code)
+                total += effectivePrice(c, info, issue, kb)
                 CodeCard(
                     c, statusLines(snap, c.code),
-                    info = DtcCatalog.info(c.code, bkey) ?: DtcCatalog.genericInfo(c.code),
-                    issue = KnownIssues.find(car, vin, c.code),
+                    info = info,
+                    issue = issue,
                     links = DtcCatalog.links(c.code, present, bkey),
                     ftb = DtcCatalog.ftbText(c.code),
-                    kb = if (c.ownerExperience.isBlank()) Kb.find(decoded, d.car, c.code) else null
+                    kb = if (c.ownerExperience.isBlank()) kb else null
                 )
+            }
+            if (total > 0) {
+                Card(radius = 18.dp, padding = 16.dp) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Column(Modifier.weight(1f)) {
+                            Text("Итого ремонт", style = Type.strong(15))
+                            Text("нижняя граница по ценам 2026 года; реальный счёт зависит от сервиса и региона", style = Type.body(12, Palette.muted))
+                        }
+                        HSpace(12.dp)
+                        Text(formatPrice(total), style = Type.strong(18, accent))
+                    }
+                }
             }
         }
 
@@ -379,16 +398,6 @@ fun ResultScreen(
                         Text(step, style = Type.body(14, Palette.text2), modifier = Modifier.weight(1f))
                     }
                 }
-                if (d.totalTo > 0) {
-                    VSpace(10.dp)
-                    Box(Modifier.fillMaxWidth().height(1.dp).background(Palette.border))
-                    VSpace(10.dp)
-                    Row {
-                        Text("Итого ремонт", style = Type.label())
-                        Spacer(Modifier.weight(1f))
-                        Text(formatPrice(d.totalFrom, d.totalTo), style = Type.strong(15))
-                    }
-                }
             }
         }
 
@@ -407,6 +416,42 @@ fun ResultScreen(
         }
         VSpace(8.dp)
     }
+}
+
+/** Фото машины (Википедия) вместо логотипа, когда машина определена и картинка нашлась. */
+@Composable
+fun CarPhotoOrLogo(car: String) {
+    val context = androidx.compose.ui.platform.LocalContext.current
+    var bitmap by remember(car) { mutableStateOf<android.graphics.Bitmap?>(null) }
+    LaunchedEffect(car) {
+        if (car.isBlank()) return@LaunchedEffect
+        val f = kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.IO) { runCatching { CarImage.fetch(context, car) }.getOrNull() }
+        if (f != null) bitmap = kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.IO) { android.graphics.BitmapFactory.decodeFile(f.path) }
+    }
+    val b = bitmap
+    if (b == null) {
+        LogoBadge()
+    } else {
+        val accent = LocalAccent.current
+        val shape = RoundedCornerShape(12.dp)
+        androidx.compose.foundation.Image(
+            bitmap = b.asImageBitmap(), contentDescription = car,
+            contentScale = androidx.compose.ui.layout.ContentScale.Crop,
+            modifier = Modifier
+                .size(width = 64.dp, height = 40.dp)
+                .shadow(10.dp, shape, ambientColor = accent, spotColor = accent)
+                .clip(shape)
+                .border(1.dp, accent.copy(alpha = 0.5f), shape)
+        )
+    }
+}
+
+/** Цена карточки «от»: нейронка → база опыта → болячка модели → справочник. */
+private fun effectivePrice(c: DtcCard, info: DtcInfo?, issue: KnownIssue?, kb: KbEntry?): Int = when {
+    c.priceFrom > 0 -> c.priceFrom
+    kb != null && kb.priceFrom > 0 -> kb.priceFrom
+    issue != null && issue.price > 0 -> issue.price
+    else -> info?.priceFrom ?: 0
 }
 
 /** Полный статус кода по UDS из того блока, где он найден. */
@@ -541,12 +586,20 @@ private fun CodeCard(
             Text(todo, style = Type.body(13, Palette.text2))
         }
         if (info != null && info.story.isNotBlank()) {
-            VSpace(8.dp)
-            Text(
-                if (more) "Скрыть подробности" else "Как это устроено и к чему ведёт",
-                style = Type.body(13, accent, FontWeight.SemiBold),
-                modifier = Modifier.clickable { more = !more }.padding(vertical = 2.dp)
-            )
+            VSpace(10.dp)
+            Row(
+                Modifier
+                    .clip(RoundedCornerShape(12.dp))
+                    .background(accent.copy(alpha = 0.12f), RoundedCornerShape(12.dp))
+                    .border(1.dp, accent.copy(alpha = 0.35f), RoundedCornerShape(12.dp))
+                    .clickable { more = !more }
+                    .padding(horizontal = 12.dp, vertical = 8.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(if (more) "Скрыть подробности" else "Как это устроено и к чему ведёт", style = Type.body(13, accent, FontWeight.SemiBold))
+                HSpace(6.dp)
+                Text(if (more) "▲" else "▼", style = Type.body(10, accent))
+            }
             if (more) {
                 VSpace(4.dp)
                 if (info.familyTitle.isNotBlank()) Text(info.familyTitle, style = Type.body(12, Palette.muted))
@@ -601,9 +654,7 @@ private fun CodeCard(
         Row {
             Text("Ремонт", style = Type.label())
             Spacer(Modifier.weight(1f))
-            val pf = if (c.priceFrom > 0) c.priceFrom else kb?.priceFrom ?: 0
-            val pt = if (c.priceFrom > 0) c.priceTo else kb?.priceTo ?: 0
-            Text(formatPrice(pf, pt), style = Type.strong(14))
+            Text(formatPrice(effectivePrice(c, info, issue, kb)), style = Type.strong(14))
         }
     }
 }
