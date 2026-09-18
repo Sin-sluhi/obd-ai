@@ -149,7 +149,7 @@ object Type {
 
 // ---------- общие элементы ----------
 
-private fun lighten(c: Color, amount: Float) = Color(
+fun lighten(c: Color, amount: Float) = Color(
     red = c.red + (1f - c.red) * amount,
     green = c.green + (1f - c.green) * amount,
     blue = c.blue + (1f - c.blue) * amount,
