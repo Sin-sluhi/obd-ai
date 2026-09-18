@@ -1,0 +1,8 @@
+name = "obdai-forum"
+main = "worker.js"
+compatibility_date = "2025-01-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "obdai-forum"
+database_id = "ВСТАВЬ_ID_ПОСЛЕ_wrangler_d1_create"

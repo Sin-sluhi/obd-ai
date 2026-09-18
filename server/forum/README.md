@@ -2,7 +2,23 @@
 
 Один файл на стандартной библиотеке Python, база SQLite. Никаких зависимостей.
 
-## Запуск на VPS
+## Самый короткий путь: автодеплой из GitHub
+
+1. Любой VPS с Ubuntu/Debian (Timeweb, Beget, Selectel, Aeza — от ~150 ₽/мес) и домен с A-записью на него
+   (подойдёт поддомен вроде `forum.мойдомен.ru`).
+2. В репозитории GitHub → Settings → Secrets and variables → Actions:
+   - секреты `FORUM_SSH_HOST` (IP сервера), `FORUM_SSH_USER` (пользователь с sudo, например `root`), `FORUM_SSH_KEY` (приватный SSH-ключ);
+   - переменные `FORUM_DOMAIN` (`forum.мойдомен.ru`) и `FORUM_URL` (`https://forum.мойдомен.ru`).
+3. Actions → «Deploy forum» → Run workflow. Он поставит сервер, nginx, HTTPS и сам пересоберёт APK с адресом форума.
+
+Дальше каждая правка `server/forum/` разворачивается автоматически.
+
+## Запасной вариант без VPS: Cloudflare Workers (бесплатно, нужен аккаунт)
+
+Папка `worker/`: тот же API на Workers + D1. Лимит бесплатного плана 100 000 запросов в день — на первые десятки
+пользователей хватит. Команды в шапке `worker/worker.js`; адрес воркера — в переменную `FORUM_URL`.
+
+## Запуск на VPS вручную
 
 ```bash
 sudo mkdir -p /opt/obdai /var/lib/obdai

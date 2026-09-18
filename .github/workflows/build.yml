@@ -6,6 +6,8 @@ on:
       - "**.txt"
       - "docs/**"
       - "tools/**"
+      - "server/**"
+      - ".github/workflows/deploy-forum.yml"
       - ".github/workflows/kb.yml"
   workflow_dispatch:
 permissions:

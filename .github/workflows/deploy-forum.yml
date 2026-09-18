@@ -1,0 +1,39 @@
+name: Deploy forum
+# Ставит/обновляет сервер форума на VPS по SSH и пересобирает APK с адресом форума.
+# Нужны секреты: FORUM_SSH_HOST (IP или хост), FORUM_SSH_USER (пользователь с sudo), FORUM_SSH_KEY (приватный ключ),
+# переменная FORUM_DOMAIN (домен с A-записью на сервер) и переменная FORUM_URL = https://<домен> для сборки APK.
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "server/forum/**"
+permissions:
+  contents: read
+  actions: write
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    if: ${{ vars.FORUM_DOMAIN != '' }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: SSH-ключ
+        run: |
+          mkdir -p ~/.ssh
+          printf '%s\n' "${{ secrets.FORUM_SSH_KEY }}" > ~/.ssh/id_forum
+          chmod 600 ~/.ssh/id_forum
+          ssh-keyscan -H "${{ secrets.FORUM_SSH_HOST }}" >> ~/.ssh/known_hosts 2>/dev/null
+      - name: Копирование и установка
+        run: |
+          H="${{ secrets.FORUM_SSH_USER }}@${{ secrets.FORUM_SSH_HOST }}"
+          ssh -i ~/.ssh/id_forum "$H" "mkdir -p ~/obdai-forum"
+          scp -i ~/.ssh/id_forum server/forum/server.py server/forum/deploy.sh "$H:~/obdai-forum/"
+          ssh -i ~/.ssh/id_forum "$H" "sudo bash ~/obdai-forum/deploy.sh '${{ vars.FORUM_DOMAIN }}'"
+      - name: Проверка снаружи
+        run: |
+          sleep 3
+          curl -fsS "https://${{ vars.FORUM_DOMAIN }}/api/health"
+      - name: Пересборка APK с адресом форума
+        if: ${{ vars.FORUM_URL != '' }}
+        run: gh workflow run build.yml
+        env:
+          GH_TOKEN: ${{ github.token }}
