@@ -45,6 +45,7 @@ import io.github.sinsluhi.obdai.ui.ConfirmDialog
 import io.github.sinsluhi.obdai.ui.DashScreen
 import io.github.sinsluhi.obdai.ui.DetailsScreen
 import io.github.sinsluhi.obdai.ui.DevicePickerDialog
+import io.github.sinsluhi.obdai.ui.ForumScreen
 import io.github.sinsluhi.obdai.ui.HistoryScreen
 import io.github.sinsluhi.obdai.ui.HomeScreen
 import io.github.sinsluhi.obdai.ui.LocalAccent
@@ -57,7 +58,7 @@ import io.github.sinsluhi.obdai.ui.SettingsScreen
 import io.github.sinsluhi.obdai.ui.Tab
 import io.github.sinsluhi.obdai.ui.reportText
 
-enum class Page { Home, Result, Sensors, History, Settings, Log, Details, Dash }
+enum class Page { Home, Result, Sensors, History, Settings, Log, Details, Dash, Forum }
 
 class MainActivity : ComponentActivity() {
 
@@ -147,6 +148,7 @@ class MainActivity : ComponentActivity() {
         val tabBar: @Composable () -> Unit = {
             val current = when (page) {
                 Page.Sensors -> Tab.Sensors
+                Page.Forum -> Tab.Forum
                 Page.History -> Tab.History
                 else -> Tab.Check
             }
@@ -155,6 +157,7 @@ class MainActivity : ComponentActivity() {
                     Tab.Check -> Page.Home
                     Tab.Sensors -> Page.Sensors
                     Tab.History -> Page.History
+                    Tab.Forum -> Page.Forum
                 }
             }
         }
@@ -198,6 +201,7 @@ class MainActivity : ComponentActivity() {
                         onGallery = { afterPhoto = { page = Page.Dash }; galleryLauncher.launch("image/*") }
                     )
                     Page.Sensors -> SensorsScreen(state, onStartTrip = { startTrip() }, onStopTrip = { stopTrip() }, bottom = tabBar)
+                    Page.Forum -> ForumScreen(state, bottom = tabBar)
                     Page.History -> HistoryScreen(
                         state,
                         onOpen = { e ->

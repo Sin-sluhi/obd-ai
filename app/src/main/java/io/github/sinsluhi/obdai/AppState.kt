@@ -39,6 +39,12 @@ class AppState private constructor(context: Context) {
         private const val NOTIF_WARMUP = 53
     }
 
+    /** Адрес сервера форума: из настроек разработчика, иначе из сборки. Пусто — чат выключен. */
+    val forumUrl: String get() = prefs.forumUrl.ifBlank { BuildConfig.FORUM_URL }
+
+    /** Фоновая работа для экранов (отправка сообщений форума и т. п.). */
+    fun runBackground(block: () -> Unit) { worker.execute(block) }
+
     private val worker = Executors.newSingleThreadExecutor()
     private val poller = Executors.newSingleThreadExecutor()
     private val main = Handler(Looper.getMainLooper())
@@ -48,6 +54,7 @@ class AppState private constructor(context: Context) {
         worker.execute {
             DtcCatalog.load(appContext); KnownIssues.load(appContext)
             Kb.init(appContext, prefs)
+            ForumTree.load(appContext)
             runCatching { if (Kb.refresh(appContext, prefs)) addLog("База опыта владельцев обновлена: ${Kb.size} записей") }
         }
     }

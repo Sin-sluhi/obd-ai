@@ -368,31 +368,27 @@ fun WarningIcon(color: Color, modifier: Modifier = Modifier) {
     }
 }
 
-enum class Tab { Check, Sensors, History }
+enum class Tab { Check, Sensors, History, Forum }
 
-/** Нижняя панель: приподнятая «стеклянная» плашка. */
+/** Нижняя панель: отдельная скруглённая «капсула» над краем экрана, как в Telegram; активная вкладка в подсвеченной таблетке. */
 @Composable
 fun BottomBar(current: Tab, onSelect: (Tab) -> Unit) {
-    Column(
-        Modifier
-            .fillMaxWidth()
-            .shadow(18.dp, RoundedCornerShape(topStart = 24.dp, topEnd = 24.dp), ambientColor = Color.Black, spotColor = Color.Black)
-            .background(
-                Brush.verticalGradient(listOf(Palette.surfaceTop, Palette.surface)),
-                RoundedCornerShape(topStart = 24.dp, topEnd = 24.dp)
-            )
-    ) {
-        Box(Modifier.fillMaxWidth().height(1.dp).padding(horizontal = 24.dp).background(Palette.edge))
+    val shape = RoundedCornerShape(28.dp)
+    Box(Modifier.fillMaxWidth().navigationBarsPadding().padding(start = 14.dp, end = 14.dp, top = 6.dp, bottom = 10.dp)) {
         Row(
             Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 12.dp, vertical = 8.dp)
-                .navigationBarsPadding(),
-            horizontalArrangement = Arrangement.SpaceEvenly
+                .shadow(22.dp, shape, ambientColor = Color.Black, spotColor = Color.Black)
+                .background(Brush.verticalGradient(listOf(Palette.surfaceTop, Palette.surface)), shape)
+                .border(1.dp, Palette.edge, shape)
+                .padding(horizontal = 6.dp, vertical = 6.dp),
+            horizontalArrangement = Arrangement.SpaceEvenly,
+            verticalAlignment = Alignment.CenterVertically
         ) {
             TabItem("Проверка", current == Tab.Check, { onSelect(Tab.Check) }) { c -> SearchIcon(c) }
             TabItem("Датчики", current == Tab.Sensors, { onSelect(Tab.Sensors) }) { c -> GaugeIcon(c) }
             TabItem("История", current == Tab.History, { onSelect(Tab.History) }) { c -> ClockIcon(c) }
+            TabItem("Форум", current == Tab.Forum, { onSelect(Tab.Forum) }) { c -> ForumIcon(c) }
         }
     }
 }
@@ -406,18 +402,45 @@ private fun RowScope.TabItem(
 ) {
     val accent = LocalAccent.current
     val color = if (selected) accent else Palette.muted
+    val shape = RoundedCornerShape(20.dp)
     Column(
         Modifier
             .weight(1f)
-            .clip(RoundedCornerShape(14.dp))
-            .background(if (selected) accent.copy(alpha = 0.10f) else Color.Transparent, RoundedCornerShape(14.dp))
+            .clip(shape)
+            .background(if (selected) accent.copy(alpha = 0.14f) else Color.Transparent, shape)
+            .border(1.dp, if (selected) accent.copy(alpha = 0.35f) else Color.Transparent, shape)
             .clickable(onClick = onClick)
             .padding(vertical = 8.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(4.dp)
     ) {
-        icon(color)
-        Text(label, style = Type.body(12, color, FontWeight.SemiBold), textAlign = TextAlign.Center)
+        Box(
+            Modifier
+                .size(30.dp)
+                .then(if (selected) Modifier.shadow(14.dp, CircleShape, ambientColor = accent, spotColor = accent).background(accent.copy(alpha = 0.18f), CircleShape) else Modifier),
+            contentAlignment = Alignment.Center
+        ) { icon(color) }
+        Text(label, style = Type.body(11, color, if (selected) FontWeight.Bold else FontWeight.SemiBold), textAlign = TextAlign.Center)
+    }
+}
+
+/** Значок форума: два облачка сообщений. */
+@Composable
+fun ForumIcon(color: Color, modifier: Modifier = Modifier) {
+    Canvas(modifier.size(22.dp)) {
+        val w = size.width
+        val sw = w * 0.09f
+        val back = Path().apply {
+            addRoundRect(androidx.compose.ui.geometry.RoundRect(w * 0.08f, w * 0.12f, w * 0.68f, w * 0.58f, androidx.compose.ui.geometry.CornerRadius(w * 0.14f)))
+        }
+        drawPath(back, color, style = Stroke(sw, join = StrokeJoin.Round))
+        val front = Path().apply {
+            addRoundRect(androidx.compose.ui.geometry.RoundRect(w * 0.32f, w * 0.40f, w * 0.92f, w * 0.86f, androidx.compose.ui.geometry.CornerRadius(w * 0.14f)))
+        }
+        drawPath(front, Palette.surface, style = androidx.compose.ui.graphics.drawscope.Fill)
+        drawPath(front, color, style = Stroke(sw, join = StrokeJoin.Round))
+        drawLine(color, Offset(w * 0.46f, w * 0.58f), Offset(w * 0.78f, w * 0.58f), sw, StrokeCap.Round)
+        drawLine(color, Offset(w * 0.46f, w * 0.70f), Offset(w * 0.68f, w * 0.70f), sw, StrokeCap.Round)
     }
 }
 

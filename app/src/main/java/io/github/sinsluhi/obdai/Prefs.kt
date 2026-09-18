@@ -135,6 +135,24 @@ class Prefs(context: Context) {
         get() = sp.getLong("kb_fetched", 0L)
         set(v) = sp.edit().putLong("kb_fetched", v).apply()
 
+    // ---- форум: ник, идентификатор устройства, последняя ветка, адрес сервера (переопределение для разработчика) ----
+
+    var forumName: String
+        get() = sp.getString("forum_name", "") ?: ""
+        set(v) = sp.edit().putString("forum_name", v.trim()).apply()
+
+    var forumDevice: String
+        get() = sp.getString("forum_device", "") ?: ""
+        set(v) = sp.edit().putString("forum_device", v).apply()
+
+    var forumRoom: String?
+        get() = sp.getString("forum_room", null)
+        set(v) = sp.edit().putString("forum_room", v).apply()
+
+    var forumUrl: String
+        get() = sp.getString("forum_url", "") ?: ""
+        set(v) = sp.edit().putString("forum_url", v.trim()).apply()
+
     // ---- последнее стирание ошибок: чтобы проверить, помог ли ремонт ----
 
     var lastClear: ClearEvent?

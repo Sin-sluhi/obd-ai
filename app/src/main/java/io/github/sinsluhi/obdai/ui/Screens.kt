@@ -958,6 +958,20 @@ fun SettingsScreen(
 
         if (state.devMode) {
             SectionTitle("Режим разработчика")
+            var forumDraft by remember { mutableStateOf(state.prefs.forumUrl) }
+            Card {
+                Text("Сервер форума", style = Type.label())
+                VSpace(6.dp)
+                SettingField(
+                    value = forumDraft,
+                    onChange = { forumDraft = it; state.prefs.forumUrl = it },
+                    placeholder = "https://forum.example.ru (пусто = из сборки)",
+                    mono = true
+                )
+                VSpace(4.dp)
+                Text("Чат работает только по HTTPS. Сервер: server/forum в репозитории.", style = Type.body(12, Palette.muted))
+            }
+            VSpace(12.dp)
             Card {
                 Text("Провайдер разбора", style = Type.label())
                 VSpace(8.dp)
@@ -1054,7 +1068,7 @@ fun SettingsScreen(
         }
 
         Text(
-            "OBD AI 0.7",
+            "OBD AI 0.8",
             style = Type.body(12, Palette.muted),
             textAlign = TextAlign.Center,
             modifier = Modifier

@@ -12,13 +12,15 @@ android {
         applicationId = "io.github.sinsluhi.obdai"
         minSdk = 26
         targetSdk = 35
-        versionCode = 7
-        versionName = "0.7"
+        versionCode = 8
+        versionName = "0.8"
         // Провайдер и ключ ИИ из секретов GitHub (AI_PROVIDER, AI_API_KEY, AI_MODEL); пусто, если не заданы
         fun env(name: String) = System.getenv(name)?.trim().orEmpty()
         buildConfigField("String", "AI_PROVIDER", "\"" + env("AI_PROVIDER").ifBlank { "groq" } + "\"")
         buildConfigField("String", "AI_API_KEY", "\"" + env("AI_API_KEY").ifBlank { env("ANTHROPIC_API_KEY") } + "\"")
         buildConfigField("String", "AI_MODEL", "\"" + env("AI_MODEL") + "\"")
+        // Адрес сервера форума (server/forum), переменная репозитория FORUM_URL; пусто = чат выключен
+        buildConfigField("String", "FORUM_URL", "\"" + env("FORUM_URL") + "\"")
     }
     buildFeatures {
         compose = true
