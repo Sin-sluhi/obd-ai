@@ -69,6 +69,30 @@ object ForumTree {
     }
 }
 
+/** Где сейчас живёт сервер форума: docs/forum_url.txt в репозитории (туннель с домашней машины меняет адрес при перезапуске). */
+object ForumLocator {
+    private const val URL_TXT = "https://raw.githubusercontent.com/Sin-sluhi/obd-ai/main/docs/forum_url.txt"
+
+    /** Скачивает актуальный адрес и кладёт в Prefs. Возвращает адрес или null, если сеть не ответила. */
+    fun refresh(prefs: Prefs): String? {
+        val conn = (URL(URL_TXT + "?t=" + (System.currentTimeMillis() / 60_000)).openConnection() as HttpURLConnection).apply {
+            connectTimeout = 8_000; readTimeout = 10_000
+            setRequestProperty("Cache-Control", "no-cache")
+        }
+        return try {
+            if (conn.responseCode !in 200..299) return null
+            val text = conn.inputStream.bufferedReader(Charsets.UTF_8).use { it.readText() }.trim()
+            val url = text.lines().firstOrNull { it.startsWith("http") }?.trim().orEmpty()
+            prefs.forumUrlRemote = url
+            url
+        } catch (e: Exception) {
+            null
+        } finally {
+            conn.disconnect()
+        }
+    }
+}
+
 /** Сообщение ветки. */
 data class ForumMessage(val id: Long, val name: String, val text: String, val time: Long, val mine: Boolean)
 

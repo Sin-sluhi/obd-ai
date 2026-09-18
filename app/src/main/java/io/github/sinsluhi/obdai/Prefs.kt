@@ -153,6 +153,11 @@ class Prefs(context: Context) {
         get() = sp.getString("forum_url", "") ?: ""
         set(v) = sp.edit().putString("forum_url", v.trim()).apply()
 
+    /** Адрес форума, опубликованный в репозитории (docs/forum_url.txt): меняется, когда туннель перезапускается. */
+    var forumUrlRemote: String
+        get() = sp.getString("forum_url_remote", "") ?: ""
+        set(v) = sp.edit().putString("forum_url_remote", v.trim()).apply()
+
     // ---- последнее стирание ошибок: чтобы проверить, помог ли ремонт ----
 
     var lastClear: ClearEvent?

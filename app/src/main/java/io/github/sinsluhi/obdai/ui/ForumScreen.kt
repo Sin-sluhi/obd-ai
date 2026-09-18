@@ -43,6 +43,7 @@ import io.github.sinsluhi.obdai.AppState
 import io.github.sinsluhi.obdai.ForumApi
 import io.github.sinsluhi.obdai.ForumBrand
 import io.github.sinsluhi.obdai.ForumGen
+import io.github.sinsluhi.obdai.ForumLocator
 import io.github.sinsluhi.obdai.ForumMessage
 import io.github.sinsluhi.obdai.ForumModel
 import io.github.sinsluhi.obdai.ForumTree
@@ -187,7 +188,13 @@ private fun GensLevel(b: ForumBrand, m: ForumModel, bottom: @Composable () -> Un
 private fun ChatLevel(state: AppState, b: ForumBrand, m: ForumModel, g: ForumGen, bottom: @Composable () -> Unit, onBack: () -> Unit) {
     val accent = LocalAccent.current
     val prefs = state.prefs
-    val api = remember(state.forumUrl) { ForumApi(state.forumUrl, ForumApi.deviceId(prefs)) }
+    var url by remember { mutableStateOf(state.forumUrl) }
+    LaunchedEffect(Unit) {
+        // адрес туннеля мог смениться: спрашиваем репозиторий перед первым опросом
+        withContext(Dispatchers.IO) { runCatching { ForumLocator.refresh(prefs) } }
+        url = state.forumUrl
+    }
+    val api = remember(url) { ForumApi(url, ForumApi.deviceId(prefs)) }
     var name by remember { mutableStateOf(ForumApi.defaultName(prefs)) }
     var editName by remember { mutableStateOf(false) }
     val messages = remember(g.id) { mutableStateListOf<ForumMessage>() }

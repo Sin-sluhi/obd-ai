@@ -40,7 +40,7 @@ class AppState private constructor(context: Context) {
     }
 
     /** Адрес сервера форума: из настроек разработчика, иначе из сборки. Пусто — чат выключен. */
-    val forumUrl: String get() = prefs.forumUrl.ifBlank { BuildConfig.FORUM_URL }
+    val forumUrl: String get() = prefs.forumUrl.ifBlank { prefs.forumUrlRemote.ifBlank { BuildConfig.FORUM_URL } }
 
     /** Фоновая работа для экранов (отправка сообщений форума и т. п.). */
     fun runBackground(block: () -> Unit) { worker.execute(block) }
@@ -55,6 +55,7 @@ class AppState private constructor(context: Context) {
             DtcCatalog.load(appContext); KnownIssues.load(appContext)
             Kb.init(appContext, prefs)
             ForumTree.load(appContext)
+            runCatching { ForumLocator.refresh(prefs) }
             runCatching { if (Kb.refresh(appContext, prefs)) addLog("База опыта владельцев обновлена: ${Kb.size} записей") }
         }
     }
