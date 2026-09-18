@@ -1,6 +1,7 @@
 package io.github.sinsluhi.obdai
 
 import android.annotation.SuppressLint
+import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothDevice
 import android.bluetooth.BluetoothManager
 import android.content.ClipData
@@ -66,7 +67,10 @@ class MainActivity : ComponentActivity() {
     private lateinit var state: AppState
 
     /** Список спаренных устройств для диалога выбора; null = диалог закрыт. */
-    private var pickerDevices by mutableStateOf<List<BluetoothDevice>?>(null)
+    private var pickerDevices by mutableStateOf<List<AdapterOption>?>(null)
+    private var scanning by mutableStateOf(false)
+    private var bleScanner: android.bluetooth.le.BluetoothLeScanner? = null
+    private var bleCallback: android.bluetooth.le.ScanCallback? = null
     private var afterPermission: (() -> Unit)? = null
 
     private val permissionLauncher =
@@ -139,6 +143,7 @@ class MainActivity : ComponentActivity() {
                 Page.Log -> Page.Settings
                 Page.Details -> Page.Result
                 Page.Purchase -> Page.Result
+                Page.Result -> { state.clearResult(); Page.Home }
                 else -> Page.Home
             }
         }
@@ -199,7 +204,7 @@ class MainActivity : ComponentActivity() {
                     )
                     Page.Result -> ResultScreen(
                         state,
-                        onBack = { page = Page.Home },
+                        onBack = { state.clearResult(); page = Page.Home },
                         onShare = { share() },
                         onFindService = { findService() },
                         onClear = { confirmClear = true },
@@ -238,17 +243,21 @@ class MainActivity : ComponentActivity() {
 
                 pickerDevices?.let { devices ->
                     DevicePickerDialog(
-                        devices = devices.map { deviceLabel(it) },
+                        devices = devices.map { it.title to it.subtitle },
+                        scanning = scanning,
                         onPick = { i ->
+                            val target = devices[i].target
                             pickerDevices = null
-                            state.connect(devices[i])
+                            stopBleScan()
+                            state.connect(target)
                         },
                         onDemo = {
                             pickerDevices = null
+                            stopBleScan()
                             state.updateDemo(true)
                             state.connectDemo()
                         },
-                        onDismiss = { pickerDevices = null },
+                        onDismiss = { pickerDevices = null; stopBleScan() },
                         showDemo = state.devMode
                     )
                 }
@@ -273,7 +282,66 @@ class MainActivity : ComponentActivity() {
     // ---------- Bluetooth ----------
 
     @SuppressLint("MissingPermission")
-    private fun deviceLabel(d: BluetoothDevice): Pair<String, String> = Pair(d.name ?: "Без имени", d.address)
+    /** Пункт списка адаптеров: что показать и куда подключаться. */
+    data class AdapterOption(val title: String, val subtitle: String, val target: AdapterTarget)
+
+    private fun classicOptions(adapter: BluetoothAdapter): List<AdapterOption> {
+        val last = state.prefs.lastDevice
+        return adapter.bondedDevices
+            .sortedByDescending { d ->
+                val n = (d.name ?: "").uppercase()
+                (if (d.address == last) 2 else 0) +
+                    (if (ADAPTER_WORDS.any { n.contains(it) }) 1 else 0)
+            }
+            .map { AdapterOption(it.name ?: "Без имени", "Bluetooth · ${it.address}", AdapterTarget.Classic(it)) }
+    }
+
+    private fun wifiOption(): AdapterOption {
+        val host = state.prefs.wifiHost
+        val port = state.prefs.wifiPort
+        return AdapterOption("Wi-Fi адаптер", "$host:$port · сначала подключи телефон к его сети", AdapterTarget.Wifi(host, port))
+    }
+
+    /** Поиск адаптеров Bluetooth LE: они не спариваются, их видно только сканированием. */
+    @SuppressLint("MissingPermission")
+    private fun startBleScan() {
+        if (Build.VERSION.SDK_INT >= 31 && checkSelfPermission(PERM_SCAN) != PackageManager.PERMISSION_GRANTED) {
+            afterPermission = { startBleScan() }
+            permissionLauncher.launch(PERM_SCAN)
+            return
+        }
+        val adapter = (getSystemService(BLUETOOTH_SERVICE) as BluetoothManager).adapter ?: return
+        val scanner = adapter.bluetoothLeScanner ?: return
+        stopBleScan()
+        bleScanner = scanner
+        scanning = true
+        val seen = HashSet<String>()
+        val cb = object : android.bluetooth.le.ScanCallback() {
+            override fun onScanResult(type: Int, result: android.bluetooth.le.ScanResult) {
+                val d = result.device ?: return
+                val nm = d.name ?: return
+                if (!seen.add(d.address)) return
+                val option = AdapterOption(nm, "Bluetooth LE · ${d.address}", AdapterTarget.Ble(d))
+                val cur = pickerDevices.orEmpty()
+                // адаптеры вперёд, остальные найденные устройства ниже
+                val likely = ADAPTER_WORDS.any { nm.uppercase().contains(it) }
+                pickerDevices = if (likely) cur.take(1) + option + cur.drop(1) else cur + option
+            }
+            override fun onScanFailed(errorCode: Int) { scanning = false }
+        }
+        bleCallback = cb
+        scanner.startScan(cb)
+        window.decorView.postDelayed({ stopBleScan() }, 12_000)
+    }
+
+    @SuppressLint("MissingPermission")
+    private fun stopBleScan() {
+        val s = bleScanner
+        val c = bleCallback
+        if (s != null && c != null) runCatching { s.stopScan(c) }
+        bleCallback = null
+        scanning = false
+    }
 
     @SuppressLint("MissingPermission")
     private fun pickDevice() {
@@ -295,13 +363,8 @@ class MainActivity : ComponentActivity() {
             pickerDevices = emptyList()
             return
         }
-        val last = state.prefs.lastDevice
-        pickerDevices = adapter.bondedDevices
-            .sortedByDescending { d ->
-                val n = (d.name ?: "").uppercase()
-                (if (d.address == last) 2 else 0) +
-                    (if (listOf("OBD", "ELM", "LINK", "VGATE", "KONNWEI", "VIECAR").any { n.contains(it) }) 1 else 0)
-            }
+        pickerDevices = classicOptions(adapter) + wifiOption()
+        startBleScan()
     }
 
     // ---------- фото приборки ----------
@@ -418,6 +481,8 @@ class MainActivity : ComponentActivity() {
 
     companion object {
         private const val PERM_CONNECT = "android.permission.BLUETOOTH_CONNECT"
+        private const val PERM_SCAN = "android.permission.BLUETOOTH_SCAN"
+        private val ADAPTER_WORDS = listOf("OBD", "ELM", "LINK", "VGATE", "ICAR", "KONNWEI", "VIECAR", "VEEPEAK", "SCAN", "CARISTA", "THINK")
         private const val PERM_NOTIFY = "android.permission.POST_NOTIFICATIONS"
         private const val PERM_LOCATION = "android.permission.ACCESS_COARSE_LOCATION"
     }

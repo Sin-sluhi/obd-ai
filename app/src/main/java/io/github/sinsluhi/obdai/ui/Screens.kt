@@ -138,7 +138,7 @@ fun HomeScreen(
     val accent = LocalAccent.current
     Screen(bottom = bottom) {
         Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
-            CarPhotoOrLogo(state.diagnosis?.car.orEmpty().ifBlank { VinDecoder.decode(state.vin).title() }, state.carPhotoVersion, onCarPhoto)
+            LogoBadge()
             HSpace(10.dp)
             Text("OBD AI", style = Type.display(20))
             Spacer(Modifier.weight(1f))
@@ -196,6 +196,7 @@ fun HomeScreen(
             Text("Ваша машина", style = Type.label())
             VSpace(10.dp)
             val car = state.diagnosis?.car.orEmpty().ifBlank { VinDecoder.decode(state.vin).title() }
+            CarPhoto(car, state.carPhotoVersion, onCarPhoto)
             if (car.isNotBlank()) {
                 Text(car, style = Type.strong(16))
                 VSpace(4.dp)
@@ -428,30 +429,50 @@ fun ResultScreen(
 
 /** Фото машины (Википедия) вместо логотипа, когда машина определена и картинка нашлась. */
 @Composable
-fun CarPhotoOrLogo(car: String, version: Int = 0, onClick: () -> Unit = {}) {
+fun CarPhoto(car: String, version: Int = 0, onClick: () -> Unit = {}) {
     val context = androidx.compose.ui.platform.LocalContext.current
+    val accent = LocalAccent.current
     var bitmap by remember(car, version) { mutableStateOf<android.graphics.Bitmap?>(null) }
     LaunchedEffect(car, version) {
         if (car.isBlank() && !CarImage.customFile(context).exists()) return@LaunchedEffect
         val f = kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.IO) { runCatching { CarImage.fetch(context, car) }.getOrNull() }
-        if (f != null) bitmap = kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.IO) { android.graphics.BitmapFactory.decodeFile(f.path) }
+        bitmap = if (f == null) null
+        else kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.IO) { android.graphics.BitmapFactory.decodeFile(f.path) }
     }
+    val shape = RoundedCornerShape(14.dp)
     val b = bitmap
-    if (b == null) {
-        Box(Modifier.clickable(onClick = onClick)) { LogoBadge() }
-    } else {
-        val accent = LocalAccent.current
-        val shape = RoundedCornerShape(12.dp)
+    if (b != null) {
         androidx.compose.foundation.Image(
             bitmap = b.asImageBitmap(), contentDescription = car,
             contentScale = androidx.compose.ui.layout.ContentScale.Crop,
             modifier = Modifier
-                .size(width = 64.dp, height = 40.dp)
-                .shadow(10.dp, shape, ambientColor = accent, spotColor = accent)
+                .fillMaxWidth()
+                .height(140.dp)
                 .clip(shape)
-                .border(1.dp, accent.copy(alpha = 0.5f), shape)
+                .border(1.dp, Palette.border, shape)
                 .clickable(onClick = onClick)
         )
+        VSpace(6.dp)
+        Text("Нажми на фото, чтобы поставить снимок своей машины", style = Type.body(11, Palette.muted))
+        VSpace(10.dp)
+    } else {
+        Row(
+            Modifier
+                .fillMaxWidth()
+                .clip(shape)
+                .background(Palette.surface2, shape)
+                .border(1.dp, Palette.border, shape)
+                .clickable(onClick = onClick)
+                .padding(horizontal = 14.dp, vertical = 12.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            CarIcon(Palette.muted)
+            HSpace(10.dp)
+            Text("Добавить фото своей машины", style = Type.body(13, Palette.text2, FontWeight.SemiBold))
+            Spacer(Modifier.weight(1f))
+            Text("+", style = Type.body(18, accent, FontWeight.Bold))
+        }
+        VSpace(10.dp)
     }
 }
 
@@ -1171,11 +1192,12 @@ fun LogScreen(state: AppState, onBack: () -> Unit, onCopyReport: () -> Unit, onC
 
 @Composable
 fun DevicePickerDialog(
-    devices: List<Pair<String, String>>,   // имя, адрес
+    devices: List<Pair<String, String>>,   // имя, подпись
     onPick: (Int) -> Unit,
     onDemo: () -> Unit,
     onDismiss: () -> Unit,
-    showDemo: Boolean = false
+    showDemo: Boolean = false,
+    scanning: Boolean = false
 ) {
     val accent = LocalAccent.current
     AlertDialog(
@@ -1188,9 +1210,14 @@ fun DevicePickerDialog(
             Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 if (devices.isEmpty()) {
                     Text(
-                        "Нет спаренных устройств. Сначала спарь адаптер в настройках Bluetooth телефона (PIN обычно 1234 или 0000).",
+                        "Пока пусто. Обычный Bluetooth-адаптер сначала спарь в настройках телефона (PIN 1234 или 0000), адаптер BLE появится сам, для Wi-Fi подключись к его сети.",
                         style = Type.body(14, Palette.text2)
                     )
+                }
+                if (scanning) Row(verticalAlignment = Alignment.CenterVertically) {
+                    CircularProgressIndicator(color = accent, strokeWidth = 2.dp, modifier = Modifier.size(14.dp))
+                    HSpace(8.dp)
+                    Text("Ищу адаптеры Bluetooth LE…", style = Type.body(13, Palette.muted))
                 }
                 LazyColumn(verticalArrangement = Arrangement.spacedBy(8.dp), modifier = Modifier.heightIn(max = 320.dp)) {
                     items(devices.size) { i ->

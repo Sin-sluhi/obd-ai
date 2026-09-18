@@ -314,6 +314,29 @@ fun LogoBadge(size: Dp = 36.dp) {
     }
 }
 
+/** Значок машины сбоку. */
+@Composable
+fun CarIcon(color: Color, modifier: Modifier = Modifier) {
+    Canvas(modifier.size(22.dp)) {
+        val w = size.width
+        val sw = w * 0.08f
+        val body = Path().apply {
+            moveTo(w * 0.06f, w * 0.66f)
+            lineTo(w * 0.12f, w * 0.46f)
+            lineTo(w * 0.30f, w * 0.44f)
+            lineTo(w * 0.42f, w * 0.30f)
+            lineTo(w * 0.66f, w * 0.30f)
+            lineTo(w * 0.76f, w * 0.46f)
+            lineTo(w * 0.94f, w * 0.52f)
+            lineTo(w * 0.94f, w * 0.66f)
+            close()
+        }
+        drawPath(body, color, style = Stroke(sw, join = StrokeJoin.Round))
+        drawCircle(color, radius = w * 0.09f, center = Offset(w * 0.30f, w * 0.70f), style = Stroke(sw))
+        drawCircle(color, radius = w * 0.09f, center = Offset(w * 0.74f, w * 0.70f), style = Stroke(sw))
+    }
+}
+
 /** Значок спидометра, нарисованный вручную. */
 @Composable
 fun GaugeIcon(color: Color, modifier: Modifier = Modifier) {

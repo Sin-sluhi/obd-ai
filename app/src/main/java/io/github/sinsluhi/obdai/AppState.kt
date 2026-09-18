@@ -197,13 +197,17 @@ class AppState private constructor(context: Context) {
 
     // ---- подключение ----
 
-    fun connect(device: BluetoothDevice) {
+    fun connect(target: AdapterTarget) {
         val elm = Elm327 { addLog(it) }
         runTask("Подключение", needLink = false) {
             ui { busy = "Подключаюсь к адаптеру" }
-            elm.connect(device)
+            elm.connect(appContext, target)
             link = elm
-            prefs.lastDevice = device.address
+            when (target) {
+                is AdapterTarget.Classic -> prefs.lastDevice = target.device.address
+                is AdapterTarget.Ble -> prefs.lastDevice = target.device.address
+                is AdapterTarget.Wifi -> prefs.lastDevice = "wifi:${target.host}:${target.port}"
+            }
             val volt = elm.readVoltageSafe()
             ui {
                 connected = true
@@ -235,6 +239,15 @@ class AppState private constructor(context: Context) {
         addLog("Демо-режим: подключена выдуманная машина")
         resetEngineState()
         startPolling()
+    }
+
+    /** Убрать результат с главного экрана: проверка сделана, итог прочитан, приложение снова «чистое».
+     *  История и журналы остаются, машина и адаптер — тоже. */
+    fun clearResult() {
+        diagnosis = null
+        lastSnapshot = null
+        dash = null
+        busy = null
     }
 
     fun disconnect() {

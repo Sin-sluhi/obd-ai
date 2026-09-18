@@ -41,6 +41,14 @@ class Prefs(context: Context) {
         get() = sp.getBoolean("demo", false)
         set(v) = sp.edit().putBoolean("demo", v).apply()
 
+    var wifiHost: String
+        get() = sp.getString("wifi_host", null) ?: WifiTransport.DEFAULT_HOST
+        set(v) = sp.edit().putString("wifi_host", v.trim()).apply()
+
+    var wifiPort: Int
+        get() = sp.getInt("wifi_port", WifiTransport.DEFAULT_PORT)
+        set(v) = sp.edit().putInt("wifi_port", v).apply()
+
     var lastDevice: String?
         get() = sp.getString("last_device", null)
         set(v) = sp.edit().putString("last_device", v).apply()
