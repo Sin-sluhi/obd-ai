@@ -270,7 +270,10 @@ fun SecondaryButton(
             .clickable(enabled = enabled, onClick = onClick),
         contentAlignment = Alignment.Center
     ) {
-        Text(text, style = Type.body(14, if (enabled) color else Palette.muted, FontWeight.SemiBold))
+        Text(
+            text, style = Type.body(14, if (enabled) color else Palette.muted, FontWeight.SemiBold),
+            textAlign = TextAlign.Center, maxLines = 2, modifier = Modifier.padding(horizontal = 10.dp)
+        )
     }
 }
 

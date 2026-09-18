@@ -87,6 +87,7 @@ class AppState private constructor(context: Context) {
     var engineOn by mutableStateOf(false)
     var warmups by mutableStateOf(prefs.loadWarmups())
     var tanks by mutableStateOf(prefs.loadTanks())        // паспорт заправки: баки от заправки до заправки
+    var carPhotoVersion by mutableStateOf(0)               // растёт, когда владелец выбрал своё фото машины
     @Volatile private var lastFuelLevel: Double? = null   // последний уровень топлива с прогретого/работающего мотора
     @Volatile private var levelAtStop: Double? = null     // уровень в момент последней остановки двигателя
     @Volatile private var refuelCheck = false             // после пуска ещё не сравнивали уровень

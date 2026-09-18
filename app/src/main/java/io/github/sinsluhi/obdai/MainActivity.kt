@@ -86,6 +86,12 @@ class MainActivity : ComponentActivity() {
             if (bmp != null) analyzeBitmap(bmp) else state.toast = "Фото не сделано"
         }
 
+    /** Своё фото машины в шапку главного экрана. */
+    private val carPhotoLauncher =
+        registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
+            if (uri != null && CarImage.saveCustom(this, uri)) state.carPhotoVersion++
+        }
+
     private val galleryLauncher =
         registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
             if (uri == null) return@registerForActivityResult
@@ -184,6 +190,7 @@ class MainActivity : ComponentActivity() {
                         onAdapterClick = { if (state.connected) page = Page.Settings else pickDevice() },
                         onPhoto = { page = Page.Dash; takePhoto { page = Page.Dash } },
                         onUseWeather = { useLocationForForecast() },
+                        onCarPhoto = { carPhotoLauncher.launch("image/*") },
                         onPurchase = {
                             if (state.lastSnapshot != null) page = Page.Purchase
                             else if (state.connected) state.runCheck { page = Page.Purchase } else pickDevice()

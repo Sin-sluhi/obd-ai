@@ -17,7 +17,23 @@ object CarImage {
     private const val UA = "OBD-AI/0.7 (+https://github.com/Sin-sluhi/obd-ai)"
 
     /** Запрос к Википедии по названию: брэнд + модель без года. Возвращает файл с картинкой или null. */
+    /** Фото, которое выбрал владелец: важнее любого найденного. */
+    fun customFile(context: Context): File = File(context.filesDir, "car_photo.jpg")
+
+    /** Сохранить своё фото (уменьшенное) из галереи. */
+    fun saveCustom(context: Context, uri: android.net.Uri): Boolean = runCatching {
+        val bytes = context.contentResolver.openInputStream(uri)?.use { it.readBytes() } ?: return false
+        val opts = BitmapFactory.Options().apply { inJustDecodeBounds = true }
+        BitmapFactory.decodeByteArray(bytes, 0, bytes.size, opts)
+        var sample = 1
+        while (opts.outWidth / sample > 1280) sample *= 2
+        val bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.size, BitmapFactory.Options().apply { inSampleSize = sample }) ?: return false
+        customFile(context).outputStream().use { bmp.compress(Bitmap.CompressFormat.JPEG, 88, it) }
+        true
+    }.getOrDefault(false)
+
     fun fetch(context: Context, car: String): File? {
+        customFile(context).let { if (it.exists() && it.length() > 0) return it }
         val title = normalize(car) ?: return null
         val dir = File(context.cacheDir, "car-images").apply { mkdirs() }
         val file = File(dir, title.lowercase().replace(Regex("[^a-z0-9а-яё]+"), "_") + ".jpg")

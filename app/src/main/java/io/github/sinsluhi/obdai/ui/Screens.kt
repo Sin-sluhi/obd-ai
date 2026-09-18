@@ -132,12 +132,13 @@ fun HomeScreen(
     onPhoto: () -> Unit,
     onUseWeather: () -> Unit,
     onPurchase: () -> Unit,
+    onCarPhoto: () -> Unit = {},
     bottom: @Composable () -> Unit
 ) {
     val accent = LocalAccent.current
     Screen(bottom = bottom) {
         Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
-            CarPhotoOrLogo(state.diagnosis?.car.orEmpty().ifBlank { VinDecoder.decode(state.vin).title() })
+            CarPhotoOrLogo(state.diagnosis?.car.orEmpty().ifBlank { VinDecoder.decode(state.vin).title() }, state.carPhotoVersion, onCarPhoto)
             HSpace(10.dp)
             Text("OBD AI", style = Type.display(20))
             Spacer(Modifier.weight(1f))
@@ -219,7 +220,7 @@ fun HomeScreen(
         }
 
         Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-            SecondaryButton("Сфотографировать приборку", Modifier.weight(1f), onClick = onPhoto)
+            SecondaryButton("Фото приборки", Modifier.weight(1f), onClick = onPhoto)
             SecondaryButton("Перед покупкой", Modifier.weight(1f), onClick = onPurchase)
         }
 
@@ -427,17 +428,17 @@ fun ResultScreen(
 
 /** Фото машины (Википедия) вместо логотипа, когда машина определена и картинка нашлась. */
 @Composable
-fun CarPhotoOrLogo(car: String) {
+fun CarPhotoOrLogo(car: String, version: Int = 0, onClick: () -> Unit = {}) {
     val context = androidx.compose.ui.platform.LocalContext.current
-    var bitmap by remember(car) { mutableStateOf<android.graphics.Bitmap?>(null) }
-    LaunchedEffect(car) {
-        if (car.isBlank()) return@LaunchedEffect
+    var bitmap by remember(car, version) { mutableStateOf<android.graphics.Bitmap?>(null) }
+    LaunchedEffect(car, version) {
+        if (car.isBlank() && !CarImage.customFile(context).exists()) return@LaunchedEffect
         val f = kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.IO) { runCatching { CarImage.fetch(context, car) }.getOrNull() }
         if (f != null) bitmap = kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.IO) { android.graphics.BitmapFactory.decodeFile(f.path) }
     }
     val b = bitmap
     if (b == null) {
-        LogoBadge()
+        Box(Modifier.clickable(onClick = onClick)) { LogoBadge() }
     } else {
         val accent = LocalAccent.current
         val shape = RoundedCornerShape(12.dp)
@@ -449,6 +450,7 @@ fun CarPhotoOrLogo(car: String) {
                 .shadow(10.dp, shape, ambientColor = accent, spotColor = accent)
                 .clip(shape)
                 .border(1.dp, accent.copy(alpha = 0.5f), shape)
+                .clickable(onClick = onClick)
         )
     }
 }
@@ -1378,13 +1380,14 @@ private fun ConnRow(label: String, ok: Boolean, value: String) {
     Row(verticalAlignment = Alignment.CenterVertically) {
         Dot(if (ok) accent else Palette.muted)
         HSpace(10.dp)
-        Text(label, style = Type.strong(14), modifier = Modifier.weight(1f))
+        Text(label, style = Type.strong(14), maxLines = 1)
         HSpace(8.dp)
         Text(
             value,
             style = Type.body(12, if (ok) accent else Palette.muted, FontWeight.SemiBold),
             textAlign = TextAlign.End,
-            maxLines = 2
+            maxLines = 2,
+            modifier = Modifier.weight(1f)
         )
     }
 }
