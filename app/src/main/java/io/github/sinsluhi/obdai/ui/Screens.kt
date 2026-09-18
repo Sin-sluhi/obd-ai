@@ -131,6 +131,7 @@ fun HomeScreen(
     onAdapterClick: () -> Unit,
     onPhoto: () -> Unit,
     onUseWeather: () -> Unit,
+    onPurchase: () -> Unit,
     bottom: @Composable () -> Unit
 ) {
     val accent = LocalAccent.current
@@ -186,6 +187,7 @@ fun HomeScreen(
         }
 
         state.forecast?.let { ForecastCard(it, onUseWeather = if (state.hasLocation) null else onUseWeather) }
+        if (state.tanks.isNotEmpty()) FuelCard(state.tanks) { t, name, bad -> state.renameTank(t, name, bad) }
 
 
         // карточка машины
@@ -216,7 +218,10 @@ fun HomeScreen(
             }
         }
 
-        SecondaryButton("Сфотографировать приборку", Modifier.fillMaxWidth(), onClick = onPhoto)
+        Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+            SecondaryButton("Сфотографировать приборку", Modifier.weight(1f), onClick = onPhoto)
+            SecondaryButton("Перед покупкой", Modifier.weight(1f), onClick = onPurchase)
+        }
 
         // большая кнопка
         Column(
@@ -290,7 +295,8 @@ fun ResultScreen(
     onFindService: () -> Unit,
     onClear: () -> Unit,
     onSettings: () -> Unit,
-    onDetails: () -> Unit
+    onDetails: () -> Unit,
+    onPurchase: () -> Unit = {}
 ) {
     val accent = LocalAccent.current
     val d = state.diagnosis
@@ -412,6 +418,7 @@ fun ResultScreen(
                     enabled = state.connected && d.codes.isNotEmpty(), onClick = onClear
                 )
             }
+            if (snap != null) SecondaryButton("Как подержанная: брать или торговаться?", Modifier.fillMaxWidth(), onClick = onPurchase)
             if (snap != null) SecondaryButton("Подробные данные с машины", Modifier.fillMaxWidth(), color = Palette.muted, onClick = onDetails)
         }
         VSpace(8.dp)
@@ -1068,7 +1075,7 @@ fun SettingsScreen(
         }
 
         Text(
-            "OBD AI 0.8",
+            "OBD AI 0.9",
             style = Type.body(12, Palette.muted),
             textAlign = TextAlign.Center,
             modifier = Modifier

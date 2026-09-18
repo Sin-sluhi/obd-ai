@@ -332,6 +332,16 @@ object KnownIssues {
         return best
     }
 
+    /** Все болячки этой машины: модельные впереди, потом марочные. */
+    fun forCar(car: VinDecoder.Info, vin: String?): List<KnownIssue> {
+        val out = ArrayList<KnownIssue>()
+        for (iss in issues) {
+            val badge = matches(iss, car, vin) ?: continue
+            out.add(KnownIssue(iss.title, iss.note, iss.mileage, iss.codes.toList(), badge, iss.severity, iss.price))
+        }
+        return out.sortedBy { if (it.badge == "Болячка модели") 0 else 1 }
+    }
+
     /** Все болячки этой машины, у которых есть хоть один код из проверки. */
     fun forCodes(car: VinDecoder.Info, vin: String?, codes: Collection<String>): List<KnownIssue> {
         val present = codes.map { DtcCatalog.base(it) }.toSet()

@@ -114,7 +114,66 @@ def seen_urls(resp):
     return out
 
 
+ISSUES_SYSTEM = """Ты — опытный автодиагност. Тебе дают марку и модель. Найди на drive2.ru и drom.ru, на что чаще всего
+жалуются владельцы ИМЕННО этой модели (двигатель, коробка, электрика, ходовая), с пробегом, на котором это обычно случается,
+и что делали. Только повторяющиеся проблемы, не единичные случаи. Ответ строго в JSON без markdown:
+{
+  "problems": [{"issue": "что ломается и как проявляется, 1 фраза", "mileage": "на каком пробеге", "fix": "что делали", "price_from": 0}],
+  "sources": ["адреса записей из результатов поиска"]
+}
+Не больше 8 проблем, по убыванию частоты. Цены в рублях по упоминаниям владельцев; неизвестно — 0."""
+
+
+def research_issues(key, car):
+    """Болячки модели без кода: запись с кодом ISSUES, causes = «проблема (пробег)», fixes = что делали."""
+    body = {
+        "model": MODEL, "temperature": 0.2, "max_tokens": 900,
+        "messages": [{"role": "system", "content": ISSUES_SYSTEM},
+                     {"role": "user", "content": "Машина: %s. Поищи «%s болячки», «%s проблемы владельцев» (drive2, drom) и ответь JSON." % (car, car, car)}],
+        "search_settings": {"country": "Russia", "include_domains": ["drive2.ru", "*.drive2.ru", "drom.ru", "*.drom.ru"]},
+        "compound_custom": {"tools": {"enabled_tools": ["web_search"]}},
+    }
+    req = urllib.request.Request(API, data=json.dumps(body).encode("utf-8"), method="POST",
+                                 headers={"Content-Type": "application/json", "Authorization": "Bearer " + key,
+                                          "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36",
+                                          "Accept": "application/json"})
+    with urllib.request.urlopen(req, timeout=240) as resp:
+        resp = json.loads(resp.read().decode("utf-8"))
+    msg = resp.get("choices", [{}])[0].get("message", {})
+    data = extract_json(msg.get("content") or "")
+    seen = seen_urls(resp)
+    seen_set = {u for u, _ in seen}
+    problems = [p for p in (data or {}).get("problems") or [] if isinstance(p, dict) and p.get("issue")]
+    if not problems:
+        return None
+    sources = [u for u in (data or {}).get("sources") or [] if isinstance(u, str) and u in seen_set] or [u for u, _ in seen][:3]
+    if not sources:
+        return None
+    brand, model = split_car(car)
+    causes = []
+    fixes = []
+    price = 0
+    for p in problems[:8]:
+        issue = str(p.get("issue", "")).strip()
+        mileage = str(p.get("mileage", "")).strip()
+        causes.append(issue + (" (%s)" % mileage if mileage else ""))
+        if p.get("fix"):
+            fixes.append(str(p["fix"]).strip())
+        try:
+            price = max(price, int(p.get("price_from") or 0))
+        except (TypeError, ValueError):
+            pass
+    return {
+        "car": car, "brand": brand, "model": model, "code": "ISSUES",
+        "summary": "Типичные проблемы по отзывам владельцев: " + "; ".join(causes[:4]) + ".",
+        "causes": causes, "fixes": fixes[:6], "wasted": [], "price_from": 0, "price_to": 0, "mileage": "",
+        "sources": sources[:4], "updated": dt.date.today().isoformat(),
+    }
+
+
 def research(key, car, code):
+    if code == "ISSUES":
+        return research_issues(key, car)
     resp = ask(key, car, code)
     msg = resp.get("choices", [{}])[0].get("message", {})
     data = extract_json(msg.get("content") or "")
@@ -169,7 +228,7 @@ def main():
     for car, codes in TARGETS:
         if args.car and args.car.lower() != car.lower():
             continue
-        for code in codes:
+        for code in ["ISSUES"] + list(codes):   # болячки модели — раньше кодов: они нужны «Перед покупкой»
             e = index.get((car, code))
             if e is None:
                 queue.append((0, car, code))       # новых — первыми

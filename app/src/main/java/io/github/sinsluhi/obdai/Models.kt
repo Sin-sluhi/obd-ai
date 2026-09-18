@@ -31,7 +31,8 @@ data class CarSnapshot(
     val warmup: WarmupResult? = null,              // последний прогрев
     val starts: StartAnalysis? = null,             // холодные пуски
     val forecast: MorningForecast? = null,         // заведётся ли утром
-    val carHint: String? = null                    // как машину назвала нейронка в прошлый раз («Hyundai Tucson 2019»)
+    val carHint: String? = null,                   // как машину назвала нейронка в прошлый раз («Hyundai Tucson 2019»)
+    val tank: Tank? = null                         // последний бак: паспорт заправки
 ) {
     /** Все коды из всех блоков. */
     val allCodes: List<String> get() = (stored + pending + permanent + modules.flatMap { it.codes }).distinct()

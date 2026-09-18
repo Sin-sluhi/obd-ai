@@ -46,6 +46,7 @@ import io.github.sinsluhi.obdai.ui.DashScreen
 import io.github.sinsluhi.obdai.ui.DetailsScreen
 import io.github.sinsluhi.obdai.ui.DevicePickerDialog
 import io.github.sinsluhi.obdai.ui.ForumScreen
+import io.github.sinsluhi.obdai.ui.PurchaseScreen
 import io.github.sinsluhi.obdai.ui.HistoryScreen
 import io.github.sinsluhi.obdai.ui.HomeScreen
 import io.github.sinsluhi.obdai.ui.LocalAccent
@@ -58,7 +59,7 @@ import io.github.sinsluhi.obdai.ui.SettingsScreen
 import io.github.sinsluhi.obdai.ui.Tab
 import io.github.sinsluhi.obdai.ui.reportText
 
-enum class Page { Home, Result, Sensors, History, Settings, Log, Details, Dash, Forum }
+enum class Page { Home, Result, Sensors, History, Settings, Log, Details, Dash, Forum, Purchase }
 
 class MainActivity : ComponentActivity() {
 
@@ -131,6 +132,7 @@ class MainActivity : ComponentActivity() {
             page = when (page) {
                 Page.Log -> Page.Settings
                 Page.Details -> Page.Result
+                Page.Purchase -> Page.Result
                 else -> Page.Home
             }
         }
@@ -182,6 +184,10 @@ class MainActivity : ComponentActivity() {
                         onAdapterClick = { if (state.connected) page = Page.Settings else pickDevice() },
                         onPhoto = { page = Page.Dash; takePhoto { page = Page.Dash } },
                         onUseWeather = { useLocationForForecast() },
+                        onPurchase = {
+                            if (state.lastSnapshot != null) page = Page.Purchase
+                            else if (state.connected) state.runCheck { page = Page.Purchase } else pickDevice()
+                        },
                         bottom = tabBar
                     )
                     Page.Result -> ResultScreen(
@@ -191,8 +197,10 @@ class MainActivity : ComponentActivity() {
                         onFindService = { findService() },
                         onClear = { confirmClear = true },
                         onSettings = { page = Page.Settings },
-                        onDetails = { page = Page.Details }
+                        onDetails = { page = Page.Details },
+                        onPurchase = { page = Page.Purchase }
                     )
+                    Page.Purchase -> PurchaseScreen(state, onBack = { page = Page.Result })
                     Page.Details -> DetailsScreen(state, onBack = { page = Page.Result })
                     Page.Dash -> DashScreen(
                         state,

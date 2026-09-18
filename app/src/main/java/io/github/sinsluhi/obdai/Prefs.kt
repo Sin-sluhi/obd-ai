@@ -106,6 +106,9 @@ class Prefs(context: Context) {
         get() = sp.getBoolean("watch_dtc", true)
         set(v) = sp.edit().putBoolean("watch_dtc", v).apply()
 
+    fun loadTanks(): List<Tank> = FuelLog.fromJson(sp.getString("tanks", null))
+    fun saveTanks(list: List<Tank>) = sp.edit().putString("tanks", FuelLog.toJson(list.takeLast(Tank.MAX))).apply()
+
     fun loadWarmups(): List<WarmupResult> = DriveLog.warmupsFromJson(sp.getString("warmups", null))
     fun saveWarmups(list: List<WarmupResult>) = sp.edit().putString("warmups", DriveLog.warmupsToJson(list)).apply()
 

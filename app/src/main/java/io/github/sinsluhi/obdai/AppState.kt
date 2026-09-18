@@ -37,6 +37,7 @@ class AppState private constructor(context: Context) {
         private const val NOTIF_DTC = 51
         private const val NOTIF_FORECAST = 52
         private const val NOTIF_WARMUP = 53
+        private const val NOTIF_FUEL = 54
     }
 
     /** Адрес сервера форума: из настроек разработчика, иначе из сборки. Пусто — чат выключен. */
@@ -85,6 +86,12 @@ class AppState private constructor(context: Context) {
     var dash by mutableStateOf<DashReport?>(null)
     var engineOn by mutableStateOf(false)
     var warmups by mutableStateOf(prefs.loadWarmups())
+    var tanks by mutableStateOf(prefs.loadTanks())        // паспорт заправки: баки от заправки до заправки
+    @Volatile private var lastFuelLevel: Double? = null   // последний уровень топлива с прогретого/работающего мотора
+    @Volatile private var levelAtStop: Double? = null     // уровень в момент последней остановки двигателя
+    @Volatile private var refuelCheck = false             // после пуска ещё не сравнивали уровень
+    private var lastFuelSampleT = 0L
+    private var lastTankSave = 0L
     var starts by mutableStateOf(prefs.loadStarts())
     var forecast by mutableStateOf<MorningForecast?>(null)
     var busy by mutableStateOf<String?>(null)      // текст текущего шага или null
@@ -314,7 +321,7 @@ class AppState private constructor(context: Context) {
             checks.filter { it.level != "ok" }.forEach { addLog("Датчики: ${it.text}") }
             val snap = base.copy(repair = repair, trend = trend, flags = flags, checks = checks,
                 warmup = warmups.lastOrNull(), starts = StartAnalysis.build(starts), forecast = forecast,
-                carHint = prev?.diagnosis?.car?.takeIf { it.isNotBlank() })
+                carHint = prev?.diagnosis?.car?.takeIf { it.isNotBlank() }, tank = tanks.lastOrNull())
             knownCodes = snap.allCodes.map { it.substringBefore(' ') }.toSet()
             ui { lastSnapshot = snap; battery = batteryNow }
 
@@ -500,6 +507,7 @@ class AppState private constructor(context: Context) {
                     val vNow = ecuV ?: Regex("[0-9]+(\\.[0-9]+)?").find(volt)?.value?.toDoubleOrNull()
                     handleEngine(l, now, s.firstOrNull { it.key == "rpm" }?.value, vNow, s)
                     recordVolt(s, volt, force = false)
+                    if (!quick) fuelSample(now, s)
                     if (trip != null) {
                         checkAlarms(s, volt)
                         if (watchDtc && now - lastDtcPoll > 90_000) watchCodes(l, now, s)
@@ -597,8 +605,68 @@ class AppState private constructor(context: Context) {
         runCatching { l.readSensors(live = false, keys = setOf("ambient")).firstOrNull()?.value }.getOrNull()?.let { lastAmbient = it }
     }
 
+    /** Паспорт заправки: детекция заправки после пуска и накопление коррекций/угла в спокойной езде. */
+    private fun fuelSample(now: Long, s: List<SensorReading>) {
+        val level = s.firstOrNull { it.key == "fuel" }?.value
+        if (level != null && level > 0) lastFuelLevel = level
+        if (!engineRunning) return
+        val dt = if (lastFuelSampleT != 0L) now - lastFuelSampleT else 0L
+        lastFuelSampleT = now
+        if (refuelCheck && level != null && level > 0) {
+            refuelCheck = false
+            val last = tanks.lastOrNull()
+            when {
+                last == null -> {
+                    val t = Tank(now, level, level, name = "Текущий бак")
+                    val list = listOf(t)
+                    prefs.saveTanks(list); ui { tanks = list }
+                    addLog("Паспорт заправки: начал журнал с уровня ${level.toInt()} %")
+                }
+                FuelLog.refuel(levelAtStop, level) -> {
+                    val t = Tank(now, levelAtStop ?: level, level, prevTrim = last.trim, prevTiming = last.timing)
+                    val list = (tanks + t).takeLast(Tank.MAX)
+                    prefs.saveTanks(list); ui { tanks = list }
+                    addLog("Заправка: ${levelAtStop?.toInt()} → ${level.toInt()} %, новый бак в журнале")
+                }
+            }
+        }
+        val t = tanks.lastOrNull() ?: return
+        if (t.enough && t.announced) return
+        if (dt in 1..5000) {
+            s.firstOrNull { it.key == "speed" }?.value?.let { sp -> t.km += sp * dt / 3_600_000.0 }
+        }
+        if (FuelLog.cruise(s)) {
+            val stft = s.firstOrNull { it.key == "stft" }?.value
+            val ltft = s.firstOrNull { it.key == "ltft" }?.value
+            if (stft != null && ltft != null) { t.trimSum += stft + ltft; t.trimN++ }
+            s.firstOrNull { it.key == "timing" }?.value?.let { t.timingSum += it; t.timingN++ }
+        }
+        if (t.enough && !t.announced) {
+            t.announced = true
+            val v = t.verdict
+            addLog("Паспорт заправки: ${t.title()} — ${t.short()}")
+            if (v == "worse") {
+                notify(NOTIF_FUEL, "С этим топливом мотор работает хуже", t.text())
+                speak("fuel_${t.start}", "Паспорт заправки: с этим топливом мотор работает хуже. Коррекции и зажигание ушли.", minGapMs = 0)
+            }
+            prefs.saveTanks(tanks); ui { tanks = tanks.toList() }
+        } else if (now - lastTankSave > 60_000) {
+            lastTankSave = now
+            prefs.saveTanks(tanks)
+        }
+    }
+
+    /** Имя АЗС и метка «плохая» для бака. */
+    fun renameTank(t: Tank, name: String, bad: Boolean) {
+        t.name = name; t.bad = bad
+        prefs.saveTanks(tanks); tanks = tanks.toList()
+    }
+
     private fun engineStopped(now: Long) {
         ui { engineOn = false }
+        levelAtStop = lastFuelLevel
+        refuelCheck = true
+        prefs.saveTanks(tanks)
         finishWarmup(now)
         val hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY)
         if (hour >= 15) computeForecast(alert = true)

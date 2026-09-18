@@ -121,6 +121,9 @@ object Kb {
         }
     }
 
+    /** Болячки модели из базы (запись с кодом ISSUES, наполняется tools/kb/build.py --issues). */
+    fun modelIssues(car: VinDecoder.Info, hint: String?): KbEntry? = find(car, hint, "ISSUES")
+
     /** Запомнить, что нейронка нашла для этой машины: только карточки с опытом и настоящими ссылками. */
     fun remember(car: VinDecoder.Info, hint: String?, d: Diagnosis, prefs: Prefs) {
         val text = carText(car, hint.takeIf { !it.isNullOrBlank() } ?: d.car.takeIf { it.isNotBlank() })
