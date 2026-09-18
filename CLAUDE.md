@@ -109,7 +109,12 @@ Android-приложение (Kotlin, Jetpack Compose) для диагности
   из `tools/forum/tree.py` (55 марок, 535 моделей, 916 веток). Чат — свой сервер `server/forum/server.py` (stdlib + SQLite,
   README рядом): опрос раз в 4 с, тот же запрос отмечает «онлайн» (90 с), ник и UUID устройства в Prefs, последняя ветка
   запоминается. Адрес сервера: переменная репозитория `FORUM_URL` → `BuildConfig.FORUM_URL`, либо поле в режиме разработчика
-  (`Prefs.forumUrl`). Пустой адрес = дерево работает, чат показывает «ещё не подключён». «Ваша машина» на первом уровне —
+  (`Prefs.forumUrl`). Пустой адрес = дерево работает, чат показывает «ещё не подключён».
+  **Сейчас сервер живёт на домашнем ПК владельца** (`C:\Users\Mira\obd-ai-server\forum.ps1`, автозагрузка через
+  `obdai-forum.vbs`): server.py на 127.0.0.1:8080, туннель `ssh -R 80:... nokey@localhost.run` (HTTPS `*.lhr.life`, без аккаунта),
+  адрес публикуется в `docs/forum_url.txt` через `gh api`; приложение читает его (`ForumLocator`) при запуске и при входе в чат:
+  порядок `Prefs.forumUrl` (dev) → `Prefs.forumUrlRemote` → `BuildConfig.FORUM_URL`. Cloudflare Tunnel не работает у этого
+  провайдера (DNS argotunnel.com режется). Скрипт .ps1 обязан быть в UTF-8 с BOM, иначе PowerShell 5.1 ломает кириллицу. «Ваша машина» на первом уровне —
   `ForumTree.findForCar` по VIN и строке `car` из разбора.
 - Цены (0.8): только «от». `families.PRICE` в `tools/dtc/families.py` — нижняя граница по РФ на сентябрь 2026 (запчасть + работа
   в обычном сервисе), код/марочный код/болячка могут переопределить (`p` / `price`). В карточке `effectivePrice`: нейронка →
