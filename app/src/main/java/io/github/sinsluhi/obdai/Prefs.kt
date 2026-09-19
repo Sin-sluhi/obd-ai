@@ -114,6 +114,12 @@ class Prefs(context: Context) {
         get() = sp.getBoolean("watch_dtc", true)
         set(v) = sp.edit().putBoolean("watch_dtc", v).apply()
 
+    fun loadBlackbox(): List<BlackboxEvent> = Blackbox.fromJson(sp.getString("blackbox", null))
+    fun saveBlackbox(list: List<BlackboxEvent>) = sp.edit().putString("blackbox", Blackbox.toJson(list)).apply()
+
+    fun loadVisits(): List<ServiceVisit> = ServiceAudit.fromJson(sp.getString("visits", null))
+    fun saveVisits(list: List<ServiceVisit>) = sp.edit().putString("visits", ServiceAudit.toJson(list)).apply()
+
     fun loadTanks(): List<Tank> = FuelLog.fromJson(sp.getString("tanks", null))
     fun saveTanks(list: List<Tank>) = sp.edit().putString("tanks", FuelLog.toJson(list.takeLast(Tank.MAX))).apply()
 

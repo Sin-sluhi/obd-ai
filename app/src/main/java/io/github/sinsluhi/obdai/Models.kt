@@ -32,7 +32,9 @@ data class CarSnapshot(
     val starts: StartAnalysis? = null,             // холодные пуски
     val forecast: MorningForecast? = null,         // заведётся ли утром
     val carHint: String? = null,                   // как машину назвала нейронка в прошлый раз («Hyundai Tucson 2019»)
-    val tank: Tank? = null                         // последний бак: паспорт заправки
+    val tank: Tank? = null,                        // последний бак: паспорт заправки
+    val blackbox: String? = null,                  // что записал чёрный ящик вокруг последнего события
+    val service: String? = null                    // итог проверки работ сервиса
 ) {
     /** Все коды из всех блоков. */
     val allCodes: List<String> get() = (stored + pending + permanent + modules.flatMap { it.codes }).distinct()

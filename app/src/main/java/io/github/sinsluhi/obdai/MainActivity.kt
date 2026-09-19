@@ -46,7 +46,9 @@ import io.github.sinsluhi.obdai.ui.ConfirmDialog
 import io.github.sinsluhi.obdai.ui.DashScreen
 import io.github.sinsluhi.obdai.ui.DetailsScreen
 import io.github.sinsluhi.obdai.ui.DevicePickerDialog
+import io.github.sinsluhi.obdai.ui.BlackboxScreen
 import io.github.sinsluhi.obdai.ui.ForumScreen
+import io.github.sinsluhi.obdai.ui.ServiceScreen
 import io.github.sinsluhi.obdai.ui.PurchaseScreen
 import io.github.sinsluhi.obdai.ui.HistoryScreen
 import io.github.sinsluhi.obdai.ui.HomeScreen
@@ -60,7 +62,7 @@ import io.github.sinsluhi.obdai.ui.SettingsScreen
 import io.github.sinsluhi.obdai.ui.Tab
 import io.github.sinsluhi.obdai.ui.reportText
 
-enum class Page { Home, Result, Sensors, History, Settings, Log, Details, Dash, Forum, Purchase }
+enum class Page { Home, Result, Sensors, History, Settings, Log, Details, Dash, Forum, Purchase, Blackbox, Service }
 
 class MainActivity : ComponentActivity() {
 
@@ -143,6 +145,8 @@ class MainActivity : ComponentActivity() {
                 Page.Log -> Page.Settings
                 Page.Details -> Page.Result
                 Page.Purchase -> Page.Result
+                Page.Blackbox -> Page.History
+                Page.Service -> Page.History
                 Page.Result -> { state.clearResult(); Page.Home }
                 else -> Page.Home
             }
@@ -222,8 +226,12 @@ class MainActivity : ComponentActivity() {
                     )
                     Page.Sensors -> SensorsScreen(state, onStartTrip = { startTrip() }, onStopTrip = { stopTrip() }, bottom = tabBar)
                     Page.Forum -> ForumScreen(state, bottom = tabBar)
+                    Page.Blackbox -> BlackboxScreen(state, onBack = { page = Page.History })
+                    Page.Service -> ServiceScreen(state, onBack = { page = Page.History })
                     Page.History -> HistoryScreen(
                         state,
+                        onBlackbox = { page = Page.Blackbox },
+                        onService = { page = Page.Service },
                         onOpen = { e ->
                             state.diagnosis = e.diagnosis
                             state.vin = e.vin

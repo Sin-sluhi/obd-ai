@@ -88,6 +88,13 @@ class AppState private constructor(context: Context) {
     var warmups by mutableStateOf(prefs.loadWarmups())
     var tanks by mutableStateOf(prefs.loadTanks())        // паспорт заправки: баки от заправки до заправки
     var carPhotoVersion by mutableStateOf(0)               // растёт, когда владелец выбрал своё фото машины
+    var blackbox by mutableStateOf(prefs.loadBlackbox())   // записи «что было за минуту до события»
+    var visits by mutableStateOf(prefs.loadVisits())       // визиты в сервис и проверка обещанных работ
+
+    // чёрный ящик: кольцевой буфер последней минуты и ожидание «хвоста» после события
+    private val bbBuffer = ArrayDeque<BbSample>()
+    @Volatile private var bbEventT = 0L
+    @Volatile private var bbEvent: Triple<String, String, String>? = null
     @Volatile private var lastFuelLevel: Double? = null   // последний уровень топлива с прогретого/работающего мотора
     @Volatile private var levelAtStop: Double? = null     // уровень в момент последней остановки двигателя
     @Volatile private var refuelCheck = false             // после пуска ещё не сравнивали уровень
@@ -335,19 +342,25 @@ class AppState private constructor(context: Context) {
             checks.filter { it.level != "ok" }.forEach { addLog("Датчики: ${it.text}") }
             val snap = base.copy(repair = repair, trend = trend, flags = flags, checks = checks,
                 warmup = warmups.lastOrNull(), starts = StartAnalysis.build(starts), forecast = forecast,
-                carHint = prev?.diagnosis?.car?.takeIf { it.isNotBlank() }, tank = tanks.lastOrNull())
+                carHint = prev?.diagnosis?.car?.takeIf { it.isNotBlank() }, tank = tanks.lastOrNull(),
+                blackbox = blackbox.lastOrNull()
+                    ?.takeIf { System.currentTimeMillis() - it.t < 7L * 86_400_000 }
+                    ?.let { Blackbox.report(it) })
             knownCodes = snap.allCodes.map { it.substringBefore(' ') }.toSet()
             ui { lastSnapshot = snap; battery = batteryNow }
+            val serviceText = runCatching { closeVisit(snap) }.getOrNull()
+            val snapFull = if (serviceText == null) snap else snap.copy(service = serviceText)
+            if (serviceText != null) ui { lastSnapshot = snapFull }
 
             val cfg = aiConfig()
             val result = if (!cfg.ready) {
                 addLog("Разбор не настроен, показываю результат по справочнику")
-                Diagnosis.local(snap)
+                Diagnosis.local(snapFull)
             } else {
                 ui { busy = "Готовлю разбор" }
                 try {
                     AiClient.diagnose(
-                        cfg, snap,
+                        cfg, snapFull,
                         progress = { stage -> ui { busy = stage } },
                         log = { addLog(it) }
                     ).also {
@@ -357,7 +370,7 @@ class AppState private constructor(context: Context) {
                 } catch (e: Exception) {
                     addLog("❌ Разбор не удался: ${e.message}")
                     ui { toast = "Подробный разбор временно недоступен" }
-                    Diagnosis.local(snap)
+                    Diagnosis.local(snapFull)
                 }
             }
             ui {
@@ -474,11 +487,86 @@ class AppState private constructor(context: Context) {
         val coolant = v("coolant")
         val rpm = v("rpm")
         val volt = v("volt") ?: Regex("[0-9]+(\\.[0-9]+)?").find(voltStr)?.value?.toDoubleOrNull()
-        if (coolant != null && coolant >= 108) speak("heat", "Перегрев двигателя: температура ${coolant.toInt()} градусов. Остановись и заглуши")
-        if (volt != null && rpm != null && rpm > 1000) {
-            if (volt < 12.3) speak("charge", "Нет зарядки: напряжение %.1f вольта. Генератор не заряжает".format(volt))
-            if (volt > 15.2) speak("over", "Перезаряд: напряжение %.1f вольта. Проверь регулятор".format(volt))
+        if (coolant != null && coolant >= 108) {
+            speak("heat", "Перегрев двигателя: температура ${coolant.toInt()} градусов. Остановись и заглуши")
+            recordEvent("heat", "Перегрев двигателя", "Температура ${coolant.toInt()} °C")
         }
+        if (volt != null && rpm != null && rpm > 1000) {
+            if (volt < 12.3) {
+                speak("charge", "Нет зарядки: напряжение %.1f вольта. Генератор не заряжает".format(volt))
+                recordEvent("volt", "Пропала зарядка", "Напряжение %.1f В на работающем моторе".format(volt))
+            }
+            if (volt > 15.2) {
+                speak("over", "Перезаряд: напряжение %.1f вольта. Проверь регулятор".format(volt))
+                recordEvent("volt", "Перезаряд", "Напряжение %.1f В".format(volt))
+            }
+        }
+    }
+
+    // ---- чёрный ящик ----
+
+    /** Каждый опрос кладём срез в кольцевой буфер; после события ещё полминуты пишем «хвост» и сохраняем. */
+    private fun bbSample(now: Long, s: List<SensorReading>, volt: Double?) {
+        val map = HashMap<String, Double>()
+        s.forEach { r -> if (r.key in BbSample.KEYS) r.value?.let { map[r.key] = it } }
+        if (volt != null) map["volt"] = volt
+        if (map.isEmpty()) return
+        bbBuffer.addLast(BbSample(now, map))
+        val keepFrom = now - Blackbox.BEFORE_MS - Blackbox.AFTER_MS
+        while (bbBuffer.isNotEmpty() && bbBuffer.first().t < keepFrom) bbBuffer.removeFirst()
+        val ev = bbEvent ?: return
+        if (now - bbEventT < Blackbox.AFTER_MS) return
+        bbEvent = null
+        val from = bbEventT - Blackbox.BEFORE_MS
+        val samples = bbBuffer.filter { it.t in from..(bbEventT + Blackbox.AFTER_MS) }
+        if (samples.size < 5) return
+        val e = BlackboxEvent(bbEventT, ev.first, ev.second, ev.third, samples)
+        val list = (blackbox + e).takeLast(Blackbox.MAX_EVENTS)
+        prefs.saveBlackbox(list)
+        ui { blackbox = list }
+        addLog("Чёрный ящик: записано событие «${e.title}» (${samples.size} замеров)")
+    }
+
+    /** Отметить событие: минута до него уже в буфере, хвост допишется сам. */
+    fun recordEvent(kind: String, title: String, detail: String) {
+        val now = System.currentTimeMillis()
+        if (bbEvent != null && now - bbEventT < Blackbox.AFTER_MS) return   // одно событие за раз
+        if (now - bbEventT < 120_000) return                                // и не чаще раза в две минуты
+        bbEventT = now
+        bbEvent = Triple(kind, title, detail)
+    }
+
+    // ---- сервис ----
+
+    /** Запомнить визит: измерения «до» берём из последней проверки. */
+    fun addVisit(place: String, works: List<String>, price: Int): Boolean {
+        val snap = lastSnapshot ?: return false
+        val v = ServiceVisit(System.currentTimeMillis(), place.trim(), works, price, ServiceMetrics.from(snap, warmups))
+        val list = (visits + v).takeLast(ServiceAudit.MAX)
+        prefs.saveVisits(list)
+        visits = list
+        addLog("Записан визит в сервис: ${works.size} работ")
+        return true
+    }
+
+    fun deleteVisit(v: ServiceVisit) {
+        val list = visits.filter { it.t != v.t }
+        prefs.saveVisits(list)
+        visits = list
+    }
+
+    /** После новой проверки закрываем незакрытый визит: это и есть «после». */
+    private fun closeVisit(snap: CarSnapshot): String? {
+        val open = visits.lastOrNull { !it.checked } ?: return null
+        if (System.currentTimeMillis() - open.t < 60_000) return null   // проверка сразу после записи — ещё не съездил
+        val updated = open.copy(after = ServiceMetrics.from(snap, warmups), afterT = System.currentTimeMillis())
+        val list = visits.map { if (it.t == open.t) updated else it }
+        prefs.saveVisits(list)
+        ui { visits = list }
+        val checks = ServiceAudit.audit(updated)
+        val verdict = ServiceAudit.verdict(checks)
+        addLog("Проверка работ сервиса: ${verdict.second}")
+        return verdict.second + ". " + checks.joinToString(" ") { "${it.work}: ${it.text}" }
     }
 
     // ---- постоянный опрос: датчики, двигатель, поездки, прогрев, пуски, новые ошибки ----
@@ -522,6 +610,7 @@ class AppState private constructor(context: Context) {
                     handleEngine(l, now, s.firstOrNull { it.key == "rpm" }?.value, vNow, s)
                     recordVolt(s, volt, force = false)
                     if (!quick) fuelSample(now, s)
+                    bbSample(now, s, vNow)
                     if (trip != null) {
                         checkAlarms(s, volt)
                         if (watchDtc && now - lastDtcPoll > 90_000) watchCodes(l, now, s)
@@ -733,6 +822,7 @@ class AppState private constructor(context: Context) {
         ui { milOn = mil.first; dtcCount = mil.second }
         val first = fresh.first()
         addLog("⚠️ Новая ошибка в пути: ${fresh.joinToString()}")
+        recordEvent("dtc", "Новая ошибка: ${fresh.joinToString()}", DtcCatalog.title(first))
         speak("dtc_$first", "Новая ошибка ${first.toCharArray().joinToString(" ")}: ${DtcCatalog.title(first)}", minGapMs = 0)
         notify(NOTIF_DTC, "Новая ошибка: ${fresh.joinToString()}", DtcCatalog.title(first) + ". Готовлю разбор…")
         val cfg = aiConfig()

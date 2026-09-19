@@ -201,7 +201,15 @@ fun HomeScreen(
                 Text(car, style = Type.strong(16))
                 VSpace(4.dp)
             }
-            Text(state.vin ?: "VIN появится после проверки", style = if (state.vin != null) Type.mono(17) else Type.body(15, Palette.muted))
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text("VIN", style = Type.body(11, Palette.muted, FontWeight.SemiBold),
+                    modifier = Modifier
+                        .background(Palette.surface2, RoundedCornerShape(6.dp))
+                        .border(1.dp, Palette.border, RoundedCornerShape(6.dp))
+                        .padding(horizontal = 6.dp, vertical = 2.dp))
+                HSpace(8.dp)
+                Text(state.vin ?: "появится после проверки", style = if (state.vin != null) Type.mono(16) else Type.body(14, Palette.muted))
+            }
             VSpace(14.dp)
             Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
                 InfoTile("Протокол", shortProtocol(state.protocol), Modifier.weight(1f))
@@ -689,6 +697,25 @@ private fun CodeCard(
     }
 }
 
+/** Плитка входа в журнал: чёрный ящик, сервис. */
+@Composable
+private fun JournalTile(title: String, subtitle: String, warn: Boolean, modifier: Modifier = Modifier, onClick: () -> Unit) {
+    val accent = LocalAccent.current
+    val shape = RoundedCornerShape(16.dp)
+    Column(
+        modifier
+            .background(Palette.surface, shape)
+            .border(1.dp, if (warn) Palette.warn.copy(alpha = 0.35f) else Palette.border, shape)
+            .clip(shape)
+            .clickable(onClick = onClick)
+            .padding(14.dp)
+    ) {
+        Text(title, style = Type.body(14, Palette.text, FontWeight.SemiBold))
+        VSpace(2.dp)
+        Text(subtitle, style = Type.body(12, if (warn) Palette.warn else Palette.muted))
+    }
+}
+
 // ======================= Датчики =======================
 
 @Composable
@@ -839,11 +866,25 @@ private fun TrimValue(label: String, value: Double?, high: Boolean, modifier: Mo
 // ======================= История =======================
 
 @Composable
-fun HistoryScreen(state: AppState, onOpen: (HistoryEntry) -> Unit, bottom: @Composable () -> Unit) {
+fun HistoryScreen(
+    state: AppState,
+    onOpen: (HistoryEntry) -> Unit,
+    onBlackbox: () -> Unit = {},
+    onService: () -> Unit = {},
+    bottom: @Composable () -> Unit
+) {
     val accent = LocalAccent.current
     val fmt = remember { SimpleDateFormat("d MMMM, HH:mm", Locale("ru")) }
     Screen(bottom = bottom) {
         Header("История")
+        Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+            JournalTile("Чёрный ящик", plural(state.blackbox.size, "запись", "записи", "записей"),
+                warn = state.blackbox.isNotEmpty(), modifier = Modifier.weight(1f), onClick = onBlackbox)
+            val open = state.visits.count { !it.checked }
+            JournalTile("Сервис", if (open > 0) "$open ждёт проверки" else plural(state.visits.size, "визит", "визита", "визитов"),
+                warn = open > 0, modifier = Modifier.weight(1f), onClick = onService)
+        }
+        VSpace(14.dp)
         if (state.trips.isNotEmpty()) {
             val month = state.trips.filter { it.start > System.currentTimeMillis() - 30L * 86_400_000 }
             val fuel = month.mapNotNull { it.fuelL }
