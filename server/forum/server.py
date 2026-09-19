@@ -14,6 +14,12 @@ API (JSON, UTF-8):
   POST /api/presence  {"room","device","name"}          → {"online": N}
   GET  /api/online?rooms=a,b,c                          → {"a": N, "b": N}
   GET  /api/health                                      → {"ok": true, "messages": N}
+
+Облачный гараж (чтобы история машины пережила смену телефона):
+  POST /api/garage/put  {"code","car","name","data"}     → {"ok": true}
+  GET  /api/garage/get?code=<код>&car=<id>               → {"name","data","updated"}
+  GET  /api/garage/list?code=<код>                       → {"cars":[{"car","name","updated","size"}]}
+Код гаража придумывает приложение (16 случайных символов) и показывает владельцу: кто знает код, тот видит гараж.
 """
 import argparse
 import json
@@ -45,6 +51,9 @@ def init_db(path):
     _db.execute("""CREATE TABLE IF NOT EXISTS presence(
         room TEXT NOT NULL, device TEXT NOT NULL, name TEXT NOT NULL, seen INTEGER NOT NULL,
         PRIMARY KEY(room, device))""")
+    _db.execute("""CREATE TABLE IF NOT EXISTS garage(
+        code TEXT NOT NULL, car TEXT NOT NULL, name TEXT NOT NULL, data TEXT NOT NULL, updated INTEGER NOT NULL,
+        PRIMARY KEY(code, car))""")
     _db.commit()
 
 
@@ -103,6 +112,37 @@ def send(room, device, name, text):
         return cur.lastrowid
 
 
+MAX_GARAGE = 512 * 1024      # на машину: истории и поездок хватает с запасом
+MAX_CARS = 12
+
+
+def garage_put(code, car, name, data):
+    with _lock:
+        n = _db.execute("SELECT COUNT(*) FROM garage WHERE code=?", (code,)).fetchone()[0]
+        exists = _db.execute("SELECT 1 FROM garage WHERE code=? AND car=?", (code, car)).fetchone()
+        if not exists and n >= MAX_CARS:
+            return False
+        _db.execute("INSERT INTO garage(code, car, name, data, updated) VALUES(?,?,?,?,?) "
+                    "ON CONFLICT(code, car) DO UPDATE SET name=excluded.name, data=excluded.data, updated=excluded.updated",
+                    (code, car, name, data, int(time.time())))
+        _db.commit()
+    return True
+
+
+def garage_get(code, car):
+    with _lock:
+        row = _db.execute("SELECT name, data, updated FROM garage WHERE code=? AND car=?", (code, car)).fetchone()
+    if not row:
+        return None
+    return {"name": row[0], "data": row[1], "updated": row[2]}
+
+
+def garage_list(code):
+    with _lock:
+        rows = _db.execute("SELECT car, name, updated, LENGTH(data) FROM garage WHERE code=? ORDER BY updated DESC", (code,)).fetchall()
+    return [{"car": r[0], "name": r[1], "updated": r[2], "size": r[3]} for r in rows]
+
+
 class Handler(BaseHTTPRequestHandler):
     server_version = "obdai-forum/1.0"
 
@@ -120,7 +160,7 @@ class Handler(BaseHTTPRequestHandler):
 
     def _body(self):
         n = int(self.headers.get("Content-Length") or 0)
-        if n <= 0 or n > 65536:
+        if n <= 0 or n > MAX_GARAGE + 8192:   # сообщения крошечные, гараж — до полумегабайта
             return {}
         try:
             return json.loads(self.rfile.read(n).decode("utf-8"))
@@ -147,6 +187,18 @@ class Handler(BaseHTTPRequestHandler):
             except ValueError:
                 after = 0
             return self._json(200, {"messages": messages(room, after), "online": online(room)})
+        if u.path == "/api/garage/get":
+            code = clean(q.get("code"), 64)
+            car = clean(q.get("car"), 64)
+            if len(code) < 8 or not car:
+                return self._json(400, {"error": "code/car"})
+            item = garage_get(code, car)
+            return self._json(200, item or {"name": "", "data": "", "updated": 0})
+        if u.path == "/api/garage/list":
+            code = clean(q.get("code"), 64)
+            if len(code) < 8:
+                return self._json(400, {"error": "code"})
+            return self._json(200, {"cars": garage_list(code)})
         if u.path == "/api/online":
             rooms = [r for r in clean(q.get("rooms"), 4000).split(",") if r][:200]
             return self._json(200, online_many(rooms))
@@ -155,6 +207,8 @@ class Handler(BaseHTTPRequestHandler):
     def do_POST(self):
         u = urlparse(self.path)
         b = self._body()
+        if u.path == "/api/garage/put":
+            return self._garage_put(b)
         room = clean(b.get("room"), 200)
         device = clean(b.get("device"), 64)
         name = clean(b.get("name"), MAX_NAME) or "Водитель"
@@ -173,6 +227,19 @@ class Handler(BaseHTTPRequestHandler):
                 return self._json(429, {"error": "slow down"})
             return self._json(200, {"id": mid})
         return self._json(404, {"error": "not found"})
+
+    def _garage_put(self, b):
+        code = clean(b.get("code"), 64)
+        car = clean(b.get("car"), 64)
+        name = clean(b.get("name"), 64)
+        data = b.get("data") or ""
+        if len(code) < 8 or not car:
+            return self._json(400, {"error": "code/car"})
+        if not isinstance(data, str) or len(data) > MAX_GARAGE:
+            return self._json(413, {"error": "too big"})
+        if not garage_put(code, car, name, data):
+            return self._json(409, {"error": "too many cars"})
+        return self._json(200, {"ok": True})
 
 
 def main():

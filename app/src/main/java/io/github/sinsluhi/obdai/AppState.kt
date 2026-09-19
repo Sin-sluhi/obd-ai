@@ -38,6 +38,7 @@ class AppState private constructor(context: Context) {
         private const val NOTIF_FORECAST = 52
         private const val NOTIF_WARMUP = 53
         private const val NOTIF_FUEL = 54
+        private const val NOTIF_GUARD = 55
     }
 
     /** Адрес сервера форума: из настроек разработчика, иначе из сборки. Пусто — чат выключен. */
@@ -90,6 +91,12 @@ class AppState private constructor(context: Context) {
     var carPhotoVersion by mutableStateOf(0)               // растёт, когда владелец выбрал своё фото машины
     var blackbox by mutableStateOf(prefs.loadBlackbox())   // записи «что было за минуту до события»
     var visits by mutableStateOf(prefs.loadVisits())       // визиты в сервис и проверка обещанных работ
+    var cars by mutableStateOf(prefs.cars)                 // гараж: все машины этого телефона
+    var carId by mutableStateOf(prefs.carId)               // какая машина открыта сейчас
+    var guard by mutableStateOf(prefs.guard)               // охрана: сообщить, если машину заведут без вас
+    var guardSince by mutableStateOf(prefs.guardSince)
+    var cloudBusy by mutableStateOf<String?>(null)         // что сейчас делает облачный гараж
+    @Volatile private var guardAlerted = 0L
 
     // чёрный ящик: кольцевой буфер последней минуты и ожидание «хвоста» после события
     private val bbBuffer = ArrayDeque<BbSample>()
@@ -200,6 +207,153 @@ class AppState private constructor(context: Context) {
         prefs.lat = lat; prefs.lon = lon
         addLog("Координаты для прогноза погоды сохранены")
         computeForecast(alert = false)
+    }
+
+    // ---- гараж: несколько машин ----
+
+    val carName: String
+        get() = cars.firstOrNull { it.id == carId }?.name
+            ?: diagnosis?.car.orEmpty().ifBlank { VinDecoder.decode(vin).title() }
+
+    /** Переключиться на машину: подменяем префикс настроек и перечитываем всё, что зависит от машины. */
+    fun switchCar(id: String, name: String = "") {
+        if (id.isBlank()) return
+        prefs.carId = id
+        val known = prefs.cars
+        val existing = known.firstOrNull { it.id == id }
+        val profile = (existing ?: CarProfile(id, name, 0L)).copy(
+            name = name.ifBlank { existing?.name.orEmpty() },
+            lastSeen = existing?.lastSeen ?: 0L
+        )
+        prefs.cars = (known.filter { it.id != id } + profile).sortedByDescending { it.lastSeen }
+        // журналы этой машины: читаем здесь, раскладываем по состоянию в главном потоке
+        volts = prefs.loadVolts()
+        val newHistory = prefs.loadHistory()
+        val newTrips = prefs.loadTrips()
+        val newWarmups = prefs.loadWarmups()
+        val newStarts = prefs.loadStarts()
+        val newTanks = prefs.loadTanks()
+        val newVisits = prefs.loadVisits()
+        val newBlackbox = prefs.loadBlackbox()
+        val newBattery = BatteryReport.build(volts)
+        ui {
+            carId = id
+            cars = prefs.cars
+            history = newHistory
+            trips = newTrips
+            warmups = newWarmups
+            starts = newStarts
+            tanks = newTanks
+            visits = newVisits
+            blackbox = newBlackbox
+            battery = newBattery
+            diagnosis = null
+            lastSnapshot = null
+        }
+        addLog("Гараж: открыта машина ${profile.name.ifBlank { id }}")
+    }
+
+    /** VIN прочитан: если это другая машина — переключаемся сами. */
+    private fun noticeCar(v: String?, name: String) {
+        val id = v?.takeIf { it.length >= 11 } ?: return
+        if (id != carId) {
+            addLog("Это другая машина: переключаю гараж")
+            switchCar(id, name)
+            ui { toast = "Открыл гараж: ${name.ifBlank { id }}" }
+        }
+        val list = prefs.cars
+        val cur = list.firstOrNull { it.id == id }
+        val updated = (cur ?: CarProfile(id, name, 0L)).copy(
+            name = name.ifBlank { cur?.name.orEmpty() },
+            lastSeen = System.currentTimeMillis(),
+            checks = (cur?.checks ?: 0) + 1
+        )
+        prefs.cars = (list.filter { it.id != id } + updated).sortedByDescending { it.lastSeen }
+        ui { cars = prefs.cars }
+    }
+
+    fun forgetCar(car: CarProfile) {
+        prefs.forgetCar(car.id)
+        prefs.cars = prefs.cars.filter { it.id != car.id }
+        cars = prefs.cars
+        if (carId == car.id) switchCar(prefs.cars.firstOrNull()?.id ?: Garage.DEFAULT_ID)
+    }
+
+    /** Выгрузить текущую машину в облако. */
+    fun cloudUpload(onDone: (String) -> Unit) {
+        val api = GarageApi(forumUrl)
+        if (!api.configured) { onDone("Облако недоступно: нет адреса сервера"); return }
+        ui { cloudBusy = "Выгружаю" }
+        worker.execute {
+            val r = runCatching { api.put(prefs.garageCode, carId, carName, prefs.exportCar()) }
+            ui {
+                cloudBusy = null
+                val now = System.currentTimeMillis()
+                prefs.cars = prefs.cars.map { if (it.id == carId) it.copy(synced = now) else it }
+                cars = prefs.cars
+                onDone(r.fold({ "Машина выгружена в облако" }, { "Не вышло: ${it.message}" }))
+            }
+        }
+    }
+
+    /** Забрать машину из облака по коду гаража. */
+    fun cloudDownload(id: String, name: String, onDone: (String) -> Unit) {
+        val api = GarageApi(forumUrl)
+        if (!api.configured) { onDone("Облако недоступно: нет адреса сервера"); return }
+        ui { cloudBusy = "Загружаю" }
+        worker.execute {
+            val r = runCatching { api.get(prefs.garageCode, id) }
+            ui {
+                cloudBusy = null
+                val data = r.getOrNull()
+                if (r.isFailure) onDone("Не вышло: ${r.exceptionOrNull()?.message}")
+                else if (data == null) onDone("В облаке этой машины нет")
+                else {
+                    switchCar(id, name.ifBlank { data.first })
+                    prefs.importCar(data.second)
+                    switchCar(id, name.ifBlank { data.first })   // перечитать журналы уже из импорта
+                    onDone("Машина загружена из облака")
+                }
+            }
+        }
+    }
+
+    fun cloudList(onDone: (List<GarageApi.CloudCar>, String?) -> Unit) {
+        val api = GarageApi(forumUrl)
+        if (!api.configured) { onDone(emptyList(), "Облако недоступно: нет адреса сервера"); return }
+        ui { cloudBusy = "Смотрю облако" }
+        worker.execute {
+            val r = runCatching { api.list(prefs.garageCode) }
+            ui { cloudBusy = null; onDone(r.getOrDefault(emptyList()), r.exceptionOrNull()?.message) }
+        }
+    }
+
+    fun updateGarageCode(code: String) {
+        prefs.garageCode = code
+        addLog("Код гаража изменён")
+    }
+
+    // ---- охрана: машину завели без вас ----
+
+    fun updateGuard(on: Boolean) {
+        guard = on
+        prefs.guard = on
+        prefs.guardSince = if (on) System.currentTimeMillis() else 0L
+        guardSince = prefs.guardSince
+        addLog(if (on) "Охрана включена" else "Охрана выключена")
+        if (on) notify(NOTIF_GUARD, "Охрана включена", "Сообщу, если двигатель заведут, пока телефон рядом с машиной.")
+    }
+
+    /** Двигатель завёлся: если охрана включена — тревога. */
+    private fun guardOnStart(now: Long) {
+        if (!guard) return
+        if (now - guardAlerted < 120_000) return
+        guardAlerted = now
+        val name = carName.ifBlank { "Машину" }
+        notify(NOTIF_GUARD, "Машину завели без вас", "$name: двигатель запущен в ${java.text.SimpleDateFormat("HH:mm", java.util.Locale("ru")).format(java.util.Date(now))}. Если это не вы — посмотрите на машину.")
+        speak("guard", "Внимание: машину завели", minGapMs = 0)
+        recordEvent("guard", "Машину завели при включённой охране", "Охрана была включена ${formatDuration(now - guardSince)} назад")
+        addLog("⚠️ Охрана: двигатель запущен")
     }
 
     // ---- подключение ----
@@ -346,6 +500,7 @@ class AppState private constructor(context: Context) {
                 blackbox = blackbox.lastOrNull()
                     ?.takeIf { System.currentTimeMillis() - it.t < 7L * 86_400_000 }
                     ?.let { Blackbox.report(it) })
+            runCatching { noticeCar(v, VinDecoder.decode(v).title()) }
             knownCodes = snap.allCodes.map { it.substringBefore(' ') }.toSet()
             ui { lastSnapshot = snap; battery = batteryNow }
             val serviceText = runCatching { closeVisit(snap) }.getOrNull()
@@ -378,6 +533,10 @@ class AppState private constructor(context: Context) {
                 history = (listOf(HistoryEntry(System.currentTimeMillis(), v, result, snap.sensorMap())) + history).take(50)
                 prefs.saveHistory(history)
                 onDone()
+            }
+            if (prefs.garageAuto) runCatching {
+                GarageApi(forumUrl).takeIf { it.configured }?.put(prefs.garageCode, carId, carName, prefs.exportCar())
+                addLog("Гараж выгружен в облако")
             }
         }
     }
@@ -692,6 +851,7 @@ class AppState private constructor(context: Context) {
 
     private fun engineStarted(l: ObdLink, now: Long, v: Double?) {
         ui { engineOn = true }
+        guardOnStart(now)
         val start = if (crankStart != 0L) crankStart else lastOffSample
         val sawOff = lastOffSample != 0L && now - lastOffSample < 20_000
         if (start != 0L && sawOff) {

@@ -48,6 +48,7 @@ import io.github.sinsluhi.obdai.ui.DetailsScreen
 import io.github.sinsluhi.obdai.ui.DevicePickerDialog
 import io.github.sinsluhi.obdai.ui.BlackboxScreen
 import io.github.sinsluhi.obdai.ui.ForumScreen
+import io.github.sinsluhi.obdai.ui.GarageScreen
 import io.github.sinsluhi.obdai.ui.ServiceScreen
 import io.github.sinsluhi.obdai.ui.PurchaseScreen
 import io.github.sinsluhi.obdai.ui.HistoryScreen
@@ -62,7 +63,7 @@ import io.github.sinsluhi.obdai.ui.SettingsScreen
 import io.github.sinsluhi.obdai.ui.Tab
 import io.github.sinsluhi.obdai.ui.reportText
 
-enum class Page { Home, Result, Sensors, History, Settings, Log, Details, Dash, Forum, Purchase, Blackbox, Service }
+enum class Page { Home, Result, Sensors, History, Settings, Log, Details, Dash, Forum, Purchase, Blackbox, Service, Garage }
 
 class MainActivity : ComponentActivity() {
 
@@ -147,6 +148,7 @@ class MainActivity : ComponentActivity() {
                 Page.Purchase -> Page.Result
                 Page.Blackbox -> Page.History
                 Page.Service -> Page.History
+                Page.Garage -> Page.Home
                 Page.Result -> { state.clearResult(); Page.Home }
                 else -> Page.Home
             }
@@ -200,6 +202,7 @@ class MainActivity : ComponentActivity() {
                         onPhoto = { page = Page.Dash; takePhoto { page = Page.Dash } },
                         onUseWeather = { useLocationForForecast() },
                         onCarPhoto = { carPhotoLauncher.launch("image/*") },
+                        onGarage = { page = Page.Garage },
                         onPurchase = {
                             if (state.lastSnapshot != null) page = Page.Purchase
                             else if (state.connected) state.runCheck { page = Page.Purchase } else pickDevice()
@@ -226,6 +229,7 @@ class MainActivity : ComponentActivity() {
                     )
                     Page.Sensors -> SensorsScreen(state, onStartTrip = { startTrip() }, onStopTrip = { stopTrip() }, bottom = tabBar)
                     Page.Forum -> ForumScreen(state, bottom = tabBar)
+                    Page.Garage -> GarageScreen(state, onBack = { page = Page.Home })
                     Page.Blackbox -> BlackboxScreen(state, onBack = { page = Page.History })
                     Page.Service -> ServiceScreen(state, onBack = { page = Page.History })
                     Page.History -> HistoryScreen(

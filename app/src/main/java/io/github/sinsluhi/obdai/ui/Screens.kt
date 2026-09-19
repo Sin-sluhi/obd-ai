@@ -133,6 +133,7 @@ fun HomeScreen(
     onUseWeather: () -> Unit,
     onPurchase: () -> Unit,
     onCarPhoto: () -> Unit = {},
+    onGarage: () -> Unit = {},
     bottom: @Composable () -> Unit
 ) {
     val accent = LocalAccent.current
@@ -193,7 +194,15 @@ fun HomeScreen(
 
         // карточка машины
         Card {
-            Text("Ваша машина", style = Type.label())
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text("Ваша машина", style = Type.label(), modifier = Modifier.weight(1f))
+                if (state.guard) { Pill("охрана", Palette.warn, Palette.warnBg); HSpace(8.dp) }
+                Text(
+                    if (state.cars.size > 1) "Гараж · ${state.cars.size}" else "Гараж",
+                    style = Type.body(12, accent, FontWeight.SemiBold),
+                    modifier = Modifier.clickable(onClick = onGarage)
+                )
+            }
             VSpace(10.dp)
             val car = state.diagnosis?.car.orEmpty().ifBlank { VinDecoder.decode(state.vin).title() }
             CarPhoto(car, state.carPhotoVersion, onCarPhoto)
@@ -1139,7 +1148,7 @@ fun SettingsScreen(
         }
 
         Text(
-            "OBD AI 0.9",
+            "OBD AI 1.2",
             style = Type.body(12, Palette.muted),
             textAlign = TextAlign.Center,
             modifier = Modifier
