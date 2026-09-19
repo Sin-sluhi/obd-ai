@@ -14,7 +14,18 @@ import java.net.URLEncoder
  * Без ключей и регистраций; результат кэшируется в cacheDir, чтобы не дёргать сеть каждый запуск.
  */
 object CarImage {
-    private const val UA = "OBD-AI/0.7 (+https://github.com/Sin-sluhi/obd-ai)"
+    private const val UA = "OBD-AI/1.1 (+https://github.com/Sin-sluhi/obd-ai)"
+
+    /** Чем такая картинка обычно оказывается: не та машина, не снаружи или вовсе не фото. */
+    private val BAD_WORDS = listOf(
+        "taxi", "такси", "police", "полиц", "милиц", "ambulance", "скорая", "rally", "ралли", "racing", "гонк",
+        "crash", "авари", "wreck", "tuning", "тюнинг", "interior", "салон", "engine", "двигател", "dashboard",
+        "приборн", "logo", "логотип", "emblem", "эмблем", "badge", "map", "карта", "diagram", "схем", "chart",
+        "plant", "завод", "assembly", "сборк", "commons-logo", "wiki", "icon", "flag", "флаг", "rear", "сзади",
+        "trunk", "багажник", "wheel", "колес", "boot"
+    )
+    private val GOOD_WORDS = listOf("front", "side", "spb", "msk", "20", "sedan", "hatch", "универсал", "лифтбек", "седан")
+    private val BAD_EXT = listOf(".svg", ".gif", ".ogg", ".webm", ".pdf", ".tif")
 
     /** Запрос к Википедии по названию: брэнд + модель без года. Возвращает файл с картинкой или null. */
     /** Фото, которое выбрал владелец: важнее любого найденного. */
@@ -40,7 +51,7 @@ object CarImage {
         val miss = File(dir, file.name + ".miss")
         if (file.exists() && file.length() > 0) return file
         if (miss.exists() && System.currentTimeMillis() - miss.lastModified() < 7 * 24 * 3_600_000L) return null
-        val url = thumbUrl("ru", title) ?: thumbUrl("en", title)
+        val url = bestImage("ru", title) ?: bestImage("en", title) ?: thumbUrl("ru", title) ?: thumbUrl("en", title)
         if (url == null) {
             miss.writeText("")
             return null
@@ -57,6 +68,35 @@ object CarImage {
             .filterNot { it.matches(Regex("(19|20)\\d{2}")) || it.matches(Regex("\\d{4}г\\.?")) }
         if (words.size < 2) return null
         return words.take(3).joinToString(" ")
+    }
+
+    /**
+     * Заглавное фото статьи часто оказывается такси, полицейской машиной или салоном.
+     * Поэтому берём все картинки статьи и выбираем ту, что похожа на обычный снимок машины сбоку:
+     * в имени файла есть модель и нет мусорных слов.
+     */
+    private fun bestImage(lang: String, title: String): String? {
+        val q = "https://$lang.wikipedia.org/w/api.php?action=query&format=json&generator=images&gimlimit=40" +
+            "&prop=imageinfo&iiprop=url&iiurlwidth=800&redirects=1&titles=" + URLEncoder.encode(title, "UTF-8")
+        val text = get(q)?.toString(Charsets.UTF_8) ?: return null
+        val pages = runCatching { JSONObject(text).getJSONObject("query").getJSONObject("pages") }.getOrNull() ?: return null
+        val model = title.split(" ").lastOrNull()?.lowercase().orEmpty()
+        data class Candidate(val name: String, val url: String, val score: Int)
+        val list = ArrayList<Candidate>()
+        pages.keys().forEach { k ->
+            val page = pages.optJSONObject(k) ?: return@forEach
+            val name = page.optString("title").substringAfter(":").lowercase()
+            val info = page.optJSONArray("imageinfo")?.optJSONObject(0) ?: return@forEach
+            val url = info.optString("thumburl").ifBlank { info.optString("url") }
+            if (!url.startsWith("http")) return@forEach
+            if (BAD_EXT.any { name.endsWith(it) }) return@forEach
+            if (BAD_WORDS.any { name.contains(it) }) return@forEach
+            var score = 0
+            if (model.isNotBlank() && name.contains(model)) score += 3
+            if (GOOD_WORDS.any { name.contains(it) }) score += 2
+            list.add(Candidate(name, url, score))
+        }
+        return list.maxByOrNull { it.score }?.url
     }
 
     private fun thumbUrl(lang: String, title: String): String? {
