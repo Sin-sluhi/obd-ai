@@ -143,21 +143,56 @@ def search_bing(query):
 
 
 BLOCKED = set()
+KEY = ""                     # ключ Groq, задаёт main(); нужен третьему поисковику
+SEARCH_MODEL = "openai/gpt-oss-20b"   # у каждой модели свой дневной лимит: поиск ссылок на 20b, выжимка на 120b
+SEARCH_PAUSE = 6.0           # DuckDuckGo ставит капчу на серию быстрых запросов с одного IP
+
+
+def search_groq(query):
+    """Третий поисковик: встроенный browser_search у Groq gpt-oss. Просим только адреса записей на drive2/drom;
+    страницы всё равно скачиваем и проверяем сами, так что модель не может подсунуть выдуманную ссылку."""
+    if not KEY:
+        raise Blocked("groq")
+    body = {"model": SEARCH_MODEL, "temperature": 0, "max_tokens": 1500, "reasoning_effort": "low",
+            "tool_choice": "required", "tools": [{"type": "browser_search"}],
+            "messages": [{"role": "user", "content":
+                          "Найди в интернете записи владельцев на drive2.ru и drom.ru по запросу «%s». "
+                          "Ответь только списком полных адресов найденных страниц (до 6 штук), по одному в строке, без пояснений." % query}]}
+    req = urllib.request.Request(API, data=json.dumps(body).encode("utf-8"), method="POST",
+                                 headers={"Content-Type": "application/json", "Authorization": "Bearer " + KEY,
+                                          "User-Agent": UA, "Accept": "application/json"})
+    try:
+        with urllib.request.urlopen(req, timeout=240) as resp:
+            data = json.loads(resp.read().decode("utf-8"))
+    except urllib.error.HTTPError as ex:
+        body = ex.read()[:300].decode("utf-8", "replace")
+        if ex.code == 429 and ("per day" in body or "TPD" in body or "RPD" in body):
+            raise Blocked("groq")
+        raise
+    text = (data.get("choices", [{}])[0].get("message", {}).get("content") or "")
+    out = []
+    for u in re.findall(r"https?://[^\s\]\)>\"'«»]+", text):
+        u = u.rstrip(".,;:")
+        if u.startswith("http") and u not in out:
+            out.append(u)
+    return out
 
 
 def search(query):
-    """Ссылки из выдачи: DuckDuckGo, при неудаче Bing. Между запросами пауза, чтобы не выглядеть ботом."""
-    for fn in (search_ddg, search_bing):
+    """Ссылки из выдачи: DuckDuckGo → Bing → browser_search Groq. Между запросами пауза, чтобы не выглядеть ботом."""
+    for fn in (search_ddg, search_bing, search_groq):
         if fn.__name__ in BLOCKED:
             continue
-        time.sleep(2.5)
+        if fn is not search_groq:
+            time.sleep(SEARCH_PAUSE)
         try:
             res = fn(query)
         except Blocked as ex:
-            print("  поисковик %s показал капчу, больше его не спрашиваю" % ex)
+            print("  поисковик %s недоступен (капча или лимит), больше его не спрашиваю" % ex)
             BLOCKED.add(fn.__name__)
             res = []
-        except Exception:  # noqa: BLE001
+        except Exception as ex:  # noqa: BLE001
+            print("  поисковик %s: %s" % (fn.__name__, str(ex)[:120]))
             res = []
         if res:
             return res
@@ -204,7 +239,8 @@ def research_notes(queries, anchor, budget, want=3):
             ex = excerpt(url, anchor, max(700, min(2800, budget // want)))
         except Exception:  # noqa: BLE001
             continue
-        if not ex:
+        # страница должна реально говорить про этот код/модель, иначе ссылка не подтверждена
+        if not ex or anchor.lower() not in ex.lower():
             continue
         notes.append("Источник: %s\n%s\n" % (url, ex))
         used.append(url)
@@ -338,6 +374,8 @@ def main():
     if not key:
         print("нет ключа: задайте GROQ_API_KEY", file=sys.stderr)
         sys.exit(2)
+    global KEY
+    KEY = key
 
     kb = load_kb()
     index = {(e["car"], e["code"]): e for e in kb["entries"]}
@@ -365,8 +403,8 @@ def main():
 
     done = added = failed = 0
     for _, car, code in queue:
-        if len(BLOCKED) >= 2:
-            print("оба поисковика показали капчу: останавливаюсь, остальное — в следующий запуск")
+        if len(BLOCKED) >= 3:
+            print("все поисковики недоступны: останавливаюсь, остальное — в следующий запуск")
             break
         try:
             entry = research(key, car, code)
