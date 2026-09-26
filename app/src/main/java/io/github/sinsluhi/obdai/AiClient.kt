@@ -118,7 +118,7 @@ object AiClient {
                 }
                 val json = extractJson(reply.content) ?: throw IOException("Модель вернула не JSON")
                 if (i > 0) log("Разбор сделала запасная модель")
-                return Diagnosis.fromJson(json, fromAi = true)
+                return verifySources(Diagnosis.fromJson(json, fromAi = true), userReport(snap, notes), log)
             } catch (e: IOException) {
                 last = e
                 if (i < models.lastIndex) {
@@ -128,6 +128,28 @@ object AiClient {
             }
         }
         throw last ?: IOException("Модель не ответила")
+    }
+
+    private val urlRegex = Regex("https?://[^\\s\"'<>«»\\]\\)]+")
+    private fun normUrl(u: String) = u.trim().trimEnd('/', '.', ',').lowercase()
+
+    /**
+     * В карточках остаются только адреса, которые модель реально видела: из выдержек ForumSearch или из базы в отчёте.
+     * Модели охотно дописывают правдоподобные drive2.ru/l/1234567 — такие отсекаем, а опыт без подтверждённой ссылки
+     * не показываем вовсе: карточка возьмёт запись из базы (`Kb.find`), а `Kb.remember` не запомнит выдумку.
+     */
+    private fun verifySources(d: Diagnosis, shown: String, log: (String) -> Unit): Diagnosis {
+        val allowed = urlRegex.findAll(shown).map { normUrl(it.value) }.toSet()
+        var dropped = 0
+        val codes = d.codes.map { c ->
+            val ok = c.sources.filter { normUrl(it) in allowed }
+            dropped += c.sources.size - ok.size
+            if (ok.isEmpty()) c.copy(sources = emptyList(), ownerExperience = "") else c.copy(sources = ok)
+        }
+        val issues = d.typicalIssues.filter { it.source.isNotBlank() && normUrl(it.source) in allowed }
+        dropped += d.typicalIssues.size - issues.size
+        if (dropped > 0) log("Отброшено неподтверждённых ссылок: $dropped")
+        return d.copy(codes = codes, typicalIssues = issues)
     }
 
     private fun userReport(snap: CarSnapshot, notes: String): String = buildString {

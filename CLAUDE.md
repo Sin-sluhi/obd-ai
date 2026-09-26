@@ -90,6 +90,9 @@ Android-приложение (Kotlin, Jetpack Compose) для диагности
   Anthropic через web_search + structured outputs. Промпт `ROLE` + схема `SCHEMA_TEXT`
   (поля `for_service`, `typical_issues`). `report()` отдаёт модели мониторы, счётчики, самотесты, АКБ, ремонт, тренд, флаги.
   Без живого поиска (капча, нет сети) опыт владельцев берётся из базы `docs/kb.json` — поэтому её наполнение важнее поиска.
+  `verifySources` (1.2.1): в карточках остаются только адреса, которые были в выдержках или в базе из отчёта; модели
+  охотно выдумывают `drive2.ru/l/7654321`. Опыт без подтверждённой ссылки не показывается, карточка берёт запись из
+  базы. Свой кэш `Prefs.kbLocal` при первом запуске 1.2.1 очищается (`kbLocalVersion`), там лежали выдуманные ссылки.
   `dashboard()` — фото приборки: Groq `qwen/qwen3.8-27b` → `qwen/qwen3.6-27b`, Anthropic через image-блок.
 - `OpenAiClient.kt` — `/chat/completions`; с `imageJpegBase64` шлёт content-массив с data-URL, `modelOverride`.
 - `AppState.kt` — синглтон на процесс (`AppState.get`), состояние для Compose, фоновые задачи, история

@@ -63,6 +63,11 @@ object Kb {
             val f = File(context.filesDir, FILE)
             if (f.exists()) parseShared(f.readText(Charsets.UTF_8))
         }
+        // до 27.09.2026 сюда попадали ссылки, которые модель выдумала (AiClient их не проверял): чистим один раз
+        if (prefs.kbLocalVersion < 2) {
+            prefs.kbLocal = null
+            prefs.kbLocalVersion = 2
+        }
         runCatching {
             val raw = prefs.kbLocal ?: return@runCatching
             val o = JSONObject(raw)

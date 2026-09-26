@@ -1148,7 +1148,7 @@ fun SettingsScreen(
         }
 
         Text(
-            "OBD AI 1.2",
+            "OBD AI 1.2.1",
             style = Type.body(12, Palette.muted),
             textAlign = TextAlign.Center,
             modifier = Modifier

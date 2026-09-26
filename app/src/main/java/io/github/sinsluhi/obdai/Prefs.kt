@@ -207,6 +207,11 @@ class Prefs(context: Context) {
         get() = sp.getString("kb_local", null)
         set(v) = sp.edit().putString("kb_local", v).apply()
 
+    /** Версия формата своего кэша: подняли, когда стали отсекать выдуманные ссылки. */
+    var kbLocalVersion: Int
+        get() = sp.getInt("kb_local_ver", 1)
+        set(v) = sp.edit().putInt("kb_local_ver", v).apply()
+
     var kbFetched: Long
         get() = sp.getLong("kb_fetched", 0L)
         set(v) = sp.edit().putLong("kb_fetched", v).apply()
