@@ -41,9 +41,8 @@ def main():
         print(models)
     for model in PROBE:
         body = {"model": model, "max_tokens": 40, "temperature": 0,
-                "messages": [{"role": "user", "content": "Ответь одним словом: столица России?"}],
+                "messages": [{"role": "user", "content": 'Ответь одним словом: столица России? Ответ в JSON: {"answer": "..."}'}],
                 "response_format": {"type": "json_object"}}
-        body["messages"][0]["content"] += ' Формат: {"answer": "..."}'
         status, headers, data = call(key, "/chat/completions", body)
         print("== %s -> %s" % (model, status))
         for k, v in sorted(headers.items()):
