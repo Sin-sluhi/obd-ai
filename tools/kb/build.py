@@ -158,17 +158,27 @@ def search_groq(query):
             "messages": [{"role": "user", "content":
                           "Найди в интернете записи владельцев на drive2.ru и drom.ru по запросу «%s». "
                           "Ответь только списком полных адресов найденных страниц (до 6 штук), по одному в строке, без пояснений." % query}]}
-    req = urllib.request.Request(API, data=json.dumps(body).encode("utf-8"), method="POST",
-                                 headers={"Content-Type": "application/json", "Authorization": "Bearer " + KEY,
-                                          "User-Agent": UA, "Accept": "application/json"})
-    try:
-        with urllib.request.urlopen(req, timeout=240) as resp:
-            data = json.loads(resp.read().decode("utf-8"))
-    except urllib.error.HTTPError as ex:
-        body = ex.read()[:300].decode("utf-8", "replace")
-        if ex.code == 429 and ("per day" in body or "TPD" in body or "RPD" in body):
-            raise Blocked("groq")
-        raise
+    data = None
+    for attempt in range(2):
+        req = urllib.request.Request(API, data=json.dumps(body).encode("utf-8"), method="POST",
+                                     headers={"Content-Type": "application/json", "Authorization": "Bearer " + KEY,
+                                              "User-Agent": UA, "Accept": "application/json"})
+        try:
+            with urllib.request.urlopen(req, timeout=240) as resp:
+                data = json.loads(resp.read().decode("utf-8"))
+            break
+        except urllib.error.HTTPError as ex:
+            err = ex.read()[:300].decode("utf-8", "replace")
+            if ex.code == 429 and ("per day" in err or "TPD" in err or "RPD" in err):
+                raise Blocked("groq")
+            if ex.code == 429 and attempt == 0:
+                # минутный лимит: поиск с чтением страниц ест много токенов, ждём сколько просят и пробуем ещё раз
+                m = re.search(r"try again in ([0-9.]+)s", err)
+                wait = min(max((float(m.group(1)) if m else 30) + 2, 15), 90)
+                print("  browser_search 429 (%s), жду %.0f с" % (err[:100].replace("\n", " "), wait))
+                time.sleep(wait)
+                continue
+            raise RuntimeError("%s: %s" % (ex.code, err[:160]))
     text = (data.get("choices", [{}])[0].get("message", {}).get("content") or "")
     out = []
     for u in re.findall(r"https?://[^\s\]\)>\"'«»]+", text):
@@ -178,10 +188,11 @@ def search_groq(query):
     return out
 
 
-def search(query):
-    """Ссылки из выдачи: DuckDuckGo → Bing → browser_search Groq. Между запросами пауза, чтобы не выглядеть ботом."""
+def search(query, groq_ok=True):
+    """Ссылки из выдачи: DuckDuckGo → Bing → browser_search Groq (он дорогой по токенам, поэтому не на каждый запрос).
+    Между запросами пауза, чтобы не выглядеть ботом."""
     for fn in (search_ddg, search_bing, search_groq):
-        if fn.__name__ in BLOCKED:
+        if fn.__name__ in BLOCKED or (fn is search_groq and not groq_ok):
             continue
         if fn is not search_groq:
             time.sleep(SEARCH_PAUSE)
@@ -225,10 +236,10 @@ def excerpt(url, anchor, window):
 def research_notes(queries, anchor, budget, want=3):
     """Ссылки с форумов по запросам и выдержки из них. Возвращает (текст для модели, [адреса])."""
     links = []
-    for q in queries:
+    for i, q in enumerate(queries):
         if len(links) >= want:
             break
-        for url in search(q):
+        for url in search(q, groq_ok=(i == 0)):   # browser_search только по первому, самому точному запросу
             if any(f in url for f in FORUMS) and url not in links and len(links) < want:
                 links.append(url)
     notes = []
