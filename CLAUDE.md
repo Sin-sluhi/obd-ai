@@ -65,7 +65,11 @@ Android-приложение (Kotlin, Jetpack Compose) для диагности
   `tools/kb/build.py` по парам из `tools/kb/targets.py`: поиск свой (зеркало ForumSearch.kt на Python: DuckDuckGo → Bing,
   капча распознаётся и заблокированный поисковик в этом запуске больше не спрашивается), выжимку делает Groq
   `gpt-oss-120b` (запасная `qwen3.8-27b`) по скачанным выдержкам; в `sources` только адреса, которые реально скачали
-  и показали модели. `tools/kb/probe.py` + `groq-probe.yml` — ручной зонд: какие модели видит ключ и какие лимиты. Приложение скачивает `raw.githubusercontent.com/
+  и показали модели. Пары без находок пишутся в `kb.json → misses` и не повторяются 30 дней (приложение читает только
+  `entries`). Из CI DuckDuckGo и Bing почти сразу ставят капчу (IP раннеров общие), рабочий источник ссылок там —
+  `browser_search` у Groq `gpt-oss-20b` (свой дневной лимит, отдельный от 120b). `forum.ps1` коммитит адрес туннеля
+  в `main` в любой момент, поэтому бот делает `git pull --rebase` перед push. `tools/kb/probe.py` + `groq-probe.yml` —
+  ручной зонд: какие модели видит ключ и какие лимиты. Приложение скачивает `raw.githubusercontent.com/
   Sin-sluhi/obd-ai/main/docs/kb.json` раз в сутки (`Kb.refresh` в `AppState.init`, файл в filesDir, `Prefs.kbFetched`).
   Своя часть: `Kb.remember` после каждого удачного разбора кладёт карточки с опытом и ссылками в `Prefs.kbLocal`
   (ключ «текст машины|код»). `Kb.find(decoded, carHint, code)` — сначала своё, потом общее; сопоставление по подстрокам

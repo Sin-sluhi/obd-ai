@@ -68,11 +68,18 @@ ISSUES_SYSTEM = """Ты — опытный автодиагност. Тебе д
 
 # ---------- база ----------
 
+MISS_RETRY_DAYS = 30   # пара, по которой ничего не нашлось, не встаёт в очередь раньше чем через месяц
+
+
 def load_kb():
     if not os.path.exists(KB_PATH):
-        return {"version": 1, "updated": "", "entries": []}
-    with io.open(KB_PATH, encoding="utf-8") as fh:
-        return json.load(fh)
+        kb = {"version": 1, "updated": "", "entries": []}
+    else:
+        with io.open(KB_PATH, encoding="utf-8") as fh:
+            kb = json.load(fh)
+    # «промахи»: {"машина|код": "дата"}; приложение читает только entries, этот ключ ему не мешает
+    kb.setdefault("misses", {})
+    return kb
 
 
 def save_kb(kb):
@@ -398,6 +405,12 @@ def main():
         except Exception:  # noqa: BLE001
             return True
 
+    def missed_recently(car, code):
+        try:
+            return (today - dt.date.fromisoformat(kb["misses"].get("%s|%s" % (car, code), ""))).days < MISS_RETRY_DAYS
+        except ValueError:
+            return False
+
     queue = []
     for car, codes in TARGETS:
         if args.car and args.car.lower() != car.lower():
@@ -405,7 +418,8 @@ def main():
         for code in ["ISSUES"] + list(codes):   # болячки модели — раньше кодов: они нужны «Перед покупкой»
             e = index.get((car, code))
             if e is None:
-                queue.append((0, car, code))       # новых — первыми
+                if not missed_recently(car, code):
+                    queue.append((0, car, code))   # новых — первыми
             elif stale(e):
                 queue.append((1, car, code))
     queue.sort(key=lambda x: x[0])
@@ -434,9 +448,11 @@ def main():
                 kb["entries"].remove(old)
             kb["entries"].append(entry)
             index[(car, code)] = entry
+            kb["misses"].pop("%s|%s" % (car, code), None)
             added += 1
             print("+ %s %s: %d ссылок" % (car, code, len(entry["sources"])))
         else:
+            kb["misses"]["%s|%s" % (car, code)] = today.isoformat()
             print("- %s %s: без подтверждённых записей" % (car, code))
         if done % 5 == 0:
             save_kb(kb)
