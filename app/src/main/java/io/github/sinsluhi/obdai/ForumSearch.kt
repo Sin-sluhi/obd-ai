@@ -14,8 +14,8 @@ object ForumSearch {
     private const val UA = "Mozilla/5.0 (Linux; Android 13; Pixel 7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Mobile Safari/537.36"
     private val forums = listOf("drive2.ru", "drom.ru")
 
-    /** Заметки для модели: по каждому коду до трёх выдержек с форумов со ссылками. */
-    fun research(codes: List<String>, car: String, log: (String) -> Unit): String {
+    /** Заметки для модели: по каждому коду до трёх выдержек с форумов со ссылками, всего не больше [budget] символов. */
+    fun research(codes: List<String>, car: String, log: (String) -> Unit, budget: Int = 9000): String {
         val sb = StringBuilder()
         var total = 0
         for (raw in codes.take(4)) {
@@ -36,11 +36,11 @@ object ForumSearch {
             }
             sb.appendLine("### $code")
             for (url in links) {
-                val excerpt = runCatching { fetchExcerpt(url, code) }.getOrNull() ?: continue
+                val excerpt = runCatching { fetchExcerpt(url, code, (budget / codes.size.coerceIn(1, 4) / 2).coerceIn(700, 2800)) }.getOrNull() ?: continue
                 if (excerpt.isBlank()) continue
                 sb.appendLine("Источник: $url").appendLine(excerpt).appendLine()
                 total += excerpt.length
-                if (total > 9000) return sb.toString()
+                if (total > budget) return sb.toString()
             }
         }
         return sb.toString()
@@ -67,9 +67,13 @@ object ForumSearch {
     }
 
     private fun searchBing(query: String): List<String> {
-        val html = get("https://www.bing.com/search?setlang=ru&q=" + URLEncoder.encode(query, "UTF-8"))
+        val html = get("https://www.bing.com/search?mkt=ru-RU&cc=RU&setlang=ru&q=" + URLEncoder.encode(query, "UTF-8"))
         val out = linkedSetOf<String>()
-        Regex("<li class=\"b_algo\".*?<h2><a href=\"([^\"]+)\"", RegexOption.DOT_MATCHES_ALL).findAll(html).forEach { m ->
+        // в каждом результате ссылка в заголовке <h2><a …> либо в плашке сайта <a class="tilk" …>, обе через bing.com/ck/a
+        val title = Regex("<h2>\\s*<a[^>]*href=\"([^\"]+)\"")
+        val tile = Regex("class=\"tilk\"[^>]*href=\"([^\"]+)\"")
+        html.split("<li class=\"b_algo\"").drop(1).forEach { block ->
+            val m = title.find(block) ?: tile.find(block) ?: return@forEach
             var href = m.groupValues[1].replace("&amp;", "&")
             if (href.contains("bing.com/ck/a")) {
                 val u = Regex("[?&]u=a1([^&]+)").find(href)?.groupValues?.get(1)
@@ -81,7 +85,7 @@ object ForumSearch {
     }
 
     /** Текст страницы без разметки, окно вокруг первого упоминания кода. */
-    private fun fetchExcerpt(url: String, code: String): String {
+    private fun fetchExcerpt(url: String, code: String, window: Int = 2800): String {
         val html = get(url, maxBytes = 600_000)
         val text = html
             .replace(Regex("(?is)<(script|style|noscript|svg|header|nav|footer)[^>]*>.*?</\\1>"), " ")
@@ -93,8 +97,8 @@ object ForumSearch {
             .trim()
         if (text.length < 200) return ""
         val idx = text.indexOf(code, ignoreCase = true).let { if (it < 0) 0 else it }
-        val start = (idx - 600).coerceAtLeast(0)
-        val end = (start + 2800).coerceAtMost(text.length)
+        val start = (idx - window / 5).coerceAtLeast(0)
+        val end = (start + window).coerceAtMost(text.length)
         return text.substring(start, end).trim()
     }
 

@@ -7,9 +7,10 @@ import java.net.HttpURLConnection
 import java.net.URL
 
 /**
- * Оркестратор разбора. Три пути в зависимости от провайдера:
- *  - Groq compound: один вызов, модель сама ищет по drive2/drom и отдаёт JSON;
- *  - остальные OpenAI-совместимые: наш ForumSearch собирает выдержки, модель отдаёт JSON;
+ * Оркестратор разбора. Два пути в зависимости от провайдера:
+ *  - OpenAI-совместимые (Groq по умолчанию): наш ForumSearch собирает выдержки с drive2/drom, модель отдаёт JSON.
+ *    Поиск свой, поэтому модель — сменная деталь: у Groq после gpt-oss-120b пробуем qwen3.8-27b (groq/compound
+ *    с собственным поиском отключён 21.09.2026);
  *  - Anthropic: встроенный web_search + structured outputs.
  */
 object AiClient {
@@ -70,82 +71,23 @@ object AiClient {
 - Если в отчёте есть раздел «Опыт владельцев из базы», это проверенные записи с настоящими адресами: используй их в owner_experience и sources как есть, а поиск трать на то, чего в базе нет, и на подтверждение.
 - Если в отчёте есть раздел «Справочник по кодам», расшифровка, частые причины и связи между кодами там уже верные — не пересказывай их. В explanation напиши, что код значит именно для этой машины с учётом датчиков и остальных кодов (1–2 фразы). В causes первыми поставь причины, которые подтвердили владельцы этой модели. Если справочник называет известную болячку модели, ищи на форумах именно её и подтверди или опровергни для этой машины."""
 
-    private const val GROQ_SEARCH = """
-Перед ответом обязательно поищи в интернете по каждому коду вместе с моделью машины (например «P0171 Kia Rio drive2»), прочитай, как владельцы решали проблему, и только потом отвечай."""
+    /** Запасные модели Groq по порядку, если основная не ответила или вернула не JSON. */
+    private val groqFallbacks = listOf("openai/gpt-oss-120b", "qwen/qwen3.8-27b")
+
+    /** Бесплатный тариф Groq: 8 тыс. токенов в минуту на запрос вместе с max_tokens — выдержки и ответ держим короткими. */
+    private const val NOTES_BUDGET = 4500
+    private const val NOTES_BUDGET_TIGHT = 1800
+    private const val VERDICT_TOKENS = 2500
 
     fun diagnose(cfg: AiConfig, snap: CarSnapshot, progress: (String) -> Unit, log: (String) -> Unit): Diagnosis {
         val hasCodes = snap.allCodes.isNotEmpty()
         return when {
             cfg.provider == Provider.ANTHROPIC -> anthropic(cfg, snap, hasCodes, progress, log)
-            cfg.provider.builtInSearch -> groq(cfg, snap, hasCodes, progress, log)
             else -> twoStage(cfg, snap, hasCodes, progress, log)
         }
     }
 
-    // ---------- Groq compound: поиск и вердикт одним вызовом ----------
-
-    private fun groq(cfg: AiConfig, snap: CarSnapshot, hasCodes: Boolean, progress: (String) -> Unit, log: (String) -> Unit): Diagnosis {
-        return try {
-            groqCompound(cfg, snap, hasCodes, progress, log)
-        } catch (e: IOException) {
-            log("Основной путь не сработал: ${e.message}. Пробую запасную модель")
-            progress("Готовлю разбор")
-            groqFallback(cfg, snap, log)
-        }
-    }
-
-    private fun groqCompound(cfg: AiConfig, snap: CarSnapshot, hasCodes: Boolean, progress: (String) -> Unit, log: (String) -> Unit): Diagnosis {
-        progress(if (hasCodes) "Ищу опыт владельцев на форумах" else "Нейронка оценивает состояние")
-        val system = ROLE + (if (hasCodes) GROQ_SEARCH else "") + "\n\n" + SCHEMA_TEXT
-        var reply = try {
-            OpenAiClient.chat(cfg, system, report(snap), search = hasCodes)
-        } catch (e: OpenAiClient.ApiException) {
-            // 429 на бесплатном тарифе: поиск со скачиванием страниц не влезает в минутный лимит — пробуем только сниппеты
-            if (e.status != 429 || !hasCodes) throw e
-            log("Лимит токенов на полном поиске, пробую облегчённый")
-            OpenAiClient.chat(cfg, system, report(snap), search = true, searchLite = true)
-        }
-        var json = extractJson(reply.content)
-        if (json == null && hasCodes) {
-            log("Первый ответ не разобрался, пробую без ограничения по сайтам")
-            reply = OpenAiClient.chat(cfg, system, report(snap), search = true, anySite = true)
-            json = extractJson(reply.content)
-        }
-        if (json == null) {
-            log("Ответ compound не разобрался, пробую запасную модель без поиска")
-            return groqFallback(cfg, snap, log)
-        }
-        log("Источников из поиска: ${reply.sources.size}")
-        val d = Diagnosis.fromJson(json, fromAi = true)
-        return attachSources(d, reply.sources)
-    }
-
-    /** Запасной путь для Groq: обычная модель, строгий JSON, без поиска. */
-    private fun groqFallback(cfg: AiConfig, snap: CarSnapshot, log: (String) -> Unit): Diagnosis {
-        val plain = cfg.copy(model = "openai/gpt-oss-120b")
-        val user = report(snap) + "\nЗаметок с форумов нет: опирайся на общие знания, owner_experience и sources оставь пустыми."
-        val reply = OpenAiClient.chat(plain, ROLE + "\n\n" + SCHEMA_TEXT, user, json = true)
-        val json = extractJson(reply.content) ?: throw IOException("Модель вернула не JSON")
-        log("Разбор сделала запасная модель")
-        return Diagnosis.fromJson(json, fromAi = true)
-    }
-
-    /** Если модель не проставила ссылки в карточке, подставляем найденные поиском записи с этим кодом. */
-    private fun attachSources(d: Diagnosis, sources: List<OpenAiClient.Source>): Diagnosis {
-        if (sources.isEmpty()) return d
-        val forum = sources.filter { it.url.contains("drive2.ru") || it.url.contains("drom.ru") }.ifEmpty { sources }
-        val codes = d.codes.map { c ->
-            if (c.sources.isNotEmpty()) c else {
-                val mine = forum.filter { s ->
-                    s.url.contains(c.code, true) || s.title.contains(c.code, true) || s.snippet.contains(c.code, true)
-                }.map { it.url }.distinct().take(3)
-                c.copy(sources = mine)
-            }
-        }
-        return d.copy(codes = codes)
-    }
-
-    // ---------- Провайдеры без поиска: наш ForumSearch + JSON-вердикт ----------
+    // ---------- Наш ForumSearch + JSON-вердикт любой OpenAI-совместимой моделью ----------
 
     private fun twoStage(cfg: AiConfig, snap: CarSnapshot, hasCodes: Boolean, progress: (String) -> Unit, log: (String) -> Unit): Diagnosis {
         var notes = ""
@@ -154,24 +96,49 @@ object AiClient {
             val decoded = VinDecoder.decode(snap.vin)
             val car = if (decoded.brand != null) decoded.title() else snap.vin?.let { identifyCar(cfg, it, log) }.orEmpty()
             progress("Ищу опыт владельцев на форумах")
-            notes = runCatching { ForumSearch.research(snap.allCodes, car, log) }
+            notes = runCatching { ForumSearch.research(snap.allCodes, car, log, NOTES_BUDGET) }
                 .onFailure { log("Поиск по форумам не удался: ${it.message}") }
                 .getOrDefault("")
         }
         progress("Нейронка формирует вердикт")
-        val user = buildString {
-            append(report(snap))
-            appendLine()
-            if (notes.isNotBlank()) {
-                appendLine("=== Выдержки с форумов (drive2.ru, drom.ru) ===")
-                append(notes)
-            } else {
-                appendLine("Выдержек с форумов нет: опирайся на общие знания, owner_experience и sources оставь пустыми.")
+        val system = ROLE + "\n\n" + SCHEMA_TEXT
+        // Groq: основная модель, при неудаче следующая; у остальных провайдеров модель одна
+        val models = if (cfg.provider == Provider.GROQ) (listOf(cfg.model) + groqFallbacks).distinct() else listOf(cfg.model)
+        var last: IOException? = null
+        for ((i, model) in models.withIndex()) {
+            val c = cfg.copy(model = model)
+            try {
+                val reply = try {
+                    OpenAiClient.chat(c, system, userReport(snap, notes), json = true, maxTokens = VERDICT_TOKENS)
+                } catch (e: OpenAiClient.ApiException) {
+                    // 429 на бесплатном тарифе: запрос не влез в минутный лимит — режем выдержки и повторяем
+                    if (e.status != 429 || notes.length <= NOTES_BUDGET_TIGHT) throw e
+                    log("Лимит токенов, повторяю с короткими выдержками")
+                    OpenAiClient.chat(c, system, userReport(snap, notes.take(NOTES_BUDGET_TIGHT)), json = true, maxTokens = VERDICT_TOKENS)
+                }
+                val json = extractJson(reply.content) ?: throw IOException("Модель вернула не JSON")
+                if (i > 0) log("Разбор сделала запасная модель")
+                return Diagnosis.fromJson(json, fromAi = true)
+            } catch (e: IOException) {
+                last = e
+                if (i < models.lastIndex) {
+                    log("Модель не ответила: ${e.message}. Пробую следующую")
+                    progress("Готовлю разбор")
+                }
             }
         }
-        val reply = OpenAiClient.chat(cfg, ROLE + "\n\n" + SCHEMA_TEXT, user, json = true)
-        val json = extractJson(reply.content) ?: throw IOException("Модель вернула не JSON")
-        return Diagnosis.fromJson(json, fromAi = true)
+        throw last ?: IOException("Модель не ответила")
+    }
+
+    private fun userReport(snap: CarSnapshot, notes: String): String = buildString {
+        append(report(snap))
+        appendLine()
+        if (notes.isNotBlank()) {
+            appendLine("=== Выдержки с форумов (drive2.ru, drom.ru) ===")
+            append(notes)
+        } else {
+            appendLine("Выдержек с форумов нет: опирайся на общие знания, owner_experience и sources оставь пустыми.")
+        }
     }
 
     private fun identifyCar(cfg: AiConfig, vin: String, log: (String) -> Unit): String {

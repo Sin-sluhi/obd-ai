@@ -61,9 +61,11 @@ Android-приложение (Kotlin, Jetpack Compose) для диагности
   `Diagnosis.local` (без сети) строит полноценный вердикт по справочнику; `AiClient.report()` отдаёт нейронке раздел
   «Справочник по кодам» и болячки как факты, ROLE велит не пересказывать их, а дополнять опытом владельцев.
 - `Kb.kt` — база опыта владельцев «машина × код». Общая часть: `docs/kb.json` в репозитории, наполняет workflow
-  `.github/workflows/kb.yml` (раз в неделю и вручную `gh workflow run kb.yml -f limit=60`) скриптом `tools/kb/build.py`
-  по парам из `tools/kb/targets.py` через Groq compound с поиском по drive2/drom; в базу попадают только записи со
-  ссылками, которые реально были в результатах поиска (executed_tools). Приложение скачивает `raw.githubusercontent.com/
+  `.github/workflows/kb.yml` (каждую ночь 02:00 UTC по 25 пар и вручную `gh workflow run kb.yml -f limit=60`) скриптом
+  `tools/kb/build.py` по парам из `tools/kb/targets.py`: поиск свой (зеркало ForumSearch.kt на Python: DuckDuckGo → Bing,
+  капча распознаётся и заблокированный поисковик в этом запуске больше не спрашивается), выжимку делает Groq
+  `gpt-oss-120b` (запасная `qwen3.8-27b`) по скачанным выдержкам; в `sources` только адреса, которые реально скачали
+  и показали модели. `tools/kb/probe.py` + `groq-probe.yml` — ручной зонд: какие модели видит ключ и какие лимиты. Приложение скачивает `raw.githubusercontent.com/
   Sin-sluhi/obd-ai/main/docs/kb.json` раз в сутки (`Kb.refresh` в `AppState.init`, файл в filesDir, `Prefs.kbFetched`).
   Своя часть: `Kb.remember` после каждого удачного разбора кладёт карточки с опытом и ссылками в `Prefs.kbLocal`
   (ключ «текст машины|код»). `Kb.find(decoded, carHint, code)` — сначала своё, потом общее; сопоставление по подстрокам
@@ -71,14 +73,18 @@ Android-приложение (Kotlin, Jetpack Compose) для диагности
   опыт), в `Diagnosis.local` (опыт, ссылки, цены без сети) и в `report()` для нейронки («Опыт владельцев из базы»,
   ROLE велит брать оттуда owner_experience/sources). `CarSnapshot.carHint` — строка `car` из прошлого разбора той же
   машины: с ней `VinDecoder.Info.withCar()` даёт модель и год для болячек и базы, когда VIN их не раскрывает.
-- `AiConfig.kt` — провайдеры: groq (по умолчанию, `groq/compound` со встроенным поиском), yandex, openrouter,
-  mistral, anthropic, custom.
-- `OpenAiClient.kt` — любой OpenAI-совместимый `/chat/completions`; для Groq compound `search_settings`
-  с `include_domains` drive2/drom; ссылки из `executed_tools`.
-- `ForumSearch.kt` — свой поиск (DuckDuckGo html → Bing) и вырезка текста записей для провайдеров без поиска.
-- `AiClient.kt` — оркестратор: Groq одним вызовом (при неудаче запасная модель `openai/gpt-oss-120b` без поиска),
-  остальные в два этапа, Anthropic через web_search + structured outputs. Промпт `ROLE` + схема `SCHEMA_TEXT`
+- `AiConfig.kt` — провайдеры: groq (по умолчанию, `openai/gpt-oss-120b`), yandex, openrouter, mistral, anthropic, custom.
+  **Поиск у провайдера не просим ни у кого**: `groq/compound` с собственным поиском Groq отключил 21.09.2026 без замены,
+  а `browser_search` у gpt-oss без фильтра по доменам и без JSON. Поэтому поиск свой, а модель — сменная деталь.
+- `OpenAiClient.kt` — любой OpenAI-совместимый `/chat/completions`; для `openai/gpt-oss*` ставит `reasoning_effort=low`
+  (размышление тратит токены ответа, а бесплатный Groq даёт 8 тыс. токенов в минуту вместе с `max_tokens`).
+- `ForumSearch.kt` — свой поиск (DuckDuckGo html → Bing, разметка Bing: ссылка в `<h2><a>` или `class="tilk"`) и вырезка
+  текста записей вокруг кода; бюджет выдержек задаёт вызывающий (`budget`, у Groq 4500 символов).
+- `AiClient.kt` — оркестратор: все OpenAI-совместимые провайдеры в два этапа (`twoStage`: ForumSearch → JSON-вердикт);
+  у Groq цепочка моделей `gpt-oss-120b` → `qwen3.8-27b`, при 429 повтор с короткими выдержками (1800 символов);
+  Anthropic через web_search + structured outputs. Промпт `ROLE` + схема `SCHEMA_TEXT`
   (поля `for_service`, `typical_issues`). `report()` отдаёт модели мониторы, счётчики, самотесты, АКБ, ремонт, тренд, флаги.
+  Без живого поиска (капча, нет сети) опыт владельцев берётся из базы `docs/kb.json` — поэтому её наполнение важнее поиска.
   `dashboard()` — фото приборки: Groq `qwen/qwen3.8-27b` → `qwen/qwen3.6-27b`, Anthropic через image-блок.
 - `OpenAiClient.kt` — `/chat/completions`; с `imageJpegBase64` шлёт content-массив с data-URL, `modelOverride`.
 - `AppState.kt` — синглтон на процесс (`AppState.get`), состояние для Compose, фоновые задачи, история
@@ -196,21 +202,22 @@ Hyundai Tucson 2019 (VIN KMHJ381ADKU…), ELM327 v1.5, ISO 15765-4 CAN 11/500. �
 - Шаг публикации релиза сначала удаляет старый APK, потом грузит новый. Если он упал с «Error saving asset»,
   ссылка на APK отдаёт 404, пока не сделать `gh run rerun <id> --failed`. Пуши только `.md`/`.txt` сборку не запускают.
 
-- Groq на бесплатном тарифе: `groq/compound` с поиском и скачиванием страниц тратит ~40 тыс. токенов за запрос при лимите
-  30 тыс. в минуту и ~500 тыс. в день (внутри llama-4-scout) → 429. Тело 429 содержит «Limit/Used/Requested» и «try again
-  in Xs», заголовка Retry-After нет. `compound_custom.tools.enabled_tools=["web_search"]` отключает скачивание страниц
-  (меньше токенов); `groq/compound-mini` не годится (413). Приложение при 429 у compound повторяет облегчённым поиском,
-  потом запасная модель без поиска. Из Python нужен браузерный User-Agent, иначе Cloudflare 1010.
+- Groq на бесплатном тарифе (проверено зондом 27.09.2026): у `gpt-oss-120b`, `gpt-oss-20b`, `qwen3.8-27b` по 8 тыс. токенов
+  в минуту (считаются вместе с `max_tokens`), 1000 запросов и 200 тыс. токенов в день на модель. Тело 429 содержит
+  «Limit/Used/Requested» и «try again in Xs», заголовка Retry-After нет. `response_format=json_object` требует слова
+  «json» в сообщениях, а у gpt-oss с маленьким `max_tokens` даёт `json_validate_failed` (размышление съело ответ).
+  Из Python нужен браузерный User-Agent, иначе Cloudflare 1010.
+- Поисковики ставят капчу на серию запросов с одного IP (DuckDuckGo после ~10 подряд, Bing отдаёт мусор/пустое, Yandex,
+  Mojeek, поиск drive2 — reCAPTCHA): проверять поиск с домашнего ПК бессмысленно, только из CI (свежий IP) или с телефона.
 - Действие `kb.yml` коммитит `docs/kb.json` в main: перед своим пушем `git pull --rebase`, иначе push отклонят.
 - Дневной лимит ключа общий у приложения и базы: 2026-09-18 тесты базы выжгли его; ночные запуски берут по 8 пар.
 
 ## Открытые задачи
 
-- База опыта `docs/kb.json` пока пуста: первый ночной запуск `kb.yml` (02:00 UTC) — проверить `gh run list --workflow
-  kb.yml` и лог: если снова 429 по минутному лимиту даже с web_search-only, смотреть «Requested» в теле; вариант — отдельный
-  ключ Groq для базы или уменьшить `max_tokens`/промпт.
-
-- Разобраться, почему compound иногда не отдаёт JSON (нужен лог из консоли: кнопка «Лог»).
+- База опыта `docs/kb.json` наполняется заново после смены поиска (27.09.2026): смотреть `gh run list --workflow kb.yml`
+  и лог — сколько пар «+», сколько «без подтверждённых записей», не показал ли поисковик капчу с IP раннера.
+- Вердикт по новой схеме (свой поиск + gpt-oss-120b) на телефоне ещё не проверен: нужен лог консоли после проверки —
+  строки «🔎 …», «Модель не ответила», «Разбор сделала запасная модель».
 - Названия для неизвестных блоков (7C3 на Tucson).
 - Расход в поездках проверить по одометру; без PID 5E и без MAF расход не считается.
 - Версии 0.5 и 0.6 (18.09.2026) на живой машине ещё не проверены: режим 06, маски PID, 22 F190 по блокам, тест

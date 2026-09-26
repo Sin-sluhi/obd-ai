@@ -12,9 +12,9 @@ enum class Provider(
 ) {
     GROQ(
         "groq", "Groq (бесплатно)",
-        "https://api.groq.com/openai/v1", "groq/compound",
-        "console.groq.com → API Keys. Карта не нужна. Модель groq/compound сама ищет опыт владельцев на drive2 и drom.",
-        builtInSearch = true, needsFolder = false
+        "https://api.groq.com/openai/v1", "openai/gpt-oss-120b",
+        "console.groq.com → API Keys. Карта не нужна. Опыт владельцев на drive2 и drom ищет само приложение.",
+        builtInSearch = false, needsFolder = false
     ),
     YANDEX(
         "yandex", "YandexGPT",

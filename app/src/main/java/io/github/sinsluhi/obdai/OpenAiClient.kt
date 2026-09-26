@@ -9,32 +9,23 @@ import java.net.URL
 /** Вызов любого OpenAI-совместимого /chat/completions (Groq, YandexGPT, OpenRouter, Mistral, свой сервер). */
 object OpenAiClient {
 
-    data class Source(val title: String, val url: String, val snippet: String)
-    class Reply(val content: String, val sources: List<Source>)
+    class Reply(val content: String)
 
-    /** Ошибка API с HTTP-статусом: по нему решаем, есть ли смысл повторять облегчённым запросом. */
+    /** Ошибка API с HTTP-статусом: по нему решаем, есть ли смысл повторять укороченным запросом. */
     class ApiException(val status: Int, message: String) : IOException(message)
 
-    private val forumDomains = listOf("drive2.ru", "*.drive2.ru", "drom.ru", "*.drom.ru")
-
     /**
-     * @param json      просить строгий JSON через response_format (при 400 повторяем без него)
-     * @param search    для Groq compound: включить веб-поиск, ограниченный форумами
-     * @param anySite   для Groq compound: не ограничивать домены
-     * @param searchLite для Groq compound: только поиск по сниппетам, без скачивания страниц — в разы меньше токенов,
-     *                  спасает при минутном лимите бесплатного тарифа (compound со скачиванием ест ~40 тыс. токенов)
+     * @param json  просить строгий JSON через response_format (при 400 повторяем без него)
+     * Поиска у провайдера не просим: опыт владельцев собирает ForumSearch и кладёт в текст запроса.
      */
     fun chat(
         cfg: AiConfig,
         system: String,
         user: String,
         json: Boolean = false,
-        search: Boolean = false,
-        anySite: Boolean = false,
         maxTokens: Int = 6000,
         imageJpegBase64: String? = null,
-        modelOverride: String? = null,
-        searchLite: Boolean = false
+        modelOverride: String? = null
     ): Reply {
         // с картинкой содержимое сообщения — массив блоков (текст + image_url с data-URL)
         val userContent: Any = if (imageJpegBase64 == null) user else JSONArray()
@@ -48,12 +39,9 @@ object OpenAiClient {
                 .put(JSONObject().put("role", "system").put("content", system))
                 .put(JSONObject().put("role", "user").put("content", userContent)))
         if (json) body.put("response_format", JSONObject().put("type", "json_object"))
-        if (search && cfg.provider == Provider.GROQ && cfg.model.startsWith("groq/compound")) {
-            val settings = JSONObject().put("country", "Russia")
-            if (!anySite) settings.put("include_domains", JSONArray(forumDomains))
-            body.put("search_settings", settings)
-            if (searchLite) body.put("compound_custom", JSONObject().put("tools", JSONObject().put("enabled_tools", JSONArray(listOf("web_search")))))
-        }
+        // gpt-oss размышляет перед ответом и тратит на это токены ответа: на бесплатном тарифе Groq (8 тыс. токенов
+        // в минуту вместе с max_tokens) держим размышление коротким
+        if ((modelOverride ?: cfg.model).startsWith("openai/gpt-oss")) body.put("reasoning_effort", "low")
 
         var (status, text) = post(cfg, body)
         if (status == 400 && json) {
@@ -71,18 +59,7 @@ object OpenAiClient {
         val message = choice.optJSONObject("message") ?: throw IOException("Пустой ответ модели")
         val content = message.optString("content").trim()
         if (content.isBlank()) throw IOException("Модель вернула пустой текст")
-
-        val sources = mutableListOf<Source>()
-        val tools = message.optJSONArray("executed_tools")
-        if (tools != null) for (i in 0 until tools.length()) {
-            val results = tools.optJSONObject(i)?.optJSONObject("search_results")?.optJSONArray("results") ?: continue
-            for (j in 0 until results.length()) {
-                val r = results.optJSONObject(j) ?: continue
-                val url = r.optString("url")
-                if (url.isNotBlank()) sources.add(Source(r.optString("title"), url, r.optString("content")))
-            }
-        }
-        return Reply(content, sources)
+        return Reply(content)
     }
 
     private fun post(cfg: AiConfig, body: JSONObject): Pair<Int, String> {

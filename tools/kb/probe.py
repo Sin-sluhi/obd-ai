@@ -40,7 +40,7 @@ def main():
     else:
         print(models)
     for model in PROBE:
-        body = {"model": model, "max_tokens": 40, "temperature": 0,
+        body = {"model": model, "max_tokens": 300, "temperature": 0, "reasoning_effort": "low",
                 "messages": [{"role": "user", "content": 'Ответь одним словом: столица России? Ответ в JSON: {"answer": "..."}'}],
                 "response_format": {"type": "json_object"}}
         status, headers, data = call(key, "/chat/completions", body)

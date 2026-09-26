@@ -58,7 +58,15 @@ class Prefs(context: Context) {
     fun apiKey(p: Provider): String = sp.getString("key_${p.id}", "") ?: ""
     fun setApiKey(p: Provider, v: String) = sp.edit().putString("key_${p.id}", v.trim()).apply()
 
-    fun model(p: Provider): String = sp.getString("model_${p.id}", null) ?: defaultModel(p)
+    fun model(p: Provider): String {
+        val saved = sp.getString("model_${p.id}", null) ?: return defaultModel(p)
+        // groq/compound отключён 21.09.2026: старую настройку тихо заменяем на текущую модель по умолчанию
+        if (p == Provider.GROQ && saved.startsWith("groq/compound")) {
+            sp.edit().remove("model_${p.id}").apply()
+            return defaultModel(p)
+        }
+        return saved
+    }
     fun setModel(p: Provider, v: String) = sp.edit().putString("model_${p.id}", v.trim()).apply()
 
     var customBaseUrl: String
