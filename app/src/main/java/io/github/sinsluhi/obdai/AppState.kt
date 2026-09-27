@@ -197,6 +197,7 @@ class AppState private constructor(context: Context) {
     fun updateFolder(v: String) { folder = v; prefs.folder = v }
     fun updateDevMode(v: Boolean) { devMode = v; prefs.devMode = v }
     fun updateAccent(i: Int) { accentIndex = i; prefs.accentIndex = i }
+    fun updateLang(l: Lang) { prefs.lang = l.code; Tr.set(appContext, l) }
     fun updateVoice(v: Boolean) { voice = v; prefs.voice = v }
     fun updateAutoTrip(v: Boolean) { autoTrip = v; prefs.autoTrip = v }
     fun updateWatchDtc(v: Boolean) { watchDtc = v; prefs.watchDtc = v }

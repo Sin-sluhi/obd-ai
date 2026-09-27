@@ -74,6 +74,8 @@ import io.github.sinsluhi.obdai.KnownIssues
 import io.github.sinsluhi.obdai.HistoryEntry
 import io.github.sinsluhi.obdai.Kb
 import io.github.sinsluhi.obdai.KbEntry
+import io.github.sinsluhi.obdai.Langs
+import io.github.sinsluhi.obdai.Tr
 import io.github.sinsluhi.obdai.Provider
 import io.github.sinsluhi.obdai.VinDecoder
 import io.github.sinsluhi.obdai.R
@@ -1034,6 +1036,31 @@ fun SettingsScreen(
                     Text(name, style = Type.body(11, if (selected) Palette.text else Palette.muted), textAlign = TextAlign.Center)
                 }
             }
+        }
+
+        SectionTitle("Язык")
+        Card {
+            @OptIn(androidx.compose.foundation.layout.ExperimentalLayoutApi::class)
+            androidx.compose.foundation.layout.FlowRow(
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+                verticalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
+                Langs.all.forEach { l ->
+                    val selected = l.code == Tr.lang.code
+                    Box(
+                        Modifier
+                            .clip(RoundedCornerShape(999.dp))
+                            .background(if (selected) accent.copy(alpha = 0.18f) else Palette.surface2, RoundedCornerShape(999.dp))
+                            .border(1.dp, if (selected) accent else Palette.border, RoundedCornerShape(999.dp))
+                            .clickable { state.updateLang(l) }
+                            .padding(horizontal = 12.dp, vertical = 7.dp)
+                    ) {
+                        Text(l.title, style = if (selected) Type.strong(13) else Type.body(13, Palette.text2))
+                    }
+                }
+            }
+            VSpace(8.dp)
+            Text("Разбор нейронки и голос — на выбранном языке. Справочник кодов и опыт владельцев пока по-русски.", style = Type.body(12, Palette.muted))
         }
 
         if (state.devMode) {

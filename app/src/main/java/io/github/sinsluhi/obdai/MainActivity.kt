@@ -181,6 +181,8 @@ class MainActivity : ComponentActivity() {
             }
         }
 
+        // смена языка пересобирает всё дерево: строки в remember и кэшах не остаются на старом языке
+        androidx.compose.runtime.key(Tr.lang.code) {
         CompositionLocalProvider(LocalAccent provides accent) {
             Box(Modifier.fillMaxSize().background(Palette.bg)) {
                 AnimatedContent(
@@ -288,6 +290,7 @@ class MainActivity : ComponentActivity() {
                     onDismiss = { confirmClear = false }
                 )
             }
+        }
         }
     }
 
