@@ -46,6 +46,9 @@ object AiClient {
 
     private const val ROLE = """Ты — опытный автодиагност, который объясняет обычному водителю результаты проверки через OBD-II.
 Пиши по-русски, простыми словами, без воды. Не пугай зря, но и не приукрашивай: если ехать опасно, скажи прямо.
+Язык: ВСЕ свободные поля (verdict_title, verdict_text, title, explanation, causes, what_to_do, owner_experience, summary,
+next_steps, for_service, typical_issues) — только по-русски, кириллицей. Английские названия узлов допустимы лишь в скобках
+после русского («ДМРВ (MAF)»). Заголовок вердикта на английском — ошибка.
 Главный источник причин и решений — реальный опыт владельцев такой же машины с форумов drive2.ru и drom.ru: что у людей оказалось причиной и что реально помогло, ставь первым. Одиночные догадки без результата не считай.
 Правила:
 - Если в отчёте есть «Расшифровка VIN», это точные данные: марка, модель и год бери оттуда и не меняй. Если расшифровки нет, определи по VIN сам (WMI, 10-й символ — год), а если VIN нет, работай по коду.
@@ -108,17 +111,27 @@ object AiClient {
         for ((i, model) in models.withIndex()) {
             val c = cfg.copy(model = model)
             try {
-                val reply = try {
-                    OpenAiClient.chat(c, system, userReport(snap, notes), json = true, maxTokens = VERDICT_TOKENS)
-                } catch (e: OpenAiClient.ApiException) {
-                    // 429 на бесплатном тарифе: запрос не влез в минутный лимит — режем выдержки и повторяем
-                    if (e.status != 429 || notes.length <= NOTES_BUDGET_TIGHT) throw e
-                    log("Лимит токенов, повторяю с короткими выдержками")
-                    OpenAiClient.chat(c, system, userReport(snap, notes.take(NOTES_BUDGET_TIGHT)), json = true, maxTokens = VERDICT_TOKENS)
+                // gpt-oss иногда отвечает по-английски, несмотря на правило: один повтор с жёстким напоминанием
+                var sys = system
+                var d: Diagnosis? = null
+                for (attempt in 0..1) {
+                    val reply = try {
+                        OpenAiClient.chat(c, sys, userReport(snap, notes), json = true, maxTokens = VERDICT_TOKENS)
+                    } catch (e: OpenAiClient.ApiException) {
+                        // 429 на бесплатном тарифе: запрос не влез в минутный лимит — режем выдержки и повторяем
+                        if (e.status != 429 || notes.length <= NOTES_BUDGET_TIGHT) throw e
+                        log("Лимит токенов, повторяю с короткими выдержками")
+                        OpenAiClient.chat(c, sys, userReport(snap, notes.take(NOTES_BUDGET_TIGHT)), json = true, maxTokens = VERDICT_TOKENS)
+                    }
+                    val json = extractJson(reply.content) ?: throw IOException("Модель вернула не JSON")
+                    val parsed = Diagnosis.fromJson(json, fromAi = true)
+                    if (isRussian(parsed.title) && isRussian(parsed.text)) { d = parsed; break }
+                    log("Ответ не по-русски («${parsed.title.take(40)}»), повторяю")
+                    sys = system + "\n\nВАЖНО: предыдущий ответ был на английском. Весь текст — строго по-русски, кириллицей."
                 }
-                val json = extractJson(reply.content) ?: throw IOException("Модель вернула не JSON")
+                val ok = d ?: throw IOException("Модель отвечает не по-русски")
                 if (i > 0) log("Разбор сделала запасная модель")
-                return verifySources(Diagnosis.fromJson(json, fromAi = true), userReport(snap, notes), log)
+                return verifySources(ok, userReport(snap, notes), log)
             } catch (e: IOException) {
                 last = e
                 if (i < models.lastIndex) {
@@ -128,6 +141,14 @@ object AiClient {
             }
         }
         throw last ?: IOException("Модель не ответила")
+    }
+
+    /** Текст считается русским, если кириллических букв не меньше, чем латинских (коды и названия узлов латиницей не мешают). */
+    private fun isRussian(s: String): Boolean {
+        if (s.isBlank()) return true
+        val cyr = s.count { it in 'Ѐ'..'ӿ' }
+        val lat = s.count { it in 'A'..'Z' || it in 'a'..'z' }
+        return cyr >= lat
     }
 
     private val urlRegex = Regex("https?://[^\\s\"'<>«»\\]\\)]+")

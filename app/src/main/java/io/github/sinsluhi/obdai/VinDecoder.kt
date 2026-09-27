@@ -73,6 +73,12 @@ object VinDecoder {
         'S' to "Santa Fe", 'L' to "Grandeur", 'T' to "Genesis", 'G' to "i40", 'N' to "Kona"
     )
 
+    /** Завод в Петербурге (Z94…): 4–5-й символы — модель; Kia Rio собирают там же под тем же WMI. */
+    private val rusPlantLines = mapOf(
+        "CT" to ("Hyundai" to "Solaris"), "K2" to ("Hyundai" to "Solaris"),
+        "CB" to ("Kia" to "Rio"), "C2" to ("Kia" to "Rio")
+    )
+
     /** Kia (KNA…): 4-й символ VIN — линейка. */
     private val kiaLines = mapOf(
         'D' to "Rio", 'P' to "Sportage", 'F' to "Cerato", 'K' to "Optima", 'M' to "Sorento",
@@ -84,9 +90,14 @@ object VinDecoder {
     fun decode(vin: String?): Info {
         val v = vin?.trim()?.uppercase().orEmpty()
         if (v.length < 3) return Info(null, null, null)
-        val brand = wmi.firstOrNull { (prefixes, _) -> prefixes.any { v.startsWith(it) } }?.second
+        var brand = wmi.firstOrNull { (prefixes, _) -> prefixes.any { v.startsWith(it) } }?.second
         var model: String? = null
-        if (brand != null && v.length >= 7) {
+        val plant = if (v.startsWith("Z94") && v.length >= 5) rusPlantLines[v.substring(3, 5)] else null
+        if (plant != null) {
+            brand = plant.first
+            model = plant.second
+        }
+        if (model == null && brand != null && v.length >= 7) {
             val vds = v.substring(3, 7)
             model = when {
                 brand.startsWith("Lada") -> ladaModels[vds] ?: ladaModels[vds.take(3)]

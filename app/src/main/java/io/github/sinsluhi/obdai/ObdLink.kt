@@ -36,7 +36,11 @@ interface ObdLink {
     fun disconnect()
 }
 
-/** Выдуманная машина, чтобы посмотреть приложение до покупки адаптера. */
+/**
+ * Выдуманная машина, чтобы посмотреть приложение до покупки адаптера. Hyundai Solaris 2017: по нему в базе опыта
+ * `docs/kb.json` уже есть записи с настоящими ссылками (болячки модели, P0300, P0420, P0011), так что демо показывает
+ * всё, включая опыт владельцев с drive2/drom.
+ */
 class DemoLink : ObdLink {
     @Volatile private var connected = true
     private var cleared = false
@@ -47,7 +51,7 @@ class DemoLink : ObdLink {
     override val name = "Демо-машина"
     override val ecuOnline = true
     override val ecuName = "ECM"
-    override val calibration = "2190-E4-1.6-M74"
+    override val calibration = "G4FC-RB-1.6-E5"
     override val supportedPids: Set<Int> = setOf(0x04, 0x05, 0x06, 0x07, 0x0B, 0x0C, 0x0D, 0x0F, 0x10, 0x11, 0x42, 0x5E, 0x2F, 0x46, 0x5C, 0xA6)
     override val adapter = AdapterInfo("ELM327 v1.5 (демо)", "OBDII to RS232 Interpreter", emptyList(), 38)
 
@@ -58,12 +62,12 @@ class DemoLink : ObdLink {
 
     override fun readCodes(mode: Int): List<String> = when {
         cleared -> emptyList()
-        mode == 0x03 -> listOf("P0171", "P0133")
-        mode == 0x07 -> listOf("P0300")
+        mode == 0x03 -> listOf("P0300", "P0420")
+        mode == 0x07 -> listOf("P0011")
         else -> emptyList()
     }
 
-    override fun readVin(): String = "XTA219010D0123456"
+    override fun readVin(): String = "Z94CT41DBHR123456"
 
     override fun readSensors(live: Boolean, keys: Set<String>?): List<SensorReading> {
         // первые 5 секунд машина заглушена, потом заводится; с 15-й секунды «едем» по городу
@@ -135,8 +139,8 @@ class DemoLink : ObdLink {
     override fun scanModules(brand: String?, progress: (Int, Int) -> Unit): List<ModuleScan> {
         val vin = readVin()
         val list = listOf(
-            ModuleScan("ABS / ESC", 0x7D1, if (cleared) emptyList() else listOf("C1259 (история)"), "UDS", if (cleared) emptyList() else listOf(0x28), vin, "21950-1000"),
-            ModuleScan("Подушки безопасности", 0x7D2, emptyList(), "UDS", emptyList(), vin, "8630-1200"),
+            ModuleScan("ABS / ESC", 0x7D1, if (cleared) emptyList() else listOf("C1259 (история)"), "UDS", if (cleared) emptyList() else listOf(0x28), vin, "58910-4L500"),
+            ModuleScan("Подушки безопасности", 0x7D2, emptyList(), "UDS", emptyList(), vin, "95910-4L000"),
             ModuleScan("Приборная панель", 0x7C6, emptyList(), "UDS", emptyList(), vin, null),
             ModuleScan("Кузовной блок (BCM)", 0x7A0, if (cleared) emptyList() else listOf("B1602 (активная)"), "UDS", if (cleared) emptyList() else listOf(0x09), null, null)
         )
@@ -150,7 +154,7 @@ class DemoLink : ObdLink {
         "0100" -> "41 00 BE 3E B8 11"
         "0105" -> "41 05 7F"
         "010C" -> "41 0C 0C B0"
-        "03" -> "43 02 01 71 01 33"
+        "03" -> "43 02 03 00 04 20"
         else -> "NO DATA"
     }
 
