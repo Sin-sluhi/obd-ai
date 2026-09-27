@@ -147,6 +147,7 @@ class MainActivity : ComponentActivity() {
     private fun App() {
         var page by remember { mutableStateOf(Page.Home) }
         var confirmClear by remember { mutableStateOf(false) }
+        var cleared by remember { mutableStateOf<List<String>?>(null) }   // стёртые коды → экран «Ошибки стёрты»
 
         // «Пульс шины» (MOTION.md §4.2): модель и единственный покадровый цикл живут ВЫШЕ key(Tr.lang.code),
         // чтобы смена языка не перезапускала шину; акцент и tint настроения анимируются плавно
@@ -309,13 +310,21 @@ class MainActivity : ComponentActivity() {
                     confirm = tr("main_clear_confirm"),
                     onConfirm = {
                         confirmClear = false
+                        // коды запоминаем до сброса: после него снимок пуст, а на экране «стёрто» их нужно показать
+                        val codes = state.lastSnapshot?.allCodes?.ifEmpty { null } ?: state.diagnosis?.codes?.map { it.code }.orEmpty()
                         state.clearCodes { ok ->
-                            state.toast = if (ok) tr("main_codes_cleared") else tr("main_clear_not_confirmed")
-                            if (ok) page = Page.Home
+                            if (ok) cleared = codes else state.toast = tr("main_clear_not_confirmed")
                         }
                     },
                     onDismiss = { confirmClear = false }
                 )
+                cleared?.let { codes ->
+                    ClearedOverlay(codes) {
+                        cleared = null
+                        state.clearResult()
+                        page = Page.Home
+                    }
+                }
             }
         }
         }
