@@ -10,6 +10,9 @@ class Elm327(private val log: (String) -> Unit) : ObdLink {
     @Volatile private var transport: ElmTransport? = null
     private val lock = Any()
 
+    /** Вызывается на каждую команду адаптеру (из рабочего потока): фон рисует по ней пакет, «светодиод RX» мигает. */
+    @Volatile var onCommand: (() -> Unit)? = null
+
     var isCan = false
         private set
     override var protocol = ""
@@ -112,6 +115,7 @@ class Elm327(private val log: (String) -> Unit) : ObdLink {
     /** Отправляет команду и ждёт приглашения '>'. */
     override fun send(cmd: String, timeoutMs: Long): String = synchronized(lock) {
         val t = transport ?: throw IOException("Адаптер не подключён")
+        onCommand?.invoke()
 
         while (t.available() > 0) t.read() // выкидываем мусор от прошлых команд
         t.write("$cmd\r".toByteArray())

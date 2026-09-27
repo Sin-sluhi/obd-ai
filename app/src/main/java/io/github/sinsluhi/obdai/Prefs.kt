@@ -145,6 +145,11 @@ class Prefs(context: Context) {
         get() = sp.getBoolean("voice", true)
         set(v) = sp.edit().putBoolean("voice", v).apply()
 
+    /** Живой фон: пакеты данных бегут по экрану в такт связи с машиной. Выключают ради батареи. */
+    var liveBackground: Boolean
+        get() = sp.getBoolean("live_bg", true)
+        set(v) = sp.edit().putBoolean("live_bg", v).apply()
+
     // ---- измерения напряжения для оценки аккумулятора ----
 
     fun loadVolts(): List<VoltSample> {

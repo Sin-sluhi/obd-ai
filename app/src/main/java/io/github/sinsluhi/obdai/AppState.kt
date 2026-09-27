@@ -11,6 +11,7 @@ import android.os.Handler
 import android.os.Looper
 import android.speech.tts.TextToSpeech
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableLongStateOf
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -112,6 +113,9 @@ class AppState private constructor(context: Context) {
     var starts by mutableStateOf(prefs.loadStarts())
     var forecast by mutableStateOf<MorningForecast?>(null)
     var busy by mutableStateOf<String?>(null)      // текст текущего шага или null
+    var rxCount by mutableLongStateOf(0L)          // счётчик команд адаптеру: живой фон рождает пакет на каждую
+    var liveBackground by mutableStateOf(prefs.liveBackground)   // тумблер «Живой фон» в настройках
+    var gaugeSelfTest by mutableStateOf(false)     // приборы уже сделали самотест после этого подключения (ставят сами)
     var error by mutableStateOf<String?>(null)
     var toast by mutableStateOf<String?>(null)
     val log = mutableStateListOf<String>()
@@ -185,6 +189,10 @@ class AppState private constructor(context: Context) {
         if (log.size > 500) log.removeAt(0)
     }
 
+    /** Команда ушла в машину: фон рисует пакет, мигает «светодиод RX». Можно звать из любого потока и сколько угодно часто —
+     *  ограничение частоты (80 мс) живёт в модели фона. */
+    fun rx() = ui { rxCount++ }
+
     fun updateProvider(p: Provider) {
         provider = p
         prefs.providerId = p.id
@@ -199,6 +207,7 @@ class AppState private constructor(context: Context) {
     fun updateAccent(i: Int) { accentIndex = i; prefs.accentIndex = i }
     fun updateLang(l: Lang) { prefs.lang = l.code; Tr.set(appContext, l) }
     fun updateVoice(v: Boolean) { voice = v; prefs.voice = v }
+    fun updateLiveBackground(v: Boolean) { liveBackground = v; prefs.liveBackground = v }
     fun updateAutoTrip(v: Boolean) { autoTrip = v; prefs.autoTrip = v }
     fun updateWatchDtc(v: Boolean) { watchDtc = v; prefs.watchDtc = v }
     fun updateDemo(v: Boolean) {
@@ -363,6 +372,7 @@ class AppState private constructor(context: Context) {
 
     fun connect(target: AdapterTarget) {
         val elm = Elm327 { addLog(it) }
+        elm.onCommand = { rx() }   // каждая команда живому адаптеру — пакет на фоне (~10 в секунду в опросе)
         runTask("Подключение", needLink = false) {
             ui { busy = "Подключаюсь к адаптеру" }
             elm.connect(appContext, target)
@@ -374,6 +384,7 @@ class AppState private constructor(context: Context) {
             }
             val volt = elm.readVoltageSafe()
             ui {
+                gaugeSelfTest = false   // новое подключение — приборы снова покажут «включили зажигание»
                 connected = true
                 adapterName = elm.name
                 adapterInfo = elm.adapter
@@ -392,6 +403,7 @@ class AppState private constructor(context: Context) {
     fun connectDemo() {
         val d = DemoLink()
         link = d
+        gaugeSelfTest = false
         connected = true
         adapterName = d.name
         adapterInfo = d.adapter
@@ -423,6 +435,7 @@ class AppState private constructor(context: Context) {
         adapterInfo = AdapterInfo()
         ecuOnline = false
         engineOn = false
+        gaugeSelfTest = false
         if (trip != null) stopTrip()
         worker.execute { runCatching { l?.disconnect() } }
         addLog("Отключено")
@@ -438,12 +451,12 @@ class AppState private constructor(context: Context) {
             val l = link ?: throw IOException("Нет подключения к адаптеру")
             pausePolling()
 
-            ui { busy = "Читаю блок двигателя" }
+            ui { busy = "Читаю блок двигателя" }; rx()
             val mil = l.readMil()
             ui { milOn = mil?.first; dtcCount = mil?.second }
             addLog("Check Engine: ${if (mil?.first == true) "ГОРИТ" else "не горит"}, ошибок по данным ЭБУ: ${mil?.second ?: "?"}")
 
-            ui { busy = "Читаю коды ошибок" }
+            ui { busy = "Читаю коды ошибок" }; rx()
             val stored = l.readCodes(0x03)
             val pending = l.readCodes(0x07)
             val permanent = runCatching { l.readCodes(0x0A) }.getOrDefault(emptyList())
@@ -451,35 +464,35 @@ class AppState private constructor(context: Context) {
             addLog(if (pending.isEmpty()) "Неподтверждённых ошибок нет" else "Неподтверждённые: ${pending.joinToString()}")
             if (permanent.isNotEmpty()) addLog("Постоянные: ${permanent.joinToString()}")
 
-            ui { busy = "Читаю мониторы и счётчики" }
+            ui { busy = "Читаю мониторы и счётчики" }; rx()
             val (ready, readyCycle) = runCatching { l.readReadiness() }.getOrDefault(Pair(null, null))
             ready?.let { addLog("Мониторы готовности: ${it.describe()}") }
             val stats = runCatching { l.readStats() }.getOrDefault(DtcStats())
             stats.lines().forEach { addLog(it) }
 
-            ui { busy = "Читаю VIN" }
+            ui { busy = "Читаю VIN" }; rx()
             val v = runCatching { l.readVin() }.getOrNull()
             ui { vin = v }
             addLog(if (v == null) "Машина не отдала VIN (на старых авто это нормально)" else "VIN: $v")
 
-            ui { busy = "Снимаю датчики" }
+            ui { busy = "Снимаю датчики" }; rx()
             val s = l.readSensors(live = false)
             val volt = l.readVoltageSafe()
             ui { sensors = s; voltage = volt; protocol = l.protocol }
             s.firstOrNull { it.key == "ambient" }?.value?.let { lastAmbient = it }
             recordVolt(s, volt, force = true)
 
-            ui { busy = "Читаю самотесты ЭБУ" }
+            ui { busy = "Читаю самотесты ЭБУ" }; rx()
             val tests = runCatching { l.readTests() }.onFailure { addLog("Режим 06 не прочитался: ${it.message}") }.getOrDefault(emptyList())
             if (tests.isNotEmpty()) {
                 addLog("Самотестов: ${tests.size}, провалено: ${tests.count { !it.passed }}")
                 Mode06.summary(tests).forEach { addLog(it) }
             }
 
-            ui { busy = "Опрашиваю блоки" }
+            ui { busy = "Опрашиваю блоки" }; rx()
             val brand = VinDecoder.decode(v).brand
             val modules = runCatching {
-                l.scanModules(brand) { i, n -> ui { busy = "Опрашиваю блоки $i/$n" } }
+                l.scanModules(brand) { i, n -> ui { busy = "Опрашиваю блоки $i/$n" }; rx() }
             }.onFailure { addLog("Опрос блоков не удался: ${it.message}") }.getOrDefault(emptyList())
             addLog("Ответило блоков: ${modules.size}, с ошибками: ${modules.count { it.codes.isNotEmpty() }}")
             resumePolling()
@@ -767,8 +780,10 @@ class AppState private constructor(context: Context) {
                     // чтобы не пропустить прокрутку стартера
                     val quick = !engineRunning && liveViewers == 0 && trip == null
                     val s = l.readSensors(live = true, keys = if (quick) QUICK_KEYS else null)
+                    if (l is DemoLink) rx()   // демо не ходит через send(): пакеты на фоне рождаем здесь
                     val ecuV = s.firstOrNull { it.key == "volt" }?.value
                     val volt = if (quick && ecuV != null) "%.1fV".format(ecuV) else l.readVoltageSafe()
+                    if (l is DemoLink) rx()
                     val vNow = ecuV ?: Regex("[0-9]+(\\.[0-9]+)?").find(volt)?.value?.toDoubleOrNull()
                     handleEngine(l, now, s.firstOrNull { it.key == "rpm" }?.value, vNow, s)
                     recordVolt(s, volt, force = false)
