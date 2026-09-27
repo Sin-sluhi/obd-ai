@@ -361,7 +361,8 @@ fun ResultScreen(
     Screen {
         Header("Результат", onBack = onBack)
         if (d == null) {
-            Text("Сначала проверь машину", style = Type.body(14, Palette.muted))
+            // проверка ещё идёт — показываем этап; иначе результата действительно нет
+            Text(state.busy ?: "Сначала проверь машину", style = Type.body(14, Palette.muted))
             return@Screen
         }
 

@@ -215,7 +215,15 @@ class MainActivity : ComponentActivity() {
                         onCheck = {
                             if (state.connected) state.runCheck { page = Page.Result } else pickDevice()
                         },
-                        onOpenResult = { page = Page.Result },
+                        // «Открыть» на плашке Check Engine: результат уже мог быть убран с главной (clearResult) —
+                        // тогда поднимаем последнюю проверку из истории, а не показываем пустой экран
+                        onOpenResult = {
+                            if (state.diagnosis == null && state.busy == null) state.history.firstOrNull()?.let { e ->
+                                state.diagnosis = e.diagnosis
+                                state.vin = e.vin
+                            }
+                            page = Page.Result
+                        },
                         onSettings = { page = Page.Settings },
                         onAdapterClick = { if (state.connected) page = Page.Settings else pickDevice() },
                         onPhoto = { page = Page.Dash; takePhoto { page = Page.Dash } },
