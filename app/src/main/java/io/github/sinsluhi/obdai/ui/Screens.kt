@@ -412,19 +412,19 @@ fun ResultScreen(
             val bkey = DtcCatalog.brandKey(car.brand)
             val present = snap?.allCodes.orEmpty() + d.codes.map { it.code }
             var total = 0
-            d.codes.forEach { c ->
+            d.codes.forEachIndexed { i, c ->
                 val info = DtcCatalog.info(c.code, bkey) ?: DtcCatalog.genericInfo(c.code)
                 val issue = KnownIssues.find(car, vin, c.code)
                 val kb = Kb.find(decoded, d.car, c.code)
                 total += effectivePrice(c, info, issue, kb)
-                CodeCard(
+                Box(Modifier.enterStagger(i + 1)) { CodeCard(
                     c, statusLines(snap, c.code),
                     info = info,
                     issue = issue,
                     links = DtcCatalog.links(c.code, present, bkey),
                     ftb = DtcCatalog.ftbText(c.code),
                     kb = if (c.ownerExperience.isBlank()) kb else null
-                )
+                ) }
             }
             if (total > 0) {
                 Card(radius = 18.dp, padding = 16.dp) {
@@ -956,8 +956,11 @@ fun HistoryScreen(
                     TripStat(tr("scr_fuel"), if (fuel.isEmpty()) "—" else "%.1f".format(fuel.sum()), tr("scr_liter"), Modifier.weight(1f))
                 }
             }
-            state.trips.take(30).forEach { t ->
-                Card(padding = 16.dp) {
+            state.trips.take(30).forEachIndexed { i, t -> key(t.start) {
+                var visible by remember { mutableStateOf(true) }
+                LaunchedEffect(visible) { if (!visible) { delay(230); state.deleteTrip(t) } }
+                AnimatedVisibility(visible, exit = shrinkVertically(tween(220)) + fadeOut(tween(180))) {
+                Card(padding = 16.dp, modifier = Modifier.enterStagger(i), edgePulseDelay = minOf(i, 8) * 45) {
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         Dot(accent, 10.dp)
                         HSpace(10.dp)
@@ -966,7 +969,7 @@ fun HistoryScreen(
                         HSpace(10.dp)
                         Icon(
                             Icons.Default.Delete, tr("scr_delete"), tint = Palette.muted,
-                            modifier = Modifier.size(20.dp).clickable { state.deleteTrip(t) }
+                            modifier = Modifier.size(20.dp).clickable { visible = false }
                         )
                     }
                     VSpace(10.dp)
@@ -976,8 +979,8 @@ fun HistoryScreen(
                         TripStat(tr("scr_avg"), "%.0f".format(t.avgSpeed), tr("scr_kmh"), Modifier.weight(1f))
                         TripStat(tr("scr_max"), "%.0f".format(t.maxSpeed), tr("scr_kmh"), Modifier.weight(1f))
                     }
-                }
-            }
+                } }
+            } }
             SectionTitle(tr("scr_checks"))
         }
         if (state.history.isEmpty()) {
@@ -987,17 +990,20 @@ fun HistoryScreen(
                 style = Type.body(14, Palette.muted), textAlign = TextAlign.Center, modifier = Modifier.fillMaxWidth()
             )
         }
-        state.history.forEach { e ->
+        state.history.forEachIndexed { i, e -> key(e.time) {
             val d = e.diagnosis
             val color = when (d.level) { "ok" -> accent; "danger" -> Palette.danger; else -> Palette.warn }
-            Card(padding = 16.dp, onClick = { onOpen(e) }) {
+            var visible by remember { mutableStateOf(true) }
+            LaunchedEffect(visible) { if (!visible) { delay(230); state.deleteHistory(e) } }
+            AnimatedVisibility(visible, exit = shrinkVertically(tween(220)) + fadeOut(tween(180))) {
+            Card(padding = 16.dp, modifier = Modifier.enterStagger(i), edgePulseDelay = minOf(i, 8) * 45, onClick = { onOpen(e) }) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Dot(color, 10.dp)
                     HSpace(10.dp)
                     Text(fmt.format(Date(e.time)), style = Type.label(), modifier = Modifier.weight(1f))
                     Icon(
                         Icons.Default.Delete, tr("scr_delete"), tint = Palette.muted,
-                        modifier = Modifier.size(20.dp).clickable { state.deleteHistory(e) }
+                        modifier = Modifier.size(20.dp).clickable { visible = false }
                     )
                 }
                 VSpace(8.dp)
@@ -1010,8 +1016,8 @@ fun HistoryScreen(
                     },
                     style = Type.mono(12, Palette.muted)
                 )
-            }
-        }
+            } }
+        } }
     }
 }
 
