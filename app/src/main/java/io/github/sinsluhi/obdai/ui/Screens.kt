@@ -172,6 +172,8 @@ fun HomeScreen(
             HSpace(10.dp)
             Text("OBD AI", style = Type.display(20))
             Spacer(Modifier.weight(1f))
+            LanguageButton { state.updateLang(it) }
+            HSpace(8.dp)
             SquareIconButton(Icons.Default.Settings, tr("scr_settings"), onSettings)
         }
 
