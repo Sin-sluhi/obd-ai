@@ -1,0 +1,19 @@
+{
+  "link_connect_method": "Подключение, способ {0}/3...",
+  "link_connect_failed": "Не удалось подключиться к адаптеру: {0}",
+  "link_wifi_bound": "Сокет привязан к Wi-Fi",
+  "link_wifi_connecting": "Подключаюсь к {0}:{1}",
+  "link_ble_connected": "BLE: соединение есть, ищу сервисы",
+  "link_ble_dropped": "соединение разорвано (код {0})",
+  "link_ble_no_chars": "у адаптера нет подходящих характеристик BLE",
+  "link_ble_no_cccd": "BLE: без CCCD, работаю как есть",
+  "link_ble_notify_on": "BLE: уведомления включены",
+  "link_ble_connecting": "BLE: подключаюсь к {0}",
+  "link_ble_timeout": "Адаптер BLE не ответил за 20 секунд",
+  "link_ble_write_not_found": "BLE: не нашёл канал записи",
+  "link_ble_service": "BLE: сервис {0}",
+  "link_ble_picked": "BLE: подобрал характеристики в {0}",
+  "link_ble_no_connection": "BLE: нет соединения",
+  "link_ble_no_write_channel": "BLE: нет канала записи",
+  "link_ble_write_failed": "BLE: запись не прошла"
+}

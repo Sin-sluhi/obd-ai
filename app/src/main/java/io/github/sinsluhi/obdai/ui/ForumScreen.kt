@@ -56,14 +56,16 @@ import io.github.sinsluhi.obdai.ForumLocator
 import io.github.sinsluhi.obdai.ForumMessage
 import io.github.sinsluhi.obdai.ForumModel
 import io.github.sinsluhi.obdai.ForumTree
+import io.github.sinsluhi.obdai.Tr
 import io.github.sinsluhi.obdai.VinDecoder
+import io.github.sinsluhi.obdai.tr
+import io.github.sinsluhi.obdai.trPlural
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.text.SimpleDateFormat
 import java.util.Date
-import java.util.Locale
 
 /**
  * Форум: марка → модель → поколение → ветка. Не общая болталка: у каждой машины своя комната,
@@ -164,8 +166,8 @@ private fun BrandsLevel(state: AppState, bottom: @Composable () -> Unit, onPick:
     val car = VinDecoder.decode(state.vin).withCar(state.diagnosis?.car)
     val mine = remember(state.vin, state.diagnosis?.car) { ForumTree.findForCar(car, state.diagnosis?.car) }
     Screen(bottom = bottom) {
-        Header("Форум")
-        Text("У каждого поколения своя ветка: внутри только владельцы такой же машины.", style = Type.body(13, Palette.muted))
+        Header(tr("forum_title"))
+        Text(tr("forum_intro"), style = Type.body(13, Palette.muted))
         VSpace(14.dp)
         val (mb, mm, mg) = mine
         if (mb != null) {
@@ -174,20 +176,20 @@ private fun BrandsLevel(state: AppState, bottom: @Composable () -> Unit, onPick:
                     LetterBadge(mb.name, accent, 44)
                     HSpace(12.dp)
                     Column(Modifier.weight(1f)) {
-                        Text("Ваша ветка", style = Type.label())
+                        Text(tr("forum_your_room"), style = Type.label())
                         Text(listOfNotNull(mb.name, mm?.name).joinToString(" "), style = Type.strong(16))
                         mg?.let { Text("${it.name} · ${it.years}", style = Type.body(12, Palette.muted)) }
                     }
                 }
                 VSpace(12.dp)
-                PrimaryButton(if (mg != null) "Открыть свою ветку" else "Выбрать поколение", onClick = { onPick(mb, mm, mg) })
+                PrimaryButton(if (mg != null) tr("forum_open_mine") else tr("forum_pick_gen"), onClick = { onPick(mb, mm, mg) })
             }
             VSpace(14.dp)
         }
-        SearchField(query, "Марка: Lada, Toyota, Haval…") { query = it }
+        SearchField(query, tr("forum_search_brand")) { query = it }
         VSpace(14.dp)
         val brands = ForumTree.brands.filter { query.isBlank() || it.name.contains(query, ignoreCase = true) }
-        SectionTitle("Марки", plural(brands.size, "марка", "марки", "марок"))
+        SectionTitle(tr("forum_brands"), trPlural("forum_brands_count", brands.size))
         Card(padding = 0.dp) {
             brands.forEachIndexed { i, br ->
                 if (i > 0) RowDivider()
@@ -199,7 +201,7 @@ private fun BrandsLevel(state: AppState, bottom: @Composable () -> Unit, onPick:
                     HSpace(12.dp)
                     Column(Modifier.weight(1f)) {
                         Text(br.name, style = Type.body(15, Palette.text, FontWeight.SemiBold))
-                        Text(plural(br.models.size, "модель", "модели", "моделей") + " · " + plural(br.models.sumOf { it.gens.size }, "ветка", "ветки", "веток"), style = Type.body(12, Palette.muted))
+                        Text(trPlural("forum_models_count", br.models.size) + " · " + trPlural("forum_rooms_count", br.models.sumOf { it.gens.size }), style = Type.body(12, Palette.muted))
                     }
                     Chevron()
                 }
@@ -215,9 +217,9 @@ private fun ModelsLevel(b: ForumBrand, bottom: @Composable () -> Unit, onBack: (
     val accent = LocalAccent.current
     Screen(bottom = bottom) {
         Header(b.name, onBack = onBack)
-        Text("Выберите модель", style = Type.body(13, Palette.muted))
+        Text(tr("forum_pick_model"), style = Type.body(13, Palette.muted))
         VSpace(12.dp)
-        if (b.models.size > 8) { SearchField(query, "Модель") { query = it }; VSpace(12.dp) }
+        if (b.models.size > 8) { SearchField(query, tr("forum_search_model")) { query = it }; VSpace(12.dp) }
         val models = b.models.filter { query.isBlank() || it.name.contains(query, ignoreCase = true) }
         Card(padding = 0.dp) {
             models.forEachIndexed { i, mo ->
@@ -232,7 +234,7 @@ private fun ModelsLevel(b: ForumBrand, bottom: @Composable () -> Unit, onBack: (
                         Text(mo.name, style = Type.body(15, Palette.text, FontWeight.SemiBold))
                         Text(
                             if (mo.gens.size == 1) mo.gens[0].years
-                            else "${mo.gens.first().years.substringBefore('–')}–${mo.gens.last().years.substringAfter('–')} · ${plural(mo.gens.size, "поколение", "поколения", "поколений")}",
+                            else "${mo.gens.first().years.substringBefore('–')}–${mo.gens.last().years.substringAfter('–')} · ${trPlural("forum_gens_count", mo.gens.size)}",
                             style = Type.body(12, Palette.muted)
                         )
                     }
@@ -249,7 +251,7 @@ private fun GensLevel(b: ForumBrand, m: ForumModel, bottom: @Composable () -> Un
     val accent = LocalAccent.current
     Screen(bottom = bottom) {
         Header(m.name, onBack = onBack)
-        Text("${b.name} › ${m.name}: выберите поколение", style = Type.body(13, Palette.muted))
+        Text(tr("forum_pick_gen_hint", b.name, m.name), style = Type.body(13, Palette.muted))
         VSpace(12.dp)
         m.gens.forEach { ge ->
             Card(radius = 18.dp, padding = 14.dp) {
@@ -266,7 +268,7 @@ private fun GensLevel(b: ForumBrand, m: ForumModel, bottom: @Composable () -> Un
                             .background(accent.copy(alpha = 0.12f), RoundedCornerShape(12.dp))
                             .border(1.dp, accent.copy(alpha = 0.35f), RoundedCornerShape(12.dp))
                             .padding(horizontal = 12.dp, vertical = 7.dp)
-                    ) { Text("В ветку", style = Type.body(13, accent, FontWeight.SemiBold)) }
+                    ) { Text(tr("forum_enter_room"), style = Type.body(13, accent, FontWeight.SemiBold)) }
                 }
             }
             VSpace(10.dp)
@@ -335,7 +337,7 @@ private fun ChatLevel(state: AppState, b: ForumBrand, m: ForumModel, g: ForumGen
                 Dot(if (offline) Palette.warn else accent, 7.dp)
                 HSpace(6.dp)
                 Text(
-                    when { !api.configured -> "чат выкл."; offline -> "переподключаюсь"; else -> "онлайн $online" },
+                    when { !api.configured -> tr("forum_chat_off"); offline -> tr("forum_reconnecting"); else -> tr("forum_online", online) },
                     style = Type.body(12, if (offline) Palette.warn else accent, FontWeight.SemiBold)
                 )
             }
@@ -363,9 +365,9 @@ private fun ChatLevel(state: AppState, b: ForumBrand, m: ForumModel, g: ForumGen
         VSpace(10.dp)
         if (!api.configured) {
             Card(background = Palette.surface2, border = Palette.border, radius = 16.dp, padding = 14.dp) {
-                Text("Чат ещё не подключён", style = Type.body(13, Palette.warn, FontWeight.SemiBold))
+                Text(tr("forum_not_connected"), style = Type.body(13, Palette.warn, FontWeight.SemiBold))
                 VSpace(4.dp)
-                Text("Ветка выбрана и запомнена. Сообщения появятся, как только сервер форума будет в сети.", style = Type.body(13, Palette.text2))
+                Text(tr("forum_not_connected_hint"), style = Type.body(13, Palette.text2))
             }
         }
         LazyColumn(state = list, modifier = Modifier.weight(1f).fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(8.dp)) {
@@ -376,9 +378,9 @@ private fun ChatLevel(state: AppState, b: ForumBrand, m: ForumModel, g: ForumGen
                             ForumIcon(Palette.muted, Modifier.size(28.dp))
                         }
                         VSpace(12.dp)
-                        Text("Пока тихо", style = Type.strong(15, Palette.text2))
+                        Text(tr("forum_quiet"), style = Type.strong(15, Palette.text2))
                         VSpace(4.dp)
-                        Text("Напишите первым: что за машина, пробег, что беспокоит.", style = Type.body(13, Palette.muted), textAlign = TextAlign.Center)
+                        Text(tr("forum_quiet_hint"), style = Type.body(13, Palette.muted), textAlign = TextAlign.Center)
                     }
                 }
             }
@@ -408,7 +410,7 @@ private fun ChatLevel(state: AppState, b: ForumBrand, m: ForumModel, g: ForumGen
         AlertDialog(
             onDismissRequest = { editName = false },
             containerColor = Palette.surface,
-            title = { Text("Как вас называть", style = Type.strong(16)) },
+            title = { Text(tr("forum_name_title"), style = Type.strong(16)) },
             text = {
                 OutlinedTextField(
                     value = value, onValueChange = { if (it.length <= 24) value = it }, singleLine = true,
@@ -424,9 +426,9 @@ private fun ChatLevel(state: AppState, b: ForumBrand, m: ForumModel, g: ForumGen
                     prefs.forumName = v
                     name = v
                     editName = false
-                }) { Text("Сохранить", color = accent) }
+                }) { Text(tr("forum_save"), color = accent) }
             },
-            dismissButton = { TextButton(onClick = { editName = false }) { Text("Отмена", color = Palette.muted) } }
+            dismissButton = { TextButton(onClick = { editName = false }) { Text(tr("forum_cancel"), color = Palette.muted) } }
         )
     }
 }
@@ -454,7 +456,7 @@ private fun ChatInput(value: String, enabled: Boolean, sending: Boolean, onChang
                 textStyle = Type.body(15, Palette.text), cursorBrush = SolidColor(accent), interactionSource = src,
                 modifier = Modifier.fillMaxWidth(),
                 decorationBox = { inner ->
-                    if (value.isEmpty()) Text(if (enabled) "Написать в ветку…" else "Чат выключен", style = Type.body(15, Palette.muted))
+                    if (value.isEmpty()) Text(if (enabled) tr("forum_write_placeholder") else tr("forum_chat_disabled"), style = Type.body(15, Palette.muted))
                     inner()
                 }
             )
@@ -479,7 +481,8 @@ private fun ChatInput(value: String, enabled: Boolean, sending: Boolean, onChang
 @Composable
 private fun MessageBubble(msg: ForumMessage) {
     val accent = LocalAccent.current
-    val time = remember(msg.time) { SimpleDateFormat("d MMM HH:mm", Locale("ru")).format(Date(msg.time)) }
+    val locale = Tr.lang.locale
+    val time = remember(msg.time, locale) { SimpleDateFormat("d MMM HH:mm", locale).format(Date(msg.time)) }
     val color = if (msg.mine) accent else nameColor(msg.name)
     val shape = RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp, bottomStart = if (msg.mine) 16.dp else 4.dp, bottomEnd = if (msg.mine) 4.dp else 16.dp)
     Row(Modifier.fillMaxWidth(), horizontalArrangement = if (msg.mine) Arrangement.End else Arrangement.Start, verticalAlignment = Alignment.Bottom) {

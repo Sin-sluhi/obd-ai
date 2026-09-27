@@ -75,7 +75,7 @@ object Skins {
     private val subaru = GaugeSkin("Subaru", Color(0xFFFF6B4A), Color(0xFFFF8A65), Color(0xFFFFE6DE), Color(0xFF1A1512), Color(0xFF0A0806), Color(0xFF3A3028))
     private val ford = GaugeSkin("Ford", Color(0xFF7FD3FF), Color(0xFFFF4444), Color(0xFFE6F6FF), Color(0xFF111A22), Color(0xFF060A0E), Color(0xFF283640))
     private val renault = GaugeSkin("Renault / Dacia", Color(0xFFFFC24A), Color(0xFFFFD166), Color(0xFFFFF3D6), Color(0xFF1A1610), Color(0xFF0A0806), Color(0xFF3A3222))
-    private val china = GaugeSkin("Китайские марки", Color(0xFF35E0C0), Color(0xFF6FFFE3), Color(0xFFDFFFF7), Color(0xFF0F1D1B), Color(0xFF06100E), Color(0xFF244440))
+    private val china = GaugeSkin("Китайские марки", Color(0xFF35E0C0), Color(0xFF6FFFE3), Color(0xFFDFFFF7), Color(0xFF0F1D1B), Color(0xFF06100E), Color(0xFF244440)) // i18n-ignore: name уходит в Screens.kt (Pill), вынести отдельно
     private val volvo = GaugeSkin("Volvo", Color(0xFFC9D8E8), Color(0xFFFF8A3D), Color(0xFFF4F8FF), Color(0xFF171B21), Color(0xFF080A0D), Color(0xFF363D48))
     private val opel = GaugeSkin("Opel", Color(0xFFFFFFFF), Color(0xFFFF3B3B), Color(0xFFFFFFFF), Color(0xFF191C22), Color(0xFF090A0D), Color(0xFF353A44))
     private val psa = GaugeSkin("Peugeot / Citroën", Color(0xFFCFE3FF), Color(0xFFFF6B6B), Color(0xFFFFFFFF), Color(0xFF151B24), Color(0xFF070A0E), Color(0xFF303845))
@@ -104,24 +104,24 @@ object Skins {
     )
 
     private val byName = listOf(
-        listOf("bmw", "бмв", "mini") to bmw,
-        listOf("mercedes", "мерседес", "мерс") to mercedes,
-        listOf("volkswagen", "фольксваген", "audi", "ауди", "skoda", "шкода", "seat", "porsche", "vw ", "polo", "tiguan", "octavia", "rapid") to vag,
-        listOf("kia", "киа", "hyundai", "хендай", "хёндай", "solaris", "солярис", "rio", "рио", "creta", "sportage", "ceed", "sorento", "tucson") to korea,
-        listOf("toyota", "тойота", "lexus", "лексус", "camry", "corolla", "rav4", "land cruiser") to toyota,
-        listOf("honda", "хонда", "civic", "accord", "cr-v") to honda,
-        listOf("nissan", "ниссан", "qashqai", "x-trail", "almera", "infiniti") to nissan,
-        listOf("lada", "лада", "ваз", "vaz", "granta", "гранта", "vesta", "веста", "priora", "приора", "kalina", "калина", "niva", "нива", "largus", "ларгус", "uaz", "уаз", "газ", "gaz", "gazelle", "газель") to lada,
-        listOf("mazda", "мазда") to mazda,
-        listOf("subaru", "субару") to subaru,
-        listOf("mitsubishi", "мицубиси", "митсубиси", "lancer", "outlander", "pajero") to mitsubishi,
-        listOf("ford", "форд", "focus", "фокус", "mondeo", "kuga") to ford,
-        listOf("renault", "рено", "dacia", "logan", "логан", "duster", "дастер", "sandero", "kaptur") to renault,
-        listOf("chery", "чери", "haval", "хавал", "geely", "джили", "changan", "чанган", "exeed", "omoda", "jaecoo", "tank", "great wall", "jac", "lifan", "dongfeng", "faw", "byd", "gac", "zeekr", "voyah", "li auto") to china,
-        listOf("volvo", "вольво") to volvo,
-        listOf("opel", "опель", "astra", "vectra", "corsa") to opel,
-        listOf("peugeot", "пежо", "citroen", "ситроен", "ds ") to psa,
-        listOf("chevrolet", "шевроле", "cruze", "aveo", "lacetti", "niva chevrolet", "daewoo", "ravon") to chevrolet
+        listOf("bmw", "бмв", "mini") to bmw, // i18n-ignore: ключи для contains()
+        listOf("mercedes", "мерседес", "мерс") to mercedes, // i18n-ignore: ключи для contains()
+        listOf("volkswagen", "фольксваген", "audi", "ауди", "skoda", "шкода", "seat", "porsche", "vw ", "polo", "tiguan", "octavia", "rapid") to vag, // i18n-ignore: ключи для contains()
+        listOf("kia", "киа", "hyundai", "хендай", "хёндай", "solaris", "солярис", "rio", "рио", "creta", "sportage", "ceed", "sorento", "tucson") to korea, // i18n-ignore: ключи для contains()
+        listOf("toyota", "тойота", "lexus", "лексус", "camry", "corolla", "rav4", "land cruiser") to toyota, // i18n-ignore: ключи для contains()
+        listOf("honda", "хонда", "civic", "accord", "cr-v") to honda, // i18n-ignore: ключи для contains()
+        listOf("nissan", "ниссан", "qashqai", "x-trail", "almera", "infiniti") to nissan, // i18n-ignore: ключи для contains()
+        listOf("lada", "лада", "ваз", "vaz", "granta", "гранта", "vesta", "веста", "priora", "приора", "kalina", "калина", "niva", "нива", "largus", "ларгус", "uaz", "уаз", "газ", "gaz", "gazelle", "газель") to lada, // i18n-ignore: ключи для contains()
+        listOf("mazda", "мазда") to mazda, // i18n-ignore: ключи для contains()
+        listOf("subaru", "субару") to subaru, // i18n-ignore: ключи для contains()
+        listOf("mitsubishi", "мицубиси", "митсубиси", "lancer", "outlander", "pajero") to mitsubishi, // i18n-ignore: ключи для contains()
+        listOf("ford", "форд", "focus", "фокус", "mondeo", "kuga") to ford, // i18n-ignore: ключи для contains()
+        listOf("renault", "рено", "dacia", "logan", "логан", "duster", "дастер", "sandero", "kaptur") to renault, // i18n-ignore: ключи для contains()
+        listOf("chery", "чери", "haval", "хавал", "geely", "джили", "changan", "чанган", "exeed", "omoda", "jaecoo", "tank", "great wall", "jac", "lifan", "dongfeng", "faw", "byd", "gac", "zeekr", "voyah", "li auto") to china, // i18n-ignore: ключи для contains()
+        listOf("volvo", "вольво") to volvo, // i18n-ignore: ключи для contains()
+        listOf("opel", "опель", "astra", "vectra", "corsa") to opel, // i18n-ignore: ключи для contains()
+        listOf("peugeot", "пежо", "citroen", "ситроен", "ds ") to psa, // i18n-ignore: ключи для contains()
+        listOf("chevrolet", "шевроле", "cruze", "aveo", "lacetti", "niva chevrolet", "daewoo", "ravon") to chevrolet // i18n-ignore: ключи для contains()
     )
 
     /** Подбираем стиль по VIN (WMI), затем по названию машины, иначе стиль приложения. */

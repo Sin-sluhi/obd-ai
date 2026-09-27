@@ -66,41 +66,42 @@ data class BatteryReport(
             var level = "ok"
             val lines = mutableListOf<String>()
             fun worse(l: String) { if (l == "danger" || (l == "warning" && level == "ok")) level = l }
+            fun v1(v: Double) = "%.1f".format(v)
 
             restV?.let { v ->
-                val text = when {
-                    v >= 12.5 -> "Аккумулятор заряжен (%.1f В без двигателя)."
-                    v >= 12.2 -> "Аккумулятор слегка подсел (%.1f В без двигателя): норма от 12.5 В."
-                    v >= 11.9 -> { worse("warning"); "Аккумулятор разряжен (%.1f В без двигателя): нужна зарядка, проверь утечку тока." }
-                    else -> { worse("danger"); "Аккумулятор сильно разряжен (%.1f В): запуск под вопросом, зарядить и проверить." }
+                val key = when {
+                    v >= 12.5 -> "health_rest_ok"
+                    v >= 12.2 -> "health_rest_low"
+                    v >= 11.9 -> { worse("warning"); "health_rest_discharged" }
+                    else -> { worse("danger"); "health_rest_deep" }
                 }
-                lines.add(text.format(v))
+                lines.add(tr(key, v1(v)))
             }
             chargeV?.let { v ->
-                val text = when {
-                    v > 15.1 -> { worse("danger"); "Перезаряд: %.1f В на работающем двигателе, регулятор напряжения неисправен, страдает АКБ и электроника." }
-                    v >= 13.7 -> "Генератор заряжает нормально (%.1f В на работающем двигателе)."
-                    v >= 13.2 -> { worse("warning"); "Зарядка слабовата (%.1f В): проверь ремень, клеммы и щётки генератора." }
-                    else -> { worse("danger"); "Генератор не заряжает (%.1f В на работающем двигателе): ехать на аккумуляторе недолго." }
+                val key = when {
+                    v > 15.1 -> { worse("danger"); "health_charge_over" }
+                    v >= 13.7 -> "health_charge_ok"
+                    v >= 13.2 -> { worse("warning"); "health_charge_weak" }
+                    else -> { worse("danger"); "health_charge_none" }
                 }
-                lines.add(text.format(v))
+                lines.add(tr(key, v1(v)))
             }
             crankMin?.let { v ->
-                val text = when {
-                    v >= 9.6 -> "Просадка при запуске до %.1f В: в норме."
-                    v >= 9.0 -> { worse("warning"); "Просадка при запуске до %.1f В: аккумулятор слабеет, зимой может не завести." }
-                    else -> { worse("danger"); "Просадка при запуске до %.1f В: аккумулятор на исходе или плохой контакт стартера." }
+                val key = when {
+                    v >= 9.6 -> "health_crank_ok"
+                    v >= 9.0 -> { worse("warning"); "health_crank_weak" }
+                    else -> { worse("danger"); "health_crank_bad" }
                 }
-                lines.add(text.format(v))
+                lines.add(tr(key, v1(v)))
             }
             trend?.let { d ->
-                if (d <= -0.3) { worse("warning"); lines.add("Напряжение покоя упало на %.1f В за последние дни: аккумулятор садится.".format(-d)) }
+                if (d <= -0.3) { worse("warning"); lines.add(tr("health_rest_trend_down", v1(-d))) }
             }
             if (lines.isEmpty()) return null
             val title = when (level) {
-                "danger" -> "Аккумулятор и зарядка: проблема"
-                "warning" -> "Аккумулятор и зарядка: обрати внимание"
-                else -> "Аккумулятор и зарядка в норме"
+                "danger" -> tr("health_battery_title_danger")
+                "warning" -> tr("health_battery_title_warning")
+                else -> tr("health_battery_title_ok")
             }
             return BatteryReport(level, title, lines, restV, chargeV, crankMin, trend)
         }
@@ -134,26 +135,26 @@ data class RepairCheck(
     val status: String                 // ok / returned / pending
 ) {
     val title: String get() = when (status) {
-        "ok" -> "Ремонт помог"
-        "returned" -> "Ошибка вернулась"
-        else -> "Проверка после ремонта продолжается"
+        "ok" -> tr("health_repair_title_ok")
+        "returned" -> tr("health_repair_title_returned")
+        else -> tr("health_repair_title_pending")
     }
 
     fun text(): String = buildString {
         val ago = formatDuration(System.currentTimeMillis() - clearedAt)
-        append("Ошибки стирали $ago назад")
-        distanceKm?.let { append(", проехано $it км") }
+        append(tr("health_repair_cleared_ago", ago))
+        distanceKm?.let { append(tr("health_repair_driven_km", it)) }
         append(". ")
         when (status) {
-            "ok" -> append("Стёртые коды (${cleared.joinToString()}) не вернулись, все самопроверки ЭБУ пройдены.")
-            "returned" -> append("Снова появились: ${returned.joinToString()}. Причина не устранена.")
+            "ok" -> append(tr("health_repair_ok_text", cleared.joinToString()))
+            "returned" -> append(tr("health_repair_returned_text", returned.joinToString()))
             else -> {
-                append("Стёртые коды пока не вернулись")
-                if (readinessDone != null && readinessTotal != null) append(", самопроверки завершены $readinessDone из $readinessTotal")
-                append(". Проедь ещё, чтобы ЭБУ закончил проверки.")
+                append(tr("health_repair_pending_text"))
+                if (readinessDone != null && readinessTotal != null) append(tr("health_repair_readiness", readinessDone, readinessTotal))
+                append(tr("health_repair_drive_more"))
             }
         }
-        if (fresh.isNotEmpty()) append(" Новые коды: ${fresh.joinToString()}.")
+        if (fresh.isNotEmpty()) append(tr("health_repair_fresh_codes", fresh.joinToString()))
     }
 
     companion object {
@@ -185,23 +186,23 @@ object Trend {
         val nowCodes = now.allCodes.map { it.substringBefore(' ') }.toSet()
         val appeared = nowCodes - prevCodes
         val gone = prevCodes - nowCodes
-        if (appeared.isNotEmpty()) out.add("Новые ошибки, которых не было ${daysWord(days)}: ${appeared.joinToString()}")
-        if (gone.isNotEmpty()) out.add("Исчезли с прошлой проверки: ${gone.joinToString()}")
+        if (appeared.isNotEmpty()) out.add(tr("health_trend_new_codes", daysWord(days), appeared.joinToString()))
+        if (gone.isNotEmpty()) out.add(tr("health_trend_gone_codes", gone.joinToString()))
         fun cur(k: String) = now.sensors.firstOrNull { it.key == k }?.value
         fun old(k: String) = prev.sensors[k]
         val ltft = cur("ltft"); val oldLtft = old("ltft")
         if (ltft != null && oldLtft != null && abs(ltft - oldLtft) >= 5) {
-            out.add("Долгосрочная топливная коррекция изменилась: было %+.1f %%, стало %+.1f %%".format(oldLtft, ltft))
+            out.add(tr("health_trend_ltft", "%+.1f".format(oldLtft), "%+.1f".format(ltft)))
         }
         val odo = now.stats.odometerKm; val oldOdo = old("odometer")
-        if (odo != null && oldOdo != null && odo > oldOdo) out.add("Пробег с прошлой проверки: +%.0f км".format(odo - oldOdo))
+        if (odo != null && oldOdo != null && odo > oldOdo) out.add(tr("health_trend_odometer", "%.0f".format(odo - oldOdo)))
         return out
     }
 
     private fun daysWord(days: Long): String = when {
-        days <= 0 -> "сегодня"
-        days == 1L -> "вчера"
-        else -> "$days дн. назад"
+        days <= 0 -> tr("health_days_today")
+        days == 1L -> tr("health_days_yesterday")
+        else -> tr("health_days_ago", days)
     }
 }
 
@@ -213,24 +214,24 @@ object Inspection {
     fun flags(snap: CarSnapshot): List<Flag> = buildList {
         val st = snap.stats
         st.distanceSinceClearKm?.let { km ->
-            if (km < 100) add(Flag("warning", "Память ошибок стирали недавно: $km км назад" +
-                (st.warmupsSinceClear?.let { ", прогревов после этого: $it" } ?: "") + ". Для б/у машины это повод спросить, что скрывали."))
+            if (km < 100) add(Flag("warning", tr("health_flag_recent_clear", km,
+                st.warmupsSinceClear?.let { tr("health_flag_warmups_since", it) } ?: "")))
         }
         snap.readiness?.let { r ->
             if (!r.allDone && r.monitors.isNotEmpty() && (st.distanceSinceClearKm ?: 1000) < 300)
-                add(Flag("info", "Самопроверки ЭБУ после сброса ещё не завершены (${r.done} из ${r.total}): часть неисправностей могла не успеть проявиться."))
+                add(Flag("info", tr("health_flag_readiness_pending", r.done, r.total)))
         }
         if (snap.milOn == true && snap.allCodes.isEmpty())
-            add(Flag("warning", "Лампа Check Engine горит, а кодов нет: возможно, ошибку только что стёрли или блок с ошибкой не отвечает."))
+            add(Flag("warning", tr("health_flag_mil_no_codes")))
         if (snap.permanent.isNotEmpty())
-            add(Flag("warning", "Постоянные коды, которые сканером не стираются: ${snap.permanent.joinToString()}."))
+            add(Flag("warning", tr("health_flag_permanent_codes", snap.permanent.joinToString())))
         val carVin = snap.vin
         snap.modules.filter { it.vin != null && ModuleIdentity.looksLikeVin(it.vin) }.forEach { m ->
             if (carVin != null && m.vin != carVin)
-                add(Flag("danger", "Блок «${m.name}» хранит другой VIN (${m.vin}): блок с другой машины, менялся после ДТП или ремонта."))
+                add(Flag("danger", tr("health_flag_foreign_vin", m.name, m.vin)))
         }
-        st.odometerKm?.let { add(Flag("info", "Пробег по данным ЭБУ: %.0f км. Сверь с приборкой: расхождение — признак скрутки.".format(it))) }
-        st.distanceMilKm?.let { if (it > 0) add(Flag("info", "С горящей лампой Check Engine проехали $it км.")) }
+        st.odometerKm?.let { add(Flag("info", tr("health_flag_ecu_odometer", "%.0f".format(it)))) }
+        st.distanceMilKm?.let { if (it > 0) add(Flag("info", tr("health_flag_mil_distance", it))) }
     }
 }
 
@@ -247,9 +248,9 @@ data class AdapterInfo(
     val fullFeatured: Boolean get() = missing.isEmpty()
 
     fun grade(): String = when {
-        version.isBlank() -> "Адаптер не представился"
-        !fullFeatured -> "Урезанный клон: нет команд ${missing.joinToString()}. Опрос блоков ограничен"
-        suspicious -> "Прошивка 2.1: известный клон, часть машин не читается"
-        else -> "Полный набор команд"
+        version.isBlank() -> tr("health_adapter_no_id")
+        !fullFeatured -> tr("health_adapter_stripped", missing.joinToString())
+        suspicious -> tr("health_adapter_fw21")
+        else -> tr("health_adapter_full")
     }
 }

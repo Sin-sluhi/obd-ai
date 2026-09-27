@@ -1,0 +1,12 @@
+{
+  "fuelcard_title": "Паспорт заправки",
+  "fuelcard_dialog_title": "Заправки",
+  "fuelcard_bad_station_suffix": " · плохая АЗС",
+  "fuelcard_tank_stats": "+{0} % бака, {1} км",
+  "fuelcard_name_station": "назвать АЗС",
+  "fuelcard_unmark_bad": "снять метку",
+  "fuelcard_mark_bad": "пометить плохой",
+  "fuelcard_name_placeholder": "Например: Лукойл на Ленина",
+  "fuelcard_save": "Сохранить",
+  "fuelcard_close": "Закрыть"
+}

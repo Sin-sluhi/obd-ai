@@ -55,10 +55,10 @@ object OpenAiClient {
 
         val resp = JSONObject(text)
         val choice = resp.optJSONArray("choices")?.optJSONObject(0)
-            ?: throw IOException("Пустой ответ модели")
-        val message = choice.optJSONObject("message") ?: throw IOException("Пустой ответ модели")
+            ?: throw IOException(tr("ai_empty_reply"))
+        val message = choice.optJSONObject("message") ?: throw IOException(tr("ai_empty_reply"))
         val content = message.optString("content").trim()
-        if (content.isBlank()) throw IOException("Модель вернула пустой текст")
+        if (content.isBlank()) throw IOException(tr("ai_empty_text"))
         return Reply(content)
     }
 
@@ -97,13 +97,13 @@ object OpenAiClient {
             o.optJSONObject("error")?.optString("message")?.ifBlank { null } ?: o.optString("message").ifBlank { null }
         }.getOrNull()
         return when (status) {
-            401 -> "${cfg.provider.title}: ключ API не принят, проверь его в настройках"
-            402 -> "${cfg.provider.title}: закончился баланс"
-            403 -> "${cfg.provider.title}: доступ запрещён. ${apiMessage ?: ""}".trim()
-            404 -> "${cfg.provider.title}: модель «${cfg.model}» не найдена, проверь имя в настройках"
-            429 -> "${cfg.provider.title}: лимит запросов, подожди минуту и повтори"
-            in 500..599 -> "${cfg.provider.title}: сервер временно недоступен ($status)"
-            else -> "${cfg.provider.title}: ошибка $status. ${apiMessage ?: text.take(200)}"
+            401 -> tr("ai_err_key_rejected", cfg.provider.title)
+            402 -> tr("ai_err_no_balance", cfg.provider.title)
+            403 -> tr("ai_err_forbidden", cfg.provider.title, apiMessage ?: "").trim()
+            404 -> tr("ai_err_model_not_found", cfg.provider.title, cfg.model)
+            429 -> tr("ai_err_rate_limit", cfg.provider.title)
+            in 500..599 -> tr("ai_err_server", cfg.provider.title, status)
+            else -> tr("ai_err_other", cfg.provider.title, status, apiMessage ?: text.take(200))
         }
     }
 }

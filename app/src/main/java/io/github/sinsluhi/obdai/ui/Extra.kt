@@ -30,11 +30,13 @@ import io.github.sinsluhi.obdai.MorningForecast
 import io.github.sinsluhi.obdai.Readiness
 import io.github.sinsluhi.obdai.RepairCheck
 import io.github.sinsluhi.obdai.StartAnalysis
+import io.github.sinsluhi.obdai.Tr
 import io.github.sinsluhi.obdai.TypicalIssue
 import io.github.sinsluhi.obdai.WarmupResult
+import io.github.sinsluhi.obdai.tr
+import io.github.sinsluhi.obdai.trPlural
 import java.text.SimpleDateFormat
 import java.util.Date
-import java.util.Locale
 
 /** Карточки результата и экраны, появившиеся в 0.5: аккумулятор, проверка после ремонта, флаги, подробности, фото. */
 
@@ -56,15 +58,15 @@ fun BatteryCard(b: BatteryReport) {
         }
         VSpace(10.dp)
         Row {
-            TripStat("Покой", b.restV?.let { "%.1f".format(it) } ?: "—", "В", Modifier.weight(1f))
-            TripStat("Зарядка", b.chargeV?.let { "%.1f".format(it) } ?: "—", "В", Modifier.weight(1f))
-            TripStat("Запуск", b.crankMinV?.let { "%.1f".format(it) } ?: "—", "В", Modifier.weight(1f))
+            TripStat(tr("ext_rest"), b.restV?.let { "%.1f".format(it) } ?: "—", tr("ext_unit_v"), Modifier.weight(1f))
+            TripStat(tr("ext_charge"), b.chargeV?.let { "%.1f".format(it) } ?: "—", tr("ext_unit_v"), Modifier.weight(1f))
+            TripStat(tr("ext_start"), b.crankMinV?.let { "%.1f".format(it) } ?: "—", tr("ext_unit_v"), Modifier.weight(1f))
         }
         VSpace(8.dp)
         b.lines.forEach { Text(it, style = Type.body(13, Palette.text2), modifier = Modifier.padding(vertical = 2.dp)) }
         if (b.crankMinV == null) {
             VSpace(4.dp)
-            Text("Просадка при запуске появится, если завести двигатель с открытым экраном датчиков", style = Type.body(11, Palette.muted))
+            Text(tr("ext_crank_hint"), style = Type.body(11, Palette.muted))
         }
     }
 }
@@ -75,7 +77,7 @@ fun RepairCard(r: RepairCheck) {
     val level = when (r.status) { "returned" -> "danger"; "pending" -> "warning"; else -> "ok" }
     val (bg, border, main) = levelColors(level, accent)
     Card(background = bg, border = border, radius = 18.dp, padding = 16.dp, glow = main) {
-        Text("ПОСЛЕ РЕМОНТА", style = Type.body(12, main, FontWeight.SemiBold))
+        Text(tr("ext_after_repair"), style = Type.body(12, main, FontWeight.SemiBold))
         VSpace(6.dp)
         Text(r.title, style = Type.strong(17))
         VSpace(6.dp)
@@ -86,7 +88,7 @@ fun RepairCard(r: RepairCheck) {
 @Composable
 fun TrendCard(lines: List<String>) {
     Card(radius = 18.dp, padding = 16.dp) {
-        Text("Изменения с прошлой проверки", style = Type.strong(15))
+        Text(tr("ext_trend_title"), style = Type.strong(15))
         VSpace(8.dp)
         lines.forEach { Bullet(it) }
     }
@@ -103,8 +105,8 @@ fun FlagsCard(flags: List<Flag>) {
     val (bg, border, main) = levelColors(worst, accent)
     Card(background = bg, border = border, radius = 18.dp, padding = 16.dp) {
         Row(verticalAlignment = Alignment.CenterVertically) {
-            Text("Факты о машине", style = Type.strong(15), modifier = Modifier.weight(1f))
-            Pill("для покупателя", main, Palette.bg.copy(alpha = 0.35f))
+            Text(tr("ext_facts_title"), style = Type.strong(15), modifier = Modifier.weight(1f))
+            Pill(tr("ext_for_buyer"), main, Palette.bg.copy(alpha = 0.35f))
         }
         VSpace(8.dp)
         flags.forEach { f ->
@@ -122,7 +124,7 @@ fun FlagsCard(flags: List<Flag>) {
 fun TypicalIssuesCard(items: List<TypicalIssue>) {
     val accent = LocalAccent.current
     val uri = LocalUriHandler.current
-    SectionTitle("Типичные болячки модели", "по опыту владельцев")
+    SectionTitle(tr("ext_typical_title"), tr("ext_typical_sub"))
     Card {
         items.forEachIndexed { i, t ->
             if (i > 0) {
@@ -146,7 +148,7 @@ fun TypicalIssuesCard(items: List<TypicalIssue>) {
 fun ServiceCard(text: String) {
     val accent = LocalAccent.current
     Card(radius = 18.dp, padding = 16.dp, glow = accent) {
-        Text("Что сказать в сервисе", style = Type.strong(15))
+        Text(tr("ext_service_title"), style = Type.strong(15))
         VSpace(6.dp)
         Text(text, style = Type.body(13, Palette.text2))
     }
@@ -166,7 +168,7 @@ fun ChecksCard(checks: List<Flag>) {
         Row(verticalAlignment = Alignment.CenterVertically) {
             Dot(main)
             HSpace(10.dp)
-            Text(if (bad.isEmpty()) "Датчики согласованы" else "Датчики: есть расхождения", style = Type.strong(15))
+            Text(if (bad.isEmpty()) tr("ext_sensors_ok") else tr("ext_sensors_mismatch"), style = Type.strong(15))
         }
         VSpace(8.dp)
         (if (bad.isEmpty()) checks else bad).forEach { f ->
@@ -188,14 +190,14 @@ fun WarmupCard(w: WarmupResult) {
         Row(verticalAlignment = Alignment.CenterVertically) {
             Dot(if (w.level == "info") Palette.muted else main)
             HSpace(10.dp)
-            Text("Прогрев и термостат", style = Type.strong(15), modifier = Modifier.weight(1f))
-            Text(SimpleDateFormat("d MMM", Locale("ru")).format(Date(w.t)), style = Type.label(12))
+            Text(tr("ext_warmup_title"), style = Type.strong(15), modifier = Modifier.weight(1f))
+            Text(SimpleDateFormat("d MMM", Tr.lang.locale).format(Date(w.t)), style = Type.label(12))
         }
         VSpace(10.dp)
         Row {
-            TripStat("До 80°", w.minutesTo80?.let { "%.0f".format(it) } ?: "—", "мин", Modifier.weight(1f))
-            TripStat("Максимум", "%.0f".format(w.maxTemp), "°C", Modifier.weight(1f))
-            TripStat("За бортом", w.ambient?.let { "%.0f".format(it) } ?: "—", "°C", Modifier.weight(1f))
+            TripStat(tr("ext_to80"), w.minutesTo80?.let { "%.0f".format(it) } ?: "—", tr("ext_unit_min"), Modifier.weight(1f))
+            TripStat(tr("ext_max"), "%.0f".format(w.maxTemp), "°C", Modifier.weight(1f))
+            TripStat(tr("ext_ambient"), w.ambient?.let { "%.0f".format(it) } ?: "—", "°C", Modifier.weight(1f))
         }
         VSpace(8.dp)
         Text(w.text, style = Type.body(13, Palette.text2))
@@ -214,9 +216,9 @@ fun StartsCard(a: StartAnalysis) {
         }
         VSpace(10.dp)
         Row {
-            TripStat("Последний", "%.1f".format(a.lastMs / 1000.0), "с", Modifier.weight(1f))
-            TripStat("Обычно", "%.1f".format(a.medianMs / 1000.0), "с", Modifier.weight(1f))
-            TripStat("Тренд", a.trendPct?.let { "%+d".format(it) } ?: "—", "%", Modifier.weight(1f))
+            TripStat(tr("ext_last"), "%.1f".format(a.lastMs / 1000.0), tr("ext_unit_s"), Modifier.weight(1f))
+            TripStat(tr("ext_usual"), "%.1f".format(a.medianMs / 1000.0), tr("ext_unit_s"), Modifier.weight(1f))
+            TripStat(tr("ext_trend"), a.trendPct?.let { "%+d".format(it) } ?: "—", "%", Modifier.weight(1f))
         }
         VSpace(8.dp)
         Text(a.text, style = Type.body(13, Palette.text2))
@@ -228,7 +230,7 @@ fun ForecastCard(f: MorningForecast, onUseWeather: (() -> Unit)?) {
     val accent = LocalAccent.current
     val (bg, border, main) = levelColors(f.level, accent)
     Card(background = bg, border = border, radius = 18.dp, padding = 16.dp, glow = main) {
-        Text("ЗАВТРА УТРОМ", style = Type.body(12, main, FontWeight.SemiBold))
+        Text(tr("ext_tomorrow_morning"), style = Type.body(12, main, FontWeight.SemiBold))
         VSpace(6.dp)
         Text(f.title, style = Type.strong(17))
         VSpace(6.dp)
@@ -236,7 +238,7 @@ fun ForecastCard(f: MorningForecast, onUseWeather: (() -> Unit)?) {
         if (onUseWeather != null && !f.fromWeather) {
             VSpace(10.dp)
             Text(
-                "Уточнить по прогнозу погоды",
+                tr("ext_weather_refine"),
                 style = Type.body(13, accent, FontWeight.SemiBold),
                 modifier = Modifier.clickable(onClick = onUseWeather).padding(vertical = 4.dp)
             )
@@ -259,24 +261,24 @@ fun DetailsScreen(state: AppState, onBack: () -> Unit) {
     val accent = LocalAccent.current
     val snap = state.lastSnapshot
     Screen {
-        Header("Данные с машины", onBack = onBack)
+        Header(tr("ext_details_title"), onBack = onBack)
         if (snap == null) {
-            Text("Сначала проверь машину", style = Type.body(14, Palette.muted))
+            Text(tr("ext_check_first"), style = Type.body(14, Palette.muted))
             return@Screen
         }
 
-        snap.readiness?.let { r -> ReadinessCard("Самопроверки с момента сброса ошибок", r, accent) }
-        snap.readinessCycle?.let { r -> if (r.monitors.isNotEmpty()) ReadinessCard("Самопроверки в этой поездке", r, accent) }
+        snap.readiness?.let { r -> ReadinessCard(tr("ext_readiness_since_clear"), r, accent) }
+        snap.readinessCycle?.let { r -> if (r.monitors.isNotEmpty()) ReadinessCard(tr("ext_readiness_cycle"), r, accent) }
 
         val stats = snap.stats.lines()
         if (stats.isNotEmpty()) {
-            SectionTitle("Счётчики ЭБУ")
+            SectionTitle(tr("ext_counters"))
             Card { stats.forEach { Bullet(it) } }
         }
 
         if (snap.tests.isNotEmpty()) {
             val failed = snap.tests.count { !it.passed }
-            SectionTitle("Самотесты ЭБУ", if (failed == 0) "все в норме" else plural(failed, "провален", "провалено", "провалено"))
+            SectionTitle(tr("ext_selftests"), if (failed == 0) tr("ext_all_ok") else trPlural("ext_failed_n", failed))
             Card(padding = 14.dp) {
                 snap.tests.sortedBy { if (it.passed) 1 else 0 }.forEachIndexed { i, t ->
                     if (i > 0) Box(Modifier.fillMaxWidth().height(1.dp).background(Palette.border))
@@ -297,7 +299,7 @@ fun DetailsScreen(state: AppState, onBack: () -> Unit) {
         }
 
         if (snap.modules.isNotEmpty()) {
-            SectionTitle("Блоки", plural(snap.modules.size, "блок", "блока", "блоков"))
+            SectionTitle(tr("ext_modules"), trPlural("ext_modules_n", snap.modules.size))
             Card(padding = 14.dp) {
                 snap.modules.forEachIndexed { i, m ->
                     if (i > 0) Box(Modifier.fillMaxWidth().height(1.dp).background(Palette.border))
@@ -307,8 +309,8 @@ fun DetailsScreen(state: AppState, onBack: () -> Unit) {
                             Text("${m.addrHex} · ${m.via}", style = Type.mono(11, Palette.muted))
                         }
                         val mismatch = m.vin != null && snap.vin != null && m.vin != snap.vin
-                        m.vin?.let { Text("VIN: $it", style = Type.mono(11, if (mismatch) Palette.danger else Palette.muted)) }
-                        m.part?.let { Text("Номер: $it", style = Type.mono(11, Palette.muted)) }
+                        m.vin?.let { Text(tr("ext_vin", it), style = Type.mono(11, if (mismatch) Palette.danger else Palette.muted)) }
+                        m.part?.let { Text(tr("ext_part", it), style = Type.mono(11, Palette.muted)) }
                         m.codes.forEach { c ->
                             val st = m.statusOf(c)
                             Text(c + if (st.isNotEmpty()) " — ${st.joinToString()}" else "", style = Type.body(12, Palette.warn))
@@ -320,7 +322,7 @@ fun DetailsScreen(state: AppState, onBack: () -> Unit) {
 
         val extra = snap.sensors.filter { it.value != null }
         if (extra.isNotEmpty()) {
-            SectionTitle("Все датчики", plural(extra.size, "значение", "значения", "значений"))
+            SectionTitle(tr("ext_all_sensors"), trPlural("ext_values_n", extra.size))
             Card(padding = 14.dp) {
                 extra.forEach { s ->
                     Row(Modifier.padding(vertical = 4.dp)) {
@@ -332,13 +334,13 @@ fun DetailsScreen(state: AppState, onBack: () -> Unit) {
         }
 
         snap.adapter?.let { a ->
-            SectionTitle("Адаптер")
+            SectionTitle(tr("ext_adapter"))
             Card(padding = 14.dp) {
-                Text(a.version.ifBlank { "не представился" }, style = Type.strong(14))
+                Text(a.version.ifBlank { tr("ext_no_name") }, style = Type.strong(14))
                 if (a.description.isNotBlank()) Text(a.description, style = Type.body(12, Palette.muted))
                 VSpace(4.dp)
                 Text(a.grade(), style = Type.body(13, if (a.fullFeatured && !a.suspicious) Palette.text2 else Palette.warn))
-                if (a.responseMs > 0) Text("Опрос масок PID: ${a.responseMs} мс", style = Type.body(12, Palette.muted))
+                if (a.responseMs > 0) Text(tr("ext_pid_mask_ms", a.responseMs), style = Type.body(12, Palette.muted))
             }
         }
         VSpace(8.dp)
@@ -347,7 +349,7 @@ fun DetailsScreen(state: AppState, onBack: () -> Unit) {
 
 @Composable
 private fun ReadinessCard(title: String, r: Readiness, accent: Color) {
-    SectionTitle(title, "${r.done} из ${r.total}")
+    SectionTitle(title, tr("ext_n_of_m", r.done, r.total))
     Card(padding = 14.dp) {
         r.monitors.forEachIndexed { i, m ->
             if (i > 0) Box(Modifier.fillMaxWidth().height(1.dp).background(Palette.border))
@@ -355,10 +357,10 @@ private fun ReadinessCard(title: String, r: Readiness, accent: Color) {
                 Dot(if (m.complete) accent else Palette.warn, 7.dp)
                 HSpace(10.dp)
                 Text(m.name, style = Type.body(13, Palette.text2), modifier = Modifier.weight(1f))
-                Text(if (m.complete) "завершена" else "ещё идёт", style = Type.body(12, if (m.complete) Palette.muted else Palette.warn))
+                Text(if (m.complete) tr("ext_done") else tr("ext_in_progress"), style = Type.body(12, if (m.complete) Palette.muted else Palette.warn))
             }
         }
-        if (r.monitors.isEmpty()) Text("Машина не отдала данные", style = Type.body(13, Palette.muted))
+        if (r.monitors.isEmpty()) Text(tr("ext_no_data"), style = Type.body(13, Palette.muted))
     }
 }
 
@@ -369,13 +371,13 @@ fun DashScreen(state: AppState, onBack: () -> Unit, onCamera: () -> Unit, onGall
     val accent = LocalAccent.current
     val r: DashReport? = state.dash
     Screen {
-        Header("Приборная панель", onBack = onBack)
+        Header(tr("ext_dash_title"), onBack = onBack)
         if (state.busy != null) {
             Text(state.busy ?: "", style = Type.body(14, Palette.muted), textAlign = TextAlign.Center, modifier = Modifier.fillMaxWidth())
         }
         if (r == null) {
             Text(
-                "Сфотографируй приборку с горящими лампами — объясню, что каждая значит и можно ли ехать.",
+                tr("ext_dash_hint"),
                 style = Type.body(14, Palette.text2)
             )
         } else {
@@ -388,22 +390,22 @@ fun DashScreen(state: AppState, onBack: () -> Unit, onCamera: () -> Unit, onGall
             Card(background = bg, border = border, radius = 22.dp, padding = 20.dp, glow = main) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text(
-                        when (level) { "danger" -> "ОПАСНО"; "warning" -> "ВНИМАНИЕ"; else -> "ВСЁ В ПОРЯДКЕ" },
+                        when (level) { "danger" -> tr("ext_danger"); "warning" -> tr("ext_attention"); else -> tr("ext_all_fine") },
                         style = Type.body(13, main, FontWeight.SemiBold)
                     )
                     Spacer(Modifier.weight(1f))
-                    val drive = when (r.canDrive) { "yes" -> "Ехать можно"; "no" -> "Не ехать"; else -> "Ехать осторожно" }
+                    val drive = when (r.canDrive) { "yes" -> tr("ext_drive_yes"); "no" -> tr("ext_drive_no"); else -> tr("ext_drive_careful") }
                     Pill(drive, main, Palette.bg.copy(alpha = 0.35f))
                 }
                 VSpace(10.dp)
                 Text(r.text, style = Type.body(14, Palette.text))
             }
-            if (r.lamps.isNotEmpty()) SectionTitle("Что горит", plural(r.lamps.size, "лампа", "лампы", "ламп"))
+            if (r.lamps.isNotEmpty()) SectionTitle(tr("ext_lit"), trPlural("ext_lamps_n", r.lamps.size))
             r.lamps.forEach { l ->
                 val (sevText, sevColor, sevBg) = when (l.severity) {
-                    "high" -> Triple("Серьёзно", Palette.danger, Palette.dangerBg)
-                    "low" -> Triple("Низко", accent, Palette.okBg)
-                    else -> Triple("Средне", Palette.warn, Palette.warnBg)
+                    "high" -> Triple(tr("ext_sev_high"), Palette.danger, Palette.dangerBg)
+                    "low" -> Triple(tr("ext_sev_low"), accent, Palette.okBg)
+                    else -> Triple(tr("ext_sev_mid"), Palette.warn, Palette.warnBg)
                 }
                 Card {
                     Row(verticalAlignment = Alignment.CenterVertically) {
@@ -416,8 +418,8 @@ fun DashScreen(state: AppState, onBack: () -> Unit, onCamera: () -> Unit, onGall
             }
         }
         Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
-            PrimaryButton(if (r == null) "Сфотографировать" else "Сфотографировать ещё раз", enabled = state.busy == null, onClick = onCamera)
-            SecondaryButton("Выбрать из галереи", Modifier.fillMaxWidth(), enabled = state.busy == null, onClick = onGallery)
+            PrimaryButton(if (r == null) tr("ext_photo") else tr("ext_photo_again"), enabled = state.busy == null, onClick = onCamera)
+            SecondaryButton(tr("ext_gallery"), Modifier.fillMaxWidth(), enabled = state.busy == null, onClick = onGallery)
         }
         VSpace(8.dp)
     }

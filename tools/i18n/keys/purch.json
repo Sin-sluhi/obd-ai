@@ -1,0 +1,19 @@
+{
+  "purch_title": "Перед покупкой",
+  "purch_no_snapshot": "Сначала проверь машину: подключи адаптер к машине продавца и нажми «Проверить».",
+  "purch_declared_hint": "Пробег по словам продавца, км",
+  "purch_verdict_buy": "МОЖНО БРАТЬ",
+  "purch_verdict_run": "ЛУЧШЕ НЕ БРАТЬ",
+  "purch_verdict_bargain": "БРАТЬ С ТОРГОМ",
+  "purch_found": "Что нашли",
+  "purch_items.one": "{0} пункт",
+  "purch_items.few": "{0} пункта",
+  "purch_items.many": "{0} пунктов",
+  "purch_bargain": "Аргументы для торга",
+  "purch_bargain_sub": "цены «от»",
+  "purch_bargain_total": "Итого скинуть",
+  "purch_checks": "Проверить на тест-драйве",
+  "purch_checks_sub": "болячки этой модели",
+  "purch_share": "Поделиться результатом",
+  "purch_share_chooser": "Поделиться"
+}

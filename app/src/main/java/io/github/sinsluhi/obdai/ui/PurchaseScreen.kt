@@ -28,6 +28,8 @@ import io.github.sinsluhi.obdai.AppState
 import io.github.sinsluhi.obdai.Purchase
 import io.github.sinsluhi.obdai.VinDecoder
 import io.github.sinsluhi.obdai.formatPrice
+import io.github.sinsluhi.obdai.tr
+import io.github.sinsluhi.obdai.trPlural
 
 /** Экран «Перед покупкой»: брать / торговаться / бежать по последней проверке. */
 @Composable
@@ -37,9 +39,9 @@ fun PurchaseScreen(state: AppState, onBack: () -> Unit) {
     val snap = state.lastSnapshot
     var declared by remember { mutableStateOf("") }
     Screen {
-        Header("Перед покупкой", onBack = onBack)
+        Header(tr("purch_title"), onBack = onBack)
         if (snap == null) {
-            Text("Сначала проверь машину: подключи адаптер к машине продавца и нажми «Проверить».", style = Type.body(14, Palette.muted))
+            Text(tr("purch_no_snapshot"), style = Type.body(14, Palette.muted))
             return@Screen
         }
         val car = VinDecoder.decode(snap.vin).withCar(state.diagnosis?.car)
@@ -51,7 +53,7 @@ fun PurchaseScreen(state: AppState, onBack: () -> Unit) {
         OutlinedTextField(
             value = declared, onValueChange = { declared = it.take(7) }, singleLine = true,
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-            placeholder = { Text("Пробег по словам продавца, км", style = Type.body(14, Palette.muted)) },
+            placeholder = { Text(tr("purch_declared_hint"), style = Type.body(14, Palette.muted)) },
             modifier = Modifier.fillMaxWidth(),
             colors = OutlinedTextFieldDefaults.colors(
                 focusedBorderColor = accent, unfocusedBorderColor = Palette.border,
@@ -61,9 +63,9 @@ fun PurchaseScreen(state: AppState, onBack: () -> Unit) {
         VSpace(12.dp)
 
         val (bg, border, main, textColor, label) = when (report.verdict) {
-            "buy" -> listOf(Palette.okBg, Palette.border, accent, Palette.text, "МОЖНО БРАТЬ")
-            "run" -> listOf(Palette.dangerBg, Palette.dangerBorder, Palette.danger, Palette.dangerText, "ЛУЧШЕ НЕ БРАТЬ")
-            else -> listOf(Palette.warnBg, Palette.warnBorder, Palette.warn, Palette.warnText, "БРАТЬ С ТОРГОМ")
+            "buy" -> listOf(Palette.okBg, Palette.border, accent, Palette.text, tr("purch_verdict_buy"))
+            "run" -> listOf(Palette.dangerBg, Palette.dangerBorder, Palette.danger, Palette.dangerText, tr("purch_verdict_run"))
+            else -> listOf(Palette.warnBg, Palette.warnBorder, Palette.warn, Palette.warnText, tr("purch_verdict_bargain"))
         }
         @Suppress("UNCHECKED_CAST")
         Card(background = bg as androidx.compose.ui.graphics.Color, border = border as androidx.compose.ui.graphics.Color, radius = 22.dp, padding = 20.dp, glow = main as androidx.compose.ui.graphics.Color) {
@@ -76,7 +78,7 @@ fun PurchaseScreen(state: AppState, onBack: () -> Unit) {
         VSpace(14.dp)
 
         if (report.reasons.isNotEmpty()) {
-            SectionTitle("Что нашли", plural(report.reasons.size, "пункт", "пункта", "пунктов"))
+            SectionTitle(tr("purch_found"), trPlural("purch_items", report.reasons.size))
             Card {
                 report.reasons.forEachIndexed { i, f ->
                     if (i > 0) { VSpace(8.dp); Box(Modifier.fillMaxWidth().height(1.dp).background(Palette.border)); VSpace(8.dp) }
@@ -91,7 +93,7 @@ fun PurchaseScreen(state: AppState, onBack: () -> Unit) {
         }
 
         if (report.bargain.isNotEmpty()) {
-            SectionTitle("Аргументы для торга", "цены «от»")
+            SectionTitle(tr("purch_bargain"), tr("purch_bargain_sub"))
             Card {
                 report.bargain.forEach { b ->
                     Row(Modifier.padding(vertical = 5.dp)) {
@@ -104,7 +106,7 @@ fun PurchaseScreen(state: AppState, onBack: () -> Unit) {
                 Box(Modifier.fillMaxWidth().height(1.dp).background(Palette.border))
                 VSpace(8.dp)
                 Row {
-                    Text("Итого скинуть", style = Type.label())
+                    Text(tr("purch_bargain_total"), style = Type.label())
                     Spacer(Modifier.weight(1f))
                     Text(formatPrice(report.bargainTotal), style = Type.strong(16, accent))
                 }
@@ -112,7 +114,7 @@ fun PurchaseScreen(state: AppState, onBack: () -> Unit) {
         }
 
         if (report.checks.isNotEmpty()) {
-            SectionTitle("Проверить на тест-драйве", "болячки этой модели")
+            SectionTitle(tr("purch_checks"), tr("purch_checks_sub"))
             Card {
                 report.checks.forEachIndexed { i, c ->
                     Row(Modifier.padding(vertical = 5.dp)) {
@@ -123,10 +125,10 @@ fun PurchaseScreen(state: AppState, onBack: () -> Unit) {
             }
         }
 
-        PrimaryButton("Поделиться результатом", onClick = {
+        PrimaryButton(tr("purch_share"), onClick = {
             val text = report.shareText(carName, declaredKm)
             val send = Intent(Intent.ACTION_SEND).apply { type = "text/plain"; putExtra(Intent.EXTRA_TEXT, text) }
-            runCatching { context.startActivity(Intent.createChooser(send, "Поделиться")) }
+            runCatching { context.startActivity(Intent.createChooser(send, tr("purch_share_chooser"))) }
         })
         VSpace(8.dp)
     }

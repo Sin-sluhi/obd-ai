@@ -61,7 +61,7 @@ class AppState private constructor(context: Context) {
             Kb.init(appContext, prefs)
             ForumTree.load(appContext)
             runCatching { ForumLocator.refresh(prefs) }
-            runCatching { if (Kb.refresh(appContext, prefs)) addLog("База опыта владельцев обновлена: ${Kb.size} записей") }
+            runCatching { if (Kb.refresh(appContext, prefs)) addLog(tr("state_kb_updated", Kb.size)) }
         }
     }
 
@@ -173,9 +173,9 @@ class AppState private constructor(context: Context) {
     }
 
     init {
-        addLog("1. Воткни адаптер в OBD-разъём, включи зажигание")
-        addLog("2. Спарь адаптер в настройках Bluetooth (PIN обычно 1234 или 0000)")
-        addLog("3. Жми на статус адаптера или на большую кнопку")
+        addLog(tr("state_hint_1"))
+        addLog(tr("state_hint_2"))
+        addLog(tr("state_hint_3"))
         battery = BatteryReport.build(volts)
     }
 
@@ -217,7 +217,7 @@ class AppState private constructor(context: Context) {
     }
     fun updateLocation(lat: Double, lon: Double) {
         prefs.lat = lat; prefs.lon = lon
-        addLog("Координаты для прогноза погоды сохранены")
+        addLog(tr("state_location_saved"))
         computeForecast(alert = false)
     }
 
@@ -262,16 +262,16 @@ class AppState private constructor(context: Context) {
             diagnosis = null
             lastSnapshot = null
         }
-        addLog("Гараж: открыта машина ${profile.name.ifBlank { id }}")
+        addLog(tr("state_garage_opened", profile.name.ifBlank { id }))
     }
 
     /** VIN прочитан: если это другая машина — переключаемся сами. */
     private fun noticeCar(v: String?, name: String) {
         val id = v?.takeIf { it.length >= 11 } ?: return
         if (id != carId) {
-            addLog("Это другая машина: переключаю гараж")
+            addLog(tr("state_other_car"))
             switchCar(id, name)
-            ui { toast = "Открыл гараж: ${name.ifBlank { id }}" }
+            ui { toast = tr("state_garage_opened_toast", name.ifBlank { id }) }
         }
         val list = prefs.cars
         val cur = list.firstOrNull { it.id == id }
@@ -294,8 +294,8 @@ class AppState private constructor(context: Context) {
     /** Выгрузить текущую машину в облако. */
     fun cloudUpload(onDone: (String) -> Unit) {
         val api = GarageApi(forumUrl)
-        if (!api.configured) { onDone("Облако недоступно: нет адреса сервера"); return }
-        ui { cloudBusy = "Выгружаю" }
+        if (!api.configured) { onDone(tr("state_cloud_no_server")); return }
+        ui { cloudBusy = tr("state_cloud_uploading") }
         worker.execute {
             val r = runCatching { api.put(prefs.garageCode, carId, carName, prefs.exportCar()) }
             ui {
@@ -303,7 +303,7 @@ class AppState private constructor(context: Context) {
                 val now = System.currentTimeMillis()
                 prefs.cars = prefs.cars.map { if (it.id == carId) it.copy(synced = now) else it }
                 cars = prefs.cars
-                onDone(r.fold({ "Машина выгружена в облако" }, { "Не вышло: ${it.message}" }))
+                onDone(r.fold({ tr("state_cloud_uploaded") }, { tr("state_cloud_failed", it.message) }))
             }
         }
     }
@@ -311,20 +311,20 @@ class AppState private constructor(context: Context) {
     /** Забрать машину из облака по коду гаража. */
     fun cloudDownload(id: String, name: String, onDone: (String) -> Unit) {
         val api = GarageApi(forumUrl)
-        if (!api.configured) { onDone("Облако недоступно: нет адреса сервера"); return }
-        ui { cloudBusy = "Загружаю" }
+        if (!api.configured) { onDone(tr("state_cloud_no_server")); return }
+        ui { cloudBusy = tr("state_cloud_downloading") }
         worker.execute {
             val r = runCatching { api.get(prefs.garageCode, id) }
             ui {
                 cloudBusy = null
                 val data = r.getOrNull()
-                if (r.isFailure) onDone("Не вышло: ${r.exceptionOrNull()?.message}")
-                else if (data == null) onDone("В облаке этой машины нет")
+                if (r.isFailure) onDone(tr("state_cloud_failed", r.exceptionOrNull()?.message))
+                else if (data == null) onDone(tr("state_cloud_no_car"))
                 else {
                     switchCar(id, name.ifBlank { data.first })
                     prefs.importCar(data.second)
                     switchCar(id, name.ifBlank { data.first })   // перечитать журналы уже из импорта
-                    onDone("Машина загружена из облака")
+                    onDone(tr("state_cloud_downloaded"))
                 }
             }
         }
@@ -332,8 +332,8 @@ class AppState private constructor(context: Context) {
 
     fun cloudList(onDone: (List<GarageApi.CloudCar>, String?) -> Unit) {
         val api = GarageApi(forumUrl)
-        if (!api.configured) { onDone(emptyList(), "Облако недоступно: нет адреса сервера"); return }
-        ui { cloudBusy = "Смотрю облако" }
+        if (!api.configured) { onDone(emptyList(), tr("state_cloud_no_server")); return }
+        ui { cloudBusy = tr("state_cloud_listing") }
         worker.execute {
             val r = runCatching { api.list(prefs.garageCode) }
             ui { cloudBusy = null; onDone(r.getOrDefault(emptyList()), r.exceptionOrNull()?.message) }
@@ -342,7 +342,7 @@ class AppState private constructor(context: Context) {
 
     fun updateGarageCode(code: String) {
         prefs.garageCode = code
-        addLog("Код гаража изменён")
+        addLog(tr("state_garage_code_changed"))
     }
 
     // ---- охрана: машину завели без вас ----
@@ -352,8 +352,8 @@ class AppState private constructor(context: Context) {
         prefs.guard = on
         prefs.guardSince = if (on) System.currentTimeMillis() else 0L
         guardSince = prefs.guardSince
-        addLog(if (on) "Охрана включена" else "Охрана выключена")
-        if (on) notify(NOTIF_GUARD, "Охрана включена", "Сообщу, если двигатель заведут, пока телефон рядом с машиной.")
+        addLog(if (on) tr("state_guard_on") else tr("state_guard_off"))
+        if (on) notify(NOTIF_GUARD, tr("state_guard_on"), tr("state_guard_on_text"))
     }
 
     /** Двигатель завёлся: если охрана включена — тревога. */
@@ -361,11 +361,11 @@ class AppState private constructor(context: Context) {
         if (!guard) return
         if (now - guardAlerted < 120_000) return
         guardAlerted = now
-        val name = carName.ifBlank { "Машину" }
-        notify(NOTIF_GUARD, "Машину завели без вас", "$name: двигатель запущен в ${java.text.SimpleDateFormat("HH:mm", java.util.Locale("ru")).format(java.util.Date(now))}. Если это не вы — посмотрите на машину.")
-        speak("guard", "Внимание: машину завели", minGapMs = 0)
-        recordEvent("guard", "Машину завели при включённой охране", "Охрана была включена ${formatDuration(now - guardSince)} назад")
-        addLog("⚠️ Охрана: двигатель запущен")
+        val name = carName.ifBlank { tr("state_guard_car_default") }
+        notify(NOTIF_GUARD, tr("state_guard_alarm_title"), tr("state_guard_alarm_text", name, SimpleDateFormat("HH:mm", Tr.lang.locale).format(Date(now))))
+        speak("guard", tr("state_guard_speak"), minGapMs = 0)
+        recordEvent("guard", tr("state_guard_event_title"), tr("state_guard_event_detail", formatDuration(now - guardSince)))
+        addLog(tr("state_guard_log"))
     }
 
     // ---- подключение ----
@@ -373,8 +373,8 @@ class AppState private constructor(context: Context) {
     fun connect(target: AdapterTarget) {
         val elm = Elm327 { addLog(it) }
         elm.onCommand = { rx() }   // каждая команда живому адаптеру — пакет на фоне (~10 в секунду в опросе)
-        runTask("Подключение", needLink = false) {
-            ui { busy = "Подключаюсь к адаптеру" }
+        runTask(tr("state_task_connect"), needLink = false) {
+            ui { busy = tr("state_connecting") }
             elm.connect(appContext, target)
             link = elm
             when (target) {
@@ -394,7 +394,7 @@ class AppState private constructor(context: Context) {
                 ecuName = elm.ecuName
                 calibration = elm.calibration
             }
-            addLog("✅ Подключено")
+            addLog(tr("state_connected"))
             resetEngineState()
             startPolling()
         }
@@ -412,7 +412,7 @@ class AppState private constructor(context: Context) {
         ecuOnline = d.ecuOnline
         ecuName = d.ecuName
         calibration = d.calibration
-        addLog("Демо-режим: подключена выдуманная машина")
+        addLog(tr("state_demo_connected"))
         resetEngineState()
         startPolling()
     }
@@ -438,7 +438,7 @@ class AppState private constructor(context: Context) {
         gaugeSelfTest = false
         if (trip != null) stopTrip()
         worker.execute { runCatching { l?.disconnect() } }
-        addLog("Отключено")
+        addLog(tr("state_disconnected"))
     }
 
     private fun ObdLink.readVoltageSafe(): String = runCatching { readVoltage() }.getOrDefault("")
@@ -447,69 +447,69 @@ class AppState private constructor(context: Context) {
 
     fun runCheck(onDone: () -> Unit) {
         if (busy != null) return
-        runTask("Проверка машины") {
-            val l = link ?: throw IOException("Нет подключения к адаптеру")
+        runTask(tr("state_task_check")) {
+            val l = link ?: throw IOException(tr("state_no_link"))
             pausePolling()
 
-            ui { busy = "Читаю блок двигателя" }; rx()
+            ui { busy = tr("state_step_ecu") }; rx()
             val mil = l.readMil()
             ui { milOn = mil?.first; dtcCount = mil?.second }
-            addLog("Check Engine: ${if (mil?.first == true) "ГОРИТ" else "не горит"}, ошибок по данным ЭБУ: ${mil?.second ?: "?"}")
+            addLog(tr("state_log_mil", if (mil?.first == true) tr("state_mil_on") else tr("state_mil_off"), mil?.second ?: "?"))
 
-            ui { busy = "Читаю коды ошибок" }; rx()
+            ui { busy = tr("state_step_codes") }; rx()
             val stored = l.readCodes(0x03)
             val pending = l.readCodes(0x07)
             val permanent = runCatching { l.readCodes(0x0A) }.getOrDefault(emptyList())
-            addLog(if (stored.isEmpty()) "Сохранённых ошибок нет" else "Ошибки: ${stored.joinToString()}")
-            addLog(if (pending.isEmpty()) "Неподтверждённых ошибок нет" else "Неподтверждённые: ${pending.joinToString()}")
-            if (permanent.isNotEmpty()) addLog("Постоянные: ${permanent.joinToString()}")
+            addLog(if (stored.isEmpty()) tr("state_log_no_stored") else tr("state_log_stored", stored.joinToString()))
+            addLog(if (pending.isEmpty()) tr("state_log_no_pending") else tr("state_log_pending", pending.joinToString()))
+            if (permanent.isNotEmpty()) addLog(tr("state_log_permanent", permanent.joinToString()))
 
-            ui { busy = "Читаю мониторы и счётчики" }; rx()
+            ui { busy = tr("state_step_monitors") }; rx()
             val (ready, readyCycle) = runCatching { l.readReadiness() }.getOrDefault(Pair(null, null))
-            ready?.let { addLog("Мониторы готовности: ${it.describe()}") }
+            ready?.let { addLog(tr("state_log_readiness", it.describe())) }
             val stats = runCatching { l.readStats() }.getOrDefault(DtcStats())
             stats.lines().forEach { addLog(it) }
 
-            ui { busy = "Читаю VIN" }; rx()
+            ui { busy = tr("state_step_vin") }; rx()
             val v = runCatching { l.readVin() }.getOrNull()
             ui { vin = v }
-            addLog(if (v == null) "Машина не отдала VIN (на старых авто это нормально)" else "VIN: $v")
+            addLog(if (v == null) tr("state_log_no_vin") else tr("state_log_vin", v))
 
-            ui { busy = "Снимаю датчики" }; rx()
+            ui { busy = tr("state_step_sensors") }; rx()
             val s = l.readSensors(live = false)
             val volt = l.readVoltageSafe()
             ui { sensors = s; voltage = volt; protocol = l.protocol }
             s.firstOrNull { it.key == "ambient" }?.value?.let { lastAmbient = it }
             recordVolt(s, volt, force = true)
 
-            ui { busy = "Читаю самотесты ЭБУ" }; rx()
-            val tests = runCatching { l.readTests() }.onFailure { addLog("Режим 06 не прочитался: ${it.message}") }.getOrDefault(emptyList())
+            ui { busy = tr("state_step_tests") }; rx()
+            val tests = runCatching { l.readTests() }.onFailure { addLog(tr("state_log_mode06_failed", it.message)) }.getOrDefault(emptyList())
             if (tests.isNotEmpty()) {
-                addLog("Самотестов: ${tests.size}, провалено: ${tests.count { !it.passed }}")
+                addLog(tr("state_log_tests", tests.size, tests.count { !it.passed }))
                 Mode06.summary(tests).forEach { addLog(it) }
             }
 
-            ui { busy = "Опрашиваю блоки" }; rx()
+            ui { busy = tr("state_step_modules") }; rx()
             val brand = VinDecoder.decode(v).brand
             val modules = runCatching {
-                l.scanModules(brand) { i, n -> ui { busy = "Опрашиваю блоки $i/$n" }; rx() }
-            }.onFailure { addLog("Опрос блоков не удался: ${it.message}") }.getOrDefault(emptyList())
-            addLog("Ответило блоков: ${modules.size}, с ошибками: ${modules.count { it.codes.isNotEmpty() }}")
+                l.scanModules(brand) { i, n -> ui { busy = tr("state_step_modules_n", i, n) }; rx() }
+            }.onFailure { addLog(tr("state_log_modules_failed", it.message)) }.getOrDefault(emptyList())
+            addLog(tr("state_log_modules", modules.size, modules.count { it.codes.isNotEmpty() }))
             resumePolling()
 
-            ui { busy = "Сверяю с прошлыми проверками" }
+            ui { busy = tr("state_step_compare") }
             val batteryNow = BatteryReport.build(volts)
             val base = CarSnapshot(v, l.protocol, volt, mil?.first, mil?.second, stored, pending, s, permanent, modules,
                 readiness = ready, readinessCycle = readyCycle, stats = stats, tests = tests, battery = batteryNow, adapter = l.adapter)
             val clear = prefs.lastClear?.takeIf { it.vin == null || v == null || it.vin == v }
             val repair = clear?.let { RepairCheck.build(it, base.allCodes, ready, stats.distanceSinceClearKm) }
-            repair?.let { addLog("После ремонта: ${it.title}") }
+            repair?.let { addLog(tr("state_log_repair", it.title)) }
             if (repair != null && repair.status != "pending") prefs.lastClear = null
             val prev = history.firstOrNull { it.vin == v || (it.vin == null && v == null) }
             val trend = Trend.compare(prev, base)
             val flags = Inspection.flags(base)
             val checks = SensorCheck.run(base, ready?.compression ?: false)
-            checks.filter { it.level != "ok" }.forEach { addLog("Датчики: ${it.text}") }
+            checks.filter { it.level != "ok" }.forEach { addLog(tr("state_log_sensors", it.text)) }
             val snap = base.copy(repair = repair, trend = trend, flags = flags, checks = checks,
                 warmup = warmups.lastOrNull(), starts = StartAnalysis.build(starts), forecast = forecast,
                 carHint = prev?.diagnosis?.car?.takeIf { it.isNotBlank() }, tank = tanks.lastOrNull(),
@@ -525,22 +525,22 @@ class AppState private constructor(context: Context) {
 
             val cfg = aiConfig()
             val result = if (!cfg.ready) {
-                addLog("Разбор не настроен, показываю результат по справочнику")
+                addLog(tr("state_log_ai_unset"))
                 Diagnosis.local(snapFull)
             } else {
-                ui { busy = "Готовлю разбор" }
+                ui { busy = tr("state_step_ai") }
                 try {
                     AiClient.diagnose(
                         cfg, snapFull,
                         progress = { stage -> ui { busy = stage } },
                         log = { addLog(it) }
                     ).also {
-                        addLog("ИИ: ${it.title}")
+                        addLog(tr("state_log_ai_title", it.title))
                         runCatching { Kb.remember(VinDecoder.decode(v), snap.carHint, it, prefs) }
                     }
                 } catch (e: Exception) {
-                    addLog("❌ Разбор не удался: ${e.message}")
-                    ui { toast = "Подробный разбор временно недоступен" }
+                    addLog(tr("state_log_ai_failed", e.message))
+                    ui { toast = tr("state_ai_unavailable") }
                     Diagnosis.local(snapFull)
                 }
             }
@@ -552,17 +552,17 @@ class AppState private constructor(context: Context) {
             }
             if (prefs.garageAuto) runCatching {
                 GarageApi(forumUrl).takeIf { it.configured }?.put(prefs.garageCode, carId, carName, prefs.exportCar())
-                addLog("Гараж выгружен в облако")
+                addLog(tr("state_log_garage_uploaded"))
             }
         }
     }
 
     fun clearCodes(onDone: (Boolean) -> Unit) {
-        runTask("Сброс ошибок") {
+        runTask(tr("state_task_clear")) {
             val codes = lastSnapshot?.allCodes.orEmpty()
             pausePolling()
             val ok = try { link?.clearCodes() ?: false } finally { resumePolling() }
-            addLog(if (ok) "✅ Ошибки стёрты" else "Машина не подтвердила сброс")
+            addLog(if (ok) tr("state_log_cleared") else tr("state_log_clear_failed"))
             if (ok) {
                 prefs.lastClear = ClearEvent(System.currentTimeMillis(), vin, codes)
                 knownCodes = emptySet()
@@ -579,7 +579,7 @@ class AppState private constructor(context: Context) {
         val c = cmd.trim().uppercase()
         if (c.isEmpty()) return
         runTask("> $c") {
-            val l = link ?: throw IOException("Нет подключения к адаптеру")
+            val l = link ?: throw IOException(tr("state_no_link"))
             pausePolling()
             try { addLog(l.send(c, 8000).replace("\r", "\n")) } finally { resumePolling() }
         }
@@ -594,11 +594,11 @@ class AppState private constructor(context: Context) {
 
     fun analyzePhoto(jpegBase64: String, onDone: () -> Unit) {
         val cfg = aiConfig()
-        if (!cfg.ready) { toast = "Разбор фото временно недоступен"; return }
-        runTask("Фото приборки", needLink = false) {
-            ui { busy = "Смотрю на приборку" }
+        if (!cfg.ready) { toast = tr("state_photo_unavailable"); return }
+        runTask(tr("state_task_photo"), needLink = false) {
+            ui { busy = tr("state_step_photo") }
             val r = AiClient.dashboard(cfg, jpegBase64) { addLog(it) }
-            addLog("Фото: ${if (r.lamps.isEmpty()) "ламп не найдено" else r.lamps.joinToString { it.name }}")
+            addLog(tr("state_log_photo", if (r.lamps.isEmpty()) tr("state_photo_no_lamps") else r.lamps.joinToString { it.name }))
             ui { dash = r; onDone() }
         }
     }
@@ -624,8 +624,8 @@ class AppState private constructor(context: Context) {
     private fun notify(id: Int, title: String, text: String) {
         val nm = appContext.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         if (Build.VERSION.SDK_INT >= 26) {
-            nm.createNotificationChannel(NotificationChannel("alerts", "Предупреждения о машине", NotificationManager.IMPORTANCE_HIGH).apply {
-                description = "Новая ошибка в пути, прогрев, запуск утром"
+            nm.createNotificationChannel(NotificationChannel("alerts", tr("state_channel_name"), NotificationManager.IMPORTANCE_HIGH).apply {
+                description = tr("state_channel_desc")
             })
         }
         val open = PendingIntent.getActivity(appContext, 0, Intent(appContext, MainActivity::class.java), PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
@@ -664,17 +664,17 @@ class AppState private constructor(context: Context) {
         val rpm = v("rpm")
         val volt = v("volt") ?: Regex("[0-9]+(\\.[0-9]+)?").find(voltStr)?.value?.toDoubleOrNull()
         if (coolant != null && coolant >= 108) {
-            speak("heat", "Перегрев двигателя: температура ${coolant.toInt()} градусов. Остановись и заглуши")
-            recordEvent("heat", "Перегрев двигателя", "Температура ${coolant.toInt()} °C")
+            speak("heat", tr("state_speak_heat", coolant.toInt()))
+            recordEvent("heat", tr("state_event_heat"), tr("state_event_heat_detail", coolant.toInt()))
         }
         if (volt != null && rpm != null && rpm > 1000) {
             if (volt < 12.3) {
-                speak("charge", "Нет зарядки: напряжение %.1f вольта. Генератор не заряжает".format(volt))
-                recordEvent("volt", "Пропала зарядка", "Напряжение %.1f В на работающем моторе".format(volt))
+                speak("charge", tr("state_speak_no_charge", "%.1f".format(volt)))
+                recordEvent("volt", tr("state_event_no_charge"), tr("state_event_no_charge_detail", "%.1f".format(volt)))
             }
             if (volt > 15.2) {
-                speak("over", "Перезаряд: напряжение %.1f вольта. Проверь регулятор".format(volt))
-                recordEvent("volt", "Перезаряд", "Напряжение %.1f В".format(volt))
+                speak("over", tr("state_speak_overcharge", "%.1f".format(volt)))
+                recordEvent("volt", tr("state_event_overcharge"), tr("state_event_volt_detail", "%.1f".format(volt)))
             }
         }
     }
@@ -700,7 +700,7 @@ class AppState private constructor(context: Context) {
         val list = (blackbox + e).takeLast(Blackbox.MAX_EVENTS)
         prefs.saveBlackbox(list)
         ui { blackbox = list }
-        addLog("Чёрный ящик: записано событие «${e.title}» (${samples.size} замеров)")
+        addLog(tr("state_log_blackbox", e.title, samples.size))
     }
 
     /** Отметить событие: минута до него уже в буфере, хвост допишется сам. */
@@ -721,7 +721,7 @@ class AppState private constructor(context: Context) {
         val list = (visits + v).takeLast(ServiceAudit.MAX)
         prefs.saveVisits(list)
         visits = list
-        addLog("Записан визит в сервис: ${works.size} работ")
+        addLog(tr("state_log_visit", works.size))
         return true
     }
 
@@ -741,7 +741,7 @@ class AppState private constructor(context: Context) {
         ui { visits = list }
         val checks = ServiceAudit.audit(updated)
         val verdict = ServiceAudit.verdict(checks)
-        addLog("Проверка работ сервиса: ${verdict.second}")
+        addLog(tr("state_log_service_audit", verdict.second))
         return verdict.second + ". " + checks.joinToString(" ") { "${it.work}: ${it.text}" }
     }
 
@@ -808,7 +808,7 @@ class AppState private constructor(context: Context) {
                     }
                     delay = if (quick) 150L else 400L
                 } catch (e: Exception) {
-                    addLog("Датчики: ${e.message}")
+                    addLog(tr("state_log_sensors", e.message))
                     delay = 1000L
                 } finally {
                     pollBusy = false
@@ -824,7 +824,7 @@ class AppState private constructor(context: Context) {
     private fun handleEngine(l: ObdLink, now: Long, rpm: Double?, v: Double?, s: List<SensorReading>) {
         if (rpm == null) {
             if (noDataSince == 0L) noDataSince = now
-            if (trip != null && tripAuto && now - noDataSince > 60_000) autoStopTrip("нет данных с машины")
+            if (trip != null && tripAuto && now - noDataSince > 60_000) autoStopTrip(tr("state_trip_stop_nodata"))
             return
         }
         noDataSince = 0L
@@ -842,7 +842,7 @@ class AppState private constructor(context: Context) {
                     if (crankStart == 0L) crankStart = now
                     crankMinV = minOf(crankMinV ?: v, v)
                 }
-                if (trip != null && tripAuto && offSince != 0L && now - offSince > 45_000) autoStopTrip("двигатель заглушен")
+                if (trip != null && tripAuto && offSince != 0L && now - offSince > 45_000) autoStopTrip(tr("state_trip_stop_engine_off"))
             }
             rpm < 400 -> {
                 if (crankStart == 0L) crankStart = if (lastOffSample != 0L) lastOffSample else now
@@ -857,7 +857,7 @@ class AppState private constructor(context: Context) {
                 val coolant = s.firstOrNull { it.key == "coolant" }?.value
                 if (warmupTracker == null && coolant != null && coolant < 50 && now - engineOnSince < 60_000) {
                     warmupTracker = WarmupTracker(now, lastAmbient)
-                    addLog("Слежу за прогревом с ${coolant.toInt()}°")
+                    addLog(tr("state_log_warmup_start", coolant.toInt()))
                 }
                 warmupTracker?.let { w ->
                     w.add(now, coolant, s.firstOrNull { it.key == "speed" }?.value)
@@ -880,7 +880,7 @@ class AppState private constructor(context: Context) {
             val list = (starts + ev).takeLast(StartEvent.MAX)
             prefs.saveStarts(list)
             ui { starts = list }
-            addLog("Запуск: стартер %.1f с, просадка до %s".format(crankMs / 1000.0, minV?.let { "%.1f В".format(it) } ?: "?"))
+            addLog(tr("state_log_start", "%.1f".format(crankMs / 1000.0), minV?.let { tr("state_volt_unit", "%.1f".format(it)) } ?: "?"))
         }
         crankStart = 0L; crankMinV = null
         dtcBaseline = null
@@ -899,16 +899,16 @@ class AppState private constructor(context: Context) {
             val last = tanks.lastOrNull()
             when {
                 last == null -> {
-                    val t = Tank(now, level, level, name = "Текущий бак")
+                    val t = Tank(now, level, level, name = tr("state_tank_current"))
                     val list = listOf(t)
                     prefs.saveTanks(list); ui { tanks = list }
-                    addLog("Паспорт заправки: начал журнал с уровня ${level.toInt()} %")
+                    addLog(tr("state_log_tank_first", level.toInt()))
                 }
                 FuelLog.refuel(levelAtStop, level) -> {
                     val t = Tank(now, levelAtStop ?: level, level, prevTrim = last.trim, prevTiming = last.timing)
                     val list = (tanks + t).takeLast(Tank.MAX)
                     prefs.saveTanks(list); ui { tanks = list }
-                    addLog("Заправка: ${levelAtStop?.toInt()} → ${level.toInt()} %, новый бак в журнале")
+                    addLog(tr("state_log_refuel", levelAtStop?.toInt(), level.toInt()))
                 }
             }
         }
@@ -926,10 +926,10 @@ class AppState private constructor(context: Context) {
         if (t.enough && !t.announced) {
             t.announced = true
             val v = t.verdict
-            addLog("Паспорт заправки: ${t.title()} — ${t.short()}")
+            addLog(tr("state_log_tank_verdict", t.title(), t.short()))
             if (v == "worse") {
-                notify(NOTIF_FUEL, "С этим топливом мотор работает хуже", t.text())
-                speak("fuel_${t.start}", "Паспорт заправки: с этим топливом мотор работает хуже. Коррекции и зажигание ушли.", minGapMs = 0)
+                notify(NOTIF_FUEL, tr("state_fuel_worse_title"), t.text())
+                speak("fuel_${t.start}", tr("state_fuel_worse_speak"), minGapMs = 0)
             }
             prefs.saveTanks(tanks); ui { tanks = tanks.toList() }
         } else if (now - lastTankSave > 60_000) {
@@ -961,8 +961,8 @@ class AppState private constructor(context: Context) {
         val list = (warmups + r).takeLast(20)
         prefs.saveWarmups(list)
         ui { warmups = list }
-        addLog("Прогрев: ${r.text}")
-        if (r.level == "warning" || r.level == "danger") notify(NOTIF_WARMUP, if (r.level == "danger") "Перегрев" else "Похоже на термостат", r.text)
+        addLog(tr("state_log_warmup", r.text))
+        if (r.level == "warning" || r.level == "danger") notify(NOTIF_WARMUP, if (r.level == "danger") tr("state_warmup_overheat") else tr("state_warmup_thermostat"), r.text)
     }
 
     private fun autoStartTrip() {
@@ -972,11 +972,11 @@ class AppState private constructor(context: Context) {
                 tripAuto = true
             }
         }
-        addLog("▶ Поездка началась сама: двигатель работает")
+        addLog(tr("state_log_trip_auto_start"))
     }
 
     private fun autoStopTrip(reason: String) {
-        addLog("⏹ Поездка закончилась сама: $reason")
+        addLog(tr("state_log_trip_auto_stop", reason))
         ui { stopTrip() }
     }
 
@@ -1000,17 +1000,17 @@ class AppState private constructor(context: Context) {
         knownCodes = knownCodes + fresh
         ui { milOn = mil.first; dtcCount = mil.second }
         val first = fresh.first()
-        addLog("⚠️ Новая ошибка в пути: ${fresh.joinToString()}")
-        recordEvent("dtc", "Новая ошибка: ${fresh.joinToString()}", DtcCatalog.title(first))
-        speak("dtc_$first", "Новая ошибка ${first.toCharArray().joinToString(" ")}: ${DtcCatalog.title(first)}", minGapMs = 0)
-        notify(NOTIF_DTC, "Новая ошибка: ${fresh.joinToString()}", DtcCatalog.title(first) + ". Готовлю разбор…")
+        addLog(tr("state_log_new_dtc", fresh.joinToString()))
+        recordEvent("dtc", tr("state_new_dtc_title", fresh.joinToString()), DtcCatalog.title(first))
+        speak("dtc_$first", tr("state_new_dtc_speak", first.toCharArray().joinToString(" "), DtcCatalog.title(first)), minGapMs = 0)
+        notify(NOTIF_DTC, tr("state_new_dtc_title", fresh.joinToString()), tr("state_new_dtc_text", DtcCatalog.title(first)))
         val cfg = aiConfig()
         if (!cfg.ready) return
         worker.execute {
             val snap = CarSnapshot(vin, protocol, voltage, mil.first, mil.second, fresh, emptyList(), s)
             runCatching { AiClient.diagnose(cfg, snap, {}, { addLog(it) }) }
                 .onSuccess { d ->
-                    val drive = when (d.canDrive) { "yes" -> "Ехать можно." ; "no" -> "Лучше остановиться." ; else -> "Ехать осторожно." }
+                    val drive = when (d.canDrive) { "yes" -> tr("state_drive_yes") ; "no" -> tr("state_drive_no") ; else -> tr("state_drive_careful") }
                     notify(NOTIF_DTC, "${fresh.joinToString()}: ${d.title}", "$drive ${d.text}")
                     speak("dtcv_$first", "${d.title}. $drive", minGapMs = 0)
                     ui {
@@ -1019,7 +1019,7 @@ class AppState private constructor(context: Context) {
                         prefs.saveHistory(history)
                     }
                 }
-                .onFailure { addLog("Разбор новой ошибки не удался: ${it.message}") }
+                .onFailure { addLog(tr("state_log_new_dtc_ai_failed", it.message)) }
         }
     }
 
@@ -1036,7 +1036,7 @@ class AppState private constructor(context: Context) {
             val f = if (t != null && t < 5) MorningForecast.build(restV, t, fromWeather, StartAnalysis.build(starts)?.medianMs) else null
             ui { forecast = f }
             if (f == null) return@execute
-            addLog("Утро: ${f.title}. ${f.text}")
+            addLog(tr("state_log_forecast", f.title, f.text))
             if (alert && f.level != "ok") {
                 val day = SimpleDateFormat("yyyy-MM-dd", Locale.US).format(Date())
                 if (prefs.forecastDay != day) {
@@ -1054,7 +1054,7 @@ class AppState private constructor(context: Context) {
         trip = TripLive(System.currentTimeMillis())
         tripAuto = false
         startPolling()
-        addLog("▶ Запись поездки")
+        addLog(tr("state_log_trip_start"))
     }
 
     fun stopTrip() {
@@ -1066,10 +1066,10 @@ class AppState private constructor(context: Context) {
         if (done.distanceKm >= 0.05 || done.durationMs >= 60_000) {
             trips = (listOf(done) + trips).take(300)
             prefs.saveTrips(trips)
-            addLog("Поездка записана: %.1f км".format(done.distanceKm))
-            toast = "Поездка сохранена: %.1f км".format(done.distanceKm)
+            addLog(tr("state_log_trip_saved", "%.1f".format(done.distanceKm)))
+            toast = tr("state_trip_saved_toast", "%.1f".format(done.distanceKm))
         } else {
-            addLog("Поездка слишком короткая, не сохраняю")
+            addLog(tr("state_log_trip_short"))
         }
     }
 
@@ -1085,7 +1085,7 @@ class AppState private constructor(context: Context) {
             addLog("▶ $title")
             try {
                 if (needLink && link?.isConnected != true) {
-                    ui { connected = false; toast = "Сначала подключись к адаптеру" }
+                    ui { connected = false; toast = tr("state_connect_first") }
                 } else {
                     block()
                 }

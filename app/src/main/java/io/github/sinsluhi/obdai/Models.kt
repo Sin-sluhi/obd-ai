@@ -140,12 +140,12 @@ data class Diagnosis(
         vin?.let { appendLine("VIN: $it") }
         if (codes.isNotEmpty()) {
             appendLine()
-            appendLine("Ошибки:")
+            appendLine(tr("model_share_errors"))
             codes.forEach { c ->
                 appendLine("• ${c.code} — ${c.title}")
                 if (c.explanation.isNotBlank()) appendLine("  ${c.explanation}")
-                if (c.priceFrom > 0) appendLine("  Ремонт: ${formatPrice(c.priceFrom, c.priceTo)}")
-                if (c.ownerExperience.isNotBlank()) appendLine("  Опыт владельцев: ${c.ownerExperience}")
+                if (c.priceFrom > 0) appendLine("  " + tr("model_share_repair", formatPrice(c.priceFrom, c.priceTo)))
+                if (c.ownerExperience.isNotBlank()) appendLine("  " + tr("model_share_owner_experience", c.ownerExperience))
                 c.sources.forEach { appendLine("  $it") }
             }
         }
@@ -155,20 +155,20 @@ data class Diagnosis(
         }
         if (nextSteps.isNotEmpty()) {
             appendLine()
-            appendLine("Что делать:")
+            appendLine(tr("model_share_what_to_do"))
             nextSteps.forEachIndexed { i, s -> appendLine("${i + 1}. $s") }
         }
         if (totalFrom > 0) {
             appendLine()
-            appendLine("Итого ремонт: ${formatPrice(totalFrom)} (нижняя граница)")
+            appendLine(tr("model_share_total_repair", formatPrice(totalFrom)))
         }
         if (forService.isNotBlank()) {
             appendLine()
-            appendLine("Что сказать в сервисе: $forService")
+            appendLine(tr("model_share_for_service", forService))
         }
         if (typicalIssues.isNotEmpty()) {
             appendLine()
-            appendLine("Типичные болячки модели по опыту владельцев:")
+            appendLine(tr("model_share_typical_issues"))
             typicalIssues.forEach { t ->
                 appendLine("• ${t.issue}" + (if (t.mileage.isNotBlank()) " (${t.mileage})" else ""))
                 if (t.source.isNotBlank()) appendLine("  ${t.source}")
@@ -207,12 +207,12 @@ data class Diagnosis(
             val carName = snap.carHint?.takeIf { it.isNotBlank() } ?: decoded.title()
             val bkey = DtcCatalog.brandKey(car.brand)
             if (all.isEmpty()) {
-                val milNote = if (snap.milOn == true) " Лампа Check Engine при этом горит: возможно, ошибка в блоке, который адаптер не читает." else ""
+                val milNote = if (snap.milOn == true) " " + tr("model_no_codes_mil_note") else ""
                 return Diagnosis(
                     car = carName,
                     level = "ok",
-                    title = "Ошибок не найдено",
-                    text = "Блок двигателя не хранит кодов неисправностей.$milNote",
+                    title = tr("model_no_codes_title"),
+                    text = tr("model_no_codes_text", milNote),
                     canDrive = "yes",
                     codes = emptyList(),
                     summary = "",
@@ -231,8 +231,8 @@ data class Diagnosis(
                 val info = DtcCatalog.info(code, bkey) ?: DtcCatalog.genericInfo(code)
                 val issue = KnownIssues.find(car, snap.vin, code)
                 val kb = Kb.find(decoded, snap.carHint, code)
-                val active = status == "активная" || (status.isEmpty() && snap.stored.contains(raw))
-                val pending = status == "неподтверждённая" || (snap.pending.contains(raw) && !snap.stored.contains(raw))
+                val active = status == "активная" || (status.isEmpty() && snap.stored.contains(raw)) // i18n-ignore: статус из ObdDecoder
+                val pending = status == "неподтверждённая" || (snap.pending.contains(raw) && !snap.stored.contains(raw)) // i18n-ignore: статус из ObdDecoder
                 val severity = issue?.severity ?: info?.severity ?: "medium"
                 if (active && info?.stop == true) stopActive = true
                 if (active && severity == "high") highActive = true
@@ -241,11 +241,11 @@ data class Diagnosis(
                     code = code,
                     title = info?.title ?: DtcCatalog.title(code),
                     explanation = listOfNotNull(
-                        module?.let { "Блок: $it." },
+                        module?.let { tr("model_card_module", it) },
                         when {
-                            status == "история" -> "Код из истории блока: сейчас не активен, но когда-то был."
-                            active -> "Код активен прямо сейчас."
-                            pending -> "Неподтверждённый код: блок заметил проблему, но пока не уверен."
+                            status == "история" -> tr("model_card_status_history") // i18n-ignore: статус из ObdDecoder
+                            active -> tr("model_card_status_active")
+                            pending -> tr("model_card_status_pending")
                             else -> null
                         },
                         DtcCatalog.ftbText(code)?.let { "$it." },
@@ -257,32 +257,32 @@ data class Diagnosis(
                     priceTo = 0,
                     whatToDo = info?.whatToDo.orEmpty(),
                     ownerExperience = kb?.let { k ->
-                        listOf(k.summary, if (k.fixes.isNotEmpty()) "Что помогло: ${k.fixes.joinToString("; ")}." else "",
-                            if (k.wasted.isNotEmpty()) "Меняли зря: ${k.wasted.joinToString("; ")}." else "").filter { it.isNotBlank() }.joinToString(" ")
+                        listOf(k.summary, if (k.fixes.isNotEmpty()) tr("model_card_what_helped", k.fixes.joinToString("; ")) else "",
+                            if (k.wasted.isNotEmpty()) tr("model_card_wasted", k.wasted.joinToString("; ")) else "").filter { it.isNotBlank() }.joinToString(" ")
                     }.orEmpty(),
                     sources = kb?.sources.orEmpty()
                 )
             }
-            val activeCount = all.count { it.contains("(активная)") }
-            val archiveOnly = all.all { it.contains("(история)") }
+            val activeCount = all.count { it.contains("(активная)") } // i18n-ignore: статус из ObdDecoder
+            val archiveOnly = all.all { it.contains("(история)") } // i18n-ignore: статус из ObdDecoder
             // связи между кодами этой проверки — в итог
             val chains = LinkedHashSet<String>()
             for (raw in all) {
                 val me = DtcCatalog.base(raw)
                 DtcCatalog.links(raw, bases, bkey).forEach { l ->
                     val key = listOf(me, l.code).sorted().joinToString("+")
-                    if (chains.none { it.startsWith("$key|") }) chains.add("$key|$me и ${l.code}: ${l.reason}.")
+                    if (chains.none { it.startsWith("$key|") }) chains.add("$key|" + tr("model_chain_pair", me, l.code, l.reason))
                 }
             }
             val issues = KnownIssues.forCodes(car, snap.vin, all)
             val summary = buildString {
                 if (chains.isNotEmpty()) {
-                    append("Как коды связаны между собой: ")
+                    append(tr("model_summary_chains"))
                     append(chains.take(5).joinToString(" ") { it.substringAfter('|') })
                 }
                 if (issues.isNotEmpty()) {
                     if (isNotEmpty()) append(" ")
-                    append("Для этой машины это известная история: ")
+                    append(tr("model_summary_known_story"))
                     append(issues.joinToString("; ") { it.title.lowercase() })
                     append(".")
                 }
@@ -299,24 +299,23 @@ data class Diagnosis(
                 activeCount > 0 -> "careful"
                 else -> "yes"
             }
-            val stopCodes = cards.filter { c -> all.any { it.startsWith(c.code) && it.contains("(активная)") } && (DtcCatalog.info(c.code, bkey)?.stop == true) }
+            val stopCodes = cards.filter { c -> all.any { it.startsWith(c.code) && it.contains("(активная)") } && (DtcCatalog.info(c.code, bkey)?.stop == true) } // i18n-ignore: статус из ObdDecoder
             val fromKb = cards.count { it.ownerExperience.isNotBlank() }
             return Diagnosis(
                 car = carName,
                 level = level,
                 title = when {
-                    stopActive -> "Лучше не ехать"
-                    archiveOnly -> "Только архивные ошибки"
-                    activeCount > 0 -> "Активных ошибок: $activeCount"
-                    all.size == 1 -> "Найдена 1 ошибка"
-                    else -> "Найдено ошибок: ${all.size}"
+                    stopActive -> tr("model_title_better_not_drive")
+                    archiveOnly -> tr("model_title_archive_only")
+                    activeCount > 0 -> tr("model_title_active_errors", activeCount)
+                    else -> trPlural("model_title_found_errors", all.size)
                 },
                 text = buildString {
-                    if (stopActive) append("Есть код, с которым ехать опасно: ${stopCodes.joinToString { it.code }}. ")
-                    else if (archiveOnly) append("Блоки помнят прошлые сбои, сейчас они не активны. ")
-                    append("Объяснения ниже — из встроенного справочника")
-                    append(if (fromKb > 0) ", опыт владельцев — из базы OBIDI и прошлых проверок. " else ". ")
-                    if (fromKb < cards.size) append("Остальной опыт владельцев именно этой модели, ссылки и цены подтянутся при следующей проверке с интернетом.")
+                    if (stopActive) append(tr("model_text_stop_code", stopCodes.joinToString { it.code }) + " ")
+                    else if (archiveOnly) append(tr("model_text_archive_only") + " ")
+                    append(tr("model_text_from_catalog"))
+                    append(if (fromKb > 0) tr("model_text_from_kb") + " " else ". ")
+                    if (fromKb < cards.size) append(tr("model_text_rest_online"))
                 },
                 canDrive = canDrive,
                 codes = cards,
@@ -361,7 +360,7 @@ fun JSONArray?.toStringList(): List<String> {
 /** Цены только «от»: рынок ремонта серый, диапазон обманывает — показываем нижнюю границу и никогда верхнюю. */
 fun formatPrice(from: Int, to: Int = 0): String {
     fun f(v: Int) = "%,d".format(v).replace(',', ' ')
-    return if (from <= 0) "уточняется" else "от ${f(from)} ₽"
+    return if (from <= 0) tr("model_price_unknown") else tr("model_price_from", f(from))
 }
 
 /** Завершённая поездка. */
@@ -433,7 +432,7 @@ data class TripLive(
 
 fun formatDuration(ms: Long): String {
     val m = ms / 60_000
-    return if (m < 60) "$m мин" else "${m / 60} ч ${m % 60} мин"
+    return if (m < 60) tr("model_duration_min", m) else tr("model_duration_h_min", m / 60, m % 60)
 }
 
 /** Результат опроса одного блока по заводскому протоколу. */

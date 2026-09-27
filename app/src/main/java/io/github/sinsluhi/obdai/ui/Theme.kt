@@ -66,6 +66,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import io.github.sinsluhi.obdai.R
+import io.github.sinsluhi.obdai.tr
 import kotlin.math.cos
 import kotlin.math.sin
 
@@ -98,12 +99,14 @@ object Palette {
 
     val okBg = Color(0xFF1B2417)
 
-    val accents = listOf(
-        "Салатовый" to Color(0xFFB8F15A),
-        "Голубой" to Color(0xFF5AD1F1),
-        "Жёлтый" to Color(0xFFF1C75A),
-        "Коралловый" to Color(0xFFF17A5A)
-    )
+    // названия читаются через tr() при каждом обращении, чтобы смена языка перерисовала выбор акцента
+    val accents: List<Pair<String, Color>>
+        get() = listOf(
+            tr("theme_accent_lime") to Color(0xFFB8F15A),
+            tr("theme_accent_sky") to Color(0xFF5AD1F1),
+            tr("theme_accent_yellow") to Color(0xFFF1C75A),
+            tr("theme_accent_coral") to Color(0xFFF17A5A)
+        )
 
     fun accent(index: Int) = accents.getOrElse(index) { accents[0] }.second
 
@@ -454,10 +457,10 @@ fun BottomBar(current: Tab, onSelect: (Tab) -> Unit) {
             horizontalArrangement = Arrangement.SpaceEvenly,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            TabItem("Проверка", current == Tab.Check, { onSelect(Tab.Check) }) { c -> SearchIcon(c) }
-            TabItem("Датчики", current == Tab.Sensors, { onSelect(Tab.Sensors) }) { c -> GaugeIcon(c) }
-            TabItem("История", current == Tab.History, { onSelect(Tab.History) }) { c -> ClockIcon(c) }
-            TabItem("Форум", current == Tab.Forum, { onSelect(Tab.Forum) }) { c -> ForumIcon(c) }
+            TabItem(tr("theme_tab_check"), current == Tab.Check, { onSelect(Tab.Check) }) { c -> SearchIcon(c) }
+            TabItem(tr("theme_tab_sensors"), current == Tab.Sensors, { onSelect(Tab.Sensors) }) { c -> GaugeIcon(c) }
+            TabItem(tr("theme_tab_history"), current == Tab.History, { onSelect(Tab.History) }) { c -> ClockIcon(c) }
+            TabItem(tr("theme_tab_forum"), current == Tab.Forum, { onSelect(Tab.Forum) }) { c -> ForumIcon(c) }
         }
     }
 }
@@ -583,12 +586,12 @@ fun BigCheckButton(busy: String?, onClick: () -> Unit) {
             if (!idle) {
                 Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(8.dp)) {
                     GaugeIcon(accent, Modifier.size(34.dp))
-                    Text("Проверяю", style = Type.display(15))
+                    Text(tr("theme_checking"), style = Type.display(15))
                 }
             } else {
                 Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(6.dp)) {
                     SearchIcon(Palette.bg, Modifier.size(34.dp))
-                    Text("Проверить\nмашину", style = Type.display(17).copy(color = Palette.bg), textAlign = TextAlign.Center)
+                    Text(tr("theme_check_car"), style = Type.display(17).copy(color = Palette.bg), textAlign = TextAlign.Center)
                 }
             }
         }

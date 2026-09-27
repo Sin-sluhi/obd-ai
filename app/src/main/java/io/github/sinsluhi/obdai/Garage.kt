@@ -9,7 +9,6 @@ import java.net.URLEncoder
 import java.security.SecureRandom
 import java.text.SimpleDateFormat
 import java.util.Date
-import java.util.Locale
 
 /**
  * Гараж: несколько машин в одном приложении и их облачная копия.
@@ -24,8 +23,8 @@ data class CarProfile(
     val checks: Int = 0,
     val synced: Long = 0       // когда последний раз выгружали в облако
 ) {
-    fun seenText(): String = if (lastSeen <= 0) "ещё не проверялась"
-    else "последняя проверка " + SimpleDateFormat("d MMMM, HH:mm", Locale("ru")).format(Date(lastSeen))
+    fun seenText(): String = if (lastSeen <= 0) tr("gar_never_checked")
+    else tr("gar_last_check", SimpleDateFormat("d MMMM, HH:mm", Tr.lang.locale).format(Date(lastSeen)))
 
     fun toJson(): JSONObject = JSONObject().put("id", id).put("name", name)
         .put("seen", lastSeen).put("checks", checks).put("synced", synced)
@@ -69,7 +68,7 @@ class GarageApi(private val baseUrl: String) {
     val configured: Boolean get() = baseUrl.startsWith("http")
 
     data class CloudCar(val id: String, val name: String, val updated: Long, val size: Int) {
-        fun updatedText(): String = SimpleDateFormat("d MMMM, HH:mm", Locale("ru")).format(Date(updated * 1000))
+        fun updatedText(): String = SimpleDateFormat("d MMMM, HH:mm", Tr.lang.locale).format(Date(updated * 1000))
     }
 
     fun list(code: String): List<CloudCar> {
@@ -100,7 +99,7 @@ class GarageApi(private val baseUrl: String) {
         try {
             val code = conn.responseCode
             val text = (if (code in 200..299) conn.inputStream else conn.errorStream)?.bufferedReader(Charsets.UTF_8)?.use { it.readText() } ?: ""
-            if (code !in 200..299) throw IOException("облако: $code")
+            if (code !in 200..299) throw IOException(tr("gar_cloud_http", code))
             return text
         } finally {
             conn.disconnect()
@@ -116,9 +115,9 @@ class GarageApi(private val baseUrl: String) {
             conn.outputStream.use { it.write(body.toString().toByteArray(Charsets.UTF_8)) }
             val code = conn.responseCode
             val text = (if (code in 200..299) conn.inputStream else conn.errorStream)?.bufferedReader(Charsets.UTF_8)?.use { it.readText() } ?: ""
-            if (code == 413) throw IOException("Данных слишком много для облака")
-            if (code == 409) throw IOException("В облачном гараже уже максимум машин")
-            if (code !in 200..299) throw IOException("облако: $code")
+            if (code == 413) throw IOException(tr("gar_cloud_too_big"))
+            if (code == 409) throw IOException(tr("gar_cloud_full"))
+            if (code !in 200..299) throw IOException(tr("gar_cloud_http", code))
             return text
         } finally {
             conn.disconnect()

@@ -45,41 +45,41 @@ class Elm327(private val log: (String) -> Unit) : ObdLink {
             is AdapterTarget.Ble -> BleTransport(context, target.device, log)
             is AdapterTarget.Wifi -> WifiTransport(target.host, target.port, context, log)
         }
-        log("Канал: ${target.title}")
+        log(tr("elm_channel", target.title))
         initAdapter()
     }
 
     private fun initAdapter() {
         val id = send("ATZ", 5000)
         val version = id.lines().lastOrNull { it.contains("ELM") }?.trim()
-        log("Адаптер: ${version ?: id}")
+        log(tr("elm_adapter", version ?: id))
         if (version != null) name = version
         // эхо выкл, переводы строк выкл, пробелы вкл, заголовки выкл, адаптивные таймауты, автопротокол
         for (cmd in listOf("ATE0", "ATL0", "ATS1", "ATH0", "ATAT1", "ATSP0")) send(cmd)
         adapter = probeAdapter(version.orEmpty())
-        log("Возможности адаптера: ${adapter.grade()}")
+        log(tr("elm_adapter_grade", adapter.grade()))
 
-        log("Ищу протокол машины (до 15 сек)...")
+        log(tr("elm_probing_protocol"))
         val probe = send("0100", 15000)
         if (listOf("UNABLE", "NO DATA", "ERROR", "TIMEOUT").any { probe.contains(it) }) {
-            log("⚠️ Машина не ответила: $probe")
-            log("Проверь, что зажигание включено")
+            log(tr("elm_car_no_answer", probe))
+            log(tr("elm_check_ignition"))
         }
         ecuOnline = !listOf("UNABLE", "NO DATA", "ERROR", "TIMEOUT").any { probe.contains(it) } && ObdDecoder.messages(probe).isNotEmpty()
         isCan = ObdDecoder.isCan(send("ATDPN"))
         protocol = send("ATDP")
-        log("Протокол: $protocol")
+        log(tr("elm_protocol", protocol))
         if (ecuOnline) {
             val t0 = System.currentTimeMillis()
             supportedPids = readSupportedPids(probe)
             adapter = adapter.copy(responseMs = System.currentTimeMillis() - t0)
-            log("Машина поддерживает PID: ${supportedPids.size}")
+            log(tr("elm_supported_pids", supportedPids.size))
             calibration = ObdDecoder.parseInfoText(send("0904", 6000), 0x04).orEmpty()
             ecuName = ObdDecoder.parseInfoText(send("090A", 6000), 0x0A).orEmpty()
-            if (ecuName.isNotBlank()) log("ЭБУ: $ecuName")
-            if (calibration.isNotBlank()) log("Прошивка: $calibration")
+            if (ecuName.isNotBlank()) log(tr("elm_ecu", ecuName))
+            if (calibration.isNotBlank()) log(tr("elm_calibration", calibration))
         }
-        log("Напряжение: ${readVoltage()}")
+        log(tr("elm_voltage", readVoltage()))
     }
 
     /** Проверяем, какие AT-команды адаптер понимает: клоны отвечают «?» на то, чего у них нет. */
@@ -114,7 +114,7 @@ class Elm327(private val log: (String) -> Unit) : ObdLink {
 
     /** Отправляет команду и ждёт приглашения '>'. */
     override fun send(cmd: String, timeoutMs: Long): String = synchronized(lock) {
-        val t = transport ?: throw IOException("Адаптер не подключён")
+        val t = transport ?: throw IOException(tr("elm_not_connected"))
         onCommand?.invoke()
 
         while (t.available() > 0) t.read() // выкидываем мусор от прошлых команд
@@ -126,7 +126,7 @@ class Elm327(private val log: (String) -> Unit) : ObdLink {
         while (System.currentTimeMillis() < deadline) {
             if (t.available() > 0) {
                 val c = t.read()
-                if (c < 0) throw IOException("Адаптер закрыл соединение")
+                if (c < 0) throw IOException(tr("elm_connection_closed"))
                 if (c == '>'.code) {
                     gotPrompt = true
                     break
@@ -226,11 +226,11 @@ class Elm327(private val log: (String) -> Unit) : ObdLink {
      */
     override fun scanModules(brand: String?, progress: (Int, Int) -> Unit): List<ModuleScan> {
         if (!isCan) {
-            log("Опрос блоков доступен только на CAN-машинах")
+            log(tr("elm_scan_can_only"))
             return emptyList()
         }
         if (!adapter.fullFeatured) {
-            log("Адаптер не умеет ${adapter.missing.joinToString()}: опрос блоков пропущен")
+            log(tr("elm_scan_skipped", adapter.missing.joinToString()))
             return emptyList()
         }
         val found = mutableListOf<ModuleScan>()
@@ -246,8 +246,8 @@ class Elm327(private val log: (String) -> Unit) : ObdLink {
                 val name = ModuleMap.name(brand, t)
                 val scan = queryModule(t, name, tryKwp = i < known.size) ?: return@forEachIndexed
                 found.add(scan)
-                log("$name (${t.addr.toString(16).uppercase()}): ${if (scan.codes.isEmpty()) "ошибок нет" else scan.codes.joinToString()}" +
-                    (scan.vin?.let { " · VIN $it" } ?: ""))
+                val codesText = if (scan.codes.isEmpty()) tr("elm_no_codes") else scan.codes.joinToString()
+                log("$name (${t.addr.toString(16).uppercase()}): $codesText" + (scan.vin?.let { " · VIN $it" } ?: ""))
             }
         } finally {
             runCatching {

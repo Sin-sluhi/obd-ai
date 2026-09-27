@@ -18,17 +18,17 @@ data class PurchaseReport(
     val bargainTotal: Int get() = bargain.sumOf { it.priceFrom }
 
     fun shareText(car: String, declaredKm: Int?): String = buildString {
-        appendLine("OBD AI, проверка перед покупкой: $title")
+        appendLine(tr("buy_share_title", title))
         if (car.isNotBlank()) appendLine(car)
-        declaredKm?.let { appendLine("Пробег по словам продавца: $it км") }
+        declaredKm?.let { appendLine(tr("buy_share_declared", it)) }
         appendLine(text)
-        if (reasons.isNotEmpty()) { appendLine(); appendLine("Что нашли:"); reasons.forEach { appendLine("• ${it.text}") } }
+        if (reasons.isNotEmpty()) { appendLine(); appendLine(tr("buy_share_found")); reasons.forEach { appendLine("• ${it.text}") } }
         if (bargain.isNotEmpty()) {
-            appendLine(); appendLine("Аргументы для торга:")
+            appendLine(); appendLine(tr("buy_share_bargain"))
             bargain.forEach { appendLine("• ${it.what}: ${formatPrice(it.priceFrom)}") }
-            appendLine("Итого: ${formatPrice(bargainTotal)}")
+            appendLine(tr("buy_share_total", formatPrice(bargainTotal)))
         }
-        if (checks.isNotEmpty()) { appendLine(); appendLine("Проверить на тест-драйве:"); checks.forEach { appendLine("• $it") } }
+        if (checks.isNotEmpty()) { appendLine(); appendLine(tr("buy_share_checks")); checks.forEach { appendLine("• $it") } }
     }
 }
 
@@ -40,14 +40,14 @@ object Purchase {
         val reasons = ArrayList<Flag>()
         val bargain = ArrayList<BargainItem>()
 
-        // 1. что помнят блоки
-        val active = snap.allCodes.filter { it.contains("(активная)") || (!it.contains("(") && snap.stored.contains(it)) }
-        val archive = snap.allCodes.filter { it.contains("(история)") }
-        val pending = snap.allCodes.filter { it.contains("(неподтверждённая)") || (!it.contains("(") && snap.pending.contains(it) && !snap.stored.contains(it)) }
+        // 1. что помнят блоки (суффиксы статуса приходят из снимка, это разбор данных, не текст интерфейса)
+        val active = snap.allCodes.filter { it.contains("(активная)") || (!it.contains("(") && snap.stored.contains(it)) } // i18n-ignore
+        val archive = snap.allCodes.filter { it.contains("(история)") } // i18n-ignore
+        val pending = snap.allCodes.filter { it.contains("(неподтверждённая)") || (!it.contains("(") && snap.pending.contains(it) && !snap.stored.contains(it)) } // i18n-ignore
         var danger = false
         for (raw in snap.allCodes) {
             val code = DtcCatalog.base(raw)
-            if (code in CRASH_CODES) { reasons.add(Flag("danger", "Блок подушек помнит срабатывание: машина била подушки, блок не заменён или сброшен кустарно.")); danger = true }
+            if (code in CRASH_CODES) { reasons.add(Flag("danger", tr("buy_airbag_fired"))); danger = true }
         }
         active.forEach { raw ->
             val code = DtcCatalog.base(raw)
@@ -58,46 +58,47 @@ object Purchase {
             val stop = info?.stop == true
             val price = issue?.price?.takeIf { it > 0 } ?: info?.priceFrom ?: 0
             when {
-                stop || sev == "high" -> { danger = true; reasons.add(Flag("danger", "$code — $title, активна сейчас" + (issue?.let { ". ${it.title}" } ?: "") + ".")) }
-                else -> reasons.add(Flag("warning", "$code — $title, активна сейчас."))
+                stop || sev == "high" -> { danger = true; reasons.add(Flag("danger", tr("buy_code_active_now", code, title) + (issue?.let { ". ${it.title}" } ?: "") + ".")) }
+                else -> reasons.add(Flag("warning", tr("buy_code_active_now", code, title) + "."))
             }
             if (price > 0) bargain.add(BargainItem("$code $title", price))
         }
         if (archive.isNotEmpty()) {
             val names = archive.take(4).joinToString { c -> DtcCatalog.base(c) }
-            reasons.add(Flag("info", "В истории блоков ${archive.size} код(а): $names. Сейчас не активны, но за ними стоит следить."))
+            reasons.add(Flag("info", trPlural("buy_archive_codes", archive.size, names)))
             archive.forEach { raw ->
                 val code = DtcCatalog.base(raw)
                 val info = DtcCatalog.info(code, bkey)
                 val issue = KnownIssues.find(car, snap.vin, code)
-                if (issue != null && issue.severity == "high") reasons.add(Flag("warning", "$code в истории — известная болячка модели: ${issue.title}."))
+                if (issue != null && issue.severity == "high") reasons.add(Flag("warning", tr("buy_archive_known_issue", code, issue.title)))
                 val price = issue?.price?.takeIf { it > 0 } ?: 0
-                if (price > 0 && info != null) bargain.add(BargainItem("$code ${info.title} (в истории, известная проблема модели)", price / 2))
+                if (price > 0 && info != null) bargain.add(BargainItem(tr("buy_bargain_archive_item", code, info.title), price / 2))
             }
         }
-        if (pending.isNotEmpty()) reasons.add(Flag("info", "Неподтверждённые коды: ${pending.joinToString { DtcCatalog.base(it) }}. Блок заметил сбой один раз."))
+        if (pending.isNotEmpty()) reasons.add(Flag("info", tr("buy_pending_codes", pending.joinToString { DtcCatalog.base(it) })))
 
         // 2. следы подготовки к продаже и чужие блоки (флаги проверки уже посчитаны)
         snap.flags.forEach { f ->
             if (f.level == "danger") danger = true
-            if (!f.text.startsWith("Пробег по данным ЭБУ")) reasons.add(f)
+            if (!f.text.startsWith("Пробег по данным ЭБУ")) reasons.add(f) // i18n-ignore
         }
 
         // 3. пробег: ЭБУ против слов продавца
         val odo = snap.stats.odometerKm
         if (odo != null) {
+            val odoText = "%.0f".format(odo)
             if (declaredKm != null && declaredKm > 0) {
                 val diff = odo - declaredKm
                 when {
-                    diff > declaredKm * 0.15 && diff > 10_000 -> { danger = true; reasons.add(Flag("danger", "Блок двигателя насчитал %.0f км, продавец говорит %d км: пробег скручен минимум на %.0f км.".format(odo, declaredKm, diff))) }
-                    diff < -declaredKm * 0.15 && -diff > 10_000 -> reasons.add(Flag("warning", "Блок двигателя насчитал %.0f км — меньше заявленных %d. Блок меняли или обнуляли.".format(odo, declaredKm)))
-                    else -> reasons.add(Flag("info", "Пробег по ЭБУ %.0f км совпадает с заявленным (%d км).".format(odo, declaredKm)))
+                    diff > declaredKm * 0.15 && diff > 10_000 -> { danger = true; reasons.add(Flag("danger", tr("buy_odo_rolled", odoText, declaredKm, "%.0f".format(diff)))) }
+                    diff < -declaredKm * 0.15 && -diff > 10_000 -> reasons.add(Flag("warning", tr("buy_odo_less", odoText, declaredKm)))
+                    else -> reasons.add(Flag("info", tr("buy_odo_match", odoText, declaredKm)))
                 }
-            } else reasons.add(Flag("info", "Пробег по данным ЭБУ: %.0f км. Введите пробег по словам продавца, чтобы сверить.".format(odo)))
-        } else reasons.add(Flag("info", "Пробег из блока двигателя эта машина не отдаёт: сверяйте по сервисной книжке, шинам, педалям и рулю."))
+            } else reasons.add(Flag("info", tr("buy_odo_enter", odoText)))
+        } else reasons.add(Flag("info", tr("buy_odo_none")))
 
         // 4. аккумулятор и адаптер
-        snap.battery?.let { b -> if (b.level == "danger" || b.level == "warning") { reasons.add(Flag("warning", "Аккумулятор/зарядка: ${b.title}.")); bargain.add(BargainItem("Аккумулятор", 6000)) } }
+        snap.battery?.let { b -> if (b.level == "danger" || b.level == "warning") { reasons.add(Flag("warning", tr("buy_battery", b.title))); bargain.add(BargainItem(tr("buy_battery_item"), 6000)) } }
 
         // 5. болячки модели — что проверить на тест-драйве
         val checks = ArrayList<String>()
@@ -108,8 +109,8 @@ object Purchase {
             val first = i.note.substringBefore(". ").let { if (it.length > 160) it.take(157) + "…" else it }
             checks.add(i.title + (if (i.mileage.isNotBlank()) " (${i.mileage})" else "") + ": " + first + ".")
         }
-        checks.add("Холодный пуск: попросите не прогревать машину до вашего приезда; стук первые секунды — фазовращатели или вкладыши.")
-        checks.add("После тест-драйва запустите проверку ещё раз: коды, которые появятся после поездки, продавец стёр перед встречей.")
+        checks.add(tr("buy_check_cold_start"))
+        checks.add(tr("buy_check_recheck"))
 
         val verdict = when {
             danger -> "run"
@@ -117,13 +118,11 @@ object Purchase {
             else -> "buy"
         }
         val total = bargain.sumOf { it.priceFrom }
-        val title = when (verdict) { "run" -> "Лучше не брать"; "bargain" -> "Брать с торгом"; else -> "Можно брать" }
+        val title = when (verdict) { "run" -> tr("buy_title_run"); "bargain" -> tr("buy_title_bargain"); else -> tr("buy_title_buy") }
         val text = when (verdict) {
-            "run" -> "Есть признаки, из-за которых машину не стоит покупать без глубокой проверки в сервисе: " +
-                reasons.filter { it.level == "danger" }.joinToString(" ") { it.text }
-            "bargain" -> "Серьёзных стоп-сигналов нет, но есть за что торговаться" +
-                (if (total > 0) ": ремонт по найденному ${formatPrice(total)}" else "") + ". Смотрите список и проверьте болячки модели на тест-драйве."
-            else -> "Блоки чистые, следов подготовки к продаже нет, пробег по ЭБУ не спорит с продавцом. Осталось проверить кузов и тест-драйв."
+            "run" -> tr("buy_text_run", reasons.filter { it.level == "danger" }.joinToString(" ") { it.text })
+            "bargain" -> if (total > 0) tr("buy_text_bargain_priced", formatPrice(total)) else tr("buy_text_bargain")
+            else -> tr("buy_text_buy")
         }
         return PurchaseReport(verdict, title, text, reasons, bargain, checks)
     }

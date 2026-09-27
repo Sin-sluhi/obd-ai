@@ -57,105 +57,105 @@ object DtcCatalog {
         val suffix = head.substringAfter('-', "")
         if (suffix.length != 2) return null
         val b = suffix.toIntOrNull(16) ?: return null
-        return failureType(b)?.let { "Тип отказа по блоку: $it" }
+        return failureType(b)?.let { tr("cat_ftb", it) }
     }
 
     private fun failureType(b: Int): String? = when (b) {
-        0x01 -> "общая электрическая неисправность"
-        0x02 -> "общая неисправность сигнала"
-        0x03 -> "неисправность частотного/ШИМ-сигнала"
-        0x04 -> "внутренняя неисправность системы"
-        0x05 -> "ошибка программирования"
-        0x06 -> "по алгоритму (расчётная)"
-        0x07 -> "механическая неисправность"
-        0x08 -> "ошибка сигнала по шине"
-        0x09 -> "отказ компонента"
-        0x11 -> "замыкание на массу"
-        0x12 -> "замыкание на плюс"
-        0x13 -> "обрыв цепи"
-        0x14 -> "замыкание на массу или обрыв"
-        0x15 -> "замыкание на плюс или обрыв"
-        0x16 -> "напряжение ниже порога"
-        0x17 -> "напряжение выше порога"
-        0x18 -> "ток ниже порога"
-        0x19 -> "ток выше порога"
-        0x1A -> "сопротивление ниже порога"
-        0x1B -> "сопротивление выше порога"
-        0x1C -> "напряжение вне диапазона"
-        0x1D -> "ток вне диапазона"
-        0x1E -> "сопротивление вне диапазона"
-        0x1F -> "прерывистый контакт"
-        0x21 -> "сигнал меньше минимума"
-        0x22 -> "сигнал больше максимума"
-        0x23 -> "сигнал застрял внизу"
-        0x24 -> "сигнал застрял вверху"
-        0x25 -> "искажённая форма сигнала"
-        0x26 -> "сигнал меняется слишком медленно"
-        0x27 -> "сигнал меняется слишком быстро"
-        0x28 -> "смещение сигнала"
-        0x29 -> "недействительный сигнал"
-        0x2A -> "сигнал застыл в рабочем диапазоне"
-        0x2B -> "сигнал вне ожидаемого диапазона"
-        0x2F -> "сигнал скачет"
-        0x31 -> "нет сигнала"
-        0x32 -> "низкий уровень слишком короткий"
-        0x33 -> "низкий уровень слишком длинный"
-        0x34 -> "высокий уровень слишком короткий"
-        0x35 -> "высокий уровень слишком длинный"
-        0x36 -> "частота слишком низкая"
-        0x37 -> "частота слишком высокая"
-        0x38 -> "частота неверная"
-        0x41 -> "ошибка контрольной суммы"
-        0x42 -> "ошибка памяти"
-        0x43 -> "ошибка специальной памяти"
-        0x44 -> "ошибка памяти данных"
-        0x45 -> "ошибка памяти программы"
-        0x46 -> "ошибка памяти калибровок"
-        0x47 -> "сторожевой таймер / контроллер безопасности"
-        0x48 -> "ошибка контрольного ПО"
-        0x49 -> "внутренняя электронная неисправность"
-        0x4A -> "установлен не тот компонент"
-        0x4B -> "перегрев"
-        0x51 -> "не запрограммировано"
-        0x52 -> "не сконфигурировано"
-        0x53 -> "деактивировано"
-        0x54 -> "нет калибровки"
-        0x55 -> "не сконфигурировано"
-        0x56 -> "несовместимая конфигурация"
-        0x57 -> "несовместимый программный компонент"
-        0x61 -> "ошибка расчёта сигнала"
-        0x62 -> "сигналы не сходятся между собой"
-        0x63 -> "защита цепи/компонента по времени"
-        0x64 -> "сигнал неправдоподобен"
-        0x65 -> "слишком мало переключений сигнала"
-        0x66 -> "слишком много переключений сигнала"
-        0x67 -> "сигнал неверен после события"
-        0x68 -> "информационное событие"
-        0x71 -> "механизм заклинил"
-        0x72 -> "механизм заклинил открытым"
-        0x73 -> "механизм заклинил закрытым"
-        0x74 -> "механизм проскальзывает"
-        0x75 -> "аварийное положение недостижимо"
-        0x76 -> "неверное положение при монтаже"
-        0x77 -> "компонент отсутствует или повреждён"
-        0x78 -> "неверная регулировка"
-        0x79 -> "неисправность механической связи"
-        0x7A -> "утечка жидкости"
-        0x7B -> "низкий уровень жидкости"
-        0x81 -> "получены недействительные данные"
-        0x82 -> "неверный счётчик сообщений"
-        0x83 -> "неверная контрольная сумма сообщения"
-        0x84 -> "сигнал ниже допустимого диапазона"
-        0x85 -> "сигнал выше допустимого диапазона"
-        0x86 -> "недействительный сигнал по шине"
-        0x87 -> "нет сообщения по шине"
-        0x88 -> "блок отключился от шины (bus off)"
-        0x93 -> "нет реакции"
-        0x94 -> "неожиданная реакция"
-        0x95 -> "неверная сборка"
-        0x96 -> "внутренняя неисправность компонента"
-        0x97 -> "компонент заблокирован"
-        0x98 -> "перегрев компонента"
+        0x01 -> tr("cat_ft_0x01")
+        0x02 -> tr("cat_ft_0x02")
+        0x03 -> tr("cat_ft_0x03")
+        0x04 -> tr("cat_ft_0x04")
+        0x05 -> tr("cat_ft_0x05")
+        0x06 -> tr("cat_ft_0x06")
+        0x07 -> tr("cat_ft_0x07")
+        0x08 -> tr("cat_ft_0x08")
+        0x09 -> tr("cat_ft_0x09")
+        0x11 -> tr("cat_ft_0x11")
+        0x12 -> tr("cat_ft_0x12")
+        0x13 -> tr("cat_ft_0x13")
+        0x14 -> tr("cat_ft_0x14")
+        0x15 -> tr("cat_ft_0x15")
+        0x16 -> tr("cat_ft_0x16")
+        0x17 -> tr("cat_ft_0x17")
+        0x18 -> tr("cat_ft_0x18")
+        0x19 -> tr("cat_ft_0x19")
+        0x1A -> tr("cat_ft_0x1a")
+        0x1B -> tr("cat_ft_0x1b")
+        0x1C -> tr("cat_ft_0x1c")
+        0x1D -> tr("cat_ft_0x1d")
+        0x1E -> tr("cat_ft_0x1e")
+        0x1F -> tr("cat_ft_0x1f")
+        0x21 -> tr("cat_ft_0x21")
+        0x22 -> tr("cat_ft_0x22")
+        0x23 -> tr("cat_ft_0x23")
+        0x24 -> tr("cat_ft_0x24")
+        0x25 -> tr("cat_ft_0x25")
+        0x26 -> tr("cat_ft_0x26")
+        0x27 -> tr("cat_ft_0x27")
+        0x28 -> tr("cat_ft_0x28")
+        0x29 -> tr("cat_ft_0x29")
+        0x2A -> tr("cat_ft_0x2a")
+        0x2B -> tr("cat_ft_0x2b")
+        0x2F -> tr("cat_ft_0x2f")
+        0x31 -> tr("cat_ft_0x31")
+        0x32 -> tr("cat_ft_0x32")
+        0x33 -> tr("cat_ft_0x33")
+        0x34 -> tr("cat_ft_0x34")
+        0x35 -> tr("cat_ft_0x35")
+        0x36 -> tr("cat_ft_0x36")
+        0x37 -> tr("cat_ft_0x37")
+        0x38 -> tr("cat_ft_0x38")
+        0x41 -> tr("cat_ft_0x41")
+        0x42 -> tr("cat_ft_0x42")
+        0x43 -> tr("cat_ft_0x43")
+        0x44 -> tr("cat_ft_0x44")
+        0x45 -> tr("cat_ft_0x45")
+        0x46 -> tr("cat_ft_0x46")
+        0x47 -> tr("cat_ft_0x47")
+        0x48 -> tr("cat_ft_0x48")
+        0x49 -> tr("cat_ft_0x49")
+        0x4A -> tr("cat_ft_0x4a")
+        0x4B -> tr("cat_ft_0x4b")
+        0x51 -> tr("cat_ft_0x51")
+        0x52 -> tr("cat_ft_0x52")
+        0x53 -> tr("cat_ft_0x53")
+        0x54 -> tr("cat_ft_0x54")
+        0x55 -> tr("cat_ft_0x52")
+        0x56 -> tr("cat_ft_0x56")
+        0x57 -> tr("cat_ft_0x57")
+        0x61 -> tr("cat_ft_0x61")
+        0x62 -> tr("cat_ft_0x62")
+        0x63 -> tr("cat_ft_0x63")
+        0x64 -> tr("cat_ft_0x64")
+        0x65 -> tr("cat_ft_0x65")
+        0x66 -> tr("cat_ft_0x66")
+        0x67 -> tr("cat_ft_0x67")
+        0x68 -> tr("cat_ft_0x68")
+        0x71 -> tr("cat_ft_0x71")
+        0x72 -> tr("cat_ft_0x72")
+        0x73 -> tr("cat_ft_0x73")
+        0x74 -> tr("cat_ft_0x74")
+        0x75 -> tr("cat_ft_0x75")
+        0x76 -> tr("cat_ft_0x76")
+        0x77 -> tr("cat_ft_0x77")
+        0x78 -> tr("cat_ft_0x78")
+        0x79 -> tr("cat_ft_0x79")
+        0x7A -> tr("cat_ft_0x7a")
+        0x7B -> tr("cat_ft_0x7b")
+        0x81 -> tr("cat_ft_0x81")
+        0x82 -> tr("cat_ft_0x82")
+        0x83 -> tr("cat_ft_0x83")
+        0x84 -> tr("cat_ft_0x84")
+        0x85 -> tr("cat_ft_0x85")
+        0x86 -> tr("cat_ft_0x86")
+        0x87 -> tr("cat_ft_0x87")
+        0x88 -> tr("cat_ft_0x88")
+        0x93 -> tr("cat_ft_0x93")
+        0x94 -> tr("cat_ft_0x94")
+        0x95 -> tr("cat_ft_0x95")
+        0x96 -> tr("cat_ft_0x96")
+        0x97 -> tr("cat_ft_0x97")
+        0x98 -> tr("cat_ft_0x98")
         else -> null
     }
 
@@ -164,7 +164,7 @@ object DtcCatalog {
         val b = brand?.lowercase() ?: return null
         return when {
             "hyundai" in b || "kia" in b -> "hyundai_kia"
-            "lada" in b || "ваз" in b -> "lada"
+            "lada" in b || "ваз" in b -> "lada" // i18n-ignore
             "toyota" in b || "lexus" in b -> "toyota"
             "volkswagen" in b || "audi" in b || "skoda" in b || "seat" in b || "porsche" in b -> "vag"
             "ford" in b -> "ford"
@@ -215,12 +215,12 @@ object DtcCatalog {
         info(code, brandKey)?.let { return it.title }
         val c = base(code)
         return when {
-            c.startsWith("P1") || c.startsWith("P3") -> "Двигатель, заводской код"
-            c.startsWith("P0") || c.startsWith("P2") -> "Двигатель / топливная система"
-            c.startsWith("C") -> "Шасси: ABS, подвеска, рулевое"
-            c.startsWith("B") -> "Кузов: подушки, свет, климат"
-            c.startsWith("U") -> "Связь между блоками"
-            else -> "Неизвестная ошибка"
+            c.startsWith("P1") || c.startsWith("P3") -> tr("cat_title_p1")
+            c.startsWith("P0") || c.startsWith("P2") -> tr("cat_title_p0")
+            c.startsWith("C") -> tr("cat_title_c")
+            c.startsWith("B") -> tr("cat_title_b")
+            c.startsWith("U") -> tr("cat_title_u")
+            else -> tr("cat_title_unknown")
         }
     }
 
@@ -302,7 +302,11 @@ object KnownIssues {
         }
     }
 
-    private fun matches(iss: Issue, car: VinDecoder.Info, vin: String?): String? {
+    /** Плашка карточки: модельная или марочная болячка. */
+    private fun badge(model: Boolean): String = if (model) tr("cat_badge_model") else tr("cat_badge_brand")
+
+    /** null — не про эту машину; true — болячка модели; false — болячка марки. */
+    private fun matches(iss: Issue, car: VinDecoder.Info, vin: String?): Boolean? {
         val v = vin?.uppercase().orEmpty()
         if (iss.vin.isNotEmpty()) {
             if (iss.vin.none { p -> v.startsWith(p) }) return null
@@ -313,9 +317,9 @@ object KnownIssues {
         val years = iss.years
         val year = car.year
         if (years != null && year != null && year !in years) return null
-        if (iss.models.isEmpty()) return "Болячка марки"
+        if (iss.models.isEmpty()) return false
         val m = car.model?.lowercase() ?: return null
-        return if (iss.models.any { x -> m.contains(x.lowercase()) }) "Болячка модели" else null
+        return if (iss.models.any { x -> m.contains(x.lowercase()) }) true else null
     }
 
     /** Болячка для конкретного кода на этой машине, если есть. Модельная важнее марочной. */
@@ -324,9 +328,9 @@ object KnownIssues {
         var best: KnownIssue? = null
         for (iss in issues) {
             if (c !in iss.codes) continue
-            val badge = matches(iss, car, vin) ?: continue
-            val k = KnownIssue(iss.title, iss.note, iss.mileage, iss.codes.toList(), badge, iss.severity, iss.price)
-            if (badge == "Болячка модели") return k
+            val model = matches(iss, car, vin) ?: continue
+            val k = KnownIssue(iss.title, iss.note, iss.mileage, iss.codes.toList(), badge(model), iss.severity, iss.price)
+            if (model) return k
             if (best == null) best = k
         }
         return best
@@ -334,12 +338,12 @@ object KnownIssues {
 
     /** Все болячки этой машины: модельные впереди, потом марочные. */
     fun forCar(car: VinDecoder.Info, vin: String?): List<KnownIssue> {
-        val out = ArrayList<KnownIssue>()
+        val out = ArrayList<Pair<Boolean, KnownIssue>>()
         for (iss in issues) {
-            val badge = matches(iss, car, vin) ?: continue
-            out.add(KnownIssue(iss.title, iss.note, iss.mileage, iss.codes.toList(), badge, iss.severity, iss.price))
+            val model = matches(iss, car, vin) ?: continue
+            out.add(model to KnownIssue(iss.title, iss.note, iss.mileage, iss.codes.toList(), badge(model), iss.severity, iss.price))
         }
-        return out.sortedBy { if (it.badge == "Болячка модели") 0 else 1 }
+        return out.sortedBy { if (it.first) 0 else 1 }.map { it.second }
     }
 
     /** Все болячки этой машины, у которых есть хоть один код из проверки. */
@@ -348,8 +352,8 @@ object KnownIssues {
         val out = ArrayList<KnownIssue>()
         for (iss in issues) {
             if (iss.codes.none { c -> c in present }) continue
-            val badge = matches(iss, car, vin) ?: continue
-            out.add(KnownIssue(iss.title, iss.note, iss.mileage, iss.codes.filter { c -> c in present }, badge, iss.severity, iss.price))
+            val model = matches(iss, car, vin) ?: continue
+            out.add(KnownIssue(iss.title, iss.note, iss.mileage, iss.codes.filter { c -> c in present }, badge(model), iss.severity, iss.price))
         }
         return out
     }

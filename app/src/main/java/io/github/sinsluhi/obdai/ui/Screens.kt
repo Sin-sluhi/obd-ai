@@ -103,6 +103,8 @@ import io.github.sinsluhi.obdai.VinDecoder
 import io.github.sinsluhi.obdai.R
 import io.github.sinsluhi.obdai.formatDuration
 import io.github.sinsluhi.obdai.formatPrice
+import io.github.sinsluhi.obdai.tr
+import io.github.sinsluhi.obdai.trPlural
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -138,7 +140,7 @@ internal fun Screen(
 internal fun Header(title: String, onBack: (() -> Unit)? = null, trailing: (@Composable () -> Unit)? = null) {
     Row(Modifier.fillMaxWidth().height(44.dp), verticalAlignment = Alignment.CenterVertically) {
         if (onBack != null) {
-            SquareIconButton(Icons.AutoMirrored.Filled.ArrowBack, "Назад", onBack)
+            SquareIconButton(Icons.AutoMirrored.Filled.ArrowBack, tr("scr_back"), onBack)
             HSpace(12.dp)
         }
         Text(title, style = Type.display(20))
@@ -170,18 +172,18 @@ fun HomeScreen(
             HSpace(10.dp)
             Text("OBD AI", style = Type.display(20))
             Spacer(Modifier.weight(1f))
-            SquareIconButton(Icons.Default.Settings, "Настройки", onSettings)
+            SquareIconButton(Icons.Default.Settings, tr("scr_settings"), onSettings)
         }
 
         // связь: адаптер и блок двигателя
         Card(radius = 16.dp, padding = 14.dp, onClick = onAdapterClick) {
-            ConnRow("Адаптер", state.connected, if (state.connected) state.adapterName else "нажми, чтобы выбрать")
+            ConnRow(tr("scr_adapter"), state.connected, if (state.connected) state.adapterName else tr("scr_tap_to_pick"))
             VSpace(10.dp)
             ConnRow(
-                "Блок двигателя", state.ecuOnline,
+                tr("scr_engine_ecu"), state.ecuOnline,
                 when {
                     state.ecuOnline -> fullProtocol(state.protocol)
-                    state.connected -> "не отвечает, включи зажигание"
+                    state.connected -> tr("scr_ecu_no_answer")
                     else -> "—"
                 }
             )
@@ -189,10 +191,10 @@ fun HomeScreen(
                 VSpace(10.dp)
                 Box(Modifier.fillMaxWidth().height(1.dp).background(Palette.border))
                 VSpace(10.dp)
-                if (state.ecuName.isNotBlank()) KeyValue("Имя ЭБУ", state.ecuName)
+                if (state.ecuName.isNotBlank()) KeyValue(tr("scr_ecu_name"), state.ecuName)
                 if (state.calibration.isNotBlank()) {
                     if (state.ecuName.isNotBlank()) VSpace(6.dp)
-                    KeyValue("Прошивка", state.calibration)
+                    KeyValue(tr("scr_firmware"), state.calibration)
                 }
             }
             if (state.connected && state.adapterInfo.version.isNotBlank()) {
@@ -205,10 +207,10 @@ fun HomeScreen(
                 val t = state.trip
                 Text(
                     when {
-                        t != null && state.tripAuto -> "Двигатель работает · поездка пишется сама, %.1f км".format(t.distanceKm)
-                        t != null -> "Поездка записывается, %.1f км".format(t.distanceKm)
-                        state.engineOn -> "Двигатель работает"
-                        else -> "Двигатель заглушен · жду запуска"
+                        t != null && state.tripAuto -> tr("scr_engine_on_auto_trip", "%.1f".format(t.distanceKm))
+                        t != null -> tr("scr_trip_recording_km", "%.1f".format(t.distanceKm))
+                        state.engineOn -> tr("scr_engine_on")
+                        else -> tr("scr_engine_off_waiting")
                     },
                     style = Type.body(12, if (state.engineOn) accent else Palette.muted)
                 )
@@ -222,10 +224,10 @@ fun HomeScreen(
         // карточка машины
         Card {
             Row(verticalAlignment = Alignment.CenterVertically) {
-                Text("Ваша машина", style = Type.label(), modifier = Modifier.weight(1f))
-                if (state.guard) { Pill("охрана", Palette.warn, Palette.warnBg); HSpace(8.dp) }
+                Text(tr("scr_your_car"), style = Type.label(), modifier = Modifier.weight(1f))
+                if (state.guard) { Pill(tr("scr_guard_pill"), Palette.warn, Palette.warnBg); HSpace(8.dp) }
                 Text(
-                    if (state.cars.size > 1) "Гараж · ${state.cars.size}" else "Гараж",
+                    if (state.cars.size > 1) tr("scr_garage_n", state.cars.size) else tr("scr_garage"),
                     style = Type.body(12, accent, FontWeight.SemiBold),
                     modifier = Modifier.clickable(onClick = onGarage)
                 )
@@ -244,12 +246,12 @@ fun HomeScreen(
                         .border(1.dp, Palette.border, RoundedCornerShape(6.dp))
                         .padding(horizontal = 6.dp, vertical = 2.dp))
                 HSpace(8.dp)
-                Text(state.vin ?: "появится после проверки", style = if (state.vin != null) Type.mono(16) else Type.body(14, Palette.muted))
+                Text(state.vin ?: tr("scr_vin_after_check"), style = if (state.vin != null) Type.mono(16) else Type.body(14, Palette.muted))
             }
             VSpace(14.dp)
             Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-                InfoTile("Протокол", shortProtocol(state.protocol), Modifier.weight(1f))
-                InfoTile("Аккумулятор", formatVolt(state.voltage), Modifier.weight(1f))
+                InfoTile(tr("scr_protocol"), shortProtocol(state.protocol), Modifier.weight(1f))
+                InfoTile(tr("scr_battery"), formatVolt(state.voltage), Modifier.weight(1f))
             }
             state.battery?.let { b ->
                 VSpace(10.dp)
@@ -259,14 +261,14 @@ fun HomeScreen(
             state.warmups.lastOrNull()?.let { w ->
                 if (w.level == "warning" || w.level == "danger") {
                     VSpace(4.dp)
-                    Text("Прогрев: " + w.text.substringBefore('.') + ".", style = Type.body(12, Palette.warn, FontWeight.SemiBold))
+                    Text(tr("scr_warmup_prefix", w.text.substringBefore('.')), style = Type.body(12, Palette.warn, FontWeight.SemiBold))
                 }
             }
         }
 
         Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-            SecondaryButton("Фото приборки", Modifier.weight(1f), onClick = onPhoto)
-            SecondaryButton("Перед покупкой", Modifier.weight(1f), onClick = onPurchase)
+            SecondaryButton(tr("scr_dash_photo"), Modifier.weight(1f), onClick = onPhoto)
+            SecondaryButton(tr("scr_before_purchase"), Modifier.weight(1f), onClick = onPurchase)
         }
 
         // большая кнопка
@@ -278,7 +280,7 @@ fun HomeScreen(
             BigCheckButton(busy = state.busy, onClick = onCheck)
             // строка терминала (§3): новый текст въезжает снизу и проявляется, старый гаснет;
             // пачку пакетов на смену busy даёт BusDriver. При выключенных анимациях — простой fade.
-            val hint = if (state.connected) "Включи зажигание. Двигатель можно не заводить" else "Сначала подключи адаптер"
+            val hint = if (state.connected) tr("scr_hint_ignition") else tr("scr_hint_connect_first")
             val motion = LocalMotion.current
             AnimatedContent(
                 targetState = state.busy ?: hint,
@@ -304,13 +306,13 @@ fun HomeScreen(
                     WarningIcon(Palette.warn)
                     HSpace(12.dp)
                     Column(Modifier.weight(1f)) {
-                        Text(if (state.milOn == true) "Горит Check Engine" else "Есть ошибки", style = Type.body(14, Palette.warnText, FontWeight.SemiBold))
+                        Text(if (state.milOn == true) tr("scr_mil_on") else tr("scr_has_errors"), style = Type.body(14, Palette.warnText, FontWeight.SemiBold))
                         Text(
-                            if (count > 0) "Последняя проверка: ${plural(count, "ошибка", "ошибки", "ошибок")}" else "Нажми, чтобы посмотреть результат",
+                            if (count > 0) tr("scr_last_check_errors", trPlural("scr_errors", count)) else tr("scr_tap_to_see_result"),
                             style = Type.body(12, Palette.warnMuted)
                         )
                     }
-                    Text("Открыть", style = Type.body(13, Palette.warn, FontWeight.SemiBold))
+                    Text(tr("scr_open"), style = Type.body(13, Palette.warn, FontWeight.SemiBold))
                 }
             }
         } else if (d != null) {
@@ -320,9 +322,9 @@ fun HomeScreen(
                     HSpace(12.dp)
                     Column(Modifier.weight(1f)) {
                         Text(d.title, style = Type.body(14, Palette.text, FontWeight.SemiBold))
-                        Text("Последняя проверка без ошибок", style = Type.body(12, Palette.muted))
+                        Text(tr("scr_last_check_clean"), style = Type.body(12, Palette.muted))
                     }
-                    Text("Открыть", style = Type.body(13, accent, FontWeight.SemiBold))
+                    Text(tr("scr_open"), style = Type.body(13, accent, FontWeight.SemiBold))
                 }
             }
         }
@@ -359,10 +361,10 @@ fun ResultScreen(
     val d = state.diagnosis
     val snap = state.lastSnapshot
     Screen {
-        Header("Результат", onBack = onBack)
+        Header(tr("scr_result"), onBack = onBack)
         if (d == null) {
             // проверка ещё идёт — показываем этап; иначе результата действительно нет
-            Text(state.busy ?: "Сначала проверь машину", style = Type.body(14, Palette.muted))
+            Text(state.busy ?: tr("scr_check_first"), style = Type.body(14, Palette.muted))
             return@Screen
         }
 
@@ -377,10 +379,10 @@ fun ResultScreen(
 
         if (!d.fromAi) {
             Card(background = Palette.surface2, border = Palette.border, radius = 16.dp, padding = 14.dp) {
-                Text("Опыт владельцев временно недоступен", style = Type.body(13, Palette.warn, FontWeight.SemiBold))
+                Text(tr("scr_owners_offline_title"), style = Type.body(13, Palette.warn, FontWeight.SemiBold))
                 VSpace(4.dp)
                 Text(
-                    "Объяснения и цепочки ниже — из встроенного справочника. Опыт владельцев именно этой модели, ссылки и цены появятся, когда будет интернет: запусти проверку ещё раз.",
+                    tr("scr_owners_offline_text"),
                     style = Type.body(13, Palette.text2)
                 )
             }
@@ -390,9 +392,9 @@ fun ResultScreen(
         val engineExtra = allModules.firstOrNull { it.addr == 0x7E0 }?.codes.orEmpty()
         val modules = allModules.filter { it.addr != 0x7E0 }
         if (modules.isNotEmpty() || state.lastSnapshot != null) {
-            SectionTitle("Блоки машины", if (modules.isEmpty()) "ответил только двигатель" else plural(modules.size + 1, "блок", "блока", "блоков"))
+            SectionTitle(tr("scr_car_modules"), if (modules.isEmpty()) tr("scr_only_engine_answered") else trPlural("scr_modules", modules.size + 1))
             Card(padding = 14.dp) {
-                ModuleRow("Двигатель", (state.lastSnapshot?.stored.orEmpty() + state.lastSnapshot?.pending.orEmpty() + engineExtra).distinct(), accent)
+                ModuleRow(tr("scr_engine"), (state.lastSnapshot?.stored.orEmpty() + state.lastSnapshot?.pending.orEmpty() + engineExtra).distinct(), accent)
                 modules.forEach { m ->
                     Box(Modifier.fillMaxWidth().height(1.dp).background(Palette.border))
                     ModuleRow(m.name, m.codes, accent, vinMismatch = m.vin != null && state.vin != null && m.vin != state.vin)
@@ -401,7 +403,7 @@ fun ResultScreen(
         }
 
         if (d.codes.isNotEmpty()) {
-            SectionTitle("Что нашли", plural(d.codes.size, "ошибка", "ошибки", "ошибок"))
+            SectionTitle(tr("scr_found"), trPlural("scr_errors", d.codes.size))
             val vin = state.vin ?: snap?.vin
             val decoded = VinDecoder.decode(vin)
             val car = decoded.withCar(d.car)
@@ -426,8 +428,8 @@ fun ResultScreen(
                 Card(radius = 18.dp, padding = 16.dp) {
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         Column(Modifier.weight(1f)) {
-                            Text("Итого ремонт", style = Type.strong(15))
-                            Text("нижняя граница по ценам 2026 года; реальный счёт зависит от сервиса и региона", style = Type.body(12, Palette.muted))
+                            Text(tr("scr_repair_total"), style = Type.strong(15))
+                            Text(tr("scr_repair_total_note"), style = Type.body(12, Palette.muted))
                         }
                         HSpace(12.dp)
                         Text(formatPrice(total), style = Type.strong(18, accent))
@@ -454,7 +456,7 @@ fun ResultScreen(
         }
 
         if (d.nextSteps.isNotEmpty()) {
-            SectionTitle("Что делать")
+            SectionTitle(tr("scr_what_to_do"))
             Card {
                 d.nextSteps.forEachIndexed { i, step ->
                     Row(Modifier.padding(vertical = 6.dp)) {
@@ -468,16 +470,16 @@ fun ResultScreen(
         if (d.forService.isNotBlank()) ServiceCard(d.forService)
 
         Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
-            PrimaryButton("Найти сервис рядом", onClick = onFindService)
+            PrimaryButton(tr("scr_find_service"), onClick = onFindService)
             Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-                SecondaryButton("Поделиться", Modifier.weight(1f), onClick = onShare)
+                SecondaryButton(tr("scr_share"), Modifier.weight(1f), onClick = onShare)
                 SecondaryButton(
-                    "Стереть ошибки", Modifier.weight(1f), color = Palette.danger,
+                    tr("scr_clear_errors"), Modifier.weight(1f), color = Palette.danger,
                     enabled = state.connected && d.codes.isNotEmpty(), onClick = onClear
                 )
             }
-            if (snap != null) SecondaryButton("Как подержанная: брать или торговаться?", Modifier.fillMaxWidth(), onClick = onPurchase)
-            if (snap != null) SecondaryButton("Подробные данные с машины", Modifier.fillMaxWidth(), color = Palette.muted, onClick = onDetails)
+            if (snap != null) SecondaryButton(tr("scr_as_used"), Modifier.fillMaxWidth(), onClick = onPurchase)
+            if (snap != null) SecondaryButton(tr("scr_details"), Modifier.fillMaxWidth(), color = Palette.muted, onClick = onDetails)
         }
         VSpace(8.dp)
     }
@@ -509,7 +511,7 @@ fun CarPhoto(car: String, version: Int = 0, onClick: () -> Unit = {}) {
                 .clickable(onClick = onClick)
         )
         VSpace(6.dp)
-        Text("Нажми на фото, чтобы поставить снимок своей машины", style = Type.body(11, Palette.muted))
+        Text(tr("scr_car_photo_tap_hint"), style = Type.body(11, Palette.muted))
         VSpace(10.dp)
     } else {
         Row(
@@ -524,7 +526,7 @@ fun CarPhoto(car: String, version: Int = 0, onClick: () -> Unit = {}) {
         ) {
             CarIcon(Palette.muted)
             HSpace(10.dp)
-            Text("Добавить фото своей машины", style = Type.body(13, Palette.text2, FontWeight.SemiBold))
+            Text(tr("scr_add_car_photo"), style = Type.body(13, Palette.text2, FontWeight.SemiBold))
             Spacer(Modifier.weight(1f))
             Text("+", style = Type.body(18, accent, FontWeight.Bold))
         }
@@ -555,9 +557,9 @@ private fun statusLines(snap: io.github.sinsluhi.obdai.CarSnapshot?, code: Strin
 private fun VerdictCard(d: Diagnosis) {
     val accent = LocalAccent.current
     val (bg, border, main, text, muted, label) = when (d.level) {
-        "ok" -> VerdictColors(Palette.okBg, Palette.border, accent, Palette.text, Palette.text2, "ВСЁ В ПОРЯДКЕ")
-        "danger" -> VerdictColors(Palette.dangerBg, Palette.dangerBorder, Palette.danger, Palette.dangerText, Palette.dangerMuted, "ОПАСНО")
-        else -> VerdictColors(Palette.warnBg, Palette.warnBorder, Palette.warn, Palette.warnText, Palette.warnMuted, "ВНИМАНИЕ")
+        "ok" -> VerdictColors(Palette.okBg, Palette.border, accent, Palette.text, Palette.text2, tr("scr_verdict_ok"))
+        "danger" -> VerdictColors(Palette.dangerBg, Palette.dangerBorder, Palette.danger, Palette.dangerText, Palette.dangerMuted, tr("scr_verdict_danger"))
+        else -> VerdictColors(Palette.warnBg, Palette.warnBorder, Palette.warn, Palette.warnText, Palette.warnMuted, tr("scr_verdict_warn"))
     }
     Card(background = bg, border = border, radius = 22.dp, padding = 20.dp, glow = main) {
         Row(verticalAlignment = Alignment.CenterVertically) {
@@ -568,7 +570,7 @@ private fun VerdictCard(d: Diagnosis) {
             HSpace(10.dp)
             Text(label, style = Type.body(13, main, FontWeight.SemiBold))
             Spacer(Modifier.weight(1f))
-            val drive = when (d.canDrive) { "yes" -> "Ехать можно"; "no" -> "Не ехать"; else -> "Ехать осторожно" }
+            val drive = when (d.canDrive) { "yes" -> tr("scr_can_drive_yes"); "no" -> tr("scr_can_drive_no"); else -> tr("scr_can_drive_careful") }
             Pill(drive, main, Palette.bg.copy(alpha = 0.35f))
         }
         VSpace(12.dp)
@@ -595,9 +597,9 @@ private fun CodeCard(
     val accent = LocalAccent.current
     val severity = issue?.severity ?: c.severity
     val (sevText, sevColor, sevBg) = when (severity) {
-        "high" -> Triple("Серьёзно", Palette.danger, Palette.dangerBg)
-        "low" -> Triple("Низко", accent, Palette.okBg)
-        else -> Triple("Средне", Palette.warn, Palette.warnBg)
+        "high" -> Triple(tr("scr_sev_high"), Palette.danger, Palette.dangerBg)
+        "low" -> Triple(tr("scr_sev_low"), accent, Palette.okBg)
+        else -> Triple(tr("scr_sev_mid"), Palette.warn, Palette.warnBg)
     }
     var more by remember(c.code) { mutableStateOf(false) }
     Card {
@@ -621,7 +623,7 @@ private fun CodeCard(
         Text(info?.title?.takeIf { it.isNotBlank() } ?: c.title, style = Type.strong(17))
         if (status.isNotEmpty()) {
             VSpace(4.dp)
-            Text("Статус в блоке: ${status.joinToString()}", style = Type.body(12, Palette.muted))
+            Text(tr("scr_status_in_module", status.joinToString()), style = Type.body(12, Palette.muted))
         }
         if (ftb != null && !c.explanation.contains(ftb)) {
             VSpace(4.dp)
@@ -653,7 +655,7 @@ private fun CodeCard(
         }
         if (links.isNotEmpty()) {
             VSpace(8.dp)
-            Text("Связано с другими кодами в этой проверке", style = Type.label(12))
+            Text(tr("scr_linked_codes"), style = Type.label(12))
             links.forEach { l ->
                 Row(Modifier.padding(top = 3.dp)) {
                     Text(l.code, style = Type.mono(12, accent), modifier = Modifier.width(64.dp))
@@ -664,7 +666,7 @@ private fun CodeCard(
         val causes = if (c.causes.isNotEmpty()) c.causes else info?.causes.orEmpty()
         if (causes.isNotEmpty()) {
             VSpace(6.dp)
-            Text("Частые причины: ${causes.joinToString()}", style = Type.body(13, Palette.muted))
+            Text(tr("scr_common_causes", causes.joinToString()), style = Type.body(13, Palette.muted))
         }
         val todo = c.whatToDo.ifBlank { info?.whatToDo.orEmpty() }
         if (todo.isNotBlank()) {
@@ -682,7 +684,7 @@ private fun CodeCard(
                     .padding(horizontal = 12.dp, vertical = 8.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Text(if (more) "Скрыть подробности" else "Как это устроено и к чему ведёт", style = Type.body(13, accent, FontWeight.SemiBold))
+                Text(if (more) tr("scr_hide_details") else tr("scr_how_it_works"), style = Type.body(13, accent, FontWeight.SemiBold))
                 HSpace(6.dp)
                 Text(if (more) "▲" else "▼", style = Type.body(10, accent))
             }
@@ -693,7 +695,7 @@ private fun CodeCard(
                 Text(info.story, style = Type.body(13, Palette.text2))
                 if (info.confirm.isNotBlank()) {
                     VSpace(6.dp)
-                    Text("По датчикам: ${info.confirm}", style = Type.body(12, Palette.muted))
+                    Text(tr("scr_by_sensors", info.confirm), style = Type.body(12, Palette.muted))
                 }
             }
         }
@@ -708,17 +710,17 @@ private fun CodeCard(
                     .padding(12.dp)
             ) {
                 Row {
-                    Text("Опыт владельцев", style = Type.body(12, accent, FontWeight.SemiBold))
+                    Text(tr("scr_owner_experience"), style = Type.body(12, accent, FontWeight.SemiBold))
                     if (c.ownerExperience.isBlank() && kb != null) {
                         Spacer(Modifier.weight(1f))
-                        Text(if (kb.local) "прошлая проверка" else "база OBIDI, ${kb.car}", style = Type.body(11, Palette.muted))
+                        Text(if (kb.local) tr("scr_kb_local") else tr("scr_kb_shared", kb.car), style = Type.body(11, Palette.muted))
                     }
                 }
                 VSpace(4.dp)
                 Text(experience, style = Type.body(13, Palette.text2))
                 if (c.ownerExperience.isBlank() && kb != null && kb.fixes.isNotEmpty()) {
                     VSpace(4.dp)
-                    Text("Что помогло: ${kb.fixes.joinToString("; ")}", style = Type.body(13, Palette.text2))
+                    Text(tr("scr_what_helped", kb.fixes.joinToString("; ")), style = Type.body(13, Palette.text2))
                 }
                 if (sources.isNotEmpty()) {
                     VSpace(6.dp)
@@ -738,7 +740,7 @@ private fun CodeCard(
         Box(Modifier.fillMaxWidth().height(1.dp).background(Palette.border))
         VSpace(10.dp)
         Row {
-            Text("Ремонт", style = Type.label())
+            Text(tr("scr_repair"), style = Type.label())
             Spacer(Modifier.weight(1f))
             Text(formatPrice(effectivePrice(c, info, issue, kb)), style = Type.strong(14))
         }
@@ -784,7 +786,7 @@ fun SensorsScreen(
     val volt = parseVolt(state.voltage)
 
     Screen(bottom = bottom) {
-        Header("Датчики") {
+        Header(tr("scr_sensors")) {
             Row(
                 Modifier
                     .background(Palette.surface, RoundedCornerShape(20.dp))
@@ -794,21 +796,21 @@ fun SensorsScreen(
             ) {
                 Dot(if (state.connected) accent else Palette.muted)
                 HSpace(8.dp)
-                Text(if (state.connected) "Обновляется" else "Нет связи", style = Type.body(12, Palette.text2, FontWeight.SemiBold))
+                Text(if (state.connected) tr("scr_updating") else tr("scr_no_link"), style = Type.body(12, Palette.text2, FontWeight.SemiBold))
             }
         }
 
         Row(verticalAlignment = Alignment.CenterVertically) {
-            Text("Приборка в стиле", style = Type.label())
+            Text(tr("scr_dash_style"), style = Type.label())
             HSpace(8.dp)
             Pill(skin.name, skin.glow, skin.glow.copy(alpha = 0.12f))
         }
         val t = state.trip
         if (t == null) {
             if (state.autoTrip && state.connected) {
-                Text("Поездка начнётся сама, когда заведёшь двигатель", style = Type.body(13, Palette.muted), textAlign = TextAlign.Center, modifier = Modifier.fillMaxWidth())
+                Text(tr("scr_trip_auto_hint"), style = Type.body(13, Palette.muted), textAlign = TextAlign.Center, modifier = Modifier.fillMaxWidth())
             } else SecondaryButton(
-                "Начать запись поездки", Modifier.fillMaxWidth(),
+                tr("scr_start_trip"), Modifier.fillMaxWidth(),
                 color = if (state.connected) accent else Palette.muted, enabled = state.connected, onClick = onStartTrip
             )
         } else {
@@ -816,38 +818,38 @@ fun SensorsScreen(
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Dot(accent)
                     HSpace(8.dp)
-                    Text(if (state.tripAuto) "Поездка пишется сама" else "Поездка записывается", style = Type.strong(14))
+                    Text(if (state.tripAuto) tr("scr_trip_auto") else tr("scr_trip_recording"), style = Type.strong(14))
                     Spacer(Modifier.weight(1f))
                     Text(formatDuration(System.currentTimeMillis() - t.start), style = Type.mono(13, Palette.muted))
                 }
                 VSpace(12.dp)
                 Row {
-                    TripStat("Путь", "%.1f".format(t.distanceKm), "км", Modifier.weight(1f))
-                    TripStat("Расход", t.fuelL?.takeIf { t.distanceKm > 0.3 }?.let { "%.1f".format(it / t.distanceKm * 100) } ?: "—", "л/100", Modifier.weight(1f))
-                    TripStat("Макс", "%.0f".format(t.maxSpeed), "км/ч", Modifier.weight(1f))
+                    TripStat(tr("scr_distance"), "%.1f".format(t.distanceKm), tr("scr_km"), Modifier.weight(1f))
+                    TripStat(tr("scr_consumption"), t.fuelL?.takeIf { t.distanceKm > 0.3 }?.let { "%.1f".format(it / t.distanceKm * 100) } ?: "—", tr("scr_l100"), Modifier.weight(1f))
+                    TripStat(tr("scr_max"), "%.0f".format(t.maxSpeed), tr("scr_kmh"), Modifier.weight(1f))
                 }
                 VSpace(12.dp)
-                PrimaryButton("Завершить поездку", onClick = onStopTrip)
+                PrimaryButton(tr("scr_stop_trip"), onClick = onStopTrip)
             }
         }
 
 
         Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-            RoundGauge("Скорость", v("speed"), "км/ч", 0f, 240f, skin, Modifier.weight(1f), majorStep = 40f)
-            RoundGauge("Обороты", v("rpm"), "об/мин", 0f, 8000f, skin, Modifier.weight(1f), majorStep = 1000f, labelDivisor = 1000f, redFrom = 6500f)
+            RoundGauge(tr("scr_speed"), v("speed"), tr("scr_kmh"), 0f, 240f, skin, Modifier.weight(1f), majorStep = 40f)
+            RoundGauge(tr("scr_rpm"), v("rpm"), tr("scr_rpm_unit"), 0f, 8000f, skin, Modifier.weight(1f), majorStep = 1000f, labelDivisor = 1000f, redFrom = 6500f)
         }
         Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-            RoundGauge("Температура", v("coolant"), "°C", -40f, 140f, skin, Modifier.weight(1f), majorStep = 30f, redFrom = 105f, coldTo = 50f)
-            RoundGauge("Напряжение", volt, "В", 8f, 16f, skin, Modifier.weight(1f), majorStep = 1f, decimals = 1, redFrom = 15f, coldTo = 11.5f)
+            RoundGauge(tr("scr_temperature"), v("coolant"), "°C", -40f, 140f, skin, Modifier.weight(1f), majorStep = 30f, redFrom = 105f, coldTo = 50f)
+            RoundGauge(tr("scr_voltage"), volt, tr("scr_volt_unit"), 8f, 16f, skin, Modifier.weight(1f), majorStep = 1f, decimals = 1, redFrom = 15f, coldTo = 11.5f)
         }
         Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-            RoundGauge("Нагрузка", v("load"), "%", 0f, 100f, skin, Modifier.weight(1f), majorStep = 20f)
-            RoundGauge("Дроссель", v("throttle"), "%", 0f, 100f, skin, Modifier.weight(1f), majorStep = 20f)
+            RoundGauge(tr("scr_load"), v("load"), "%", 0f, 100f, skin, Modifier.weight(1f), majorStep = 20f)
+            RoundGauge(tr("scr_throttle"), v("throttle"), "%", 0f, 100f, skin, Modifier.weight(1f), majorStep = 20f)
         }
         Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-            RoundGauge("Впуск", v("iat"), "°C", -40f, 140f, skin, Modifier.weight(1f), majorStep = 30f, redFrom = 80f)
-            if (v("fuelrate") != null) RoundGauge("Расход", v("fuelrate"), "л/ч", 0f, 40f, skin, Modifier.weight(1f), majorStep = 10f, decimals = 1)
-            else if (v("map") != null) RoundGauge("Впуск, кПа", v("map"), "кПа", 0f, 250f, skin, Modifier.weight(1f), majorStep = 50f)
+            RoundGauge(tr("scr_intake"), v("iat"), "°C", -40f, 140f, skin, Modifier.weight(1f), majorStep = 30f, redFrom = 80f)
+            if (v("fuelrate") != null) RoundGauge(tr("scr_consumption"), v("fuelrate"), tr("scr_lph"), 0f, 40f, skin, Modifier.weight(1f), majorStep = 10f, decimals = 1)
+            else if (v("map") != null) RoundGauge(tr("scr_intake_kpa"), v("map"), tr("scr_kpa"), 0f, 250f, skin, Modifier.weight(1f), majorStep = 50f)
             else Box(Modifier.weight(1f))
         }
         state.battery?.let { BatteryCard(it) }
@@ -861,21 +863,21 @@ fun SensorsScreen(
             radius = 18.dp, padding = 16.dp
         ) {
             Row {
-                Text("Коррекция топлива", style = Type.body(13, if (high) Palette.warnMuted else Palette.muted))
+                Text(tr("scr_fuel_trim"), style = Type.body(13, if (high) Palette.warnMuted else Palette.muted))
                 Spacer(Modifier.weight(1f))
                 Text(
-                    if (stft == null && ltft == null) "нет данных" else if (high) "Выше нормы" else "В норме",
+                    if (stft == null && ltft == null) tr("scr_no_data") else if (high) tr("scr_above_normal") else tr("scr_normal"),
                     style = Type.body(12, if (high) Palette.warn else accent, FontWeight.SemiBold)
                 )
             }
             VSpace(10.dp)
             Row {
-                TrimValue("Краткосрочная", stft, high, Modifier.weight(1f))
-                TrimValue("Долгосрочная", ltft, high, Modifier.weight(1f))
+                TrimValue(tr("scr_trim_short"), stft, high, Modifier.weight(1f))
+                TrimValue(tr("scr_trim_long"), ltft, high, Modifier.weight(1f))
             }
         }
         if (!state.connected) {
-            Text("Подключи адаптер, и стрелки оживут", style = Type.body(13, Palette.muted), textAlign = TextAlign.Center, modifier = Modifier.fillMaxWidth())
+            Text(tr("scr_connect_adapter_gauges"), style = Type.body(13, Palette.muted), textAlign = TextAlign.Center, modifier = Modifier.fillMaxWidth())
         }
     }
 }
@@ -922,26 +924,26 @@ fun HistoryScreen(
     bottom: @Composable () -> Unit
 ) {
     val accent = LocalAccent.current
-    val fmt = remember { SimpleDateFormat("d MMMM, HH:mm", Locale("ru")) }
+    val fmt = remember(Tr.lang) { SimpleDateFormat("d MMMM, HH:mm", Tr.lang.locale) }
     Screen(bottom = bottom) {
-        Header("История")
+        Header(tr("scr_history"))
         Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-            JournalTile("Чёрный ящик", plural(state.blackbox.size, "запись", "записи", "записей"),
+            JournalTile(tr("scr_blackbox"), trPlural("scr_records", state.blackbox.size),
                 warn = state.blackbox.isNotEmpty(), modifier = Modifier.weight(1f), onClick = onBlackbox)
             val open = state.visits.count { !it.checked }
-            JournalTile("Сервис", if (open > 0) "$open ждёт проверки" else plural(state.visits.size, "визит", "визита", "визитов"),
+            JournalTile(tr("scr_service"), if (open > 0) tr("scr_awaiting_check", open) else trPlural("scr_visits", state.visits.size),
                 warn = open > 0, modifier = Modifier.weight(1f), onClick = onService)
         }
         VSpace(14.dp)
         if (state.trips.isNotEmpty()) {
             val month = state.trips.filter { it.start > System.currentTimeMillis() - 30L * 86_400_000 }
             val fuel = month.mapNotNull { it.fuelL }
-            SectionTitle("Поездки", "за 30 дней")
+            SectionTitle(tr("scr_trips"), tr("scr_last_30_days"))
             Card(glow = accent) {
                 Row {
-                    TripStat("Поездок", "${month.size}", "", Modifier.weight(1f))
-                    TripStat("Путь", "%.0f".format(month.sumOf { it.distanceKm }), "км", Modifier.weight(1f))
-                    TripStat("Топливо", if (fuel.isEmpty()) "—" else "%.1f".format(fuel.sum()), "л", Modifier.weight(1f))
+                    TripStat(tr("scr_trips_count"), "${month.size}", "", Modifier.weight(1f))
+                    TripStat(tr("scr_distance"), "%.0f".format(month.sumOf { it.distanceKm }), tr("scr_km"), Modifier.weight(1f))
+                    TripStat(tr("scr_fuel"), if (fuel.isEmpty()) "—" else "%.1f".format(fuel.sum()), tr("scr_liter"), Modifier.weight(1f))
                 }
             }
             state.trips.take(30).forEach { t ->
@@ -953,25 +955,25 @@ fun HistoryScreen(
                         Text(formatDuration(t.durationMs), style = Type.mono(12, Palette.muted))
                         HSpace(10.dp)
                         Icon(
-                            Icons.Default.Delete, "Удалить", tint = Palette.muted,
+                            Icons.Default.Delete, tr("scr_delete"), tint = Palette.muted,
                             modifier = Modifier.size(20.dp).clickable { state.deleteTrip(t) }
                         )
                     }
                     VSpace(10.dp)
                     Row {
-                        TripStat("Путь", "%.1f".format(t.distanceKm), "км", Modifier.weight(1f))
-                        TripStat("Расход", t.avgConsumption?.let { "%.1f".format(it) } ?: "—", "л/100", Modifier.weight(1f))
-                        TripStat("Средняя", "%.0f".format(t.avgSpeed), "км/ч", Modifier.weight(1f))
-                        TripStat("Макс", "%.0f".format(t.maxSpeed), "км/ч", Modifier.weight(1f))
+                        TripStat(tr("scr_distance"), "%.1f".format(t.distanceKm), tr("scr_km"), Modifier.weight(1f))
+                        TripStat(tr("scr_consumption"), t.avgConsumption?.let { "%.1f".format(it) } ?: "—", tr("scr_l100"), Modifier.weight(1f))
+                        TripStat(tr("scr_avg"), "%.0f".format(t.avgSpeed), tr("scr_kmh"), Modifier.weight(1f))
+                        TripStat(tr("scr_max"), "%.0f".format(t.maxSpeed), tr("scr_kmh"), Modifier.weight(1f))
                     }
                 }
             }
-            SectionTitle("Проверки")
+            SectionTitle(tr("scr_checks"))
         }
         if (state.history.isEmpty()) {
             VSpace(40.dp)
             Text(
-                "Здесь будут прошлые проверки.\nПока ни одной.",
+                tr("scr_history_empty"),
                 style = Type.body(14, Palette.muted), textAlign = TextAlign.Center, modifier = Modifier.fillMaxWidth()
             )
         }
@@ -984,7 +986,7 @@ fun HistoryScreen(
                     HSpace(10.dp)
                     Text(fmt.format(Date(e.time)), style = Type.label(), modifier = Modifier.weight(1f))
                     Icon(
-                        Icons.Default.Delete, "Удалить", tint = Palette.muted,
+                        Icons.Default.Delete, tr("scr_delete"), tint = Palette.muted,
                         modifier = Modifier.size(20.dp).clickable { state.deleteHistory(e) }
                     )
                 }
@@ -994,7 +996,7 @@ fun HistoryScreen(
                 Text(
                     buildString {
                         e.vin?.let { append(it); append("  ·  ") }
-                        append(if (d.codes.isEmpty()) "без ошибок" else d.codes.joinToString { it.code })
+                        append(if (d.codes.isEmpty()) tr("scr_no_errors") else d.codes.joinToString { it.code })
                     },
                     style = Type.mono(12, Palette.muted)
                 )
@@ -1021,37 +1023,37 @@ fun SettingsScreen(
     var versionTaps by remember { mutableStateOf(0) }
 
     Screen {
-        Header("Настройки", onBack = onBack)
+        Header(tr("scr_settings"), onBack = onBack)
 
-        SectionTitle("Адаптер")
+        SectionTitle(tr("scr_adapter"))
         Card {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Column(Modifier.weight(1f)) {
-                    Text(if (state.connected) state.adapterName else "Не подключён", style = Type.strong(15))
-                    Text(if (state.connected) shortProtocol(state.protocol) else "ELM327 по Bluetooth", style = Type.label(12))
+                    Text(if (state.connected) state.adapterName else tr("scr_not_connected"), style = Type.strong(15))
+                    Text(if (state.connected) shortProtocol(state.protocol) else tr("scr_elm_bt"), style = Type.label(12))
                 }
                 SecondaryButton(
-                    if (state.connected) "Отключить" else "Выбрать",
+                    if (state.connected) tr("scr_disconnect") else tr("scr_pick"),
                     Modifier.width(120.dp),
                     onClick = { if (state.connected) state.disconnect() else onPickDevice() }
                 )
             }
         }
 
-        SectionTitle("Пока адаптер подключён")
+        SectionTitle(tr("scr_while_connected"))
         Card {
-            ToggleRow("Поездки сами", "Завёл двигатель — запись началась, заглушил — сохранилась", state.autoTrip) { state.updateAutoTrip(it) }
+            ToggleRow(tr("scr_auto_trips"), tr("scr_auto_trips_hint"), state.autoTrip) { state.updateAutoTrip(it) }
             VSpace(10.dp)
             Box(Modifier.fillMaxWidth().height(1.dp).background(Palette.border))
             VSpace(10.dp)
-            ToggleRow("Новая ошибка в пути", "Раз в полторы минуты проверяю коды. Появился новый — скажу и разберу сразу", state.watchDtc) { state.updateWatchDtc(it) }
+            ToggleRow(tr("scr_watch_dtc"), tr("scr_watch_dtc_hint"), state.watchDtc) { state.updateWatchDtc(it) }
             VSpace(10.dp)
             Box(Modifier.fillMaxWidth().height(1.dp).background(Palette.border))
             VSpace(10.dp)
-            ToggleRow("Голосовые предупреждения", "Перегрев, нет зарядки, перезаряд, новая ошибка: скажу вслух", state.voice) { state.updateVoice(it) }
+            ToggleRow(tr("scr_voice"), tr("scr_voice_hint"), state.voice) { state.updateVoice(it) }
         }
 
-        SectionTitle("Цвет акцента")
+        SectionTitle(tr("scr_accent_color"))
         Row(horizontalArrangement = Arrangement.spacedBy(14.dp)) {
             Palette.accents.forEachIndexed { i, (name, color) ->
                 val selected = i == state.accentIndex
@@ -1075,12 +1077,12 @@ fun SettingsScreen(
             }
         }
 
-        SectionTitle("Живой фон")
+        SectionTitle(tr("scr_live_bg"))
         Card {
-            ToggleRow("Живой фон", "Пакеты данных на фоне бегут в такт связи с машиной. Выключи, если экономишь батарею", state.liveBackground) { state.updateLiveBackground(it) }
+            ToggleRow(tr("scr_live_bg"), tr("scr_live_bg_hint"), state.liveBackground) { state.updateLiveBackground(it) }
         }
 
-        SectionTitle("Язык")
+        SectionTitle(tr("scr_language"))
         Card {
             @OptIn(androidx.compose.foundation.layout.ExperimentalLayoutApi::class)
             androidx.compose.foundation.layout.FlowRow(
@@ -1102,27 +1104,27 @@ fun SettingsScreen(
                 }
             }
             VSpace(8.dp)
-            Text("Разбор нейронки и голос — на выбранном языке. Справочник кодов и опыт владельцев пока по-русски.", style = Type.body(12, Palette.muted))
+            Text(tr("scr_language_note"), style = Type.body(12, Palette.muted))
         }
 
         if (state.devMode) {
-            SectionTitle("Режим разработчика")
+            SectionTitle(tr("scr_dev_mode"))
             var forumDraft by remember { mutableStateOf(state.prefs.forumUrl) }
             Card {
-                Text("Сервер форума", style = Type.label())
+                Text(tr("scr_forum_server"), style = Type.label())
                 VSpace(6.dp)
                 SettingField(
                     value = forumDraft,
                     onChange = { forumDraft = it; state.prefs.forumUrl = it },
-                    placeholder = "https://forum.example.ru (пусто = из сборки)",
+                    placeholder = tr("scr_forum_url_ph"),
                     mono = true
                 )
                 VSpace(4.dp)
-                Text("Чат работает только по HTTPS. Сервер: server/forum в репозитории.", style = Type.body(12, Palette.muted))
+                Text(tr("scr_forum_https_note"), style = Type.body(12, Palette.muted))
             }
             VSpace(12.dp)
             Card {
-                Text("Провайдер разбора", style = Type.label())
+                Text(tr("scr_provider"), style = Type.label())
                 VSpace(8.dp)
                 Provider.entries.forEach { p ->
                     val selected = p == state.provider
@@ -1150,46 +1152,46 @@ fun SettingsScreen(
                 Text(state.provider.hint, style = Type.body(12, Palette.muted))
                 VSpace(12.dp)
 
-                Text(if (state.builtInKey) "Ключ API (в сборке уже есть свой)" else "Ключ API", style = Type.label())
+                Text(if (state.builtInKey) tr("scr_api_key_builtin") else tr("scr_api_key"), style = Type.label())
                 VSpace(6.dp)
                 SettingField(
                     value = keyDraft,
                     onChange = { keyDraft = it; state.updateApiKey(it) },
-                    placeholder = if (state.builtInKey) "пусто = встроенный ключ" else "вставь ключ",
+                    placeholder = if (state.builtInKey) tr("scr_key_ph_builtin") else tr("scr_key_ph"),
                     mono = true,
                     secret = !showKey,
                     trailing = {
                         Text(
-                            if (showKey) "скрыть" else "показать",
+                            if (showKey) tr("scr_hide") else tr("scr_show"),
                             style = Type.body(12, accent, FontWeight.SemiBold),
                             modifier = Modifier.clickable { showKey = !showKey }.padding(8.dp)
                         )
                     }
                 )
                 VSpace(10.dp)
-                Text("Модель", style = Type.label())
+                Text(tr("scr_model"), style = Type.label())
                 VSpace(6.dp)
                 SettingField(
                     value = modelDraft,
                     onChange = { modelDraft = it; state.updateModel(it) },
-                    placeholder = state.provider.defaultModel.ifBlank { "имя модели" },
+                    placeholder = state.provider.defaultModel.ifBlank { tr("scr_model_ph") },
                     mono = true
                 )
                 if (state.provider.needsFolder) {
                     VSpace(10.dp)
-                    Text("ID каталога Yandex Cloud", style = Type.label())
+                    Text(tr("scr_yandex_folder"), style = Type.label())
                     VSpace(6.dp)
                     SettingField(value = folderDraft, onChange = { folderDraft = it; state.updateFolder(it) }, placeholder = "b1g…", mono = true)
                 }
                 if (state.provider == Provider.CUSTOM) {
                     VSpace(10.dp)
-                    Text("Адрес API", style = Type.label())
+                    Text(tr("scr_api_url"), style = Type.label())
                     VSpace(6.dp)
                     SettingField(value = baseDraft, onChange = { baseDraft = it; state.updateCustomBaseUrl(it) }, placeholder = "https://host/v1", mono = true)
                 }
                 VSpace(10.dp)
                 Text(
-                    if (state.hasAiKey) "Готово: разбор приходит прямо в приложение." else "Ключа нет: показывается только встроенный справочник.",
+                    if (state.hasAiKey) tr("scr_key_ok") else tr("scr_key_missing"),
                     style = Type.body(12, if (state.hasAiKey) accent else Palette.warn)
                 )
             }
@@ -1197,8 +1199,8 @@ fun SettingsScreen(
             Card {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Column(Modifier.weight(1f)) {
-                        Text("Демо-машина", style = Type.strong(15))
-                        Text("Выдуманная машина с двумя ошибками, чтобы проверить приложение без адаптера", style = Type.label(12))
+                        Text(tr("scr_demo_car"), style = Type.strong(15))
+                        Text(tr("scr_demo_car_hint"), style = Type.label(12))
                     }
                     HSpace(8.dp)
                     Switch(
@@ -1212,8 +1214,8 @@ fun SettingsScreen(
                     )
                 }
             }
-            SecondaryButton("Консоль и лог адаптера", Modifier.fillMaxWidth(), onClick = onOpenLog)
-            SecondaryButton("Выключить режим разработчика", Modifier.fillMaxWidth(), color = Palette.muted, onClick = { state.updateDevMode(false) })
+            SecondaryButton(tr("scr_console_log"), Modifier.fillMaxWidth(), onClick = onOpenLog)
+            SecondaryButton(tr("scr_dev_mode_off"), Modifier.fillMaxWidth(), color = Palette.muted, onClick = { state.updateDevMode(false) })
         }
 
         Text(
@@ -1226,9 +1228,9 @@ fun SettingsScreen(
                     versionTaps++
                     if (!state.devMode && versionTaps >= 7) {
                         state.updateDevMode(true)
-                        state.toast = "Режим разработчика включён"
+                        state.toast = tr("scr_dev_mode_on_toast")
                     } else if (!state.devMode && versionTaps >= 4) {
-                        state.toast = "Ещё ${7 - versionTaps}…"
+                        state.toast = tr("scr_taps_more", 7 - versionTaps)
                     }
                 }
                 .padding(12.dp)
@@ -1248,14 +1250,14 @@ fun LogScreen(state: AppState, onBack: () -> Unit, onCopyReport: () -> Unit, onC
     }
     Column(Modifier.fillMaxSize().background(Palette.background).statusBarsPadding().imePadding()) {
         Column(Modifier.padding(horizontal = screenPadding).padding(top = 20.dp)) {
-            Header("Консоль", onBack = onBack) {
+            Header(tr("scr_console"), onBack = onBack) {
                 Text(
-                    "Лог",
+                    tr("scr_log"),
                     style = Type.body(13, accent, FontWeight.SemiBold),
                     modifier = Modifier.clickable(onClick = onCopyLog).padding(8.dp)
                 )
                 Text(
-                    "Отчёт",
+                    tr("scr_report"),
                     style = Type.body(13, accent, FontWeight.SemiBold),
                     modifier = Modifier.clickable(onClick = onCopyReport).padding(8.dp)
                 )
@@ -1281,7 +1283,7 @@ fun LogScreen(state: AppState, onBack: () -> Unit, onCopyReport: () -> Unit, onC
             OutlinedTextField(
                 value = cmd,
                 onValueChange = { cmd = it },
-                placeholder = { Text("Команда адаптеру, напр. 0105", style = Type.body(14, Palette.muted)) },
+                placeholder = { Text(tr("scr_cmd_ph"), style = Type.body(14, Palette.muted)) },
                 singleLine = true,
                 textStyle = Type.mono(14),
                 colors = OutlinedTextFieldDefaults.colors(
@@ -1301,7 +1303,7 @@ fun LogScreen(state: AppState, onBack: () -> Unit, onCopyReport: () -> Unit, onC
                     .clickable { state.sendRaw(cmd); cmd = "" },
                 contentAlignment = Alignment.Center
             ) {
-                Icon(Icons.AutoMirrored.Filled.Send, "Отправить", tint = Palette.bg)
+                Icon(Icons.AutoMirrored.Filled.Send, tr("scr_send"), tint = Palette.bg)
             }
         }
     }
@@ -1324,19 +1326,19 @@ fun DevicePickerDialog(
         containerColor = Palette.surface,
         titleContentColor = Palette.text,
         textContentColor = Palette.text2,
-        title = { Text("Выбери адаптер", style = Type.display(18)) },
+        title = { Text(tr("scr_pick_adapter"), style = Type.display(18)) },
         text = {
             Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 if (devices.isEmpty()) {
                     Text(
-                        "Пока пусто. Обычный Bluetooth-адаптер сначала спарь в настройках телефона (PIN 1234 или 0000), адаптер BLE появится сам, для Wi-Fi подключись к его сети.",
+                        tr("scr_no_devices_hint"),
                         style = Type.body(14, Palette.text2)
                     )
                 }
                 if (scanning) Row(verticalAlignment = Alignment.CenterVertically) {
                     Radar(14.dp, accent)
                     HSpace(8.dp)
-                    Text("Ищу адаптеры Bluetooth LE…", style = Type.body(13, Palette.muted))
+                    Text(tr("scr_scanning_ble"), style = Type.body(13, Palette.muted))
                 }
                 LazyColumn(verticalArrangement = Arrangement.spacedBy(8.dp), modifier = Modifier.heightIn(max = 320.dp)) {
                     items(devices.size) { i ->
@@ -1355,13 +1357,13 @@ fun DevicePickerDialog(
                     }
                 }
                 if (showDemo) Text(
-                    "Или попробовать демо-машину",
+                    tr("scr_try_demo"),
                     style = Type.body(13, accent, FontWeight.SemiBold),
                     modifier = Modifier.clickable(onClick = onDemo).padding(vertical = 8.dp)
                 )
             }
         },
-        confirmButton = { TextButton(onClick = onDismiss) { Text("Отмена", color = Palette.muted) } }
+        confirmButton = { TextButton(onClick = onDismiss) { Text(tr("scr_cancel"), color = Palette.muted) } }
     )
 }
 
@@ -1374,7 +1376,7 @@ fun MessageDialog(title: String, text: String, onDismiss: () -> Unit) {
         textContentColor = Palette.text2,
         title = { Text(title, style = Type.display(18)) },
         text = { Text(text, style = Type.body(14, Palette.text2)) },
-        confirmButton = { TextButton(onClick = onDismiss) { Text("Понятно", color = LocalAccent.current) } }
+        confirmButton = { TextButton(onClick = onDismiss) { Text(tr("scr_ok_got_it"), color = LocalAccent.current) } }
     )
 }
 
@@ -1388,7 +1390,7 @@ fun ConfirmDialog(title: String, text: String, confirm: String, onConfirm: () ->
         title = { Text(title, style = Type.display(18)) },
         text = { Text(text, style = Type.body(14, Palette.text2)) },
         confirmButton = { TextButton(onClick = onConfirm) { Text(confirm, color = Palette.danger) } },
-        dismissButton = { TextButton(onClick = onDismiss) { Text("Отмена", color = Palette.muted) } }
+        dismissButton = { TextButton(onClick = onDismiss) { Text(tr("scr_cancel"), color = Palette.muted) } }
     )
 }
 
@@ -1398,13 +1400,13 @@ fun shortProtocol(p: String): String {
     if (p.isBlank()) return "—"
     val u = p.uppercase()
     return when {
-        u.contains("15765") && u.contains("500") -> "CAN 500 кбит/с"
-        u.contains("15765") && u.contains("250") -> "CAN 250 кбит/с"
+        u.contains("15765") && u.contains("500") -> tr("scr_can_kbps", "500")
+        u.contains("15765") && u.contains("250") -> tr("scr_can_kbps", "250")
         u.contains("15765") -> "CAN"
         u.contains("14230") || u.contains("KWP") -> "K-line KWP2000"
         u.contains("9141") -> "K-line ISO 9141"
         u.contains("J1850") -> "J1850"
-        u.contains("AUTO") -> "Авто"
+        u.contains("AUTO") -> tr("scr_proto_auto")
         else -> p.take(14)
     }
 }
@@ -1414,7 +1416,7 @@ fun shortUrl(url: String): String = url.removePrefix("https://").removePrefix("h
 fun parseVolt(s: String): Double? =
     Regex("[0-9]+(\\.[0-9]+)?").find(s)?.value?.toDoubleOrNull()
 
-fun formatVolt(s: String): String = parseVolt(s)?.let { "%.1f В".format(it) } ?: "—"
+fun formatVolt(s: String): String = parseVolt(s)?.let { tr("scr_volt_fmt", "%.1f".format(it)) } ?: "—"
 
 fun plural(n: Int, one: String, few: String, many: String): String {
     val m10 = n % 10
@@ -1430,8 +1432,8 @@ fun plural(n: Int, one: String, few: String, many: String): String {
 /** Текст отчёта для ручной вставки в чат, как в первой версии. */
 fun reportText(state: AppState): String? {
     val snap = state.lastSnapshot ?: return null
-    return "Расшифруй диагностику машины простыми словами: что сломано, можно ли ехать, что сделать и примерно сколько стоит ремонт. " +
-        "Определи модель по VIN и найди на drive2.ru и drom.ru, как владельцы такой машины решали каждую из этих ошибок, со ссылками на записи.\n\n" +
+    return "Расшифруй диагностику машины простыми словами: что сломано, можно ли ехать, что сделать и примерно сколько стоит ремонт. " + // i18n-ignore
+        "Определи модель по VIN и найди на drive2.ru и drom.ru, как владельцы такой машины решали каждую из этих ошибок, со ссылками на записи.\n\n" + // i18n-ignore
         AiClient.report(snap)
 }
 
@@ -1509,10 +1511,10 @@ private fun ModuleRow(name: String, codes: List<String>, accent: Color, vinMisma
         HSpace(10.dp)
         Column(Modifier.weight(1f)) {
             Text(name, style = Type.body(14, Palette.text, FontWeight.SemiBold))
-            if (vinMismatch) Text("другой VIN в блоке", style = Type.body(11, Palette.danger))
+            if (vinMismatch) Text(tr("scr_other_vin"), style = Type.body(11, Palette.danger))
         }
         Text(
-            if (codes.isEmpty()) "ошибок нет" else codes.joinToString(),
+            if (codes.isEmpty()) tr("scr_module_no_errors") else codes.joinToString(),
             style = if (codes.isEmpty()) Type.label(12) else Type.mono(12, Palette.warn),
             textAlign = TextAlign.End,
             modifier = Modifier.weight(1.4f)
@@ -1551,8 +1553,8 @@ private fun KeyValue(label: String, value: String) {
 fun fullProtocol(p: String): String {
     val u = p.uppercase()
     return when {
-        u.contains("15765") && u.contains("11") -> "ISO 15765-4 CAN, 11-бит ID, ${if (u.contains("250")) "250" else "500"} кбит/с"
-        u.contains("15765") && u.contains("29") -> "ISO 15765-4 CAN, 29-бит ID, ${if (u.contains("250")) "250" else "500"} кбит/с"
+        u.contains("15765") && u.contains("11") -> tr("scr_proto_can_11", if (u.contains("250")) "250" else "500")
+        u.contains("15765") && u.contains("29") -> tr("scr_proto_can_29", if (u.contains("250")) "250" else "500")
         u.contains("15765") -> "ISO 15765-4 CAN"
         u.contains("14230") || u.contains("KWP") -> "ISO 14230-4 KWP2000 (K-line)"
         u.contains("9141") -> "ISO 9141-2 (K-line)"

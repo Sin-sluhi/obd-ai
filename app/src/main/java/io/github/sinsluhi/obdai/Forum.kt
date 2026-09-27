@@ -135,7 +135,7 @@ class ForumApi(private val baseUrl: String, private val deviceId: String) {
         try {
             val code = conn.responseCode
             val text = (if (code in 200..299) conn.inputStream else conn.errorStream)?.bufferedReader(Charsets.UTF_8)?.use { it.readText() } ?: ""
-            if (code !in 200..299) throw IOException("форум: $code")
+            if (code !in 200..299) throw IOException(tr("frm_http_error", code))
             return text
         } finally {
             conn.disconnect()
@@ -151,8 +151,8 @@ class ForumApi(private val baseUrl: String, private val deviceId: String) {
             conn.outputStream.use { it.write(body.toString().toByteArray(Charsets.UTF_8)) }
             val code = conn.responseCode
             val text = (if (code in 200..299) conn.inputStream else conn.errorStream)?.bufferedReader(Charsets.UTF_8)?.use { it.readText() } ?: ""
-            if (code == 429) throw IOException("Не так быстро: одно сообщение в пару секунд")
-            if (code !in 200..299) throw IOException("форум: $code")
+            if (code == 429) throw IOException(tr("frm_too_fast"))
+            if (code !in 200..299) throw IOException(tr("frm_http_error", code))
             return text
         } finally {
             conn.disconnect()
@@ -165,7 +165,7 @@ class ForumApi(private val baseUrl: String, private val deviceId: String) {
 
         /** Ник по умолчанию: «Водитель-1234». */
         fun defaultName(prefs: Prefs): String = prefs.forumName.ifBlank {
-            "Водитель-" + (1000 + (deviceId(prefs).hashCode().let { if (it < 0) -it else it } % 9000)).toString()
+            tr("frm_default_name", 1000 + (deviceId(prefs).hashCode().let { if (it < 0) -it else it } % 9000))
         }
     }
 }

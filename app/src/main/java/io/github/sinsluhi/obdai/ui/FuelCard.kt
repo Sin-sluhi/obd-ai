@@ -23,6 +23,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import io.github.sinsluhi.obdai.Tank
+import io.github.sinsluhi.obdai.tr
 
 /** Карточка «Паспорт заправки» на главном экране: последний бак и его вердикт, по нажатию — журнал баков и имя АЗС. */
 @Composable
@@ -34,7 +35,7 @@ fun FuelCard(tanks: List<Tank>, onRename: (Tank, String, Boolean) -> Unit) {
     Card(radius = 18.dp, padding = 14.dp, glow = if (last.verdict == "worse") Palette.warn else null) {
         Row(Modifier.fillMaxWidth().clickable { open = true }, verticalAlignment = Alignment.CenterVertically) {
             Column(Modifier.weight(1f)) {
-                Text("Паспорт заправки", style = Type.label())
+                Text(tr("fuelcard_title"), style = Type.label())
                 VSpace(4.dp)
                 Text(last.title(), style = Type.strong(15))
                 VSpace(2.dp)
@@ -51,28 +52,28 @@ fun FuelCard(tanks: List<Tank>, onRename: (Tank, String, Boolean) -> Unit) {
         AlertDialog(
             onDismissRequest = { open = false },
             containerColor = Palette.surface,
-            title = { Text("Заправки", style = Type.strong(16)) },
+            title = { Text(tr("fuelcard_dialog_title"), style = Type.strong(16)) },
             text = {
                 Column {
                     tanks.asReversed().take(6).forEachIndexed { i, t ->
                         if (i > 0) { VSpace(8.dp); Box(Modifier.fillMaxWidth().height(1.dp).background(Palette.border)); VSpace(8.dp) }
                         val c = when (t.verdict) { "worse" -> Palette.warn; "better" -> accent; else -> Palette.text2 }
-                        Text(t.title() + (if (t.bad) " · плохая АЗС" else ""), style = Type.body(13, Palette.text, FontWeight.SemiBold))
-                        Text("+%.0f %% бака, %.0f км".format(t.fill, t.km), style = Type.body(12, Palette.muted))
+                        Text(t.title() + (if (t.bad) tr("fuelcard_bad_station_suffix") else ""), style = Type.body(13, Palette.text, FontWeight.SemiBold))
+                        Text(tr("fuelcard_tank_stats", "%.0f".format(t.fill), "%.0f".format(t.km)), style = Type.body(12, Palette.muted))
                         VSpace(2.dp)
                         Text(t.text(), style = Type.body(12, c))
                         VSpace(4.dp)
                         Row {
-                            Text("назвать АЗС", style = Type.body(12, accent, FontWeight.SemiBold), modifier = Modifier.clickable { editing = t; name = t.name })
+                            Text(tr("fuelcard_name_station"), style = Type.body(12, accent, FontWeight.SemiBold), modifier = Modifier.clickable { editing = t; name = t.name })
                             HSpace(14.dp)
-                            Text(if (t.bad) "снять метку" else "пометить плохой", style = Type.body(12, Palette.warn, FontWeight.SemiBold), modifier = Modifier.clickable { onRename(t, t.name, !t.bad) })
+                            Text(if (t.bad) tr("fuelcard_unmark_bad") else tr("fuelcard_mark_bad"), style = Type.body(12, Palette.warn, FontWeight.SemiBold), modifier = Modifier.clickable { onRename(t, t.name, !t.bad) })
                         }
                     }
                     editing?.let { t ->
                         VSpace(10.dp)
                         OutlinedTextField(
                             value = name, onValueChange = { if (it.length <= 40) name = it }, singleLine = true,
-                            placeholder = { Text("Например: Лукойл на Ленина", style = Type.body(13, Palette.muted)) },
+                            placeholder = { Text(tr("fuelcard_name_placeholder"), style = Type.body(13, Palette.muted)) },
                             colors = OutlinedTextFieldDefaults.colors(
                                 focusedBorderColor = accent, unfocusedBorderColor = Palette.border,
                                 focusedTextColor = Palette.text, unfocusedTextColor = Palette.text, cursorColor = accent
@@ -81,12 +82,12 @@ fun FuelCard(tanks: List<Tank>, onRename: (Tank, String, Boolean) -> Unit) {
                         VSpace(6.dp)
                         Row {
                             Spacer(Modifier.weight(1f))
-                            TextButton(onClick = { onRename(t, name.trim(), t.bad); editing = null }) { Text("Сохранить", color = accent) }
+                            TextButton(onClick = { onRename(t, name.trim(), t.bad); editing = null }) { Text(tr("fuelcard_save"), color = accent) }
                         }
                     }
                 }
             },
-            confirmButton = { TextButton(onClick = { open = false }) { Text("Закрыть", color = Palette.muted) } }
+            confirmButton = { TextButton(onClick = { open = false }) { Text(tr("fuelcard_close"), color = Palette.muted) } }
         )
     }
 }

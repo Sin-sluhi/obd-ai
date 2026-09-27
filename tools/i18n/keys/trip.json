@@ -1,0 +1,13 @@
+{
+  "trip_prefix_trip": "Поездка · ",
+  "trip_prefix_record": "Запись · ",
+  "trip_km": "{0} км",
+  "trip_fuel_per_100": " · {0} л/100",
+  "trip_engine_on": "Двигатель работает",
+  "trip_engine_off": "Двигатель заглушен",
+  "trip_volt_unit": " В",
+  "trip_channel_name": "Связь с машиной",
+  "trip_channel_desc": "Показывается, пока OBD AI подключён к адаптеру",
+  "trip_connected": "На связи с машиной",
+  "trip_notif_title": "OBD AI следит за машиной"
+}

@@ -89,7 +89,7 @@ class MainActivity : ComponentActivity() {
             val pending = afterPermission
             afterPermission = null
             if (granted) pending?.invoke()
-            else if (pending != null && state.trip == null && !state.connected) state.toast = "Без разрешения Bluetooth работать не получится"
+            else if (pending != null && state.trip == null && !state.connected) state.toast = tr("main_no_bt_permission")
             else pending?.invoke()
         }
 
@@ -98,7 +98,7 @@ class MainActivity : ComponentActivity() {
 
     private val cameraLauncher =
         registerForActivityResult(ActivityResultContracts.TakePicturePreview()) { bmp ->
-            if (bmp != null) analyzeBitmap(bmp) else state.toast = "Фото не сделано"
+            if (bmp != null) analyzeBitmap(bmp) else state.toast = tr("main_photo_not_taken")
         }
 
     /** Своё фото машины в шапку главного экрана. */
@@ -116,7 +116,7 @@ class MainActivity : ComponentActivity() {
                     BitmapFactory.decodeStream(input, null, opts)
                 }
             }.getOrNull()
-            if (bmp != null) analyzeBitmap(bmp) else state.toast = "Не удалось открыть картинку"
+            if (bmp != null) analyzeBitmap(bmp) else state.toast = tr("main_image_open_failed")
         }
 
     /** Ужимаем до 1280 px по длинной стороне, JPEG, base64 — и отдаём нейронке. */
@@ -302,15 +302,15 @@ class MainActivity : ComponentActivity() {
                         showDemo = state.devMode
                     )
                 }
-                state.error?.let { MessageDialog("Не получилось", it) { state.error = null } }
+                state.error?.let { MessageDialog(tr("main_failed_title"), it) { state.error = null } }
                 if (confirmClear) ConfirmDialog(
-                    title = "Стереть ошибки?",
-                    text = "Зажигание включено, двигатель заглушен. Check Engine погаснет, но если неисправность осталась, ошибка вернётся.",
-                    confirm = "Стереть",
+                    title = tr("main_clear_title"),
+                    text = tr("main_clear_text"),
+                    confirm = tr("main_clear_confirm"),
                     onConfirm = {
                         confirmClear = false
                         state.clearCodes { ok ->
-                            state.toast = if (ok) "Ошибки стёрты" else "Машина не подтвердила сброс"
+                            state.toast = if (ok) tr("main_codes_cleared") else tr("main_clear_not_confirmed")
                             if (ok) page = Page.Home
                         }
                     },
@@ -335,13 +335,13 @@ class MainActivity : ComponentActivity() {
                 (if (d.address == last) 2 else 0) +
                     (if (ADAPTER_WORDS.any { n.contains(it) }) 1 else 0)
             }
-            .map { AdapterOption(it.name ?: "Без имени", "Bluetooth · ${it.address}", AdapterTarget.Classic(it)) }
+            .map { AdapterOption(it.name ?: tr("main_no_name"), "Bluetooth · ${it.address}", AdapterTarget.Classic(it)) }
     }
 
     private fun wifiOption(): AdapterOption {
         val host = state.prefs.wifiHost
         val port = state.prefs.wifiPort
-        return AdapterOption("Wi-Fi адаптер", "$host:$port · сначала подключи телефон к его сети", AdapterTarget.Wifi(host, port))
+        return AdapterOption(tr("main_wifi_adapter"), tr("main_wifi_hint", host, port), AdapterTarget.Wifi(host, port))
     }
 
     /** Поиск адаптеров Bluetooth LE: они не спариваются, их видно только сканированием. */
@@ -396,12 +396,12 @@ class MainActivity : ComponentActivity() {
         }
         val adapter = (getSystemService(BLUETOOTH_SERVICE) as BluetoothManager).adapter
         if (adapter == null) {
-            state.toast = "На телефоне нет Bluetooth"
+            state.toast = tr("main_no_bluetooth")
             pickerDevices = emptyList()
             return
         }
         if (!adapter.isEnabled) {
-            state.toast = "Включи Bluetooth"
+            state.toast = tr("main_enable_bluetooth")
             pickerDevices = emptyList()
             return
         }
@@ -412,10 +412,10 @@ class MainActivity : ComponentActivity() {
     // ---------- фото приборки ----------
 
     private fun takePhoto(onDone: () -> Unit) {
-        if (!state.hasAiKey) { state.toast = "Разбор фото временно недоступен"; return }
+        if (!state.hasAiKey) { state.toast = tr("main_photo_unavailable"); return }
         afterPhoto = onDone
         runCatching { cameraLauncher.launch(null) }
-            .onFailure { state.toast = "Камера недоступна: ${it.message}" }
+            .onFailure { state.toast = tr("main_camera_unavailable", it.message) }
     }
 
     // ---------- действия с результатом ----------
@@ -426,33 +426,33 @@ class MainActivity : ComponentActivity() {
             type = "text/plain"
             putExtra(Intent.EXTRA_TEXT, d.shareText(state.vin))
         }
-        startActivity(Intent.createChooser(intent, "Поделиться результатом"))
+        startActivity(Intent.createChooser(intent, tr("main_share_result")))
     }
 
     private fun findService() {
-        val geo = Intent(Intent.ACTION_VIEW, Uri.parse("geo:0,0?q=" + Uri.encode("автосервис")))
+        val geo = Intent(Intent.ACTION_VIEW, Uri.parse("geo:0,0?q=" + Uri.encode(tr("main_service_query"))))
         try {
             startActivity(geo)
         } catch (e: Exception) {
-            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://yandex.ru/maps/?text=" + Uri.encode("автосервис"))))
+            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://yandex.ru/maps/?text=" + Uri.encode(tr("main_service_query")))))
         }
     }
 
     private fun copyLog() {
         val clipboard = getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
-        clipboard.setPrimaryClip(ClipData.newPlainText("OBD лог", state.log.joinToString("\n")))
-        state.toast = "Лог скопирован, вставь его в чат"
+        clipboard.setPrimaryClip(ClipData.newPlainText(tr("main_clip_log"), state.log.joinToString("\n")))
+        state.toast = tr("main_log_copied")
     }
 
     private fun copyReport(): Boolean {
         val text = reportText(state)
         if (text == null) {
-            state.toast = "Сначала проверь машину"
+            state.toast = tr("main_check_first")
             return false
         }
         val clipboard = getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
-        clipboard.setPrimaryClip(ClipData.newPlainText("OBD отчёт", text))
-        state.toast = "Отчёт скопирован"
+        clipboard.setPrimaryClip(ClipData.newPlainText(tr("main_clip_report"), text))
+        state.toast = tr("main_report_copied")
         return true
     }
 
@@ -473,13 +473,13 @@ class MainActivity : ComponentActivity() {
     private fun startCarService() {
         if (!state.connected || !state.realLink) return
         runCatching { ContextCompat.startForegroundService(this, Intent(this, TripService::class.java)) }
-            .onFailure { state.addLog("Сервис не запустился: ${it.message}") }
+            .onFailure { state.addLog(tr("main_service_failed", it.message)) }
     }
 
     // ---------- поездки ----------
 
     private fun startTrip() {
-        if (!state.connected) { state.toast = "Сначала подключи адаптер"; return }
+        if (!state.connected) { state.toast = tr("main_connect_first"); return }
         state.startTrip()
         ensureService()
     }
@@ -492,7 +492,7 @@ class MainActivity : ComponentActivity() {
 
     private val locationLauncher =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) { granted ->
-            if (granted) readLocation() else state.toast = "Без геопозиции прогноз считается по датчику за бортом"
+            if (granted) readLocation() else state.toast = tr("main_no_location")
         }
 
     private fun useLocationForForecast() {
@@ -510,7 +510,7 @@ class MainActivity : ComponentActivity() {
             .mapNotNull { p -> runCatching { lm.getLastKnownLocation(p) }.getOrNull() }
             .maxByOrNull { it.time }
         if (loc == null) {
-            state.toast = "Телефон ещё не знает, где он. Открой карты на минуту и попробуй снова"
+            state.toast = tr("main_location_unknown")
             return
         }
         state.updateLocation(loc.latitude, loc.longitude)

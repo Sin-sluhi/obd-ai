@@ -48,12 +48,12 @@ class DemoLink : ObdLink {
 
     override val isConnected get() = connected
     override val protocol = "ISO 15765-4 (CAN 11/500)"
-    override val name = "Демо-машина"
+    override val name: String get() = tr("demo_car_name")
     override val ecuOnline = true
     override val ecuName = "ECM"
     override val calibration = "G4FC-RB-1.6-E5"
     override val supportedPids: Set<Int> = setOf(0x04, 0x05, 0x06, 0x07, 0x0B, 0x0C, 0x0D, 0x0F, 0x10, 0x11, 0x42, 0x5E, 0x2F, 0x46, 0x5C, 0xA6)
-    override val adapter = AdapterInfo("ELM327 v1.5 (демо)", "OBDII to RS232 Interpreter", emptyList(), 38)
+    override val adapter: AdapterInfo get() = AdapterInfo(tr("demo_adapter_version"), "OBDII to RS232 Interpreter", emptyList(), 38)
 
     private fun t() = (System.currentTimeMillis() - start) / 1000.0
     private fun driving() = t() > 15
@@ -87,26 +87,26 @@ class DemoLink : ObdLink {
     private fun readAll(running: Boolean, driving: Boolean, speed: Double, rpm: Double, maf: Double, live: Boolean): List<SensorReading> {
         val volt = if (!running) 12.4 else if (t() < 5.6) 9.9 else 13.9 + 0.05 * sin(t())
         val base = listOf(
-            SensorReading("rpm", "Обороты", rpm, "об/мин"),
-            SensorReading("speed", "Скорость", speed, "км/ч"),
-            SensorReading("maf", "Расход воздуха", maf, "г/с"),
-            SensorReading("coolant", "Температура ОЖ", 87.0 + (t() / 30).coerceAtMost(4.0), "°C"),
-            SensorReading("load", "Нагрузка двигателя", if (driving) 30 + speed * 0.5 else 23 + 2 * sin(t()), "%"),
-            SensorReading("iat", "Температура на впуске", 31.0, "°C"),
-            SensorReading("throttle", "Дроссель", if (driving) 12 + speed * 0.3 else 14 + sin(t() * 0.7), "%"),
-            SensorReading("stft", "Кратк. топл. коррекция", 7.8 + 1.5 * sin(t() * 2), "%"),
-            SensorReading("ltft", "Долг. топл. коррекция", 12.5, "%"),
-            SensorReading("map", "Давление во впуске", if (!running) 99.0 else if (driving) 45 + speed * 0.4 else 33.0, "кПа"),
-            SensorReading("volt", "Напряжение на ЭБУ", volt, "В"),
-            SensorReading("fuelrate", "Расход топлива", if (running) maf / 14.7 / 745.0 * 3600 else 0.0, "л/ч")
+            SensorReading("rpm", tr("demo_sensor_rpm"), rpm, tr("demo_unit_rpm")),
+            SensorReading("speed", tr("demo_sensor_speed"), speed, tr("demo_unit_kmh")),
+            SensorReading("maf", tr("demo_sensor_maf"), maf, tr("demo_unit_g_s")),
+            SensorReading("coolant", tr("demo_sensor_coolant"), 87.0 + (t() / 30).coerceAtMost(4.0), "°C"),
+            SensorReading("load", tr("demo_sensor_load"), if (driving) 30 + speed * 0.5 else 23 + 2 * sin(t()), "%"),
+            SensorReading("iat", tr("demo_sensor_iat"), 31.0, "°C"),
+            SensorReading("throttle", tr("demo_sensor_throttle"), if (driving) 12 + speed * 0.3 else 14 + sin(t() * 0.7), "%"),
+            SensorReading("stft", tr("demo_sensor_stft"), 7.8 + 1.5 * sin(t() * 2), "%"),
+            SensorReading("ltft", tr("demo_sensor_ltft"), 12.5, "%"),
+            SensorReading("map", tr("demo_sensor_map"), if (!running) 99.0 else if (driving) 45 + speed * 0.4 else 33.0, tr("demo_unit_kpa")),
+            SensorReading("volt", tr("demo_sensor_volt"), volt, tr("demo_unit_v")),
+            SensorReading("fuelrate", tr("demo_sensor_fuelrate"), if (running) maf / 14.7 / 745.0 * 3600 else 0.0, tr("demo_unit_l_h"))
         )
         if (live) return base
         return base + listOf(
-            SensorReading("fuel", "Уровень топлива", 41.0, "%"),
-            SensorReading("ambient", "Температура за бортом", 17.0, "°C"),
-            SensorReading("baro", "Атмосферное давление", 99.0, "кПа"),
-            SensorReading("runtime", "Двигатель работает", if (running) t() - 5 else 0.0, "с"),
-            SensorReading("oil", "Температура масла", 91.0, "°C")
+            SensorReading("fuel", tr("demo_sensor_fuel"), 41.0, "%"),
+            SensorReading("ambient", tr("demo_sensor_ambient"), 17.0, "°C"),
+            SensorReading("baro", tr("demo_sensor_baro"), 99.0, tr("demo_unit_kpa")),
+            SensorReading("runtime", tr("demo_sensor_runtime"), if (running) t() - 5 else 0.0, tr("demo_unit_s")),
+            SensorReading("oil", tr("demo_sensor_oil"), 91.0, "°C")
         )
     }
 
@@ -116,9 +116,9 @@ class DemoLink : ObdLink {
 
     override fun readReadiness(): Pair<Readiness?, Readiness?> {
         val since = Readiness(true, false, listOf(
-            Readiness.Monitor("Пропуски зажигания", true), Readiness.Monitor("Топливная система", true), Readiness.Monitor("Общие компоненты", true),
-            Readiness.Monitor("Катализатор", !cleared), Readiness.Monitor("Улавливание паров топлива (EVAP)", false),
-            Readiness.Monitor("Лямбда-зонды", true), Readiness.Monitor("Подогрев лямбда-зондов", true)
+            Readiness.Monitor(tr("demo_mon_misfire"), true), Readiness.Monitor(tr("demo_mon_fuel"), true), Readiness.Monitor(tr("demo_mon_components"), true),
+            Readiness.Monitor(tr("demo_mon_catalyst"), !cleared), Readiness.Monitor(tr("demo_mon_evap"), false),
+            Readiness.Monitor(tr("demo_mon_o2"), true), Readiness.Monitor(tr("demo_mon_o2_heater"), true)
         ))
         val cycle = Readiness(false, false, since.monitors.map { it.copy(complete = it.complete && driving()) })
         return Pair(since, cycle)
@@ -139,17 +139,17 @@ class DemoLink : ObdLink {
     override fun scanModules(brand: String?, progress: (Int, Int) -> Unit): List<ModuleScan> {
         val vin = readVin()
         val list = listOf(
-            ModuleScan("ABS / ESC", 0x7D1, if (cleared) emptyList() else listOf("C1259 (история)"), "UDS", if (cleared) emptyList() else listOf(0x28), vin, "58910-4L500"),
-            ModuleScan("Подушки безопасности", 0x7D2, emptyList(), "UDS", emptyList(), vin, "95910-4L000"),
-            ModuleScan("Приборная панель", 0x7C6, emptyList(), "UDS", emptyList(), vin, null),
-            ModuleScan("Кузовной блок (BCM)", 0x7A0, if (cleared) emptyList() else listOf("B1602 (активная)"), "UDS", if (cleared) emptyList() else listOf(0x09), null, null)
+            ModuleScan("ABS / ESC", 0x7D1, if (cleared) emptyList() else listOf("C1259 (история)"), "UDS", if (cleared) emptyList() else listOf(0x28), vin, "58910-4L500"), // i18n-ignore: пометка статуса как в ObdDecoder, по ней сравнивают Models/Purchase
+            ModuleScan(tr("demo_module_airbag"), 0x7D2, emptyList(), "UDS", emptyList(), vin, "95910-4L000"),
+            ModuleScan(tr("demo_module_cluster"), 0x7C6, emptyList(), "UDS", emptyList(), vin, null),
+            ModuleScan(tr("demo_module_bcm"), 0x7A0, if (cleared) emptyList() else listOf("B1602 (активная)"), "UDS", if (cleared) emptyList() else listOf(0x09), null, null) // i18n-ignore: пометка статуса как в ObdDecoder
         )
         for (i in 1..4) { progress(i, 4); Thread.sleep(300) }
         return list
     }
 
     override fun send(cmd: String, timeoutMs: Long): String = when (cmd.uppercase()) {
-        "ATZ" -> "ELM327 v1.5 (демо)"
+        "ATZ" -> tr("demo_adapter_version")
         "ATRV" -> readVoltage()
         "0100" -> "41 00 BE 3E B8 11"
         "0105" -> "41 05 7F"

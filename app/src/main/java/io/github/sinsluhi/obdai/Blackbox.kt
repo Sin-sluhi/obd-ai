@@ -4,7 +4,6 @@ import org.json.JSONArray
 import org.json.JSONObject
 import java.text.SimpleDateFormat
 import java.util.Date
-import java.util.Locale
 
 /**
  * Чёрный ящик: приложение всё время держит в памяти последнюю минуту показаний.
@@ -29,7 +28,7 @@ data class BlackboxEvent(
     val before: List<BbSample> get() = samples.filter { it.t <= t }
     val after: List<BbSample> get() = samples.filter { it.t > t }
 
-    fun timeText(): String = SimpleDateFormat("d MMMM, HH:mm:ss", Locale("ru")).format(Date(t))
+    fun timeText(): String = SimpleDateFormat("d MMMM, HH:mm:ss", Tr.lang.locale).format(Date(t))
 
     /** Ряд значений одного параметра для графика. */
     fun series(key: String): List<Pair<Long, Double>> = samples.mapNotNull { s -> s.v[key]?.let { s.t to it } }
@@ -50,10 +49,10 @@ data class BlackboxEvent(
             val unit = UNITS[key] ?: ""
             when (key) {
                 "stft", "ltft" -> if (kotlin.math.abs(d) >= 5) add("$name: %.0f → %.0f %%".format(a, b))
-                "volt" -> if (kotlin.math.abs(d) >= 0.4) add("$name: %.1f → %.1f В".format(a, b))
-                "coolant" -> if (kotlin.math.abs(d) >= 5) add("$name: %.0f → %.0f °C".format(a, b))
+                "volt" -> if (kotlin.math.abs(d) >= 0.4) add(tr("bb_change_volt", name, "%.1f".format(a), "%.1f".format(b)))
+                "coolant" -> if (kotlin.math.abs(d) >= 5) add(tr("bb_change_coolant", name, "%.0f".format(a), "%.0f".format(b)))
                 "rpm" -> if (kotlin.math.abs(d) >= 400) add("$name: %.0f → %.0f".format(a, b))
-                "speed" -> if (kotlin.math.abs(d) >= 15) add("$name: %.0f → %.0f км/ч".format(a, b))
+                "speed" -> if (kotlin.math.abs(d) >= 15) add(tr("bb_change_speed", name, "%.0f".format(a), "%.0f".format(b)))
                 "timing" -> if (kotlin.math.abs(d) >= 4) add("$name: %.0f° → %.0f°".format(a, b))
                 else -> if (a != 0.0 && kotlin.math.abs(d / a) >= 0.35) add("$name: %.1f → %.1f $unit".format(a, b))
             }
@@ -61,17 +60,17 @@ data class BlackboxEvent(
     }
 
     fun shareText(): String = buildString {
-        appendLine("OBD AI, чёрный ящик: $title")
+        appendLine(tr("bb_share_title", title))
         appendLine(timeText())
         if (detail.isNotBlank()) appendLine(detail)
         val ch = changes()
         if (ch.isNotEmpty()) {
             appendLine()
-            appendLine("За несколько секунд до события:")
+            appendLine(tr("bb_share_before_event"))
             ch.forEach { appendLine("• $it") }
         }
         appendLine()
-        appendLine("Запись: ${before.size} замеров до и ${after.size} после.")
+        appendLine(tr("bb_share_record", before.size, after.size))
     }
 
     /** Компактно: список ключей один раз, дальше строки чисел. */
@@ -89,15 +88,20 @@ data class BlackboxEvent(
     }
 
     companion object {
-        val NAMES = mapOf(
-            "rpm" to "Обороты", "speed" to "Скорость", "load" to "Нагрузка", "coolant" to "Температура",
-            "stft" to "Коррекция кратк.", "ltft" to "Коррекция долг.", "maf" to "Расход воздуха",
-            "map" to "Давление впуска", "volt" to "Напряжение", "throttle" to "Дроссель", "timing" to "Зажигание"
-        )
-        val UNITS = mapOf(
-            "rpm" to "об/мин", "speed" to "км/ч", "load" to "%", "coolant" to "°C", "stft" to "%", "ltft" to "%",
-            "maf" to "г/с", "map" to "кПа", "volt" to "В", "throttle" to "%", "timing" to "°"
-        )
+        /** Подписи параметров: считаются при каждом обращении, чтобы смена языка сразу отражалась. */
+        val NAMES: Map<String, String>
+            get() = mapOf(
+                "rpm" to tr("bb_name_rpm"), "speed" to tr("bb_name_speed"), "load" to tr("bb_name_load"),
+                "coolant" to tr("bb_name_coolant"), "stft" to tr("bb_name_stft"), "ltft" to tr("bb_name_ltft"),
+                "maf" to tr("bb_name_maf"), "map" to tr("bb_name_map"), "volt" to tr("bb_name_volt"),
+                "throttle" to tr("bb_name_throttle"), "timing" to tr("bb_name_timing")
+            )
+        val UNITS: Map<String, String>
+            get() = mapOf(
+                "rpm" to tr("bb_unit_rpm"), "speed" to tr("bb_unit_kmh"), "load" to "%", "coolant" to "°C",
+                "stft" to "%", "ltft" to "%", "maf" to tr("bb_unit_gs"), "map" to tr("bb_unit_kpa"),
+                "volt" to tr("bb_unit_v"), "throttle" to "%", "timing" to "°"
+            )
 
         fun fromJson(o: JSONObject): BlackboxEvent? = runCatching {
             val t = o.getLong("t")
@@ -133,8 +137,8 @@ object Blackbox {
 
     /** Строка для нейронки: что было перед последним событием. */
     fun report(e: BlackboxEvent): String = buildString {
-        append("Чёрный ящик, ${e.timeText()}: ${e.title}.")
+        append("Чёрный ящик, ${e.timeText()}: ${e.title}.") // i18n-ignore
         val ch = e.changes()
-        if (ch.isNotEmpty()) append(" За секунды до события: ${ch.joinToString("; ")}.")
+        if (ch.isNotEmpty()) append(" За секунды до события: ${ch.joinToString("; ")}.") // i18n-ignore
     }
 }

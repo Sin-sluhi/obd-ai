@@ -4,7 +4,6 @@ import org.json.JSONArray
 import org.json.JSONObject
 import java.text.SimpleDateFormat
 import java.util.Date
-import java.util.Locale
 
 /**
  * «Паспорт заправки»: один бак — от заправки до следующей. По уровню топлива ловим момент заправки,
@@ -47,36 +46,37 @@ data class Tank(
             }
         }
 
-    fun title(): String = "Бак от " + SimpleDateFormat("d MMMM", Locale("ru")).format(Date(start)) + (if (name.isNotBlank()) " · $name" else "")
+    fun title(): String = tr("fuel_tank_from", SimpleDateFormat("d MMMM", Tr.lang.locale).format(Date(start))) + (if (name.isNotBlank()) " · $name" else "")
 
     fun text(): String {
         val t = trim
         val pt = prevTrim
         fun f(v: Double) = (if (v >= 0) "+" else "") + "%.0f".format(v)
+        fun timingText() = timing?.let { tr("fuel_timing_deg", "%.0f".format(it)) } ?: ""
         return when (verdict) {
-            "pending" -> "Собираю данные: %.0f км из %.0f и %d замеров из %d на прогретом моторе в спокойной езде.".format(km, MIN_KM, trimN, MIN_N)
-            "first" -> "Первый бак в журнале: коррекции ${f(t!!)} %" + (timing?.let { ", зажигание %.0f°".format(it) } ?: "") + ". Сравню со следующей заправкой."
+            "pending" -> tr("fuel_pending", "%.0f".format(km), "%.0f".format(MIN_KM), trimN, MIN_N)
+            "first" -> tr("fuel_first", f(t!!), timingText())
             "worse" -> buildString {
-                append("Мотор с этим топливом работает хуже: коррекции смеси ${f(t!!)} % против ${f(pt!!)} % на прошлом баке")
-                if (timing != null && prevTiming != null) append(", зажигание на %.0f° позже".format(prevTiming - timing!!))
-                append(". Так выглядит бензин с низким октаном или водой. Повторится с той же АЗС — менять заправку.")
+                append(tr("fuel_worse_head", f(t!!), f(pt!!)))
+                if (timing != null && prevTiming != null) append(tr("fuel_worse_timing", "%.0f".format(prevTiming - timing!!)))
+                append(tr("fuel_worse_tail"))
             }
             "better" -> buildString {
-                append("С этим топливом ровнее: коррекции ${f(t!!)} % против ${f(pt!!)} %")
-                if (timing != null && prevTiming != null) append(", зажигание на %.0f° раньше".format(timing!! - prevTiming))
-                append(". Эту заправку стоит запомнить.")
+                append(tr("fuel_better_head", f(t!!), f(pt!!)))
+                if (timing != null && prevTiming != null) append(tr("fuel_better_timing", "%.0f".format(timing!! - prevTiming)))
+                append(tr("fuel_better_tail"))
             }
-            else -> "Как на прошлом баке: коррекции ${f(t!!)} % (было ${f(pt!!)} %)" + (timing?.let { ", зажигание %.0f°".format(it) } ?: "") + ". Топливо нормальное."
+            else -> tr("fuel_same", f(t!!), f(pt!!), timingText())
         }
     }
 
     /** Одна строка для главного экрана. */
     fun short(): String = when (verdict) {
-        "pending" -> "заправка %s, собираю данные (%.0f км)".format(SimpleDateFormat("d.MM", Locale("ru")).format(Date(start)), km)
-        "first" -> "первый бак записан"
-        "worse" -> "с этим топливом мотор работает хуже"
-        "better" -> "с этим топливом ровнее, чем на прошлом"
-        else -> "топливо нормальное"
+        "pending" -> tr("fuel_short_pending", SimpleDateFormat("d.MM", Tr.lang.locale).format(Date(start)), "%.0f".format(km))
+        "first" -> tr("fuel_short_first")
+        "worse" -> tr("fuel_short_worse")
+        "better" -> tr("fuel_short_better")
+        else -> tr("fuel_short_same")
     }
 
     fun toJson(): JSONObject = JSONObject()

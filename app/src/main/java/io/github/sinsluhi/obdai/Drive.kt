@@ -65,14 +65,14 @@ class WarmupTracker(private val start: Long, private val ambient: Double?) {
         val moving = points.count { it.speed > 20 }.toDouble() / points.size
         val drop = reach != null && points.filter { it.t > reach.t }.any { it.speed > 70 && it.coolant < 75 }
         val limit = if ((ambient ?: 10.0) < -15) 25.0 else 15.0
-        val amb = ambient?.let { " при %.0f° за бортом".format(it) } ?: ""
+        val amb = ambient?.let { tr("drive_warmup_at_ambient", "%.0f".format(it)) } ?: ""
         val (level, text) = when {
-            maxTemp >= 108 -> "danger" to "Перегрев: температура доходила до %.0f°. Проверь уровень антифриза, вентилятор и термостат.".format(maxTemp)
-            drop -> "warning" to "После прогрева на трассе температура падала ниже 75°: термостат не закрывается до конца. Мотор работает холодным, расход выше."
-            minutesTo80 != null && minutesTo80 <= limit -> "ok" to "Прогрев в норме: 80° за %.0f мин%s.".format(minutesTo80, amb)
-            minutesTo80 != null -> "info" to "До 80° грелся %.0f мин%s: долговато, но %s.".format(minutesTo80, amb, if (moving < 0.5) "в основном на холостых, это нормально" else "если так каждый раз, проверь термостат")
-            dur >= 20 && moving > 0.5 -> "warning" to "За %.0f мин в движении не прогрелся до 80° (максимум %.0f°)%s: похоже, термостат открыт. Частая болячка, деталь недорогая.".format(dur, maxTemp, amb)
-            dur >= 20 -> "info" to "За %.0f мин на холостых прогрелся только до %.0f°%s. На холостых зимой это бывает, проверь в движении.".format(dur, maxTemp, amb)
+            maxTemp >= 108 -> "danger" to tr("drive_warmup_overheat", "%.0f".format(maxTemp))
+            drop -> "warning" to tr("drive_warmup_drop_highway")
+            minutesTo80 != null && minutesTo80 <= limit -> "ok" to tr("drive_warmup_ok", "%.0f".format(minutesTo80), amb)
+            minutesTo80 != null -> "info" to tr("drive_warmup_slow", "%.0f".format(minutesTo80), amb, if (moving < 0.5) tr("drive_warmup_slow_idle_fine") else tr("drive_warmup_slow_check_thermostat"))
+            dur >= 20 && moving > 0.5 -> "warning" to tr("drive_warmup_not_reached_moving", "%.0f".format(dur), "%.0f".format(maxTemp), amb)
+            dur >= 20 -> "info" to tr("drive_warmup_not_reached_idle", "%.0f".format(dur), "%.0f".format(maxTemp), amb)
             else -> return null
         }
         return WarmupResult(now, ambient, minutesTo80, maxTemp, dur, moving, drop, level, text)
@@ -108,20 +108,20 @@ data class StartAnalysis(val level: String, val title: String, val text: String,
             } else null
             var level = "ok"
             val sb = StringBuilder()
-            sb.append("Последний запуск: стартер крутил %.1f с".format(last.crankMs / 1000.0))
-            last.minV?.let { sb.append(", напряжение просело до %.1f В".format(it)) }
-            last.coolant?.let { sb.append(", мотор %.0f°".format(it)) }
+            sb.append(tr("drive_start_last", "%.1f".format(last.crankMs / 1000.0)))
+            last.minV?.let { sb.append(tr("drive_start_volt_drop", "%.1f".format(it))) }
+            last.coolant?.let { sb.append(tr("drive_start_coolant", "%.0f".format(it))) }
             sb.append(". ")
             when {
-                median >= 3000 -> { level = "danger"; sb.append("Обычно крутит дольше 3 секунд: аккумулятор, стартер или давление топлива на исходе.") }
-                median >= 1500 -> { level = "warning"; sb.append("Запуск затянутый (обычно %.1f с): следи, зимой может не завести.".format(median / 1000.0)) }
-                else -> sb.append("Запускается бодро.")
+                median >= 3000 -> { level = "danger"; sb.append(tr("drive_start_too_long")) }
+                median >= 1500 -> { level = "warning"; sb.append(tr("drive_start_slow", "%.1f".format(median / 1000.0))) }
+                else -> sb.append(tr("drive_start_brisk"))
             }
             if (trend != null && trend >= 50) {
                 if (level == "ok") level = "warning"
-                sb.append(" Время запуска выросло на $trend % по сравнению с прошлыми: что-то деградирует.")
+                sb.append(tr("drive_start_trend_worse", trend))
             }
-            val title = when (level) { "danger" -> "Запуск: плохо"; "warning" -> "Запуск: затянутый"; else -> "Запуск в норме" }
+            val title = when (level) { "danger" -> tr("drive_start_title_bad"); "warning" -> tr("drive_start_title_slow"); else -> tr("drive_start_title_ok") }
             return StartAnalysis(level, title, sb.toString(), last.crankMs, median, trend)
         }
     }
@@ -157,13 +157,13 @@ data class MorningForecast(val level: String, val title: String, val text: Strin
             var need = needFor(nightTemp)
             if (crankMedianMs != null && crankMedianMs >= 1500) need += 15
             val margin = soc - need
-            val src = if (fromWeather) "по прогнозу" else "по датчику за бортом"
+            val src = if (fromWeather) tr("drive_forecast_src_weather") else tr("drive_forecast_src_sensor")
             val (level, title, advice) = when {
-                margin >= 20 -> Triple("ok", "Утром заведётся", "Заряда хватает с запасом.")
-                margin >= 0 -> Triple("warning", "Утром заведётся, но впритык", "Если есть возможность, подзаряди аккумулятор или поставь машину в тепло.")
-                else -> Triple("danger", "Утром может не завестись", "Поставь аккумулятор на зарядку сегодня или заранее найди, у кого прикурить.")
+                margin >= 20 -> Triple("ok", tr("drive_forecast_ok_title"), tr("drive_forecast_ok_advice"))
+                margin >= 0 -> Triple("warning", tr("drive_forecast_tight_title"), tr("drive_forecast_tight_advice"))
+                else -> Triple("danger", tr("drive_forecast_bad_title"), tr("drive_forecast_bad_advice"))
             }
-            val text = "Ночью %s около %.0f°, аккумулятор %.2f В (заряд ~%d %%), для запуска в такой мороз нужно ~%d %%. %s".format(src, nightTemp, restV, soc, need, advice)
+            val text = tr("drive_forecast_text", src, "%.0f".format(nightTemp), "%.2f".format(restV), soc, need, advice)
             return MorningForecast(level, title, text, nightTemp, restV, soc, need, fromWeather)
         }
     }
@@ -206,32 +206,32 @@ object SensorCheck {
 
         if (cold && iat != null) {
             if (abs(coolant!! - iat) > 8) add(Flag("warning",
-                "На холодной машине температура ОЖ (%.0f°) и впуска (%.0f°) должны совпадать, а расходятся на %.0f°. Один из датчиков врёт: чаще датчик температуры ОЖ, от него зависят смесь и запуск.".format(coolant, iat, abs(coolant - iat))))
-            else add(Flag("ok", "Датчики температуры ОЖ и впуска сходятся на холодной машине (%.0f° и %.0f°).".format(coolant, iat)))
+                tr("drive_sensor_temp_mismatch", "%.0f".format(coolant), "%.0f".format(iat), "%.0f".format(abs(coolant - iat)))))
+            else add(Flag("ok", tr("drive_sensor_temp_ok", "%.0f".format(coolant), "%.0f".format(iat))))
         }
         if (cold && ambient != null && coolant != null && abs(coolant - ambient) > 10)
-            add(Flag("info", "Температура ОЖ на холодной машине (%.0f°) заметно отличается от забортной (%.0f°): либо машина недавно ездила, либо датчик наружной температуры врёт.".format(coolant, ambient)))
+            add(Flag("info", tr("drive_sensor_ambient_diff", "%.0f".format(coolant), "%.0f".format(ambient))))
 
         if (engineOff && map != null) {
             when {
-                baro != null && abs(map - baro) > 6 -> add(Flag("warning", "При выключенном двигателе давление во впуске (%.0f кПа) должно равняться атмосферному (%.0f кПа). Датчик абсолютного давления врёт.".format(map, baro)))
-                baro == null && (map < 70 || map > 110) -> add(Flag("warning", "При выключенном двигателе давление во впуске %.0f кПа, а должно быть атмосферное (около 100). Датчик абсолютного давления врёт.".format(map)))
-                else -> add(Flag("ok", "Датчик давления во впуске сходится с атмосферным (%.0f кПа).".format(map)))
+                baro != null && abs(map - baro) > 6 -> add(Flag("warning", tr("drive_sensor_map_vs_baro", "%.0f".format(map), "%.0f".format(baro))))
+                baro == null && (map < 70 || map > 110) -> add(Flag("warning", tr("drive_sensor_map_no_baro", "%.0f".format(map))))
+                else -> add(Flag("ok", tr("drive_sensor_map_ok", "%.0f".format(map))))
             }
         }
         if (!engineOff && rpm != null && rpm in 500.0..1100.0 && map != null && !compression) {
-            if (map > 65) add(Flag("warning", "На холостых давление во впуске %.0f кПа: разрежения почти нет. Подсос воздуха, зависший дроссель или неисправный датчик давления.".format(map)))
+            if (map > 65) add(Flag("warning", tr("drive_sensor_idle_no_vacuum", "%.0f".format(map))))
         }
         if (baro != null && (baro < 60 || baro > 108))
-            add(Flag("warning", "Датчик атмосферного давления показывает %.0f кПа: нереальное значение, датчик или ЭБУ.".format(baro)))
+            add(Flag("warning", tr("drive_sensor_baro_unreal", "%.0f".format(baro))))
 
         val adapterV = Regex("[0-9]+(\\.[0-9]+)?").find(snap.voltage)?.value?.toDoubleOrNull()
         if (ecuV != null && adapterV != null && abs(ecuV - adapterV) > 0.7)
-            add(Flag("info", "Вольтметр адаптера (%.1f В) расходится с ЭБУ (%.1f В): верить ЭБУ, клоны меряют грубо.".format(adapterV, ecuV)))
+            add(Flag("info", tr("drive_sensor_adapter_volt_diff", "%.1f".format(adapterV), "%.1f".format(ecuV))))
 
         val stft = v("stft"); val ltft = v("ltft")
         if (stft != null && ltft != null && !engineOff && abs(stft + ltft) > 20)
-            add(Flag("warning", "Суммарная топливная коррекция %+.0f %%: ЭБУ сильно правит смесь. Подсос, форсунки, ДМРВ или давление топлива.".format(stft + ltft)))
+            add(Flag("warning", tr("drive_sensor_fuel_trim", "%+.0f".format(stft + ltft))))
     }
 }
 

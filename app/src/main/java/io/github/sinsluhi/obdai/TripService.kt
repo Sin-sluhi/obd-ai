@@ -30,14 +30,14 @@ class TripService : Service() {
             }
             val t = state.trip
             val text = if (t != null) buildString {
-                append(if (state.tripAuto) "Поездка · " else "Запись · ")
-                append("%.1f км".format(t.distanceKm))
+                append(if (state.tripAuto) tr("trip_prefix_trip") else tr("trip_prefix_record"))
+                append(tr("trip_km", "%.1f".format(t.distanceKm)))
                 append(" · ").append(formatDuration(System.currentTimeMillis() - t.start))
-                t.fuelL?.let { if (t.distanceKm > 0.3) append(" · %.1f л/100".format(it / t.distanceKm * 100)) }
+                t.fuelL?.let { if (t.distanceKm > 0.3) append(tr("trip_fuel_per_100", "%.1f".format(it / t.distanceKm * 100))) }
             } else buildString {
-                append(if (state.engineOn) "Двигатель работает" else "Двигатель заглушен")
+                append(if (state.engineOn) tr("trip_engine_on") else tr("trip_engine_off"))
                 val v = state.voltage
-                if (v.isNotBlank()) append(" · ").append(v.replace("V", " В"))
+                if (v.isNotBlank()) append(" · ").append(v.replace("V", tr("trip_volt_unit")))
             }
             manager().notify(ID, build(text))
             handler.postDelayed(this, 3_000)
@@ -48,12 +48,12 @@ class TripService : Service() {
         super.onCreate()
         if (Build.VERSION.SDK_INT >= 26) {
             manager().createNotificationChannel(
-                NotificationChannel(CHANNEL, "Связь с машиной", NotificationManager.IMPORTANCE_LOW).apply {
-                    description = "Показывается, пока OBD AI подключён к адаптеру"
+                NotificationChannel(CHANNEL, tr("trip_channel_name"), NotificationManager.IMPORTANCE_LOW).apply {
+                    description = tr("trip_channel_desc")
                 }
             )
         }
-        ServiceCompat.startForeground(this, ID, build("На связи с машиной"), ServiceInfo.FOREGROUND_SERVICE_TYPE_CONNECTED_DEVICE)
+        ServiceCompat.startForeground(this, ID, build(tr("trip_connected")), ServiceInfo.FOREGROUND_SERVICE_TYPE_CONNECTED_DEVICE)
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
@@ -78,7 +78,7 @@ class TripService : Service() {
         )
         return NotificationCompat.Builder(this, CHANNEL)
             .setSmallIcon(R.drawable.ic_logo)
-            .setContentTitle("OBD AI следит за машиной")
+            .setContentTitle(tr("trip_notif_title"))
             .setContentText(text)
             .setOngoing(true)
             .setOnlyAlertOnce(true)

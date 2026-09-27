@@ -1,0 +1,18 @@
+{
+  "elm_channel": "Канал: {0}",
+  "elm_adapter": "Адаптер: {0}",
+  "elm_adapter_grade": "Возможности адаптера: {0}",
+  "elm_probing_protocol": "Ищу протокол машины (до 15 сек)...",
+  "elm_car_no_answer": "⚠️ Машина не ответила: {0}",
+  "elm_check_ignition": "Проверь, что зажигание включено",
+  "elm_protocol": "Протокол: {0}",
+  "elm_supported_pids": "Машина поддерживает PID: {0}",
+  "elm_ecu": "ЭБУ: {0}",
+  "elm_calibration": "Прошивка: {0}",
+  "elm_voltage": "Напряжение: {0}",
+  "elm_not_connected": "Адаптер не подключён",
+  "elm_connection_closed": "Адаптер закрыл соединение",
+  "elm_scan_can_only": "Опрос блоков доступен только на CAN-машинах",
+  "elm_scan_skipped": "Адаптер не умеет {0}: опрос блоков пропущен",
+  "elm_no_codes": "ошибок нет"
+}

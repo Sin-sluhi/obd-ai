@@ -47,7 +47,7 @@ import io.github.sinsluhi.obdai.BlackboxEvent
 import io.github.sinsluhi.obdai.ServiceAudit
 import io.github.sinsluhi.obdai.ServiceCatalog
 import io.github.sinsluhi.obdai.ServiceVisit
-import io.github.sinsluhi.obdai.formatPrice
+import io.github.sinsluhi.obdai.tr
 
 // ======================= чёрный ящик =======================
 
@@ -59,23 +59,22 @@ fun BlackboxScreen(state: AppState, onBack: () -> Unit) {
     if (current != null) {
         BlackboxDetail(current, onBack = { open = null }, onShare = {
             val send = Intent(Intent.ACTION_SEND).apply { type = "text/plain"; putExtra(Intent.EXTRA_TEXT, current.shareText()) }
-            runCatching { context.startActivity(Intent.createChooser(send, "Поделиться")) }
+            runCatching { context.startActivity(Intent.createChooser(send, tr("journal_share"))) }
         })
         return
     }
     Screen {
-        Header("Чёрный ящик", onBack = onBack)
+        Header(tr("journal_blackbox_title"), onBack = onBack)
         Text(
-            "Пока адаптер в машине, приложение всё время держит в памяти последнюю минуту показаний. " +
-                "Случилось что-то — минута «до» и полминуты «после» остаются здесь.",
+            tr("journal_blackbox_intro"),
             style = Type.body(13, Palette.muted)
         )
         VSpace(14.dp)
         if (state.blackbox.isEmpty()) {
             Card(background = Palette.surface2, border = Palette.border, radius = 16.dp, padding = 16.dp) {
-                Text("Записей пока нет", style = Type.strong(15))
+                Text(tr("journal_blackbox_empty"), style = Type.strong(15))
                 VSpace(4.dp)
-                Text("И это хорошо: значит, ни ошибок в пути, ни перегрева, ни проблем с зарядкой не было.", style = Type.body(13, Palette.text2))
+                Text(tr("journal_blackbox_empty_hint"), style = Type.body(13, Palette.text2))
             }
             return@Screen
         }
@@ -106,7 +105,7 @@ fun BlackboxScreen(state: AppState, onBack: () -> Unit) {
 private fun BlackboxDetail(e: BlackboxEvent, onBack: () -> Unit, onShare: () -> Unit) {
     val accent = LocalAccent.current
     Screen {
-        Header("Запись", onBack = onBack)
+        Header(tr("journal_record_title"), onBack = onBack)
         Card(radius = 18.dp, padding = 16.dp, glow = Palette.warn) {
             Text(e.title, style = Type.strong(17))
             Text(e.timeText(), style = Type.body(12, Palette.muted))
@@ -115,7 +114,7 @@ private fun BlackboxDetail(e: BlackboxEvent, onBack: () -> Unit, onShare: () -> 
         VSpace(12.dp)
         val changes = e.changes()
         if (changes.isNotEmpty()) {
-            SectionTitle("Что изменилось перед событием")
+            SectionTitle(tr("journal_changes_title"))
             Card {
                 changes.forEach { c ->
                     Row(Modifier.padding(vertical = 4.dp)) {
@@ -127,7 +126,7 @@ private fun BlackboxDetail(e: BlackboxEvent, onBack: () -> Unit, onShare: () -> 
             }
             VSpace(12.dp)
         }
-        SectionTitle("Датчики вокруг события", "${e.before.size} до · ${e.after.size} после")
+        SectionTitle(tr("journal_sensors_title"), tr("journal_sensors_count", e.before.size, e.after.size))
         BbSample.KEYS.forEach { key ->
             val row = e.series(key)
             if (row.size >= 4) {
@@ -146,7 +145,7 @@ private fun BlackboxDetail(e: BlackboxEvent, onBack: () -> Unit, onShare: () -> 
                 VSpace(10.dp)
             }
         }
-        PrimaryButton("Поделиться записью", onClick = onShare)
+        PrimaryButton(tr("journal_share_record"), onClick = onShare)
         VSpace(8.dp)
     }
 }
@@ -240,10 +239,9 @@ fun ServiceScreen(state: AppState, onBack: () -> Unit) {
     val context = LocalContext.current
     var adding by remember { mutableStateOf(false) }
     Screen {
-        Header("Сервис", onBack = onBack)
+        Header(tr("journal_service_title"), onBack = onBack)
         Text(
-            "Запишите, что обещали сделать. После следующей проверки приложение сравнит измерения до и после " +
-                "и скажет, что подтверждается, а что нет.",
+            tr("journal_service_intro"),
             style = Type.body(13, Palette.muted)
         )
         VSpace(14.dp)
@@ -253,13 +251,13 @@ fun ServiceScreen(state: AppState, onBack: () -> Unit) {
                 onCancel = { adding = false },
                 onSave = { place, works, price ->
                     if (state.addVisit(place, works, price)) adding = false
-                    else state.toast = "Сначала проверьте машину: нужны измерения «до»"
+                    else state.toast = tr("journal_service_need_check_toast")
                 }
             )
             VSpace(14.dp)
         } else {
             PrimaryButton(
-                if (state.lastSnapshot == null) "Сначала проверьте машину" else "Записать визит в сервис",
+                if (state.lastSnapshot == null) tr("journal_service_check_first") else tr("journal_service_add_visit"),
                 enabled = state.lastSnapshot != null,
                 onClick = { adding = true }
             )
@@ -268,16 +266,16 @@ fun ServiceScreen(state: AppState, onBack: () -> Unit) {
 
         if (state.visits.isEmpty()) {
             Card(background = Palette.surface2, border = Palette.border, radius = 16.dp, padding = 16.dp) {
-                Text("Пока пусто", style = Type.strong(15))
+                Text(tr("journal_service_empty"), style = Type.strong(15))
                 VSpace(4.dp)
-                Text("Перед поездкой в сервис проверьте машину и запишите визит. Это и есть точка отсчёта.", style = Type.body(13, Palette.text2))
+                Text(tr("journal_service_empty_hint"), style = Type.body(13, Palette.text2))
             }
             return@Screen
         }
 
         state.visits.asReversed().forEach { v ->
             val checks = ServiceAudit.audit(v)
-            val (level, headline) = if (v.checked) ServiceAudit.verdict(checks) else "unknown" to "Ждёт проверки после ремонта"
+            val (level, headline) = if (v.checked) ServiceAudit.verdict(checks) else "unknown" to tr("journal_service_waiting")
             val color = when (level) { "ok" -> accent; "warn" -> Palette.warn; else -> Palette.muted }
             Card(radius = 18.dp, padding = 16.dp, glow = if (level == "warn") Palette.warn else null) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
@@ -285,13 +283,13 @@ fun ServiceScreen(state: AppState, onBack: () -> Unit) {
                         Text(v.title(), style = Type.strong(15))
                         Text(v.works.joinToString { ServiceCatalog.title(it) }, style = Type.body(12, Palette.muted))
                     }
-                    if (v.price > 0) Text(formatPrice(v.price).removePrefix("от "), style = Type.strong(14))
+                    if (v.price > 0) Text(tr("journal_price_rub", "%,d".format(v.price).replace(',', ' ')), style = Type.strong(14))
                 }
                 VSpace(10.dp)
                 Text(headline, style = Type.body(13, color, FontWeight.SemiBold))
                 if (!v.checked) {
                     VSpace(4.dp)
-                    Text("Съездите в сервис, потом нажмите «Проверить машину» — сравню сам.", style = Type.body(12, Palette.muted))
+                    Text(tr("journal_service_waiting_hint"), style = Type.body(12, Palette.muted))
                 }
                 if (checks.isNotEmpty()) {
                     VSpace(10.dp)
@@ -308,14 +306,14 @@ fun ServiceScreen(state: AppState, onBack: () -> Unit) {
                     }
                     VSpace(10.dp)
                     Row {
-                        Text("Поделиться", style = Type.body(13, accent, FontWeight.SemiBold), modifier = Modifier.clickable {
+                        Text(tr("journal_share"), style = Type.body(13, accent, FontWeight.SemiBold), modifier = Modifier.clickable {
                             val send = Intent(Intent.ACTION_SEND).apply {
                                 type = "text/plain"; putExtra(Intent.EXTRA_TEXT, ServiceAudit.shareText(v, checks))
                             }
-                            runCatching { context.startActivity(Intent.createChooser(send, "Поделиться")) }
+                            runCatching { context.startActivity(Intent.createChooser(send, tr("journal_share"))) }
                         })
                         Spacer(Modifier.weight(1f))
-                        Text("Удалить", style = Type.body(13, Palette.muted), modifier = Modifier.clickable { state.deleteVisit(v) })
+                        Text(tr("journal_delete"), style = Type.body(13, Palette.muted), modifier = Modifier.clickable { state.deleteVisit(v) })
                     }
                 }
             }
@@ -331,7 +329,7 @@ private fun AddVisitForm(onCancel: () -> Unit, onSave: (String, List<String>, In
     var price by remember { mutableStateOf("") }
     val picked = remember { mutableStateOf(setOf<String>()) }
     Card(radius = 18.dp, padding = 16.dp) {
-        Text("Что обещали сделать", style = Type.label())
+        Text(tr("journal_form_title"), style = Type.label())
         VSpace(10.dp)
         ServiceCatalog.works.forEach { w ->
             val on = w.key in picked.value
@@ -359,13 +357,13 @@ private fun AddVisitForm(onCancel: () -> Unit, onSave: (String, List<String>, In
             VSpace(6.dp)
         }
         VSpace(6.dp)
-        SmallField(place, "Сервис или мастер (не обязательно)") { place = it }
+        SmallField(place, tr("journal_form_place")) { place = it }
         VSpace(8.dp)
-        SmallField(price, "Сколько отдали, ₽", numeric = true) { price = it.filter { c -> c.isDigit() }.take(7) }
+        SmallField(price, tr("journal_form_price"), numeric = true) { price = it.filter { c -> c.isDigit() }.take(7) }
         VSpace(12.dp)
         Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-            SecondaryButton("Отмена", Modifier.weight(1f), color = Palette.muted, onClick = onCancel)
-            PrimaryButton("Сохранить", Modifier.weight(1f), enabled = picked.value.isNotEmpty()) {
+            SecondaryButton(tr("journal_cancel"), Modifier.weight(1f), color = Palette.muted, onClick = onCancel)
+            PrimaryButton(tr("journal_save"), Modifier.weight(1f), enabled = picked.value.isNotEmpty()) {
                 onSave(place, picked.value.toList(), price.toIntOrNull() ?: 0)
             }
         }

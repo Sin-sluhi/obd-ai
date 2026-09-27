@@ -11,39 +11,39 @@ enum class Provider(
     val needsFolder: Boolean
 ) {
     GROQ(
-        "groq", "Groq (бесплатно)",
+        "groq", "Groq (бесплатно)", // i18n-ignore
         "https://api.groq.com/openai/v1", "openai/gpt-oss-120b",
-        "console.groq.com → API Keys. Карта не нужна. Опыт владельцев на drive2 и drom ищет само приложение.",
+        "console.groq.com → API Keys. Карта не нужна. Опыт владельцев на drive2 и drom ищет само приложение.", // i18n-ignore
         builtInSearch = false, needsFolder = false
     ),
     YANDEX(
         "yandex", "YandexGPT",
         "https://llm.api.cloud.yandex.net/v1", "yandexgpt/latest",
-        "Yandex Cloud → API-ключ сервисного аккаунта и ID каталога. Оплата в рублях, новичкам дают грант.",
+        "Yandex Cloud → API-ключ сервисного аккаунта и ID каталога. Оплата в рублях, новичкам дают грант.", // i18n-ignore
         builtInSearch = false, needsFolder = true
     ),
     OPENROUTER(
         "openrouter", "OpenRouter",
         "https://openrouter.ai/api/v1", "nvidia/nemotron-3.5-lightning:free",
-        "openrouter.ai → Keys. Модели с пометкой :free бесплатны, список меняется.",
+        "openrouter.ai → Keys. Модели с пометкой :free бесплатны, список меняется.", // i18n-ignore
         builtInSearch = false, needsFolder = false
     ),
     MISTRAL(
         "mistral", "Mistral",
         "https://api.mistral.ai/v1", "mistral-small-latest",
-        "console.mistral.ai → API Keys, план Experiment бесплатный.",
+        "console.mistral.ai → API Keys, план Experiment бесплатный.", // i18n-ignore
         builtInSearch = false, needsFolder = false
     ),
     ANTHROPIC(
         "anthropic", "Claude (Anthropic)",
         "https://api.anthropic.com", "claude-opus-5",
-        "console.anthropic.com. Нужна иностранная карта. Самое высокое качество разбора.",
+        "console.anthropic.com. Нужна иностранная карта. Самое высокое качество разбора.", // i18n-ignore
         builtInSearch = true, needsFolder = false
     ),
     CUSTOM(
-        "custom", "Свой сервер",
+        "custom", "Свой сервер", // i18n-ignore
         "", "",
-        "Любой OpenAI-совместимый сервер: адрес вида https://host/v1, ключ и имя модели.",
+        "Любой OpenAI-совместимый сервер: адрес вида https://host/v1, ключ и имя модели.", // i18n-ignore
         builtInSearch = false, needsFolder = false
     );
 

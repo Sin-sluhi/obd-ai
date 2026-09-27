@@ -80,7 +80,7 @@ class BtTransport(private val socket: BluetoothSocket) : ElmTransport {
                             .getMethod("createRfcommSocket", Int::class.javaPrimitiveType)
                             .invoke(device, 1) as BluetoothSocket
                     }
-                    log("Подключение, способ ${method + 1}/3...")
+                    log(tr("link_connect_method", method + 1))
                     s.connect()
                     return BtTransport(s)
                 } catch (e: Exception) {
@@ -88,7 +88,7 @@ class BtTransport(private val socket: BluetoothSocket) : ElmTransport {
                     runCatching { s?.close() }
                 }
             }
-            throw IOException("Не удалось подключиться к адаптеру: ${lastError?.message}")
+            throw IOException(tr("link_connect_failed", lastError?.message))
         }
     }
 }
@@ -108,9 +108,9 @@ class WifiTransport(host: String, port: Int, context: Context, log: (String) -> 
             val wifi = cm.allNetworks.firstOrNull { n ->
                 cm.getNetworkCapabilities(n)?.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) == true
             }
-            if (wifi != null) { cm.bindProcessToNetwork(wifi); log("Сокет привязан к Wi-Fi") }
+            if (wifi != null) { cm.bindProcessToNetwork(wifi); log(tr("link_wifi_bound")) }
         }
-        log("Подключаюсь к $host:$port")
+        log(tr("link_wifi_connecting", host, port))
         socket.connect(InetSocketAddress(host, port), 8000)
         socket.tcpNoDelay = true
         socket.soTimeout = 200
@@ -154,11 +154,11 @@ class BleTransport(context: Context, device: BluetoothDevice, private val log: (
         override fun onConnectionStateChange(g: BluetoothGatt, status: Int, newState: Int) {
             if (newState == BluetoothProfile.STATE_CONNECTED) {
                 connected = true
-                log("BLE: соединение есть, ищу сервисы")
+                log(tr("link_ble_connected"))
                 g.requestMtu(185)
             } else if (newState == BluetoothProfile.STATE_DISCONNECTED) {
                 connected = false
-                if (ready.count > 0) { failure = "соединение разорвано (код $status)"; ready.countDown() }
+                if (ready.count > 0) { failure = tr("link_ble_dropped", status); ready.countDown() }
             }
         }
 
@@ -170,7 +170,7 @@ class BleTransport(context: Context, device: BluetoothDevice, private val log: (
         override fun onServicesDiscovered(g: BluetoothGatt, status: Int) {
             val pair = pickCharacteristics(g)
             if (pair == null) {
-                failure = "у адаптера нет подходящих характеристик BLE"
+                failure = tr("link_ble_no_chars")
                 ready.countDown()
                 return
             }
@@ -189,13 +189,13 @@ class BleTransport(context: Context, device: BluetoothDevice, private val log: (
                     g.writeDescriptor(cccd)
                 }
             } else {
-                log("BLE: без CCCD, работаю как есть")
+                log(tr("link_ble_no_cccd"))
                 ready.countDown()
             }
         }
 
         override fun onDescriptorWrite(g: BluetoothGatt, d: BluetoothGattDescriptor, status: Int) {
-            log("BLE: уведомления включены")
+            log(tr("link_ble_notify_on"))
             ready.countDown()
         }
 
@@ -215,14 +215,14 @@ class BleTransport(context: Context, device: BluetoothDevice, private val log: (
     }
 
     init {
-        log("BLE: подключаюсь к ${device.name ?: device.address}")
+        log(tr("link_ble_connecting", device.name ?: device.address))
         gatt = device.connectGatt(context, false, callback, BluetoothDevice.TRANSPORT_LE)
         if (!ready.await(20, TimeUnit.SECONDS)) {
             close()
-            throw IOException("Адаптер BLE не ответил за 20 секунд")
+            throw IOException(tr("link_ble_timeout"))
         }
         failure?.let { close(); throw IOException("BLE: $it") }
-        if (writeCh == null) { close(); throw IOException("BLE: не нашёл канал записи") }
+        if (writeCh == null) { close(); throw IOException(tr("link_ble_write_not_found")) }
     }
 
     /** Известные пары «уведомления + запись», иначе первая подходящая пара из любого сервиса. */
@@ -231,7 +231,7 @@ class BleTransport(context: Context, device: BluetoothDevice, private val log: (
             val service = g.getService(svc) ?: continue
             val n = service.getCharacteristic(notifyUuid) ?: continue
             val w = service.getCharacteristic(writeUuid) ?: continue
-            log("BLE: сервис ${svc.toString().take(8)}")
+            log(tr("link_ble_service", svc.toString().take(8)))
             return n to w
         }
         for (service in g.services) {
@@ -241,7 +241,7 @@ class BleTransport(context: Context, device: BluetoothDevice, private val log: (
             val w = service.characteristics.firstOrNull {
                 it.properties and (BluetoothGattCharacteristic.PROPERTY_WRITE or BluetoothGattCharacteristic.PROPERTY_WRITE_NO_RESPONSE) != 0
             } ?: continue
-            log("BLE: подобрал характеристики в ${service.uuid.toString().take(8)}")
+            log(tr("link_ble_picked", service.uuid.toString().take(8)))
             return n to w
         }
         return null
@@ -251,8 +251,8 @@ class BleTransport(context: Context, device: BluetoothDevice, private val log: (
     override val kind = "Bluetooth LE"
 
     override fun write(data: ByteArray) {
-        val g = gatt ?: throw IOException("BLE: нет соединения")
-        val c = writeCh ?: throw IOException("BLE: нет канала записи")
+        val g = gatt ?: throw IOException(tr("link_ble_no_connection"))
+        val c = writeCh ?: throw IOException(tr("link_ble_no_write_channel"))
         val noResponse = c.properties and BluetoothGattCharacteristic.PROPERTY_WRITE_NO_RESPONSE != 0
         val type = if (noResponse) BluetoothGattCharacteristic.WRITE_TYPE_NO_RESPONSE else BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT
         var offset = 0
@@ -265,7 +265,7 @@ class BleTransport(context: Context, device: BluetoothDevice, private val log: (
                 @Suppress("DEPRECATION")
                 run { c.writeType = type; c.value = part; g.writeCharacteristic(c) }
             }
-            if (!ok) { writeLock.release(); throw IOException("BLE: запись не прошла") }
+            if (!ok) { writeLock.release(); throw IOException(tr("link_ble_write_failed")) }
             if (noResponse) writeLock.release()   // подтверждения не будет
             offset += part.size
         }

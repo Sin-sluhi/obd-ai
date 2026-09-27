@@ -4,7 +4,6 @@ import org.json.JSONArray
 import org.json.JSONObject
 import java.text.SimpleDateFormat
 import java.util.Date
-import java.util.Locale
 
 /**
  * Проверка честности сервиса: до визита запоминаем измерения, после следующей проверки сравниваем
@@ -14,24 +13,26 @@ import java.util.Locale
 data class ServiceWork(val key: String, val title: String, val hint: String)
 
 object ServiceCatalog {
-    val works = listOf(
-        ServiceWork("spark", "Свечи зажигания", "смотрю пропуски по цилиндрам и коррекции"),
-        ServiceWork("coil", "Катушки или провода", "смотрю пропуски в том же цилиндре"),
-        ServiceWork("injectors", "Форсунки (чистка или замена)", "смотрю вклад цилиндров и коррекции"),
-        ServiceWork("throttle", "Чистка дросселя", "смотрю холостой ход и положение заслонки"),
-        ServiceWork("maf", "Датчик расхода воздуха", "смотрю коррекции и расход на холостом"),
-        ServiceWork("lambda", "Лямбда-зонд", "смотрю коррекции и сигнал зонда"),
-        ServiceWork("cat", "Катализатор", "смотрю второй зонд и монитор катализатора"),
-        ServiceWork("thermostat", "Термостат", "смотрю, до какой температуры греется мотор"),
-        ServiceWork("egr", "Клапан EGR", "смотрю холостой ход и коррекции"),
-        ServiceWork("battery", "Аккумулятор или генератор", "смотрю напряжение покоя, зарядку и просадку при пуске"),
-        ServiceWork("timing", "Цепь или ремень ГРМ", "смотрю коды рассогласования фаз"),
-        ServiceWork("vvt", "Фазовращатель или его клапан", "смотрю коды фаз"),
-        ServiceWork("plugsoil", "Замена масла", "по OBD не проверяется"),
-        ServiceWork("brakes", "Тормоза", "по OBD не проверяется"),
-        ServiceWork("suspension", "Подвеска", "по OBD не проверяется"),
-        ServiceWork("other", "Другое", "сравню коды и общие показатели")
-    )
+    /** Геттер, а не val: названия берутся из tr(), и при смене языка список пересобирается. */
+    val works: List<ServiceWork>
+        get() = listOf(
+            ServiceWork("spark", tr("svc_work_spark"), tr("svc_hint_spark")),
+            ServiceWork("coil", tr("svc_work_coil"), tr("svc_hint_coil")),
+            ServiceWork("injectors", tr("svc_work_injectors"), tr("svc_hint_injectors")),
+            ServiceWork("throttle", tr("svc_work_throttle"), tr("svc_hint_throttle")),
+            ServiceWork("maf", tr("svc_work_maf"), tr("svc_hint_maf")),
+            ServiceWork("lambda", tr("svc_work_lambda"), tr("svc_hint_lambda")),
+            ServiceWork("cat", tr("svc_work_cat"), tr("svc_hint_cat")),
+            ServiceWork("thermostat", tr("svc_work_thermostat"), tr("svc_hint_thermostat")),
+            ServiceWork("egr", tr("svc_work_egr"), tr("svc_hint_egr")),
+            ServiceWork("battery", tr("svc_work_battery"), tr("svc_hint_battery")),
+            ServiceWork("timing", tr("svc_work_timing"), tr("svc_hint_timing")),
+            ServiceWork("vvt", tr("svc_work_vvt"), tr("svc_hint_vvt")),
+            ServiceWork("plugsoil", tr("svc_work_plugsoil"), tr("svc_hint_not_obd")),
+            ServiceWork("brakes", tr("svc_work_brakes"), tr("svc_hint_not_obd")),
+            ServiceWork("suspension", tr("svc_work_suspension"), tr("svc_hint_not_obd")),
+            ServiceWork("other", tr("svc_work_other"), tr("svc_hint_other"))
+        )
 
     fun title(key: String) = works.firstOrNull { it.key == key }?.title ?: key
 }
@@ -108,7 +109,10 @@ data class ServiceVisit(
 ) {
     val checked: Boolean get() = after != null
 
-    fun title(): String = "Сервис " + SimpleDateFormat("d MMMM", Locale("ru")).format(Date(t)) + (if (place.isNotBlank()) " · $place" else "")
+    fun title(): String {
+        val date = SimpleDateFormat("d MMMM", Tr.lang.locale).format(Date(t))
+        return if (place.isNotBlank()) tr("svc_visit_title_place", date, place) else tr("svc_visit_title", date)
+    }
 
     fun toJson(): JSONObject = JSONObject()
         .put("t", t).put("place", place).put("works", JSONArray(works)).put("price", price)
@@ -141,9 +145,12 @@ object ServiceAudit {
         val bad = b.misfire.filter { it.value > 0 }
         if (bad.isEmpty()) return null
         val still = bad.keys.filter { (a.misfire[it] ?: 0) > 0 }
-        val text = bad.entries.joinToString { "цилиндр ${it.key}: было ${it.value}, стало ${a.misfire[it.key] ?: 0}" }
+        val text = bad.entries.joinToString { tr("svc_misfire_cyl", it.key, it.value, a.misfire[it.key] ?: 0) }
         return (still.isEmpty()) to text
     }
+
+    private fun f0(v: Double) = "%.0f".format(v)
+    private fun f1(v: Double) = "%.1f".format(v)
 
     /** Сравнение обещанного с измерениями. */
     fun audit(v: ServiceVisit): List<ServiceCheck> {
@@ -157,11 +164,11 @@ object ServiceAudit {
                     val m = misfireDrop(b, a)
                     val codes = gone(b, a, "P030", "P0301", "P0302", "P0303", "P0304", "P035", "P020")
                     when {
-                        m != null && m.first -> out.add(ServiceCheck(title, "ok", "Подтверждается: пропусков больше нет (${m.second})."))
-                        m != null && !m.first -> out.add(ServiceCheck(title, "warn", "Не подтверждается: пропуски остались (${m.second})."))
-                        codes == true -> out.add(ServiceCheck(title, "ok", "Подтверждается: коды пропусков и зажигания ушли."))
-                        codes == false -> out.add(ServiceCheck(title, "warn", "Не подтверждается: коды пропусков остались."))
-                        else -> out.add(ServiceCheck(title, "unknown", "Проверить нечем: до ремонта пропусков в данных не было. Нужен режим 06 и поездка."))
+                        m != null && m.first -> out.add(ServiceCheck(title, "ok", tr("svc_misfire_ok", m.second)))
+                        m != null && !m.first -> out.add(ServiceCheck(title, "warn", tr("svc_misfire_warn", m.second)))
+                        codes == true -> out.add(ServiceCheck(title, "ok", tr("svc_misfire_codes_ok")))
+                        codes == false -> out.add(ServiceCheck(title, "warn", tr("svc_misfire_codes_warn")))
+                        else -> out.add(ServiceCheck(title, "unknown", tr("svc_misfire_unknown")))
                     }
                 }
                 "throttle", "egr" -> {
@@ -171,13 +178,13 @@ object ServiceAudit {
                     val trimB = b.trim
                     val trimA = a.trim
                     when {
-                        codes == false -> out.add(ServiceCheck(title, "warn", "Не подтверждается: коды остались на месте."))
-                        codes == true -> out.add(ServiceCheck(title, "ok", "Подтверждается: коды ушли."))
+                        codes == false -> out.add(ServiceCheck(title, "warn", tr("svc_codes_stayed_warn")))
+                        codes == true -> out.add(ServiceCheck(title, "ok", tr("svc_codes_gone_ok")))
                         trimB != null && trimA != null && kotlin.math.abs(trimB) > 8 && kotlin.math.abs(trimA) < kotlin.math.abs(trimB) - 3 ->
-                            out.add(ServiceCheck(title, "ok", "Похоже на правду: коррекции сместились с %.0f%% к %.0f%%.".format(trimB, trimA)))
+                            out.add(ServiceCheck(title, "ok", tr("svc_trim_shifted_ok", f0(trimB), f0(trimA))))
                         trimB != null && trimA != null && kotlin.math.abs(trimA - trimB) < 2 && idleB != null && idleA != null && kotlin.math.abs(idleA - idleB) < 60 ->
-                            out.add(ServiceCheck(title, "warn", "Ничего не изменилось: холостой ход и коррекции те же (%.0f об/мин, %.0f%%). После чистки обычно видно разницу.".format(idleA, trimA)))
-                        else -> out.add(ServiceCheck(title, "unknown", "Данных мало: нужна проверка на прогретом моторе до и после."))
+                            out.add(ServiceCheck(title, "warn", tr("svc_idle_same_warn", f0(idleA), f0(trimA))))
+                        else -> out.add(ServiceCheck(title, "unknown", tr("svc_idle_unknown")))
                     }
                 }
                 "maf", "lambda" -> {
@@ -185,31 +192,31 @@ object ServiceAudit {
                     val trimB = b.trim
                     val trimA = a.trim
                     when {
-                        codes == false -> out.add(ServiceCheck(title, "warn", "Не подтверждается: коды остались."))
+                        codes == false -> out.add(ServiceCheck(title, "warn", tr("svc_codes_left_warn")))
                         trimB != null && trimA != null && kotlin.math.abs(trimB) >= 8 && kotlin.math.abs(trimA) <= 5 ->
-                            out.add(ServiceCheck(title, "ok", "Подтверждается: коррекции вернулись к норме (%.0f%% → %.0f%%).".format(trimB, trimA)))
+                            out.add(ServiceCheck(title, "ok", tr("svc_trim_normal_ok", f0(trimB), f0(trimA))))
                         trimB != null && trimA != null && kotlin.math.abs(trimA) >= kotlin.math.abs(trimB) - 2 ->
-                            out.add(ServiceCheck(title, "warn", "Не похоже: коррекции как были (%.0f%% → %.0f%%). Или деталь не меняли, или причина была в другом.".format(trimB, trimA)))
-                        codes == true -> out.add(ServiceCheck(title, "ok", "Подтверждается: коды ушли."))
-                        else -> out.add(ServiceCheck(title, "unknown", "Проверить нечем: коррекции и коды до ремонта были в норме."))
+                            out.add(ServiceCheck(title, "warn", tr("svc_trim_same_warn", f0(trimB), f0(trimA))))
+                        codes == true -> out.add(ServiceCheck(title, "ok", tr("svc_codes_gone_ok")))
+                        else -> out.add(ServiceCheck(title, "unknown", tr("svc_trim_unknown")))
                     }
                 }
                 "cat" -> {
                     val codes = gone(b, a, "P0420", "P0430")
                     when {
-                        codes == true -> out.add(ServiceCheck(title, "ok", "Подтверждается: код катализатора ушёл. Окончательно скажет монитор после нескольких поездок."))
-                        codes == false -> out.add(ServiceCheck(title, "warn", "Не подтверждается: код катализатора вернулся или не стирался."))
-                        else -> out.add(ServiceCheck(title, "unknown", "Проверить нечем: кода катализатора до ремонта не было."))
+                        codes == true -> out.add(ServiceCheck(title, "ok", tr("svc_cat_ok")))
+                        codes == false -> out.add(ServiceCheck(title, "warn", tr("svc_cat_warn")))
+                        else -> out.add(ServiceCheck(title, "unknown", tr("svc_cat_unknown")))
                     }
                 }
                 "thermostat" -> {
                     val wa = a.warmupMax
                     val codes = gone(b, a, "P0128", "P0125", "P0126")
                     when {
-                        wa != null && wa >= 85 -> out.add(ServiceCheck(title, "ok", "Подтверждается: мотор прогревается до %.0f °C.".format(wa)))
-                        wa != null && wa < 80 -> out.add(ServiceCheck(title, "warn", "Не подтверждается: мотор греется только до %.0f °C. Термостат по-прежнему открыт или поставили не тот.".format(wa)))
-                        codes == true -> out.add(ServiceCheck(title, "ok", "Подтверждается: код медленного прогрева ушёл."))
-                        else -> out.add(ServiceCheck(title, "unknown", "Нужна поездка с холодного пуска: тогда увижу, до скольки греется."))
+                        wa != null && wa >= 85 -> out.add(ServiceCheck(title, "ok", tr("svc_thermo_ok", f0(wa))))
+                        wa != null && wa < 80 -> out.add(ServiceCheck(title, "warn", tr("svc_thermo_warn", f0(wa))))
+                        codes == true -> out.add(ServiceCheck(title, "ok", tr("svc_thermo_codes_ok")))
+                        else -> out.add(ServiceCheck(title, "unknown", tr("svc_thermo_unknown")))
                     }
                 }
                 "battery" -> {
@@ -217,32 +224,38 @@ object ServiceAudit {
                     val chg = a.chargeV
                     val crank = a.crankV
                     val bad = ArrayList<String>()
-                    if (rest != null && rest < 12.4) bad.add("напряжение покоя %.1f В".format(rest))
-                    if (chg != null && chg < 13.6) bad.add("зарядка %.1f В".format(chg))
-                    if (crank != null && crank < 9.6) bad.add("просадка при пуске до %.1f В".format(crank))
+                    if (rest != null && rest < 12.4) bad.add(tr("svc_batt_bad_rest", f1(rest)))
+                    if (chg != null && chg < 13.6) bad.add(tr("svc_batt_bad_charge", f1(chg)))
+                    if (crank != null && crank < 9.6) bad.add(tr("svc_batt_bad_crank", f1(crank)))
                     when {
-                        bad.isEmpty() && (rest != null || chg != null) -> out.add(ServiceCheck(title, "ok", "Подтверждается: питание в норме" +
-                            listOfNotNull(rest?.let { "покой %.1f В".format(it) }, chg?.let { "зарядка %.1f В".format(it) }, crank?.let { "пуск %.1f В".format(it) }).joinToString(", ", " (", ")") + "."))
-                        bad.isNotEmpty() -> out.add(ServiceCheck(title, "warn", "Не подтверждается: ${bad.joinToString()}. После замены таких цифр быть не должно."))
-                        else -> out.add(ServiceCheck(title, "unknown", "Нужен ночной простой и пуск, чтобы измерить."))
+                        bad.isEmpty() && (rest != null || chg != null) -> {
+                            val parts = listOfNotNull(
+                                rest?.let { tr("svc_batt_part_rest", f1(it)) },
+                                chg?.let { tr("svc_batt_part_charge", f1(it)) },
+                                crank?.let { tr("svc_batt_part_crank", f1(it)) }
+                            ).joinToString(", ", " (", ")")
+                            out.add(ServiceCheck(title, "ok", tr("svc_batt_ok", parts)))
+                        }
+                        bad.isNotEmpty() -> out.add(ServiceCheck(title, "warn", tr("svc_batt_warn", bad.joinToString())))
+                        else -> out.add(ServiceCheck(title, "unknown", tr("svc_batt_unknown")))
                     }
                 }
                 "timing", "vvt" -> {
                     val codes = gone(b, a, "P0016", "P0017", "P0018", "P0019", "P0011", "P0012", "P0014", "P0021", "P0341", "P0340")
                     when {
-                        codes == true -> out.add(ServiceCheck(title, "ok", "Подтверждается: коды фаз ушли."))
-                        codes == false -> out.add(ServiceCheck(title, "warn", "Не подтверждается: коды фаз на месте."))
-                        else -> out.add(ServiceCheck(title, "unknown", "Проверить нечем: кодов фаз до ремонта не было."))
+                        codes == true -> out.add(ServiceCheck(title, "ok", tr("svc_phase_ok")))
+                        codes == false -> out.add(ServiceCheck(title, "warn", tr("svc_phase_warn")))
+                        else -> out.add(ServiceCheck(title, "unknown", tr("svc_phase_unknown")))
                     }
                 }
-                "plugsoil", "brakes", "suspension" -> out.add(ServiceCheck(title, "unknown", "По разъёму OBD это не проверяется: тут только чек, глаза и щуп."))
+                "plugsoil", "brakes", "suspension" -> out.add(ServiceCheck(title, "unknown", tr("svc_not_obd")))
                 else -> {
                     val gone2 = b.codes.filter { it !in a.codes }
                     val stayed = b.codes.filter { it in a.codes }
                     val text = buildString {
-                        if (gone2.isNotEmpty()) append("Ушли коды: ${gone2.joinToString()}. ")
-                        if (stayed.isNotEmpty()) append("Остались: ${stayed.joinToString()}.")
-                        if (isEmpty()) append("Кодов не было ни до, ни после.")
+                        if (gone2.isNotEmpty()) append(tr("svc_other_gone", gone2.joinToString()))
+                        if (stayed.isNotEmpty()) append(tr("svc_other_stayed", stayed.joinToString()))
+                        if (isEmpty()) append(tr("svc_other_none"))
                     }
                     out.add(ServiceCheck(title, if (stayed.isEmpty()) "ok" else "warn", text))
                 }
@@ -255,16 +268,19 @@ object ServiceAudit {
         val warn = checks.count { it.level == "warn" }
         val ok = checks.count { it.level == "ok" }
         return when {
-            warn > 0 && ok == 0 -> "warn" to "Ни одна из заявленных работ не подтверждается измерениями"
-            warn > 0 -> "warn" to "Часть работ не подтверждается: $warn из ${checks.size}"
-            ok > 0 -> "ok" to "Всё, что можно проверить, подтверждается"
-            else -> "unknown" to "Проверить по данным машины нечем"
+            warn > 0 && ok == 0 -> "warn" to tr("svc_verdict_none")
+            warn > 0 -> "warn" to tr("svc_verdict_part", warn, checks.size)
+            ok > 0 -> "ok" to tr("svc_verdict_ok")
+            else -> "unknown" to tr("svc_verdict_unknown")
         }
     }
 
     fun shareText(v: ServiceVisit, checks: List<ServiceCheck>): String = buildString {
-        appendLine("OBD AI, проверка работ: ${v.title()}")
-        if (v.price > 0) appendLine("Заплачено: ${formatPrice(v.price)}".replace("от ", ""))
+        appendLine(tr("svc_share_title", v.title()))
+        if (v.price > 0) {
+            val paid = formatPrice(v.price).replace("от ", "")  // i18n-ignore: убираем «от» из цены справочника
+            appendLine(tr("svc_share_paid", paid))
+        }
         appendLine()
         checks.forEach { c ->
             val mark = when (c.level) { "ok" -> "+"; "warn" -> "!"; else -> "?" }

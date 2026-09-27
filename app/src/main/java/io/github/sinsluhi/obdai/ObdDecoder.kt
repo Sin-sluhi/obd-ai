@@ -114,45 +114,49 @@ object ObdDecoder {
         return Pair((a and 0x80) != 0, a and 0x7F)
     }
 
+    /** Имя и единица — ключи локализации: `name`/`unit` читаются через tr() при каждом обращении, чтобы смена языка подхватывалась. */
     class Sensor(
         val key: String,
-        val name: String,
+        private val nameKey: String,
         val cmd: String,
         val pid: Int,
-        val unit: String,
+        private val unitKey: String,
         val live: Boolean = false,     // опрашивать постоянно на экране датчиков (остальные — только при проверке)
         val formula: (List<Int>) -> Double?
-    )
+    ) {
+        val name: String get() = tr(nameKey)
+        val unit: String get() = tr(unitKey)
+    }
 
     private fun oneByte(d: List<Int>, f: (Int) -> Double) = d.firstOrNull()?.let(f)
     private fun word(d: List<Int>): Int? = if (d.size >= 2) d[0] * 256 + d[1] else null
 
     /** Стандартные датчики SAE J1979. Формулы по стандарту, ничего марочного. */
     val sensors = listOf(
-        Sensor("rpm", "Обороты", "010C", 0x0C, "об/мин", live = true) { d -> word(d)?.let { it / 4.0 } },
-        Sensor("speed", "Скорость", "010D", 0x0D, "км/ч", live = true) { d -> oneByte(d) { it.toDouble() } },
-        Sensor("coolant", "Температура ОЖ", "0105", 0x05, "°C", live = true) { d -> oneByte(d) { it - 40.0 } },
-        Sensor("load", "Нагрузка двигателя", "0104", 0x04, "%", live = true) { d -> oneByte(d) { it * 100.0 / 255 } },
-        Sensor("iat", "Температура на впуске", "010F", 0x0F, "°C", live = true) { d -> oneByte(d) { it - 40.0 } },
-        Sensor("throttle", "Дроссель", "0111", 0x11, "%", live = true) { d -> oneByte(d) { it * 100.0 / 255 } },
-        Sensor("stft", "Кратк. топл. коррекция", "0106", 0x06, "%", live = true) { d -> oneByte(d) { (it - 128) * 100.0 / 128 } },
-        Sensor("ltft", "Долг. топл. коррекция", "0107", 0x07, "%", live = true) { d -> oneByte(d) { (it - 128) * 100.0 / 128 } },
-        Sensor("maf", "Расход воздуха", "0110", 0x10, "г/с", live = true) { d -> word(d)?.let { it / 100.0 } },
-        Sensor("map", "Давление во впуске", "010B", 0x0B, "кПа", live = true) { d -> oneByte(d) { it.toDouble() } },
-        Sensor("volt", "Напряжение на ЭБУ", "0142", 0x42, "В", live = true) { d -> word(d)?.let { it / 1000.0 } },
-        Sensor("fuelrate", "Расход топлива", "015E", 0x5E, "л/ч", live = true) { d -> word(d)?.let { it / 20.0 } },
-        Sensor("timing", "Угол опережения", "010E", 0x0E, "°", live = true) { d -> oneByte(d) { (it - 128) / 2.0 } },
-        Sensor("fuel", "Уровень топлива", "012F", 0x2F, "%", live = true) { d -> oneByte(d) { it * 100.0 / 255 } },
-        Sensor("baro", "Атмосферное давление", "0133", 0x33, "кПа") { d -> oneByte(d) { it.toDouble() } },
-        Sensor("ambient", "Температура за бортом", "0146", 0x46, "°C") { d -> oneByte(d) { it - 40.0 } },
-        Sensor("oil", "Температура масла", "015C", 0x5C, "°C") { d -> oneByte(d) { it - 40.0 } },
-        Sensor("runtime", "Двигатель работает", "011F", 0x1F, "с") { d -> word(d)?.toDouble() },
-        Sensor("cat", "Температура катализатора", "013C", 0x3C, "°C") { d -> word(d)?.let { it / 10.0 - 40 } },
-        Sensor("torque", "Фактический момент", "0162", 0x62, "%") { d -> oneByte(d) { it - 125.0 } },
-        Sensor("o2b1s1", "Лямбда-зонд 1", "0114", 0x14, "В") { d -> oneByte(d) { it / 200.0 } },
-        Sensor("o2b1s2", "Лямбда-зонд 2", "0115", 0x15, "В") { d -> oneByte(d) { it / 200.0 } },
-        Sensor("egr", "Ошибка EGR", "012D", 0x2D, "%") { d -> oneByte(d) { (it - 128) * 100.0 / 128 } },
-        Sensor("evap", "Давление в баке (EVAP)", "0132", 0x32, "Па") { d -> word(d)?.let { (if (it >= 0x8000) it - 0x10000 else it) / 4.0 } },
+        Sensor("rpm", "obd_sensor_rpm", "010C", 0x0C, "obd_unit_rpm", live = true) { d -> word(d)?.let { it / 4.0 } },
+        Sensor("speed", "obd_sensor_speed", "010D", 0x0D, "obd_unit_kmh", live = true) { d -> oneByte(d) { it.toDouble() } },
+        Sensor("coolant", "obd_sensor_coolant", "0105", 0x05, "obd_unit_celsius", live = true) { d -> oneByte(d) { it - 40.0 } },
+        Sensor("load", "obd_sensor_load", "0104", 0x04, "obd_unit_percent", live = true) { d -> oneByte(d) { it * 100.0 / 255 } },
+        Sensor("iat", "obd_sensor_iat", "010F", 0x0F, "obd_unit_celsius", live = true) { d -> oneByte(d) { it - 40.0 } },
+        Sensor("throttle", "obd_sensor_throttle", "0111", 0x11, "obd_unit_percent", live = true) { d -> oneByte(d) { it * 100.0 / 255 } },
+        Sensor("stft", "obd_sensor_stft", "0106", 0x06, "obd_unit_percent", live = true) { d -> oneByte(d) { (it - 128) * 100.0 / 128 } },
+        Sensor("ltft", "obd_sensor_ltft", "0107", 0x07, "obd_unit_percent", live = true) { d -> oneByte(d) { (it - 128) * 100.0 / 128 } },
+        Sensor("maf", "obd_sensor_maf", "0110", 0x10, "obd_unit_gs", live = true) { d -> word(d)?.let { it / 100.0 } },
+        Sensor("map", "obd_sensor_map", "010B", 0x0B, "obd_unit_kpa", live = true) { d -> oneByte(d) { it.toDouble() } },
+        Sensor("volt", "obd_sensor_volt", "0142", 0x42, "obd_unit_volt", live = true) { d -> word(d)?.let { it / 1000.0 } },
+        Sensor("fuelrate", "obd_sensor_fuelrate", "015E", 0x5E, "obd_unit_lh", live = true) { d -> word(d)?.let { it / 20.0 } },
+        Sensor("timing", "obd_sensor_timing", "010E", 0x0E, "obd_unit_degree", live = true) { d -> oneByte(d) { (it - 128) / 2.0 } },
+        Sensor("fuel", "obd_sensor_fuel", "012F", 0x2F, "obd_unit_percent", live = true) { d -> oneByte(d) { it * 100.0 / 255 } },
+        Sensor("baro", "obd_sensor_baro", "0133", 0x33, "obd_unit_kpa") { d -> oneByte(d) { it.toDouble() } },
+        Sensor("ambient", "obd_sensor_ambient", "0146", 0x46, "obd_unit_celsius") { d -> oneByte(d) { it - 40.0 } },
+        Sensor("oil", "obd_sensor_oil", "015C", 0x5C, "obd_unit_celsius") { d -> oneByte(d) { it - 40.0 } },
+        Sensor("runtime", "obd_sensor_runtime", "011F", 0x1F, "obd_unit_second") { d -> word(d)?.toDouble() },
+        Sensor("cat", "obd_sensor_cat", "013C", 0x3C, "obd_unit_celsius") { d -> word(d)?.let { it / 10.0 - 40 } },
+        Sensor("torque", "obd_sensor_torque", "0162", 0x62, "obd_unit_percent") { d -> oneByte(d) { it - 125.0 } },
+        Sensor("o2b1s1", "obd_sensor_o2b1s1", "0114", 0x14, "obd_unit_volt") { d -> oneByte(d) { it / 200.0 } },
+        Sensor("o2b1s2", "obd_sensor_o2b1s2", "0115", 0x15, "obd_unit_volt") { d -> oneByte(d) { it / 200.0 } },
+        Sensor("egr", "obd_sensor_egr", "012D", 0x2D, "obd_unit_percent") { d -> oneByte(d) { (it - 128) * 100.0 / 128 } },
+        Sensor("evap", "obd_sensor_evap", "0132", 0x32, "obd_unit_pa") { d -> word(d)?.let { (if (it >= 0x8000) it - 0x10000 else it) / 4.0 } },
     )
 
     /**
@@ -205,11 +209,12 @@ object ModuleDecoder {
     }
 
     /** Байт статуса UDS: бит0 — активна сейчас, бит3 — подтверждена, бит2 — неподтверждена, иначе история. */
+    // Пометки — маркеры данных: их ищут через contains("(активная)") в Models.kt и Purchase.kt, поэтому не локализуются.
     fun statusSuffix(status: Int): String = when {
-        status and 0x01 != 0 -> " (активная)"
+        status and 0x01 != 0 -> " (активная)" // i18n-ignore
         status and 0x08 != 0 -> ""
-        status and 0x04 != 0 -> " (неподтверждённая)"
-        else -> " (история)"
+        status and 0x04 != 0 -> " (неподтверждённая)" // i18n-ignore
+        else -> " (история)" // i18n-ignore
     }
 
     /** KWP: 58 <кол-во> затем группы по 3 байта: DTC(2) + статус. */
@@ -238,30 +243,34 @@ object ModuleDecoder {
 object ModuleMap {
     data class Target(val addr: Int, val rx: Int, val generic: String)
 
-    /** Диапазон полного перебора для Hyundai/Kia: 7A0–7DF, где живут все их блоки. */
-    val hyundaiSweep: List<Target> = (0x7A0..0x7DF).map { Target(it, it + 8, "Блок %03X".format(it)) }
+    /** Обезличенное имя блока по адресу: «Блок 7E2». */
+    private fun block(addr: Int): String = tr("obd_module_block", "%03X".format(addr))
 
-    val candidates = listOf(
-        Target(0x7E0, 0x7E8, "Двигатель"),
-        Target(0x7E1, 0x7E9, "Коробка передач"),
-        Target(0x7E2, 0x7EA, "Блок 7E2"), Target(0x7E3, 0x7EB, "Блок 7E3"),
-        Target(0x7D1, 0x7D9, "Блок 7D1"), Target(0x7D2, 0x7DA, "Блок 7D2"), Target(0x7D4, 0x7DC, "Блок 7D4"),
-        Target(0x7D5, 0x7DD, "Блок 7D5"), Target(0x7C6, 0x7CE, "Блок 7C6"), Target(0x7C4, 0x7CC, "Блок 7C4"),
-        Target(0x7A0, 0x7A8, "Блок 7A0"), Target(0x7A5, 0x7AD, "Блок 7A5"), Target(0x7B3, 0x7BB, "Блок 7B3"),
-        Target(0x7B6, 0x7BE, "Блок 7B6"), Target(0x7C0, 0x7C8, "Блок 7C0"), Target(0x7B0, 0x7B8, "Блок 7B0"),
-        Target(0x780, 0x788, "Блок 780"), Target(0x7A1, 0x7A9, "Блок 7A1"),
-        Target(0x713, 0x77D, "Блок 713"), Target(0x715, 0x77F, "Блок 715"), Target(0x714, 0x77E, "Блок 714"),
-        Target(0x712, 0x77C, "Блок 712"), Target(0x710, 0x77A, "Блок 710"), Target(0x70E, 0x778, "Блок 70E"),
-        Target(0x746, 0x7B0, "Блок 746"), Target(0x7E4, 0x7EC, "Блок 7E4"), Target(0x7E5, 0x7ED, "Блок 7E5"),
-        Target(0x7E6, 0x7EE, "Блок 7E6"), Target(0x7E7, 0x7EF, "Блок 7E7")
+    /** Диапазон полного перебора для Hyundai/Kia: 7A0–7DF, где живут все их блоки. Геттер: имена на текущем языке. */
+    val hyundaiSweep: List<Target> get() = (0x7A0..0x7DF).map { Target(it, it + 8, block(it)) }
+
+    val candidates: List<Target> get() = listOf(
+        Target(0x7E0, 0x7E8, tr("obd_module_engine")),
+        Target(0x7E1, 0x7E9, tr("obd_module_gearbox")),
+        Target(0x7E2, 0x7EA, block(0x7E2)), Target(0x7E3, 0x7EB, block(0x7E3)),
+        Target(0x7D1, 0x7D9, block(0x7D1)), Target(0x7D2, 0x7DA, block(0x7D2)), Target(0x7D4, 0x7DC, block(0x7D4)),
+        Target(0x7D5, 0x7DD, block(0x7D5)), Target(0x7C6, 0x7CE, block(0x7C6)), Target(0x7C4, 0x7CC, block(0x7C4)),
+        Target(0x7A0, 0x7A8, block(0x7A0)), Target(0x7A5, 0x7AD, block(0x7A5)), Target(0x7B3, 0x7BB, block(0x7B3)),
+        Target(0x7B6, 0x7BE, block(0x7B6)), Target(0x7C0, 0x7C8, block(0x7C0)), Target(0x7B0, 0x7B8, block(0x7B0)),
+        Target(0x780, 0x788, block(0x780)), Target(0x7A1, 0x7A9, block(0x7A1)),
+        Target(0x713, 0x77D, block(0x713)), Target(0x715, 0x77F, block(0x715)), Target(0x714, 0x77E, block(0x714)),
+        Target(0x712, 0x77C, block(0x712)), Target(0x710, 0x77A, block(0x710)), Target(0x70E, 0x778, block(0x70E)),
+        Target(0x746, 0x7B0, block(0x746)), Target(0x7E4, 0x7EC, block(0x7E4)), Target(0x7E5, 0x7ED, block(0x7E5)),
+        Target(0x7E6, 0x7EE, block(0x7E6)), Target(0x7E7, 0x7EF, block(0x7E7))
     )
 
+    // В таблицах по маркам — ключи локализации, текст берётся через tr() в name().
     private val hyundaiKia = mapOf(
-        0x7E0 to "Двигатель", 0x7E1 to "Коробка передач", 0x7D1 to "ABS / ESC", 0x7D2 to "Подушки безопасности", 0x7D4 to "Электроусилитель руля",
-        0x7D5 to "Стояночный тормоз", 0x7C6 to "Приборная панель", 0x7C4 to "Парктроники", 0x7A0 to "Кузовной блок (BCM)",
-        0x7A5 to "Смарт-ключ", 0x7B3 to "Климат", 0x7B6 to "Полный привод", 0x7B7 to "Камера / ассистенты", 0x7B1 to "Радар",
-        0x7C7 to "Датчики давления шин", 0x7A2 to "Люк / стёкла", 0x7A3 to "Сиденья", 0x7C5 to "Мультимедиа (AVN)",
-        0x7D0 to "Двигатель (дополнительно)", 0x7D3 to "Иммобилайзер", 0x7D6 to "Полный привод (4WD)", 0x7B2 to "Задняя камера", 0x7B4 to "Слепые зоны"
+        0x7E0 to "obd_module_engine", 0x7E1 to "obd_module_gearbox", 0x7D1 to "obd_module_abs_esc", 0x7D2 to "obd_module_airbags", 0x7D4 to "obd_module_eps",
+        0x7D5 to "obd_module_parking_brake", 0x7C6 to "obd_module_cluster", 0x7C4 to "obd_module_parktronic", 0x7A0 to "obd_module_bcm",
+        0x7A5 to "obd_module_smart_key", 0x7B3 to "obd_module_climate", 0x7B6 to "obd_module_awd", 0x7B7 to "obd_module_camera_assist", 0x7B1 to "obd_module_radar",
+        0x7C7 to "obd_module_tpms", 0x7A2 to "obd_module_sunroof_windows", 0x7A3 to "obd_module_seats", 0x7C5 to "obd_module_avn",
+        0x7D0 to "obd_module_engine_extra", 0x7D3 to "obd_module_immobilizer", 0x7D6 to "obd_module_awd_4wd", 0x7B2 to "obd_module_rear_camera", 0x7B4 to "obd_module_blind_spot"
     )
 
     fun isHyundaiKia(brand: String?): Boolean {
@@ -269,12 +278,12 @@ object ModuleMap {
         return b.contains("hyundai") || b.contains("kia")
     }
     private val vag = mapOf(
-        0x7E1 to "Коробка передач", 0x713 to "ABS / ESP", 0x715 to "Подушки безопасности", 0x714 to "Приборная панель",
-        0x712 to "Электроусилитель руля", 0x710 to "Шлюз CAN", 0x70E to "Кузовной блок", 0x746 to "Климат"
+        0x7E1 to "obd_module_gearbox", 0x713 to "obd_module_abs_esp", 0x715 to "obd_module_airbags", 0x714 to "obd_module_cluster",
+        0x712 to "obd_module_eps", 0x710 to "obd_module_can_gateway", 0x70E to "obd_module_body", 0x746 to "obd_module_climate"
     )
     private val toyota = mapOf(
-        0x7E1 to "Коробка передач", 0x7B0 to "ABS / VSC", 0x780 to "Подушки безопасности", 0x7C0 to "Приборная панель",
-        0x7A1 to "Электроусилитель руля"
+        0x7E1 to "obd_module_gearbox", 0x7B0 to "obd_module_abs_vsc", 0x780 to "obd_module_airbags", 0x7C0 to "obd_module_cluster",
+        0x7A1 to "obd_module_eps"
     )
 
     fun name(brand: String?, target: Target): String {
@@ -285,6 +294,6 @@ object ModuleMap {
             b.contains("toyota") || b.contains("lexus") -> toyota
             else -> emptyMap()
         }
-        return map[target.addr] ?: target.generic
+        return map[target.addr]?.let { tr(it) } ?: target.generic
     }
 }
