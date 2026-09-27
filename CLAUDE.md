@@ -112,6 +112,17 @@ Android-приложение (Kotlin, Jetpack Compose) для диагности
   `auto_trip`, `watch_dtc`, `warmups`, `starts`, `lat`/`lon` (для погоды, только по кнопке), `forecast_day`.
 - `ui/Theme.kt` — палитра «приборная панель ночью», шрифты (Unbounded/Manrope/JetBrains Mono из `res/font`),
   объёмные карточки, кнопки, живая кнопка проверки, спидометр.
+- **Анимации «Пульс шины» (1.2.1, спецификация `MOTION.md`)**: `ui/Motion.kt` — `BusModel` (пул пакетов в массивах, без
+  аллокаций в кадре), единственный `withFrameNanos`-цикл `BusDriver` (внутри `repeatOnLifecycle(RESUMED)`, спит на «Лог» и при
+  `Motion.Off`), `busMode` по состоянию машины (нет адаптера → дремлет; двигатель → быстрее по оборотам; проверка → пачками),
+  `rememberMotion` (системное «отключить анимацию»/энергосбережение/тумблер «Живой фон» → Off/Reduced), настроение
+  `rememberMood/rememberTint`; `ui/MotionLayers.kt` — `BusBackground` (фон-осциллограф), `SweepOverlay` (развёртка поверх
+  карточек), `PageReveal/pageTransition` (шторка-луч); `ui/MotionWidgets.kt` — `pressPulse`, `enterStagger`, `rememberEdgePulse/
+  drawEdgePulse`, `LiveDot`, `RollingText`, `Radar`, `rememberCachedDial`. Хуки: `AppState.rx()` на каждую команду адаптеру
+  (Elm327.onCommand) и в демо, `liveBackground`, `gaugeSelfTest`. Правило: покадровые State (`tick`, `breathQ`, `rxQ`…) читать
+  только в draw/graphicsLayer, каждый покадровый читатель — в своём `graphicsLayer()`. В Compose 1.7 нет top-level `using` —
+  для `SizeTransform` использовать конструктор `ContentTransform`. Ещё не сделано из MOTION.md: стаггер карточек результата/истории,
+  `AnimatedVisibility` раскрывашки CodeCard, анимация удаления в истории, пружина кружка акцента.
 - `ui/Gauges.kt` — круглые приборы со стрелками и скины по маркам (`Skins.forCar`).
 - `ui/Screens.kt` — экраны: главный (кнопка «Сфотографировать приборку», оценка адаптера), результат (карточки
   ремонта, тренда, флагов, АКБ, статус кода в блоке, итог ремонта, «что сказать в сервисе», болячки модели),
