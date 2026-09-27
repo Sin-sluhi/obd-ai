@@ -1074,6 +1074,11 @@ fun SettingsScreen(
             }
         }
 
+        SectionTitle("Живой фон")
+        Card {
+            ToggleRow("Живой фон", "Пакеты данных на фоне бегут в такт связи с машиной. Выключи, если экономишь батарею", state.liveBackground) { state.updateLiveBackground(it) }
+        }
+
         SectionTitle("Язык")
         Card {
             @OptIn(androidx.compose.foundation.layout.ExperimentalLayoutApi::class)

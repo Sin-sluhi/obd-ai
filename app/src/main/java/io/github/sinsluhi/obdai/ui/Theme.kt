@@ -32,6 +32,15 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.spring
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.ui.draw.drawWithCache
+import androidx.compose.ui.geometry.CornerRadius
+import androidx.compose.ui.graphics.drawscope.scale
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -166,26 +175,45 @@ fun Card(
     padding: Dp = 18.dp,
     elevation: Dp = 10.dp,
     glow: Color? = null,
+    edgePulse: Boolean = true,
+    edgePulseDelay: Int = 0,
     onClick: (() -> Unit)? = null,
     content: @Composable ColumnScope.() -> Unit
 ) {
     val shape = RoundedCornerShape(radius)
+    val accent = LocalAccent.current
+    val motion = LocalMotion.current
+    val bus = LocalBus.current
     val brush = Brush.verticalGradient(listOf(lighten(background, 0.05f), background))
+    // огонёк по верхней кромке при появлении и при «приборка включилась» (edgeEpoch); значение читается только в draw
+    val edge = rememberEdgePulse(edgePulseDelay, if (edgePulse) bus.edgeEpoch.intValue else -1, if (edgePulse) motion else Motion.Off)
+    val interaction = remember { MutableInteractionSource() }
     var m = modifier
+    if (onClick != null) m = m.pressPulse(radius, accent, interaction, 0.985f)
+    m = m
         .fillMaxWidth()
         .shadow(elevation, shape, ambientColor = Color.Black, spotColor = Color.Black)
         .clip(shape)
         .background(brush, shape)
-        .drawBehind {
-            if (glow != null) {
-                val center = Offset(size.width, 0f)
-                val radius = size.width * 0.7f
-                drawCircle(Brush.radialGradient(listOf(glow.copy(alpha = 0.28f), Color.Transparent), center = center, radius = radius), radius, center)
-            }
-        }
+        .drawBehind { drawEdgePulse(edge.value, accent, 64.dp.toPx(), 1.5.dp.toPx()) }
         .border(1.dp, border, shape)
-    if (onClick != null) m = m.clickable(onClick = onClick)
+    if (onClick != null) m = m.clickable(interactionSource = interaction, indication = null, onClick = onClick)
     Box(m) {
+        if (glow != null) {
+            // свечение в своём слое: тревожное (warn/danger) дышит по часам шины, «всё в порядке» статично
+            val breathes = glow == Palette.warn || glow == Palette.danger
+            Box(
+                Modifier.matchParentSize().graphicsLayer().drawWithCache {
+                    val center = Offset(size.width, 0f)
+                    val r = size.width * 0.7f
+                    val halo = Brush.radialGradient(listOf(glow, Color.Transparent), center = center, radius = r)
+                    onDrawBehind {
+                        val a = if (breathes) 0.22f + 0.10f * bus.breathQ.floatValue else 0.28f
+                        drawCircle(halo, r, center, alpha = a)
+                    }
+                }
+            )
+        }
         // светлая линия по верхней кромке — ощущение подсветки сверху
         Box(
             Modifier
@@ -236,15 +264,17 @@ fun PrimaryButton(text: String, modifier: Modifier = Modifier, enabled: Boolean 
     val shape = RoundedCornerShape(16.dp)
     val brush = if (enabled) Brush.verticalGradient(listOf(lighten(accent, 0.18f), accent))
     else Brush.verticalGradient(listOf(Palette.border, Palette.border))
+    val interaction = remember { MutableInteractionSource() }
     Box(
         modifier
+            .pressPulse(16.dp, lighten(accent, 0.4f), interaction)
             .fillMaxWidth()
             .height(54.dp)
             .shadow(if (enabled) 14.dp else 0.dp, shape, ambientColor = accent, spotColor = accent)
             .clip(shape)
             .background(brush, shape)
             .border(1.dp, if (enabled) lighten(accent, 0.35f).copy(alpha = 0.6f) else Palette.border, shape)
-            .clickable(enabled = enabled, onClick = onClick),
+            .clickable(enabled = enabled, interactionSource = interaction, indication = null, onClick = onClick),
         contentAlignment = Alignment.Center
     ) {
         Text(text, style = Type.body(16, if (enabled) Palette.bg else Palette.muted, FontWeight.Bold))
@@ -260,14 +290,16 @@ fun SecondaryButton(
     onClick: () -> Unit
 ) {
     val shape = RoundedCornerShape(16.dp)
+    val interaction = remember { MutableInteractionSource() }
     Box(
         modifier
+            .pressPulse(16.dp, LocalAccent.current, interaction)
             .height(50.dp)
             .shadow(6.dp, shape, ambientColor = Color.Black, spotColor = Color.Black)
             .clip(shape)
             .background(Brush.verticalGradient(listOf(Palette.surfaceTop, Palette.surface)), shape)
             .border(1.dp, Palette.border, shape)
-            .clickable(enabled = enabled, onClick = onClick),
+            .clickable(enabled = enabled, interactionSource = interaction, indication = null, onClick = onClick),
         contentAlignment = Alignment.Center
     ) {
         Text(
@@ -280,14 +312,16 @@ fun SecondaryButton(
 @Composable
 fun SquareIconButton(icon: ImageVector, description: String, onClick: () -> Unit) {
     val shape = RoundedCornerShape(12.dp)
+    val interaction = remember { MutableInteractionSource() }
     Box(
         Modifier
+            .pressPulse(12.dp, LocalAccent.current, interaction, 0.96f)
             .size(44.dp)
             .shadow(6.dp, shape, ambientColor = Color.Black, spotColor = Color.Black)
             .clip(shape)
             .background(Brush.verticalGradient(listOf(Palette.surfaceTop, Palette.surface)), shape)
             .border(1.dp, Palette.border, shape)
-            .clickable(onClick = onClick),
+            .clickable(interactionSource = interaction, indication = null, onClick = onClick),
         contentAlignment = Alignment.Center
     ) {
         Icon(icon, contentDescription = description, tint = Palette.text, modifier = Modifier.size(20.dp))
@@ -400,6 +434,9 @@ enum class Tab { Check, Sensors, History, Forum }
 @Composable
 fun BottomBar(current: Tab, onSelect: (Tab) -> Unit) {
     val shape = RoundedCornerShape(28.dp)
+    val accent = LocalAccent.current
+    // одна таблетка скользит по рельсу между вкладками; позиция читается только в draw
+    val idx by animateFloatAsState(current.ordinal.toFloat(), spring(dampingRatio = 0.85f, stiffness = Spring.StiffnessMediumLow), label = "tab")
     Box(Modifier.fillMaxWidth().navigationBarsPadding().padding(start = 14.dp, end = 14.dp, top = 6.dp, bottom = 10.dp)) {
         Row(
             Modifier
@@ -407,7 +444,13 @@ fun BottomBar(current: Tab, onSelect: (Tab) -> Unit) {
                 .shadow(22.dp, shape, ambientColor = Color.Black, spotColor = Color.Black)
                 .background(Brush.verticalGradient(listOf(Palette.surfaceTop, Palette.surface)), shape)
                 .border(1.dp, Palette.edge, shape)
-                .padding(horizontal = 6.dp, vertical = 6.dp),
+                .padding(horizontal = 6.dp, vertical = 6.dp)
+                .drawBehind {
+                    val slot = size.width / Tab.entries.size
+                    val r = CornerRadius(20.dp.toPx())
+                    drawRoundRect(accent.copy(alpha = 0.14f), Offset(idx * slot, 0f), Size(slot, size.height), r)
+                    drawRoundRect(accent.copy(alpha = 0.35f), Offset(idx * slot, 0f), Size(slot, size.height), r, style = Stroke(1.dp.toPx()))
+                },
             horizontalArrangement = Arrangement.SpaceEvenly,
             verticalAlignment = Alignment.CenterVertically
         ) {
@@ -427,14 +470,14 @@ private fun RowScope.TabItem(
     icon: @Composable (Color) -> Unit
 ) {
     val accent = LocalAccent.current
-    val color = if (selected) accent else Palette.muted
+    // цвет перетекает, иконка выбранной вкладки «кивает»; таблетку рисует BottomBar
+    val color by animateColorAsState(if (selected) accent else Palette.muted, tween(200), label = "tabColor")
+    val nod by animateFloatAsState(if (selected) 1.12f else 1f, spring(dampingRatio = 0.45f, stiffness = Spring.StiffnessMedium), label = "nod")
     val shape = RoundedCornerShape(20.dp)
     Column(
         Modifier
             .weight(1f)
             .clip(shape)
-            .background(if (selected) accent.copy(alpha = 0.14f) else Color.Transparent, shape)
-            .border(1.dp, if (selected) accent.copy(alpha = 0.35f) else Color.Transparent, shape)
             .clickable(onClick = onClick)
             .padding(vertical = 8.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -443,7 +486,8 @@ private fun RowScope.TabItem(
         Box(
             Modifier
                 .size(30.dp)
-                .then(if (selected) Modifier.shadow(14.dp, CircleShape, ambientColor = accent, spotColor = accent).background(accent.copy(alpha = 0.18f), CircleShape) else Modifier),
+                .graphicsLayer { scaleX = nod; scaleY = nod }
+                .drawBehind { if (selected) drawCircle(accent.copy(alpha = 0.18f)) },
             contentAlignment = Alignment.Center
         ) { icon(color) }
         Text(label, style = Type.body(11, color, if (selected) FontWeight.Bold else FontWeight.SemiBold), textAlign = TextAlign.Center)
@@ -478,72 +522,62 @@ fun HSpace(w: Dp) = Spacer(Modifier.width(w))
 
 // ---------- живые элементы ----------
 
-/** Мягкое свечение акцента в верхней части экрана. */
-@Composable
-fun Modifier.glowTop(): Modifier {
-    val accent = LocalAccent.current
-    return this.then(
-        Modifier.drawBehind {
-            val center = Offset(size.width * 0.5f, -size.width * 0.2f)
-            val radius = size.width * 0.9f
-            drawCircle(
-                brush = Brush.radialGradient(listOf(accent.copy(alpha = 0.14f), Color.Transparent), center = center, radius = radius),
-                radius = radius,
-                center = center
-            )
-        }
-    )
-}
-
-/** Большая кнопка проверки: пульсирующее свечение в покое, вращающаяся дуга в работе. */
+/** Большая кнопка проверки: ореол и кольцо дышат по часам шины, дуга в работе светлеет на каждый пакет. */
 @Composable
 fun BigCheckButton(busy: String?, onClick: () -> Unit) {
     val accent = LocalAccent.current
+    val bus = LocalBus.current
     val transition = rememberInfiniteTransition(label = "check")
-    val pulse by transition.animateFloat(
-        initialValue = 0f, targetValue = 1f,
-        animationSpec = infiniteRepeatable(tween(1600, easing = FastOutSlowInEasing), RepeatMode.Reverse),
-        label = "pulse"
-    )
     val spin by transition.animateFloat(
         initialValue = 0f, targetValue = 360f,
         animationSpec = infiniteRepeatable(tween(1300, easing = LinearEasing)),
         label = "spin"
     )
     val idle = busy == null
+    val interaction = remember { MutableInteractionSource() }
     Box(Modifier.size(236.dp), contentAlignment = Alignment.Center) {
-        Canvas(Modifier.size(236.dp)) {
-            val stroke = 3.dp.toPx()
-            val inset = stroke * 1.5f
-            val arcSize = Size(size.width - inset * 2, size.height - inset * 2)
-            drawCircle(
-                color = if (idle) accent.copy(alpha = 0.15f + 0.25f * pulse) else Palette.border,
-                radius = size.minDimension / 2 - inset,
-                style = Stroke(stroke)
-            )
-            if (!idle) {
-                rotate(spin) {
-                    drawArc(
-                        brush = Brush.sweepGradient(
-                            0f to Color.Transparent, 0.3f to accent, 0.301f to Color.Transparent, 1f to Color.Transparent
-                        ),
-                        startAngle = 0f, sweepAngle = 108f, useCenter = false,
-                        topLeft = Offset(inset, inset), size = arcSize,
-                        style = Stroke(stroke * 1.4f, cap = StrokeCap.Round)
-                    )
+        // всё покадровое — в своём слое и только в draw: кисти и Stroke созданы один раз в кэше
+        Box(
+            Modifier.size(236.dp).graphicsLayer().drawWithCache {
+                val stroke = 3.dp.toPx()
+                val inset = stroke * 1.5f
+                val c = Offset(size.width / 2f, size.height / 2f)
+                val radius = size.minDimension / 2f
+                val arcSize = Size(size.width - inset * 2, size.height - inset * 2)
+                val halo = Brush.radialGradient(listOf(accent.copy(alpha = 0.45f), Color.Transparent), center = c, radius = radius)
+                val sweep = Brush.sweepGradient(0f to Color.Transparent, 0.3f to accent, 0.301f to Color.Transparent, 1f to Color.Transparent)
+                val ringStroke = Stroke(stroke)
+                val arcStroke = Stroke(stroke * 1.4f, cap = StrokeCap.Round)
+                onDrawBehind {
+                    if (idle) {
+                        val breath = bus.breathQ.floatValue
+                        val s = 0.92f + 0.12f * breath
+                        scale(s, s, c) { drawCircle(halo, radius, c, alpha = 0.35f + 0.45f * breath) }
+                        drawCircle(accent.copy(alpha = 0.15f + 0.25f * breath), radius - inset, c, style = ringStroke)
+                    } else {
+                        drawCircle(Palette.border, radius - inset, c, style = ringStroke)
+                        rotate(spin) {
+                            drawArc(
+                                brush = sweep, startAngle = 0f, sweepAngle = 108f, useCenter = false,
+                                topLeft = Offset(inset, inset), size = arcSize,
+                                alpha = 0.8f + 0.2f * bus.rxQ.floatValue, style = arcStroke
+                            )
+                        }
+                    }
                 }
             }
-        }
+        )
         val brush = if (idle) Brush.radialGradient(listOf(lighten(accent, 0.18f), accent), radius = 300f)
         else Brush.verticalGradient(listOf(Palette.surfaceTop, Palette.surface))
         Box(
             Modifier
+                .pressPulse(88.dp, lighten(accent, 0.4f), interaction, 0.96f)
                 .size(176.dp)
-                .shadow(if (idle) (14 + 22 * pulse).dp else 6.dp, CircleShape, ambientColor = accent, spotColor = accent)
+                .shadow(if (idle) 10.dp else 6.dp, CircleShape, ambientColor = accent, spotColor = accent)
                 .background(brush, CircleShape)
                 .border(1.dp, if (idle) Color.White.copy(alpha = 0.35f) else Palette.border, CircleShape)
                 .clip(CircleShape)
-                .clickable(enabled = idle, onClick = onClick),
+                .clickable(enabled = idle, interactionSource = interaction, indication = null, onClick = onClick),
             contentAlignment = Alignment.Center
         ) {
             if (!idle) {
@@ -566,7 +600,8 @@ fun BigCheckButton(busy: String?, onClick: () -> Unit) {
 fun RpmGauge(rpm: Double?, max: Float = 7000f, modifier: Modifier = Modifier) {
     val accent = LocalAccent.current
     val target = ((rpm ?: 0.0).toFloat() / max).coerceIn(0f, 1f)
-    val value by animateFloatAsState(targetValue = target, animationSpec = tween(450), label = "rpm")
+    // механический перелёт стрелки: пружина вместо tween
+    val value by animateFloatAsState(targetValue = target, animationSpec = spring(dampingRatio = 0.6f, stiffness = 150f), label = "rpm")
     Canvas(modifier) {
         val stroke = 14.dp.toPx()
         val r = minOf(size.width / 2 - stroke, (size.height - stroke * 2) / 1.5f)
