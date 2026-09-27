@@ -688,16 +688,24 @@ private fun CodeCard(
             ) {
                 Text(if (more) tr("scr_hide_details") else tr("scr_how_it_works"), style = Type.body(13, accent, FontWeight.SemiBold))
                 HSpace(6.dp)
-                Text(if (more) "▲" else "▼", style = Type.body(10, accent))
+                // один глиф, поворот вместо смены символа
+                val rot by animateFloatAsState(if (more) 180f else 0f, tween(200), label = "chev")
+                Text("▼", style = Type.body(10, accent), modifier = Modifier.graphicsLayer { rotationZ = rot })
             }
-            if (more) {
-                VSpace(4.dp)
-                if (info.familyTitle.isNotBlank()) Text(info.familyTitle, style = Type.body(12, Palette.muted))
-                VSpace(4.dp)
-                Text(info.story, style = Type.body(13, Palette.text2))
-                if (info.confirm.isNotBlank()) {
-                    VSpace(6.dp)
-                    Text(tr("scr_by_sensors", info.confirm), style = Type.body(12, Palette.muted))
+            AnimatedVisibility(
+                visible = more,
+                enter = expandVertically(spring(stiffness = Spring.StiffnessMediumLow)) + fadeIn(),
+                exit = shrinkVertically() + fadeOut()
+            ) {
+                Column {
+                    VSpace(4.dp)
+                    if (info.familyTitle.isNotBlank()) Text(info.familyTitle, style = Type.body(12, Palette.muted))
+                    VSpace(4.dp)
+                    Text(info.story, style = Type.body(13, Palette.text2))
+                    if (info.confirm.isNotBlank()) {
+                        VSpace(6.dp)
+                        Text(tr("scr_by_sensors", info.confirm), style = Type.body(12, Palette.muted))
+                    }
                 }
             }
         }
@@ -1059,11 +1067,15 @@ fun SettingsScreen(
         Row(horizontalArrangement = Arrangement.spacedBy(14.dp)) {
             Palette.accents.forEachIndexed { i, (name, color) ->
                 val selected = i == state.accentIndex
+                // выбранный кружок подпрыгивает пружиной, тень разгорается
+                val bump by animateFloatAsState(if (selected) 1.12f else 1f, spring(dampingRatio = 0.5f, stiffness = 500f), label = "accBump")
+                val glowDp by animateDpAsState(if (selected) 14.dp else 4.dp, label = "accGlow")
                 Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.weight(1f)) {
                     Box(
                         Modifier
+                            .graphicsLayer { scaleX = bump; scaleY = bump }
                             .size(48.dp)
-                            .shadow(if (selected) 14.dp else 4.dp, CircleShape, ambientColor = color, spotColor = color)
+                            .shadow(glowDp, CircleShape, ambientColor = color, spotColor = color)
                             .border(2.dp, if (selected) Palette.text else Color.Transparent, CircleShape)
                             .padding(4.dp)
                             .background(color, CircleShape)
