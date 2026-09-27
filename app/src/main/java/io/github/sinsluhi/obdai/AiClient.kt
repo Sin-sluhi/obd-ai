@@ -104,7 +104,7 @@ next_steps, for_service, typical_issues) — только по-русски, к�
                 .getOrDefault("")
         }
         progress("Нейронка формирует вердикт")
-        val system = ROLE + "\n\n" + SCHEMA_TEXT
+        val system = ROLE + langRule() + "\n\n" + SCHEMA_TEXT
         // Groq: основная модель, при неудаче следующая; у остальных провайдеров модель одна
         val models = if (cfg.provider == Provider.GROQ) (listOf(cfg.model) + groqFallbacks).distinct() else listOf(cfg.model)
         var last: IOException? = null
@@ -125,7 +125,8 @@ next_steps, for_service, typical_issues) — только по-русски, к�
                     }
                     val json = extractJson(reply.content) ?: throw IOException("Модель вернула не JSON")
                     val parsed = Diagnosis.fromJson(json, fromAi = true)
-                    if (isRussian(parsed.title) && isRussian(parsed.text)) { d = parsed; break }
+                    // проверка языка только для русского интерфейса: для остальных языков надёжного признака нет
+                    if (!Tr.isRussian || (isRussian(parsed.title) && isRussian(parsed.text))) { d = parsed; break }
                     log("Ответ не по-русски («${parsed.title.take(40)}»), повторяю")
                     sys = system + "\n\nВАЖНО: предыдущий ответ был на английском. Весь текст — строго по-русски, кириллицей."
                 }
@@ -142,6 +143,12 @@ next_steps, for_service, typical_issues) — только по-русски, к�
         }
         throw last ?: IOException("Модель не ответила")
     }
+
+    /** Язык вердикта: в ROLE зашит русский; при другом языке интерфейса добавляем указание, которое сильнее него. */
+    private fun langRule(): String = if (Tr.isRussian) "" else
+        "\n\nЯЗЫК ОТВЕТА: ${Tr.lang.aiName}. Это важнее правила про русский выше: все свободные поля (verdict_title, " +
+            "verdict_text, title, explanation, causes, what_to_do, owner_experience, summary, next_steps, for_service, " +
+            "typical_issues) пиши на языке «${Tr.lang.aiName}». Коды ошибок, VIN и адреса ссылок не переводить."
 
     /** Текст считается русским, если кириллических букв не меньше, чем латинских (коды и названия узлов латиницей не мешают). */
     private fun isRussian(s: String): Boolean {
@@ -226,7 +233,7 @@ next_steps, for_service, typical_issues) — только по-русски, к�
             .put("model", cfg.wireModel)
             .put("max_tokens", 16000)
             .put("fallbacks", "default")
-            .put("system", ROLE)
+            .put("system", ROLE + langRule())
             .put("output_config", JSONObject()
                 .put("effort", "medium")
                 .put("format", JSONObject().put("type", "json_schema").put("schema", anthropicSchema())))

@@ -52,6 +52,8 @@ class AppState private constructor(context: Context) {
     private val main = Handler(Looper.getMainLooper())
 
     init {
+        // Язык интерфейса нужен до первого кадра: переводы маленькие, читаем сразу
+        Tr.init(appContext, prefs)
         // Справочник кодов и болячки моделей: ~1 МБ JSON, читаем в фоне один раз на процесс
         worker.execute {
             DtcCatalog.load(appContext); KnownIssues.load(appContext)
@@ -631,12 +633,13 @@ class AppState private constructor(context: Context) {
         if (tts == null) {
             tts = TextToSpeech(appContext) { status ->
                 if (status == TextToSpeech.SUCCESS) {
-                    tts?.setLanguage(Locale("ru"))
+                    tts?.setLanguage(Tr.lang.locale)
                     ttsReady = true
                     tts?.speak(text, TextToSpeech.QUEUE_ADD, null, key)
                 }
             }
         } else if (ttsReady) {
+            tts?.setLanguage(Tr.lang.locale)   // язык могли сменить в настройках после создания синтезатора
             tts?.speak(text, TextToSpeech.QUEUE_ADD, null, key)
         }
     }

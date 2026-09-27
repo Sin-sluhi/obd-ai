@@ -201,6 +201,11 @@ class Prefs(context: Context) {
         get() = sp.getString(k("forecast_day"), "") ?: ""
         set(v) = sp.edit().putString(k("forecast_day"), v).apply()
 
+    /** Язык интерфейса (код из `Langs`); пусто = язык телефона, если он у нас есть, иначе русский. */
+    var lang: String
+        get() = sp.getString("lang", "") ?: ""
+        set(v) = sp.edit().putString("lang", v).apply()
+
     // ---- база опыта владельцев: свой кэш и время последней загрузки общей ----
 
     var kbLocal: String?
