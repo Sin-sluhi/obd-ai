@@ -41,6 +41,7 @@ import androidx.core.content.ContextCompat
 import io.github.sinsluhi.obdai.ui.BottomBar
 import io.github.sinsluhi.obdai.ui.BusBackground
 import io.github.sinsluhi.obdai.ui.BusDriver
+import io.github.sinsluhi.obdai.ui.ClearedOverlay
 import io.github.sinsluhi.obdai.ui.ConfirmDialog
 import io.github.sinsluhi.obdai.ui.DashScreen
 import io.github.sinsluhi.obdai.ui.DetailsScreen
