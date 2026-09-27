@@ -1,9 +1,11 @@
 package io.github.sinsluhi.obdai.ui
 
 import android.graphics.Paint
+import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
-import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -12,17 +14,25 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.CacheDrawScope
+import androidx.compose.ui.draw.DrawResult
+import androidx.compose.ui.draw.drawWithCache
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.drawscope.drawIntoCanvas
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.nativeCanvas
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
@@ -32,6 +42,7 @@ import androidx.core.content.res.ResourcesCompat
 import io.github.sinsluhi.obdai.R
 import kotlin.math.cos
 import kotlin.math.sin
+import kotlinx.coroutines.delay
 
 /** Стиль приборов «в духе марки»: подсветка, стрелка, цифры, циферблат. */
 data class GaugeSkin(
@@ -127,9 +138,25 @@ object Skins {
     }
 }
 
+/** Шкала прибора: 240° от 150° (семь часов) по часовой стрелке. */
+private const val GAUGE_START = 150f
+private const val GAUGE_SWEEP = 240f
+
+/** Блик по дорожке живого прибора: 18°, период 2,4 с, фаза 0.125·order (MOTION.md §3). */
+private const val GLINT_DEG = 18f
+private const val GLINT_PERIOD_S = 2.4f
+
 /**
  * Круглый прибор со стрелкой: шкала 240°, деления с цифрами, красная и синяя зоны,
  * дуга подсветки до текущего значения, объёмный ободок.
+ *
+ * Статика (ободок, циферблат, зоны, дорожка, деления, цифры) записана в GraphicsLayer и перерисовывается
+ * только при смене стиля, шкалы или размера; покадрово — слой + дуга значения + стрелка (MOTION.md §4.5).
+ * [order] — место прибора в сетке 0..7: задержка самотеста `order·90` мс и фаза блика.
+ * [live] — связь с машиной есть: узел в своём graphicsLayer, а при Motion.Full по дорожке бежит блик,
+ * стрелка дрожит при работающем моторе и красная зона пульсирует, когда стрелка в ней (часы — BusModel).
+ * [selfTest] — «включили зажигание»: один раз при первом показе стрелка 0→max за 650 мс, max→значение
+ * за 750 мс. Значение латчится при входе, так что SensorsScreen может сразу поставить state.gaugeSelfTest = true.
  */
 @Composable
 fun RoundGauge(
@@ -144,7 +171,10 @@ fun RoundGauge(
     labelDivisor: Float = 1f,
     decimals: Int = 0,
     redFrom: Float? = null,
-    coldTo: Float? = null
+    coldTo: Float? = null,
+    order: Int = 0,
+    live: Boolean = false,
+    selfTest: Boolean = false
 ) {
     val context = LocalContext.current
     val paint = remember {
@@ -154,109 +184,246 @@ fun RoundGauge(
             typeface = runCatching { ResourcesCompat.getFont(context, R.font.jetbrains_mono) }.getOrNull()
         }
     }
-    val fraction = if (value == null) 0f else ((value.toFloat() - min) / (max - min)).coerceIn(0f, 1f)
-    val animated by animateFloatAsState(targetValue = fraction, animationSpec = tween(500), label = label)
+    val motion = LocalMotion.current
+    // Часы шины нужны только живому прибору при полной анимации; LocalBus без провайдера бросает,
+    // поэтому читается только тогда (как LiveDot). Сам tick читается ВНУТРИ draw, не здесь.
+    val bus = if (live && motion == Motion.Full) LocalBus.current else null
+    val span = if (max > min) max - min else 1f
+    val fraction = if (value == null) 0f else ((value.toFloat() - min) / span).coerceIn(0f, 1f)
+    val redFrac = redFrom?.let { ((it - min) / span).coerceIn(0f, 1f) }
 
-    Box(modifier.aspectRatio(1f), contentAlignment = Alignment.Center) {
-        Canvas(Modifier.fillMaxSize()) {
-            val cx = size.width / 2
-            val cy = size.height / 2
-            val outer = size.minDimension / 2
+    // Стрелка. Самотест латчится при первом показе: SensorsScreen после запуска ставит state.gaugeSelfTest = true,
+    // параметр на следующей рекомпозиции станет false, но начатый пробег это не прерывает. При Motion.Off
+    // самотеста нет, и без него стрелка сразу стоит на значении — иначе каждый вход на «Датчики» был бы пробегом.
+    val runTest = remember { selfTest && motion != Motion.Off }
+    val needle = remember { Animatable(if (runTest) 0f else fraction) }
+    val testing = remember { mutableStateOf(runTest) }
+    val target = rememberUpdatedState(fraction)
+    if (testing.value) {
+        LaunchedEffect(Unit) {
+            delay(order.coerceAtLeast(0) * 90L)
+            needle.animateTo(1f, tween(durationMillis = 650, easing = FastOutSlowInEasing))
+            needle.animateTo(target.value, tween(durationMillis = 750, easing = FastOutSlowInEasing))
+            testing.value = false
+        }
+    } else {
+        LaunchedEffect(fraction) {
+            needle.animateTo(fraction, spring(dampingRatio = 0.6f, stiffness = 150f))
+        }
+    }
+
+    // Статика в слое: перезапись при смене стиля, шкалы, зон или размера холста (размер сверяет drawDial).
+    // У живого прибора красная зона пульсирует, поэтому рисуется покадрово, а не в слое — отсюда liveFrames в ключах.
+    val liveFrames = bus != null
+    val dial = rememberCachedDial(skin, min, max, majorStep, labelDivisor, redFrom, coldTo, liveFrames) {
+        drawStaticDial(paint, skin, min, max, majorStep, labelDivisor, redFrom, coldTo, redStatic = !liveFrames)
+    }
+
+    // Кисть ступицы и обводки дуг — один раз на размер (в кадре ничего не выделяется). Лямбда в remember,
+    // чтобы очередное значение датчика не пересобирало кэш: draw читает needle.value, а не fraction.
+    val onCache = remember(dial, needle, bus, skin, redFrac, order) {
+        val block: CacheDrawScope.() -> DrawResult = {
+            val cx = size.width / 2f
+            val cy = size.height / 2f
             val c = Offset(cx, cy)
-
-            // ободок и циферблат
-            drawCircle(Brush.radialGradient(listOf(skin.bezel, Color(0xFF07080A)), center = Offset(cx, cy - outer * 0.4f), radius = outer * 1.3f), outer, c)
-            drawCircle(Color.White.copy(alpha = 0.08f), outer - 1.dp.toPx(), c, style = Stroke(1.dp.toPx()))
+            val outer = size.minDimension / 2f
             val dialR = outer * 0.9f
-            drawCircle(Brush.radialGradient(listOf(skin.dialTop, skin.dialBottom), center = Offset(cx, cy - dialR * 0.3f), radius = dialR * 1.2f), dialR, c)
-            drawCircle(skin.glow.copy(alpha = 0.10f), dialR, c, style = Stroke(1.5f.dp.toPx()))
-
-            val start = 150f
-            val sweep = 240f
             val scaleR = dialR * 0.84f
-            val arcTopLeft = Offset(cx - scaleR, cy - scaleR)
-            val arcSize = Size(scaleR * 2, scaleR * 2)
             val ringW = dialR * 0.055f
+            val arcTopLeft = Offset(cx - scaleR, cy - scaleR)
+            val arcSize = Size(scaleR * 2f, scaleR * 2f)
+            val glowTopLeft = Offset(cx - scaleR * 0.93f, cy - scaleR * 0.93f)
+            val glowSize = Size(scaleR * 1.86f, scaleR * 1.86f)
+            val hubR = dialR * 0.1f
+            val hub = Brush.radialGradient(
+                listOf(Color(0xFF3A404A), Color(0xFF14171C)),
+                center = c, radius = hubR.coerceAtLeast(1f)
+            )
+            val zoneStroke = Stroke(ringW)
+            val glowStroke = Stroke(ringW * 2.2f, cap = StrokeCap.Round)
+            val valueStroke = Stroke(ringW * 0.7f, cap = StrokeCap.Round)
+            val glintStroke = Stroke(ringW * 1.3f, cap = StrokeCap.Round)
+            val shadowW = 4.dp.toPx()
+            val haloW = 7.dp.toPx()
+            val needleW = 2.6f.dp.toPx()
+            onDrawBehind {
+                if (outer <= 0f) return@onDrawBehind
+                drawDial(dial)
+                val a = needle.value.coerceIn(0f, 1f)
 
-            fun frac(v: Float) = ((v - min) / (max - min)).coerceIn(0f, 1f)
-
-            // зоны
-            coldTo?.let {
-                drawArc(skin.coldZone.copy(alpha = 0.85f), start, sweep * frac(it), false, arcTopLeft, arcSize, style = Stroke(ringW))
-            }
-            redFrom?.let {
-                val f = frac(it)
-                drawArc(skin.redZone.copy(alpha = 0.9f), start + sweep * f, sweep * (1f - f), false, arcTopLeft, arcSize, style = Stroke(ringW))
-            }
-            // тонкая дорожка шкалы
-            drawArc(skin.numbers.copy(alpha = 0.25f), start, sweep, false, arcTopLeft, arcSize, style = Stroke(1.dp.toPx()))
-
-            // подсветка до текущего значения
-            if (animated > 0.004f) {
-                drawArc(
-                    skin.glow.copy(alpha = 0.22f), start, sweep * animated, false,
-                    Offset(cx - scaleR * 0.93f, cy - scaleR * 0.93f), Size(scaleR * 1.86f, scaleR * 1.86f),
-                    style = Stroke(ringW * 2.2f, cap = StrokeCap.Round)
-                )
-                drawArc(
-                    skin.glow, start, sweep * animated, false,
-                    Offset(cx - scaleR * 0.93f, cy - scaleR * 0.93f), Size(scaleR * 1.86f, scaleR * 1.86f),
-                    style = Stroke(ringW * 0.7f, cap = StrokeCap.Round)
-                )
-            }
-
-            // деления и цифры
-            val majors = ((max - min) / majorStep).toInt()
-            paint.textSize = dialR * 0.13f
-            paint.color = skin.numbers.toArgb()
-            for (i in 0..majors) {
-                val v = min + majorStep * i
-                val a = Math.toRadians((start + sweep * frac(v)).toDouble())
-                val cosA = cos(a).toFloat()
-                val sinA = sin(a).toFloat()
-                drawLine(
-                    skin.numbers.copy(alpha = 0.9f),
-                    Offset(cx + cosA * (scaleR - ringW * 1.2f), cy + sinA * (scaleR - ringW * 1.2f)),
-                    Offset(cx + cosA * (scaleR + ringW * 0.9f), cy + sinA * (scaleR + ringW * 0.9f)),
-                    2.dp.toPx(), StrokeCap.Round
-                )
-                val labelR = scaleR * 0.74f
-                val text = formatTick(v / labelDivisor)
-                drawIntoCanvas {
-                    it.nativeCanvas.drawText(text, cx + cosA * labelR, cy + sinA * labelR + paint.textSize * 0.35f, paint)
+                // покадровое — только у живого прибора: подписка на tick, дальше сырые поля модели
+                var jitter = 0f
+                var redAlpha = 0.9f
+                var glint = -1f
+                if (bus != null) {
+                    @Suppress("UNUSED_VARIABLE")
+                    val t = bus.tick.longValue
+                    val time = bus.time
+                    // speedK при работающем моторе = 1 + обороты/8000 (busMode), run — сглаженный «мотор работает»
+                    val rpmNorm = (bus.speedK - 1f).coerceIn(0f, 1f)
+                    jitter = sin(time * 41f) * 0.35f * bus.run * (0.4f + rpmNorm)
+                    if (redFrac != null && a >= redFrac) redAlpha = 0.55f + 0.45f * bus.pulse
+                    glint = (time / GLINT_PERIOD_S + 0.125f * order) % 1f
                 }
-                if (i < majors) for (k in 1..4) {
-                    val vm = v + majorStep * k / 5f
-                    val am = Math.toRadians((start + sweep * frac(vm)).toDouble())
-                    val cm = cos(am).toFloat()
-                    val sm = sin(am).toFloat()
-                    drawLine(
-                        skin.numbers.copy(alpha = 0.45f),
-                        Offset(cx + cm * (scaleR - ringW * 0.3f), cy + sm * (scaleR - ringW * 0.3f)),
-                        Offset(cx + cm * (scaleR + ringW * 0.6f), cy + sm * (scaleR + ringW * 0.6f)),
-                        1.dp.toPx(), StrokeCap.Round
+
+                // красная зона живого прибора (в слое её нет): дышит, пока стрелка в ней
+                if (bus != null && redFrac != null && redFrac < 1f) {
+                    drawArc(
+                        skin.redZone.copy(alpha = redAlpha),
+                        GAUGE_START + GAUGE_SWEEP * redFrac, GAUGE_SWEEP * (1f - redFrac), false,
+                        arcTopLeft, arcSize, style = zoneStroke
                     )
                 }
-            }
 
-            // стрелка с тенью и подсветкой
-            val a = Math.toRadians((start + sweep * animated).toDouble())
-            val tip = Offset(cx + cos(a).toFloat() * scaleR * 0.92f, cy + sin(a).toFloat() * scaleR * 0.92f)
-            val tail = Offset(cx - cos(a).toFloat() * dialR * 0.14f, cy - sin(a).toFloat() * dialR * 0.14f)
-            drawLine(Color.Black.copy(alpha = 0.45f), Offset(tail.x + 2, tail.y + 3), Offset(tip.x + 2, tip.y + 3), 4.dp.toPx(), StrokeCap.Round)
-            drawLine(skin.needle.copy(alpha = 0.35f), tail, tip, 7.dp.toPx(), StrokeCap.Round)
-            drawLine(skin.needle, tail, tip, 2.6f.dp.toPx(), StrokeCap.Round)
-            drawCircle(Brush.radialGradient(listOf(Color(0xFF3A404A), Color(0xFF14171C)), center = c, radius = dialR * 0.1f), dialR * 0.1f, c)
-            drawCircle(skin.needle, dialR * 0.035f, c)
+                // подсветка до текущего значения
+                if (a > 0.004f) {
+                    drawArc(skin.glow.copy(alpha = 0.22f), GAUGE_START, GAUGE_SWEEP * a, false, glowTopLeft, glowSize, style = glowStroke)
+                    drawArc(skin.glow, GAUGE_START, GAUGE_SWEEP * a, false, glowTopLeft, glowSize, style = valueStroke)
+                }
+
+                // блик по дорожке: входит с начала шкалы и уходит за её конец, без скачка
+                if (glint >= 0f) {
+                    val s = GAUGE_START - GLINT_DEG + (GAUGE_SWEEP + GLINT_DEG) * glint
+                    val a0 = if (s > GAUGE_START) s else GAUGE_START
+                    val end = s + GLINT_DEG
+                    val a1 = if (end < GAUGE_START + GAUGE_SWEEP) end else GAUGE_START + GAUGE_SWEEP
+                    if (a1 > a0) {
+                        drawArc(skin.glow.copy(alpha = 0.12f), a0, a1 - a0, false, arcTopLeft, arcSize, style = glintStroke)
+                    }
+                }
+
+                // стрелка с тенью и подсветкой
+                val ang = Math.toRadians((GAUGE_START + GAUGE_SWEEP * a + jitter).toDouble())
+                val cosA = cos(ang).toFloat()
+                val sinA = sin(ang).toFloat()
+                val tip = Offset(cx + cosA * scaleR * 0.92f, cy + sinA * scaleR * 0.92f)
+                val tail = Offset(cx - cosA * dialR * 0.14f, cy - sinA * dialR * 0.14f)
+                drawLine(Color.Black.copy(alpha = 0.45f), Offset(tail.x + 2f, tail.y + 3f), Offset(tip.x + 2f, tip.y + 3f), shadowW, StrokeCap.Round)
+                drawLine(skin.needle.copy(alpha = 0.35f), tail, tip, haloW, StrokeCap.Round)
+                drawLine(skin.needle, tail, tip, needleW, StrokeCap.Round)
+                drawCircle(hub, hubR, c)
+                drawCircle(skin.needle, dialR * 0.035f, c)
+            }
         }
+        block
+    }
+
+    Box(modifier.aspectRatio(1f), contentAlignment = Alignment.Center) {
+        // Живой прибор — в своём graphicsLayer: покадровая инвалидация не переписывает слой экрана (MOTION.md §5.4)
+        Box(
+            Modifier
+                .fillMaxSize()
+                .then(if (live) Modifier.graphicsLayer() else Modifier)
+                .drawWithCache(onCache)
+        )
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             Text(label, style = Type.body(11, skin.numbers.copy(alpha = 0.75f), FontWeight.Medium))
             Spacer(Modifier.height(30.dp))
-            Text(
-                value?.let { "%.${decimals}f".format(it) } ?: "—",
-                style = Type.mono(22, skin.numbers).copy(fontWeight = FontWeight.SemiBold)
-            )
+            GaugeValue(value, decimals, skin.numbers)
             Text(unit, style = Type.body(10, skin.numbers.copy(alpha = 0.65f)))
+        }
+    }
+}
+
+/** Цифра значения докручивается за 450 мс; свой composable, чтобы её рекомпозиция не трогала прибор. */
+@Composable
+private fun GaugeValue(value: Double?, decimals: Int, color: Color) {
+    val shown by animateFloatAsState(
+        targetValue = value?.toFloat() ?: 0f,
+        animationSpec = tween(450),
+        label = "gaugeValue"
+    )
+    Text(
+        if (value == null) "—" else "%.${decimals}f".format(shown),
+        style = Type.mono(22, color).copy(fontWeight = FontWeight.SemiBold)
+    )
+}
+
+/**
+ * Статика прибора — пишется в слой один раз на размер/стиль/шкалу: ободок, циферблат, зоны, дорожка,
+ * деления, цифры (nativeCanvas). Кисти градиентов создаются здесь, в записи, а не в кадре.
+ * Красная зона — только при [redStatic]; у живого прибора она пульсирует и рисуется покадрово.
+ */
+private fun DrawScope.drawStaticDial(
+    paint: Paint,
+    skin: GaugeSkin,
+    min: Float,
+    max: Float,
+    majorStep: Float,
+    labelDivisor: Float,
+    redFrom: Float?,
+    coldTo: Float?,
+    redStatic: Boolean
+) {
+    val cx = size.width / 2f
+    val cy = size.height / 2f
+    val outer = size.minDimension / 2f
+    if (outer <= 0f) return
+    val c = Offset(cx, cy)
+    val span = if (max > min) max - min else 1f
+    fun frac(v: Float) = ((v - min) / span).coerceIn(0f, 1f)
+
+    // ободок и циферблат
+    drawCircle(
+        Brush.radialGradient(listOf(skin.bezel, Color(0xFF07080A)), center = Offset(cx, cy - outer * 0.4f), radius = (outer * 1.3f).coerceAtLeast(1f)),
+        outer, c
+    )
+    drawCircle(Color.White.copy(alpha = 0.08f), outer - 1.dp.toPx(), c, style = Stroke(1.dp.toPx()))
+    val dialR = outer * 0.9f
+    drawCircle(
+        Brush.radialGradient(listOf(skin.dialTop, skin.dialBottom), center = Offset(cx, cy - dialR * 0.3f), radius = (dialR * 1.2f).coerceAtLeast(1f)),
+        dialR, c
+    )
+    drawCircle(skin.glow.copy(alpha = 0.10f), dialR, c, style = Stroke(1.5f.dp.toPx()))
+
+    val scaleR = dialR * 0.84f
+    val arcTopLeft = Offset(cx - scaleR, cy - scaleR)
+    val arcSize = Size(scaleR * 2f, scaleR * 2f)
+    val ringW = dialR * 0.055f
+
+    // зоны
+    coldTo?.let {
+        drawArc(skin.coldZone.copy(alpha = 0.85f), GAUGE_START, GAUGE_SWEEP * frac(it), false, arcTopLeft, arcSize, style = Stroke(ringW))
+    }
+    if (redStatic) redFrom?.let {
+        val f = frac(it)
+        drawArc(skin.redZone.copy(alpha = 0.9f), GAUGE_START + GAUGE_SWEEP * f, GAUGE_SWEEP * (1f - f), false, arcTopLeft, arcSize, style = Stroke(ringW))
+    }
+    // тонкая дорожка шкалы
+    drawArc(skin.numbers.copy(alpha = 0.25f), GAUGE_START, GAUGE_SWEEP, false, arcTopLeft, arcSize, style = Stroke(1.dp.toPx()))
+
+    // деления и цифры
+    val step = if (majorStep > 0f) majorStep else span / 8f
+    val majors = (span / step).toInt().coerceIn(1, 64)
+    paint.textSize = dialR * 0.13f
+    paint.color = skin.numbers.toArgb()
+    val labelR = scaleR * 0.74f
+    for (i in 0..majors) {
+        val v = min + step * i
+        val a = Math.toRadians((GAUGE_START + GAUGE_SWEEP * frac(v)).toDouble())
+        val cosA = cos(a).toFloat()
+        val sinA = sin(a).toFloat()
+        drawLine(
+            skin.numbers.copy(alpha = 0.9f),
+            Offset(cx + cosA * (scaleR - ringW * 1.2f), cy + sinA * (scaleR - ringW * 1.2f)),
+            Offset(cx + cosA * (scaleR + ringW * 0.9f), cy + sinA * (scaleR + ringW * 0.9f)),
+            2.dp.toPx(), StrokeCap.Round
+        )
+        val text = formatTick(v / labelDivisor)
+        drawIntoCanvas {
+            it.nativeCanvas.drawText(text, cx + cosA * labelR, cy + sinA * labelR + paint.textSize * 0.35f, paint)
+        }
+        if (i < majors) for (k in 1..4) {
+            val vm = v + step * k / 5f
+            val am = Math.toRadians((GAUGE_START + GAUGE_SWEEP * frac(vm)).toDouble())
+            val cm = cos(am).toFloat()
+            val sm = sin(am).toFloat()
+            drawLine(
+                skin.numbers.copy(alpha = 0.45f),
+                Offset(cx + cm * (scaleR - ringW * 0.3f), cy + sm * (scaleR - ringW * 0.3f)),
+                Offset(cx + cm * (scaleR + ringW * 0.6f), cy + sm * (scaleR + ringW * 0.6f)),
+                1.dp.toPx(), StrokeCap.Round
+            )
         }
     }
 }

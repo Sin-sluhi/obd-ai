@@ -1,8 +1,23 @@
 package io.github.sinsluhi.obdai.ui
 
+import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.animateIntAsState
+import androidx.compose.animation.core.spring
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.expandVertically
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.shrinkVertically
+import androidx.compose.animation.slideInVertically
+import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -33,7 +48,6 @@ import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.automirrored.filled.Send
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.AlertDialog
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
@@ -45,15 +59,23 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.key
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.drawWithCache
 import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.geometry.CornerRadius
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.asImageBitmap
+import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.graphics.graphicsLayer
 import io.github.sinsluhi.obdai.CarImage
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.painterResource
@@ -85,6 +107,7 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 import kotlin.math.abs
+import kotlinx.coroutines.delay
 
 private val screenPadding = 20.dp
 
@@ -94,7 +117,9 @@ internal fun Screen(
     scroll: Boolean = true,
     content: @Composable ColumnScope.() -> Unit
 ) {
-    Column(Modifier.fillMaxSize().background(Palette.background).glowTop()) {
+    // Фон и подсветку приборки рисует BusBackground в MainActivity (§4.3): страницы прозрачные,
+    // шина видна в полях и зазорах между карточками. Свой непрозрачный фон оставляет только LogScreen.
+    Column(Modifier.fillMaxSize()) {
         val base = Modifier
             .weight(1f)
             .fillMaxWidth()
@@ -251,20 +276,30 @@ fun HomeScreen(
             verticalArrangement = Arrangement.spacedBy(18.dp)
         ) {
             BigCheckButton(busy = state.busy, onClick = onCheck)
-            Text(
-                state.busy ?: if (state.connected) "Включи зажигание. Двигатель можно не заводить"
-                else "Сначала подключи адаптер",
-                style = Type.body(14, Palette.muted),
-                textAlign = TextAlign.Center,
-                modifier = Modifier.width(280.dp)
-            )
+            // строка терминала (§3): новый текст въезжает снизу и проявляется, старый гаснет;
+            // пачку пакетов на смену busy даёт BusDriver. При выключенных анимациях — простой fade.
+            val hint = if (state.connected) "Включи зажигание. Двигатель можно не заводить" else "Сначала подключи адаптер"
+            val motion = LocalMotion.current
+            AnimatedContent(
+                targetState = state.busy ?: hint,
+                modifier = Modifier.width(280.dp),
+                transitionSpec = {
+                    if (motion == Motion.Off) fadeIn(tween(150)) togetherWith fadeOut(tween(150))
+                    else (slideInVertically(tween(180)) { it / 4 } + fadeIn(tween(180))) togetherWith fadeOut(tween(120))
+                },
+                contentAlignment = Alignment.Center,
+                label = "hint"
+            ) { text ->
+                Text(text, style = Type.body(14, Palette.muted), textAlign = TextAlign.Center, modifier = Modifier.fillMaxWidth())
+            }
         }
 
         // плашка Check Engine / последний результат
         val d = state.diagnosis
         if (state.milOn == true || (d != null && d.codes.isNotEmpty())) {
             val count = d?.codes?.size ?: state.dtcCount ?: 0
-            Card(background = Palette.warnBg, border = Palette.warnBorder, radius = 16.dp, padding = 14.dp, onClick = onOpenResult) {
+            // тёплое дышащее свечение (внутри Card по цвету warn), значок статичный — мигающий MIL значит другое
+            Card(background = Palette.warnBg, border = Palette.warnBorder, radius = 16.dp, padding = 14.dp, glow = Palette.warn, onClick = onOpenResult) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     WarningIcon(Palette.warn)
                     HSpace(12.dp)
@@ -279,7 +314,7 @@ fun HomeScreen(
                 }
             }
         } else if (d != null) {
-            Card(background = Palette.okBg, border = Palette.border, radius = 16.dp, padding = 14.dp, onClick = onOpenResult) {
+            Card(background = Palette.okBg, border = Palette.border, radius = 16.dp, padding = 14.dp, glow = accent, onClick = onOpenResult) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Icon(Icons.Default.Check, null, tint = accent, modifier = Modifier.size(22.dp))
                     HSpace(12.dp)
@@ -302,7 +337,8 @@ private fun InfoTile(label: String, value: String, modifier: Modifier = Modifier
             .padding(horizontal = 12.dp, vertical = 10.dp)
     ) {
         Text(label, style = Type.label(12))
-        Text(value, style = Type.strong(14), maxLines = 1)
+        // одометр: новая цифра выезжает снизу, старая уходит вверх; первый показ без анимации
+        RollingText(value, Type.strong(14))
     }
 }
 
@@ -1292,7 +1328,7 @@ fun DevicePickerDialog(
                     )
                 }
                 if (scanning) Row(verticalAlignment = Alignment.CenterVertically) {
-                    CircularProgressIndicator(color = accent, strokeWidth = 2.dp, modifier = Modifier.size(14.dp))
+                    Radar(14.dp, accent)
                     HSpace(8.dp)
                     Text("Ищу адаптеры Bluetooth LE…", style = Type.body(13, Palette.muted))
                 }
@@ -1482,7 +1518,8 @@ private fun ModuleRow(name: String, codes: List<String>, accent: Color, vinMisma
 private fun ConnRow(label: String, ok: Boolean, value: String) {
     val accent = LocalAccent.current
     Row(verticalAlignment = Alignment.CenterVertically) {
-        Dot(if (ok) accent else Palette.muted)
+        // светодиод RX: при связи дышит и вспыхивает на каждую команду адаптеру, без связи — серая точка
+        LiveDot(accent, live = ok)
         HSpace(10.dp)
         Text(label, style = Type.strong(14), maxLines = 1)
         HSpace(8.dp)

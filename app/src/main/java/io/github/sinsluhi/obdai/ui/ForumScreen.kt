@@ -439,6 +439,8 @@ private fun ChatInput(value: String, enabled: Boolean, sending: Boolean, onChang
     val focused by src.collectIsFocusedAsState()
     val shape = RoundedCornerShape(24.dp)
     val canSend = enabled && !sending && value.isNotBlank()
+    // одна MutableInteractionSource на pressPulse и clickable: масштаб и отрезок по контуру от того же нажатия
+    val interaction = remember { MutableInteractionSource() }
     Row(Modifier.fillMaxWidth().imePadding(), verticalAlignment = Alignment.Bottom) {
         Box(
             Modifier
@@ -461,11 +463,12 @@ private fun ChatInput(value: String, enabled: Boolean, sending: Boolean, onChang
         Box(
             Modifier
                 .size(48.dp)
+                .pressPulse(24.dp, accent, interaction)
                 .then(if (canSend) Modifier.shadow(12.dp, CircleShape, ambientColor = accent, spotColor = accent) else Modifier)
                 .clip(CircleShape)
                 .background(if (canSend) Brush.verticalGradient(listOf(lighten(accent, 0.15f), accent)) else SolidColor(Palette.surface2), CircleShape)
                 .border(1.dp, if (canSend) accent.copy(alpha = 0.6f) else Palette.border, CircleShape)
-                .clickable(enabled = canSend, onClick = onSend),
+                .clickable(interactionSource = interaction, indication = null, enabled = canSend, onClick = onSend),
             contentAlignment = Alignment.Center
         ) {
             Icon(Icons.AutoMirrored.Filled.Send, null, tint = if (canSend) Palette.bg else Palette.muted, modifier = Modifier.size(20.dp).padding(start = 2.dp))

@@ -17,8 +17,8 @@ import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
+import androidx.compose.animation.ContentTransform
 import androidx.compose.animation.togetherWith
-import androidx.compose.animation.using
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.PressInteraction
@@ -269,9 +269,12 @@ fun RollingText(text: String, style: TextStyle, modifier: Modifier = Modifier) {
         targetState = text,
         modifier = modifier,
         transitionSpec = {
-            (slideInVertically(animationSpec = tween(180)) { it / 2 } + fadeIn(animationSpec = tween(180)))
-                .togetherWith(slideOutVertically(animationSpec = tween(120)) { -it / 2 } + fadeOut(animationSpec = tween(120)))
-                .using(SizeTransform(clip = false))
+            // конструктор вместо infix `using`: в этой версии Compose такого top-level импорта нет
+            ContentTransform(
+                targetContentEnter = slideInVertically(animationSpec = tween(180)) { it / 2 } + fadeIn(animationSpec = tween(180)),
+                initialContentExit = slideOutVertically(animationSpec = tween(120)) { -it / 2 } + fadeOut(animationSpec = tween(120)),
+                sizeTransform = SizeTransform(clip = false)
+            )
         },
         label = "roll"
     ) { value ->

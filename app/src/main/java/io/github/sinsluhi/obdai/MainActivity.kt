@@ -24,10 +24,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.animation.AnimatedContent
-import androidx.compose.animation.fadeIn
-import androidx.compose.animation.fadeOut
-import androidx.compose.animation.slideInVertically
-import androidx.compose.animation.togetherWith
+import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -42,6 +39,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.core.content.ContextCompat
 import io.github.sinsluhi.obdai.ui.BottomBar
+import io.github.sinsluhi.obdai.ui.BusBackground
+import io.github.sinsluhi.obdai.ui.BusDriver
 import io.github.sinsluhi.obdai.ui.ConfirmDialog
 import io.github.sinsluhi.obdai.ui.DashScreen
 import io.github.sinsluhi.obdai.ui.DetailsScreen
@@ -54,13 +53,22 @@ import io.github.sinsluhi.obdai.ui.PurchaseScreen
 import io.github.sinsluhi.obdai.ui.HistoryScreen
 import io.github.sinsluhi.obdai.ui.HomeScreen
 import io.github.sinsluhi.obdai.ui.LocalAccent
+import io.github.sinsluhi.obdai.ui.LocalBus
+import io.github.sinsluhi.obdai.ui.LocalMotion
 import io.github.sinsluhi.obdai.ui.LogScreen
 import io.github.sinsluhi.obdai.ui.MessageDialog
+import io.github.sinsluhi.obdai.ui.PageReveal
 import io.github.sinsluhi.obdai.ui.Palette
 import io.github.sinsluhi.obdai.ui.ResultScreen
 import io.github.sinsluhi.obdai.ui.SensorsScreen
 import io.github.sinsluhi.obdai.ui.SettingsScreen
+import io.github.sinsluhi.obdai.ui.SweepOverlay
 import io.github.sinsluhi.obdai.ui.Tab
+import io.github.sinsluhi.obdai.ui.pageTransition
+import io.github.sinsluhi.obdai.ui.rememberBusModel
+import io.github.sinsluhi.obdai.ui.rememberMood
+import io.github.sinsluhi.obdai.ui.rememberMotion
+import io.github.sinsluhi.obdai.ui.rememberTint
 import io.github.sinsluhi.obdai.ui.reportText
 
 enum class Page { Home, Result, Sensors, History, Settings, Log, Details, Dash, Forum, Purchase, Blackbox, Service, Garage }
@@ -139,7 +147,15 @@ class MainActivity : ComponentActivity() {
     private fun App() {
         var page by remember { mutableStateOf(Page.Home) }
         var confirmClear by remember { mutableStateOf(false) }
-        val accent = Palette.accent(state.accentIndex)
+
+        // «Пульс шины» (MOTION.md §4.2): модель и единственный покадровый цикл живут ВЫШЕ key(Tr.lang.code),
+        // чтобы смена языка не перезапускала шину; акцент и tint настроения анимируются плавно
+        val model = rememberBusModel()
+        val motion by rememberMotion(state)
+        BusDriver(model, state, page, motion)
+        val accent by animateColorAsState(Palette.accent(state.accentIndex), tween(500), label = "accent")
+        val mood = rememberMood(state)
+        val tint by rememberTint(mood, page, accent)
 
         BackHandler(enabled = page != Page.Home) {
             page = when (page) {
@@ -183,15 +199,16 @@ class MainActivity : ComponentActivity() {
 
         // смена языка пересобирает всё дерево: строки в remember и кэшах не остаются на старом языке
         androidx.compose.runtime.key(Tr.lang.code) {
-        CompositionLocalProvider(LocalAccent provides accent) {
+        CompositionLocalProvider(LocalAccent provides accent, LocalMotion provides motion, LocalBus provides model) {
+            // плоский цвет остаётся подложкой первого кадра; слои по z: фон-осциллограф → страницы → полоса развёртки
             Box(Modifier.fillMaxSize().background(Palette.bg)) {
+                BusBackground(model, tint)
                 AnimatedContent(
                     targetState = page,
-                    transitionSpec = {
-                        (fadeIn(tween(220)) + slideInVertically(tween(220)) { it / 30 }).togetherWith(fadeOut(tween(150)))
-                    },
+                    transitionSpec = { pageTransition(motion) },
                     label = "page"
                 ) { p ->
+                PageReveal(motion, accent) {
                 when (p) {
                     Page.Home -> HomeScreen(
                         state,
@@ -254,6 +271,8 @@ class MainActivity : ComponentActivity() {
                     Page.Log -> LogScreen(state, onBack = { page = Page.Settings }, onCopyReport = { copyReport() }, onCopyLog = { copyLog() })
                 }
                 }
+                }
+                SweepOverlay(model, tint)
 
                 pickerDevices?.let { devices ->
                     DevicePickerDialog(

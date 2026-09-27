@@ -1,7 +1,9 @@
 package io.github.sinsluhi.obdai.ui
 
 import android.content.Intent
-import androidx.compose.foundation.Canvas
+import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.FastOutSlowInEasing
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -19,17 +21,22 @@ import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.drawWithCache
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.graphics.drawscope.clipRect
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
@@ -144,27 +151,85 @@ private fun BlackboxDetail(e: BlackboxEvent, onBack: () -> Unit, onShare: () -> 
     }
 }
 
-/** График одного параметра с вертикальной чертой в момент события. */
+/**
+ * График одного параметра с вертикальной чертой в момент события.
+ * При появлении прорисовывается слева направо за 600 мс (`clipRect(right = W·p)`) с бегущей точкой-головой 3 dp
+ * на конце — та же осциллограмма, что на фоне (MOTION.md §3). Path один на ряд (`remember(row)`), точки в px
+ * пересчитываются только при смене размера в `drawWithCache`; прогресс читается только в draw, узел в своём
+ * `graphicsLayer()`, чтобы покадровая инвалидация не переписывала слой карточки. При Motion.Off — сразу целиком.
+ */
 @Composable
-private fun Sparkline(row: List<Pair<Long, Double>>, eventT: Long, accent: androidx.compose.ui.graphics.Color) {
+private fun Sparkline(row: List<Pair<Long, Double>>, eventT: Long, accent: Color) {
+    val motion = LocalMotion.current
     val minV = row.minOf { it.second }
     val maxV = row.maxOf { it.second }
     val minT = row.minOf { it.first }
     val maxT = row.maxOf { it.first }
-    Canvas(Modifier.fillMaxWidth().height(56.dp)) {
-        val w = size.width
-        val h = size.height
-        val spanV = (maxV - minV).takeIf { it > 0.0001 } ?: 1.0
-        val spanT = (maxT - minT).takeIf { it > 0 } ?: 1L
-        fun x(t: Long) = ((t - minT).toDouble() / spanT * w).toFloat()
-        fun y(v: Double) = (h - (v - minV) / spanV * (h * 0.85) - h * 0.075).toFloat()
-        // момент события
-        val ex = x(eventT)
-        drawLine(Palette.warn.copy(alpha = 0.55f), Offset(ex, 0f), Offset(ex, h), strokeWidth = 1.5f)
-        val path = Path()
-        row.forEachIndexed { i, (t, v) -> if (i == 0) path.moveTo(x(t), y(v)) else path.lineTo(x(t), y(v)) }
-        drawPath(path, accent, style = Stroke(2.2f, cap = StrokeCap.Round))
+    val path = remember(row) { Path() }
+    val progress = remember(row) { Animatable(if (motion == Motion.Off) 1f else 0f) }
+    LaunchedEffect(row, motion) {
+        if (motion == Motion.Off) progress.snapTo(1f)
+        else if (progress.value < 1f) progress.animateTo(1f, tween(durationMillis = 600, easing = FastOutSlowInEasing))
     }
+    val head = lighten(accent, 0.4f)
+    Spacer(
+        Modifier
+            .fillMaxWidth()
+            .height(56.dp)
+            .graphicsLayer()
+            .drawWithCache {
+                val w = size.width
+                val h = size.height
+                val spanV = (maxV - minV).takeIf { it > 0.0001 } ?: 1.0
+                val spanT = (maxT - minT).takeIf { it > 0 } ?: 1L
+                fun x(t: Long) = ((t - minT).toDouble() / spanT * w).toFloat()
+                fun y(v: Double) = (h - (v - minV) / spanV * (h * 0.85) - h * 0.075).toFloat()
+                // точки в px: массивы для головы и один Path для линии — только при смене размера, не в кадре
+                val n = row.size
+                val xs = FloatArray(n)
+                val ys = FloatArray(n)
+                path.reset()
+                row.forEachIndexed { i, (t, v) ->
+                    xs[i] = x(t); ys[i] = y(v)
+                    if (i == 0) path.moveTo(xs[i], ys[i]) else path.lineTo(xs[i], ys[i])
+                }
+                val stroke = Stroke(2.2f, cap = StrokeCap.Round)
+                val ex = x(eventT)                  // момент события
+                val headR = 3.dp.toPx()             // точка-голова
+                val haloR = 7.dp.toPx()
+                onDrawBehind {
+                    val p = progress.value.coerceIn(0f, 1f)
+                    if (p >= 1f) {
+                        drawLine(Palette.warn.copy(alpha = 0.55f), Offset(ex, 0f), Offset(ex, h), strokeWidth = 1.5f)
+                        drawPath(path, accent, style = stroke)
+                        return@onDrawBehind
+                    }
+                    val edge = w * p
+                    clipRect(right = edge) {
+                        drawLine(Palette.warn.copy(alpha = 0.55f), Offset(ex, 0f), Offset(ex, h), strokeWidth = 1.5f)
+                        drawPath(path, accent, style = stroke)
+                    }
+                    if (n == 0) return@onDrawBehind
+                    // голова: точка графика под кромкой (ряд идёт по времени, x не убывает)
+                    var i = 0
+                    while (i < n - 1 && xs[i + 1] < edge) i++
+                    val hy = if (i >= n - 1) {
+                        ys[n - 1]
+                    } else {
+                        val x0 = xs[i]
+                        val x1 = xs[i + 1]
+                        val k = if (x1 > x0) ((edge - x0) / (x1 - x0)).coerceIn(0f, 1f) else 1f
+                        ys[i] + (ys[i + 1] - ys[i]) * k
+                    }
+                    // «пакет прибыл»: в последних 12 % пути голова растёт до ×1.8 и гаснет, как у пакетов на фоне
+                    val left = ((1f - p) / 0.12f).coerceIn(0f, 1f)
+                    val mul = 1f + 0.8f * (1f - left)
+                    val c = Offset(edge, hy)
+                    drawCircle(accent.copy(alpha = 0.25f * left), radius = haloR * mul, center = c)
+                    drawCircle(head.copy(alpha = left), radius = headR * mul, center = c)
+                }
+            }
+    )
 }
 
 // ======================= сервис =======================
