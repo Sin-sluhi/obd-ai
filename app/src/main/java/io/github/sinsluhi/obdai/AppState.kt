@@ -423,7 +423,7 @@ class AppState private constructor(context: Context) {
         diagnosis = null
         lastSnapshot = null
         dash = null
-        busy = null
+        // busy не трогаем: им управляет runTask, иначе возврат на главную «останавливал» идущую проверку на экране
     }
 
     fun disconnect() {

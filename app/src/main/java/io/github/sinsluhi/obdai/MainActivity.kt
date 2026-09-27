@@ -167,7 +167,7 @@ class MainActivity : ComponentActivity() {
                 Page.Blackbox -> Page.History
                 Page.Service -> Page.History
                 Page.Garage -> Page.Home
-                Page.Result -> { state.clearResult(); Page.Home }
+                Page.Result -> { if (state.busy == null) state.clearResult(); Page.Home }
                 else -> Page.Home
             }
         }
@@ -220,11 +220,15 @@ class MainActivity : ComponentActivity() {
                         // «Открыть» на плашке Check Engine: результат уже мог быть убран с главной (clearResult) —
                         // тогда поднимаем последнюю проверку из истории, а не показываем пустой экран
                         onOpenResult = {
-                            if (state.diagnosis == null && state.busy == null) state.history.firstOrNull()?.let { e ->
-                                state.diagnosis = e.diagnosis
-                                state.vin = e.vin
+                            // во время проверки плашка ничего не открывает: прогресс виден на большой кнопке,
+                            // а результат откроется сам, когда проверка закончится
+                            if (state.busy == null) {
+                                if (state.diagnosis == null) state.history.firstOrNull()?.let { e ->
+                                    state.diagnosis = e.diagnosis
+                                    state.vin = e.vin
+                                }
+                                page = Page.Result
                             }
-                            page = Page.Result
                         },
                         onSettings = { page = Page.Settings },
                         onAdapterClick = { if (state.connected) page = Page.Settings else pickDevice() },
@@ -240,7 +244,8 @@ class MainActivity : ComponentActivity() {
                     )
                     Page.Result -> ResultScreen(
                         state,
-                        onBack = { state.clearResult(); page = Page.Home },
+                        // пока идёт проверка, результат не чистим: она дойдёт до конца и сама откроет вердикт
+                        onBack = { if (state.busy == null) state.clearResult(); page = Page.Home },
                         onShare = { share() },
                         onFindService = { findService() },
                         onClear = { confirmClear = true },

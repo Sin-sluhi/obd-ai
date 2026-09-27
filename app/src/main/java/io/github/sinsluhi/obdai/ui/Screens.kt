@@ -1096,30 +1096,7 @@ fun SettingsScreen(
             ToggleRow(tr("scr_live_bg"), tr("scr_live_bg_hint"), state.liveBackground) { state.updateLiveBackground(it) }
         }
 
-        SectionTitle(tr("scr_language"))
-        Card {
-            @OptIn(androidx.compose.foundation.layout.ExperimentalLayoutApi::class)
-            androidx.compose.foundation.layout.FlowRow(
-                horizontalArrangement = Arrangement.spacedBy(8.dp),
-                verticalArrangement = Arrangement.spacedBy(8.dp)
-            ) {
-                Langs.all.forEach { l ->
-                    val selected = l.code == Tr.lang.code
-                    Box(
-                        Modifier
-                            .clip(RoundedCornerShape(999.dp))
-                            .background(if (selected) accent.copy(alpha = 0.18f) else Palette.surface2, RoundedCornerShape(999.dp))
-                            .border(1.dp, if (selected) accent else Palette.border, RoundedCornerShape(999.dp))
-                            .clickable { state.updateLang(l) }
-                            .padding(horizontal = 12.dp, vertical = 7.dp)
-                    ) {
-                        Text(l.title, style = if (selected) Type.strong(13) else Type.body(13, Palette.text2))
-                    }
-                }
-            }
-            VSpace(8.dp)
-            Text(tr("scr_language_note"), style = Type.body(12, Palette.muted))
-        }
+        // язык переключается кнопкой в правом верхнем углу главной (ui/LangMenu.kt); в настройках его нет по просьбе владельца
 
         if (state.devMode) {
             SectionTitle(tr("scr_dev_mode"))
