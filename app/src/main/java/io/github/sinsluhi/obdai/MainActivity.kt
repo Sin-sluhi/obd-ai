@@ -34,10 +34,11 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.core.content.ContextCompat
+import androidx.core.location.LocationManagerCompat
 import io.github.sinsluhi.obdai.ui.BottomBar
 import io.github.sinsluhi.obdai.ui.BusBackground
 import io.github.sinsluhi.obdai.ui.BusDriver
@@ -83,19 +84,17 @@ class MainActivity : ComponentActivity() {
     private var scanning by mutableStateOf(false)
     private var bleScanner: android.bluetooth.le.BluetoothLeScanner? = null
     private var bleCallback: android.bluetooth.le.ScanCallback? = null
-    private var afterPermission: (() -> Unit)? = null
+    /** Что сделать после ответа на запрос разрешения; получает «выдано ли». Каждый запрос сам решает,
+     *  нужно ли продолжать без разрешения, — иначе при отказе навсегда (система отвечает сразу, без диалога)
+     *  повторный вызов запроса уходил в бесконечный цикл. */
+    private var afterPermission: ((Boolean) -> Unit)? = null
 
     private val permissionLauncher =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) { granted ->
             val pending = afterPermission
             afterPermission = null
-            if (granted) pending?.invoke()
-            else if (pending != null && state.trip == null && !state.connected) state.toast = tr("main_no_bt_permission")
-            else pending?.invoke()
+            pending?.invoke(granted)
         }
-
-    /** Куда перейти после разбора фото (экран приборки). */
-    private var afterPhoto: (() -> Unit)? = null
 
     private val cameraLauncher =
         registerForActivityResult(ActivityResultContracts.TakePicturePreview()) { bmp ->
@@ -128,9 +127,9 @@ class MainActivity : ComponentActivity() {
         val out = ByteArrayOutputStream()
         bmp.compress(Bitmap.CompressFormat.JPEG, 82, out)
         val b64 = Base64.encodeToString(out.toByteArray(), Base64.NO_WRAP)
-        val done = afterPhoto
-        afterPhoto = null
-        state.analyzePhoto(b64) { done?.invoke() }
+        // экран приборки открываем через pendingPage: колбэк не держит состояние композиции,
+        // а сама Activity могла быть пересоздана, пока была открыта камера
+        state.analyzePhoto(b64) { pendingPage = Page.Dash }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -146,9 +145,17 @@ class MainActivity : ComponentActivity() {
 
     @Composable
     private fun App() {
-        var page by remember { mutableStateOf(Page.Home) }
-        var confirmClear by remember { mutableStateOf(false) }
-        var cleared by remember { mutableStateOf<List<String>?>(null) }   // стёртые коды → экран «Ошибки стёрты»
+        // rememberSaveable: поворот, смена темы/шрифта, split-screen и выгрузка Activity в фоне (камера)
+        // пересоздают Activity — экран не должен сбрасываться на главный
+        var page by rememberSaveable { mutableStateOf(Page.Home) }
+        var confirmClear by rememberSaveable { mutableStateOf(false) }
+        var cleared by rememberSaveable { mutableStateOf<List<String>?>(null) }   // стёртые коды → экран «Ошибки стёрты»
+
+        // долгие задачи (проверка, фото) просят открыть экран через pendingPage, а не через колбэк:
+        // колбэк из старой композиции после пересоздания Activity писал бы в мёртвое состояние
+        LaunchedEffect(pendingPage) {
+            pendingPage?.let { page = it; pendingPage = null }
+        }
 
         // «Пульс шины» (MOTION.md §4.2): модель и единственный покадровый цикл живут ВЫШЕ key(Tr.lang.code),
         // чтобы смена языка не перезапускала шину; акцент и tint настроения анимируются плавно
@@ -215,7 +222,7 @@ class MainActivity : ComponentActivity() {
                     Page.Home -> HomeScreen(
                         state,
                         onCheck = {
-                            if (state.connected) state.runCheck { page = Page.Result } else pickDevice()
+                            if (state.connected) state.runCheck { pendingPage = Page.Result } else pickDevice()
                         },
                         // «Открыть» на плашке Check Engine: результат уже мог быть убран с главной (clearResult) —
                         // тогда поднимаем последнюю проверку из истории, а не показываем пустой экран
@@ -232,13 +239,13 @@ class MainActivity : ComponentActivity() {
                         },
                         onSettings = { page = Page.Settings },
                         onAdapterClick = { if (state.connected) page = Page.Settings else pickDevice() },
-                        onPhoto = { page = Page.Dash; takePhoto { page = Page.Dash } },
+                        onPhoto = { page = Page.Dash; takePhoto() },
                         onUseWeather = { useLocationForForecast() },
                         onCarPhoto = { carPhotoLauncher.launch("image/*") },
                         onGarage = { page = Page.Garage },
                         onPurchase = {
                             if (state.lastSnapshot != null) page = Page.Purchase
-                            else if (state.connected) state.runCheck { page = Page.Purchase } else pickDevice()
+                            else if (state.connected) state.runCheck { pendingPage = Page.Purchase } else pickDevice()
                         },
                         bottom = tabBar
                     )
@@ -258,8 +265,8 @@ class MainActivity : ComponentActivity() {
                     Page.Dash -> DashScreen(
                         state,
                         onBack = { page = Page.Home },
-                        onCamera = { takePhoto { page = Page.Dash } },
-                        onGallery = { afterPhoto = { page = Page.Dash }; galleryLauncher.launch("image/*") }
+                        onCamera = { takePhoto() },
+                        onGallery = { galleryLauncher.launch("image/*") }
                     )
                     Page.Sensors -> SensorsScreen(state, onStartTrip = { startTrip() }, onStopTrip = { stopTrip() }, bottom = tabBar)
                     Page.Forum -> ForumScreen(state, bottom = tabBar)
@@ -363,9 +370,26 @@ class MainActivity : ComponentActivity() {
     @SuppressLint("MissingPermission")
     private fun startBleScan() {
         if (Build.VERSION.SDK_INT >= 31 && checkSelfPermission(PERM_SCAN) != PackageManager.PERMISSION_GRANTED) {
-            afterPermission = { startBleScan() }
+            // без разрешения остаётся список спаренных устройств, просить повторно не нужно
+            afterPermission = { granted -> if (granted) startBleScan() else state.toast = tr("main_no_bt_permission") }
             permissionLauncher.launch(PERM_SCAN)
             return
+        }
+        if (Build.VERSION.SDK_INT < 31) {
+            // Android 8–11 отдаёт результаты BLE-скана только с разрешением на геолокацию
+            // (10–11: точная, раньше хватает приблизительной) и при включённой геолокации;
+            // иначе startScan не падает, а список просто остаётся пустым
+            val need = if (Build.VERSION.SDK_INT >= 29) PERM_FINE_LOCATION else PERM_LOCATION
+            if (checkSelfPermission(need) != PackageManager.PERMISSION_GRANTED) {
+                afterPermission = { granted -> if (granted) startBleScan() else state.toast = tr("main_ble_need_location") }
+                permissionLauncher.launch(need)
+                return
+            }
+            val lm = getSystemService(LOCATION_SERVICE) as LocationManager
+            if (!LocationManagerCompat.isLocationEnabled(lm)) {
+                state.toast = tr("main_ble_need_location")
+                return
+            }
         }
         val adapter = (getSystemService(BLUETOOTH_SERVICE) as BluetoothManager).adapter ?: return
         val scanner = adapter.bluetoothLeScanner ?: return
@@ -405,30 +429,31 @@ class MainActivity : ComponentActivity() {
         if (Build.VERSION.SDK_INT >= 31 &&
             checkSelfPermission(PERM_CONNECT) != PackageManager.PERMISSION_GRANTED
         ) {
-            afterPermission = { pickDevice() }
+            afterPermission = { granted ->
+                if (granted) pickDevice()
+                else {
+                    // без Bluetooth-разрешения остаётся Wi-Fi адаптер; повторно не спрашиваем (при отказе
+                    // навсегда система отвечает сразу, и повторный запрос уходил бы в цикл)
+                    state.toast = tr("main_no_bt_permission")
+                    pickerDevices = listOf(wifiOption())
+                }
+            }
             permissionLauncher.launch(PERM_CONNECT)
             return
         }
         val adapter = (getSystemService(BLUETOOTH_SERVICE) as BluetoothManager).adapter
-        if (adapter == null) {
-            state.toast = tr("main_no_bluetooth")
-            pickerDevices = emptyList()
-            return
-        }
-        if (!adapter.isEnabled) {
-            state.toast = tr("main_enable_bluetooth")
-            pickerDevices = emptyList()
-            return
-        }
-        pickerDevices = classicOptions(adapter) + wifiOption()
-        startBleScan()
+        val btReady = adapter != null && adapter.isEnabled
+        // Wi-Fi адаптеру Bluetooth не нужен: его пункт показываем всегда, даже когда Bluetooth выключен или его нет
+        if (adapter == null) state.toast = tr("main_no_bluetooth")
+        else if (!adapter.isEnabled) state.toast = tr("main_enable_bluetooth")
+        pickerDevices = (if (adapter != null && btReady) classicOptions(adapter) else emptyList()) + wifiOption()
+        if (btReady) startBleScan()
     }
 
     // ---------- фото приборки ----------
 
-    private fun takePhoto(onDone: () -> Unit) {
+    private fun takePhoto() {
         if (!state.hasAiKey) { state.toast = tr("main_photo_unavailable"); return }
-        afterPhoto = onDone
         runCatching { cameraLauncher.launch(null) }
             .onFailure { state.toast = tr("main_camera_unavailable", it.message) }
     }
@@ -478,6 +503,7 @@ class MainActivity : ComponentActivity() {
         if (Build.VERSION.SDK_INT >= 33 &&
             checkSelfPermission(PERM_NOTIFY) != PackageManager.PERMISSION_GRANTED
         ) {
+            // сервис работает и без разрешения на уведомления, поэтому запускаем его при любом ответе
             afterPermission = { startCarService() }
             permissionLauncher.launch(PERM_NOTIFY)
             return
@@ -532,13 +558,20 @@ class MainActivity : ComponentActivity() {
     }
 
     override fun onDestroy() {
-        // соединение, опрос и поездки живут в AppState и сервисе, экран им не нужен
+        // соединение, опрос и поездки живут в AppState и сервисе, экран им не нужен;
+        // а вот BLE-скан привязан к этой Activity — иначе он крутится до таймера уже после пересоздания
+        stopBleScan()
         super.onDestroy()
     }
 
     companion object {
+        /** Экран, который просит открыть долгая задача (проверка, фото). Живёт вне Activity, чтобы
+         *  пережить её пересоздание; App() читает и сбрасывает его через LaunchedEffect. */
+        private var pendingPage by mutableStateOf<Page?>(null)
+
         private const val PERM_CONNECT = "android.permission.BLUETOOTH_CONNECT"
         private const val PERM_SCAN = "android.permission.BLUETOOTH_SCAN"
+        private const val PERM_FINE_LOCATION = "android.permission.ACCESS_FINE_LOCATION"
         private val ADAPTER_WORDS = listOf("OBD", "ELM", "LINK", "VGATE", "ICAR", "KONNWEI", "VIECAR", "VEEPEAK", "SCAN", "CARISTA", "THINK")
         private const val PERM_NOTIFY = "android.permission.POST_NOTIFICATIONS"
         private const val PERM_LOCATION = "android.permission.ACCESS_COARSE_LOCATION"

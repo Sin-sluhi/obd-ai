@@ -15,6 +15,7 @@
   "main_enable_bluetooth": "Включи Bluetooth",
   "main_photo_unavailable": "Разбор фото временно недоступен",
   "main_camera_unavailable": "Камера недоступна: {0}",
+  "main_ble_need_location": "Для поиска Bluetooth LE адаптеров Android нужна геолокация: разреши её приложению и включи в настройках телефона",
   "main_share_result": "Поделиться результатом",
   "main_service_query": "автосервис",
   "main_clip_log": "OBD лог",

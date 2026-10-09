@@ -103,12 +103,14 @@ class WifiTransport(host: String, port: Int, context: Context, log: (String) -> 
     init {
         // Телефон подключён к точке доступа адаптера, но интернет идёт через мобильную сеть:
         // без привязки к Wi-Fi сокет уйдёт в мобильный интернет и адаптер «не найдётся».
+        // Привязываем только этот сокет, а не весь процесс: у точки доступа адаптера нет интернета,
+        // и bindProcessToNetwork увёл бы туда все HTTP-запросы приложения (нейронка, база, форум, фото).
         runCatching {
             val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
             val wifi = cm.allNetworks.firstOrNull { n ->
                 cm.getNetworkCapabilities(n)?.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) == true
             }
-            if (wifi != null) { cm.bindProcessToNetwork(wifi); log(tr("link_wifi_bound")) }
+            if (wifi != null) { wifi.bindSocket(socket); log(tr("link_wifi_bound")) }
         }
         log(tr("link_wifi_connecting", host, port))
         socket.connect(InetSocketAddress(host, port), 8000)

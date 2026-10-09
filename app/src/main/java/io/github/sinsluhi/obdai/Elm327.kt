@@ -59,13 +59,25 @@ class Elm327(private val log: (String) -> Unit) : ObdLink {
         adapter = probeAdapter(version.orEmpty())
         log(tr("elm_adapter_grade", adapter.grade()))
 
+        refreshEcu()
+        log(tr("elm_voltage", readVoltage()))
+    }
+
+    /**
+     * Спрашивает блок двигателя (0100) и заново снимает протокол, маску PID, имя блока и калибровку.
+     * Вызывается при подключении и повторно, когда подключились при выключенном зажигании, а блок потом ответил:
+     * иначе ecuOnline навсегда остаётся false, а supportedPids — пустым. Возвращает ecuOnline.
+     * Блокирующий, звать из рабочего потока (send под замком, с опросом не гоняется).
+     */
+    fun refreshEcu(): Boolean {
         log(tr("elm_probing_protocol"))
         val probe = send("0100", 15000)
-        if (listOf("UNABLE", "NO DATA", "ERROR", "TIMEOUT").any { probe.contains(it) }) {
+        val bad = listOf("UNABLE", "NO DATA", "ERROR", "TIMEOUT").any { probe.contains(it) }
+        if (bad) {
             log(tr("elm_car_no_answer", probe))
             log(tr("elm_check_ignition"))
         }
-        ecuOnline = !listOf("UNABLE", "NO DATA", "ERROR", "TIMEOUT").any { probe.contains(it) } && ObdDecoder.messages(probe).isNotEmpty()
+        ecuOnline = !bad && ObdDecoder.messages(probe).isNotEmpty()
         isCan = ObdDecoder.isCan(send("ATDPN"))
         protocol = send("ATDP")
         log(tr("elm_protocol", protocol))
@@ -79,7 +91,7 @@ class Elm327(private val log: (String) -> Unit) : ObdLink {
             if (ecuName.isNotBlank()) log(tr("elm_ecu", ecuName))
             if (calibration.isNotBlank()) log(tr("elm_calibration", calibration))
         }
-        log(tr("elm_voltage", readVoltage()))
+        return ecuOnline
     }
 
     /** Проверяем, какие AT-команды адаптер понимает: клоны отвечают «?» на то, чего у них нет. */

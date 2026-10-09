@@ -45,6 +45,7 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -74,10 +75,22 @@ import java.util.Date
 @Composable
 fun ForumScreen(state: AppState, bottom: @Composable () -> Unit) {
     val prefs = state.prefs
+    val context = LocalContext.current.applicationContext
+    // ForumTree.brands — не Compose-состояние, а грузится в фоне AppState.init после справочника кодов (~1 МБ JSON).
+    // Если вкладку открыли раньше, читаем дерево сами (76 КБ) и держим его в state: иначе экран остался бы пустым,
+    // а сохранённая ветка не восстановилась бы до перезапуска.
+    var tree by remember { mutableStateOf(ForumTree.brands) }
+    LaunchedEffect(Unit) {
+        if (tree.isEmpty()) {
+            withContext(Dispatchers.IO) { ForumTree.load(context) }
+            tree = ForumTree.brands
+        }
+    }
     val saved = remember { prefs.forumRoom }
-    var brand by remember { mutableStateOf(saved?.let { id -> ForumTree.brands.firstOrNull { b -> id.startsWith(b.slug + "/") } }) }
-    var model by remember { mutableStateOf(saved?.let { id -> brand?.models?.firstOrNull { m -> m.gens.any { g -> g.id == id } } }) }
-    var gen by remember { mutableStateOf(saved?.let { id -> model?.gens?.firstOrNull { g -> g.id == id } }) }
+    // ключ tree меняется один раз, с пустого списка на полный, когда выбрать ещё ничего нельзя — выбор не сбросится
+    var brand by remember(tree) { mutableStateOf(saved?.let { id -> tree.firstOrNull { b -> id.startsWith(b.slug + "/") } }) }
+    var model by remember(tree) { mutableStateOf(saved?.let { id -> brand?.models?.firstOrNull { m -> m.gens.any { g -> g.id == id } } }) }
+    var gen by remember(tree) { mutableStateOf(saved?.let { id -> model?.gens?.firstOrNull { g -> g.id == id } }) }
 
     BackHandler(enabled = brand != null) {
         when {
@@ -91,7 +104,7 @@ fun ForumScreen(state: AppState, bottom: @Composable () -> Unit) {
     val m = model
     val g = gen
     when {
-        b == null -> BrandsLevel(state, bottom) { nb, nm, ng -> brand = nb; model = nm; gen = ng }
+        b == null -> BrandsLevel(state, tree, bottom) { nb, nm, ng -> brand = nb; model = nm; gen = ng }
         m == null -> ModelsLevel(b, bottom, onBack = { brand = null }) { model = it }
         g == null -> GensLevel(b, m, bottom, onBack = { model = null }) { gen = it; prefs.forumRoom = it.id }
         else -> ChatLevel(state, b, m, g, bottom, onBack = { gen = null })
@@ -160,11 +173,11 @@ private fun SearchField(value: String, placeholder: String, onChange: (String) -
 // ---------- уровни ----------
 
 @Composable
-private fun BrandsLevel(state: AppState, bottom: @Composable () -> Unit, onPick: (ForumBrand, ForumModel?, ForumGen?) -> Unit) {
+private fun BrandsLevel(state: AppState, tree: List<ForumBrand>, bottom: @Composable () -> Unit, onPick: (ForumBrand, ForumModel?, ForumGen?) -> Unit) {
     val accent = LocalAccent.current
     var query by remember { mutableStateOf("") }
     val car = VinDecoder.decode(state.vin).withCar(state.diagnosis?.car)
-    val mine = remember(state.vin, state.diagnosis?.car) { ForumTree.findForCar(car, state.diagnosis?.car) }
+    val mine = remember(state.vin, state.diagnosis?.car, tree) { ForumTree.findForCar(car, state.diagnosis?.car) }
     Screen(bottom = bottom) {
         Header(tr("forum_title"))
         Text(tr("forum_intro"), style = Type.body(13, Palette.muted))
@@ -188,9 +201,10 @@ private fun BrandsLevel(state: AppState, bottom: @Composable () -> Unit, onPick:
         }
         SearchField(query, tr("forum_search_brand")) { query = it }
         VSpace(14.dp)
-        val brands = ForumTree.brands.filter { query.isBlank() || it.name.contains(query, ignoreCase = true) }
-        SectionTitle(tr("forum_brands"), trPlural("forum_brands_count", brands.size))
-        Card(padding = 0.dp) {
+        val brands = tree.filter { query.isBlank() || it.name.contains(query, ignoreCase = true) }
+        if (tree.isEmpty()) Text(tr("forum_loading"), style = Type.body(13, Palette.muted))
+        else SectionTitle(tr("forum_brands"), trPlural("forum_brands_count", brands.size))
+        if (tree.isNotEmpty()) Card(padding = 0.dp) {
             brands.forEachIndexed { i, br ->
                 if (i > 0) RowDivider()
                 Row(

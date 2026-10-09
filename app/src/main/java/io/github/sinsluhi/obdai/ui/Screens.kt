@@ -1410,8 +1410,9 @@ fun shortProtocol(p: String): String {
 
 fun shortUrl(url: String): String = url.removePrefix("https://").removePrefix("http://").removePrefix("www.").let { if (it.length > 48) it.take(45) + "…" else it }
 
+/** Напряжение из строки адаптера или быстрого опроса: «12.6V» и «12,6V» (String.format по локали телефона). */
 fun parseVolt(s: String): Double? =
-    Regex("[0-9]+(\\.[0-9]+)?").find(s)?.value?.toDoubleOrNull()
+    Regex("[0-9]+([.,][0-9]+)?").find(s)?.value?.replace(',', '.')?.toDoubleOrNull()
 
 fun formatVolt(s: String): String = parseVolt(s)?.let { tr("scr_volt_fmt", "%.1f".format(it)) } ?: "—"
 

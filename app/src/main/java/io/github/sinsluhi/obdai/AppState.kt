@@ -70,6 +70,7 @@ class AppState private constructor(context: Context) {
     @Volatile private var paused = false
     @Volatile private var pollBusy = false
     @Volatile private var liveViewers = 0
+    private var atrvTimeouts = 0   // подряд не отвеченных ATRV в опросе: три — адаптер пропал (только в потоке опроса)
 
     // ---- наблюдаемое состояние ----
     var connected by mutableStateOf(false)
@@ -261,14 +262,24 @@ class AppState private constructor(context: Context) {
             battery = newBattery
             diagnosis = null
             lastSnapshot = null
+            dash = null
+            // открыли из гаража не ту машину, что подключена: её VIN и лампа Check Engine на главной ни при чём.
+            // Если машину переключил noticeCar по VIN подключённой машины — живые данные остаются.
+            val sameCar = vin == id || (vin == null && id == Garage.DEFAULT_ID)
+            if (!sameCar) {
+                vin = if (id == Garage.DEFAULT_ID) null else id
+                milOn = null
+                dtcCount = null
+            }
         }
         addLog(tr("state_garage_opened", profile.name.ifBlank { id }))
     }
 
-    /** VIN прочитан: если это другая машина — переключаемся сами. */
-    private fun noticeCar(v: String?, name: String) {
-        val id = v?.takeIf { it.length >= 11 } ?: return
-        if (id != carId) {
+    /** VIN прочитан: если это другая машина — переключаемся сами. Возвращает true, если машину переключили. */
+    private fun noticeCar(v: String?, name: String): Boolean {
+        val id = v?.takeIf { it.length >= 11 } ?: return false
+        val switched = id != carId
+        if (switched) {
             addLog(tr("state_other_car"))
             switchCar(id, name)
             ui { toast = tr("state_garage_opened_toast", name.ifBlank { id }) }
@@ -282,6 +293,7 @@ class AppState private constructor(context: Context) {
         )
         prefs.cars = (list.filter { it.id != id } + updated).sortedByDescending { it.lastSeen }
         ui { cars = prefs.cars }
+        return switched
     }
 
     fun forgetCar(car: CarProfile) {
@@ -441,7 +453,9 @@ class AppState private constructor(context: Context) {
         addLog(tr("state_disconnected"))
     }
 
-    private fun ObdLink.readVoltageSafe(): String = runCatching { readVoltage() }.getOrDefault("")
+    /** Напряжение строкой «12.6V»; запятая из локали (демо форматирует через String.format) приводится к точке,
+     *  иначе разборщики на главной и в опросе берут только целую часть. */
+    private fun ObdLink.readVoltageSafe(): String = runCatching { readVoltage() }.getOrDefault("").replace(',', '.')
 
     // ---- главная проверка: машина → ИИ → вердикт ----
 
@@ -452,9 +466,19 @@ class AppState private constructor(context: Context) {
             pausePolling()
 
             ui { busy = tr("state_step_ecu") }; rx()
+            // ecuOnline считается один раз при подключении, а зажигание могли выключить позже: без этой проверки
+            // молчащий блок выглядел бы как «ошибок не найдено»
+            val probe = l.send("0100", 15000)
+            val ecuAnswered = ObdDecoder.messages(probe).isNotEmpty() &&
+                listOf("UNABLE", "NO DATA", "ERROR", "TIMEOUT").none { probe.uppercase().contains(it) }
+            ui { ecuOnline = ecuAnswered }
+            if (!ecuAnswered) {
+                addLog(tr("state_log_ecu_silent", probe.trim()))
+                throw IllegalStateException(tr("state_ecu_silent"))   // не IOException: связь с адаптером цела
+            }
             val mil = l.readMil()
             ui { milOn = mil?.first; dtcCount = mil?.second }
-            addLog(tr("state_log_mil", if (mil?.first == true) tr("state_mil_on") else tr("state_mil_off"), mil?.second ?: "?"))
+            addLog(tr("state_log_mil", when (mil?.first) { true -> tr("state_mil_on"); false -> tr("state_mil_off"); null -> tr("state_mil_unknown") }, mil?.second ?: "?"))
 
             ui { busy = tr("state_step_codes") }; rx()
             val stored = l.readCodes(0x03)
@@ -474,6 +498,16 @@ class AppState private constructor(context: Context) {
             val v = runCatching { l.readVin() }.getOrNull()
             ui { vin = v }
             addLog(if (v == null) tr("state_log_no_vin") else tr("state_log_vin", v))
+            // Другая машина — переключаемся до записи любых журналов, иначе напряжение, визиты и история
+            // уходят под старым carId. После switchCar Compose-поля обновятся позже через ui{}, поэтому
+            // журналы той машины берём прямо из настроек (volts switchCar перечитывает синхронно).
+            val switched = runCatching { noticeCar(v, VinDecoder.decode(v).title()) }.getOrDefault(false)
+            val carHistory = if (switched) prefs.loadHistory() else history
+            val carWarmups = if (switched) prefs.loadWarmups() else warmups
+            val carStarts = if (switched) prefs.loadStarts() else starts
+            val carTanks = if (switched) prefs.loadTanks() else tanks
+            val carBlackbox = if (switched) prefs.loadBlackbox() else blackbox
+            val carVisits = if (switched) prefs.loadVisits() else visits
 
             ui { busy = tr("state_step_sensors") }; rx()
             val s = l.readSensors(live = false)
@@ -505,21 +539,20 @@ class AppState private constructor(context: Context) {
             val repair = clear?.let { RepairCheck.build(it, base.allCodes, ready, stats.distanceSinceClearKm) }
             repair?.let { addLog(tr("state_log_repair", it.title)) }
             if (repair != null && repair.status != "pending") prefs.lastClear = null
-            val prev = history.firstOrNull { it.vin == v || (it.vin == null && v == null) }
+            val prev = carHistory.firstOrNull { it.vin == v || (it.vin == null && v == null) }
             val trend = Trend.compare(prev, base)
             val flags = Inspection.flags(base)
             val checks = SensorCheck.run(base, ready?.compression ?: false)
             checks.filter { it.level != "ok" }.forEach { addLog(tr("state_log_sensors", it.text)) }
             val snap = base.copy(repair = repair, trend = trend, flags = flags, checks = checks,
-                warmup = warmups.lastOrNull(), starts = StartAnalysis.build(starts), forecast = forecast,
-                carHint = prev?.diagnosis?.car?.takeIf { it.isNotBlank() }, tank = tanks.lastOrNull(),
-                blackbox = blackbox.lastOrNull()
+                warmup = carWarmups.lastOrNull(), starts = StartAnalysis.build(carStarts), forecast = forecast,
+                carHint = prev?.diagnosis?.car?.takeIf { it.isNotBlank() }, tank = carTanks.lastOrNull(),
+                blackbox = carBlackbox.lastOrNull()
                     ?.takeIf { System.currentTimeMillis() - it.t < 7L * 86_400_000 }
                     ?.let { Blackbox.report(it) })
-            runCatching { noticeCar(v, VinDecoder.decode(v).title()) }
             knownCodes = snap.allCodes.map { it.substringBefore(' ') }.toSet()
             ui { lastSnapshot = snap; battery = batteryNow }
-            val serviceText = runCatching { closeVisit(snap) }.getOrNull()
+            val serviceText = runCatching { closeVisit(snap, carVisits, carWarmups) }.getOrNull()
             val snapFull = if (serviceText == null) snap else snap.copy(service = serviceText)
             if (serviceText != null) ui { lastSnapshot = snapFull }
 
@@ -732,11 +765,11 @@ class AppState private constructor(context: Context) {
     }
 
     /** После новой проверки закрываем незакрытый визит: это и есть «после». */
-    private fun closeVisit(snap: CarSnapshot): String? {
-        val open = visits.lastOrNull { !it.checked } ?: return null
+    private fun closeVisit(snap: CarSnapshot, visitList: List<ServiceVisit> = visits, warmupList: List<WarmupResult> = warmups): String? {
+        val open = visitList.lastOrNull { !it.checked } ?: return null
         if (System.currentTimeMillis() - open.t < 60_000) return null   // проверка сразу после записи — ещё не съездил
-        val updated = open.copy(after = ServiceMetrics.from(snap, warmups), afterT = System.currentTimeMillis())
-        val list = visits.map { if (it.t == open.t) updated else it }
+        val updated = open.copy(after = ServiceMetrics.from(snap, warmupList), afterT = System.currentTimeMillis())
+        val list = visitList.map { if (it.t == open.t) updated else it }
         prefs.saveVisits(list)
         ui { visits = list }
         val checks = ServiceAudit.audit(updated)
@@ -764,14 +797,31 @@ class AppState private constructor(context: Context) {
         knownCodes = lastSnapshot?.allCodes?.map { it.substringBefore(' ') }?.toSet().orEmpty()
     }
 
+    /** Адаптер пропал (вышли из радиуса, выдернули из разъёма): закрываем связь и говорим об этом пользователю.
+     *  Зовётся из потока опроса; polling гасим здесь же, чтобы новое подключение могло сразу запустить опрос. */
+    private fun linkLost(l: ObdLink) {
+        polling = false
+        ui {
+            if (link === l) {
+                disconnect()
+                toast = tr("state_link_lost")
+            }
+        }
+    }
+
     fun startPolling() {
         if (polling) return
         polling = true
+        atrvTimeouts = 0
         poller.execute {
             while (polling) {
                 if (paused) { Thread.sleep(200); continue }
                 val l = link
-                if (l == null || !l.isConnected) { Thread.sleep(500); continue }
+                if (l == null || !l.isConnected) {
+                    // BLE сам отмечает разрыв (isConnected=false): без этого опрос молча спал бы с connected=true
+                    if (l != null && connected) { addLog(tr("state_link_lost")); linkLost(l); break }
+                    Thread.sleep(500); continue
+                }
                 pollBusy = true
                 var delay = 400L
                 try {
@@ -782,8 +832,15 @@ class AppState private constructor(context: Context) {
                     val s = l.readSensors(live = true, keys = if (quick) QUICK_KEYS else null)
                     if (l is DemoLink) rx()   // демо не ходит через send(): пакеты на фоне рождаем здесь
                     val ecuV = s.firstOrNull { it.key == "volt" }?.value
-                    val volt = if (quick && ecuV != null) "%.1fV".format(ecuV) else l.readVoltageSafe()
+                    // Locale.US: с русской локалью получалось «12,6V», и разборщики брали только «12»
+                    val volt = if (quick && ecuV != null) "%.1fV".format(Locale.US, ecuV) else l.readVoltageSafe()
                     if (l is DemoLink) rx()
+                    // ATRV отвечает сам адаптер, машина тут ни при чём: три таймаута подряд — адаптера больше нет,
+                    // а сокет Bluetooth/Wi-Fi об этом не скажет (isConnected остаётся true до нашего close())
+                    if (l is Elm327) {
+                        atrvTimeouts = if (volt.contains("TIMEOUT")) atrvTimeouts + 1 else 0
+                        if (atrvTimeouts >= 3) throw IOException(tr("state_link_lost"))
+                    }
                     val vNow = ecuV ?: Regex("[0-9]+(\\.[0-9]+)?").find(volt)?.value?.toDoubleOrNull()
                     handleEngine(l, now, s.firstOrNull { it.key == "rpm" }?.value, vNow, s)
                     recordVolt(s, volt, force = false)
@@ -809,6 +866,9 @@ class AppState private constructor(context: Context) {
                     delay = if (quick) 150L else 400L
                 } catch (e: Exception) {
                     addLog(tr("state_log_sensors", e.message))
+                    // IOException из send() — только обрыв канала; link === l отсекает «адаптер не подключён»
+                    // после того, как пользователь отключился сам (link уже null, опрос останавливается)
+                    if (polling && link === l && (e is IOException || !l.isConnected)) { linkLost(l); break }
                     delay = 1000L
                 } finally {
                     pollBusy = false
@@ -1092,7 +1152,10 @@ class AppState private constructor(context: Context) {
             } catch (e: Exception) {
                 val msg = e.message ?: e.javaClass.simpleName
                 addLog("❌ $msg")
-                ui { error = msg }
+                // IOException в задаче с адаптером — обрыв канала (send() других IOException не бросает):
+                // закрываем связь и говорим словами, а не сырым сообщением сокета
+                if (needLink && e is IOException && link != null) ui { disconnect(); error = tr("state_link_lost") }
+                else ui { error = msg }
             } finally {
                 resumePolling()
                 ui { busy = null }
