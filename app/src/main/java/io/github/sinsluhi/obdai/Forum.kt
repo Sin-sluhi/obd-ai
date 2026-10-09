@@ -165,7 +165,7 @@ class ForumApi(private val baseUrl: String, private val deviceId: String) {
 
         /** Ник по умолчанию: «Водитель-1234». */
         fun defaultName(prefs: Prefs): String = prefs.forumName.ifBlank {
-            tr("frm_default_name", 1000 + (deviceId(prefs).hashCode().let { if (it < 0) -it else it } % 9000))
+            tr("frm_default_name", 1000 + ((deviceId(prefs).hashCode() and 0x7fffffff) % 9000))
         }
     }
 }

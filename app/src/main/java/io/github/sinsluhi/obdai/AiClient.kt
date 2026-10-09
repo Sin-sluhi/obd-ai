@@ -95,15 +95,15 @@ next_steps, for_service, typical_issues) — только по-русски, к�
     private fun twoStage(cfg: AiConfig, snap: CarSnapshot, hasCodes: Boolean, progress: (String) -> Unit, log: (String) -> Unit): Diagnosis {
         var notes = ""
         if (hasCodes) {
-            progress("Определяю машину по VIN")
+            progress(tr("ai_stage_vin"))
             val decoded = VinDecoder.decode(snap.vin)
             val car = if (decoded.brand != null) decoded.title() else snap.vin?.let { identifyCar(cfg, it, log) }.orEmpty()
-            progress("Ищу опыт владельцев на форумах")
+            progress(tr("ai_stage_search"))
             notes = runCatching { ForumSearch.research(snap.allCodes, car, log, NOTES_BUDGET) }
                 .onFailure { log("Поиск по форумам не удался: ${it.message}") }
                 .getOrDefault("")
         }
-        progress("Нейронка формирует вердикт")
+        progress(tr("ai_stage_verdict"))
         val system = ROLE + langRule() + "\n\n" + SCHEMA_TEXT
         // Groq: основная модель, при неудаче следующая; у остальных провайдеров модель одна
         val models = if (cfg.provider == Provider.GROQ) (listOf(cfg.model) + groqFallbacks).distinct() else listOf(cfg.model)
@@ -137,7 +137,7 @@ next_steps, for_service, typical_issues) — только по-русски, к�
                 last = e
                 if (i < models.lastIndex) {
                     log("Модель не ответила: ${e.message}. Пробую следующую")
-                    progress("Готовлю разбор")
+                    progress(tr("ai_stage_prep"))
                 }
             }
         }
@@ -213,12 +213,12 @@ next_steps, for_service, typical_issues) — только по-русски, к�
         val endpoint = cfg.baseUrl.trimEnd('/') + "/v1/messages"
         var notes = ""
         if (hasCodes) {
-            progress("Ищу опыт владельцев на форумах")
+            progress(tr("ai_stage_search"))
             notes = runCatching { anthropicResearch(cfg, endpoint, snap, log) }
                 .onFailure { log("Поиск по форумам не удался: ${it.message}") }
                 .getOrDefault("")
         }
-        progress("Нейронка формирует вердикт")
+        progress(tr("ai_stage_verdict"))
         val user = buildString {
             append(report(snap))
             appendLine()

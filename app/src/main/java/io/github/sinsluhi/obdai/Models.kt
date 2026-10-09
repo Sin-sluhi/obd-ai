@@ -50,7 +50,7 @@ data class CarSnapshot(
 data class TypicalIssue(val issue: String, val mileage: String, val source: String) {
     fun toJson(): JSONObject = JSONObject().put("issue", issue).put("mileage", mileage).put("source", source)
     companion object {
-        fun fromJson(o: JSONObject) = TypicalIssue(o.optString("issue"), o.optString("mileage"), o.optString("source"))
+        fun fromJson(o: JSONObject) = TypicalIssue(o.str("issue"), o.str("mileage"), o.str("source"))
     }
 }
 
@@ -64,9 +64,9 @@ data class DashReport(val canDrive: String, val text: String, val lamps: List<Da
             val arr = o.optJSONArray("lamps")
             if (arr != null) for (i in 0 until arr.length()) {
                 val l = arr.optJSONObject(i) ?: continue
-                lamps.add(DashLamp(l.optString("name"), l.optString("meaning"), l.optString("severity", "medium"), l.optString("action")))
+                lamps.add(DashLamp(l.str("name"), l.str("meaning"), l.str("severity", "medium"), l.str("action")))
             }
-            return DashReport(o.optString("can_drive", "careful"), o.optString("text"), lamps)
+            return DashReport(o.str("can_drive", "careful"), o.str("text"), lamps)
         }
     }
 }
@@ -92,15 +92,15 @@ data class DtcCard(
 
     companion object {
         fun fromJson(o: JSONObject) = DtcCard(
-            code = o.optString("code"),
-            title = o.optString("title"),
-            explanation = o.optString("explanation"),
+            code = o.str("code"),
+            title = o.str("title"),
+            explanation = o.str("explanation"),
             causes = o.optJSONArray("causes").toStringList(),
-            severity = o.optString("severity", "medium"),
+            severity = o.str("severity", "medium"),
             priceFrom = o.optInt("price_from", 0),
             priceTo = o.optInt("price_to", 0),
-            whatToDo = o.optString("what_to_do"),
-            ownerExperience = o.optString("owner_experience"),
+            whatToDo = o.str("what_to_do"),
+            ownerExperience = o.str("owner_experience"),
             sources = o.optJSONArray("sources").toStringList()
         )
     }
@@ -185,17 +185,17 @@ data class Diagnosis(
             val iarr = o.optJSONArray("typical_issues")
             if (iarr != null) for (i in 0 until iarr.length()) iarr.optJSONObject(i)?.let { issues.add(TypicalIssue.fromJson(it)) }
             return Diagnosis(
-                car = o.optString("car"),
-                level = o.optString("verdict_level", "warning"),
-                title = o.optString("verdict_title"),
-                text = o.optString("verdict_text"),
-                canDrive = o.optString("can_drive", "careful"),
+                car = o.str("car"),
+                level = o.str("verdict_level", "warning"),
+                title = o.str("verdict_title"),
+                text = o.str("verdict_text"),
+                canDrive = o.str("can_drive", "careful"),
                 codes = codes,
-                summary = o.optString("summary"),
+                summary = o.str("summary"),
                 nextSteps = o.optJSONArray("next_steps").toStringList(),
                 fromAi = fromAi,
                 typicalIssues = issues.filter { it.issue.isNotBlank() },
-                forService = o.optString("for_service")
+                forService = o.str("for_service")
             )
         }
 
@@ -342,7 +342,7 @@ data class HistoryEntry(
             o.optJSONObject("s")?.let { so -> so.keys().forEach { k -> s[k] = so.optDouble(k) } }
             return HistoryEntry(
                 time = o.optLong("time"),
-                vin = if (o.isNull("vin")) null else o.optString("vin"),
+                vin = if (o.isNull("vin")) null else o.str("vin"),
                 diagnosis = Diagnosis.fromJson(o.getJSONObject("d")),
                 sensors = s
             )
@@ -353,7 +353,7 @@ data class HistoryEntry(
 fun JSONArray?.toStringList(): List<String> {
     if (this == null) return emptyList()
     val out = ArrayList<String>(length())
-    for (i in 0 until length()) out.add(optString(i))
+    for (i in 0 until length()) if (!isNull(i)) optString(i).takeIf { it.isNotBlank() }?.let { out.add(it) }   // null и пустые — мимо
     return out
 }
 
@@ -453,3 +453,6 @@ data class ModuleScan(
         return if (i >= 0 && i < statuses.size) UdsStatus.describe(statuses[i]) else emptyList()
     }
 }
+
+/** org.json на Android для JSON-значения null возвращает строку "null" — а нейронка такое присылает; берём пустую строку. */
+internal fun JSONObject.str(key: String, def: String = ""): String = if (isNull(key)) def else optString(key, def)

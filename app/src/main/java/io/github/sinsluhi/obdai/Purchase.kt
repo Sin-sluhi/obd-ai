@@ -78,9 +78,11 @@ object Purchase {
         if (pending.isNotEmpty()) reasons.add(Flag("info", tr("buy_pending_codes", pending.joinToString { DtcCatalog.base(it) })))
 
         // 2. следы подготовки к продаже и чужие блоки (флаги проверки уже посчитаны)
+        // флаг пробега по ЭБУ ниже считается отдельно: отсеиваем его по локализованному началу текста, а не по русскому литералу
+        val odoPrefix = tr("health_flag_ecu_odometer").substringBefore("{0}")
         snap.flags.forEach { f ->
             if (f.level == "danger") danger = true
-            if (!f.text.startsWith("Пробег по данным ЭБУ")) reasons.add(f) // i18n-ignore
+            if (!f.text.startsWith(odoPrefix)) reasons.add(f)
         }
 
         // 3. пробег: ЭБУ против слов продавца

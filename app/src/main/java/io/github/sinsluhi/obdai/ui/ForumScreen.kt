@@ -136,7 +136,7 @@ private fun RowDivider() = Box(Modifier.fillMaxWidth().padding(start = 64.dp, en
 /** Цвет собеседника по имени: шесть спокойных оттенков, чтобы участники различались. */
 private fun nameColor(name: String): Color {
     val palette = listOf(Color(0xFF7CC4FF), Color(0xFFFFB86C), Color(0xFFB5E48C), Color(0xFFE39BFF), Color(0xFF7BE0D1), Color(0xFFFF9AA2))
-    val h = name.hashCode().let { if (it < 0) -it else it }
+    val h = name.hashCode() and 0x7fffffff   // -MIN_VALUE == MIN_VALUE, поэтому не модуль, а маска
     return palette[h % palette.size]
 }
 

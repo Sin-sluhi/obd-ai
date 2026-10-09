@@ -46,6 +46,7 @@ class TripService : Service() {
 
     override fun onCreate() {
         super.onCreate()
+        AppState.get(applicationContext)   // при перезапуске сервиса системой Tr ещё не инициализирован — иначе в уведомлении будут ключи
         if (Build.VERSION.SDK_INT >= 26) {
             manager().createNotificationChannel(
                 NotificationChannel(CHANNEL, tr("trip_channel_name"), NotificationManager.IMPORTANCE_LOW).apply {

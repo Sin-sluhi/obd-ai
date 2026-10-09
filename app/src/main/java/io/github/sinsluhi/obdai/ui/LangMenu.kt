@@ -69,7 +69,8 @@ fun LanguageButton(onPick: (Lang) -> Unit) {
     val shape = RoundedCornerShape(12.dp)
     val interaction = remember { MutableInteractionSource() }
     val below = with(LocalDensity.current) { 50.dp.roundToPx() }
-    val phase = wavePhase(active = true)
+    // волна на кнопке только пока список открыт: на главной бесконечная анимация ни к чему
+    val phase = if (open) wavePhase(active = true) else remember { mutableStateOf(0f) }
     Box {
         Row(
             Modifier
