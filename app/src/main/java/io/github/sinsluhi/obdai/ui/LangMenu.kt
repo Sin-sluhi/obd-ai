@@ -42,9 +42,18 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.drawscope.DrawScope
-import androidx.compose.ui.graphics.drawscope.clipRect
+import androidx.compose.ui.unit.LayoutDirection
+import androidx.compose.ui.unit.Density
+import androidx.compose.ui.graphics.nativeCanvas
+import androidx.compose.ui.graphics.drawscope.drawIntoCanvas
+import androidx.compose.ui.graphics.drawscope.clipPath
+import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.graphics.drawscope.CanvasDrawScope
+import androidx.compose.ui.graphics.asAndroidBitmap
+import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.geometry.RoundRect
+import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.graphics.drawscope.translate
-import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.IntOffset
@@ -194,32 +203,96 @@ private object Flags {
 }
 
 /**
- * Развевающийся флаг: рисуется вертикальными ломтиками, каждый сдвинут по волне и чуть затемнён на «складке».
- * Без картинок и аллокаций в кадре: путь звезды создаётся один раз.
+ * Развевающийся флаг. Флаг один раз рисуется в растр с запасом по разрешению (скруглённые углы, тонкая кромка, лёгкий
+ * блик), а в кадре этот растр натягивается на гладкую сетку `drawBitmapMesh`: волна идёт от древка, где флаг закреплён,
+ * а затенение складок задаётся цветами вершин. Раньше флаг резался на 12 полосок со сдвигом — отсюда «лесенка» по краям
+ * и пиксельные швы; сетка с фильтрацией растра даёт ровные края на любом размере.
  */
 @Composable
 fun WavingFlag(code: String, phase: State<Float>, modifier: Modifier = Modifier) {
     val spec = remember(code) { Flags.spec(code) }
-    val star = remember { Path() }
-    Canvas(modifier.graphicsLayer()) {
-        val slices = 12
-        val w = size.width
-        val h = size.height
-        val amp = h * 0.07f
-        val p = phase.value * 2f * PI.toFloat()
-        val sliceW = w / slices
-        for (i in 0 until slices) {
-            val x0 = i * sliceW
-            val k = p + i * 0.6f
-            val dy = amp * sin(k)
-            val shade = 0.12f * (1f - cos(k)) / 2f
-            translate(0f, dy) {
-                clipRect(x0, -amp, x0 + sliceW + 0.6f, h + amp) {
-                    drawFlag(spec, w, h, star)
-                    if (shade > 0.005f) drawRect(Color.Black.copy(alpha = shade), Offset(x0, -amp), Size(sliceW + 0.6f, h + 2 * amp))
+    val holder = remember(code) { FlagRaster() }
+    Canvas(modifier) {
+        val bmp = holder.get(spec, size, density) ?: return@Canvas
+        drawIntoCanvas { c -> holder.drawWave(c.nativeCanvas, bmp, size, phase.value) }
+    }
+}
+
+private class FlagRaster {
+    private var bmp: android.graphics.Bitmap? = null
+    private var forW = 0
+    private var forH = 0
+    private val paint = android.graphics.Paint(android.graphics.Paint.FILTER_BITMAP_FLAG or android.graphics.Paint.ANTI_ALIAS_FLAG)
+    private val cols = 16
+    private val rows = 4
+    private val verts = FloatArray((cols + 1) * (rows + 1) * 2)
+    private val colors = IntArray((cols + 1) * (rows + 1))
+
+    /** Прозрачная рамка вокруг флага в растре: край сетки ложится на неё, и кромка флага сглаживается фильтром. */
+    private val padPx = 3
+
+    fun get(spec: FlagSpec, size: Size, density: Float): android.graphics.Bitmap? {
+        val w = size.width.toInt()
+        val h = size.height.toInt()
+        if (w <= 0 || h <= 0) return null
+        if (bmp == null || forW != w || forH != h) {
+            // растр в 2 раза плотнее экрана: при натягивании на волну детали (звезда, кресты) остаются чёткими
+            val k = 2f
+            val fw = (w * k).toInt()
+            val fh = (h * k).toInt()
+            val img = ImageBitmap(fw + padPx * 2, fh + padPx * 2)
+            val canvas = androidx.compose.ui.graphics.Canvas(img)
+            CanvasDrawScope().draw(Density(density), LayoutDirection.Ltr, canvas, Size(img.width.toFloat(), img.height.toFloat())) {
+                translate(padPx.toFloat(), padPx.toFloat()) {
+                    val r = fh * 0.12f
+                    val shape = Path().apply { addRoundRect(RoundRect(0f, 0f, fw.toFloat(), fh.toFloat(), CornerRadius(r, r))) }
+                    clipPath(shape) {
+                        drawFlag(spec, fw.toFloat(), fh.toFloat(), Path())
+                        // мягкий блик сверху и тень снизу: флаг выглядит тканью, а не плоской наклейкой
+                        drawRect(Brush.verticalGradient(
+                            0f to Color.White.copy(alpha = 0.16f), 0.45f to Color.Transparent,
+                            1f to Color.Black.copy(alpha = 0.14f)
+                        ))
+                    }
+                    // тонкая кромка: светлые полосы (белый, жёлтый) не растворяются на тёмном фоне
+                    drawPath(shape, Color.Black.copy(alpha = 0.35f), style = Stroke(width = k))
                 }
             }
+            bmp = img.asAndroidBitmap()
+            forW = w
+            forH = h
         }
+        return bmp
+    }
+
+    fun drawWave(canvas: android.graphics.Canvas, bmp: android.graphics.Bitmap, size: Size, phase: Float) {
+        val w = size.width
+        val h = size.height
+        // рамка растра в координатах экрана
+        val pad = padPx * w / (bmp.width - padPx * 2)
+        val amp = h * 0.08f
+        val p = phase * 2f * PI.toFloat()
+        var vi = 0
+        var ci = 0
+        for (j in 0..rows) {
+            val fy = j.toFloat() / rows
+            for (i in 0..cols) {
+                val fx = i.toFloat() / cols
+                // у древка (fx = 0) флаг закреплён, к свободному краю размах растёт
+                val reach = 0.25f + 0.75f * fx
+                val k = p - fx * 2.2f * PI.toFloat()
+                val dy = amp * sin(k) * reach
+                // свободный край чуть подтягивается к древку на гребнях — ткань не растягивается
+                val dx = -w * 0.015f * (1f - cos(k)) * fx
+                verts[vi++] = -pad + fx * (w + 2 * pad) + dx
+                verts[vi++] = -pad + fy * (h + 2 * pad) + dy
+                // складка: склон к зрителю светлее, от зрителя темнее
+                val shade = (0.9f + 0.1f * cos(k + 0.6f) * reach).coerceIn(0.78f, 1f)
+                val c = (255 * shade).toInt()
+                colors[ci++] = android.graphics.Color.argb(255, c, c, c)
+            }
+        }
+        canvas.drawBitmapMesh(bmp, cols, rows, verts, 0, colors, 0, paint)
     }
 }
 
@@ -245,7 +318,15 @@ private fun DrawScope.drawFlag(s: FlagSpec, w: Float, h: Float, star: Path) {
             drawStar(star, cx, cy, h * 0.16f, s.emblemColor)
         }
         Emblem.Sun -> {
-            drawCircle(s.emblemColor, h * 0.18f, Offset(w * 0.5f, h * 0.5f))
+            // солнце с лучами (Казахстан, Кыргызстан): круг и венец тонких лучей
+            val c = Offset(w * 0.5f, h * 0.5f)
+            val r = h * 0.15f
+            for (i in 0 until 24) {
+                val a = i * 2f * PI.toFloat() / 24
+                drawLine(s.emblemColor, Offset(c.x + cos(a) * r * 1.15f, c.y + sin(a) * r * 1.15f),
+                    Offset(c.x + cos(a) * r * 1.85f, c.y + sin(a) * r * 1.85f), strokeWidth = h * 0.025f)
+            }
+            drawCircle(s.emblemColor, r, c)
         }
         Emblem.Crescent -> {
             val cx = if (n == 1) w * 0.5f else w * 0.22f

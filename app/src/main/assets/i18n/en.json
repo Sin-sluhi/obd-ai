@@ -11,6 +11,7 @@
  "ai_stage_prep": "Preparing the analysis",
  "ai_stage_search": "Looking for owner experience on forums",
  "ai_stage_verdict": "AI is forming the verdict",
+ "ai_stage_wait": "The AI is busy, continuing in {0} s",
  "ai_stage_vin": "Identifying the car by VIN",
  "bb_change_coolant": "{0}: {1} → {2} °C",
  "bb_change_speed": "{0}: {1} → {2} km/h",
@@ -1152,5 +1153,12 @@
  "trip_notif_title": "OBD AI is watching the car",
  "trip_prefix_record": "Recording · ",
  "trip_prefix_trip": "Trip · ",
- "trip_volt_unit": " V"
+ "trip_volt_unit": " V",
+ "kb_symptoms": "How it shows:",
+ "kb_checks": "What to check:",
+ "kb_plan": "Repair plan:",
+ "kb_dont": "Common money wasters:",
+ "kb_risk": "If left unrepaired:",
+ "kb_measured": "From the app's measurements:",
+ "kb_text_complete": "Each code is explained below: what failed, how to check it and in what order to repair."
 }

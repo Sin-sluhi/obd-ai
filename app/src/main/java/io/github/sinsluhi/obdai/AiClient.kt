@@ -82,12 +82,50 @@ next_steps, for_service, typical_issues) — только по-русски, к�
     private const val NOTES_BUDGET_TIGHT = 1800
     private const val VERDICT_TOKENS = 2500
 
+    /** Groq отвечает за секунды; дольше минуты-полутора ждать бессмысленно — это зависание, а не работа. */
+    private const val GROQ_READ_TIMEOUT_MS = 90_000
+
+    /** Ждать сброса минутного лимита имеет смысл, если ждать недолго; иначе сразу следующая модель. */
+    private const val MAX_RATE_WAIT_SEC = 30.0
+
+    /** Поиск по форумам целиком: что успели найти за это время, то и идёт в разбор. */
+    private const val SEARCH_DEADLINE_MS = 35_000L
+
+    /** Готовый разбор той же машины с теми же кодами переиспользуется: мгновенно и без расхода лимита. */
+    private const val CACHE_MS = 60 * 60_000L
+    private class Cached(val at: Long, val d: Diagnosis)
+    private val cache = java.util.concurrent.ConcurrentHashMap<String, Cached>()
+
+    private fun cacheKey(cfg: AiConfig, snap: CarSnapshot): String =
+        listOf(cfg.provider.id, cfg.model, Tr.lang.code, snap.vin.orEmpty(),
+            snap.allCodes.map { it.trim() }.sorted().joinToString(",")).joinToString("|")
+
+    /**
+     * Жёсткое правило владельца: сначала своя база. Если каждый код этой проверки есть в подробной базе и все их сочетания
+     * в ней описаны ([KbFirst.covers]), разбор собирается из базы без нейронки. Нейронка подключается только когда в базе
+     * нет хотя бы одного кода или связки кодов.
+     */
     fun diagnose(cfg: AiConfig, snap: CarSnapshot, progress: (String) -> Unit, log: (String) -> Unit): Diagnosis {
+        val gap = KbFirst.gap(snap)
+        if (gap == null) {
+            log("Разбор из базы знаний: все коды и связки в ней есть")
+            return Diagnosis.local(snap, complete = true)
+        }
+        log("В базе знаний нет: $gap — подключаю нейронку")
+        val key = cacheKey(cfg, snap)
+        cache[key]?.takeIf { System.currentTimeMillis() - it.at < CACHE_MS }?.let {
+            log("Разбор взят из проверки ${(System.currentTimeMillis() - it.at) / 60_000} мин назад: те же коды, лимит не тратится")
+            return it.d
+        }
         val hasCodes = snap.allCodes.isNotEmpty()
-        return when {
+        val t0 = System.currentTimeMillis()
+        val d = when {
             cfg.provider == Provider.ANTHROPIC -> anthropic(cfg, snap, hasCodes, progress, log)
             else -> twoStage(cfg, snap, hasCodes, progress, log)
         }
+        log("Разбор готов за ${(System.currentTimeMillis() - t0) / 1000} с")
+        cache[key] = Cached(System.currentTimeMillis(), d)
+        return d
     }
 
     // ---------- Наш ForumSearch + JSON-вердикт любой OpenAI-совместимой моделью ----------
@@ -99,9 +137,11 @@ next_steps, for_service, typical_issues) — только по-русски, к�
             val decoded = VinDecoder.decode(snap.vin)
             val car = if (decoded.brand != null) decoded.title() else snap.vin?.let { identifyCar(cfg, it, log) }.orEmpty()
             progress(tr("ai_stage_search"))
-            notes = runCatching { ForumSearch.research(snap.allCodes, car, log, NOTES_BUDGET) }
+            val ts = System.currentTimeMillis()
+            notes = runCatching { ForumSearch.research(snap.allCodes, car, log, NOTES_BUDGET, SEARCH_DEADLINE_MS) }
                 .onFailure { log("Поиск по форумам не удался: ${it.message}") }
                 .getOrDefault("")
+            log("Поиск по форумам: ${(System.currentTimeMillis() - ts) / 1000} с, выдержек ${notes.length} символов")
         }
         progress(tr("ai_stage_verdict"))
         val system = ROLE + langRule() + "\n\n" + SCHEMA_TEXT
@@ -115,14 +155,7 @@ next_steps, for_service, typical_issues) — только по-русски, к�
                 var sys = system
                 var d: Diagnosis? = null
                 for (attempt in 0..1) {
-                    val reply = try {
-                        OpenAiClient.chat(c, sys, userReport(snap, notes), json = true, maxTokens = VERDICT_TOKENS)
-                    } catch (e: OpenAiClient.ApiException) {
-                        // 429 на бесплатном тарифе: запрос не влез в минутный лимит — режем выдержки и повторяем
-                        if (e.status != 429 || notes.length <= NOTES_BUDGET_TIGHT) throw e
-                        log("Лимит токенов, повторяю с короткими выдержками")
-                        OpenAiClient.chat(c, sys, userReport(snap, notes.take(NOTES_BUDGET_TIGHT)), json = true, maxTokens = VERDICT_TOKENS)
-                    }
+                    val reply = verdictCall(c, sys, snap, notes, progress, log)
                     val json = extractJson(reply.content) ?: throw IOException("Модель вернула не JSON")
                     val parsed = Diagnosis.fromJson(json, fromAi = true)
                     // проверка языка только для русского интерфейса: для остальных языков надёжного признака нет
@@ -142,6 +175,36 @@ next_steps, for_service, typical_issues) — только по-русски, к�
             }
         }
         throw last ?: IOException("Модель не ответила")
+    }
+
+    /**
+     * Один запрос вердикта с обработкой минутного лимита (429). Если провайдер сказал, что лимит сбросится скоро,
+     * ждём и повторяем тот же полный запрос — разбор остаётся подробным. Если ждать долго, пробуем короткие выдержки
+     * (меньше токенов могут влезть в остаток минуты), а дальше ошибка уходит наверх и включается следующая модель.
+     */
+    private fun verdictCall(c: AiConfig, sys: String, snap: CarSnapshot, notes: String,
+                            progress: (String) -> Unit, log: (String) -> Unit): OpenAiClient.Reply {
+        val timeout = if (c.provider == Provider.GROQ) GROQ_READ_TIMEOUT_MS else 240_000
+        fun call(n: String) = OpenAiClient.chat(c, sys, userReport(snap, n), json = true, maxTokens = VERDICT_TOKENS, readTimeoutMs = timeout)
+        try {
+            return call(notes)
+        } catch (e: OpenAiClient.ApiException) {
+            if (e.status != 429) throw e
+            val wait = e.retryAfterSec
+            if (wait != null && wait <= MAX_RATE_WAIT_SEC) {
+                val sec = kotlin.math.ceil(wait).toInt() + 1
+                log("Минутный лимит нейронки, жду $sec с и повторяю тот же запрос")
+                for (left in sec downTo 1) {
+                    progress(tr("ai_stage_wait", left))
+                    Thread.sleep(1000)
+                }
+                progress(tr("ai_stage_verdict"))
+                return call(notes)
+            }
+            if (notes.length <= NOTES_BUDGET_TIGHT) throw e
+            log("Лимит токенов (сброс через ${wait?.toInt() ?: "?"} с), повторяю с короткими выдержками")
+            return call(notes.take(NOTES_BUDGET_TIGHT))
+        }
     }
 
     /** Язык вердикта: в ROLE зашит русский; при другом языке интерфейса добавляем указание, которое сильнее него. */
@@ -197,7 +260,8 @@ next_steps, for_service, typical_issues) — только по-русски, к�
                 cfg,
                 "По VIN назови марку, модель и примерный год. Ответь только названием, например «Kia Rio 2015». Если уверен только в марке, назови марку. Без пояснений.",
                 "VIN: $vin",
-                maxTokens = 60
+                maxTokens = 60,
+                readTimeoutMs = 30_000
             )
         }.getOrNull() ?: return ""
         val car = reply.content.lines().firstOrNull { it.isNotBlank() }?.trim('«', '»', '"', ' ', '.')?.take(40).orEmpty()

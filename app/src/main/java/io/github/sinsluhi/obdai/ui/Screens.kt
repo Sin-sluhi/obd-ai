@@ -379,7 +379,7 @@ fun ResultScreen(
         snap?.starts?.let { StartsCard(it) }
         snap?.battery?.let { BatteryCard(it) }
 
-        if (!d.fromAi) {
+        if (!d.fromAi && !d.fromKb) {
             Card(background = Palette.surface2, border = Palette.border, radius = 16.dp, padding = 14.dp) {
                 Text(tr("scr_owners_offline_title"), style = Type.body(13, Palette.warn, FontWeight.SemiBold))
                 VSpace(4.dp)

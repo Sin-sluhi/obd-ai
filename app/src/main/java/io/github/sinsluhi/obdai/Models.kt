@@ -118,7 +118,9 @@ data class Diagnosis(
     val nextSteps: List<String>,
     val fromAi: Boolean,
     val typicalIssues: List<TypicalIssue> = emptyList(),
-    val forService: String = ""
+    val forService: String = "",
+    /** Полный разбор из подробной базы (правило «сначала база»): не помечается как временный офлайн-вариант. */
+    val fromKb: Boolean = false
 ) {
     /** Сумма ремонта по всем кодам, где цена известна. */
     val totalFrom: Int get() = codes.sumOf { it.priceFrom }
@@ -131,6 +133,7 @@ data class Diagnosis(
         .put("summary", summary).put("next_steps", JSONArray(nextSteps)).put("from_ai", fromAi)
         .put("typical_issues", JSONArray().also { arr -> typicalIssues.forEach { arr.put(it.toJson()) } })
         .put("for_service", forService)
+        .put("from_kb", fromKb)
 
     /** Текст для кнопки «Поделиться». */
     fun shareText(vin: String?): String = buildString {
@@ -195,29 +198,41 @@ data class Diagnosis(
                 nextSteps = o.optJSONArray("next_steps").toStringList(),
                 fromAi = fromAi,
                 typicalIssues = issues.filter { it.issue.isNotBlank() },
-                forService = o.str("for_service")
+                forService = o.str("for_service"),
+                fromKb = o.optBoolean("from_kb", false)
             )
         }
 
-        /** Вердикт без нейронки: по кодам и встроенному справочнику (объяснения, цепочки, болячки модели). */
-        fun local(snap: CarSnapshot): Diagnosis {
+        /**
+         * Вердикт без нейронки: по кодам и встроенному справочнику (объяснения, цепочки, болячки модели).
+         * [complete] — база покрывает проверку целиком ([KbFirst.gap] == null): это полноценный разбор, а не запасной.
+         */
+        fun local(snap: CarSnapshot, complete: Boolean = false): Diagnosis {
             val all = snap.allCodes
             val decoded = VinDecoder.decode(snap.vin)
             val car = decoded.withCar(snap.carHint)
             val carName = snap.carHint?.takeIf { it.isNotBlank() } ?: decoded.title()
             val bkey = DtcCatalog.brandKey(car.brand)
+            // что приложение само измерило и что не в порядке: согласованность датчиков, ремонт, работа сервиса
+            val measured = buildList {
+                snap.checks.filter { it.level != "ok" }.forEach { add(it.text) }
+                snap.repair?.let { add("${it.title}. ${it.text()}") }
+                snap.service?.let { add(it) }
+            }
+            val measuredText = if (measured.isEmpty()) "" else tr("kb_measured") + " " + measured.joinToString(" ")
             if (all.isEmpty()) {
                 val milNote = if (snap.milOn == true) " " + tr("model_no_codes_mil_note") else ""
                 return Diagnosis(
                     car = carName,
-                    level = "ok",
+                    level = if (snap.checks.any { it.level == "warning" || it.level == "danger" }) "warning" else "ok",
                     title = tr("model_no_codes_title"),
                     text = tr("model_no_codes_text", milNote),
                     canDrive = "yes",
                     codes = emptyList(),
-                    summary = "",
+                    summary = measuredText,
                     nextSteps = emptyList(),
-                    fromAi = false
+                    fromAi = false,
+                    fromKb = complete
                 )
             }
             val bases = all.map { DtcCatalog.base(it) }
@@ -249,13 +264,20 @@ data class Diagnosis(
                             else -> null
                         },
                         DtcCatalog.ftbText(code)?.let { "$it." },
-                        info?.meaning?.takeIf { it.isNotBlank() }
+                        info?.meaning?.takeIf { it.isNotBlank() && info.detail.isBlank() },
+                        info?.detail?.takeIf { it.isNotBlank() },
+                        info?.symptoms?.takeIf { it.isNotEmpty() }?.let { tr("kb_symptoms") + " " + it.joinToString("; ") + "." }
                     ).joinToString(" "),
-                    causes = if (kb != null && kb.causes.isNotEmpty()) kb.causes else info?.causes.orEmpty(),
+                    causes = when {
+                        // подробная база: её причины уже упорядочены и с подсказкой, как подтвердить; опыт владельцев — первым
+                        info?.detailed == true -> (kb?.causes.orEmpty() + info.causes).distinct()
+                        kb != null && kb.causes.isNotEmpty() -> kb.causes
+                        else -> info?.causes.orEmpty()
+                    },
                     severity = severity,
                     priceFrom = kb?.priceFrom?.takeIf { it > 0 } ?: issue?.price?.takeIf { it > 0 } ?: info?.priceFrom ?: 0,
                     priceTo = 0,
-                    whatToDo = info?.whatToDo.orEmpty(),
+                    whatToDo = if (info?.detailed == true) detailedPlan(info) else info?.whatToDo.orEmpty(),
                     ownerExperience = kb?.let { k ->
                         listOf(k.summary, if (k.fixes.isNotEmpty()) tr("model_card_what_helped", k.fixes.joinToString("; ")) else "",
                             if (k.wasted.isNotEmpty()) tr("model_card_wasted", k.wasted.joinToString("; ")) else "").filter { it.isNotBlank() }.joinToString(" ")
@@ -286,6 +308,10 @@ data class Diagnosis(
                     append(issues.joinToString("; ") { it.title.lowercase() })
                     append(".")
                 }
+                if (measuredText.isNotEmpty()) {
+                    if (isNotEmpty()) append("\n\n")
+                    append(measuredText)
+                }
             }
             val level = when {
                 stopActive -> "danger"
@@ -313,16 +339,34 @@ data class Diagnosis(
                 text = buildString {
                     if (stopActive) append(tr("model_text_stop_code", stopCodes.joinToString { it.code }) + " ")
                     else if (archiveOnly) append(tr("model_text_archive_only") + " ")
-                    append(tr("model_text_from_catalog"))
-                    append(if (fromKb > 0) tr("model_text_from_kb") + " " else ". ")
-                    if (fromKb < cards.size) append(tr("model_text_rest_online"))
+                    if (complete) {
+                        append(tr("kb_text_complete"))
+                    } else {
+                        append(tr("model_text_from_catalog"))
+                        append(if (fromKb > 0) tr("model_text_from_kb") + " " else ". ")
+                        if (fromKb < cards.size) append(tr("model_text_rest_online"))
+                    }
                 },
                 canDrive = canDrive,
                 codes = cards,
                 summary = summary,
                 nextSteps = steps.values.take(5),
-                fromAi = false
+                fromAi = false,
+                typicalIssues = if (complete) issues.map { TypicalIssue("${it.title}. ${it.note.take(400)}", it.mileage, "") } else emptyList(),
+                fromKb = complete
             )
+        }
+
+        /** «Что делать» из подробной базы: проверки по шагам, порядок ремонта, ложные пути и чем грозит. */
+        private fun detailedPlan(info: DtcInfo): String = buildString {
+            append(tr("kb_checks"))
+            info.checks.forEach { append("\n• ").append(it) }
+            append("\n\n").append(tr("kb_plan")).append(" ").append(info.whatToDo)
+            if (info.dont.isNotEmpty()) {
+                append("\n\n").append(tr("kb_dont"))
+                info.dont.forEach { append("\n• ").append(it) }
+            }
+            if (info.risk.isNotBlank()) append("\n\n").append(tr("kb_risk")).append(" ").append(info.risk)
         }
     }
 }

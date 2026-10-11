@@ -11,8 +11,11 @@ object OpenAiClient {
 
     class Reply(val content: String)
 
-    /** Ошибка API с HTTP-статусом: по нему решаем, есть ли смысл повторять укороченным запросом. */
-    class ApiException(val status: Int, message: String) : IOException(message)
+    /**
+     * Ошибка API с HTTP-статусом: по нему решаем, есть ли смысл повторять укороченным запросом.
+     * [retryAfterSec] — сколько ждать до сброса лимита (для 429), если провайдер это сообщил.
+     */
+    class ApiException(val status: Int, message: String, val retryAfterSec: Double? = null) : IOException(message)
 
     /**
      * @param json  просить строгий JSON через response_format (при 400 повторяем без него)
@@ -25,7 +28,8 @@ object OpenAiClient {
         json: Boolean = false,
         maxTokens: Int = 6000,
         imageJpegBase64: String? = null,
-        modelOverride: String? = null
+        modelOverride: String? = null,
+        readTimeoutMs: Int = 240_000
     ): Reply {
         // с картинкой содержимое сообщения — массив блоков (текст + image_url с data-URL)
         val userContent: Any = if (imageJpegBase64 == null) user else JSONArray()
@@ -43,15 +47,15 @@ object OpenAiClient {
         // в минуту вместе с max_tokens) держим размышление коротким
         if ((modelOverride ?: cfg.model).startsWith("openai/gpt-oss")) body.put("reasoning_effort", "low")
 
-        var (status, text) = post(cfg, body)
-        if (status == 400 && json) {
+        var resp0 = post(cfg, body, readTimeoutMs)
+        if (resp0.status == 400 && json) {
             // не все модели умеют response_format — пробуем без него
             body.remove("response_format")
-            val again = post(cfg, body)
-            status = again.first
-            text = again.second
+            resp0 = post(cfg, body, readTimeoutMs)
         }
-        if (status !in 200..299) throw ApiException(status, describeError(cfg, status, text))
+        val status = resp0.status
+        val text = resp0.text
+        if (status !in 200..299) throw ApiException(status, describeError(cfg, status, text), retryAfter(resp0))
 
         val resp = JSONObject(text)
         val choice = resp.optJSONArray("choices")?.optJSONObject(0)
@@ -62,12 +66,28 @@ object OpenAiClient {
         return Reply(content)
     }
 
-    private fun post(cfg: AiConfig, body: JSONObject): Pair<Int, String> {
+    private class Raw(val status: Int, val text: String, val retryAfterHeader: String?)
+
+    /**
+     * Сколько ждать до сброса лимита: заголовок Retry-After, иначе текст ошибки. Groq заголовка не шлёт,
+     * пишет в сообщении «Please try again in 7.36s» или «in 1m12.5s».
+     */
+    private fun retryAfter(r: Raw): Double? {
+        r.retryAfterHeader?.trim()?.toDoubleOrNull()?.let { return it }
+        val m = Regex("try again in\\s+(?:(\\d+)h)?(?:(\\d+)m(?!s))?(?:([\\d.]+)s)?(?:([\\d.]+)ms)?", RegexOption.IGNORE_CASE) // i18n-ignore
+            .find(r.text) ?: return null
+        val (h, min, s, ms) = m.destructured
+        val total = (h.toDoubleOrNull() ?: 0.0) * 3600 + (min.toDoubleOrNull() ?: 0.0) * 60 +
+            (s.toDoubleOrNull() ?: 0.0) + (ms.toDoubleOrNull() ?: 0.0) / 1000
+        return total.takeIf { it > 0 }
+    }
+
+    private fun post(cfg: AiConfig, body: JSONObject, readTimeoutMs: Int): Raw {
         val base = cfg.baseUrl.trimEnd('/')
         val conn = (URL("$base/chat/completions").openConnection() as HttpURLConnection).apply {
             requestMethod = "POST"
             connectTimeout = 20_000
-            readTimeout = 240_000
+            readTimeout = readTimeoutMs
             doOutput = true
             setRequestProperty("Content-Type", "application/json")
             setRequestProperty("Authorization", "Bearer ${cfg.apiKey.trim()}")
@@ -85,7 +105,7 @@ object OpenAiClient {
             val status = conn.responseCode
             val stream = if (status in 200..299) conn.inputStream else conn.errorStream
             val text = stream?.bufferedReader(Charsets.UTF_8)?.use { it.readText() } ?: ""
-            return Pair(status, text)
+            return Raw(status, text, conn.getHeaderField("retry-after"))
         } finally {
             conn.disconnect()
         }

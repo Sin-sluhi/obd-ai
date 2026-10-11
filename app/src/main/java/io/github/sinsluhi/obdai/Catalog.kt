@@ -24,8 +24,17 @@ data class DtcInfo(
     val familyTitle: String,
     val related: Map<String, String>, // код → почему связан
     val brand: String?,               // ключ марочной таблицы, если код из неё
-    val priceFrom: Int = 0            // ремонт «от», рублей (запчасть + работа, РФ 2026, нижняя граница)
-)
+    val priceFrom: Int = 0,           // ремонт «от», рублей (запчасть + работа, РФ 2026, нижняя граница)
+    // подробная база (tools/dtc/detail): есть у кодов, разобранных до уровня «проверить по шагам»
+    val detail: String = "",          // что происходит именно с этим кодом (поле e записи кода)
+    val symptoms: List<String> = emptyList(),
+    val checks: List<String> = emptyList(),
+    val dont: List<String> = emptyList(),
+    val risk: String = ""
+) {
+    /** Код разобран в подробной базе: по нему разбор собирается без нейронки. */
+    val detailed: Boolean get() = checks.isNotEmpty() && causes.isNotEmpty() && whatToDo.isNotBlank()
+}
 
 /** Связь двух кодов из одной проверки. */
 data class DtcLink(val code: String, val reason: String)
@@ -165,6 +174,7 @@ object DtcCatalog {
         return when {
             "hyundai" in b || "kia" in b -> "hyundai_kia"
             "lada" in b || "ваз" in b -> "lada" // i18n-ignore
+            "уаз" in b || "uaz" in b || b.startsWith("газ") || "gaz" in b -> "uaz_gaz" // i18n-ignore
             "toyota" in b || "lexus" in b -> "toyota"
             "volkswagen" in b || "audi" in b || "skoda" in b || "seat" in b || "porsche" in b -> "vag"
             "ford" in b -> "ford"
@@ -188,7 +198,8 @@ object DtcCatalog {
         val famKey = e.optString("f")
         val fam = families?.optJSONObject(famKey) ?: JSONObject()
         val own = e.optString("e")
-        val story = listOf(own, fam.optString("s")).filter { it.isNotBlank() }.joinToString("\n\n")
+        // у подробной записи её текст уже стоит в объяснении карточки: в «как это устроено» остаётся только узел
+        val story = if (e.has("ck")) fam.optString("s") else listOf(own, fam.optString("s")).filter { it.isNotBlank() }.joinToString("\n\n")
         val causes = e.optJSONArray("c")?.toStringList() ?: fam.optJSONArray("c").toStringList()
         val related = LinkedHashMap<String, String>()
         e.optJSONObject("r")?.let { r -> r.keys().forEach { k -> related[k] = r.optString(k) } }
@@ -206,7 +217,12 @@ object DtcCatalog {
             familyTitle = fam.optString("t"),
             related = related,
             brand = brand,
-            priceFrom = if (e.has("p")) e.optInt("p") else fam.optInt("p")
+            priceFrom = if (e.has("p")) e.optInt("p") else fam.optInt("p"),
+            detail = own,
+            symptoms = e.optJSONArray("sy").toStringList(),
+            checks = e.optJSONArray("ck").toStringList(),
+            dont = e.optJSONArray("x").toStringList(),
+            risk = e.optString("rk")
         )
     }
 

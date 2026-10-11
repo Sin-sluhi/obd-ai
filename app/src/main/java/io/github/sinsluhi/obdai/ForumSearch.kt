@@ -14,47 +14,84 @@ object ForumSearch {
     private const val UA = "Mozilla/5.0 (Linux; Android 13; Pixel 7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Mobile Safari/537.36"
     private val forums = listOf("drive2.ru", "drom.ru")
 
-    /** Заметки для модели: по каждому коду до трёх выдержек с форумов со ссылками, всего не больше [budget] символов. */
-    fun research(codes: List<String>, car: String, log: (String) -> Unit, budget: Int = 9000): String {
-        val sb = StringBuilder()
-        var total = 0
-        for (raw in codes.take(4)) {
-            val code = raw.substringBefore(' ')
-            val base = if (car.isBlank()) code else "$code $car"
-            val queries = listOf("$base site:drive2.ru", "$base site:drom.ru", "$base ошибка форум")
-            val links = linkedSetOf<String>()
-            for (q in queries) {
-                if (links.size >= 3) break
-                log("🔎 $q")
-                runCatching { search(q) }.getOrDefault(emptyList())
-                    .filter { url -> forums.any { url.contains(it) } }
-                    .forEach { if (links.size < 3) links.add(it) }
+    /** Найденное по паре «код + машина» живёт 6 часов: повторная проверка той же машины не ходит в поисковики заново. */
+    private const val CACHE_MS = 6 * 3600_000L
+    private val cache = java.util.concurrent.ConcurrentHashMap<String, Pair<Long, String>>()
+
+    /** DuckDuckGo после серии запросов ставит капчу и молчит; тогда на 15 минут сразу идём в Bing, не теряя секунды. */
+    @Volatile private var ddgBlockedUntil = 0L
+
+    /**
+     * Заметки для модели: по каждому коду до трёх выдержек с форумов со ссылками, всего не больше [budget] символов.
+     * Коды ищутся параллельно, а весь поиск укладывается в [deadlineMs]: что не успело — не ждём, разбор идёт с тем, что есть.
+     */
+    fun research(codes: List<String>, car: String, log: (String) -> Unit, budget: Int = 9000, deadlineMs: Long = 35_000): String {
+        val list = codes.take(4).map { it.substringBefore(' ') }.distinct()
+        if (list.isEmpty()) return ""
+        val deadline = System.currentTimeMillis() + deadlineMs
+        val window = (budget / list.size / 2).coerceIn(700, 2800)
+        val pool = java.util.concurrent.Executors.newFixedThreadPool(list.size)
+        try {
+            val futures = list.map { code -> pool.submit<String> { forCode(code, car, window, deadline, log) } }
+            val sb = StringBuilder()
+            for ((i, f) in futures.withIndex()) {
+                val left = deadline - System.currentTimeMillis()
+                val part = runCatching { f.get(left.coerceAtLeast(1), java.util.concurrent.TimeUnit.MILLISECONDS) }
+                    .getOrElse { log("Поиск по ${list[i]} не уложился во время, иду дальше"); "" }
+                if (sb.length + part.length > budget && sb.isNotEmpty()) break
+                sb.append(part)
             }
-            if (links.isEmpty()) {
-                sb.appendLine("### $code: на форумах ничего не найдено").appendLine()
-                continue
-            }
-            sb.appendLine("### $code")
-            for (url in links) {
-                val excerpt = runCatching { fetchExcerpt(url, code, (budget / codes.size.coerceIn(1, 4) / 2).coerceIn(700, 2800)) }.getOrNull() ?: continue
-                if (excerpt.isBlank()) continue
-                sb.appendLine("Источник: $url").appendLine(excerpt).appendLine()
-                total += excerpt.length
-                if (total > budget) return sb.toString()
-            }
+            return sb.toString()
+        } finally {
+            pool.shutdownNow()
         }
+    }
+
+    private fun forCode(code: String, car: String, window: Int, deadline: Long, log: (String) -> Unit): String {
+        val key = "$code|$car"
+        cache[key]?.takeIf { System.currentTimeMillis() - it.first < CACHE_MS }?.let { return it.second }
+        val base = if (car.isBlank()) code else "$code $car"
+        val queries = listOf("$base site:drive2.ru", "$base site:drom.ru", "$base ошибка форум")
+        val links = linkedSetOf<String>()
+        for (q in queries) {
+            if (links.size >= 3 || System.currentTimeMillis() > deadline) break
+            log("🔎 $q")
+            runCatching { search(q) }.getOrDefault(emptyList())
+                .filter { url -> forums.any { url.contains(it) } }
+                .forEach { if (links.size < 3) links.add(it) }
+        }
+        val sb = StringBuilder()
+        if (links.isEmpty()) {
+            sb.appendLine("### $code: на форумах ничего не найдено").appendLine()
+            return sb.toString()   // пустой результат не кешируем: в следующий раз поисковик может ответить
+        }
+        sb.appendLine("### $code")
+        var found = 0
+        for (url in links) {
+            if (System.currentTimeMillis() > deadline) break
+            val excerpt = runCatching { fetchExcerpt(url, code, window) }.getOrNull() ?: continue
+            if (excerpt.isBlank()) continue
+            sb.appendLine("Источник: $url").appendLine(excerpt).appendLine()
+            found++
+        }
+        if (found > 0) cache[key] = System.currentTimeMillis() to sb.toString()
         return sb.toString()
     }
 
     /** Ссылки из выдачи: сначала DuckDuckGo (html-версия), при неудаче Bing. */
     fun search(query: String): List<String> {
-        val ddg = runCatching { searchDdg(query) }.getOrDefault(emptyList())
-        if (ddg.isNotEmpty()) return ddg
+        if (System.currentTimeMillis() > ddgBlockedUntil) {
+            val ddg = runCatching { searchDdg(query) }
+            ddg.getOrNull()?.takeIf { it.isNotEmpty() }?.let { return it }
+            // капча или сеть, а не честное «ничего не найдено» — DuckDuckGo на время пропускаем
+            if (ddg.isFailure) ddgBlockedUntil = System.currentTimeMillis() + 15 * 60_000L
+        }
         return runCatching { searchBing(query) }.getOrDefault(emptyList())
     }
 
     private fun searchDdg(query: String): List<String> {
         val html = get("https://html.duckduckgo.com/html/?q=" + URLEncoder.encode(query, "UTF-8"))
+        if ("anomaly-modal" in html || "challenge-form" in html) throw java.io.IOException("DuckDuckGo: капча")
         val out = linkedSetOf<String>()
         Regex("class=\"result__a\"[^>]*href=\"([^\"]+)\"").findAll(html).forEach { m ->
             var href = m.groupValues[1].replace("&amp;", "&")
@@ -104,8 +141,8 @@ object ForumSearch {
 
     private fun get(url: String, maxBytes: Int = 300_000): String {
         val conn = (URL(url).openConnection() as HttpURLConnection).apply {
-            connectTimeout = 10_000
-            readTimeout = 15_000
+            connectTimeout = 7_000
+            readTimeout = 10_000
             instanceFollowRedirects = true
             setRequestProperty("User-Agent", UA)
             setRequestProperty("Accept-Language", "ru-RU,ru;q=0.9")

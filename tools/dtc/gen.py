@@ -49,12 +49,63 @@ def check():
                 print("предупреждение: болячка «%s» ссылается на неизвестный код %s" % (it["title"], c))
 
 
+def merge_links():
+    """Дополнительные связи семейств (links_extra.py) — в обе стороны, своя формулировка семейства важнее."""
+    from links_extra import LINKS
+    added = 0
+    for (a, b), reason in LINKS.items():
+        assert a in F and b in F, "неизвестное семейство в связи %s — %s" % (a, b)
+        for x, y in ((a, b), (b, a)):
+            if y not in F[x]["links"]:
+                F[x]["links"][y] = reason
+                added += 1
+    print("дополнительных связей семейств: %d" % added)
+
+
+def merge_detail():
+    """Подробная база (detail/) поверх справочника. Общая запись кода дополняет CODES; для марки собирается полная
+    запись: справочник + общая подробная + марочная, где у марки текст и причины идут первыми."""
+    from detail import DETAIL, BRAND_DETAIL, REQUIRED
+    for code, d in DETAIL.items():
+        assert code in CODES, "подробная запись для неизвестного кода %s" % code
+        miss = [k for k in REQUIRED if not d.get(k)]
+        assert not miss, "%s: не заполнено %s" % (code, miss)
+        CODES[code].update(d)
+    for brand, codes in BRAND_DETAIL.items():
+        table = BRANDS.setdefault(brand, {})
+        for code, b in codes.items():
+            base = dict(CODES.get(code) or table.get(code) or {})
+            assert base, "марочная запись %s/%s без кода в справочнике" % (brand, code)
+            base.update(table.get(code, {}))
+            g = DETAIL.get(code, {})
+            rec = dict(base)
+            rec.update({k: v for k, v in g.items()})
+            if all(b.get(k) for k in REQUIRED):
+                # полная марочная запись (Лада, УАЗ/ГАЗ): она самодостаточна, общая лишь заполняет пропущенные поля
+                rec.update(b)
+                table[code] = rec
+                continue
+            if b.get("e"):
+                rec["e"] = b["e"] + ("\n\n" + g["e"] if g.get("e") else "")
+            for k in ("c", "ck", "x", "sy"):
+                if b.get(k):
+                    rec[k] = list(dict.fromkeys(b[k] + list(g.get(k, []))))
+            for k in ("d", "rk", "p", "s", "stop"):
+                if k in b:
+                    rec[k] = b[k]
+            table[code] = rec
+    nb = sum(len(v) for v in BRAND_DETAIL.values())
+    print("подробная база: общих записей %d, марочных %d" % (len(DETAIL), nb))
+
+
 def main():
+    merge_links()
     check()
     families = {}
     for k, f in F.items():
         families[k] = {"t": f["title"], "s": f["story"], "c": f["causes"], "d": f["do"], "sev": f["severity"],
                        "cf": f["confirm"], "stop": f["stop"], "l": f["links"], "p": f["price"]}
+    merge_detail()
     data = {"version": 1, "families": families, "codes": CODES, "brands": BRANDS}
     os.makedirs(ASSETS, exist_ok=True)
     out = os.path.join(ASSETS, "dtc_ru.json")

@@ -55,7 +55,7 @@ class AppState private constructor(context: Context) {
     init {
         // Язык интерфейса нужен до первого кадра: переводы маленькие, читаем сразу
         Tr.init(appContext, prefs)
-        // Справочник кодов и болячки моделей: ~1 МБ JSON, читаем в фоне один раз на процесс
+        // Справочник кодов с подробной базой и болячки моделей: ~5 МБ JSON, читаем в фоне один раз на процесс
         worker.execute {
             DtcCatalog.load(appContext); KnownIssues.load(appContext)
             Kb.init(appContext, prefs)
