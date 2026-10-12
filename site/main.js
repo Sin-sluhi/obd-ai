@@ -656,9 +656,38 @@
       } catch (e) { state("off"); timer = setTimeout(poll, 20000); }
     }
 
-    $("#dlBtn").addEventListener("click", () => {
-      // браузер сам скачивает файл по ссылке; через пару секунд сервер уже считает её использованной
-      setTimeout(() => state("used"), 2500);
+    // Качаем скриптом, а не переходом по ссылке: туннель serveo показывает страницу-предупреждение
+    // запросам браузера с Accept: text/html, а запрос из скрипта проходит сразу. Заодно видно процент.
+    let downloading = false;
+    $("#dlBtn").addEventListener("click", async e => {
+      e.preventDefault();
+      if (downloading) return;
+      downloading = true;
+      const a = $("#dlBtn"), label = a.querySelector("span"), size = $(".dl-size");
+      label.textContent = "Скачиваю…";
+      try {
+        const r = await fetch(a.href, { cache: "no-store" });
+        if (r.status === 410) { state("used"); return; }
+        if (!r.ok || !r.body) throw new Error(r.status);
+        const total = +r.headers.get("Content-Length") || 0, reader = r.body.getReader(), parts = [];
+        let got = 0;
+        for (;;) {
+          const { done, value } = await reader.read();
+          if (done) break;
+          parts.push(value); got += value.length;
+          if (total) size.textContent = Math.round(got / total * 100) + "% · " + mb(got) + " из " + mb(total);
+        }
+        if (total && got < total) throw new Error("обрыв");
+        const url = URL.createObjectURL(new Blob(parts, { type: "application/vnd.android.package-archive" }));
+        const link = document.createElement("a");
+        link.href = url; link.download = "OBD-AI.apk"; document.body.appendChild(link); link.click(); link.remove();
+        setTimeout(() => URL.revokeObjectURL(url), 60000);
+        state("used");
+      } catch (x) {
+        // передача оборвалась — сервер вернул ссылку в рабочее состояние, можно нажать ещё раз
+        label.textContent = "Скачать APK";
+        size.textContent = "Связь прервалась — нажмите ещё раз";
+      } finally { downloading = false; }
     });
     $$("[data-act=forget]").forEach(b => b.addEventListener("click", () => { set(""); ticket = ""; state("form"); }));
 

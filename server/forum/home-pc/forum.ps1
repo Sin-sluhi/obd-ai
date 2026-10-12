@@ -1,4 +1,4 @@
-﻿# Форум OBD AI на домашнем ПК: локальный сервер + туннель наружу (localhost.run по SSH, без аккаунта, HTTPS)
+﻿# Форум OBD AI на домашнем ПК: локальный сервер + туннель наружу (serveo.net, запасной localhost.run; по SSH, без аккаунта, HTTPS)
 # + публикация текущего адреса в репозиторий (docs/forum_url.txt), откуда его берёт приложение и сайт.
 # + APK для выдачи по заявкам с сайта: раз в 10 минут забирает последнюю сборку (Update-Apk, нужен apk.pass).
 # Запускается при входе в Windows (obdai-forum.vbs в автозагрузке), работает без окна. Лог: forum.log в этой папке.
@@ -40,20 +40,30 @@ function Publish-Url($url) {
     } catch { Log "не удалось опубликовать адрес: $_" }
 }
 
-function Start-Tunnel {
-    # localhost.run: ssh -R даёт https://<случайно>.lhr.life; адрес печатается в баннере
+function Start-Tunnel($kind) {
+    # serveo.net держится дольше localhost.run; оба без аккаунта, адрес случайный — публикуем его в docs/forum_url.txt.
+    # Сайт обходит страницу-предупреждение serveo: она показывается только запросам с Accept: text/html, а сайт и приложение
+    # ходят в API скриптом.
     $out = "$dir\tunnel.out"
     Remove-Item $out -ErrorAction SilentlyContinue
-    $p = Start-Process -FilePath $ssh -ArgumentList @('-T', '-o', 'StrictHostKeyChecking=accept-new', '-o', 'ServerAliveInterval=30', '-o', 'ServerAliveCountMax=3', '-o', 'ExitOnForwardFailure=yes', '-R', "80:127.0.0.1:$port", 'nokey@localhost.run') -WindowStyle Hidden -RedirectStandardOutput $out -RedirectStandardError "$dir\tunnel.err" -PassThru
+    $common = @('-T', '-o', 'StrictHostKeyChecking=accept-new', '-o', 'ServerAliveInterval=20', '-o', 'ServerAliveCountMax=3', '-o', 'ExitOnForwardFailure=yes')
+    if ($kind -eq 'serveo') {
+        $sshArgs = $common + @('-R', "80:127.0.0.1:$port", 'serveo.net')
+        $pattern = 'https://[a-z0-9-]+\.serveousercontent\.com'
+    } else {
+        $sshArgs = $common + @('-R', "80:127.0.0.1:$port", 'nokey@localhost.run')
+        $pattern = 'https://[a-z0-9]+\.lhr\.life'
+    }
+    $p = Start-Process -FilePath $ssh -ArgumentList $sshArgs -WindowStyle Hidden -RedirectStandardOutput $out -RedirectStandardError "$dir\tunnel.err" -PassThru
     $url = $null
-    for ($i = 0; $i -lt 45 -and -not $url -and -not $p.HasExited; $i++) {
+    for ($i = 0; $i -lt 30 -and -not $url -and -not $p.HasExited; $i++) {
         Start-Sleep -Seconds 2
         if (Test-Path $out) {
-            $m = Select-String -Path $out -Pattern 'https://[a-z0-9]+\.lhr\.life' -AllMatches | Select-Object -First 1
+            $m = Select-String -Path $out -Pattern $pattern -AllMatches | Select-Object -First 1
             if ($m) { $url = $m.Matches[0].Value }
         }
     }
-    return @{ proc = $p; url = $url }
+    return @{ proc = $p; url = $url; kind = $kind }
 }
 
 function Update-Apk {
@@ -89,12 +99,14 @@ function Update-Apk {
 Log "старт (репозиторий: $repo)"
 if (-not (Test-Path "$repo\server\forum\server.py")) { Log "нет файла $repo\server\forum\server.py — проверьте, где лежит репозиторий"; exit 1 }
 Update-Apk
+$kind = 'serveo'
 while ($true) {
     Ensure-Server
-    $t = Start-Tunnel
+    $started = Get-Date
+    $t = Start-Tunnel $kind
     $p = $t.proc
     if ($t.url) {
-        Log "туннель: $($t.url)"
+        Log "туннель ($($t.kind)): $($t.url)"
         # проверяем снаружи, прежде чем публиковать
         $ok = $false
         for ($i = 0; $i -lt 5 -and -not $ok; $i++) {
@@ -124,5 +136,6 @@ while ($true) {
         }
     }
     Log "туннель завершился (код $($p.ExitCode)), через 10 с новый"
+    if (((Get-Date) - $started).TotalSeconds -lt 180) { $kind = if ($kind -eq 'serveo') { 'lhr' } else { 'serveo' }; Log "переключаюсь на $kind" }
     Start-Sleep -Seconds 10
 }
