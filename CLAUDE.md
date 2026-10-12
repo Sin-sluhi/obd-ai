@@ -7,8 +7,10 @@ Android-приложение (Kotlin, Jetpack Compose) для диагности
 ## Как собирать и выпускать
 
 - Локально Android SDK нет. Сборка только в GitHub Actions (`.github/workflows/build.yml`), при каждом пуше в `main`.
-- Результат: debug-APK в Releases под тегом `latest`:
-  https://github.com/Sin-sluhi/obd-ai/releases/download/latest/app-debug.apk
+- Результат: debug-APK. С 12.10.2026 открытой ссылки нет (переменная `PUBLIC_APK=false`, файл из релиза `latest` удалён):
+  APK раздаётся только по заявке на сайте https://sin-sluhi.github.io/obd-ai/. Себе — кнопка «Скачать себе» в
+  `site/admin.html` или артефакт сборки (зашифрован, пароль в `obd-ai-serverpk.pass`). Вернуть открытую ссылку —
+  удалить переменную `PUBLIC_APK` и пересобрать.
 - `gh` установлен в `C:\Program Files\GitHub CLI` (не в PATH Git Bash: `export PATH="$PATH:/c/Program Files/GitHub CLI"`), залогинен.
 - Ждать сборку: `gh run watch <id> --exit-status`, ошибки: `gh run view <id> --log-failed | grep "e: file"`.
 - Секреты репозитория: `AI_API_KEY` (ключ Groq, задан), переменные `AI_PROVIDER` (по умолчанию `groq`), `AI_MODEL`.
@@ -261,7 +263,7 @@ Hyundai Tucson 2019 (VIN KMHJ381ADKU…), ELM327 v1.5, ISO 15765-4 CAN 11/500. �
 - Cloudflare в консоли Groq не проходится из встроенного браузера и часто из Chrome с VPN: ключ создавать
   с телефона на мобильном интернете.
 - Компилятор только в CI: после каждого изменения пуш и `gh run watch`.
-- Шаг публикации релиза сначала удаляет старый APK, потом грузит новый. Если он упал с «Error saving asset»,
+- (пока `PUBLIC_APK` не false) Шаг публикации релиза сначала удаляет старый APK, потом грузит новый. Если он упал с «Error saving asset»,
   ссылка на APK отдаёт 404, пока не сделать `gh run rerun <id> --failed`. Пуши только `.md`/`.txt` сборку не запускают.
 
 - Groq на бесплатном тарифе (проверено зондом 27.09.2026): у `gpt-oss-120b`, `gpt-oss-20b`, `qwen3.8-27b` по 8 тыс. токенов

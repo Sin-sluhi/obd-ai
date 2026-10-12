@@ -117,7 +117,7 @@ gh run list -R Sin-sluhi/obd-ai --workflow build.yml -L 3   # последняя
 gh run list -R Sin-sluhi/obd-ai --workflow kb.yml -L 3      # ночные запуски базы опыта
 gh release view latest -R Sin-sluhi/obd-ai --json assets --jq '.assets[].name'   # app-debug.apk
 ```
-Ссылка на APK для владельца: https://github.com/Sin-sluhi/obd-ai/releases/download/latest/app-debug.apk
+APK для владельца: открытой ссылки больше нет — «Скачать себе» в https://sin-sluhi.github.io/obd-ai/admin.html (ключ в obd-ai-serverdmin.key).
 
 ## Шаг 7. Проверить с телефона
 
