@@ -469,6 +469,10 @@ next_steps, for_service, typical_issues) — только по-русски, к�
             appendLine("Датчики (зажигание включено, снимок в момент проверки):")
             known.forEach { appendLine("- ${it.name}: ${"%.1f".format(it.value)} ${it.unit}") }
         }
+        snap.freeze?.let { f ->
+            appendLine("Стоп-кадр (режим 02, условия в момент записи ошибки — используй, чтобы объяснить, когда и почему она возникла): ${f.describe()}")
+            f.notes().forEach { appendLine("- $it") }
+        }
         snap.readiness?.let { r -> appendLine("Мониторы готовности с момента сброса ошибок: ${r.describe()}") }
         snap.readinessCycle?.let { r -> if (r.monitors.isNotEmpty()) appendLine("Мониторы в текущей поездке: ${r.describe()}") }
         val stats = snap.stats.lines()

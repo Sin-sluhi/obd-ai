@@ -35,6 +35,8 @@ class AppState private constructor(context: Context) {
             instance ?: AppState(context.applicationContext).also { instance = it }
         }
         private val QUICK_KEYS = setOf("rpm", "volt")
+        // машине состояний двигателя, поездке и чёрному ящику нужны эти датчики и во время теста
+        private val TASK_BASE = setOf("rpm", "speed", "coolant", "volt", "fuel", "stft", "ltft", "load", "maf", "fuelrate")
         private const val NOTIF_DTC = 51
         private const val NOTIF_FORECAST = 52
         private const val NOTIF_WARMUP = 53
@@ -70,6 +72,10 @@ class AppState private constructor(context: Context) {
     @Volatile private var paused = false
     @Volatile private var pollBusy = false
     @Volatile private var liveViewers = 0
+    /** Тест мастерской (подсос, проверка по жалобе): какие датчики опрашивать и куда писать замеры. */
+    @Volatile private var taskKeys: Set<String> = emptySet()
+    private val taskBuf = ArrayDeque<Sample>()
+    var taskTick by mutableStateOf(0)
     private var atrvTimeouts = 0   // подряд не отвеченных ATRV в опросе: три — адаптер пропал (только в потоке опроса)
 
     // ---- наблюдаемое состояние ----
@@ -523,6 +529,10 @@ class AppState private constructor(context: Context) {
                 Mode06.summary(tests).forEach { addLog(it) }
             }
 
+            ui { busy = tr("state_step_freeze") }; rx()
+            val freeze = runCatching { l.readFreezeFrame() }.getOrNull()
+            addLog(freeze?.describe() ?: tr("state_log_no_freeze"))
+
             ui { busy = tr("state_step_modules") }; rx()
             val brand = VinDecoder.decode(v).brand
             val modules = runCatching {
@@ -534,7 +544,8 @@ class AppState private constructor(context: Context) {
             ui { busy = tr("state_step_compare") }
             val batteryNow = BatteryReport.build(volts)
             val base = CarSnapshot(v, l.protocol, volt, mil?.first, mil?.second, stored, pending, s, permanent, modules,
-                readiness = ready, readinessCycle = readyCycle, stats = stats, tests = tests, battery = batteryNow, adapter = l.adapter)
+                readiness = ready, readinessCycle = readyCycle, stats = stats, tests = tests, battery = batteryNow, adapter = l.adapter,
+                freeze = freeze)
             val clear = prefs.lastClear?.takeIf { it.vin == null || v == null || it.vin == v }
             val repair = clear?.let { RepairCheck.build(it, base.allCodes, ready, stats.distanceSinceClearKm) }
             repair?.let { addLog(tr("state_log_repair", it.title)) }
@@ -780,6 +791,30 @@ class AppState private constructor(context: Context) {
 
     // ---- постоянный опрос: датчики, двигатель, поездки, прогрев, пуски, новые ошибки ----
 
+    /** Начать запись датчиков для теста: опрос переходит на эти ключи (плюс нужные машине состояний). */
+    fun startTask(keys: Set<String>) {
+        synchronized(taskBuf) { taskBuf.clear() }
+        taskKeys = keys + TASK_BASE
+        watchLive(true)
+        taskTick = 0
+    }
+
+    fun stopTask() {
+        if (taskKeys.isEmpty()) return
+        taskKeys = emptySet()
+        watchLive(false)
+        demoRev(null)
+    }
+
+    fun resetTaskSamples() { synchronized(taskBuf) { taskBuf.clear() }; taskTick = 0 }
+
+    fun taskSamples(): List<Sample> = synchronized(taskBuf) { taskBuf.toList() }
+
+    /** В демо «водитель» держит обороты, пока идёт вторая фаза теста на подсос. */
+    fun demoRev(rpm: Double?) { (link as? DemoLink)?.revTarget = rpm }
+
+    val isDemo: Boolean get() = link is DemoLink
+
     fun watchLive(on: Boolean) { liveViewers = (liveViewers + if (on) 1 else -1).coerceAtLeast(0) }
 
     private fun pausePolling() {
@@ -829,7 +864,17 @@ class AppState private constructor(context: Context) {
                     // двигатель стоит и на приборы никто не смотрит: опрашиваем только обороты и напряжение, часто,
                     // чтобы не пропустить прокрутку стартера
                     val quick = !engineRunning && liveViewers == 0 && trip == null
-                    val s = l.readSensors(live = true, keys = if (quick) QUICK_KEYS else null)
+                    val task = taskKeys
+                    val s = when {
+                        quick -> l.readSensors(live = true, keys = QUICK_KEYS)
+                        task.isNotEmpty() -> l.readSensors(live = false, keys = task)
+                        else -> l.readSensors(live = true, keys = null)
+                    }
+                    if (task.isNotEmpty() && taskKeys.isNotEmpty()) {
+                        val sample = Sample(now, s.mapNotNull { r -> r.value?.let { r.key to it } }.toMap())
+                        synchronized(taskBuf) { taskBuf.addLast(sample); while (taskBuf.size > 900) taskBuf.removeFirst() }
+                        ui { taskTick++ }
+                    }
                     if (l is DemoLink) rx()   // демо не ходит через send(): пакеты на фоне рождаем здесь
                     val ecuV = s.firstOrNull { it.key == "volt" }?.value
                     // Locale.US: с русской локалью получалось «12,6V», и разборщики брали только «12»

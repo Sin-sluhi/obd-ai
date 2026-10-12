@@ -33,6 +33,8 @@ interface ObdLink {
     fun readTests(): List<TestResult>
     /** Опрос блоков по заводским протоколам; progress получает «сколько из скольких». */
     fun scanModules(brand: String?, progress: (Int, Int) -> Unit): List<ModuleScan>
+    /** Стоп-кадр режима 02: условия, при которых записана ошибка. null — кадра нет или машина не отдаёт. */
+    fun readFreezeFrame(): FreezeFrame? = null
     fun disconnect()
 }
 
@@ -44,6 +46,8 @@ interface ObdLink {
 class DemoLink : ObdLink {
     @Volatile private var connected = true
     private var cleared = false
+    /** Тест на подсос в демо: «водитель держит» эти обороты, пока идёт фаза 2500. */
+    @Volatile var revTarget: Double? = null
     private val start = System.currentTimeMillis()
 
     override val isConnected get() = connected
@@ -77,9 +81,10 @@ class DemoLink : ObdLink {
         val rpm = when {
             !running -> 0.0
             driving -> 900 + speed * 42 + Random.nextInt(-30, 31)
+            revTarget != null -> revTarget!! + 60 * sin(t() * 0.9) + Random.nextInt(-20, 21)
             else -> 812 + 25 * sin(t() * 1.3) + Random.nextInt(-8, 9)
         }
-        val maf = if (driving) 3.0 + speed * 0.22 else 3.2 + 0.2 * sin(t())
+        val maf = if (driving) 3.0 + speed * 0.22 else if (revTarget != null) 11.5 + 0.4 * sin(t()) else 3.2 + 0.2 * sin(t())
         val all = readAll(running, driving, speed, rpm, maf, live)
         return if (keys == null) all else all.filter { it.key in keys }
     }
@@ -94,14 +99,20 @@ class DemoLink : ObdLink {
             SensorReading("load", tr("demo_sensor_load"), if (driving) 30 + speed * 0.5 else 23 + 2 * sin(t()), "%"),
             SensorReading("iat", tr("demo_sensor_iat"), 31.0, "°C"),
             SensorReading("throttle", tr("demo_sensor_throttle"), if (driving) 12 + speed * 0.3 else 14 + sin(t() * 0.7), "%"),
-            SensorReading("stft", tr("demo_sensor_stft"), 7.8 + 1.5 * sin(t() * 2), "%"),
+            // подсос в демо: на холостых бедно (+20 %), на 2500 коррекция почти уходит — как настоящая трещина гофры
+            SensorReading("stft", tr("demo_sensor_stft"), if (revTarget != null && !driving) -9.0 + 1.2 * sin(t() * 2) else 7.8 + 1.5 * sin(t() * 2), "%"),
             SensorReading("ltft", tr("demo_sensor_ltft"), 12.5, "%"),
-            SensorReading("map", tr("demo_sensor_map"), if (!running) 99.0 else if (driving) 45 + speed * 0.4 else 33.0, tr("demo_unit_kpa")),
+            SensorReading("map", tr("demo_sensor_map"), if (!running) 99.0 else if (driving) 45 + speed * 0.4 else if (revTarget != null) 27.0 else 33.0, tr("demo_unit_kpa")),
             SensorReading("volt", tr("demo_sensor_volt"), volt, tr("demo_unit_v")),
             SensorReading("fuelrate", tr("demo_sensor_fuelrate"), if (running) maf / 14.7 / 745.0 * 3600 else 0.0, tr("demo_unit_l_h"))
         )
         if (live) return base
-        return base + listOf(
+        // первый зонд честно переключается, второй (P0420) мечется вслед за ним — катализатор не держит кислород
+        val o2 = if (running) listOf(
+            SensorReading("o2b1s1", tr("obd_sensor_o2b1s1"), 0.45 + 0.38 * sin(t() * 2.6), tr("obd_unit_volt")),
+            SensorReading("o2b1s2", tr("obd_sensor_o2b1s2"), 0.5 + 0.28 * sin(t() * 2.6 - 0.8), tr("obd_unit_volt"))
+        ) else emptyList()
+        return base + o2 + listOf(
             SensorReading("fuel", tr("demo_sensor_fuel"), 41.0, "%"),
             SensorReading("ambient", tr("demo_sensor_ambient"), 17.0, "°C"),
             SensorReading("baro", tr("demo_sensor_baro"), 99.0, tr("demo_unit_kpa")),
@@ -128,6 +139,17 @@ class DemoLink : ObdLink {
         distanceMilKm = if (cleared) 0 else 412, distanceSinceClearKm = if (cleared) 0 else 1830, warmupsSinceClear = if (cleared) 0 else 57,
         minutesMilOn = if (cleared) 0 else 610, minutesSinceClear = if (cleared) 1 else 3900, runTimeSec = t().toInt(), odometerKm = 128_412.0
     )
+
+    override fun readFreezeFrame(): FreezeFrame? = if (cleared) null else FreezeFrame("P0300", listOf(
+        SensorReading("rpm", tr("obd_sensor_rpm"), 2140.0, tr("obd_unit_rpm")),
+        SensorReading("speed", tr("obd_sensor_speed"), 64.0, tr("obd_unit_kmh")),
+        SensorReading("coolant", tr("obd_sensor_coolant"), 88.0, tr("obd_unit_celsius")),
+        SensorReading("load", tr("obd_sensor_load"), 46.0, tr("obd_unit_percent")),
+        SensorReading("stft", tr("obd_sensor_stft"), 9.4, tr("obd_unit_percent")),
+        SensorReading("ltft", tr("obd_sensor_ltft"), 12.5, tr("obd_unit_percent")),
+        SensorReading("map", tr("obd_sensor_map"), 52.0, tr("obd_unit_kpa")),
+        SensorReading("iat", tr("obd_sensor_iat"), 29.0, tr("obd_unit_celsius"))
+    ))
 
     override fun readTests(): List<TestResult> = listOf(
         TestResult(0x21, 0x80, 0x1E, 21000, 0, 25000),

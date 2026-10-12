@@ -270,6 +270,21 @@ fun DetailsScreen(state: AppState, onBack: () -> Unit) {
         snap.readiness?.let { r -> ReadinessCard(tr("ext_readiness_since_clear"), r, accent) }
         snap.readinessCycle?.let { r -> if (r.monitors.isNotEmpty()) ReadinessCard(tr("ext_readiness_cycle"), r, accent) }
 
+        snap.freeze?.let { f ->
+            SectionTitle(tr("work_freeze_title"), f.code)
+            Card(padding = 14.dp) {
+                Text(tr("work_freeze_intro"), style = Type.body(12, Palette.muted))
+                VSpace(6.dp)
+                f.values.filter { it.value != null }.forEach { r ->
+                    Row(Modifier.padding(vertical = 3.dp), verticalAlignment = Alignment.CenterVertically) {
+                        Text(r.name, style = Type.body(13, Palette.text2), modifier = Modifier.weight(1f))
+                        Text("%.1f %s".format(r.value, r.unit), style = Type.mono(13))
+                    }
+                }
+                f.notes().forEach { Bullet(it) }
+            }
+        }
+
         val stats = snap.stats.lines()
         if (stats.isNotEmpty()) {
             SectionTitle(tr("ext_counters"))

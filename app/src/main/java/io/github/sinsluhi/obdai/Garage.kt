@@ -40,7 +40,7 @@ object Garage {
     const val DEFAULT_ID = "default"
 
     /** Ключи, которые хранятся отдельно для каждой машины. */
-    val CAR_KEYS = listOf("history", "trips", "volts", "warmups", "starts", "tanks", "visits", "blackbox", "last_clear", "forecast_day", "forum_room")
+    val CAR_KEYS = listOf("history", "trips", "volts", "warmups", "starts", "tanks", "visits", "blackbox", "last_clear", "forecast_day", "forum_room", "maintenance")
 
     fun listToJson(list: List<CarProfile>): String =
         JSONArray().also { a -> list.forEach { a.put(it.toJson()) } }.toString()

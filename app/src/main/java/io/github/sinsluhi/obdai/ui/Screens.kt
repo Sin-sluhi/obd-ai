@@ -163,6 +163,7 @@ fun HomeScreen(
     onPurchase: () -> Unit,
     onCarPhoto: () -> Unit = {},
     onGarage: () -> Unit = {},
+    onTools: () -> Unit = {},
     bottom: @Composable () -> Unit
 ) {
     val accent = LocalAccent.current
@@ -272,6 +273,7 @@ fun HomeScreen(
             SecondaryButton(tr("scr_dash_photo"), Modifier.weight(1f), onClick = onPhoto)
             SecondaryButton(tr("scr_before_purchase"), Modifier.weight(1f), onClick = onPurchase)
         }
+        SecondaryButton(tr("work_home_button"), Modifier.fillMaxWidth(), onClick = onTools)
 
         // большая кнопка
         Column(
@@ -357,7 +359,8 @@ fun ResultScreen(
     onClear: () -> Unit,
     onSettings: () -> Unit,
     onDetails: () -> Unit,
-    onPurchase: () -> Unit = {}
+    onPurchase: () -> Unit = {},
+    onWizard: (String) -> Unit = {}
 ) {
     val accent = LocalAccent.current
     val d = state.diagnosis
@@ -423,7 +426,8 @@ fun ResultScreen(
                     issue = issue,
                     links = DtcCatalog.links(c.code, present, bkey),
                     ftb = DtcCatalog.ftbText(c.code),
-                    kb = if (c.ownerExperience.isBlank()) kb else null
+                    kb = if (c.ownerExperience.isBlank()) kb else null,
+                    onWizard = onWizard
                 ) }
             }
             if (total > 0) {
@@ -594,7 +598,8 @@ private fun CodeCard(
     issue: KnownIssue? = null,      // известная болячка этой модели
     links: List<DtcLink> = emptyList(),   // связи с другими кодами этой проверки
     ftb: String? = null,            // тип отказа по UDS («P2400-20»)
-    kb: KbEntry? = null             // опыт владельцев из базы, когда нейронка его не дала
+    kb: KbEntry? = null,            // опыт владельцев из базы, когда нейронка его не дала
+    onWizard: ((String) -> Unit)? = null   // «Проверить по шагам»: мастер по пунктам проверки из базы
 ) {
     val accent = LocalAccent.current
     val severity = issue?.severity ?: c.severity
@@ -753,6 +758,10 @@ private fun CodeCard(
             Text(tr("scr_repair"), style = Type.label())
             Spacer(Modifier.weight(1f))
             Text(formatPrice(effectivePrice(c, info, issue, kb)), style = Type.strong(14))
+        }
+        if (onWizard != null && info != null && info.checks.isNotEmpty()) {
+            VSpace(12.dp)
+            SecondaryButton(tr("work_wizard_button"), Modifier.fillMaxWidth(), color = accent) { onWizard(c.code) }
         }
     }
 }

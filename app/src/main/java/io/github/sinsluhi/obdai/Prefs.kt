@@ -206,6 +206,11 @@ class Prefs(context: Context) {
         get() = sp.getString(k("forecast_day"), "") ?: ""
         set(v) = sp.edit().putString(k("forecast_day"), v).apply()
 
+    /** ТО по пробегу: последняя замена по каждому пункту (Maintenance.toJson). */
+    var maintenance: String
+        get() = sp.getString(k("maintenance"), "") ?: ""
+        set(v) = sp.edit().putString(k("maintenance"), v).apply()
+
     /** Язык интерфейса (код из `Langs`); пусто = язык телефона, если он у нас есть, иначе русский. */
     var lang: String
         get() = sp.getString("lang", "") ?: ""

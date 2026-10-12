@@ -65,6 +65,14 @@ import io.github.sinsluhi.obdai.ui.ResultScreen
 import io.github.sinsluhi.obdai.ui.SensorsScreen
 import io.github.sinsluhi.obdai.ui.SettingsScreen
 import io.github.sinsluhi.obdai.ui.SweepOverlay
+import io.github.sinsluhi.obdai.ui.ToolsScreen
+import io.github.sinsluhi.obdai.ui.ComplaintScreen
+import io.github.sinsluhi.obdai.ui.TaskScreen
+import io.github.sinsluhi.obdai.ui.WizardScreen
+import io.github.sinsluhi.obdai.ui.SchemesScreen
+import io.github.sinsluhi.obdai.ui.SchemeScreen
+import io.github.sinsluhi.obdai.ui.OldCodesScreen
+import io.github.sinsluhi.obdai.ui.MaintenanceScreen
 import io.github.sinsluhi.obdai.ui.Tab
 import io.github.sinsluhi.obdai.ui.pageTransition
 import io.github.sinsluhi.obdai.ui.rememberBusModel
@@ -73,7 +81,8 @@ import io.github.sinsluhi.obdai.ui.rememberMotion
 import io.github.sinsluhi.obdai.ui.rememberTint
 import io.github.sinsluhi.obdai.ui.reportText
 
-enum class Page { Home, Result, Sensors, History, Settings, Log, Details, Dash, Forum, Purchase, Blackbox, Service, Garage }
+enum class Page { Home, Result, Sensors, History, Settings, Log, Details, Dash, Forum, Purchase, Blackbox, Service, Garage,
+    Tools, Complaint, Task, Wizard, Schemes, Scheme, OldCodes, Maintenance }
 
 class MainActivity : ComponentActivity() {
 
@@ -150,6 +159,12 @@ class MainActivity : ComponentActivity() {
         var page by rememberSaveable { mutableStateOf(Page.Home) }
         var confirmClear by rememberSaveable { mutableStateOf(false) }
         var cleared by rememberSaveable { mutableStateOf<List<String>?>(null) }   // стёртые коды → экран «Ошибки стёрты»
+        // «Мастерская»: что открыто и куда вернуться (задача и схема открываются и из хаба, и из мастера по коду)
+        var taskId by rememberSaveable { mutableStateOf("leak") }
+        var wizardCode by rememberSaveable { mutableStateOf("") }
+        var schemeId by rememberSaveable { mutableStateOf("lambda") }
+        var taskBack by rememberSaveable { mutableStateOf(Page.Tools) }
+        var schemeBack by rememberSaveable { mutableStateOf(Page.Schemes) }
 
         // долгие задачи (проверка, фото) просят открыть экран через pendingPage, а не через колбэк:
         // колбэк из старой композиции после пересоздания Activity писал бы в мёртвое состояние
@@ -174,6 +189,11 @@ class MainActivity : ComponentActivity() {
                 Page.Blackbox -> Page.History
                 Page.Service -> Page.History
                 Page.Garage -> Page.Home
+                Page.Tools -> Page.Home
+                Page.Complaint, Page.Schemes, Page.OldCodes, Page.Maintenance -> Page.Tools
+                Page.Task -> taskBack
+                Page.Scheme -> schemeBack
+                Page.Wizard -> Page.Result
                 Page.Result -> { if (state.busy == null) state.clearResult(); Page.Home }
                 else -> Page.Home
             }
@@ -243,6 +263,7 @@ class MainActivity : ComponentActivity() {
                         onUseWeather = { useLocationForForecast() },
                         onCarPhoto = { carPhotoLauncher.launch("image/*") },
                         onGarage = { page = Page.Garage },
+                        onTools = { page = Page.Tools },
                         onPurchase = {
                             if (state.lastSnapshot != null) page = Page.Purchase
                             else if (state.connected) state.runCheck { pendingPage = Page.Purchase } else pickDevice()
@@ -258,8 +279,28 @@ class MainActivity : ComponentActivity() {
                         onClear = { confirmClear = true },
                         onSettings = { page = Page.Settings },
                         onDetails = { page = Page.Details },
-                        onPurchase = { page = Page.Purchase }
+                        onPurchase = { page = Page.Purchase },
+                        onWizard = { code -> wizardCode = code; page = Page.Wizard }
                     )
+                    Page.Tools -> ToolsScreen(
+                        state, onBack = { page = Page.Home },
+                        onComplaint = { page = Page.Complaint },
+                        onTask = { id -> taskId = id; taskBack = Page.Tools; page = Page.Task },
+                        onOldCodes = { page = Page.OldCodes },
+                        onMaintenance = { page = Page.Maintenance },
+                        onSchemes = { page = Page.Schemes }
+                    )
+                    Page.Complaint -> ComplaintScreen(state, onBack = { page = Page.Tools },
+                        onTask = { id -> taskId = id; taskBack = Page.Complaint; page = Page.Task })
+                    Page.Task -> TaskScreen(state, taskId, onBack = { page = taskBack })
+                    Page.Wizard -> WizardScreen(state, wizardCode, onBack = { page = Page.Result },
+                        onTask = { id -> taskId = id; taskBack = Page.Wizard; page = Page.Task },
+                        onScheme = { id -> schemeId = id; schemeBack = Page.Wizard; page = Page.Scheme })
+                    Page.Schemes -> SchemesScreen(onBack = { page = Page.Tools },
+                        onScheme = { id -> schemeId = id; schemeBack = Page.Schemes; page = Page.Scheme })
+                    Page.Scheme -> SchemeScreen(schemeId, onBack = { page = schemeBack })
+                    Page.OldCodes -> OldCodesScreen(onBack = { page = Page.Tools })
+                    Page.Maintenance -> MaintenanceScreen(state, onBack = { page = Page.Tools })
                     Page.Purchase -> PurchaseScreen(state, onBack = { page = Page.Result })
                     Page.Details -> DetailsScreen(state, onBack = { page = Page.Result })
                     Page.Dash -> DashScreen(

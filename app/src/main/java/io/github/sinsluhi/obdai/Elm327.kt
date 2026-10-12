@@ -168,6 +168,17 @@ class Elm327(private val log: (String) -> Unit) : ObdLink {
             SensorReading(s.key, s.name, data?.let { s.formula(it) }, s.unit)
         }
 
+    override fun readFreezeFrame(): FreezeFrame? {
+        val d = ObdDecoder.freezeData(send("020200", 4000), 0x02) ?: return null
+        if (d.size < 2 || (d[0] == 0 && d[1] == 0)) return null
+        val code = ObdDecoder.dtc(d[0], d[1])
+        val values = ObdDecoder.sensors.filter { it.key in FreezeFrame.KEYS && supported(it.pid) }.mapNotNull { s ->
+            val data = ObdDecoder.freezeData(send("02%02X00".format(s.pid), 3000), s.pid) ?: return@mapNotNull null
+            s.formula(data)?.let { SensorReading(s.key, s.name, it, s.unit) }
+        }
+        return FreezeFrame(code, values)
+    }
+
     override fun clearCodes(): Boolean = send("04", 8000).replace(" ", "").contains("44")
 
     override fun readVoltage(): String = send("ATRV")

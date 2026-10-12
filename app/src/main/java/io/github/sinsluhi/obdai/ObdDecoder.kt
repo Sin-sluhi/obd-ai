@@ -93,6 +93,16 @@ object ObdDecoder {
         return null
     }
 
+    /** Режим 02 (стоп-кадр): данные после байтов 42, PID и номера кадра из первого ответившего блока. */
+    fun freezeData(raw: String, pid: Int): List<Int>? {
+        for (msg in messages(raw)) {
+            for (i in 0 until msg.size - 2) {
+                if (msg[i] == 0x42 && msg[i + 1] == pid) return msg.drop(i + 3)
+            }
+        }
+        return null
+    }
+
     /** Режим 09: текстовые PID (04 = версия калибровки, 0A = имя ЭБУ). */
     fun parseInfoText(raw: String, pid: Int): String? {
         val sb = StringBuilder()

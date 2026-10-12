@@ -34,7 +34,8 @@ data class CarSnapshot(
     val carHint: String? = null,                   // как машину назвала нейронка в прошлый раз («Hyundai Tucson 2019»)
     val tank: Tank? = null,                        // последний бак: паспорт заправки
     val blackbox: String? = null,                  // что записал чёрный ящик вокруг последнего события
-    val service: String? = null                    // итог проверки работ сервиса
+    val service: String? = null,                   // итог проверки работ сервиса
+    val freeze: FreezeFrame? = null                // стоп-кадр: условия, при которых записана ошибка
 ) {
     /** Все коды из всех блоков. */
     val allCodes: List<String> get() = (stored + pending + permanent + modules.flatMap { it.codes }).distinct()
@@ -215,6 +216,7 @@ data class Diagnosis(
             val bkey = DtcCatalog.brandKey(car.brand)
             // что приложение само измерило и что не в порядке: согласованность датчиков, ремонт, работа сервиса
             val measured = buildList {
+                snap.freeze?.let { f -> add(f.describe() + (f.notes().takeIf { it.isNotEmpty() }?.joinToString(" ", " ") ?: "")) }
                 snap.checks.filter { it.level != "ok" }.forEach { add(it.text) }
                 snap.repair?.let { add("${it.title}. ${it.text()}") }
                 snap.service?.let { add(it) }
