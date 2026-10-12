@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>OBD AI — машина скажет сама</title>
+<meta name="description" content="Недорогой адаптер ELM327 и одно приложение: подключился, нажал «Проверить машину» — получил понятный вердикт: что сломалось, почему, что проверить и что говорят владельцы такой же машины.">
+<meta name="theme-color" content="#07080a">
+<meta property="og:title" content="OBD AI — машина скажет сама">
+<meta property="og:description" content="Диагностика машины одной кнопкой: разбор ошибок по подробной базе и опыту владельцев.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@200..900&family=Manrope:wght@400..800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="is-booting">
+
+<!-- Загрузка: адаптер «просыпается» -->
+<div id="boot" aria-hidden="true">
+  <div class="boot-term"><div class="boot-lines"></div><span class="boot-caret"></span></div>
+  <div class="boot-bar"><i></i></div>
+  <div class="boot-half boot-top"></div>
+  <div class="boot-half boot-bot"></div>
+  <div class="boot-scan"></div>
+</div>
+
+<!-- Шторка для переходов по меню -->
+<div id="wipe" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><b></b></div>
+
+<div class="cursor" aria-hidden="true"><span class="cursor-dot"></span><span class="cursor-ring"><em></em></span></div>
+<div class="grain" aria-hidden="true"></div>
+
+<header class="nav">
+  <a class="nav-logo" href="#hero" data-go>
+    <svg viewBox="0 0 64 64" aria-hidden="true"><use href="#obidi-mini"/></svg>
+    <span>OBD&nbsp;AI</span>
+  </a>
+  <nav class="nav-links" aria-label="Разделы">
+    <a href="#how" data-go><span data-n="01">Как работает</span></a>
+    <a href="#features" data-go><span data-n="02">Возможности</span></a>
+    <a href="#honest" data-go><span data-n="03">Честно</span></a>
+    <a href="#access" data-go><span data-n="04">Доступ</span></a>
+  </nav>
+  <a class="btn btn-sm btn-lime magnetic" href="#access" data-go><span>Получить доступ</span></a>
+</header>
+
+<main>
+
+<!-- 1. Герой -->
+<section id="hero" class="hero">
+  <canvas id="bus" aria-hidden="true"></canvas>
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow mono"><span class="live"></span>ELM327 · Bluetooth · BLE · Wi-Fi</p>
+      <h1 class="hero-title" aria-label="Машина скажет сама.">
+        <span class="line" data-split>Машина</span>
+        <span class="line" data-split>скажет</span>
+        <span class="line accent" data-split>сама.</span>
+      </h1>
+      <p class="lead hero-lead">Недорогой адаптер в разъём OBD-II и одна кнопка. Приложение опрашивает блоки машины
+        и говорит по-человечески: что сломалось, почему, насколько срочно, что проверить и что пишут владельцы
+        такой же машины на drive2 и drom.</p>
+      <div class="hero-cta">
+        <a class="btn btn-lime btn-lg magnetic" href="#access" data-go><span>Получить доступ</span><svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn-ghost btn-lg magnetic" href="#how" data-go><span>Как это работает</span></a>
+      </div>
+    </div>
+
+    <div class="hero-stage">
+      <div class="phone" id="heroPhone">
+        <div class="phone-body">
+          <div class="phone-screen">
+            <div class="ui-status mono"><span>9:41</span><span class="ui-rx"><i></i>RX</span></div>
+            <div class="ui-head">
+              <svg viewBox="0 0 64 64" aria-hidden="true"><use href="#obidi-mini"/></svg>
+              <b>OBD AI</b><span class="ui-flag">RU</span>
+            </div>
+            <div class="ui-car">
+              <div class="ui-car-img"></div>
+              <div><small>Ваша машина</small><b>Hyundai Solaris 2017</b><span class="mono">Z94CT41DBHR…</span></div>
+            </div>
+            <div class="ui-check">
+              <svg class="ui-arc" viewBox="0 0 200 200" aria-hidden="true">
+                <circle cx="100" cy="100" r="86" class="arc-bg"/>
+                <circle cx="100" cy="100" r="86" class="arc-run"/>
+              </svg>
+              <div class="ui-check-btn"><span>Проверить<br>машину</span></div>
+            </div>
+            <div class="ui-row">
+              <div class="ui-mini"><small>АКБ</small><b class="mono">12.6&nbsp;В</b></div>
+              <div class="ui-mini"><small>Блоков</small><b class="mono">10</b></div>
+              <div class="ui-mini"><small>Адаптер</small><b class="mono">v1.5</b></div>
+            </div>
+            <div class="ui-tabs"><i class="on"></i><i></i><i></i><i></i></div>
+          </div>
+        </div>
+        <div class="phone-shadow"></div>
+      </div>
+      <div class="chip chip-a"><span class="dot warn"></span><b class="mono">P0420</b>Катализатор</div>
+      <div class="chip chip-b"><span class="dot lime"></span>drive2.ru · опыт владельцев</div>
+      <div class="chip chip-c"><span class="dot sky"></span><b class="mono">7E0 → 7E8</b>двигатель ответил</div>
+    </div>
+  </div>
+  <a class="scroll-hint mono" href="#how" data-go><span>листай</span><i></i></a>
+</section>
+
+<!-- Бегущая строка кодов -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>P0300</span><em>✳</em><span class="o">P0420</span><em>✳</em><span>P0011</span><em>✳</em><span class="o">P2400</span><em>✳</em>
+    <span>P0171</span><em>✳</em><span class="o">U0100</span><em>✳</em><span>P0335</span><em>✳</em><span class="o">B00D0</span><em>✳</em>
+  </div>
+</div>
+
+<!-- 2. Как работает: три шага, телефон закреплён -->
+<section id="how" class="how">
+  <div class="how-pin">
+    <div class="how-left">
+      <p class="eyebrow mono">01 — Как это работает</p>
+      <h2 class="h2" data-words>Одна кнопка.<br>Ноль ручных шагов.</h2>
+      <div class="steps">
+        <article class="step is-on" data-step="0">
+          <span class="step-n mono">01</span>
+          <h3>Вставь адаптер</h3>
+          <p>ELM327 в разъём OBD-II под рулём. Приложение покажет его в списке: Bluetooth, BLE или Wi-Fi.</p>
+        </article>
+        <article class="step" data-step="1">
+          <span class="step-n mono">02</span>
+          <h3>Нажми «Проверить машину»</h3>
+          <p>Ошибки двигателя и других блоков, мониторы готовности, самотесты, напряжение АКБ, VIN — всё за один проход.</p>
+        </article>
+        <article class="step" data-step="2">
+          <span class="step-n mono">03</span>
+          <h3>Получи вердикт</h3>
+          <p>Что случилось и насколько срочно, причины по частоте, проверки с цифрами, порядок ремонта, цена «от»
+            и опыт владельцев такой же модели со ссылками.</p>
+        </article>
+      </div>
+      <div class="rail"><i class="rail-fill"></i><b class="rail-dot"></b></div>
+    </div>
+
+    <div class="how-right">
+      <div class="phone phone-how">
+        <div class="phone-body">
+          <div class="phone-screen screens">
+            <!-- экран 1: подключение -->
+            <div class="scr scr-1 is-on">
+              <div class="ui-status mono"><span>9:41</span><span class="ui-rx"><i></i>RX</span></div>
+              <p class="scr-title">Адаптер</p>
+              <div class="dev on"><span class="bt"></span><div><b>OBDII</b><small>Bluetooth · спарен</small></div><em class="mono">OK</em></div>
+              <div class="dev"><span class="ble"></span><div><b>IOS-Vlink</b><small>BLE · рядом</small></div></div>
+              <div class="dev"><span class="wifi"></span><div><b>WiFi_OBDII</b><small>192.168.0.10:35000</small></div></div>
+              <div class="term mono">
+                <p>&gt; ATZ</p><p class="ok">ELM327 v1.5</p><p>&gt; ATSP0</p><p class="ok">OK</p><p>&gt; 0100</p><p class="ok">41 00 BE 3F A8 13</p>
+              </div>
+            </div>
+            <!-- экран 2: проверка -->
+            <div class="scr scr-2">
+              <div class="ui-status mono"><span>9:41</span><span class="ui-rx busy"><i></i>RX</span></div>
+              <p class="scr-title">Проверка</p>
+              <div class="radar"><i></i><b></b><span class="blip b1"></span><span class="blip b2"></span><span class="blip b3"></span></div>
+              <ul class="mods mono">
+                <li><span>7E0</span>Двигатель<em>✓</em></li>
+                <li><span>7E1</span>Коробка<em>✓</em></li>
+                <li><span>7D1</span>ABS / ESC<em>✓</em></li>
+                <li><span>7D2</span>Подушки<em>✓</em></li>
+                <li class="wait"><span>7C6</span>Приборка<em>…</em></li>
+              </ul>
+            </div>
+            <!-- экран 3: вердикт -->
+            <div class="scr scr-3">
+              <div class="ui-status mono"><span>9:42</span><span class="ui-rx"><i></i>RX</span></div>
+              <div class="verdict">
+                <small class="mono">ВЕРДИКТ</small>
+                <b>Ехать можно, но не тянуть</b>
+                <p>Пропуски зажигания — первопричина. Катализатор страдает из-за них.</p>
+              </div>
+              <div class="code"><span class="sev warn"></span><b class="mono">P0300</b><p>Случайные пропуски зажигания</p></div>
+              <div class="code"><span class="sev warn"></span><b class="mono">P0420</b><p>Катализатор неэффективен</p></div>
+              <div class="code"><span class="sev ok"></span><b class="mono">P0011</b><p>Фазы впускного вала</p></div>
+              <div class="src mono">drive2.ru ↗ · drom.ru ↗</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. Возможности: горизонтальная лента -->
+<section id="features" class="features">
+  <div class="features-pin">
+    <div class="features-head">
+      <p class="eyebrow mono">02 — Возможности</p>
+      <h2 class="h2" data-words>Видит больше,<br>чем лампочка.</h2>
+      <p class="features-count mono"><span class="fc-now">01</span> / 08</p>
+    </div>
+    <div class="track">
+      <article class="card">
+        <span class="card-n mono">01</span>
+        <div class="viz viz-base">
+          <b class="big">1&nbsp;274</b>
+          <ul class="mono"><li>P0300 · причины по частоте</li><li>P0171 · проверки с цифрами</li><li>P0420 · ложные пути</li><li>P2400 · порядок ремонта</li></ul>
+        </div>
+        <h3>Подробная база кодов</h3>
+        <p>Каждый разбор — не строчка из справочника: что происходит, как проявляется, как подтвердить причину,
+          что не надо менять зря и чем грозит. Сначала своя база, сеть — только для того, чего в ней нет.</p>
+      </article>
+      <article class="card">
+        <span class="card-n mono">02</span>
+        <div class="viz viz-mods">
+          <span>Двигатель</span><span>КПП</span><span>ABS</span><span>Подушки</span><span>ЭУР</span>
+          <span>Приборка</span><span>Парктроник</span><span>BCM</span><span>Климат</span>
+        </div>
+        <h3>Не только двигатель</h3>
+        <p>На CAN-машинах опрашивает и другие блоки: коробку, ABS, подушки, кузов, климат. На Hyundai Tucson 2019
+          ответили десять блоков — и показали ошибки, которых обычный сканер не видит.</p>
+      </article>
+      <article class="card">
+        <span class="card-n mono">03</span>
+        <div class="viz viz-buy">
+          <span>Брать</span><span class="on">Торговаться</span><span>Бежать</span>
+        </div>
+        <h3>Перед покупкой</h3>
+        <p>Недавнее стирание ошибок, чужой VIN в блоке, коды после ДТП, пробег из блока двигателя там, где машина
+          его отдаёт. Вердикт и аргументы для торга, чек-лист болячек модели для тест-драйва.</p>
+      </article>
+      <article class="card">
+        <span class="card-n mono">04</span>
+        <div class="viz viz-volt">
+          <svg viewBox="0 0 300 110" preserveAspectRatio="none"><path class="ln" d="M0 30 H110 L118 92 L126 70 L134 78 L142 46 H300"/><path class="ar" d="M0 30 H110 L118 92 L126 70 L134 78 L142 46 H300 V110 H0Z"/></svg>
+          <span class="mono v1">12.6 В</span><span class="mono v2">пуск</span><span class="mono v3">14.2 В</span>
+        </div>
+        <h3>АКБ и стартер</h3>
+        <p>Напряжение покоя, просадка при пуске, зарядка на ходу, тренд за месяц. Вечером — прогноз на утро
+          с учётом ночной температуры.</p>
+      </article>
+      <article class="card">
+        <span class="card-n mono">05</span>
+        <div class="viz viz-fuel">
+          <div><i style="--h:42%"></i><small class="mono">прошлый бак</small></div>
+          <div><i class="bad" style="--h:78%"></i><small class="mono">этот бак</small></div>
+        </div>
+        <h3>Паспорт заправки</h3>
+        <p>Сравнивает коррекции топлива и угол опережения с прошлым баком на одинаковом режиме.
+          Плохой бензин виден по цифрам, а не по ощущениям.</p>
+      </article>
+      <article class="card">
+        <span class="card-n mono">06</span>
+        <div class="viz viz-box">
+          <svg viewBox="0 0 300 110" preserveAspectRatio="none"><path d="M0 70 C30 66 50 74 80 68 S130 60 160 64 S200 30 215 22 S250 40 300 36"/><line x1="215" y1="0" x2="215" y2="110"/></svg>
+          <span class="mono">событие −10 с</span>
+        </div>
+        <h3>Чёрный ящик</h3>
+        <p>Новая ошибка в пути, перегрев, пропала зарядка — сохраняется минута до события и полминуты после по 11 параметрам
+          и то, что изменилось за десять секунд до события.</p>
+      </article>
+      <article class="card">
+        <span class="card-n mono">07</span>
+        <div class="viz viz-svc mono">
+          <p><em class="y">✓</em>Замена свечей · подтверждается</p>
+          <p><em class="n">✕</em>Чистка дросселя · не подтверждается</p>
+          <p><em class="q">?</em>Замена ремня · проверить нечем</p>
+        </div>
+        <h3>Честность сервиса</h3>
+        <p>Проверка до сервиса и после. По измерениям видно, какая работа подтверждается, а за какую взяли деньги зря.</p>
+      </article>
+      <article class="card">
+        <span class="card-n mono">08</span>
+        <div class="viz viz-dash">
+          <i></i><i class="w"></i><i></i><i class="r"></i><i></i><i></i>
+        </div>
+        <h3>Фото приборки</h3>
+        <p>Загорелся непонятный значок — сфотографируй приборную панель, и приложение объяснит, что он значит.</p>
+      </article>
+      <div class="card card-more">
+        <p class="mono">и ещё</p>
+        <ul>
+          <li>Гараж на несколько машин и облако по коду</li>
+          <li>Поездки и расход</li>
+          <li>Форум по маркам и моделям</li>
+          <li>Голосовые подсказки</li>
+          <li>11 языков интерфейса</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. Цифры -->
+<section id="numbers" class="numbers">
+  <div class="num"><b class="odo" data-to="1274">0</b><p>кодов разобраны подробно, отечественные марки — отдельно</p></div>
+  <div class="num"><b class="odo" data-to="2250">0</b><p>стандартных кодов SAE в справочнике</p></div>
+  <div class="num"><b class="odo" data-to="916">0</b><p>веток форума: 55 марок, 535 моделей</p></div>
+  <div class="num"><b class="odo" data-to="11">0</b><p>языков интерфейса</p></div>
+</section>
+
+<!-- 5. Честно: экран заливается лаймом -->
+<section id="honest" class="honest">
+  <div class="honest-fill"></div>
+  <div class="honest-in">
+    <p class="eyebrow mono">03 — Честно</p>
+    <h2 class="h2 honest-title" data-words>Только факты. Никакой магии на словах.</h2>
+    <ul class="strike">
+      <li><span>«Балл здоровья 87 из 100»</span><i></i></li>
+      <li><span>Прошивки и кодировки по непроверенным командам</span><i></i></li>
+      <li><span>«Найдёт любую поломку»</span><i></i></li>
+    </ul>
+    <div class="honest-cols">
+      <p>Оценки — только из измерений: самотесты блока, мониторы готовности, напряжение, коррекции.</p>
+      <p>В блоки машины приложение ничего не пишет. Единственное, что оно меняет, — стирает ошибки по вашей команде.</p>
+      <p>Пробег читается только там, где блок двигателя отдаёт его по стандарту. Не отдаёт — так и скажем.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 6. Доступ по заявке -->
+<section id="access" class="access">
+  <div class="access-grid">
+    <div class="access-copy">
+      <p class="eyebrow mono">04 — Доступ</p>
+      <h2 class="h2" data-words>По приглашению.</h2>
+      <p class="lead">Приложения нет в открытом доступе. Оставьте заявку — администратор откроет вам
+        персональную ссылку на APK. Она сработает один раз.</p>
+      <div class="mascot" id="mascot" aria-hidden="true">
+        <svg viewBox="0 0 240 260">
+          <defs>
+            <linearGradient id="mb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2c313b"/><stop offset="1" stop-color="#14171c"/></linearGradient>
+            <radialGradient id="mg" cx=".5" cy=".4" r=".6"><stop offset="0" stop-color="#b8f15a" stop-opacity=".22"/><stop offset="1" stop-color="#b8f15a" stop-opacity="0"/></radialGradient>
+          </defs>
+          <circle cx="120" cy="120" r="118" fill="url(#mg)"/>
+          <g class="m-antenna">
+            <line x1="120" y1="44" x2="150" y2="10" stroke="#3a404b" stroke-width="5" stroke-linecap="round"/>
+            <path class="m-star" d="M150 0l3 7 7 3-7 3-3 7-3-7-7-3 7-3z" fill="#b8f15a"/>
+          </g>
+          <rect x="30" y="40" width="180" height="170" rx="46" fill="url(#mb)"/>
+          <rect x="30.5" y="40.5" width="179" height="169" rx="45.5" fill="none" stroke="#ffffff" stroke-opacity=".08"/>
+          <rect x="52" y="70" width="136" height="108" rx="28" fill="#06070a"/>
+          <path d="M80 112a40 40 0 0 1 80 0" fill="none" stroke="#b8f15a" stroke-opacity=".35" stroke-width="4" stroke-linecap="round" stroke-dasharray="2 9"/>
+          <g class="m-eyes">
+            <rect class="m-eye" x="88" y="110" width="16" height="30" rx="8" fill="#b8f15a"/>
+            <rect class="m-eye" x="136" y="110" width="16" height="30" rx="8" fill="#b8f15a"/>
+          </g>
+          <path d="M96 210h48l-6 26h-36z" fill="#1b1f26" stroke="#3a404b" stroke-width="2"/>
+          <g fill="#b8f15a" opacity=".7"><rect x="106" y="216" width="4" height="8" rx="1"/><rect x="114" y="216" width="4" height="8" rx="1"/><rect x="122" y="216" width="4" height="8" rx="1"/><rect x="130" y="216" width="4" height="8" rx="1"/></g>
+        </svg>
+      </div>
+    </div>
+
+    <div class="gate" id="gate" data-state="form">
+      <!-- форма -->
+      <form class="gate-pane pane-form" id="reqForm" novalidate>
+        <p class="gate-k mono"><span class="live"></span>Заявка на доступ</p>
+        <label class="fld"><input name="name" required maxlength="40" autocomplete="name" placeholder=" "><span>Как к вам обращаться</span></label>
+        <label class="fld"><input name="contact" required maxlength="80" autocomplete="tel" placeholder=" "><span>Telegram или телефон</span></label>
+        <label class="fld"><input name="car" maxlength="80" placeholder=" "><span>Машина — марка, модель, год (необязательно)</span></label>
+        <label class="hp" aria-hidden="true">Сайт<input name="website" tabindex="-1" autocomplete="off"></label>
+        <button class="btn btn-lime btn-lg btn-wide magnetic" type="submit"><span>Отправить заявку</span><svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></button>
+        <p class="gate-note">Контакт нужен только чтобы ответить по заявке. Нужен Android 8.0 или новее
+          и адаптер ELM327 (лучше v1.5); машина — легковая с разъёмом OBD-II.</p>
+        <p class="gate-err" role="alert"></p>
+      </form>
+
+      <!-- ждём решения -->
+      <div class="gate-pane pane-wait">
+        <p class="gate-k mono"><span class="live warn"></span>Заявка у администратора</p>
+        <div class="wait-radar"><i></i><b></b></div>
+        <h3>Ждём решения</h3>
+        <p>Страницу можно закрыть: заявка запомнена на этом устройстве. Как только доступ откроют, здесь появится кнопка скачивания.</p>
+        <p class="mono ticket">заявка <span class="tk"></span></p>
+        <button class="link-btn" type="button" data-act="forget">Отменить и заполнить заново</button>
+      </div>
+
+      <!-- доступ открыт -->
+      <div class="gate-pane pane-ok">
+        <p class="gate-k mono"><span class="live"></span>Доступ открыт</p>
+        <h3>Ваша ссылка готова</h3>
+        <a class="btn btn-lime btn-xl btn-wide dl" id="dlBtn" href="#"><span>Скачать APK</span><small class="mono dl-size"></small></a>
+        <p class="warn-line"><b>Ссылка сработает один раз.</b> Скачивайте сразу на тот телефон, где будете пользоваться приложением.</p>
+      </div>
+
+      <!-- скачано -->
+      <div class="gate-pane pane-used">
+        <p class="gate-k mono"><span class="live"></span>Готово</p>
+        <h3>APK скачан — ссылка закрыта</h3>
+        <ol class="install">
+          <li>Откройте файл <b class="mono">OBD-AI.apk</b> из загрузок.</li>
+          <li>Если Android спросит — разрешите установку из этого источника.</li>
+          <li>Вставьте адаптер, включите зажигание, нажмите «Проверить машину».</li>
+        </ol>
+        <p class="gate-note">Нужно скачать ещё раз? Напишите администратору — он может открыть ссылку повторно.</p>
+      </div>
+
+      <!-- отказ -->
+      <div class="gate-pane pane-no">
+        <p class="gate-k mono"><span class="live danger"></span>Заявка отклонена</p>
+        <h3>Доступ не открыт</h3>
+        <p>Если это ошибка — свяжитесь с администратором.</p>
+        <button class="link-btn" type="button" data-act="forget">Отправить новую заявку</button>
+      </div>
+
+      <!-- сервер недоступен -->
+      <div class="gate-pane pane-off">
+        <p class="gate-k mono"><span class="live danger"></span>Приём заявок</p>
+        <h3>Сейчас не принимаем</h3>
+        <p>Сервер заявок временно недоступен. Загляните чуть позже — страница проверит сама.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="foot-row">
+    <p class="mono">OBD AI · только чтение, никаких записей в блоки</p>
+    <a href="#hero" data-go class="mono">наверх ↑</a>
+  </div>
+  <div class="wordmark" aria-hidden="true"><span>O</span><span>B</span><span>D</span><span class="sp"></span><span class="lime">A</span><span class="lime">I</span></div>
+</footer>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="obidi-mini" viewBox="0 0 64 64">
+    <rect x="4" y="4" width="56" height="56" rx="16" fill="#23272f"/>
+    <rect x="11" y="15" width="42" height="34" rx="10" fill="#07080a"/>
+    <rect x="21" y="27" width="6" height="11" rx="3" fill="#b8f15a"/>
+    <rect x="37" y="27" width="6" height="11" rx="3" fill="#b8f15a"/>
+  </symbol>
+</svg>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="api.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

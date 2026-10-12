@@ -20,14 +20,21 @@ API (JSON, UTF-8):
   GET  /api/garage/get?code=<код>&car=<id>               → {"name","data","updated"}
   GET  /api/garage/list?code=<код>                       → {"cars":[{"car","name","updated","size"}]}
 Код гаража придумывает приложение (16 случайных символов) и показывает владельцу: кто знает код, тот видит гараж.
+
+Выдача APK по заявке (сайт site/, модуль apk.py): посетитель оставляет заявку, владелец одобряет её в site/admin.html,
+ссылка срабатывает один раз. Ключ администратора — переменная OBDAI_ADMIN_KEY или файл admin.key рядом с базой
+(создаётся сам при первом запуске). APK лежит в --apk (по умолчанию apk/app-debug.apk рядом с базой).
 """
 import argparse
 import json
+import os
 import sqlite3
 import threading
 import time
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import parse_qs, urlparse
+
+import apk
 
 ONLINE_WINDOW = 90          # секунд с последнего запроса, пока считаем устройство онлайн
 MAX_TEXT = 1000
@@ -54,6 +61,7 @@ def init_db(path):
     _db.execute("""CREATE TABLE IF NOT EXISTS garage(
         code TEXT NOT NULL, car TEXT NOT NULL, name TEXT NOT NULL, data TEXT NOT NULL, updated INTEGER NOT NULL,
         PRIMARY KEY(code, car))""")
+    apk.init_db(_db)
     _db.commit()
 
 
@@ -149,14 +157,28 @@ class Handler(BaseHTTPRequestHandler):
     def log_message(self, fmt, *args):  # тише
         pass
 
+    def _cors(self):
+        # сайт живёт на GitHub Pages, API — здесь: браузеру нужно разрешение на чужой адрес
+        self.send_header("Access-Control-Allow-Origin", "*")
+        self.send_header("Access-Control-Allow-Headers", "Content-Type, X-Admin-Key")
+        self.send_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
+        self.send_header("Access-Control-Expose-Headers", "Content-Length, Content-Disposition")
+
     def _json(self, code, obj):
         data = json.dumps(obj, ensure_ascii=False).encode("utf-8")
         self.send_response(code)
         self.send_header("Content-Type", "application/json; charset=utf-8")
         self.send_header("Content-Length", str(len(data)))
         self.send_header("Cache-Control", "no-store")
+        self._cors()
         self.end_headers()
         self.wfile.write(data)
+
+    def do_OPTIONS(self):
+        self.send_response(204)
+        self._cors()
+        self.send_header("Access-Control-Max-Age", "86400")
+        self.end_headers()
 
     def _body(self):
         n = int(self.headers.get("Content-Length") or 0)
@@ -170,6 +192,8 @@ class Handler(BaseHTTPRequestHandler):
     def do_GET(self):
         u = urlparse(self.path)
         q = {k: v[0] for k, v in parse_qs(u.query).items()}
+        if u.path.startswith("/api/apk/") or u.path.startswith("/api/admin/"):
+            return apk.handle_get(self, _db, _lock, u.path, q)
         if u.path == "/api/health":
             with _lock:
                 n = _db.execute("SELECT COUNT(*) FROM messages").fetchone()[0]
@@ -207,6 +231,8 @@ class Handler(BaseHTTPRequestHandler):
     def do_POST(self):
         u = urlparse(self.path)
         b = self._body()
+        if u.path.startswith("/api/apk/") or u.path.startswith("/api/admin/"):
+            return apk.handle_post(self, _db, _lock, u.path, b)
         if u.path == "/api/garage/put":
             return self._garage_put(b)
         room = clean(b.get("room"), 200)
@@ -247,10 +273,13 @@ def main():
     ap.add_argument("--port", type=int, default=8080)
     ap.add_argument("--host", default="0.0.0.0")
     ap.add_argument("--db", default="forum.db")
+    ap.add_argument("--apk", default="", help="файл APK для выдачи по заявкам (по умолчанию apk/app-debug.apk рядом с базой)")
     args = ap.parse_args()
     init_db(args.db)
+    base = os.path.dirname(os.path.abspath(args.db))
+    apk.configure(base, args.apk or os.path.join(base, "apk", "app-debug.apk"))
     srv = ThreadingHTTPServer((args.host, args.port), Handler)
-    print("форум слушает %s:%d, база %s" % (args.host, args.port, args.db))
+    print("форум слушает %s:%d, база %s, APK %s" % (args.host, args.port, args.db, apk.APK_PATH))
     srv.serve_forever()
 
 

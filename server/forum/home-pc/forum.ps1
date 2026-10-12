@@ -1,5 +1,6 @@
 ﻿# Форум OBD AI на домашнем ПК: локальный сервер + туннель наружу (localhost.run по SSH, без аккаунта, HTTPS)
-# + публикация текущего адреса в репозиторий (docs/forum_url.txt), откуда его берёт приложение.
+# + публикация текущего адреса в репозиторий (docs/forum_url.txt), откуда его берёт приложение и сайт.
+# + APK для выдачи по заявкам с сайта: раз в 10 минут забирает последнюю сборку (Update-Apk, нужен apk.pass).
 # Запускается при входе в Windows (obdai-forum.vbs в автозагрузке), работает без окна. Лог: forum.log в этой папке.
 #
 # Пути не зашиты: скрипт живёт в <папка>\obd-ai-server, репозиторий ожидается рядом в <папка>\obd-ai.
@@ -55,8 +56,39 @@ function Start-Tunnel {
     return @{ proc = $p; url = $url }
 }
 
+function Update-Apk {
+    # APK для выдачи по заявкам с сайта: последняя удачная сборка build.yml, артефакт «apk» зашифрован паролем из apk.pass
+    $apkDir = "$dir\apk"
+    $passFile = "$dir\apk.pass"
+    if (-not (Test-Path $passFile)) { return }
+    try {
+        $runs = & $gh run list -R Sin-sluhi/obd-ai --workflow build.yml --status success -L 1 --json databaseId 2>$null | ConvertFrom-Json
+        if (-not $runs) { return }
+        $id = "$($runs[0].databaseId)"
+        $mark = "$apkDir\run.txt"
+        if ((Test-Path "$apkDir\app-debug.apk") -and (Test-Path $mark) -and ((Get-Content $mark -Raw).Trim() -eq $id)) { return }
+        $tmp = "$dir\apk.tmp"
+        Remove-Item $tmp -Recurse -Force -ErrorAction SilentlyContinue
+        & $gh run download $id -R Sin-sluhi/obd-ai -n apk -D $tmp 2>&1 | Out-Null
+        if (-not (Test-Path "$tmp\app.apk.enc")) { Log "APK: в сборке $id нет зашифрованного артефакта"; Set-Content -Path $mark -Value $id; return }
+        $openssl = (Get-Command openssl.exe -ErrorAction SilentlyContinue).Source
+        if (-not $openssl) { $openssl = 'C:\Program Files\Git\usr\bin\openssl.exe' }
+        $env:OBDAI_APK_PASS = (Get-Content $passFile -Raw).Trim()
+        & $openssl enc -d -aes-256-cbc -pbkdf2 -iter 200000 -in "$tmp\app.apk.enc" -out "$tmp\app-debug.apk" -pass env:OBDAI_APK_PASS 2>&1 | Out-Null
+        Remove-Item Env:\OBDAI_APK_PASS -ErrorAction SilentlyContinue
+        if (-not (Test-Path "$tmp\app-debug.apk") -or (Get-Item "$tmp\app-debug.apk").Length -lt 100000) { Log "APK: не расшифровался (пароль в apk.pass не совпадает с секретом APK_PASS?)"; return }
+        New-Item -ItemType Directory -Force $apkDir | Out-Null
+        # пока кто-то качает, Windows не даст заменить файл — тогда попробуем в следующий раз
+        Move-Item "$tmp\app-debug.apk" "$apkDir\app-debug.apk" -Force -ErrorAction Stop
+        if (Test-Path "$tmp\version.txt") { Copy-Item "$tmp\version.txt" "$apkDir\version.txt" -Force }
+        Set-Content -Path $mark -Value $id
+        Log "APK обновлён: сборка $id"
+    } catch { Log "APK: $($_.Exception.Message)" }
+}
+
 Log "старт (репозиторий: $repo)"
 if (-not (Test-Path "$repo\server\forum\server.py")) { Log "нет файла $repo\server\forum\server.py — проверьте, где лежит репозиторий"; exit 1 }
+Update-Apk
 while ($true) {
     Ensure-Server
     $t = Start-Tunnel
@@ -76,9 +108,12 @@ while ($true) {
     }
     # пока туннель жив — следим за сервером и самим туннелем; упал — цикл поднимет новый и опубликует новый адрес
     $fails = 0
+    $tick = 0
     while (-not $p.HasExited) {
         Start-Sleep -Seconds 30
         Ensure-Server
+        $tick++
+        if ($tick % 20 -eq 0) { Update-Apk }   # раз в 10 минут: не вышла ли новая сборка
         if ($t.url) {
             try { Invoke-RestMethod -Uri "$($t.url)/api/health" -TimeoutSec 15 | Out-Null; $fails = 0 }
             catch {

@@ -200,6 +200,22 @@ Android-приложение (Kotlin, Jetpack Compose) для диагности
 - Охрана (1.2): `Prefs.guard`, `AppState.guardOnStart` в `engineStarted`. Пока телефон в радиусе адаптера, пуск двигателя
   даёт уведомление, голос и запись в чёрный ящик. Честное ограничение: если телефон далеко, узнать о пуске неоткуда.
 
+## Сайт и выдача APK по заявке (12.10.2026)
+
+- `site/` — лендинг (статичный: `index.html`, `style.css`, `main.js`, `api.js`; GSAP 3.12.5 + ScrollTrigger с cdnjs, Lenis 1.1.13),
+  публикуется workflow `pages.yml` на GitHub Pages при правке `site/**`. Фон героя — осциллограф шины по `MOTION.md`,
+  палитра и шрифты как в приложении. Тексты — только то, что приложение реально умеет. Локальный просмотр:
+  `.claude/launch.json` → «site», адрес сервера для проверки — `?api=http://127.0.0.1:<порт>`.
+- Доступ к APK только по заявке: `server/forum/apk.py` (подключён в `server.py`). Заявка → владелец одобряет в
+  `site/admin.html` (ключ из `admin.key` рядом с `forum.db`, создаётся сам) → ссылка срабатывает один раз (атомарно
+  approved→used; оборвалась передача — снова approved; «Выдать ещё раз» в админке). Ссылку можно переслать человеку:
+  `<сайт>/#get=<заявка>`. Уведомления в Telegram — если заданы `OBDAI_TG_TOKEN`/`OBDAI_TG_CHAT` у сервера.
+- Откуда сервер берёт APK: `build.yml` шифрует APK (`openssl enc -aes-256-cbc -pbkdf2 -iter 200000`, секрет `APK_PASS`) и кладёт
+  артефакт `apk` — артефакты публичного репозитория видит любой вошедший на GitHub, поэтому без шифра нельзя.
+  `forum.ps1` (`Update-Apk`, раз в 10 мин) скачивает его через `gh run download`, расшифровывает паролем из `apk.pass`
+  в `obd-ai-serverpkpp-debug.apk` + `version.txt`. Открытый релиз `latest` выключается переменной `PUBLIC_APK=false`.
+- Сайт находит сервер через `docs/forum_url.txt` (как приложение); сервер отдаёт CORS `*`.
+
 ## Локализация (1.2.1)
 
 - `I18n.kt`: `Langs` (17 языков: ru + en/es/zh/fr/de + uk/be/kk/ky/uz/tg/tk/hy/az/ro/ka), `Tr` (Compose-состояние текущего языка),

@@ -7,6 +7,8 @@ on:
       - "docs/**"
       - "tools/**"
       - "server/**"
+      - "site/**"
+      - ".github/workflows/pages.yml"
       - ".github/workflows/deploy-forum.yml"
       - ".github/workflows/kb.yml"
   workflow_dispatch:
@@ -34,7 +36,26 @@ jobs:
           AI_API_KEY: ${{ secrets.AI_API_KEY }}
           AI_MODEL: ${{ vars.AI_MODEL }}
           FORUM_URL: ${{ vars.FORUM_URL }}
-      - uses: softprops/action-gh-release@v2
+      # APK для выдачи по заявкам: сервер (forum.ps1) забирает его через gh run download и расшифровывает.
+      # Артефакт публичного репозитория может скачать любой вошедший на GitHub, поэтому APK внутри зашифрован
+      # (секрет APK_PASS, тот же пароль лежит у сервера в apk.pass). Без секрета артефакт не выкладывается.
+      - name: Encrypt APK for the download server
+        env:
+          APK_PASS: ${{ secrets.APK_PASS }}
+        run: |
+          mkdir -p gated
+          if [ -z "$APK_PASS" ]; then echo "APK_PASS не задан — артефакт для сервера пропущен"; exit 0; fi
+          grep -oP 'versionName = "\K[^"]+' app/build.gradle.kts > gated/version.txt
+          openssl enc -aes-256-cbc -pbkdf2 -iter 200000 -salt -in app/build/outputs/apk/debug/app-debug.apk -out gated/app.apk.enc -pass env:APK_PASS
+      - uses: actions/upload-artifact@v4
+        with:
+          name: apk
+          path: gated/
+          if-no-files-found: ignore
+          retention-days: 30
+      # Открытая ссылка на APK в релизе. Переменная PUBLIC_APK=false её выключает: тогда APK только по заявке на сайте.
+      - if: vars.PUBLIC_APK != 'false'
+        uses: softprops/action-gh-release@v2
         with:
           tag_name: latest
           name: Тестовая сборка
