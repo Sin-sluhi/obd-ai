@@ -90,7 +90,14 @@ function Update-Apk {
         New-Item -ItemType Directory -Force $apkDir | Out-Null
         # пока кто-то качает, Windows не даст заменить файл — тогда попробуем в следующий раз
         Move-Item "$tmp\app-debug.apk" "$apkDir\app-debug.apk" -Force -ErrorAction Stop
-        if (Test-Path "$tmp\version.txt") { Copy-Item "$tmp\version.txt" "$apkDir\version.txt" -Force }
+        if (Test-Path "$tmp\version.txt") { Copy-Item "$tmp\version.txt" "$apkDir\version.txt" -Force }
+        # пароль этой сборки для сайта (APK под ним лежит на Pages в dl/app-<run>.bin) — сервер выдаёт его одобренной заявке
+        if (Test-Path "$tmp\pass.enc") {
+            $env:OBDAI_APK_PASS = (Get-Content $passFile -Raw).Trim()
+            & $openssl enc -d -aes-256-cbc -pbkdf2 -iter 200000 -in "$tmp\pass.enc" -out "$apkDir\build.pass" -pass env:OBDAI_APK_PASS 2>&1 | Out-Null
+            Remove-Item Env:\OBDAI_APK_PASS -ErrorAction SilentlyContinue
+            Copy-Item "$tmp\meta.json" "$apkDir\meta.json" -Force
+        }
         Set-Content -Path $mark -Value $id
         Log "APK обновлён: сборка $id"
     } catch { Log "APK: $($_.Exception.Message)" }

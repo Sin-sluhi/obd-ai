@@ -45,8 +45,18 @@ jobs:
         run: |
           mkdir -p gated
           if [ -z "$APK_PASS" ]; then echo "APK_PASS не задан — артефакт для сервера пропущен"; exit 0; fi
+          APK=app/build/outputs/apk/debug/app-debug.apk
           grep -oP 'versionName = "\K[^"]+' app/build.gradle.kts > gated/version.txt
-          openssl enc -aes-256-cbc -pbkdf2 -iter 200000 -salt -in app/build/outputs/apk/debug/app-debug.apk -out gated/app.apk.enc -pass env:APK_PASS
+          # 1) для сервера целиком (админ «Скачать себе», приложение)
+          openssl enc -aes-256-cbc -pbkdf2 -iter 200000 -salt -in $APK -out gated/app.apk.enc -pass env:APK_PASS
+          # 2) для сайта: APK под случайным паролем этой сборки лежит открыто на Pages (быстро, без туннеля),
+          #    а сам пароль сервер выдаёт одобренной заявке один раз; у сервера он зашифрован общим APK_PASS
+          export BUILD_PASS=$(openssl rand -hex 24)
+          openssl enc -aes-256-cbc -pbkdf2 -iter 100000 -md sha256 -salt -in $APK -out gated/app.bin -pass env:BUILD_PASS
+          printf '%s' "$BUILD_PASS" | openssl enc -aes-256-cbc -pbkdf2 -iter 200000 -salt -out gated/pass.enc -pass env:APK_PASS
+          printf '{"run":"%s","version":"%s","size":%s,"sha256":"%s"}' "${{ github.run_id }}" "$(cat gated/version.txt)" \
+            "$(stat -c%s $APK)" "$(sha256sum $APK | cut -d' ' -f1)" > gated/meta.json
+          cat gated/meta.json
       - uses: actions/upload-artifact@v4
         with:
           name: apk

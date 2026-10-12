@@ -656,8 +656,19 @@
       } catch (e) { state("off"); timer = setTimeout(poll, 20000); }
     }
 
-    // Качаем скриптом, а не переходом по ссылке: туннель serveo показывает страницу-предупреждение
-    // запросам браузера с Accept: text/html, а запрос из скрипта проходит сразу. Заодно видно процент.
+    // Скачивание: сервер заявок отдаёт только пароль этой сборки (несколько байт через туннель), а сам APK —
+    // зашифрованный файл dl/app-<run>.bin на этом же сайте (GitHub Pages, быстро). Расшифровка в браузере (WebCrypto),
+    // формат openssl enc: «Salted__» + соль + AES-256-CBC, ключ и IV из PBKDF2-SHA256.
+    async function decryptOpenssl(buf, pass, iter) {
+      const data = new Uint8Array(buf);
+      if (new TextDecoder().decode(data.slice(0, 8)) !== "Salted__") throw new Error("формат");
+      const salt = data.slice(8, 16);
+      const base = await crypto.subtle.importKey("raw", new TextEncoder().encode(pass), "PBKDF2", false, ["deriveBits"]);
+      const bits = new Uint8Array(await crypto.subtle.deriveBits({ name: "PBKDF2", salt, iterations: iter, hash: "SHA-256" }, base, 384));
+      const key = await crypto.subtle.importKey("raw", bits.slice(0, 32), "AES-CBC", false, ["decrypt"]);
+      return crypto.subtle.decrypt({ name: "AES-CBC", iv: bits.slice(32, 48) }, key, data.slice(16));
+    }
+    const hex = b => Array.from(new Uint8Array(b), x => x.toString(16).padStart(2, "0")).join("");
     let downloading = false;
     $("#dlBtn").addEventListener("click", async e => {
       e.preventDefault();
@@ -666,9 +677,11 @@
       const a = $("#dlBtn"), label = a.querySelector("span"), size = $(".dl-size");
       label.textContent = "Скачиваю…";
       try {
-        const r = await fetch(a.href, { cache: "no-store" });
-        if (r.status === 410) { state("used"); return; }
-        if (!r.ok || !r.body) throw new Error(r.status);
+        const k = await ObdApi.json("/api/apk/key?ticket=" + encodeURIComponent(ticket));
+        if (k.status === 410) { state("used"); return; }
+        if (k.status !== 200 || !k.data.pass) throw new Error("key " + k.status);
+        const r = await fetch(k.data.file, { cache: "no-store" });
+        if (!r.ok || !r.body) throw new Error("file " + r.status);
         const total = +r.headers.get("Content-Length") || 0, reader = r.body.getReader(), parts = [];
         let got = 0;
         for (;;) {
@@ -677,16 +690,18 @@
           parts.push(value); got += value.length;
           if (total) size.textContent = Math.round(got / total * 100) + "% · " + mb(got) + " из " + mb(total);
         }
-        if (total && got < total) throw new Error("обрыв");
-        const url = URL.createObjectURL(new Blob(parts, { type: "application/vnd.android.package-archive" }));
+        size.textContent = "Распаковываю…";
+        const plain = await decryptOpenssl(await new Blob(parts).arrayBuffer(), k.data.pass, k.data.iter || 100000);
+        if (k.data.sha256 && hex(await crypto.subtle.digest("SHA-256", plain)) !== k.data.sha256) throw new Error("sha");
+        const url = URL.createObjectURL(new Blob([plain], { type: "application/vnd.android.package-archive" }));
         const link = document.createElement("a");
         link.href = url; link.download = "OBD-AI.apk"; document.body.appendChild(link); link.click(); link.remove();
         setTimeout(() => URL.revokeObjectURL(url), 60000);
         state("used");
       } catch (x) {
-        // передача оборвалась — сервер вернул ссылку в рабочее состояние, можно нажать ещё раз
+        // пароль уже выдан, но 30 минут его можно спросить снова — просто нажать ещё раз
         label.textContent = "Скачать APK";
-        size.textContent = "Связь прервалась — нажмите ещё раз";
+        size.textContent = "Не получилось — нажмите ещё раз";
       } finally { downloading = false; }
     });
     $$("[data-act=forget]").forEach(b => b.addEventListener("click", () => { set(""); ticket = ""; state("form"); }));

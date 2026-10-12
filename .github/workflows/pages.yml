@@ -11,9 +11,14 @@ on:
       - ".github/workflows/pages.yml"
   schedule:
     - cron: "7,37 * * * *"
+  # новая сборка APK → сразу кладём её зашифрованную копию на сайт
+  workflow_run:
+    workflows: ["Build APK"]
+    types: [completed]
   workflow_dispatch:
 permissions:
   contents: read
+  actions: read
   pages: write
   id-token: write
 concurrency:
@@ -33,6 +38,19 @@ jobs:
       - name: News snapshot
         continue-on-error: true
         run: python tools/news/build.py site/news.json
+      # Две последние удачные сборки: app-<run>.bin (APK под паролем сборки) + meta. Пароль знает только сервер заявок,
+      # а сервер может отставать на одну сборку — поэтому держим две.
+      - name: Gated APK
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p site/dl
+          for id in $(gh run list -R "$GITHUB_REPOSITORY" --workflow build.yml --status success -L 2 --json databaseId -q '.[].databaseId'); do
+            rm -rf /tmp/g && gh run download "$id" -R "$GITHUB_REPOSITORY" -n apk -D /tmp/g || continue
+            [ -f /tmp/g/app.bin ] || continue
+            cp /tmp/g/app.bin "site/dl/app-$id.bin" && cp /tmp/g/meta.json "site/dl/meta-$id.json" && echo "сборка $id на сайте"
+          done
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

@@ -4,6 +4,7 @@
 Публичная часть (для сайта, без ключа):
   POST /api/apk/request {"name","contact","car","note"}  → {"ticket","status"}
   GET  /api/apk/status?ticket=<t>                         → {"status","created","decided","size","version"}
+  GET  /api/apk/key?ticket=<t>                            → пароль сборки для dl/app-<run>.bin на сайте (так качает сайт)
   GET  /api/apk/download?ticket=<t>                       → сам APK, только при status=approved, ровно один раз
   GET  /api/apk/info                                      → {"open": bool, "size", "version"} — принимаем ли заявки
 
@@ -31,6 +32,7 @@ ADMIN_KEY = ""
 MAX_PENDING = 300           # больше висящих заявок не принимаем — защита от спама
 PER_IP_HOUR = 4             # заявок с одного адреса в час
 CHUNK = 64 * 1024
+RETRY_WINDOW = 30 * 60      # сколько после выдачи пароля сборки тот же билет может спросить его снова
 
 _ip_hits = {}               # ip → [время заявок]
 _bad_admin = {}             # ip → [время неверных ключей]
@@ -164,6 +166,29 @@ def handle_get(h, db, lock, path, q):
         meta = _apk_meta() or {}
         return h._json(200, {"status": r[0], "created": r[1], "decided": r[2],
                              "size": meta.get("size", 0), "version": meta.get("version", "")})
+
+    if path == "/api/apk/key":
+        # Сайт качает APK с Pages (dl/app-<run>.bin, зашифрован паролем сборки), отсюда берёт только пароль.
+        # Выдача пароля = использование ссылки; 30 минут после этого тот же билет может спросить ещё раз (если оборвалось).
+        t = _clean(q.get("ticket"), 64)
+        d = os.path.dirname(APK_PATH)
+        try:
+            build_pass = open(os.path.join(d, "build.pass"), encoding="utf-8").read().strip()
+            meta = json.load(open(os.path.join(d, "meta.json"), encoding="utf-8"))
+        except (OSError, ValueError):
+            return h._json(503, {"error": "no build"})
+        now = int(time.time())
+        with lock:
+            cur = db.execute("UPDATE apk_requests SET status='used', used=?, downloads=downloads+1 "
+                             "WHERE ticket=? AND (status='approved' OR (status='used' AND used>?))", (now, t, now - RETRY_WINDOW))
+            db.commit()
+            if cur.rowcount != 1:
+                r = db.execute("SELECT status FROM apk_requests WHERE ticket=?", (t,)).fetchone()
+        if cur.rowcount != 1:
+            return h._json(410 if r and r[0] == "used" else 403, {"error": r[0] if r else "ticket"})
+        return h._json(200, {"pass": build_pass, "iter": 100000, "run": str(meta.get("run", "")),
+                             "file": "dl/app-%s.bin" % meta.get("run", ""), "version": meta.get("version", ""),
+                             "size": meta.get("size", 0), "sha256": meta.get("sha256", "")})
 
     if path == "/api/apk/download":
         t = _clean(q.get("ticket"), 64)
