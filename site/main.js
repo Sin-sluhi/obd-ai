@@ -10,7 +10,7 @@
   const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
   const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
 
-  if (hasGsap) gsap.registerPlugin(ScrollTrigger);
+  if (hasGsap) { gsap.registerPlugin(ScrollTrigger); ScrollTrigger.config({ ignoreMobileResize: true }); }
 
   /* ============ Разбивка текста ============ */
   $$("[data-split]").forEach(el => {
@@ -207,11 +207,18 @@
     const qx = gsap.quickTo(ph, "rotationY", { duration: .8, ease: "power3" });
     const qy = gsap.quickTo(ph, "rotationX", { duration: .8, ease: "power3" });
     gsap.set(ph, { rotationY: -14, rotationX: 6 });
+    const scr = $("#heroPhone .hero-screen");
     $("#hero").addEventListener("pointermove", e => {
       const nx = e.clientX / innerWidth - .5, ny = e.clientY / innerHeight - .5;
       qx(-14 + nx * 26); qy(6 - ny * 18);
+      scr.style.setProperty("--gx", (nx * -60).toFixed(1) + "%");
     });
     $$(".hero .chip").forEach((c, i) => gsap.to(c, { y: i % 2 ? 14 : -14, duration: 2.6 + i * .4, repeat: -1, yoyo: true, ease: "sine.inOut" }));
+  } else if (!reduce && hasGsap) {
+    gsap.set("#heroPhone", { rotationY: -10, rotationX: 4 });
+    gsap.to("#heroPhone", { rotationY: 8, rotationX: -2, y: -10, duration: 5, repeat: -1, yoyo: true, ease: "sine.inOut" });
+    gsap.to("#heroPhone .hero-screen", { "--gx": "40%", duration: 5, repeat: -1, yoyo: true, ease: "sine.inOut", startAt: { "--gx": "-40%" } });
+    $$(".hero .chip").forEach((c, i) => gsap.to(c, { y: i % 2 ? 10 : -10, duration: 2.6 + i * .4, repeat: -1, yoyo: true, ease: "sine.inOut" }));
   }
 
   /* ============ Курсор и «магнитные» кнопки ============ */
@@ -288,6 +295,147 @@
     })();
   })();
 
+  /* ============ Живой телефон в герое: проверка идёт сама по кругу ============ */
+  function heroPhone() {
+    const scr = $(".hero-screen"); if (!scr) return;
+    const clock = $(".clock", scr);
+    const tick = () => { clock.textContent = new Date().toLocaleTimeString("ru-RU", { hour: "2-digit", minute: "2-digit" }); };
+    tick(); setInterval(tick, 20000);
+    // напряжение АКБ «дышит», при проверке чуть проседает
+    const volt = $(".volt", scr), line = $(".spark polyline", scr), vals = Array(24).fill(12.6);
+    const draw = () => { line.setAttribute("points", vals.map((v, i) => (i * 60 / 23).toFixed(1) + "," + (15 - (v - 12.2) / .55 * 13).toFixed(1)).join(" ")); };
+    draw();
+    if (reduce || !hasGsap) return;
+    setInterval(() => {
+      const busy = scr.dataset.s === "scan";
+      const v = (busy ? 12.38 : 12.56) + Math.random() * .08;
+      vals.push(v); vals.shift(); draw();
+      volt.textContent = v.toFixed(2) + " В";
+    }, 650);
+    scr.classList.add("js-phone");
+    const pct = $(".cb-pct", scr), stage = $(".ui-stage", scr), prog = $(".arc-prog", scr), btn = $(".ui-check-btn", scr);
+    const mods = ["двигатель 7E0", "коробка 7E1", "ABS 7D1", "подушки 7D2", "ЭУР 7D4", "приборка 7C6", "климат 7B3"];
+    const o = { p: 0 };
+    const setP = () => { prog.style.strokeDashoffset = 100 - o.p; };
+    const tl = gsap.timeline({ repeat: -1, paused: true });
+    tl.call(() => { scr.dataset.s = "home"; stage.textContent = "Готов к проверке"; })
+      .to({}, { duration: 2.2 })
+      .to(btn, { scale: .88, duration: .14, ease: "power2.in" })
+      .call(() => { scr.dataset.s = "scan"; Bus.burst(4); })
+      .to(btn, { scale: 1, duration: .7, ease: "elastic.out(1,.4)" })
+      .fromTo(o, { p: 0 }, { p: 100, duration: 4.4, ease: "power1.inOut", onUpdate: () => {
+        setP(); pct.textContent = Math.round(o.p) + "%";
+        stage.textContent = "Опрашиваю: " + mods[Math.min(mods.length - 1, Math.floor(o.p / 100 * mods.length))];
+      } }, "<")
+      .call(() => { scr.dataset.s = "verdict"; stage.textContent = "3 кода · 10 блоков ответили"; })
+      .to({}, { duration: 1.3 })
+      .call(() => scr.classList.add("has-notif"))
+      .to({}, { duration: 2.8 })
+      .call(() => scr.classList.remove("has-notif"))
+      .to({}, { duration: 1.4 })
+      .call(() => { scr.dataset.s = "home"; })
+      .to(o, { p: 0, duration: .9, ease: "power2.inOut", onUpdate: setP });
+    new IntersectionObserver(es => { es[0].isIntersecting ? tl.play() : tl.pause(); }).observe(scr);
+  }
+
+  /* ============ Обиди: смотрит, моргает, говорит ============ */
+  const Obidi = (function () {
+    const m = $("#mascot"), bub = $("#bubble"), txt = bub && $(".bubble-txt", bub);
+    if (!m) return { say() {}, mood() {}, jump() {}, shake() {} };
+    const eyes = $(".m-eyes", m);
+    let typing = 0, held = false;
+    function say(t) {
+      if (!txt || txt.dataset.t === t) return;
+      txt.dataset.t = t;
+      clearInterval(typing); bub.classList.remove("done");
+      if (reduce) { txt.textContent = t; bub.classList.add("done"); return; }
+      let i = 0; txt.textContent = "";
+      typing = setInterval(() => { txt.textContent = t.slice(0, ++i); if (i >= t.length) { clearInterval(typing); bub.classList.add("done"); } }, 24);
+      if (hasGsap) gsap.fromTo(bub, { scale: .86, opacity: .3 }, { scale: 1, opacity: 1, duration: .55, ease: "back.out(2)", transformOrigin: "10% 100%" });
+    }
+    function mood(k) { m.classList.remove("is-happy", "is-sad", "is-busy"); if (k) m.classList.add("is-" + k); }
+    function lookAt(x, y) {
+      const r = m.getBoundingClientRect(); if (!r.width) return;
+      const dx = clamp((x - (r.left + r.width / 2)) / 40, -9, 9), dy = clamp((y - (r.top + r.height * .45)) / 50, -6, 6);
+      eyes.style.transform = `translate(${dx}px,${dy}px)`;
+    }
+    function blink() { m.classList.add("is-blink"); setTimeout(() => m.classList.remove("is-blink"), 140); }
+    function jump() { if (hasGsap && !reduce) gsap.fromTo(m, { y: 0 }, { y: -34, duration: .28, ease: "power2.out", yoyo: true, repeat: 1 }); }
+    function shake() { if (hasGsap && !reduce) gsap.fromTo(m, { rotation: -7 }, { rotation: 0, duration: .9, ease: "elastic.out(1,.3)", transformOrigin: "50% 90%" }); }
+    if (fine) addEventListener("pointermove", e => { if (!held) lookAt(e.clientX, e.clientY); });
+    else if (!reduce) setInterval(() => {
+      if (held) return;
+      const r = m.getBoundingClientRect();
+      lookAt(r.left + r.width / 2 + (Math.random() - .5) * 500, r.top + r.height / 2 + (Math.random() - .5) * 260);
+    }, 2300);
+    // смотрит на поле, в которое пишут, и моргает при наборе
+    document.addEventListener("focusin", e => {
+      if (!e.target.closest || !e.target.closest("#reqForm")) return;
+      held = true; const r = e.target.getBoundingClientRect(); lookAt(r.left + r.width / 2, r.top + r.height / 2);
+    });
+    document.addEventListener("focusout", e => { if (e.target.closest && e.target.closest("#reqForm")) held = false; });
+    document.addEventListener("input", e => { if (e.target.closest && e.target.closest("#reqForm") && Math.random() < .3) blink(); });
+    return { say, mood, jump, shake };
+  })();
+
+  /* ============ Новости автомира ============ */
+  function setupNews() {
+    const grid = $("#newsGrid"), box = $("#newsSrc"); if (!grid) return;
+    let src = "", started = false, chips = false, timer = 0;
+    const esc = s => String(s || "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+    const ago = t => {
+      const d = Date.now() / 1000 - t;
+      if (!t) return "";
+      if (d < 3600) return Math.max(1, Math.round(d / 60)) + " мин назад";
+      if (d < 86400) return Math.round(d / 3600) + " ч назад";
+      return new Date(t * 1000).toLocaleDateString("ru-RU", { day: "numeric", month: "long" });
+    };
+    const card = (x, i) => `<article class="nc${i === 0 ? " nc-big" : ""}"><a href="${esc(x.link)}" target="_blank" rel="noopener noreferrer">
+      <div class="img"><span class="noimg">${esc(x.sourceName)}</span>${x.image ? `<img src="${esc(x.image)}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onload="this.classList.add('ok')" onerror="this.remove()">` : ""}</div>
+      <span class="go" aria-hidden="true">↗</span>
+      <div class="body"><div class="meta"><b>${esc(x.sourceName)}</b><span>${ago(x.time)}</span></div>
+      <h3><span>${esc(x.title)}</span></h3><p>${esc(x.lead)}</p></div></a></article>`;
+    async function load(animate) {
+      clearTimeout(timer);
+      try {
+        const r = await ObdApi.json("/api/news?limit=9" + (src ? "&source=" + encodeURIComponent(src) : ""));
+        const items = (r.data && r.data.items) || [];
+        if (r.status !== 200 || !items.length) throw new Error("empty");
+        if (!chips && r.data.sources) {
+          chips = true;
+          box.innerHTML += r.data.sources.map(s => `<button class="src-chip" data-src="${esc(s.id)}" type="button">${esc(s.name)}</button>`).join("");
+        }
+        grid.innerHTML = items.map(card).join("");
+        if (animate && hasGsap && !reduce) gsap.from(grid.children, { y: 50, opacity: 0, duration: .9, ease: "expo.out", stagger: .06 });
+      } catch (e) {
+        grid.innerHTML = `<div class="news-empty">Лента новостей сейчас недоступна. Загляните чуть позже — страница обновит её сама.</div>`;
+      }
+      if (hasGsap) ScrollTrigger.refresh();
+      timer = setTimeout(() => load(false), 10 * 60 * 1000);
+    }
+    box.addEventListener("click", async e => {
+      const b = e.target.closest(".src-chip"); if (!b || b.classList.contains("on")) return;
+      box.querySelectorAll(".src-chip").forEach(c => c.classList.toggle("on", c === b));
+      src = b.dataset.src;
+      if (hasGsap && !reduce) await gsap.to(grid.children, { y: -20, opacity: 0, duration: .3, stagger: .02, ease: "power2.in" });
+      load(true);
+    });
+    new IntersectionObserver((es, io) => {
+      if (es[0].isIntersecting && !started) { started = true; io.disconnect(); load(true); }
+    }, { rootMargin: "800px 0px" }).observe(grid);
+  }
+
+  /* ============ Телефон в «Как работает» вписывается в экран смартфона ============ */
+  function fitHowPhone() {
+    const ph = $(".phone-how"), box = $(".how-right"); if (!ph || !box) return;
+    if (innerWidth > 760) { ph.style.zoom = ""; return; }
+    const natural = 320 * 19.3 / 9 + 20;
+    const z = clamp(Math.min(box.clientHeight / natural, (innerWidth - 40) / 320), .3, 1);
+    ph.style.zoom = z.toFixed(3);
+  }
+
+  heroPhone();
+  setupNews();
   if (!hasGsap || reduce) { $$("[data-reveal]").forEach(e => e.style.opacity = 1); setupGate(); boot(); return; }
 
   /* ============ Заголовки разделов: слова выезжают из-под маски ============ */
@@ -323,8 +471,10 @@
 
   const mm = gsap.matchMedia();
 
-  /* ============ Как работает: закреплённый телефон, три экрана ============ */
-  mm.add("(min-width: 761px)", () => {
+  /* ============ Как работает: закреплённый телефон, три экрана (на всех ширинах) ============ */
+  mm.add("all", () => {
+    fitHowPhone();
+    ScrollTrigger.addEventListener("refreshInit", fitHowPhone);
     const steps = $$(".step"), scrs = $$(".scr");
     let cur = 0;
     function show(i) {
@@ -351,17 +501,18 @@
       }
     });
     gsap.from(".phone-how", { y: 120, opacity: 0, rotationX: 30, duration: 1.4, ease: "expo.out", scrollTrigger: { trigger: ".how", start: "top 70%" } });
-    return () => st.kill();
+    return () => { st.kill(); ScrollTrigger.removeEventListener("refreshInit", fitHowPhone); };
   });
 
-  /* ============ Возможности: горизонтальная лента ============ */
-  mm.add("(min-width: 761px)", () => {
+  /* ============ Возможности: горизонтальная лента (и на телефоне тоже) ============ */
+  mm.add("all", () => {
     const track = $(".track"), now = $(".fc-now"), cards = $$(".track .card");
     const dist = () => track.scrollWidth - innerWidth;
     const tween = gsap.to(track, {
       x: () => -dist(), ease: "none",
       scrollTrigger: {
         trigger: ".features", start: "top top", end: () => "+=" + dist(), pin: ".features-pin", scrub: 1, invalidateOnRefresh: true,
+        snap: { snapTo: 1 / (cards.length - 1), duration: { min: .25, max: .7 }, delay: .08, ease: "power2.inOut" },
         onUpdate: self => { now.textContent = String(clamp(Math.round(self.progress * 7) + 1, 1, 8)).padStart(2, "0"); }
       }
     });
@@ -374,10 +525,6 @@
       });
     });
     return () => tween.scrollTrigger && tween.scrollTrigger.kill();
-  });
-  mm.add("(max-width: 760px)", () => {
-    $$(".track .card").forEach(c => gsap.from(c, { y: 80, opacity: 0, duration: 1, ease: "expo.out",
-      scrollTrigger: { trigger: c, start: "top 88%", onEnter: () => c.classList.add("in") } }));
   });
 
   // живые мини-картинки на карточках
@@ -418,7 +565,8 @@
 
   /* ============ Доступ ============ */
   gsap.from(".gate", { y: 100, opacity: 0, rotationX: 18, duration: 1.4, ease: "expo.out", scrollTrigger: { trigger: ".access", start: "top 70%" } });
-  gsap.from(".mascot", { y: 60, opacity: 0, rotation: -8, duration: 1.4, ease: "elastic.out(1,.6)", scrollTrigger: { trigger: ".access", start: "top 60%" } });
+  gsap.from(".mascot", { y: 80, opacity: 0, scale: .7, duration: 1.6, ease: "elastic.out(1,.55)", scrollTrigger: { trigger: ".access-grid", start: "top 75%" } });
+  gsap.from(".bubble", { scale: .4, opacity: 0, duration: .8, ease: "back.out(2.2)", delay: .5, transformOrigin: "10% 100%", scrollTrigger: { trigger: ".access-grid", start: "top 75%" } });
 
   /* ============ Подвал: буквы поднимаются ============ */
   gsap.from(".wordmark span", { yPercent: 100, duration: 1.2, ease: "expo.out", stagger: .06, scrollTrigger: { trigger: ".foot", start: "top 90%" } });
@@ -428,7 +576,7 @@
 
   /* ============ Заявка на APK ============ */
   function setupGate() {
-    const gate = $("#gate"), form = $("#reqForm"), err = $(".gate-err"), mascot = $("#mascot");
+    const gate = $("#gate"), form = $("#reqForm"), err = $(".gate-err");
     const KEY = "obdai_ticket";
     const get = () => { try { return localStorage.getItem(KEY) || ""; } catch (e) { return ""; } };
     const set = v => { try { v ? localStorage.setItem(KEY, v) : localStorage.removeItem(KEY); } catch (e) { /* без хранилища заявка живёт до закрытия вкладки */ } };
@@ -446,7 +594,16 @@
         const vt = document.startViewTransition(swap);
         vt.ready.catch(() => {}); vt.finished.catch(() => {});
       } else swap();
-      if (mascot) mascot.classList.toggle("is-happy", s === "ok" || s === "used");
+      const talk = {
+        form: ["Привет! Я Обиди. Оставь заявку — передам админу лично.", ""],
+        wait: ["Заявка у админа. Как ответит — здесь появится кнопка. Страницу можно закрыть.", "busy"],
+        ok: ["Доступ открыт! Жми «Скачать» — ссылка одноразовая.", "happy"],
+        used: ["Готово! Ставь приложение — увидимся в машине.", "happy"],
+        no: ["В этот раз не вышло. Если это ошибка — напиши админу.", "sad"],
+        off: ["Сервер заявок прилёг. Я проверю ещё раз сам.", "sad"]
+      }[s];
+      if (talk) { Obidi.say(talk[0]); Obidi.mood(talk[1]); }
+      if (s === "ok" || s === "used") Obidi.jump();
       if (s === "ok" || s === "wait") Bus.burst(4);
     }
     const mb = n => (n / 1048576).toLocaleString("ru-RU", { maximumFractionDigits: 1 }) + " МБ";
@@ -493,7 +650,7 @@
         f.classList.remove("bad"); void f.offsetWidth;
         if (body[n].length < min) { f.classList.add("bad"); bad = true; }
       });
-      if (bad) { err.textContent = "Заполните имя и контакт — без них не сможем ответить."; return; }
+      if (bad) { err.textContent = "Заполните имя и контакт — без них не сможем ответить."; Obidi.say("Без имени и контакта админ не сможет ответить."); Obidi.shake(); return; }
       const btn = form.querySelector("button[type=submit]");
       btn.disabled = true; btn.querySelector("span").textContent = "Отправляю…";
       try {
@@ -508,15 +665,5 @@
 
     document.addEventListener("visibilitychange", () => { if (!document.hidden && ticket) poll(); });
     poll();
-
-    // глаза маскота следят за курсором
-    if (mascot && fine) {
-      const eyes = mascot.querySelector(".m-eyes");
-      addEventListener("pointermove", e => {
-        const r = mascot.getBoundingClientRect(); if (!r.width) return;
-        const dx = clamp((e.clientX - (r.left + r.width / 2)) / 40, -8, 8), dy = clamp((e.clientY - (r.top + r.height / 2)) / 50, -5, 5);
-        eyes.style.transform = `translate(${dx}px,${dy}px)`;
-      });
-    }
   }
 })();

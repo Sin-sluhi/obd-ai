@@ -21,6 +21,8 @@ API (JSON, UTF-8):
   GET  /api/garage/list?code=<код>                       → {"cars":[{"car","name","updated","size"}]}
 Код гаража придумывает приложение (16 случайных символов) и показывает владельцу: кто знает код, тот видит гараж.
 
+Новости автомира для сайта (модуль news.py): GET /api/news — RSS изданий, перечитываются раз в 20 минут.
+
 Выдача APK по заявке (сайт site/, модуль apk.py): посетитель оставляет заявку, владелец одобряет её в site/admin.html,
 ссылка срабатывает один раз. Ключ администратора — переменная OBDAI_ADMIN_KEY или файл admin.key рядом с базой
 (создаётся сам при первом запуске). APK лежит в --apk (по умолчанию apk/app-debug.apk рядом с базой).
@@ -35,6 +37,7 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import parse_qs, urlparse
 
 import apk
+import news
 
 ONLINE_WINDOW = 90          # секунд с последнего запроса, пока считаем устройство онлайн
 MAX_TEXT = 1000
@@ -194,6 +197,8 @@ class Handler(BaseHTTPRequestHandler):
         q = {k: v[0] for k, v in parse_qs(u.query).items()}
         if u.path.startswith("/api/apk/") or u.path.startswith("/api/admin/"):
             return apk.handle_get(self, _db, _lock, u.path, q)
+        if u.path == "/api/news":
+            return news.handle_get(self, q)
         if u.path == "/api/health":
             with _lock:
                 n = _db.execute("SELECT COUNT(*) FROM messages").fetchone()[0]
@@ -278,6 +283,7 @@ def main():
     init_db(args.db)
     base = os.path.dirname(os.path.abspath(args.db))
     apk.configure(base, args.apk or os.path.join(base, "apk", "app-debug.apk"))
+    news.start()
     srv = ThreadingHTTPServer((args.host, args.port), Handler)
     print("форум слушает %s:%d, база %s, APK %s" % (args.host, args.port, args.db, apk.APK_PATH))
     srv.serve_forever()

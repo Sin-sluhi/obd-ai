@@ -40,7 +40,8 @@
     <a href="#how" data-go><span data-n="01">Как работает</span></a>
     <a href="#features" data-go><span data-n="02">Возможности</span></a>
     <a href="#honest" data-go><span data-n="03">Честно</span></a>
-    <a href="#access" data-go><span data-n="04">Доступ</span></a>
+    <a href="#news" data-go><span>Новости</span></a>
+    <a href="#access" data-go><span>Доступ</span></a>
   </nav>
   <a class="btn btn-sm btn-lime magnetic" href="#access" data-go><span>Получить доступ</span></a>
 </header>
@@ -70,30 +71,64 @@
 
     <div class="hero-stage">
       <div class="phone" id="heroPhone">
+        <span class="ph-key k1"></span><span class="ph-key k2"></span><span class="ph-key k3"></span>
         <div class="phone-body">
-          <div class="phone-screen">
-            <div class="ui-status mono"><span>9:41</span><span class="ui-rx"><i></i>RX</span></div>
+          <div class="phone-screen hero-screen" data-s="home">
+            <div class="island"><i class="cam"></i><span class="island-txt mono"><b class="isl-dot"></b><em>7E0 → 7E8</em></span></div>
+            <div class="ui-status mono"><span class="clock">9:41</span><span class="sig"><i></i><i></i><i></i><i></i><b class="bat"></b></span></div>
+
+            <div class="notif">
+              <svg viewBox="0 0 64 64" aria-hidden="true"><use href="#obidi-mini"/></svg>
+              <div><small><b>OBIDI AI</b> · сейчас</small><p>Вердикт готов: 3 кода, ехать можно</p></div>
+            </div>
+
             <div class="ui-head">
               <svg viewBox="0 0 64 64" aria-hidden="true"><use href="#obidi-mini"/></svg>
               <b>OBD AI</b><span class="ui-flag">RU</span>
             </div>
             <div class="ui-car">
-              <div class="ui-car-img"></div>
-              <div><small>Ваша машина</small><b>Hyundai Solaris 2017</b><span class="mono">Z94CT41DBHR…</span></div>
+              <div class="ui-car-img">
+                <svg viewBox="0 0 120 60" aria-hidden="true">
+                  <path class="car-body" d="M8 42c0-6 3-9 10-10l14-3 13-11c3-2 6-3 10-3h20c5 0 9 2 12 5l9 9 12 2c5 1 8 4 8 9v4c0 2-1 3-3 3h-8a10 10 0 0 0-20 0H39a10 10 0 0 0-20 0h-8c-2 0-3-1-3-3z"/>
+                  <path class="car-glass" d="M38 29l10-9c2-2 4-2 7-2h9v11zM68 29V18h8c3 0 5 1 7 3l7 8z"/>
+                  <circle class="car-wheel" cx="29" cy="47" r="8"/><circle class="car-wheel" cx="91" cy="47" r="8"/>
+                  <circle class="car-hub" cx="29" cy="47" r="3"/><circle class="car-hub" cx="91" cy="47" r="3"/>
+                  <path class="car-light" d="M106 37h6"/>
+                </svg>
+              </div>
+              <div><small>Ваша машина</small><b>Hyundai Solaris 2017</b><span class="conn mono"><i></i>подключено</span></div>
             </div>
             <div class="ui-check">
               <svg class="ui-arc" viewBox="0 0 200 200" aria-hidden="true">
                 <circle cx="100" cy="100" r="86" class="arc-bg"/>
-                <circle cx="100" cy="100" r="86" class="arc-run"/>
+                <circle cx="100" cy="100" r="86" class="arc-idle"/>
+                <circle cx="100" cy="100" r="86" class="arc-prog" pathLength="100"/>
               </svg>
-              <div class="ui-check-btn"><span>Проверить<br>машину</span></div>
+              <div class="ui-check-btn"><span class="cb-idle">Проверить<br>машину</span><span class="cb-pct mono">0%</span><span class="cb-done">✓</span></div>
             </div>
+            <p class="ui-stage mono">Готов к проверке</p>
             <div class="ui-row">
-              <div class="ui-mini"><small>АКБ</small><b class="mono">12.6&nbsp;В</b></div>
-              <div class="ui-mini"><small>Блоков</small><b class="mono">10</b></div>
+              <div class="ui-mini"><small>АКБ</small><b class="mono volt">12.6 В</b>
+                <svg class="spark" viewBox="0 0 60 16" preserveAspectRatio="none" aria-hidden="true"><polyline points=""/></svg></div>
+              <div class="ui-mini"><small>Блоков</small><b class="mono mods-n">10</b></div>
               <div class="ui-mini"><small>Адаптер</small><b class="mono">v1.5</b></div>
             </div>
-            <div class="ui-tabs"><i class="on"></i><i></i><i></i><i></i></div>
+
+            <div class="sheet">
+              <i class="grab"></i>
+              <div class="verdict">
+                <small class="mono">ВЕРДИКТ</small>
+                <b>Ехать можно, но не тянуть</b>
+                <p>Пропуски зажигания — первопричина, катализатор страдает из-за них.</p>
+              </div>
+              <div class="code"><span class="sev warn"></span><b class="mono">P0300</b><p>Случайные пропуски зажигания</p></div>
+              <div class="code"><span class="sev warn"></span><b class="mono">P0420</b><p>Катализатор неэффективен</p></div>
+              <div class="code"><span class="sev ok"></span><b class="mono">P0011</b><p>Фазы впускного вала</p></div>
+              <div class="src mono">drive2.ru ↗ · drom.ru ↗</div>
+            </div>
+
+            <div class="ui-tabs"><b class="tab-pill"></b><i></i><i></i><i></i><i></i></div>
+            <div class="glare"></div>
           </div>
         </div>
         <div class="phone-shadow"></div>
@@ -316,35 +351,80 @@
   </div>
 </section>
 
+<!-- 5. Новости автомира (RSS изданий через наш сервер) -->
+<section id="news" class="news">
+  <div class="news-head">
+    <div>
+      <p class="eyebrow mono">04 — Новости</p>
+      <h2 class="h2" data-words>Что нового в&nbsp;автомире.</h2>
+    </div>
+    <div class="news-src" id="newsSrc" role="tablist" aria-label="Издание">
+      <button class="src-chip on" data-src="" type="button">Все</button>
+    </div>
+  </div>
+  <div class="news-grid" id="newsGrid" aria-live="polite">
+    <article class="nc nc-big sk"></article><article class="nc sk"></article><article class="nc sk"></article>
+    <article class="nc sk"></article><article class="nc sk"></article><article class="nc sk"></article>
+    <article class="nc sk"></article><article class="nc sk"></article><article class="nc sk"></article>
+  </div>
+  <p class="news-note mono" id="newsNote">Заголовки и анонсы из RSS изданий, ссылки ведут на оригинал. Обновление — каждые 20 минут.</p>
+</section>
+
 <!-- 6. Доступ по заявке -->
 <section id="access" class="access">
+  <div class="access-head">
+    <p class="eyebrow mono">05 — Доступ</p>
+    <h2 class="h2" data-words>По приглашению.</h2>
+    <p class="lead">Приложения нет в открытом доступе. Оставьте заявку — администратор откроет вам
+      персональную ссылку на APK. Она сработает один раз.</p>
+  </div>
   <div class="access-grid">
-    <div class="access-copy">
-      <p class="eyebrow mono">04 — Доступ</p>
-      <h2 class="h2" data-words>По приглашению.</h2>
-      <p class="lead">Приложения нет в открытом доступе. Оставьте заявку — администратор откроет вам
-        персональную ссылку на APK. Она сработает один раз.</p>
-      <div class="mascot" id="mascot" aria-hidden="true">
-        <svg viewBox="0 0 240 260">
+    <div class="obidi-stage" aria-hidden="true">
+      <div class="bubble" id="bubble"><span class="bubble-txt">Привет! Я Обиди. Оставь заявку — передам админу.</span></div>
+      <div class="mascot" id="mascot">
+        <svg viewBox="0 0 260 300">
           <defs>
-            <linearGradient id="mb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2c313b"/><stop offset="1" stop-color="#14171c"/></linearGradient>
-            <radialGradient id="mg" cx=".5" cy=".4" r=".6"><stop offset="0" stop-color="#b8f15a" stop-opacity=".22"/><stop offset="1" stop-color="#b8f15a" stop-opacity="0"/></radialGradient>
+            <linearGradient id="mBody" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3b414c"/><stop offset=".55" stop-color="#22262e"/><stop offset="1" stop-color="#15181d"/></linearGradient>
+            <linearGradient id="mSheen" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".22"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+            <linearGradient id="mScreen" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0d1013"/><stop offset="1" stop-color="#040506"/></linearGradient>
+            <radialGradient id="mScreenGlow" cx=".5" cy=".55" r=".6"><stop offset="0" stop-color="#b8f15a" stop-opacity=".16"/><stop offset="1" stop-color="#b8f15a" stop-opacity="0"/></radialGradient>
+            <filter id="mGlow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="4"/></filter>
+            <pattern id="mScan" width="4" height="4" patternUnits="userSpaceOnUse"><rect width="4" height="1" fill="#fff" opacity=".035"/></pattern>
           </defs>
-          <circle cx="120" cy="120" r="118" fill="url(#mg)"/>
-          <g class="m-antenna">
-            <line x1="120" y1="44" x2="150" y2="10" stroke="#3a404b" stroke-width="5" stroke-linecap="round"/>
-            <path class="m-star" d="M150 0l3 7 7 3-7 3-3 7-3-7-7-3 7-3z" fill="#b8f15a"/>
+          <ellipse class="m-shadow" cx="130" cy="288" rx="70" ry="8" fill="#000" opacity=".55"/>
+          <g class="m-float">
+            <path class="m-cable" d="M130 262c0 18 30 22 60 24s56 8 70 14" fill="none" stroke="#262a32" stroke-width="7" stroke-linecap="round"/>
+            <g class="m-antenna">
+              <path d="M130 60c0-14 2-28 6-40" fill="none" stroke="#3b414c" stroke-width="5" stroke-linecap="round"/>
+              <g class="m-star"><path d="M137 2l3.5 8.5L149 14l-8.5 3.5L137 26l-3.5-8.5L125 14l8.5-3.5z" fill="#b8f15a" filter="url(#mGlow)" opacity=".8"/>
+              <path d="M137 2l3.5 8.5L149 14l-8.5 3.5L137 26l-3.5-8.5L125 14l8.5-3.5z" fill="#d9ff9a"/></g>
+              <ellipse cx="130" cy="60" rx="14" ry="5" fill="#2b3039"/>
+            </g>
+            <rect x="24" y="118" width="18" height="54" rx="9" fill="#1c1f25" stroke="#ffffff" stroke-opacity=".06"/>
+            <rect x="218" y="118" width="18" height="54" rx="9" fill="#1c1f25" stroke="#ffffff" stroke-opacity=".06"/>
+            <circle class="m-led" cx="33" cy="134" r="3" fill="#b8f15a"/>
+            <rect x="38" y="58" width="184" height="176" rx="54" fill="url(#mBody)"/>
+            <path d="M92 59h76c30 0 52 18 54 44-40-14-144-14-184 0 2-26 24-44 54-44z" fill="url(#mSheen)"/>
+            <rect x="38.5" y="58.5" width="183" height="175" rx="53.5" fill="none" stroke="#fff" stroke-opacity=".09"/>
+            <rect x="58" y="84" width="144" height="120" rx="36" fill="url(#mScreen)"/>
+            <rect x="58" y="84" width="144" height="120" rx="36" fill="url(#mScreenGlow)"/>
+            <rect x="58" y="84" width="144" height="120" rx="36" fill="url(#mScan)"/>
+            <rect x="58.5" y="84.5" width="143" height="119" rx="35.5" fill="none" stroke="#b8f15a" stroke-opacity=".14"/>
+            <path class="m-brow" d="M92 112a40 40 0 0 1 76 0" fill="none" stroke="#b8f15a" stroke-opacity=".35" stroke-width="3" stroke-linecap="round" stroke-dasharray="1.5 8"/>
+            <g class="m-face">
+              <g class="m-eyes">
+                <rect class="m-eye" x="99" y="122" width="18" height="34" rx="9" fill="#b8f15a" filter="url(#mGlow)" opacity=".7"/>
+                <rect class="m-eye" x="143" y="122" width="18" height="34" rx="9" fill="#b8f15a" filter="url(#mGlow)" opacity=".7"/>
+                <rect class="m-eye" x="99" y="122" width="18" height="34" rx="9" fill="#cfff85"/>
+                <rect class="m-eye" x="143" y="122" width="18" height="34" rx="9" fill="#cfff85"/>
+              </g>
+              <path class="m-mouth" d="M120 174q10 7 20 0" fill="none" stroke="#b8f15a" stroke-width="3.5" stroke-linecap="round"/>
+              <circle cx="92" cy="170" r="6" fill="#b8f15a" opacity=".12"/>
+              <circle cx="168" cy="170" r="6" fill="#b8f15a" opacity=".12"/>
+            </g>
+            <path d="M104 232h52l-6 30h-40z" fill="#1b1f26" stroke="#3b414c" stroke-width="2" stroke-linejoin="round"/>
+            <g fill="#b8f15a" opacity=".75"><rect x="114" y="240" width="4" height="9" rx="1"/><rect x="122" y="240" width="4" height="9" rx="1"/><rect x="130" y="240" width="4" height="9" rx="1"/><rect x="138" y="240" width="4" height="9" rx="1"/></g>
           </g>
-          <rect x="30" y="40" width="180" height="170" rx="46" fill="url(#mb)"/>
-          <rect x="30.5" y="40.5" width="179" height="169" rx="45.5" fill="none" stroke="#ffffff" stroke-opacity=".08"/>
-          <rect x="52" y="70" width="136" height="108" rx="28" fill="#06070a"/>
-          <path d="M80 112a40 40 0 0 1 80 0" fill="none" stroke="#b8f15a" stroke-opacity=".35" stroke-width="4" stroke-linecap="round" stroke-dasharray="2 9"/>
-          <g class="m-eyes">
-            <rect class="m-eye" x="88" y="110" width="16" height="30" rx="8" fill="#b8f15a"/>
-            <rect class="m-eye" x="136" y="110" width="16" height="30" rx="8" fill="#b8f15a"/>
-          </g>
-          <path d="M96 210h48l-6 26h-36z" fill="#1b1f26" stroke="#3a404b" stroke-width="2"/>
-          <g fill="#b8f15a" opacity=".7"><rect x="106" y="216" width="4" height="8" rx="1"/><rect x="114" y="216" width="4" height="8" rx="1"/><rect x="122" y="216" width="4" height="8" rx="1"/><rect x="130" y="216" width="4" height="8" rx="1"/></g>
         </svg>
       </div>
     </div>
@@ -355,7 +435,7 @@
         <p class="gate-k mono"><span class="live"></span>Заявка на доступ</p>
         <label class="fld"><input name="name" required maxlength="40" autocomplete="name" placeholder=" "><span>Как к вам обращаться</span></label>
         <label class="fld"><input name="contact" required maxlength="80" autocomplete="tel" placeholder=" "><span>Telegram или телефон</span></label>
-        <label class="fld"><input name="car" maxlength="80" placeholder=" "><span>Машина — марка, модель, год (необязательно)</span></label>
+        <label class="fld"><input name="car" maxlength="80" placeholder=" "><span>Машина и год — по желанию</span></label>
         <label class="hp" aria-hidden="true">Сайт<input name="website" tabindex="-1" autocomplete="off"></label>
         <button class="btn btn-lime btn-lg btn-wide magnetic" type="submit"><span>Отправить заявку</span><svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></button>
         <p class="gate-note">Контакт нужен только чтобы ответить по заявке. Нужен Android 8.0 или новее
