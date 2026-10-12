@@ -171,6 +171,11 @@
   /* ============ Герой ============ */
   function heroIn(delay) {
     if (!hasGsap || reduce) return;
+    // меню въезжает CSS-анимацией: твин GSAP мог застыть на середине (фоновая вкладка), и меню оставалось почти прозрачным
+    const nav = $(".nav");
+    nav.style.animationDelay = (delay + .3) + "s";
+    nav.classList.add("is-entering");
+    nav.addEventListener("animationend", () => nav.classList.remove("is-entering"), { once: true });
     const tl = gsap.timeline({ delay });
     tl.from(".hero-title .ch", { yPercent: 115, rotateX: -90, opacity: 0, duration: 1.1, ease: "expo.out", stagger: .028, transformOrigin: "50% 100%" })
       .from(".hero .eyebrow", { opacity: 0, y: 20, duration: .6 }, .1)
@@ -178,7 +183,6 @@
       .from(".hero-cta > *", { opacity: 0, y: 30, duration: .8, stagger: .08, ease: "power3.out" }, .55)
       .from("#heroPhone", { opacity: 0, y: 140, rotateX: 40, rotateY: -30, scale: .8, duration: 1.6, ease: "expo.out" }, .2)
       .from(".hero .chip", { opacity: 0, scale: .6, y: 30, duration: .9, stagger: .12, ease: "back.out(2)" }, .9)
-      .from(".nav", { opacity: 0, y: -40, duration: .8, ease: "expo.out" }, .3)
       .from(".scroll-hint", { opacity: 0, duration: .8 }, 1.2)
       .call(() => Bus.burst(8), null, .2);
   }

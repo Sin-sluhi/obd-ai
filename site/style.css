@@ -92,6 +92,8 @@ button { font: inherit; color: inherit; }
   transition: transform .5s var(--ease), opacity .4s;
 }
 .nav.is-hidden { transform: translate(-50%, -140%); }
+.nav.is-entering { animation: nav-in .8s var(--ease-out) backwards; }
+@keyframes nav-in { from { opacity: 0; transform: translate(-50%, -40px); } }
 .nav-logo { display: flex; align-items: center; gap: 10px; font: 700 15px var(--display); letter-spacing: .02em; }
 .nav-logo svg { width: 30px; height: 30px; }
 .nav-links { display: flex; gap: 4px; margin-left: auto; }
