@@ -395,23 +395,46 @@
       <span class="go" aria-hidden="true">↗</span>
       <div class="body"><div class="meta"><b>${esc(x.sourceName)}</b><span>${ago(x.time)}</span></div>
       <h3><span>${esc(x.title)}</span></h3><p>${esc(x.lead)}</p></div></a></article>`;
+    // лента «Все»: по очереди из каждого издания, свежее первым — одно издание не забивает остальные
+    const mix = (items, n) => {
+      const q = {};
+      items.forEach(x => (q[x.source] = q[x.source] || []).push(x));
+      const order = Object.keys(q).sort((a, b) => q[b][0].time - q[a][0].time), out = [];
+      while (out.length < n && order.some(k => q[k].length)) order.forEach(k => { if (q[k].length && out.length < n) out.push(q[k].shift()); });
+      return out;
+    };
+    // источник 1 — снимок news.json рядом с сайтом (собирает GitHub раз в 30 минут), источник 2 — сервер на ПК
+    async function fetchNews() {
+      try {
+        const r = await fetch("news.json?t=" + Math.floor(Date.now() / 300000), { cache: "no-store" });
+        if (r.ok) { const d = await r.json(); if (d.items && d.items.length) return d; }
+      } catch (e) { /* снимка нет — спросим сервер */ }
+      const r = await ObdApi.json("/api/news?limit=60");
+      if (r.status !== 200 || !r.data.items || !r.data.items.length) throw new Error("empty");
+      return r.data;
+    }
+    let all = null;
     async function load(animate) {
       clearTimeout(timer);
+      let ok = false;
       try {
-        const r = await ObdApi.json("/api/news?limit=9" + (src ? "&source=" + encodeURIComponent(src) : ""));
-        const items = (r.data && r.data.items) || [];
-        if (r.status !== 200 || !items.length) throw new Error("empty");
-        if (!chips && r.data.sources) {
+        if (!all || !animate) all = await fetchNews();
+        const items = src ? all.items.filter(x => x.source === src).slice(0, 9) : mix(all.items, 9);
+        if (!items.length) throw new Error("empty");
+        if (!chips && all.sources) {
           chips = true;
-          box.innerHTML += r.data.sources.map(s => `<button class="src-chip" data-src="${esc(s.id)}" type="button">${esc(s.name)}</button>`).join("");
+          const have = new Set(all.items.map(x => x.source));
+          box.innerHTML += all.sources.filter(s => have.has(s.id)).map(s => `<button class="src-chip" data-src="${esc(s.id)}" type="button">${esc(s.name)}</button>`).join("");
         }
         grid.innerHTML = items.map(card).join("");
         if (animate && hasGsap && !reduce) gsap.from(grid.children, { y: 50, opacity: 0, duration: .9, ease: "expo.out", stagger: .06 });
+        ok = true;
       } catch (e) {
-        grid.innerHTML = `<div class="news-empty">Лента новостей сейчас недоступна. Загляните чуть позже — страница обновит её сама.</div>`;
+        if (!grid.querySelector(".nc:not(.sk)")) grid.innerHTML = `<div class="news-empty">Загружаю ленту новостей…</div>`;
       }
       if (hasGsap) ScrollTrigger.refresh();
-      timer = setTimeout(() => load(false), 10 * 60 * 1000);
+      // не вышло — пробуем снова через 30 с (туннель переезжает за минуту), вышло — обновляем раз в 10 минут
+      timer = setTimeout(() => { all = null; load(false); }, ok ? 10 * 60 * 1000 : 30000);
     }
     box.addEventListener("click", async e => {
       const b = e.target.closest(".src-chip"); if (!b || b.classList.contains("on")) return;

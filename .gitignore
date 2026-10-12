@@ -9,3 +9,4 @@ local.properties
 tools/i18n/chunks/
 tools/i18n/parts/
 __pycache__/
+site/news.json

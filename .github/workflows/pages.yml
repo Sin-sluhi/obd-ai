@@ -1,11 +1,16 @@
 name: Site
 # Сайт site/ на GitHub Pages. Заявки на APK обслуживает server/forum (apk.py), адрес сервера сайт берёт из docs/forum_url.txt.
+# Раз в 30 минут сайт пересобирается со свежим снимком новостей (site/news.json) — лента не зависит от туннеля.
 on:
   push:
     branches: [main]
     paths:
       - "site/**"
+      - "tools/news/**"
+      - "server/forum/news.py"
       - ".github/workflows/pages.yml"
+  schedule:
+    - cron: "7,37 * * * *"
   workflow_dispatch:
 permissions:
   contents: read
@@ -22,6 +27,12 @@ jobs:
       url: ${{ steps.deploy.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: News snapshot
+        continue-on-error: true
+        run: python tools/news/build.py site/news.json
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
