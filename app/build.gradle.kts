@@ -12,8 +12,8 @@ android {
         applicationId = "io.github.sinsluhi.obdai"
         minSdk = 26
         targetSdk = 35
-        versionCode = 13
-        versionName = "1.2.1"
+        versionCode = 14
+        versionName = "1.2.2"
         // Провайдер и ключ ИИ из секретов GitHub (AI_PROVIDER, AI_API_KEY, AI_MODEL); пусто, если не заданы
         fun env(name: String) = System.getenv(name)?.trim().orEmpty()
         buildConfigField("String", "AI_PROVIDER", "\"" + env("AI_PROVIDER").ifBlank { "groq" } + "\"")
@@ -21,6 +21,23 @@ android {
         buildConfigField("String", "AI_MODEL", "\"" + env("AI_MODEL") + "\"")
         // Адрес сервера форума (server/forum), переменная репозитория FORUM_URL; пусто = чат выключен
         buildConfigField("String", "FORUM_URL", "\"" + env("FORUM_URL") + "\"")
+    }
+    // Постоянный ключ подписи (секреты SIGNING_*; CI раскладывает .jks и задаёт SIGNING_KEYSTORE_FILE).
+    // Без него каждая сборка подписывалась случайным debug-ключом раннера и не вставала поверх прошлой версии.
+    // Локально без переменных сборка подписывается обычным debug-ключом, как раньше.
+    val keystore = System.getenv("SIGNING_KEYSTORE_FILE")?.let { file(it) }?.takeIf { it.exists() }
+    signingConfigs {
+        if (keystore != null) create("stable") {
+            storeFile = keystore
+            storePassword = System.getenv("SIGNING_STORE_PASSWORD")
+            keyAlias = System.getenv("SIGNING_KEY_ALIAS")
+            keyPassword = System.getenv("SIGNING_KEY_PASSWORD")
+        }
+    }
+    buildTypes {
+        getByName("debug") {
+            signingConfigs.findByName("stable")?.let { signingConfig = it }
+        }
     }
     buildFeatures {
         compose = true

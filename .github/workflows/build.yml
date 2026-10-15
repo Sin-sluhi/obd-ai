@@ -30,12 +30,30 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: "8.9"
+      # Постоянный ключ подписи: без него каждая сборка получала случайный debug-ключ раннера и обновление
+      # не вставало поверх установленной версии (приходилось удалять приложение и терять историю).
+      - name: Signing key
+        env:
+          SIGNING_KEYSTORE_B64: ${{ secrets.SIGNING_KEYSTORE_B64 }}
+        run: |
+          if [ -z "$SIGNING_KEYSTORE_B64" ]; then echo "::warning::SIGNING_KEYSTORE_B64 не задан — сборка будет подписана случайным ключом"; exit 0; fi
+          printf '%s' "$SIGNING_KEYSTORE_B64" | base64 -d > "$RUNNER_TEMP/obdai-release.jks"
+          echo "SIGNING_KEYSTORE_FILE=$RUNNER_TEMP/obdai-release.jks" >> "$GITHUB_ENV"
       - run: gradle assembleDebug
         env:
           AI_PROVIDER: ${{ vars.AI_PROVIDER }}
           AI_API_KEY: ${{ secrets.AI_API_KEY }}
           AI_MODEL: ${{ vars.AI_MODEL }}
           FORUM_URL: ${{ vars.FORUM_URL }}
+          SIGNING_STORE_PASSWORD: ${{ secrets.SIGNING_STORE_PASSWORD }}
+          SIGNING_KEY_ALIAS: ${{ secrets.SIGNING_KEY_ALIAS }}
+          SIGNING_KEY_PASSWORD: ${{ secrets.SIGNING_KEY_PASSWORD }}
+      # Отпечаток подписи в лог: у всех сборок он должен быть одинаковым (SHA-256 1d9ad032…450b9147).
+      # keytool тут не годится — при minSdk 26 подпись только v2/v3, её видит apksigner.
+      - name: Signature fingerprint
+        run: |
+          BT=$(ls -d "$ANDROID_HOME"/build-tools/* | sort -V | tail -1)
+          "$BT/apksigner" verify --print-certs app/build/outputs/apk/debug/app-debug.apk | grep -i "SHA-256" || true
       # APK для выдачи по заявкам: сервер (forum.ps1) забирает его через gh run download и расшифровывает.
       # Артефакт публичного репозитория может скачать любой вошедший на GitHub, поэтому APK внутри зашифрован
       # (секрет APK_PASS, тот же пароль лежит у сервера в apk.pass). Без секрета артефакт не выкладывается.
