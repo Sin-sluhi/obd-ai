@@ -14,6 +14,10 @@ $ssh  = (Get-Command ssh.exe -ErrorAction SilentlyContinue).Source
 if (-not $ssh) { $ssh = 'C:\Windows\System32\OpenSSH\ssh.exe' }
 $log  = "$dir\forum.log"
 $port = 8080
+# Токен GitHub для gh: файл gh.token рядом со скриптом. Вход «gh auth login», сделанный внутри приложения из
+# Microsoft Store (например, из сессии Claude), хранится в его изолированной папке и при автозапуске не виден —
+# тогда gh молча не публикует адрес и не скачивает сборки.
+if (Test-Path "$dir\gh.token") { $env:GH_TOKEN = (Get-Content "$dir\gh.token" -Raw).Trim() }
 
 function Log($m) { Add-Content -Path $log -Value ("{0} {1}" -f (Get-Date -Format 'yyyy-MM-dd HH:mm:ss'), $m) -Encoding utf8 }
 
@@ -35,7 +39,8 @@ function Publish-Url($url) {
         $b64 = [Convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes($url + "`n"))
         $args = @('api', '-X', 'PUT', 'repos/Sin-sluhi/obd-ai/contents/docs/forum_url.txt', '-f', 'message=forum: адрес туннеля', '-f', "content=$b64")
         if ($sha) { $args += @('-f', "sha=$sha") }
-        & $gh @args 2>&1 | Out-Null
+        $res = & $gh @args 2>&1
+        if ($LASTEXITCODE -ne 0) { Log "не удалось опубликовать адрес: $(($res | Out-String).Trim() -replace '\s+', ' ')"; return }
         Log "опубликован адрес $url"
     } catch { Log "не удалось опубликовать адрес: $_" }
 }
@@ -72,13 +77,16 @@ function Update-Apk {
     $passFile = "$dir\apk.pass"
     if (-not (Test-Path $passFile)) { return }
     try {
-        $runs = & $gh run list -R Sin-sluhi/obd-ai --workflow build.yml --status success -L 1 --json databaseId 2>$null | ConvertFrom-Json
-        if (-not $runs) { return }
+        $raw = & $gh run list -R Sin-sluhi/obd-ai --workflow build.yml --status success -L 1 --json databaseId 2>&1
+        $runs = $null
+        try { $runs = ($raw | Where-Object { $_ -is [string] }) -join '' | ConvertFrom-Json } catch {}
+        if (-not $runs) { Log "APK: gh не вернул сборку: $(($raw | Out-String).Trim() -replace '\s+', ' ')"; return }
         $id = "$($runs[0].databaseId)"
         $mark = "$apkDir\run.txt"
         if ((Test-Path "$apkDir\app-debug.apk") -and (Test-Path $mark) -and ((Get-Content $mark -Raw).Trim() -eq $id)) { return }
         $tmp = "$dir\apk.tmp"
         Remove-Item $tmp -Recurse -Force -ErrorAction SilentlyContinue
+        if (Test-Path $tmp) { Log "APK: не удалось очистить $tmp — скачивание поверх старых файлов не пройдёт"; return }
         & $gh run download $id -R Sin-sluhi/obd-ai -n apk -D $tmp 2>&1 | Out-Null
         if (-not (Test-Path "$tmp\app.apk.enc")) { Log "APK: в сборке $id нет зашифрованного артефакта"; Set-Content -Path $mark -Value $id; return }
         $openssl = (Get-Command openssl.exe -ErrorAction SilentlyContinue).Source
