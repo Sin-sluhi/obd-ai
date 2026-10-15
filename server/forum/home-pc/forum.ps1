@@ -115,6 +115,29 @@ function Update-Apk {
 Log "старт (репозиторий: $repo)"
 if (-not (Test-Path "$repo\server\forum\server.py")) { Log "нет файла $repo\server\forum\server.py — проверьте, где лежит репозиторий"; exit 1 }
 Update-Apk
+
+# Постоянный адрес (Tailscale Funnel и т.п.): файл public.url рядом со скриптом, например
+# https://sh01.tailec27da.ts.net/obd. Тогда туннели serveo/localhost.run не нужны: они меняли адрес каждые 10–20 минут
+# и большую часть времени отвечали 502. Если постоянный адрес не отвечает больше 10 минут — уходим на туннели как запас.
+$publicFile = "$dir\public.url"
+if (Test-Path $publicFile) {
+    $public = (Get-Content $publicFile -Raw).Trim().TrimEnd('/')
+    Log "постоянный адрес: $public"
+    Ensure-Server
+    Publish-Url $public
+    $fails = 0
+    $tick = 0
+    while ($fails -lt 20) {
+        Start-Sleep -Seconds 30
+        Ensure-Server
+        $tick++
+        if ($tick % 20 -eq 0) { Update-Apk }
+        try { Invoke-RestMethod -Uri "$public/api/health" -TimeoutSec 15 | Out-Null; if ($fails -gt 0) { Log "постоянный адрес снова отвечает" }; $fails = 0 }
+        catch { $fails++; if ($fails -eq 1 -or $fails % 5 -eq 0) { Log "постоянный адрес не ответил ($fails): $($_.Exception.Message)" } }
+    }
+    Log "постоянный адрес не отвечает 10 минут — перехожу на туннели"
+}
+
 $kind = 'serveo'
 while ($true) {
     Ensure-Server
