@@ -82,6 +82,9 @@ jobs:
       - name: Developer build
         env:
           DEV_TOOLS: "true"
+          # ключ к разбору через Claude на компьютере владельца — только в версии разработчика
+          OWNER_AI_KEY: ${{ secrets.OWNER_AI_KEY }}
+          OWNER_AI_URL: ${{ vars.OWNER_AI_URL }}
           AI_PROVIDER: ${{ vars.AI_PROVIDER }}
           AI_API_KEY: ${{ secrets.AI_API_KEY }}
           AI_MODEL: ${{ vars.AI_MODEL }}

@@ -37,6 +37,7 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import parse_qs, urlparse
 
 import apk
+import owner_ai
 import news
 
 ONLINE_WINDOW = 90          # секунд с последнего запроса, пока считаем устройство онлайн
@@ -163,7 +164,7 @@ class Handler(BaseHTTPRequestHandler):
     def _cors(self):
         # сайт живёт на GitHub Pages, API — здесь: браузеру нужно разрешение на чужой адрес
         self.send_header("Access-Control-Allow-Origin", "*")
-        self.send_header("Access-Control-Allow-Headers", "Content-Type, X-Admin-Key")
+        self.send_header("Access-Control-Allow-Headers", "Content-Type, X-Admin-Key, X-Owner-Key")
         self.send_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
         self.send_header("Access-Control-Expose-Headers", "Content-Length, Content-Disposition")
 
@@ -197,6 +198,8 @@ class Handler(BaseHTTPRequestHandler):
         q = {k: v[0] for k, v in parse_qs(u.query).items()}
         if u.path.startswith("/api/apk/") or u.path.startswith("/api/admin/"):
             return apk.handle_get(self, _db, _lock, u.path, q)
+        if u.path.startswith("/api/owner/"):
+            return owner_ai.handle_get(self, u.path)
         if u.path == "/api/news":
             return news.handle_get(self, q)
         if u.path == "/api/health":
@@ -238,6 +241,8 @@ class Handler(BaseHTTPRequestHandler):
         b = self._body()
         if u.path.startswith("/api/apk/") or u.path.startswith("/api/admin/"):
             return apk.handle_post(self, _db, _lock, u.path, b)
+        if u.path.startswith("/api/owner/"):
+            return owner_ai.handle_post(self, u.path, b)
         if u.path == "/api/garage/put":
             return self._garage_put(b)
         room = clean(b.get("room"), 200)
@@ -283,6 +288,7 @@ def main():
     init_db(args.db)
     base = os.path.dirname(os.path.abspath(args.db))
     apk.configure(base, args.apk or os.path.join(base, "apk", "app-debug.apk"))
+    owner_ai.configure(base)
     news.start()
     srv = ThreadingHTTPServer((args.host, args.port), Handler)
     print("форум слушает %s:%d, база %s, APK %s" % (args.host, args.port, args.db, apk.APK_PATH))

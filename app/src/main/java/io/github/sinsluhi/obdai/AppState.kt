@@ -578,7 +578,8 @@ class AppState private constructor(context: Context) {
                     AiClient.diagnose(
                         cfg, snapFull,
                         progress = { stage -> ui { busy = stage } },
-                        log = { addLog(it) }
+                        log = { addLog(it) },
+                        ownerUrl = BuildConfig.OWNER_AI_URL.ifBlank { forumUrl }
                     ).also {
                         addLog(tr("state_log_ai_title", it.title))
                         runCatching { Kb.remember(VinDecoder.decode(v), snap.carHint, it, prefs) }
@@ -1114,7 +1115,7 @@ class AppState private constructor(context: Context) {
         if (!cfg.ready) return
         worker.execute {
             val snap = CarSnapshot(vin, protocol, voltage, mil.first, mil.second, fresh, emptyList(), s)
-            runCatching { AiClient.diagnose(cfg, snap, {}, { addLog(it) }) }
+            runCatching { AiClient.diagnose(cfg, snap, {}, { addLog(it) }, ownerUrl = BuildConfig.OWNER_AI_URL.ifBlank { forumUrl }) }
                 .onSuccess { d ->
                     val drive = when (d.canDrive) { "yes" -> tr("state_drive_yes") ; "no" -> tr("state_drive_no") ; else -> tr("state_drive_careful") }
                     notify(NOTIF_DTC, "${fresh.joinToString()}: ${d.title}", "$drive ${d.text}")

@@ -105,7 +105,13 @@ next_steps, for_service, typical_issues) — только по-русски, к�
      * в ней описаны ([KbFirst.covers]), разбор собирается из базы без нейронки. Нейронка подключается только когда в базе
      * нет хотя бы одного кода или связки кодов.
      */
-    fun diagnose(cfg: AiConfig, snap: CarSnapshot, progress: (String) -> Unit, log: (String) -> Unit): Diagnosis {
+    fun diagnose(cfg: AiConfig, snap: CarSnapshot, progress: (String) -> Unit, log: (String) -> Unit, ownerUrl: String = ""): Diagnosis {
+        // Версия разработчика владельца: весь разбор ведёт Claude на его компьютере (личная подписка).
+        // Компьютер недоступен — обычный путь ниже, без вопросов к пользователю.
+        if (BuildConfig.DEV_TOOLS && BuildConfig.OWNER_AI_KEY.isNotBlank() && ownerUrl.isNotBlank()) {
+            runCatching { return ownerClaude(ownerUrl, snap, progress, log) }
+                .onFailure { log("Claude на компьютере недоступен (${it.message}) — обычный разбор") }
+        }
         val gap = KbFirst.gap(snap)
         if (gap == null) {
             log("Разбор из базы знаний: все коды и связки в ней есть")
@@ -175,6 +181,46 @@ next_steps, for_service, typical_issues) — только по-русски, к�
             }
         }
         throw last ?: IOException("Модель не ответила")
+    }
+
+    /**
+     * Разбор через Claude Code на компьютере владельца (server/forum/owner_ai.py). Отчёт тот же, что для нейронок,
+     * опыт владельцев Claude ищет сам веб-поиском, поэтому выдержек ForumSearch не шлём и ссылки не отсекаем:
+     * он их действительно открывал. Только для версии разработчика — ключ владельца есть лишь в ней.
+     */
+    private fun ownerClaude(baseUrl: String, snap: CarSnapshot, progress: (String) -> Unit, log: (String) -> Unit): Diagnosis {
+        progress(tr("ai_stage_verdict"))
+        val t0 = System.currentTimeMillis()
+        val user = buildString {
+            append(report(snap))
+            appendLine()
+            appendLine("Опыт владельцев найди сам: ищи на drive2.ru и drom.ru по каждому коду и этой машине, открывай записи, " +
+                "бери то, что реально помогло, и ставь в sources только адреса, которые открыл.") // i18n-ignore: промпт
+        }
+        val body = JSONObject().put("system", ROLE + langRule() + "\n\n" + SCHEMA_TEXT).put("user", user)
+        val conn = (URL(baseUrl.trimEnd('/') + "/api/owner/analyze").openConnection() as HttpURLConnection).apply {
+            requestMethod = "POST"
+            connectTimeout = 15_000
+            readTimeout = 480_000           // Claude с веб-поиском думает минуты, не секунды
+            doOutput = true
+            setRequestProperty("Content-Type", "application/json")
+            setRequestProperty("X-Owner-Key", BuildConfig.OWNER_AI_KEY)
+        }
+        try {
+            conn.outputStream.use { it.write(body.toString().toByteArray(Charsets.UTF_8)) }
+            val status = conn.responseCode
+            val text = (if (status in 200..299) conn.inputStream else conn.errorStream)
+                ?.bufferedReader(Charsets.UTF_8)?.use { it.readText() }.orEmpty()
+            if (status !in 200..299) {
+                throw IOException(runCatching { JSONObject(text).optString("error") }.getOrNull()?.ifBlank { null } ?: "HTTP $status")
+            }
+            val resp = JSONObject(text)
+            val json = extractJson(resp.optString("content")) ?: throw IOException("Claude вернул не JSON")
+            log("Разбор сделал Claude на компьютере (${resp.optString("model")}, ${(System.currentTimeMillis() - t0) / 1000} с)")
+            return Diagnosis.fromJson(json, fromAi = true)
+        } finally {
+            conn.disconnect()
+        }
     }
 
     /**
