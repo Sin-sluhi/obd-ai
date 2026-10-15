@@ -85,7 +85,8 @@ class Prefs(context: Context) {
         set(v) = sp.edit().putInt("accent", v).apply()
 
     var devMode: Boolean
-        get() = sp.getBoolean("dev", false)
+        // в сборке для пользователей режима нет вовсе: даже включённый раньше флаг не действует
+        get() = BuildConfig.DEV_TOOLS && sp.getBoolean("dev", false)
         set(v) = sp.edit().putBoolean("dev", v).apply()
 
     var demo: Boolean

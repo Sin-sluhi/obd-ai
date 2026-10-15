@@ -12,6 +12,7 @@
   GET  /api/admin/apk                                     → {"requests":[…], "apk":{…}}
   POST /api/admin/apk/decide {"id","action"}              → action: approve | reject | reset | delete
   GET  /api/admin/apk/file                                → APK для себя (не тратит ничьих ссылок)
+  GET  /api/admin/apk/dev                                 → версия разработчика (с режимом разработчика), только владельцу
 
 Статусы: pending → approved → used; pending → rejected. reset возвращает used/rejected в approved (выдать ещё раз).
 Ссылка помечается использованной в момент начала скачивания (чтобы две вкладки не скачали параллельно);
@@ -225,6 +226,16 @@ def handle_get(h, db, lock, path, q):
         if not os.path.exists(APK_PATH):
             return h._json(404, {"error": "нет файла"})
         _send_file(h, APK_PATH, "OBD-AI.apk")
+        return
+
+    # версия разработчика (с режимом разработчика) — только владельцу, покупателям не выдаётся
+    if path == "/api/admin/apk/dev":
+        if not _is_admin(h):
+            return h._json(401, {"error": "key"})
+        dev = os.path.join(os.path.dirname(APK_PATH), "app-dev.apk")
+        if not os.path.exists(dev):
+            return h._json(404, {"error": "нет файла"})
+        _send_file(h, dev, "OBD-AI-dev.apk")
         return
 
     return h._json(404, {"error": "not found"})

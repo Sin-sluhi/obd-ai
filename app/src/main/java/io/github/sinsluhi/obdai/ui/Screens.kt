@@ -86,6 +86,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import io.github.sinsluhi.obdai.AiClient
 import io.github.sinsluhi.obdai.AppState
+import io.github.sinsluhi.obdai.BuildConfig
 import io.github.sinsluhi.obdai.Diagnosis
 import io.github.sinsluhi.obdai.DtcCard
 import io.github.sinsluhi.obdai.DtcCatalog
@@ -1230,7 +1231,8 @@ fun SettingsScreen(
             textAlign = TextAlign.Center,
             modifier = Modifier
                 .fillMaxWidth()
-                .clickable {
+                // в сборке для пользователей версия не нажимается: режима разработчика там нет
+                .clickable(enabled = BuildConfig.DEV_TOOLS) {
                     versionTaps++
                     if (!state.devMode && versionTaps >= 7) {
                         state.updateDevMode(true)

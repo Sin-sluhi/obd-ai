@@ -21,6 +21,10 @@ android {
         buildConfigField("String", "AI_MODEL", "\"" + env("AI_MODEL") + "\"")
         // Адрес сервера форума (server/forum), переменная репозитория FORUM_URL; пусто = чат выключен
         buildConfigField("String", "FORUM_URL", "\"" + env("FORUM_URL") + "\"")
+        // Режим разработчика (7 нажатий на версию): в сборке для пользователей (CI) выключен, локально — есть.
+        // Переменная репозитория DEV_TOOLS=true включает его и в CI (только для своей тестовой сборки).
+        val devTools = env("DEV_TOOLS").ifBlank { if (env("CI") == "true") "false" else "true" } == "true"
+        buildConfigField("boolean", "DEV_TOOLS", devTools.toString())
     }
     // Постоянный ключ подписи (секреты SIGNING_*; CI раскладывает .jks и задаёт SIGNING_KEYSTORE_FILE).
     // Без него каждая сборка подписывалась случайным debug-ключом раннера и не вставала поверх прошлой версии.

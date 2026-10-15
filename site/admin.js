@@ -93,18 +93,21 @@
   $("#tabs").addEventListener("click", e => { const t = e.target.closest(".tab"); if (t) { filter = t.dataset.f; render(); } });
   $("#logout").addEventListener("click", () => { store.set(""); key = ""; clearTimeout(timer); show(false); });
 
-  $("#selfDl").addEventListener("click", async () => {
-    // fetch + blob: ключ уходит в заголовке, а не в адресе ссылки
-    const b = $("#selfDl"); b.disabled = true; b.querySelector("span").textContent = "Качаю…";
+  // fetch + blob: ключ уходит в заголовке, а не в адресе ссылки
+  async function selfDownload(btnId, path, fileName, label) {
+    const b = $(btnId); b.disabled = true; b.querySelector("span").textContent = "Качаю…";
     try {
-      const r = await ObdApi.call("/api/admin/apk/file", { headers: { "X-Admin-Key": key } });
+      const r = await ObdApi.call(path, { headers: { "X-Admin-Key": key } });
       if (!r.ok) throw new Error(r.status);
       const url = URL.createObjectURL(await r.blob());
-      const a = document.createElement("a"); a.href = url; a.download = "OBD-AI.apk"; document.body.appendChild(a); a.click(); a.remove();
+      const a = document.createElement("a"); a.href = url; a.download = fileName; document.body.appendChild(a); a.click(); a.remove();
       setTimeout(() => URL.revokeObjectURL(url), 10000);
     } catch (e) { toast("Файла нет на сервере"); }
-    b.disabled = false; b.querySelector("span").textContent = "Скачать себе";
-  });
+    b.disabled = false; b.querySelector("span").textContent = label;
+  }
+  $("#selfDl").addEventListener("click", () => selfDownload("#selfDl", "/api/admin/apk/file", "OBD-AI.apk", "Скачать себе"));
+  // версия разработчика: та же сборка, но с режимом разработчика (7 нажатий на версию в настройках)
+  $("#devDl").addEventListener("click", () => selfDownload("#devDl", "/api/admin/apk/dev", "OBD-AI-dev.apk", "Версия разработчика"));
 
   $("#loginForm").addEventListener("submit", e => {
     e.preventDefault();

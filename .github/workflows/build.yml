@@ -75,6 +75,26 @@ jobs:
           printf '{"run":"%s","version":"%s","size":%s,"sha256":"%s"}' "${{ github.run_id }}" "$(cat gated/version.txt)" \
             "$(stat -c%s $APK)" "$(sha256sum $APK | cut -d' ' -f1)" > gated/meta.json
           cat gated/meta.json
+      # Пользовательский APK откладываем: следующий шаг пересобирает в ту же папку версию разработчика
+      - run: mkdir -p out && cp app/build/outputs/apk/debug/app-debug.apk out/app-debug.apk
+      # Версия разработчика (с режимом разработчика) — только для владельца: кнопка «Версия разработчика» в админке.
+      # Тот же ключ подписи, поэтому ставится поверх пользовательской и обратно.
+      - name: Developer build
+        env:
+          DEV_TOOLS: "true"
+          AI_PROVIDER: ${{ vars.AI_PROVIDER }}
+          AI_API_KEY: ${{ secrets.AI_API_KEY }}
+          AI_MODEL: ${{ vars.AI_MODEL }}
+          FORUM_URL: ${{ vars.FORUM_URL }}
+          SIGNING_STORE_PASSWORD: ${{ secrets.SIGNING_STORE_PASSWORD }}
+          SIGNING_KEY_ALIAS: ${{ secrets.SIGNING_KEY_ALIAS }}
+          SIGNING_KEY_PASSWORD: ${{ secrets.SIGNING_KEY_PASSWORD }}
+          APK_PASS: ${{ secrets.APK_PASS }}
+        run: |
+          if [ -z "$APK_PASS" ]; then echo "APK_PASS не задан — версия разработчика не выкладывается"; exit 0; fi
+          gradle assembleDebug
+          openssl enc -aes-256-cbc -pbkdf2 -iter 200000 -salt -in app/build/outputs/apk/debug/app-debug.apk \
+            -out gated/app-dev.apk.enc -pass env:APK_PASS
       - uses: actions/upload-artifact@v4
         with:
           name: apk
@@ -88,5 +108,5 @@ jobs:
           tag_name: latest
           name: Тестовая сборка
           prerelease: true
-          files: app/build/outputs/apk/debug/*.apk
+          files: out/app-debug.apk
 
