@@ -112,6 +112,13 @@ function Update-Apk {
     } catch { Log "APK: $($_.Exception.Message)" }
 }
 
+# Новая сборка проверяется по часам, а не по числу оборотов цикла: при сбоях туннеля обороты растягиваются
+# таймаутами или обрываются, и счётчик до проверки не доходил — сервер часами отдавал старый APK.
+$script:lastApk = [datetime]::MinValue
+function Maybe-UpdateApk {
+    if (((Get-Date) - $script:lastApk).TotalMinutes -ge 10) { $script:lastApk = Get-Date; Update-Apk }
+}
+
 Log "старт (репозиторий: $repo)"
 if (-not (Test-Path "$repo\server\forum\server.py")) { Log "нет файла $repo\server\forum\server.py — проверьте, где лежит репозиторий"; exit 1 }
 Update-Apk
@@ -131,7 +138,7 @@ if (Test-Path $publicFile) {
         Start-Sleep -Seconds 30
         Ensure-Server
         $tick++
-        if ($tick % 20 -eq 0) { Update-Apk }
+        Maybe-UpdateApk
         try { Invoke-RestMethod -Uri "$public/api/health" -TimeoutSec 15 | Out-Null; if ($fails -gt 0) { Log "постоянный адрес снова отвечает" }; $fails = 0 }
         catch { $fails++; if ($fails -eq 1 -or $fails % 5 -eq 0) { Log "постоянный адрес не ответил ($fails): $($_.Exception.Message)" } }
     }
@@ -164,7 +171,7 @@ while ($true) {
         Start-Sleep -Seconds 30
         Ensure-Server
         $tick++
-        if ($tick % 20 -eq 0) { Update-Apk }   # раз в 10 минут: не вышла ли новая сборка
+        Maybe-UpdateApk   # раз в 10 минут по часам: не вышла ли новая сборка
         if ($t.url) {
             try { Invoke-RestMethod -Uri "$($t.url)/api/health" -TimeoutSec 15 | Out-Null; $fails = 0 }
             catch {
