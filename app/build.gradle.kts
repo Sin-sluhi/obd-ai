@@ -24,7 +24,9 @@ android {
         // Режим разработчика (7 нажатий на версию): в сборке для пользователей (CI) выключен, локально — есть.
         // Переменная репозитория DEV_TOOLS=true включает его и в CI (только для своей тестовой сборки).
         val devTools = env("DEV_TOOLS").ifBlank { if (env("CI") == "true") "false" else "true" } == "true"
-        buildConfigField("boolean", "DEV_TOOLS", devTools.toString())
+        // не константа (parseBoolean), иначе Kotlin вшивает значение в код экранов и при быстрой пересборке
+        // версии разработчика в CI экраны могли остаться с прежним значением
+        buildConfigField("boolean", "DEV_TOOLS", "Boolean.parseBoolean(\"$devTools\")")
     }
     // Постоянный ключ подписи (секреты SIGNING_*; CI раскладывает .jks и задаёт SIGNING_KEYSTORE_FILE).
     // Без него каждая сборка подписывалась случайным debug-ключом раннера и не вставала поверх прошлой версии.
