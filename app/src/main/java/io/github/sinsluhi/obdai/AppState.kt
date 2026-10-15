@@ -560,7 +560,8 @@ class AppState private constructor(context: Context) {
                 carHint = prev?.diagnosis?.car?.takeIf { it.isNotBlank() }, tank = carTanks.lastOrNull(),
                 blackbox = carBlackbox.lastOrNull()
                     ?.takeIf { System.currentTimeMillis() - it.t < 7L * 86_400_000 }
-                    ?.let { Blackbox.report(it) })
+                    // запись чёрного ящика — дополнение к отчёту: её сбой не должен ронять всю проверку
+                    ?.let { bb -> runCatching { Blackbox.report(bb) }.onFailure { addLog(tr("state_log_blackbox_failed", it.message)) }.getOrNull() })
             knownCodes = snap.allCodes.map { it.substringBefore(' ') }.toSet()
             ui { lastSnapshot = snap; battery = batteryNow }
             val serviceText = runCatching { closeVisit(snap, carVisits, carWarmups) }.getOrNull()

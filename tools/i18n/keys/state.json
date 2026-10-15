@@ -67,6 +67,7 @@
   "state_step_ai": "Готовлю разбор",
   "state_log_ai_title": "ИИ: {0}",
   "state_log_ai_failed": "❌ Разбор не удался: {0}",
+  "state_log_blackbox_failed": "Чёрный ящик: не удалось разобрать запись ({0})",
   "state_ai_unavailable": "Подробный разбор временно недоступен",
   "state_log_garage_uploaded": "Гараж выгружен в облако",
   "state_task_clear": "Сброс ошибок",

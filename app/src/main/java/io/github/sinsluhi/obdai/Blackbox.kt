@@ -48,13 +48,15 @@ data class BlackboxEvent(
             val name = NAMES[key] ?: key
             val unit = UNITS[key] ?: ""
             when (key) {
-                "stft", "ltft" -> if (kotlin.math.abs(d) >= 5) add("$name: %.0f → %.0f %%".format(a, b))
+                // имя и единицу в шаблон format не подставляем: «%» в них (нагрузка, дроссель) ломал всю проверку
+                // ошибкой «Conversion = 'End of String'»
+                "stft", "ltft" -> if (kotlin.math.abs(d) >= 5) add("$name: " + "%.0f → %.0f".format(a, b) + " %")
                 "volt" -> if (kotlin.math.abs(d) >= 0.4) add(tr("bb_change_volt", name, "%.1f".format(a), "%.1f".format(b)))
                 "coolant" -> if (kotlin.math.abs(d) >= 5) add(tr("bb_change_coolant", name, "%.0f".format(a), "%.0f".format(b)))
-                "rpm" -> if (kotlin.math.abs(d) >= 400) add("$name: %.0f → %.0f".format(a, b))
+                "rpm" -> if (kotlin.math.abs(d) >= 400) add("$name: " + "%.0f → %.0f".format(a, b))
                 "speed" -> if (kotlin.math.abs(d) >= 15) add(tr("bb_change_speed", name, "%.0f".format(a), "%.0f".format(b)))
-                "timing" -> if (kotlin.math.abs(d) >= 4) add("$name: %.0f° → %.0f°".format(a, b))
-                else -> if (a != 0.0 && kotlin.math.abs(d / a) >= 0.35) add("$name: %.1f → %.1f $unit".format(a, b))
+                "timing" -> if (kotlin.math.abs(d) >= 4) add("$name: " + "%.0f° → %.0f°".format(a, b))
+                else -> if (a != 0.0 && kotlin.math.abs(d / a) >= 0.35) add("$name: " + "%.1f → %.1f".format(a, b) + " $unit")
             }
         }
     }

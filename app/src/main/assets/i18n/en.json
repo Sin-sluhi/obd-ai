@@ -985,6 +985,7 @@
  "state_kb_updated": "Owner experience database updated: {0} records",
  "state_location_saved": "Location for the weather forecast saved",
  "state_log_ai_failed": "❌ Analysis failed: {0}",
+ "state_log_blackbox_failed": "Black box: could not read the recording ({0})",
  "state_log_ai_title": "AI: {0}",
  "state_log_ai_unset": "Analysis not set up, showing the result from the reference",
  "state_log_blackbox": "Black box: event \"{0}\" recorded ({1} samples)",
