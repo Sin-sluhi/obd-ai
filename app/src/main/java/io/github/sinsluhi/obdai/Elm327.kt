@@ -260,6 +260,11 @@ class Elm327(private val log: (String) -> Unit) : ObdLink {
             log(tr("elm_scan_skipped", adapter.missing.joinToString()))
             return emptyList()
         }
+        if (ModuleMap.isBmw(brand)) {
+            val bmw = scanBmw(progress)
+            if (bmw != null) return bmw
+            log("BMW: адаптер не поддерживает расширенную адресацию (ATCEA) — опрашиваю стандартные адреса") // i18n-ignore: журнал
+        }
         val found = mutableListOf<ModuleScan>()
         val known = ModuleMap.candidates
         val extra = if (ModuleMap.isHyundaiKia(brand)) ModuleMap.hyundaiSweep.filter { s -> known.none { it.addr == s.addr } } else emptyList()
@@ -281,6 +286,50 @@ class Elm327(private val log: (String) -> Unit) : ObdLink {
                 send("ATFCSM 0"); send("ATAR"); send("ATSH 7DF"); send("ATST 64"); send("ATAT1")
             }
         }
+        return found
+    }
+
+    /**
+     * BMW и MINI серий F/G: блоки сидят за центральным шлюзом. Запрос идёт на CAN ID 0x6F1, первым байтом —
+     * адрес блока (расширенная адресация ISO 15765, у ELM327 — ATCEA), ответ приходит с 0x600 + адрес.
+     * Обходим 0x00–0x7F, в каждом блоке читаем память ошибок 19 02 FF — коды в формате BMW (130508, 118002).
+     * Порядок команд управления потоком как в документации ELM327: FCSH, FCSD, затем FCSM 1.
+     * null — адаптер не умеет расширенную адресацию.
+     */
+    private fun scanBmw(progress: (Int, Int) -> Unit): List<ModuleScan>? {
+        val found = mutableListOf<ModuleScan>()
+        val addrs = ModuleMap.bmwAddresses
+        try {
+            send("ATAT0")
+            send("ATST 20")       // ~130 мс на ответ: шлюз BMW отвечает быстро, а молчащих адресов много
+            send("ATSH 6F1")
+            send("ATFCSH 6F1")
+            for ((i, a) in addrs.withIndex()) {
+                progress(i + 1, addrs.size)
+                val hex = "%02X".format(a)
+                val cea = send("ATCEA $hex")
+                if (cea.contains("?")) return if (i == 0) null else found
+                send("ATCRA %03X".format(0x600 + a))
+                send("ATFCSD $hex 30 00 00")
+                send("ATFCSM 1")
+                val r = send("1902FF", 1500)
+                if (silent(r)) continue
+                log("↩ BMW $hex: ${r.replace("\r", " | ").take(240)}") // i18n-ignore: журнал
+                val name = ModuleMap.bmwName(a)
+                val codes = ModuleDecoder.parseBmw(r)
+                if (codes != null) {
+                    found.add(ModuleScan(name, 0x600 + a, codes.map { it.first }, "BMW", codes.map { it.second }, null, null))
+                    log("$name: ${if (codes.isEmpty()) tr("elm_no_codes") else codes.joinToString { it.first }}")
+                } else if (!ModuleDecoder.isNegative(ObdDecoder.messages(r), 0x19)) {
+                    found.add(ModuleScan(name, 0x600 + a, emptyList(), "BMW"))
+                }
+            }
+        } finally {
+            runCatching {
+                send("ATCEA"); send("ATFCSM 0"); send("ATAR"); send("ATSH 7DF"); send("ATST 64"); send("ATAT1")
+            }
+        }
+        log("BMW: ответили блоки ${found.size}") // i18n-ignore: журнал
         return found
     }
 

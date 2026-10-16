@@ -227,6 +227,36 @@ object ModuleDecoder {
         else -> " (история)" // i18n-ignore
     }
 
+    /**
+     * Ответ блока BMW на 19 02 FF через шлюз: коды трёхбайтные (как в ISTA и марочных сканерах: 130508, 118002),
+     * за каждым — байт статуса UDS. Адаптер с расширенной адресацией может оставлять байт адреса тестера (F1)
+     * в начале каждой строки многокадрового ответа — если он стоит у всех строк, снимаем его.
+     */
+    fun parseBmw(raw: String): List<Pair<String, Int>>? {
+        val segRx = Regex("^([0-9A-F]):([0-9A-F]*)$")
+        val hex = Regex("^[0-9A-F]+$")
+        val lines = raw.uppercase().split('\r', '\n').map { it.trim().replace(" ", "") }
+            .filter { it.isNotEmpty() && !it.startsWith("SEARCHING") }
+        val segs = lines.mapNotNull { segRx.find(it)?.groupValues?.get(2) }
+        val parts = if (segs.isNotEmpty()) {
+            if (segs.all { it.startsWith("F1") }) segs.map { it.drop(2) } else segs
+        } else {
+            lines.filter { hex.matches(it) && it.length % 2 == 0 && it.length > 3 }
+        }
+        val bytes = parts.flatMap { if (it.length % 2 == 0 && hex.matches(it)) it.chunked(2).map { b -> b.toInt(16) } else emptyList() }
+        var i = -1
+        for (k in 0 until bytes.size - 1) if (bytes[k] == 0x59 && bytes[k + 1] == 0x02) { i = k; break }
+        if (i < 0) return null
+        val codes = linkedMapOf<String, Int>()
+        for (g in bytes.drop(i + 3).chunked(4)) {
+            if (g.size < 4 || (g[0] == 0 && g[1] == 0 && g[2] == 0)) continue
+            val code = "%02X%02X%02X".format(g[0], g[1], g[2])
+            val key = code + statusSuffix(g[3])
+            if (!codes.containsKey(key)) codes[key] = g[3]
+        }
+        return codes.entries.map { it.key to it.value }
+    }
+
     /** KWP: 58 <кол-во> затем группы по 3 байта: DTC(2) + статус. */
     fun parseKwp(msgs: List<List<Int>>): List<String>? {
         var found = false
@@ -282,6 +312,25 @@ object ModuleMap {
         0x7C7 to "obd_module_tpms", 0x7A2 to "obd_module_sunroof_windows", 0x7A3 to "obd_module_seats", 0x7C5 to "obd_module_avn",
         0x7D0 to "obd_module_engine_extra", 0x7D3 to "obd_module_immobilizer", 0x7D6 to "obd_module_awd_4wd", 0x7B2 to "obd_module_rear_camera", 0x7B4 to "obd_module_blind_spot"
     )
+
+    /** BMW и MINI серий F/G: блоки за центральным шлюзом, адресация через 0x6F1 + байт адреса блока. */
+    fun isBmw(brand: String?): Boolean {
+        val b = brand.orEmpty().lowercase()
+        return b.contains("bmw") || b.contains("mini")
+    }
+
+    /**
+     * Адреса блоков BMW F/G для обхода через шлюз. Подписаны только те, в которых есть уверенность; остальные
+     * идут как «Блок 0xNN» — опрашиваем весь диапазон 0x00–0x7F, как это делают марочные сканеры.
+     */
+    private val bmwNames = mapOf(
+        0x01 to "obd_module_airbags", 0x10 to "obd_module_can_gateway", 0x12 to "obd_module_engine",
+        0x13 to "obd_module_engine_extra", 0x18 to "obd_module_gearbox", 0x19 to "obd_module_awd",
+        0x29 to "obd_module_abs_esp", 0x40 to "obd_module_immobilizer", 0x60 to "obd_module_cluster",
+        0x63 to "obd_module_avn", 0x72 to "obd_module_body", 0x78 to "obd_module_climate"
+    )
+    val bmwAddresses: List<Int> get() = (0x00..0x7F).toList()
+    fun bmwName(addr: Int): String = bmwNames[addr]?.let { tr(it) } ?: tr("obd_module_block", "0x%02X".format(addr))
 
     fun isHyundaiKia(brand: String?): Boolean {
         val b = brand.orEmpty().lowercase()
