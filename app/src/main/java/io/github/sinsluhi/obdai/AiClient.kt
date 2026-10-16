@@ -469,6 +469,11 @@ next_steps, for_service, typical_issues) — только по-русски, к�
         appendLine("Сохранённые ошибки: ${snap.stored.joinToString().ifEmpty { "нет" }}")
         appendLine("Неподтверждённые ошибки: ${snap.pending.joinToString().ifEmpty { "нет" }}")
         if (snap.permanent.isNotEmpty()) appendLine("Постоянные ошибки (не стираются до починки): ${snap.permanent.joinToString()}")
+        if (snap.modules.none { it.addr != 0x7E0 && it.addr != 0x7E1 }) {
+            appendLine("Ответили только двигатель и коробка: заводская память других блоков и расширенная память двигателя " +
+                "(BMW, Mercedes, старые VAG) не прочитаны. Если кодов нет — не пиши уверенно, что машина исправна: " +
+                "скажи, что по стандартному OBD ошибок нет, а полную проверку стоит сделать марочным сканером.") // i18n-ignore: промпт
+        }
         if (snap.modules.isNotEmpty()) {
             appendLine("Другие блоки (опрос по заводскому протоколу, ответили только эти):")
             snap.modules.forEach { m ->

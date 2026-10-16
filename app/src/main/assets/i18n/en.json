@@ -655,6 +655,8 @@
  "model_no_codes_mil_note": "Yet the Check Engine light is on: the fault may be in a module the adapter can't read.",
  "model_no_codes_text": "The engine module has no fault codes stored.{0}",
  "model_no_codes_title": "No faults found",
+ "model_no_codes_title_obd": "No OBD trouble codes",
+ "model_no_codes_limited": "Only the engine (and gearbox) responded. The manufacturer fault memory of other modules and the extended engine memory (BMW, Mercedes, Audi and VW before ~2013) is not read through this adapter yet, so faults may exist that standard OBD does not show. For a full check of such a car use a dealer or multi-brand scanner.",
  "model_price_from": "from {0} ₽",
  "model_price_unknown": "to be confirmed",
  "model_share_errors": "Faults:",

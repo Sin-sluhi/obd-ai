@@ -224,11 +224,14 @@ data class Diagnosis(
             val measuredText = if (measured.isEmpty()) "" else tr("kb_measured") + " " + measured.joinToString(" ")
             if (all.isEmpty()) {
                 val milNote = if (snap.milOn == true) " " + tr("model_no_codes_mil_note") else ""
+                // Ответили только двигатель (и коробка): заводская память других блоков и расширенная память двигателя
+                // (BMW, Mercedes, старые VAG) не прочитаны — уверенное «ошибок не найдено» тут вводит в заблуждение
+                val onlyEngine = snap.modules.none { it.addr != 0x7E0 && it.addr != 0x7E1 }
                 return Diagnosis(
                     car = carName,
                     level = if (snap.checks.any { it.level == "warning" || it.level == "danger" }) "warning" else "ok",
-                    title = tr("model_no_codes_title"),
-                    text = tr("model_no_codes_text", milNote),
+                    title = if (onlyEngine) tr("model_no_codes_title_obd") else tr("model_no_codes_title"),
+                    text = tr("model_no_codes_text", milNote) + if (onlyEngine) " " + tr("model_no_codes_limited") else "",
                     canDrive = "yes",
                     codes = emptyList(),
                     summary = measuredText,
