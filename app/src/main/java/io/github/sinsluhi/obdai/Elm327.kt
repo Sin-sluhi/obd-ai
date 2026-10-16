@@ -47,9 +47,9 @@ class Elm327(private val logger: (String) -> Unit) : ObdLink, ElmSession {
             is AdapterTarget.Wifi -> "Wi-Fi ${target.host}"
         }
         transport = when (target) {
-            is AdapterTarget.Classic -> BtTransport.open(target.device, log)
-            is AdapterTarget.Ble -> BleTransport(context, target.device, log)
-            is AdapterTarget.Wifi -> WifiTransport(target.host, target.port, context, log)
+            is AdapterTarget.Classic -> BtTransport.open(target.device, logger)
+            is AdapterTarget.Ble -> BleTransport(context, target.device, logger)
+            is AdapterTarget.Wifi -> WifiTransport(target.host, target.port, context, logger)
         }
         log(tr("elm_channel", target.title))
         initAdapter()
