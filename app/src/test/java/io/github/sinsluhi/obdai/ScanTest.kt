@@ -18,6 +18,9 @@ class ScriptedCar(private val bits29: Boolean = false, private val unsupported: 
      * На K-line req = физический адрес блока.
      */
     class Ecu(val req: Int, val resp: Int, val ext: Int? = null, val rxByte: Int = 0xF1, val handler: (List<Int>) -> List<Int>?)
+    /** GMLAN: на A9 блок отвечает серией сырых кадров на своём UUDT ID (без ISO-TP). */
+    class Uudt(val req: Int, val id: Int, val frames: List<List<Int>>)
+    val uudt = mutableListOf<Uudt>()
 
     val ecus = mutableListOf<Ecu>()
     val sent = mutableListOf<String>()
@@ -30,6 +33,8 @@ class ScriptedCar(private val bits29: Boolean = false, private val unsupported: 
     private var fcsd: List<Int> = emptyList()
     private var fcsm = 0
     private var cea: Int? = null
+    private var cfc = true
+    private var caf = true
     private var ta = 0xF1
     private var klineInit: Int? = null   // адрес блока, с которым прошёл init на K-line
 
@@ -46,12 +51,14 @@ class ScriptedCar(private val bits29: Boolean = false, private val unsupported: 
         val c = cmd.uppercase().replace(" ", "")
         if (c.startsWith("AT")) {
             // имена команд — по списку, длинные раньше: аргумент может начинаться с буквы (ATSH DA28F1)
-            val name = Regex("^AT(FCSH|FCSD|FCSM|CRA|CEA|CAF|CFC|CF|CM|CP|AR|SH|ST|AT|TA|FI|SI|H|E|L|S|Z|I|@1)").find(c)?.value ?: return "?"
+            val name = Regex("^AT(FCSH|FCSD|FCSM|CRA|CEA|CAF|CFC|CF|CM|CP|AR|SH|ST|AT|TA|FI|SI|PC|H|E|L|S|Z|I|@1)").find(c)?.value ?: return "?"
             if (name in unsupported) return "?"
             val arg = c.removePrefix(name)
             when (name) {
                 "ATSH" -> sh = if (bits29) (0x18 shl 24) or hex(arg) else hex(arg)
                 "ATTA" -> ta = hex(arg)
+                "ATCFC" -> cfc = arg == "1"
+                "ATCAF" -> caf = arg == "1"
                 "ATFI", "ATSI" -> {
                     // K-line: быстрый init к физическому адресу из заголовка 81 xx F1
                     val addr = (sh shr 8) and 0xFF
@@ -70,13 +77,21 @@ class ScriptedCar(private val bits29: Boolean = false, private val unsupported: 
             }
             return "OK"
         }
-        val req = c.chunked(2).map { it.toInt(16) }
+        // нечётная длина — в конце цифра ожидаемых кадров (ELM v1.3+): адаптер отдаёт «>» после стольких кадров
+        val expect = if (c.length % 2 == 1) c.last().digitToInt(16) else null
+        val body = if (expect != null) c.dropLast(1) else c
+        var req = body.chunked(2).map { it.toInt(16) }
+        if (!caf && req.isNotEmpty()) req = req.drop(1)   // ATCAF0: первый байт запроса — длина, блоку она не нужна
         val lines = mutableListOf<String>()
         if (!isCan) {
             // K-line при ATH0: адаптер отдаёт только байты данных, без адресов и контрольной суммы
             val e = ecus.firstOrNull { it.req == klineInit } ?: return "NO DATA"
             val payload = e.handler(req) ?: return "NO DATA"
             return payload.joinToString(" ") { "%02X".format(it) } + "\r"
+        }
+        for (u in uudt) {
+            if (u.req != sh || req.firstOrNull() != 0xA9 || !passes(u.id)) continue
+            for (f in u.frames) lines.add("%03X ".format(u.id) + f.joinToString(" ") { "%02X".format(it) })
         }
         for (e in ecus) {
             if (e.req != sh || e.ext != cea) continue
@@ -86,7 +101,8 @@ class ScriptedCar(private val bits29: Boolean = false, private val unsupported: 
             if (cea != null && e.rxByte != ta) continue
             lines.addAll(frames(e, payload))
         }
-        return if (lines.isEmpty()) "NO DATA" else lines.joinToString("\r") + "\r"
+        val out = if (expect != null) lines.take(expect) else lines
+        return if (out.isEmpty()) "NO DATA" else out.joinToString("\r") + "\r"
     }
 
     private fun passes(id: Int): Boolean {
@@ -108,8 +124,8 @@ class ScriptedCar(private val bits29: Boolean = false, private val unsupported: 
         if (payload.size <= cap) return listOf(line(listOf(payload.size) + payload))
         val out = mutableListOf(line(listOf(0x10 or (payload.size shr 8), payload.size and 0xFF) + payload.take(cap - 1)))
         // кадр управления потоком: ручной — на ATFCSH (с байтом адреса), автоматический — на «ответ−8» / обмен адресов
-        val fcOk = if (fcsm == 1) fcsh == e.req && (e.ext == null || fcsd.firstOrNull() == e.ext)
-                   else e.ext == null && autoFc(e.resp) == e.req
+        val fcOk = cfc && if (fcsm == 1) fcsh == e.req && (e.ext == null || fcsd.firstOrNull() == e.ext)
+                          else e.ext == null && autoFc(e.resp) == e.req
         if (!fcOk) return out
         var rest = payload.drop(cap - 1); var seq = 1
         while (rest.isNotEmpty()) {
@@ -141,6 +157,21 @@ object Replies {
             0x19 -> listOf(0x7F, 0x19, 0x11)
             0x18 -> listOf(0x58, records.size / 3) + records.toList()
             else -> listOf(0x7F, req[0], 0x11)
+        }
+    }
+}
+
+object MoreReplies {
+    /** Nissan/Renault KWP-on-CAN: без сессии 10 C0 на 18 — 7F 18 22. */
+    fun kwpWithSession(vararg records: Int): (List<Int>) -> List<Int>? {
+        var open = false
+        return { req ->
+            when (req[0]) {
+                0x19 -> listOf(0x7F, 0x19, 0x11)
+                0x10 -> if (req.getOrNull(1) == 0xC0) { open = true; listOf(0x50, 0xC0) } else listOf(0x7F, 0x10, 0x12)
+                0x18 -> if (open) listOf(0x58, records.size / 3) + records.toList() else listOf(0x7F, 0x18, 0x22)
+                else -> listOf(0x7F, req[0], 0x11)
+            }
         }
     }
 }
@@ -282,6 +313,60 @@ class ScanTest {
         assertEquals(listOf("P0300"), r.modules[0].codes)
         assertTrue(car.sent.contains("ATSH 81 10 F1") && car.sent.contains("ATFI"))
         assertTrue(car.sent.none { it == "ATH1" })
+    }
+
+    @Test fun discoveryProbeIsSessionWithOneFrameAndNoAutoFlow() {
+        val car = ScriptedCar()
+        car.ecus += ScriptedCar.Ecu(0x7E0, 0x7E8, handler = Replies.uds(*engineRecords))
+        val r = ModuleScanner(car).scan(null, emptyList()) { _, _ -> }
+        assertEquals(listOf("P0300", "P0420"), r.modules.first().codes.map { it.substringBefore(' ') })
+        assertTrue(car.sent.contains("1001 1") && car.sent.contains("ATCFC0"))
+        assertTrue(car.sent.indexOf("ATCFC1") > car.sent.lastIndexOf("1001 1"))
+    }
+
+    @Test fun responseIdIsNotProbedAsRequest() {
+        val car = ScriptedCar()
+        car.ecus += ScriptedCar.Ecu(0x7E0, 0x7E8, handler = Replies.uds())
+        car.ecus += ScriptedCar.Ecu(0x780, 0x781, handler = Replies.uds())   // Mitsubishi: ответ +1
+        ModuleScanner(car).scan("Mitsubishi", emptyList()) { _, _ -> }
+        val shs = car.sent.filter { it.startsWith("ATSH ") }
+        assertTrue(shs.contains("ATSH 780"))
+        assertTrue(shs.none { it == "ATSH 781" })
+    }
+
+    @Test fun nissanKwpNeedsSession() {
+        val car = ScriptedCar()
+        car.ecus += ScriptedCar.Ecu(0x7E0, 0x7E8, handler = Replies.uds())
+        car.ecus += ScriptedCar.Ecu(0x745, 0x765, handler = MoreReplies.kwpWithSession(0x96, 0x02, 0x60))
+        val r = ModuleScanner(car).scan("Nissan", emptyList()) { _, _ -> }
+        val bcm = r.modules.first { it.addr == 0x745 }
+        assertEquals(listOf("B1602"), bcm.codes)
+        assertTrue(car.sent.contains("10C0"))
+    }
+
+    @Test fun gmGlobalAReadsViaGmlanUudt() {
+        val car = ScriptedCar()
+        car.ecus += ScriptedCar.Ecu(0x7E0, 0x7E8, handler = { req -> if (req[0] == 0x10) listOf(0x50, 0x01) else listOf(0x7F, req[0], 0x11) })
+        car.ecus += ScriptedCar.Ecu(0x241, 0x641, handler = { req -> if (req[0] == 0x10) listOf(0x50, 0x01) else listOf(0x7F, req[0], 0x11) })
+        // ECM: P0300 (тип отказа 00) и P0171-1A, затем кадр конца списка
+        car.uudt += ScriptedCar.Uudt(0x7E0, 0x5E8, listOf(listOf(0x81, 0x03, 0x00, 0x00, 0x12), listOf(0x81, 0x01, 0x71, 0x1A, 0x12), listOf(0x81, 0, 0, 0, 0)))
+        car.uudt += ScriptedCar.Uudt(0x241, 0x541, listOf(listOf(0x81, 0, 0, 0, 0)))
+        val r = ModuleScanner(car).scan("Chevrolet", emptyList()) { _, _ -> }
+        val ecm = r.modules.first { it.addr == 0x7E0 }
+        assertEquals("GMLAN", ecm.via)
+        assertEquals(listOf("P0300", "P0171-1A"), ecm.codes.map { it.substringBefore(' ') })
+        val bcm = r.modules.first { it.addr == 0x241 }
+        assertEquals("GMLAN", bcm.via)
+        assertTrue(bcm.codes.isEmpty())
+        assertTrue(car.sent.contains("ATCAF0") && car.sent.contains("ATCRA 5E8") && car.sent.contains("03A98112"))
+        assertEquals("ATCAF1", car.sent.last { it.startsWith("ATCAF") })
+    }
+
+    @Test fun bmwGatewayStopsAt80WhenLowerHalfEmpty() {
+        val car = ScriptedCar()
+        car.ecus += ScriptedCar.Ecu(0x7E0, 0x7E8, handler = Replies.uds())
+        ModuleScanner(car).scan("BMW", emptyList()) { _, _ -> }
+        assertTrue(car.sent.none { it == "ATCEA 80" })
     }
 
     @Test fun cacheRoundTrip() {

@@ -251,6 +251,24 @@ object ModuleDecoder {
     fun parseBmw(raw: String): List<Pair<String, Int>>? =
         parseUdsDetailed(ObdDecoder.messages(raw).map { m -> if (m.size > 1 && m[0] == 0xF1 && m[1] != 0x59) m.drop(1) else m }, oemHex = true)
 
+    /**
+     * GMLAN (GMW3110 $A9 81): ответ — серия однокадровых UUDT на ID 0x5xx, в каждом один код:
+     * 81, DTC(2), байт типа отказа, статус. Кадр с нулевым кодом — конец списка. null — ни одного кадра 81.
+     */
+    fun parseGmlan(frames: List<List<Int>>): List<Pair<String, Int>>? {
+        var found = false
+        val codes = linkedMapOf<String, Int>()
+        for (f in frames) {
+            if (f.size < 5 || f[0] != 0x81) continue
+            found = true
+            if (f[1] == 0 && f[2] == 0) break
+            val base = ObdDecoder.dtc(f[1], f[2])
+            val code = if (f[3] != 0) "%s-%02X".format(base, f[3]) else base
+            if (!codes.containsKey(code)) codes[code] = f[4]
+        }
+        return if (found) codes.entries.map { it.key to it.value } else null
+    }
+
     /** KWP: 58 <кол-во> затем группы по 3 байта: DTC(2) + статус. */
     fun parseKwp(msgs: List<List<Int>>): List<String>? {
         var found = false
@@ -321,12 +339,19 @@ object ModuleMap {
         0x5F to "obd_module_can_gateway", 0x6D to "obd_module_camera_assist")
     fun toyotaSubName(sub: Int): String = toyotaSubNames[sub]?.let { tr(it) } ?: tr("obd_module_block", "750/%02X".format(sub))
     fun isToyota(brand: String?): Boolean { val b = brand.orEmpty().lowercase(); return b.contains("toyota") || b.contains("lexus") }
+    /** GM до Global B: ошибки только по GMLAN A9 81 (Cruze, Aveo T300, Cobalt, Orlando, Astra J, Insignia A, Captiva C140). */
+    fun isGm(brand: String?): Boolean {
+        val b = brand.orEmpty().lowercase()
+        return listOf("chevrolet", "cadillac", "buick", "gmc", "daewoo", "ravon", "opel", "vauxhall", "holden").any { b.contains(it) }
+    }
 
     /** K-line KWP2000: физические адреса для быстрого init. 0x10 — двигатель (Лада, ГАЗ, УАЗ), остальные — типовые. */
-    val klineAddresses: List<Int> = listOf(0x10, 0x11, 0x12, 0x17, 0x18, 0x28, 0x29, 0x40, 0x58, 0x60)
+    val klineAddresses: List<Int> = listOf(0x10, 0x11, 0x20, 0x28, 0x27, 0x58, 0x30, 0x70, 0xA0, 0x36, 0x29, 0x60, 0x6A, 0x17, 0x18, 0x40, 0x12)
     private val klineNames = mapOf(0x10 to "obd_module_engine", 0x11 to "obd_module_engine_extra", 0x12 to "obd_module_engine_extra",
-        0x17 to "obd_module_cluster", 0x18 to "obd_module_gearbox", 0x28 to "obd_module_abs_esp", 0x29 to "obd_module_abs_esp",
-        0x40 to "obd_module_body", 0x58 to "obd_module_airbags", 0x60 to "obd_module_cluster")
+        0x17 to "obd_module_cluster", 0x18 to "obd_module_gearbox", 0x20 to "obd_module_abs_esp", 0x28 to "obd_module_abs_esp",
+        0x27 to "obd_module_airbags", 0x58 to "obd_module_airbags", 0x30 to "obd_module_eps", 0x70 to "obd_module_body",
+        0xA0 to "obd_module_immobilizer", 0x36 to "obd_module_climate", 0x29 to "obd_module_climate", 0x60 to "obd_module_cluster",
+        0x6A to "obd_module_parktronic", 0x40 to "obd_module_body")
     fun klineName(brand: String?, addr: Int): String = klineNames[addr]?.let { tr(it) } ?: tr("obd_module_block", "%02X".format(addr))
 
     /** 29-битный перебор 18DAxxF1: сначала известные адреса Honda/Renault-Nissan/Chrysler, затем остальное. */
@@ -396,7 +421,8 @@ object ModuleMap {
         0x29 to "obd_module_abs_esp", 0x40 to "obd_module_immobilizer", 0x60 to "obd_module_cluster",
         0x63 to "obd_module_avn", 0x72 to "obd_module_body", 0x78 to "obd_module_climate"
     )
-    val bmwAddresses: List<Int> get() = (0x00..0x7F).toList()
+    /** Адрес блока — байт 0x00–0xFF (кроме тестера F1); у F/G-серий камеры, фары, усилитель, сиденья сидят выше 0x7F. */
+    val bmwAddresses: List<Int> get() = (0x00..0xFF).filter { it != 0xF1 }
     fun bmwName(addr: Int): String = bmwNames[addr]?.let { tr(it) } ?: tr("obd_module_block", "0x%02X".format(addr))
 
     fun isHyundaiKia(brand: String?): Boolean {

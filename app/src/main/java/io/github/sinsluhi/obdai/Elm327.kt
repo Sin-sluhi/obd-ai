@@ -109,22 +109,29 @@ class Elm327(private val logger: (String) -> Unit) : ObdLink, ElmSession {
         log(tr("elm_probing_protocol"))
         fun ok(r: String) = listOf("UNABLE", "NO DATA", "ERROR", "TIMEOUT", "STOPPED", "?").none { r.contains(it) } &&
             ObdDecoder.messages(r).isNotEmpty()
-        // 1) автопоиск: на первый запрос адаптер перебирает протоколы, это до 15–20 с — ждём, а не повторяем
-        var probe = send("0100", 20000)
-        if (!ok(probe)) {
-            Trace.note("автопоиск не нашёл протокол: $probe") // i18n-ignore: лог
-            // 2) повтор: блок мог проснуться позже первой посылки (так Car Scanner и «видит со второго раза»)
-            Thread.sleep(800)
-            probe = send("0100", 8000)
+        // 1) Ручной перебор по доле в парке: CAN 11/500 (~85 %), 29/500 (Honda), 250k, K-line быстрый init.
+        //    Так находим шину за доли секунды и не трогаем автопоиск ELM: тот начинает с J1850 и медленных init,
+        //    а проба 250k на живой шине 500k даёт ERR94 у клонов и глушит шлюз на полсекунды.
+        //    ATPC закрывает протокол и сбрасывает счётчики ошибок CAN перед следующей пробой.
+        send("ATST 32"); send("ATAT1")
+        var probe = ""
+        for (p in listOf(6, 7, 8, 9, 5)) {
+            send("ATPC"); send("ATSP $p")
+            val r = send("0100", if (p == 5) 8000 else 4000)
+            Trace.note("протокол $p: ${if (ok(r)) "ответил" else "нет"}") // i18n-ignore: лог
+            if (ok(r)) { probe = r; break }
         }
         if (!ok(probe)) {
-            // 3) ручной перебор: CAN 11/500, 11/250, 29/500, 29/250, затем K-line (KWP fast, KWP slow, ISO 9141)
-            for (p in listOf(6, 8, 7, 9, 5, 4, 3)) {
-                send("ATSP $p")
-                val r = send("0100", if (p <= 5) 12000 else 6000)
-                Trace.note("протокол $p: ${if (ok(r)) "ответил" else "нет"}") // i18n-ignore: лог
-                if (ok(r)) { probe = r; log(tr("elm_protocol_manual", p)); break }
-            }
+            // 2) автопоиск ELM — для J1850 и медленного init ISO 9141 / KWP (машины до ~2004)
+            send("ATPC"); send("ATSP0")
+            probe = send("0100", 20000)
+            Trace.note("автопоиск: ${if (ok(probe)) "ответил" else probe}") // i18n-ignore: лог
+        }
+        if (!ok(probe)) {
+            // 3) повтор на самом частом протоколе: блок мог проснуться позже первой посылки («видит со второго раза»)
+            Thread.sleep(800)
+            send("ATPC"); send("ATSP6")
+            probe = send("0100", 4000)
             if (!ok(probe)) send("ATSP0")   // никто не ответил — оставляем автопоиск на следующую попытку
         }
         val good = ok(probe)
@@ -233,6 +240,11 @@ class Elm327(private val logger: (String) -> Unit) : ObdLink, ElmSession {
         Trace.rx(out, System.currentTimeMillis() - t0)
         if (out.contains("BUFFER FULL") || out.contains("<DATA ERROR")) {
             log(tr("elm_truncated", cmd))
+        }
+        if (out.contains("LV RESET")) {
+            // просадка питания: чип сбросил ATE0/ATH/ATS к заводским — лог, следующая проверка переинициализирует
+            Trace.note("LV RESET: адаптер сбросился по питанию") // i18n-ignore: лог
+            log(tr("elm_lv_reset"))
         }
         out
     }

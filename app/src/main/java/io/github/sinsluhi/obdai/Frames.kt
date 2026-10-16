@@ -95,6 +95,12 @@ object Frames {
 
     private fun isHex(s: String) = s.isNotEmpty() && s.all { it in '0'..'9' || it in 'A'..'F' }
 
+    /** Сырые кадры без сборки ISO-TP: (ID, байты как есть). Для ответов, где первый байт — не PCI (GMLAN UUDT при ATCAF0). */
+    fun raw(raw: String, bits29: Boolean): List<Frame> = raw.uppercase().split('\r', '\n')
+        .map { it.trim() }
+        .filter { it.isNotEmpty() && !it.startsWith("SEARCHING") && STATUS_WORDS.none { w -> it.contains(w) } }
+        .mapNotNull { line -> split(line, bits29)?.let { (id, b) -> Frame(id, b) } }
+
     /** Законченные сообщения как списки байтов — формат, который понимают разборы [ModuleDecoder]. */
     fun messages(frames: List<Frame>): List<List<Int>> = frames.filter { !it.partial && it.data.isNotEmpty() }.map { it.data }
 }

@@ -166,49 +166,40 @@ class ModuleScanner(private val s: ElmSession) {
      */
     private fun sweep(brand: String?, progress: (Int, Int) -> Unit, found: MutableMap<Int, ModuleScan>, addrs: MutableMap<Int, EcuAddr>) {
         if (ceaUsed) { s.send("ATCEA"); ceaUsed = false }
-        s.send("ATFCSM 0"); s.send("ATST 32")
+        // На поиске автопоток выключен: достаточно первого кадра, чтобы узнать блок и ID ответа, а длинные ответы
+        // только забивали бы буфер клона. Цифра «1» в конце зонда — ELM отдаёт управление после первого кадра,
+        // не дожидаясь таймаута: молчащие адреса стоят ATST, ответившие — миллисекунды.
+        s.send("ATFCSM 0"); s.send("ATCFC0"); s.send("ATST 32")
         val plan = if (s.is29Bit) listOf(ModuleMap.Range(ModuleMap.sweep29(), "ATCF 18DAF100", "ATCM 1FFFFF00")) else ModuleMap.plan(brand)
         val targets = plan.flatMap { r -> r.targets.map { it to r } }
         s.log(tr("elm_scan_mode_full", targets.size))
-        val needRead = mutableListOf<EcuAddr>()       // ответили, но не полностью или не по UDS — дочитать
-        val needIdentity = mutableListOf<EcuAddr>()   // ответ полный, осталось спросить VIN и номер блока
+        val needRead = mutableListOf<EcuAddr>()       // кто ответил на зонд — дочитать память ошибок
         var range: ModuleMap.Range? = null
         targets.forEachIndexed { i, (a, r) ->
             progress(i + 1, targets.size)
             if (r !== range) { range = r; rangeFilter = wideFilter(r.cf, r.cm) }
+            // адрес, который уже засветился как ID ответа найденного блока, — не запрос (Hyundai у 7DF, Mitsubishi +1)
+            if (a.req in addrs) return@forEachIndexed
             header(a)
             if (!rangeFilter) filterTo(a)
-            val raw = s.send("1902FF", 1500)
+            // Зонд — сессия по умолчанию: UDS отвечает 50 01, KWP — 7F 10 12, и оба тем самым выдают ID ответа.
+            // На 19 02 FF старые KWP-блоки (Mercedes до 2011, Nissan, Mitsubishi) могут промолчать совсем.
+            val raw = s.send("1001 1", 1500)
             val frames = Frames.parse(raw, s.is29Bit)
             for (id in frames.map { it.id }.distinct()) {
                 if (id in addrs) continue
-                val own = frames.filter { it.id == id }
                 val addr = a.copy(resp = id)
-                val msgs = Frames.messages(own)
-                val detailed = ModuleDecoder.parseUdsDetailed(msgs, oemHex = ModuleMap.isBmw(brand))
-                if (own.none { it.partial } && detailed != null && !ModuleDecoder.isNegative(msgs, 0x19)) {
-                    // полный ответ уже на руках (стандартная пара +8, автопоток ELM сработал)
-                    val e = addr.copy(via = "UDS")
-                    addrs[id] = e
-                    found[id] = module(e, brand, detailed, Pair(null, null))
-                    needIdentity.add(e)
-                } else {
-                    addrs[id] = addr
-                    needRead.add(addr)
-                }
+                addrs[id] = addr
+                needRead.add(addr)
             }
         }
+        s.send("ATCFC1")
         // второй проход: дочитать блоки, которым не хватило автопотока, или которые ответили 7F / не по UDS
         needRead.forEachIndexed { i, a ->
             progress(i + 1, needRead.size)
             val r = readEcu(a, brand)
             if (r != null) { found[a.resp] = r.first; addrs[a.resp] = r.second }
             else if (a.resp !in found) found[a.resp] = ModuleScan(ModuleMap.name(brand, a), a.display, emptyList(), "?")
-        }
-        for (a in needIdentity) {
-            setup(a)
-            val (vin, part) = identity(a)
-            if (vin != null || part != null) found[a.resp]?.let { found[a.resp] = it.copy(vin = vin, part = part) }
         }
     }
 
@@ -220,8 +211,10 @@ class ModuleScanner(private val s: ElmSession) {
                              found: MutableMap<Int, ModuleScan>, addrs: MutableMap<Int, EcuAddr>) {
         ceaUsed = true
         s.send("ATSH %03X".format(req)); s.send("ATFCSH %03X".format(req))
+        var hits = 0
         for ((i, a) in addresses.withIndex()) {
             progress(i + 1, addresses.size)
+            if (a == 0x80 && hits == 0) return   // нижняя половина пуста — это не BMW за шлюзом, не тратим ещё 40 с
             val addr = EcuAddr(req, respBase + a, false, a, "BMW")
             if (s.send("ATCEA %02X".format(a)).contains("?")) return
             filterTo(addr)
@@ -229,6 +222,7 @@ class ModuleScanner(private val s: ElmSession) {
             val raw = s.send("1902FF", 1500)
             val frames = Frames.parse(raw, false, addr.rx).filter { it.id == addr.resp }
             if (frames.isEmpty()) continue
+            hits++
             val r = readUds(addr, frames, raw, oem = true, brand = "bmw")
             if (r != null) { found[addr.resp] = r.first; addrs[addr.resp] = r.second }
             else found[addr.resp] = ModuleScan(ModuleMap.bmwName(a), a, emptyList(), "?")
@@ -283,8 +277,9 @@ class ModuleScanner(private val s: ElmSession) {
                 val init = s.send(if (s.protocolNo == 5) "ATFI" else "ATSI", 6000)
                 if (!init.uppercase().contains("OK")) continue
                 var codes: List<String>? = null
-                for (cmd in listOf("1800FF00", "1802FF00")) {
+                for (cmd in listOf("1800FF00", "1802FF00", "1081", "1800FF00")) {
                     val k = s.send(cmd, 4000)
+                    if (cmd == "1081") continue   // сессия для старых Январь 5.1 / Bosch M1.5.4, ответ не разбираем
                     codes = ModuleDecoder.parseKwp(ObdDecoder.messages(k))
                     if (codes != null) { s.log("↩ K-line %02X: %s".format(a, k.replace("\r", " | ").take(200))); break } // i18n-ignore: журнал
                 }
@@ -340,17 +335,28 @@ class ModuleScanner(private val s: ElmSession) {
                 }
             }
         }
-        // KWP2000 по CAN: readDiagnosticTroubleCodesByStatus, две формы группы
-        for (cmd in listOf("1802FF00", "1800FF00")) {
-            val k = s.send(cmd, 2500)
-            val kf = Frames.parse(k, a.bits29, a.rx).filter { it.id == a.resp }
-            val km = Frames.messages(kf)
-            ModuleDecoder.parseKwp(km)?.let { codes ->
-                s.log("↩ ${hex(a)} KWP: ${k.replace("\r", " | ").take(200)}") // i18n-ignore: журнал
-                val e = a.copy(via = "KWP")
-                return ModuleScan(ModuleMap.name(brand, e), e.display, codes, "KWP") to e
+        // GM до Global B: сервиса 19 нет вовсе, память ошибок — GMLAN A9 81 с ответом UUDT на 0x5xx
+        if (!a.bits29 && a.ext == null && (ModuleMap.isGm(brand) || a.req in 0x240..0x25F) && (code == 0x11 || code == null)) {
+            readGmlan(a, brand)?.let { return it }
+        }
+        // KWP2000 по CAN: readDiagnosticTroubleCodesByStatus, две формы группы; Nissan/Renault/Mitsubishi/VAG/Mercedes
+        // без своей сессии отвечают 7F 18 22/80 или молчат — тогда открываем её и пробуем ещё раз
+        for (session in listOf(null, "10C0", "1092", "1089")) {
+            if (session != null) {
+                val ses = s.send(session, 2000)
+                if (Frames.parse(ses, a.bits29, a.rx).none { it.data.firstOrNull() == 0x50 }) continue
             }
-            if (km.isNotEmpty() && nrc(km, 0x18) == null) break
+            for (cmd in listOf("1802FF00", "1800FF00")) {
+                val k = s.send(cmd, 2500)
+                val kf = Frames.parse(k, a.bits29, a.rx).filter { it.id == a.resp }
+                val km = Frames.messages(kf)
+                ModuleDecoder.parseKwp(km)?.let { codes ->
+                    s.log("↩ ${hex(a)} KWP: ${k.replace("\r", " | ").take(200)}") // i18n-ignore: журнал
+                    val e = a.copy(via = "KWP")
+                    return ModuleScan(ModuleMap.name(brand, e), e.display, codes, "KWP") to e
+                }
+                if (km.isNotEmpty() && nrc(km, 0x18) == null) break
+            }
         }
         if (frames.isNotEmpty() || Frames.status(raw).isEmpty() && raw.isNotBlank()) {
             // блок есть, но память ошибок не разобрали — честно показываем блок и пишем сырой ответ
@@ -358,6 +364,23 @@ class ModuleScanner(private val s: ElmSession) {
             return ModuleScan(ModuleMap.name(brand, a), a.display, emptyList(), "?") to a.copy(via = "?")
         }
         return null
+    }
+
+    /**
+     * GMLAN (GMW3110): запрос A9 81 12 обычным кадром, ответ — серия однокадровых UUDT на ID «ответ − 0x100» (0x7E8 → 0x5E8,
+     * 0x641 → 0x541), первый байт 81 — не PCI, поэтому на время чтения автоформат ISO-TP выключен (ATCAF0, длина в кадре своя),
+     * окно приёма длинное: кадры идут с паузами 30–50 мс до завершающего кадра с нулевым кодом.
+     */
+    private fun readGmlan(a: EcuAddr, brand: String?): Pair<ModuleScan, EcuAddr>? {
+        val uudt = a.resp - 0x100
+        s.send("ATCAF0"); s.send("ATCRA %03X".format(uudt)); s.send("ATST FF")
+        val raw = s.send("03A98112", 4000)
+        s.send("ATCAF1"); s.send("ATST 64"); filterTo(a)
+        val frames = Frames.raw(raw, false).filter { it.id == uudt }.map { it.data }
+        val detailed = ModuleDecoder.parseGmlan(frames) ?: return null
+        s.log("↩ ${hex(a)} GMLAN: ${raw.replace("\r", " | ").take(200)}") // i18n-ignore: журнал
+        val e = a.copy(via = "GMLAN")
+        return module(e, brand, detailed, Pair(null, null)) to e
     }
 
     /** Разбор ответа UDS с повтором при «7F 19 78» (блок просит подождать). */
