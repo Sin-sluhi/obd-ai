@@ -19,7 +19,6 @@ class ScriptedCar(private val bits29: Boolean = false, private val unsupported: 
     val logs = mutableListOf<String>()
 
     private var sh = 0
-    private var cra: Int? = null
     private var cf: Int? = null
     private var cm: Int? = null
     private var fcsh: Int? = null
@@ -31,7 +30,7 @@ class ScriptedCar(private val bits29: Boolean = false, private val unsupported: 
     override val is29Bit = bits29
     override val adapter = AdapterInfo("ELM327 v1.5", "", emptyList(), 40)
     override fun log(text: String) { logs.add(text) }
-    override fun restoreObdHeader() { sh = if (bits29) 0x18DB33F1 else 0x7DF; cra = null; cf = null; cm = null }
+    override fun restoreObdHeader() { sh = if (bits29) 0x18DB33F1 else 0x7DF; cf = null; cm = null }
 
     private fun hex(s: String) = s.replace(" ", "").toInt(16)
 
@@ -39,15 +38,17 @@ class ScriptedCar(private val bits29: Boolean = false, private val unsupported: 
         sent.add(cmd)
         val c = cmd.uppercase().replace(" ", "")
         if (c.startsWith("AT")) {
-            val name = Regex("^AT[A-Z@]+").find(c)!!.value
+            // имена команд — по списку, длинные раньше: аргумент может начинаться с буквы (ATSH DA28F1)
+            val name = Regex("^AT(FCSH|FCSD|FCSM|CRA|CEA|CAF|CFC|CF|CM|CP|AR|SH|ST|AT|H|E|L|S|Z|I|@1)").find(c)?.value ?: return "?"
             if (name in unsupported) return "?"
             val arg = c.removePrefix(name)
             when (name) {
                 "ATSH" -> sh = if (bits29) (0x18 shl 24) or hex(arg) else hex(arg)
-                "ATCRA" -> cra = hex(arg)
+                // у настоящего ELM327 ATCRA — это те же CF/CM: последняя команда побеждает
+                "ATCRA" -> { cf = hex(arg); cm = if (bits29) 0x1FFFFFFF else 0x7FF }
                 "ATCF" -> cf = hex(arg)
                 "ATCM" -> cm = hex(arg)
-                "ATAR" -> { cra = null; cf = null; cm = null }
+                "ATAR" -> { cf = null; cm = null }
                 "ATFCSH" -> fcsh = if (bits29) (0x18 shl 24) or hex(arg) else hex(arg)
                 "ATFCSD" -> fcsd = arg.chunked(2).map { it.toInt(16) }
                 "ATFCSM" -> fcsm = arg.toInt()
@@ -67,7 +68,6 @@ class ScriptedCar(private val bits29: Boolean = false, private val unsupported: 
     }
 
     private fun passes(id: Int): Boolean {
-        cra?.let { return id == it }
         if (cf != null && cm != null) return (id and cm!!) == (cf!! and cm!!)
         return id == autoResp(sh)
     }
@@ -132,7 +132,7 @@ class ScanTest {
         val car = ScriptedCar()
         car.ecus += ScriptedCar.Ecu(0x7E0, 0x7E8, handler = Replies.uds(*engineRecords))
         car.ecus += ScriptedCar.Ecu(0x7E1, 0x7E9, handler = Replies.uds())
-        car.ecus += ScriptedCar.Ecu(0x7D1, 0x7D9, handler = Replies.uds(0x41, 0x11, 0x00, 0x28))   // C1111 история
+        car.ecus += ScriptedCar.Ecu(0x7D1, 0x7D9, handler = Replies.uds(0x51, 0x11, 0x00, 0x28))   // C1111 история
         car.ecus += ScriptedCar.Ecu(0x7A0, 0x7A8, handler = Replies.kwp(0x96, 0x02, 0x60))         // B1602 по KWP
         val r = ModuleScanner(car).scan("Hyundai", emptyList()) { _, _ -> }
         assertTrue(r.fullSweep)
@@ -164,7 +164,7 @@ class ScanTest {
     @Test fun honda29bitFound() {
         val car = ScriptedCar(bits29 = true)
         car.ecus += ScriptedCar.Ecu(0x18DA10F1, 0x18DAF110, handler = Replies.uds())
-        car.ecus += ScriptedCar.Ecu(0x18DA28F1, 0x18DAF128, handler = Replies.uds(0x41, 0x11, 0x00, 0x28))
+        car.ecus += ScriptedCar.Ecu(0x18DA28F1, 0x18DAF128, handler = Replies.uds(0x51, 0x11, 0x00, 0x28))
         val r = ModuleScanner(car).scan("Honda", emptyList()) { _, _ -> }
         assertEquals(2, r.modules.size)
         assertEquals(listOf("C1111"), r.modules.first { it.addr == 0x28 }.codes.map { it.substringBefore(' ') })
