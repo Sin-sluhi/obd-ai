@@ -66,29 +66,67 @@ class BtTransport(private val socket: BluetoothSocket) : ElmTransport {
     companion object {
         val SPP_UUID: UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB")
 
-        /** Дешёвые клоны капризные: три способа открыть SPP-сокет. */
+        /** Таймаут одного connect(): системный бывает до 30 с, за это время пользователь решает, что всё зависло. */
+        private const val CONNECT_TIMEOUT_MS = 10_000L
+
+        /**
+         * Дешёвые клоны капризные: три способа открыть SPP-сокет, и до трёх кругов с паузой.
+         * Раньше подключение удавалось с 3–4 попыток: идущий поиск устройств душит RFCOMM, первый connect упирается
+         * в диалог сопряжения, а мгновенный повтор попадает в ещё не освободившийся канал.
+         */
         @SuppressLint("MissingPermission")
         fun open(device: BluetoothDevice, log: (String) -> Unit): BtTransport {
+            // поиск устройств замедляет и обрывает соединение — останавливаем его
+            runCatching { android.bluetooth.BluetoothAdapter.getDefaultAdapter()?.cancelDiscovery() }
+            runCatching {
+                if (device.bondState != BluetoothDevice.BOND_BONDED) log(tr("link_not_bonded"))
+            }
             var lastError: Exception? = null
-            for (method in 0..2) {
-                var s: BluetoothSocket? = null
-                try {
-                    s = when (method) {
-                        0 -> device.createRfcommSocketToServiceRecord(SPP_UUID)
-                        1 -> device.createInsecureRfcommSocketToServiceRecord(SPP_UUID)
-                        else -> device.javaClass
-                            .getMethod("createRfcommSocket", Int::class.javaPrimitiveType)
-                            .invoke(device, 1) as BluetoothSocket
+            for (round in 0 until 3) {
+                if (round > 0) {
+                    log(tr("link_retry_round", round + 1))
+                    Thread.sleep(700L * round)   // дать адаптеру освободить канал
+                }
+                // небезопасный сокет первым: у большинства клонов без PIN-обмена он и работает
+                for (method in listOf(1, 0, 2)) {
+                    var s: BluetoothSocket? = null
+                    try {
+                        s = when (method) {
+                            0 -> device.createRfcommSocketToServiceRecord(SPP_UUID)
+                            1 -> device.createInsecureRfcommSocketToServiceRecord(SPP_UUID)
+                            else -> device.javaClass
+                                .getMethod("createRfcommSocket", Int::class.javaPrimitiveType)
+                                .invoke(device, 1) as BluetoothSocket
+                        }
+                        log(tr("link_connect_method", method + 1))
+                        Trace.note("BT: круг ${round + 1}, способ ${method + 1}") // i18n-ignore: лог
+                        connectWithTimeout(s)
+                        Thread.sleep(300)   // часть клонов теряет первый байт, если писать сразу
+                        Trace.note("BT: подключено") // i18n-ignore: лог
+                        return BtTransport(s)
+                    } catch (e: Exception) {
+                        lastError = e
+                        Trace.note("BT: ошибка: ${e.message}") // i18n-ignore: лог
+                        runCatching { s?.close() }
                     }
-                    log(tr("link_connect_method", method + 1))
-                    s.connect()
-                    return BtTransport(s)
-                } catch (e: Exception) {
-                    lastError = e
-                    runCatching { s?.close() }
                 }
             }
             throw IOException(tr("link_connect_failed", lastError?.message))
+        }
+
+        /** connect() без собственного таймаута: если завис — закрываем сокет из сторожевого потока. */
+        private fun connectWithTimeout(s: BluetoothSocket) {
+            val done = java.util.concurrent.atomic.AtomicBoolean(false)
+            val watchdog = Thread {
+                try { Thread.sleep(CONNECT_TIMEOUT_MS) } catch (_: InterruptedException) { return@Thread }
+                if (!done.get()) runCatching { s.close() }
+            }.apply { isDaemon = true; start() }
+            try {
+                s.connect()
+            } finally {
+                done.set(true)
+                watchdog.interrupt()
+            }
         }
     }
 }
@@ -151,6 +189,7 @@ class BleTransport(context: Context, device: BluetoothDevice, private val log: (
     @Volatile private var failure: String? = null
     @Volatile private var connected = false
     @Volatile private var chunk = 20
+    @Volatile private var servicesRequested = false
 
     private val callback = object : BluetoothGattCallback() {
         override fun onConnectionStateChange(g: BluetoothGatt, status: Int, newState: Int) {
@@ -158,6 +197,11 @@ class BleTransport(context: Context, device: BluetoothDevice, private val log: (
                 connected = true
                 log(tr("link_ble_connected"))
                 g.requestMtu(185)
+                // часть адаптеров не отвечает на запрос MTU — не ждать 20 с, а искать сервисы сами
+                Thread {
+                    try { Thread.sleep(2500) } catch (_: InterruptedException) { return@Thread }
+                    if (!servicesRequested) { servicesRequested = true; runCatching { g.discoverServices() } }
+                }.apply { isDaemon = true; start() }
             } else if (newState == BluetoothProfile.STATE_DISCONNECTED) {
                 connected = false
                 if (ready.count > 0) { failure = tr("link_ble_dropped", status); ready.countDown() }
@@ -166,7 +210,7 @@ class BleTransport(context: Context, device: BluetoothDevice, private val log: (
 
         override fun onMtuChanged(g: BluetoothGatt, mtu: Int, status: Int) {
             if (mtu > 23) chunk = (mtu - 3).coerceAtMost(180)
-            g.discoverServices()
+            if (!servicesRequested) { servicesRequested = true; g.discoverServices() }
         }
 
         override fun onServicesDiscovered(g: BluetoothGatt, status: Int) {
@@ -260,7 +304,8 @@ class BleTransport(context: Context, device: BluetoothDevice, private val log: (
         var offset = 0
         while (offset < data.size) {
             val part = data.copyOfRange(offset, minOf(offset + chunk, data.size))
-            if (!writeLock.tryAcquire(3, TimeUnit.SECONDS)) writeLock.release()
+            // подтверждение прошлой записи не пришло — не пишем поверх неё (раньше семафор отпускался, и записи накладывались)
+            if (!writeLock.tryAcquire(3, TimeUnit.SECONDS)) throw IOException(tr("link_ble_write_failed"))
             val ok = if (Build.VERSION.SDK_INT >= 33) {
                 g.writeCharacteristic(c, part, type) == BluetoothGatt.GATT_SUCCESS
             } else {

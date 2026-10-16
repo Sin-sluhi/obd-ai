@@ -50,17 +50,40 @@ class Elm327(private val log: (String) -> Unit) : ObdLink {
     }
 
     private fun initAdapter() {
-        val id = send("ATZ", 5000)
+        Trace.note("инициализация адаптера") // i18n-ignore: лог
+        // ATZ перезагружает адаптер: часть клонов после неё секунду ничего не принимает
+        var id = send("ATZ", 5000)
+        Thread.sleep(500)
+        if (!id.contains("ELM")) id = send("ATI", 3000)
         val version = id.lines().lastOrNull { it.contains("ELM") }?.trim()
         log(tr("elm_adapter", version ?: id))
         if (version != null) name = version
-        // эхо выкл, переводы строк выкл, пробелы вкл, заголовки выкл, адаптивные таймауты, автопротокол
+        // эхо выкл, переводы строк выкл, пробелы вкл, заголовки выкл, адаптивные таймауты, автопротокол.
+        // Заголовок (ATSH) до определения протокола НЕ трогаем: на 29-битных машинах ATSH 7DF превращается в 0x180007DF,
+        // и после поиска все запросы уходят не туда — машина «не отвечает».
         for (cmd in listOf("ATE0", "ATL0", "ATS1", "ATH0", "ATAT1", "ATSP0")) send(cmd)
-        adapter = probeAdapter(version.orEmpty())
-        log(tr("elm_adapter_grade", adapter.grade()))
 
         refreshEcu()
+        // Возможности адаптера проверяем уже на найденном протоколе, а не до него
+        adapter = probeAdapter(version.orEmpty()).copy(responseMs = adapter.responseMs)
+        log(tr("elm_adapter_grade", adapter.grade()))
         log(tr("elm_voltage", readVoltage()))
+    }
+
+    /** Напряжение по ATRV, вольты, или null. */
+    private fun voltage(): Double? = Regex("(\\d{1,2}[.,]\\d)").find(send("ATRV"))?.groupValues?.get(1)?.replace(',', '.')?.toDoubleOrNull()
+
+    /** Номер протокола из ATDPN: «A6» → 6, «7» → 7. */
+    private fun protocolNumber(): Int? = send("ATDPN").trim().lastOrNull()?.digitToIntOrNull(16)
+
+    /** 29-битный CAN (протоколы 7 и 9): другой формат адресов, 11-битные заголовки здесь неприменимы. */
+    var is29Bit = false
+        private set
+
+    /** Вернуть заголовок и фильтр к стандартному OBD-запросу для текущего протокола. */
+    private fun restoreObdHeader() {
+        send("ATAR")
+        if (is29Bit) { send("ATCP 18"); send("ATSH DB33F1") } else if (isCan) send("ATSH 7DF")
     }
 
     /**
@@ -71,14 +94,43 @@ class Elm327(private val log: (String) -> Unit) : ObdLink {
      */
     fun refreshEcu(): Boolean {
         log(tr("elm_probing_protocol"))
-        val probe = send("0100", 15000)
-        val bad = listOf("UNABLE", "NO DATA", "ERROR", "TIMEOUT").any { probe.contains(it) }
-        if (bad) {
-            log(tr("elm_car_no_answer", probe))
-            log(tr("elm_check_ignition"))
+        fun ok(r: String) = listOf("UNABLE", "NO DATA", "ERROR", "TIMEOUT", "STOPPED", "?").none { r.contains(it) } &&
+            ObdDecoder.messages(r).isNotEmpty()
+        // 1) автопоиск: на первый запрос адаптер перебирает протоколы, это до 15–20 с — ждём, а не повторяем
+        var probe = send("0100", 20000)
+        if (!ok(probe)) {
+            Trace.note("автопоиск не нашёл протокол: $probe") // i18n-ignore: лог
+            // 2) повтор: блок мог проснуться позже первой посылки (так Car Scanner и «видит со второго раза»)
+            Thread.sleep(800)
+            probe = send("0100", 8000)
         }
-        ecuOnline = !bad && ObdDecoder.messages(probe).isNotEmpty()
-        isCan = ObdDecoder.isCan(send("ATDPN"))
+        if (!ok(probe)) {
+            // 3) ручной перебор: CAN 11/500, 11/250, 29/500, 29/250, затем K-line (KWP fast, KWP slow, ISO 9141)
+            for (p in listOf(6, 8, 7, 9, 5, 4, 3)) {
+                send("ATSP $p")
+                val r = send("0100", if (p <= 5) 12000 else 6000)
+                Trace.note("протокол $p: ${if (ok(r)) "ответил" else "нет"}") // i18n-ignore: лог
+                if (ok(r)) { probe = r; log(tr("elm_protocol_manual", p)); break }
+            }
+            if (!ok(probe)) send("ATSP0")   // никто не ответил — оставляем автопоиск на следующую попытку
+        }
+        val good = ok(probe)
+        if (!good) {
+            log(tr("elm_car_no_answer", probe))
+            val v = voltage()
+            // по напряжению: < 11,5 В — адаптер плохо сидит в разъёме или машина обесточена; 11,5–12,9 — зажигание,
+            // скорее всего, выключено (или ACC); от 13 В — мотор работает, значит блок молчит по другой причине
+            log(when {
+                v == null -> tr("elm_check_ignition")
+                v < 11.5 -> tr("elm_hint_low_voltage", "%.1f".format(v))
+                v < 13.0 -> tr("elm_hint_ignition_off", "%.1f".format(v))
+                else -> tr("elm_hint_engine_on_silent", "%.1f".format(v))
+            })
+        }
+        ecuOnline = good
+        val pn = protocolNumber()
+        isCan = pn != null && pn in 6..0xC
+        is29Bit = pn == 7 || pn == 9
         protocol = send("ATDP")
         log(tr("elm_protocol", protocol))
         if (ecuOnline) {
@@ -108,7 +160,8 @@ class Elm327(private val log: (String) -> Unit) : ObdLink {
         }
         // вернуть всё как было
         // ATAR — штатный сброс фильтра приёма (вместо голой ATCRA, которую понимают не все платы)
-        for (c in listOf("ATFCSM 0", "ATAR", "ATSH 7DF", "ATST 64", "ATAT1")) send(c)
+        for (c in listOf("ATFCSM 0", "ATST 64", "ATAT1")) send(c)
+        restoreObdHeader()
         return AdapterInfo(version, description, missing.distinct(), 0)
     }
 
@@ -133,13 +186,21 @@ class Elm327(private val log: (String) -> Unit) : ObdLink {
         val t = transport ?: throw IOException(tr("elm_not_connected"))
         onCommand?.invoke()
 
-        while (t.available() > 0) t.read() // выкидываем мусор от прошлых команд
+        // хвост прошлой команды (запоздавший ответ) — в лог, чтобы было видно, что адаптер не успел
+        val stale = StringBuilder()
+        while (t.available() > 0) { val c = t.read(); if (c >= 0) stale.append(c.toChar()) }
+        if (stale.isNotBlank()) Trace.note("хвост прошлой команды: ${stale.toString().replace("\r", " | ").trim()}") // i18n-ignore: лог
+        Trace.tx(cmd)
+        val t0 = System.currentTimeMillis()
         t.write("$cmd\r".toByteArray())
 
         val sb = StringBuilder()
         var gotPrompt = false
-        val deadline = System.currentTimeMillis() + timeoutMs
-        while (System.currentTimeMillis() < deadline) {
+        // Основное ожидание, затем запас: адаптер, который ещё ищет протокол или ждёт медленный блок, нельзя перебивать
+        // следующей командой — любой символ обрывает его работу (STOPPED), и машина «не отвечает».
+        val deadline = t0 + timeoutMs
+        val hardDeadline = deadline + PROMPT_GRACE_MS
+        while (System.currentTimeMillis() < hardDeadline) {
             if (t.available() > 0) {
                 val c = t.read()
                 if (c < 0) throw IOException(tr("elm_connection_closed"))
@@ -149,11 +210,17 @@ class Elm327(private val log: (String) -> Unit) : ObdLink {
                 }
                 sb.append(c.toChar())
             } else {
+                if (!t.isOpen) throw IOException(tr("elm_connection_closed"))
                 Thread.sleep(10)
             }
         }
         if (!gotPrompt) sb.append("\rTIMEOUT")
-        sb.toString().replace("\u0000", "").trim().removePrefix(cmd).trim()
+        val out = sb.toString().replace("\u0000", "").trim().removePrefix(cmd).trim()
+        Trace.rx(out, System.currentTimeMillis() - t0)
+        if (out.contains("BUFFER FULL") || out.contains("<DATA ERROR")) {
+            log(tr("elm_truncated", cmd))
+        }
+        out
     }
 
     override fun readCodes(mode: Int): List<String> =
@@ -260,6 +327,11 @@ class Elm327(private val log: (String) -> Unit) : ObdLink {
             log(tr("elm_scan_skipped", adapter.missing.joinToString()))
             return emptyList()
         }
+        if (is29Bit) {
+            // 11-битные адреса на 29-битной шине — это чужие кадры; поиск блоков 18DAxxF1 — следующий шаг переделки
+            log(tr("elm_scan_29bit_later"))
+            return emptyList()
+        }
         if (ModuleMap.isBmw(brand)) {
             val bmw = scanBmw(progress)
             if (bmw != null) return bmw
@@ -267,7 +339,9 @@ class Elm327(private val log: (String) -> Unit) : ObdLink {
         }
         val found = mutableListOf<ModuleScan>()
         val known = ModuleMap.candidates
-        val extra = if (ModuleMap.isHyundaiKia(brand)) ModuleMap.hyundaiSweep.filter { s -> known.none { it.addr == s.addr } } else emptyList()
+        // 0x7D8–0x7DF не трогаем: 0x7DF — широковещательный адрес (запрос ушёл бы всем блокам сразу),
+        // а их ответы ждались бы на 0x7E0–0x7E7 — это адреса запросов к двигателю и коробке
+        val extra = if (ModuleMap.isHyundaiKia(brand)) ModuleMap.hyundaiSweep.filter { s -> s.addr < 0x7D8 && known.none { it.addr == s.addr } } else emptyList()
         val targets = known + extra
         try {
             send("ATAT0")
@@ -283,7 +357,7 @@ class Elm327(private val log: (String) -> Unit) : ObdLink {
             }
         } finally {
             runCatching {
-                send("ATFCSM 0"); send("ATAR"); send("ATSH 7DF"); send("ATST 64"); send("ATAT1")
+                send("ATFCSM 0"); send("ATST 64"); send("ATAT1"); restoreObdHeader()
             }
         }
         return found
@@ -326,7 +400,7 @@ class Elm327(private val log: (String) -> Unit) : ObdLink {
             }
         } finally {
             runCatching {
-                send("ATCEA"); send("ATFCSM 0"); send("ATAR"); send("ATSH 7DF"); send("ATST 64"); send("ATAT1")
+                send("ATCEA"); send("ATFCSM 0"); send("ATST 64"); send("ATAT1"); restoreObdHeader()
             }
         }
         log("BMW: ответили блоки ${found.size}") // i18n-ignore: журнал
@@ -340,7 +414,15 @@ class Elm327(private val log: (String) -> Unit) : ObdLink {
         send("ATFCSH $hex")
         send("ATFCSM 1")
 
-        val uds = send("1902FF", 1500)
+        var uds = send("1902FF", 1500)
+        // «7F 19 78» — блок просит подождать. Клоны и чипы до v2.1 сами не дослушивают, поэтому
+        // ждём и спрашиваем ещё раз с длинным таймаутом, а не уходим в KWP (иначе ответ UDS прилетит посреди KWP)
+        if (uds.replace(" ", "").uppercase().contains("7F1978")) {
+            Thread.sleep(1000)
+            send("ATST FF")
+            uds = send("1902FF", 5000)
+            send("ATST 32")
+        }
         if (!silent(uds)) {
             log("↩ $hex UDS: ${uds.replace("\r", " | ").take(220)}")
             val msgs = ObdDecoder.messages(uds)
@@ -384,4 +466,8 @@ class Elm327(private val log: (String) -> Unit) : ObdLink {
         transport = null
     }
 
+    companion object {
+        /** Запас сверх таймаута на ожидание приглашения «>»: не перебивать адаптер, который ещё работает. */
+        private const val PROMPT_GRACE_MS = 3000L
+    }
 }

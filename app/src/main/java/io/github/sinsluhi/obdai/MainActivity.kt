@@ -519,10 +519,38 @@ class MainActivity : ComponentActivity() {
         }
     }
 
+    /**
+     * «Лог» в консоли: один файл с журналом и полным сырым обменом с адаптером (Trace) — тестировщик отправляет его
+     * через «Поделиться», и по нему видно, на каком шаге сломалось. Если поделиться нечем — журнал в буфер, как раньше.
+     */
     private fun copyLog() {
-        val clipboard = getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
-        clipboard.setPrimaryClip(ClipData.newPlainText(tr("main_clip_log"), state.log.joinToString("\n")))
-        state.toast = tr("main_log_copied")
+        val text = buildString {
+            appendLine("OBD AI — журнал и обмен с адаптером") // i18n-ignore: заголовок файла лога
+            appendLine("Адаптер: ${state.adapterName} · протокол: ${state.protocol} · VIN: ${state.vin ?: "—"}") // i18n-ignore: лог
+            appendLine()
+            appendLine("===== Журнал =====") // i18n-ignore: лог
+            state.log.forEach { appendLine(it) }
+            appendLine()
+            appendLine("===== Обмен с адаптером =====") // i18n-ignore: лог
+            append(Trace.dump())
+        }
+        try {
+            val dir = java.io.File(cacheDir, "logs").apply { mkdirs() }
+            val stamp = java.text.SimpleDateFormat("yyyyMMdd-HHmmss", java.util.Locale.US).format(java.util.Date())
+            val file = java.io.File(dir, "obd-ai-log-$stamp.txt")
+            file.writeText(text)
+            val uri = androidx.core.content.FileProvider.getUriForFile(this, "$packageName.files", file)
+            val intent = Intent(Intent.ACTION_SEND).apply {
+                type = "text/plain"
+                putExtra(Intent.EXTRA_STREAM, uri)
+                addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+            }
+            startActivity(Intent.createChooser(intent, tr("main_clip_log")))
+        } catch (e: Exception) {
+            val clipboard = getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
+            clipboard.setPrimaryClip(ClipData.newPlainText(tr("main_clip_log"), text))
+            state.toast = tr("main_log_copied")
+        }
     }
 
     private fun copyReport(): Boolean {

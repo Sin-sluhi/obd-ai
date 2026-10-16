@@ -16,6 +16,10 @@ object ObdDecoder {
     /** Режет ответ на сообщения (списки байтов), склеивая многокадровые CAN-ответы. */
     fun messages(raw: String): List<List<Int>> {
         val result = mutableListOf<MutableList<Int>>()
+        // Многокадровый ответ ELM327 начинается со строки длины (три hex-цифры, «01A» = 26 байт), дальше «0:», «1:»…
+        // Последний кадр добит заполнителями (FF/AA/55) до 7 байт — без обрезки по длине они читаются как данные
+        // (так появлялись «ошибки» FFFFFF и сдвиги кодов).
+        val expected = java.util.IdentityHashMap<MutableList<Int>, Int>()   // по ссылке: содержимое списков меняется
         var multi: MutableList<Int>? = null
         val segment = Regex("^([0-9A-F]):([0-9A-F]*)$")
         for (lineRaw in raw.uppercase().split('\r', '\n')) {
@@ -29,7 +33,7 @@ object ObdDecoder {
                     if (seg.groupValues[2].length % 2 == 0) target.addAll(hexBytes(seg.groupValues[2]))
                 }
                 compact.length == 3 && isHex(compact) -> {
-                    multi = mutableListOf<Int>().also { result.add(it) }
+                    multi = mutableListOf<Int>().also { result.add(it); expected[it] = compact.toInt(16) }
                 }
                 isHex(compact) && compact.length % 2 == 0 -> {
                     multi = null
@@ -37,6 +41,9 @@ object ObdDecoder {
                 }
                 else -> Unit // NO DATA, STOPPED, ? и прочее
             }
+        }
+        for ((list, len) in expected) if (len in 1 until list.size) {
+            while (list.size > len) list.removeAt(list.size - 1)
         }
         return result.filter { it.isNotEmpty() }
     }
@@ -207,8 +214,7 @@ object ModuleDecoder {
             found = true
             val data = msg.drop(i + 3)
             for (g in data.chunked(4)) {
-                if (g.size < 4) continue
-                if (g[0] == 0 && g[1] == 0 && g[2] == 0) continue
+                if (fillerRecord(g)) continue
                 val base = ObdDecoder.dtc(g[0], g[1])
                 val code = if (g[2] != 0) "%s-%02X".format(base, g[2]) else base
                 val key = code + UdsStatus.suffix(g[3])
@@ -227,34 +233,33 @@ object ModuleDecoder {
         else -> " (история)" // i18n-ignore
     }
 
+    /** Запись памяти ошибок — заполнитель кадра (FF/AA/55/00) или без единого бита статуса: не ошибка, а мусор. */
+    private fun fillerRecord(g: List<Int>): Boolean {
+        val b = g.take(3)
+        return g.size < 4 || g[3] == 0 || b.all { it == 0 } || b.all { it == 0xFF } || b.all { it == 0xAA } || b.all { it == 0x55 }
+    }
+
     /**
      * Ответ блока BMW на 19 02 FF через шлюз: коды трёхбайтные (как в ISTA и марочных сканерах: 130508, 118002),
-     * за каждым — байт статуса UDS. Адаптер с расширенной адресацией может оставлять байт адреса тестера (F1)
-     * в начале каждой строки многокадрового ответа — если он стоит у всех строк, снимаем его.
+     * за каждым — байт статуса UDS. С ATCEA адаптер сам снимает байт адреса тестера (F1); если клон его оставил —
+     * снимаем сами. Длину многокадрового ответа берём из строки длины ELM (см. [ObdDecoder.messages]).
      */
     fun parseBmw(raw: String): List<Pair<String, Int>>? {
-        val segRx = Regex("^([0-9A-F]):([0-9A-F]*)$")
-        val hex = Regex("^[0-9A-F]+$")
-        val lines = raw.uppercase().split('\r', '\n').map { it.trim().replace(" ", "") }
-            .filter { it.isNotEmpty() && !it.startsWith("SEARCHING") }
-        val segs = lines.mapNotNull { segRx.find(it)?.groupValues?.get(2) }
-        val parts = if (segs.isNotEmpty()) {
-            if (segs.all { it.startsWith("F1") }) segs.map { it.drop(2) } else segs
-        } else {
-            lines.filter { hex.matches(it) && it.length % 2 == 0 && it.length > 3 }
-        }
-        val bytes = parts.flatMap { if (it.length % 2 == 0 && hex.matches(it)) it.chunked(2).map { b -> b.toInt(16) } else emptyList() }
-        var i = -1
-        for (k in 0 until bytes.size - 1) if (bytes[k] == 0x59 && bytes[k + 1] == 0x02) { i = k; break }
-        if (i < 0) return null
+        var found = false
         val codes = linkedMapOf<String, Int>()
-        for (g in bytes.drop(i + 3).chunked(4)) {
-            if (g.size < 4 || (g[0] == 0 && g[1] == 0 && g[2] == 0)) continue
-            val code = "%02X%02X%02X".format(g[0], g[1], g[2])
-            val key = code + statusSuffix(g[3])
-            if (!codes.containsKey(key)) codes[key] = g[3]
+        for (m0 in ObdDecoder.messages(raw)) {
+            val m = if (m0.size > 1 && m0[0] == 0xF1 && m0[1] != 0x59) m0.drop(1) else m0
+            var i = -1
+            for (k in 0 until m.size - 1) if (m[k] == 0x59 && m[k + 1] == 0x02) { i = k; break }
+            if (i < 0) continue
+            found = true
+            for (g in m.drop(i + 3).chunked(4)) {
+                if (fillerRecord(g)) continue
+                val key = "%02X%02X%02X".format(g[0], g[1], g[2]) + statusSuffix(g[3])
+                if (!codes.containsKey(key)) codes[key] = g[3]
+            }
         }
-        return codes.entries.map { it.key to it.value }
+        return if (found) codes.entries.map { it.key to it.value } else null
     }
 
     /** KWP: 58 <кол-во> затем группы по 3 байта: DTC(2) + статус. */
