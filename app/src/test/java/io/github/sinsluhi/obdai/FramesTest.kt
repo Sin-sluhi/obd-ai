@@ -32,7 +32,7 @@ class FramesTest {
     }
 
     @Test fun twoEcusInterleaved() {
-        val raw = "7E8 10 0B 59 02 FF 01 33 00\r7E9 02 59 02 FF\r7E8 21 09 FF FF FF 00 AA AA\r"
+        val raw = "7E8 10 0B 59 02 FF 01 33 00\r7E9 03 59 02 FF\r7E8 21 09 FF FF FF 00 AA AA\r"
         val f = Frames.parse(raw, bits29 = false)
         assertEquals(setOf(0x7E8, 0x7E9), f.map { it.id }.toSet())
         assertEquals(11, f.first { it.id == 0x7E8 }.data.size)

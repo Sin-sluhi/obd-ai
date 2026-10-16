@@ -131,7 +131,8 @@ class ModuleScanner(private val s: ElmSession) {
     /** Фильтр приёма на весь диапазон ответов. false — адаптер не понял ATCF/ATCM. */
     private fun wideFilter(): Boolean {
         val (cf, cm) = if (s.is29Bit) "ATCF 18DAF100" to "ATCM 1FFFFF00" else "ATCF 700" to "ATCM 700"
-        val ok = !s.send(cf).contains("?") && !s.send(cm).contains("?")
+        s.send("ATAR")   // снять ATCRA от прошлого чтения: у клонов порядок «кто последний» не гарантирован
+        val ok =!s.send(cf).contains("?") && !s.send(cm).contains("?")
         if (!ok) { s.send("ATAR"); s.log(tr("elm_scan_no_range_filter")) }
         return ok
     }

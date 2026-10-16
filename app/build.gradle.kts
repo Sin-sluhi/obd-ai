@@ -75,4 +75,6 @@ dependencies {
     implementation("androidx.compose.material:material-icons-core")
     // разбор ответов адаптера проверяется тестами на записанных ответах: python-подобные регрессии не ловятся сборкой
     testImplementation("junit:junit:4.13.2")
+    // настоящий org.json для JVM-тестов: в android.jar он заглушка и бросает «not mocked»
+    testImplementation("org.json:json:20240303")
 }
