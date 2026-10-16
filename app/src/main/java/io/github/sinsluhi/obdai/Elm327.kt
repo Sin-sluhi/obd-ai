@@ -97,14 +97,18 @@ class Elm327(private val log: (String) -> Unit) : ObdLink {
     /** Проверяем, какие AT-команды адаптер понимает: клоны отвечают «?» на то, чего у них нет. */
     private fun probeAdapter(version: String): AdapterInfo {
         val description = send("AT@1").lines().firstOrNull { it.isNotBlank() && !it.contains("?") }?.trim().orEmpty()
-        val checks = listOf("ATCRA", "ATFCSH 7E0", "ATFCSM 1", "ATFCSD 30 00 00", "ATST 32", "ATCAF1")
+        // Проверяем ровно те формы команд, что нужны опросу блоков, и в допустимом порядке:
+        // ATFCSM 1 по документации ELM327 принимается только после ATFCSH и ATFCSD — иначе даже настоящий чип
+        // отвечает «?»; ATCRA проверяем с адресом (так её шлёт опрос), голую форму умеют не все честные платы.
+        val checks = listOf("ATCRA 7E8", "ATFCSH 7E0", "ATFCSD 30 00 00", "ATFCSM 1", "ATST 32", "ATCAF1")
         val missing = mutableListOf<String>()
         for (c in checks) {
             val r = send(c).uppercase()
             if (r.contains("?")) missing.add(c.substringBefore(' '))
         }
         // вернуть всё как было
-        for (c in listOf("ATFCSM 0", "ATCRA", "ATSH 7DF", "ATST 64", "ATAT1")) send(c)
+        // ATAR — штатный сброс фильтра приёма (вместо голой ATCRA, которую понимают не все платы)
+        for (c in listOf("ATFCSM 0", "ATAR", "ATSH 7DF", "ATST 64", "ATAT1")) send(c)
         return AdapterInfo(version, description, missing.distinct(), 0)
     }
 
@@ -274,7 +278,7 @@ class Elm327(private val log: (String) -> Unit) : ObdLink {
             }
         } finally {
             runCatching {
-                send("ATFCSM 0"); send("ATCRA"); send("ATSH 7DF"); send("ATST 64"); send("ATAT1")
+                send("ATFCSM 0"); send("ATAR"); send("ATSH 7DF"); send("ATST 64"); send("ATAT1")
             }
         }
         return found
