@@ -39,6 +39,8 @@ jobs:
           if [ -z "$SIGNING_KEYSTORE_B64" ]; then echo "::warning::SIGNING_KEYSTORE_B64 не задан — сборка будет подписана случайным ключом"; exit 0; fi
           printf '%s' "$SIGNING_KEYSTORE_B64" | base64 -d > "$RUNNER_TEMP/obdai-release.jks"
           echo "SIGNING_KEYSTORE_FILE=$RUNNER_TEMP/obdai-release.jks" >> "$GITHUB_ENV"
+      # Стенд: разбор кадров и поиск блоков на записанных обменах. Красные тесты — красная сборка.
+      - run: gradle testDebugUnitTest
       - run: gradle assembleDebug
         env:
           AI_PROVIDER: ${{ vars.AI_PROVIDER }}

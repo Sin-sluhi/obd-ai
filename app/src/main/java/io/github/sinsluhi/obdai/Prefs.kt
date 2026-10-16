@@ -212,6 +212,11 @@ class Prefs(context: Context) {
         get() = sp.getString(k("maintenance"), "") ?: ""
         set(v) = sp.edit().putString(k("maintenance"), v).apply()
 
+    /** Блоки, найденные полным перебором шины (по машине): JSON [EcuCache]. */
+    var ecus: String
+        get() = sp.getString(k("ecus"), "") ?: ""
+        set(v) = sp.edit().putString(k("ecus"), v).apply()
+
     /** Язык интерфейса (код из `Langs`); пусто = язык телефона, если он у нас есть, иначе русский. */
     var lang: String
         get() = sp.getString("lang", "") ?: ""

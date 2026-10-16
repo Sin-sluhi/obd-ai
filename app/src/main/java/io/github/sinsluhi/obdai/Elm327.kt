@@ -5,7 +5,9 @@ import android.content.Context
 import java.io.IOException
 
 /** Работа с адаптером ELM327 по Bluetooth. Все методы блокирующие — вызывать не из UI-потока. */
-class Elm327(private val log: (String) -> Unit) : ObdLink {
+class Elm327(private val logger: (String) -> Unit) : ObdLink, ElmSession {
+
+    override fun log(text: String) = logger(text)
 
     @Volatile private var transport: ElmTransport? = null
     private val lock = Any()
@@ -13,7 +15,7 @@ class Elm327(private val log: (String) -> Unit) : ObdLink {
     /** Вызывается на каждую команду адаптеру (из рабочего потока): фон рисует по ней пакет, «светодиод RX» мигает. */
     @Volatile var onCommand: (() -> Unit)? = null
 
-    var isCan = false
+    override var isCan = false
         private set
     override var protocol = ""
         private set
@@ -28,6 +30,10 @@ class Elm327(private val log: (String) -> Unit) : ObdLink {
     override var supportedPids: Set<Int> = emptySet()
         private set
     override var adapter = AdapterInfo()
+        private set
+    override var foundEcus: List<EcuAddr> = emptyList()
+        private set
+    override var lastScanFull = false
         private set
 
     override val isConnected: Boolean get() = transport?.isOpen == true
@@ -77,11 +83,11 @@ class Elm327(private val log: (String) -> Unit) : ObdLink {
     private fun protocolNumber(): Int? = send("ATDPN").trim().lastOrNull()?.digitToIntOrNull(16)
 
     /** 29-битный CAN (протоколы 7 и 9): другой формат адресов, 11-битные заголовки здесь неприменимы. */
-    var is29Bit = false
+    override var is29Bit = false
         private set
 
     /** Вернуть заголовок и фильтр к стандартному OBD-запросу для текущего протокола. */
-    private fun restoreObdHeader() {
+    override fun restoreObdHeader() {
         send("ATAR")
         if (is29Bit) { send("ATCP 18"); send("ATSH DB33F1") } else if (isCan) send("ATSH 7DF")
     }
@@ -311,154 +317,17 @@ class Elm327(private val log: (String) -> Unit) : ObdLink {
         return out
     }
 
-    // ---------- опрос блоков по заводским протоколам ----------
+    // ---------- опрос блоков ----------
 
     /**
-     * Перебираем известные адреса модулей: на каждый шлём UDS 19 02 FF (все ошибки со статусом),
-     * если блок молчит или отвечает 7F — пробуем KWP 18 00 FF 00. Кто ответил, тот и в списке.
-     * У ответивших по UDS дополнительно читаем VIN (22 F190) и заводской номер (22 F187).
+     * Поиск и чтение блоков — [ModuleScanner] (спецификация `docs/ОСНОВА ОПРОСА.md`): перебор всей шины с открытым
+     * фильтром, ID ответа узнаётся, а не угадывается; найденные адреса отдаются через [foundEcus] для кеша по машине.
      */
-    override fun scanModules(brand: String?, progress: (Int, Int) -> Unit): List<ModuleScan> {
-        if (!isCan) {
-            log(tr("elm_scan_can_only"))
-            return emptyList()
-        }
-        if (!adapter.fullFeatured) {
-            log(tr("elm_scan_skipped", adapter.missing.joinToString()))
-            return emptyList()
-        }
-        if (is29Bit) {
-            // 11-битные адреса на 29-битной шине — это чужие кадры; поиск блоков 18DAxxF1 — следующий шаг переделки
-            log(tr("elm_scan_29bit_later"))
-            return emptyList()
-        }
-        if (ModuleMap.isBmw(brand)) {
-            val bmw = scanBmw(progress)
-            if (bmw != null) return bmw
-            log("BMW: адаптер не поддерживает расширенную адресацию (ATCEA) — опрашиваю стандартные адреса") // i18n-ignore: журнал
-        }
-        val found = mutableListOf<ModuleScan>()
-        val known = ModuleMap.candidates
-        // 0x7D8–0x7DF не трогаем: 0x7DF — широковещательный адрес (запрос ушёл бы всем блокам сразу),
-        // а их ответы ждались бы на 0x7E0–0x7E7 — это адреса запросов к двигателю и коробке
-        val extra = if (ModuleMap.isHyundaiKia(brand)) ModuleMap.hyundaiSweep.filter { s -> s.addr < 0x7D8 && known.none { it.addr == s.addr } } else emptyList()
-        val targets = known + extra
-        try {
-            send("ATAT0")
-            send("ATST 32")       // 200 мс ожидания на ответ, чтобы молчащие адреса не тормозили
-            send("ATFCSD 30 00 00")
-            targets.forEachIndexed { i, t ->
-                progress(i + 1, targets.size)
-                val name = ModuleMap.name(brand, t)
-                val scan = queryModule(t, name, tryKwp = i < known.size) ?: return@forEachIndexed
-                found.add(scan)
-                val codesText = if (scan.codes.isEmpty()) tr("elm_no_codes") else scan.codes.joinToString()
-                log("$name (${t.addr.toString(16).uppercase()}): $codesText" + (scan.vin?.let { " · VIN $it" } ?: ""))
-            }
-        } finally {
-            runCatching {
-                send("ATFCSM 0"); send("ATST 64"); send("ATAT1"); restoreObdHeader()
-            }
-        }
-        return found
-    }
-
-    /**
-     * BMW и MINI серий F/G: блоки сидят за центральным шлюзом. Запрос идёт на CAN ID 0x6F1, первым байтом —
-     * адрес блока (расширенная адресация ISO 15765, у ELM327 — ATCEA), ответ приходит с 0x600 + адрес.
-     * Обходим 0x00–0x7F, в каждом блоке читаем память ошибок 19 02 FF — коды в формате BMW (130508, 118002).
-     * Порядок команд управления потоком как в документации ELM327: FCSH, FCSD, затем FCSM 1.
-     * null — адаптер не умеет расширенную адресацию.
-     */
-    private fun scanBmw(progress: (Int, Int) -> Unit): List<ModuleScan>? {
-        val found = mutableListOf<ModuleScan>()
-        val addrs = ModuleMap.bmwAddresses
-        try {
-            send("ATAT0")
-            send("ATST 20")       // ~130 мс на ответ: шлюз BMW отвечает быстро, а молчащих адресов много
-            send("ATSH 6F1")
-            send("ATFCSH 6F1")
-            for ((i, a) in addrs.withIndex()) {
-                progress(i + 1, addrs.size)
-                val hex = "%02X".format(a)
-                val cea = send("ATCEA $hex")
-                if (cea.contains("?")) return if (i == 0) null else found
-                send("ATCRA %03X".format(0x600 + a))
-                send("ATFCSD $hex 30 00 00")
-                send("ATFCSM 1")
-                val r = send("1902FF", 1500)
-                if (silent(r)) continue
-                log("↩ BMW $hex: ${r.replace("\r", " | ").take(240)}") // i18n-ignore: журнал
-                val name = ModuleMap.bmwName(a)
-                val codes = ModuleDecoder.parseBmw(r)
-                if (codes != null) {
-                    found.add(ModuleScan(name, 0x600 + a, codes.map { it.first }, "BMW", codes.map { it.second }, null, null))
-                    log("$name: ${if (codes.isEmpty()) tr("elm_no_codes") else codes.joinToString { it.first }}")
-                } else if (!ModuleDecoder.isNegative(ObdDecoder.messages(r), 0x19)) {
-                    found.add(ModuleScan(name, 0x600 + a, emptyList(), "BMW"))
-                }
-            }
-        } finally {
-            runCatching {
-                send("ATCEA"); send("ATFCSM 0"); send("ATST 64"); send("ATAT1"); restoreObdHeader()
-            }
-        }
-        log("BMW: ответили блоки ${found.size}") // i18n-ignore: журнал
-        return found
-    }
-
-    private fun queryModule(t: ModuleMap.Target, name: String, tryKwp: Boolean = true): ModuleScan? {
-        val hex = "%03X".format(t.addr)
-        send("ATSH $hex")
-        send("ATCRA %03X".format(t.rx))
-        send("ATFCSH $hex")
-        send("ATFCSM 1")
-
-        var uds = send("1902FF", 1500)
-        // «7F 19 78» — блок просит подождать. Клоны и чипы до v2.1 сами не дослушивают, поэтому
-        // ждём и спрашиваем ещё раз с длинным таймаутом, а не уходим в KWP (иначе ответ UDS прилетит посреди KWP)
-        if (uds.replace(" ", "").uppercase().contains("7F1978")) {
-            Thread.sleep(1000)
-            send("ATST FF")
-            uds = send("1902FF", 5000)
-            send("ATST 32")
-        }
-        if (!silent(uds)) {
-            log("↩ $hex UDS: ${uds.replace("\r", " | ").take(220)}")
-            val msgs = ObdDecoder.messages(uds)
-            ModuleDecoder.parseUdsDetailed(msgs)?.let { detailed ->
-                val (vin, part) = identity()
-                return ModuleScan(name, t.addr, detailed.map { it.first }, "UDS", detailed.map { it.second }, vin, part)
-            }
-            if (!ModuleDecoder.isNegative(msgs, 0x19) && msgs.isNotEmpty()) {
-                // ответил чем-то непонятным — блок есть, коды не разобрали
-                return ModuleScan(name, t.addr, emptyList(), "?")
-            }
-        }
-        if (!tryKwp) return null
-        val kwp = send("1800FF00", 1500)
-        if (!silent(kwp)) {
-            log("↩ $hex KWP: ${kwp.replace("\r", " | ").take(220)}")
-            val msgs = ObdDecoder.messages(kwp)
-            ModuleDecoder.parseKwp(msgs)?.let { return ModuleScan(name, t.addr, it, "KWP") }
-            if (msgs.isNotEmpty()) return ModuleScan(name, t.addr, emptyList(), "?")
-        }
-        return null
-    }
-
-    /** VIN и заводской номер блока по стандартным DID. Заголовки уже настроены на блок. */
-    private fun identity(): Pair<String?, String?> {
-        val vinRaw = send("22F190", 1200)
-        val vin = if (silent(vinRaw)) null else ModuleIdentity.parseAscii(vinRaw, 0xF190)?.takeLast(17)
-        val partRaw = send("22F187", 1200)
-        val part = if (silent(partRaw)) null else ModuleIdentity.parseAscii(partRaw, 0xF187)?.take(32)
-        return Pair(vin?.takeIf { ModuleIdentity.looksLikeVin(it) }, part)
-    }
-
-    private fun silent(resp: String): Boolean {
-        val u = resp.uppercase()
-        return listOf("NO DATA", "TIMEOUT", "CAN ERROR", "STOPPED", "UNABLE", "ERROR").any { u.contains(it) } ||
-            ObdDecoder.messages(resp).isEmpty()
+    override fun scanModules(brand: String?, known: List<EcuAddr>, progress: (Int, Int) -> Unit): List<ModuleScan> {
+        val r = ModuleScanner(this).scan(brand, known, progress)
+        foundEcus = r.ecus
+        lastScanFull = r.fullSweep
+        return r.modules
     }
 
     override fun disconnect() {

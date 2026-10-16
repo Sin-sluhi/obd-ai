@@ -535,9 +535,14 @@ class AppState private constructor(context: Context) {
 
             ui { busy = tr("state_step_modules") }; rx()
             val brand = VinDecoder.decode(v).brand
+            // адреса блоков из прошлого поиска по этой машине: с ними опрос быстрый; полный перебор — раз в 30 дней
+            // или когда из известных блоков ответила меньше половины
+            val knownEcus = EcuCache.fromJson(prefs.ecus)?.takeIf { it.fresh }?.ecus.orEmpty()
             val modules = runCatching {
-                l.scanModules(brand) { i, n -> ui { busy = tr("state_step_modules_n", i, n) }; rx() }
+                l.scanModules(brand, knownEcus) { i, n -> ui { busy = tr("state_step_modules_n", i, n) }; rx() }
             }.onFailure { addLog(tr("state_log_modules_failed", it.message)) }.getOrDefault(emptyList())
+            // кешируем только убедительный полный поиск: при спящих блоках список был бы неполным на месяц
+            if (l.lastScanFull && l.foundEcus.size >= 3) prefs.ecus = EcuCache(l.foundEcus, System.currentTimeMillis()).toJson()
             addLog(tr("state_log_modules", modules.size, modules.count { it.codes.isNotEmpty() }))
             resumePolling()
 

@@ -204,19 +204,27 @@ object ModuleDecoder {
     /** UDS: 59 02 <маска> затем группы по 4 байта: DTC(3) + статус. null, если ответа 59 02 нет. */
     fun parseUds(msgs: List<List<Int>>): List<String>? = parseUdsDetailed(msgs)?.map { it.first }
 
-    /** То же, но с сырым байтом статуса на каждый код. */
-    fun parseUdsDetailed(msgs: List<List<Int>>): List<Pair<String, Int>>? {
+    /**
+     * То же, но с сырым байтом статуса на каждый код. oemHex — заводской формат трёхбайтного кода (BMW: 130508,
+     * как в ISTA и марочных сканерах) вместо SAE «P0300-20». Ответ 59 02 ищется с начала сообщения.
+     */
+    fun parseUdsDetailed(msgs: List<List<Int>>, oemHex: Boolean = false): List<Pair<String, Int>>? {
         var found = false
         val codes = linkedMapOf<String, Int>()
         for (msg in msgs) {
-            val i = msg.indexOf(0x59)
-            if (i < 0 || i + 1 >= msg.size || msg[i + 1] != 0x02) continue
+            var i = -1
+            for (k in 0 until msg.size - 1) if (msg[k] == 0x59 && msg[k + 1] == 0x02) { i = k; break }
+            if (i < 0) continue
             found = true
             val data = msg.drop(i + 3)
             for (g in data.chunked(4)) {
                 if (fillerRecord(g)) continue
                 val base = ObdDecoder.dtc(g[0], g[1])
-                val code = if (g[2] != 0) "%s-%02X".format(base, g[2]) else base
+                val code = when {
+                    oemHex -> "%02X%02X%02X".format(g[0], g[1], g[2])
+                    g[2] != 0 -> "%s-%02X".format(base, g[2])
+                    else -> base
+                }
                 val key = code + UdsStatus.suffix(g[3])
                 if (!codes.containsKey(key)) codes[key] = g[3]
             }
@@ -239,28 +247,9 @@ object ModuleDecoder {
         return g.size < 4 || g[3] == 0 || b.all { it == 0 } || b.all { it == 0xFF } || b.all { it == 0xAA } || b.all { it == 0x55 }
     }
 
-    /**
-     * Ответ блока BMW на 19 02 FF через шлюз: коды трёхбайтные (как в ISTA и марочных сканерах: 130508, 118002),
-     * за каждым — байт статуса UDS. С ATCEA адаптер сам снимает байт адреса тестера (F1); если клон его оставил —
-     * снимаем сами. Длину многокадрового ответа берём из строки длины ELM (см. [ObdDecoder.messages]).
-     */
-    fun parseBmw(raw: String): List<Pair<String, Int>>? {
-        var found = false
-        val codes = linkedMapOf<String, Int>()
-        for (m0 in ObdDecoder.messages(raw)) {
-            val m = if (m0.size > 1 && m0[0] == 0xF1 && m0[1] != 0x59) m0.drop(1) else m0
-            var i = -1
-            for (k in 0 until m.size - 1) if (m[k] == 0x59 && m[k + 1] == 0x02) { i = k; break }
-            if (i < 0) continue
-            found = true
-            for (g in m.drop(i + 3).chunked(4)) {
-                if (fillerRecord(g)) continue
-                val key = "%02X%02X%02X".format(g[0], g[1], g[2]) + statusSuffix(g[3])
-                if (!codes.containsKey(key)) codes[key] = g[3]
-            }
-        }
-        return if (found) codes.entries.map { it.key to it.value } else null
-    }
+    /** Ответ блока BMW (формат ATH0): коды трёхбайтные, как в ISTA. Байт адреса тестера F1 впереди снимается. */
+    fun parseBmw(raw: String): List<Pair<String, Int>>? =
+        parseUdsDetailed(ObdDecoder.messages(raw).map { m -> if (m.size > 1 && m[0] == 0xF1 && m[1] != 0x59) m.drop(1) else m }, oemHex = true)
 
     /** KWP: 58 <кол-во> затем группы по 3 байта: DTC(2) + статус. */
     fun parseKwp(msgs: List<List<Int>>): List<String>? {
@@ -284,30 +273,32 @@ object ModuleDecoder {
         msgs.any { it.size >= 2 && it[0] == 0x7F && it[1] == service }
 }
 
-/** Адреса блоков (запрос/ответ, 11-битный CAN). Имена зависят от марки, список общий. */
+/**
+ * Адреса для перебора и имена блоков по маркам. Имена — только подпись: на поиск они не влияют,
+ * неизвестный адрес подписывается «Блок 7xx». Таблицы: opendbc (MIT), документация марок, свои логи.
+ */
 object ModuleMap {
-    data class Target(val addr: Int, val rx: Int, val generic: String)
-
     /** Обезличенное имя блока по адресу: «Блок 7E2». */
     private fun block(addr: Int): String = tr("obd_module_block", "%03X".format(addr))
+    private fun block29(ta: Int): String = tr("obd_module_block", "18DA%02XF1".format(ta))
 
-    /** Диапазон полного перебора для Hyundai/Kia: 7A0–7DF, где живут все их блоки. Геттер: имена на текущем языке. */
-    val hyundaiSweep: List<Target> get() = (0x7A0..0x7DF).map { Target(it, it + 8, block(it)) }
+    /**
+     * Полный перебор 11-битных адресов 0x700–0x7FF: сначала стандартные OBD-блоки и «горячие» диапазоны
+     * корейцев и японцев, чтобы первые находки появлялись сразу. Исключены 0x7DF (широковещательный) и
+     * 0x7E8–0x7EF (это ID ответов двигателя и коробки, а не запросов). Ответ по умолчанию +8 — только для
+     * адаптеров без фильтра диапазона; настоящий ID ответа узнаётся из ответа.
+     */
+    fun sweep11(): List<EcuAddr> {
+        val order = (0x7E0..0x7E7) + (0x7D0..0x7DE) + (0x7A0..0x7CF) + (0x700..0x79F) + (0x7F0..0x7FF)
+        return order.map { EcuAddr(it, it + 8) }
+    }
 
-    val candidates: List<Target> get() = listOf(
-        Target(0x7E0, 0x7E8, tr("obd_module_engine")),
-        Target(0x7E1, 0x7E9, tr("obd_module_gearbox")),
-        Target(0x7E2, 0x7EA, block(0x7E2)), Target(0x7E3, 0x7EB, block(0x7E3)),
-        Target(0x7D1, 0x7D9, block(0x7D1)), Target(0x7D2, 0x7DA, block(0x7D2)), Target(0x7D4, 0x7DC, block(0x7D4)),
-        Target(0x7D5, 0x7DD, block(0x7D5)), Target(0x7C6, 0x7CE, block(0x7C6)), Target(0x7C4, 0x7CC, block(0x7C4)),
-        Target(0x7A0, 0x7A8, block(0x7A0)), Target(0x7A5, 0x7AD, block(0x7A5)), Target(0x7B3, 0x7BB, block(0x7B3)),
-        Target(0x7B6, 0x7BE, block(0x7B6)), Target(0x7C0, 0x7C8, block(0x7C0)), Target(0x7B0, 0x7B8, block(0x7B0)),
-        Target(0x780, 0x788, block(0x780)), Target(0x7A1, 0x7A9, block(0x7A1)),
-        Target(0x713, 0x77D, block(0x713)), Target(0x715, 0x77F, block(0x715)), Target(0x714, 0x77E, block(0x714)),
-        Target(0x712, 0x77C, block(0x712)), Target(0x710, 0x77A, block(0x710)), Target(0x70E, 0x778, block(0x70E)),
-        Target(0x746, 0x7B0, block(0x746)), Target(0x7E4, 0x7EC, block(0x7E4)), Target(0x7E5, 0x7ED, block(0x7E5)),
-        Target(0x7E6, 0x7EE, block(0x7E6)), Target(0x7E7, 0x7EF, block(0x7E7))
-    )
+    /** 29-битный перебор 18DAxxF1: сначала известные адреса Honda/Renault-Nissan/Chrysler, затем остальное. */
+    fun sweep29(): List<EcuAddr> {
+        val hot = listOf(0x10, 0x18, 0x1E, 0x28, 0x30, 0x53, 0x60, 0x61, 0xB0, 0xB5, 0xEF, 0x0E, 0x0B, 0x2B, 0xC0, 0xD0)
+        val order = hot + (0x00..0xFF).filter { it !in hot && it != 0xF1 && it != 0x33 }
+        return order.map { EcuAddr(0x18DA00F1 or (it shl 8), 0x18DAF100 or it, bits29 = true) }
+    }
 
     // В таблицах по маркам — ключи локализации, текст берётся через tr() в name().
     private val hyundaiKia = mapOf(
@@ -316,6 +307,30 @@ object ModuleMap {
         0x7A5 to "obd_module_smart_key", 0x7B3 to "obd_module_climate", 0x7B6 to "obd_module_awd", 0x7B7 to "obd_module_camera_assist", 0x7B1 to "obd_module_radar",
         0x7C7 to "obd_module_tpms", 0x7A2 to "obd_module_sunroof_windows", 0x7A3 to "obd_module_seats", 0x7C5 to "obd_module_avn",
         0x7D0 to "obd_module_engine_extra", 0x7D3 to "obd_module_immobilizer", 0x7D6 to "obd_module_awd_4wd", 0x7B2 to "obd_module_rear_camera", 0x7B4 to "obd_module_blind_spot"
+    )
+    private val vag = mapOf(
+        0x7E0 to "obd_module_engine", 0x7E1 to "obd_module_gearbox", 0x713 to "obd_module_abs_esp", 0x715 to "obd_module_airbags", 0x714 to "obd_module_cluster",
+        0x712 to "obd_module_eps", 0x710 to "obd_module_can_gateway", 0x70E to "obd_module_body", 0x746 to "obd_module_climate", 0x757 to "obd_module_radar",
+        0x74F to "obd_module_camera_assist"
+    )
+    private val toyota = mapOf(
+        0x7E0 to "obd_module_engine", 0x7E1 to "obd_module_gearbox", 0x7B0 to "obd_module_abs_vsc", 0x780 to "obd_module_airbags", 0x7C0 to "obd_module_cluster",
+        0x7A1 to "obd_module_eps", 0x7C4 to "obd_module_climate"
+    )
+    private val renaultNissan = mapOf(
+        0x7E0 to "obd_module_engine", 0x7E1 to "obd_module_gearbox", 0x740 to "obd_module_abs_esp", 0x742 to "obd_module_eps", 0x743 to "obd_module_cluster",
+        0x744 to "obd_module_climate", 0x745 to "obd_module_bcm", 0x752 to "obd_module_airbags", 0x755 to "obd_module_parking_brake", 0x707 to "obd_module_camera_assist"
+    )
+    private val ford = mapOf(
+        0x7E0 to "obd_module_engine", 0x7E1 to "obd_module_gearbox", 0x760 to "obd_module_abs_esp", 0x730 to "obd_module_eps", 0x720 to "obd_module_cluster",
+        0x726 to "obd_module_bcm", 0x737 to "obd_module_airbags", 0x764 to "obd_module_radar", 0x706 to "obd_module_camera_assist", 0x7D0 to "obd_module_avn"
+    )
+    private val generic = mapOf(0x7E0 to "obd_module_engine", 0x7E1 to "obd_module_gearbox")
+    /** 29 бит (Honda и альянс Renault-Nissan): по адресу блока. */
+    private val honda29 = mapOf(
+        0x10 to "obd_module_engine", 0x0E to "obd_module_engine", 0x1E to "obd_module_gearbox", 0x28 to "obd_module_abs_esc", 0x30 to "obd_module_eps",
+        0x53 to "obd_module_airbags", 0x60 to "obd_module_cluster", 0xB0 to "obd_module_radar", 0xB5 to "obd_module_camera_assist", 0xEF to "obd_module_can_gateway",
+        0xD0 to "obd_module_can_gateway"
     )
 
     /** BMW и MINI серий F/G: блоки за центральным шлюзом, адресация через 0x6F1 + байт адреса блока. */
@@ -341,23 +356,19 @@ object ModuleMap {
         val b = brand.orEmpty().lowercase()
         return b.contains("hyundai") || b.contains("kia")
     }
-    private val vag = mapOf(
-        0x7E1 to "obd_module_gearbox", 0x713 to "obd_module_abs_esp", 0x715 to "obd_module_airbags", 0x714 to "obd_module_cluster",
-        0x712 to "obd_module_eps", 0x710 to "obd_module_can_gateway", 0x70E to "obd_module_body", 0x746 to "obd_module_climate"
-    )
-    private val toyota = mapOf(
-        0x7E1 to "obd_module_gearbox", 0x7B0 to "obd_module_abs_vsc", 0x780 to "obd_module_airbags", 0x7C0 to "obd_module_cluster",
-        0x7A1 to "obd_module_eps"
-    )
 
-    fun name(brand: String?, target: Target): String {
+    fun name(brand: String?, a: EcuAddr): String {
+        if (a.ext != null) return bmwName(a.ext)
+        if (a.bits29) return honda29[a.display]?.let { tr(it) } ?: block29(a.display)
         val b = brand.orEmpty().lowercase()
         val map = when {
-            b.contains("hyundai") || b.contains("kia") -> hyundaiKia
+            b.contains("hyundai") || b.contains("kia") || b.contains("genesis") -> hyundaiKia
             b.contains("volkswagen") || b.contains("audi") || b.contains("skoda") || b.contains("seat") || b.contains("porsche") -> vag
             b.contains("toyota") || b.contains("lexus") -> toyota
-            else -> emptyMap()
+            b.contains("renault") || b.contains("nissan") || b.contains("dacia") || b.contains("infiniti") -> renaultNissan
+            b.contains("ford") || b.contains("mazda") -> ford
+            else -> generic
         }
-        return map[target.addr]?.let { tr(it) } ?: target.generic
+        return (map[a.req] ?: generic[a.req])?.let { tr(it) } ?: block(a.req)
     }
 }
