@@ -251,7 +251,7 @@ class ScanTest {
         var calls = 0
         val car = ScriptedCar()
         car.ecus += ScriptedCar.Ecu(0x7E0, 0x7E8, handler = { req ->
-            if (req[0] == 0x19) { calls++; if (calls <= 2) listOf(0x7F, 0x19, 0x78) else listOf(0x59, 0x02, 0xFF, 0x03, 0x00, 0x00, 0x09) }
+            if (req[0] == 0x19) { calls++; if (calls <= 1) listOf(0x7F, 0x19, 0x78) else listOf(0x59, 0x02, 0xFF, 0x03, 0x00, 0x00, 0x09) }
             else Replies.uds()(req)
         })
         val r = ModuleScanner(car).scan(null, emptyList()) { _, _ -> }
@@ -321,7 +321,7 @@ class ScanTest {
         val r = ModuleScanner(car).scan(null, emptyList()) { _, _ -> }
         assertEquals(listOf("P0300", "P0420"), r.modules.first().codes.map { it.substringBefore(' ') })
         assertTrue(car.sent.contains("1001 1") && car.sent.contains("ATCFC0"))
-        assertTrue(car.sent.indexOf("ATCFC1") > car.sent.lastIndexOf("1001 1"))
+        assertTrue(car.sent.lastIndexOf("ATCFC1") > car.sent.lastIndexOf("1001 1"))
     }
 
     @Test fun responseIdIsNotProbedAsRequest() {

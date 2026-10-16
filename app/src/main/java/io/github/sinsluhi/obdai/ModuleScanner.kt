@@ -367,12 +367,13 @@ class ModuleScanner(private val s: ElmSession) {
     }
 
     /**
-     * GMLAN (GMW3110): запрос A9 81 12 обычным кадром, ответ — серия однокадровых UUDT на ID «ответ − 0x100» (0x7E8 → 0x5E8,
+     * GMLAN (GMW3110): запрос A9 81 12 обычным кадром, ответ — серия однокадровых UUDT на ID 0x500 + младший байт ответа (0x7E8 → 0x5E8,
      * 0x641 → 0x541), первый байт 81 — не PCI, поэтому на время чтения автоформат ISO-TP выключен (ATCAF0, длина в кадре своя),
      * окно приёма длинное: кадры идут с паузами 30–50 мс до завершающего кадра с нулевым кодом.
      */
     private fun readGmlan(a: EcuAddr, brand: String?): Pair<ModuleScan, EcuAddr>? {
-        val uudt = a.resp - 0x100
+        // UUDT ID = 0x500 + младший байт ID ответа: 0x641 -> 0x541 (BCM), 0x7E8 -> 0x5E8 (ECM)
+        val uudt = 0x500 or (a.resp and 0xFF)
         s.send("ATCAF0"); s.send("ATCRA %03X".format(uudt)); s.send("ATST FF")
         val raw = s.send("03A98112", 4000)
         s.send("ATCAF1"); s.send("ATST 64"); filterTo(a)
