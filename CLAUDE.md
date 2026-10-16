@@ -295,6 +295,9 @@ Hyundai Tucson 2019 (VIN KMHJ381ADKU…), ELM327 v1.5, ISO 15765-4 CAN 11/500. �
 
 ## Открытые задачи
 
+- Контекст сессии 12–16.10.2026 (подпись, версия разработчика, Claude у владельца, сервер на Tailscale, полевые тесты John,
+  переделка опроса блоков — шаг 1 сделан, шаги 2–3 в плане): `docs/КОНТЕКСТ СЕССИИ 2026-10-16.md`, исследования — `docs/research/`.
+  Правило: не латать под отдельные машины — чинить основу опроса; код закрытых чужих приложений не декомпилировать.
 - Разбор через Claude для владельца (16.10.2026): только версия разработчика (BuildConfig.OWNER_AI_KEY / OWNER_AI_URL,
   секрет OWNER_AI_KEY и переменная OWNER_AI_URL = https://sh01.tailec27da.ts.net/obd). AiClient.ownerClaude шлёт отчёт на
   server/forum/owner_ai.py → claude -p (встроенный в приложение Claude для Windows, подписка владельца, только WebSearch/WebFetch).
