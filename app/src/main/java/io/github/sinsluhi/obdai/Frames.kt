@@ -26,7 +26,7 @@ object Frames {
      * @param extAddr расширенная адресация (`ATCEA`): первый байт данных — адрес тестера (F1). Часть адаптеров
      *   его снимает сама, часть печатает; снимаем только если он на месте (PCI с типом F не бывает).
      */
-    fun parse(raw: String, bits29: Boolean, extAddr: Boolean = false): List<Frame> {
+    fun parse(raw: String, bits29: Boolean, extAddr: Int? = null): List<Frame> {
         val out = mutableListOf<Frame>()
         // незаконченные многокадровые сообщения по ID: заявленная длина, буфер, ожидаемый номер кадра
         class Pending(val len: Int, val buf: MutableList<Int>, var seq: Int)
@@ -38,7 +38,7 @@ object Frames {
             if (STATUS_WORDS.any { line.contains(it) }) continue
             val (id, bytes) = split(line, bits29) ?: continue
             var data = bytes
-            if (extAddr && data.firstOrNull() == TESTER) data = data.drop(1)
+            if (extAddr != null && data.firstOrNull() == extAddr) data = data.drop(1)
             if (data.isEmpty()) continue
             val pci = data[0]
             when (pci shr 4) {

@@ -10,9 +10,14 @@ import org.junit.Test
  * потоком (авто и ручное), расширенную адресацию (CEA) и отвечает кадрами так, как их печатает адаптер.
  * Многокадровый ответ приходит целиком, только если кадр управления потоком дошёл до блока — как на живой шине.
  */
-class ScriptedCar(private val bits29: Boolean = false, private val unsupported: Set<String> = emptySet()) : ElmSession {
-    /** Блок: ID запроса, ID ответа, байт расширенной адресации, обработчик запроса → байты ответа (null — молчит). */
-    class Ecu(val req: Int, val resp: Int, val ext: Int? = null, val handler: (List<Int>) -> List<Int>?)
+class ScriptedCar(private val bits29: Boolean = false, private val unsupported: Set<String> = emptySet(),
+                  override val protocolNo: Int = if (bits29) 7 else 6) : ElmSession {
+    /**
+     * Блок: ID запроса, ID ответа, байт расширенной адресации, обработчик запроса → байты ответа (null — молчит).
+     * rxByte — что блок ставит первым байтом ответа при расширенной адресации (BMW — адрес тестера F1, Toyota — подадрес).
+     * На K-line req = физический адрес блока.
+     */
+    class Ecu(val req: Int, val resp: Int, val ext: Int? = null, val rxByte: Int = 0xF1, val handler: (List<Int>) -> List<Int>?)
 
     val ecus = mutableListOf<Ecu>()
     val sent = mutableListOf<String>()
@@ -25,8 +30,10 @@ class ScriptedCar(private val bits29: Boolean = false, private val unsupported: 
     private var fcsd: List<Int> = emptyList()
     private var fcsm = 0
     private var cea: Int? = null
+    private var ta = 0xF1
+    private var klineInit: Int? = null   // адрес блока, с которым прошёл init на K-line
 
-    override val isCan = true
+    override val isCan = protocolNo in 6..9
     override val is29Bit = bits29
     override val adapter = AdapterInfo("ELM327 v1.5", "", emptyList(), 40)
     override fun log(text: String) { logs.add(text) }
@@ -39,11 +46,18 @@ class ScriptedCar(private val bits29: Boolean = false, private val unsupported: 
         val c = cmd.uppercase().replace(" ", "")
         if (c.startsWith("AT")) {
             // имена команд — по списку, длинные раньше: аргумент может начинаться с буквы (ATSH DA28F1)
-            val name = Regex("^AT(FCSH|FCSD|FCSM|CRA|CEA|CAF|CFC|CF|CM|CP|AR|SH|ST|AT|H|E|L|S|Z|I|@1)").find(c)?.value ?: return "?"
+            val name = Regex("^AT(FCSH|FCSD|FCSM|CRA|CEA|CAF|CFC|CF|CM|CP|AR|SH|ST|AT|TA|FI|SI|H|E|L|S|Z|I|@1)").find(c)?.value ?: return "?"
             if (name in unsupported) return "?"
             val arg = c.removePrefix(name)
             when (name) {
                 "ATSH" -> sh = if (bits29) (0x18 shl 24) or hex(arg) else hex(arg)
+                "ATTA" -> ta = hex(arg)
+                "ATFI", "ATSI" -> {
+                    // K-line: быстрый init к физическому адресу из заголовка 81 xx F1
+                    val addr = (sh shr 8) and 0xFF
+                    klineInit = if (ecus.any { it.req == addr }) addr else null
+                    return if (klineInit != null) "BUS INIT: OK" else "BUS INIT: ...ERROR"
+                }
                 // у настоящего ELM327 ATCRA — это те же CF/CM: последняя команда побеждает
                 "ATCRA" -> { cf = hex(arg); cm = if (bits29) 0x1FFFFFFF else 0x7FF }
                 "ATCF" -> cf = hex(arg)
@@ -58,10 +72,18 @@ class ScriptedCar(private val bits29: Boolean = false, private val unsupported: 
         }
         val req = c.chunked(2).map { it.toInt(16) }
         val lines = mutableListOf<String>()
+        if (!isCan) {
+            // K-line при ATH0: адаптер отдаёт только байты данных, без адресов и контрольной суммы
+            val e = ecus.firstOrNull { it.req == klineInit } ?: return "NO DATA"
+            val payload = e.handler(req) ?: return "NO DATA"
+            return payload.joinToString(" ") { "%02X".format(it) } + "\r"
+        }
         for (e in ecus) {
             if (e.req != sh || e.ext != cea) continue
             val payload = e.handler(req) ?: continue
             if (!passes(e.resp)) continue
+            // ELM327 при ATCEA пропускает только кадры, у которых первый байт равен адресу тестера
+            if (cea != null && e.rxByte != ta) continue
             lines.addAll(frames(e, payload))
         }
         return if (lines.isEmpty()) "NO DATA" else lines.joinToString("\r") + "\r"
@@ -77,7 +99,7 @@ class ScriptedCar(private val bits29: Boolean = false, private val unsupported: 
         if (bits29) (0x18DA0000 or ((req and 0xFF) shl 8) or ((req shr 8) and 0xFF)) else req + 8
 
     private fun frames(e: Ecu, payload: List<Int>): List<String> {
-        val prefix = if (e.ext != null) listOf(0xF1) else emptyList()
+        val prefix = if (e.ext != null) listOf(e.rxByte) else emptyList()
         val cap = 7 - prefix.size
         fun line(bytes: List<Int>): String {
             val id = if (bits29) "%08X".format(e.resp).chunked(2).joinToString(" ") else "%03X".format(e.resp)
@@ -224,6 +246,42 @@ class ScanTest {
         val r = ModuleScanner(car).scan(null, known) { _, _ -> }
         assertTrue(r.fullSweep)
         assertEquals(1, r.modules.size)
+    }
+
+    @Test fun psaOffsetMinus20FoundInExtraRange() {
+        val car = ScriptedCar()
+        car.ecus += ScriptedCar.Ecu(0x7E0, 0x7E8, handler = Replies.uds())
+        car.ecus += ScriptedCar.Ecu(0x6A8, 0x688, handler = Replies.uds(*engineRecords))   // впрыск PSA: ответ −0x20
+        val r = ModuleScanner(car).scan("Peugeot", emptyList()) { _, _ -> }
+        val inj = r.modules.first { it.addr == 0x6A8 }
+        assertEquals(listOf("P0300", "P0420"), inj.codes.map { it.substringBefore(' ') })
+        assertEquals(0x688, r.ecus.first { it.req == 0x6A8 }.resp)
+        assertTrue(car.sent.contains("ATCF 600"))
+    }
+
+    @Test fun toyotaSubAddressedGateway() {
+        val car = ScriptedCar()
+        car.ecus += ScriptedCar.Ecu(0x7E0, 0x7E8, handler = Replies.uds())
+        car.ecus += ScriptedCar.Ecu(0x750, 0x758, ext = 0x40, rxByte = 0x40, handler = Replies.uds(0x96, 0x02, 0x00, 0x09))   // кузов: B1602
+        val r = ModuleScanner(car).scan("Toyota", emptyList()) { _, _ -> }
+        val body = r.modules.first { it.addr == 0x40 }
+        assertEquals(listOf("B1602"), body.codes.map { it.substringBefore(' ') })
+        assertTrue(car.sent.contains("ATTA 40") && car.sent.contains("ATCEA 40"))
+        assertEquals("ATTA F1", car.sent.last { it.startsWith("ATTA") })
+        val cached = EcuAddr.fromJson(r.ecus.first { it.ext == 0x40 }.toJson())
+        assertEquals(0x40, cached.rx)
+    }
+
+    @Test fun ladaKlineEngineViaFastInit() {
+        val car = ScriptedCar(protocolNo = 5)
+        car.ecus += ScriptedCar.Ecu(0x10, 0x10, handler = Replies.kwp(0x03, 0x00, 0x60))   // Январь 7.2: P0300
+        val r = ModuleScanner(car).scan("Lada", emptyList()) { _, _ -> }
+        assertTrue(r.fullSweep)
+        assertEquals(1, r.modules.size)
+        assertEquals("KWP", r.modules[0].via)
+        assertEquals(listOf("P0300"), r.modules[0].codes)
+        assertTrue(car.sent.contains("ATSH 81 10 F1") && car.sent.contains("ATFI"))
+        assertTrue(car.sent.none { it == "ATH1" })
     }
 
     @Test fun cacheRoundTrip() {

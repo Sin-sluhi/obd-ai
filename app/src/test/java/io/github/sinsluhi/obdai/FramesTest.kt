@@ -55,7 +55,7 @@ class FramesTest {
     @Test fun bmwGatewayStripsTesterByte() {
         // ответ DME через шлюз: первый байт данных F1 — адрес тестера, дальше PCI
         val raw = "612 F1 10 13 59 02 FF 13 05\r612 F1 21 08 2C 21 39 01 2C\r612 F1 22 11 80 02 2C 21 35\r612 F1 23 01 2C AA AA AA AA\r"
-        val f = Frames.parse(raw, bits29 = false, extAddr = true)
+        val f = Frames.parse(raw, bits29 = false, extAddr = Frames.TESTER)
         assertEquals(1, f.size)
         assertEquals(19, f[0].data.size)
         val codes = ModuleDecoder.parseUdsDetailed(Frames.messages(f), oemHex = true)!!.map { it.first.substringBefore(' ') }
@@ -64,7 +64,7 @@ class FramesTest {
 
     @Test fun bmwGatewayWhenAdapterAlreadyStrippedTester() {
         val raw = "612 03 59 02 FF\r"
-        val f = Frames.parse(raw, bits29 = false, extAddr = true)
+        val f = Frames.parse(raw, bits29 = false, extAddr = Frames.TESTER)
         assertEquals(listOf(0x59, 0x02, 0xFF), f[0].data)
     }
 

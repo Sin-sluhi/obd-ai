@@ -85,11 +85,18 @@ class Elm327(private val logger: (String) -> Unit) : ObdLink, ElmSession {
     /** 29-битный CAN (протоколы 7 и 9): другой формат адресов, 11-битные заголовки здесь неприменимы. */
     override var is29Bit = false
         private set
+    override var protocolNo = 0
+        private set
 
-    /** Вернуть заголовок и фильтр к стандартному OBD-запросу для текущего протокола. */
+    /** Вернуть заголовок и фильтр к стандартному OBD-запросу для текущего протокола (CAN — 7DF/18DB33F1, K-line — 33). */
     override fun restoreObdHeader() {
         send("ATAR")
-        if (is29Bit) { send("ATCP 18"); send("ATSH DB33F1") } else if (isCan) send("ATSH 7DF")
+        when {
+            is29Bit -> { send("ATCP 18"); send("ATSH DB33F1") }
+            isCan -> send("ATSH 7DF")
+            protocolNo in 4..5 -> send("ATSH C2 33 F1")
+            protocolNo == 3 -> send("ATSH 68 6A F1")
+        }
     }
 
     /**
@@ -135,6 +142,7 @@ class Elm327(private val logger: (String) -> Unit) : ObdLink, ElmSession {
         }
         ecuOnline = good
         val pn = protocolNumber()
+        protocolNo = pn ?: 0
         isCan = pn != null && pn in 6..0xC
         is29Bit = pn == 7 || pn == 9
         protocol = send("ATDP")

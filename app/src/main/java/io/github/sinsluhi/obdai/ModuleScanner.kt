@@ -11,6 +11,8 @@ interface ElmSession {
     fun send(cmd: String, timeoutMs: Long): String
     val isCan: Boolean
     val is29Bit: Boolean
+    /** Номер протокола ELM327 (ATDPN): 6/8 — CAN 11 бит, 7/9 — 29 бит, 5 — KWP быстрый init, 4 — KWP медленный, 3 — ISO 9141. */
+    val protocolNo: Int
     val adapter: AdapterInfo
     fun log(text: String)
     /** Вернуть заголовок и фильтр к стандартному OBD-запросу (7DF или 18DB33F1). */
@@ -25,7 +27,11 @@ fun ElmSession.send(cmd: String): String = send(cmd, 3000)
  * [req]/[resp] — CAN ID запроса и ответа (11 бит — 0x7xx, 29 бит — полный 0x18DAxxF1 / 0x18DAF1xx),
  * [ext] — байт расширенной адресации (шлюз BMW 0x6F1: адрес блока первым байтом данных), [via] — чем прочитали.
  */
-data class EcuAddr(val req: Int, val resp: Int, val bits29: Boolean = false, val ext: Int? = null, val via: String = "") {
+data class EcuAddr(val req: Int, val resp: Int, val bits29: Boolean = false, val ext: Int? = null, val via: String = "",
+                   val extRx: Int = Frames.TESTER) {
+    /** Байт, который стоит первым в ответе при расширенной адресации и снимается: BMW — адрес тестера F1, Toyota — подадрес. */
+    val rx: Int? get() = if (ext != null) extRx else null
+
     /** Что показывать как адрес блока: для 29 бит — адрес блока (TA), для шлюза — его байт. */
     val display: Int get() = when {
         ext != null -> ext
@@ -34,11 +40,11 @@ data class EcuAddr(val req: Int, val resp: Int, val bits29: Boolean = false, val
     }
 
     fun toJson(): JSONObject = JSONObject().put("req", req).put("resp", resp).put("b29", bits29).put("via", via)
-        .also { if (ext != null) it.put("ext", ext) }
+        .also { if (ext != null) { it.put("ext", ext); it.put("rx", extRx) } }
 
     companion object {
         fun fromJson(o: JSONObject) = EcuAddr(o.getInt("req"), o.getInt("resp"), o.optBoolean("b29"),
-            if (o.has("ext")) o.getInt("ext") else null, o.optString("via"))
+            if (o.has("ext")) o.getInt("ext") else null, o.optString("via"), o.optInt("rx", Frames.TESTER))
     }
 }
 
@@ -78,7 +84,11 @@ class ModuleScanner(private val s: ElmSession) {
      * Полный перебор, если известных нет, или из них ответила меньше половины (прошлый поиск шёл при спящих блоках).
      */
     fun scan(brand: String?, known: List<EcuAddr>, progress: (Int, Int) -> Unit): Result {
-        if (!s.isCan) { s.log(tr("elm_scan_can_only")); return Result(emptyList(), emptyList(), false) }
+        if (!s.isCan) {
+            // K-line: KWP2000 с быстрым init по физическим адресам (Лада, старые азиаты и европейцы)
+            if (s.protocolNo in 4..5) return scanKline(brand, progress)
+            s.log(tr("elm_scan_can_only")); return Result(emptyList(), emptyList(), false)
+        }
         manualFc = listOf("ATFCSH", "ATFCSD", "ATFCSM").none { it in s.adapter.missing }
         val found = linkedMapOf<Int, ModuleScan>()      // по ID ответа: один блок — одна запись
         val addrs = linkedMapOf<Int, EcuAddr>()
@@ -101,8 +111,11 @@ class ModuleScanner(private val s: ElmSession) {
                 val gateway = ModuleMap.isBmw(brand) && "ATCEA" !in s.adapter.missing
                 if (gateway) sweepGateway(0x6F1, 0x600, ModuleMap.bmwAddresses, progress, found, addrs)
                 if (!gateway || found.isEmpty()) sweep(brand, progress, found, addrs)
+                val cea = "ATCEA" !in s.adapter.missing && !s.is29Bit
+                // Toyota/Lexus: часть блоков за шлюзом 0x750 с подадресом первым байтом, ответ с 0x758
+                if (cea && ModuleMap.isToyota(brand)) sweepToyota(progress, found, addrs)
                 // марка неизвестна, обычный перебор почти пуст, адаптер умеет ATCEA — коротко стучимся в шлюз BMW
-                if (!gateway && found.size <= 2 && "ATCEA" !in s.adapter.missing && !s.is29Bit) {
+                if (!gateway && cea && found.size <= 2) {
                     val probe = linkedMapOf<Int, ModuleScan>(); val probeAddrs = linkedMapOf<Int, EcuAddr>()
                     sweepGateway(0x6F1, 0x600, listOf(0x12, 0x40, 0x60), { _, _ -> }, probe, probeAddrs)
                     if (probe.isNotEmpty()) sweepGateway(0x6F1, 0x600, ModuleMap.bmwAddresses, progress, found, addrs)
@@ -128,11 +141,10 @@ class ModuleScanner(private val s: ElmSession) {
         s.restoreObdHeader()
     }
 
-    /** Фильтр приёма на весь диапазон ответов. false — адаптер не понял ATCF/ATCM. */
-    private fun wideFilter(): Boolean {
-        val (cf, cm) = if (s.is29Bit) "ATCF 18DAF100" to "ATCM 1FFFFF00" else "ATCF 700" to "ATCM 700"
+    /** Фильтр приёма на диапазон ответов. false — адаптер не понял ATCF/ATCM. */
+    private fun wideFilter(cf: String, cm: String): Boolean {
         s.send("ATAR")   // снять ATCRA от прошлого чтения: у клонов порядок «кто последний» не гарантирован
-        val ok =!s.send(cf).contains("?") && !s.send(cm).contains("?")
+        val ok = !s.send(cf).contains("?") && !s.send(cm).contains("?")
         if (!ok) { s.send("ATAR"); s.log(tr("elm_scan_no_range_filter")) }
         return ok
     }
@@ -147,17 +159,23 @@ class ModuleScanner(private val s: ElmSession) {
 
     // ---------- поиск ----------
 
-    /** Перебор физических адресов: 11 бит 0x700–0x7FF (кроме 7DF и ответов 7E8–7EF), 29 бит 18DAxxF1 для xx=00..FF. */
+    /**
+     * Перебор физических адресов по плану марки ([ModuleMap.plan]): 11 бит — 0x700–0x7FF для всех, плюс диапазоны
+     * PSA (0x680–0x6FF, ответ −0x20), GM (0x240–0x25F, ответ +0x400), Mercedes (0x600–0x6FF); 29 бит — 18DAxxF1.
+     * У каждого диапазона свой фильтр приёма, потому что ответы лежат в другом месте, чем запросы.
+     */
     private fun sweep(brand: String?, progress: (Int, Int) -> Unit, found: MutableMap<Int, ModuleScan>, addrs: MutableMap<Int, EcuAddr>) {
         if (ceaUsed) { s.send("ATCEA"); ceaUsed = false }
-        rangeFilter = wideFilter()
         s.send("ATFCSM 0"); s.send("ATST 32")
-        val targets = if (s.is29Bit) ModuleMap.sweep29() else ModuleMap.sweep11()
+        val plan = if (s.is29Bit) listOf(ModuleMap.Range(ModuleMap.sweep29(), "ATCF 18DAF100", "ATCM 1FFFFF00")) else ModuleMap.plan(brand)
+        val targets = plan.flatMap { r -> r.targets.map { it to r } }
         s.log(tr("elm_scan_mode_full", targets.size))
         val needRead = mutableListOf<EcuAddr>()       // ответили, но не полностью или не по UDS — дочитать
         val needIdentity = mutableListOf<EcuAddr>()   // ответ полный, осталось спросить VIN и номер блока
-        targets.forEachIndexed { i, a ->
+        var range: ModuleMap.Range? = null
+        targets.forEachIndexed { i, (a, r) ->
             progress(i + 1, targets.size)
+            if (r !== range) { range = r; rangeFilter = wideFilter(r.cf, r.cm) }
             header(a)
             if (!rangeFilter) filterTo(a)
             val raw = s.send("1902FF", 1500)
@@ -209,13 +227,78 @@ class ModuleScanner(private val s: ElmSession) {
             filterTo(addr)
             if (manualFc) { s.send("ATFCSD %02X 30 00 00".format(a)); s.send("ATFCSM 1") }
             val raw = s.send("1902FF", 1500)
-            val frames = Frames.parse(raw, false, extAddr = true).filter { it.id == addr.resp }
+            val frames = Frames.parse(raw, false, addr.rx).filter { it.id == addr.resp }
             if (frames.isEmpty()) continue
             val r = readUds(addr, frames, raw, oem = true, brand = "bmw")
             if (r != null) { found[addr.resp] = r.first; addrs[addr.resp] = r.second }
             else found[addr.resp] = ModuleScan(ModuleMap.bmwName(a), a, emptyList(), "?")
         }
         s.log(tr("elm_scan_gateway_bmw", found.size))
+    }
+
+    /**
+     * Toyota/Lexus: блоки за шлюзом 0x750 — подадрес первым байтом (ATCEA), ответ с 0x758 с тем же подадресом впереди.
+     * ELM327 при ATCEA пропускает только кадры, у которых первый байт равен адресу тестера, поэтому на время запроса
+     * адрес тестера ставится равным подадресу (ATTA) и возвращается к F1 после.
+     */
+    private fun sweepToyota(progress: (Int, Int) -> Unit, found: MutableMap<Int, ModuleScan>, addrs: MutableMap<Int, EcuAddr>) {
+        val subs = ModuleMap.toyotaSubs
+        ceaUsed = true
+        s.send("ATSH 750"); s.send("ATFCSH 750")
+        try {
+            for ((i, sub) in subs.withIndex()) {
+                progress(i + 1, subs.size)
+                val addr = EcuAddr(0x750, 0x758, false, sub, "UDS", extRx = sub)
+                if (s.send("ATCEA %02X".format(sub)).contains("?")) return
+                if (s.send("ATTA %02X".format(sub)).contains("?")) return
+                filterTo(addr)
+                if (manualFc) { s.send("ATFCSD %02X 30 00 00".format(sub)); s.send("ATFCSM 1") }
+                val raw = s.send("1902FF", 1500)
+                val frames = Frames.parse(raw, false, sub).filter { it.id == 0x758 }
+                if (frames.isEmpty()) continue
+                val r = readUds(addr, frames, raw, oem = false, brand = "toyota")
+                if (r != null) { found[0x75800 + sub] = r.first; addrs[0x75800 + sub] = r.second }
+                else found[0x75800 + sub] = ModuleScan(ModuleMap.toyotaSubName(sub), sub, emptyList(), "?")
+            }
+        } finally {
+            s.send("ATTA F1")
+        }
+    }
+
+    /**
+     * K-line (ISO 14230, быстрый init): перебор физических адресов, на каждый — init и KWP 18 00 FF 00 / 18 02 FF 00.
+     * Заголовков у строк нет (ATH0): адаптер сам снимает адрес и контрольную сумму, разбор — [ObdDecoder.messages].
+     * Лада: двигатель 0x10 (Январь 7.2, M7.9.7, M73/M74), остальные блоки — свои адреса на той же линии.
+     */
+    private fun scanKline(brand: String?, progress: (Int, Int) -> Unit): Result {
+        val found = mutableListOf<ModuleScan>()
+        val addrs = mutableListOf<EcuAddr>()
+        val targets = ModuleMap.klineAddresses
+        s.log(tr("elm_scan_kline", targets.size))
+        try {
+            s.send("ATAT0"); s.send("ATST 64")
+            for ((i, a) in targets.withIndex()) {
+                progress(i + 1, targets.size)
+                s.send("ATSH 81 %02X F1".format(a))
+                val init = s.send(if (s.protocolNo == 5) "ATFI" else "ATSI", 6000)
+                if (!init.uppercase().contains("OK")) continue
+                var codes: List<String>? = null
+                for (cmd in listOf("1800FF00", "1802FF00")) {
+                    val k = s.send(cmd, 4000)
+                    codes = ModuleDecoder.parseKwp(ObdDecoder.messages(k))
+                    if (codes != null) { s.log("↩ K-line %02X: %s".format(a, k.replace("\r", " | ").take(200))); break } // i18n-ignore: журнал
+                }
+                val e = EcuAddr(a, a, via = if (codes != null) "KWP" else "?")
+                val name = ModuleMap.klineName(brand, a)
+                found.add(ModuleScan(name, a, codes.orEmpty(), e.via))
+                addrs.add(e)
+                s.log("$name (%02X): %s".format(a, if (codes.isNullOrEmpty()) tr("elm_no_codes") else codes.joinToString()))
+            }
+        } finally {
+            runCatching { s.send("ATST 64"); s.send("ATAT1"); s.restoreObdHeader() }
+        }
+        s.log(tr("elm_scan_found", found.size))
+        return Result(found, addrs, true)
     }
 
     // ---------- чтение одного блока ----------
@@ -241,7 +324,7 @@ class ModuleScanner(private val s: ElmSession) {
         setup(a)
         s.send("ATST 64")
         var raw = s.send("1902FF", 2500)
-        var frames = Frames.parse(raw, a.bits29, a.ext != null).filter { it.id == a.resp }
+        var frames = Frames.parse(raw, a.bits29, a.rx).filter { it.id == a.resp }
         val oem = a.ext != null || ModuleMap.isBmw(brand)
         readUds(a, frames, raw, oem, brand)?.let { return it }
         val msgs = Frames.messages(frames)
@@ -250,9 +333,9 @@ class ModuleScanner(private val s: ElmSession) {
             // не в той сессии / условия не те: открываем расширенную и спрашиваем ещё раз
             if (code in listOf(0x22, 0x7E, 0x7F)) {
                 val ses = s.send("1003", 2000)
-                if (Frames.parse(ses, a.bits29, a.ext != null).any { it.data.firstOrNull() == 0x50 }) {
+                if (Frames.parse(ses, a.bits29, a.rx).any { it.data.firstOrNull() == 0x50 }) {
                     raw = s.send("1902FF", 2500)
-                    frames = Frames.parse(raw, a.bits29, a.ext != null).filter { it.id == a.resp }
+                    frames = Frames.parse(raw, a.bits29, a.rx).filter { it.id == a.resp }
                     readUds(a, frames, raw, oem, brand)?.let { return it }
                 }
             }
@@ -260,7 +343,7 @@ class ModuleScanner(private val s: ElmSession) {
         // KWP2000 по CAN: readDiagnosticTroubleCodesByStatus, две формы группы
         for (cmd in listOf("1802FF00", "1800FF00")) {
             val k = s.send(cmd, 2500)
-            val kf = Frames.parse(k, a.bits29, a.ext != null).filter { it.id == a.resp }
+            val kf = Frames.parse(k, a.bits29, a.rx).filter { it.id == a.resp }
             val km = Frames.messages(kf)
             ModuleDecoder.parseKwp(km)?.let { codes ->
                 s.log("↩ ${hex(a)} KWP: ${k.replace("\r", " | ").take(200)}") // i18n-ignore: журнал
@@ -285,7 +368,7 @@ class ModuleScanner(private val s: ElmSession) {
             Thread.sleep(if (frames.any { it.partial }) 200 else 1000)
             s.send("ATST FF")
             raw = s.send("1902FF", 6000)
-            frames = Frames.parse(raw, a.bits29, a.ext != null).filter { it.id == a.resp }
+            frames = Frames.parse(raw, a.bits29, a.rx).filter { it.id == a.resp }
             s.send("ATST 64")
         }
         val msgs = Frames.messages(frames)
@@ -306,7 +389,7 @@ class ModuleScanner(private val s: ElmSession) {
     private fun identity(a: EcuAddr): Pair<String?, String?> {
         fun ascii(did: Int): String? {
             val r = s.send("22%04X".format(did), 1500)
-            val m = Frames.messages(Frames.parse(r, a.bits29, a.ext != null).filter { it.id == a.resp })
+            val m = Frames.messages(Frames.parse(r, a.bits29, a.rx).filter { it.id == a.resp })
             val msg = m.firstOrNull { it.size > 3 && it[0] == 0x62 && it[1] == (did shr 8) && it[2] == (did and 0xFF) } ?: return null
             return msg.drop(3).filter { it in 0x20..0x7E }.map { it.toChar() }.joinToString("").trim().takeIf { it.isNotBlank() }
         }

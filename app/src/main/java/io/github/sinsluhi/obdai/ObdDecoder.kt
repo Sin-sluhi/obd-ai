@@ -293,6 +293,42 @@ object ModuleMap {
         return order.map { EcuAddr(it, it + 8) }
     }
 
+    /** Диапазон перебора со своим фильтром приёма (ответы PSA/GM лежат не там, где запросы). */
+    data class Range(val targets: List<EcuAddr>, val cf: String, val cm: String)
+
+    /**
+     * План перебора по марке: всем — 0x700–0x7FF; PSA (ответ −0x20) — ещё 0x680–0x6FF; GM до 2017 (ответ +0x400) —
+     * 0x240–0x25F; Mercedes и неизвестные марки — 0x600–0x6FF (открытых таблиц нет, ищем шире).
+     */
+    fun plan(brand: String?): List<Range> {
+        val b = brand.orEmpty().lowercase()
+        val main = Range(sweep11(), "ATCF 700", "ATCM 700")
+        val psa = b.contains("peugeot") || b.contains("citro") || b.contains("ds ") || b == "ds" || b.contains("opel") || b.contains("vauxhall")
+        val gm = b.contains("chevrolet") || b.contains("cadillac") || b.contains("buick") || b.contains("gmc") || b.contains("daewoo") ||
+            b.contains("ravon") || b.contains("opel") || b.contains("holden")
+        val wide = b.contains("mercedes") || b.contains("smart") || b.isBlank()
+        return buildList {
+            add(main)
+            if (psa) add(Range((0x680..0x6FF).map { EcuAddr(it, it - 0x20) }, "ATCF 600", "ATCM 600"))
+            if (gm) add(Range((0x240..0x25F).map { EcuAddr(it, it + 0x400) }, "ATCF 400", "ATCM 400"))
+            if (wide && !psa) add(Range((0x600..0x6FF).map { EcuAddr(it, it + 8) }, "ATCF 600", "ATCM 600"))
+        }
+    }
+
+    /** Toyota/Lexus: подадреса за шлюзом 0x750 (opendbc): радар, EPB, кузов, шлюз, камера, телематика. */
+    val toyotaSubs: List<Int> = listOf(0x0F, 0x2C, 0x40, 0x5F, 0x6D, 0xC7)
+    private val toyotaSubNames = mapOf(0x0F to "obd_module_radar", 0x2C to "obd_module_parking_brake", 0x40 to "obd_module_bcm",
+        0x5F to "obd_module_can_gateway", 0x6D to "obd_module_camera_assist")
+    fun toyotaSubName(sub: Int): String = toyotaSubNames[sub]?.let { tr(it) } ?: tr("obd_module_block", "750/%02X".format(sub))
+    fun isToyota(brand: String?): Boolean { val b = brand.orEmpty().lowercase(); return b.contains("toyota") || b.contains("lexus") }
+
+    /** K-line KWP2000: физические адреса для быстрого init. 0x10 — двигатель (Лада, ГАЗ, УАЗ), остальные — типовые. */
+    val klineAddresses: List<Int> = listOf(0x10, 0x11, 0x12, 0x17, 0x18, 0x28, 0x29, 0x40, 0x58, 0x60)
+    private val klineNames = mapOf(0x10 to "obd_module_engine", 0x11 to "obd_module_engine_extra", 0x12 to "obd_module_engine_extra",
+        0x17 to "obd_module_cluster", 0x18 to "obd_module_gearbox", 0x28 to "obd_module_abs_esp", 0x29 to "obd_module_abs_esp",
+        0x40 to "obd_module_body", 0x58 to "obd_module_airbags", 0x60 to "obd_module_cluster")
+    fun klineName(brand: String?, addr: Int): String = klineNames[addr]?.let { tr(it) } ?: tr("obd_module_block", "%02X".format(addr))
+
     /** 29-битный перебор 18DAxxF1: сначала известные адреса Honda/Renault-Nissan/Chrysler, затем остальное. */
     fun sweep29(): List<EcuAddr> {
         val hot = listOf(0x10, 0x18, 0x1E, 0x28, 0x30, 0x53, 0x60, 0x61, 0xB0, 0xB5, 0xEF, 0x0E, 0x0B, 0x2B, 0xC0, 0xD0)
@@ -324,6 +360,17 @@ object ModuleMap {
     private val ford = mapOf(
         0x7E0 to "obd_module_engine", 0x7E1 to "obd_module_gearbox", 0x760 to "obd_module_abs_esp", 0x730 to "obd_module_eps", 0x720 to "obd_module_cluster",
         0x726 to "obd_module_bcm", 0x737 to "obd_module_airbags", 0x764 to "obd_module_radar", 0x706 to "obd_module_camera_assist", 0x7D0 to "obd_module_avn"
+    )
+    /** PSA (arduino-psa-diag): запрос → ответ −0x20. */
+    private val psa = mapOf(
+        0x6A8 to "obd_module_engine", 0x6A9 to "obd_module_gearbox", 0x6AD to "obd_module_abs_esp", 0x744 to "obd_module_airbags",
+        0x752 to "obd_module_bcm", 0x6B5 to "obd_module_eps", 0x75F to "obd_module_cluster", 0x76D to "obd_module_climate",
+        0x760 to "obd_module_avn", 0x764 to "obd_module_avn", 0x6AF to "obd_module_tpms", 0x6B6 to "obd_module_radar", 0x720 to "obd_module_can_gateway"
+    )
+    /** GM до Global B (opendbc, gocan): запрос 0x24x → ответ 0x64x. */
+    private val gm = mapOf(
+        0x7E0 to "obd_module_engine", 0x7E2 to "obd_module_gearbox", 0x241 to "obd_module_bcm", 0x243 to "obd_module_abs_esp",
+        0x247 to "obd_module_airbags", 0x24C to "obd_module_cluster", 0x24B to "obd_module_camera_assist"
     )
     private val generic = mapOf(0x7E0 to "obd_module_engine", 0x7E1 to "obd_module_gearbox")
     /** 29 бит (Honda и альянс Renault-Nissan): по адресу блока. */
@@ -367,6 +414,8 @@ object ModuleMap {
             b.contains("toyota") || b.contains("lexus") -> toyota
             b.contains("renault") || b.contains("nissan") || b.contains("dacia") || b.contains("infiniti") -> renaultNissan
             b.contains("ford") || b.contains("mazda") -> ford
+            b.contains("peugeot") || b.contains("citro") || b.contains("opel") || b.contains("vauxhall") -> psa + (if (b.contains("opel")) gm else emptyMap())
+            b.contains("chevrolet") || b.contains("cadillac") || b.contains("buick") || b.contains("daewoo") || b.contains("ravon") -> gm
             else -> generic
         }
         return (map[a.req] ?: generic[a.req])?.let { tr(it) } ?: block(a.req)
