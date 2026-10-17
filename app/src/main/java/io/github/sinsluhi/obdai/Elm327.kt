@@ -4,6 +4,19 @@ import android.annotation.SuppressLint
 import android.content.Context
 import java.io.IOException
 
+/**
+ * Почему молчит блок двигателя — по напряжению на разъёме (ATRV), а не общим «включи зажигание»: на работающем моторе
+ * генератор даёт 13,5–14,5 В, поэтому ниже 13 В мотор не работает, что бы ни казалось (Audi S8 John 17.10.2026:
+ * 11,3 В, «мотор заведён», окно просило включить зажигание). < 11,5 — ещё и АКБ подсажен или адаптер сидит плохо;
+ * 11,5–13 — зажигание выключено или ACC; от 13 — мотор работает, блок молчит по другой причине.
+ */
+fun silentEcuHint(v: Double?): String = when {
+    v == null -> tr("elm_check_ignition")
+    v < 11.5 -> tr("elm_hint_low_voltage", "%.1f".format(v))
+    v < 13.0 -> tr("elm_hint_ignition_off", "%.1f".format(v))
+    else -> tr("elm_hint_engine_on_silent", "%.1f".format(v))
+}
+
 /** Работа с адаптером ELM327 по Bluetooth. Все методы блокирующие — вызывать не из UI-потока. */
 class Elm327(private val logger: (String) -> Unit) : ObdLink, ElmSession {
 
@@ -149,15 +162,7 @@ class Elm327(private val logger: (String) -> Unit) : ObdLink, ElmSession {
         val good = ok(probe)
         if (!good) {
             log(tr("elm_car_no_answer", probe))
-            val v = voltage()
-            // по напряжению: < 11,5 В — адаптер плохо сидит в разъёме или машина обесточена; 11,5–12,9 — зажигание,
-            // скорее всего, выключено (или ACC); от 13 В — мотор работает, значит блок молчит по другой причине
-            log(when {
-                v == null -> tr("elm_check_ignition")
-                v < 11.5 -> tr("elm_hint_low_voltage", "%.1f".format(v))
-                v < 13.0 -> tr("elm_hint_ignition_off", "%.1f".format(v))
-                else -> tr("elm_hint_engine_on_silent", "%.1f".format(v))
-            })
+            log(silentEcuHint(voltage()))
         }
         ecuOnline = good
         val pn = protocolNumber()

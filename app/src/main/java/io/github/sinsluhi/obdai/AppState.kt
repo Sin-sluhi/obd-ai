@@ -496,7 +496,9 @@ class AppState private constructor(context: Context) {
             ui { ecuOnline = ecuAnswered }
             if (!ecuAnswered) {
                 addLog(tr("state_log_ecu_silent", probe.trim()))
-                throw IllegalStateException(tr("state_ecu_silent"))   // не IOException: связь с адаптером цела
+                // по напряжению видно, работает ли мотор: окно говорит цифрами, а не общим «включи зажигание»
+                val v = Regex("[0-9]+(\\.[0-9]+)?").find(runCatching { l.send("ATRV") }.getOrDefault(""))?.value?.toDoubleOrNull()
+                throw IllegalStateException(if (v != null) silentEcuHint(v) else tr("state_ecu_silent"))   // не IOException: связь с адаптером цела
             }
             val mil = l.readMil()
             ui { milOn = mil?.first; dtcCount = mil?.second }
