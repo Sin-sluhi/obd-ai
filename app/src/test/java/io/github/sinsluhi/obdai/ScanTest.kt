@@ -109,7 +109,7 @@ class ScriptedCar(private val bits29: Boolean = false, private val unsupported: 
             return "OK"
         }
         // скорость шины не та (CAN 250k на машине с 500k): кадр никто не подтвердил
-        if (proto in deadProtocols) return "CAN ERROR"
+        if (proto in deadProtocols) return "CAN ERROR"
         // нечётная длина — в конце цифра ожидаемых кадров (ELM v1.3+): адаптер отдаёт «>» после стольких кадров
         val expect = if (c.length % 2 == 1) c.last().digitToInt(16) else null
         val body = if (expect != null) c.dropLast(1) else c
