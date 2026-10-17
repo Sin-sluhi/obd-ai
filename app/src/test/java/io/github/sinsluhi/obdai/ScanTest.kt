@@ -51,6 +51,7 @@ class ScriptedCar(private val bits29: Boolean = false, private val unsupported: 
     private var klineInit: Int? = null   // адрес блока, с которым прошёл init на K-line
     private var proto = protocolNo       // текущий протокол адаптера (ATTP/ATSP меняют, машина — нет)
     private var iia = 0x33               // адрес 5-бод init (ATIIA), по умолчанию — функциональный OBD
+    var klineObdFailures = 0             // двигатель на K-line не отвечает на столько стандартных запросов подряд
 
     override val isCan = protocolNo in 6..9
     override val is29Bit = bits29
@@ -114,6 +115,12 @@ class ScriptedCar(private val bits29: Boolean = false, private val unsupported: 
         }
         val lines = mutableListOf<String>()
         if (!isCan) {
+            // стандартный OBD-запрос вне сессии с блоком — отвечает двигатель (init к 0x33 адаптер делает сам);
+            // klineObdFailures — сколько раз он ещё молчит после перебора (Hyundai Getz, лог 17.10.2026)
+            if (klineInit == null && req.size >= 2 && req[0] == 0x01 && req[1] == 0x00) {
+                if (klineObdFailures > 0) { klineObdFailures--; return "BUS INIT: ...ERROR\r" }
+                return "41 00 BE 3E B8 11\r"
+            }
             // K-line при ATH0: адаптер отдаёт только байты данных, без адресов и контрольной суммы
             val e = ecus.firstOrNull { it.req == klineInit } ?: return "NO DATA"
             val payload = e.handler(req) ?: return "NO DATA"
@@ -448,34 +455,66 @@ class ScanTest {
     }
 
     /**
-     * Лог Hyundai Getz (`traces/2026-10-17_hyundai-getz_iso9141-engine-only.txt`): двигатель на ISO 9141-2 (протокол 3),
-     * сканер ответил «опрос блоков только на CAN» и не спросил ни одного блока. Теперь перебор K-line и для 9141:
-     * быстрым init, затем 5-бод через ATIIA; протокол машины и адрес 5-бод init возвращаются в конце.
+     * KWP с медленным init (протокол 4): блоки ищутся быстрым init, затем 5-бодом через ATIIA (адрес 5-бод init задаёт
+     * только она, не заголовок); в конце адрес init — снова 0x33, протокол — свой, двигатель отвечает.
      */
-    @Test fun iso9141CarSweepsKlineFastThenSlowInit() {
-        val car = ScriptedCar(protocolNo = 3)
+    @Test fun kwpSlowInitCarSweepsFastThenSlowInit() {
+        val car = ScriptedCar(protocolNo = 4)
         car.ecus += ScriptedCar.Ecu(0x28, 0x28, kline = 5, handler = Replies.kwp(0x50, 0x01, 0x60))   // ABS быстрым init: C1001
         car.ecus += ScriptedCar.Ecu(0x58, 0x58, kline = 4, handler = Replies.kwp(0x91, 0x02, 0x60))   // подушки 5-бод: B1102
-        val r = ModuleScanner(car).scan(null, emptyList()) { _, _ -> }
-        assertTrue(car.logs.none { it.contains("elm_scan_can_only") })
+        val r = ModuleScanner(car) { }.scan(null, emptyList()) { _, _ -> }
         assertEquals(setOf(0x28, 0x58), r.modules.map { it.addr }.toSet())
         assertEquals(listOf("C1001"), r.modules.first { it.addr == 0x28 }.codes)
         assertEquals(listOf("B1102"), r.modules.first { it.addr == 0x58 }.codes)
         assertTrue(car.sent.contains("ATIIA 58") && car.sent.contains("ATSI") && car.sent.contains("ATFI"))
         assertTrue(car.sent.none { it == "ATIIA 28" })   // ABS ответил быстрым init — 5-бодом его второй раз не будили
-        assertEquals("ATTP 3", car.sent.last { it.startsWith("ATTP") })      // протокол машины вернулся
+        assertEquals("ATTP 4", car.sent.last { it.startsWith("ATTP") })      // протокол машины вернулся
         assertEquals("ATIIA 33", car.sent.last { it.startsWith("ATIIA") })   // и адрес 5-бод init — к двигателю
         assertEquals("ATAT1", car.sent.last { it.startsWith("ATAT") })
+        assertTrue(car.logs.none { it.contains("elm_scan_kline_engine_lost") })
     }
 
-    @Test fun iso9141WithoutIiaUsesFastInitOnly() {
-        val car = ScriptedCar(protocolNo = 3, unsupported = setOf("ATIIA"))
+    @Test fun kwpSlowInitWithoutIiaUsesFastInitOnly() {
+        val car = ScriptedCar(protocolNo = 4, unsupported = setOf("ATIIA"))
         car.ecus += ScriptedCar.Ecu(0x28, 0x28, kline = 5, handler = Replies.kwp(0x50, 0x01, 0x60))
         car.ecus += ScriptedCar.Ecu(0x58, 0x58, kline = 4, handler = Replies.kwp(0x91, 0x02, 0x60))
-        val r = ModuleScanner(car).scan(null, emptyList()) { _, _ -> }
+        val r = ModuleScanner(car) { }.scan(null, emptyList()) { _, _ -> }
         assertEquals(listOf(0x28), r.modules.map { it.addr })
         assertTrue(car.sent.none { it == "ATSI" })
         assertTrue(car.logs.any { it.contains("elm_scan_kline_no_iia") || it.contains("ATIIA") })
+    }
+
+    /**
+     * Лог Hyundai Getz (`traces/2026-10-17_hyundai-getz_iso9141-after-sweep-engine-lost.txt`): двигатель на ISO 9141-2,
+     * перебор 17 адресов быстрым и 5-бод init за 68 с не нашёл ни одного блока, а двигатель после него замолчал.
+     * Пока адреса по моделям не известны — на 9141 только двигатель, протокол не трогаем.
+     */
+    @Test fun iso9141CarOnlyEngineNoSweep() {
+        val car = ScriptedCar(protocolNo = 3)
+        car.ecus += ScriptedCar.Ecu(0x28, 0x28, kline = 5, handler = Replies.kwp(0x50, 0x01, 0x60))
+        val r = ModuleScanner(car) { }.scan(null, emptyList()) { _, _ -> }
+        assertTrue(r.modules.isEmpty())
+        assertTrue(car.sent.none { it.startsWith("ATTP") || it == "ATFI" || it == "ATSI" || it.startsWith("ATIIA") })
+        assertTrue(car.logs.any { it.contains("elm_scan_iso9141") })
+    }
+
+    /** После перебора двигатель не ответил с первого раза: пауза дольше P3max, автопоиск, связь вернулась. */
+    @Test fun klineEngineReconnectsAfterSweep() {
+        val car = ScriptedCar(protocolNo = 4)
+        car.ecus += ScriptedCar.Ecu(0x28, 0x28, kline = 5, handler = Replies.kwp(0x50, 0x01, 0x60))
+        car.klineObdFailures = 1
+        val pauses = mutableListOf<Long>()
+        ModuleScanner(car) { pauses.add(it) }.scan(null, emptyList()) { _, _ -> }
+        assertEquals(listOf(5500L), pauses)
+        assertEquals("ATSP0", car.sent.last { it.startsWith("ATSP") || it.startsWith("ATTP") })
+        assertTrue(car.logs.none { it.contains("elm_scan_kline_engine_lost") })
+    }
+
+    @Test fun klineEngineLostIsReported() {
+        val car = ScriptedCar(protocolNo = 4)
+        car.klineObdFailures = 2
+        ModuleScanner(car) { }.scan(null, emptyList()) { _, _ -> }
+        assertTrue(car.logs.any { it.contains("elm_scan_kline_engine_lost") })
     }
 
     @Test fun discoveryProbeIsSessionWithOneFrameAndNoAutoFlow() {

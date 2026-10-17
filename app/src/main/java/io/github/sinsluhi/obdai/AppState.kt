@@ -179,7 +179,12 @@ class AppState private constructor(context: Context) {
         val p = provider
         val key = prefs.apiKey(p).ifBlank { if (p.id == BuildConfig.AI_PROVIDER) BuildConfig.AI_API_KEY else "" }
         val base = if (p == Provider.CUSTOM) prefs.customBaseUrl else p.baseUrl
-        return AiConfig(p, key, prefs.model(p), base, prefs.folder)
+        val cfg = AiConfig(p, key, prefs.model(p), base, prefs.folder)
+        if (cfg.ready || BuildConfig.AI_API_KEY.isBlank()) return cfg
+        // выбран провайдер без ключа (настройка осталась от версии разработчика на том же телефоне) — встроенный,
+        // иначе покупатель видит «Разбор не настроен» (телефон владельца, 17.10.2026: Getz и BMW без разбора)
+        val bp = Provider.byId(BuildConfig.AI_PROVIDER)
+        return AiConfig(bp, BuildConfig.AI_API_KEY, prefs.model(bp), bp.baseUrl, prefs.folder)
     }
 
     init {

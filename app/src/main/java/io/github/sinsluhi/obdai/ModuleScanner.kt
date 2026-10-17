@@ -73,7 +73,7 @@ data class EcuCache(val ecus: List<EcuAddr>, val at: Long) {
  * отрицательный 7F) выдаёт блок и ID его ответа. Потом каждый найденный блок дочитывается с ручным управлением
  * потоком, у UDS-блоков берутся VIN и номер блока. Расширенная адресация (шлюз BMW) — профиль поверх того же.
  */
-class ModuleScanner(private val s: ElmSession) {
+class ModuleScanner(private val s: ElmSession, private val pause: (Long) -> Unit = { Thread.sleep(it) }) {
 
     data class Result(val modules: List<ModuleScan>, val ecus: List<EcuAddr>, val fullSweep: Boolean)
 
@@ -103,9 +103,11 @@ class ModuleScanner(private val s: ElmSession) {
      */
     fun scan(brand: String?, known: List<EcuAddr>, progress: (Int, Int) -> Unit): Result {
         if (!s.isCan) {
-            // K-line: KWP2000 по физическим адресам (Лада, Hyundai/Kia и Daewoo 2000-х, старые азиаты и европейцы);
-            // ISO 9141-2 тоже: двигатель на нём, а блоки на той же линии будятся своим init
-            if (s.protocolNo in 3..5) return scanKline(brand, progress)
+            // K-line: KWP2000 по физическим адресам (Лада, старые азиаты и европейцы)
+            if (s.protocolNo in 4..5) return scanKline(brand, progress)
+            // ISO 9141-2: перебор адресов на Hyundai Getz (лог 17.10.2026) за 68 с не нашёл ни одного блока, а двигатель
+            // после него перестал отвечать. Пока не знаем реальных адресов и init по моделям — только двигатель.
+            if (s.protocolNo == 3) { s.log(tr("elm_scan_iso9141")); return Result(emptyList(), emptyList(), false) }
             s.log(tr("elm_scan_can_only")); return Result(emptyList(), emptyList(), false)
         }
         manualFc = listOf("ATFCSH", "ATFCSD", "ATFCSM").none { it in s.adapter.missing }
@@ -330,9 +332,10 @@ class ModuleScanner(private val s: ElmSession) {
      * Блок будится одним из двух способов, и какой у него — заранее не знаем:
      * - быстрый init (ISO 14230, протокол 5): адрес в заголовке `81 xx F1`, `ATFI` — для всех K-line машин;
      * - медленный 5-бод (протокол 4): адрес задаёт только `ATIIA xx` (заголовок на 5-бод init не влияет), затем `ATSI` —
-     *   если машина сама на медленном init (ISO 9141-2 / KWP 5 бод: Hyundai Getz, лог 17.10.2026 — двигатель ответил
-     *   на 9141, а блоки не спрашивались вовсе: перебор был только для протоколов 4–5, и 5-бод шёл всегда на 0x33).
-     * Протокол на время перебора меняется `ATTP` и возвращается в конце: следующий OBD-запрос сам сделает init двигателю.
+     *   если машина сама на KWP с медленным init (раньше 5-бод шёл без ATIIA, то есть всегда на 0x33 — к двигателю).
+     * Протокол на время перебора меняется `ATTP` и возвращается в конце. Затем двигатель обязан снова ответить на `01 00`:
+     * на Hyundai Getz (ISO 9141, лог 17.10.2026) после перебора он замолчал — блок застрял в старой сессии или адаптер
+     * не вернулся в прежнее состояние. Не ответил — пауза дольше P3max (5 с) и автопоиск, как при подключении.
      * Заголовков у строк нет (ATH0): адаптер сам снимает адрес и контрольную сумму, разбор — [ObdDecoder.messages].
      * Лада: двигатель 0x10 (Январь 7.2, M7.9.7, M73/M74), остальные блоки — свои адреса на той же линии.
      */
@@ -346,8 +349,8 @@ class ModuleScanner(private val s: ElmSession) {
         try {
             s.send("ATAT0"); s.send("ATST 64")
             // 5-бод init к чужому адресу — только через ATIIA (ELM327 v1.4+); адаптер её не понял — остаётся быстрый
-            val slow = own in 3..4 && !s.send("ATIIA 33").contains("?")
-            if (own in 3..4 && !slow) s.log(tr("elm_scan_kline_no_iia"))
+            val slow = own == 4 && !s.send("ATIIA 33").contains("?")
+            if (own == 4 && !slow) s.log(tr("elm_scan_kline_no_iia"))
             val passes = if (slow) listOf(5, 4) else listOf(5)
             val total = targets.size * passes.size
             s.log(tr("elm_scan_kline", targets.size))
@@ -383,11 +386,20 @@ class ModuleScanner(private val s: ElmSession) {
                 if (iiaUsed) s.send("ATIIA 33")
                 if (cur != own) { s.send("ATPC"); s.send("ATTP $own") }
                 s.send("ATST 64"); s.send("ATAT1"); s.restoreObdHeader()
+                if (!engineAnswers()) {
+                    pause(5500)   // дольше P3max: блок двигателя закрывает старую сессию и снова слушает init
+                    s.send("ATPC"); s.send("ATSP0"); s.restoreObdHeader()
+                    if (!engineAnswers()) s.log(tr("elm_scan_kline_engine_lost"))
+                }
             }
         }
         s.log(tr("elm_scan_found", found.size))
         return Result(found, addrs, true)
     }
+
+    /** Двигатель отвечает на стандартный запрос (41 00 …) — связь после перебора K-line вернулась. */
+    private fun engineAnswers(): Boolean =
+        ObdDecoder.messages(s.send("0100", 12000)).any { it.size >= 2 && it[0] == 0x41 && it[1] == 0x00 }
 
     // ---------- чтение одного блока ----------
 
