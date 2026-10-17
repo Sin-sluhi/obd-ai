@@ -500,6 +500,13 @@ class AppState private constructor(context: Context) {
                 val v = Regex("[0-9]+(\\.[0-9]+)?").find(runCatching { l.send("ATRV") }.getOrDefault(""))?.value?.toDoubleOrNull()
                 throw IllegalStateException(if (v != null) silentEcuHint(v) else tr("state_ecu_silent"))   // не IOException: связь с адаптером цела
             }
+            // Подключились при выключенном зажигании, а теперь блок ответил (шину нашёл автопоиск ELM): протокол, маска PID,
+            // имя блока при подключении сняты не были. Без этого сканер считал машину «не CAN» и блоки не искал, режим 06
+            // пропускался — BMW F10 John 17.10.2026: из всей машины одна неподтверждённая P0101.
+            if (l is Elm327 && !l.ecuOnline) {
+                l.refreshEcu()
+                ui { protocol = l.protocol; ecuName = l.ecuName; calibration = l.calibration }
+            }
             val mil = l.readMil()
             ui { milOn = mil?.first; dtcCount = mil?.second }
             addLog(tr("state_log_mil", when (mil?.first) { true -> tr("state_mil_on"); false -> tr("state_mil_off"); null -> tr("state_mil_unknown") }, mil?.second ?: "?"))
@@ -597,7 +604,10 @@ class AppState private constructor(context: Context) {
             if (serviceText != null) ui { lastSnapshot = snapFull }
 
             val cfg = aiConfig()
-            val result = if (!cfg.ready) {
+            // версия разработчика: разбор через Claude на компьютере владельца не зависит от выбранного провайдера —
+            // раньше другой провайдер без ключа в настройках давал «Разбор не настроен» и до Claude дело не доходило
+            val ownerAi = BuildConfig.DEV_TOOLS && BuildConfig.OWNER_AI_KEY.isNotBlank()
+            val result = if (!cfg.ready && !ownerAi) {
                 addLog(tr("state_log_ai_unset"))
                 Diagnosis.local(snapFull)
             } else {
