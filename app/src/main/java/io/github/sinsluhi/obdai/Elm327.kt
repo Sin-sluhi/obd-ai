@@ -14,6 +14,11 @@ class Elm327(private val logger: (String) -> Unit) : ObdLink, ElmSession {
 
     /** Вызывается на каждую команду адаптеру (из рабочего потока): фон рисует по ней пакет, «светодиод RX» мигает. */
     @Volatile var onCommand: (() -> Unit)? = null
+    /** Каждый шаг паспорта адаптера — карточка на экране оживает по ходу проверок. */
+    @Volatile var onAdapterTest: ((List<AdapterTest>) -> Unit)? = null
+    /** Сколько блоков уже найдено в опросе — счётчик у радара на главной. */
+    @Volatile var onFound: ((Int) -> Unit)? = null
+    override fun found(count: Int) { onFound?.invoke(count) }
 
     override var isCan = false
         private set
@@ -174,23 +179,20 @@ class Elm327(private val logger: (String) -> Unit) : ObdLink, ElmSession {
         return ecuOnline
     }
 
-    /** Проверяем, какие AT-команды адаптер понимает: клоны отвечают «?» на то, чего у них нет. */
+    /**
+     * Паспорт адаптера по поведению ([AdapterProbe]): честность на незнакомые команды, настоящее имя, скорость,
+     * расширенная адресация, ручной поток, фильтры, сырой режим. Список недостающих команд для опроса — из него же.
+     */
     private fun probeAdapter(version: String): AdapterInfo {
         val description = send("AT@1").lines().firstOrNull { it.isNotBlank() && !it.contains("?") }?.trim().orEmpty()
-        // Проверяем ровно те формы команд, что нужны опросу блоков, и в допустимом порядке:
-        // ATFCSM 1 по документации ELM327 принимается только после ATFCSH и ATFCSD — иначе даже настоящий чип
-        // отвечает «?»; ATCRA проверяем с адресом (так её шлёт опрос), голую форму умеют не все честные платы.
-        val checks = listOf("ATCRA 7E8", "ATFCSH 7E0", "ATFCSD 30 00 00", "ATFCSM 1", "ATST 32", "ATCAF1")
-        val missing = mutableListOf<String>()
-        for (c in checks) {
-            val r = send(c).uppercase()
-            if (r.contains("?")) missing.add(c.substringBefore(' '))
+        val tests = AdapterProbe { cmd, t -> send(cmd, t) }.execute { onAdapterTest?.invoke(it) }
+        val missing = buildList {
+            fun miss(key: String, cmd: String) { if (tests.any { it.key == key && it.ok == false }) add(cmd) }
+            miss("cea", "ATCEA"); miss("flow", "ATFCSM"); miss("filter", "ATCF"); miss("cra", "ATCRA"); miss("raw", "ATCAF0")
         }
-        // вернуть всё как было
-        // ATAR — штатный сброс фильтра приёма (вместо голой ATCRA, которую понимают не все платы)
-        for (c in listOf("ATFCSM 0", "ATST 64", "ATAT1")) send(c)
+        for (c in listOf("ATST 64", "ATAT1")) send(c)
         restoreObdHeader()
-        return AdapterInfo(version, description, missing.distinct(), 0)
+        return AdapterInfo(version, description, missing, 0, tests)
     }
 
     /** Маски 01 00, 01 20, … — цепочка, пока в маске стоит бит следующего диапазона. */

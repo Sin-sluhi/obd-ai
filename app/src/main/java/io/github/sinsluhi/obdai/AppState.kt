@@ -82,6 +82,9 @@ class AppState private constructor(context: Context) {
     var connected by mutableStateOf(false)
     var adapterName by mutableStateOf("")
     var adapterInfo by mutableStateOf(AdapterInfo())
+    var adapterTests by mutableStateOf<List<AdapterTest>>(emptyList())   // паспорт адаптера по ходу проверок
+    var scanning by mutableStateOf(false)   // идёт поиск блоков — радар на главной
+    var scanFound by mutableStateOf(0)
     var protocol by mutableStateOf("")
     var voltage by mutableStateOf("")
     var ecuOnline by mutableStateOf(false)
@@ -391,8 +394,10 @@ class AppState private constructor(context: Context) {
     fun connect(target: AdapterTarget) {
         val elm = Elm327 { addLog(it) }
         elm.onCommand = { rx() }   // каждая команда живому адаптеру — пакет на фоне (~10 в секунду в опросе)
+        elm.onAdapterTest = { t -> ui { adapterTests = t } }
+        elm.onFound = { n -> ui { scanFound = n } }
         runTask(tr("state_task_connect"), needLink = false) {
-            ui { busy = tr("state_connecting") }
+            ui { busy = tr("state_connecting"); adapterTests = emptyList() }
             elm.connect(appContext, target)
             link = elm
             when (target) {
@@ -425,6 +430,15 @@ class AppState private constructor(context: Context) {
         connected = true
         adapterName = d.name
         adapterInfo = d.adapter
+        // демо обязано показывать всё: паспорт адаптера проигрывается по шагам, как на живом адаптере
+        adapterTests = emptyList()
+        val demoTests = d.adapter.tests
+        Thread {
+            for (i in demoTests.indices) {
+                Thread.sleep(200); ui { adapterTests = demoTests.take(i) + demoTests[i].copy(ok = null) }
+                Thread.sleep(180); ui { adapterTests = demoTests.take(i + 1) }
+            }
+        }.start()
         protocol = d.protocol
         voltage = d.readVoltage()
         ecuOnline = d.ecuOnline
@@ -451,6 +465,8 @@ class AppState private constructor(context: Context) {
         connected = false
         adapterName = ""
         adapterInfo = AdapterInfo()
+        adapterTests = emptyList()
+        scanning = false
         ecuOnline = false
         engineOn = false
         gaugeSelfTest = false
@@ -533,14 +549,15 @@ class AppState private constructor(context: Context) {
             val freeze = runCatching { l.readFreezeFrame() }.getOrNull()
             addLog(freeze?.describe() ?: tr("state_log_no_freeze"))
 
-            ui { busy = tr("state_step_modules") }; rx()
+            ui { busy = tr("state_step_modules"); scanning = true; scanFound = 0 }; rx()
             val brand = VinDecoder.decode(v).brand
             // адреса блоков из прошлого поиска по этой машине: с ними опрос быстрый; полный перебор — раз в 30 дней
             // или когда из известных блоков ответила меньше половины
             val knownEcus = EcuCache.fromJson(prefs.ecus)?.takeIf { it.fresh }?.ecus.orEmpty()
             val modules = runCatching {
-                l.scanModules(brand, knownEcus) { i, n -> ui { busy = tr("state_step_modules_n", i, n) }; rx() }
+                l.scanModules(brand, knownEcus) { i, n -> ui { busy = tr("state_step_modules_n", i, n); if (l is DemoLink) scanFound = i }; rx() }
             }.onFailure { addLog(tr("state_log_modules_failed", it.message)) }.getOrDefault(emptyList())
+            ui { scanning = false; scanFound = modules.size }
             // кешируем только убедительный полный поиск: при спящих блоках список был бы неполным на месяц
             if (l.lastScanFull && l.foundEcus.size >= 3) prefs.ecus = EcuCache(l.foundEcus, System.currentTimeMillis()).toJson()
             addLog(tr("state_log_modules", modules.size, modules.count { it.codes.isNotEmpty() }))

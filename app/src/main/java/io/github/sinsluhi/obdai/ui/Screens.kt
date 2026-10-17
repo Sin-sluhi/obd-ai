@@ -221,6 +221,7 @@ fun HomeScreen(
             }
         }
 
+        if (state.connected && state.adapterTests.isNotEmpty()) AdapterCard(state.adapterInfo, state.adapterTests, state.adapterName)
         state.forecast?.let { ForecastCard(it, onUseWeather = if (state.hasLocation) null else onUseWeather) }
         if (state.tanks.isNotEmpty()) FuelCard(state.tanks) { t, name, bad -> state.renameTank(t, name, bad) }
 
@@ -283,6 +284,7 @@ fun HomeScreen(
             verticalArrangement = Arrangement.spacedBy(18.dp)
         ) {
             BigCheckButton(busy = state.busy, onClick = onCheck)
+            if (state.scanning) ScanRadar(state.scanFound)
             // строка терминала (§3): новый текст въезжает снизу и проявляется, старый гаснет;
             // пачку пакетов на смену busy даёт BusDriver. При выключенных анимациях — простой fade.
             val hint = if (state.connected) tr("scr_hint_ignition") else tr("scr_hint_connect_first")

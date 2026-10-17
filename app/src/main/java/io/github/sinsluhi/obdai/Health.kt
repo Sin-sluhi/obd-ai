@@ -242,15 +242,30 @@ data class AdapterInfo(
     val version: String = "",
     val description: String = "",
     val missing: List<String> = emptyList(),
-    val responseMs: Long = 0
+    val responseMs: Long = 0,
+    val tests: List<AdapterTest> = emptyList()   // паспорт по поведению ([AdapterProbe])
 ) {
     val suspicious: Boolean get() = version.contains("2.1")
     val fullFeatured: Boolean get() = missing.isEmpty()
+    /** Не отвечает «OK» на незнакомые команды: остальным проверкам можно верить. */
+    val honest: Boolean get() = tests.none { it.key == "honest" && it.ok == false }
+    val passed: Int get() = tests.count { it.ok == true }
+    private fun failed(key: String) = tests.any { it.key == key && it.ok == false }
 
     fun grade(): String = when {
         version.isBlank() -> tr("health_adapter_no_id")
+        !honest -> tr("health_adapter_liar")
         !fullFeatured -> tr("health_adapter_stripped", missing.joinToString())
         suspicious -> tr("health_adapter_fw21")
         else -> tr("health_adapter_full")
+    }
+
+    /** Чем провалы обернутся для владельца — следствия словами вместо ярлыка «клон». */
+    fun limits(): List<String> = buildList {
+        if (!honest) add(tr("adp_limit_honest"))
+        if (failed("cea") && failed("raw")) add(tr("adp_limit_gateway")) else if (failed("cea")) add(tr("adp_limit_cea"))
+        if (failed("flow")) add(tr("adp_limit_flow"))
+        if (failed("filter")) add(tr("adp_limit_filter"))
+        if (failed("speed")) add(tr("adp_limit_speed"))
     }
 }

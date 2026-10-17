@@ -62,7 +62,7 @@ class DemoLink : ObdLink {
     override val ecuName = "ECM"
     override val calibration = "G4FC-RB-1.6-E5"
     override val supportedPids: Set<Int> = setOf(0x04, 0x05, 0x06, 0x07, 0x0B, 0x0C, 0x0D, 0x0F, 0x10, 0x11, 0x42, 0x5E, 0x2F, 0x46, 0x5C, 0xA6)
-    override val adapter: AdapterInfo get() = AdapterInfo(tr("demo_adapter_version"), "OBDII to RS232 Interpreter", emptyList(), 38)
+    override val adapter: AdapterInfo get() = AdapterInfo(tr("demo_adapter_version"), "OBDII to RS232 Interpreter", emptyList(), 38, AdapterProbe.demo())
 
     private fun t() = (System.currentTimeMillis() - start) / 1000.0
     private fun driving() = t() > 15

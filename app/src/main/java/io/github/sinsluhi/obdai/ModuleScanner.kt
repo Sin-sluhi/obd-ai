@@ -17,6 +17,8 @@ interface ElmSession {
     fun log(text: String)
     /** Вернуть заголовок и фильтр к стандартному OBD-запросу (7DF или 18DB33F1). */
     fun restoreObdHeader()
+    /** Найдено блоков на данный момент — для счётчика на экране. */
+    fun found(count: Int) {}
 }
 
 /** AT-command with the usual timeout. Extension, not a default: [Elm327] inherits send() from two interfaces. */
@@ -93,7 +95,10 @@ class ModuleScanner(private val s: ElmSession) {
             s.log(tr("elm_scan_can_only")); return Result(emptyList(), emptyList(), false)
         }
         manualFc = listOf("ATFCSH", "ATFCSD", "ATFCSM").none { it in s.adapter.missing }
-        val found = linkedMapOf<Int, ModuleScan>()      // по ID ответа: один блок — одна запись
+        // по ID ответа: один блок — одна запись; каждая запись — тик счётчика на экране
+        val found = object : LinkedHashMap<Int, ModuleScan>() {
+            override fun put(key: Int, value: ModuleScan): ModuleScan? = super.put(key, value).also { s.found(size) }
+        }
         val addrs = linkedMapOf<Int, EcuAddr>()
         var full = false
         try {
@@ -107,7 +112,7 @@ class ModuleScanner(private val s: ElmSession) {
                     readEcu(a, brand)?.let { (m, e) -> found[a.resp] = m; addrs[a.resp] = e }
                 }
                 fromCache = found.size * 2 >= known.size
-                if (!fromCache) { s.log(tr("elm_scan_cache_stale")); found.clear(); addrs.clear() }
+                if (!fromCache) { s.log(tr("elm_scan_cache_stale")); found.clear(); addrs.clear(); s.found(0) }
             }
             if (!fromCache) {
                 full = true
@@ -332,6 +337,7 @@ class ModuleScanner(private val s: ElmSession) {
                 val name = ModuleMap.klineName(brand, a)
                 found.add(ModuleScan(name, a, codes.orEmpty(), e.via))
                 addrs.add(e)
+                s.found(found.size)
                 s.log("$name (%02X): %s".format(a, if (codes.isNullOrEmpty()) tr("elm_no_codes") else codes.joinToString()))
             }
         } finally {

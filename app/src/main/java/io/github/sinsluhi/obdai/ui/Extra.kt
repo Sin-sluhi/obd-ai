@@ -354,8 +354,16 @@ fun DetailsScreen(state: AppState, onBack: () -> Unit) {
                 Text(a.version.ifBlank { tr("ext_no_name") }, style = Type.strong(14))
                 if (a.description.isNotBlank()) Text(a.description, style = Type.body(12, Palette.muted))
                 VSpace(4.dp)
-                Text(a.grade(), style = Type.body(13, if (a.fullFeatured && !a.suspicious) Palette.text2 else Palette.warn))
+                Text(a.grade(), style = Type.body(13, if (a.fullFeatured && !a.suspicious && a.honest) Palette.text2 else Palette.warn))
                 if (a.responseMs > 0) Text(tr("ext_pid_mask_ms", a.responseMs), style = Type.body(12, Palette.muted))
+                a.tests.forEach { t ->
+                    Row(Modifier.padding(vertical = 3.dp)) {
+                        Text(when (t.ok) { true -> "✓"; false -> "✕"; null -> "…" }, style = Type.mono(12, if (t.ok == false) Palette.warn else Palette.text2))
+                        Text(t.title, style = Type.body(12, Palette.text2), modifier = Modifier.weight(1f).padding(start = 8.dp))
+                        if (t.detail.isNotBlank()) Text(t.detail, style = Type.mono(11, Palette.muted))
+                    }
+                }
+                a.limits().forEach { Text("• $it", style = Type.body(12, Palette.warn)) }
             }
         }
         VSpace(8.dp)
