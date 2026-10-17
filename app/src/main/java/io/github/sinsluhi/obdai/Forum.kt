@@ -60,6 +60,14 @@ object ForumTree {
         return Triple(brand, model, gen)
     }
 
+    /** Живые ветки по статистике сервера: (статистика, марка/модель/поколение), свежие первыми. */
+    fun liveRooms(tree: List<ForumBrand>, rooms: Map<String, RoomStat>): List<Pair<RoomStat, Triple<ForumBrand, ForumModel, ForumGen>>> {
+        if (rooms.isEmpty()) return emptyList()
+        val out = ArrayList<Pair<RoomStat, Triple<ForumBrand, ForumModel, ForumGen>>>()
+        for (b in tree) for (m in b.models) for (g in m.gens) rooms[g.id]?.let { out.add(it to Triple(b, m, g)) }
+        return out.sortedByDescending { it.first.last }
+    }
+
     private fun yearIn(range: String, year: Int): Boolean {
         val nums = Regex("(19|20)\\d{2}").findAll(range).map { it.value.toInt() }.toList()
         if (nums.isEmpty()) return false
@@ -72,6 +80,33 @@ object ForumTree {
 /** Где сейчас живёт сервер форума: docs/forum_url.txt в репозитории (туннель с домашней машины меняет адрес при перезапуске). */
 object ForumLocator {
     private const val URL_TXT = "https://raw.githubusercontent.com/Sin-sluhi/obd-ai/main/docs/forum_url.txt"
+    /** Постоянный адрес сервера (Tailscale Funnel на ПК владельца): последний запасной вариант, если файл с адресом отстал. */
+    const val PUBLIC = "https://sh01.tailec27da.ts.net/obd"
+
+    /**
+     * Лучший живой адрес: файл в репозитории, адрес из сборки, постоянный адрес — первый, кто ответил на /api/health.
+     * Файл с адресом может указывать на мёртвый туннель (raw.githubusercontent отстаёт до 5 минут), поэтому адресу
+     * из файла не верим на слово, а спрашиваем. Результат — в Prefs.forumUrlRemote; null — никто не ответил.
+     */
+    fun best(prefs: Prefs): String? {
+        val remote = refresh(prefs)
+        val candidates = listOf(prefs.forumUrl, remote, BuildConfig.FORUM_URL, PUBLIC)
+            .filter { !it.isNullOrBlank() && it.startsWith("http") }.map { it!!.trimEnd('/') }.distinct()
+        val alive = candidates.firstOrNull { alive(it) } ?: return remote
+        prefs.forumUrlRemote = alive
+        return alive
+    }
+
+    private fun alive(base: String): Boolean {
+        val conn = (URL("$base/api/health").openConnection() as HttpURLConnection).apply { connectTimeout = 5_000; readTimeout = 6_000 }
+        return try {
+            conn.responseCode in 200..299 && conn.inputStream.bufferedReader(Charsets.UTF_8).use { it.readText() }.contains("\"ok\": true")
+        } catch (e: Exception) {
+            false
+        } finally {
+            conn.disconnect()
+        }
+    }
 
     /** Скачивает актуальный адрес и кладёт в Prefs. Возвращает адрес или null, если сеть не ответила. */
     fun refresh(prefs: Prefs): String? {
@@ -96,6 +131,33 @@ object ForumLocator {
 /** Сообщение ветки. */
 data class ForumMessage(val id: Long, val name: String, val text: String, val time: Long, val mine: Boolean)
 
+/** Ветка с сообщениями: сколько всего, сколько от других устройств, последнее сообщение. */
+data class RoomStat(val room: String, val count: Int, val others: Int, val last: Long, val name: String, val text: String)
+
+/** Эмодзи для быстрой вставки и стикеры — крупные эмодзи, которые уходят отдельным сообщением и показываются без пузыря. */
+object Stickers {
+    val emoji = listOf("👍", "👎", "😂", "😅", "🤔", "😡", "🙏", "🤝", "🔥", "👀", "💪", "🎉")
+    val stickers = listOf("🚗💨", "🔧", "🛞", "⛽", "🚨", "🔋", "🪫", "🧯", "🏁", "🛠️", "🥶", "🔥", "💸", "🧰", "📸", "🚙", "🏎️", "🅿️", "🔑", "🛣️")
+
+    /** Стикер — одни эмодзи (до четырёх): такое сообщение показывается крупно. Буквы и цифры — обычный текст. */
+    fun isSticker(text: String): Boolean {
+        val t = text.trim()
+        if (t.isEmpty() || t.length > 24) return false
+        var count = 0
+        var i = 0
+        while (i < t.length) {
+            val cp = t.codePointAt(i)
+            when {
+                cp == 0x200D || cp == 0xFE0F || cp in 0x1F3FB..0x1F3FF || cp == 0x20E3 -> Unit   // связка, вариант, тон кожи, клавиша
+                cp >= 0x1F000 || cp in 0x2600..0x27BF || cp in 0x2B00..0x2BFF || cp == 0x3030 || cp == 0x303D || cp == 0x00A9 || cp == 0x00AE -> count++
+                else -> return false
+            }
+            i += Character.charCount(cp)
+        }
+        return count in 1..4
+    }
+}
+
 /** Клиент сервера форума (server/forum/server.py). Пустой адрес = форум без чата, только дерево. */
 class ForumApi(private val baseUrl: String, private val deviceId: String) {
     val configured: Boolean get() = baseUrl.startsWith("http")
@@ -118,6 +180,16 @@ class ForumApi(private val baseUrl: String, private val deviceId: String) {
         val body = JSONObject().put("room", room).put("device", deviceId).put("name", name).put("text", text)
         val o = JSONObject(post("${baseUrl.trimEnd('/')}/api/send", body))
         return o.optLong("id")
+    }
+
+    /** Ветки, где есть сообщения (для подсветки живых комнат). */
+    fun rooms(): List<RoomStat> {
+        val o = JSONObject(get("${baseUrl.trimEnd('/')}/api/rooms?device=${enc(deviceId)}"))
+        val arr = o.optJSONArray("rooms") ?: JSONArray()
+        return (0 until arr.length()).map { i ->
+            val r = arr.getJSONObject(i)
+            RoomStat(r.optString("room"), r.optInt("count"), r.optInt("others"), r.optLong("last") * 1000, r.optString("name"), r.optString("text"))
+        }
     }
 
     fun online(rooms: List<String>): Map<String, Int> {

@@ -62,7 +62,7 @@ class AppState private constructor(context: Context) {
             DtcCatalog.load(appContext); KnownIssues.load(appContext)
             Kb.init(appContext, prefs)
             ForumTree.load(appContext)
-            runCatching { ForumLocator.refresh(prefs) }
+            runCatching { ForumLocator.best(prefs) }
             runCatching { if (Kb.refresh(appContext, prefs)) addLog(tr("state_kb_updated", Kb.size)) }
         }
     }

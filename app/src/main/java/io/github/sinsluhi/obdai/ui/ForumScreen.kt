@@ -16,7 +16,11 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.spring
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.CircleShape
@@ -45,6 +49,8 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
+import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -57,6 +63,9 @@ import io.github.sinsluhi.obdai.ForumLocator
 import io.github.sinsluhi.obdai.ForumMessage
 import io.github.sinsluhi.obdai.ForumModel
 import io.github.sinsluhi.obdai.ForumTree
+import io.github.sinsluhi.obdai.RoomStat
+import io.github.sinsluhi.obdai.Stickers
+import io.github.sinsluhi.obdai.Trace
 import io.github.sinsluhi.obdai.Tr
 import io.github.sinsluhi.obdai.VinDecoder
 import io.github.sinsluhi.obdai.tr
@@ -92,6 +101,17 @@ fun ForumScreen(state: AppState, bottom: @Composable () -> Unit) {
     var model by remember(tree) { mutableStateOf(saved?.let { id -> brand?.models?.firstOrNull { m -> m.gens.any { g -> g.id == id } } }) }
     var gen by remember(tree) { mutableStateOf(saved?.let { id -> model?.gens?.firstOrNull { g -> g.id == id } }) }
 
+    // живые ветки: сервер отдаёт, где есть сообщения; перечитываем при каждом возврате из чата
+    var rooms by remember { mutableStateOf<Map<String, RoomStat>>(emptyMap()) }
+    LaunchedEffect(gen == null) {
+        if (gen == null) {
+            val found = withContext(Dispatchers.IO) {
+                runCatching { ForumApi(state.forumUrl, ForumApi.deviceId(prefs)).rooms() }.getOrDefault(emptyList())
+            }
+            if (found.isNotEmpty()) rooms = found.associateBy { it.room }
+        }
+    }
+
     BackHandler(enabled = brand != null) {
         when {
             gen != null -> gen = null
@@ -104,9 +124,9 @@ fun ForumScreen(state: AppState, bottom: @Composable () -> Unit) {
     val m = model
     val g = gen
     when {
-        b == null -> BrandsLevel(state, tree, bottom) { nb, nm, ng -> brand = nb; model = nm; gen = ng }
-        m == null -> ModelsLevel(b, bottom, onBack = { brand = null }) { model = it }
-        g == null -> GensLevel(b, m, bottom, onBack = { model = null }) { gen = it; prefs.forumRoom = it.id }
+        b == null -> BrandsLevel(state, tree, rooms, bottom) { nb, nm, ng -> brand = nb; model = nm; gen = ng; if (ng != null) prefs.forumRoom = ng.id }
+        m == null -> ModelsLevel(b, rooms, bottom, onBack = { brand = null }) { model = it }
+        g == null -> GensLevel(b, m, rooms, bottom, onBack = { model = null }) { gen = it; prefs.forumRoom = it.id }
         else -> ChatLevel(state, b, m, g, bottom, onBack = { gen = null })
     }
 }
@@ -129,6 +149,38 @@ private fun LetterBadge(text: String, color: Color, size: Int = 38) {
 
 @Composable
 private fun Chevron() = Text("›", style = Type.body(20, Palette.muted))
+
+/** Когда было последнее сообщение: сегодня — время, раньше — день. */
+private fun whenText(t: Long): String {
+    val fmt = if (System.currentTimeMillis() - t < 86_400_000L) "HH:mm" else "d MMM"
+    return SimpleDateFormat(fmt, Tr.lang.locale).format(Date(t))
+}
+
+/** Метка живой ветки: дышащая точка связи и число сообщений. */
+@Composable
+private fun LiveMark(st: RoomStat) {
+    val accent = LocalAccent.current
+    val hot = st.others > 0
+    Row(
+        Modifier
+            .background((if (hot) accent else Palette.muted).copy(alpha = 0.12f), RoundedCornerShape(12.dp))
+            .padding(horizontal = 8.dp, vertical = 4.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        LiveDot(if (hot) accent else Palette.muted, 6.dp, live = hot)
+        HSpace(6.dp)
+        Text(trPlural("forum_msgs_count", st.count), style = Type.body(11, if (hot) accent else Palette.muted, FontWeight.SemiBold))
+    }
+}
+
+/** Стикер вспыхивает при появлении: масштаб 0.5→1 с пружинным перелётом; при выключенных анимациях — сразу. */
+@Composable
+private fun PopIn(content: @Composable () -> Unit) {
+    val motion = LocalMotion.current
+    val sc = remember { Animatable(if (motion == Motion.Off) 1f else 0.5f) }
+    LaunchedEffect(Unit) { if (motion != Motion.Off) sc.animateTo(1f, spring(dampingRatio = 0.5f, stiffness = 500f)) }
+    Box(Modifier.graphicsLayer { scaleX = sc.value; scaleY = sc.value }) { content() }
+}
 
 @Composable
 private fun RowDivider() = Box(Modifier.fillMaxWidth().padding(start = 64.dp, end = 14.dp).height(1.dp).background(Palette.border))
@@ -173,9 +225,11 @@ private fun SearchField(value: String, placeholder: String, onChange: (String) -
 // ---------- уровни ----------
 
 @Composable
-private fun BrandsLevel(state: AppState, tree: List<ForumBrand>, bottom: @Composable () -> Unit, onPick: (ForumBrand, ForumModel?, ForumGen?) -> Unit) {
+private fun BrandsLevel(state: AppState, tree: List<ForumBrand>, rooms: Map<String, RoomStat>, bottom: @Composable () -> Unit, onPick: (ForumBrand, ForumModel?, ForumGen?) -> Unit) {
     val accent = LocalAccent.current
     var query by remember { mutableStateOf("") }
+    val live = remember(rooms, tree) { ForumTree.liveRooms(tree, rooms) }
+    val liveByBrand = remember(live) { live.groupBy { it.second.first.slug }.mapValues { e -> e.value.count { it.first.others > 0 } to e.value.size } }
     val car = VinDecoder.decode(state.vin).withCar(state.diagnosis?.car)
     val mine = remember(state.vin, state.diagnosis?.car, tree) { ForumTree.findForCar(car, state.diagnosis?.car) }
     Screen(bottom = bottom) {
@@ -199,6 +253,32 @@ private fun BrandsLevel(state: AppState, tree: List<ForumBrand>, bottom: @Compos
             }
             VSpace(14.dp)
         }
+        if (live.isNotEmpty()) {
+            SectionTitle(tr("forum_live_title"), trPlural("forum_live_rooms", live.size))
+            VSpace(8.dp)
+            live.take(6).forEachIndexed { i, (st, path) ->
+                val (lb, lm, lg) = path
+                val hot = st.others > 0
+                Card(radius = 18.dp, padding = 12.dp, glow = if (hot) accent else null, modifier = Modifier.enterStagger(i)) {
+                    Row(Modifier.fillMaxWidth().clickable { onPick(lb, lm, lg) }, verticalAlignment = Alignment.CenterVertically) {
+                        LetterBadge(lb.name, if (hot) accent else nameColor(lb.name), 40)
+                        HSpace(10.dp)
+                        Column(Modifier.weight(1f)) {
+                            Row(verticalAlignment = Alignment.CenterVertically) {
+                                LiveDot(if (hot) accent else Palette.muted, 7.dp, live = hot)
+                                HSpace(6.dp)
+                                Text("${lb.name} ${lm.name} · ${lg.name}", style = Type.body(14, Palette.text, FontWeight.SemiBold), maxLines = 1, overflow = TextOverflow.Ellipsis)
+                            }
+                            Text("${st.name}: ${st.text}", style = Type.body(12, Palette.text2), maxLines = 1, overflow = TextOverflow.Ellipsis)
+                            Text(trPlural("forum_msgs_count", st.count) + " · " + whenText(st.last), style = Type.body(11, Palette.muted))
+                        }
+                        Chevron()
+                    }
+                }
+                VSpace(8.dp)
+            }
+            VSpace(6.dp)
+        }
         SearchField(query, tr("forum_search_brand")) { query = it }
         VSpace(14.dp)
         val brands = tree.filter { query.isBlank() || it.name.contains(query, ignoreCase = true) }
@@ -211,11 +291,23 @@ private fun BrandsLevel(state: AppState, tree: List<ForumBrand>, bottom: @Compos
                     Modifier.fillMaxWidth().clickable { onPick(br, null, null) }.padding(horizontal = 14.dp, vertical = 11.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    LetterBadge(br.name, nameColor(br.name))
+                    val lv = liveByBrand[br.slug]
+                    LetterBadge(br.name, if (lv != null && lv.first > 0) accent else nameColor(br.name))
                     HSpace(12.dp)
                     Column(Modifier.weight(1f)) {
                         Text(br.name, style = Type.body(15, Palette.text, FontWeight.SemiBold))
                         Text(trPlural("forum_models_count", br.models.size) + " · " + trPlural("forum_rooms_count", br.models.sumOf { it.gens.size }), style = Type.body(12, Palette.muted))
+                    }
+                    if (lv != null) {
+                        Row(
+                            Modifier.background((if (lv.first > 0) accent else Palette.muted).copy(alpha = 0.12f), RoundedCornerShape(12.dp)).padding(horizontal = 8.dp, vertical = 4.dp),
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            LiveDot(if (lv.first > 0) accent else Palette.muted, 6.dp, live = lv.first > 0)
+                            HSpace(6.dp)
+                            Text(trPlural("forum_live_rooms", lv.second), style = Type.body(11, if (lv.first > 0) accent else Palette.muted, FontWeight.SemiBold))
+                        }
+                        HSpace(8.dp)
                     }
                     Chevron()
                 }
@@ -226,7 +318,7 @@ private fun BrandsLevel(state: AppState, tree: List<ForumBrand>, bottom: @Compos
 }
 
 @Composable
-private fun ModelsLevel(b: ForumBrand, bottom: @Composable () -> Unit, onBack: () -> Unit, onPick: (ForumModel) -> Unit) {
+private fun ModelsLevel(b: ForumBrand, rooms: Map<String, RoomStat>, bottom: @Composable () -> Unit, onBack: () -> Unit, onPick: (ForumModel) -> Unit) {
     var query by remember { mutableStateOf("") }
     val accent = LocalAccent.current
     Screen(bottom = bottom) {
@@ -242,7 +334,8 @@ private fun ModelsLevel(b: ForumBrand, bottom: @Composable () -> Unit, onBack: (
                     Modifier.fillMaxWidth().clickable { onPick(mo) }.padding(horizontal = 14.dp, vertical = 11.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    LetterBadge(mo.name, accent)
+                    val lv = mo.gens.mapNotNull { rooms[it.id] }
+                    LetterBadge(mo.name, if (lv.any { it.others > 0 }) accent else accent.copy(alpha = 0.7f))
                     HSpace(12.dp)
                     Column(Modifier.weight(1f)) {
                         Text(mo.name, style = Type.body(15, Palette.text, FontWeight.SemiBold))
@@ -252,6 +345,7 @@ private fun ModelsLevel(b: ForumBrand, bottom: @Composable () -> Unit, onBack: (
                             style = Type.body(12, Palette.muted)
                         )
                     }
+                    lv.maxByOrNull { it.last }?.let { LiveMark(it); HSpace(8.dp) }
                     Chevron()
                 }
             }
@@ -261,20 +355,29 @@ private fun ModelsLevel(b: ForumBrand, bottom: @Composable () -> Unit, onBack: (
 }
 
 @Composable
-private fun GensLevel(b: ForumBrand, m: ForumModel, bottom: @Composable () -> Unit, onBack: () -> Unit, onPick: (ForumGen) -> Unit) {
+private fun GensLevel(b: ForumBrand, m: ForumModel, rooms: Map<String, RoomStat>, bottom: @Composable () -> Unit, onBack: () -> Unit, onPick: (ForumGen) -> Unit) {
     val accent = LocalAccent.current
     Screen(bottom = bottom) {
         Header(m.name, onBack = onBack)
         Text(tr("forum_pick_gen_hint", b.name, m.name), style = Type.body(13, Palette.muted))
         VSpace(12.dp)
         m.gens.forEach { ge ->
-            Card(radius = 18.dp, padding = 14.dp) {
+            val st = rooms[ge.id]
+            Card(radius = 18.dp, padding = 14.dp, glow = if (st != null && st.others > 0) accent else null) {
                 Row(Modifier.fillMaxWidth().clickable { onPick(ge) }, verticalAlignment = Alignment.CenterVertically) {
                     LetterBadge(ge.name, accent, 42)
                     HSpace(12.dp)
                     Column(Modifier.weight(1f)) {
                         Text(ge.name, style = Type.strong(15))
                         Text(ge.years, style = Type.body(12, Palette.muted))
+                        if (st != null) {
+                            VSpace(4.dp)
+                            Row(verticalAlignment = Alignment.CenterVertically) {
+                                LiveMark(st)
+                                HSpace(8.dp)
+                                Text("${st.name}: ${st.text}", style = Type.body(11, Palette.text2), maxLines = 1, overflow = TextOverflow.Ellipsis, modifier = Modifier.weight(1f))
+                            }
+                        }
                     }
                     Row(
                         Modifier
@@ -303,13 +406,14 @@ private fun ChatLevel(state: AppState, b: ForumBrand, m: ForumModel, g: ForumGen
     var sendError by remember(g.id) { mutableStateOf<String?>(null) }
     var draft by remember(g.id) { mutableStateOf("") }
     var sending by remember { mutableStateOf(false) }
+    var panel by remember { mutableStateOf(false) }   // панель эмодзи и стикеров
     val list = rememberLazyListState()
     val scope = rememberCoroutineScope()
     val api = remember(url) { ForumApi(url, ForumApi.deviceId(prefs)) }
 
     // адрес туннеля меняется: спрашиваем репозиторий перед первым опросом и после каждых трёх ошибок подряд
     LaunchedEffect(g.id) {
-        withContext(Dispatchers.IO) { runCatching { ForumLocator.refresh(prefs) } }
+        withContext(Dispatchers.IO) { runCatching { ForumLocator.best(prefs) } }
         url = state.forumUrl
     }
     LaunchedEffect(g.id, url) {
@@ -330,7 +434,7 @@ private fun ChatLevel(state: AppState, b: ForumBrand, m: ForumModel, g: ForumGen
                 failures++
                 offline = true
                 if (failures % 3 == 1) {
-                    withContext(Dispatchers.IO) { runCatching { ForumLocator.refresh(prefs) } }
+                    withContext(Dispatchers.IO) { runCatching { ForumLocator.best(prefs) } }
                     val fresh = state.forumUrl
                     if (fresh != url) { url = fresh; return@LaunchedEffect }
                 }
@@ -402,20 +506,29 @@ private fun ChatLevel(state: AppState, b: ForumBrand, m: ForumModel, g: ForumGen
         }
         sendError?.let { VSpace(4.dp); Text(it, style = Type.body(12, Palette.warn)) }
         VSpace(8.dp)
-        ChatInput(
-            value = draft, enabled = api.configured, sending = sending, onChange = { draft = it },
-            onSend = {
-                val text = draft.trim()
-                if (text.isNotBlank()) {
-                    sending = true
-                    sendError = null
-                    scope.launch {
-                        val r = withContext(Dispatchers.IO) { runCatching { api.send(g.id, name, text) } }
-                        sending = false
-                        r.onSuccess { draft = "" }.onFailure { sendError = it.message }
-                    }
+        fun post(text: String, clearDraft: Boolean) {
+            if (text.isBlank() || sending) return
+            sending = true
+            sendError = null
+            scope.launch {
+                val r = withContext(Dispatchers.IO) { runCatching { api.send(g.id, name, text) } }
+                sending = false
+                r.onSuccess { if (clearDraft) draft = "" }.onFailure {
+                    // пользователю — по-человечески, код ответа — в журнал обмена
+                    Trace.note("форум: ${it.message}") // i18n-ignore: лог
+                    sendError = tr("forum_send_failed")
                 }
             }
+        }
+        AnimatedVisibility(visible = panel && api.configured) {
+            Column {
+                StickerPanel(onEmoji = { draft += it }, onSticker = { post(it, clearDraft = false) })
+                VSpace(8.dp)
+            }
+        }
+        ChatInput(
+            value = draft, enabled = api.configured, sending = sending, panel = panel, onPanel = { panel = !panel }, onChange = { draft = it },
+            onSend = { post(draft.trim(), clearDraft = true) }
         )
     }
 
@@ -447,9 +560,41 @@ private fun ChatLevel(state: AppState, b: ForumBrand, m: ForumModel, g: ForumGen
     }
 }
 
-/** Поле ввода в форме таблетки и круглая кнопка отправки. */
+/** Панель эмодзи (вставка в поле) и стикеров (уходят сразу отдельным сообщением). */
 @Composable
-private fun ChatInput(value: String, enabled: Boolean, sending: Boolean, onChange: (String) -> Unit, onSend: () -> Unit) {
+private fun StickerPanel(onEmoji: (String) -> Unit, onSticker: (String) -> Unit) {
+    val accent = LocalAccent.current
+    val shape = RoundedCornerShape(18.dp)
+    Column(Modifier.fillMaxWidth().background(Palette.surface2, shape).border(1.dp, Palette.border, shape).padding(10.dp)) {
+        Text(tr("forum_emoji"), style = Type.label())
+        VSpace(4.dp)
+        LazyRow(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
+            items(Stickers.emoji) { e ->
+                Text(e, style = Type.body(24), modifier = Modifier.clip(CircleShape).clickable { onEmoji(e) }.padding(6.dp))
+            }
+        }
+        VSpace(8.dp)
+        Text(tr("forum_stickers"), style = Type.label())
+        VSpace(4.dp)
+        LazyRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            items(Stickers.stickers) { st ->
+                Box(
+                    Modifier
+                        .size(60.dp)
+                        .clip(RoundedCornerShape(16.dp))
+                        .background(accent.copy(alpha = 0.08f), RoundedCornerShape(16.dp))
+                        .border(1.dp, accent.copy(alpha = 0.22f), RoundedCornerShape(16.dp))
+                        .clickable { onSticker(st) },
+                    contentAlignment = Alignment.Center
+                ) { Text(st, style = Type.body(28)) }
+            }
+        }
+    }
+}
+
+/** Поле ввода в форме таблетки, кнопка панели стикеров и круглая кнопка отправки. */
+@Composable
+private fun ChatInput(value: String, enabled: Boolean, sending: Boolean, panel: Boolean, onPanel: () -> Unit, onChange: (String) -> Unit, onSend: () -> Unit) {
     val accent = LocalAccent.current
     val src = remember { MutableInteractionSource() }
     val focused by src.collectIsFocusedAsState()
@@ -458,6 +603,16 @@ private fun ChatInput(value: String, enabled: Boolean, sending: Boolean, onChang
     // одна MutableInteractionSource на pressPulse и clickable: масштаб и отрезок по контуру от того же нажатия
     val interaction = remember { MutableInteractionSource() }
     Row(Modifier.fillMaxWidth().imePadding(), verticalAlignment = Alignment.Bottom) {
+        Box(
+            Modifier
+                .size(48.dp)
+                .clip(CircleShape)
+                .background(if (panel) accent.copy(alpha = 0.18f) else Palette.surface2, CircleShape)
+                .border(1.dp, if (panel) accent.copy(alpha = 0.6f) else Palette.border, CircleShape)
+                .clickable(enabled = enabled, onClick = onPanel),
+            contentAlignment = Alignment.Center
+        ) { Text("☺", style = Type.body(22, if (panel) accent else Palette.muted)) }
+        HSpace(10.dp)
         Box(
             Modifier
                 .weight(1f)
@@ -498,6 +653,18 @@ private fun MessageBubble(msg: ForumMessage) {
     val locale = Tr.lang.locale
     val time = remember(msg.time, locale) { SimpleDateFormat("d MMM HH:mm", locale).format(Date(msg.time)) }
     val color = if (msg.mine) accent else nameColor(msg.name)
+    if (Stickers.isSticker(msg.text)) {
+        // стикер: крупные эмодзи без пузыря, со вспышкой при появлении
+        Row(Modifier.fillMaxWidth(), horizontalArrangement = if (msg.mine) Arrangement.End else Arrangement.Start, verticalAlignment = Alignment.Bottom) {
+            if (!msg.mine) { LetterBadge(msg.name, color, 28); HSpace(8.dp) }
+            Column(horizontalAlignment = if (msg.mine) Alignment.End else Alignment.Start) {
+                if (!msg.mine) Text(msg.name, style = Type.body(12, color, FontWeight.SemiBold))
+                PopIn { Text(msg.text, style = Type.body(52)) }
+                Text(time, style = Type.body(10, Palette.muted))
+            }
+        }
+        return
+    }
     val shape = RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp, bottomStart = if (msg.mine) 16.dp else 4.dp, bottomEnd = if (msg.mine) 4.dp else 16.dp)
     Row(Modifier.fillMaxWidth(), horizontalArrangement = if (msg.mine) Arrangement.End else Arrangement.Start, verticalAlignment = Alignment.Bottom) {
         if (!msg.mine) { LetterBadge(msg.name, color, 28); HSpace(8.dp) }

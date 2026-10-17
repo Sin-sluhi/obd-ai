@@ -1,4 +1,4 @@
-﻿# Форум OBD AI на домашнем ПК: локальный сервер + туннель наружу (serveo.net, запасной localhost.run; по SSH, без аккаунта, HTTPS)
+﻿# Форум OBD AI на домашнем ПК: локальный сервер + постоянный адрес (Tailscale Funnel, public.url) и запасные туннели serveo.net / localhost.run
 # + публикация текущего адреса в репозиторий (docs/forum_url.txt), откуда его берёт приложение и сайт.
 # + APK для выдачи по заявкам с сайта: раз в 10 минут забирает последнюю сборку (Update-Apk, нужен apk.pass).
 # Запускается при входе в Windows (obdai-forum.vbs в автозагрузке), работает без окна. Лог: forum.log в этой папке.
@@ -30,17 +30,19 @@ function Ensure-Server {
 
 function Publish-Url($url) {
     # docs/forum_url.txt в GitHub: приложение читает его при запуске и при входе в чат
+    if ($script:published -eq $url) { return }
     try {
         $old = ''
         $sha = $null
         $cur = & $gh api repos/Sin-sluhi/obd-ai/contents/docs/forum_url.txt 2>$null | ConvertFrom-Json
         if ($cur -and $cur.content) { $old = [Text.Encoding]::UTF8.GetString([Convert]::FromBase64String($cur.content)).Trim(); $sha = $cur.sha }
-        if ($old -eq $url) { Log "адрес не изменился: $url"; return }
+        if ($old -eq $url) { Log "адрес не изменился: $url"; $script:published = $url; return }
         $b64 = [Convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes($url + "`n"))
         $args = @('api', '-X', 'PUT', 'repos/Sin-sluhi/obd-ai/contents/docs/forum_url.txt', '-f', 'message=forum: адрес туннеля', '-f', "content=$b64")
         if ($sha) { $args += @('-f', "sha=$sha") }
         $res = & $gh @args 2>&1
         if ($LASTEXITCODE -ne 0) { Log "не удалось опубликовать адрес: $(($res | Out-String).Trim() -replace '\s+', ' ')"; return }
+        $script:published = $url
         Log "опубликован адрес $url"
     } catch { Log "не удалось опубликовать адрес: $_" }
 }
@@ -127,69 +129,86 @@ function Maybe-UpdateApk {
     if (((Get-Date) - $script:lastApk).TotalMinutes -ge 10) { $script:lastApk = Get-Date; Update-Apk }
 }
 
+# Проверки наружу — напрямую, минуя системный прокси Windows (VPN на 127.0.0.1:10809): когда VPN лежит, прокси рвёт
+# соединение, и скрипт считал мёртвым живой Funnel, уходил на туннели и обратно не возвращался — отсюда вечные 502.
+[System.Net.WebRequest]::DefaultWebProxy = $null
+try { [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 } catch {}
+
+function Test-Url($url) {
+    try { $r = Invoke-RestMethod -Uri "$url/api/health" -TimeoutSec 15; return [bool]$r.ok } catch { return $false }
+}
+
+function Repair-Funnel {
+    # Funnel иногда пропадает (VPN на ПК); повторная публикация пути /obd идемпотентна и другие пути (сайт GPU Check) не трогает
+    $ts = 'C:\Program Files\Tailscale\tailscale.exe'
+    if (-not (Test-Path $ts)) { return }
+    try { & $ts funnel --bg --set-path /obd "http://127.0.0.1:$port" 2>&1 | Out-Null; Log "Funnel: путь /obd переопубликован" } catch { Log "Funnel: $($_.Exception.Message)" }
+}
+
+function Start-PublishedTunnel($kind) {
+    # поднять туннель, убедиться снаружи, опубликовать; $null — не получилось (следующий оборот попробует другой вид)
+    $t = Start-Tunnel $kind
+    if (-not $t.url) { Log "туннель ($kind) не поднялся"; try { $t.proc.Kill() } catch {}; return $null }
+    Log "туннель ($($t.kind)): $($t.url)"
+    $ok = $false
+    for ($i = 0; $i -lt 5 -and -not $ok; $i++) { Start-Sleep -Seconds 3; $ok = Test-Url $t.url }
+    if (-not $ok) { Log "адрес туннеля снаружи не отвечает"; try { $t.proc.Kill() } catch {}; return $null }
+    Publish-Url $t.url
+    $t.started = Get-Date
+    $t.fails = 0
+    return $t
+}
+
 Log "старт (репозиторий: $repo)"
 if (-not (Test-Path "$repo\server\forum\server.py")) { Log "нет файла $repo\server\forum\server.py — проверьте, где лежит репозиторий"; exit 1 }
 Update-Apk
 
-# Постоянный адрес (Tailscale Funnel и т.п.): файл public.url рядом со скриптом, например
-# https://sh01.tailec27da.ts.net/obd. Тогда туннели serveo/localhost.run не нужны: они меняли адрес каждые 10–20 минут
-# и большую часть времени отвечали 502. Если постоянный адрес не отвечает больше 10 минут — уходим на туннели как запас.
+# Постоянный адрес (Tailscale Funnel): файл public.url рядом со скриптом, например https://sh01.tailec27da.ts.net/obd.
+# Он всегда главный: пока отвечает — публикуется он. Не отвечает 2 минуты — переопубликовать путь Funnel; 10 минут —
+# временно поднять туннель serveo/localhost.run и опубликовать его. Как только постоянный адрес отвечает три раза
+# подряд — туннель гасится и публикуется снова постоянный адрес. Раньше дорога была в одну сторону.
 $publicFile = "$dir\public.url"
-if (Test-Path $publicFile) {
-    $public = (Get-Content $publicFile -Raw).Trim().TrimEnd('/')
-    Log "постоянный адрес: $public"
-    Ensure-Server
-    Publish-Url $public
-    $fails = 0
-    $tick = 0
-    while ($fails -lt 20) {
-        Start-Sleep -Seconds 30
-        Ensure-Server
-        $tick++
-        Maybe-UpdateApk
-        try { Invoke-RestMethod -Uri "$public/api/health" -TimeoutSec 15 | Out-Null; if ($fails -gt 0) { Log "постоянный адрес снова отвечает" }; $fails = 0 }
-        catch { $fails++; if ($fails -eq 1 -or $fails % 5 -eq 0) { Log "постоянный адрес не ответил ($fails): $($_.Exception.Message)" } }
-    }
-    Log "постоянный адрес не отвечает 10 минут — перехожу на туннели"
-}
+$public = $null
+if (Test-Path $publicFile) { $public = (Get-Content $publicFile -Raw).Trim().TrimEnd('/'); Log "постоянный адрес: $public" }
 
 $kind = 'serveo'
+$tunnel = $null
+$publicFails = 0
+$publicOk = 0
 while ($true) {
     Ensure-Server
-    $started = Get-Date
-    $t = Start-Tunnel $kind
-    $p = $t.proc
-    if ($t.url) {
-        Log "туннель ($($t.kind)): $($t.url)"
-        # проверяем снаружи, прежде чем публиковать
-        $ok = $false
-        for ($i = 0; $i -lt 5 -and -not $ok; $i++) {
-            Start-Sleep -Seconds 3
-            try { $r = Invoke-RestMethod -Uri "$($t.url)/api/health" -TimeoutSec 15; if ($r.ok) { $ok = $true } } catch {}
-        }
-        if ($ok) { Publish-Url $t.url } else { Log "адрес снаружи не отвечает, перезапуск"; try { $p.Kill() } catch {} }
-    } else {
-        Log "туннель не поднялся, перезапуск"
-        try { $p.Kill() } catch {}
-    }
-    # пока туннель жив — следим за сервером и самим туннелем; упал — цикл поднимет новый и опубликует новый адрес
-    $fails = 0
-    $tick = 0
-    while (-not $p.HasExited) {
-        Start-Sleep -Seconds 30
-        Ensure-Server
-        $tick++
-        Maybe-UpdateApk   # раз в 10 минут по часам: не вышла ли новая сборка
-        if ($t.url) {
-            try { Invoke-RestMethod -Uri "$($t.url)/api/health" -TimeoutSec 15 | Out-Null; $fails = 0 }
-            catch {
-                $fails++
-                Log "туннель не ответил снаружи ($fails): $($_.Exception.Message)"
-                if ($fails -ge 2) { Log "перезапуск туннеля"; try { $p.Kill() } catch {} }
-            }
+    Maybe-UpdateApk
+    if ($public) {
+        if (Test-Url $public) {
+            $publicOk++
+            if ($publicFails -gt 0) { Log "постоянный адрес снова отвечает" }
+            $publicFails = 0
+            if ($tunnel) {
+                if ($publicOk -ge 3) { Log "возвращаюсь на постоянный адрес"; try { $tunnel.proc.Kill() } catch {}; $tunnel = $null; Publish-Url $public }
+            } else { Publish-Url $public }
+        } else {
+            $publicOk = 0
+            $publicFails++
+            if ($publicFails -eq 1 -or $publicFails % 10 -eq 0) { Log "постоянный адрес не ответил ($publicFails)" }
+            if ($publicFails -eq 4) { Repair-Funnel }
+            if ($publicFails -eq 20) { Log "постоянный адрес не отвечает 10 минут — временно поднимаю туннель" }
         }
     }
-    Log "туннель завершился (код $($p.ExitCode)), через 10 с новый"
-    if (((Get-Date) - $started).TotalSeconds -lt 180) { $kind = if ($kind -eq 'serveo') { 'lhr' } else { 'serveo' }; Log "переключаюсь на $kind" }
-    Start-Sleep -Seconds 10
+    $needTunnel = (-not $public) -or ($publicFails -ge 20)
+    if ($needTunnel -and -not $tunnel) {
+        $tunnel = Start-PublishedTunnel $kind
+        if (-not $tunnel) { $kind = if ($kind -eq 'serveo') { 'lhr' } else { 'serveo' } }
+    }
+    if ($tunnel) {
+        if ($tunnel.proc.HasExited) {
+            Log "туннель завершился (код $($tunnel.proc.ExitCode))"
+            if (((Get-Date) - $tunnel.started).TotalSeconds -lt 180) { $kind = if ($kind -eq 'serveo') { 'lhr' } else { 'serveo' }; Log "переключаюсь на $kind" }
+            $tunnel = $null
+        } elseif (-not (Test-Url $tunnel.url)) {
+            $tunnel.fails++
+            Log "туннель не ответил снаружи ($($tunnel.fails))"
+            if ($tunnel.fails -ge 2) { Log "перезапуск туннеля"; try { $tunnel.proc.Kill() } catch {}; $tunnel = $null }
+        } else { $tunnel.fails = 0 }
+    }
+    Start-Sleep -Seconds 30
 }

@@ -99,6 +99,20 @@ def online_many(rooms):
     return out
 
 
+def room_stats(device):
+    """Ветки, где есть сообщения: сколько всего, сколько от других устройств, последнее сообщение. Свежие первыми."""
+    with _lock:
+        rows = _db.execute("SELECT room, COUNT(*), SUM(CASE WHEN device<>? THEN 1 ELSE 0 END), MAX(time), MAX(id) "
+                           "FROM messages GROUP BY room", (device,)).fetchall()
+        out = []
+        for r in rows:
+            last = _db.execute("SELECT name, text FROM messages WHERE id=?", (r[4],)).fetchone()
+            out.append({"room": r[0], "count": r[1], "others": r[2] or 0, "last": r[3],
+                        "name": last[0] if last else "", "text": (last[1] if last else "")[:80]})
+    out.sort(key=lambda x: -x["last"])
+    return out[:200]
+
+
 def messages(room, after):
     with _lock:
         if after > 0:
@@ -231,6 +245,8 @@ class Handler(BaseHTTPRequestHandler):
             if len(code) < 8:
                 return self._json(400, {"error": "code"})
             return self._json(200, {"cars": garage_list(code)})
+        if u.path == "/api/rooms":
+            return self._json(200, {"rooms": room_stats(clean(q.get("device"), 64))})
         if u.path == "/api/online":
             rooms = [r for r in clean(q.get("rooms"), 4000).split(",") if r][:200]
             return self._json(200, online_many(rooms))

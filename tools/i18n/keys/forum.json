@@ -34,5 +34,15 @@
   "forum_save": "Сохранить",
   "forum_cancel": "Отмена",
   "forum_write_placeholder": "Написать в ветку…",
-  "forum_chat_disabled": "Чат выключен"
+  "forum_chat_disabled": "Чат выключен",
+  "forum_live_title": "Сейчас обсуждают",
+  "forum_live_rooms.one": "{0} живая ветка",
+  "forum_live_rooms.few": "{0} живые ветки",
+  "forum_live_rooms.many": "{0} живых веток",
+  "forum_msgs_count.one": "{0} сообщение",
+  "forum_msgs_count.few": "{0} сообщения",
+  "forum_msgs_count.many": "{0} сообщений",
+  "forum_emoji": "Эмодзи",
+  "forum_stickers": "Стикеры",
+  "forum_send_failed": "Не отправилось: сервер не ответил, попробуйте ещё раз"
 }
