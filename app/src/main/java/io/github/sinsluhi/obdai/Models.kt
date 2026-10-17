@@ -40,6 +40,24 @@ data class CarSnapshot(
     /** Все коды из всех блоков. */
     val allCodes: List<String> get() = (stored + pending + permanent + modules.flatMap { it.codes }).distinct().filterNot { DtcCatalog.isFiller(it) }
 
+    /**
+     * Коды, которые идут нейронке и в поиск по форумам: активные, подтверждённые, неподтверждённые и постоянные — не больше
+     * [limit], активные первыми; история — только счётом. Hyundai Grandeur 2020 (17.10.2026): ~130 кодов истории двигателя
+     * со справкой по каждому дали запрос на 46 тыс. токенов при лимите бесплатного Groq 8 тыс. — разбор не прошёл вовсе.
+     * Карточки на экране от этого не пропадают: недостающие добирает свой разбор ([Diagnosis.completeWith]).
+     */
+    fun focusCodes(limit: Int = 20): List<String> {
+        val std = stored + pending + permanent
+        fun rank(c: String) = when {
+            c.contains("(активная)") -> 0 // i18n-ignore: пометка статуса из ObdDecoder
+            c in std -> 1
+            c.contains("(неподтверждённая)") -> 3 // i18n-ignore: пометка статуса из ObdDecoder
+            else -> 2
+        }
+        return allCodes.filterNot { it.contains("(история)") } // i18n-ignore: пометка статуса из ObdDecoder
+            .sortedBy { rank(it) }.take(limit)
+    }
+
     /** Показания датчиков для истории: ключ → значение, плюс пробег. */
     fun sensorMap(): Map<String, Double> = buildMap {
         sensors.forEach { s -> s.value?.let { put(s.key, it) } }

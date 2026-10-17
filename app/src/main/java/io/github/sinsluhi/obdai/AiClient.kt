@@ -84,6 +84,9 @@ next_steps, for_service, typical_issues) — только по-русски, к�
     /** Бесплатный тариф Groq: 8 тыс. токенов в минуту на запрос вместе с max_tokens — выдержки и ответ держим короткими. */
     private const val NOTES_BUDGET = 4500
     private const val NOTES_BUDGET_TIGHT = 1800
+    /** Сколько главных кодов идёт нейронке со справкой и опытом владельцев; сжатый повтор после 413 — меньше. */
+    private const val FOCUS_CODES = 12
+    private const val FOCUS_CODES_TIGHT = 5
     private const val VERDICT_TOKENS = 2500
 
     /** Groq отвечает за секунды; дольше минуты-полутора ждать бессмысленно — это зависание, а не работа. */
@@ -148,7 +151,7 @@ next_steps, for_service, typical_issues) — только по-русски, к�
             val car = if (decoded.brand != null) decoded.title() else snap.vin?.let { identifyCar(cfg, it, log) }.orEmpty()
             progress(tr("ai_stage_search"))
             val ts = System.currentTimeMillis()
-            notes = runCatching { ForumSearch.research(snap.allCodes, car, log, NOTES_BUDGET, SEARCH_DEADLINE_MS) }
+            notes = runCatching { ForumSearch.research(snap.focusCodes(), car, log, NOTES_BUDGET, SEARCH_DEADLINE_MS) }
                 .onFailure { log("Поиск по форумам не удался: ${it.message}") }
                 .getOrDefault("")
             log("Поиск по форумам: ${(System.currentTimeMillis() - ts) / 1000} с, выдержек ${notes.length} символов")
@@ -235,10 +238,16 @@ next_steps, for_service, typical_issues) — только по-русски, к�
     private fun verdictCall(c: AiConfig, sys: String, snap: CarSnapshot, notes: String,
                             progress: (String) -> Unit, log: (String) -> Unit): OpenAiClient.Reply {
         val timeout = if (c.provider == Provider.GROQ) GROQ_READ_TIMEOUT_MS else 240_000
-        fun call(n: String) = OpenAiClient.chat(c, sys, userReport(snap, n), json = true, maxTokens = VERDICT_TOKENS, readTimeoutMs = timeout)
+        fun call(n: String, focus: Int = FOCUS_CODES) =
+            OpenAiClient.chat(c, sys, userReport(snap, n, focus), json = true, maxTokens = VERDICT_TOKENS, readTimeoutMs = timeout)
         try {
             return call(notes)
         } catch (e: OpenAiClient.ApiException) {
+            // 413: запрос целиком больше минутного лимита модели — ждать бесполезно, только сжать (главные коды, короткие выдержки)
+            if (e.status == 413) {
+                log("Запрос больше лимита модели, повторяю сжатым: $FOCUS_CODES_TIGHT главных кодов, короткие выдержки")
+                return call(notes.take(NOTES_BUDGET_TIGHT), FOCUS_CODES_TIGHT)
+            }
             if (e.status != 429) throw e
             val wait = e.retryAfterSec
             if (wait != null && wait <= MAX_RATE_WAIT_SEC) {
@@ -293,8 +302,8 @@ next_steps, for_service, typical_issues) — только по-русски, к�
         return d.copy(codes = codes, typicalIssues = issues)
     }
 
-    private fun userReport(snap: CarSnapshot, notes: String): String = buildString {
-        append(report(snap))
+    private fun userReport(snap: CarSnapshot, notes: String, focus: Int = FOCUS_CODES): String = buildString {
+        append(report(snap, focus))
         appendLine()
         if (notes.isNotBlank()) {
             appendLine("=== Выдержки с форумов (drive2.ru, drom.ru) ===")
@@ -460,7 +469,7 @@ next_steps, for_service, typical_issues) — только по-русски, к�
     // ---------- общее ----------
 
     /** Отчёт о машине для модели. */
-    fun report(snap: CarSnapshot): String = buildString {
+    fun report(snap: CarSnapshot, focus: Int = FOCUS_CODES): String = buildString {
         appendLine("Результаты OBD-II диагностики:")
         appendLine("Протокол: ${snap.protocol.ifBlank { "неизвестно" }}")
         appendLine("VIN: ${snap.vin ?: "не прочитан"}")
@@ -485,14 +494,20 @@ next_steps, for_service, typical_issues) — только по-русски, к�
         if (snap.modules.isNotEmpty()) {
             appendLine("Другие блоки (опрос по заводскому протоколу, ответили только эти):")
             snap.modules.forEach { m ->
-                appendLine("- ${m.name} [${m.addrHex}]: ${m.codes.joinToString().ifEmpty { "ошибок нет" }}")
-                m.codes.forEach { c ->
+                // история (неактивные записи прошлых лет) — только счётом: на Grandeur её было ~130 кодов у одного двигателя
+                val (old, live) = m.codes.partition { it.contains("(история)") }
+                val head = live.take(15).joinToString().ifEmpty { if (old.isEmpty()) "ошибок нет" else "текущих ошибок нет" }
+                val tail = if (live.size > 15) " и ещё ${live.size - 15}" else ""
+                val hist = if (old.isEmpty()) "" else "; в истории ${old.size} старых кодов (первые: ${old.take(8).joinToString { it.substringBefore(' ') }})"
+                appendLine("- ${m.name} [${m.addrHex}]: $head$tail$hist")
+                live.take(15).forEach { c ->
                     val st = m.statusOf(c)
                     if (st.isNotEmpty()) appendLine("    ${c.substringBefore(' ')}: статус по UDS — ${st.joinToString()}")
                 }
             }
         }
-        val allCodes = snap.allCodes
+        // справка, болячки и опыт владельцев — только по главным кодам, иначе запрос не влезает в лимит модели
+        val allCodes = snap.focusCodes(focus)
         if (allCodes.isNotEmpty()) {
             val brandKey = DtcCatalog.brandKey(decoded.brand)
             val bases = allCodes.map { DtcCatalog.base(it) }

@@ -72,6 +72,22 @@ class OemCodeTest {
         assertFalse(VoltSample(now, 13.4, null).rest)                       // 13+ В без оборотов — не покой
     }
 
+    /** Grandeur 2020 (17.10.2026): ~130 кодов истории двигателя раздули запрос нейронке до 46 тыс. токенов — уходят только главные. */
+    @Test fun focusCodesSkipHistoryAndPutActiveFirst() {
+        val history = (1..130).map { "P0%03d (история)".format(it) }
+        val snap = CarSnapshot(vin = null, protocol = "", voltage = "", milOn = true, dtcCount = 1,
+            stored = listOf("P000A"), pending = listOf("P000A"), sensors = emptyList(), permanent = listOf("P000A"),
+            modules = listOf(
+                ModuleScan("Двигатель", 0x7E0, history + "P000A (активная)", "UDS"),
+                ModuleScan("Кузовной блок", 0x7A0, listOf("P0017 (активная)", "P043A", "B1602 (неподтверждённая)"), "UDS")))
+        val focus = snap.focusCodes(12)
+        assertTrue(focus.none { it.contains("история") })
+        assertEquals("P000A (активная)", focus.first())
+        assertTrue(focus.containsAll(listOf("P000A", "P043A", "P0017 (активная)", "B1602 (неподтверждённая)")))
+        assertTrue(focus.size <= 12)
+        assertEquals("B1602 (неподтверждённая)", focus.last())   // неподтверждённые — последними
+    }
+
     @Test fun vpicTitleParsed() {
         val json = """{"Count":1,"Results":[{"Make":"BMW","Model":"X3","ModelYear":"2013","VIN":"X4XKC81140DV57558"}]}"""
         assertEquals("BMW X3 2013", VinDecoder.parseOnline(json))
