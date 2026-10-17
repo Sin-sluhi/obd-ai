@@ -89,7 +89,9 @@ class FramesTest {
         assertTrue(Frames.messages(f).isEmpty())                       // без спасения обрезанный ответ не сообщение
         val codes = ModuleDecoder.parseUdsDetailed(Frames.messages(f, withPartial = true))!!
         assertEquals(20, codes.size)                                   // (83 − 3) / 4 = 20 целых записей, хвост отброшен
-        assertEquals("P10E7 (история)", codes.first().first)
+        // запись 00 10 E7 40: код P0010 с байтом типа отказа E7 (VAG), статус 0x40 — история
+        assertEquals("P0010-E7 (история)", codes.first().first)
+        assertEquals("P0010-E8 (история)", codes[1].first)
         assertEquals(listOf("BUFFER FULL"), Frames.status(raw))
     }
 

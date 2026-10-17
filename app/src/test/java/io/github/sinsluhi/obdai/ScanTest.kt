@@ -507,7 +507,7 @@ class ScanTest {
         val r = ModuleScanner(car).scan("BMW", emptyList()) { _, _ -> }
         val dme = r.modules.first { it.addr == 0x12 }
         assertEquals(listOf("130508", "118002"), dme.codes.map { it.substringBefore(' ') })
-        assertTrue(car.sent.contains("ATCAF0") && car.sent.contains("12031902FF") && car.sent.contains("12300000"))
+        assertTrue(car.sent.contains("ATCAF0") && car.sent.contains("12031902FF") && car.sent.contains("12300014"))
         assertEquals("ATCAF1", car.sent.last { it.startsWith("ATCAF") })
         assertTrue(car.logs.any { it.contains("ATCEA") || it.contains("raw_gateway") })
     }
