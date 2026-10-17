@@ -43,6 +43,8 @@ object DtcCatalog {
     @Volatile private var families: JSONObject? = null
     @Volatile private var codes: JSONObject? = null
     @Volatile private var brands: JSONObject? = null
+    /** Открытый слой (`dtc_open.json`, tools/dtc/open): названия кодов, которых нет в своей базе. */
+    @Volatile private var open: JSONObject? = null
 
     val ready: Boolean get() = codes != null
 
@@ -55,6 +57,24 @@ object DtcCatalog {
             brands = root.getJSONObject("brands")
             codes = root.getJSONObject("codes")
         }
+        runCatching { open = JSONObject(context.assets.open("dtc_open.json").bufferedReader(Charsets.UTF_8).use { it.readText() }) }
+    }
+
+    /** Для стенда: открытый слой из текста. */
+    fun loadOpen(text: String) { open = JSONObject(text) }
+
+    /**
+     * Название кода из открытых баз: марочная таблица, потом стандартные SAE, пятизначные VAG. Русское, если переведено
+     * (в английском интерфейсе — английское), иначе английское название источника. null — кода нет и там.
+     */
+    fun openTitle(code: String, brandKey: String? = null): String? {
+        val o = open ?: return null
+        val c = base(code)
+        if (c.length == 5 && c.all { it.isDigit() }) return o.optJSONObject("v")?.optString(c)?.ifBlank { null }
+        val row = brandKey?.let { o.optJSONObject("b")?.optJSONObject(it)?.optJSONArray(c) } ?: o.optJSONObject("g")?.optJSONArray(c) ?: return null
+        val ru = if (row.isNull(0)) "" else row.optString(0)
+        val en = row.optString(1)
+        return (if (Tr.lang.code == "en") en else ru.ifBlank { en }).ifBlank { null }
     }
 
     /** «P2400-20 (активная)» → «P2400». */
@@ -195,6 +215,17 @@ object DtcCatalog {
             "chevrolet" in b || "opel" in b -> "gm"
             "nissan" in b || "infiniti" in b -> "nissan"
             "honda" in b || "acura" in b -> "honda"
+            // марки только из открытого слоя (dtc_open.json): своих таблиц нет
+            "bmw" in b || "mini" in b -> "bmw"
+            "mazda" in b -> "mazda"
+            "chrysler" in b || "dodge" in b || "jeep" in b || b == "ram" -> "chrysler"
+            "mitsubishi" in b -> "mitsubishi"
+            "subaru" in b -> "subaru"
+            "mercedes" in b -> "mercedes"
+            "jaguar" in b -> "jaguar"
+            "suzuki" in b -> "suzuki"
+            "cadillac" in b || "buick" in b || "gmc" in b -> "gm"
+            "lincoln" in b || "mercury" in b -> "ford"
             else -> null
         }
     }
@@ -243,6 +274,7 @@ object DtcCatalog {
     /** Короткое название: справочник, иначе по первым символам. */
     fun title(code: String, brandKey: String? = null): String {
         info(code, brandKey)?.let { return it.title }
+        openTitle(code, brandKey)?.let { return it }
         val c = base(code)
         if (isOemHex(c)) return tr("cat_title_oem")
         return when {
@@ -255,10 +287,20 @@ object DtcCatalog {
         }
     }
 
-    /** Заводской код без марочной расшифровки — объяснение семейства «generic_*». */
-    fun genericInfo(code: String): DtcInfo? {
+    /**
+     * Кода нет в своей базе: объяснение семейства «generic_*», а название — из открытого слоя, если код там есть
+     * (стандартный редкий SAE → «open_sae», пятизначный VAG → «open_vag»). [brandKey] — для марочных таблиц слоя.
+     */
+    fun genericInfo(code: String, brandKey: String? = null): DtcInfo? {
         val c = base(code)
-        if (isOemHex(c)) return null
+        val openT = openTitle(c, brandKey)
+        if (isOemHex(c)) {
+            if (openT == null || !(c.length == 5 && c.all { it.isDigit() })) return null
+            return familyInfo(c, "open_vag", openT)
+        }
+        if (openT != null && (c.startsWith("P0") || c.startsWith("P2") || c.startsWith("P34") ||
+                c.startsWith("B0") || c.startsWith("C0") || c.startsWith("U0") || c.startsWith("B3") || c.startsWith("C3") || c.startsWith("U3")))
+            return familyInfo(c, "open_sae", openT)
         val famKey = when {
             c.startsWith("P1") || c.startsWith("P3") -> "generic_p1"
             c.startsWith("C") -> "generic_c"
@@ -266,8 +308,12 @@ object DtcCatalog {
             c.startsWith("U") -> "generic_u"
             else -> return null
         }
+        return familyInfo(c, famKey, openT ?: title(c))
+    }
+
+    private fun familyInfo(c: String, famKey: String, title: String): DtcInfo? {
         val fam = families?.optJSONObject(famKey) ?: return null
-        return DtcInfo(c, title(c), "", fam.optString("s"), fam.optJSONArray("c").toStringList(), fam.optString("d"),
+        return DtcInfo(c, title, "", fam.optString("s"), fam.optJSONArray("c").toStringList(), fam.optString("d"),
             "", fam.optString("sev").ifBlank { "medium" }, false, famKey, fam.optString("t"), emptyMap(), null, 0)
     }
 

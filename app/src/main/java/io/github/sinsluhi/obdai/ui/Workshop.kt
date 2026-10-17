@@ -283,7 +283,7 @@ private fun LeakBody(state: AppState, samples: List<Sample>) {
 fun WizardScreen(state: AppState, code: String, onBack: () -> Unit, onTask: (String) -> Unit, onScheme: (String) -> Unit) {
     val accent = LocalAccent.current
     val bkey = DtcCatalog.brandKey(VinDecoder.decode(state.lastSnapshot?.vin ?: state.vin).brand)
-    val info = remember(code) { DtcCatalog.info(code, bkey) ?: DtcCatalog.genericInfo(code) }
+    val info = remember(code) { DtcCatalog.info(code, bkey) ?: DtcCatalog.genericInfo(code, bkey) }
     val answers = remember(code) { mutableStateMapOf<Int, String>() }
     Screen {
         Header(tr("work_wizard_title", code), onBack = onBack)

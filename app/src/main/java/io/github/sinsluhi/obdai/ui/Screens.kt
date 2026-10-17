@@ -409,7 +409,7 @@ fun ResultScreen(
         fun fullCodeCard(c: DtcCard) {
             CodeCard(
                 c, statusLines(snap, c.code),
-                info = DtcCatalog.info(c.code, cBkey) ?: DtcCatalog.genericInfo(c.code),
+                info = DtcCatalog.info(c.code, cBkey) ?: DtcCatalog.genericInfo(c.code, cBkey),
                 issue = KnownIssues.find(cCar, cVin, c.code),
                 links = DtcCatalog.links(c.code, cPresent, cBkey),
                 ftb = DtcCatalog.ftbText(c.code),
@@ -457,7 +457,7 @@ fun ResultScreen(
             }
             var total = 0
             d.codes.forEach { c ->
-                val info = DtcCatalog.info(c.code, bkey) ?: DtcCatalog.genericInfo(c.code)
+                val info = DtcCatalog.info(c.code, bkey) ?: DtcCatalog.genericInfo(c.code, bkey)
                 total += effectivePrice(c, info, KnownIssues.find(car, vin, c.code), Kb.find(decoded, d.car, c.code))
             }
             @Composable

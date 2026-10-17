@@ -513,7 +513,11 @@ next_steps, for_service, typical_issues) — только по-русски, к�
             val bases = allCodes.map { DtcCatalog.base(it) }
             val lines = ArrayList<String>()
             allCodes.forEach { raw ->
-                val info = DtcCatalog.info(raw, brandKey) ?: return@forEach
+                val info = DtcCatalog.info(raw, brandKey) ?: run {
+                    // подробной записи нет — хотя бы название узла из открытых баз: модель объясняет, а не гадает, что за узел
+                    DtcCatalog.openTitle(raw, brandKey)?.let { lines.add("- ${DtcCatalog.base(raw)} — $it (название из открытой базы кодов, подробной записи нет)") }
+                    return@forEach
+                }
                 lines.add("- ${info.code} — ${info.title}. ${info.meaning}")
                 if (info.causes.isNotEmpty()) lines.add("  Частые причины: ${info.causes.take(4).joinToString("; ")}.")
                 DtcCatalog.links(raw, bases, brandKey).forEach { l -> lines.add("  Связь с ${l.code}: ${l.reason}.") }

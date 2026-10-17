@@ -284,7 +284,7 @@ data class Diagnosis(
                 val code = raw.substringBefore(' ')
                 val status = raw.substringAfter(' ', "").trim('(', ')')
                 val module = snap.modules.firstOrNull { m -> m.codes.contains(raw) }?.name
-                val info = DtcCatalog.info(code, bkey) ?: DtcCatalog.genericInfo(code)
+                val info = DtcCatalog.info(code, bkey) ?: DtcCatalog.genericInfo(code, bkey)
                 val issue = KnownIssues.find(car, snap.vin, code)
                 val kb = Kb.find(decoded, snap.carHint, code)
                 val active = status == "активная" || (status.isEmpty() && snap.stored.contains(raw)) // i18n-ignore: статус из ObdDecoder

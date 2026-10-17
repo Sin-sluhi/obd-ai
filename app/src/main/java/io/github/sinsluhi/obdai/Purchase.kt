@@ -51,7 +51,7 @@ object Purchase {
         }
         active.forEach { raw ->
             val code = DtcCatalog.base(raw)
-            val info = DtcCatalog.info(code, bkey) ?: DtcCatalog.genericInfo(code)
+            val info = DtcCatalog.info(code, bkey) ?: DtcCatalog.genericInfo(code, bkey)
             val issue = KnownIssues.find(car, snap.vin, code)
             val title = info?.title ?: DtcCatalog.title(code)
             val sev = issue?.severity ?: info?.severity ?: "medium"
