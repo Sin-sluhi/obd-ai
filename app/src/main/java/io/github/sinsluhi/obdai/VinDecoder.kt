@@ -1,5 +1,9 @@
 package io.github.sinsluhi.obdai
 
+import org.json.JSONObject
+import java.net.HttpURLConnection
+import java.net.URL
+
 /** Расшифровка VIN без интернета: марка по WMI, год по 10-му символу, модель для АвтоВАЗа по VDS. */
 object VinDecoder {
 
@@ -109,6 +113,39 @@ object VinDecoder {
         val year = if (v.length >= 10) yearFrom(v[9]) else null
         return Info(brand, model, year)
     }
+
+    /**
+     * Модель по VIN из открытой базы NHTSA (vPIC), когда своих таблиц нет (BMW, Mercedes, Ford, Toyota…): «BMW X3 2013».
+     * Сеть, до 4 с; ответ (и пустой — «база не знает») кешируется в Prefs, чтобы не спрашивать каждую проверку.
+     */
+    fun online(vin: String?, prefs: Prefs): String? {
+        val v = vin?.trim()?.uppercase()?.takeIf { it.length == 17 } ?: return null
+        prefs.vinOnline(v)?.let { return it.ifBlank { null } }
+        val text = runCatching {
+            val conn = (URL("https://vpic.nhtsa.dot.gov/api/vehicles/DecodeVinValues/$v?format=json").openConnection() as HttpURLConnection)
+                .apply { connectTimeout = 4_000; readTimeout = 4_000 }
+            try {
+                if (conn.responseCode in 200..299) conn.inputStream.bufferedReader(Charsets.UTF_8).use { it.readText() } else null
+            } finally {
+                conn.disconnect()
+            }
+        }.getOrNull() ?: return null
+        val title = parseOnline(text)
+        prefs.setVinOnline(v, title.orEmpty())
+        return title
+    }
+
+    /** Разбор ответа vPIC: Make + Model + ModelYear; марка в человеческом регистре (BMW, Mercedes-Benz). */
+    fun parseOnline(json: String): String? = runCatching {
+        val r = JSONObject(json).getJSONArray("Results").getJSONObject(0)
+        val make = r.optString("Make").trim()
+        val model = r.optString("Model").trim()
+        val year = r.optString("ModelYear").trim()
+        if (make.isBlank() || model.isBlank()) return@runCatching null
+        val niceMake = if (make.length <= 3) make.uppercase()
+            else make.split("-").joinToString("-") { p -> p.lowercase().replaceFirstChar { it.uppercase() } }
+        listOf(niceMake, model, year).filter { it.isNotBlank() }.joinToString(" ")
+    }.getOrNull()
 
     private fun yearFrom(c: Char): Int? {
         val idx = YEAR_CODES.indexOf(c)

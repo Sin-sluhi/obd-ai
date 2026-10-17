@@ -416,7 +416,7 @@ object ModuleMap {
      * идут как «Блок 0xNN» — опрашиваем весь диапазон 0x00–0x7F, как это делают марочные сканеры.
      */
     private val bmwNames = mapOf(
-        0x01 to "obd_module_airbags", 0x10 to "obd_module_can_gateway", 0x12 to "obd_module_engine",
+        0x01 to "obd_module_airbags", 0x10 to "obd_module_can_gateway", 0x12 to "obd_module_dme",
         0x13 to "obd_module_engine_extra", 0x18 to "obd_module_gearbox", 0x19 to "obd_module_awd",
         0x29 to "obd_module_abs_esp", 0x40 to "obd_module_immobilizer", 0x60 to "obd_module_cluster",
         0x63 to "obd_module_avn", 0x72 to "obd_module_body", 0x78 to "obd_module_climate"

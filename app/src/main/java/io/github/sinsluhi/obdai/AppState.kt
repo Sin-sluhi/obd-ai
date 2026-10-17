@@ -523,7 +523,11 @@ class AppState private constructor(context: Context) {
             // Другая машина — переключаемся до записи любых журналов, иначе напряжение, визиты и история
             // уходят под старым carId. После switchCar Compose-поля обновятся позже через ui{}, поэтому
             // журналы той машины берём прямо из настроек (volts switchCar перечитывает синхронно).
-            val switched = runCatching { noticeCar(v, VinDecoder.decode(v).title()) }.getOrDefault(false)
+            // своих таблиц моделей нет для BMW, Mercedes, Ford… — спрашиваем открытую базу NHTSA, чтобы гараж назывался
+            // «BMW X3 2013», а не «BMW»
+            val decodedVin = VinDecoder.decode(v)
+            val onlineTitle = if (v != null && decodedVin.model == null) runCatching { VinDecoder.online(v, prefs) }.getOrNull() else null
+            val switched = runCatching { noticeCar(v, onlineTitle ?: decodedVin.title()) }.getOrDefault(false)
             val carHistory = if (switched) prefs.loadHistory() else history
             val carWarmups = if (switched) prefs.loadWarmups() else warmups
             val carStarts = if (switched) prefs.loadStarts() else starts
@@ -579,7 +583,7 @@ class AppState private constructor(context: Context) {
             checks.filter { it.level != "ok" }.forEach { addLog(tr("state_log_sensors", it.text)) }
             val snap = base.copy(repair = repair, trend = trend, flags = flags, checks = checks,
                 warmup = carWarmups.lastOrNull(), starts = StartAnalysis.build(carStarts), forecast = forecast,
-                carHint = prev?.diagnosis?.car?.takeIf { it.isNotBlank() }, tank = carTanks.lastOrNull(),
+                carHint = prev?.diagnosis?.car?.takeIf { it.isNotBlank() } ?: onlineTitle, tank = carTanks.lastOrNull(),
                 blackbox = carBlackbox.lastOrNull()
                     ?.takeIf { System.currentTimeMillis() - it.t < 7L * 86_400_000 }
                     // запись чёрного ящика — дополнение к отчёту: её сбой не должен ронять всю проверку

@@ -101,5 +101,6 @@
   "cat_title_u": "Связь между блоками",
   "cat_title_unknown": "Неизвестная ошибка",
   "cat_badge_model": "Болячка модели",
-  "cat_badge_brand": "Болячка марки"
+  "cat_badge_brand": "Болячка марки",
+  "cat_title_oem": "Заводской код"
 }

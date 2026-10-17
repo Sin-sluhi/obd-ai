@@ -256,6 +256,14 @@ class Prefs(context: Context) {
         set(v) = sp.edit().putString("forum_url", v.trim()).apply()
 
     /** Адрес форума, опубликованный в репозитории (docs/forum_url.txt): меняется, когда туннель перезапускается. */
+    /** Кеш разбора VIN из открытой базы (vPIC): VIN → «марка модель год»; пустая строка — база не знает. */
+    fun vinOnline(vin: String): String? = runCatching { JSONObject(sp.getString("vin_online", "{}") ?: "{}").optString(vin, null as String?) }.getOrNull()
+    fun setVinOnline(vin: String, title: String) {
+        val o = runCatching { JSONObject(sp.getString("vin_online", "{}") ?: "{}") }.getOrDefault(JSONObject())
+        o.put(vin, title)
+        sp.edit().putString("vin_online", o.toString()).apply()
+    }
+
     var forumUrlRemote: String
         get() = sp.getString("forum_url_remote", "") ?: ""
         set(v) = sp.edit().putString("forum_url_remote", v.trim()).apply()

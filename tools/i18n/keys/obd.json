@@ -61,5 +61,6 @@
   "obd_module_abs_esp": "ABS / ESP",
   "obd_module_can_gateway": "Шлюз CAN",
   "obd_module_body": "Кузовной блок",
-  "obd_module_abs_vsc": "ABS / VSC"
+  "obd_module_abs_vsc": "ABS / VSC",
+  "obd_module_dme": "Двигатель (DME)"
 }

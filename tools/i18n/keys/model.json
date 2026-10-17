@@ -34,5 +34,8 @@
   "model_price_unknown": "уточняется",
   "model_price_from": "от {0} ₽",
   "model_duration_min": "{0} мин",
-  "model_duration_h_min": "{0} ч {1} мин"
+  "model_duration_h_min": "{0} ч {1} мин",
+  "model_card_oem_title": "Заводской код {0}",
+  "model_card_oem_hint": "Код в формате завода, как в дилерском сканере: в общий справочник SAE он не входит, буква впереди ничего не значит. Расшифровка — по марке и номеру блока.",
+  "model_card_bmw_dummy": "Тестовая запись памяти ошибок (BMW 02FF17) — не неисправность"
 }

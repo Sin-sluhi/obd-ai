@@ -60,6 +60,18 @@ object DtcCatalog {
     /** «P2400-20 (активная)» → «P2400». */
     fun base(raw: String): String = raw.trim().substringBefore(' ').substringBefore('-').uppercase()
 
+    /**
+     * Заводской код в формате марки (BMW: шесть hex-цифр, как в ISTA — 130508, CD046B). Буква впереди — просто
+     * цифра шестнадцатеричной записи, через семейства SAE (P/C/B/U) такой код трактовать нельзя.
+     */
+    fun isOemHex(code: String): Boolean {
+        val c = base(code)
+        return c.length == 6 && c.all { it in '0'..'9' || it in 'A'..'F' }
+    }
+
+    /** Заполнитель кадра, прочитанный как код (FFFFFF, 000000…): не ошибка, а мусор — нигде не показываем. */
+    fun isFiller(code: String): Boolean = base(code) in setOf("FFFFFF", "000000", "AAAAAA", "555555")
+
     /** Байт типа отказа UDS из «P2400-20»: словами по ISO 14229 Annex D, либо null. */
     fun ftbText(raw: String): String? {
         val head = raw.trim().substringBefore(' ')
@@ -230,6 +242,7 @@ object DtcCatalog {
     fun title(code: String, brandKey: String? = null): String {
         info(code, brandKey)?.let { return it.title }
         val c = base(code)
+        if (isOemHex(c)) return tr("cat_title_oem")
         return when {
             c.startsWith("P1") || c.startsWith("P3") -> tr("cat_title_p1")
             c.startsWith("P0") || c.startsWith("P2") -> tr("cat_title_p0")
@@ -243,6 +256,7 @@ object DtcCatalog {
     /** Заводской код без марочной расшифровки — объяснение семейства «generic_*». */
     fun genericInfo(code: String): DtcInfo? {
         val c = base(code)
+        if (isOemHex(c)) return null
         val famKey = when {
             c.startsWith("P1") || c.startsWith("P3") -> "generic_p1"
             c.startsWith("C") -> "generic_c"

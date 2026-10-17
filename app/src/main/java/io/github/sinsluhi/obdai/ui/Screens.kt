@@ -417,12 +417,29 @@ fun ResultScreen(
             val car = decoded.withCar(d.car)
             val bkey = DtcCatalog.brandKey(car.brand)
             val present = snap?.allCodes.orEmpty() + d.codes.map { it.code }
+            val raws = snap?.allCodes.orEmpty()
+            fun isHistory(c: DtcCard) = raws.any { it.startsWith(c.code + " ") && it.contains("(история)") } // i18n-ignore: статус из ObdDecoder
+            // «где та одна активная»: сразу под заголовком — коды, активные прямо сейчас, с именем блока
+            val activeCodes = d.codes.filter { c -> raws.any { it.startsWith(c.code + " ") && it.contains("(активная)") } } // i18n-ignore: статус из ObdDecoder
+            if (activeCodes.isNotEmpty()) {
+                Text(
+                    tr("scr_active_where", activeCodes.joinToString { c ->
+                        c.code + (allModules.firstOrNull { m -> m.codes.any { it.startsWith(c.code + " ") || it == c.code } }?.let { " · " + it.name } ?: "")
+                    }),
+                    style = Type.body(12, Palette.warn, FontWeight.SemiBold)
+                )
+                VSpace(8.dp)
+            }
             var total = 0
-            d.codes.forEachIndexed { i, c ->
+            d.codes.forEach { c ->
+                val info = DtcCatalog.info(c.code, bkey) ?: DtcCatalog.genericInfo(c.code)
+                total += effectivePrice(c, info, KnownIssues.find(car, vin, c.code), Kb.find(decoded, d.car, c.code))
+            }
+            @Composable
+            fun codeCard(i: Int, c: DtcCard) {
                 val info = DtcCatalog.info(c.code, bkey) ?: DtcCatalog.genericInfo(c.code)
                 val issue = KnownIssues.find(car, vin, c.code)
                 val kb = Kb.find(decoded, d.car, c.code)
-                total += effectivePrice(c, info, issue, kb)
                 Box(Modifier.enterStagger(i + 1)) { CodeCard(
                     c, statusLines(snap, c.code),
                     info = info,
@@ -432,6 +449,23 @@ fun ResultScreen(
                     kb = if (c.ownerExperience.isBlank()) kb else null,
                     onWizard = onWizard
                 ) }
+            }
+            // история блоков (BMW отдаёт их десятками) — одной свёрнутой карточкой, чтобы активное не утонуло
+            val history = d.codes.filter { isHistory(it) }
+            val main = d.codes.filterNot { isHistory(it) }
+            var showHistory by remember(d.codes.size) { mutableStateOf(history.size <= 3) }
+            main.forEachIndexed { i, c -> codeCard(i, c) }
+            if (history.isNotEmpty()) {
+                Card(radius = 18.dp, padding = 14.dp, onClick = { showHistory = !showHistory }) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Column(Modifier.weight(1f)) {
+                            Text(trPlural("scr_history_group", history.size), style = Type.strong(14))
+                            Text(tr("scr_history_hint"), style = Type.body(12, Palette.muted))
+                        }
+                        Text(if (showHistory) tr("scr_hide") else tr("scr_show"), style = Type.body(13, accent, FontWeight.SemiBold))
+                    }
+                }
+                if (showHistory) history.forEachIndexed { i, c -> codeCard(main.size + i, c) }
             }
             if (total > 0) {
                 Card(radius = 18.dp, padding = 16.dp) {
@@ -609,6 +643,7 @@ private fun CodeCard(
     val (sevText, sevColor, sevBg) = when (severity) {
         "high" -> Triple(tr("scr_sev_high"), Palette.danger, Palette.dangerBg)
         "low" -> Triple(tr("scr_sev_low"), accent, Palette.okBg)
+        "unknown" -> Triple(tr("scr_sev_unknown"), Palette.muted, Palette.surface2)
         else -> Triple(tr("scr_sev_mid"), Palette.warn, Palette.warnBg)
     }
     var more by remember(c.code) { mutableStateOf(false) }

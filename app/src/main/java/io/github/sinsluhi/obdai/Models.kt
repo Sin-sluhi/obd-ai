@@ -38,7 +38,7 @@ data class CarSnapshot(
     val freeze: FreezeFrame? = null                // стоп-кадр: условия, при которых записана ошибка
 ) {
     /** Все коды из всех блоков. */
-    val allCodes: List<String> get() = (stored + pending + permanent + modules.flatMap { it.codes }).distinct()
+    val allCodes: List<String> get() = (stored + pending + permanent + modules.flatMap { it.codes }).distinct().filterNot { DtcCatalog.isFiller(it) }
 
     /** Показания датчиков для истории: ключ → значение, плюс пробег. */
     fun sensorMap(): Map<String, Double> = buildMap {
@@ -244,7 +244,14 @@ data class Diagnosis(
             var stopActive = false
             var highActive = false
             val steps = LinkedHashMap<String, String>()   // семейство → что делать
-            val cards = all.map { raw ->
+            // активные — первыми, потом неподтверждённые, подтверждённые, история: владелец ищет «где та одна активная»
+            fun rank(raw: String) = when {
+                raw.contains("(активная)") -> 0 // i18n-ignore: статус из ObdDecoder
+                raw.contains("(неподтверждённая)") -> 1 // i18n-ignore: статус из ObdDecoder
+                raw.contains("(история)") -> 3 // i18n-ignore: статус из ObdDecoder
+                else -> 2
+            }
+            val cards = all.sortedBy { rank(it) }.map { raw ->
                 val code = raw.substringBefore(' ')
                 val status = raw.substringAfter(' ', "").trim('(', ')')
                 val module = snap.modules.firstOrNull { m -> m.codes.contains(raw) }?.name
@@ -253,13 +260,24 @@ data class Diagnosis(
                 val kb = Kb.find(decoded, snap.carHint, code)
                 val active = status == "активная" || (status.isEmpty() && snap.stored.contains(raw)) // i18n-ignore: статус из ObdDecoder
                 val pending = status == "неподтверждённая" || (snap.pending.contains(raw) && !snap.stored.contains(raw)) // i18n-ignore: статус из ObdDecoder
-                val severity = issue?.severity ?: info?.severity ?: "medium"
+                // заводской код (BMW: 130508, CD046B) — не SAE: серьёзность не угадываем, причины по букве не выдумываем
+                val oem = DtcCatalog.isOemHex(code)
+                val dummy = oem && code == "02FF17"   // BMW: тестовая запись в памяти ошибок, не неисправность
+                val severity = when {
+                    dummy -> "low"
+                    oem -> "unknown"
+                    else -> issue?.severity ?: info?.severity ?: "medium"
+                }
                 if (active && info?.stop == true) stopActive = true
                 if (active && severity == "high") highActive = true
                 if (active && info != null && info.whatToDo.isNotBlank()) steps.putIfAbsent(info.family, info.whatToDo)
                 DtcCard(
                     code = code,
-                    title = info?.title ?: DtcCatalog.title(code),
+                    title = when {
+                        dummy -> tr("model_card_bmw_dummy")
+                        oem -> tr("model_card_oem_title", car.brand.orEmpty()).trim()
+                        else -> info?.title ?: DtcCatalog.title(code)
+                    },
                     explanation = listOfNotNull(
                         module?.let { tr("model_card_module", it) },
                         when {
@@ -268,6 +286,7 @@ data class Diagnosis(
                             pending -> tr("model_card_status_pending")
                             else -> null
                         },
+                        if (oem && !dummy) tr("model_card_oem_hint") else null,
                         DtcCatalog.ftbText(code)?.let { "$it." },
                         info?.meaning?.takeIf { it.isNotBlank() && info.detail.isBlank() },
                         info?.detail?.takeIf { it.isNotBlank() },
