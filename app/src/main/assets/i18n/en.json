@@ -1171,5 +1171,14 @@
  "kb_dont": "Common money wasters:",
  "kb_risk": "If left unrepaired:",
  "kb_measured": "From the app's measurements:",
- "kb_text_complete": "Each code is explained below: what failed, how to check it and in what order to repair."
+ "kb_text_complete": "Each code is explained below: what failed, how to check it and in what order to repair.",
+ "elm_bus_alive": "The engine ignores the standard request, but the CAN bus is alive ({0})",
+ "elm_scan_tp20_probe_yes": "The engine answered over VW TP2.0 — this is VAG, scanning VAG modules",
+ "elm_scan_tp20_probe_no": "No engine answer over VW TP2.0 — not a VAG car",
+ "state_log_bus_only": "Standard modes skipped — searching for modules directly",
+ "obd_module_seat_passenger": "Passenger seat",
+ "obd_module_media2": "Media player 2",
+ "obd_module_level_control": "Air suspension",
+ "obd_module_headlight_range": "Headlight range control",
+ "obd_module_battery_mgmt": "Battery management"
 }

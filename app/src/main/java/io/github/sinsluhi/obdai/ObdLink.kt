@@ -40,6 +40,11 @@ interface ObdLink {
     val lastScanFull: Boolean get() = false
     /** Стоп-кадр режима 02: условия, при которых записана ошибка. null — кадра нет или машина не отдаёт. */
     fun readFreezeFrame(): FreezeFrame? = null
+    /**
+     * Двигатель молчит на стандартный запрос: жива ли шина CAN (кадр подтверждён, но никто не ответил — NO DATA,
+     * а не CAN ERROR). true — протокол переключён на эту шину, можно искать блоки.
+     */
+    fun wakeBus(): Boolean = false
     fun disconnect()
 }
 

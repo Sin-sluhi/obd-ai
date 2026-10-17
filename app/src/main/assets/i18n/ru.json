@@ -1492,5 +1492,14 @@
  "work_wizard_step_n": "Шаг {0}",
  "work_wizard_steps": "Шаги проверки",
  "work_wizard_summary": "Итог",
- "work_wizard_title": "{0}: проверка по шагам"
+ "work_wizard_title": "{0}: проверка по шагам",
+ "elm_bus_alive": "Двигатель молчит на стандартный запрос, но шина CAN жива ({0})",
+ "elm_scan_tp20_probe_yes": "Двигатель ответил по VW TP2.0 — это VAG, опрашиваю блоки VAG",
+ "elm_scan_tp20_probe_no": "По VW TP2.0 двигатель не ответил — машина не VAG",
+ "state_log_bus_only": "Стандартные режимы пропущены — ищу блоки напрямую",
+ "obd_module_seat_passenger": "Сиденье пассажира",
+ "obd_module_media2": "Медиаплеер 2",
+ "obd_module_level_control": "Пневмоподвеска",
+ "obd_module_headlight_range": "Корректор фар",
+ "obd_module_battery_mgmt": "Контроль АКБ"
 }

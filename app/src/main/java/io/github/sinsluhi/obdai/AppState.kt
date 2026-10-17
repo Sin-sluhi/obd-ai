@@ -507,39 +507,47 @@ class AppState private constructor(context: Context) {
             val ecuAnswered = ObdDecoder.messages(probe).isNotEmpty() &&
                 listOf("UNABLE", "NO DATA", "ERROR", "TIMEOUT").none { probe.uppercase().contains(it) }
             ui { ecuOnline = ecuAnswered }
-            if (!ecuAnswered) {
-                addLog(tr("state_log_ecu_silent", probe.trim()))
-                // по напряжению видно, работает ли мотор: окно говорит цифрами, а не общим «включи зажигание»
+            // по напряжению видно, работает ли мотор: окно говорит цифрами, а не общим «включи зажигание»
+            fun silentError(): Nothing {
                 val v = Regex("[0-9]+(\\.[0-9]+)?").find(runCatching { l.send("ATRV") }.getOrDefault(""))?.value?.toDoubleOrNull()
                 throw IllegalStateException(if (v != null) silentEcuHint(v) else tr("state_ecu_silent"))   // не IOException: связь с адаптером цела
+            }
+            // Стандартный OBD молчит, но шина CAN жива (Audi S8 17.10.2026: Launch читал все блоки, мы останавливались
+            // на 7DF) — стандартные режимы пропускаем и идём искать блоки. Ничего не нашли — прежнее окно с напряжением.
+            var busOnly = false
+            if (!ecuAnswered) {
+                addLog(tr("state_log_ecu_silent", probe.trim()))
+                busOnly = runCatching { l.wakeBus() }.getOrDefault(false)
+                if (!busOnly) silentError()
+                addLog(tr("state_log_bus_only"))
             }
             // Подключились при выключенном зажигании, а теперь блок ответил (шину нашёл автопоиск ELM): протокол, маска PID,
             // имя блока при подключении сняты не были. Без этого сканер считал машину «не CAN» и блоки не искал, режим 06
             // пропускался — BMW F10 John 17.10.2026: из всей машины одна неподтверждённая P0101.
-            if (l is Elm327 && !l.ecuOnline) {
+            if (!busOnly && l is Elm327 && !l.ecuOnline) {
                 l.refreshEcu()
                 ui { protocol = l.protocol; ecuName = l.ecuName; calibration = l.calibration }
             }
-            val mil = l.readMil()
+            val mil = if (busOnly) null else l.readMil()
             ui { milOn = mil?.first; dtcCount = mil?.second }
             addLog(tr("state_log_mil", when (mil?.first) { true -> tr("state_mil_on"); false -> tr("state_mil_off"); null -> tr("state_mil_unknown") }, mil?.second ?: "?"))
 
             ui { busy = tr("state_step_codes") }; rx()
-            val stored = l.readCodes(0x03)
-            val pending = l.readCodes(0x07)
-            val permanent = runCatching { l.readCodes(0x0A) }.getOrDefault(emptyList())
+            val stored = if (busOnly) emptyList() else l.readCodes(0x03)
+            val pending = if (busOnly) emptyList() else l.readCodes(0x07)
+            val permanent = if (busOnly) emptyList() else runCatching { l.readCodes(0x0A) }.getOrDefault(emptyList())
             addLog(if (stored.isEmpty()) tr("state_log_no_stored") else tr("state_log_stored", stored.joinToString()))
             addLog(if (pending.isEmpty()) tr("state_log_no_pending") else tr("state_log_pending", pending.joinToString()))
             if (permanent.isNotEmpty()) addLog(tr("state_log_permanent", permanent.joinToString()))
 
             ui { busy = tr("state_step_monitors") }; rx()
-            val (ready, readyCycle) = runCatching { l.readReadiness() }.getOrDefault(Pair(null, null))
+            val (ready, readyCycle) = if (busOnly) Pair(null, null) else runCatching { l.readReadiness() }.getOrDefault(Pair(null, null))
             ready?.let { addLog(tr("state_log_readiness", it.describe())) }
-            val stats = runCatching { l.readStats() }.getOrDefault(DtcStats())
+            val stats = if (busOnly) DtcStats() else runCatching { l.readStats() }.getOrDefault(DtcStats())
             stats.lines().forEach { addLog(it) }
 
             ui { busy = tr("state_step_vin") }; rx()
-            val v = runCatching { l.readVin() }.getOrNull()
+            val v = if (busOnly) null else runCatching { l.readVin() }.getOrNull()
             ui { vin = v }
             addLog(if (v == null) tr("state_log_no_vin") else tr("state_log_vin", v))
             // Другая машина — переключаемся до записи любых журналов, иначе напряжение, визиты и история
@@ -564,21 +572,21 @@ class AppState private constructor(context: Context) {
             val carVisits = if (switched) prefs.loadVisits() else visits
 
             ui { busy = tr("state_step_sensors") }; rx()
-            val s = l.readSensors(live = false)
+            val s = if (busOnly) emptyList() else l.readSensors(live = false)
             val volt = l.readVoltageSafe()
             ui { sensors = s; voltage = volt; protocol = l.protocol }
             s.firstOrNull { it.key == "ambient" }?.value?.let { lastAmbient = it }
             recordVolt(s, volt, force = true)
 
             ui { busy = tr("state_step_tests") }; rx()
-            val tests = runCatching { l.readTests() }.onFailure { addLog(tr("state_log_mode06_failed", it.message)) }.getOrDefault(emptyList())
+            val tests = if (busOnly) emptyList() else runCatching { l.readTests() }.onFailure { addLog(tr("state_log_mode06_failed", it.message)) }.getOrDefault(emptyList())
             if (tests.isNotEmpty()) {
                 addLog(tr("state_log_tests", tests.size, tests.count { !it.passed }))
                 Mode06.summary(tests).forEach { addLog(it) }
             }
 
             ui { busy = tr("state_step_freeze") }; rx()
-            val freeze = runCatching { l.readFreezeFrame() }.getOrNull()
+            val freeze = if (busOnly) null else runCatching { l.readFreezeFrame() }.getOrNull()
             addLog(freeze?.describe() ?: tr("state_log_no_freeze"))
 
             ui { busy = tr("state_step_modules"); scanning = true; scanFound = 0 }; rx()
@@ -594,6 +602,7 @@ class AppState private constructor(context: Context) {
             if (l.lastScanFull && l.foundEcus.size >= 3) prefs.ecus = EcuCache(l.foundEcus, System.currentTimeMillis()).toJson()
             addLog(tr("state_log_modules", modules.size, modules.count { it.codes.isNotEmpty() }))
             resumePolling()
+            if (busOnly && modules.isEmpty()) silentError()
 
             ui { busy = tr("state_step_compare") }
             val batteryNow = BatteryReport.build(volts)

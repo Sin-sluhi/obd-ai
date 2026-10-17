@@ -16,7 +16,8 @@ import org.junit.Test
  *   как у ELM327 v1.5 на Audi A4 B8 (лог 17.10.2026, 38 кадров). С паузой STmin > 0 адаптер успевает, ответ целый.
  */
 class ScriptedCar(private val bits29: Boolean = false, private val unsupported: Set<String> = emptySet(),
-                  override val protocolNo: Int = if (bits29) 7 else 6, private val bufferFrames: Int? = null) : ElmSession {
+                  override val protocolNo: Int = if (bits29) 7 else 6, private val bufferFrames: Int? = null,
+                  private val deadProtocols: Set<Int> = emptySet()) : ElmSession {
     /**
      * Блок: ID запроса, ID ответа, байт расширенной адресации, обработчик запроса → байты ответа (null — молчит).
      * rxByte — что блок ставит первым байтом ответа при расширенной адресации (BMW — адрес тестера F1, Toyota — подадрес).
@@ -107,6 +108,8 @@ class ScriptedCar(private val bits29: Boolean = false, private val unsupported: 
             }
             return "OK"
         }
+        // скорость шины не та (CAN 250k на машине с 500k): кадр никто не подтвердил
+        if (proto in deadProtocols) return "CAN ERROR"
         // нечётная длина — в конце цифра ожидаемых кадров (ELM v1.3+): адаптер отдаёт «>» после стольких кадров
         val expect = if (c.length % 2 == 1) c.last().digitToInt(16) else null
         val body = if (expect != null) c.dropLast(1) else c
@@ -467,6 +470,60 @@ class ScanTest {
         car.ecus += ScriptedCar.Ecu(0x7E0, 0x7E8, handler = Replies.uds())
         ModuleScanner(car).scan("Hyundai", emptyList()) { _, _ -> }
         assertTrue(car.sent.none { it == "ATSH 200" })
+    }
+
+    /**
+     * Audi S8 (`traces/2026-10-17_audi-s8_engine-off-11v.txt`): на 7DF никто не отвечает, CAN 11/500 — NO DATA, 250k — CAN ERROR,
+     * VIN не прочитан. Launch на этой же машине читал двигатель P1577/P0480, пневму 01583, фары 01539. Шина жива — протокол 6.
+     */
+    @Test fun silentObdButLiveCanBusFound() {
+        val car = ScriptedCar(deadProtocols = setOf(8, 9))
+        assertEquals(6, BusProbe.liveCan(car))
+        assertTrue(car.sent.contains("ATTP 6"))
+    }
+
+    @Test fun deadBusReportedAndAutoSearchRestored() {
+        val car = ScriptedCar(deadProtocols = setOf(6, 7, 8, 9))
+        assertEquals(null, BusProbe.liveCan(car))
+        assertEquals("ATSP0", car.sent.last())
+    }
+
+    /** Марка неизвестна, ISO-TP пуст: двигатель 01 по TP2.0 выдаёт VAG, читаются все блоки VAG — с двигателем. */
+    @Test fun unknownBrandDetectedAsVagByTp20Engine() {
+        val car = ScriptedCar(deadProtocols = setOf(8, 9))
+        // 0x4641 = 17985 → P1577, 0x41E0 = 16864 → P0480
+        car.tp20 += ScriptedCar.Tp20Ecu(0x01, handler = Replies.vagKwp(0x46, 0x41, 0x23, 0x41, 0xE0, 0x23))
+        car.tp20 += ScriptedCar.Tp20Ecu(0x34, 0x743, 0x303, handler = Replies.vagKwp(0x06, 0x2F, 0x23))   // 01583
+        car.tp20 += ScriptedCar.Tp20Ecu(0x61, 0x744, 0x304, handler = Replies.vagKwp(0x08, 0xDC, 0x23))   // 02268
+        val r = ModuleScanner(car).scan(null, emptyList()) { _, _ -> }
+        assertEquals(listOf("P1577", "P0480"), r.modules.first { it.via == "TP20" && it.addr == 0x01 }.codes)
+        assertEquals(listOf("01583"), r.modules.first { it.via == "TP20" && it.addr == 0x34 }.codes)
+        assertEquals(listOf("02268"), r.modules.first { it.via == "TP20" && it.addr == 0x61 }.codes)
+    }
+
+    /** Марка неизвестна, но перебор ISO-TP нашёл много блоков: на 0x200 (рабочий ID у других марок) ничего не шлём. */
+    @Test fun unknownBrandWithManyIsoTpModulesSkipsTp20Probe() {
+        val car = ScriptedCar()
+        for (a in listOf(0x7E0, 0x7E1, 0x7D1, 0x7A0)) car.ecus += ScriptedCar.Ecu(a, a + 8, handler = Replies.uds())
+        ModuleScanner(car).scan(null, emptyList()) { _, _ -> }
+        assertTrue(car.sent.none { it == "ATSH 200" })
+    }
+
+    /** Марка неизвестна, блоков почти нет, TP2.0 молчит: один кадр-зонд к 01 — и никакого перебора VAG. */
+    @Test fun unknownBrandNonVagSingleTp20Probe() {
+        val car = ScriptedCar()
+        car.ecus += ScriptedCar.Ecu(0x7E0, 0x7E8, handler = Replies.uds())
+        ModuleScanner(car).scan(null, emptyList()) { _, _ -> }
+        assertEquals(1, car.sent.count { it.endsWith("C00010000301 1") })
+        assertEquals("ATCAF1", car.sent.last { it.startsWith("ATCAF") })
+    }
+
+    @Test fun vagFactoryP1Codes() {
+        assertEquals("P1556", ModuleDecoder.vagCode(17964))
+        assertEquals("P1577", ModuleDecoder.vagCode(17985))
+        assertEquals("P0480", ModuleDecoder.vagCode(16864))
+        assertEquals("18590", ModuleDecoder.vagCode(18590))
+        assertEquals("01583", ModuleDecoder.vagCode(1583))
     }
 
     /** n−2 записей истории (статус 0x40, как на Audi) и в конце P0300 активная, P0420 подтверждённая. */

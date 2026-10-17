@@ -147,7 +147,11 @@ class ModuleScanner(private val s: ElmSession, private val pause: (Long) -> Unit
             }
             // VAG 2004–2013: кроме двигателя и коробки блоки за VW TP2.0 и на перебор ISO-TP молчат (Audi A4 B8, лог
             // 17.10.2026: 247 адресов — один двигатель). Адреса TP2.0 в кеш не идут: перебор их короткий, ~7 с.
-            if (!s.is29Bit && ModuleMap.isVag(brand)) sweepTp20(progress, found)
+            // Марка неизвестна (VIN не прочитан: Audi S8 17.10.2026 — 7DF молчит, VIN взять неоткуда), перебор ISO-TP почти
+            // пуст: один кадр открытия канала к двигателю 01 на 0x200 отличает VAG. Только при почти пустом переборе —
+            // 0x200 у других марок обычный рабочий ID, лишний кадр туда слать незачем.
+            val vag = ModuleMap.isVag(brand) || (brand == null && !s.is29Bit && found.size <= 3 && tp20Probe())
+            if (!s.is29Bit && vag) sweepTp20(progress, found, readEngine = brand == null)
         } finally {
             runCatching { leave() }
         }
@@ -420,10 +424,10 @@ class ModuleScanner(private val s: ElmSession, private val pause: (Long) -> Unit
      * ELM327 TP2.0 не знает: кадры пишем и подтверждаем сами при ATCAF0, ответы — сырыми строками при ATH1.
      * Источник — открытые описания протокола; **на машине не проверено**.
      */
-    private fun sweepTp20(progress: (Int, Int) -> Unit, found: MutableMap<Int, ModuleScan>) {
+    private fun sweepTp20(progress: (Int, Int) -> Unit, found: MutableMap<Int, ModuleScan>, readEngine: Boolean = false) {
         val list = ModuleMap.vagTp20Addresses.filter { a ->
             // двигатель и коробку уже прочитали по ISO-TP (7E8/7E9) — это те же блоки
-            !(a == 0x01 && 0x7E8 in found) && !(a == 0x02 && 0x7E9 in found)
+            readEngine || !(a == 0x01 && 0x7E8 in found) && !(a == 0x02 && 0x7E9 in found)
         }
         s.log(tr("elm_scan_tp20", list.size))
         if (ceaUsed) { s.send("ATCEA"); ceaUsed = false }
@@ -452,6 +456,21 @@ class ModuleScanner(private val s: ElmSession, private val pause: (Long) -> Unit
             s.send("ATCAF1"); s.send("ATCFC1"); s.send("ATAR"); s.send("ATST 32")
         }
         s.log(tr("elm_scan_tp20_found", hits))
+    }
+
+    /** Отвечает ли двигатель VAG по TP2.0 (адрес 01): так узнаём марку, когда VIN прочитать не удалось. */
+    private fun tp20Probe(): Boolean {
+        if (ceaUsed) { s.send("ATCEA"); ceaUsed = false }
+        exitRaw()
+        s.send("ATCAF0"); s.send("ATCFC0")
+        return try {
+            val ch = tp20Open(0x01)
+            if (ch != null) s.send("A8", 500)
+            s.log(tr(if (ch != null) "elm_scan_tp20_probe_yes" else "elm_scan_tp20_probe_no"))
+            ch != null
+        } finally {
+            s.send("ATCAF1"); s.send("ATCFC1"); s.send("ATAR"); s.send("ATST 32")
+        }
     }
 
     /** Открыть канал к блоку с логическим адресом [a]. null — блок не ответил или не принял параметры. */
@@ -675,4 +694,24 @@ class ModuleScanner(private val s: ElmSession, private val pause: (Long) -> Unit
         msgs.firstOrNull { it.size >= 3 && it[0] == 0x7F && it[1] == service }?.get(2)
 
     private fun hex(a: EcuAddr) = if (a.bits29) "%08X".format(a.req) else "%03X".format(a.req) + (a.ext?.let { "/%02X".format(it) } ?: "")
+}
+
+/**
+ * Двигатель молчит на 01 00, а машина, может быть, жива (Audi S8 17.10.2026: CAN 11/500 — NO DATA, 250k — CAN ERROR,
+ * Launch при этом читал все блоки). NO DATA на CAN значит: наш кадр кто-то подтвердил, шина работает, просто на 7DF
+ * никто не отвечает. CAN ERROR / BUS ERROR — скорость чужая или шины нет. Возвращает номер протокола живой шины
+ * (6 или 8) и оставляет адаптер на нём; null — шины нет, адаптер возвращён на автопоиск.
+ */
+object BusProbe {
+    fun liveCan(s: ElmSession): Int? {
+        for (p in listOf(6, 8)) {
+            s.send("ATPC"); s.send("ATTP $p")
+            val r = s.send("0100", 4000).uppercase()
+            val dead = listOf("CAN ERROR", "BUS ERROR", "BUS INIT", "UNABLE", "BUFFER FULL", "?").any { r.contains(it) }
+            val answered = ObdDecoder.messages(r).any { it.size >= 2 && it[0] == 0x41 }
+            if (!dead && (answered || r.contains("NO DATA"))) return p
+        }
+        s.send("ATPC"); s.send("ATSP0")
+        return null
+    }
 }
