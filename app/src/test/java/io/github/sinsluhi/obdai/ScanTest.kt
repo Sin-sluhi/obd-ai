@@ -29,6 +29,15 @@ class ScriptedCar(private val bits29: Boolean = false, private val unsupported: 
     /** GMLAN: на A9 блок отвечает серией сырых кадров на своём UUDT ID (без ISO-TP). */
     class Uudt(val req: Int, val id: Int, val frames: List<List<Int>>)
     val uudt = mutableListOf<Uudt>()
+    /**
+     * VW TP2.0: блок с логическим адресом [addr]; канал открывается кадром на 0x200, дальше тестер шлёт на [txId], блок
+     * отвечает с [rxId]; внутри KWP ([handler]). [swapIds] — блок пишет ID в ответе на открытие в обратном порядке.
+     */
+    class Tp20Ecu(val addr: Int, val txId: Int = 0x740, val rxId: Int = 0x300, val swapIds: Boolean = false,
+                  val handler: (List<Int>) -> List<Int>?)
+    val tp20 = mutableListOf<Tp20Ecu>()
+    private val tpSeq = mutableMapOf<Int, Int>()
+    private var tpOpen: Tp20Ecu? = null
     /** Периодика рабочей шины: кадры, которые адаптер видит при открытом фильтре независимо от запроса. */
     val noise = mutableListOf<Pair<Int, List<Int>>>()
     /** Продолжения многокадрового ответа, которые ждут ручного кадра управления потоком (шлюз без ATCEA). */
@@ -102,6 +111,7 @@ class ScriptedCar(private val bits29: Boolean = false, private val unsupported: 
         val expect = if (c.length % 2 == 1) c.last().digitToInt(16) else null
         val body = if (expect != null) c.dropLast(1) else c
         var req = body.chunked(2).map { it.toInt(16) }
+        if (!caf && isCan) tp20Reply(req, expect)?.let { return it }
         var extReq: Int? = null
         if (!caf && req.isNotEmpty()) {
             // ATCAF0: тестер сам пишет байт адреса за шлюзом (если шлёт блоку за ним) и PCI
@@ -148,6 +158,44 @@ class ScriptedCar(private val bits29: Boolean = false, private val unsupported: 
         var out = if (expect != null) lines.take(expect) else lines
         if (overflow) out = out.take(bufferFrames!!) + "BUFFER FULL"
         return if (out.isEmpty()) "NO DATA" else out.joinToString("\r") + "\r"
+    }
+
+    /** Ответ блока VAG по TP2.0 на сырой кадр (ATCAF0). null — кадр не TP2.0, пусть разбирает общий путь. */
+    private fun tp20Reply(b: List<Int>, expect: Int?): String? {
+        if (sh == 0x200 && b.size == 7 && b[1] == 0xC0) {
+            val e = tp20.firstOrNull { it.addr == b[0] }
+            if (e == null || !passes(0x200 + e.addr)) return "NO DATA\r"
+            tpSeq[e.addr] = 0
+            val (p, q) = if (e.swapIds) e.txId to e.rxId else e.rxId to e.txId
+            return "%03X 00 D0 %02X %02X %02X %02X 01\r".format(0x200 + e.addr, p and 0xFF, p shr 8, q and 0xFF, q shr 8)
+        }
+        val e = tp20.firstOrNull { it.txId == sh } ?: return null
+        if (!passes(e.rxId) || b.isEmpty()) return "NO DATA\r"
+        fun line(bytes: List<Int>) = "%03X ".format(e.rxId) + bytes.joinToString(" ") { "%02X".format(it) }
+        val op = b[0]
+        val lines = mutableListOf<String>()
+        when {
+            op == 0xA0 -> { tpOpen = e; lines.add(line(listOf(0xA1, 0x0F, 0x8A, 0xFF, 0x4A, 0xFF))) }
+            op == 0xA3 -> if (tpOpen == e) lines.add(line(listOf(0xA1, 0x0F, 0x8A, 0xFF, 0x4A, 0xFF)))
+            op == 0xA8 -> { tpOpen = null; lines.add(line(listOf(0xA8))) }
+            op shr 4 == 0x0B || op shr 4 == 0x09 -> Unit   // подтверждение от тестера: блок молчит
+            op shr 4 in 0..3 && tpOpen == e -> {
+                val seq = op and 0x0F
+                val len = (b[1] shl 8) or b[2]
+                lines.add(line(listOf(0xB0 or ((seq + 1) and 0x0F))))
+                val resp = e.handler(b.drop(3).take(len))
+                if (resp != null) {
+                    val chunks = (listOf(resp.size shr 8, resp.size and 0xFF) + resp).chunked(6)
+                    chunks.forEachIndexed { i, c ->
+                        val n = tpSeq.getOrDefault(e.addr, 0)
+                        tpSeq[e.addr] = (n + 1) and 0x0F
+                        lines.add(line(listOf((if (i == chunks.lastIndex) 0x10 else 0x20) or n) + c))
+                    }
+                }
+            }
+        }
+        val out = if (expect != null) lines.take(expect) else lines
+        return if (out.isEmpty()) "NO DATA\r" else out.joinToString("\r") + "\r"
     }
 
     private fun passes(id: Int): Boolean {
@@ -221,6 +269,15 @@ object Replies {
             req[0] == 0x19 -> listOf(0x7F, 0x19, 0x11)
             req[0] == 0x18 && req.getOrNull(2) == 0xFF && req.getOrNull(3) == 0xFF -> listOf(0x58, records.size / 3) + records.toList()
             req[0] == 0x18 -> listOf(0x7F, 0x18, 0x12)
+            else -> listOf(0x7F, req[0], 0x11)
+        }
+    }
+
+    /** Блок VAG за TP2.0: KWP, сессия 10 89 → 50 89, 18 02 FF 00 → 58 n [код(2) статус]. */
+    fun vagKwp(vararg records: Int): (List<Int>) -> List<Int>? = { req ->
+        when (req[0]) {
+            0x10 -> listOf(0x50, req.getOrElse(1) { 0x89 })
+            0x18 -> listOf(0x58, records.size / 3) + records.toList()
             else -> listOf(0x7F, req[0], 0x11)
         }
     }
@@ -375,6 +432,41 @@ class ScanTest {
         assertTrue(engine.codes.any { it.startsWith("P0420") })
         assertTrue(car.sent.contains("190201") && car.sent.contains("190208"))
         assertTrue(car.logs.any { it.contains("elm_scan_truncated") || it.contains("не влез") })   // в тестах tr() отдаёт ключ
+    }
+
+    /**
+     * VAG 2004–2013 (Audi A4 B8, лог 17.10.2026: перебор ISO-TP нашёл один двигатель): блоки за VW TP2.0 — канал на 0x200,
+     * параметры A0/A1, KWP пакетами с подтверждениями; коды VAG пятизначные, P0xxx из диапазона 16384+ — как SAE.
+     */
+    @Test fun vagTp20ModulesRead() {
+        val car = ScriptedCar()
+        car.ecus += ScriptedCar.Ecu(0x7E0, 0x7E8, handler = Replies.uds())
+        car.tp20 += ScriptedCar.Tp20Ecu(0x03, 0x741, 0x301, handler = Replies.vagKwp(0x04, 0xFC, 0x23))
+        // четыре кода — 16 байт сообщения, три пакета: подтверждение после последнего
+        car.tp20 += ScriptedCar.Tp20Ecu(0x17, 0x742, 0x302,
+            handler = Replies.vagKwp(0x02, 0x14, 0x23, 0x04, 0xFC, 0x60, 0x41, 0xA4, 0x24, 0x48, 0x9E, 0x23))
+        val r = ModuleScanner(car).scan("Audi", emptyList()) { _, _ -> }
+        assertEquals(listOf("01276"), r.modules.first { it.via == "TP20" && it.addr == 0x03 }.codes)
+        assertEquals(listOf("00532", "01276", "P0420", "18590"), r.modules.first { it.via == "TP20" && it.addr == 0x17 }.codes)
+        assertTrue(car.sent.contains("ATSH 200") && car.sent.contains("03C00010000301 1"))
+        assertTrue(car.sent.contains("A00F8AFF32FF") && car.sent.contains("A8") && car.sent.contains("B4"))
+        assertEquals("ATCAF1", car.sent.last { it.startsWith("ATCAF") })
+        assertTrue(car.sent.none { it.startsWith("01C0") })   // двигатель уже прочитан по ISO-TP — по TP2.0 не открываем
+    }
+
+    /** Двигатель только по TP2.0, ID в ответе на открытие канала в обратном порядке: со второй пары параметры приняты. */
+    @Test fun vagTp20EngineWithSwappedIds() {
+        val car = ScriptedCar()
+        car.tp20 += ScriptedCar.Tp20Ecu(0x01, swapIds = true, handler = Replies.vagKwp(0x41, 0x2C, 0x23))   // 16684 → P0300
+        val r = ModuleScanner(car).scan("Volkswagen", emptyList()) { _, _ -> }
+        assertEquals(listOf("P0300"), r.modules.first { it.via == "TP20" && it.addr == 0x01 }.codes)
+    }
+
+    @Test fun tp20OnlyForVag() {
+        val car = ScriptedCar()
+        car.ecus += ScriptedCar.Ecu(0x7E0, 0x7E8, handler = Replies.uds())
+        ModuleScanner(car).scan("Hyundai", emptyList()) { _, _ -> }
+        assertTrue(car.sent.none { it == "ATSH 200" })
     }
 
     /** n−2 записей истории (статус 0x40, как на Audi) и в конце P0300 активная, P0420 подтверждённая. */

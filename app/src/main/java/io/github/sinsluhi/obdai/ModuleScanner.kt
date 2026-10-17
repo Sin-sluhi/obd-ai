@@ -145,6 +145,9 @@ class ModuleScanner(private val s: ElmSession, private val pause: (Long) -> Unit
                     if (probe.isNotEmpty()) sweepGateway(0x6F1, 0x600, ModuleMap.bmwAddresses, progress, found, addrs)
                 }
             }
+            // VAG 2004–2013: кроме двигателя и коробки блоки за VW TP2.0 и на перебор ISO-TP молчат (Audi A4 B8, лог
+            // 17.10.2026: 247 адресов — один двигатель). Адреса TP2.0 в кеш не идут: перебор их короткий, ~7 с.
+            if (!s.is29Bit && ModuleMap.isVag(brand)) sweepTp20(progress, found)
         } finally {
             runCatching { leave() }
         }
@@ -400,6 +403,121 @@ class ModuleScanner(private val s: ElmSession, private val pause: (Long) -> Unit
     /** Двигатель отвечает на стандартный запрос (41 00 …) — связь после перебора K-line вернулась. */
     private fun engineAnswers(): Boolean =
         ObdDecoder.messages(s.send("0100", 12000)).any { it.size >= 2 && it[0] == 0x41 && it[1] == 0x00 }
+
+    // ---------- VW TP2.0 ----------
+
+    /** Открытый канал TP2.0: на какой ID шлёт тестер, с какого отвечает блок, номера пакетов в обе стороны. */
+    private class Tp20(val addr: Int, val tx: Int, val rx: Int) {
+        var txSeq = 0
+        var lastRx = -1
+    }
+
+    /**
+     * VW TP2.0 поверх CAN 500 (VAG 2004–2013). Канал к блоку: кадр на 0x200 `[адрес C0 00 10 00 03 01]`, ответ с 0x200+адрес
+     * `[00 D0 rxLo rxHi txLo txHi 01]` — ID для дальнейшего разговора (обычно тестер → 0x740, блок → 0x300). Затем параметры
+     * канала A0/A1, внутри KWP2000 (`10 89`, `18 02 FF 00`) нумерованными пакетами: старший полубайт — тип (0/1 — ждёт
+     * подтверждения, 1/3 — последний), младший — номер; подтверждение `B<следующий номер>`; закрытие A8.
+     * ELM327 TP2.0 не знает: кадры пишем и подтверждаем сами при ATCAF0, ответы — сырыми строками при ATH1.
+     * Источник — открытые описания протокола; **на машине не проверено**.
+     */
+    private fun sweepTp20(progress: (Int, Int) -> Unit, found: MutableMap<Int, ModuleScan>) {
+        val list = ModuleMap.vagTp20Addresses.filter { a ->
+            // двигатель и коробку уже прочитали по ISO-TP (7E8/7E9) — это те же блоки
+            !(a == 0x01 && 0x7E8 in found) && !(a == 0x02 && 0x7E9 in found)
+        }
+        s.log(tr("elm_scan_tp20", list.size))
+        if (ceaUsed) { s.send("ATCEA"); ceaUsed = false }
+        exitRaw()
+        s.send("ATCAF0"); s.send("ATCFC0")
+        var hits = 0
+        try {
+            for ((i, a) in list.withIndex()) {
+                progress(i + 1, list.size)
+                val ch = tp20Open(a) ?: continue
+                hits++
+                try {
+                    tp20Request(ch, listOf(0x10, 0x89))   // сессия диагностики VAG; отказ не мешает читать коды
+                    val r = tp20Request(ch, listOf(0x18, 0x02, 0xFF, 0x00))
+                    val codes = r?.let { ModuleDecoder.parseKwpVag(listOf(it)) }
+                    val name = ModuleMap.vagTp20Name(a)
+                    val m = ModuleScan(name, a, codes.orEmpty().map { it.first }, if (codes != null) "TP20" else "?", codes.orEmpty().map { it.second })
+                    found[0x10000 + a] = m
+                    s.log("$name (TP2.0 %02X): %s".format(a, // i18n-ignore: журнал
+                        if (codes == null) tr("elm_module_unread") else if (codes.isEmpty()) tr("elm_no_codes") else codes.joinToString { it.first }))
+                } finally {
+                    s.send("A8", 500)   // закрыть канал: блок держит его, пока не истечёт таймаут
+                }
+            }
+        } finally {
+            s.send("ATCAF1"); s.send("ATCFC1"); s.send("ATAR"); s.send("ATST 32")
+        }
+        s.log(tr("elm_scan_tp20_found", hits))
+    }
+
+    /** Открыть канал к блоку с логическим адресом [a]. null — блок не ответил или не принял параметры. */
+    private fun tp20Open(a: Int): Tp20? {
+        s.send("ATST 19")   // 100 мс: на открытие канала блок отвечает за единицы миллисекунд
+        s.send("ATSH 200"); s.send("ATCRA %03X".format(0x200 + a))
+        // цифра в конце — ждём один кадр: ответивший блок не стоит таймаута
+        val resp = Frames.raw(s.send("%02XC00010000301 1".format(a), 1500), false)
+            .firstOrNull { it.id == 0x200 + a && it.data.size >= 6 && it.data[1] == 0xD0 } ?: return null
+        val d = resp.data
+        val first = ((d[3] and 0x07) shl 8) or d[2]    // на этом ID блок шлёт тестеру (обычно 0x300)
+        val second = ((d[5] and 0x07) shl 8) or d[4]   // на этот ID тестер шлёт блоку (обычно 0x740)
+        // поля в описаниях называют по-разному: если параметры не приняты — пробуем ID наоборот
+        for ((tx, rx) in listOf(second to first, first to second)) {
+            s.send("ATSH %03X".format(tx)); s.send("ATCRA %03X".format(rx))
+            s.send("ATST 0F")   // 60 мс: подтверждение блоку нужно успеть отправить за его T1 (~100 мс)
+            val p = Frames.raw(s.send("A00F8AFF32FF", 1500), false)
+            if (p.any { it.id == rx && it.data.firstOrNull() == 0xA1 }) return Tp20(a, tx, rx)
+        }
+        s.send("A8", 500)
+        return null
+    }
+
+    /**
+     * Сообщение KWP через открытый канал: один пакет туда (запросы короткие), ответ — сколько придёт пакетов, с нашим
+     * подтверждением после пакета «жду подтверждения». Ответ может не уложиться в окно запроса или быть «7F xx 78»
+     * (подожди): тогда слушаем дальше — проверкой канала A3 или окном нашего же подтверждения.
+     */
+    private fun tp20Request(ch: Tp20, payload: List<Int>): List<Int>? {
+        val frame = listOf(0x10 or (ch.txSeq and 0x0F), payload.size shr 8, payload.size and 0xFF) + payload
+        ch.txSeq = (ch.txSeq + 1) and 0x0F
+        var raw = s.send(frame.joinToString("") { "%02X".format(it) }, 1500)
+        val msg = mutableListOf<Int>()
+        var expect = -1
+        for (round in 0 until 8) {
+            var ack: Int? = null
+            for (f in Frames.raw(raw, false)) {
+                if (f.id != ch.rx || f.data.isEmpty()) continue
+                val op = f.data[0] shr 4
+                val seq = f.data[0] and 0x0F
+                if (op !in 0..3) continue             // B_/9_ — подтверждения, A_ — служебные
+                if (seq == ch.lastRx) continue          // блок повторил пакет, не дождавшись подтверждения
+                ch.lastRx = seq
+                val body = f.data.drop(1)
+                if (expect < 0) {
+                    if (body.size < 2) continue
+                    expect = ((body[0] and 0x7F) shl 8) or body[1]
+                    msg.addAll(body.drop(2))
+                } else msg.addAll(body)
+                if (op == 0 || op == 1) ack = (seq + 1) and 0x0F
+            }
+            val done = expect >= 0 && msg.size >= expect
+            // подтверждение отправляем сразу, а в его окне ловим, что блок пришлёт следом
+            raw = if (ack != null) s.send("%02X".format(0xB0 or ack), 1500) else if (!done) s.send("A3", 1500) else ""
+            if (done) {
+                val m = msg.take(expect)
+                if (m.size >= 3 && m[0] == 0x7F && m[2] == 0x78) {   // «подожди» — настоящий ответ следом
+                    msg.clear(); expect = -1
+                    if (raw.isBlank() || Frames.raw(raw, false).none { it.id == ch.rx }) raw = s.send("A3", 1500)
+                    continue
+                }
+                return m
+            }
+        }
+        return null
+    }
 
     // ---------- чтение одного блока ----------
 

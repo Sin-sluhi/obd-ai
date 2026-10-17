@@ -30,6 +30,18 @@ class OemCodeTest {
         assertEquals(emptyList<Pair<String, Int>>(), ModuleDecoder.parseKwpDetailed(listOf(listOf(0x58, 0x00)), oemHex = true))
     }
 
+    /** VAG по KWP (TP2.0): пятизначный десятичный, как VCDS; 16384+ — стандартные P0xxx. */
+    @Test fun vagKwpCodes() {
+        assertEquals("P0300", ModuleDecoder.vagCode(16684))
+        assertEquals("P0420", ModuleDecoder.vagCode(16804))
+        assertEquals("P0102", ModuleDecoder.vagCode(16486))
+        assertEquals("00532", ModuleDecoder.vagCode(532))
+        assertEquals("17964", ModuleDecoder.vagCode(17964))
+        assertTrue(DtcCatalog.isOemHex("00532"))
+        assertTrue(DtcCatalog.isOemHex("17964 (история)"))
+        assertFalse(DtcCatalog.isOemHex("P0420"))
+    }
+
     @Test fun fillersAreDropped() {
         assertTrue(DtcCatalog.isFiller("FFFFFF (активная)"))
         assertTrue(DtcCatalog.isFiller("000000"))

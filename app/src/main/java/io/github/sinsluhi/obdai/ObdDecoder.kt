@@ -294,6 +294,16 @@ object ModuleDecoder {
         return if (found) codes.entries.map { it.key to it.value } else null
     }
 
+    /**
+     * KWP2000 VAG (блоки за VW TP2.0): коды двухбайтные, как их показывает VCDS — пятизначным десятичным числом (00532,
+     * 17964). Диапазон 16384–17383 — это стандартные P0xxx: номер минус 16384, прочитанный десятично (16684 → P0300,
+     * 16804 → P0420, 16486 → P0102) — такие коды идут в общий справочник. Остальные — заводские, без расшифровки.
+     */
+    fun parseKwpVag(msgs: List<List<Int>>): List<Pair<String, Int>>? =
+        parseKwpDetailed(msgs, oemHex = true)?.map { (hex, st) -> vagCode(hex.toInt(16)) to st }
+
+    fun vagCode(n: Int): String = if (n in 16384..17383) "P%04d".format(n - 16384) else "%05d".format(n)
+
     /** Отрицательный ответ 7F <сервис> <код>: блок есть, но так спрашивать нельзя. */
     fun isNegative(msgs: List<List<Int>>, service: Int) =
         msgs.any { it.size >= 2 && it[0] == 0x7F && it[1] == service }
@@ -436,12 +446,35 @@ object ModuleMap {
     val bmwAddresses: List<Int> get() = (0x00..0xFF).filter { it != 0xF1 }
     fun bmwName(addr: Int): String = bmwNames[addr]?.let { tr(it) } ?: tr("obd_module_block", "0x%02X".format(addr))
 
+    /** Концерн VW: блоки 2004–2013 годов (PQ35/46, MLB раннего выпуска) — за VW TP2.0. */
+    fun isVag(brand: String?): Boolean {
+        val b = brand.orEmpty().lowercase()
+        return listOf("volkswagen", "audi", "skoda", "škoda", "seat", "vw").any { b.contains(it) }
+    }
+
+    /**
+     * Логические адреса блоков VAG для открытия канала TP2.0 — те же, что адреса в VCDS (01 двигатель, 03 ABS, 17 приборка…).
+     * Подписаны только общеизвестные; остальные идут как «Блок 0x..».
+     */
+    val vagTp20Addresses: List<Int> = listOf(0x01, 0x02, 0x03, 0x05, 0x08, 0x09, 0x13, 0x15, 0x16, 0x17, 0x19, 0x22, 0x25,
+        0x34, 0x36, 0x3C, 0x42, 0x44, 0x46, 0x52, 0x53, 0x55, 0x56, 0x5F, 0x61, 0x62, 0x65, 0x69, 0x6C, 0x72, 0x76, 0x77)
+    private val vagTp20Names = mapOf(
+        0x01 to "obd_module_engine", 0x02 to "obd_module_gearbox", 0x03 to "obd_module_abs_esp", 0x05 to "obd_module_smart_key",
+        0x08 to "obd_module_climate", 0x09 to "obd_module_bcm", 0x13 to "obd_module_radar", 0x15 to "obd_module_airbags",
+        0x17 to "obd_module_cluster", 0x19 to "obd_module_can_gateway", 0x22 to "obd_module_awd", 0x25 to "obd_module_immobilizer",
+        0x36 to "obd_module_seats", 0x3C to "obd_module_blind_spot", 0x44 to "obd_module_eps", 0x46 to "obd_module_body",
+        0x53 to "obd_module_parking_brake", 0x56 to "obd_module_avn", 0x5F to "obd_module_avn", 0x65 to "obd_module_tpms",
+        0x6C to "obd_module_rear_camera", 0x76 to "obd_module_parktronic"
+    )
+    fun vagTp20Name(addr: Int): String = vagTp20Names[addr]?.let { tr(it) } ?: tr("obd_module_block", "0x%02X".format(addr))
+
     fun isHyundaiKia(brand: String?): Boolean {
         val b = brand.orEmpty().lowercase()
         return b.contains("hyundai") || b.contains("kia")
     }
 
     fun name(brand: String?, a: EcuAddr): String {
+        if (a.via == "TP20") return vagTp20Name(a.req)
         if (a.ext != null) return bmwName(a.ext)
         if (a.bits29) return honda29[a.display]?.let { tr(it) } ?: block29(a.display)
         val b = brand.orEmpty().lowercase()

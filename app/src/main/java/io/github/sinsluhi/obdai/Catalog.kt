@@ -67,7 +67,8 @@ object DtcCatalog {
      */
     fun isOemHex(code: String): Boolean {
         val c = base(code)
-        return (c.length == 6 || c.length == 4) && c.all { it in '0'..'9' || it in 'A'..'F' }
+        return (c.length == 6 || c.length == 4) && c.all { it in '0'..'9' || it in 'A'..'F' } ||
+            c.length == 5 && c.all { it in '0'..'9' }   // VAG по KWP: пятизначный десятичный, как в VCDS (00532, 17964)
     }
 
     /** Заполнитель кадра, прочитанный как код (FFFFFF, 000000…): не ошибка, а мусор — нигде не показываем. */
