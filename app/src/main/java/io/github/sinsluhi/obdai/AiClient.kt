@@ -113,7 +113,7 @@ next_steps, for_service, typical_issues) — только по-русски, к�
         // Версия разработчика владельца: весь разбор ведёт Claude на его компьютере (личная подписка).
         // Компьютер недоступен — обычный путь ниже, без вопросов к пользователю.
         if (BuildConfig.DEV_TOOLS && BuildConfig.OWNER_AI_KEY.isNotBlank() && ownerUrl.isNotBlank()) {
-            runCatching { return ownerClaude(ownerUrl, snap, progress, log) }
+            runCatching { return ownerClaude(ownerUrl, snap, progress, log).completeWith(snap) }
                 .onFailure { log("Claude на компьютере недоступен (${it.message}) — обычный разбор") }
         }
         val gap = KbFirst.gap(snap)
@@ -132,7 +132,7 @@ next_steps, for_service, typical_issues) — только по-русски, к�
         val d = when {
             cfg.provider == Provider.ANTHROPIC -> anthropic(cfg, snap, hasCodes, progress, log)
             else -> twoStage(cfg, snap, hasCodes, progress, log)
-        }
+        }.completeWith(snap)
         log("Разбор готов за ${(System.currentTimeMillis() - t0) / 1000} с")
         cache[key] = Cached(System.currentTimeMillis(), d)
         return d
@@ -467,7 +467,11 @@ next_steps, for_service, typical_issues) — только по-русски, к�
         val decoded = VinDecoder.decode(snap.vin)
         if (!decoded.isEmpty) appendLine("Расшифровка VIN (точные данные, не меняй их): ${decoded.describe()}")
         snap.carHint?.takeIf { it.isNotBlank() }?.let { appendLine("В прошлую проверку машина была определена как: $it") }
-        appendLine("Напряжение бортсети: ${snap.voltage.ifBlank { "неизвестно" }}")
+        // на зажигании без двигателя напряжение под нагрузкой: 10–12,4 В — норма, по нему о заряде АКБ не судят
+        val engineStopped = snap.sensors.firstOrNull { it.key == "rpm" }?.value?.let { it < 50 } == true
+        appendLine("Напряжение бортсети: ${snap.voltage.ifBlank { "неизвестно" }}" +
+            if (engineStopped) " (зажигание включено, двигатель не работает — напряжение под нагрузкой: выше ${BatteryReport.IGNITION_LOW.toInt()} В это норма, " +
+                "не делай по нему выводов о разряде аккумулятора и не выноси его в вердикт)" else "")
         snap.milOn?.let { appendLine("Лампа Check Engine: ${if (it) "горит" else "не горит"}") }
         snap.dtcCount?.let { appendLine("Ошибок по данным ЭБУ: $it") }
         appendLine("Сохранённые ошибки: ${snap.stored.joinToString().ifEmpty { "нет" }}")

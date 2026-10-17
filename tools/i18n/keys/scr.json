@@ -102,6 +102,8 @@
   "scr_model": "Модель",
   "scr_model_ph": "имя модели",
   "scr_module_no_errors": "ошибок нет",
+  "scr_module_hide": "Свернуть",
+  "scr_module_open": "Нажми — что за ошибка",
   "scr_modules.few": "{0} блока",
   "scr_modules.many": "{0} блоков",
   "scr_modules.one": "{0} блок",

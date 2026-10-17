@@ -42,6 +42,24 @@ class OemCodeTest {
         assertEquals(listOf("P0300 (активная)", "87FC23 (история)"), snap.allCodes)
     }
 
+    /**
+     * Видео John 17.10.2026 (MINI): 11,7 В на зажигании без двигателя дали «сильно разряжен» и вердикт «Низкое напряжение».
+     * Замер на зажигании — под нагрузкой: тревога только ниже 10 В; покой — только когда ЭБУ спит.
+     */
+    @Test fun ignitionVoltageIsNotRest() {
+        val now = 10_000_000L
+        val ign = (0 until 5).map { VoltSample(now - it * 60_000L, 11.7, 0.0) }
+        assertFalse(ign.first().rest)
+        assertTrue(ign.first().ignition)
+        assertNull(BatteryReport.build(ign, now))                          // 11,7 на зажигании — сказать нечего, тревоги нет
+        val dead = (0 until 5).map { VoltSample(now - it * 60_000L, 9.7, 0.0) }
+        assertEquals("danger", BatteryReport.build(dead, now)!!.level)     // ниже 10 В — тревога
+        val rest = (0 until 5).map { VoltSample(now - it * 60_000L, 11.7, null) }
+        assertTrue(rest.first().rest)                                       // ЭБУ спит — настоящий покой, таблица покоя
+        assertEquals("danger", BatteryReport.build(rest, now)!!.level)
+        assertFalse(VoltSample(now, 13.4, null).rest)                       // 13+ В без оборотов — не покой
+    }
+
     @Test fun vpicTitleParsed() {
         val json = """{"Count":1,"Results":[{"Make":"BMW","Model":"X3","ModelYear":"2013","VIN":"X4XKC81140DV57558"}]}"""
         assertEquals("BMW X3 2013", VinDecoder.parseOnline(json))

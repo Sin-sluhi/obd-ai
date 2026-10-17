@@ -14,12 +14,21 @@ import kotlin.math.abs
 
 /** Одно измерение напряжения: время, вольты, обороты (null — неизвестны). */
 data class VoltSample(val t: Long, val v: Double, val rpm: Double?) {
-    /** Двигатель не работает: покой (зажигание может быть включено). */
-    val rest: Boolean get() = rpm != null && rpm < 50
+    /**
+     * Настоящий покой: ЭБУ спит (оборотов не отдаёт — зажигание выключено), напряжение меряет сам адаптер.
+     * Выше 13 В покоя не бывает — это поверхностный заряд сразу после поездки или пропущенный ответ ЭБУ на ходу.
+     */
+    val rest: Boolean get() = rpm == null && v < 13.0
+    /**
+     * Зажигание включено, двигатель стоит: ЭБУ отвечает, оборотов нет. Под нагрузкой (насос, блоки, вентилятор,
+     * 5–20 А) исправный АКБ проседает на 0,3–1 В — по таблице покоя такой замер судить нельзя: MINI John
+     * (видео 17.10.2026) на 11,7 В получил «сильно разряжен» и вердикт «Низкое напряжение» при живом аккумуляторе.
+     */
+    val ignition: Boolean get() = rpm != null && rpm < 50
     /** Двигатель работает: напряжение задаёт генератор. */
     val running: Boolean get() = rpm != null && rpm > 400
-    /** Провал при прокрутке стартером. */
-    val crank: Boolean get() = v < 10.8 && (rpm == null || rpm < 400)
+    /** Провал при прокрутке стартером: стартер крутит (50–400 об/мин) или ЭБУ занят и оборотов не отдал. Ноль оборотов — это зажигание, не пуск. */
+    val crank: Boolean get() = v < 10.8 && (rpm == null || rpm in 50.0..400.0)
 
     fun toJson(): JSONObject = JSONObject().put("t", t).put("v", v).put("r", rpm ?: JSONObject.NULL)
 
@@ -48,6 +57,7 @@ data class BatteryReport(
             if (recent.isEmpty()) return null
             val today = recent.filter { now - it.t <= 6 * 3_600_000L }
             val rest = today.filter { it.rest && !it.crank }.map { it.v }
+            val ignition = today.filter { it.ignition }.map { it.v }
             val running = today.filter { it.running }.map { it.v }
             val crank = recent.filter { it.crank }.map { it.v }
             val restV = rest.takeIf { it.isNotEmpty() }?.let { median(it) }
@@ -77,6 +87,11 @@ data class BatteryReport(
                 }
                 lines.add(tr(key, v1(v)))
             }
+            // на зажигании без двигателя тревожим только ниже 10 В: выше — обычная просадка под нагрузкой,
+            // о заряде по ней не судим (оценка — по покою, пуску и зарядке на ходу)
+            ignition.takeIf { it.isNotEmpty() }?.let { median(it) }?.takeIf { it < IGNITION_LOW }?.let { v ->
+                worse("danger"); lines.add(tr("health_ignition_low", v1(v)))
+            }
             chargeV?.let { v ->
                 val key = when {
                     v > 15.1 -> { worse("danger"); "health_charge_over" }
@@ -105,6 +120,9 @@ data class BatteryReport(
             }
             return BatteryReport(level, title, lines, restV, chargeV, crankMin, trend)
         }
+
+        /** Ниже этого на включённом зажигании (двигатель стоит) АКБ почти пуст: стартер может не провернуть. */
+        const val IGNITION_LOW = 10.0
 
         private fun median(list: List<Double>): Double {
             val s = list.sorted()

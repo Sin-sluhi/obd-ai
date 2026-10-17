@@ -125,6 +125,17 @@ data class Diagnosis(
 ) {
     /** Сумма ремонта по всем кодам, где цена известна. */
     val totalFrom: Int get() = codes.sumOf { it.priceFrom }
+
+    /**
+     * Каждый код, прочитанный с машины, обязан иметь карточку. Нейронка коды без расшифровки опускает (заводские
+     * коды BMW — почти всегда: MINI John 17.10.2026, коды 9E2C/A8B7/9C90 были в «Блоках машины», а карточек не было —
+     * открыть нечего). Недостающие берём из своего разбора: блок, статус, честное «заводской код».
+     */
+    fun completeWith(snap: CarSnapshot): Diagnosis {
+        val have = codes.map { DtcCatalog.base(it.code) }.toSet()
+        val missing = local(snap).codes.filter { DtcCatalog.base(it.code) !in have }
+        return if (missing.isEmpty()) this else copy(codes = codes + missing)
+    }
     val totalTo: Int get() = codes.sumOf { maxOf(it.priceTo, it.priceFrom) }
 
     fun toJson(): JSONObject = JSONObject()

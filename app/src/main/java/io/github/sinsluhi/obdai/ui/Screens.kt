@@ -399,24 +399,49 @@ fun ResultScreen(
         val allModules = state.lastSnapshot?.modules.orEmpty()
         val engineExtra = allModules.firstOrNull { it.addr == 0x7E0 }?.codes.orEmpty()
         val modules = allModules.filter { it.addr != 0x7E0 }
+        // карточка кода — одна и та же в развороте строки блока и в списке ниже
+        val cVin = state.vin ?: snap?.vin
+        val cDecoded = VinDecoder.decode(cVin)
+        val cCar = cDecoded.withCar(d.car)
+        val cBkey = DtcCatalog.brandKey(cCar.brand)
+        val cPresent = snap?.allCodes.orEmpty() + d.codes.map { it.code }
+        @Composable
+        fun fullCodeCard(c: DtcCard) {
+            CodeCard(
+                c, statusLines(snap, c.code),
+                info = DtcCatalog.info(c.code, cBkey) ?: DtcCatalog.genericInfo(c.code),
+                issue = KnownIssues.find(cCar, cVin, c.code),
+                links = DtcCatalog.links(c.code, cPresent, cBkey),
+                ftb = DtcCatalog.ftbText(c.code),
+                kb = if (c.ownerExperience.isBlank()) Kb.find(cDecoded, d.car, c.code) else null,
+                onWizard = onWizard
+            )
+        }
+        // разворот строки блока: John (видео 17.10.2026) видел у блока код и не мог его открыть
+        @Composable
+        fun moduleCodes(raw: List<String>) {
+            raw.map { DtcCatalog.base(it) }.distinct().forEach { b ->
+                d.codes.firstOrNull { DtcCatalog.base(it.code) == b }?.let { c -> VSpace(8.dp); fullCodeCard(c) }
+            }
+        }
         if (modules.isNotEmpty() || state.lastSnapshot != null) {
             SectionTitle(tr("scr_car_modules"), if (modules.isEmpty()) tr("scr_only_engine_answered") else trPlural("scr_modules", modules.size + 1))
             Card(padding = 14.dp) {
-                ModuleRow(tr("scr_engine"), (state.lastSnapshot?.stored.orEmpty() + state.lastSnapshot?.pending.orEmpty() + engineExtra).distinct(), accent)
+                val engineCodes = (state.lastSnapshot?.stored.orEmpty() + state.lastSnapshot?.pending.orEmpty() + engineExtra).distinct()
+                ModuleRow(tr("scr_engine"), engineCodes, accent) { moduleCodes(engineCodes) }
                 modules.forEach { m ->
                     Box(Modifier.fillMaxWidth().height(1.dp).background(Palette.border))
-                    ModuleRow(m.name, m.codes, accent, vinMismatch = m.vin != null && state.vin != null && m.vin != state.vin)
+                    ModuleRow(m.name, m.codes, accent, vinMismatch = m.vin != null && state.vin != null && m.vin != state.vin) { moduleCodes(m.codes) }
                 }
             }
         }
 
         if (d.codes.isNotEmpty()) {
             SectionTitle(tr("scr_found"), trPlural("scr_errors", d.codes.size))
-            val vin = state.vin ?: snap?.vin
-            val decoded = VinDecoder.decode(vin)
-            val car = decoded.withCar(d.car)
-            val bkey = DtcCatalog.brandKey(car.brand)
-            val present = snap?.allCodes.orEmpty() + d.codes.map { it.code }
+            val vin = cVin
+            val decoded = cDecoded
+            val car = cCar
+            val bkey = cBkey
             val raws = snap?.allCodes.orEmpty()
             fun isHistory(c: DtcCard) = raws.any { it.startsWith(c.code + " ") && it.contains("(история)") } // i18n-ignore: статус из ObdDecoder
             // «где та одна активная»: сразу под заголовком — коды, активные прямо сейчас, с именем блока
@@ -437,18 +462,7 @@ fun ResultScreen(
             }
             @Composable
             fun codeCard(i: Int, c: DtcCard) {
-                val info = DtcCatalog.info(c.code, bkey) ?: DtcCatalog.genericInfo(c.code)
-                val issue = KnownIssues.find(car, vin, c.code)
-                val kb = Kb.find(decoded, d.car, c.code)
-                Box(Modifier.enterStagger(i + 1)) { CodeCard(
-                    c, statusLines(snap, c.code),
-                    info = info,
-                    issue = issue,
-                    links = DtcCatalog.links(c.code, present, bkey),
-                    ftb = DtcCatalog.ftbText(c.code),
-                    kb = if (c.ownerExperience.isBlank()) kb else null,
-                    onWizard = onWizard
-                ) }
+                Box(Modifier.enterStagger(i + 1)) { fullCodeCard(c) }
             }
             // история блоков (BMW отдаёт их десятками) — одной свёрнутой карточкой, чтобы активное не утонуло
             val history = d.codes.filter { isHistory(it) }
@@ -1560,21 +1574,42 @@ fun TripStat(label: String, value: String, unit: String, modifier: Modifier = Mo
     }
 }
 
+/** Строка блока. С ошибками — нажимается и разворачивает под собой карточки своих кодов ([details]). */
 @Composable
-private fun ModuleRow(name: String, codes: List<String>, accent: Color, vinMismatch: Boolean = false) {
-    Row(Modifier.padding(vertical = 10.dp), verticalAlignment = Alignment.CenterVertically) {
-        Dot(if (vinMismatch) Palette.danger else if (codes.isEmpty()) accent else Palette.warn)
-        HSpace(10.dp)
-        Column(Modifier.weight(1f)) {
-            Text(name, style = Type.body(14, Palette.text, FontWeight.SemiBold))
-            if (vinMismatch) Text(tr("scr_other_vin"), style = Type.body(11, Palette.danger))
+private fun ModuleRow(name: String, codes: List<String>, accent: Color, vinMismatch: Boolean = false,
+                      details: (@Composable () -> Unit)? = null) {
+    val tappable = codes.isNotEmpty() && details != null
+    var open by remember(name, codes) { mutableStateOf(false) }
+    Column {
+        Row(
+            Modifier
+                .fillMaxWidth()
+                .then(if (tappable) Modifier.clickable { open = !open } else Modifier)
+                .padding(vertical = 10.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Dot(if (vinMismatch) Palette.danger else if (codes.isEmpty()) accent else Palette.warn)
+            HSpace(10.dp)
+            Column(Modifier.weight(1f)) {
+                Text(name, style = Type.body(14, Palette.text, FontWeight.SemiBold))
+                if (vinMismatch) Text(tr("scr_other_vin"), style = Type.body(11, Palette.danger))
+                if (tappable) Text(tr(if (open) "scr_module_hide" else "scr_module_open"), style = Type.body(11, Palette.warn))
+            }
+            Text(
+                if (codes.isEmpty()) tr("scr_module_no_errors") else codes.joinToString(),
+                style = if (codes.isEmpty()) Type.label(12) else Type.mono(12, Palette.warn),
+                textAlign = TextAlign.End,
+                modifier = Modifier.weight(1.4f)
+            )
+            if (tappable) {
+                HSpace(6.dp)
+                Text(if (open) "▴" else "▾", style = Type.body(14, Palette.warn))
+            }
         }
-        Text(
-            if (codes.isEmpty()) tr("scr_module_no_errors") else codes.joinToString(),
-            style = if (codes.isEmpty()) Type.label(12) else Type.mono(12, Palette.warn),
-            textAlign = TextAlign.End,
-            modifier = Modifier.weight(1.4f)
-        )
+        if (tappable && open) {
+            details!!()
+            VSpace(8.dp)
+        }
     }
 }
 
