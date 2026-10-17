@@ -21,10 +21,11 @@ class ScriptedCar(private val bits29: Boolean = false, private val unsupported: 
      * Блок: ID запроса, ID ответа, байт расширенной адресации, обработчик запроса → байты ответа (null — молчит).
      * rxByte — что блок ставит первым байтом ответа при расширенной адресации (BMW — адрес тестера F1, Toyota — подадрес).
      * ignoresStmin — блок не соблюдает паузу между кадрами из нашего FC (такие есть), ответ летит без пауз.
-     * На K-line req = физический адрес блока.
+     * На K-line req = физический адрес блока, kline — каким init он будится: 5 — быстрый (ATFI, адрес из заголовка),
+     * 4 — медленный 5-бод (ATSI, адрес из ATIIA), null — любым.
      */
     class Ecu(val req: Int, val resp: Int, val ext: Int? = null, val rxByte: Int = 0xF1, val ignoresStmin: Boolean = false,
-              val handler: (List<Int>) -> List<Int>?)
+              val kline: Int? = null, val handler: (List<Int>) -> List<Int>?)
     /** GMLAN: на A9 блок отвечает серией сырых кадров на своём UUDT ID (без ISO-TP). */
     class Uudt(val req: Int, val id: Int, val frames: List<List<Int>>)
     val uudt = mutableListOf<Uudt>()
@@ -48,6 +49,8 @@ class ScriptedCar(private val bits29: Boolean = false, private val unsupported: 
     private var caf = true
     private var ta = 0xF1
     private var klineInit: Int? = null   // адрес блока, с которым прошёл init на K-line
+    private var proto = protocolNo       // текущий протокол адаптера (ATTP/ATSP меняют, машина — нет)
+    private var iia = 0x33               // адрес 5-бод init (ATIIA), по умолчанию — функциональный OBD
 
     override val isCan = protocolNo in 6..9
     override val is29Bit = bits29
@@ -62,7 +65,7 @@ class ScriptedCar(private val bits29: Boolean = false, private val unsupported: 
         val c = cmd.uppercase().replace(" ", "")
         if (c.startsWith("AT")) {
             // имена команд — по списку, длинные раньше: аргумент может начинаться с буквы (ATSH DA28F1)
-            val name = Regex("^AT(FCSH|FCSD|FCSM|CRA|CEA|CAF|CFC|CF|CM|CP|AR|SH|ST|AT|TA|FI|SI|PC|H|E|L|S|Z|I|@1)").find(c)?.value ?: return "?"
+            val name = Regex("^AT(FCSH|FCSD|FCSM|CRA|CEA|CAF|CFC|IIA|CF|CM|CP|AR|SH|SP|ST|AT|TA|TP|FI|SI|PC|H|E|L|S|Z|I|@1)").find(c)?.value ?: return "?"
             if (name in unsupported) return "?"
             val arg = c.removePrefix(name)
             when (name) {
@@ -71,11 +74,17 @@ class ScriptedCar(private val bits29: Boolean = false, private val unsupported: 
                 "ATCFC" -> cfc = arg == "1"
                 "ATCAF" -> caf = arg == "1"
                 "ATFI", "ATSI" -> {
-                    // K-line: быстрый init к физическому адресу из заголовка 81 xx F1
-                    val addr = (sh shr 8) and 0xFF
-                    klineInit = if (ecus.any { it.req == addr }) addr else null
+                    // K-line: быстрый init (только протокол 5) — к адресу из заголовка 81 xx F1;
+                    // медленный 5-бод (протоколы 3–4) — к адресу из ATIIA, заголовок на него не влияет
+                    val fast = name == "ATFI"
+                    if (fast && proto != 5 || !fast && proto !in 3..4) return "?"
+                    val addr = if (fast) (sh shr 8) and 0xFF else iia
+                    klineInit = ecus.firstOrNull { it.req == addr && (it.kline == null || it.kline == if (fast) 5 else 4) }?.req
                     return if (klineInit != null) "BUS INIT: OK" else "BUS INIT: ...ERROR"
                 }
+                "ATIIA" -> iia = hex(arg)
+                "ATTP", "ATSP" -> { proto = arg.removePrefix("A").toInt(16); klineInit = null }
+                "ATPC" -> klineInit = null
                 // у настоящего ELM327 ATCRA — это те же CF/CM: последняя команда побеждает
                 "ATCRA" -> { cf = hex(arg); cm = if (bits29) 0x1FFFFFFF else 0x7FF }
                 "ATCF" -> cf = hex(arg)
@@ -436,6 +445,37 @@ class ScanTest {
         assertEquals(listOf("P0300"), r.modules[0].codes)
         assertTrue(car.sent.contains("ATSH 81 10 F1") && car.sent.contains("ATFI"))
         assertTrue(car.sent.none { it == "ATH1" })
+    }
+
+    /**
+     * Лог Hyundai Getz (`traces/2026-10-17_hyundai-getz_iso9141-engine-only.txt`): двигатель на ISO 9141-2 (протокол 3),
+     * сканер ответил «опрос блоков только на CAN» и не спросил ни одного блока. Теперь перебор K-line и для 9141:
+     * быстрым init, затем 5-бод через ATIIA; протокол машины и адрес 5-бод init возвращаются в конце.
+     */
+    @Test fun iso9141CarSweepsKlineFastThenSlowInit() {
+        val car = ScriptedCar(protocolNo = 3)
+        car.ecus += ScriptedCar.Ecu(0x28, 0x28, kline = 5, handler = Replies.kwp(0x50, 0x01, 0x60))   // ABS быстрым init: C1001
+        car.ecus += ScriptedCar.Ecu(0x58, 0x58, kline = 4, handler = Replies.kwp(0x91, 0x02, 0x60))   // подушки 5-бод: B1102
+        val r = ModuleScanner(car).scan(null, emptyList()) { _, _ -> }
+        assertTrue(car.logs.none { it.contains("elm_scan_can_only") })
+        assertEquals(setOf(0x28, 0x58), r.modules.map { it.addr }.toSet())
+        assertEquals(listOf("C1001"), r.modules.first { it.addr == 0x28 }.codes)
+        assertEquals(listOf("B1102"), r.modules.first { it.addr == 0x58 }.codes)
+        assertTrue(car.sent.contains("ATIIA 58") && car.sent.contains("ATSI") && car.sent.contains("ATFI"))
+        assertTrue(car.sent.none { it == "ATIIA 28" })   // ABS ответил быстрым init — 5-бодом его второй раз не будили
+        assertEquals("ATTP 3", car.sent.last { it.startsWith("ATTP") })      // протокол машины вернулся
+        assertEquals("ATIIA 33", car.sent.last { it.startsWith("ATIIA") })   // и адрес 5-бод init — к двигателю
+        assertEquals("ATAT1", car.sent.last { it.startsWith("ATAT") })
+    }
+
+    @Test fun iso9141WithoutIiaUsesFastInitOnly() {
+        val car = ScriptedCar(protocolNo = 3, unsupported = setOf("ATIIA"))
+        car.ecus += ScriptedCar.Ecu(0x28, 0x28, kline = 5, handler = Replies.kwp(0x50, 0x01, 0x60))
+        car.ecus += ScriptedCar.Ecu(0x58, 0x58, kline = 4, handler = Replies.kwp(0x91, 0x02, 0x60))
+        val r = ModuleScanner(car).scan(null, emptyList()) { _, _ -> }
+        assertEquals(listOf(0x28), r.modules.map { it.addr })
+        assertTrue(car.sent.none { it == "ATSI" })
+        assertTrue(car.logs.any { it.contains("elm_scan_kline_no_iia") || it.contains("ATIIA") })
     }
 
     @Test fun discoveryProbeIsSessionWithOneFrameAndNoAutoFlow() {

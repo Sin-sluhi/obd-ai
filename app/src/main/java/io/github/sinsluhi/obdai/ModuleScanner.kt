@@ -103,8 +103,9 @@ class ModuleScanner(private val s: ElmSession) {
      */
     fun scan(brand: String?, known: List<EcuAddr>, progress: (Int, Int) -> Unit): Result {
         if (!s.isCan) {
-            // K-line: KWP2000 с быстрым init по физическим адресам (Лада, старые азиаты и европейцы)
-            if (s.protocolNo in 4..5) return scanKline(brand, progress)
+            // K-line: KWP2000 по физическим адресам (Лада, Hyundai/Kia и Daewoo 2000-х, старые азиаты и европейцы);
+            // ISO 9141-2 тоже: двигатель на нём, а блоки на той же линии будятся своим init
+            if (s.protocolNo in 3..5) return scanKline(brand, progress)
             s.log(tr("elm_scan_can_only")); return Result(emptyList(), emptyList(), false)
         }
         manualFc = listOf("ATFCSH", "ATFCSD", "ATFCSM").none { it in s.adapter.missing }
@@ -325,7 +326,13 @@ class ModuleScanner(private val s: ElmSession) {
     }
 
     /**
-     * K-line (ISO 14230, быстрый init): перебор физических адресов, на каждый — init и KWP 18 00 FF 00 / 18 02 FF 00.
+     * K-line: перебор физических адресов, на каждый — init и KWP 18 00 FF 00 / 18 02 FF 00.
+     * Блок будится одним из двух способов, и какой у него — заранее не знаем:
+     * - быстрый init (ISO 14230, протокол 5): адрес в заголовке `81 xx F1`, `ATFI` — для всех K-line машин;
+     * - медленный 5-бод (протокол 4): адрес задаёт только `ATIIA xx` (заголовок на 5-бод init не влияет), затем `ATSI` —
+     *   если машина сама на медленном init (ISO 9141-2 / KWP 5 бод: Hyundai Getz, лог 17.10.2026 — двигатель ответил
+     *   на 9141, а блоки не спрашивались вовсе: перебор был только для протоколов 4–5, и 5-бод шёл всегда на 0x33).
+     * Протокол на время перебора меняется `ATTP` и возвращается в конце: следующий OBD-запрос сам сделает init двигателю.
      * Заголовков у строк нет (ATH0): адаптер сам снимает адрес и контрольную сумму, разбор — [ObdDecoder.messages].
      * Лада: двигатель 0x10 (Январь 7.2, M7.9.7, M73/M74), остальные блоки — свои адреса на той же линии.
      */
@@ -333,30 +340,50 @@ class ModuleScanner(private val s: ElmSession) {
         val found = mutableListOf<ModuleScan>()
         val addrs = mutableListOf<EcuAddr>()
         val targets = ModuleMap.klineAddresses
-        s.log(tr("elm_scan_kline", targets.size))
+        val own = s.protocolNo
+        var cur = own
+        var iiaUsed = false
         try {
             s.send("ATAT0"); s.send("ATST 64")
-            for ((i, a) in targets.withIndex()) {
-                progress(i + 1, targets.size)
-                s.send("ATSH 81 %02X F1".format(a))
-                val init = s.send(if (s.protocolNo == 5) "ATFI" else "ATSI", 6000)
-                if (!init.uppercase().contains("OK")) continue
-                var codes: List<String>? = null
-                for (cmd in listOf("1800FF00", "1802FF00", "1081", "1800FF00")) {
-                    val k = s.send(cmd, 4000)
-                    if (cmd == "1081") continue   // сессия для старых Январь 5.1 / Bosch M1.5.4, ответ не разбираем
-                    codes = ModuleDecoder.parseKwp(ObdDecoder.messages(k))
-                    if (codes != null) { s.log("↩ K-line %02X: %s".format(a, k.replace("\r", " | ").take(200))); break } // i18n-ignore: журнал
+            // 5-бод init к чужому адресу — только через ATIIA (ELM327 v1.4+); адаптер её не понял — остаётся быстрый
+            val slow = own in 3..4 && !s.send("ATIIA 33").contains("?")
+            if (own in 3..4 && !slow) s.log(tr("elm_scan_kline_no_iia"))
+            val passes = if (slow) listOf(5, 4) else listOf(5)
+            val total = targets.size * passes.size
+            s.log(tr("elm_scan_kline", targets.size))
+            var step = 0
+            for (p in passes) {
+                if (p != cur) { s.send("ATPC"); s.send("ATTP $p"); cur = p }
+                if (p == 4) s.log(tr("elm_scan_kline_slow"))
+                for (a in targets) {
+                    progress(++step, total)
+                    if (addrs.any { it.req == a }) continue   // уже ответил быстрым init
+                    s.send("ATSH 81 %02X F1".format(a))
+                    val init = if (p == 5) s.send("ATFI", 6000)
+                               else { iiaUsed = true; s.send("ATIIA %02X".format(a)); s.send("ATSI", 8000) }
+                    if (!init.uppercase().contains("OK")) continue
+                    var codes: List<String>? = null
+                    for (cmd in listOf("1800FF00", "1802FF00", "1081", "1800FF00")) {
+                        val k = s.send(cmd, 4000)
+                        if (cmd == "1081") continue   // сессия для старых Январь 5.1 / Bosch M1.5.4, ответ не разбираем
+                        codes = ModuleDecoder.parseKwp(ObdDecoder.messages(k))
+                        if (codes != null) { s.log("↩ K-line %02X: %s".format(a, k.replace("\r", " | ").take(200))); break } // i18n-ignore: журнал
+                    }
+                    val e = EcuAddr(a, a, via = if (codes != null) "KWP" else "?")
+                    val name = ModuleMap.klineName(brand, a)
+                    found.add(ModuleScan(name, a, codes.orEmpty(), e.via))
+                    addrs.add(e)
+                    s.found(found.size)
+                    s.log("$name (%02X, %s): %s".format(a, if (p == 5) "fast init" else "5 baud", // i18n-ignore: журнал
+                        if (codes.isNullOrEmpty()) tr("elm_no_codes") else codes.joinToString()))
                 }
-                val e = EcuAddr(a, a, via = if (codes != null) "KWP" else "?")
-                val name = ModuleMap.klineName(brand, a)
-                found.add(ModuleScan(name, a, codes.orEmpty(), e.via))
-                addrs.add(e)
-                s.found(found.size)
-                s.log("$name (%02X): %s".format(a, if (codes.isNullOrEmpty()) tr("elm_no_codes") else codes.joinToString()))
             }
         } finally {
-            runCatching { s.send("ATST 64"); s.send("ATAT1"); s.restoreObdHeader() }
+            runCatching {
+                if (iiaUsed) s.send("ATIIA 33")
+                if (cur != own) { s.send("ATPC"); s.send("ATTP $own") }
+                s.send("ATST 64"); s.send("ATAT1"); s.restoreObdHeader()
+            }
         }
         s.log(tr("elm_scan_found", found.size))
         return Result(found, addrs, true)
