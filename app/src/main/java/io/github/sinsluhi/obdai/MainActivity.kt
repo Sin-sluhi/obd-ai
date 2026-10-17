@@ -329,7 +329,8 @@ class MainActivity : ComponentActivity() {
                         state,
                         onBack = { page = Page.Home },
                         onPickDevice = { pickDevice() },
-                        onOpenLog = { page = Page.Log }
+                        onOpenLog = { page = Page.Log },
+                        onShareLog = { copyLog() }
                     )
                     Page.Log -> LogScreen(state, onBack = { page = Page.Settings }, onCopyReport = { copyReport() }, onCopyLog = { copyLog() })
                 }

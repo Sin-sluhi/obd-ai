@@ -1075,7 +1075,8 @@ fun SettingsScreen(
     state: AppState,
     onBack: () -> Unit,
     onPickDevice: () -> Unit,
-    onOpenLog: () -> Unit
+    onOpenLog: () -> Unit,
+    onShareLog: () -> Unit
 ) {
     val accent = LocalAccent.current
     var showKey by remember { mutableStateOf(false) }
@@ -1150,6 +1151,15 @@ fun SettingsScreen(
         }
 
         // язык переключается кнопкой в правом верхнем углу главной (ui/LangMenu.kt); в настройках его нет по просьбе владельца
+
+        // лог доступен всегда, не только в режиме разработчика: тестировщику с покупательской сборкой иначе нечем поделиться
+        SectionTitle(tr("scr_help_title"))
+        Card {
+            Text(tr("scr_send_log_hint"), style = Type.body(13, Palette.text2))
+            VSpace(10.dp)
+            SecondaryButton(tr("scr_send_log"), Modifier.fillMaxWidth(), onClick = onShareLog)
+        }
+        VSpace(18.dp)
 
         if (state.devMode) {
             SectionTitle(tr("scr_dev_mode"))
