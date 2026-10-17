@@ -310,6 +310,14 @@ class AppState private constructor(context: Context) {
         return switched
     }
 
+    /** Модель уточнилась по открытой базе (в фоне, после проверки): гараж называет машину по модели, а не по марке. */
+    private fun renameCar(id: String, name: String) {
+        val list = prefs.cars
+        if (list.none { it.id == id }) return
+        prefs.cars = list.map { if (it.id == id) it.copy(name = name) else it }
+        ui { cars = prefs.cars }
+    }
+
     fun forgetCar(car: CarProfile) {
         prefs.forgetCar(car.id)
         prefs.cars = prefs.cars.filter { it.id != car.id }
@@ -540,8 +548,14 @@ class AppState private constructor(context: Context) {
             // своих таблиц моделей нет для BMW, Mercedes, Ford… — спрашиваем открытую базу NHTSA, чтобы гараж назывался
             // «BMW X3 2013», а не «BMW»
             val decodedVin = VinDecoder.decode(v)
-            val onlineTitle = if (v != null && decodedVin.model == null) runCatching { VinDecoder.online(v, prefs) }.getOrNull() else null
+            // Название модели из открытой базы — только из кеша, сеть — в фоне. Синхронный запрос посреди проверки висел
+            // на DNS 33 с (Subaru 17.10.2026, телефон с VPN; таймауты соединения DNS не покрывают), адаптер за это
+            // время молчал и отвалился: «Broken pipe», проверка оборвана после чтения VIN.
+            val onlineTitle = if (v != null && decodedVin.model == null) prefs.vinOnline(v)?.ifBlank { null } else null
             val switched = runCatching { noticeCar(v, onlineTitle ?: decodedVin.title()) }.getOrDefault(false)
+            if (v != null && decodedVin.model == null && prefs.vinOnline(v) == null) Thread {
+                runCatching { VinDecoder.online(v, prefs) }.getOrNull()?.let { renameCar(v, it) }
+            }.apply { isDaemon = true }.start()
             val carHistory = if (switched) prefs.loadHistory() else history
             val carWarmups = if (switched) prefs.loadWarmups() else warmups
             val carStarts = if (switched) prefs.loadStarts() else starts
