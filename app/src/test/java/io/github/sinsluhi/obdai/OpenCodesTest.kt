@@ -22,9 +22,10 @@ class OpenCodesTest {
 
     /** Стандартный редкий SAE и заводской P1 марки — из Wal33D (MIT); P1 без марки не угадываем. */
     @Test fun saeAndBrandTitlesFromWal33d() {
-        assertNotNull(DtcCatalog.openTitle("P2563"))
-        assertNotNull(DtcCatalog.openTitle("P1556", "vag"))
-        assertNull(DtcCatalog.openTitle("P1556"))
+        assertNotNull(DtcCatalog.openTitle("B0004"))
+        // P1577 двигателя S8 (Launch): клапан правой опоры двигателя
+        assertNotNull(DtcCatalog.openTitle("P1577", "vag"))
+        assertNull(DtcCatalog.openTitle("P1577"))
         assertNull(DtcCatalog.openTitle("99999"))
     }
 }
