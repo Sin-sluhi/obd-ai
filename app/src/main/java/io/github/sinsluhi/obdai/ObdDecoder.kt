@@ -270,20 +270,28 @@ object ModuleDecoder {
     }
 
     /** KWP: 58 <кол-во> затем группы по 3 байта: DTC(2) + статус. */
-    fun parseKwp(msgs: List<List<Int>>): List<String>? {
+    fun parseKwp(msgs: List<List<Int>>): List<String>? = parseKwpDetailed(msgs)?.map { it.first }
+
+    /**
+     * То же с сырым байтом статуса KWP на каждый код. oemHex — заводской двухбайтный код марки как есть
+     * (BMW серий E за шлюзом: A0B4, 9CBB — так их показывают INPA и марочные сканеры), иначе SAE «P0300».
+     * Байт статуса у KWP марочный, в слова не переводится — статус-пометки к коду не приписываем.
+     */
+    fun parseKwpDetailed(msgs: List<List<Int>>, oemHex: Boolean = false): List<Pair<String, Int>>? {
         var found = false
-        val codes = linkedSetOf<String>()
+        val codes = linkedMapOf<String, Int>()
         for (msg in msgs) {
             val i = msg.indexOf(0x58)
             if (i < 0 || i + 1 >= msg.size) continue
             found = true
             val data = msg.drop(i + 2)
             for (g in data.chunked(3)) {
-                if (g.size < 2 || (g[0] == 0 && g[1] == 0)) continue
-                codes.add(ObdDecoder.dtc(g[0], g[1]))
+                if (g.size < 2 || (g[0] == 0 && g[1] == 0) || (g[0] == 0xFF && g[1] == 0xFF)) continue
+                val code = if (oemHex) "%02X%02X".format(g[0], g[1]) else ObdDecoder.dtc(g[0], g[1])
+                if (!codes.containsKey(code)) codes[code] = g.getOrElse(2) { 0 }
             }
         }
-        return if (found) codes.toList() else null
+        return if (found) codes.entries.map { it.key to it.value } else null
     }
 
     /** Отрицательный ответ 7F <сервис> <код>: блок есть, но так спрашивать нельзя. */
@@ -405,7 +413,10 @@ object ModuleMap {
         0xD0 to "obd_module_can_gateway"
     )
 
-    /** BMW и MINI серий F/G: блоки за центральным шлюзом, адресация через 0x6F1 + байт адреса блока. */
+    /**
+     * BMW и MINI: блоки за центральным шлюзом, адресация через 0x6F1 + байт адреса блока. Серии F/G отвечают по UDS
+     * (коды 6 hex), серии E и MINI R5x — по KWP `18 02 FF FF` (коды 4 hex), на `19 02` говорят `7F 19 11`.
+     */
     fun isBmw(brand: String?): Boolean {
         val b = brand.orEmpty().lowercase()
         return b.contains("bmw") || b.contains("mini")

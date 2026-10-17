@@ -101,6 +101,11 @@ object Frames {
         .filter { it.isNotEmpty() && !it.startsWith("SEARCHING") && STATUS_WORDS.none { w -> it.contains(w) } }
         .mapNotNull { line -> split(line, bits29)?.let { (id, b) -> Frame(id, b) } }
 
-    /** Законченные сообщения как списки байтов — формат, который понимают разборы [ModuleDecoder]. */
-    fun messages(frames: List<Frame>): List<List<Int>> = frames.filter { !it.partial && it.data.isNotEmpty() }.map { it.data }
+    /**
+     * Законченные сообщения как списки байтов — формат, который понимают разборы [ModuleDecoder].
+     * [withPartial] — отдать и недособранные: когда ответ обрезал адаптер (`BUFFER FULL` у клона на 60+ записях),
+     * целые записи в начале всё равно верные, а хвост разбор отбросит сам по длине записи.
+     */
+    fun messages(frames: List<Frame>, withPartial: Boolean = false): List<List<Int>> =
+        frames.filter { (withPartial || !it.partial) && it.data.isNotEmpty() }.map { it.data }
 }

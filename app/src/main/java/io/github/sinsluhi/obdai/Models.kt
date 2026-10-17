@@ -511,7 +511,8 @@ data class ModuleScan(
     val via: String,
     val statuses: List<Int> = emptyList(),   // сырой байт статуса UDS на каждый код (если UDS)
     val vin: String? = null,                 // VIN, записанный в блоке (22 F190)
-    val part: String? = null                 // заводской номер блока (22 F187)
+    val part: String? = null,                // заводской номер блока (22 F187)
+    val truncated: Boolean = false           // полный список не влез в адаптер: активные дочитаны, история может быть неполной
 ) {
     val addrHex: String get() = "%03X".format(addr)
 

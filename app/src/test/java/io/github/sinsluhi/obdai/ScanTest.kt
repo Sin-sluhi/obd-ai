@@ -10,14 +10,21 @@ import org.junit.Test
  * потоком (авто и ручное), расширенную адресацию (CEA) и отвечает кадрами так, как их печатает адаптер.
  * Многокадровый ответ приходит целиком, только если кадр управления потоком дошёл до блока — как на живой шине.
  */
+/**
+ * @param bufferFrames буфер клона в кадрах: длинный ответ, который блок сыплет без паузы (STmin 0 в нашем кадре
+ *   управления потоком или блок, который паузу не соблюдает), обрезается на этом кадре и заканчивается `BUFFER FULL` —
+ *   как у ELM327 v1.5 на Audi A4 B8 (лог 17.10.2026, 38 кадров). С паузой STmin > 0 адаптер успевает, ответ целый.
+ */
 class ScriptedCar(private val bits29: Boolean = false, private val unsupported: Set<String> = emptySet(),
-                  override val protocolNo: Int = if (bits29) 7 else 6) : ElmSession {
+                  override val protocolNo: Int = if (bits29) 7 else 6, private val bufferFrames: Int? = null) : ElmSession {
     /**
      * Блок: ID запроса, ID ответа, байт расширенной адресации, обработчик запроса → байты ответа (null — молчит).
      * rxByte — что блок ставит первым байтом ответа при расширенной адресации (BMW — адрес тестера F1, Toyota — подадрес).
+     * ignoresStmin — блок не соблюдает паузу между кадрами из нашего FC (такие есть), ответ летит без пауз.
      * На K-line req = физический адрес блока.
      */
-    class Ecu(val req: Int, val resp: Int, val ext: Int? = null, val rxByte: Int = 0xF1, val handler: (List<Int>) -> List<Int>?)
+    class Ecu(val req: Int, val resp: Int, val ext: Int? = null, val rxByte: Int = 0xF1, val ignoresStmin: Boolean = false,
+              val handler: (List<Int>) -> List<Int>?)
     /** GMLAN: на A9 блок отвечает серией сырых кадров на своём UUDT ID (без ISO-TP). */
     class Uudt(val req: Int, val id: Int, val frames: List<List<Int>>)
     val uudt = mutableListOf<Uudt>()
@@ -107,16 +114,23 @@ class ScriptedCar(private val bits29: Boolean = false, private val unsupported: 
             if (u.req != sh || req.firstOrNull() != 0xA9 || !passes(u.id)) continue
             for (f in u.frames) lines.add("%03X ".format(u.id) + f.joinToString(" ") { "%02X".format(it) })
         }
+        var overflow = false
+        // пауза между кадрами, которую блок получит в кадре управления потоком: наш FC (ATFCSM 1) — последний байт данных,
+        // автоматический FC адаптера — 30 00 00, то есть без паузы
+        val stmin = if (fcsm == 1 && fcsd.size >= 3) fcsd.last() else 0
         for (e in ecus) {
             if (e.req != sh || e.ext != (cea ?: extReq)) continue
             val payload = e.handler(req) ?: continue
             if (!passes(e.resp)) continue
             // ELM327 при ATCEA пропускает только кадры, у которых первый байт равен адресу тестера
             if (cea != null && e.rxByte != ta) continue
-            lines.addAll(frames(e, payload))
+            val fr = frames(e, payload)
+            if (bufferFrames != null && fr.size > bufferFrames && (stmin == 0 || e.ignoresStmin)) overflow = true
+            lines.addAll(fr)
         }
         for ((id, bytes) in noise) if (passes(id)) lines.add("%03X ".format(id) + bytes.joinToString(" ") { "%02X".format(it) })
-        val out = if (expect != null) lines.take(expect) else lines
+        var out = if (expect != null) lines.take(expect) else lines
+        if (overflow) out = out.take(bufferFrames!!) + "BUFFER FULL"
         return if (out.isEmpty()) "NO DATA" else out.joinToString("\r") + "\r"
     }
 
@@ -180,6 +194,28 @@ object Replies {
             0x18 -> listOf(0x58, records.size / 3) + records.toList()
             else -> listOf(0x7F, req[0], 0x11)
         }
+    }
+
+    /**
+     * Блок BMW/MINI серии E за шлюзом (лог MINI R56 17.10.2026): на 19 02 — 7F 19 11, память ошибок только по
+     * KWP 18 02 FF FF (группа FF 00 — 7F 18 12), коды двухбайтные заводские, 22 F1xx не знает.
+     */
+    fun bmwE(vararg records: Int): (List<Int>) -> List<Int>? = { req ->
+        when {
+            req[0] == 0x19 -> listOf(0x7F, 0x19, 0x11)
+            req[0] == 0x18 && req.getOrNull(2) == 0xFF && req.getOrNull(3) == 0xFF -> listOf(0x58, records.size / 3) + records.toList()
+            req[0] == 0x18 -> listOf(0x7F, 0x18, 0x12)
+            else -> listOf(0x7F, req[0], 0x11)
+        }
+    }
+
+    /** UDS с честной маской статуса: на 19 02 <маска> отдаёт только записи, у которых есть бит из маски (FF — все). */
+    fun udsMasked(vararg records: Int): (List<Int>) -> List<Int>? = { req ->
+        if (req.size >= 3 && req[0] == 0x19 && req[1] == 0x02) {
+            val mask = req[2]
+            val picked = records.toList().chunked(4).filter { mask == 0xFF || (it[3] and mask) != 0 }.flatten()
+            listOf(0x59, 0x02, mask) + picked
+        } else uds()(req)
     }
 }
 
@@ -265,8 +301,73 @@ class ScanTest {
         assertEquals("BMW", dme.via)
         assertEquals(listOf("130508", "118002"), dme.codes.map { it.substringBefore(' ') })
         assertTrue(r.modules.any { it.addr == 0x60 })
-        assertTrue(car.sent.contains("ATCEA 12") && car.sent.contains("ATFCSD 12 30 00 00"))
+        assertTrue(car.sent.contains("ATCEA 12") && car.sent.contains("ATFCSD 12 30 00 14"))
         assertEquals("ATCEA", car.sent.last { it.startsWith("ATCEA") })   // расширенная адресация выключена в конце
+    }
+
+    /**
+     * Лог MINI R56 2010 (`traces/2026-10-17_mini-r56-2010_gateway-kwp-7F1911.txt`): шлюз нашёл 12 блоков, все ответили
+     * `7F 19 11`, сканер записал «ошибок 0», а Launch видел коды в кузовном блоке и климате. Серии E читаются по KWP.
+     */
+    @Test fun miniR56GatewayBlocksReadByKwpAfter7F1911() {
+        val car = ScriptedCar()
+        car.ecus += ScriptedCar.Ecu(0x7E0, 0x7E8, handler = Replies.uds())
+        car.ecus += ScriptedCar.Ecu(0x6F1, 0x600, ext = 0x00, handler = Replies.bmwE(0xA0, 0xB4, 0x24, 0x9C, 0xBB, 0x20))   // JBE
+        car.ecus += ScriptedCar.Ecu(0x6F1, 0x612, ext = 0x12, handler = Replies.bmwE())                                       // DME, пусто
+        car.ecus += ScriptedCar.Ecu(0x6F1, 0x678, ext = 0x78, handler = Replies.bmwE(0x9C, 0x7E, 0x20))                     // IHKA
+        val r = ModuleScanner(car).scan("MINI", emptyList()) { _, _ -> }
+        val jbe = r.modules.first { it.addr == 0x00 }
+        assertEquals("KWP", jbe.via)
+        assertEquals(listOf("A0B4", "9CBB"), jbe.codes)
+        assertEquals(listOf(0x24, 0x20), jbe.statuses)
+        assertEquals(listOf("9C7E"), r.modules.first { it.addr == 0x78 }.codes)
+        val dme = r.modules.first { it.addr == 0x12 }
+        assertEquals("KWP", dme.via)
+        assertTrue(dme.codes.isEmpty())
+        assertTrue(car.sent.contains("1802FFFF"))
+        assertTrue(DtcCatalog.isOemHex("A0B4"))   // заводской код, не SAE
+        assertEquals(setOf(0x600, 0x612, 0x678), r.ecus.map { it.resp }.toSet())
+    }
+
+    /**
+     * Лог Audi A4 B8 2008 (`traces/2026-10-17_audi-a4-b8-2008_buffer-full-tp20.txt`): двигатель отдал 65 записей
+     * (263 байта, 38 кадров) без пауз, клон переполнился — `BUFFER FULL`, ответ потерян целиком. С паузой STmin в нашем
+     * кадре управления потоком блок сыплет медленнее, адаптер успевает.
+     */
+    @Test fun longUdsAnswerPacedBySeparationTime() {
+        val car = ScriptedCar(bufferFrames = 12)
+        car.ecus += ScriptedCar.Ecu(0x7E0, 0x7E8, handler = Replies.udsMasked(*manyRecords(65)))
+        val r = ModuleScanner(car).scan(null, emptyList()) { _, _ -> }
+        val engine = r.modules.first { it.addr == 0x7E0 }
+        assertEquals(65, engine.codes.size)
+        assertFalse(engine.truncated)
+        assertTrue(car.sent.contains("ATFCSD 30 00 14"))
+        assertTrue(car.logs.none { it.contains("elm_scan_truncated") })
+    }
+
+    /** Блок паузу не соблюдает, ответ всё равно обрезан: целые записи из начала берём, активные дочитываем узкой маской. */
+    @Test fun truncatedAnswerSalvagedAndActiveReadByNarrowMask() {
+        val car = ScriptedCar(bufferFrames = 12)
+        car.ecus += ScriptedCar.Ecu(0x7E0, 0x7E8, ignoresStmin = true, handler = Replies.udsMasked(*manyRecords(65)))
+        val r = ModuleScanner(car).scan(null, emptyList()) { _, _ -> }
+        val engine = r.modules.first { it.addr == 0x7E0 }
+        assertTrue(engine.truncated)
+        // 12 кадров = 6 + 11×7 байт = 20 целых записей истории из начала…
+        assertTrue(engine.codes.count { it.contains("(история)") } >= 20)
+        // …и активная P0300 с подтверждённой P0420 из самого конца списка — дочитаны по 19 02 01 / 19 02 08
+        assertTrue(engine.codes.any { it.startsWith("P0300") && it.contains("(активная)") })
+        assertTrue(engine.codes.any { it.startsWith("P0420") })
+        assertTrue(car.sent.contains("190201") && car.sent.contains("190208"))
+        assertTrue(car.logs.any { it.contains("elm_scan_truncated") || it.contains("не влез") })   // в тестах tr() отдаёт ключ
+    }
+
+    /** n−2 записей истории (статус 0x40, как на Audi) и в конце P0300 активная, P0420 подтверждённая. */
+    private fun manyRecords(n: Int): IntArray {
+        val out = mutableListOf<Int>()
+        for (i in 0 until n - 2) out += listOf(0x10, 0xE7 + (i % 24), (i / 24), 0x40)
+        out += listOf(0x03, 0x00, 0x00, 0x09)
+        out += listOf(0x04, 0x20, 0x00, 0x08)
+        return out.toIntArray()
     }
 
     @Test fun responsePendingRetried() {

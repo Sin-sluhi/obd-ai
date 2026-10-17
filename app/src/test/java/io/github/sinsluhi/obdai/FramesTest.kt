@@ -68,6 +68,31 @@ class FramesTest {
         assertEquals(listOf(0x59, 0x02, 0xFF), f[0].data)
     }
 
+    @Test fun gatewayNegativeResponseIsAFrame() {
+        // MINI R56 (лог 17.10.2026): каждый блок за шлюзом отвечает «сервис 19 не поддерживаю» — это ответ, блок найден
+        val f = Frames.parse("600 F1 03 7F 19 11\r", bits29 = false, extAddr = Frames.TESTER)
+        assertEquals(1, f.size)
+        assertEquals(0x600, f[0].id)
+        assertEquals(listOf(0x7F, 0x19, 0x11), f[0].data)
+        assertEquals(0x11, Frames.messages(f).first()[2])
+    }
+
+    @Test fun bufferFullKeepsWholeRecordsFromTheHead() {
+        // Audi A4 B8 (лог 17.10.2026): 263 байта, клон отдал 12 кадров и BUFFER FULL
+        val raw = "7E8 11 07 59 02 FF 00 10 E7\r7E8 21 40 00 10 E8 40 00 15\r7E8 22 02 40 00 15 03 40 00\r7E8 23 10 EA 50 00 10 EC 40\r" +
+            "7E8 24 00 12 B4 40 00 15 00\r7E8 25 40 00 15 01 40 00 10\r7E8 26 E6 40 00 1B DD 40 00\r7E8 27 12 CF 40 00 0A 53 40\r" +
+            "7E8 28 00 1B E4 50 00 12 57\r7E8 29 50 00 12 59 50 00 1B\r7E8 2A E5 50 00 12 5A 50 00\r7E8 2B 1B E6 50 00 12 5B 50\rBUFFER FULL\r"
+        val f = Frames.parse(raw, bits29 = false)
+        assertEquals(1, f.size)
+        assertTrue(f[0].partial)
+        assertEquals(6 + 11 * 7, f[0].data.size)
+        assertTrue(Frames.messages(f).isEmpty())                       // без спасения обрезанный ответ не сообщение
+        val codes = ModuleDecoder.parseUdsDetailed(Frames.messages(f, withPartial = true))!!
+        assertEquals(20, codes.size)                                   // (83 − 3) / 4 = 20 целых записей, хвост отброшен
+        assertEquals("P10E7 (история)", codes.first().first)
+        assertEquals(listOf("BUFFER FULL"), Frames.status(raw))
+    }
+
     @Test fun statusLinesIgnored() {
         assertTrue(Frames.parse("NO DATA\r", bits29 = false).isEmpty())
         assertTrue(Frames.parse("CAN ERROR\r", bits29 = false).isEmpty())
