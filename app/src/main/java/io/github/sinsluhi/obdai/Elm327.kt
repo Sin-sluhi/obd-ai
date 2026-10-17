@@ -67,7 +67,8 @@ class Elm327(private val logger: (String) -> Unit) : ObdLink, ElmSession {
         // эхо выкл, переводы строк выкл, пробелы вкл, заголовки выкл, адаптивные таймауты, автопротокол.
         // Заголовок (ATSH) до определения протокола НЕ трогаем: на 29-битных машинах ATSH 7DF превращается в 0x180007DF,
         // и после поиска все запросы уходят не туда — машина «не отвечает».
-        for (cmd in listOf("ATE0", "ATL0", "ATS1", "ATH0", "ATAT1", "ATSP0")) send(cmd)
+        // ATD — всё к заводским: у клонов ATZ не всегда снимает старые фильтры и заголовки прошлой машины
+        for (cmd in listOf("ATD") + BASE + "ATSP0") send(cmd)
 
         refreshEcu()
         // Возможности адаптера проверяем уже на найденном протоколе, а не до него
@@ -113,10 +114,16 @@ class Elm327(private val logger: (String) -> Unit) : ObdLink, ElmSession {
         //    Так находим шину за доли секунды и не трогаем автопоиск ELM: тот начинает с J1850 и медленных init,
         //    а проба 250k на живой шине 500k даёт ERR94 у клонов и глушит шлюз на полсекунды.
         //    ATPC закрывает протокол и сбрасывает счётчики ошибок CAN перед следующей пробой.
+        if (adapterReset) {
+            // после LV RESET / ERR94 чип вернул заводские настройки — повторяем базовые
+            adapterReset = false
+            for (cmd in BASE) send(cmd)
+        }
         send("ATST 32"); send("ATAT1")
         var probe = ""
+        // ATTP, а не ATSP: SP пишет EEPROM (~30 мс и износ) на каждой пробе, TP — нет
         for (p in listOf(6, 7, 8, 9, 5)) {
-            send("ATPC"); send("ATSP $p")
+            send("ATPC"); send("ATTP $p")
             val r = send("0100", if (p == 5) 8000 else 4000)
             Trace.note("протокол $p: ${if (ok(r)) "ответил" else "нет"}") // i18n-ignore: лог
             if (ok(r)) { probe = r; break }
@@ -130,7 +137,7 @@ class Elm327(private val logger: (String) -> Unit) : ObdLink, ElmSession {
         if (!ok(probe)) {
             // 3) повтор на самом частом протоколе: блок мог проснуться позже первой посылки («видит со второго раза»)
             Thread.sleep(800)
-            send("ATPC"); send("ATSP6")
+            send("ATPC"); send("ATTP6")
             probe = send("0100", 4000)
             if (!ok(probe)) send("ATSP0")   // никто не ответил — оставляем автопоиск на следующую попытку
         }
@@ -241,10 +248,15 @@ class Elm327(private val logger: (String) -> Unit) : ObdLink, ElmSession {
         if (out.contains("BUFFER FULL") || out.contains("<DATA ERROR")) {
             log(tr("elm_truncated", cmd))
         }
-        if (out.contains("LV RESET")) {
-            // просадка питания: чип сбросил ATE0/ATH/ATS к заводским — лог, следующая проверка переинициализирует
-            Trace.note("LV RESET: адаптер сбросился по питанию") // i18n-ignore: лог
-            log(tr("elm_lv_reset"))
+        if ((out.contains("LV RESET") || out.contains("ERR94")) && !forgetting) {
+            // просадка питания или фатальная ошибка CAN: чип вернул заводские настройки и до ATFE (или передёргивания
+            // питания) блокирует поиск по CAN (PP 2A). ATFE снимает блокировку сразу, базовые настройки вернёт refreshEcu.
+            val err94 = out.contains("ERR94")
+            adapterReset = true
+            Trace.note(if (err94) "ERR94: фатальная ошибка CAN, шлю ATFE" else "LV RESET: адаптер сбросился по питанию, шлю ATFE") // i18n-ignore: лог
+            log(tr(if (err94) "elm_err94" else "elm_lv_reset"))
+            forgetting = true
+            try { send("ATFE", 2000) } finally { forgetting = false }
         }
         out
     }
@@ -355,8 +367,14 @@ class Elm327(private val logger: (String) -> Unit) : ObdLink, ElmSession {
         transport = null
     }
 
+    /** Адаптер сбросился (LV RESET / ERR94): базовые настройки надо повторить. */
+    @Volatile private var adapterReset = false
+    private var forgetting = false
+
     companion object {
         /** Запас сверх таймаута на ожидание приглашения «>»: не перебивать адаптер, который ещё работает. */
         private const val PROMPT_GRACE_MS = 3000L
+        /** Базовые настройки терминала: эхо выкл, переводы строк выкл, пробелы вкл, заголовки выкл, адаптивные таймауты. */
+        private val BASE = listOf("ATE0", "ATL0", "ATS1", "ATH0", "ATAT1")
     }
 }
