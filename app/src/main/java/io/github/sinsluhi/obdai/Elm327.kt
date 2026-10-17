@@ -363,6 +363,9 @@ class Elm327(private val logger: (String) -> Unit) : ObdLink, ElmSession {
      * Поиск и чтение блоков — [ModuleScanner] (спецификация `docs/ОСНОВА ОПРОСА.md`): перебор всей шины с открытым
      * фильтром, ID ответа узнаётся, а не угадывается; найденные адреса отдаются через [foundEcus] для кеша по машине.
      */
+    override fun readBrand(cmds: List<ObdbCommand>, progress: (Int, Int) -> Unit): List<BrandReading> =
+        Obdb.read(this, cmds, progress)
+
     override fun wakeBus(): Boolean {
         val p = BusProbe.liveCan(this) ?: return false
         protocolNo = p

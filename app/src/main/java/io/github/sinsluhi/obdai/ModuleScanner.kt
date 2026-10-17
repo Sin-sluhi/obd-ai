@@ -159,6 +159,33 @@ class ModuleScanner(private val s: ElmSession, private val pause: (Long) -> Unit
         return Result(found.values.toList(), addrs.values.toList(), full)
     }
 
+    /**
+     * Марочные параметры (OBDb): по каждому запросу — положительный ответ целиком (`62 DID …` / `61 xx …`), null — блок
+     * отказал или промолчал. Только сервисы чтения 21/22. Заголовки ставятся один раз на подряд идущие запросы к
+     * одному блоку; блок, промолчавший дважды подряд, дальше не спрашиваем — не ждать таймаут на каждом его DID.
+     */
+    fun readData(requests: List<Pair<EcuAddr, List<Int>>>, progress: (Int, Int) -> Unit = { _, _ -> }): List<List<Int>?> {
+        manualFc = listOf("ATFCSH", "ATFCSD", "ATFCSM").none { it in s.adapter.missing }
+        val out = ArrayList<List<Int>?>(requests.size)
+        val silent = mutableMapOf<EcuAddr, Int>()
+        var cur: EcuAddr? = null
+        try {
+            enter()
+            for ((i, r) in requests.withIndex()) {
+                progress(i + 1, requests.size)
+                val (a, data) = r
+                if (data.firstOrNull() !in listOf(0x21, 0x22) || (silent[a] ?: 0) >= 2) { out.add(null); continue }
+                if (a != cur) { setup(a); cur = a }
+                val msgs = Frames.messages(Frames.parse(req(a, data, 1500), a.bits29, a.rx).filter { it.id == a.resp })
+                silent[a] = if (msgs.isEmpty()) (silent[a] ?: 0) + 1 else 0
+                out.add(msgs.firstOrNull { m -> m.size >= data.size && m[0] == data[0] + 0x40 && (1 until data.size).all { m[it] == data[it] } })
+            }
+        } finally {
+            runCatching { leave() }
+        }
+        return out
+    }
+
     // ---------- режим адаптера ----------
 
     private fun enter() {

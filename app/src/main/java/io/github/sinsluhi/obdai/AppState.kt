@@ -94,6 +94,10 @@ class AppState private constructor(context: Context) {
     var milOn by mutableStateOf<Boolean?>(null)
     var dtcCount by mutableStateOf<Int?>(null)
     var sensors by mutableStateOf<List<SensorReading>>(emptyList())
+    /** Марочные параметры (OBDb): какая модель базы подошла, что прочитали, почему нечего читать. */
+    var brandModel by mutableStateOf<String?>(null)
+    var brandReadings by mutableStateOf<List<BrandReading>>(emptyList())
+    var brandNote by mutableStateOf<String?>(null)
     var diagnosis by mutableStateOf<Diagnosis?>(null)
     var lastSnapshot by mutableStateOf<CarSnapshot?>(null)
     var battery by mutableStateOf<BatteryReport?>(null)
@@ -683,6 +687,38 @@ class AppState private constructor(context: Context) {
             ui {
                 if (ok) { milOn = false; dtcCount = 0 }
                 onDone(ok)
+            }
+        }
+    }
+
+    /**
+     * Марочные параметры модели из OBDb (пробег с приборки, шины, масло, коробка…). Модель — по VIN и названию машины,
+     * год обязателен: у разных поколений DID разные. Опрос датчиков на время чтения стоит, как при проверке.
+     */
+    fun readBrandParams() {
+        if (busy != null) return
+        runTask(tr("state_task_brand")) {
+            val l = link ?: throw IOException(tr("state_no_link"))
+            val info = VinDecoder.decode(vin).withCar(lastSnapshot?.carHint ?: diagnosis?.car?.ifBlank { null } ?: carName)
+            val bits29 = (l as? Elm327)?.is29Bit ?: false
+            val found = Obdb.forCar(appContext, info.brand, listOfNotNull(info.model, carName, diagnosis?.car).joinToString(" "), info.year, bits29)
+            if (found == null) { ui { brandModel = null; brandReadings = emptyList(); brandNote = tr("state_brand_no_model") }; return@runTask }
+            val (model, cmds) = found
+            val title = "${model.make} ${model.model}" // i18n-ignore: название модели
+            if (cmds.isEmpty()) {
+                ui { brandModel = title; brandReadings = emptyList(); brandNote = tr(if (info.year == null) "state_brand_no_year" else "state_brand_no_gen", info.year ?: "") }
+                return@runTask
+            }
+            pausePolling()
+            val r = try {
+                l.readBrand(cmds) { i, n -> ui { busy = tr("state_brand_progress", i, n) } }
+            } finally { resumePolling() }
+            val got = r.count { it.value != null }
+            addLog(tr("state_log_brand", title, got, r.size))
+            ui {
+                brandModel = title
+                brandReadings = r.filter { it.value != null }
+                brandNote = if (got == 0) tr("state_brand_none") else null
             }
         }
     }

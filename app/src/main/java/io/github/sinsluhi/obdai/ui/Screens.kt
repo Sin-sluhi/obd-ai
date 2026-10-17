@@ -947,6 +947,7 @@ fun SensorsScreen(
                 TrimValue(tr("scr_trim_long"), ltft, high, Modifier.weight(1f))
             }
         }
+        ModelParamsCard(state)
         if (!state.connected) {
             Text(tr("scr_connect_adapter_gauges"), style = Type.body(13, Palette.muted), textAlign = TextAlign.Center, modifier = Modifier.fillMaxWidth())
         }
@@ -1304,6 +1305,8 @@ fun SettingsScreen(
                 }
                 .padding(12.dp)
         )
+        // CC BY-SA 4.0 требует указать источник переработанной базы
+        Text(tr("scr_credits_obdb"), style = Type.body(11, Palette.muted), textAlign = TextAlign.Center, modifier = Modifier.fillMaxWidth())
     }
 }
 

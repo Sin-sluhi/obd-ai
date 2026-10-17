@@ -45,6 +45,8 @@ interface ObdLink {
      * а не CAN ERROR). true — протокол переключён на эту шину, можно искать блоки.
      */
     fun wakeBus(): Boolean = false
+    /** Марочные параметры модели (OBDb): прочитать команды и разобрать сигналы. */
+    fun readBrand(cmds: List<ObdbCommand>, progress: (Int, Int) -> Unit): List<BrandReading> = emptyList()
     fun disconnect()
 }
 
@@ -167,6 +169,31 @@ class DemoLink : ObdLink {
         TestResult(0xA1, 0x0B, 0x24, 0, 0, 900), TestResult(0xA2, 0x0C, 0x24, 0, 0, 900),
         TestResult(0xA3, 0x0C, 0x24, if (cleared) 0 else 12, 0, 900), TestResult(0xA4, 0x0C, 0x24, 0, 0, 900), TestResult(0xA5, 0x0C, 0x24, 0, 0, 900)
     )
+
+    /**
+     * Демо обязано показывать всё: марочные параметры выдуманного Solaris — правдоподобные числа по названию сигнала
+     * (пробег, шины, температуры, напряжения), остальное — середина допустимого диапазона.
+     */
+    override fun readBrand(cmds: List<ObdbCommand>, progress: (Int, Int) -> Unit): List<BrandReading> =
+        cmds.flatMapIndexed { i, c ->
+            progress(i + 1, cmds.size)
+            Thread.sleep(40)
+            c.signals.map { s ->
+                val n = s.name.lowercase()
+                val v = when {
+                    "odometer" in n -> 87_450.0
+                    "tire" in n && "pressure" in n -> if (s.unit == "psi") 33.0 else if (s.unit == "bars") 2.3 else 230.0
+                    "tire" in n && "temp" in n -> 21.0
+                    "oil" in n && "temp" in n -> 88.0
+                    "transmission" in n && "temp" in n || "atf" in n -> 74.0
+                    "temp" in n -> 24.0
+                    s.unit == "volts" -> 14.1
+                    s.unit in listOf("offon", "noyes", "yesno", "onoff") -> 0.0
+                    else -> ((s.min ?: 0.0) + (s.max ?: 100.0).coerceAtMost((s.min ?: 0.0) + 200.0)) / 2
+                }
+                BrandReading(s.group, s.name, v, s.unit)
+            }
+        }
 
     override fun scanModules(brand: String?, known: List<EcuAddr>, progress: (Int, Int) -> Unit): List<ModuleScan> {
         val vin = readVin()
