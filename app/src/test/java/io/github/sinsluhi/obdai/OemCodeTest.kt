@@ -36,7 +36,7 @@ class OemCodeTest {
         assertEquals("P0420", ModuleDecoder.vagCode(16804))
         assertEquals("P0102", ModuleDecoder.vagCode(16486))
         assertEquals("00532", ModuleDecoder.vagCode(532))
-        assertEquals("17964", ModuleDecoder.vagCode(17964))
+        assertEquals("P1556", ModuleDecoder.vagCode(17964))   // 17408+ — заводские P1xxx VAG
         assertTrue(DtcCatalog.isOemHex("00532"))
         assertTrue(DtcCatalog.isOemHex("17964 (история)"))
         assertFalse(DtcCatalog.isOemHex("P0420"))
