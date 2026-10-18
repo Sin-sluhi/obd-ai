@@ -87,11 +87,11 @@ class FramesTest {
         assertTrue(f[0].partial)
         assertEquals(6 + 11 * 7, f[0].data.size)
         assertTrue(Frames.messages(f).isEmpty())                       // без спасения обрезанный ответ не сообщение
+        assertEquals(83, Frames.messages(f, withPartial = true).single().size)   // (83 − 3) / 4 = 20 целых записей
+        // все 20 записей — статусы 40/50 («тест не завершён», ни одного бита неисправности): это не ошибки.
+        // Раньше они шли как «P0010-E7 (история)…», отсюда десятки ложных кодов истории у Audi B8 и Grandeur
         val codes = ModuleDecoder.parseUdsDetailed(Frames.messages(f, withPartial = true))!!
-        assertEquals(20, codes.size)                                   // (83 − 3) / 4 = 20 целых записей, хвост отброшен
-        // запись 00 10 E7 40: код P0010 с байтом типа отказа E7 (VAG), статус 0x40 — история
-        assertEquals("P0010-E7 (история)", codes.first().first)
-        assertEquals("P0010-E8 (история)", codes[1].first)
+        assertEquals(0, codes.size)
         assertEquals(listOf("BUFFER FULL"), Frames.status(raw))
     }
 

@@ -529,7 +529,8 @@ class ScanTest {
     /** n−2 записей истории (статус 0x40, как на Audi) и в конце P0300 активная, P0420 подтверждённая. */
     private fun manyRecords(n: Int): IntArray {
         val out = mutableListOf<Int>()
-        for (i in 0 until n - 2) out += listOf(0x10, 0xE7 + (i % 24), (i / 24), 0x40)
+        // история — бит 5 «была после стирания»; 0x40 («тест не завершён») ошибкой не считается и в список не идёт
+        for (i in 0 until n - 2) out += listOf(0x10, 0xE7 + (i % 24), (i / 24), 0x20)
         out += listOf(0x03, 0x00, 0x00, 0x09)
         out += listOf(0x04, 0x20, 0x00, 0x08)
         return out.toIntArray()

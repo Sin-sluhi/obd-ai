@@ -95,6 +95,17 @@ class ModuleScanner(private val s: ElmSession, private val pause: (Long) -> Unit
         const val FC_DATA_RAW = "300014"
         /** Маски статуса для дочитывания, когда полный ответ `19 02 FF` всё равно не влез: активные, подтверждённые, неподтверждённые. */
         val NARROW_MASKS = listOf(0x01, 0x08, 0x04)
+        /**
+         * Маски для блока, который маску FF не принял (`7F 19 31`, Hyundai 788/79E на Grandeur 2020): от широкой к узкой.
+         * 2F — сейчас, в поездке, неподтверждённые, подтверждённые, история; дальше без истории и только подтверждённые.
+         */
+        val OTHER_MASKS = listOf(0x2F, 0x0D, 0x09, 0x08)
+        /**
+         * Сколько окон слушать ответ после «подожди» (`7F xx 78`). Окно — запрос `3E 80` (TesterPresent без ответа): блок на него
+         * молчит, а адаптер ~1 с (ATST FF) ждёт кадры и принимает отложенный ответ целиком, с управлением потоком.
+         * Коробка Grandeur 2020 отдала ответ через ~2,3 с после повторного запроса; P2*server по ISO 14229 — до 5 с.
+         */
+        const val PENDING_WINDOWS = 6
     }
 
     /**
@@ -596,40 +607,68 @@ class ModuleScanner(private val s: ElmSession, private val pause: (Long) -> Unit
     }
 
     /**
-     * Блок на `19 02 FF` ответил не по UDS (7F 19 xx или не разобрать): сессия и повтор, GMLAN, KWP2000 по CAN.
+     * Блок на `19 02 FF` ответил не по UDS (7F 19 xx или не разобрать) — лестница повторов (шаг 2 плана «логи сами»):
+     * 1) `31` (маска не та) — те же 19 02 с масками [OTHER_MASKS]; 2) отказ «не в той сессии» или сервис спрятан
+     * (`22/7E/7F`, а также `11/12/31` — Grandeur 2020: 708/7F9 отвечали 7F 19 11) — расширенная сессия 10 03 и ещё раз,
+     * потом обратно 10 01; 3) GMLAN; 4) KWP2000 по CAN с сессиями. На любой ступеньке блок может дослать отложенный ответ
+     * `59 02` (коробка Grandeur: ответ на 19 02 FF пришёл во время KWP-запроса и раньше выбрасывался) — его берём.
      * Заголовки уже настроены на блок. null — блок не ответил вовсе.
      */
     private fun readOther(a: EcuAddr, raw0: String, frames0: List<Frame>, brand: String?, oem: Boolean): Pair<ModuleScan, EcuAddr>? {
-        var raw = raw0; var frames = frames0
-        val msgs = Frames.messages(frames)
-        val code = nrc(msgs, 0x19)
-        if (code != null && code !in listOf(0x11, 0x12)) {
-            // не в той сессии / условия не те: открываем расширенную и спрашиваем ещё раз
-            if (code in listOf(0x22, 0x7E, 0x7F)) {
-                val ses = req(a, listOf(0x10, 0x03), 2000)
-                if (Frames.parse(ses, a.bits29, a.rx).any { it.data.firstOrNull() == 0x50 }) {
-                    raw = req(a, DTC, 2500)
-                    frames = Frames.parse(raw, a.bits29, a.rx).filter { it.id == a.resp }
-                    readUds(a, frames, raw, oem, brand)?.let { return it }
+        val raw = raw0; val frames = frames0
+        val code = nrc(Frames.messages(frames), 0x19)
+        fun parse(r: String) = Frames.parse(r, a.bits29, a.rx).filter { it.id == a.resp }
+        fun late(r: String, f: List<Frame>): Pair<ModuleScan, EcuAddr>? =
+            if (udsIn(f)) readUds(a, f, r, oem, brand)?.also { s.log(tr("elm_scan_rung_late", hex(a))) } else null
+
+        // 1. маска FF не принята — те же записи узкой маской
+        if (code == 0x31) {
+            for (mask in OTHER_MASKS) {
+                val request = listOf(0x19, 0x02, mask)
+                val r = req(a, request, 2500)
+                val f = parse(r)
+                val c = nrc(Frames.messages(f), 0x19)
+                if (udsIn(f) || c == 0x78) readUds(a, f, r, oem, brand, request)?.let {
+                    s.log(tr("elm_scan_rung_mask", hex(a), "%02X".format(mask)))
+                    return it
                 }
+                if (c != 0x31) break
             }
         }
-        // GM до Global B: сервиса 19 нет вовсе, память ошибок — GMLAN A9 81 с ответом UUDT на 0x5xx
+        // 2. расширенная сессия и ещё раз
+        if (code != null && code in listOf(0x22, 0x7E, 0x7F, 0x11, 0x12, 0x31)) {
+            val ses = req(a, listOf(0x10, 0x03), 2000)
+            val sf = parse(ses)
+            late(ses, sf)?.let { return it }
+            if (sf.any { it.data.firstOrNull() == 0x50 }) {
+                val r = req(a, DTC, 2500)
+                val f = parse(r)
+                val got = readUds(a, f, r, oem, brand)
+                req(a, listOf(0x10, 0x01), 1500)   // вернуть обычную сессию, не ждать таймаута S3
+                if (got != null) { s.log(tr("elm_scan_rung_session", hex(a))); return got }
+            }
+        }
+        // 3. GM до Global B: сервиса 19 нет вовсе, память ошибок — GMLAN A9 81 с ответом UUDT на 0x5xx
         if (!a.bits29 && a.ext == null && (ModuleMap.isGm(brand) || a.req in 0x240..0x25F) && (code == 0x11 || code == null)) {
             readGmlan(a, brand)?.let { return it }
         }
-        // KWP2000 по CAN: readDiagnosticTroubleCodesByStatus, формы группы: FF FF «все группы» (BMW серий E за шлюзом,
+        // 4. KWP2000 по CAN: readDiagnosticTroubleCodesByStatus, формы группы: FF FF «все группы» (BMW серий E за шлюзом,
         // лог MINI R56 17.10.2026) и FF 00 / 00 FF 00 (VAG, азиаты). Nissan/Renault/Mitsubishi/VAG/Mercedes без своей
         // сессии отвечают 7F 18 22/80 или молчат — тогда открываем её и пробуем ещё раз
         val kwpCmds = if (oem) listOf("1802FFFF", "1802FF00", "1800FF00") else listOf("1802FF00", "1800FF00", "1802FFFF")
         for (session in listOf(null, "10C0", "1092", "1089")) {
             if (session != null) {
                 val ses = req(a, hexBytes(session), 2000)
-                if (Frames.parse(ses, a.bits29, a.rx).none { it.data.firstOrNull() == 0x50 }) continue
+                val sf = parse(ses)
+                late(ses, sf)?.let { return it }
+                if (sf.none { it.data.firstOrNull() == 0x50 }) continue
             }
             for (cmd in kwpCmds) {
-                val k = req(a, hexBytes(cmd), 2500)
-                val kf = Frames.parse(k, a.bits29, a.rx).filter { it.id == a.resp }
+                var k = req(a, hexBytes(cmd), 2500)
+                var kf = parse(k)
+                late(k, kf)?.let { return it }
+                if (nrc(Frames.messages(kf), 0x18) == 0x78) awaitPending(a, 0x18)?.let { k = it.first; kf = it.second }
+                late(k, kf)?.let { return it }
                 val km = Frames.messages(kf)
                 ModuleDecoder.parseKwpDetailed(km, oemHex = oem)?.let { detailed ->
                     s.log("↩ ${hex(a)} KWP: ${k.replace("\r", " | ").take(200)}") // i18n-ignore: журнал
@@ -671,15 +710,19 @@ class ModuleScanner(private val s: ElmSession, private val pause: (Long) -> Unit
      * а активные, подтверждённые и неподтверждённые дочитываем отдельными запросами с узкой маской —
      * их мало, они влезают, и именно они нужны вердикту; неполной может остаться только история.
      */
-    private fun readUds(a: EcuAddr, frames0: List<Frame>, raw0: String, oem: Boolean, brand: String?): Pair<ModuleScan, EcuAddr>? {
+    private fun readUds(a: EcuAddr, frames0: List<Frame>, raw0: String, oem: Boolean, brand: String?, request: List<Int> = DTC): Pair<ModuleScan, EcuAddr>? {
         var frames = frames0; var raw = raw0
-        if (nrc(Frames.messages(frames), 0x19) == 0x78 || frames.any { it.partial }) {
-            // «подожди» или недособранный ответ: длинное окно и ещё раз (клоны до v2.1 сами 78 не дослушивают)
-            Thread.sleep(if (frames.any { it.partial }) 200 else 1000)
+        fun pending() = nrc(Frames.messages(frames), 0x19) == 0x78
+        // ступенька «подожди»: дослушиваем отложенный ответ, а не спрашиваем заново (повтор перезапускает обработку)
+        if (pending()) awaitPending(a, 0x19)?.let { raw = it.first; frames = it.second }
+        if (pending() || frames.any { it.partial }) {
+            // не дождались или ответ недособран: длинное окно и ещё раз (клоны до v2.1 сами 78 не дослушивают)
+            pause(if (frames.any { it.partial }) 200 else 1000)
             s.send("ATST FF")
-            raw = req(a, DTC, 6000)
+            raw = req(a, request, 6000)
             frames = Frames.parse(raw, a.bits29, a.rx).filter { it.id == a.resp }
             s.send("ATST 64")
+            if (pending()) awaitPending(a, 0x19)?.let { raw = it.first; frames = it.second }
         }
         val cut = frames.any { it.partial } && frames.none { !it.partial && it.data.take(2) == listOf(0x59, 0x02) }
         var detailed = ModuleDecoder.parseUdsDetailed(Frames.messages(frames, withPartial = cut), oemHex = oem) ?: return null
@@ -697,6 +740,35 @@ class ModuleScanner(private val s: ElmSession, private val pause: (Long) -> Unit
         val e = a.copy(via = if (oem) "BMW" else "UDS")
         return module(e, brand, detailed, identity(a), truncated = cut) to e
     }
+
+    /**
+     * Блок ответил «подожди» (`7F <сервис> 78`): слушаем окнами `3E 80`, пока не придёт настоящий ответ на [service]
+     * (положительный, другой отказ или начало многокадрового). Клон ELM v1.5 после 78 перестаёт слушать, а блок отвечает
+     * позже — на Grandeur 2020 ответ коробки (123 байта) пришёл во время следующего запроса. null — не дождались.
+     */
+    private fun awaitPending(a: EcuAddr, service: Int): Pair<String, List<Frame>>? {
+        s.send("ATST FF")
+        try {
+            repeat(PENDING_WINDOWS) { w ->
+                val raw = req(a, listOf(0x3E, 0x80), 6000)
+                val frames = Frames.parse(raw, a.bits29, a.rx).filter { it.id == a.resp }
+                val msgs = Frames.messages(frames)
+                val code = nrc(msgs, service)
+                if (frames.any { it.partial } || msgs.any { it.firstOrNull() == service + 0x40 } || code != null && code != 0x78) {
+                    s.log(tr("elm_scan_pending_caught", hex(a), w + 1))
+                    return raw to frames
+                }
+            }
+        } finally {
+            s.send("ATST 64")
+        }
+        s.log(tr("elm_scan_pending_lost", hex(a)))
+        return null
+    }
+
+    /** В ответе есть память ошибок UDS (`59 02`) — бывает и в ответ на другой запрос, если блок досылает отложенный. */
+    private fun udsIn(frames: List<Frame>): Boolean =
+        Frames.messages(frames, withPartial = true).any { it.size >= 2 && it[0] == 0x59 && it[1] == 0x02 }
 
     private fun module(e: EcuAddr, brand: String?, detailed: List<Pair<String, Int>>, id: Pair<String?, String?>, truncated: Boolean = false): ModuleScan {
         val name = if (e.ext != null) ModuleMap.bmwName(e.ext) else ModuleMap.name(brand, e)

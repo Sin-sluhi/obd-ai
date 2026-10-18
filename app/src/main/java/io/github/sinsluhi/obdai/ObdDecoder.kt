@@ -219,6 +219,10 @@ object ModuleDecoder {
             val data = msg.drop(i + 3)
             for (g in data.chunked(4)) {
                 if (fillerRecord(g)) continue
+                // запись без битов неисправности — не ошибка, а «тест ещё не завершён» (биты 4 и 6) или пустой статус:
+                // на маску FF блоки отдают весь свой список кодов. Grandeur 2020 (лог 17.10.2026): из 216 записей
+                // таких 208, у коробки — все 30; раньше они шли в «историю» и раздували отчёт до 46 тыс. токенов
+                if (g.size == 4 && !UdsStatus.isFault(g[3])) continue
                 val base = ObdDecoder.dtc(g[0], g[1])
                 val code = when {
                     oemHex -> "%02X%02X%02X".format(g[0], g[1], g[2])
