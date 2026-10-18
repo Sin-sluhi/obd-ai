@@ -23,6 +23,10 @@ class OpenCodesTest {
     /** Стандартный редкий SAE и заводской P1 марки — из Wal33D (MIT); P1 без марки не угадываем. */
     @Test fun saeAndBrandTitlesFromWal33d() {
         assertNotNull(DtcCatalog.openTitle("B0004"))
+        // SAE-коды Wal33D переведены по-русски (tools/dtc/open/ru/sae_*.tsv)
+        assertEquals("Подушка коленей водителя: управление срабатыванием", DtcCatalog.openTitle("B0004"))
+        assertEquals("Датчик скорости левого переднего колеса A: низкий уровень сигнала в цепи", DtcCatalog.openTitle("C0502"))
+        assertEquals("Нет связи: блок кондиционера", DtcCatalog.openTitle("U010F"))
         // P1577 двигателя S8 (Launch): клапан правой опоры двигателя
         assertEquals("Клапан правой опоры двигателя: обрыв", DtcCatalog.openTitle("P1577", "vag"))
         assertNull(DtcCatalog.openTitle("P1577"))
