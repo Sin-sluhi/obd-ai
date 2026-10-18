@@ -176,7 +176,10 @@ class RetryLadderTest {
         val hints = listOf(EcuAddr(0x780, 0x788, rung = "mask:0D"))
         val r = ModuleScanner(car, pause = {}).scan("Hyundai", emptyList(), hints) { _, _ -> }
         assertEquals(listOf("U0101"), r.modules.first { it.addr == 0x780 }.codes.map { it.substringBefore(' ') })
-        assertFalse(car.sent.contains("1902FF"))
+        // блоку 780 (команды после ATSH 780 до следующей ATSH) маска FF не уходила; 1902FF зонда шлюза BMW — не ему
+        val to780 = car.sent.withIndex().filter { (i, _) -> car.sent.subList(0, i + 1).lastOrNull { it.startsWith("ATSH") } == "ATSH 780" }.map { it.value }
+        assertTrue(to780.contains("19020D"))
+        assertFalse(to780.contains("1902FF"))
         assertEquals("mask:0D", r.ecus.first { it.req == 0x780 }.rung)
     }
 }
