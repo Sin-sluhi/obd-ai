@@ -120,6 +120,8 @@ class RetryLadderTest {
         })
         val r = ModuleScanner(car, pause = {}).scan("Hyundai", emptyList()) { _, _ -> }
         assertEquals("?", r.modules.first { it.addr == 0x700 }.via)
-        assertTrue(car.sent.count { it == "1902FF" } <= 3)
+        // расширенная сессия — одна попытка, и после неё обычная сессия возвращена
+        assertEquals(1, car.sent.count { it == "1003" })
+        assertTrue(car.sent.indexOf("1001") > car.sent.indexOf("1003"))
     }
 }
