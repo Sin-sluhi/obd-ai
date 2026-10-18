@@ -62,6 +62,7 @@
   "state_step_modules_search_n": "Ищу блоки машины… найдено: {0}",
   "state_step_modules_read": "Читаю блоки: {0} из {1}",
   "state_step_modules_read_name": "Читаю «{0}»: {1} из {2}",
+  "state_log_profile": "Профиль модели с сервера: подсказки для блоков — {0}",
   "state_log_modules_failed": "Опрос блоков не удался: {0}",
   "state_log_modules": "Ответило блоков: {0}, с ошибками: {1}",
   "state_step_compare": "Сверяю с прошлыми проверками",

@@ -34,10 +34,12 @@ fun ElmSession.send(cmd: String): String = send(cmd, 3000)
 /**
  * Адрес блока так, как к нему обращаться через ELM327.
  * [req]/[resp] — CAN ID запроса и ответа (11 бит — 0x7xx, 29 бит — полный 0x18DAxxF1 / 0x18DAF1xx),
- * [ext] — байт расширенной адресации (шлюз BMW 0x6F1: адрес блока первым байтом данных), [via] — чем прочитали.
+ * [ext] — байт расширенной адресации (шлюз BMW 0x6F1: адрес блока первым байтом данных), [via] — чем прочитали,
+ * [rung] — какая ступенька лестницы повторов сработала («mask:0D», «session», «wait», «late», «deep»): с ней этот блок
+ * в следующий раз спрашивается сразу правильно (кеш машины, а через сервер — профиль модели).
  */
 data class EcuAddr(val req: Int, val resp: Int, val bits29: Boolean = false, val ext: Int? = null, val via: String = "",
-                   val extRx: Int = Frames.TESTER) {
+                   val extRx: Int = Frames.TESTER, val rung: String = "") {
     /** Байт, который стоит первым в ответе при расширенной адресации и снимается: BMW — адрес тестера F1, Toyota — подадрес. */
     val rx: Int? get() = if (ext != null) extRx else null
 
@@ -50,10 +52,11 @@ data class EcuAddr(val req: Int, val resp: Int, val bits29: Boolean = false, val
 
     fun toJson(): JSONObject = JSONObject().put("req", req).put("resp", resp).put("b29", bits29).put("via", via)
         .also { if (ext != null) { it.put("ext", ext); it.put("rx", extRx) } }
+        .also { if (rung.isNotEmpty()) it.put("rung", rung) }
 
     companion object {
         fun fromJson(o: JSONObject) = EcuAddr(o.getInt("req"), o.getInt("resp"), o.optBoolean("b29"),
-            if (o.has("ext")) o.getInt("ext") else null, o.optString("via"), o.optInt("rx", Frames.TESTER))
+            if (o.has("ext")) o.getInt("ext") else null, o.optString("via"), o.optInt("rx", Frames.TESTER), o.optString("rung"))
     }
 }
 
@@ -90,6 +93,9 @@ class ModuleScanner(private val s: ElmSession, private val pause: (Long) -> Unit
     private var taUsed = false         // адрес тестера менялся (Toyota) — вернуть F1
     private var rawGateway = false     // адаптер не умеет ATCEA: блоки за шлюзом опрашиваем сырыми кадрами (ATCAF0)
     private var current = ""           // имя блока, который сейчас читается — для живой ленты
+    private var lastRung = ""          // какая ступенька сработала на текущем блоке (EcuAddr.rung)
+    /** Профиль модели с сервера: блоки и способы, которые сработали у владельцев такой же машины. */
+    private var hints: List<EcuAddr> = emptyList()
     private val DTC = listOf(0x19, 0x02, 0xFF)
 
     companion object {
@@ -120,7 +126,8 @@ class ModuleScanner(private val s: ElmSession, private val pause: (Long) -> Unit
      * @param brand марка из VIN (для имён и профилей шлюзов), @param known блоки из прошлого поиска по этой машине.
      * Полный перебор, если известных нет, или из них ответила меньше половины (прошлый поиск шёл при спящих блоках).
      */
-    fun scan(brand: String?, known: List<EcuAddr>, progress: (Int, Int) -> Unit): Result {
+    fun scan(brand: String?, known: List<EcuAddr>, hints: List<EcuAddr> = emptyList(), progress: (Int, Int) -> Unit): Result {
+        this.hints = hints
         if (!s.isCan) {
             // K-line: KWP2000 по физическим адресам (Лада, старые азиаты и европейцы)
             if (s.protocolNo in 4..5) return scanKline(brand, progress)
@@ -172,6 +179,13 @@ class ModuleScanner(private val s: ElmSession, private val pause: (Long) -> Unit
             // 0x200 у других марок обычный рабочий ID, лишний кадр туда слать незачем.
             val vag = ModuleMap.isVag(brand) || (brand == null && !s.is29Bit && found.size <= 3 && tp20Probe())
             if (!s.is29Bit && vag) sweepTp20(progress, found, readEngine = brand == null)
+            // второй круг — блоки «отвечает, память не отдаёт» дочитываем в этой же проверке (до 4 штук, медленно)
+            val unread = found.entries.filter { it.value.via == "?" }.mapNotNull { e -> addrs[e.key]?.let { e.key to it } }.take(4)
+            unread.forEachIndexed { i, (key, a) ->
+                s.stage(true, ModuleMap.name(brand, a))
+                progress(i + 1, unread.size)
+                deepRead(a, brand)?.let { (m, e) -> found[key] = m; addrs[key] = e }
+            }
         } finally {
             runCatching { leave() }
         }
@@ -609,13 +623,66 @@ class ModuleScanner(private val s: ElmSession, private val pause: (Long) -> Unit
     /** Настроить заголовки на блок и прочитать память ошибок: UDS, потом KWP. null — блок не ответил. */
     private fun readEcu(a: EcuAddr, brand: String?): Pair<ModuleScan, EcuAddr>? {
         current = if (a.ext != null) ModuleMap.bmwName(a.ext) else ModuleMap.name(brand, a)
+        lastRung = ""
         setup(a)
         s.send("ATST 64")
+        val oem = a.ext != null || ModuleMap.isBmw(brand)
+        // способ из прошлого раза (кеш машины или профиль модели с сервера): сразу им, без лишних кругов
+        // формат: «mask:0D» — своя маска, «session» — расширенная сессия, «session:08» — сессия и маска.
+        // Своя подсказка (кеш этой машины) важнее профиля модели с сервера
+        val rung = a.rung.ifEmpty { hints.firstOrNull { it.req == a.req && it.ext == a.ext && it.bits29 == a.bits29 }?.rung.orEmpty() }
+        val sess = rung.startsWith("session")
+        val mask = rung.substringAfter(':', "").toIntOrNull(16)
+        if (sess || mask != null) {
+            val request = mask?.let { listOf(0x19, 0x02, it) } ?: DTC
+            if (sess) req(a, listOf(0x10, 0x03), 2000)
+            val r = req(a, request, 2500)
+            val got = readUds(a, Frames.parse(r, a.bits29, a.rx).filter { it.id == a.resp }, r, oem, brand, request)
+            if (sess) req(a, listOf(0x10, 0x01), 1500)
+            if (got != null) return got.first to got.second.copy(rung = rung)
+        }
         val raw = req(a, DTC, 2500)
         val frames = Frames.parse(raw, a.bits29, a.rx).filter { it.id == a.resp }
+        val got = readUds(a, frames, raw, oem, brand) ?: readOther(a, raw, frames, brand, oem)
+        return got?.let { it.first to it.second.copy(rung = lastRung) }
+    }
+
+    /**
+     * Второй круг для блока, который в первом ответил, но память не отдал («?»): пауза, длинное окно и вдвое больше
+     * окон дослушивания, затем все маски в расширенной сессии. Медленно, но внутри той же проверки —
+     * человеку не нужно возвращаться, чтобы «дочитать».
+     */
+    private fun deepRead(a: EcuAddr, brand: String?): Pair<ModuleScan, EcuAddr>? {
+        current = if (a.ext != null) ModuleMap.bmwName(a.ext) else ModuleMap.name(brand, a)
+        s.event("wait", tr("live_module_deep", current))
         val oem = a.ext != null || ModuleMap.isBmw(brand)
-        readUds(a, frames, raw, oem, brand)?.let { return it }
-        return readOther(a, raw, frames, brand, oem)
+        pause(1500)
+        setup(a)
+        s.send("ATST FF")
+        try {
+            val raw = req(a, DTC, 6000)
+            var frames = Frames.parse(raw, a.bits29, a.rx).filter { it.id == a.resp }
+            var r = raw
+            if (nrc(Frames.messages(frames), 0x19) == 0x78) awaitPending(a, 0x19, PENDING_WINDOWS * 2)?.let { r = it.first; frames = it.second }
+            if (udsIn(frames)) readUds(a, frames, r, oem, brand)?.let { return it.first to it.second.copy(rung = "deep") }
+            val ses = Frames.parse(req(a, listOf(0x10, 0x03), 2000), a.bits29, a.rx).any { it.id == a.resp && it.data.firstOrNull() == 0x50 }
+            try {
+                for (mask in (listOf(0xFF) + OTHER_MASKS + NARROW_MASKS).distinct()) {
+                    val request = listOf(0x19, 0x02, mask)
+                    val k = req(a, request, 4000)
+                    val f = Frames.parse(k, a.bits29, a.rx).filter { it.id == a.resp }
+                    if (udsIn(f) || nrc(Frames.messages(f), 0x19) == 0x78) readUds(a, f, k, oem, brand, request)?.let {
+                        s.log(tr("elm_scan_rung_deep", hex(a), "%02X".format(mask)))
+                        return it.first to it.second.copy(rung = (if (ses) "session:%02X" else "mask:%02X").format(mask))
+                    }
+                }
+            } finally {
+                if (ses) req(a, listOf(0x10, 0x01), 1500)
+            }
+        } finally {
+            s.send("ATST 64")
+        }
+        return null
     }
 
     /**
@@ -631,7 +698,7 @@ class ModuleScanner(private val s: ElmSession, private val pause: (Long) -> Unit
         val code = nrc(Frames.messages(frames), 0x19)
         fun parse(r: String) = Frames.parse(r, a.bits29, a.rx).filter { it.id == a.resp }
         fun late(r: String, f: List<Frame>): Pair<ModuleScan, EcuAddr>? =
-            if (udsIn(f)) readUds(a, f, r, oem, brand)?.also { s.log(tr("elm_scan_rung_late", hex(a))) } else null
+            if (udsIn(f)) readUds(a, f, r, oem, brand)?.also { s.log(tr("elm_scan_rung_late", hex(a))); lastRung = "late" } else null
 
         // 1. маска FF не принята — те же записи узкой маской
         if (code == 0x31) {
@@ -642,6 +709,7 @@ class ModuleScanner(private val s: ElmSession, private val pause: (Long) -> Unit
                 val c = nrc(Frames.messages(f), 0x19)
                 if (udsIn(f) || c == 0x78) readUds(a, f, r, oem, brand, request)?.let {
                     s.log(tr("elm_scan_rung_mask", hex(a), "%02X".format(mask)))
+                    lastRung = "mask:%02X".format(mask)
                     return it
                 }
                 if (c != 0x31) break
@@ -657,7 +725,7 @@ class ModuleScanner(private val s: ElmSession, private val pause: (Long) -> Unit
                 val f = parse(r)
                 val got = readUds(a, f, r, oem, brand)
                 req(a, listOf(0x10, 0x01), 1500)   // вернуть обычную сессию, не ждать таймаута S3
-                if (got != null) { s.log(tr("elm_scan_rung_session", hex(a))); return got }
+                if (got != null) { s.log(tr("elm_scan_rung_session", hex(a))); lastRung = "session"; return got }
             }
         }
         // 3. GM до Global B: сервиса 19 нет вовсе, память ошибок — GMLAN A9 81 с ответом UUDT на 0x5xx
@@ -759,17 +827,18 @@ class ModuleScanner(private val s: ElmSession, private val pause: (Long) -> Unit
      * (положительный, другой отказ или начало многокадрового). Клон ELM v1.5 после 78 перестаёт слушать, а блок отвечает
      * позже — на Grandeur 2020 ответ коробки (123 байта) пришёл во время следующего запроса. null — не дождались.
      */
-    private fun awaitPending(a: EcuAddr, service: Int): Pair<String, List<Frame>>? {
+    private fun awaitPending(a: EcuAddr, service: Int, windows: Int = PENDING_WINDOWS): Pair<String, List<Frame>>? {
         s.event("wait", tr("live_module_wait", current.ifBlank { hex(a) }))
         s.send("ATST FF")
         try {
-            repeat(PENDING_WINDOWS) { w ->
+            repeat(windows) { w ->
                 val raw = req(a, listOf(0x3E, 0x80), 6000)
                 val frames = Frames.parse(raw, a.bits29, a.rx).filter { it.id == a.resp }
                 val msgs = Frames.messages(frames)
                 val code = nrc(msgs, service)
                 if (frames.any { it.partial } || msgs.any { it.firstOrNull() == service + 0x40 } || code != null && code != 0x78) {
                     s.log(tr("elm_scan_pending_caught", hex(a), w + 1))
+                    if (lastRung.isEmpty()) lastRung = "wait"
                     return raw to frames
                 }
             }

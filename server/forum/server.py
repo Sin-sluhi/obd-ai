@@ -222,6 +222,9 @@ class Handler(BaseHTTPRequestHandler):
             return logs.handle_get(self, _db, _lock, u.path, q)
         if u.path.startswith("/api/admin/dev"):
             return dev.handle_admin_get(self, _db, _lock, u.path, q)
+        if u.path == "/api/profile":
+            code, obj = logs.profile(_db, _lock, q)
+            return self._json(code, obj)
         if u.path == "/api/dev/messages":
             code, obj = dev.messages(_db, _lock, q)
             return self._json(code, obj)

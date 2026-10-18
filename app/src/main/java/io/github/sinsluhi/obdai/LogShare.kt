@@ -38,6 +38,7 @@ object LogShare {
         val codes: Int = 0,
         val busOnly: Boolean = false,
         val durationMs: Long = 0,
+        val ecus: List<EcuAddr> = emptyList(),   // блоки и сработавшие ступеньки — из них сервер собирает профиль модели
     )
 
     /** Готовое тело запроса: метаданные + сжатый текст. Чистая функция — проверяется на стенде. */
@@ -63,7 +64,8 @@ object LogShare {
                 .put("brand", meta.brand).put("model", meta.model).put("year", meta.year ?: 0)
                 .put("protocol", meta.protocol).put("adapter", meta.adapter)
                 .put("modules", meta.modules).put("codes", meta.codes).put("busOnly", meta.busOnly)
-                .put("durationMs", meta.durationMs))
+                .put("durationMs", meta.durationMs)
+                .put("ecus", org.json.JSONArray().also { a -> meta.ecus.forEach { a.put(it.toJson()) } }))
             .put("gz", Base64.getEncoder().encodeToString(gz))
     }
 

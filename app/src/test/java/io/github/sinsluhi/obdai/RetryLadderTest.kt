@@ -120,8 +120,63 @@ class RetryLadderTest {
         })
         val r = ModuleScanner(car, pause = {}).scan("Hyundai", emptyList()) { _, _ -> }
         assertEquals("?", r.modules.first { it.addr == 0x700 }.via)
-        // расширенная сессия — одна попытка, и после неё обычная сессия возвращена
-        assertEquals(1, car.sent.count { it == "1003" })
-        assertTrue(car.sent.indexOf("1001") > car.sent.indexOf("1003"))
+        // расширенная сессия — в первом круге и во втором, и после каждой обычная сессия возвращена
+        assertEquals(2, car.sent.count { it == "1003" })
+        assertTrue(car.sent.lastIndexOf("1001") > car.sent.lastIndexOf("1003"))
+    }
+
+    /** Способ, которым блок прочитали, запоминается в адресе (кеш машины): в следующий раз — сразу им, без FF. */
+    @Test fun rememberedRungUsedNextTime() {
+        val car = ScriptedCar()
+        car.ecus += ScriptedCar.Ecu(0x780, 0x788, handler = { req ->
+            if (req.size >= 3 && req[0] == 0x19 && req[1] == 0x02) {
+                if (req[2] and 0xF0 != 0) listOf(0x7F, 0x19, 0x31) else listOf(0x59, 0x02, req[2], 0xC1, 0x01, 0x00, 0x09)
+            } else if (req[0] == 0x18) listOf(0x7F, 0x18, 0x11) else Replies.uds()(req)
+        })
+        val first = ModuleScanner(car, pause = {}).scan("Hyundai", emptyList()) { _, _ -> }
+        val addr = first.ecus.first { it.req == 0x780 }
+        assertEquals("mask:0D", addr.rung)
+        assertEquals(addr, EcuCache.fromJson(EcuCache(first.ecus, 1L).toJson())!!.ecus.first { it.req == 0x780 })
+        car.sent.clear()
+        val second = ModuleScanner(car, pause = {}).scan("Hyundai", first.ecus) { _, _ -> }
+        assertEquals(listOf("U0101"), second.modules.first { it.addr == 0x780 }.codes.map { it.substringBefore(' ') })
+        assertFalse(car.sent.contains("1902FF"))
+        assertTrue(car.sent.contains("19020D"))
+    }
+
+    /** Блок отдаёт память только в расширенной сессии и только узкой маской 08: первый круг — «?», второй — прочитан. */
+    @Test fun deepPassReadsStubbornBlock() {
+        var extended = false
+        val car = ScriptedCar()
+        car.ecus += ScriptedCar.Ecu(0x7F1, 0x7F9, handler = { req ->
+            when {
+                req[0] == 0x10 -> { extended = req.getOrNull(1) == 0x03; listOf(0x50, req[1], 0x00, 0x32, 0x01, 0xF4) }
+                req[0] == 0x19 && !extended -> listOf(0x7F, 0x19, 0x11)
+                req[0] == 0x19 && req.getOrNull(2) == 0x08 -> listOf(0x59, 0x02, 0x08, 0x96, 0x02, 0x00, 0x08)
+                req[0] == 0x19 -> listOf(0x7F, 0x19, 0x31)
+                else -> listOf(0x7F, req[0], 0x11)
+            }
+        })
+        val r = ModuleScanner(car, pause = {}).scan("Hyundai", emptyList()) { _, _ -> }
+        val m = r.modules.first { it.addr == 0x7F1 }
+        assertEquals(listOf("B1602"), m.codes.map { it.substringBefore(' ') })
+        assertEquals("session:08", r.ecus.first { it.req == 0x7F1 }.rung)
+        assertFalse(extended)
+        assertTrue(car.logs.any { it.contains("elm_scan_rung_deep") || it.contains("втором круге") })
+    }
+
+    /** Профиль модели с сервера: блок 780 у владельцев такой же машины читался маской 0D — спрашиваем сразу ею. */
+    @Test fun serverProfileHintUsedOnFirstCheck() {
+        val car = ScriptedCar()
+        car.ecus += ScriptedCar.Ecu(0x780, 0x788, handler = { req ->
+            if (req.size >= 3 && req[0] == 0x19 && req[1] == 0x02) {
+                if (req[2] and 0xF0 != 0) listOf(0x7F, 0x19, 0x31) else listOf(0x59, 0x02, req[2], 0xC1, 0x01, 0x00, 0x09)
+            } else if (req[0] == 0x18) listOf(0x7F, 0x18, 0x11) else Replies.uds()(req)
+        })
+        val hints = listOf(EcuAddr(0x780, 0x788, rung = "mask:0D"))
+        val r = ModuleScanner(car, pause = {}).scan("Hyundai", emptyList(), hints) { _, _ -> }
+        assertEquals(listOf("U0101"), r.modules.first { it.addr == 0x780 }.codes.map { it.substringBefore(' ') })
+        assertFalse(car.sent.contains("1902FF"))
+        assertEquals("mask:0D", r.ecus.first { it.req == 0x780 }.rung)
     }
 }

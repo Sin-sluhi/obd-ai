@@ -572,6 +572,7 @@ class AppState private constructor(context: Context) {
         var modules = 0
         var codes = 0
         var demo = false
+        var ecus: List<EcuAddr> = emptyList()
     }
     @Volatile private var logMark: Long? = null
     @Volatile private var logStart: Long? = null
@@ -587,7 +588,7 @@ class AppState private constructor(context: Context) {
                 brand = info.brand.orEmpty(), model = info.model ?: rec.title, year = info.year,
                 protocol = protocol, adapter = listOf(adapterName, adapterInfo.version).filter { it.isNotBlank() }.distinct().joinToString(" · "),
                 modules = rec.modules, codes = rec.codes, busOnly = rec.busOnly,
-                durationMs = System.currentTimeMillis() - rec.t0)
+                durationMs = System.currentTimeMillis() - rec.t0, ecus = rec.ecus)
             LogShare.enqueue(appContext.filesDir, LogShare.payload(prefs.logInstall, BuildConfig.VERSION_NAME, meta, trace, journal))
         }.onFailure { Trace.note("лог не сохранён: ${it.message}") } // i18n-ignore: лог
         Thread {
@@ -671,6 +672,14 @@ class AppState private constructor(context: Context) {
             val onlineTitle = if (v != null && decodedVin.model == null) prefs.vinOnline(v)?.ifBlank { null } else null
             rec.title = onlineTitle ?: decodedVin.title()
             ui { checkCar = decodedVin }
+            // профиль модели с сервера (что сработало у владельцев такой же машины) — в фоне, пока читаются датчики
+            val profileUrl = forumUrl
+            val profileInfo = decodedVin
+            val profileModel = profileInfo.model ?: rec.title
+            var profile: List<EcuAddr> = emptyList()
+            val profileThread = Thread {
+                profile = runCatching { ModelProfile.fetch(profileUrl, profileInfo.brand.orEmpty(), profileModel, profileInfo.year) }.getOrDefault(emptyList())
+            }.apply { isDaemon = true; start() }
             liveEvent("car", rec.title.ifBlank { null }?.let { tr("live_car", it) } ?: tr("live_vin_none"))
             val switched = runCatching { noticeCar(v, onlineTitle ?: decodedVin.title()) }.getOrDefault(false)
             if (v != null && decodedVin.model == null && prefs.vinOnline(v) == null) Thread {
@@ -711,7 +720,9 @@ class AppState private constructor(context: Context) {
             val knownEcus = EcuCache.fromJson(prefs.ecus)?.takeIf { it.fresh }?.ecus.orEmpty()
             val modules = runCatching {
                 scanReading = l is DemoLink; scanName = null
-                l.scanModules(brand, knownEcus) { i, n ->
+                profileThread.join(2000)
+                if (profile.isNotEmpty()) addLog(tr("state_log_profile", profile.size))
+                l.scanModules(brand, knownEcus, profile) { i, n ->
                     ui {
                         if (l is DemoLink) scanFound = i
                         // поиск — сколько блоков уже нашлось (адресов перебора сотни, это не блоки); чтение — какой блок из скольких
@@ -726,6 +737,7 @@ class AppState private constructor(context: Context) {
             }.onFailure { addLog(tr("state_log_modules_failed", it.message)) }.getOrDefault(emptyList())
             ui { scanning = false; scanFound = modules.size }
             rec.modules = modules.size
+            rec.ecus = l.foundEcus
             // кешируем только убедительный полный поиск: при спящих блоках список был бы неполным на месяц
             if (l.lastScanFull && l.foundEcus.size >= 3) prefs.ecus = EcuCache(l.foundEcus, System.currentTimeMillis()).toJson()
             addLog(tr("state_log_modules", modules.size, modules.count { it.codes.isNotEmpty() }))

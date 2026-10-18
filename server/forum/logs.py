@@ -12,6 +12,11 @@
   GET  /api/admin/logs/models                → {"models":[{"brand","model","year","n","bad","flags":{…},"last"}]}
   GET  /api/admin/logs/file?id=              → текст лога (text/plain)
 
+Профиль модели (шаг 3 плана, 18.10.2026): в meta лога приходит список блоков и сработавших ступенек лестницы повторов
+(`ecus`: req, resp, b29, ext, via, rung). Следующая машина той же модели перед поиском блоков спрашивает
+  GET /api/profile?brand=&model=&year=                    → {"ecus":[{req,resp,b29,ext,rung,n}]}
+и спрашивает эти блоки сразу правильным способом. Только подсказки чтения, никаких команд записи.
+
 Лимиты: 400 КБ сжатого текста на лог, 40 логов в сутки с одной установки, 3000 логов всего (старые удаляются).
 """
 import base64
@@ -46,6 +51,10 @@ def init_db(db):
         modules INTEGER NOT NULL, codes INTEGER NOT NULL, bus_only INTEGER NOT NULL, duration INTEGER NOT NULL,
         size INTEGER NOT NULL, flags TEXT NOT NULL, counts TEXT NOT NULL)""")
     db.execute("CREATE INDEX IF NOT EXISTS idx_logs_model ON logs(brand, model, year)")
+    try:
+        db.execute("ALTER TABLE logs ADD COLUMN ecus TEXT NOT NULL DEFAULT '[]'")
+    except Exception:
+        pass   # колонка уже есть
 
 
 # ---- разбор: где опрос споткнулся ----
@@ -199,6 +208,12 @@ def put(db, lock, b):
     vin = _clean(meta.get("vin"), 17)
     if len(vin) == 17:
         vin = vin[:11] + "XXXXXX"       # на случай старой версии приложения: серийный номер не храним
+    ecus = []
+    for e in (meta.get("ecus") or [])[:80]:
+        if isinstance(e, dict) and isinstance(e.get("req"), int) and isinstance(e.get("resp"), int):
+            ecus.append({"req": e["req"], "resp": e["resp"], "b29": bool(e.get("b29")),
+                         "ext": e.get("ext") if isinstance(e.get("ext"), int) else None,
+                         "via": _clean(e.get("via"), 8), "rung": _clean(e.get("rung"), 16)})
     row = (int(now), install, _clean(b.get("app"), 32), _clean(meta.get("kind"), 16) or "check",
            1 if meta.get("ok") else 0, _clean(meta.get("error"), 300), vin, _clean(meta.get("brand"), 40),
            _clean(meta.get("model"), 60), int(meta.get("year") or 0), _clean(meta.get("protocol"), 60),
@@ -207,7 +222,8 @@ def put(db, lock, b):
            json.dumps(flags, ensure_ascii=False), json.dumps(counts, ensure_ascii=False))
     with lock:
         cur = db.execute("""INSERT INTO logs(time, install, app, kind, ok, error, vin, brand, model, year, protocol,
-            adapter, modules, codes, bus_only, duration, size, flags, counts) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""", row)
+            adapter, modules, codes, bus_only, duration, size, flags, counts, ecus) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
+                         row + (json.dumps(ecus),))
         lid = cur.lastrowid
         old = db.execute("SELECT id FROM logs ORDER BY id DESC LIMIT -1 OFFSET ?", (KEEP,)).fetchall()
         for (oid,) in old:
@@ -291,3 +307,35 @@ def handle_get(h, db, lock, path, q):
         h.wfile.write(data)
         return None
     return h._json(404, {"error": "not found"})
+
+
+RUNG = re.compile(r"^(mask:[0-9A-F]{2}|session(:[0-9A-F]{2})?|wait|late|deep)$")
+
+
+def profile(db, lock, q):
+    """Подсказки по модели: для каждого блока — ступенька, которая чаще всего срабатывала у владельцев этой модели."""
+    brand = _clean(q.get("brand"), 40)
+    model = _clean(q.get("model"), 60)
+    try:
+        year = int(q.get("year") or 0)
+    except ValueError:
+        year = 0
+    if not brand:
+        return 400, {"error": "brand"}
+    with lock:
+        rows = db.execute("""SELECT ecus FROM logs WHERE brand=? AND model=? AND (year=? OR ?=0 OR year=0)
+                             ORDER BY id DESC LIMIT 300""", (brand, model, year, year)).fetchall()
+    votes = {}
+    for (raw,) in rows:
+        for e in json.loads(raw or "[]"):
+            rung = e.get("rung") or ""
+            if e.get("via") == "?" or not RUNG.match(rung) or rung in ("wait", "late", "deep"):
+                continue   # подсказка — только то, что меняет первый запрос: маска и/или сессия
+            key = (e["req"], e["resp"], bool(e.get("b29")), e.get("ext"))
+            votes.setdefault(key, {}).setdefault(rung, 0)
+            votes[key][rung] += 1
+    out = []
+    for (req, resp, b29, ext), rv in votes.items():
+        rung, n = max(rv.items(), key=lambda kv: kv[1])
+        out.append({"req": req, "resp": resp, "b29": b29, "ext": ext, "rung": rung, "n": n})
+    return 200, {"ecus": out}

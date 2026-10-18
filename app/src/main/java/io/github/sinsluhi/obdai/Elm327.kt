@@ -381,8 +381,8 @@ class Elm327(private val logger: (String) -> Unit) : ObdLink, ElmSession {
         return true
     }
 
-    override fun scanModules(brand: String?, known: List<EcuAddr>, progress: (Int, Int) -> Unit): List<ModuleScan> {
-        val r = ModuleScanner(this).scan(brand, known, progress)
+    override fun scanModules(brand: String?, known: List<EcuAddr>, hints: List<EcuAddr>, progress: (Int, Int) -> Unit): List<ModuleScan> {
+        val r = ModuleScanner(this).scan(brand, known, hints, progress)
         foundEcus = r.ecus
         lastScanFull = r.fullSweep
         return r.modules

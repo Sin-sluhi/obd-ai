@@ -35,7 +35,7 @@ interface ObdLink {
      * Поиск и опрос блоков; known — адреса из прошлого поиска по этой машине (пусто — полный перебор шины),
      * progress получает «сколько из скольких». После вызова [foundEcus] — что нашли, [lastScanFull] — был ли полный перебор.
      */
-    fun scanModules(brand: String?, known: List<EcuAddr> = emptyList(), progress: (Int, Int) -> Unit): List<ModuleScan>
+    fun scanModules(brand: String?, known: List<EcuAddr> = emptyList(), hints: List<EcuAddr> = emptyList(), progress: (Int, Int) -> Unit): List<ModuleScan>
     val foundEcus: List<EcuAddr> get() = emptyList()
     val lastScanFull: Boolean get() = false
     /** Стоп-кадр режима 02: условия, при которых записана ошибка. null — кадра нет или машина не отдаёт. */
@@ -195,7 +195,7 @@ class DemoLink : ObdLink {
             }
         }
 
-    override fun scanModules(brand: String?, known: List<EcuAddr>, progress: (Int, Int) -> Unit): List<ModuleScan> {
+    override fun scanModules(brand: String?, known: List<EcuAddr>, hints: List<EcuAddr>, progress: (Int, Int) -> Unit): List<ModuleScan> {
         val vin = readVin()
         val list = listOf(
             ModuleScan("ABS / ESC", 0x7D1, if (cleared) emptyList() else listOf("C1259 (история)"), "UDS", if (cleared) emptyList() else listOf(0x28), vin, "58910-4L500"), // i18n-ignore: пометка статуса как в ObdDecoder, по ней сравнивают Models/Purchase
