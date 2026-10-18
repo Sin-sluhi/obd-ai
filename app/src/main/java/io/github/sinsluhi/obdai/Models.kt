@@ -548,7 +548,13 @@ data class ModuleScan(
     /** Подробности по коду: полный статус UDS словами. */
     fun statusOf(code: String): List<String> {
         val i = codes.indexOf(code)
-        return if (i >= 0 && i < statuses.size) UdsStatus.describe(statuses[i]) else emptyList()
+        if (i < 0 || i >= statuses.size) return emptyList()
+        return when (via) {
+            "TP20" -> VagKwpStatus.describe(statuses[i], code.substringBefore(' '))
+            // KWP других марок: у байта статуса свой смысл, по битам UDS его читать нельзя, а проверенной раскладки нет
+            "KWP" -> emptyList()
+            else -> UdsStatus.describe(statuses[i])
+        }
     }
 }
 

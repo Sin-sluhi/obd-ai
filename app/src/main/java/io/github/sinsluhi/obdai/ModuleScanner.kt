@@ -471,7 +471,8 @@ class ModuleScanner(private val s: ElmSession, private val pause: (Long) -> Unit
                     val r = tp20Request(ch, listOf(0x18, 0x02, 0xFF, 0x00))
                     val codes = r?.let { ModuleDecoder.parseKwpVag(listOf(it)) }
                     val name = ModuleMap.vagTp20Name(a)
-                    val m = ModuleScan(name, a, codes.orEmpty().map { it.first }, if (codes != null) "TP20" else "?", codes.orEmpty().map { it.second })
+                    val m = ModuleScan(name, a, codes.orEmpty().map { it.first + VagKwpStatus.suffix(it.second) },
+                        if (codes != null) "TP20" else "?", codes.orEmpty().map { it.second })
                     found[0x10000 + a] = m
                     s.log("$name (TP2.0 %02X): %s".format(a, // i18n-ignore: журнал
                         if (codes == null) tr("elm_module_unread") else if (codes.isEmpty()) tr("elm_no_codes") else codes.joinToString { it.first }))

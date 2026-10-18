@@ -502,7 +502,7 @@ next_steps, for_service, typical_issues) — только по-русски, к�
                 appendLine("- ${m.name} [${m.addrHex}]: $head$tail$hist")
                 live.take(15).forEach { c ->
                     val st = m.statusOf(c)
-                    if (st.isNotEmpty()) appendLine("    ${c.substringBefore(' ')}: статус по UDS — ${st.joinToString()}")
+                    if (st.isNotEmpty()) appendLine("    ${c.substringBefore(' ')}: статус${if (m.via == "TP20") " (KWP2000 VAG)" else " по UDS"} — ${st.joinToString()}")
                 }
             }
         }

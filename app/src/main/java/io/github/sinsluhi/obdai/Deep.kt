@@ -225,6 +225,42 @@ object UdsStatus {
     fun suffix(s: Int): String = ModuleDecoder.statusSuffix(s)
 }
 
+/**
+ * Байт статуса ошибки VAG по KWP2000 (ответ 58 на 18 02 FF 00, блоки за VW TP2.0). Не UDS: биты значат другое.
+ * Бит 7 — блок зажигает лампу; бит 6 — ошибка есть сейчас; только бит 5 — спорадическая (сейчас нет); младшие биты —
+ * симптом (000–014). Раскладка — от владельца (дампы Audi D3 4E0), сверена с логами VCDS, где рядом печатается и байт,
+ * и текст: 00101101 = «013 Check DTC Memory, Intermittent», 00101011 = «011 Open Circuit, Intermittent»,
+ * 00101000 = «008 Implausible Signal, Intermittent», 01100010 = «002 Lower Limit Exceeded», 01100100 = «004 No Signal».
+ * У стандартных P-кодов в этих байтах встречается бит 4 и другие тексты симптома (00110010 = P0458 «002 Short to Ground,
+ * Intermittent»), поэтому симптом словами — только для пятизначных кодов VAG; у P-кодов — только активность и лампа.
+ */
+object VagKwpStatus {
+    fun active(s: Int) = s and 0x40 != 0
+    fun intermittent(s: Int) = s and 0x60 == 0x20
+    fun mil(s: Int) = s and 0x80 != 0
+
+    /** Симптом словами; null — нет симптома, P-код (свой набор текстов) или значение вне таблицы. */
+    fun symptom(s: Int, code: String): String? {
+        if (code.startsWith("P") || s and 0x10 != 0) return null
+        val n = s and 0x0F
+        return if (n in 1..14) tr("vkwp_sym_$n") else null
+    }
+
+    fun describe(s: Int, code: String): List<String> = buildList {
+        when {
+            active(s) -> add(tr("vkwp_active"))
+            intermittent(s) -> add(tr("vkwp_intermittent"))
+            else -> add(tr("vkwp_stored"))
+        }
+        symptom(s, code)?.let { add(it) }
+        if (mil(s)) add(tr("deep_uds_mil"))
+    }
+
+    /** Пометка в списке кодов — те же маркеры, что у UDS (по ним сортируются карточки). */
+    // i18n-ignore: маркеры данных, как в ModuleDecoder.statusSuffix
+    fun suffix(s: Int): String = if (active(s)) " (активная)" else " (история)" // i18n-ignore
+}
+
 /** Идентификация блока по UDS 22: VIN (F190) и заводской номер (F187). */
 object ModuleIdentity {
     /** Ответ на 22 F1 xx: «62 F1 xx <байты>». Возвращает печатные символы или null. */

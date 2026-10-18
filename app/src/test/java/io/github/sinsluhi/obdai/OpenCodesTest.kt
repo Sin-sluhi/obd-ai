@@ -28,4 +28,22 @@ class OpenCodesTest {
         assertNull(DtcCatalog.openTitle("P1577"))
         assertNull(DtcCatalog.openTitle("99999"))
     }
+
+    /** Байт статуса VAG KWP2000: пары «байт — текст» из логов VCDS. */
+    @Test fun vagKwpStatusMatchesVcdsLogs() {
+        // 00101101 → «013 Check DTC Memory — Intermittent»
+        assertEquals(listOf("vkwp_intermittent", "vkwp_sym_13").map { tr(it) }, VagKwpStatus.describe(0x2D, "00457"))
+        // 00101011 → «011 Open Circuit — Intermittent», 00101000 → «008 Implausible Signal — Intermittent»
+        assertEquals(tr("vkwp_sym_11"), VagKwpStatus.symptom(0x2B, "00329"))
+        assertEquals(tr("vkwp_sym_8"), VagKwpStatus.symptom(0x28, "00893"))
+        // 01100010 → «002 Lower Limit Exceeded», активная; 11100100 → лампа + активная + «004 No Signal»
+        assertEquals(listOf("vkwp_active", "vkwp_sym_2").map { tr(it) }, VagKwpStatus.describe(0x62, "00532"))
+        assertEquals(listOf("vkwp_active", "vkwp_sym_4", "deep_uds_mil").map { tr(it) }, VagKwpStatus.describe(0xE4, "00525"))
+        // 00100000 → без симптома, спорадическая
+        assertEquals(listOf(tr("vkwp_intermittent")), VagKwpStatus.describe(0x20, "01272"))
+        // P-код: у VCDS свой текст симптома (00110010 = P0458 «002 Short to Ground») — словами не пишем
+        assertEquals(null, VagKwpStatus.symptom(0x32, "P0458"))
+        assertEquals(" (история)", VagKwpStatus.suffix(0x32))
+        assertEquals(" (активная)", VagKwpStatus.suffix(0x62))
+    }
 }

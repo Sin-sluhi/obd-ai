@@ -449,8 +449,8 @@ class ScanTest {
         car.tp20 += ScriptedCar.Tp20Ecu(0x17, 0x742, 0x302,
             handler = Replies.vagKwp(0x02, 0x14, 0x23, 0x04, 0xFC, 0x60, 0x41, 0xA4, 0x24, 0x48, 0x9E, 0x23))
         val r = ModuleScanner(car).scan("Audi", emptyList()) { _, _ -> }
-        assertEquals(listOf("01276"), r.modules.first { it.via == "TP20" && it.addr == 0x03 }.codes)
-        assertEquals(listOf("00532", "01276", "P0420", "18590"), r.modules.first { it.via == "TP20" && it.addr == 0x17 }.codes)
+        assertEquals(listOf("01276"), r.modules.first { it.via == "TP20" && it.addr == 0x03 }.codes.map { it.substringBefore(' ') })
+        assertEquals(listOf("00532", "01276", "P0420", "18590"), r.modules.first { it.via == "TP20" && it.addr == 0x17 }.codes.map { it.substringBefore(' ') })
         assertTrue(car.sent.contains("ATSH 200") && car.sent.contains("03C00010000301 1"))
         assertTrue(car.sent.contains("A00F8AFF32FF") && car.sent.contains("A8") && car.sent.contains("B4"))
         assertEquals("ATCAF1", car.sent.last { it.startsWith("ATCAF") })
@@ -462,7 +462,7 @@ class ScanTest {
         val car = ScriptedCar()
         car.tp20 += ScriptedCar.Tp20Ecu(0x01, swapIds = true, handler = Replies.vagKwp(0x41, 0x2C, 0x23))   // 16684 → P0300
         val r = ModuleScanner(car).scan("Volkswagen", emptyList()) { _, _ -> }
-        assertEquals(listOf("P0300"), r.modules.first { it.via == "TP20" && it.addr == 0x01 }.codes)
+        assertEquals(listOf("P0300"), r.modules.first { it.via == "TP20" && it.addr == 0x01 }.codes.map { it.substringBefore(' ') })
     }
 
     @Test fun tp20OnlyForVag() {
@@ -496,9 +496,9 @@ class ScanTest {
         car.tp20 += ScriptedCar.Tp20Ecu(0x34, 0x743, 0x303, handler = Replies.vagKwp(0x06, 0x2F, 0x23))   // 01583
         car.tp20 += ScriptedCar.Tp20Ecu(0x61, 0x744, 0x304, handler = Replies.vagKwp(0x08, 0xDC, 0x23))   // 02268
         val r = ModuleScanner(car).scan(null, emptyList()) { _, _ -> }
-        assertEquals(listOf("P1577", "P0480"), r.modules.first { it.via == "TP20" && it.addr == 0x01 }.codes)
-        assertEquals(listOf("01583"), r.modules.first { it.via == "TP20" && it.addr == 0x34 }.codes)
-        assertEquals(listOf("02268"), r.modules.first { it.via == "TP20" && it.addr == 0x61 }.codes)
+        assertEquals(listOf("P1577", "P0480"), r.modules.first { it.via == "TP20" && it.addr == 0x01 }.codes.map { it.substringBefore(' ') })
+        assertEquals(listOf("01583"), r.modules.first { it.via == "TP20" && it.addr == 0x34 }.codes.map { it.substringBefore(' ') })
+        assertEquals(listOf("02268"), r.modules.first { it.via == "TP20" && it.addr == 0x61 }.codes.map { it.substringBefore(' ') })
     }
 
     /** Марка неизвестна, но перебор ISO-TP нашёл много блоков: на 0x200 (рабочий ID у других марок) ничего не шлём. */

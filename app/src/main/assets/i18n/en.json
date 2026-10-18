@@ -1237,5 +1237,22 @@
  "mp_u_mi": "mi",
  "mp_u_mph": "mph",
  "mp_u_m": "m",
- "scr_credits_obdb": "Brand parameters — open database OBDb (github.com/OBDb), CC BY-SA 4.0"
+ "scr_credits_obdb": "Brand parameters — open database OBDb (github.com/OBDb), CC BY-SA 4.0",
+ "vkwp_active": "present now",
+ "vkwp_intermittent": "intermittent (not present now)",
+ "vkwp_stored": "stored",
+ "vkwp_sym_1": "upper limit exceeded",
+ "vkwp_sym_2": "lower limit exceeded",
+ "vkwp_sym_3": "mechanical malfunction",
+ "vkwp_sym_4": "no signal / communication",
+ "vkwp_sym_5": "no or incorrect basic setting / adaptation",
+ "vkwp_sym_6": "short to plus",
+ "vkwp_sym_7": "short to ground",
+ "vkwp_sym_8": "implausible signal",
+ "vkwp_sym_9": "open or short to ground",
+ "vkwp_sym_10": "open or short to plus",
+ "vkwp_sym_11": "open circuit",
+ "vkwp_sym_12": "electrical fault in circuit",
+ "vkwp_sym_13": "check DTC memory of the related module",
+ "vkwp_sym_14": "component defective"
 }
