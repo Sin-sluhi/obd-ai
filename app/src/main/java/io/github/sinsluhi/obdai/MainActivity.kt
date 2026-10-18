@@ -40,6 +40,8 @@ import androidx.compose.ui.Modifier
 import androidx.core.content.ContextCompat
 import androidx.core.location.LocationManagerCompat
 import io.github.sinsluhi.obdai.ui.BottomBar
+import io.github.sinsluhi.obdai.ui.DevChatScreen
+import io.github.sinsluhi.obdai.ui.ObidiButton
 import io.github.sinsluhi.obdai.ui.BusBackground
 import io.github.sinsluhi.obdai.ui.BusDriver
 import io.github.sinsluhi.obdai.ui.ClearedOverlay
@@ -82,7 +84,7 @@ import io.github.sinsluhi.obdai.ui.rememberTint
 import io.github.sinsluhi.obdai.ui.reportText
 
 enum class Page { Home, Result, Sensors, History, Settings, Log, Details, Dash, Forum, Purchase, Blackbox, Service, Garage,
-    Tools, Complaint, Task, Wizard, Schemes, Scheme, OldCodes, Maintenance }
+    Tools, Complaint, Task, Wizard, Schemes, Scheme, OldCodes, Maintenance, Dev }
 
 class MainActivity : ComponentActivity() {
 
@@ -216,7 +218,16 @@ class MainActivity : ComponentActivity() {
                 Page.History -> Tab.History
                 else -> Tab.Check
             }
-            BottomBar(current) { tab ->
+            BottomBar(current, dev = {
+                ObidiButton(
+                    unread = state.devUnread,
+                    peek = !state.obidiPeeked,
+                    hello = state.prefs.devHello,
+                    onPeeked = { state.obidiPeeked = true },
+                    onHelloShown = { state.prefs.devHello = true },
+                    onClick = { page = Page.Dev }
+                )
+            }) { tab ->
                 page = when (tab) {
                     Tab.Check -> Page.Home
                     Tab.Sensors -> Page.Sensors
@@ -311,6 +322,7 @@ class MainActivity : ComponentActivity() {
                     )
                     Page.Sensors -> SensorsScreen(state, onStartTrip = { startTrip() }, onStopTrip = { stopTrip() }, bottom = tabBar)
                     Page.Forum -> ForumScreen(state, bottom = tabBar)
+                    Page.Dev -> DevChatScreen(state, onBack = { page = Page.Home }, bottom = tabBar)
                     Page.Garage -> GarageScreen(state, onBack = { page = Page.Home })
                     Page.Blackbox -> BlackboxScreen(state, onBack = { page = Page.History })
                     Page.Service -> ServiceScreen(state, onBack = { page = Page.History })

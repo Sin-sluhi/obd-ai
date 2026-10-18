@@ -55,6 +55,20 @@
   .req ul.flags { margin: 8px 0 0; padding-left: 18px; color: var(--warn); font-size: 14px; }
   .req ul.flags li.info { color: var(--muted); }
   .req.clean { opacity: .75; }
+  .dv { display: grid; gap: 14px; grid-template-columns: 1fr; }
+  .dv.open { grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); }
+  .dv-thread { border-radius: 22px; border: 1px solid rgba(184,241,90,.35); background: linear-gradient(180deg, #171a20, #111317); padding: 16px; display: flex; flex-direction: column; gap: 12px; max-height: 70vh; }
+  .dv-head { display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+  .dv-head .sp { flex: 1; }
+  .dv-head .mono { font-size: 12px; color: var(--muted); }
+  .dv-msgs { overflow: auto; display: flex; flex-direction: column; gap: 8px; flex: 1; min-height: 120px; }
+  .dv-m { max-width: 85%; padding: 9px 12px; border-radius: 14px; background: var(--surface); border: 1px solid var(--line); white-space: pre-wrap; font-size: 15px; }
+  .dv-m.me { align-self: flex-end; background: rgba(184,241,90,.12); border-color: rgba(184,241,90,.35); }
+  .dv-m small { display: block; color: var(--muted); font: 11px var(--mono); margin-top: 4px; }
+  .dv-reply { display: flex; gap: 10px; align-items: flex-end; }
+  .dv-reply textarea { flex: 1; resize: vertical; border-radius: 14px; border: 1px solid var(--line2); background: var(--bg); color: var(--text); padding: 10px 12px; font: 15px var(--body); }
+  .req .unread { background: var(--lime); color: var(--ink); font: 700 11px var(--mono); padding: 2px 8px; border-radius: 99px; margin-left: 6px; }
+  @media (max-width: 860px) { .dv.open { grid-template-columns: 1fr; } }
   @media (max-width: 680px) { .req { grid-template-columns: 1fr; } .req .acts { justify-content: flex-start; } }
 </style>
 </head>
@@ -97,6 +111,21 @@
   <div class="list" id="list"></div>
 
   <div class="adm-top logs-top">
+    <h2>Сообщения от пользователей</h2>
+    <span class="sp"></span>
+    <button class="btn btn-ghost btn-sm" id="dvRefresh" type="button"><span>Обновить</span></button>
+  </div>
+  <p class="lg-note">Кнопка с Обиди справа от нижней панели приложения. Новое сообщение приходит и в Telegram; ответ отсюда человек увидит в приложении — у Обиди появится значок.</p>
+  <div class="dv" id="dv">
+    <div class="list dv-threads" id="dvList"></div>
+    <div class="dv-thread" id="dvThread" hidden>
+      <div class="dv-head"><b id="dvWho"></b><span class="mono" id="dvMeta"></span><span class="sp"></span><button class="link-btn" id="dvClose" type="button">закрыть</button></div>
+      <div class="dv-msgs" id="dvMsgs"></div>
+      <form class="dv-reply" id="dvForm"><textarea name="t" rows="3" placeholder="Ответ — придёт в приложение"></textarea><button class="btn btn-lime btn-sm" type="submit"><span>Ответить</span></button></form>
+    </div>
+  </div>
+
+  <div class="adm-top logs-top">
     <h2>Логи с машин</h2>
     <span class="sp"></span>
     <label class="mono lg-bad"><input type="checkbox" id="lgBad" checked> только где споткнулся</label>
@@ -121,6 +150,6 @@
   </symbol>
 </svg>
 <script src="api.js?v=7"></script>
-<script src="admin.js?v=8"></script>
+<script src="admin.js?v=9"></script>
 </body>
 </html>

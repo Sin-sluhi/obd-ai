@@ -109,6 +109,54 @@
   // версия разработчика: та же сборка, но с режимом разработчика (7 нажатий на версию в настройках)
   $("#devDl").addEventListener("click", () => selfDownload("#devDl", "/api/admin/apk/dev", "OBD-AI-dev.apk", "Версия разработчика"));
 
+  // ---- сообщения от пользователей (server/forum/dev.py): треды по устройствам, ответ уходит в приложение ----
+  let dvThreads = [], dvOpen = null;
+  async function loadDev() {
+    try {
+      const r = await ObdApi.json("/api/admin/dev", { headers: hdr() });
+      if (r.status !== 200) throw new Error(r.status);
+      dvThreads = r.data.threads || [];
+      renderDev();
+      if (dvOpen) openThread(dvOpen, true);
+    } catch (e) {
+      $("#dvList").innerHTML = `<div class="empty">Сообщения не загрузились — сервер старой версии или недоступен</div>`;
+    }
+  }
+  function renderDev() {
+    if (!dvThreads.length) { $("#dvList").innerHTML = `<div class="empty">Пока никто не писал</div>`; return; }
+    $("#dvList").innerHTML = dvThreads.map(t => `<article class="req ${t.unread ? "pending" : "clean"}" data-dv="${esc(t.device)}" style="cursor:pointer">
+        <div>
+          <h3>${esc(t.name || "Водитель")}${t.unread ? `<span class="unread">${t.unread}</span>` : ""}</h3>
+          <div class="meta"><span>${esc(t.car || "машина не указана")}</span><span class="mono">${esc(t.app)} · ${when(t.last)} · сообщений ${t.count}</span></div>
+          <div class="meta" style="margin-top:6px"><span>${t.owner ? "Вы: " : ""}${esc((t.text || "").slice(0, 140))}</span></div>
+        </div>
+      </article>`).join("");
+  }
+  async function openThread(device, quiet) {
+    dvOpen = device;
+    const t = dvThreads.find(x => x.device === device) || {};
+    $("#dv").classList.add("open"); $("#dvThread").hidden = false;
+    $("#dvWho").textContent = t.name || "Водитель";
+    $("#dvMeta").textContent = [t.car, t.app].filter(Boolean).join(" · ");
+    const r = await ObdApi.json("/api/admin/dev/thread?device=" + encodeURIComponent(device), { headers: hdr() });
+    if (r.status !== 200) { if (!quiet) toast("Не открылось"); return; }
+    const box = $("#dvMsgs");
+    box.innerHTML = (r.data.messages || []).map(m => `<div class="dv-m ${m.owner ? "me" : ""}">${esc(m.text)}<small>${m.owner ? "вы" : esc(t.name || "водитель")} · ${when(m.time)}</small></div>`).join("");
+    box.scrollTop = box.scrollHeight;
+    if (t.unread) { t.unread = 0; renderDev(); }
+  }
+  $("#dvList").addEventListener("click", e => { const a = e.target.closest("[data-dv]"); if (a) openThread(a.dataset.dv); });
+  $("#dvClose").addEventListener("click", () => { dvOpen = null; $("#dvThread").hidden = true; $("#dv").classList.remove("open"); });
+  $("#dvRefresh").addEventListener("click", loadDev);
+  $("#dvForm").addEventListener("submit", async e => {
+    e.preventDefault();
+    const ta = e.target.elements.t, text = ta.value.trim();
+    if (!text || !dvOpen) return;
+    const r = await ObdApi.json("/api/admin/dev/reply", { method: "POST", headers: hdr(), body: JSON.stringify({ device: dvOpen, text }) });
+    if (r.status === 200) { ta.value = ""; toast("Ответ ушёл — человек увидит его в приложении"); loadDev(); }
+    else toast("Не отправилось");
+  });
+
   // ---- логи с машин (server/forum/logs.py): сводка по моделям и последние проверки ----
   let lgView = "models", lgModels = [], lgLogs = [];
   const flagLi = f => `<li class="${f.startsWith("блоков найдено") ? "info" : ""}">${esc(f)}</li>`;
@@ -185,11 +233,11 @@
     e.preventDefault();
     key = e.target.elements.key.value.trim();
     if (!key) return;
-    store.set(key); show(true); load(); loadLogs();
+    store.set(key); show(true); load(); loadLogs(); loadDev();
   });
-  document.addEventListener("visibilitychange", () => { if (!document.hidden && key) { load(); loadLogs(); } });
+  document.addEventListener("visibilitychange", () => { if (!document.hidden && key) { load(); loadLogs(); loadDev(); } });
 
   key = store.get();
   show(!!key);
-  if (key) { load(); loadLogs(); }
+  if (key) { load(); loadLogs(); loadDev(); setInterval(() => { if (!document.hidden) loadDev(); }, 30000); }
 })();

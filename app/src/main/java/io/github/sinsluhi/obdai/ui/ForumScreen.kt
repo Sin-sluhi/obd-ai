@@ -135,7 +135,7 @@ fun ForumScreen(state: AppState, bottom: @Composable () -> Unit) {
 
 /** Круглый значок с первой буквой: марка или собеседник. */
 @Composable
-private fun LetterBadge(text: String, color: Color, size: Int = 38) {
+internal fun LetterBadge(text: String, color: Color, size: Int = 38) {
     Box(
         Modifier
             .size(size.dp)
@@ -186,7 +186,7 @@ private fun PopIn(content: @Composable () -> Unit) {
 private fun RowDivider() = Box(Modifier.fillMaxWidth().padding(start = 64.dp, end = 14.dp).height(1.dp).background(Palette.border))
 
 /** Цвет собеседника по имени: шесть спокойных оттенков, чтобы участники различались. */
-private fun nameColor(name: String): Color {
+internal fun nameColor(name: String): Color {
     val palette = listOf(Color(0xFF7CC4FF), Color(0xFFFFB86C), Color(0xFFB5E48C), Color(0xFFE39BFF), Color(0xFF7BE0D1), Color(0xFFFF9AA2))
     val h = name.hashCode() and 0x7fffffff   // -MIN_VALUE == MIN_VALUE, поэтому не модуль, а маска
     return palette[h % palette.size]
@@ -562,7 +562,7 @@ private fun ChatLevel(state: AppState, b: ForumBrand, m: ForumModel, g: ForumGen
 
 /** Панель эмодзи (вставка в поле) и стикеров (уходят сразу отдельным сообщением). */
 @Composable
-private fun StickerPanel(onEmoji: (String) -> Unit, onSticker: (String) -> Unit) {
+internal fun StickerPanel(onEmoji: (String) -> Unit, onSticker: (String) -> Unit) {
     val accent = LocalAccent.current
     val shape = RoundedCornerShape(18.dp)
     Column(Modifier.fillMaxWidth().background(Palette.surface2, shape).border(1.dp, Palette.border, shape).padding(10.dp)) {
@@ -594,7 +594,7 @@ private fun StickerPanel(onEmoji: (String) -> Unit, onSticker: (String) -> Unit)
 
 /** Поле ввода в форме таблетки, кнопка панели стикеров и круглая кнопка отправки. */
 @Composable
-private fun ChatInput(value: String, enabled: Boolean, sending: Boolean, panel: Boolean, onPanel: () -> Unit, onChange: (String) -> Unit, onSend: () -> Unit) {
+internal fun ChatInput(value: String, enabled: Boolean, sending: Boolean, panel: Boolean, onPanel: () -> Unit, onChange: (String) -> Unit, onSend: () -> Unit) {
     val accent = LocalAccent.current
     val src = remember { MutableInteractionSource() }
     val focused by src.collectIsFocusedAsState()
@@ -648,7 +648,7 @@ private fun ChatInput(value: String, enabled: Boolean, sending: Boolean, panel: 
 }
 
 @Composable
-private fun MessageBubble(msg: ForumMessage) {
+internal fun MessageBubble(msg: ForumMessage) {
     val accent = LocalAccent.current
     val locale = Tr.lang.locale
     val time = remember(msg.time, locale) { SimpleDateFormat("d MMM HH:mm", locale).format(Date(msg.time)) }

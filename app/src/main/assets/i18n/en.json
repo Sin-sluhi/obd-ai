@@ -1260,5 +1260,16 @@
  "state_step_modules_search": "Looking for the car's modules…",
  "state_step_modules_search_n": "Looking for the car's modules… found: {0}",
  "state_step_modules_read": "Reading modules: {0} of {1}",
- "state_step_modules_read_name": "Reading “{0}”: {1} of {2}"
+ "state_step_modules_read_name": "Reading “{0}”: {1} of {2}",
+ "dev_button": "Contact the developer",
+ "dev_hello_bubble": "Something to say? Write to the developer directly",
+ "dev_reply_bubble": "The developer replied",
+ "dev_title": "Contact the developer",
+ "dev_intro_title": "Write directly",
+ "dev_intro": "What you liked, what went wrong, what is missing — your message goes to the developer personally, and he replies himself.",
+ "dev_auto_note": "Your car model and app version are attached automatically, so nobody has to ask.",
+ "dev_offline": "No connection to the server — please try again a bit later.",
+ "dev_send_failed": "Not sent — check the internet connection and try again",
+ "dev_name": "Developer",
+ "dev_car_unknown": "car not checked yet"
 }

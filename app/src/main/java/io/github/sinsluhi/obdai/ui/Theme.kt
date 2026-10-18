@@ -435,15 +435,16 @@ enum class Tab { Check, Sensors, History, Forum }
 
 /** Нижняя панель: отдельная скруглённая «капсула» над краем экрана, как в Telegram; активная вкладка в подсвеченной таблетке. */
 @Composable
-fun BottomBar(current: Tab, onSelect: (Tab) -> Unit) {
+fun BottomBar(current: Tab, dev: (@Composable () -> Unit)? = null, onSelect: (Tab) -> Unit) {
     val shape = RoundedCornerShape(28.dp)
     val accent = LocalAccent.current
     // одна таблетка скользит по рельсу между вкладками; позиция читается только в draw
     val idx by animateFloatAsState(current.ordinal.toFloat(), spring(dampingRatio = 0.85f, stiffness = Spring.StiffnessMediumLow), label = "tab")
-    Box(Modifier.fillMaxWidth().navigationBarsPadding().padding(start = 14.dp, end = 14.dp, top = 6.dp, bottom = 10.dp)) {
+    // справа от капсулы — Обиди, связь с разработчиком ([dev]); капсула занимает остальное
+    Row(Modifier.fillMaxWidth().navigationBarsPadding().padding(start = 14.dp, end = 14.dp, top = 6.dp, bottom = 10.dp), verticalAlignment = Alignment.CenterVertically) {
         Row(
             Modifier
-                .fillMaxWidth()
+                .weight(1f)
                 .shadow(22.dp, shape, ambientColor = Color.Black, spotColor = Color.Black)
                 .background(Brush.verticalGradient(listOf(Palette.surfaceTop, Palette.surface)), shape)
                 .border(1.dp, Palette.edge, shape)
@@ -461,6 +462,10 @@ fun BottomBar(current: Tab, onSelect: (Tab) -> Unit) {
             TabItem(tr("theme_tab_sensors"), current == Tab.Sensors, { onSelect(Tab.Sensors) }) { c -> GaugeIcon(c) }
             TabItem(tr("theme_tab_history"), current == Tab.History, { onSelect(Tab.History) }) { c -> ClockIcon(c) }
             TabItem(tr("theme_tab_forum"), current == Tab.Forum, { onSelect(Tab.Forum) }) { c -> ForumIcon(c) }
+        }
+        if (dev != null) {
+            Spacer(Modifier.width(10.dp))
+            dev()
         }
     }
 }

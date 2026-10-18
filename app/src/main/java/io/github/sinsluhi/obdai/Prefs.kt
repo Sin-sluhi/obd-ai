@@ -253,6 +253,16 @@ class Prefs(context: Context) {
         get() = sp.getString("forum_name", "") ?: ""
         set(v) = sp.edit().putString("forum_name", v.trim()).apply()
 
+    /** Связь с разработчиком: id последнего ответа разработчика, который человек уже видел. */
+    var devSeen: Long
+        get() = sp.getLong("dev_seen", 0L)
+        set(v) = sp.edit().putLong("dev_seen", v).apply()
+
+    /** Обиди уже показал подсказку «напишите разработчику» (один раз за установку). */
+    var devHello: Boolean
+        get() = sp.getBoolean("dev_hello", false)
+        set(v) = sp.edit().putBoolean("dev_hello", v).apply()
+
     var forumDevice: String
         get() = sp.getString("forum_device", "") ?: ""
         set(v) = sp.edit().putString("forum_device", v).apply()

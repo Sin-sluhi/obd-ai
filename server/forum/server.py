@@ -21,6 +21,8 @@ API (JSON, UTF-8):
   GET  /api/garage/list?code=<код>                       → {"cars":[{"car","name","updated","size"}]}
 Код гаража придумывает приложение (16 случайных символов) и показывает владельцу: кто знает код, тот видит гараж.
 
+Связь с разработчиком (модуль dev.py): POST /api/dev/send, GET /api/dev/messages, ответы владельца — /api/admin/dev*.
+
 Логи проверок от приложений (модуль logs.py): POST /api/logs/put, сводка для владельца — /api/admin/logs*.
 
 Новости автомира для сайта (модуль news.py): GET /api/news — RSS изданий, перечитываются раз в 20 минут.
@@ -40,6 +42,7 @@ from urllib.parse import parse_qs, urlparse
 
 import apk
 import logs
+import dev
 import owner_ai
 import news
 
@@ -70,6 +73,7 @@ def init_db(path):
         PRIMARY KEY(code, car))""")
     apk.init_db(_db)
     logs.init_db(_db)
+    dev.init_db(_db)
     _db.commit()
 
 
@@ -216,6 +220,11 @@ class Handler(BaseHTTPRequestHandler):
         q = {k: v[0] for k, v in parse_qs(u.query).items()}
         if u.path.startswith("/api/admin/logs"):
             return logs.handle_get(self, _db, _lock, u.path, q)
+        if u.path.startswith("/api/admin/dev"):
+            return dev.handle_admin_get(self, _db, _lock, u.path, q)
+        if u.path == "/api/dev/messages":
+            code, obj = dev.messages(_db, _lock, q)
+            return self._json(code, obj)
         if u.path.startswith("/api/apk/") or u.path.startswith("/api/admin/"):
             return apk.handle_get(self, _db, _lock, u.path, q)
         if u.path.startswith("/api/owner/"):
@@ -261,6 +270,11 @@ class Handler(BaseHTTPRequestHandler):
     def do_POST(self):
         u = urlparse(self.path)
         b = self._body()
+        if u.path.startswith("/api/admin/dev"):
+            return dev.handle_admin_post(self, _db, _lock, u.path, b)
+        if u.path == "/api/dev/send":
+            code, obj = dev.send(_db, _lock, b)
+            return self._json(code, obj)
         if u.path.startswith("/api/apk/") or u.path.startswith("/api/admin/"):
             return apk.handle_post(self, _db, _lock, u.path, b)
         if u.path.startswith("/api/owner/"):

@@ -64,6 +64,7 @@ class AppState private constructor(context: Context) {
             ForumTree.load(appContext)
             runCatching { ForumLocator.best(prefs) }
             runCatching { if (prefs.logShare) LogShare.flush(appContext.filesDir, forumUrl) }   // логи, не ушедшие без сети
+            checkDevReplies()
             runCatching { if (Kb.refresh(appContext, prefs)) addLog(tr("state_kb_updated", Kb.size)) }
         }
     }
@@ -133,6 +134,8 @@ class AppState private constructor(context: Context) {
     var rxCount by mutableLongStateOf(0L)          // счётчик команд адаптеру: живой фон рождает пакет на каждую
     var liveBackground by mutableStateOf(prefs.liveBackground)   // тумблер «Живой фон» в настройках
     var logShare by mutableStateOf(prefs.logShare)               // автоотправка логов проверки (LogShare)
+    var devUnread by mutableStateOf(0)                           // непрочитанные ответы разработчика (DevChat)
+    var obidiPeeked = false                                      // Обиди уже выглянул в этом процессе — не повторять на каждой вкладке
     var gaugeSelfTest by mutableStateOf(false)     // приборы уже сделали самотест после этого подключения (ставят сами)
     var error by mutableStateOf<String?>(null)
     var toast by mutableStateOf<String?>(null)
@@ -235,6 +238,22 @@ class AppState private constructor(context: Context) {
     fun updateVoice(v: Boolean) { voice = v; prefs.voice = v }
     fun updateLiveBackground(v: Boolean) { liveBackground = v; prefs.liveBackground = v }
     fun updateLogShare(v: Boolean) { logShare = v; prefs.logShare = v }
+
+    /** Есть ли новые ответы разработчика: кнопка Обиди покажет значок. Сеть — звать из фонового потока. */
+    fun checkDevReplies() {
+        runCatching {
+            val api = DevApi(forumUrl, ForumApi.deviceId(prefs))
+            if (!api.configured) return
+            val n = api.messages(prefs.devSeen).count { it.owner }
+            ui { devUnread = n }
+        }
+    }
+
+    /** Человек открыл переписку и увидел ответы до [lastId] включительно. */
+    fun markDevSeen(lastId: Long) {
+        if (lastId > prefs.devSeen) prefs.devSeen = lastId
+        devUnread = 0
+    }
     fun updateAutoTrip(v: Boolean) { autoTrip = v; prefs.autoTrip = v }
     fun updateWatchDtc(v: Boolean) { watchDtc = v; prefs.watchDtc = v }
     fun updateDemo(v: Boolean) {
@@ -558,6 +577,7 @@ class AppState private constructor(context: Context) {
         Thread {
             val url = runCatching { ForumLocator.best(prefs) }.getOrNull() ?: forumUrl
             runCatching { LogShare.flush(appContext.filesDir, url) }
+            checkDevReplies()
         }.start()
     }
 
