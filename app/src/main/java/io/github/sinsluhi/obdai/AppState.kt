@@ -42,6 +42,7 @@ class AppState private constructor(context: Context) {
         private const val NOTIF_WARMUP = 53
         private const val NOTIF_FUEL = 54
         private const val NOTIF_GUARD = 55
+        private const val NOTIF_RESULT = 56
     }
 
     /** Адрес сервера форума: из настроек разработчика, иначе из сборки. Пусто — чат выключен. */
@@ -135,6 +136,19 @@ class AppState private constructor(context: Context) {
     var liveBackground by mutableStateOf(prefs.liveBackground)   // тумблер «Живой фон» в настройках
     var logShare by mutableStateOf(prefs.logShare)               // автоотправка логов проверки (LogShare)
     var devUnread by mutableStateOf(0)                           // непрочитанные ответы разработчика (DevChat)
+
+    // ---- живая проверка: лента событий, этап и время (ui/CheckLive.kt), чтобы человек видел работу, а не одну строку ----
+    data class LiveEvent(val id: Int, val kind: String, val text: String)   // kind: ok | warn | wait | info | car
+    val live = mutableStateListOf<LiveEvent>()
+    private var liveSeq = 0
+    var checkStarted by mutableStateOf(0L)          // 0 — проверка не идёт
+    var checkStage by mutableStateOf(0)             // 0 связь · 1 двигатель · 2 блоки · 3 разбор
+    var checkCar by mutableStateOf<VinDecoder.Info?>(null)
+    @Volatile var appVisible = true                 // экран на виду (MainActivity onStart/onStop): иначе итог — уведомлением
+    fun liveEvent(kind: String, text: String) = ui {
+        live.add(LiveEvent(++liveSeq, kind, text))
+        if (live.size > 40) live.removeAt(0)
+    }
     var obidiPeeked = false                                      // Обиди уже выглянул в этом процессе — не повторять на каждой вкладке
     var gaugeSelfTest by mutableStateOf(false)     // приборы уже сделали самотест после этого подключения (ставят сами)
     var error by mutableStateOf<String?>(null)
@@ -442,6 +456,7 @@ class AppState private constructor(context: Context) {
         elm.onAdapterTest = { t -> ui { adapterTests = t } }
         elm.onFound = { n -> ui { scanFound = n } }
         elm.onStage = { reading, name -> scanReading = reading; scanName = name }
+        elm.onEvent = { kind, text -> liveEvent(kind, text) }
         runTask(tr("state_task_connect"), needLink = false) {
             ui { busy = tr("state_connecting"); adapterTests = emptyList() }
             val mark = Trace.mark(); val t0 = System.currentTimeMillis()
@@ -541,9 +556,10 @@ class AppState private constructor(context: Context) {
             // лог проверки уходит в любом исходе (LogShare): кусок обмена от подключения или от начала этой проверки
             val rec = CheckRec("check", logMark ?: Trace.mark(), logStart ?: System.currentTimeMillis())
             logMark = null; logStart = null
+            ui { live.clear(); checkStarted = System.currentTimeMillis(); checkStage = 0; checkCar = null }
             try { checkBody(rec, onDone) }
             catch (e: Exception) { rec.error = e.message ?: e.javaClass.simpleName; throw e }
-            finally { shareLog(rec) }
+            finally { shareLog(rec); ui { checkStarted = 0L } }
         }
     }
 
@@ -594,6 +610,7 @@ class AppState private constructor(context: Context) {
             val ecuAnswered = ObdDecoder.messages(probe).isNotEmpty() &&
                 listOf("UNABLE", "NO DATA", "ERROR", "TIMEOUT").none { probe.uppercase().contains(it) }
             ui { ecuOnline = ecuAnswered }
+            liveEvent(if (ecuAnswered) "ok" else "wait", tr(if (ecuAnswered) "live_ecu_ok" else "live_ecu_silent"))
             // по напряжению видно, работает ли мотор: окно говорит цифрами, а не общим «включи зажигание»
             fun silentError(): Nothing {
                 val v = Regex("[0-9]+(\\.[0-9]+)?").find(runCatching { l.send("ATRV") }.getOrDefault(""))?.value?.toDoubleOrNull()
@@ -618,18 +635,22 @@ class AppState private constructor(context: Context) {
             val mil = if (busOnly) null else l.readMil()
             ui { milOn = mil?.first; dtcCount = mil?.second }
             addLog(tr("state_log_mil", when (mil?.first) { true -> tr("state_mil_on"); false -> tr("state_mil_off"); null -> tr("state_mil_unknown") }, mil?.second ?: "?"))
+            mil?.let { liveEvent(if (it.first) "warn" else "ok", if (it.first) tr("live_mil_on", it.second) else tr("live_mil_off")) }
 
-            ui { busy = tr("state_step_codes") }; rx()
+            ui { busy = tr("state_step_codes"); checkStage = 1 }; rx()
             val stored = if (busOnly) emptyList() else l.readCodes(0x03)
             val pending = if (busOnly) emptyList() else l.readCodes(0x07)
             val permanent = if (busOnly) emptyList() else runCatching { l.readCodes(0x0A) }.getOrDefault(emptyList())
             addLog(if (stored.isEmpty()) tr("state_log_no_stored") else tr("state_log_stored", stored.joinToString()))
             addLog(if (pending.isEmpty()) tr("state_log_no_pending") else tr("state_log_pending", pending.joinToString()))
             if (permanent.isNotEmpty()) addLog(tr("state_log_permanent", permanent.joinToString()))
+            if (!busOnly) (stored + pending + permanent).map { it.substringBefore(' ') }.distinct().let {
+                liveEvent(if (it.isEmpty()) "ok" else "warn", if (it.isEmpty()) tr("live_engine_clean") else tr("live_engine_codes", it.take(6).joinToString()))
+            }
 
             ui { busy = tr("state_step_monitors") }; rx()
             val (ready, readyCycle) = if (busOnly) Pair(null, null) else runCatching { l.readReadiness() }.getOrDefault(Pair(null, null))
-            ready?.let { addLog(tr("state_log_readiness", it.describe())) }
+            ready?.let { addLog(tr("state_log_readiness", it.describe())); liveEvent("info", tr("live_readiness", it.describe())) }
             val stats = if (busOnly) DtcStats() else runCatching { l.readStats() }.getOrDefault(DtcStats())
             stats.lines().forEach { addLog(it) }
 
@@ -649,6 +670,8 @@ class AppState private constructor(context: Context) {
             // время молчал и отвалился: «Broken pipe», проверка оборвана после чтения VIN.
             val onlineTitle = if (v != null && decodedVin.model == null) prefs.vinOnline(v)?.ifBlank { null } else null
             rec.title = onlineTitle ?: decodedVin.title()
+            ui { checkCar = decodedVin }
+            liveEvent("car", rec.title.ifBlank { null }?.let { tr("live_car", it) } ?: tr("live_vin_none"))
             val switched = runCatching { noticeCar(v, onlineTitle ?: decodedVin.title()) }.getOrDefault(false)
             if (v != null && decodedVin.model == null && prefs.vinOnline(v) == null) Thread {
                 runCatching { VinDecoder.online(v, prefs) }.getOrNull()?.let { renameCar(v, it) }
@@ -666,11 +689,13 @@ class AppState private constructor(context: Context) {
             ui { sensors = s; voltage = volt; protocol = l.protocol }
             s.firstOrNull { it.key == "ambient" }?.value?.let { lastAmbient = it }
             recordVolt(s, volt, force = true)
+            if (s.isNotEmpty()) liveEvent("info", tr("live_sensors", s.size, volt.ifBlank { "—" }))
 
             ui { busy = tr("state_step_tests") }; rx()
             val tests = if (busOnly) emptyList() else runCatching { l.readTests() }.onFailure { addLog(tr("state_log_mode06_failed", it.message)) }.getOrDefault(emptyList())
             if (tests.isNotEmpty()) {
                 addLog(tr("state_log_tests", tests.size, tests.count { !it.passed }))
+                liveEvent(if (tests.any { !it.passed }) "warn" else "ok", tr("live_tests", tests.size, tests.count { !it.passed }))
                 Mode06.summary(tests).forEach { addLog(it) }
             }
 
@@ -678,7 +703,8 @@ class AppState private constructor(context: Context) {
             val freeze = if (busOnly) null else runCatching { l.readFreezeFrame() }.getOrNull()
             addLog(freeze?.describe() ?: tr("state_log_no_freeze"))
 
-            ui { busy = tr("state_step_modules"); scanning = true; scanFound = 0 }; rx()
+            ui { busy = tr("state_step_modules"); scanning = true; scanFound = 0; checkStage = 2 }; rx()
+            liveEvent("wait", tr("live_modules_start"))
             val brand = VinDecoder.decode(v).brand
             // адреса блоков из прошлого поиска по этой машине: с ними опрос быстрый; полный перебор — раз в 30 дней
             // или когда из известных блоков ответила меньше половины
@@ -703,10 +729,11 @@ class AppState private constructor(context: Context) {
             // кешируем только убедительный полный поиск: при спящих блоках список был бы неполным на месяц
             if (l.lastScanFull && l.foundEcus.size >= 3) prefs.ecus = EcuCache(l.foundEcus, System.currentTimeMillis()).toJson()
             addLog(tr("state_log_modules", modules.size, modules.count { it.codes.isNotEmpty() }))
+            liveEvent("info", tr("live_modules_done", modules.size, modules.count { it.codes.isNotEmpty() }))
             resumePolling()
             if (busOnly && modules.isEmpty()) silentError()
 
-            ui { busy = tr("state_step_compare") }
+            ui { busy = tr("state_step_compare"); checkStage = 3 }
             val batteryNow = BatteryReport.build(volts)
             val base = CarSnapshot(v, l.protocol, volt, mil?.first, mil?.second, stored, pending, s, permanent, modules,
                 readiness = ready, readinessCycle = readyCycle, stats = stats, tests = tests, battery = batteryNow, adapter = l.adapter,
@@ -743,6 +770,7 @@ class AppState private constructor(context: Context) {
                 Diagnosis.local(snapFull)
             } else {
                 ui { busy = tr("state_step_ai") }
+                liveEvent("wait", tr("live_ai"))
                 try {
                     AiClient.diagnose(
                         cfg, snapFull,
@@ -759,6 +787,9 @@ class AppState private constructor(context: Context) {
                     Diagnosis.local(snapFull)
                 }
             }
+            liveEvent("ok", tr("live_done"))
+            // человек свернул приложение, пока шла проверка: итог — уведомлением, возвращаться наугад не нужно
+            if (!appVisible && l !is DemoLink) notify(NOTIF_RESULT, tr("live_notif_title"), result.title.ifBlank { tr("live_notif_text") })
             ui {
                 diagnosis = result
                 history = (listOf(HistoryEntry(System.currentTimeMillis(), v, result, snap.sensorMap())) + history).take(50)

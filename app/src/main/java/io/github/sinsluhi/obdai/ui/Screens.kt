@@ -303,6 +303,9 @@ fun HomeScreen(
             }
         }
 
+        // живая проверка: этапы, лента событий и «пока проверяю» — человек видит работу, а не одну строку
+        CheckLive(state)
+
         // плашка Check Engine / последний результат
         val d = state.diagnosis
         if (state.milOn == true || (d != null && d.codes.isNotEmpty())) {

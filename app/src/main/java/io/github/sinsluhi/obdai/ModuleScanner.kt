@@ -24,6 +24,8 @@ interface ElmSession {
      * Раньше счётчик «Опрашиваю блоки 12/247» показывал адреса перебора как блоки.
      */
     fun stage(reading: Boolean, name: String?) {}
+    /** Событие для живой ленты проверки на экране: kind — ok | warn | wait | info, текст — человеческий. */
+    fun event(kind: String, text: String) {}
 }
 
 /** AT-command with the usual timeout. Extension, not a default: [Elm327] inherits send() from two interfaces. */
@@ -87,6 +89,7 @@ class ModuleScanner(private val s: ElmSession, private val pause: (Long) -> Unit
     private var ceaUsed = false
     private var taUsed = false         // адрес тестера менялся (Toyota) — вернуть F1
     private var rawGateway = false     // адаптер не умеет ATCEA: блоки за шлюзом опрашиваем сырыми кадрами (ATCAF0)
+    private var current = ""           // имя блока, который сейчас читается — для живой ленты
     private val DTC = listOf(0x19, 0x02, 0xFF)
 
     companion object {
@@ -605,6 +608,7 @@ class ModuleScanner(private val s: ElmSession, private val pause: (Long) -> Unit
 
     /** Настроить заголовки на блок и прочитать память ошибок: UDS, потом KWP. null — блок не ответил. */
     private fun readEcu(a: EcuAddr, brand: String?): Pair<ModuleScan, EcuAddr>? {
+        current = if (a.ext != null) ModuleMap.bmwName(a.ext) else ModuleMap.name(brand, a)
         setup(a)
         s.send("ATST 64")
         val raw = req(a, DTC, 2500)
@@ -688,6 +692,7 @@ class ModuleScanner(private val s: ElmSession, private val pause: (Long) -> Unit
         }
         if (frames.isNotEmpty() || Frames.status(raw).isEmpty() && raw.isNotBlank()) {
             // блок есть, но память ошибок не разобрали — честно показываем блок и пишем сырой ответ
+            s.event("warn", tr("live_module_unread", current.ifBlank { hex(a) }))
             s.log("↩ ${hex(a)}: ${raw.replace("\r", " | ").take(200)} — ${tr("elm_module_unread")}") // i18n-ignore: журнал
             return ModuleScan(ModuleMap.name(brand, a), a.display, emptyList(), "?") to a.copy(via = "?")
         }
@@ -755,6 +760,7 @@ class ModuleScanner(private val s: ElmSession, private val pause: (Long) -> Unit
      * позже — на Grandeur 2020 ответ коробки (123 байта) пришёл во время следующего запроса. null — не дождались.
      */
     private fun awaitPending(a: EcuAddr, service: Int): Pair<String, List<Frame>>? {
+        s.event("wait", tr("live_module_wait", current.ifBlank { hex(a) }))
         s.send("ATST FF")
         try {
             repeat(PENDING_WINDOWS) { w ->
@@ -781,6 +787,7 @@ class ModuleScanner(private val s: ElmSession, private val pause: (Long) -> Unit
     private fun module(e: EcuAddr, brand: String?, detailed: List<Pair<String, Int>>, id: Pair<String?, String?>, truncated: Boolean = false): ModuleScan {
         val name = if (e.ext != null) ModuleMap.bmwName(e.ext) else ModuleMap.name(brand, e)
         val m = ModuleScan(name, e.display, detailed.map { it.first }, e.via.ifBlank { "UDS" }, detailed.map { it.second }, id.first, id.second, truncated)
+        s.event(if (m.codes.isEmpty()) "ok" else "warn", if (m.codes.isEmpty()) tr("live_module_ok", name) else tr("live_module_codes", name, m.codes.size))
         s.log("$name (${hex(e)}): ${if (m.codes.isEmpty()) tr("elm_no_codes") else m.codes.joinToString()}" + (m.vin?.let { " · VIN $it" } ?: ""))
         return m
     }

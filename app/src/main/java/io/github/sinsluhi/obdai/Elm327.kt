@@ -35,6 +35,8 @@ class Elm327(private val logger: (String) -> Unit) : ObdLink, ElmSession {
     override fun found(count: Int) { onFound?.invoke(count) }
     @Volatile var onStage: ((Boolean, String?) -> Unit)? = null
     override fun stage(reading: Boolean, name: String?) { onStage?.invoke(reading, name) }
+    @Volatile var onEvent: ((String, String) -> Unit)? = null
+    override fun event(kind: String, text: String) { onEvent?.invoke(kind, text) }
 
     override var isCan = false
         private set

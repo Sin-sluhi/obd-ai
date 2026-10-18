@@ -143,6 +143,10 @@ class MainActivity : ComponentActivity() {
         state.analyzePhoto(b64) { pendingPage = Page.Dash }
     }
 
+    // экран на виду или свёрнут: итог проверки при свёрнутом приложении приходит уведомлением
+    override fun onStart() { super.onStart(); if (::state.isInitialized) state.appVisible = true }
+    override fun onStop() { super.onStop(); if (::state.isInitialized) state.appVisible = false }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge(

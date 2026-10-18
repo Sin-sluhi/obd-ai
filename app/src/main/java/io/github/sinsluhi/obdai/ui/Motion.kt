@@ -487,7 +487,7 @@ fun pageIntensity(page: Page): Float = when (page) {
     Page.Home -> 1f
     Page.Sensors -> 0.7f
     Page.Result, Page.Purchase, Page.Details -> 0.6f
-    Page.History, Page.Forum, Page.Settings, Page.Garage, Page.Blackbox, Page.Service, Page.Dash,
+    Page.History, Page.Forum, Page.Dev, Page.Settings, Page.Garage, Page.Blackbox, Page.Service, Page.Dash,
     Page.Tools, Page.Complaint, Page.Schemes, Page.Scheme, Page.OldCodes, Page.Maintenance, Page.Wizard -> 0.5f
     Page.Task -> 0.6f
     Page.Log -> 0f
