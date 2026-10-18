@@ -164,6 +164,7 @@ fun HomeScreen(
     onPurchase: () -> Unit,
     onCarPhoto: () -> Unit = {},
     onGarage: () -> Unit = {},
+    onDemo: () -> Unit = {},
     onTools: () -> Unit = {},
     bottom: @Composable () -> Unit
 ) {
@@ -301,6 +302,12 @@ fun HomeScreen(
             ) { text ->
                 Text(text, style = Type.body(14, Palette.muted), textAlign = TextAlign.Center, modifier = Modifier.fillMaxWidth())
             }
+            // адаптера нет — можно посмотреть приложение на демо-машине (само не включается)
+            if (!state.connected && state.busy == null) Text(
+                tr("scr_try_demo"),
+                style = Type.body(13, accent, FontWeight.SemiBold),
+                modifier = Modifier.clip(RoundedCornerShape(10.dp)).clickable(onClick = onDemo).padding(horizontal = 12.dp, vertical = 6.dp)
+            )
         }
 
         // живая проверка: этапы, лента событий и «пока проверяю» — человек видит работу, а не одну строку
@@ -1170,6 +1177,27 @@ fun SettingsScreen(
 
         // язык переключается кнопкой в правом верхнем углу главной (ui/LangMenu.kt); в настройках его нет по просьбе владельца
 
+        // демо-машина — для всех, но только по желанию: само при запуске не включается (решение владельца 18.10.2026)
+        SectionTitle(tr("scr_demo_car"))
+        Card {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Column(Modifier.weight(1f)) {
+                    Text(tr("scr_demo_car"), style = Type.strong(15))
+                    Text(tr("scr_demo_car_hint"), style = Type.label(12))
+                }
+                HSpace(8.dp)
+                Switch(
+                    checked = state.demo,
+                    onCheckedChange = { on -> if (on) state.startDemo() else state.stopDemo() },
+                    colors = SwitchDefaults.colors(
+                        checkedThumbColor = Palette.bg, checkedTrackColor = accent,
+                        uncheckedThumbColor = Palette.muted, uncheckedTrackColor = Palette.surface2,
+                        uncheckedBorderColor = Palette.border
+                    )
+                )
+            }
+        }
+
         // лог доступен всегда, не только в режиме разработчика: тестировщику с покупательской сборкой иначе нечем поделиться
         SectionTitle(tr("scr_help_title"))
         Card {
@@ -1270,24 +1298,6 @@ fun SettingsScreen(
                 )
             }
 
-            Card {
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Column(Modifier.weight(1f)) {
-                        Text(tr("scr_demo_car"), style = Type.strong(15))
-                        Text(tr("scr_demo_car_hint"), style = Type.label(12))
-                    }
-                    HSpace(8.dp)
-                    Switch(
-                        checked = state.demo,
-                        onCheckedChange = { state.updateDemo(it); if (it) state.connectDemo() },
-                        colors = SwitchDefaults.colors(
-                            checkedThumbColor = Palette.bg, checkedTrackColor = accent,
-                            uncheckedThumbColor = Palette.muted, uncheckedTrackColor = Palette.surface2,
-                            uncheckedBorderColor = Palette.border
-                        )
-                    )
-                }
-            }
             SecondaryButton(tr("scr_console_log"), Modifier.fillMaxWidth(), onClick = onOpenLog)
             SecondaryButton(tr("scr_dev_mode_off"), Modifier.fillMaxWidth(), color = Palette.muted, onClick = { state.updateDevMode(false) })
         }

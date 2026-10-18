@@ -492,6 +492,19 @@ class AppState private constructor(context: Context) {
         }
     }
 
+    /** Включить демо по желанию человека: настоящий адаптер, если был, отключается. */
+    fun startDemo() {
+        if (connected && !isDemo) disconnect()
+        updateDemo(true)
+        connectDemo()
+    }
+
+    /** Выключить демо: машина-пример отключается, приложение возвращается к «подключите адаптер». */
+    fun stopDemo() {
+        updateDemo(false)
+        if (isDemo) disconnect()
+    }
+
     fun connectDemo() {
         val d = DemoLink()
         link = d

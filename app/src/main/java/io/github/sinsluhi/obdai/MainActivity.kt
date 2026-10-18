@@ -274,6 +274,7 @@ class MainActivity : ComponentActivity() {
                         },
                         onSettings = { page = Page.Settings },
                         onAdapterClick = { if (state.connected) page = Page.Settings else pickDevice() },
+                        onDemo = { state.startDemo() },
                         onPhoto = { page = Page.Dash; takePhoto() },
                         onUseWeather = { useLocationForForecast() },
                         onCarPhoto = { carPhotoLauncher.launch("image/*") },
@@ -367,11 +368,10 @@ class MainActivity : ComponentActivity() {
                         onDemo = {
                             pickerDevices = null
                             stopBleScan()
-                            state.updateDemo(true)
-                            state.connectDemo()
+                            state.startDemo()
                         },
                         onDismiss = { pickerDevices = null; stopBleScan() },
-                        showDemo = state.devMode
+                        showDemo = true   // демо — всем, но только по выбору человека
                     )
                 }
                 state.error?.let { MessageDialog(tr("main_failed_title"), it) { state.error = null } }
