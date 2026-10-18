@@ -148,7 +148,7 @@ class MainActivity : ComponentActivity() {
             navigationBarStyle = SystemBarStyle.dark(android.graphics.Color.TRANSPARENT)
         )
         state = AppState.get(this)
-        if (state.demo && !state.connected) state.connectDemo()   // при пересоздании Activity демо уже подключено
+        // демо само не включается: при пересоздании Activity оно и так подключено (AppState живёт весь процесс)
         setContent { App() }
     }
 

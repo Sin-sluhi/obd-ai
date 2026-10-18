@@ -1256,5 +1256,9 @@
  "vkwp_sym_13": "check DTC memory of the related module",
  "vkwp_sym_14": "component defective",
  "scr_log_share": "Help improve the check",
- "scr_log_share_hint": "After a check, the adapter exchange is sent to the developer automatically, so the scan learns to understand new cars. The VIN serial number is cut out, location is not sent."
+ "scr_log_share_hint": "After a check, the adapter exchange is sent to the developer automatically, so the scan learns to understand new cars. The VIN serial number is cut out, location is not sent.",
+ "state_step_modules_search": "Looking for the car's modules…",
+ "state_step_modules_search_n": "Looking for the car's modules… found: {0}",
+ "state_step_modules_read": "Reading modules: {0} of {1}",
+ "state_step_modules_read_name": "Reading “{0}”: {1} of {2}"
 }

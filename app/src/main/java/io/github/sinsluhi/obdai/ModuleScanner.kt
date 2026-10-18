@@ -19,6 +19,11 @@ interface ElmSession {
     fun restoreObdHeader()
     /** Найдено блоков на данный момент — для счётчика на экране. */
     fun found(count: Int) {}
+    /**
+     * Что сейчас на экране: поиск (перебор адресов — их сотни, это не блоки) или чтение найденного блока [name].
+     * Раньше счётчик «Опрашиваю блоки 12/247» показывал адреса перебора как блоки.
+     */
+    fun stage(reading: Boolean, name: String?) {}
 }
 
 /** AT-command with the usual timeout. Extension, not a default: [Elm327] inherits send() from two interfaces. */
@@ -135,6 +140,7 @@ class ModuleScanner(private val s: ElmSession, private val pause: (Long) -> Unit
             if (known.isNotEmpty()) {
                 s.log(tr("elm_scan_mode_cached", known.size))
                 known.forEachIndexed { i, a ->
+                    s.stage(true, ModuleMap.name(brand, a))
                     progress(i + 1, known.size)
                     readEcu(a, brand)?.let { (m, e) -> found[a.resp] = m; addrs[a.resp] = e }
                 }
@@ -292,6 +298,7 @@ class ModuleScanner(private val s: ElmSession, private val pause: (Long) -> Unit
         val plan = if (s.is29Bit) listOf(ModuleMap.Range(ModuleMap.sweep29(), "ATCF 18DAF100", "ATCM 1FFFFF00")) else ModuleMap.plan(brand)
         val targets = plan.flatMap { r -> r.targets.map { it to r } }
         s.log(tr("elm_scan_mode_full", targets.size))
+        s.stage(false, null)
         val needRead = mutableListOf<EcuAddr>()       // кто ответил на зонд — дочитать память ошибок
         var range: ModuleMap.Range? = null
         targets.forEachIndexed { i, (a, r) ->
@@ -318,6 +325,7 @@ class ModuleScanner(private val s: ElmSession, private val pause: (Long) -> Unit
         s.send("ATCFC1")
         // второй проход: дочитать блоки, которым не хватило автопотока, или которые ответили 7F / не по UDS
         needRead.forEachIndexed { i, a ->
+            s.stage(true, ModuleMap.name(brand, a))
             progress(i + 1, needRead.size)
             val r = readEcu(a, brand)
             if (r != null) { found[a.resp] = r.first; addrs[a.resp] = r.second }

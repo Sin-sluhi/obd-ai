@@ -33,6 +33,8 @@ class Elm327(private val logger: (String) -> Unit) : ObdLink, ElmSession {
     /** Сколько блоков уже найдено в опросе — счётчик у радара на главной. */
     @Volatile var onFound: ((Int) -> Unit)? = null
     override fun found(count: Int) { onFound?.invoke(count) }
+    @Volatile var onStage: ((Boolean, String?) -> Unit)? = null
+    override fun stage(reading: Boolean, name: String?) { onStage?.invoke(reading, name) }
 
     override var isCan = false
         private set

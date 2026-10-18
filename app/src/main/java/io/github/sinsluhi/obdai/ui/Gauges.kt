@@ -7,6 +7,9 @@ import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
@@ -37,9 +40,12 @@ import androidx.compose.ui.graphics.nativeCanvas
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.core.content.res.ResourcesCompat
 import io.github.sinsluhi.obdai.R
+import kotlin.math.abs
 import kotlin.math.cos
 import kotlin.math.sin
 import kotlinx.coroutines.delay
@@ -308,7 +314,8 @@ fun RoundGauge(
         block
     }
 
-    Box(modifier.aspectRatio(1f), contentAlignment = Alignment.Center) {
+    BoxWithConstraints(modifier.aspectRatio(1f), contentAlignment = Alignment.Center) {
+        val d = maxWidth
         // Живой прибор — в своём graphicsLayer: покадровая инвалидация не переписывает слой экрана (MOTION.md §5.4)
         Box(
             Modifier
@@ -316,12 +323,18 @@ fun RoundGauge(
                 .then(if (live) Modifier.graphicsLayer() else Modifier)
                 .drawWithCache(onCache)
         )
-        Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            Text(label, style = Type.body(11, skin.numbers.copy(alpha = 0.75f), FontWeight.Medium))
-            Spacer(Modifier.height(30.dp))
+        // Значение — под ступицей стрелки, название — в нижнем вырезе шкалы (150°…30° делений нет).
+        // Раньше название стояло над центром и на приборах ~150 dp наезжало на верхние цифры и риски.
+        Column(Modifier.align(Alignment.TopCenter).padding(top = d * 0.555f), horizontalAlignment = Alignment.CenterHorizontally) {
             GaugeValue(value, decimals, skin.numbers)
-            Text(unit, style = Type.body(10, skin.numbers.copy(alpha = 0.65f)))
+            Text(unit, style = Type.body(10, skin.numbers.copy(alpha = 0.65f)), maxLines = 1)
         }
+        Text(
+            label,
+            Modifier.align(Alignment.TopCenter).padding(top = d * 0.80f).widthIn(max = d * 0.56f),
+            style = Type.body(10, skin.numbers.copy(alpha = 0.75f), FontWeight.Medium),
+            maxLines = 1, overflow = TextOverflow.Ellipsis, textAlign = TextAlign.Center
+        )
     }
 }
 
@@ -397,7 +410,11 @@ private fun DrawScope.drawStaticDial(
     val majors = (span / step).toInt().coerceIn(1, 64)
     paint.textSize = dialR * 0.13f
     paint.color = skin.numbers.toArgb()
-    val labelR = scaleR * 0.74f
+    // Цифра стоит внутри рисок с зазором, на радиусе по своей ширине и углу: широкие «240», «-40» сбоку прибора
+    // при общем радиусе заходили краем на деления. capH — высота цифр (без выносных элементов).
+    val tickIn = scaleR - ringW * 1.2f
+    val gap = dialR * 0.05f
+    val capH = paint.textSize * 0.72f
     for (i in 0..majors) {
         val v = min + step * i
         val a = Math.toRadians((GAUGE_START + GAUGE_SWEEP * frac(v)).toDouble())
@@ -410,8 +427,10 @@ private fun DrawScope.drawStaticDial(
             2.dp.toPx(), StrokeCap.Round
         )
         val text = formatTick(v / labelDivisor)
+        val halfW = paint.measureText(text) / 2f
+        val labelR = tickIn - gap - (abs(cosA) * halfW + abs(sinA) * capH / 2f)
         drawIntoCanvas {
-            it.nativeCanvas.drawText(text, cx + cosA * labelR, cy + sinA * labelR + paint.textSize * 0.35f, paint)
+            it.nativeCanvas.drawText(text, cx + cosA * labelR, cy + sinA * labelR + capH / 2f, paint)
         }
         if (i < majors) for (k in 1..4) {
             val vm = v + step * k / 5f

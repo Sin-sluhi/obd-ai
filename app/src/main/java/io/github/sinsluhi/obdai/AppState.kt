@@ -86,6 +86,8 @@ class AppState private constructor(context: Context) {
     var adapterTests by mutableStateOf<List<AdapterTest>>(emptyList())   // паспорт адаптера по ходу проверок
     var scanning by mutableStateOf(false)   // идёт поиск блоков — радар на главной
     var scanFound by mutableStateOf(0)
+    @Volatile private var scanReading = false   // поиск адресов или чтение найденного блока (ElmSession.stage)
+    @Volatile private var scanName: String? = null
     var protocol by mutableStateOf("")
     var voltage by mutableStateOf("")
     var ecuOnline by mutableStateOf(false)
@@ -145,7 +147,9 @@ class AppState private constructor(context: Context) {
     var customBaseUrl by mutableStateOf(prefs.customBaseUrl)
     var folder by mutableStateOf(prefs.folder)
     var accentIndex by mutableStateOf(prefs.accentIndex)
-    var demo by mutableStateOf(prefs.demo)
+    // Демо не переживает перезапуск: решение «смотреть демо» принимается каждый раз заново (просьба владельца
+    // 18.10.2026 — не включать за человека). Пересоздание Activity процесс не убивает, поэтому идущее демо цело.
+    var demo by mutableStateOf(false.also { prefs.demo = false })
     var devMode by mutableStateOf(prefs.devMode)
     var voice by mutableStateOf(prefs.voice)
     var autoTrip by mutableStateOf(prefs.autoTrip)
@@ -413,10 +417,12 @@ class AppState private constructor(context: Context) {
     // ---- подключение ----
 
     fun connect(target: AdapterTarget) {
+        if (demo) updateDemo(false)   // настоящий адаптер важнее демо
         val elm = Elm327 { addLog(it) }
         elm.onCommand = { rx() }   // каждая команда живому адаптеру — пакет на фоне (~10 в секунду в опросе)
         elm.onAdapterTest = { t -> ui { adapterTests = t } }
         elm.onFound = { n -> ui { scanFound = n } }
+        elm.onStage = { reading, name -> scanReading = reading; scanName = name }
         runTask(tr("state_task_connect"), needLink = false) {
             ui { busy = tr("state_connecting"); adapterTests = emptyList() }
             val mark = Trace.mark(); val t0 = System.currentTimeMillis()
@@ -658,7 +664,19 @@ class AppState private constructor(context: Context) {
             // или когда из известных блоков ответила меньше половины
             val knownEcus = EcuCache.fromJson(prefs.ecus)?.takeIf { it.fresh }?.ecus.orEmpty()
             val modules = runCatching {
-                l.scanModules(brand, knownEcus) { i, n -> ui { busy = tr("state_step_modules_n", i, n); if (l is DemoLink) scanFound = i }; rx() }
+                scanReading = l is DemoLink; scanName = null
+                l.scanModules(brand, knownEcus) { i, n ->
+                    ui {
+                        if (l is DemoLink) scanFound = i
+                        // поиск — сколько блоков уже нашлось (адресов перебора сотни, это не блоки); чтение — какой блок из скольких
+                        busy = when {
+                            !scanReading -> if (scanFound > 0) tr("state_step_modules_search_n", scanFound) else tr("state_step_modules_search")
+                            scanName != null -> tr("state_step_modules_read_name", scanName, i, n)
+                            else -> tr("state_step_modules_read", i, n)
+                        }
+                    }
+                    rx()
+                }
             }.onFailure { addLog(tr("state_log_modules_failed", it.message)) }.getOrDefault(emptyList())
             ui { scanning = false; scanFound = modules.size }
             rec.modules = modules.size
