@@ -21,6 +21,8 @@ API (JSON, UTF-8):
   GET  /api/garage/list?code=<код>                       → {"cars":[{"car","name","updated","size"}]}
 Код гаража придумывает приложение (16 случайных символов) и показывает владельцу: кто знает код, тот видит гараж.
 
+Логи проверок от приложений (модуль logs.py): POST /api/logs/put, сводка для владельца — /api/admin/logs*.
+
 Новости автомира для сайта (модуль news.py): GET /api/news — RSS изданий, перечитываются раз в 20 минут.
 
 Выдача APK по заявке (сайт site/, модуль apk.py): посетитель оставляет заявку, владелец одобряет её в site/admin.html,
@@ -37,6 +39,7 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import parse_qs, urlparse
 
 import apk
+import logs
 import owner_ai
 import news
 
@@ -66,6 +69,7 @@ def init_db(path):
         code TEXT NOT NULL, car TEXT NOT NULL, name TEXT NOT NULL, data TEXT NOT NULL, updated INTEGER NOT NULL,
         PRIMARY KEY(code, car))""")
     apk.init_db(_db)
+    logs.init_db(_db)
     _db.commit()
 
 
@@ -200,7 +204,7 @@ class Handler(BaseHTTPRequestHandler):
 
     def _body(self):
         n = int(self.headers.get("Content-Length") or 0)
-        if n <= 0 or n > MAX_GARAGE + 8192:   # сообщения крошечные, гараж — до полумегабайта
+        if n <= 0 or n > 600 * 1024:   # сообщения крошечные, гараж — до полумегабайта, лог — до 400 КБ в base64
             return {}
         try:
             return json.loads(self.rfile.read(n).decode("utf-8"))
@@ -210,6 +214,8 @@ class Handler(BaseHTTPRequestHandler):
     def do_GET(self):
         u = urlparse(self.path)
         q = {k: v[0] for k, v in parse_qs(u.query).items()}
+        if u.path.startswith("/api/admin/logs"):
+            return logs.handle_get(self, _db, _lock, u.path, q)
         if u.path.startswith("/api/apk/") or u.path.startswith("/api/admin/"):
             return apk.handle_get(self, _db, _lock, u.path, q)
         if u.path.startswith("/api/owner/"):
@@ -261,6 +267,9 @@ class Handler(BaseHTTPRequestHandler):
             return owner_ai.handle_post(self, u.path, b)
         if u.path == "/api/garage/put":
             return self._garage_put(b)
+        if u.path == "/api/logs/put":
+            code, obj = logs.put(_db, _lock, b)
+            return self._json(code, obj)
         room = clean(b.get("room"), 200)
         device = clean(b.get("device"), 64)
         name = clean(b.get("name"), MAX_NAME) or "Водитель"
@@ -305,6 +314,7 @@ def main():
     base = os.path.dirname(os.path.abspath(args.db))
     apk.configure(base, args.apk or os.path.join(base, "apk", "app-debug.apk"))
     owner_ai.configure(base)
+    logs.configure(base)
     news.start()
     srv = ThreadingHTTPServer((args.host, args.port), Handler)
     print("форум слушает %s:%d, база %s, APK %s" % (args.host, args.port, args.db, apk.APK_PATH))

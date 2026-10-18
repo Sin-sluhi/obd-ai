@@ -853,6 +853,8 @@
  "scr_live_bg_hint": "Datenpakete im Hintergrund laufen im Takt der Verbindung zum Auto. Ausschalten, wenn du Akku sparen willst",
  "scr_load": "Last",
  "scr_log": "Log",
+ "scr_log_share": "Diagnose verbessern helfen",
+ "scr_log_share_hint": "Nach jeder Prüfung geht der Datenaustausch mit dem Adapter automatisch an den Entwickler – so lernt die Abfrage neue Autos verstehen. Die Seriennummer der FIN wird entfernt, der Standort wird nicht übertragen.",
  "scr_lph": "l/h",
  "scr_max": "Max",
  "scr_mil_on": "Check Engine leuchtet",

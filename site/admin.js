@@ -109,15 +109,87 @@
   // версия разработчика: та же сборка, но с режимом разработчика (7 нажатий на версию в настройках)
   $("#devDl").addEventListener("click", () => selfDownload("#devDl", "/api/admin/apk/dev", "OBD-AI-dev.apk", "Версия разработчика"));
 
+  // ---- логи с машин (server/forum/logs.py): сводка по моделям и последние проверки ----
+  let lgView = "models", lgModels = [], lgLogs = [];
+  const flagLi = f => `<li class="${f.startsWith("блоков найдено") ? "info" : ""}">${esc(f)}</li>`;
+  const carName = x => [x.brand, x.model, x.year || ""].filter(Boolean).join(" ") || "машина без VIN";
+
+  async function loadLogs() {
+    try {
+      const bad = $("#lgBad").checked ? "&bad=1" : "";
+      const [m, l] = await Promise.all([
+        ObdApi.json("/api/admin/logs/models", { headers: hdr() }),
+        ObdApi.json("/api/admin/logs?limit=150" + bad, { headers: hdr() })
+      ]);
+      if (m.status !== 200 || l.status !== 200) throw new Error(m.status + "/" + l.status);
+      lgModels = m.data.models || []; lgLogs = l.data.logs || [];
+      renderLogs();
+    } catch (e) {
+      $("#lgList").innerHTML = `<div class="empty">Логи не загрузились — сервер старой версии или недоступен</div>`;
+    }
+  }
+
+  function renderLogs() {
+    const models = $("#lgBad").checked ? lgModels.filter(g => g.bad) : lgModels;
+    document.querySelectorAll("#lgTabs .tab").forEach(t => {
+      t.classList.toggle("on", t.dataset.v === lgView);
+      t.querySelector("em").textContent = t.dataset.v === "models" ? models.length : lgLogs.length;
+    });
+    if (lgView === "models") {
+      if (!models.length) { $("#lgList").innerHTML = `<div class="empty">Логов пока нет</div>`; return; }
+      $("#lgList").innerHTML = models.map(g => {
+        const fl = Object.entries(g.flags).sort((a, b) => b[1] - a[1]).map(([f, n]) => flagLi(f + (n > 1 ? " — в " + n + " логах" : "")));
+        return `<article class="req ${g.bad ? "pending" : "clean"}">
+          <div>
+            <h3>${esc(carName(g))}</h3>
+            <div class="meta"><span>проверок: ${g.n}</span><span>споткнулся: ${g.bad}</span><span class="mono">последний ${when(g.last)}</span></div>
+            ${fl.length ? `<ul class="flags">${fl.join("")}</ul>` : ""}
+          </div>
+          <div class="acts"><button class="btn btn-ghost btn-sm" data-lg="filter" data-b="${esc(g.brand)}"><span>Логи марки</span></button></div>
+        </article>`;
+      }).join("");
+      return;
+    }
+    if (!lgLogs.length) { $("#lgList").innerHTML = `<div class="empty">Здесь пусто</div>`; return; }
+    $("#lgList").innerHTML = lgLogs.map(x => `<article class="req ${x.flags.some(f => !f.startsWith("блоков найдено")) || !x.ok ? "pending" : "clean"}">
+        <div>
+          <h3>${esc(carName(x))} <span class="pill ${x.ok ? "approved" : "rejected"}">${x.kind === "connect" ? "подключение" : "проверка"}${x.ok ? "" : " · сбой"}</span></h3>
+          <div class="meta"><span>${esc(x.protocol || "протокол ?")}</span><span>${esc(x.adapter)}</span>
+            <span>блоков ${x.modules} · кодов ${x.codes}</span>
+            <span class="mono">№${x.id} · ${when(x.time)} · ${esc(x.app)} · ${esc(x.vin)} · уст. ${esc(x.install)} · ${Math.round(x.duration / 1000)} с</span></div>
+          ${x.flags.length ? `<ul class="flags">${x.flags.map(flagLi).join("")}</ul>` : ""}
+        </div>
+        <div class="acts"><button class="btn btn-ghost btn-sm" data-lg="open" data-id="${x.id}"><span>Открыть лог</span></button></div>
+      </article>`).join("");
+  }
+
+  $("#lgList").addEventListener("click", async e => {
+    const b = e.target.closest("[data-lg]"); if (!b) return;
+    if (b.dataset.lg === "filter") {
+      const r = await ObdApi.json("/api/admin/logs?limit=150&brand=" + encodeURIComponent(b.dataset.b), { headers: hdr() });
+      if (r.status === 200) { lgLogs = r.data.logs || []; lgView = "logs"; renderLogs(); }
+      return;
+    }
+    // ключ в заголовке, лог открывается как файл из blob
+    const r = await ObdApi.call("/api/admin/logs/file?id=" + b.dataset.id, { headers: { "X-Admin-Key": key } });
+    if (!r.ok) { toast("Лога нет на сервере"); return; }
+    const url = URL.createObjectURL(new Blob([await r.text()], { type: "text/plain;charset=utf-8" }));
+    const a = document.createElement("a"); a.href = url; a.download = "obd-ai-log-" + b.dataset.id + ".txt"; document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 10000);
+  });
+  $("#lgTabs").addEventListener("click", e => { const t = e.target.closest(".tab"); if (t) { lgView = t.dataset.v; renderLogs(); } });
+  $("#lgBad").addEventListener("change", loadLogs);
+  $("#lgRefresh").addEventListener("click", loadLogs);
+
   $("#loginForm").addEventListener("submit", e => {
     e.preventDefault();
     key = e.target.elements.key.value.trim();
     if (!key) return;
-    store.set(key); show(true); load();
+    store.set(key); show(true); load(); loadLogs();
   });
-  document.addEventListener("visibilitychange", () => { if (!document.hidden && key) load(); });
+  document.addEventListener("visibilitychange", () => { if (!document.hidden && key) { load(); loadLogs(); } });
 
   key = store.get();
   show(!!key);
-  if (key) load();
+  if (key) { load(); loadLogs(); }
 })();

@@ -1173,6 +1173,8 @@ fun SettingsScreen(
             Text(tr("scr_send_log_hint"), style = Type.body(13, Palette.text2))
             VSpace(10.dp)
             SecondaryButton(tr("scr_send_log"), Modifier.fillMaxWidth(), onClick = onShareLog)
+            VSpace(14.dp)
+            ToggleRow(tr("scr_log_share"), tr("scr_log_share_hint"), state.logShare) { state.updateLogShare(it) }
         }
         VSpace(18.dp)
 

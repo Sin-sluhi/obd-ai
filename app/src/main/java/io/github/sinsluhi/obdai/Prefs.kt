@@ -27,6 +27,16 @@ class Prefs(context: Context) {
         get() = sp.getString("garage_code", null) ?: Garage.newCode().also { sp.edit().putString("garage_code", it).apply() }
         set(v) = sp.edit().putString("garage_code", v.trim().uppercase().replace("-", "")).apply()
 
+    /** Автоотправка логов проверки (LogShare). Включена у всех без вопроса (решение владельца 18.10.2026:
+     *  покупатели не понимают, что такое логи); выключатель — в настройках, раздел «Помощь». */
+    var logShare: Boolean
+        get() = sp.getBoolean("log_share", true)
+        set(v) = sp.edit().putBoolean("log_share", v).apply()
+
+    /** Случайный номер установки для логов: сервер видит, что логи с одного телефона, но не связывает их с форумом. */
+    val logInstall: String
+        get() = sp.getString("log_install", null) ?: java.util.UUID.randomUUID().toString().also { sp.edit().putString("log_install", it).apply() }
+
     var garageAuto: Boolean
         get() = sp.getBoolean("garage_auto", true)
         set(v) = sp.edit().putBoolean("garage_auto", v).apply()

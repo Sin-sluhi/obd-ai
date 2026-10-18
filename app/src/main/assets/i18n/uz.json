@@ -841,6 +841,8 @@
  "scr_live_bg_hint": "Fondagi maʼlumot paketlari mashina bilan aloqa ritmida yuguradi. Batareyani tejasang, oʻchir",
  "scr_load": "Yuklama",
  "scr_log": "Log",
+ "scr_log_share": "Tekshiruvni yaxshilashga yordam berish",
+ "scr_log_share_hint": "Tekshiruvdan soʻng adapter bilan almashuv dasturchiga oʻzi yuboriladi — shu tarzda soʻrov yangi mashinalarni tushunishni oʻrganadi. VIN seriya raqami olib tashlanadi, joylashuv yuborilmaydi.",
  "scr_lph": "l/soat",
  "scr_max": "Maks",
  "scr_mil_on": "Check Engine yonib turibdi",

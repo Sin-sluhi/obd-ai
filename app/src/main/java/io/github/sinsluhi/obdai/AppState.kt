@@ -63,6 +63,7 @@ class AppState private constructor(context: Context) {
             Kb.init(appContext, prefs)
             ForumTree.load(appContext)
             runCatching { ForumLocator.best(prefs) }
+            runCatching { if (prefs.logShare) LogShare.flush(appContext.filesDir, forumUrl) }   // логи, не ушедшие без сети
             runCatching { if (Kb.refresh(appContext, prefs)) addLog(tr("state_kb_updated", Kb.size)) }
         }
     }
@@ -129,6 +130,7 @@ class AppState private constructor(context: Context) {
     var busy by mutableStateOf<String?>(null)      // текст текущего шага или null
     var rxCount by mutableLongStateOf(0L)          // счётчик команд адаптеру: живой фон рождает пакет на каждую
     var liveBackground by mutableStateOf(prefs.liveBackground)   // тумблер «Живой фон» в настройках
+    var logShare by mutableStateOf(prefs.logShare)               // автоотправка логов проверки (LogShare)
     var gaugeSelfTest by mutableStateOf(false)     // приборы уже сделали самотест после этого подключения (ставят сами)
     var error by mutableStateOf<String?>(null)
     var toast by mutableStateOf<String?>(null)
@@ -205,6 +207,7 @@ class AppState private constructor(context: Context) {
     fun addLog(msg: String) = ui {
         val stamp = SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(Date())
         log.add("$stamp  $msg")
+        Trace.journal("$stamp  $msg")
         if (log.size > 500) log.removeAt(0)
     }
 
@@ -227,6 +230,7 @@ class AppState private constructor(context: Context) {
     fun updateLang(l: Lang) { prefs.lang = l.code; Tr.set(appContext, l) }
     fun updateVoice(v: Boolean) { voice = v; prefs.voice = v }
     fun updateLiveBackground(v: Boolean) { liveBackground = v; prefs.liveBackground = v }
+    fun updateLogShare(v: Boolean) { logShare = v; prefs.logShare = v }
     fun updateAutoTrip(v: Boolean) { autoTrip = v; prefs.autoTrip = v }
     fun updateWatchDtc(v: Boolean) { watchDtc = v; prefs.watchDtc = v }
     fun updateDemo(v: Boolean) {
@@ -415,7 +419,15 @@ class AppState private constructor(context: Context) {
         elm.onFound = { n -> ui { scanFound = n } }
         runTask(tr("state_task_connect"), needLink = false) {
             ui { busy = tr("state_connecting"); adapterTests = emptyList() }
-            elm.connect(appContext, target)
+            val mark = Trace.mark(); val t0 = System.currentTimeMillis()
+            try {
+                elm.connect(appContext, target)
+            } catch (e: Exception) {
+                // неудачное подключение — самый ценный лог: машина или адаптер, которых опрос не понял
+                shareLog(CheckRec("connect", mark, t0).apply { error = e.message ?: e.javaClass.simpleName })
+                throw e
+            }
+            logMark = mark; logStart = t0
             link = elm
             when (target) {
                 is AdapterTarget.Classic -> prefs.lastDevice = target.device.address
@@ -501,7 +513,52 @@ class AppState private constructor(context: Context) {
     fun runCheck(onDone: () -> Unit) {
         if (busy != null) return
         runTask(tr("state_task_check")) {
+            // лог проверки уходит в любом исходе (LogShare): кусок обмена от подключения или от начала этой проверки
+            val rec = CheckRec("check", logMark ?: Trace.mark(), logStart ?: System.currentTimeMillis())
+            logMark = null; logStart = null
+            try { checkBody(rec, onDone) }
+            catch (e: Exception) { rec.error = e.message ?: e.javaClass.simpleName; throw e }
+            finally { shareLog(rec) }
+        }
+    }
+
+    /** Итог проверки для автоотправки лога: заполняется по ходу [checkBody]. */
+    private class CheckRec(val kind: String, val mark: Long, val t0: Long) {
+        var error: String? = null
+        var vin: String? = null
+        var title: String = ""
+        var busOnly = false
+        var modules = 0
+        var codes = 0
+        var demo = false
+    }
+    @Volatile private var logMark: Long? = null
+    @Volatile private var logStart: Long? = null
+
+    /** Положить лог в очередь и отправить (в своём потоке: сеть не должна держать очередь задач адаптера). */
+    private fun shareLog(rec: CheckRec) {
+        if (!prefs.logShare || rec.demo) return
+        runCatching {
+            val (trace, journal) = Trace.since(rec.mark)
+            val info = VinDecoder.decode(rec.vin)
+            val meta = LogShare.Meta(
+                kind = rec.kind, ok = rec.error == null, error = rec.error.orEmpty(), vin = rec.vin,
+                brand = info.brand.orEmpty(), model = info.model ?: rec.title, year = info.year,
+                protocol = protocol, adapter = listOf(adapterName, adapterInfo.version).filter { it.isNotBlank() }.distinct().joinToString(" · "),
+                modules = rec.modules, codes = rec.codes, busOnly = rec.busOnly,
+                durationMs = System.currentTimeMillis() - rec.t0)
+            LogShare.enqueue(appContext.filesDir, LogShare.payload(prefs.logInstall, BuildConfig.VERSION_NAME, meta, trace, journal))
+        }.onFailure { Trace.note("лог не сохранён: ${it.message}") } // i18n-ignore: лог
+        Thread {
+            val url = runCatching { ForumLocator.best(prefs) }.getOrNull() ?: forumUrl
+            runCatching { LogShare.flush(appContext.filesDir, url) }
+        }.start()
+    }
+
+    private fun checkBody(rec: CheckRec, onDone: () -> Unit) {
+        run {
             val l = link ?: throw IOException(tr("state_no_link"))
+            rec.demo = l is DemoLink
             pausePolling()
 
             ui { busy = tr("state_step_ecu") }; rx()
@@ -552,6 +609,7 @@ class AppState private constructor(context: Context) {
 
             ui { busy = tr("state_step_vin") }; rx()
             val v = if (busOnly) null else runCatching { l.readVin() }.getOrNull()
+            rec.vin = v; rec.busOnly = busOnly
             ui { vin = v }
             addLog(if (v == null) tr("state_log_no_vin") else tr("state_log_vin", v))
             // Другая машина — переключаемся до записи любых журналов, иначе напряжение, визиты и история
@@ -564,6 +622,7 @@ class AppState private constructor(context: Context) {
             // на DNS 33 с (Subaru 17.10.2026, телефон с VPN; таймауты соединения DNS не покрывают), адаптер за это
             // время молчал и отвалился: «Broken pipe», проверка оборвана после чтения VIN.
             val onlineTitle = if (v != null && decodedVin.model == null) prefs.vinOnline(v)?.ifBlank { null } else null
+            rec.title = onlineTitle ?: decodedVin.title()
             val switched = runCatching { noticeCar(v, onlineTitle ?: decodedVin.title()) }.getOrDefault(false)
             if (v != null && decodedVin.model == null && prefs.vinOnline(v) == null) Thread {
                 runCatching { VinDecoder.online(v, prefs) }.getOrNull()?.let { renameCar(v, it) }
@@ -602,6 +661,7 @@ class AppState private constructor(context: Context) {
                 l.scanModules(brand, knownEcus) { i, n -> ui { busy = tr("state_step_modules_n", i, n); if (l is DemoLink) scanFound = i }; rx() }
             }.onFailure { addLog(tr("state_log_modules_failed", it.message)) }.getOrDefault(emptyList())
             ui { scanning = false; scanFound = modules.size }
+            rec.modules = modules.size
             // кешируем только убедительный полный поиск: при спящих блоках список был бы неполным на месяц
             if (l.lastScanFull && l.foundEcus.size >= 3) prefs.ecus = EcuCache(l.foundEcus, System.currentTimeMillis()).toJson()
             addLog(tr("state_log_modules", modules.size, modules.count { it.codes.isNotEmpty() }))
@@ -630,6 +690,7 @@ class AppState private constructor(context: Context) {
                     // запись чёрного ящика — дополнение к отчёту: её сбой не должен ронять всю проверку
                     ?.let { bb -> runCatching { Blackbox.report(bb) }.onFailure { addLog(tr("state_log_blackbox_failed", it.message)) }.getOrNull() })
             knownCodes = snap.allCodes.map { it.substringBefore(' ') }.toSet()
+            rec.codes = snap.allCodes.size
             ui { lastSnapshot = snap; battery = batteryNow }
             val serviceText = runCatching { closeVisit(snap, carVisits, carWarmups) }.getOrNull()
             val snapFull = if (serviceText == null) snap else snap.copy(service = serviceText)

@@ -838,6 +838,8 @@
  "scr_live_bg_hint": "背景数据包随车辆通信节奏流动。省电的话可以关掉",
  "scr_load": "负荷",
  "scr_log": "日志",
+ "scr_log_share": "帮助改进检测",
+ "scr_log_share_hint": "每次检测后，与适配器的通信记录会自动发送给开发者，帮助检测学会识别新车型。VIN 中的序列号会被删除，不发送位置信息。",
  "scr_lph": "L/h",
  "scr_max": "最大",
  "scr_mil_on": "Check Engine 灯亮",

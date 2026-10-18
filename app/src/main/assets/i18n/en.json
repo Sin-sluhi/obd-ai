@@ -1254,5 +1254,7 @@
  "vkwp_sym_11": "open circuit",
  "vkwp_sym_12": "electrical fault in circuit",
  "vkwp_sym_13": "check DTC memory of the related module",
- "vkwp_sym_14": "component defective"
+ "vkwp_sym_14": "component defective",
+ "scr_log_share": "Help improve the check",
+ "scr_log_share_hint": "After a check, the adapter exchange is sent to the developer automatically, so the scan learns to understand new cars. The VIN serial number is cut out, location is not sent."
 }

@@ -48,6 +48,13 @@
   .empty { padding: 60px 20px; text-align: center; color: var(--muted); border: 1px dashed var(--line2); border-radius: 22px; }
   .toast { position: fixed; left: 50%; bottom: 24px; transform: translate(-50%, 200%); visibility: hidden; padding: 12px 18px; border-radius: 14px; background: var(--lime); color: var(--ink); font-weight: 700; transition: transform .5s var(--ease); z-index: 99; }
   .toast.on { transform: translate(-50%, 0); visibility: visible; }
+  .logs-top { margin: 56px 0 10px; }
+  .logs-top h2 { margin: 0; font: 800 clamp(24px, 3vw, 36px)/1 var(--display); letter-spacing: -.04em; }
+  .lg-bad { font-size: 12px; color: var(--text2); display: flex; gap: 8px; align-items: center; cursor: pointer; }
+  .lg-note { color: var(--muted); font-size: 14px; max-width: 760px; margin: 0 0 18px; }
+  .req ul.flags { margin: 8px 0 0; padding-left: 18px; color: var(--warn); font-size: 14px; }
+  .req ul.flags li.info { color: var(--muted); }
+  .req.clean { opacity: .75; }
   @media (max-width: 680px) { .req { grid-template-columns: 1fr; } .req .acts { justify-content: flex-start; } }
 </style>
 </head>
@@ -88,6 +95,19 @@
     <button class="tab" data-f="all">Все<em>0</em></button>
   </div>
   <div class="list" id="list"></div>
+
+  <div class="adm-top logs-top">
+    <h2>Логи с машин</h2>
+    <span class="sp"></span>
+    <label class="mono lg-bad"><input type="checkbox" id="lgBad" checked> только где споткнулся</label>
+    <button class="btn btn-ghost btn-sm" id="lgRefresh" type="button"><span>Обновить</span></button>
+  </div>
+  <p class="lg-note">Приложение само присылает обмен с адаптером после каждой проверки (серийный номер VIN вырезан). Флаг — итог, а не шаг перебора: «коды не прочитаны» значит, что блок ответил, но ни одного ответа с кодами от него так и не было.</p>
+  <div class="tabs" id="lgTabs">
+    <button class="tab on" data-v="models">По моделям<em>0</em></button>
+    <button class="tab" data-v="logs">Последние<em>0</em></button>
+  </div>
+  <div class="list" id="lgList"></div>
 </section>
 
 <div class="toast" id="toast"></div>
@@ -101,6 +121,6 @@
   </symbol>
 </svg>
 <script src="api.js?v=7"></script>
-<script src="admin.js?v=7"></script>
+<script src="admin.js?v=8"></script>
 </body>
 </html>

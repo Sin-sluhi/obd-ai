@@ -853,6 +853,8 @@
  "scr_live_bg_hint": "Los paquetes de datos del fondo corren al ritmo de la conexión con el coche. Desactívalo si ahorras batería",
  "scr_load": "Carga",
  "scr_log": "Registro",
+ "scr_log_share": "Ayudar a mejorar el diagnóstico",
+ "scr_log_share_hint": "Tras cada diagnóstico, el intercambio con el adaptador se envía al desarrollador automáticamente: así el escaneo aprende a entender coches nuevos. El número de serie del VIN se elimina y no se envía la ubicación.",
  "scr_lph": "l/h",
  "scr_max": "Máx",
  "scr_mil_on": "Check Engine encendido",

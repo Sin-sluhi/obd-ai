@@ -853,6 +853,8 @@
  "scr_live_bg_hint": "Les paquets de données défilent en fond au rythme de la liaison avec la voiture. Désactive pour économiser la batterie",
  "scr_load": "Charge",
  "scr_log": "Journal",
+ "scr_log_share": "Aider à améliorer le diagnostic",
+ "scr_log_share_hint": "Après chaque diagnostic, l’échange avec l’adaptateur est envoyé automatiquement au développeur : l’analyse apprend ainsi à comprendre de nouvelles voitures. Le numéro de série du VIN est supprimé, la position n’est pas envoyée.",
  "scr_lph": "l/h",
  "scr_max": "Max",
  "scr_mil_on": "Voyant Check Engine allumé",
