@@ -24,7 +24,7 @@ class OpenCodesTest {
     @Test fun saeAndBrandTitlesFromWal33d() {
         assertNotNull(DtcCatalog.openTitle("B0004"))
         // P1577 двигателя S8 (Launch): клапан правой опоры двигателя
-        assertNotNull(DtcCatalog.openTitle("P1577", "vag"))
+        assertEquals("Клапан правой опоры двигателя: обрыв", DtcCatalog.openTitle("P1577", "vag"))
         assertNull(DtcCatalog.openTitle("P1577"))
         assertNull(DtcCatalog.openTitle("99999"))
     }

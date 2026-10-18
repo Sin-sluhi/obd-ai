@@ -39,10 +39,18 @@ ru_b = tsv("brand_*.tsv")     # ключ «марка:код»
 ru_v = tsv("vag5_*.tsv")
 
 g = {c: [ru_g.get(c), en] for c, en in sorted(wal["generic"].items()) if c not in ours["codes"]}
+# Таблицы марок у Wal33D во многом копии друг друга (Chrysler ≈ GM, Lincoln ≈ Ford): перевод с тем же английским
+# названием берётся у уже переведённой марки, чтобы не пересказывать одно и то же дважды
+by_en = {}
+for key, table in wal["brands"].items():
+    for c, en in table.items():
+        ru = ru_b.get(f"{key}:{c}")
+        if ru:
+            by_en.setdefault(en.strip().lower(), ru)
 b = {}
 for key, table in wal["brands"].items():
     have = ours["brands"].get(key, {})
-    rows = {c: [ru_b.get(f"{key}:{c}"), en] for c, en in sorted(table.items()) if c not in have}
+    rows = {c: [ru_b.get(f"{key}:{c}") or by_en.get(en.strip().lower()), en] for c, en in sorted(table.items()) if c not in have}
     if rows:
         b[key] = rows
 v = {c: ru_v[c] for c in sorted(vag) if c in ru_v}
