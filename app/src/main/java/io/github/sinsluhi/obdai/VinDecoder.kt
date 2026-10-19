@@ -51,7 +51,10 @@ object VinDecoder {
         listOf("VF3", "VR3") to "Peugeot", listOf("VF7", "VR7") to "Citroën", listOf("VR1", "VXK") to "DS / Opel",
         listOf("1G1", "KL1", "XUU", "X9L", "2G1", "3G1", "KL4", "KL8") to "Chevrolet",
         listOf("ZFA", "ZFF") to "Fiat", listOf("ZAR") to "Alfa Romeo", listOf("SAL", "SAJ") to "Land Rover / Jaguar",
-        listOf("TRU", "WVZ") to "Audi", listOf("KPT", "X7M") to "SsangYong", listOf("MAL") to "Hyundai (Индия)",
+        listOf("TRU", "WVZ") to "Audi", listOf("KPT") to "SsangYong",
+        // X7M — ТагАЗ (Таганрог): Hyundai Accent, Sonata, Porter. Раньше стоял SsangYong — ошибка, ТагАЗ-овский Accent
+        // не получал болячек и кодов Hyundai (сверено: Wikibooks VIN codes/Hyundai, список WMI, 19.10.2026)
+        listOf("X7M") to "Hyundai (ТагАЗ)", listOf("MAL") to "Hyundai (Индия)",
         listOf("JS", "TSM", "MA3") to "Suzuki", listOf("JNK", "JNR", "JNZ") to "Infiniti", listOf("JH4") to "Acura",
         listOf("1J4", "1J8", "1C4", "ZAC") to "Jeep", listOf("1C3", "2C3") to "Chrysler", listOf("1B3", "2B3", "1D7", "3D4") to "Dodge",
         listOf("1G6", "1GY") to "Cadillac", listOf("KMT") to "Genesis", listOf("XWB", "KLA", "KLY") to "Daewoo / Ravon",
@@ -105,7 +108,7 @@ object VinDecoder {
             val vds = v.substring(3, 7)
             model = when {
                 brand.startsWith("Lada") -> ladaModels[vds] ?: ladaModels[vds.take(3)]
-                v.startsWith("KMH") -> hyundaiLines[v[3]]
+                v.startsWith("KMH") || v.startsWith("X7M") -> hyundaiLines[v[3]]
                 v.startsWith("KNA") -> kiaLines[v[3]]
                 else -> null
             }

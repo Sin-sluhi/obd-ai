@@ -38,4 +38,13 @@ class ParserTest {
         val codes = ModuleDecoder.parseUdsDetailed(msgs)!!.map { it.first.substringBefore(' ') }
         assertEquals(listOf("P0133"), codes)
     }
+
+    /** ТагАЗ: X7M — Hyundai таганрогской сборки, модель по той же букве линейки, что у корейских (C — Accent). */
+    @Test fun tagazAccentIsHyundai() {
+        val info = VinDecoder.decode("X7MCF41GP8M012345")
+        assertEquals("Hyundai (ТагАЗ)", info.brand)
+        assertEquals("Accent", info.model)
+        assertEquals(2008, info.year)
+        assertEquals("hyundai_kia", DtcCatalog.brandKey(info.brand))
+    }
 }
