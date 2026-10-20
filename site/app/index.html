@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>OBD AI — тест адаптера</title>
+<meta name="theme-color" content="#07080a">
+<meta name="robots" content="noindex">
+<style>
+  :root { --bg:#07080a; --surface:#111317; --line:rgba(255,255,255,.1); --text:#eef1f5; --muted:#7d8592; --lime:#b8f15a; --red:#ff6b6b; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--text); font:500 16px/1.5 system-ui,-apple-system,sans-serif; }
+  .wrap { max-width:640px; margin:0 auto; padding:24px 16px 60px; }
+  h1 { font-size:24px; margin:0 0 6px; }
+  p { color:var(--muted); margin:0 0 16px; }
+  button { width:100%; padding:16px; border:0; border-radius:14px; background:var(--lime); color:#0b0d10; font:700 17px system-ui,sans-serif; margin-bottom:10px; }
+  button.sec { background:var(--surface); color:var(--text); border:1px solid var(--line); }
+  button:disabled { opacity:.4; }
+  .row { display:flex; gap:8px; }
+  .row input { flex:1; padding:14px; border-radius:12px; border:1px solid var(--line); background:var(--surface); color:var(--text); font:15px ui-monospace,monospace; }
+  .row button { width:auto; padding:14px 18px; }
+  #status { padding:12px 14px; border-radius:12px; background:var(--surface); border:1px solid var(--line); margin-bottom:12px; }
+  #log { white-space:pre-wrap; word-break:break-all; font:13px/1.45 ui-monospace,Menlo,monospace; background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:12px; min-height:200px; }
+  .tx { color:var(--lime); } .err { color:var(--red); } .info { color:var(--muted); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Тест адаптера</h1>
+  <p>Проверка: может ли браузер подключиться к ELM327 по Bluetooth (BLE). iPhone — открыть в браузере Bluefy. Android — в Chrome.</p>
+  <div id="status">Не подключено</div>
+  <button id="connect">Подключить адаптер</button>
+  <button id="test" class="sec" disabled>Проверить: ATZ, ATI, 0100, VIN</button>
+  <div class="row"><input id="cmd" placeholder="Своя команда, напр. 010C" autocapitalize="characters"><button id="send" class="sec" disabled>➜</button></div>
+  <p></p>
+  <button id="copy" class="sec">Скопировать журнал</button>
+  <div id="log"></div>
+</div>
+<script>
+// Пары «сервис / уведомления / запись» — те же, что в Transport.kt (BleTransport).
+const KNOWN = [
+  ['0000fff0-0000-1000-8000-00805f9b34fb', '0000fff1-0000-1000-8000-00805f9b34fb', '0000fff2-0000-1000-8000-00805f9b34fb'],
+  ['0000ffe0-0000-1000-8000-00805f9b34fb', '0000ffe1-0000-1000-8000-00805f9b34fb', '0000ffe1-0000-1000-8000-00805f9b34fb'],
+  ['000018f0-0000-1000-8000-00805f9b34fb', '00002af0-0000-1000-8000-00805f9b34fb', '00002af1-0000-1000-8000-00805f9b34fb'],
+  ['e7810a71-73ae-499d-8c15-faa9aef0c3f2', 'bef8d6c9-9c21-4c9e-b632-bd58c1009f9f', 'bef8d6c9-9c21-4c9e-b632-bd58c1009f9f'],
+];
+const $ = id => document.getElementById(id);
+const logEl = $('log');
+function log(text, cls) {
+  const t = new Date().toLocaleTimeString('ru-RU');
+  const s = document.createElement('div');
+  if (cls) s.className = cls;
+  s.textContent = t + '  ' + text;
+  logEl.appendChild(s);
+  s.scrollIntoView({ block: 'nearest' });
+}
+function status(t) { $('status').textContent = t; }
+
+log('Браузер: ' + navigator.userAgent, 'info');
+if (!navigator.bluetooth) {
+  status('Этот браузер не умеет Bluetooth. На iPhone — Bluefy, на Android — Chrome.');
+  log('navigator.bluetooth нет', 'err');
+  $('connect').disabled = true;
+}
+
+let device, notifyCh, writeCh, buf = '', waiter = null;
+const dec = new TextDecoder(), enc = new TextEncoder();
+
+function onData(e) {
+  buf += dec.decode(e.target.value);
+  if (buf.includes('>') && waiter) { const w = waiter; waiter = null; const r = buf; buf = ''; w(r); }
+}
+
+async function send(cmd, timeout = 4000) {
+  buf = '';
+  log('→ ' + cmd, 'tx');
+  const data = enc.encode(cmd + '\r');
+  const answer = new Promise(res => { waiter = res; setTimeout(() => { if (waiter === res) { waiter = null; res(buf + ' [нет ответа за ' + timeout / 1000 + ' с]'); } }, timeout); });
+  for (let i = 0; i < data.length; i += 20) {
+    const chunk = data.slice(i, i + 20);
+    if (writeCh.properties.writeWithoutResponse) await writeCh.writeValueWithoutResponse(chunk);
+    else await writeCh.writeValue(chunk);
+  }
+  const r = (await answer).replace(/\r/g, ' ').replace(/>/g, '').trim();
+  log('← ' + (r || '(пусто)'));
+  return r;
+}
+
+async function pickChars(server) {
+  const services = await server.getPrimaryServices();
+  log('Сервисы: ' + services.map(s => s.uuid).join(', '), 'info');
+  for (const [s, n, w] of KNOWN) {
+    const svc = services.find(x => x.uuid === s);
+    if (!svc) continue;
+    try { return [await svc.getCharacteristic(n), await svc.getCharacteristic(w), s]; } catch (e) { log('Пара ' + s.slice(4, 8) + ' не подошла: ' + e.message, 'info'); }
+  }
+  // Иначе — первая пара notify + write из любого сервиса.
+  for (const svc of services) {
+    let chars; try { chars = await svc.getCharacteristics(); } catch (e) { continue; }
+    const n = chars.find(c => c.properties.notify || c.properties.indicate);
+    const w = chars.find(c => c.properties.write || c.properties.writeWithoutResponse);
+    if (n && w) return [n, w, svc.uuid];
+  }
+  throw new Error('нет характеристик для чтения и записи');
+}
+
+$('connect').onclick = async () => {
+  try {
+    status('Выберите адаптер в списке…');
+    device = await navigator.bluetooth.requestDevice({ acceptAllDevices: true, optionalServices: KNOWN.map(k => k[0]) });
+    log('Выбран: ' + (device.name || '(без имени)') + ' ' + device.id, 'info');
+    device.addEventListener('gattserverdisconnected', () => { status('Связь потеряна'); log('Отключился', 'err'); $('test').disabled = $('send').disabled = true; });
+    status('Подключаюсь…');
+    const server = await device.gatt.connect();
+    const [n, w, s] = await pickChars(server);
+    notifyCh = n; writeCh = w;
+    log('Сервис ' + s + ', чтение ' + n.uuid + ', запись ' + w.uuid, 'info');
+    await notifyCh.startNotifications();
+    notifyCh.addEventListener('characteristicvaluechanged', onData);
+    status('Подключено: ' + (device.name || 'адаптер'));
+    $('test').disabled = $('send').disabled = false;
+  } catch (e) {
+    status('Не получилось: ' + e.message);
+    log('Ошибка: ' + e.name + ' — ' + e.message, 'err');
+  }
+};
+
+$('test').onclick = async () => {
+  $('test').disabled = true;
+  try {
+    await send('ATZ', 5000);
+    for (const c of ['ATE0', 'ATL0', 'ATS1', 'ATH0', 'ATSP0', 'ATI', 'ATRV']) await send(c);
+    const r = await send('0100', 12000);
+    await send('ATDPN');
+    await send('0902', 6000);
+    status(/41\s*00/.test(r) ? 'Работает: машина ответила ✓' : 'Адаптер отвечает, машина — нет (зажигание включено?)');
+  } catch (e) { log('Ошибка: ' + e.message, 'err'); }
+  $('test').disabled = false;
+};
+
+$('send').onclick = async () => {
+  const c = $('cmd').value.trim().toUpperCase();
+  if (!c) return;
+  try { await send(c, 8000); } catch (e) { log('Ошибка: ' + e.message, 'err'); }
+};
+
+$('copy').onclick = async () => {
+  const text = logEl.innerText;
+  try { await navigator.clipboard.writeText(text); status('Журнал скопирован'); }
+  catch (e) { const r = document.createRange(); r.selectNodeContents(logEl); getSelection().removeAllRanges(); getSelection().addRange(r); status('Выделил журнал — скопируйте вручную'); }
+};
+</script>
+</body>
+</html>
