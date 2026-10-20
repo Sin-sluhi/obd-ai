@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Политика конфиденциальности — OBD AI</title>
+<meta name="theme-color" content="#07080a">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root { --bg: #07080a; --surface: #111317; --line: rgba(255,255,255,.08); --text: #eef1f5; --text2: #b9c0cb; --muted: #7d8592; --lime: #b8f15a; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 500 16px/1.65 "Manrope", system-ui, sans-serif; }
+  .wrap { max-width: 820px; margin: 0 auto; padding: 48px 20px 80px; }
+  a { color: var(--lime); }
+  h1 { font: 800 clamp(30px, 5vw, 46px)/1.05 "Unbounded", system-ui, sans-serif; letter-spacing: -.04em; margin: 0 0 10px; }
+  h2 { font: 700 20px/1.3 "Unbounded", system-ui, sans-serif; letter-spacing: -.02em; margin: 40px 0 10px; }
+  p, li { color: var(--text2); }
+  ul { padding-left: 20px; }
+  .muted { color: var(--muted); font-size: 14px; }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 15px; }
+  th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { color: var(--muted); font-size: 13px; text-transform: uppercase; letter-spacing: .06em; }
+  td:first-child { color: var(--text); font-weight: 600; }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 18px 20px; margin-top: 18px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="muted"><a href="./">OBD AI</a> · действует с 20 октября 2026 года</p>
+  <h1>Политика конфиденциальности</h1>
+  <p>OBD AI — приложение для диагностики автомобиля через адаптер ELM327. Здесь честно и полностью описано, какие данные
+    приложение отправляет за пределы телефона, куда и зачем. Рекламы, трекеров и аналитики сторонних компаний в приложении нет.
+    Данные не продаются и не передаются третьим лицам, кроме перечисленных ниже сервисов, которые нужны для работы функций.</p>
+
+  <h2>Что остаётся только на телефоне</h2>
+  <p>История проверок, поездки, замеры напряжения, прогревы, журнал и настройки хранятся в памяти телефона. Обмен с адаптером
+    идёт по Bluetooth или Wi-Fi напрямую между телефоном и адаптером.</p>
+
+  <h2>Что и куда отправляется</h2>
+  <table>
+    <thead><tr><th>Данные</th><th>Куда и зачем</th><th>Когда</th></tr></thead>
+    <tbody>
+      <tr><td>Коды ошибок, показания датчиков, VIN, марка и модель машины</td><td>Сервис нейросети (Groq, США) — чтобы составить разбор неисправностей по-русски</td><td>При проверке, если в собственной базе приложения нет объяснения всем кодам</td></tr>
+      <tr><td>Коды ошибок и марка машины (без VIN)</td><td>Поисковые системы (DuckDuckGo, Bing) — найти опыт владельцев на форумах drive2.ru и drom.ru</td><td>При той же проверке</td></tr>
+      <tr><td>VIN</td><td>Открытая база NHTSA vPIC (США) — узнать модель машины, если приложение не знает её само</td><td>Один раз для машины, ответ запоминается</td></tr>
+      <tr><td>Технический журнал проверки: команды адаптеру и ответы блоков, марка, модель и год, версия приложения, тип адаптера. Серийный номер VIN (последние 6 знаков) вырезается</td><td>Сервер разработчика — чтобы опрос научился понимать новые машины</td><td>После проверки. Выключается в настройках, раздел «Помощь»</td></tr>
+      <tr><td>История и журналы машины</td><td>Сервер разработчика, облачный гараж — чтобы перенести данные на новый телефон по коду гаража</td><td>После проверки, если включена автовыгрузка гаража (выключается в разделе «Гараж»)</td></tr>
+      <tr><td>Ник и сообщения</td><td>Сервер разработчика — форум и переписка с разработчиком; к сообщению разработчику прикладываются модель машины и версия приложения</td><td>Только когда вы пишете сами</td></tr>
+      <tr><td>Фото приборной панели</td><td>Сервис нейросети (Groq) — распознать горящие значки</td><td>Только когда вы сами фотографируете приборку</td></tr>
+      <tr><td>Примерные координаты</td><td>Open-Meteo — прогноз ночной температуры для оценки утреннего пуска</td><td>Только по кнопке, если вы разрешили</td></tr>
+      <tr><td>Марка и модель</td><td>Википедия — фото машины для главного экрана</td><td>Один раз для машины</td></tr>
+    </tbody>
+  </table>
+  <p>Для технического журнала, гаража и переписки приложение создаёт случайный номер установки. Он не связан с вашим
+    аккаунтом Google, телефоном или именем. Имя, телефон, почта, контакты и точная геолокация не собираются.</p>
+
+  <h2>Разрешения</h2>
+  <ul>
+    <li><b>Bluetooth</b> — подключиться к адаптеру. Поиск Bluetooth-устройств не используется для определения местоположения.</li>
+    <li><b>Уведомления</b> — сообщить о готовой проверке, новых ошибках в пути, разряде АКБ.</li>
+    <li><b>Работа в фоне при подключённом адаптере</b> — поездка, слежение за ошибками и напряжением, пока адаптер подключён.</li>
+    <li><b>Камера и фото</b> — только по вашей кнопке (фото приборки или своё фото машины).</li>
+    <li><b>Примерное местоположение</b> — только по кнопке, для прогноза погоды.</li>
+  </ul>
+
+  <h2>Хранение и удаление</h2>
+  <p>Технические журналы на сервере хранятся до 3 000 последних, старые удаляются автоматически. Данные гаража хранятся,
+    пока вы ими пользуетесь. Чтобы удалить данные с сервера, напишите разработчику через кнопку «Связь с разработчиком»
+    в приложении — удалим по номеру установки или коду гаража. Данные на телефоне удаляются вместе с приложением.</p>
+
+  <h2>Безопасность</h2>
+  <p>Связь с сервером идёт по HTTPS. Приложение только читает данные из блоков машины и ничего в них не записывает.</p>
+
+  <h2>Дети</h2>
+  <p>Приложение не предназначено для детей и не собирает о них данные намеренно.</p>
+
+  <h2>Изменения и связь</h2>
+  <p>Если политика изменится, новая редакция появится на этой странице с новой датой. Вопросы — через кнопку
+    «Связь с разработчиком» в приложении или по адресу почты, указанному в карточке приложения в Google Play.</p>
+
+  <div class="card">
+    <p class="muted" style="margin:0"><b>In English, briefly.</b> OBD AI reads diagnostic data from your car through an ELM327 adapter.
+      Fault codes, sensor values and the VIN are sent to an AI service (Groq, USA) to explain faults; codes and make are used in web
+      searches (DuckDuckGo, Bing); the VIN may be sent to NHTSA vPIC to identify the model. A technical log of the adapter exchange
+      (VIN serial cut out) is sent to the developer's server to improve the scan (can be turned off in Settings). Garage backup,
+      forum and developer chat are stored on the developer's server. No ads, no third-party analytics, no data sales.
+      Deletion requests: the in-app “Contact the developer” button.</p>
+  </div>
+</div>
+</body>
+</html>
