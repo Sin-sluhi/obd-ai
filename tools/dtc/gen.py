@@ -98,6 +98,44 @@ def merge_detail():
     print("подробная база: общих записей %d, марочных %d" % (len(DETAIL), nb))
 
 
+def merge_detail2():
+    """Вторая волна (detail2/): развёрнутые записи для кодов, у которых было только название. Стандартные коды из
+    справочника дополняются на месте; остальные (открытый слой SAE, пятизначные VAG, марочные) уходят отдельными файлами
+    assets/dtc2/<серия>-<марка>_<первые 3 знака кода>.json — приложение подгружает их по коду, а не держит всё в памяти."""
+    from detail2 import DETAIL2, REQUIRED
+    op = json.load(io.open(os.path.join(ASSETS, "dtc_open.json"), encoding="utf-8"))
+    files = {}
+    n_in, n_out = 0, 0
+    for (series, brand, code), d in sorted(DETAIL2.items()):
+        miss = [k for k in REQUIRED if d.get(k) in (None, "", [])]
+        assert not miss, "%s/%s: не заполнено %s" % (brand or series, code, miss)
+        if series == "sae" and code in CODES:
+            CODES[code].update(d); n_in += 1
+            continue
+        if series == "brand" and code in BRANDS.get(brand, {}):
+            BRANDS[brand][code].update(d); n_in += 1
+            continue
+        if series == "sae":
+            t = op["g"].get(code, [""])[0]; fam = "open_sae"
+        elif series == "vag5":
+            t = op["v"].get(code, ""); fam = "open_vag"
+        else:
+            t = op["b"].get(brand, {}).get(code, [""])[0]; fam = "generic_p1" if code[0] == "P" else "generic_" + code[0].lower()
+        rec = {"t": t, "f": fam, "m": t}
+        rec.update(d)
+        name = "%s%s_%s" % (series, ("-" + brand) if brand else "", code[:3])
+        files.setdefault(name, {})[code] = rec; n_out += 1
+    out = os.path.join(ASSETS, "dtc2")
+    os.makedirs(out, exist_ok=True)
+    for f in os.listdir(out):
+        os.remove(os.path.join(out, f))
+    for name, recs in files.items():
+        with io.open(os.path.join(out, name + ".json"), "w", encoding="utf-8", newline="\n") as fh:
+            json.dump(recs, fh, ensure_ascii=False, separators=(",", ":"))
+    total = sum(os.path.getsize(os.path.join(out, f)) for f in os.listdir(out))
+    print("вторая волна: в справочник %d, отдельными файлами %d (%d файлов, %d КБ)" % (n_in, n_out, len(files), total // 1024))
+
+
 def main():
     merge_links()
     check()
@@ -106,6 +144,7 @@ def main():
         families[k] = {"t": f["title"], "s": f["story"], "c": f["causes"], "d": f["do"], "sev": f["severity"],
                        "cf": f["confirm"], "stop": f["stop"], "l": f["links"], "p": f["price"]}
     merge_detail()
+    merge_detail2()
     data = {"version": 1, "families": families, "codes": CODES, "brands": BRANDS}
     os.makedirs(ASSETS, exist_ok=True)
     out = os.path.join(ASSETS, "dtc_ru.json")

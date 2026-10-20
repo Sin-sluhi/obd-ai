@@ -45,8 +45,31 @@ object DtcCatalog {
     @Volatile private var brands: JSONObject? = null
     /** Открытый слой (`dtc_open.json`, tools/dtc/open): названия кодов, которых нет в своей базе. */
     @Volatile private var open: JSONObject? = null
+    /**
+     * Вторая волна подробной базы (`assets/dtc2/<серия>[-марка]_<3 знака>.json`, tools/dtc/detail2): развёрнутые записи
+     * для кодов, которых нет в `codes`/`brands`. Файлы маленькие и подгружаются по первому обращению к коду.
+     */
+    @Volatile private var detail2Loader: ((String) -> String?)? = null
+    private val detail2 = HashMap<String, JSONObject?>()
 
     val ready: Boolean get() = codes != null
+
+    private fun detail2File(name: String): JSONObject? = synchronized(detail2) {
+        detail2.getOrPut(name) { runCatching { detail2Loader?.invoke(name)?.let { JSONObject(it) } }.getOrNull() }
+    }
+
+    /** Запись второй волны: марочный файл (или vag5 для пятизначных), затем стандартный. */
+    private fun detail2Entry(c: String, brandKey: String?): Pair<JSONObject, String?>? {
+        if (detail2Loader == null || c.length < 3) return null
+        val p = c.substring(0, 3)
+        if (brandKey != null) {
+            val name = if (c.length == 5 && brandKey == "vag") "vag5-vag_$p" else "brand-${brandKey}_$p"
+            detail2File(name)?.optJSONObject(c)?.let { return it to brandKey }
+        }
+        if (c.length == 5) return null
+        detail2File("sae_$p")?.optJSONObject(c)?.let { return it to null }
+        return null
+    }
 
     fun load(context: Context) {
         if (codes != null) return
@@ -58,7 +81,12 @@ object DtcCatalog {
             codes = root.getJSONObject("codes")
         }
         runCatching { open = JSONObject(context.assets.open("dtc_open.json").bufferedReader(Charsets.UTF_8).use { it.readText() }) }
+        val assets = context.assets
+        detail2Loader = { name -> runCatching { assets.open("dtc2/$name.json").bufferedReader(Charsets.UTF_8).use { it.readText() } }.getOrNull() }
     }
+
+    /** Для стенда: источник файлов второй волны по имени (без «.json»). */
+    fun loadDetail2(loader: (String) -> String?) { detail2Loader = loader; synchronized(detail2) { detail2.clear() } }
 
     /** Для стенда: открытый слой из текста. */
     fun loadOpen(text: String) { open = JSONObject(text) }
@@ -242,7 +270,7 @@ object DtcCatalog {
         val c = base(code)
         if (brandKey != null) brands?.optJSONObject(brandKey)?.optJSONObject(c)?.let { return it to brandKey }
         codes?.optJSONObject(c)?.let { return it to null }
-        return null
+        return detail2Entry(c, brandKey)
     }
 
     /** Полное объяснение кода или null, если кода нет в справочнике. */

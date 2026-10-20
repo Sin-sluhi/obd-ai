@@ -299,7 +299,8 @@ data class Diagnosis(
                 val active = status == "активная" || (status.isEmpty() && snap.stored.contains(raw)) // i18n-ignore: статус из ObdDecoder
                 val pending = status == "неподтверждённая" || (snap.pending.contains(raw) && !snap.stored.contains(raw)) // i18n-ignore: статус из ObdDecoder
                 // заводской код (BMW: 130508, CD046B) — не SAE: серьёзность не угадываем, причины по букве не выдумываем
-                val oem = DtcCatalog.isOemHex(code)
+                // пятизначный VAG с развёрнутой записью второй волны — уже не «заводской без расшифровки»
+                val oem = DtcCatalog.isOemHex(code) && info?.checks.isNullOrEmpty()
                 val dummy = oem && code == "02FF17"   // BMW: тестовая запись в памяти ошибок, не неисправность
                 val severity = when {
                     dummy -> "low"

@@ -13,12 +13,12 @@ import re
 DETAIL2 = {}
 REQUIRED = ("e", "sy", "c", "ck", "d", "x", "rk", "p", "s", "stop")
 
-_here = os.path.dirname(os.path.abspath(__file__))
-for _m in sorted(m.name for m in pkgutil.iter_modules([_here]) if re.match(r"s_", m.name)):
-    importlib.import_module("%s.%s" % (__name__, _m))
-
-
 def put(series, brand, code, **rec):
     key = (series, brand or "", code)
     assert key not in DETAIL2, "повтор записи %s" % (key,)
     DETAIL2[key] = rec
+
+
+_here = os.path.dirname(os.path.abspath(__file__))
+for _m in sorted(m.name for m in pkgutil.iter_modules([_here]) if re.match(r"s_", m.name)):
+    importlib.import_module("%s.%s" % (__name__, _m))
