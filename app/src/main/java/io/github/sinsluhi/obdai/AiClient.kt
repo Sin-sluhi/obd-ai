@@ -148,7 +148,8 @@ next_steps, for_service, typical_issues) — только по-русски, к�
         if (hasCodes) {
             progress(tr("ai_stage_vin"))
             val decoded = VinDecoder.decode(snap.vin)
-            val car = if (decoded.brand != null) decoded.title() else snap.vin?.let { identifyCar(cfg, it, log) }.orEmpty()
+            val car = if (decoded.brand != null) decoded.title()
+                else snap.vin?.let { identifyCar(cfg, it, log) }?.ifBlank { null } ?: snap.brandNote.orEmpty()
             progress(tr("ai_stage_search"))
             val ts = System.currentTimeMillis()
             notes = runCatching { ForumSearch.research(snap.focusCodes(), car, log, NOTES_BUDGET, SEARCH_DEADLINE_MS) }
@@ -476,6 +477,7 @@ next_steps, for_service, typical_issues) — только по-русски, к�
         val decoded = VinDecoder.decode(snap.vin)
         if (!decoded.isEmpty) appendLine("Расшифровка VIN (точные данные, не меняй их): ${decoded.describe()}")
         snap.carHint?.takeIf { it.isNotBlank() }?.let { appendLine("В прошлую проверку машина была определена как: $it") }
+        if (decoded.brand == null) snap.brandNote?.let { appendLine("VIN машина не отдала. Марка по набору блоков (вероятно, не точно): $it") }
         // на зажигании без двигателя напряжение под нагрузкой: 10–12,4 В — норма, по нему о заряде АКБ не судят
         val engineStopped = snap.sensors.firstOrNull { it.key == "rpm" }?.value?.let { it < 50 } == true
         appendLine("Напряжение бортсети: ${snap.voltage.ifBlank { "неизвестно" }}" +
@@ -509,7 +511,7 @@ next_steps, for_service, typical_issues) — только по-русски, к�
         // справка, болячки и опыт владельцев — только по главным кодам, иначе запрос не влезает в лимит модели
         val allCodes = snap.focusCodes(focus)
         if (allCodes.isNotEmpty()) {
-            val brandKey = DtcCatalog.brandKey(decoded.brand)
+            val brandKey = DtcCatalog.brandKey(snap.carInfo().brand)
             val bases = allCodes.map { DtcCatalog.base(it) }
             val lines = ArrayList<String>()
             allCodes.forEach { raw ->
@@ -526,7 +528,7 @@ next_steps, for_service, typical_issues) — только по-русски, к�
                 appendLine("Справочник по кодам (точная расшифровка из встроенной базы; не пересказывай, а дополняй опытом владельцев этой модели):")
                 lines.forEach { appendLine(it) }
             }
-            KnownIssues.forCodes(decoded.withCar(snap.carHint), snap.vin, allCodes).forEach { i ->
+            KnownIssues.forCodes(snap.carInfo(), snap.vin, allCodes).forEach { i ->
                 appendLine("Известная болячка (${i.badge.lowercase()}, коды ${i.codes.joinToString()}): ${i.title}. ${i.note.take(500)}")
             }
             val kbLines = ArrayList<String>()

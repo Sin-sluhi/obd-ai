@@ -26,6 +26,8 @@ interface ElmSession {
     fun stage(reading: Boolean, name: String?) {}
     /** Событие для живой ленты проверки на экране: kind — ok | warn | wait | info, текст — человеческий. */
     fun event(kind: String, text: String) {}
+    /** Стандартный запрос ошибок двигателя (режим 03) в этой сессии прошёл: двигатель уже прочитан по OBD. */
+    val obdEngineRead: Boolean get() = false
 }
 
 /** AT-command with the usual timeout. Extension, not a default: [Elm327] inherits send() from two interfaces. */
@@ -743,6 +745,7 @@ class ModuleScanner(private val s: ElmSession, private val pause: (Long) -> Unit
                 late(ses, sf)?.let { return it }
                 if (sf.none { it.data.firstOrNull() == 0x50 }) continue
             }
+            var noService18 = true   // все формы 18 — «нет такого сервиса»: пробуем 13 и 17
             for (cmd in kwpCmds) {
                 var k = req(a, hexBytes(cmd), 2500)
                 var kf = parse(k)
@@ -755,8 +758,27 @@ class ModuleScanner(private val s: ElmSession, private val pause: (Long) -> Unit
                     val e = a.copy(via = "KWP")
                     return module(e, brand, detailed, Pair(null, null)) to e
                 }
+                if (nrc(km, 0x18) != 0x11) noService18 = false
                 if (km.isNotEmpty() && nrc(km, 0x18) == null) break
             }
+            if (noService18) for ((svc, cmd) in listOf(0x13 to "13", 0x17 to "17FF00")) {
+                val k = req(a, hexBytes(cmd), 2500)
+                val kf = parse(k)
+                late(k, kf)?.let { return it }
+                ModuleDecoder.parseKwpService(Frames.messages(kf), svc, oemHex = oem)?.let { detailed ->
+                    s.log("↩ ${hex(a)} KWP $cmd: ${k.replace("\r", " | ").take(200)}") // i18n-ignore: журнал
+                    lastRung = "kwp:%02X".format(svc)
+                    val e = a.copy(via = "KWP")
+                    return module(e, brand, detailed, Pair(null, null)) to e
+                }
+            }
+        }
+        if (frames.isNotEmpty() && !a.bits29 && a.ext == null && a.req == 0x7E0 && s.obdEngineRead) {
+            // двигатель заводскую память не отдал (Nissan 20.10.2026: 19 и 18 — «нет сервиса»), но его коды уже прочитаны
+            // стандартным OBD (режимы 03/07) — это не сбой опроса, и второй круг ему не нужен
+            s.event("info", tr("live_module_obd", current.ifBlank { hex(a) }))
+            s.log(tr("elm_scan_engine_obd", hex(a)))
+            return ModuleScan(ModuleMap.name(brand, a), a.display, emptyList(), "OBD") to a.copy(via = "OBD")
         }
         if (frames.isNotEmpty() || Frames.status(raw).isEmpty() && raw.isNotBlank()) {
             // блок есть, но память ошибок не разобрали — честно показываем блок и пишем сырой ответ

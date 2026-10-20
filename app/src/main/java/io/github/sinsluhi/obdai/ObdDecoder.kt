@@ -281,6 +281,24 @@ object ModuleDecoder {
      * (BMW серий E за шлюзом: A0B4, 9CBB — так их показывают INPA и марочные сканеры), иначе SAE «P0300».
      * Байт статуса у KWP марочный, в слова не переводится — статус-пометки к коду не приписываем.
      */
+    /**
+     * Запасные сервисы чтения KWP2000 для блоков, которые 18 не знают (двигатель Nissan 20.10.2026: 7F 18 11):
+     * 13 (readDiagnosticTroubleCodes) → 53 n [код 2 байта]×n — без статуса, считаем записанными (0x08);
+     * 17 (readStatusOfDiagnosticTroubleCodes) → 57 n [код 2 байта + статус]×n. Коды — по раскладке SAE, как у 18.
+     * Сервисы есть в общем дереве KWP2000 Nissan (nissanecu.miraheze.org), запросы на машине ещё не проверены.
+     */
+    fun parseKwpService(msgs: List<List<Int>>, service: Int, oemHex: Boolean = false): List<Pair<String, Int>>? {
+        val m = msgs.firstOrNull { it.firstOrNull() == service + 0x40 } ?: return null
+        val step = if (service == 0x13) 2 else 3
+        val codes = linkedMapOf<String, Int>()
+        for (g in m.drop(2).chunked(step)) {
+            if (g.size < 2 || (g[0] == 0 && g[1] == 0) || (g[0] == 0xFF && g[1] == 0xFF)) continue
+            val code = if (oemHex) "%02X%02X".format(g[0], g[1]) else ObdDecoder.dtc(g[0], g[1])
+            codes.putIfAbsent(code, if (step == 2) 0x08 else g.getOrElse(2) { 0 })
+        }
+        return codes.entries.map { it.key to it.value }
+    }
+
     fun parseKwpDetailed(msgs: List<List<Int>>, oemHex: Boolean = false): List<Pair<String, Int>>? {
         var found = false
         val codes = linkedMapOf<String, Int>()
@@ -477,6 +495,25 @@ object ModuleMap {
         0x6C to "obd_module_rear_camera", 0x76 to "obd_module_parktronic"
     )
     fun vagTp20Name(addr: Int): String = vagTp20Names[addr]?.let { tr(it) } ?: tr("obd_module_block", "0x%02X".format(addr))
+
+    /**
+     * Марка по набору найденных блоков — когда машина не отдала VIN (Nissan 20.10.2026: ABS 740→760, руль 742→762,
+     * приборка 743→763, кузов 745→765, IPDM 74D→76D, подушки 752→772 — VIN по 09 02 «NO DATA»).
+     * [brand] — для справочника кодов, только при уверенности; [names] — для названий блоков; [note] — человеку и нейронке.
+     * Схема адресов альянса Renault–Nissan общая: «Nissan» — только если есть IPDM 74D, иначе марка в справочник не идёт.
+     */
+    data class BrandGuess(val brand: String?, val names: String, val note: String)
+
+    fun guessBrand(ecus: List<EcuAddr>): BrandGuess? {
+        val pairs = ecus.filter { !it.bits29 && it.ext == null && it.via != "TP20" }.map { it.req to it.resp }.toSet()
+        fun has(req: Int, resp: Int) = (req to resp) in pairs
+        val alliance = listOf(0x740, 0x742, 0x743, 0x745, 0x74D, 0x752).count { has(it, it + 0x20) }
+        if (alliance >= 3) return if (has(0x74D, 0x76D)) BrandGuess("Nissan", "nissan", "Nissan") // i18n-ignore: марка
+            else BrandGuess(null, "renault", "Renault / Nissan") // i18n-ignore: марка
+        val hk = listOf(0x7D1, 0x7D2, 0x7D4, 0x7A0, 0x7C6, 0x7B3).count { has(it, it + 8) }
+        if (hk >= 3) return BrandGuess("Hyundai / Kia", "hyundai", "Hyundai / Kia") // i18n-ignore: марка
+        return null
+    }
 
     fun isHyundaiKia(brand: String?): Boolean {
         val b = brand.orEmpty().lowercase()

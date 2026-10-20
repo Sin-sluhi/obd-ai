@@ -64,6 +64,7 @@ class AppState private constructor(context: Context) {
             Kb.init(appContext, prefs)
             ForumTree.load(appContext)
             runCatching { ForumLocator.best(prefs) }
+            OpenAiClient.relayBase = forumUrl   // запасной путь до нейронки через сервер владельца
             runCatching { if (prefs.logShare) LogShare.flush(appContext.filesDir, forumUrl) }   // логи, не ушедшие без сети
             checkDevReplies()
             runCatching { if (Kb.refresh(appContext, prefs)) addLog(tr("state_kb_updated", Kb.size)) }
@@ -586,6 +587,7 @@ class AppState private constructor(context: Context) {
         var codes = 0
         var demo = false
         var ecus: List<EcuAddr> = emptyList()
+        var brandGuess: String? = null
     }
     @Volatile private var logMark: Long? = null
     @Volatile private var logStart: Long? = null
@@ -598,7 +600,7 @@ class AppState private constructor(context: Context) {
             val info = VinDecoder.decode(rec.vin)
             val meta = LogShare.Meta(
                 kind = rec.kind, ok = rec.error == null, error = rec.error.orEmpty(), vin = rec.vin,
-                brand = info.brand.orEmpty(), model = info.model ?: rec.title, year = info.year,
+                brand = info.brand ?: rec.brandGuess.orEmpty(), model = info.model ?: rec.title, year = info.year,
                 protocol = protocol, adapter = listOf(adapterName, adapterInfo.version).filter { it.isNotBlank() }.distinct().joinToString(" · "),
                 modules = rec.modules, codes = rec.codes, busOnly = rec.busOnly,
                 durationMs = System.currentTimeMillis() - rec.t0, ecus = rec.ecus)
@@ -751,6 +753,18 @@ class AppState private constructor(context: Context) {
             ui { scanning = false; scanFound = modules.size }
             rec.modules = modules.size
             rec.ecus = l.foundEcus
+            // VIN нет — марка по набору блоков: названия блоков, справочник кодов и запрос нейронке уже с маркой
+            val guess = if (brand == null) ModuleMap.guessBrand(l.foundEcus) else null
+            val named = if (guess == null) modules else modules.map { m ->
+                val e = l.foundEcus.firstOrNull { !it.bits29 && it.ext == null && it.via != "TP20" && it.display == m.addr }
+                if (e == null) m else m.copy(name = ModuleMap.name(guess.names, e))
+            }
+            guess?.let {
+                addLog(tr("state_log_brand_guess", it.note))
+                liveEvent("car", tr("live_brand_guess", it.note))
+                rec.brandGuess = it.brand
+                if (rec.title.isBlank()) rec.title = it.note
+            }
             // кешируем только убедительный полный поиск: при спящих блоках список был бы неполным на месяц
             if (l.lastScanFull && l.foundEcus.size >= 3) prefs.ecus = EcuCache(l.foundEcus, System.currentTimeMillis()).toJson()
             addLog(tr("state_log_modules", modules.size, modules.count { it.codes.isNotEmpty() }))
@@ -760,9 +774,9 @@ class AppState private constructor(context: Context) {
 
             ui { busy = tr("state_step_compare"); checkStage = 3 }
             val batteryNow = BatteryReport.build(volts)
-            val base = CarSnapshot(v, l.protocol, volt, mil?.first, mil?.second, stored, pending, s, permanent, modules,
+            val base = CarSnapshot(v, l.protocol, volt, mil?.first, mil?.second, stored, pending, s, permanent, named,
                 readiness = ready, readinessCycle = readyCycle, stats = stats, tests = tests, battery = batteryNow, adapter = l.adapter,
-                freeze = freeze)
+                freeze = freeze, brandGuess = guess?.brand, brandNote = guess?.note)
             val clear = prefs.lastClear?.takeIf { it.vin == null || v == null || it.vin == v }
             val repair = clear?.let { RepairCheck.build(it, base.allCodes, ready, stats.distanceSinceClearKm) }
             repair?.let { addLog(tr("state_log_repair", it.title)) }
@@ -796,6 +810,7 @@ class AppState private constructor(context: Context) {
             } else {
                 ui { busy = tr("state_step_ai") }
                 liveEvent("wait", tr("live_ai"))
+                OpenAiClient.relayBase = forumUrl
                 try {
                     AiClient.diagnose(
                         cfg, snapFull,

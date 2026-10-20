@@ -64,6 +64,9 @@ class ScriptedCar(private val bits29: Boolean = false, private val unsupported: 
     var klineObdFailures = 0             // двигатель на K-line не отвечает на столько стандартных запросов подряд
 
     override val isCan = protocolNo in 6..9
+    /** Режим 03 у этой «машины» ответил — двигатель прочитан стандартным OBD (как Elm327.readCodes). */
+    var engineObd = false
+    override val obdEngineRead: Boolean get() = engineObd
     override val is29Bit = bits29
     override val adapter = AdapterInfo("ELM327 v1.5", "", emptyList(), 40)
     override fun log(text: String) { logs.add(text) }

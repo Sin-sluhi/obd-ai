@@ -273,8 +273,15 @@ class Elm327(private val logger: (String) -> Unit) : ObdLink, ElmSession {
         out
     }
 
-    override fun readCodes(mode: Int): List<String> =
-        ObdDecoder.parseDtcs(send("%02X".format(mode), 8000), isCan, mode)
+    /** Режим 03 ответил (43 …): двигатель прочитан стандартным OBD — сканер блоков не считает его непрочитанным. */
+    @Volatile private var engineRead = false
+    override val obdEngineRead: Boolean get() = engineRead
+
+    override fun readCodes(mode: Int): List<String> {
+        val raw = send("%02X".format(mode), 8000)
+        if (mode == 0x03 && ObdDecoder.messages(raw).any { it.firstOrNull() == 0x43 }) engineRead = true
+        return ObdDecoder.parseDtcs(raw, isCan, mode)
+    }
 
     override fun readVin(): String? = ObdDecoder.parseVin(send("0902", 8000))
 
@@ -338,10 +345,29 @@ class Elm327(private val logger: (String) -> Unit) : ObdLink, ElmSession {
         }
         val out = mutableListOf<TestResult>()
         for (mid in mids.filter { it % 0x20 != 0 }.sorted()) {
-            val raw = send("06%02X".format(mid), 4000)
+            val cmd = "06%02X".format(mid)
+            var raw = send(cmd, 4000)
+            // длинный ответ (06A1 — пропуски по цилиндрам; Nissan 20.10.2026) не влез в клон: запрос на 7DF идёт с
+            // автоматическим управлением потоком без паузы между кадрами. Переспрашиваем двигатель напрямую со своим
+            // кадром управления (пауза 20 мс), как блоки при поиске
+            if (raw.contains("BUFFER FULL") && !is29Bit && "ATFCSM" !in adapter.missing) {
+                raw = pacedEngine(cmd)
+                if (!raw.contains("BUFFER FULL")) log(tr("elm_tests_repaced", cmd))
+            }
             out.addAll(Mode06.parse(raw))
         }
         return out
+    }
+
+    /** Запрос двигателю 7E0 напрямую со своим управлением потоком (STmin 20 мс); заголовок потом — обратно на 7DF. */
+    private fun pacedEngine(cmd: String): String {
+        send("ATSH 7E0"); send("ATFCSH 7E0"); send("ATFCSD ${ModuleScanner.FC_DATA}"); send("ATFCSM 1")
+        try {
+            return send(cmd, 6000)
+        } finally {
+            send("ATFCSM 0")
+            restoreObdHeader()
+        }
     }
 
     private fun mode06Mask(raw: String, base: Int): Set<Int> {

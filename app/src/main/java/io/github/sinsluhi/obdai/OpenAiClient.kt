@@ -82,8 +82,34 @@ object OpenAiClient {
         return total.takeIf { it > 0 }
     }
 
+    /**
+     * Запасной путь до Groq через сервер владельца (`server/forum/ai_relay.py`): у части телефонов прямое соединение
+     * с api.groq.com сбрасывается («Connection reset», лог Nissan 20.10.2026 — обе модели, разбор не удался). Сервер
+     * только пересылает запрос с тем же ключом. Адрес сервера ставит AppState (тот же, что у форума).
+     */
+    @Volatile var relayBase: String = ""
+    /** До этого момента напрямую не пробуем: прошлая попытка не дошла — сразу через сервер, без ожидания таймаута. */
+    @Volatile private var directDeadUntil = 0L
+    private const val GROQ = "https://api.groq.com/openai/v1"
+
     private fun post(cfg: AiConfig, body: JSONObject, readTimeoutMs: Int): Raw {
         val base = cfg.baseUrl.trimEnd('/')
+        val relay = relayBase.trimEnd('/').takeIf { base == GROQ && it.startsWith("http") }
+        if (relay != null && System.currentTimeMillis() < directDeadUntil) return send(cfg, "$relay/api/ai/groq", body, readTimeoutMs)
+        return try {
+            send(cfg, base, body, readTimeoutMs)
+        } catch (e: IOException) {
+            if (relay == null || e is ApiException) throw e
+            // модель долго думает (вышел таймаут чтения) — это не блокировка, через сервер будет так же
+            if (e is java.net.SocketTimeoutException && e.message.orEmpty().contains("read", ignoreCase = true)) throw e
+            // соединение не установилось или оборвалось — не ответ API, а сеть: через сервер
+            directDeadUntil = System.currentTimeMillis() + 10 * 60_000
+            Trace.note("нейронка: напрямую не вышло (${e.javaClass.simpleName}: ${e.message}), иду через сервер") // i18n-ignore: лог
+            send(cfg, "$relay/api/ai/groq", body, readTimeoutMs)
+        }
+    }
+
+    private fun send(cfg: AiConfig, base: String, body: JSONObject, readTimeoutMs: Int): Raw {
         val conn = (URL("$base/chat/completions").openConnection() as HttpURLConnection).apply {
             requestMethod = "POST"
             connectTimeout = 20_000

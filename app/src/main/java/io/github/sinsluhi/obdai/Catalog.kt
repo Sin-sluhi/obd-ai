@@ -63,6 +63,14 @@ object DtcCatalog {
     /** Для стенда: открытый слой из текста. */
     fun loadOpen(text: String) { open = JSONObject(text) }
 
+    /** Для стенда: своя база (dtc_ru.json) из текста. */
+    fun loadMain(text: String) {
+        val root = JSONObject(text)
+        families = root.getJSONObject("families")
+        brands = root.getJSONObject("brands")
+        codes = root.getJSONObject("codes")
+    }
+
     /**
      * Название кода из открытых баз: марочная таблица, потом стандартные SAE, пятизначные VAG. Русское, если переведено
      * (в английском интерфейсе — английское), иначе английское название источника. null — кода нет и там.

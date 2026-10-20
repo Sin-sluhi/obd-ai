@@ -1309,5 +1309,8 @@
  "live_tip_7": "With the engine off, 12.4–12.7 V is normal. Below 12.2 V the battery needs charging.",
  "live_tip_8": "If something looks odd, tap Obidi at the bottom right and write to the developer directly.",
  "live_tip_9": "The check only reads: the app never writes anything into the car's modules.",
- "live_module_deep": "{0} — second round: asking again, slowly"
+ "live_module_deep": "{0} — second round: asking again, slowly",
+ "live_brand_guess": "Make by the set of modules: {0}",
+ "state_log_brand_guess": "The car did not report its VIN — make by the set of modules: {0}",
+ "live_module_obd": "{0} — codes read via standard OBD"
 }

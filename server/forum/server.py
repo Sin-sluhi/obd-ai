@@ -21,6 +21,8 @@ API (JSON, UTF-8):
   GET  /api/garage/list?code=<код>                       → {"cars":[{"car","name","updated","size"}]}
 Код гаража придумывает приложение (16 случайных символов) и показывает владельцу: кто знает код, тот видит гараж.
 
+Запасной путь до нейронки (модуль ai_relay.py): POST /api/ai/groq/chat/completions — пересылка в Groq с ключом запроса.
+
 Связь с разработчиком (модуль dev.py): POST /api/dev/send, GET /api/dev/messages, ответы владельца — /api/admin/dev*.
 
 Логи проверок от приложений (модуль logs.py): POST /api/logs/put, сводка для владельца — /api/admin/logs*.
@@ -43,6 +45,7 @@ from urllib.parse import parse_qs, urlparse
 import apk
 import logs
 import dev
+import ai_relay
 import owner_ai
 import news
 
@@ -272,6 +275,8 @@ class Handler(BaseHTTPRequestHandler):
 
     def do_POST(self):
         u = urlparse(self.path)
+        if u.path == "/api/ai/groq/chat/completions":   # тело не JSON-разбираем: пересылаем как есть
+            return ai_relay.handle(self)
         b = self._body()
         if u.path.startswith("/api/admin/dev"):
             return dev.handle_admin_post(self, _db, _lock, u.path, b)

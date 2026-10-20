@@ -15,7 +15,7 @@ object KbFirst {
     fun gap(snap: CarSnapshot): String? {
         val codes = snap.allCodes.map { DtcCatalog.base(it) }.distinct()
         if (codes.isEmpty()) return null
-        val car = VinDecoder.decode(snap.vin).withCar(snap.carHint)
+        val car = snap.carInfo()
         val bkey = DtcCatalog.brandKey(car.brand)
         val infos = codes.associateWith { DtcCatalog.info(it, bkey) }
         val missing = codes.filter { infos[it]?.detailed != true }

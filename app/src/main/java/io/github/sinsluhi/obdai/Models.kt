@@ -35,8 +35,17 @@ data class CarSnapshot(
     val tank: Tank? = null,                        // последний бак: паспорт заправки
     val blackbox: String? = null,                  // что записал чёрный ящик вокруг последнего события
     val service: String? = null,                   // итог проверки работ сервиса
-    val freeze: FreezeFrame? = null                // стоп-кадр: условия, при которых записана ошибка
+    val freeze: FreezeFrame? = null,               // стоп-кадр: условия, при которых записана ошибка
+    val brandGuess: String? = null,                // марка по набору блоков, если VIN нет (для справочника, только уверенная)
+    val brandNote: String? = null                  // то же словами для человека и нейронки («Nissan», «Renault / Nissan»)
 ) {
+    /** Машина для справочника и базы опыта: VIN, без марки в VIN — марка по блокам, плюс как назвала нейронка. */
+    fun carInfo(): VinDecoder.Info {
+        val d = VinDecoder.decode(vin)
+        val g = if (d.brand == null && brandGuess != null) d.copy(brand = brandGuess) else d
+        return g.withCar(carHint)
+    }
+
     /** Все коды из всех блоков. */
     val allCodes: List<String> get() = (stored + pending + permanent + modules.flatMap { it.codes }).distinct().filterNot { DtcCatalog.isFiller(it) }
 
@@ -240,8 +249,8 @@ data class Diagnosis(
         fun local(snap: CarSnapshot, complete: Boolean = false): Diagnosis {
             val all = snap.allCodes
             val decoded = VinDecoder.decode(snap.vin)
-            val car = decoded.withCar(snap.carHint)
-            val carName = snap.carHint?.takeIf { it.isNotBlank() } ?: decoded.title()
+            val car = snap.carInfo()
+            val carName = snap.carHint?.takeIf { it.isNotBlank() } ?: decoded.title().ifBlank { snap.brandNote.orEmpty() }
             val bkey = DtcCatalog.brandKey(car.brand)
             // что приложение само измерило и что не в порядке: согласованность датчиков, ремонт, работа сервиса
             val measured = buildList {

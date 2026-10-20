@@ -157,8 +157,12 @@ def analyze(text, meta):
         flags.append("стандартный OBD молчит, шина жива — искали блоки")
     if c["buffer_full"]:
         flags.append("BUFFER FULL ×%d — ответ не влез в адаптер" % c["buffer_full"])
+    # двигатель прочитан стандартным OBD (ответ 43 на режим 03) — его отказ на заводской запрос не сбой опроса
+    engine_obd = re.search(r"<< \[\d+ мс\] 43( |$)", text, re.M) is not None
     unread = []
     for rid, e in sorted(ids.items()):
+        if rid == "7E8" and engine_obd:
+            continue
         if e["neg"] and not e["pos"]:
             top = max(e["neg"].items(), key=lambda kv: kv[1])[0]
             unread.append("%s 7F %s%s" % (rid, top, " (" + NRC[top.split()[1]] + ")" if top.split()[1] in NRC else ""))
