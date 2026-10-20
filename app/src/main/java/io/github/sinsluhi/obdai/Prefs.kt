@@ -33,6 +33,11 @@ class Prefs(context: Context) {
         get() = sp.getBoolean("log_share", true)
         set(v) = sp.edit().putBoolean("log_share", v).apply()
 
+    /** Версия из Google Play: человек уже видел окно о техническом журнале (правила Play о сборе данных). */
+    var logNoticeSeen: Boolean
+        get() = sp.getBoolean("log_notice_seen", false)
+        set(v) = sp.edit().putBoolean("log_notice_seen", v).apply()
+
     /** Случайный номер установки для логов: сервер видит, что логи с одного телефона, но не связывает их с форумом. */
     val logInstall: String
         get() = sp.getString("log_install", null) ?: java.util.UUID.randomUUID().toString().also { sp.edit().putString("log_install", it).apply() }

@@ -12,10 +12,13 @@ android {
         applicationId = "io.github.sinsluhi.obdai"
         minSdk = 26
         targetSdk = 35
-        versionCode = 14
-        versionName = "1.2.2"
-        // Провайдер и ключ ИИ из секретов GitHub (AI_PROVIDER, AI_API_KEY, AI_MODEL); пусто, если не заданы
         fun env(name: String) = System.getenv(name)?.trim().orEmpty()
+        // Номер версии растёт с каждой сборкой CI (Google Play не принимает повторный номер); локально — 14
+        versionCode = env("GITHUB_RUN_NUMBER").toIntOrNull()?.let { 100 + it } ?: 14
+        versionName = "1.2.2"
+        // Сборка для магазина (release, AAB): по правилам Google Play о сборе данных показывается окно про журнал
+        buildConfigField("boolean", "STORE", "false")
+        // Провайдер и ключ ИИ из секретов GitHub (AI_PROVIDER, AI_API_KEY, AI_MODEL); пусто, если не заданы
         buildConfigField("String", "AI_PROVIDER", "\"" + env("AI_PROVIDER").ifBlank { "groq" } + "\"")
         buildConfigField("String", "AI_API_KEY", "\"" + env("AI_API_KEY").ifBlank { env("ANTHROPIC_API_KEY") } + "\"")
         buildConfigField("String", "AI_MODEL", "\"" + env("AI_MODEL") + "\"")
@@ -49,6 +52,14 @@ android {
     buildTypes {
         getByName("debug") {
             signingConfigs.findByName("stable")?.let { signingConfig = it }
+        }
+        // Google Play: AAB тем же постоянным ключом — в Play загружаем его как ключ подписи приложения, тогда версия
+        // из магазина встаёт поверх APK, поставленного с сайта, и наоборот. Без сжатия R8: разбор JSON и рефлексия Compose
+        // не проверены под ним на машине, размер и так ~14 МБ.
+        getByName("release") {
+            signingConfigs.findByName("stable")?.let { signingConfig = it }
+            isMinifyEnabled = false
+            buildConfigField("boolean", "STORE", "true")
         }
     }
     buildFeatures {

@@ -100,6 +100,25 @@ jobs:
           gradle assembleDebug
           openssl enc -aes-256-cbc -pbkdf2 -iter 200000 -salt -in app/build/outputs/apk/debug/app-debug.apk \
             -out gated/app-dev.apk.enc -pass env:APK_PASS
+      # Google Play: AAB пользовательской сборки (без режима разработчика) тем же ключом. Внутри ключ Groq, а артефакты
+      # публичного репозитория видит любой вошедший — поэтому зашифрован тем же APK_PASS.
+      - name: Play bundle
+        env:
+          DEV_TOOLS: "false"
+          AI_PROVIDER: ${{ vars.AI_PROVIDER }}
+          AI_API_KEY: ${{ secrets.AI_API_KEY }}
+          AI_MODEL: ${{ vars.AI_MODEL }}
+          FORUM_URL: ${{ vars.FORUM_URL }}
+          SIGNING_STORE_PASSWORD: ${{ secrets.SIGNING_STORE_PASSWORD }}
+          SIGNING_KEY_ALIAS: ${{ secrets.SIGNING_KEY_ALIAS }}
+          SIGNING_KEY_PASSWORD: ${{ secrets.SIGNING_KEY_PASSWORD }}
+          APK_PASS: ${{ secrets.APK_PASS }}
+        run: |
+          if [ -z "$APK_PASS" ]; then echo "APK_PASS не задан — AAB не выкладывается"; exit 0; fi
+          gradle bundleRelease
+          AAB=app/build/outputs/bundle/release/app-release.aab
+          ls -la $AAB
+          openssl enc -aes-256-cbc -pbkdf2 -iter 200000 -salt -in $AAB -out gated/app-release.aab.enc -pass env:APK_PASS
       - uses: actions/upload-artifact@v4
         with:
           name: apk

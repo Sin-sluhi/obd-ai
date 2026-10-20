@@ -375,6 +375,25 @@ class MainActivity : ComponentActivity() {
                     )
                 }
                 state.error?.let { MessageDialog(tr("main_failed_title"), it) { state.error = null } }
+                // Google Play требует заметно предупредить о сборе данных до него: в версии для магазина — одно окно
+                // о техническом журнале при первом запуске. В APK с сайта — как решил владелец, без окна.
+                var logNotice by rememberSaveable { mutableStateOf(BuildConfig.STORE && !state.prefs.logNoticeSeen) }
+                if (logNotice) androidx.compose.material3.AlertDialog(
+                    onDismissRequest = {},
+                    containerColor = io.github.sinsluhi.obdai.ui.Palette.surface,
+                    title = { androidx.compose.material3.Text(tr("store_log_title"), style = io.github.sinsluhi.obdai.ui.Type.display(18)) },
+                    text = { androidx.compose.material3.Text(tr("store_log_text"), style = io.github.sinsluhi.obdai.ui.Type.body(14, io.github.sinsluhi.obdai.ui.Palette.text2)) },
+                    confirmButton = {
+                        androidx.compose.material3.TextButton(onClick = {
+                            state.prefs.logNoticeSeen = true; state.updateLogShare(true); logNotice = false
+                        }) { androidx.compose.material3.Text(tr("store_log_ok")) }
+                    },
+                    dismissButton = {
+                        androidx.compose.material3.TextButton(onClick = {
+                            state.prefs.logNoticeSeen = true; state.updateLogShare(false); logNotice = false
+                        }) { androidx.compose.material3.Text(tr("store_log_no"), color = io.github.sinsluhi.obdai.ui.Palette.muted) }
+                    }
+                )
                 if (confirmClear) ConfirmDialog(
                     title = tr("main_clear_title"),
                     text = tr("main_clear_text"),
