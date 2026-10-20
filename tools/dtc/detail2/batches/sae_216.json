@@ -1,0 +1,393 @@
+{
+ "name": "sae_216",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "air inlet pressure",
+  "anode drain",
+  "anode drain valve",
+  "anode drain valve heater relay",
+  "anode header drain",
+  "anode header drain valve",
+  "anode header drain valve heater relay",
+  "anode inlet pressure",
+  "anode multifunction",
+  "anode multifunction valve",
+  "cathode backpressure valve",
+  "cathode backpressure valve position",
+  "cathode bypass",
+  "cathode bypass valve",
+  "cathode bypass valve position",
+  "charge air cooler outlet pressure",
+  "charge air cooler outlet temperature",
+  "expander inlet pressure",
+  "hydrogen supply line a pressure",
+  "hydrogen tank",
+  "hydrogen tank a temperature",
+  "hydrogen tank a valve",
+  "hydrogen tank a valve enable",
+  "hydrogen tank b temperature",
+  "hydrogen tank b valve",
+  "hydrogen tank b valve enable",
+  "hydrogen tank c",
+  "hydrogen tank c temperature",
+  "hydrogen tank c valve",
+  "hydrogen tank c valve enable",
+  "ru:блокировочная цепь высоковольтной системы p",
+  "stack inlet coolant temperature"
+ ],
+ "codes": [
+  {
+   "code": "U3545",
+   "brand": "",
+   "ru": "Блокировочная цепь высоковольтной системы P",
+   "en": "High Voltage System Interlock Circuit P",
+   "fam": "",
+   "node": "ru:блокировочная цепь высоковольтной системы p"
+  },
+  {
+   "code": "U3546",
+   "brand": "",
+   "ru": "Блокировочная цепь высоковольтной системы P: работа нарушена",
+   "en": "High Voltage System Interlock Circuit P Performance",
+   "fam": "",
+   "node": "ru:блокировочная цепь высоковольтной системы p"
+  },
+  {
+   "code": "U3547",
+   "brand": "",
+   "ru": "Блокировочная цепь высоковольтной системы P: низкий уровень",
+   "en": "High Voltage System Interlock Circuit P Low",
+   "fam": "",
+   "node": "ru:блокировочная цепь высоковольтной системы p"
+  },
+  {
+   "code": "U3548",
+   "brand": "",
+   "ru": "Блокировочная цепь высоковольтной системы P: высокий уровень",
+   "en": "High Voltage System Interlock Circuit P High",
+   "fam": "",
+   "node": "ru:блокировочная цепь высоковольтной системы p"
+  },
+  {
+   "code": "U3549",
+   "brand": "",
+   "ru": "Датчик высокого давления водородного баллона 1: цепь",
+   "en": "Hydrogen Tank High Pressure Sensor 1 Circuit",
+   "fam": "",
+   "node": "hydrogen tank"
+  },
+  {
+   "code": "U354A",
+   "brand": "",
+   "ru": "Датчик температуры водородного баллона A 1: цепь",
+   "en": "Hydrogen Tank A Temperature Sensor 1 Circuit",
+   "fam": "",
+   "node": "hydrogen tank a temperature"
+  },
+  {
+   "code": "U354B",
+   "brand": "",
+   "ru": "Датчик температуры водородного баллона A 2: цепь",
+   "en": "Hydrogen Tank A Temperature Sensor 2 Circuit",
+   "fam": "",
+   "node": "hydrogen tank a temperature"
+  },
+  {
+   "code": "U354C",
+   "brand": "",
+   "ru": "Датчик температуры водородного баллона B 1: цепь",
+   "en": "Hydrogen Tank B Temperature Sensor 1 Circuit",
+   "fam": "",
+   "node": "hydrogen tank b temperature"
+  },
+  {
+   "code": "U354D",
+   "brand": "",
+   "ru": "Датчик температуры водородного баллона B 2: цепь",
+   "en": "Hydrogen Tank B Temperature Sensor 2 Circuit",
+   "fam": "",
+   "node": "hydrogen tank b temperature"
+  },
+  {
+   "code": "U354E",
+   "brand": "",
+   "ru": "Датчик температуры водородного баллона C 1: цепь",
+   "en": "Hydrogen Tank C Temperature Sensor 1 Circuit",
+   "fam": "",
+   "node": "hydrogen tank c temperature"
+  },
+  {
+   "code": "U354F",
+   "brand": "",
+   "ru": "Датчик температуры водородного баллона C 2: цепь",
+   "en": "Hydrogen Tank C Temperature Sensor 2 Circuit",
+   "fam": "",
+   "node": "hydrogen tank c temperature"
+  },
+  {
+   "code": "U3550",
+   "brand": "",
+   "ru": "Клапан водородного баллона A: цепь управления",
+   "en": "Hydrogen Tank A Valve Control Circuit",
+   "fam": "",
+   "node": "hydrogen tank a valve"
+  },
+  {
+   "code": "U3552",
+   "brand": "",
+   "ru": "Клапан водородного баллона A: работа нарушена",
+   "en": "Hydrogen Tank A Valve Performance",
+   "fam": "",
+   "node": "hydrogen tank a valve"
+  },
+  {
+   "code": "U3551",
+   "brand": "",
+   "ru": "Клапан водородного баллона A: цепь включения",
+   "en": "Hydrogen Tank A Valve Enable Circuit",
+   "fam": "",
+   "node": "hydrogen tank a valve enable"
+  },
+  {
+   "code": "U3553",
+   "brand": "",
+   "ru": "Клапан водородного баллона B: цепь управления",
+   "en": "Hydrogen Tank B Valve Control Circuit",
+   "fam": "",
+   "node": "hydrogen tank b valve"
+  },
+  {
+   "code": "U3555",
+   "brand": "",
+   "ru": "Клапан водородного баллона B: работа нарушена",
+   "en": "Hydrogen Tank B Valve Performance",
+   "fam": "",
+   "node": "hydrogen tank b valve"
+  },
+  {
+   "code": "U3554",
+   "brand": "",
+   "ru": "Клапан водородного баллона B: цепь включения",
+   "en": "Hydrogen Tank B Valve Enable Circuit",
+   "fam": "",
+   "node": "hydrogen tank b valve enable"
+  },
+  {
+   "code": "U3556",
+   "brand": "",
+   "ru": "Клапан водородного баллона C: цепь управления",
+   "en": "Hydrogen Tank C Valve Control Circuit",
+   "fam": "",
+   "node": "hydrogen tank c valve"
+  },
+  {
+   "code": "U3557",
+   "brand": "",
+   "ru": "Клапан водородного баллона C: цепь включения",
+   "en": "Hydrogen Tank C Valve Enable Circuit",
+   "fam": "",
+   "node": "hydrogen tank c valve enable"
+  },
+  {
+   "code": "U3558",
+   "brand": "",
+   "ru": "Клапан водородного баллона C",
+   "en": "Hydrogen Tank C Valve",
+   "fam": "",
+   "node": "hydrogen tank c"
+  },
+  {
+   "code": "U3559",
+   "brand": "",
+   "ru": "Датчик давления на входе воздуха: цепь",
+   "en": "Air Inlet Pressure Sensor Circuit",
+   "fam": "",
+   "node": "air inlet pressure"
+  },
+  {
+   "code": "U355A",
+   "brand": "",
+   "ru": "Датчик давления на выходе интеркулера 1: цепь",
+   "en": "Charge Air Cooler Outlet Pressure Sensor 1 Circuit",
+   "fam": "",
+   "node": "charge air cooler outlet pressure"
+  },
+  {
+   "code": "U355B",
+   "brand": "",
+   "ru": "Датчик давления на выходе интеркулера 2: цепь",
+   "en": "Charge Air Cooler Outlet Pressure Sensor 2 Circuit",
+   "fam": "",
+   "node": "charge air cooler outlet pressure"
+  },
+  {
+   "code": "U355C",
+   "brand": "",
+   "ru": "Датчик температуры на выходе интеркулера: цепь",
+   "en": "Charge Air Cooler Outlet Temperature Sensor Circuit",
+   "fam": "",
+   "node": "charge air cooler outlet temperature"
+  },
+  {
+   "code": "U355D",
+   "brand": "",
+   "ru": "Датчик давления на входе детандера 1: цепь",
+   "en": "Expander Inlet Pressure Sensor 1 Circuit",
+   "fam": "",
+   "node": "expander inlet pressure"
+  },
+  {
+   "code": "U355E",
+   "brand": "",
+   "ru": "Датчик давления на входе детандера 2: цепь",
+   "en": "Expander Inlet Pressure Sensor 2 Circuit",
+   "fam": "",
+   "node": "expander inlet pressure"
+  },
+  {
+   "code": "U355F",
+   "brand": "",
+   "ru": "Клапан противодавления катода: цепь управления",
+   "en": "Cathode Backpressure Valve Control Circuit",
+   "fam": "",
+   "node": "cathode backpressure valve"
+  },
+  {
+   "code": "U3560",
+   "brand": "",
+   "ru": "Датчик положения клапана противодавления катода: цепь",
+   "en": "Cathode Backpressure Valve Position Sensor Circuit",
+   "fam": "",
+   "node": "cathode backpressure valve position"
+  },
+  {
+   "code": "U3561",
+   "brand": "",
+   "ru": "Перепускной клапан катода: цепь управления",
+   "en": "Cathode Bypass Valve Control Circuit",
+   "fam": "",
+   "node": "cathode bypass valve"
+  },
+  {
+   "code": "U3562",
+   "brand": "",
+   "ru": "Перепускной клапан катода",
+   "en": "Cathode Bypass Valve",
+   "fam": "",
+   "node": "cathode bypass"
+  },
+  {
+   "code": "U3563",
+   "brand": "",
+   "ru": "Датчик положения перепускного клапана катода: цепь",
+   "en": "Cathode Bypass Valve Position Sensor Circuit",
+   "fam": "",
+   "node": "cathode bypass valve position"
+  },
+  {
+   "code": "U3564",
+   "brand": "",
+   "ru": "Датчик давления линии подачи водорода A 1: цепь",
+   "en": "Hydrogen Supply Line A Pressure Sensor 1 Circuit",
+   "fam": "",
+   "node": "hydrogen supply line a pressure"
+  },
+  {
+   "code": "U3565",
+   "brand": "",
+   "ru": "Датчик давления линии подачи водорода A 2: цепь",
+   "en": "Hydrogen Supply Line A Pressure Sensor 2 Circuit",
+   "fam": "",
+   "node": "hydrogen supply line a pressure"
+  },
+  {
+   "code": "U3566",
+   "brand": "",
+   "ru": "Датчик давления на входе анода 1: цепь",
+   "en": "Anode Inlet Pressure Sensor 1 Circuit",
+   "fam": "",
+   "node": "anode inlet pressure"
+  },
+  {
+   "code": "U3567",
+   "brand": "",
+   "ru": "Датчик давления на входе анода 2: цепь",
+   "en": "Anode Inlet Pressure Sensor 2 Circuit",
+   "fam": "",
+   "node": "anode inlet pressure"
+  },
+  {
+   "code": "U3568",
+   "brand": "",
+   "ru": "Многофункциональный клапан анода: цепь управления",
+   "en": "Anode Multifunction Valve Control Circuit",
+   "fam": "",
+   "node": "anode multifunction valve"
+  },
+  {
+   "code": "U3569",
+   "brand": "",
+   "ru": "Многофункциональный клапан анода",
+   "en": "Anode Multifunction Valve",
+   "fam": "",
+   "node": "anode multifunction"
+  },
+  {
+   "code": "U356A",
+   "brand": "",
+   "ru": "Дренажный клапан анода: цепь управления",
+   "en": "Anode Drain Valve Control Circuit",
+   "fam": "",
+   "node": "anode drain valve"
+  },
+  {
+   "code": "U356B",
+   "brand": "",
+   "ru": "Дренажный клапан анода",
+   "en": "Anode Drain Valve",
+   "fam": "",
+   "node": "anode drain"
+  },
+  {
+   "code": "U356C",
+   "brand": "",
+   "ru": "Дренажный клапан коллектора анода: цепь управления",
+   "en": "Anode Header Drain Valve Control Circuit",
+   "fam": "",
+   "node": "anode header drain valve"
+  },
+  {
+   "code": "U356D",
+   "brand": "",
+   "ru": "Дренажный клапан коллектора анода",
+   "en": "Anode Header Drain Valve",
+   "fam": "",
+   "node": "anode header drain"
+  },
+  {
+   "code": "U356E",
+   "brand": "",
+   "ru": "Реле подогрева дренажного клапана анода: цепь управления",
+   "en": "Anode Drain Valve Heater Relay Control Circuit",
+   "fam": "",
+   "node": "anode drain valve heater relay"
+  },
+  {
+   "code": "U356F",
+   "brand": "",
+   "ru": "Реле подогрева дренажного клапана коллектора анода: цепь управления",
+   "en": "Anode Header Drain Valve Heater Relay Control Circuit",
+   "fam": "",
+   "node": "anode header drain valve heater relay"
+  },
+  {
+   "code": "U3570",
+   "brand": "",
+   "ru": "Датчик температуры жидкости на входе стека: цепь",
+   "en": "Stack Inlet Coolant Temperature Sensor Circuit",
+   "fam": "",
+   "node": "stack inlet coolant temperature"
+  }
+ ]
+}

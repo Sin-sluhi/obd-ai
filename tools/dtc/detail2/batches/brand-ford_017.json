@@ -1,0 +1,401 @@
+{
+ "name": "brand-ford_017",
+ "series": "brand",
+ "brand": "ford",
+ "nodes": [
+  "alternator load",
+  "cylinder #1",
+  "cylinder #2",
+  "cylinder #3",
+  "cylinder #4",
+  "cylinder #5",
+  "cylinder #6",
+  "cylinder #7",
+  "fam:fuel_pump",
+  "fam:immo",
+  "fuel pump control out of",
+  "fuel pump driver module off line",
+  "fuel pump secondary",
+  "intercooler pump driver fault",
+  "lack of power to fprc",
+  "pedal correlation pds1 and hpds",
+  "pedal correlation pds1 and lpds",
+  "pedal correlation pds1 and pds2",
+  "pedal correlation pds2 and hpds",
+  "pedal correlation pds2 and lpds",
+  "pedal demand sensor b",
+  "ru:включено реле высокой скорости топливного насоса",
+  "ru:нет питания на цепи топливного насоса",
+  "ru:топливный насос, низкая скорость",
+  "second fuel pump faulty or ground fault",
+  "speed fuel pump positive feed fault",
+  "throttle position sensor b out of self test",
+  "turbo boost pressure",
+  "turbo boost pressure not detected",
+  "wastegate control valve",
+  "wastegate failed",
+  "wastegate failed closed over pressure"
+ ],
+ "codes": [
+  {
+   "code": "P1223",
+   "brand": "ford",
+   "ru": "Датчик педали газа B: высокий сигнал",
+   "en": "Pedal Demand Sensor B Circuit High Input",
+   "fam": "",
+   "node": "pedal demand sensor b"
+  },
+  {
+   "code": "P1224",
+   "brand": "ford",
+   "ru": "Датчик положения дросселя B: вне диапазона самотеста",
+   "en": "Throttle Position Sensor B Out of Self-Test Range",
+   "fam": "",
+   "node": "throttle position sensor b out of self test"
+  },
+  {
+   "code": "P1227",
+   "brand": "ford",
+   "ru": "Вестгейт заклинил закрытым — избыточный наддув",
+   "en": "Wastegate Failed Closed Over Pressure",
+   "fam": "",
+   "node": "wastegate failed closed over pressure"
+  },
+  {
+   "code": "P1228",
+   "brand": "ford",
+   "ru": "Вестгейт заклинил открытым — недостаточный наддув",
+   "en": "Wastegate Failed Open Under Pressure",
+   "fam": "",
+   "node": "wastegate failed"
+  },
+  {
+   "code": "P1229",
+   "brand": "ford",
+   "ru": "Насос интеркулера: неисправность драйвера",
+   "en": "Intercooler Pump Driver Fault",
+   "fam": "",
+   "node": "intercooler pump driver fault"
+  },
+  {
+   "code": "P1230",
+   "brand": "ford",
+   "ru": "Нет питания на цепи топливного насоса",
+   "en": "Open Power to Fuel Pump Circuit",
+   "fam": "",
+   "node": "ru:нет питания на цепи топливного насоса"
+  },
+  {
+   "code": "P1231",
+   "brand": "ford",
+   "ru": "Включено реле высокой скорости топливного насоса",
+   "en": "High Speed Fuel Pump Relay Activated",
+   "fam": "",
+   "node": "ru:включено реле высокой скорости топливного насоса"
+  },
+  {
+   "code": "P1232",
+   "brand": "ford",
+   "ru": "Топливный насос, низкая скорость: неисправность первичной цепи",
+   "en": "Low Speed Fuel Pump Primary Circuit Failure",
+   "fam": "",
+   "node": "ru:топливный насос, низкая скорость"
+  },
+  {
+   "code": "P1233",
+   "brand": "ford",
+   "ru": "Модуль управления топливным насосом не отвечает",
+   "en": "",
+   "fam": "fuel_pump",
+   "node": "fam:fuel_pump"
+  },
+  {
+   "code": "P1235",
+   "brand": "ford",
+   "ru": "Управление топливным насосом: вне диапазона",
+   "en": "",
+   "fam": "fuel_pump",
+   "node": "fam:fuel_pump"
+  },
+  {
+   "code": "P1237",
+   "brand": "ford",
+   "ru": "Топливный насос: вторичная цепь",
+   "en": "",
+   "fam": "fuel_pump",
+   "node": "fam:fuel_pump"
+  },
+  {
+   "code": "P1234",
+   "brand": "ford",
+   "ru": "Блок управления топливным насосом не на связи",
+   "en": "Fuel Pump Driver Module Off-Line",
+   "fam": "",
+   "node": "fuel pump driver module off line"
+  },
+  {
+   "code": "P1236",
+   "brand": "ford",
+   "ru": "Управление топливным насосом: вне диапазона",
+   "en": "Fuel Pump Control Out of Range",
+   "fam": "",
+   "node": "fuel pump control out of"
+  },
+  {
+   "code": "P1238",
+   "brand": "ford",
+   "ru": "Топливный насос: неисправность вторичной цепи",
+   "en": "Fuel Pump Secondary Circuit Fault",
+   "fam": "",
+   "node": "fuel pump secondary"
+  },
+  {
+   "code": "P1239",
+   "brand": "ford",
+   "ru": "Топливный насос: неисправность плюсового питания",
+   "en": "Speed Fuel Pump Positive Feed Fault",
+   "fam": "",
+   "node": "speed fuel pump positive feed fault"
+  },
+  {
+   "code": "P1243",
+   "brand": "ford",
+   "ru": "Второй топливный насос неисправен или замыкание на массу",
+   "en": "Second Fuel Pump Faulty or Ground Fault",
+   "fam": "",
+   "node": "second fuel pump faulty or ground fault"
+  },
+  {
+   "code": "P1244",
+   "brand": "ford",
+   "ru": "Сигнал нагрузки генератора: высокий",
+   "en": "Alternator Load Input Failed High",
+   "fam": "",
+   "node": "alternator load"
+  },
+  {
+   "code": "P1245",
+   "brand": "ford",
+   "ru": "Сигнал нагрузки генератора: низкий",
+   "en": "Alternator Load Input Failed Low",
+   "fam": "",
+   "node": "alternator load"
+  },
+  {
+   "code": "P1246",
+   "brand": "ford",
+   "ru": "Сигнал нагрузки генератора: неисправность",
+   "en": "Alternator Load Input Failed",
+   "fam": "",
+   "node": "alternator load"
+  },
+  {
+   "code": "P1247",
+   "brand": "ford",
+   "ru": "Давление наддува низкое",
+   "en": "Turbo Boost Pressure Low",
+   "fam": "",
+   "node": "turbo boost pressure"
+  },
+  {
+   "code": "P1248",
+   "brand": "ford",
+   "ru": "Давление наддува не обнаружено",
+   "en": "Turbo Boost Pressure Not Detected",
+   "fam": "",
+   "node": "turbo boost pressure not detected"
+  },
+  {
+   "code": "P1249",
+   "brand": "ford",
+   "ru": "Клапан управления вестгейтом: работа",
+   "en": "Wastegate Control Valve Performance",
+   "fam": "",
+   "node": "wastegate control valve"
+  },
+  {
+   "code": "P1250",
+   "brand": "ford",
+   "ru": "Нет питания на клапане регулятора давления топлива",
+   "en": "Lack of Power to FPRC Solenoid",
+   "fam": "",
+   "node": "lack of power to fprc"
+  },
+  {
+   "code": "P1252",
+   "brand": "ford",
+   "ru": "Согласование педали: датчики PDS1 и LPDS, высоко",
+   "en": "Pedal Correlation PDS1 and LPDS High",
+   "fam": "",
+   "node": "pedal correlation pds1 and lpds"
+  },
+  {
+   "code": "P1253",
+   "brand": "ford",
+   "ru": "Согласование педали: датчики PDS1 и LPDS, низко",
+   "en": "Pedal Correlation PDS1 and LPDS Low",
+   "fam": "",
+   "node": "pedal correlation pds1 and lpds"
+  },
+  {
+   "code": "P1254",
+   "brand": "ford",
+   "ru": "Согласование педали: датчики PDS2 и LPDS, высоко",
+   "en": "Pedal Correlation PDS2 and LPDS High",
+   "fam": "",
+   "node": "pedal correlation pds2 and lpds"
+  },
+  {
+   "code": "P1255",
+   "brand": "ford",
+   "ru": "Согласование педали: датчики PDS2 и LPDS, низко",
+   "en": "Pedal Correlation PDS2 and LPDS Low",
+   "fam": "",
+   "node": "pedal correlation pds2 and lpds"
+  },
+  {
+   "code": "P1256",
+   "brand": "ford",
+   "ru": "Согласование педали: датчики PDS1 и HPDS",
+   "en": "Pedal Correlation PDS1 and HPDS",
+   "fam": "",
+   "node": "pedal correlation pds1 and hpds"
+  },
+  {
+   "code": "P1257",
+   "brand": "ford",
+   "ru": "Согласование педали: датчики PDS2 и HPDS",
+   "en": "Pedal Correlation PDS2 and HPDS",
+   "fam": "",
+   "node": "pedal correlation pds2 and hpds"
+  },
+  {
+   "code": "P1258",
+   "brand": "ford",
+   "ru": "Согласование педали: датчики PDS1 и PDS2",
+   "en": "Pedal Correlation PDS1 and PDS2",
+   "fam": "",
+   "node": "pedal correlation pds1 and pds2"
+  },
+  {
+   "code": "P1260",
+   "brand": "ford",
+   "ru": "Обнаружена попытка угона: двигатель заблокирован (PATS)",
+   "en": "",
+   "fam": "immo",
+   "node": "fam:immo"
+  },
+  {
+   "code": "P1261",
+   "brand": "ford",
+   "ru": "Форсунка цилиндра 1: замыкание плюсовой стороны на минусовую",
+   "en": "Cylinder #1 High To Low Side Short",
+   "fam": "",
+   "node": "cylinder #1"
+  },
+  {
+   "code": "P1271",
+   "brand": "ford",
+   "ru": "Форсунка цилиндра 1: обрыв между плюсовой и минусовой стороной",
+   "en": "Cylinder #1 High To Low Side Open",
+   "fam": "",
+   "node": "cylinder #1"
+  },
+  {
+   "code": "P1262",
+   "brand": "ford",
+   "ru": "Форсунка цилиндра 2: замыкание плюсовой стороны на минусовую",
+   "en": "Cylinder #2 High To Low Side Short",
+   "fam": "",
+   "node": "cylinder #2"
+  },
+  {
+   "code": "P1272",
+   "brand": "ford",
+   "ru": "Форсунка цилиндра 2: обрыв между плюсовой и минусовой стороной",
+   "en": "Cylinder #2 High To Low Side Open",
+   "fam": "",
+   "node": "cylinder #2"
+  },
+  {
+   "code": "P1263",
+   "brand": "ford",
+   "ru": "Форсунка цилиндра 3: замыкание плюсовой стороны на минусовую",
+   "en": "Cylinder #3 High To Low Side Short",
+   "fam": "",
+   "node": "cylinder #3"
+  },
+  {
+   "code": "P1273",
+   "brand": "ford",
+   "ru": "Форсунка цилиндра 3: обрыв между плюсовой и минусовой стороной",
+   "en": "Cylinder #3 High To Low Side Open",
+   "fam": "",
+   "node": "cylinder #3"
+  },
+  {
+   "code": "P1264",
+   "brand": "ford",
+   "ru": "Форсунка цилиндра 4: замыкание плюсовой стороны на минусовую",
+   "en": "Cylinder #4 High To Low Side Short",
+   "fam": "",
+   "node": "cylinder #4"
+  },
+  {
+   "code": "P1274",
+   "brand": "ford",
+   "ru": "Форсунка цилиндра 4: обрыв между плюсовой и минусовой стороной",
+   "en": "Cylinder #4 High To Low Side Open",
+   "fam": "",
+   "node": "cylinder #4"
+  },
+  {
+   "code": "P1265",
+   "brand": "ford",
+   "ru": "Форсунка цилиндра 5: замыкание плюсовой стороны на минусовую",
+   "en": "Cylinder #5 High To Low Side Short",
+   "fam": "",
+   "node": "cylinder #5"
+  },
+  {
+   "code": "P1275",
+   "brand": "ford",
+   "ru": "Форсунка цилиндра 5: обрыв между плюсовой и минусовой стороной",
+   "en": "Cylinder #5 High To Low Side Open",
+   "fam": "",
+   "node": "cylinder #5"
+  },
+  {
+   "code": "P1266",
+   "brand": "ford",
+   "ru": "Форсунка цилиндра 6: замыкание плюсовой стороны на минусовую",
+   "en": "Cylinder #6 High To Low Side Short",
+   "fam": "",
+   "node": "cylinder #6"
+  },
+  {
+   "code": "P1276",
+   "brand": "ford",
+   "ru": "Форсунка цилиндра 6: обрыв между плюсовой и минусовой стороной",
+   "en": "Cylinder #6 High To Low Side Open",
+   "fam": "",
+   "node": "cylinder #6"
+  },
+  {
+   "code": "P1267",
+   "brand": "ford",
+   "ru": "Форсунка цилиндра 7: замыкание плюсовой стороны на минусовую",
+   "en": "Cylinder #7 High To Low Side Short",
+   "fam": "",
+   "node": "cylinder #7"
+  },
+  {
+   "code": "P1277",
+   "brand": "ford",
+   "ru": "Форсунка цилиндра 7: обрыв между плюсовой и минусовой стороной",
+   "en": "Cylinder #7 High To Low Side Open",
+   "fam": "",
+   "node": "cylinder #7"
+  }
+ ]
+}

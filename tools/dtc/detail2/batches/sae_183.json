@@ -1,0 +1,369 @@
+{
+ "name": "sae_183",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "a c compressor motor",
+  "a c compressor motor voltage b",
+  "air assisted injector",
+  "battery charging system negative contactor c",
+  "battery charging system positive contactor c",
+  "cold start hybrid ev battery",
+  "generator b",
+  "generator b mechanical",
+  "generator b over temperature",
+  "hybrid ev battery cooling system b",
+  "hybrid ev battery cooling system c",
+  "hybrid ev battery pack b over temperature",
+  "hybrid ev battery pack c over temperature",
+  "hybrid ev battery pack coolant temperature sensor c",
+  "hybrid ev battery pack d over temperature",
+  "hybrid ev battery pack e over temperature",
+  "hybrid ev battery pack f over temperature",
+  "hybrid ev battery pack g over temperature",
+  "hybrid ev battery pack h over temperature",
+  "hybrid ev battery pack i over temperature",
+  "hybrid ev battery pack j over temperature",
+  "hybrid ev battery pack k over temperature",
+  "hybrid ev battery pack l over temperature",
+  "reductant level sensor a b correlation"
+ ],
+ "codes": [
+  {
+   "code": "P2D3E",
+   "brand": "",
+   "ru": "Холодный пуск: тяговая батарея работает с нарушением",
+   "en": "Cold Start Hybrid/EV Battery Performance",
+   "fam": "",
+   "node": "cold start hybrid ev battery"
+  },
+  {
+   "code": "P2D3F",
+   "brand": "",
+   "ru": "Система охлаждения тяговой батареи B: работа нарушена",
+   "en": "Hybrid/EV Battery Cooling System B Performance",
+   "fam": "",
+   "node": "hybrid ev battery cooling system b"
+  },
+  {
+   "code": "P2D40",
+   "brand": "",
+   "ru": "Система охлаждения тяговой батареи C: работа нарушена",
+   "en": "Hybrid/EV Battery Cooling System C Performance",
+   "fam": "",
+   "node": "hybrid ev battery cooling system c"
+  },
+  {
+   "code": "P2D41",
+   "brand": "",
+   "ru": "Напряжение электромотора компрессора кондиционера B: работа нарушена",
+   "en": "A/C Compressor Motor Voltage B Performance",
+   "fam": "",
+   "node": "a c compressor motor voltage b"
+  },
+  {
+   "code": "P2D42",
+   "brand": "",
+   "ru": "Напряжение электромотора компрессора кондиционера B: низкий уровень",
+   "en": "A/C Compressor Motor Voltage B Low",
+   "fam": "",
+   "node": "a c compressor motor voltage b"
+  },
+  {
+   "code": "P2D43",
+   "brand": "",
+   "ru": "Напряжение электромотора компрессора кондиционера B: высокий уровень",
+   "en": "A/C Compressor Motor Voltage B High",
+   "fam": "",
+   "node": "a c compressor motor voltage b"
+  },
+  {
+   "code": "P2D44",
+   "brand": "",
+   "ru": "Электромотор компрессора кондиционера: работа нарушена",
+   "en": "A/C Compressor Motor Performance",
+   "fam": "",
+   "node": "a c compressor motor"
+  },
+  {
+   "code": "P2D46",
+   "brand": "",
+   "ru": "Тяговая батарея B: перегрев",
+   "en": "Hybrid/EV Battery Pack B Over Temperature",
+   "fam": "",
+   "node": "hybrid ev battery pack b over temperature"
+  },
+  {
+   "code": "P2D47",
+   "brand": "",
+   "ru": "Тяговая батарея C: перегрев",
+   "en": "Hybrid/EV Battery Pack C Over Temperature",
+   "fam": "",
+   "node": "hybrid ev battery pack c over temperature"
+  },
+  {
+   "code": "P2D48",
+   "brand": "",
+   "ru": "Тяговая батарея D: перегрев",
+   "en": "Hybrid/EV Battery Pack D Over Temperature",
+   "fam": "",
+   "node": "hybrid ev battery pack d over temperature"
+  },
+  {
+   "code": "P2D49",
+   "brand": "",
+   "ru": "Тяговая батарея E: перегрев",
+   "en": "Hybrid/EV Battery Pack E Over Temperature",
+   "fam": "",
+   "node": "hybrid ev battery pack e over temperature"
+  },
+  {
+   "code": "P2D4A",
+   "brand": "",
+   "ru": "Тяговая батарея F: перегрев",
+   "en": "Hybrid/EV Battery Pack F Over Temperature",
+   "fam": "",
+   "node": "hybrid ev battery pack f over temperature"
+  },
+  {
+   "code": "P2D4B",
+   "brand": "",
+   "ru": "Тяговая батарея G: перегрев",
+   "en": "Hybrid/EV Battery Pack G Over Temperature",
+   "fam": "",
+   "node": "hybrid ev battery pack g over temperature"
+  },
+  {
+   "code": "P2D4C",
+   "brand": "",
+   "ru": "Тяговая батарея H: перегрев",
+   "en": "Hybrid/EV Battery Pack H Over Temperature",
+   "fam": "",
+   "node": "hybrid ev battery pack h over temperature"
+  },
+  {
+   "code": "P2D4D",
+   "brand": "",
+   "ru": "Тяговая батарея I: перегрев",
+   "en": "Hybrid/EV Battery Pack I Over Temperature",
+   "fam": "",
+   "node": "hybrid ev battery pack i over temperature"
+  },
+  {
+   "code": "P2D4E",
+   "brand": "",
+   "ru": "Тяговая батарея J: перегрев",
+   "en": "Hybrid/EV Battery Pack J Over Temperature",
+   "fam": "",
+   "node": "hybrid ev battery pack j over temperature"
+  },
+  {
+   "code": "P2D4F",
+   "brand": "",
+   "ru": "Тяговая батарея K: перегрев",
+   "en": "Hybrid/EV Battery Pack K Over Temperature",
+   "fam": "",
+   "node": "hybrid ev battery pack k over temperature"
+  },
+  {
+   "code": "P2D50",
+   "brand": "",
+   "ru": "Тяговая батарея L: перегрев",
+   "en": "Hybrid/EV Battery Pack L Over Temperature",
+   "fam": "",
+   "node": "hybrid ev battery pack l over temperature"
+  },
+  {
+   "code": "P2D51",
+   "brand": "",
+   "ru": "Форсунка с воздушным распылом: цепь управления",
+   "en": "Air Assisted Injector Control Circuit",
+   "fam": "",
+   "node": "air assisted injector"
+  },
+  {
+   "code": "P2D52",
+   "brand": "",
+   "ru": "Датчик температуры охлаждающей жидкости тяговой батареи C: цепь",
+   "en": "Hybrid/EV Battery Pack Coolant Temperature Sensor C Circuit",
+   "fam": "",
+   "node": "hybrid ev battery pack coolant temperature sensor c"
+  },
+  {
+   "code": "P2D53",
+   "brand": "",
+   "ru": "Датчик температуры охлаждающей жидкости тяговой батареи C: сигнал вне диапазона",
+   "en": "Hybrid/EV Battery Pack Coolant Temperature Sensor C Circuit Range/Performance",
+   "fam": "",
+   "node": "hybrid ev battery pack coolant temperature sensor c"
+  },
+  {
+   "code": "P2D54",
+   "brand": "",
+   "ru": "Датчик температуры охлаждающей жидкости тяговой батареи C: низкий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Pack Coolant Temperature Sensor C Circuit Low",
+   "fam": "",
+   "node": "hybrid ev battery pack coolant temperature sensor c"
+  },
+  {
+   "code": "P2D55",
+   "brand": "",
+   "ru": "Датчик температуры охлаждающей жидкости тяговой батареи C: высокий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Pack Coolant Temperature Sensor C Circuit High",
+   "fam": "",
+   "node": "hybrid ev battery pack coolant temperature sensor c"
+  },
+  {
+   "code": "P2D56",
+   "brand": "",
+   "ru": "Датчик температуры охлаждающей жидкости тяговой батареи C: прерывистый / нестабильный сигнал",
+   "en": "Hybrid/EV Battery Pack Coolant Temperature Sensor C Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "hybrid ev battery pack coolant temperature sensor c"
+  },
+  {
+   "code": "P2D57",
+   "brand": "",
+   "ru": "Генератор (гибрид) B: цепь управления вне диапазона",
+   "en": "Generator B Control Circuit Range/Performance",
+   "fam": "",
+   "node": "generator b"
+  },
+  {
+   "code": "P2D58",
+   "brand": "",
+   "ru": "Генератор B: механическая неисправность",
+   "en": "Generator B Mechanical Performance",
+   "fam": "",
+   "node": "generator b mechanical"
+  },
+  {
+   "code": "P2D59",
+   "brand": "",
+   "ru": "Генератор (гибрид) B: перегрев",
+   "en": "Generator B Over Temperature",
+   "fam": "",
+   "node": "generator b over temperature"
+  },
+  {
+   "code": "P2D5A",
+   "brand": "",
+   "ru": "Датчик уровня мочевины (AdBlue): рассогласование A/B",
+   "en": "Reductant Level Sensor A/B Correlation",
+   "fam": "",
+   "node": "reductant level sensor a b correlation"
+  },
+  {
+   "code": "P2D5B",
+   "brand": "",
+   "ru": "Плюсовой контактор системы зарядки C: цепь",
+   "en": "Battery Charging System Positive Contactor C Circuit",
+   "fam": "",
+   "node": "battery charging system positive contactor c"
+  },
+  {
+   "code": "P2D5C",
+   "brand": "",
+   "ru": "Плюсовой контактор системы зарядки C: заклинил закрытым",
+   "en": "Battery Charging System Positive Contactor C Stuck Closed",
+   "fam": "",
+   "node": "battery charging system positive contactor c"
+  },
+  {
+   "code": "P2D5D",
+   "brand": "",
+   "ru": "Плюсовой контактор системы зарядки C: заклинил открытым",
+   "en": "Battery Charging System Positive Contactor C Stuck Open",
+   "fam": "",
+   "node": "battery charging system positive contactor c"
+  },
+  {
+   "code": "P2D5E",
+   "brand": "",
+   "ru": "Плюсовой контактор системы зарядки C: обрыв цепи управления",
+   "en": "Battery Charging System Positive Contactor C Control Circuit/Open",
+   "fam": "",
+   "node": "battery charging system positive contactor c"
+  },
+  {
+   "code": "P2D5F",
+   "brand": "",
+   "ru": "Плюсовой контактор системы зарядки C: цепь управления вне диапазона",
+   "en": "Battery Charging System Positive Contactor C Control Circuit Range/Performance",
+   "fam": "",
+   "node": "battery charging system positive contactor c"
+  },
+  {
+   "code": "P2D60",
+   "brand": "",
+   "ru": "Плюсовой контактор системы зарядки C: низкий уровень в цепи управления",
+   "en": "Battery Charging System Positive Contactor C Control Circuit Low",
+   "fam": "",
+   "node": "battery charging system positive contactor c"
+  },
+  {
+   "code": "P2D61",
+   "brand": "",
+   "ru": "Плюсовой контактор системы зарядки C: высокий уровень в цепи управления",
+   "en": "Battery Charging System Positive Contactor C Control Circuit High",
+   "fam": "",
+   "node": "battery charging system positive contactor c"
+  },
+  {
+   "code": "P2D62",
+   "brand": "",
+   "ru": "Минусовой контактор системы зарядки C: цепь",
+   "en": "Battery Charging System Negative Contactor C Circuit",
+   "fam": "",
+   "node": "battery charging system negative contactor c"
+  },
+  {
+   "code": "P2D63",
+   "brand": "",
+   "ru": "Минусовой контактор системы зарядки C: заклинил закрытым",
+   "en": "Battery Charging System Negative Contactor C Stuck Closed",
+   "fam": "",
+   "node": "battery charging system negative contactor c"
+  },
+  {
+   "code": "P2D64",
+   "brand": "",
+   "ru": "Минусовой контактор системы зарядки C: заклинил открытым",
+   "en": "Battery Charging System Negative Contactor C Stuck Open",
+   "fam": "",
+   "node": "battery charging system negative contactor c"
+  },
+  {
+   "code": "P2D65",
+   "brand": "",
+   "ru": "Минусовой контактор системы зарядки C: обрыв цепи управления",
+   "en": "Battery Charging System Negative Contactor C Control Circuit/Open",
+   "fam": "",
+   "node": "battery charging system negative contactor c"
+  },
+  {
+   "code": "P2D66",
+   "brand": "",
+   "ru": "Минусовой контактор системы зарядки C: цепь управления вне диапазона",
+   "en": "Battery Charging System Negative Contactor C Control Circuit Range/Performance",
+   "fam": "",
+   "node": "battery charging system negative contactor c"
+  },
+  {
+   "code": "P2D67",
+   "brand": "",
+   "ru": "Минусовой контактор системы зарядки C: низкий уровень в цепи управления",
+   "en": "Battery Charging System Negative Contactor C Control Circuit Low",
+   "fam": "",
+   "node": "battery charging system negative contactor c"
+  },
+  {
+   "code": "P2D68",
+   "brand": "",
+   "ru": "Минусовой контактор системы зарядки C: высокий уровень в цепи управления",
+   "en": "Battery Charging System Negative Contactor C Control Circuit High",
+   "fam": "",
+   "node": "battery charging system negative contactor c"
+  }
+ ]
+}

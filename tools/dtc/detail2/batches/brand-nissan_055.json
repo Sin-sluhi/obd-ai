@@ -1,0 +1,374 @@
+{
+ "name": "brand-nissan_055",
+ "series": "brand",
+ "brand": "nissan",
+ "nodes": [
+  "closed loop control",
+  "fam:abs_module",
+  "fam:brake_pressure",
+  "fam:brake_switch",
+  "fam:eps",
+  "fam:lost_comm",
+  "fam:system_voltage",
+  "fam:wss",
+  "intake valve timing",
+  "intake valve timing control",
+  "intake valve timing control position sensor",
+  "map baro pressure switch solenoid",
+  "map higher than expected",
+  "map lower than expected",
+  "ru:датчик атмосферного давления",
+  "secondary throttle position",
+  "swirl control valve control solenoid",
+  "tandem throttle position",
+  "thermostat function",
+  "throttle position higher than expected",
+  "throttle position lower than expected"
+ ],
+ "codes": [
+  {
+   "code": "C1101",
+   "brand": "nissan",
+   "ru": "Датчик скорости правого заднего колеса: цепь (сенсор-1)",
+   "en": "",
+   "fam": "wss",
+   "node": "fam:wss"
+  },
+  {
+   "code": "C1102",
+   "brand": "nissan",
+   "ru": "Датчик скорости левого заднего колеса: цепь (сенсор-1)",
+   "en": "",
+   "fam": "wss",
+   "node": "fam:wss"
+  },
+  {
+   "code": "C1103",
+   "brand": "nissan",
+   "ru": "Датчик скорости правого переднего колеса: цепь (сенсор-1)",
+   "en": "",
+   "fam": "wss",
+   "node": "fam:wss"
+  },
+  {
+   "code": "C1104",
+   "brand": "nissan",
+   "ru": "Датчик скорости левого переднего колеса: цепь (сенсор-1)",
+   "en": "",
+   "fam": "wss",
+   "node": "fam:wss"
+  },
+  {
+   "code": "C1105",
+   "brand": "nissan",
+   "ru": "Датчик скорости правого заднего колеса: неправдоподобный сигнал (сенсор-2)",
+   "en": "",
+   "fam": "wss",
+   "node": "fam:wss"
+  },
+  {
+   "code": "C1106",
+   "brand": "nissan",
+   "ru": "Датчик скорости левого заднего колеса: неправдоподобный сигнал (сенсор-2)",
+   "en": "",
+   "fam": "wss",
+   "node": "fam:wss"
+  },
+  {
+   "code": "C1107",
+   "brand": "nissan",
+   "ru": "Датчик скорости правого переднего колеса: неправдоподобный сигнал (сенсор-2)",
+   "en": "",
+   "fam": "wss",
+   "node": "fam:wss"
+  },
+  {
+   "code": "C1108",
+   "brand": "nissan",
+   "ru": "Датчик скорости левого переднего колеса: неправдоподобный сигнал (сенсор-2)",
+   "en": "",
+   "fam": "wss",
+   "node": "fam:wss"
+  },
+  {
+   "code": "C1115",
+   "brand": "nissan",
+   "ru": "Датчики колёс: неправдоподобный сигнал",
+   "en": "",
+   "fam": "wss",
+   "node": "fam:wss"
+  },
+  {
+   "code": "C1109",
+   "brand": "nissan",
+   "ru": "Блок ABS: напряжение питания вне нормы",
+   "en": "",
+   "fam": "system_voltage",
+   "node": "fam:system_voltage"
+  },
+  {
+   "code": "C1110",
+   "brand": "nissan",
+   "ru": "Блок ABS: внутренняя неисправность",
+   "en": "",
+   "fam": "abs_module",
+   "node": "fam:abs_module"
+  },
+  {
+   "code": "C1111",
+   "brand": "nissan",
+   "ru": "Блок ABS: мотор насоса",
+   "en": "",
+   "fam": "abs_module",
+   "node": "fam:abs_module"
+  },
+  {
+   "code": "C1114",
+   "brand": "nissan",
+   "ru": "Блок ABS: реле питания клапанов",
+   "en": "",
+   "fam": "abs_module",
+   "node": "fam:abs_module"
+  },
+  {
+   "code": "P1211",
+   "brand": "nissan",
+   "ru": "Блок ABS/TCS: неисправность",
+   "en": "",
+   "fam": "abs_module",
+   "node": "fam:abs_module"
+  },
+  {
+   "code": "C1116",
+   "brand": "nissan",
+   "ru": "Выключатель стоп-сигнала (для ABS)",
+   "en": "",
+   "fam": "brake_switch",
+   "node": "fam:brake_switch"
+  },
+  {
+   "code": "P1572",
+   "brand": "nissan",
+   "ru": "Выключатель тормоза для круиза: неисправность",
+   "en": "",
+   "fam": "brake_switch",
+   "node": "fam:brake_switch"
+  },
+  {
+   "code": "C1130",
+   "brand": "nissan",
+   "ru": "Блок ABS: нет сигнала от блока двигателя",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "P1212",
+   "brand": "nissan",
+   "ru": "Линия связи ABS/TCS",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "C1155",
+   "brand": "nissan",
+   "ru": "Низкий уровень тормозной жидкости",
+   "en": "",
+   "fam": "brake_pressure",
+   "node": "fam:brake_pressure"
+  },
+  {
+   "code": "C1601",
+   "brand": "nissan",
+   "ru": "Электроусилитель руля: питание",
+   "en": "",
+   "fam": "eps",
+   "node": "fam:eps"
+  },
+  {
+   "code": "C1604",
+   "brand": "nissan",
+   "ru": "Электроусилитель руля: датчик момента",
+   "en": "",
+   "fam": "eps",
+   "node": "fam:eps"
+  },
+  {
+   "code": "C1606",
+   "brand": "nissan",
+   "ru": "Электроусилитель руля: мотор",
+   "en": "",
+   "fam": "eps",
+   "node": "fam:eps"
+  },
+  {
+   "code": "C1607",
+   "brand": "nissan",
+   "ru": "Электроусилитель руля: память блока (EEPROM)",
+   "en": "",
+   "fam": "eps",
+   "node": "fam:eps"
+  },
+  {
+   "code": "C1608",
+   "brand": "nissan",
+   "ru": "Электроусилитель руля: блок управления",
+   "en": "",
+   "fam": "eps",
+   "node": "fam:eps"
+  },
+  {
+   "code": "C1609",
+   "brand": "nissan",
+   "ru": "Электроусилитель руля: сигнал скорости",
+   "en": "",
+   "fam": "eps",
+   "node": "fam:eps"
+  },
+  {
+   "code": "P1105",
+   "brand": "nissan",
+   "ru": "Клапан переключения датчика давления во впуске / атмосферного давления",
+   "en": "MAP BARO Pressure Switch Solenoid Valve",
+   "fam": "",
+   "node": "map baro pressure switch solenoid"
+  },
+  {
+   "code": "P1106",
+   "brand": "nissan",
+   "ru": "Датчик атмосферного давления: выход за диапазон",
+   "en": "BARO Circuit Range Performance Malfunction",
+   "fam": "",
+   "node": "ru:датчик атмосферного давления"
+  },
+  {
+   "code": "P1107",
+   "brand": "nissan",
+   "ru": "Датчик атмосферного давления: низкий сигнал",
+   "en": "BARO Circuit Low Input",
+   "fam": "",
+   "node": "ru:датчик атмосферного давления"
+  },
+  {
+   "code": "P1108",
+   "brand": "nissan",
+   "ru": "Датчик атмосферного давления: высокий сигнал",
+   "en": "BARO Circuit High Input",
+   "fam": "",
+   "node": "ru:датчик атмосферного давления"
+  },
+  {
+   "code": "P1110",
+   "brand": "nissan",
+   "ru": "Клапан изменения фаз впуска",
+   "en": "Intake Valve Timing Control Solenoid",
+   "fam": "",
+   "node": "intake valve timing control"
+  },
+  {
+   "code": "P1120",
+   "brand": "nissan",
+   "ru": "Датчик положения второй дроссельной заслонки: неисправность цепи",
+   "en": "Secondary Throttle Position Sensor Circuit Fault",
+   "fam": "",
+   "node": "secondary throttle position"
+  },
+  {
+   "code": "P1121",
+   "brand": "nissan",
+   "ru": "Положение дросселя ниже ожидаемого",
+   "en": "Throttle Position Lower Than Expected",
+   "fam": "",
+   "node": "throttle position lower than expected"
+  },
+  {
+   "code": "P1122",
+   "brand": "nissan",
+   "ru": "Положение дросселя выше ожидаемого",
+   "en": "Throttle Position Higher Than Expected",
+   "fam": "",
+   "node": "throttle position higher than expected"
+  },
+  {
+   "code": "P1125",
+   "brand": "nissan",
+   "ru": "Сдвоенный датчик положения дросселя: неисправность цепи",
+   "en": "Tandem Throttle Position Sensor Circuit Fault",
+   "fam": "",
+   "node": "tandem throttle position"
+  },
+  {
+   "code": "P1126",
+   "brand": "nissan",
+   "ru": "Работа термостата",
+   "en": "Thermostat Function",
+   "fam": "",
+   "node": "thermostat function"
+  },
+  {
+   "code": "P1128",
+   "brand": "nissan",
+   "ru": "Давление во впуске ниже ожидаемого",
+   "en": "MAP Lower Than Expected",
+   "fam": "",
+   "node": "map lower than expected"
+  },
+  {
+   "code": "P1129",
+   "brand": "nissan",
+   "ru": "Давление во впуске выше ожидаемого",
+   "en": "MAP Higher Than Expected",
+   "fam": "",
+   "node": "map higher than expected"
+  },
+  {
+   "code": "P1130",
+   "brand": "nissan",
+   "ru": "Клапан управления завихрением (swirl)",
+   "en": "Swirl Control Valve Control Solenoid Valve",
+   "fam": "",
+   "node": "swirl control valve control solenoid"
+  },
+  {
+   "code": "P1135",
+   "brand": "nissan",
+   "ru": "Изменение фаз впуска (ряд 2): цепь",
+   "en": "Intake Valve Timing Control Circuit Bank 2",
+   "fam": "",
+   "node": "intake valve timing"
+  },
+  {
+   "code": "P1140",
+   "brand": "nissan",
+   "ru": "Датчик положения фаз впуска (ряд 1)",
+   "en": "Intake Valve Timing Control Position Sensor Bank 1",
+   "fam": "",
+   "node": "intake valve timing control position sensor"
+  },
+  {
+   "code": "P1145",
+   "brand": "nissan",
+   "ru": "Датчик положения фаз впуска (ряд 2)",
+   "en": "Intake Valve Timing Control Position Sensor Bank 2",
+   "fam": "",
+   "node": "intake valve timing control position sensor"
+  },
+  {
+   "code": "P1148",
+   "brand": "nissan",
+   "ru": "Регулирование по лямбда-зонду (ряд 1)",
+   "en": "Closed Loop Control Bank 1",
+   "fam": "",
+   "node": "closed loop control"
+  },
+  {
+   "code": "P1168",
+   "brand": "nissan",
+   "ru": "Регулирование по лямбда-зонду (ряд 2)",
+   "en": "Closed Loop Control Bank 2",
+   "fam": "",
+   "node": "closed loop control"
+  }
+ ]
+}

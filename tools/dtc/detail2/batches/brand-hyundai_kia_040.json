@@ -1,0 +1,394 @@
+{
+ "name": "brand-hyundai_kia_040",
+ "series": "brand",
+ "brand": "hyundai_kia",
+ "nodes": [
+  "a c compressor clutch",
+  "a t to m t codification",
+  "canister drain cut valve",
+  "chassis acceleration sensor",
+  "egr boost or pressure",
+  "egr boost sensor",
+  "egr control",
+  "egr differential pressure sensor",
+  "egr stepper motor",
+  "egr vacuum control",
+  "egr vent control",
+  "evap purge control",
+  "excessive vacuum leak",
+  "fam:iac",
+  "fam:ps_pressure",
+  "fuel injector",
+  "fuel tank sending unit",
+  "idle air control valve closing coil",
+  "ignition switch start",
+  "knock sensor control zero test",
+  "no sgc",
+  "no vehicle speed",
+  "pressure regulator control solenoid valve",
+  "pressure regulator control solenoid valve no.",
+  "purge solenoid valve"
+ ],
+ "codes": [
+  {
+   "code": "P1195",
+   "brand": "hyundai_kia",
+   "ru": "Датчик давления наддува / ЕГР: неисправность цепи",
+   "en": "EGR Boost Or Pressure Sensor Circuit Fault",
+   "fam": "",
+   "node": "egr boost or pressure"
+  },
+  {
+   "code": "P1196",
+   "brand": "hyundai_kia",
+   "ru": "Замок зажигания, цепь «Пуск»: неисправность",
+   "en": "Ignition Switch Start Circuit Fault",
+   "fam": "",
+   "node": "ignition switch start"
+  },
+  {
+   "code": "P1213",
+   "brand": "hyundai_kia",
+   "ru": "Форсунка 1: высокое напряжение в цепи",
+   "en": "Fuel Injector 1 Circuit High Voltage",
+   "fam": "",
+   "node": "fuel injector"
+  },
+  {
+   "code": "P1214",
+   "brand": "hyundai_kia",
+   "ru": "Форсунка 2: высокое напряжение в цепи",
+   "en": "Fuel Injector 2 Circuit High Voltage",
+   "fam": "",
+   "node": "fuel injector"
+  },
+  {
+   "code": "P1215",
+   "brand": "hyundai_kia",
+   "ru": "Форсунка 3: высокое напряжение в цепи",
+   "en": "Fuel Injector 3 Circuit High Voltage",
+   "fam": "",
+   "node": "fuel injector"
+  },
+  {
+   "code": "P1216",
+   "brand": "hyundai_kia",
+   "ru": "Форсунка 4: высокое напряжение в цепи",
+   "en": "Fuel Injector 4 Circuit High Voltage",
+   "fam": "",
+   "node": "fuel injector"
+  },
+  {
+   "code": "P1225",
+   "brand": "hyundai_kia",
+   "ru": "Форсунка 1: низкое напряжение в цепи",
+   "en": "Fuel Injector 1 Circuit Low Voltage",
+   "fam": "",
+   "node": "fuel injector"
+  },
+  {
+   "code": "P1226",
+   "brand": "hyundai_kia",
+   "ru": "Форсунка 2: низкое напряжение в цепи",
+   "en": "Fuel Injector 2 Circuit Low Voltage",
+   "fam": "",
+   "node": "fuel injector"
+  },
+  {
+   "code": "P1227",
+   "brand": "hyundai_kia",
+   "ru": "Форсунка 3: низкое напряжение в цепи",
+   "en": "Fuel Injector 3 Circuit Low Voltage",
+   "fam": "",
+   "node": "fuel injector"
+  },
+  {
+   "code": "P1228",
+   "brand": "hyundai_kia",
+   "ru": "Форсунка 4: низкое напряжение в цепи",
+   "en": "Fuel Injector 4 Circuit Low Voltage",
+   "fam": "",
+   "node": "fuel injector"
+  },
+  {
+   "code": "P1250",
+   "brand": "hyundai_kia",
+   "ru": "Клапан регулятора давления: обрыв или замыкание",
+   "en": "Pressure Regulator Control Solenoid Valve Open Or Short",
+   "fam": "",
+   "node": "pressure regulator control solenoid valve"
+  },
+  {
+   "code": "P1252",
+   "brand": "hyundai_kia",
+   "ru": "Клапан регулятора давления № 2: неисправность цепи",
+   "en": "Pressure Regulator Control Solenoid Valve No. 2 Circuit Malfunction",
+   "fam": "",
+   "node": "pressure regulator control solenoid valve no."
+  },
+  {
+   "code": "P1307",
+   "brand": "hyundai_kia",
+   "ru": "Датчик ускорения кузова: неисправность сигнала",
+   "en": "Chassis Acceleration Sensor Signal Malfunction",
+   "fam": "",
+   "node": "chassis acceleration sensor"
+  },
+  {
+   "code": "P1308",
+   "brand": "hyundai_kia",
+   "ru": "Датчик ускорения кузова: низкий сигнал",
+   "en": "Chassis Acceleration Sensor Signal Low",
+   "fam": "",
+   "node": "chassis acceleration sensor"
+  },
+  {
+   "code": "P1309",
+   "brand": "hyundai_kia",
+   "ru": "Датчик ускорения кузова: высокий сигнал",
+   "en": "Chassis Acceleration Sensor Signal High",
+   "fam": "",
+   "node": "chassis acceleration sensor"
+  },
+  {
+   "code": "P1345",
+   "brand": "hyundai_kia",
+   "ru": "Нет сигнала датчика положения распредвала (1.6)",
+   "en": "No SGC Signal 1.6L",
+   "fam": "",
+   "node": "no sgc"
+  },
+  {
+   "code": "P1386",
+   "brand": "hyundai_kia",
+   "ru": "Контроль детонации: ошибка проверки нуля",
+   "en": "Knock Sensor Control Zero Test",
+   "fam": "",
+   "node": "knock sensor control zero test"
+  },
+  {
+   "code": "P1401",
+   "brand": "hyundai_kia",
+   "ru": "Клапан управления ЕГР: низкий сигнал в цепи",
+   "en": "EGR Control Solenoid Circuit Signal Low",
+   "fam": "",
+   "node": "egr control"
+  },
+  {
+   "code": "P1402",
+   "brand": "hyundai_kia",
+   "ru": "Клапан управления ЕГР: высокий сигнал в цепи",
+   "en": "EGR Control Solenoid Circuit Signal High",
+   "fam": "",
+   "node": "egr control"
+  },
+  {
+   "code": "P1410",
+   "brand": "hyundai_kia",
+   "ru": "Клапан продувки адсорбера: высокое напряжение в цепи",
+   "en": "EVAP Purge Control Solenoid Circuit High Voltage",
+   "fam": "",
+   "node": "evap purge control"
+  },
+  {
+   "code": "P1425",
+   "brand": "hyundai_kia",
+   "ru": "Клапан продувки адсорбера: низкое напряжение в цепи",
+   "en": "EVAP Purge Control Solenoid Circuit Low Voltage",
+   "fam": "",
+   "node": "evap purge control"
+  },
+  {
+   "code": "P1412",
+   "brand": "hyundai_kia",
+   "ru": "Датчик перепада давления ЕГР: низкий сигнал",
+   "en": "EGR Differential Pressure Sensor Signal Low",
+   "fam": "",
+   "node": "egr differential pressure sensor"
+  },
+  {
+   "code": "P1413",
+   "brand": "hyundai_kia",
+   "ru": "Датчик перепада давления ЕГР: высокий сигнал",
+   "en": "EGR Differential Pressure Sensor Signal High",
+   "fam": "",
+   "node": "egr differential pressure sensor"
+  },
+  {
+   "code": "P1449",
+   "brand": "hyundai_kia",
+   "ru": "Отсечной клапан адсорбера: обрыв или замыкание (1.8)",
+   "en": "Canister Drain Cut Valve Open Or Short 1.8L",
+   "fam": "",
+   "node": "canister drain cut valve"
+  },
+  {
+   "code": "P1450",
+   "brand": "hyundai_kia",
+   "ru": "Слишком сильное разрежение (утечка в системе улавливания паров)",
+   "en": "Excessive Vacuum Leak",
+   "fam": "",
+   "node": "excessive vacuum leak"
+  },
+  {
+   "code": "P1455",
+   "brand": "hyundai_kia",
+   "ru": "Датчик уровня топлива: обрыв или замыкание (1.8)",
+   "en": "Fuel Tank Sending Unit Open Or Short 1.8L",
+   "fam": "",
+   "node": "fuel tank sending unit"
+  },
+  {
+   "code": "P1457",
+   "brand": "hyundai_kia",
+   "ru": "Клапан продувки адсорбера: неисправность системы",
+   "en": "Purge Solenoid Valve Low System Malfunction",
+   "fam": "",
+   "node": "purge solenoid valve"
+  },
+  {
+   "code": "P1458",
+   "brand": "hyundai_kia",
+   "ru": "Сигнал муфты компрессора кондиционера: неисправность",
+   "en": "A/C Compressor Clutch Signal Fault",
+   "fam": "",
+   "node": "a c compressor clutch"
+  },
+  {
+   "code": "P1485",
+   "brand": "hyundai_kia",
+   "ru": "Клапан сброса ЕГР: неисправность цепи",
+   "en": "EGR Vent Control Solenoid Circuit Fault",
+   "fam": "",
+   "node": "egr vent control"
+  },
+  {
+   "code": "P1486",
+   "brand": "hyundai_kia",
+   "ru": "Вакуумный клапан ЕГР: неисправность цепи",
+   "en": "EGR Vacuum Control Solenoid Circuit Fault",
+   "fam": "",
+   "node": "egr vacuum control"
+  },
+  {
+   "code": "P1487",
+   "brand": "hyundai_kia",
+   "ru": "Клапан датчика наддува ЕГР: неисправность цепи",
+   "en": "EGR Boost Sensor Solenoid Circuit Fault",
+   "fam": "",
+   "node": "egr boost sensor"
+  },
+  {
+   "code": "P1496",
+   "brand": "hyundai_kia",
+   "ru": "Шаговый мотор ЕГР, обмотка 1: неисправность (1.8)",
+   "en": "EGR Stepper Motor Malfunction Circuit 1 1.8L",
+   "fam": "",
+   "node": "egr stepper motor"
+  },
+  {
+   "code": "P1497",
+   "brand": "hyundai_kia",
+   "ru": "Шаговый мотор ЕГР, обмотка 2: неисправность (1.8)",
+   "en": "EGR Stepper Motor Malfunction Circuit 2 1.8L",
+   "fam": "",
+   "node": "egr stepper motor"
+  },
+  {
+   "code": "P1498",
+   "brand": "hyundai_kia",
+   "ru": "Шаговый мотор ЕГР, обмотка 3: неисправность (1.8)",
+   "en": "EGR Stepper Motor Malfunction Circuit 3 1.8L",
+   "fam": "",
+   "node": "egr stepper motor"
+  },
+  {
+   "code": "P1499",
+   "brand": "hyundai_kia",
+   "ru": "Шаговый мотор ЕГР, обмотка 4: неисправность (1.8)",
+   "en": "EGR Stepper Motor Malfunction Circuit 4 1.8L",
+   "fam": "",
+   "node": "egr stepper motor"
+  },
+  {
+   "code": "P1500",
+   "brand": "hyundai_kia",
+   "ru": "Нет сигнала скорости для блока коробки",
+   "en": "No Vehicle Speed Signal to TCM",
+   "fam": "",
+   "node": "no vehicle speed"
+  },
+  {
+   "code": "P1505",
+   "brand": "hyundai_kia",
+   "ru": "Регулятор холостого хода: обмотка 1, низкий уровень",
+   "en": "",
+   "fam": "iac",
+   "node": "fam:iac"
+  },
+  {
+   "code": "P1506",
+   "brand": "hyundai_kia",
+   "ru": "Регулятор холостого хода: обмотка 1, высокий уровень",
+   "en": "",
+   "fam": "iac",
+   "node": "fam:iac"
+  },
+  {
+   "code": "P1507",
+   "brand": "hyundai_kia",
+   "ru": "Регулятор холостого хода: обмотка 2, низкий уровень",
+   "en": "",
+   "fam": "iac",
+   "node": "fam:iac"
+  },
+  {
+   "code": "P1508",
+   "brand": "hyundai_kia",
+   "ru": "Регулятор холостого хода: обмотка 2, высокий уровень",
+   "en": "",
+   "fam": "iac",
+   "node": "fam:iac"
+  },
+  {
+   "code": "P1510",
+   "brand": "hyundai_kia",
+   "ru": "Регулятор холостого хода, обмотка закрытия: высокое напряжение",
+   "en": "Idle Air Control Valve Closing Coil High Voltage",
+   "fam": "",
+   "node": "idle air control valve closing coil"
+  },
+  {
+   "code": "P1513",
+   "brand": "hyundai_kia",
+   "ru": "Регулятор холостого хода, обмотка закрытия: низкое напряжение",
+   "en": "Idle Air Control Valve Closing Coil Low Voltage",
+   "fam": "",
+   "node": "idle air control valve closing coil"
+  },
+  {
+   "code": "P1515",
+   "brand": "hyundai_kia",
+   "ru": "Кодировка блока: АКПП вместо МКПП",
+   "en": "A/T To M/T Codification",
+   "fam": "",
+   "node": "a t to m t codification"
+  },
+  {
+   "code": "P1586",
+   "brand": "hyundai_kia",
+   "ru": "Кодировка блока: АКПП вместо МКПП",
+   "en": "A/T To M/T Codification",
+   "fam": "",
+   "node": "a t to m t codification"
+  },
+  {
+   "code": "P1521",
+   "brand": "hyundai_kia",
+   "ru": "Датчик давления гидроусилителя: цепь",
+   "en": "",
+   "fam": "ps_pressure",
+   "node": "fam:ps_pressure"
+  }
+ ]
+}

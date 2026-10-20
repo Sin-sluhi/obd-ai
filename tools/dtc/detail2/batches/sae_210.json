@@ -1,0 +1,393 @@
+{
+ "name": "sae_210",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "lost communication with a c refrigerant distribution valve actuator “a”",
+  "lost communication with a c refrigerant distribution valve actuator “b”",
+  "lost communication with a c refrigerant distribution valve actuator “c”",
+  "lost communication with a c refrigerant distribution valve actuator “d”",
+  "lost communication with a c refrigerant expansion valve actuator",
+  "lost communication with a c refrigerant pressure sensor “a”",
+  "lost communication with a c refrigerant pressure sensor “b”",
+  "lost communication with a c refrigerant temperature sensor “a”",
+  "lost communication with a c refrigerant temperature sensor “b”",
+  "lost communication with battery isolation voltage stabilization control",
+  "lost communication with coolant pump c",
+  "lost communication with coolant pump “a”",
+  "lost communication with coolant pump “b”",
+  "lost communication with crankcase pressure",
+  "lost communication with engine coolant bypass valve a",
+  "lost communication with engine coolant bypass valve b",
+  "lost communication with engine coolant bypass valve c",
+  "lost communication with engine coolant bypass valve d",
+  "lost communication with engine coolant temperature",
+  "lost communication with exhaust gas temperature sensor",
+  "lost communication with fuel rail pressure sensor",
+  "lost communication with intake air temperature",
+  "lost communication with mass or volume air flow sensor a",
+  "lost communication with mass or volume air flow sensor b",
+  "lost communication with reductant level sensor a",
+  "lost communication with reductant level sensor b",
+  "lost communication with reductant level sensor c",
+  "lost communication with reductant temperature sensor a",
+  "lost communication with reductant temperature sensor b",
+  "lost communication with turbocharger supercharger boost sensor a",
+  "lost communication with turbocharger supercharger boost sensor b",
+  "lost communication with turbocharger supercharger boost sensor c"
+ ],
+ "codes": [
+  {
+   "code": "U060B",
+   "brand": "",
+   "ru": "Нет связи: датчик давления наддува A",
+   "en": "Lost Communication With Turbocharger/Supercharger Boost Sensor A",
+   "fam": "",
+   "node": "lost communication with turbocharger supercharger boost sensor a"
+  },
+  {
+   "code": "U060C",
+   "brand": "",
+   "ru": "Нет связи: датчик давления наддува B",
+   "en": "Lost Communication With Turbocharger/Supercharger Boost Sensor B",
+   "fam": "",
+   "node": "lost communication with turbocharger supercharger boost sensor b"
+  },
+  {
+   "code": "U060D",
+   "brand": "",
+   "ru": "Нет связи: датчик давления наддува C",
+   "en": "Lost Communication With Turbocharger/Supercharger Boost Sensor C",
+   "fam": "",
+   "node": "lost communication with turbocharger supercharger boost sensor c"
+  },
+  {
+   "code": "U060E",
+   "brand": "",
+   "ru": "Нет связи: датчик давления в картере",
+   "en": "Lost Communication With Crankcase Pressure Sensor",
+   "fam": "",
+   "node": "lost communication with crankcase pressure"
+  },
+  {
+   "code": "U060F",
+   "brand": "",
+   "ru": "Нет связи: датчик расхода воздуха (ДМРВ) A",
+   "en": "Lost Communication With Mass or Volume Air Flow Sensor A",
+   "fam": "",
+   "node": "lost communication with mass or volume air flow sensor a"
+  },
+  {
+   "code": "U0610",
+   "brand": "",
+   "ru": "Нет связи: датчик расхода воздуха (ДМРВ) B",
+   "en": "Lost Communication With Mass or Volume Air Flow Sensor B",
+   "fam": "",
+   "node": "lost communication with mass or volume air flow sensor b"
+  },
+  {
+   "code": "U0611",
+   "brand": "",
+   "ru": "Нет связи: датчик температуры впускного воздуха 1 (банк 1)",
+   "en": "Lost Communication With Intake Air Temperature Sensor 1 Bank 1",
+   "fam": "",
+   "node": "lost communication with intake air temperature"
+  },
+  {
+   "code": "U0612",
+   "brand": "",
+   "ru": "Нет связи: датчик температуры впускного воздуха 1 (банк 2)",
+   "en": "Lost Communication With Intake Air Temperature Sensor 1 Bank 2",
+   "fam": "",
+   "node": "lost communication with intake air temperature"
+  },
+  {
+   "code": "U0613",
+   "brand": "",
+   "ru": "Нет связи: датчик температуры впускного воздуха 2 (банк 1)",
+   "en": "Lost Communication With Intake Air Temperature Sensor 2 Bank 1",
+   "fam": "",
+   "node": "lost communication with intake air temperature"
+  },
+  {
+   "code": "U0614",
+   "brand": "",
+   "ru": "Нет связи: датчик температуры впускного воздуха 2 (банк 2)",
+   "en": "Lost Communication With Intake Air Temperature Sensor 2 Bank 2",
+   "fam": "",
+   "node": "lost communication with intake air temperature"
+  },
+  {
+   "code": "U0615",
+   "brand": "",
+   "ru": "Нет связи: перепускной клапан охлаждающей жидкости двигателя A",
+   "en": "Lost Communication With Engine Coolant Bypass Valve A",
+   "fam": "",
+   "node": "lost communication with engine coolant bypass valve a"
+  },
+  {
+   "code": "U0616",
+   "brand": "",
+   "ru": "Нет связи: перепускной клапан охлаждающей жидкости двигателя B",
+   "en": "Lost Communication With Engine Coolant Bypass Valve B",
+   "fam": "",
+   "node": "lost communication with engine coolant bypass valve b"
+  },
+  {
+   "code": "U0617",
+   "brand": "",
+   "ru": "Нет связи: перепускной клапан охлаждающей жидкости двигателя C",
+   "en": "Lost Communication With Engine Coolant Bypass Valve C",
+   "fam": "",
+   "node": "lost communication with engine coolant bypass valve c"
+  },
+  {
+   "code": "U0618",
+   "brand": "",
+   "ru": "Нет связи: перепускной клапан охлаждающей жидкости двигателя D",
+   "en": "Lost Communication With Engine Coolant Bypass Valve D",
+   "fam": "",
+   "node": "lost communication with engine coolant bypass valve d"
+  },
+  {
+   "code": "U0619",
+   "brand": "",
+   "ru": "Нет связи: датчик уровня мочевины (AdBlue) A",
+   "en": "Lost Communication With Reductant Level Sensor A",
+   "fam": "",
+   "node": "lost communication with reductant level sensor a"
+  },
+  {
+   "code": "U061A",
+   "brand": "",
+   "ru": "Нет связи: датчик уровня мочевины (AdBlue) B",
+   "en": "Lost Communication With Reductant Level Sensor B",
+   "fam": "",
+   "node": "lost communication with reductant level sensor b"
+  },
+  {
+   "code": "U061B",
+   "brand": "",
+   "ru": "Нет связи: датчик уровня мочевины (AdBlue) C",
+   "en": "Lost Communication With Reductant Level Sensor C",
+   "fam": "",
+   "node": "lost communication with reductant level sensor c"
+  },
+  {
+   "code": "U061C",
+   "brand": "",
+   "ru": "Нет связи: датчик температуры мочевины A",
+   "en": "Lost Communication With Reductant Temperature Sensor A",
+   "fam": "",
+   "node": "lost communication with reductant temperature sensor a"
+  },
+  {
+   "code": "U061D",
+   "brand": "",
+   "ru": "Нет связи: датчик температуры мочевины B",
+   "en": "Lost Communication With Reductant Temperature Sensor B",
+   "fam": "",
+   "node": "lost communication with reductant temperature sensor b"
+  },
+  {
+   "code": "U061E",
+   "brand": "",
+   "ru": "Нет связи: блок развязки АКБ / стабилизации напряжения",
+   "en": "Lost Communication with Battery Isolation/Voltage Stabilization Control Module",
+   "fam": "",
+   "node": "lost communication with battery isolation voltage stabilization control"
+  },
+  {
+   "code": "U061F",
+   "brand": "",
+   "ru": "Нет связи: датчик температуры отработавших газов (банк 1, датчик 1)",
+   "en": "Lost Communication With Exhaust Gas Temperature Sensor Bank 1 Sensor 1",
+   "fam": "",
+   "node": "lost communication with exhaust gas temperature sensor"
+  },
+  {
+   "code": "U0620",
+   "brand": "",
+   "ru": "Нет связи: датчик температуры отработавших газов (банк 1, датчик 2)",
+   "en": "Lost Communication With Exhaust Gas Temperature Sensor Bank 1 Sensor 2",
+   "fam": "",
+   "node": "lost communication with exhaust gas temperature sensor"
+  },
+  {
+   "code": "U0621",
+   "brand": "",
+   "ru": "Нет связи: датчик температуры отработавших газов (банк 2, датчик 1)",
+   "en": "Lost Communication With Exhaust Gas Temperature Sensor Bank 2 Sensor 1",
+   "fam": "",
+   "node": "lost communication with exhaust gas temperature sensor"
+  },
+  {
+   "code": "U0622",
+   "brand": "",
+   "ru": "Нет связи: датчик температуры отработавших газов (банк 2, датчик 2)",
+   "en": "Lost Communication With Exhaust Gas Temperature Sensor Bank 2 Sensor 2",
+   "fam": "",
+   "node": "lost communication with exhaust gas temperature sensor"
+  },
+  {
+   "code": "U069A",
+   "brand": "",
+   "ru": "Нет связи: датчик температуры отработавших газов (банк 1, датчик 3)",
+   "en": "Lost Communication With Exhaust Gas Temperature Sensor Bank 1 Sensor 3",
+   "fam": "",
+   "node": "lost communication with exhaust gas temperature sensor"
+  },
+  {
+   "code": "U069B",
+   "brand": "",
+   "ru": "Нет связи: датчик температуры отработавших газов (банк 1, датчик 4)",
+   "en": "Lost Communication With Exhaust Gas Temperature Sensor Bank 1 Sensor 4",
+   "fam": "",
+   "node": "lost communication with exhaust gas temperature sensor"
+  },
+  {
+   "code": "U069C",
+   "brand": "",
+   "ru": "Нет связи: датчик температуры отработавших газов (банк 2, датчик 3)",
+   "en": "Lost Communication With Exhaust Gas Temperature Sensor Bank 2 Sensor 3",
+   "fam": "",
+   "node": "lost communication with exhaust gas temperature sensor"
+  },
+  {
+   "code": "U069D",
+   "brand": "",
+   "ru": "Нет связи: датчик температуры отработавших газов (банк 2, датчик 4)",
+   "en": "Lost Communication With Exhaust Gas Temperature Sensor Bank 2 Sensor 4",
+   "fam": "",
+   "node": "lost communication with exhaust gas temperature sensor"
+  },
+  {
+   "code": "U0623",
+   "brand": "",
+   "ru": "Нет связи: насос охлаждающей жидкости A",
+   "en": "Lost Communication With Coolant Pump “A”",
+   "fam": "",
+   "node": "lost communication with coolant pump “a”"
+  },
+  {
+   "code": "U0624",
+   "brand": "",
+   "ru": "Нет связи: насос охлаждающей жидкости B",
+   "en": "Lost Communication With Coolant Pump “B”",
+   "fam": "",
+   "node": "lost communication with coolant pump “b”"
+  },
+  {
+   "code": "U0625",
+   "brand": "",
+   "ru": "Нет связи: датчик давления в топливной рампе (банк 1)",
+   "en": "Lost Communication With Fuel Rail Pressure Sensor Bank 1",
+   "fam": "",
+   "node": "lost communication with fuel rail pressure sensor"
+  },
+  {
+   "code": "U0665",
+   "brand": "",
+   "ru": "Нет связи: датчик давления в топливной рампе (банк 2)",
+   "en": "Lost Communication With Fuel Rail Pressure Sensor Bank 2",
+   "fam": "",
+   "node": "lost communication with fuel rail pressure sensor"
+  },
+  {
+   "code": "U0626",
+   "brand": "",
+   "ru": "Нет связи: датчик давления хладагента A",
+   "en": "Lost Communication With A/C Refrigerant Pressure Sensor “A”",
+   "fam": "",
+   "node": "lost communication with a c refrigerant pressure sensor “a”"
+  },
+  {
+   "code": "U0627",
+   "brand": "",
+   "ru": "Нет связи: датчик температуры хладагента A",
+   "en": "Lost Communication With A/C Refrigerant Temperature Sensor “A”",
+   "fam": "",
+   "node": "lost communication with a c refrigerant temperature sensor “a”"
+  },
+  {
+   "code": "U0628",
+   "brand": "",
+   "ru": "Нет связи: датчик давления хладагента B",
+   "en": "Lost Communication With A/C Refrigerant Pressure Sensor “B”",
+   "fam": "",
+   "node": "lost communication with a c refrigerant pressure sensor “b”"
+  },
+  {
+   "code": "U0629",
+   "brand": "",
+   "ru": "Нет связи: датчик температуры хладагента B",
+   "en": "Lost Communication With A/C Refrigerant Temperature Sensor “B”",
+   "fam": "",
+   "node": "lost communication with a c refrigerant temperature sensor “b”"
+  },
+  {
+   "code": "U062A",
+   "brand": "",
+   "ru": "Нет связи: привод клапана распределения хладагента A",
+   "en": "Lost Communication With A/C Refrigerant Distribution Valve Actuator “A”",
+   "fam": "",
+   "node": "lost communication with a c refrigerant distribution valve actuator “a”"
+  },
+  {
+   "code": "U062B",
+   "brand": "",
+   "ru": "Нет связи: привод клапана распределения хладагента B",
+   "en": "Lost Communication With A/C Refrigerant Distribution Valve Actuator “B”",
+   "fam": "",
+   "node": "lost communication with a c refrigerant distribution valve actuator “b”"
+  },
+  {
+   "code": "U062C",
+   "brand": "",
+   "ru": "Нет связи: привод клапана распределения хладагента C",
+   "en": "Lost Communication With A/C Refrigerant Distribution Valve Actuator “C”",
+   "fam": "",
+   "node": "lost communication with a c refrigerant distribution valve actuator “c”"
+  },
+  {
+   "code": "U062D",
+   "brand": "",
+   "ru": "Нет связи: привод клапана распределения хладагента D",
+   "en": "Lost Communication With A/C Refrigerant Distribution Valve Actuator “D”",
+   "fam": "",
+   "node": "lost communication with a c refrigerant distribution valve actuator “d”"
+  },
+  {
+   "code": "U062E",
+   "brand": "",
+   "ru": "Нет связи: привод расширительного клапана кондиционера",
+   "en": "Lost Communication With A/C Refrigerant Expansion Valve Actuator",
+   "fam": "",
+   "node": "lost communication with a c refrigerant expansion valve actuator"
+  },
+  {
+   "code": "U062F",
+   "brand": "",
+   "ru": "Нет связи: насос охлаждающей жидкости C",
+   "en": "Lost Communication With Coolant Pump C",
+   "fam": "",
+   "node": "lost communication with coolant pump c"
+  },
+  {
+   "code": "U0630",
+   "brand": "",
+   "ru": "Нет связи: датчик температуры охлаждающей жидкости 4",
+   "en": "Lost Communication With Engine Coolant Temperature Sensor 4",
+   "fam": "",
+   "node": "lost communication with engine coolant temperature"
+  },
+  {
+   "code": "U0631",
+   "brand": "",
+   "ru": "Нет связи: датчик температуры охлаждающей жидкости 5",
+   "en": "Lost Communication With Engine Coolant Temperature Sensor 5",
+   "fam": "",
+   "node": "lost communication with engine coolant temperature"
+  }
+ ]
+}

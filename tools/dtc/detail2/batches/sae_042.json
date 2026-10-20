@@ -1,0 +1,368 @@
+{
+ "name": "sae_042",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "diesel intake air flow a",
+  "diesel intake air flow a control",
+  "fuel injector a offset learning at max limit",
+  "fuel injector a offset learning at min limit",
+  "injector leaking",
+  "turbocharger supercharger b overboost condition",
+  "turbocharger supercharger b underboost condition"
+ ],
+ "codes": [
+  {
+   "code": "P029D",
+   "brand": "",
+   "ru": "Цилиндр 1: форсунка подтекает",
+   "en": "Cylinder 1 - Injector Leaking",
+   "fam": "",
+   "node": "injector leaking"
+  },
+  {
+   "code": "P02A1",
+   "brand": "",
+   "ru": "Цилиндр 2: форсунка подтекает",
+   "en": "Cylinder 2 - Injector Leaking",
+   "fam": "",
+   "node": "injector leaking"
+  },
+  {
+   "code": "P02A5",
+   "brand": "",
+   "ru": "Цилиндр 3: форсунка подтекает",
+   "en": "Cylinder 3 - Injector Leaking",
+   "fam": "",
+   "node": "injector leaking"
+  },
+  {
+   "code": "P02A9",
+   "brand": "",
+   "ru": "Цилиндр 4: форсунка подтекает",
+   "en": "Cylinder 4 - Injector Leaking",
+   "fam": "",
+   "node": "injector leaking"
+  },
+  {
+   "code": "P02AD",
+   "brand": "",
+   "ru": "Цилиндр 5: форсунка подтекает",
+   "en": "Cylinder 5 - Injector Leaking",
+   "fam": "",
+   "node": "injector leaking"
+  },
+  {
+   "code": "P02B1",
+   "brand": "",
+   "ru": "Цилиндр 6: форсунка подтекает",
+   "en": "Cylinder 6 - Injector Leaking",
+   "fam": "",
+   "node": "injector leaking"
+  },
+  {
+   "code": "P02B5",
+   "brand": "",
+   "ru": "Цилиндр 7: форсунка подтекает",
+   "en": "Cylinder 7 - Injector Leaking",
+   "fam": "",
+   "node": "injector leaking"
+  },
+  {
+   "code": "P02B9",
+   "brand": "",
+   "ru": "Цилиндр 8: форсунка подтекает",
+   "en": "Cylinder 8 - Injector Leaking",
+   "fam": "",
+   "node": "injector leaking"
+  },
+  {
+   "code": "P02BD",
+   "brand": "",
+   "ru": "Цилиндр 9: форсунка подтекает",
+   "en": "Cylinder 9 - Injector Leaking",
+   "fam": "",
+   "node": "injector leaking"
+  },
+  {
+   "code": "P02C1",
+   "brand": "",
+   "ru": "Цилиндр 10: форсунка подтекает",
+   "en": "Cylinder 10 - Injector Leaking",
+   "fam": "",
+   "node": "injector leaking"
+  },
+  {
+   "code": "P02C5",
+   "brand": "",
+   "ru": "Цилиндр 11: форсунка подтекает",
+   "en": "Cylinder 11 - Injector Leaking",
+   "fam": "",
+   "node": "injector leaking"
+  },
+  {
+   "code": "P02C9",
+   "brand": "",
+   "ru": "Цилиндр 12: форсунка подтекает",
+   "en": "Cylinder 12 - Injector Leaking",
+   "fam": "",
+   "node": "injector leaking"
+  },
+  {
+   "code": "P02CA",
+   "brand": "",
+   "ru": "Турбина/нагнетатель B: избыточный наддув",
+   "en": "Turbocharger/Supercharger B Overboost Condition",
+   "fam": "",
+   "node": "turbocharger supercharger b overboost condition"
+  },
+  {
+   "code": "P02CB",
+   "brand": "",
+   "ru": "Турбина/нагнетатель B: недостаточный наддув",
+   "en": "Turbocharger/Supercharger B Underboost Condition",
+   "fam": "",
+   "node": "turbocharger supercharger b underboost condition"
+  },
+  {
+   "code": "P02CC",
+   "brand": "",
+   "ru": "Смещение форсунки цилиндра 1: адаптация на минимальном пределе",
+   "en": "Cylinder 1 Fuel Injector A Offset Learning At Min Limit",
+   "fam": "",
+   "node": "fuel injector a offset learning at min limit"
+  },
+  {
+   "code": "P02CE",
+   "brand": "",
+   "ru": "Смещение форсунки цилиндра 2: адаптация на минимальном пределе",
+   "en": "Cylinder 2 Fuel Injector A Offset Learning At Min Limit",
+   "fam": "",
+   "node": "fuel injector a offset learning at min limit"
+  },
+  {
+   "code": "P02D0",
+   "brand": "",
+   "ru": "Смещение форсунки цилиндра 3: адаптация на минимальном пределе",
+   "en": "Cylinder 3 Fuel Injector A Offset Learning At Min Limit",
+   "fam": "",
+   "node": "fuel injector a offset learning at min limit"
+  },
+  {
+   "code": "P02D2",
+   "brand": "",
+   "ru": "Смещение форсунки цилиндра 4: адаптация на минимальном пределе",
+   "en": "Cylinder 4 Fuel Injector A Offset Learning At Min Limit",
+   "fam": "",
+   "node": "fuel injector a offset learning at min limit"
+  },
+  {
+   "code": "P02D4",
+   "brand": "",
+   "ru": "Смещение форсунки цилиндра 5: адаптация на минимальном пределе",
+   "en": "Cylinder 5 Fuel Injector A Offset Learning At Min Limit",
+   "fam": "",
+   "node": "fuel injector a offset learning at min limit"
+  },
+  {
+   "code": "P02D6",
+   "brand": "",
+   "ru": "Смещение форсунки цилиндра 6: адаптация на минимальном пределе",
+   "en": "Cylinder 6 Fuel Injector A Offset Learning At Min Limit",
+   "fam": "",
+   "node": "fuel injector a offset learning at min limit"
+  },
+  {
+   "code": "P02D8",
+   "brand": "",
+   "ru": "Смещение форсунки цилиндра 7: адаптация на минимальном пределе",
+   "en": "Cylinder 7 Fuel Injector A Offset Learning At Min Limit",
+   "fam": "",
+   "node": "fuel injector a offset learning at min limit"
+  },
+  {
+   "code": "P02DA",
+   "brand": "",
+   "ru": "Смещение форсунки цилиндра 8: адаптация на минимальном пределе",
+   "en": "Cylinder 8 Fuel Injector A Offset Learning At Min Limit",
+   "fam": "",
+   "node": "fuel injector a offset learning at min limit"
+  },
+  {
+   "code": "P02DC",
+   "brand": "",
+   "ru": "Смещение форсунки цилиндра 9: адаптация на минимальном пределе",
+   "en": "Cylinder 9 Fuel Injector A Offset Learning At Min Limit",
+   "fam": "",
+   "node": "fuel injector a offset learning at min limit"
+  },
+  {
+   "code": "P02DE",
+   "brand": "",
+   "ru": "Смещение форсунки цилиндра 10: адаптация на минимальном пределе",
+   "en": "Cylinder 10 Fuel Injector A Offset Learning At Min Limit",
+   "fam": "",
+   "node": "fuel injector a offset learning at min limit"
+  },
+  {
+   "code": "P232B",
+   "brand": "",
+   "ru": "Смещение форсунки цилиндра 11: адаптация на минимальном пределе",
+   "en": "Cylinder 11 Fuel Injector A Offset Learning At Min Limit",
+   "fam": "",
+   "node": "fuel injector a offset learning at min limit"
+  },
+  {
+   "code": "P232D",
+   "brand": "",
+   "ru": "Смещение форсунки цилиндра 12: адаптация на минимальном пределе",
+   "en": "Cylinder 12 Fuel Injector A Offset Learning At Min Limit",
+   "fam": "",
+   "node": "fuel injector a offset learning at min limit"
+  },
+  {
+   "code": "P02CD",
+   "brand": "",
+   "ru": "Смещение форсунки цилиндра 1: адаптация на максимальном пределе",
+   "en": "Cylinder 1 Fuel Injector A Offset Learning At Max Limit",
+   "fam": "",
+   "node": "fuel injector a offset learning at max limit"
+  },
+  {
+   "code": "P02CF",
+   "brand": "",
+   "ru": "Смещение форсунки цилиндра 2: адаптация на максимальном пределе",
+   "en": "Cylinder 2 Fuel Injector A Offset Learning At Max Limit",
+   "fam": "",
+   "node": "fuel injector a offset learning at max limit"
+  },
+  {
+   "code": "P02D1",
+   "brand": "",
+   "ru": "Смещение форсунки цилиндра 3: адаптация на максимальном пределе",
+   "en": "Cylinder 3 Fuel Injector A Offset Learning At Max Limit",
+   "fam": "",
+   "node": "fuel injector a offset learning at max limit"
+  },
+  {
+   "code": "P02D3",
+   "brand": "",
+   "ru": "Смещение форсунки цилиндра 4: адаптация на максимальном пределе",
+   "en": "Cylinder 4 Fuel Injector A Offset Learning At Max Limit",
+   "fam": "",
+   "node": "fuel injector a offset learning at max limit"
+  },
+  {
+   "code": "P02D5",
+   "brand": "",
+   "ru": "Смещение форсунки цилиндра 5: адаптация на максимальном пределе",
+   "en": "Cylinder 5 Fuel Injector A Offset Learning At Max Limit",
+   "fam": "",
+   "node": "fuel injector a offset learning at max limit"
+  },
+  {
+   "code": "P02D7",
+   "brand": "",
+   "ru": "Смещение форсунки цилиндра 6: адаптация на максимальном пределе",
+   "en": "Cylinder 6 Fuel Injector A Offset Learning At Max Limit",
+   "fam": "",
+   "node": "fuel injector a offset learning at max limit"
+  },
+  {
+   "code": "P02D9",
+   "brand": "",
+   "ru": "Смещение форсунки цилиндра 7: адаптация на максимальном пределе",
+   "en": "Cylinder 7 Fuel Injector A Offset Learning At Max Limit",
+   "fam": "",
+   "node": "fuel injector a offset learning at max limit"
+  },
+  {
+   "code": "P02DB",
+   "brand": "",
+   "ru": "Смещение форсунки цилиндра 8: адаптация на максимальном пределе",
+   "en": "Cylinder 8 Fuel Injector A Offset Learning At Max Limit",
+   "fam": "",
+   "node": "fuel injector a offset learning at max limit"
+  },
+  {
+   "code": "P02DD",
+   "brand": "",
+   "ru": "Смещение форсунки цилиндра 9: адаптация на максимальном пределе",
+   "en": "Cylinder 9 Fuel Injector A Offset Learning At Max Limit",
+   "fam": "",
+   "node": "fuel injector a offset learning at max limit"
+  },
+  {
+   "code": "P02DF",
+   "brand": "",
+   "ru": "Смещение форсунки цилиндра 10: адаптация на максимальном пределе",
+   "en": "Cylinder 10 Fuel Injector A Offset Learning At Max Limit",
+   "fam": "",
+   "node": "fuel injector a offset learning at max limit"
+  },
+  {
+   "code": "P232C",
+   "brand": "",
+   "ru": "Смещение форсунки цилиндра 11: адаптация на максимальном пределе",
+   "en": "Cylinder 11 Fuel Injector A Offset Learning At Max Limit",
+   "fam": "",
+   "node": "fuel injector a offset learning at max limit"
+  },
+  {
+   "code": "P232E",
+   "brand": "",
+   "ru": "Смещение форсунки цилиндра 12: адаптация на максимальном пределе",
+   "en": "Cylinder 12 Fuel Injector A Offset Learning At Max Limit",
+   "fam": "",
+   "node": "fuel injector a offset learning at max limit"
+  },
+  {
+   "code": "P02E0",
+   "brand": "",
+   "ru": "Заслонка впускного воздуха дизеля A: обрыв цепи управления",
+   "en": "Diesel Intake Air Flow A Control Circuit/Open",
+   "fam": "",
+   "node": "diesel intake air flow a"
+  },
+  {
+   "code": "P02E2",
+   "brand": "",
+   "ru": "Заслонка впускного воздуха дизеля A: низкий уровень в цепи управления",
+   "en": "Diesel Intake Air Flow A Control Circuit Low",
+   "fam": "",
+   "node": "diesel intake air flow a"
+  },
+  {
+   "code": "P02E3",
+   "brand": "",
+   "ru": "Заслонка впускного воздуха дизеля A: высокий уровень в цепи управления",
+   "en": "Diesel Intake Air Flow A Control Circuit High",
+   "fam": "",
+   "node": "diesel intake air flow a"
+  },
+  {
+   "code": "P02E1",
+   "brand": "",
+   "ru": "Заслонка впускного воздуха дизеля A: нарушено управление",
+   "en": "Diesel Intake Air Flow A Control Performance",
+   "fam": "",
+   "node": "diesel intake air flow a control"
+  },
+  {
+   "code": "P02E4",
+   "brand": "",
+   "ru": "Управление впускной заслонкой дизеля A: заклинил открытым",
+   "en": "Diesel Intake Air Flow A Control Stuck Open",
+   "fam": "",
+   "node": "diesel intake air flow a control"
+  },
+  {
+   "code": "P02E5",
+   "brand": "",
+   "ru": "Управление впускной заслонкой дизеля A: заклинил закрытым",
+   "en": "Diesel Intake Air Flow A Control Stuck Closed",
+   "fam": "",
+   "node": "diesel intake air flow a control"
+  }
+ ]
+}

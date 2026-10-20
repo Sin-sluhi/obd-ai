@@ -1,0 +1,392 @@
+{
+ "name": "brand-nissan_056",
+ "series": "brand",
+ "brand": "nissan",
+ "nodes": [
+  "accelerator position",
+  "accelerator position sensors 1 & 2 improper correlation",
+  "closed throttle position insufficient",
+  "crankshaft position sensor ref",
+  "electrical load detector",
+  "fam:etc",
+  "fam:ignition_module",
+  "fam:overtemp",
+  "fam:sensor_ref",
+  "fuel pump control",
+  "ho2s11",
+  "ho2s11 label",
+  "knock sensor power source",
+  "misfire",
+  "random misfire",
+  "ru:детектор электрической нагрузки",
+  "spark plug voltage detection",
+  "spark plug voltage detection module reset",
+  "swirl control valve control vacuum",
+  "throttle position insufficient",
+  "throttle vent control",
+  "traction control system",
+  "vtec system"
+ ],
+ "codes": [
+  {
+   "code": "P1162",
+   "brand": "nissan",
+   "ru": "Лямбда-зонд 1 (ряд 1): неисправность цепи",
+   "en": "HO2S11 Circuit Fault Bank 1 Sensor 1",
+   "fam": "",
+   "node": "ho2s11"
+  },
+  {
+   "code": "P1163",
+   "brand": "nissan",
+   "ru": "Лямбда-зонд 1 (ряд 1): медленный отклик",
+   "en": "HO2S11 Slow Response Bank 1 Sensor 1",
+   "fam": "",
+   "node": "ho2s11"
+  },
+  {
+   "code": "P1164",
+   "brand": "nissan",
+   "ru": "Лямбда-зонд 1 (ряд 1): неисправность цепи",
+   "en": "HO2S11 Circuit Fault Bank 1 Sensor 1",
+   "fam": "",
+   "node": "ho2s11"
+  },
+  {
+   "code": "P1166",
+   "brand": "nissan",
+   "ru": "Подогрев лямбда-зонда 1 (ряд 1): неисправность цепи",
+   "en": "HO2S11 Heater Circuit Fault Bank 1 Sensor 1",
+   "fam": "",
+   "node": "ho2s11"
+  },
+  {
+   "code": "P1167",
+   "brand": "nissan",
+   "ru": "Подогрев лямбда-зонда 1 (ряд 1): неисправность цепи питания",
+   "en": "HO2S11 Heater Circuit VS+ Fault Bank 1 Sensor 1",
+   "fam": "",
+   "node": "ho2s11"
+  },
+  {
+   "code": "P1165",
+   "brand": "nissan",
+   "ru": "Вакуумный выключатель клапана завихрения",
+   "en": "Swirl Control Valve Control Vacuum Switch",
+   "fam": "",
+   "node": "swirl control valve control vacuum"
+  },
+  {
+   "code": "P1169",
+   "brand": "nissan",
+   "ru": "Лямбда-зонд 1 (ряд 1): высокое напряжение в цепи метки",
+   "en": "HO2S11 Label Circuit High Voltage Fault Bank 1 Sensor 1",
+   "fam": "",
+   "node": "ho2s11 label"
+  },
+  {
+   "code": "P1201",
+   "brand": "nissan",
+   "ru": "Пропуски воспламенения, цилиндр 1",
+   "en": "Cylinder 1 Misfire",
+   "fam": "",
+   "node": "misfire"
+  },
+  {
+   "code": "P1202",
+   "brand": "nissan",
+   "ru": "Пропуски воспламенения, цилиндр 2",
+   "en": "Cylinder 2 Misfire",
+   "fam": "",
+   "node": "misfire"
+  },
+  {
+   "code": "P1203",
+   "brand": "nissan",
+   "ru": "Пропуски воспламенения, цилиндр 3",
+   "en": "Cylinder 3 Misfire",
+   "fam": "",
+   "node": "misfire"
+  },
+  {
+   "code": "P1204",
+   "brand": "nissan",
+   "ru": "Пропуски воспламенения, цилиндр 4",
+   "en": "Cylinder 4 Misfire",
+   "fam": "",
+   "node": "misfire"
+  },
+  {
+   "code": "P1205",
+   "brand": "nissan",
+   "ru": "Пропуски воспламенения, цилиндр 5",
+   "en": "Cylinder 5 Misfire",
+   "fam": "",
+   "node": "misfire"
+  },
+  {
+   "code": "P1206",
+   "brand": "nissan",
+   "ru": "Пропуски воспламенения, цилиндр 6",
+   "en": "Cylinder 6 Misfire",
+   "fam": "",
+   "node": "misfire"
+  },
+  {
+   "code": "P1301",
+   "brand": "nissan",
+   "ru": "Пропуски воспламенения, цилиндр 1",
+   "en": "Cylinder 1 Misfire",
+   "fam": "",
+   "node": "misfire"
+  },
+  {
+   "code": "P1302",
+   "brand": "nissan",
+   "ru": "Пропуски воспламенения, цилиндр 2",
+   "en": "Cylinder 2 Misfire",
+   "fam": "",
+   "node": "misfire"
+  },
+  {
+   "code": "P1303",
+   "brand": "nissan",
+   "ru": "Пропуски воспламенения, цилиндр 3",
+   "en": "Cylinder 3 Misfire",
+   "fam": "",
+   "node": "misfire"
+  },
+  {
+   "code": "P1304",
+   "brand": "nissan",
+   "ru": "Пропуски воспламенения, цилиндр 4",
+   "en": "Cylinder 4 Misfire",
+   "fam": "",
+   "node": "misfire"
+  },
+  {
+   "code": "P1305",
+   "brand": "nissan",
+   "ru": "Пропуски воспламенения, цилиндр 5",
+   "en": "Cylinder 5 Misfire",
+   "fam": "",
+   "node": "misfire"
+  },
+  {
+   "code": "P1306",
+   "brand": "nissan",
+   "ru": "Пропуски воспламенения, цилиндр 6",
+   "en": "Cylinder 6 Misfire",
+   "fam": "",
+   "node": "misfire"
+  },
+  {
+   "code": "P1210",
+   "brand": "nissan",
+   "ru": "Сигнал противобуксовочной системы: неисправность",
+   "en": "Traction Control System Signal Fault",
+   "fam": "",
+   "node": "traction control system"
+  },
+  {
+   "code": "P1217",
+   "brand": "nissan",
+   "ru": "Перегрев двигателя",
+   "en": "",
+   "fam": "overtemp",
+   "node": "fam:overtemp"
+  },
+  {
+   "code": "P1220",
+   "brand": "nissan",
+   "ru": "Сигнал управления топливным насосом: неисправность",
+   "en": "Fuel Pump Control Signal Fault",
+   "fam": "",
+   "node": "fuel pump control"
+  },
+  {
+   "code": "P1225",
+   "brand": "nissan",
+   "ru": "Обучение закрытого положения дросселя: не выполняется",
+   "en": "",
+   "fam": "etc",
+   "node": "fam:etc"
+  },
+  {
+   "code": "P1226",
+   "brand": "nissan",
+   "ru": "Обучение закрытого положения дросселя: не выполнено",
+   "en": "",
+   "fam": "etc",
+   "node": "fam:etc"
+  },
+  {
+   "code": "P1229",
+   "brand": "nissan",
+   "ru": "Питание датчиков",
+   "en": "",
+   "fam": "sensor_ref",
+   "node": "fam:sensor_ref"
+  },
+  {
+   "code": "P1241",
+   "brand": "nissan",
+   "ru": "Мотор управления дросселем, цепь 1: неисправность",
+   "en": "Throttle Vent Control Motor Circuit 1 Malfunction",
+   "fam": "",
+   "node": "throttle vent control"
+  },
+  {
+   "code": "P1242",
+   "brand": "nissan",
+   "ru": "Мотор управления дросселем, цепь 2: неисправность",
+   "en": "Throttle Vent Control Motor Circuit 2 Malfunction",
+   "fam": "",
+   "node": "throttle vent control"
+  },
+  {
+   "code": "P1243",
+   "brand": "nissan",
+   "ru": "Недостаточное открытие дросселя",
+   "en": "Throttle Position Insufficient",
+   "fam": "",
+   "node": "throttle position insufficient"
+  },
+  {
+   "code": "P1244",
+   "brand": "nissan",
+   "ru": "Недостаточное закрытие дросселя",
+   "en": "Closed Throttle Position Insufficient",
+   "fam": "",
+   "node": "closed throttle position insufficient"
+  },
+  {
+   "code": "P1246",
+   "brand": "nissan",
+   "ru": "Датчик педали газа 1: неисправность цепи",
+   "en": "Accelerator Position Sensor 1 Circuit Malfunction",
+   "fam": "",
+   "node": "accelerator position"
+  },
+  {
+   "code": "P1247",
+   "brand": "nissan",
+   "ru": "Датчик педали газа 2: неисправность цепи",
+   "en": "Accelerator Position Sensor 2 Circuit Malfunction",
+   "fam": "",
+   "node": "accelerator position"
+  },
+  {
+   "code": "P1248",
+   "brand": "nissan",
+   "ru": "Датчики педали газа 1 и 2: не согласуются",
+   "en": "Accelerator Position Sensors 1 & 2 Improper Correlation",
+   "fam": "",
+   "node": "accelerator position sensors 1 & 2 improper correlation"
+  },
+  {
+   "code": "P1253",
+   "brand": "nissan",
+   "ru": "Система VTEC: неисправность цепи",
+   "en": "VTEC System Circuit Fault",
+   "fam": "",
+   "node": "vtec system"
+  },
+  {
+   "code": "P1259",
+   "brand": "nissan",
+   "ru": "Система VTEC (задний ряд, ряд 1): неисправность",
+   "en": "VTEC System Malfunction Rear Bank 1",
+   "fam": "",
+   "node": "vtec system"
+  },
+  {
+   "code": "P1279",
+   "brand": "nissan",
+   "ru": "Система VTEC (передний ряд, ряд 2): неисправность",
+   "en": "VTEC System Malfunction Front Bank 2",
+   "fam": "",
+   "node": "vtec system"
+  },
+  {
+   "code": "P1297",
+   "brand": "nissan",
+   "ru": "Детектор электрической нагрузки: низкий сигнал",
+   "en": "ELD Circuit Low Input",
+   "fam": "",
+   "node": "ru:детектор электрической нагрузки"
+  },
+  {
+   "code": "P1298",
+   "brand": "nissan",
+   "ru": "Детектор электрической нагрузки: высокое напряжение",
+   "en": "Electrical Load Detector Circuit High Voltage",
+   "fam": "",
+   "node": "electrical load detector"
+  },
+  {
+   "code": "P1300",
+   "brand": "nissan",
+   "ru": "Случайные пропуски воспламенения",
+   "en": "Random Misfire",
+   "fam": "",
+   "node": "random misfire"
+  },
+  {
+   "code": "P1316",
+   "brand": "nissan",
+   "ru": "Цепь контроля напряжения свечей (передний ряд): неисправность",
+   "en": "Spark Plug Voltage Detection Circuit Malfunction Front Bank",
+   "fam": "",
+   "node": "spark plug voltage detection"
+  },
+  {
+   "code": "P1317",
+   "brand": "nissan",
+   "ru": "Цепь контроля напряжения свечей (задний ряд): неисправность",
+   "en": "Spark Plug Voltage Detection Circuit Malfunction Rear Bank",
+   "fam": "",
+   "node": "spark plug voltage detection"
+  },
+  {
+   "code": "P1318",
+   "brand": "nissan",
+   "ru": "Сброс модуля контроля напряжения свечей (передний ряд): неисправность",
+   "en": "Spark Plug Voltage Detection Module Reset Circuit Malfunction Front Bank",
+   "fam": "",
+   "node": "spark plug voltage detection module reset"
+  },
+  {
+   "code": "P1319",
+   "brand": "nissan",
+   "ru": "Сброс модуля контроля напряжения свечей (задний ряд): неисправность",
+   "en": "Spark Plug Voltage Detection Module Reset Circuit Malfunction Rear Bank",
+   "fam": "",
+   "node": "spark plug voltage detection module reset"
+  },
+  {
+   "code": "P1320",
+   "brand": "nissan",
+   "ru": "Сигнал зажигания (первичная цепь)",
+   "en": "",
+   "fam": "ignition_module",
+   "node": "fam:ignition_module"
+  },
+  {
+   "code": "P1324",
+   "brand": "nissan",
+   "ru": "Питание датчика детонации: низкое напряжение",
+   "en": "Knock Sensor Power Source Circuit Low Voltage",
+   "fam": "",
+   "node": "knock sensor power source"
+  },
+  {
+   "code": "P1335",
+   "brand": "nissan",
+   "ru": "Датчик положения коленвала (REF)",
+   "en": "Crankshaft Position Sensor REF",
+   "fam": "",
+   "node": "crankshaft position sensor ref"
+  }
+ ]
+}

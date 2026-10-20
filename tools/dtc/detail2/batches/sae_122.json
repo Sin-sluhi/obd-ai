@@ -1,0 +1,466 @@
+{
+ "name": "sae_122",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "hybrid ev battery cell balancing"
+ ],
+ "codes": [
+  {
+   "code": "P0DAB",
+   "brand": "",
+   "ru": "Балансировка ячеек тяговой батареи: работа нарушена",
+   "en": "Hybrid/EV Battery Cell Balancing Performance",
+   "fam": "",
+   "node": "hybrid ev battery cell balancing"
+  },
+  {
+   "code": "P0DAC",
+   "brand": "",
+   "ru": "Цепь балансировки ячеек тяговой батареи A",
+   "en": "Hybrid/EV Battery Cell Balancing Circuit A",
+   "fam": "",
+   "node": "hybrid ev battery cell balancing"
+  },
+  {
+   "code": "P0DAD",
+   "brand": "",
+   "ru": "Цепь балансировки ячеек тяговой батареи A: постоянно включён",
+   "en": "Hybrid/EV Battery Cell Balancing Circuit A Stuck On",
+   "fam": "",
+   "node": "hybrid ev battery cell balancing"
+  },
+  {
+   "code": "P0DAE",
+   "brand": "",
+   "ru": "Цепь балансировки ячеек тяговой батареи A: не включается",
+   "en": "Hybrid/EV Battery Cell Balancing Circuit A Stuck Off",
+   "fam": "",
+   "node": "hybrid ev battery cell balancing"
+  },
+  {
+   "code": "P0DAF",
+   "brand": "",
+   "ru": "Цепь балансировки ячеек тяговой батареи A: вне допустимого диапазона",
+   "en": "Hybrid/EV Battery Cell Balancing Circuit A Range/Performance",
+   "fam": "",
+   "node": "hybrid ev battery cell balancing"
+  },
+  {
+   "code": "P0DB0",
+   "brand": "",
+   "ru": "Цепь балансировки ячеек тяговой батареи B",
+   "en": "Hybrid/EV Battery Cell Balancing Circuit B",
+   "fam": "",
+   "node": "hybrid ev battery cell balancing"
+  },
+  {
+   "code": "P0DB1",
+   "brand": "",
+   "ru": "Цепь балансировки ячеек тяговой батареи B: постоянно включён",
+   "en": "Hybrid/EV Battery Cell Balancing Circuit B Stuck On",
+   "fam": "",
+   "node": "hybrid ev battery cell balancing"
+  },
+  {
+   "code": "P0DB2",
+   "brand": "",
+   "ru": "Цепь балансировки ячеек тяговой батареи B: не включается",
+   "en": "Hybrid/EV Battery Cell Balancing Circuit B Stuck Off",
+   "fam": "",
+   "node": "hybrid ev battery cell balancing"
+  },
+  {
+   "code": "P0DB3",
+   "brand": "",
+   "ru": "Цепь балансировки ячеек тяговой батареи B: вне допустимого диапазона",
+   "en": "Hybrid/EV Battery Cell Balancing Circuit B Range/Performance",
+   "fam": "",
+   "node": "hybrid ev battery cell balancing"
+  },
+  {
+   "code": "P0DB4",
+   "brand": "",
+   "ru": "Цепь балансировки ячеек тяговой батареи C",
+   "en": "Hybrid/EV Battery Cell Balancing Circuit C",
+   "fam": "",
+   "node": "hybrid ev battery cell balancing"
+  },
+  {
+   "code": "P0DB5",
+   "brand": "",
+   "ru": "Цепь балансировки ячеек тяговой батареи C: постоянно включён",
+   "en": "Hybrid/EV Battery Cell Balancing Circuit C Stuck On",
+   "fam": "",
+   "node": "hybrid ev battery cell balancing"
+  },
+  {
+   "code": "P0DB6",
+   "brand": "",
+   "ru": "Цепь балансировки ячеек тяговой батареи C: не включается",
+   "en": "Hybrid/EV Battery Cell Balancing Circuit C Stuck Off",
+   "fam": "",
+   "node": "hybrid ev battery cell balancing"
+  },
+  {
+   "code": "P0DB7",
+   "brand": "",
+   "ru": "Цепь балансировки ячеек тяговой батареи C: вне допустимого диапазона",
+   "en": "Hybrid/EV Battery Cell Balancing Circuit C Range/Performance",
+   "fam": "",
+   "node": "hybrid ev battery cell balancing"
+  },
+  {
+   "code": "P0DB8",
+   "brand": "",
+   "ru": "Цепь балансировки ячеек тяговой батареи D",
+   "en": "Hybrid/EV Battery Cell Balancing Circuit D",
+   "fam": "",
+   "node": "hybrid ev battery cell balancing"
+  },
+  {
+   "code": "P0DB9",
+   "brand": "",
+   "ru": "Цепь балансировки ячеек тяговой батареи D: постоянно включён",
+   "en": "Hybrid/EV Battery Cell Balancing Circuit D Stuck On",
+   "fam": "",
+   "node": "hybrid ev battery cell balancing"
+  },
+  {
+   "code": "P0DBA",
+   "brand": "",
+   "ru": "Цепь балансировки ячеек тяговой батареи D: не включается",
+   "en": "Hybrid/EV Battery Cell Balancing Circuit D Stuck Off",
+   "fam": "",
+   "node": "hybrid ev battery cell balancing"
+  },
+  {
+   "code": "P0DBB",
+   "brand": "",
+   "ru": "Цепь балансировки ячеек тяговой батареи D: вне допустимого диапазона",
+   "en": "Hybrid/EV Battery Cell Balancing Circuit D Range/Performance",
+   "fam": "",
+   "node": "hybrid ev battery cell balancing"
+  },
+  {
+   "code": "P0DBC",
+   "brand": "",
+   "ru": "Цепь балансировки ячеек тяговой батареи E",
+   "en": "Hybrid/EV Battery Cell Balancing Circuit E",
+   "fam": "",
+   "node": "hybrid ev battery cell balancing"
+  },
+  {
+   "code": "P0DBD",
+   "brand": "",
+   "ru": "Цепь балансировки ячеек тяговой батареи E: постоянно включён",
+   "en": "Hybrid/EV Battery Cell Balancing Circuit E Stuck On",
+   "fam": "",
+   "node": "hybrid ev battery cell balancing"
+  },
+  {
+   "code": "P0DBE",
+   "brand": "",
+   "ru": "Цепь балансировки ячеек тяговой батареи E: не включается",
+   "en": "Hybrid/EV Battery Cell Balancing Circuit E Stuck Off",
+   "fam": "",
+   "node": "hybrid ev battery cell balancing"
+  },
+  {
+   "code": "P0DBF",
+   "brand": "",
+   "ru": "Цепь балансировки ячеек тяговой батареи E: вне допустимого диапазона",
+   "en": "Hybrid/EV Battery Cell Balancing Circuit E Range/Performance",
+   "fam": "",
+   "node": "hybrid ev battery cell balancing"
+  },
+  {
+   "code": "P0DC0",
+   "brand": "",
+   "ru": "Цепь балансировки ячеек тяговой батареи F",
+   "en": "Hybrid/EV Battery Cell Balancing Circuit F",
+   "fam": "",
+   "node": "hybrid ev battery cell balancing"
+  },
+  {
+   "code": "P0DC1",
+   "brand": "",
+   "ru": "Цепь балансировки ячеек тяговой батареи F: постоянно включён",
+   "en": "Hybrid/EV Battery Cell Balancing Circuit F Stuck On",
+   "fam": "",
+   "node": "hybrid ev battery cell balancing"
+  },
+  {
+   "code": "P0DC2",
+   "brand": "",
+   "ru": "Цепь балансировки ячеек тяговой батареи F: не включается",
+   "en": "Hybrid/EV Battery Cell Balancing Circuit F Stuck Off",
+   "fam": "",
+   "node": "hybrid ev battery cell balancing"
+  },
+  {
+   "code": "P0DC3",
+   "brand": "",
+   "ru": "Цепь балансировки ячеек тяговой батареи F: вне допустимого диапазона",
+   "en": "Hybrid/EV Battery Cell Balancing Circuit F Range/Performance",
+   "fam": "",
+   "node": "hybrid ev battery cell balancing"
+  },
+  {
+   "code": "P0DC4",
+   "brand": "",
+   "ru": "Цепь балансировки ячеек тяговой батареи G",
+   "en": "Hybrid/EV Battery Cell Balancing Circuit G",
+   "fam": "",
+   "node": "hybrid ev battery cell balancing"
+  },
+  {
+   "code": "P0DC5",
+   "brand": "",
+   "ru": "Цепь балансировки ячеек тяговой батареи G: постоянно включён",
+   "en": "Hybrid/EV Battery Cell Balancing Circuit G Stuck On",
+   "fam": "",
+   "node": "hybrid ev battery cell balancing"
+  },
+  {
+   "code": "P0DC6",
+   "brand": "",
+   "ru": "Цепь балансировки ячеек тяговой батареи G: не включается",
+   "en": "Hybrid/EV Battery Cell Balancing Circuit G Stuck Off",
+   "fam": "",
+   "node": "hybrid ev battery cell balancing"
+  },
+  {
+   "code": "P0DC7",
+   "brand": "",
+   "ru": "Цепь балансировки ячеек тяговой батареи G: вне допустимого диапазона",
+   "en": "Hybrid/EV Battery Cell Balancing Circuit G Range/Performance",
+   "fam": "",
+   "node": "hybrid ev battery cell balancing"
+  },
+  {
+   "code": "P0DC8",
+   "brand": "",
+   "ru": "Цепь балансировки ячеек тяговой батареи H",
+   "en": "Hybrid/EV Battery Cell Balancing Circuit H",
+   "fam": "",
+   "node": "hybrid ev battery cell balancing"
+  },
+  {
+   "code": "P0DC9",
+   "brand": "",
+   "ru": "Цепь балансировки ячеек тяговой батареи H: постоянно включён",
+   "en": "Hybrid/EV Battery Cell Balancing Circuit H Stuck On",
+   "fam": "",
+   "node": "hybrid ev battery cell balancing"
+  },
+  {
+   "code": "P0DCA",
+   "brand": "",
+   "ru": "Цепь балансировки ячеек тяговой батареи H: не включается",
+   "en": "Hybrid/EV Battery Cell Balancing Circuit H Stuck Off",
+   "fam": "",
+   "node": "hybrid ev battery cell balancing"
+  },
+  {
+   "code": "P0DCB",
+   "brand": "",
+   "ru": "Цепь балансировки ячеек тяговой батареи H: вне допустимого диапазона",
+   "en": "Hybrid/EV Battery Cell Balancing Circuit H Range/Performance",
+   "fam": "",
+   "node": "hybrid ev battery cell balancing"
+  },
+  {
+   "code": "P0DCC",
+   "brand": "",
+   "ru": "Цепь балансировки ячеек тяговой батареи I",
+   "en": "Hybrid/EV Battery Cell Balancing Circuit I",
+   "fam": "",
+   "node": "hybrid ev battery cell balancing"
+  },
+  {
+   "code": "P0DCD",
+   "brand": "",
+   "ru": "Цепь балансировки ячеек тяговой батареи I: постоянно включён",
+   "en": "Hybrid/EV Battery Cell Balancing Circuit I Stuck On",
+   "fam": "",
+   "node": "hybrid ev battery cell balancing"
+  },
+  {
+   "code": "P0DCE",
+   "brand": "",
+   "ru": "Цепь балансировки ячеек тяговой батареи I: не включается",
+   "en": "Hybrid/EV Battery Cell Balancing Circuit I Stuck Off",
+   "fam": "",
+   "node": "hybrid ev battery cell balancing"
+  },
+  {
+   "code": "P0DCF",
+   "brand": "",
+   "ru": "Цепь балансировки ячеек тяговой батареи I: вне допустимого диапазона",
+   "en": "Hybrid/EV Battery Cell Balancing Circuit I Range/Performance",
+   "fam": "",
+   "node": "hybrid ev battery cell balancing"
+  },
+  {
+   "code": "P0DD0",
+   "brand": "",
+   "ru": "Цепь балансировки ячеек тяговой батареи J",
+   "en": "Hybrid/EV Battery Cell Balancing Circuit J",
+   "fam": "",
+   "node": "hybrid ev battery cell balancing"
+  },
+  {
+   "code": "P0DD1",
+   "brand": "",
+   "ru": "Цепь балансировки ячеек тяговой батареи J: постоянно включён",
+   "en": "Hybrid/EV Battery Cell Balancing Circuit J Stuck On",
+   "fam": "",
+   "node": "hybrid ev battery cell balancing"
+  },
+  {
+   "code": "P0DD2",
+   "brand": "",
+   "ru": "Цепь балансировки ячеек тяговой батареи J: не включается",
+   "en": "Hybrid/EV Battery Cell Balancing Circuit J Stuck Off",
+   "fam": "",
+   "node": "hybrid ev battery cell balancing"
+  },
+  {
+   "code": "P0DD3",
+   "brand": "",
+   "ru": "Цепь балансировки ячеек тяговой батареи J: вне допустимого диапазона",
+   "en": "Hybrid/EV Battery Cell Balancing Circuit J Range/Performance",
+   "fam": "",
+   "node": "hybrid ev battery cell balancing"
+  },
+  {
+   "code": "P0DD4",
+   "brand": "",
+   "ru": "Цепь балансировки ячеек тяговой батареи K",
+   "en": "Hybrid/EV Battery Cell Balancing Circuit K",
+   "fam": "",
+   "node": "hybrid ev battery cell balancing"
+  },
+  {
+   "code": "P0DD5",
+   "brand": "",
+   "ru": "Цепь балансировки ячеек тяговой батареи K: постоянно включён",
+   "en": "Hybrid/EV Battery Cell Balancing Circuit K Stuck On",
+   "fam": "",
+   "node": "hybrid ev battery cell balancing"
+  },
+  {
+   "code": "P0DD6",
+   "brand": "",
+   "ru": "Цепь балансировки ячеек тяговой батареи K: не включается",
+   "en": "Hybrid/EV Battery Cell Balancing Circuit K Stuck Off",
+   "fam": "",
+   "node": "hybrid ev battery cell balancing"
+  },
+  {
+   "code": "P0DD7",
+   "brand": "",
+   "ru": "Цепь балансировки ячеек тяговой батареи K: вне допустимого диапазона",
+   "en": "Hybrid/EV Battery Cell Balancing Circuit K Range/Performance",
+   "fam": "",
+   "node": "hybrid ev battery cell balancing"
+  },
+  {
+   "code": "P0DD8",
+   "brand": "",
+   "ru": "Цепь балансировки ячеек тяговой батареи L",
+   "en": "Hybrid/EV Battery Cell Balancing Circuit L",
+   "fam": "",
+   "node": "hybrid ev battery cell balancing"
+  },
+  {
+   "code": "P0DD9",
+   "brand": "",
+   "ru": "Цепь балансировки ячеек тяговой батареи L: постоянно включён",
+   "en": "Hybrid/EV Battery Cell Balancing Circuit L Stuck On",
+   "fam": "",
+   "node": "hybrid ev battery cell balancing"
+  },
+  {
+   "code": "P0DDA",
+   "brand": "",
+   "ru": "Цепь балансировки ячеек тяговой батареи L: не включается",
+   "en": "Hybrid/EV Battery Cell Balancing Circuit L Stuck Off",
+   "fam": "",
+   "node": "hybrid ev battery cell balancing"
+  },
+  {
+   "code": "P0DDB",
+   "brand": "",
+   "ru": "Цепь балансировки ячеек тяговой батареи L: вне допустимого диапазона",
+   "en": "Hybrid/EV Battery Cell Balancing Circuit L Range/Performance",
+   "fam": "",
+   "node": "hybrid ev battery cell balancing"
+  },
+  {
+   "code": "P0DDC",
+   "brand": "",
+   "ru": "Цепь балансировки ячеек тяговой батареи M",
+   "en": "Hybrid/EV Battery Cell Balancing Circuit M",
+   "fam": "",
+   "node": "hybrid ev battery cell balancing"
+  },
+  {
+   "code": "P0DDD",
+   "brand": "",
+   "ru": "Цепь балансировки ячеек тяговой батареи M: постоянно включён",
+   "en": "Hybrid/EV Battery Cell Balancing Circuit M Stuck On",
+   "fam": "",
+   "node": "hybrid ev battery cell balancing"
+  },
+  {
+   "code": "P0DDE",
+   "brand": "",
+   "ru": "Цепь балансировки ячеек тяговой батареи M: не включается",
+   "en": "Hybrid/EV Battery Cell Balancing Circuit M Stuck Off",
+   "fam": "",
+   "node": "hybrid ev battery cell balancing"
+  },
+  {
+   "code": "P0DDF",
+   "brand": "",
+   "ru": "Цепь балансировки ячеек тяговой батареи M: вне допустимого диапазона",
+   "en": "Hybrid/EV Battery Cell Balancing Circuit M Range/Performance",
+   "fam": "",
+   "node": "hybrid ev battery cell balancing"
+  },
+  {
+   "code": "P0DE0",
+   "brand": "",
+   "ru": "Цепь балансировки ячеек тяговой батареи N",
+   "en": "Hybrid/EV Battery Cell Balancing Circuit N",
+   "fam": "",
+   "node": "hybrid ev battery cell balancing"
+  },
+  {
+   "code": "P0DE1",
+   "brand": "",
+   "ru": "Цепь балансировки ячеек тяговой батареи N: постоянно включён",
+   "en": "Hybrid/EV Battery Cell Balancing Circuit N Stuck On",
+   "fam": "",
+   "node": "hybrid ev battery cell balancing"
+  },
+  {
+   "code": "P0DE2",
+   "brand": "",
+   "ru": "Цепь балансировки ячеек тяговой батареи N: не включается",
+   "en": "Hybrid/EV Battery Cell Balancing Circuit N Stuck Off",
+   "fam": "",
+   "node": "hybrid ev battery cell balancing"
+  },
+  {
+   "code": "P0DE3",
+   "brand": "",
+   "ru": "Цепь балансировки ячеек тяговой батареи N: вне допустимого диапазона",
+   "en": "Hybrid/EV Battery Cell Balancing Circuit N Range/Performance",
+   "fam": "",
+   "node": "hybrid ev battery cell balancing"
+  }
+ ]
+}

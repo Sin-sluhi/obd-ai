@@ -1,0 +1,413 @@
+{
+ "name": "sae_196",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "lost communication with a c compressor control",
+  "lost communication with accelerator pedal",
+  "lost communication with active roll control",
+  "lost communication with active vibration control",
+  "lost communication with all terrain control",
+  "lost communication with anti lock brake system control module b",
+  "lost communication with automated driving system control module a",
+  "lost communication with automated driving system control module b",
+  "lost communication with automated driving system interface module “a”",
+  "lost communication with automated driving system interface module “b",
+  "lost communication with battery charger control module a",
+  "lost communication with battery energy control module c",
+  "lost communication with battery energy control module d",
+  "lost communication with camshaft position control",
+  "lost communication with chassis control module b",
+  "lost communication with differential control module front",
+  "lost communication with differential control module rear",
+  "lost communication with direct ozone reduction catalyst temperature",
+  "lost communication with engine coolant pump control",
+  "lost communication with exhaust gas sensor module b",
+  "lost communication with fuel pump control module b",
+  "lost communication with generator a control",
+  "lost communication with generator b control",
+  "lost communication with global positioning system",
+  "lost communication with glow plug control",
+  "lost communication with headlamp leveling control module b",
+  "lost communication with hybrid ev battery inductive charging",
+  "lost communication with mirror control module b",
+  "lost communication with multi axis acceleration sensor module b",
+  "lost communication with pedestrian alert control",
+  "lost communication with power steering control module rear",
+  "lost communication with power steering control module “b”",
+  "lost communication with restraints system sensor k",
+  "lost communication with restraints system sensor l",
+  "lost communication with restraints system sensor m",
+  "lost communication with restraints system sensor n",
+  "lost communication with seat belt pretensioner module a",
+  "lost communication with seat belt pretensioner module b",
+  "lost communication with suspension control module b",
+  "lost communication with tachograph",
+  "lost communication with trailer brake control",
+  "lost communication with transmission",
+  "lost communication with vacuum sensor a",
+  "lost communication with vacuum sensor b"
+ ],
+ "codes": [
+  {
+   "code": "U012B",
+   "brand": "",
+   "ru": "Нет связи: блок управления шасси B",
+   "en": "Lost Communication With Chassis Control Module B",
+   "fam": "",
+   "node": "lost communication with chassis control module b"
+  },
+  {
+   "code": "U012C",
+   "brand": "",
+   "ru": "Нет связи: блок активного гашения вибраций",
+   "en": "Lost Communication With Active Vibration Control Module",
+   "fam": "",
+   "node": "lost communication with active vibration control"
+  },
+  {
+   "code": "U012D",
+   "brand": "",
+   "ru": "Нет связи: блок генератора A",
+   "en": "Lost Communication With Generator A Control Module",
+   "fam": "",
+   "node": "lost communication with generator a control"
+  },
+  {
+   "code": "U012E",
+   "brand": "",
+   "ru": "Нет связи: блок управления фазами газораспределения",
+   "en": "Lost Communication With Camshaft Position Control Module",
+   "fam": "",
+   "node": "lost communication with camshaft position control"
+  },
+  {
+   "code": "U012F",
+   "brand": "",
+   "ru": "Нет связи: блок генератора B",
+   "en": "Lost Communication With Generator B Control Module",
+   "fam": "",
+   "node": "lost communication with generator b control"
+  },
+  {
+   "code": "U0133",
+   "brand": "",
+   "ru": "Нет связи: блок активного стабилизатора",
+   "en": "Lost Communication With Active Roll Control Module",
+   "fam": "",
+   "node": "lost communication with active roll control"
+  },
+  {
+   "code": "U0134",
+   "brand": "",
+   "ru": "Нет связи: блок подруливания задних колёс",
+   "en": "Lost Communication With Power Steering Control Module - Rear",
+   "fam": "",
+   "node": "lost communication with power steering control module rear"
+  },
+  {
+   "code": "U0135",
+   "brand": "",
+   "ru": "Нет связи: блок переднего дифференциала",
+   "en": "Lost Communication With Differential Control Module - Front",
+   "fam": "",
+   "node": "lost communication with differential control module front"
+  },
+  {
+   "code": "U0136",
+   "brand": "",
+   "ru": "Нет связи: блок заднего дифференциала",
+   "en": "Lost Communication With Differential Control Module - Rear",
+   "fam": "",
+   "node": "lost communication with differential control module rear"
+  },
+  {
+   "code": "U0137",
+   "brand": "",
+   "ru": "Нет связи: блок тормозов прицепа",
+   "en": "Lost Communication With Trailer Brake Control Module",
+   "fam": "",
+   "node": "lost communication with trailer brake control"
+  },
+  {
+   "code": "U064D",
+   "brand": "",
+   "ru": "Нет связи: регулятор тормозов прицепа",
+   "en": "Lost Communication With Trailer Brake Control Switch",
+   "fam": "",
+   "node": "lost communication with trailer brake control"
+  },
+  {
+   "code": "U0138",
+   "brand": "",
+   "ru": "Нет связи: блок режимов бездорожья",
+   "en": "Lost Communication With All Terrain Control Module",
+   "fam": "",
+   "node": "lost communication with all terrain control"
+  },
+  {
+   "code": "U0139",
+   "brand": "",
+   "ru": "Нет связи: блок управления подвеской B",
+   "en": "Lost Communication With Suspension Control Module B",
+   "fam": "",
+   "node": "lost communication with suspension control module b"
+  },
+  {
+   "code": "U013C",
+   "brand": "",
+   "ru": "Нет связи: модуль педали газа",
+   "en": "Lost Communication With Accelerator Pedal Module",
+   "fam": "",
+   "node": "lost communication with accelerator pedal"
+  },
+  {
+   "code": "U013D",
+   "brand": "",
+   "ru": "Нет связи: датчик разрежения A",
+   "en": "Lost Communication With Vacuum Sensor A",
+   "fam": "",
+   "node": "lost communication with vacuum sensor a"
+  },
+  {
+   "code": "U013E",
+   "brand": "",
+   "ru": "Нет связи: датчик разрежения B",
+   "en": "Lost Communication With Vacuum Sensor B",
+   "fam": "",
+   "node": "lost communication with vacuum sensor b"
+  },
+  {
+   "code": "U013F",
+   "brand": "",
+   "ru": "Нет связи: блок звукового оповещения пешеходов",
+   "en": "Lost Communication With Pedestrian Alert Control Module",
+   "fam": "",
+   "node": "lost communication with pedestrian alert control"
+  },
+  {
+   "code": "U014A",
+   "brand": "",
+   "ru": "Нет связи: блок управления энергией батареи C",
+   "en": "Lost Communication With Battery Energy Control Module C",
+   "fam": "",
+   "node": "lost communication with battery energy control module c"
+  },
+  {
+   "code": "U014B",
+   "brand": "",
+   "ru": "Нет связи: модуль индуктивной зарядки тяговой батареи",
+   "en": "Lost Communication With Hybrid/EV Battery Inductive Charging Module",
+   "fam": "",
+   "node": "lost communication with hybrid ev battery inductive charging"
+  },
+  {
+   "code": "U014C",
+   "brand": "",
+   "ru": "Нет связи: блок управления энергией батареи D",
+   "en": "Lost Communication With Battery Energy Control Module D",
+   "fam": "",
+   "node": "lost communication with battery energy control module d"
+  },
+  {
+   "code": "U014D",
+   "brand": "",
+   "ru": "Нет связи: блок зеркал B",
+   "en": "Lost Communication with Mirror Control Module B",
+   "fam": "",
+   "node": "lost communication with mirror control module b"
+  },
+  {
+   "code": "U014E",
+   "brand": "",
+   "ru": "Нет связи: блок датчиков ускорения B",
+   "en": "Lost Communication With Multi-axis Acceleration Sensor Module B",
+   "fam": "",
+   "node": "lost communication with multi axis acceleration sensor module b"
+  },
+  {
+   "code": "U015A",
+   "brand": "",
+   "ru": "Нет связи: блок ABS B",
+   "en": "Lost Communication With Anti-Lock Brake System (ABS) Control Module B",
+   "fam": "",
+   "node": "lost communication with anti lock brake system control module b"
+  },
+  {
+   "code": "U015B",
+   "brand": "",
+   "ru": "Нет связи: блок усилителя руля B",
+   "en": "Lost Communication With Power Steering Control Module “B”",
+   "fam": "",
+   "node": "lost communication with power steering control module “b”"
+  },
+  {
+   "code": "U015C",
+   "brand": "",
+   "ru": "Нет связи: блок системы автоматизированного вождения A",
+   "en": "Lost Communication With Automated Driving System Control Module A",
+   "fam": "",
+   "node": "lost communication with automated driving system control module a"
+  },
+  {
+   "code": "U015D",
+   "brand": "",
+   "ru": "Нет связи: блок системы автоматизированного вождения B",
+   "en": "Lost Communication With Automated Driving System Control Module B",
+   "fam": "",
+   "node": "lost communication with automated driving system control module b"
+  },
+  {
+   "code": "U015E",
+   "brand": "",
+   "ru": "Нет связи: интерфейсный блок системы автоматизированного вождения A",
+   "en": "Lost Communication With Automated Driving System Interface Module “A”",
+   "fam": "",
+   "node": "lost communication with automated driving system interface module “a”"
+  },
+  {
+   "code": "U015F",
+   "brand": "",
+   "ru": "Нет связи: интерфейсный блок системы автоматизированного вождения B",
+   "en": "Lost Communication With Automated Driving System Interface Module “B",
+   "fam": "",
+   "node": "lost communication with automated driving system interface module “b"
+  },
+  {
+   "code": "U016A",
+   "brand": "",
+   "ru": "Нет связи: модуль GPS",
+   "en": "Lost Communication With Global Positioning System Module",
+   "fam": "",
+   "node": "lost communication with global positioning system"
+  },
+  {
+   "code": "U016B",
+   "brand": "",
+   "ru": "Нет связи: блок компрессора кондиционера",
+   "en": "Lost Communication With A/C Compressor Control Module",
+   "fam": "",
+   "node": "lost communication with a c compressor control"
+  },
+  {
+   "code": "U016C",
+   "brand": "",
+   "ru": "Нет связи: блок управления топливным насосом B",
+   "en": "Lost Communication With Fuel Pump Control Module B",
+   "fam": "",
+   "node": "lost communication with fuel pump control module b"
+  },
+  {
+   "code": "U016D",
+   "brand": "",
+   "ru": "Нет связи: блок датчика отработавших газов B",
+   "en": "Lost Communication With Exhaust Gas Sensor Module B",
+   "fam": "",
+   "node": "lost communication with exhaust gas sensor module b"
+  },
+  {
+   "code": "U017A",
+   "brand": "",
+   "ru": "Нет связи: датчик системы пассивной безопасности K",
+   "en": "Lost Communication With Restraints System Sensor K",
+   "fam": "",
+   "node": "lost communication with restraints system sensor k"
+  },
+  {
+   "code": "U017B",
+   "brand": "",
+   "ru": "Нет связи: датчик системы пассивной безопасности L",
+   "en": "Lost Communication With Restraints System Sensor L",
+   "fam": "",
+   "node": "lost communication with restraints system sensor l"
+  },
+  {
+   "code": "U017C",
+   "brand": "",
+   "ru": "Нет связи: датчик системы пассивной безопасности M",
+   "en": "Lost Communication With Restraints System Sensor M",
+   "fam": "",
+   "node": "lost communication with restraints system sensor m"
+  },
+  {
+   "code": "U017D",
+   "brand": "",
+   "ru": "Нет связи: датчик системы пассивной безопасности N",
+   "en": "Lost Communication With Restraints System Sensor N",
+   "fam": "",
+   "node": "lost communication with restraints system sensor n"
+  },
+  {
+   "code": "U017E",
+   "brand": "",
+   "ru": "Нет связи: блок преднатяжителей ремней A",
+   "en": "Lost Communication With Seat Belt Pretensioner Module A",
+   "fam": "",
+   "node": "lost communication with seat belt pretensioner module a"
+  },
+  {
+   "code": "U017F",
+   "brand": "",
+   "ru": "Нет связи: блок преднатяжителей ремней B",
+   "en": "Lost Communication With Seat Belt Pretensioner Module B",
+   "fam": "",
+   "node": "lost communication with seat belt pretensioner module b"
+  },
+  {
+   "code": "U018A",
+   "brand": "",
+   "ru": "Нет связи: блок корректора фар B",
+   "en": "Lost Communication With Headlamp Leveling Control Module B",
+   "fam": "",
+   "node": "lost communication with headlamp leveling control module b"
+  },
+  {
+   "code": "U019A",
+   "brand": "",
+   "ru": "Нет связи: тахограф",
+   "en": "Lost Communication With Tachograph Module",
+   "fam": "",
+   "node": "lost communication with tachograph"
+  },
+  {
+   "code": "U019B",
+   "brand": "",
+   "ru": "Нет связи: блок управления зарядным устройством A",
+   "en": "Lost Communication With Battery Charger Control Module A",
+   "fam": "",
+   "node": "lost communication with battery charger control module a"
+  },
+  {
+   "code": "U019C",
+   "brand": "",
+   "ru": "Нет связи: блок управления свечами накаливания 2",
+   "en": "Lost Communication With Glow Plug Control Module 2",
+   "fam": "",
+   "node": "lost communication with glow plug control"
+  },
+  {
+   "code": "U019D",
+   "brand": "",
+   "ru": "Нет связи: датчик температуры катализатора озона",
+   "en": "Lost Communication With Direct Ozone Reduction Catalyst Temperature Sensor",
+   "fam": "",
+   "node": "lost communication with direct ozone reduction catalyst temperature"
+  },
+  {
+   "code": "U019E",
+   "brand": "",
+   "ru": "Нет связи: блок управления селектором КПП",
+   "en": "Lost Communication With Transmission Range Control Module",
+   "fam": "",
+   "node": "lost communication with transmission"
+  },
+  {
+   "code": "U019F",
+   "brand": "",
+   "ru": "Нет связи: блок управления насосом охлаждающей жидкости",
+   "en": "Lost Communication With Engine Coolant Pump Control Module",
+   "fam": "",
+   "node": "lost communication with engine coolant pump control"
+  }
+ ]
+}

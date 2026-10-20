@@ -1,0 +1,399 @@
+{
+ "name": "brand-vag_077",
+ "series": "brand",
+ "brand": "vag",
+ "nodes": [
+  "can bus hardware defective",
+  "can bus missing message from brake",
+  "can bus missing message from engine",
+  "can bus software version",
+  "can bus unplausible message from brake",
+  "can bus unplausible message from engine",
+  "check dtc memory of brake system ecu",
+  "check dtc memory of central electronic control ecu",
+  "check dtc memory of engine ecu",
+  "check dtc memory of instrument panel ecu",
+  "check dtc memory of transmission ecu",
+  "data bus powertrain missing message from adr control",
+  "data bus powertrain missing message from central electronics",
+  "data bus powertrain missing message from steering angle",
+  "engine speed",
+  "engine transmission control do not match",
+  "fuel level is too",
+  "idle speed intervention",
+  "kick down switch error message from engine",
+  "pressure control solenoid",
+  "pressure control solenoid 1 electrical",
+  "pressure control solenoid 2 electrical",
+  "pressure control solenoid 3 electrical",
+  "pressure control solenoid 4 electrical",
+  "reversing light",
+  "ru:выключатель тормоза",
+  "ru:датчик оборотов выходного вала 2",
+  "throttle pedal position sensor a",
+  "throttle position sensor error message from ecm",
+  "transmission"
+ ],
+ "codes": [
+  {
+   "code": "P1786",
+   "brand": "vag",
+   "ru": "Фонари заднего хода: обрыв цепи",
+   "en": "Reversing Light Circuit Open",
+   "fam": "",
+   "node": "reversing light"
+  },
+  {
+   "code": "P1787",
+   "brand": "vag",
+   "ru": "Фонари заднего хода: замыкание на массу",
+   "en": "Reversing Light Circuit Short To Ground",
+   "fam": "",
+   "node": "reversing light"
+  },
+  {
+   "code": "P1788",
+   "brand": "vag",
+   "ru": "Фонари заднего хода: замыкание на плюс",
+   "en": "Reversing Light Circuit Short To B+",
+   "fam": "",
+   "node": "reversing light"
+  },
+  {
+   "code": "P1789",
+   "brand": "vag",
+   "ru": "Вмешательство в холостой ход: сообщение об ошибке от блока двигателя",
+   "en": "Idle Speed Intervention Circuit Error Message From Engine Control",
+   "fam": "",
+   "node": "idle speed intervention"
+  },
+  {
+   "code": "P1790",
+   "brand": "vag",
+   "ru": "Индикация диапазона коробки: обрыв цепи",
+   "en": "Transmission Range Display Circuit Open",
+   "fam": "",
+   "node": "transmission"
+  },
+  {
+   "code": "P1791",
+   "brand": "vag",
+   "ru": "Индикация диапазона коробки: замыкание на массу",
+   "en": "Transmission Range Display Circuit Short To Ground",
+   "fam": "",
+   "node": "transmission"
+  },
+  {
+   "code": "P1792",
+   "brand": "vag",
+   "ru": "Индикация диапазона коробки: замыкание на плюс",
+   "en": "Transmission Range Display Circuit Short To B+",
+   "fam": "",
+   "node": "transmission"
+  },
+  {
+   "code": "P1793",
+   "brand": "vag",
+   "ru": "Датчик оборотов выходного вала 2: нет сигнала",
+   "en": "Output Speed Sensor 2 Circuit No Signal",
+   "fam": "",
+   "node": "ru:датчик оборотов выходного вала 2"
+  },
+  {
+   "code": "P1798",
+   "brand": "vag",
+   "ru": "Датчик оборотов выходного вала 2: выход за диапазон",
+   "en": "Output Speed Sensor 2 Circuit Range Performance",
+   "fam": "",
+   "node": "ru:датчик оборотов выходного вала 2"
+  },
+  {
+   "code": "P1799",
+   "brand": "vag",
+   "ru": "Датчик оборотов выходного вала 2: слишком высокие обороты",
+   "en": "Output Speed Sensor 2 Circuit RPM Too High",
+   "fam": "",
+   "node": "ru:датчик оборотов выходного вала 2"
+  },
+  {
+   "code": "P1813",
+   "brand": "vag",
+   "ru": "Клапан регулирования давления 1 (коробка): электрическая неисправность",
+   "en": "Pressure Control Solenoid 1 Electrical",
+   "fam": "",
+   "node": "pressure control solenoid 1 electrical"
+  },
+  {
+   "code": "P1814",
+   "brand": "vag",
+   "ru": "Клапан регулирования давления 1 (коробка): обрыв или замыкание на массу",
+   "en": "Pressure Control Solenoid 1 Open Short To Ground",
+   "fam": "",
+   "node": "pressure control solenoid"
+  },
+  {
+   "code": "P1815",
+   "brand": "vag",
+   "ru": "Клапан регулирования давления 1 (коробка): замыкание на плюс",
+   "en": "Pressure Control Solenoid 1 Short To B+",
+   "fam": "",
+   "node": "pressure control solenoid"
+  },
+  {
+   "code": "P1819",
+   "brand": "vag",
+   "ru": "Клапан регулирования давления 2 (коробка): обрыв или замыкание на массу",
+   "en": "Pressure Control Solenoid 2 Open Short To Ground",
+   "fam": "",
+   "node": "pressure control solenoid"
+  },
+  {
+   "code": "P1820",
+   "brand": "vag",
+   "ru": "Клапан регулирования давления 2 (коробка): замыкание на плюс",
+   "en": "Pressure Control Solenoid 2 Short To B+",
+   "fam": "",
+   "node": "pressure control solenoid"
+  },
+  {
+   "code": "P1824",
+   "brand": "vag",
+   "ru": "Клапан регулирования давления 3 (коробка): обрыв или замыкание на массу",
+   "en": "Pressure Control Solenoid 3 Open Short To Ground",
+   "fam": "",
+   "node": "pressure control solenoid"
+  },
+  {
+   "code": "P1825",
+   "brand": "vag",
+   "ru": "Клапан регулирования давления 3 (коробка): замыкание на плюс",
+   "en": "Pressure Control Solenoid 3 Short To B+",
+   "fam": "",
+   "node": "pressure control solenoid"
+  },
+  {
+   "code": "P1829",
+   "brand": "vag",
+   "ru": "Клапан регулирования давления 4 (коробка): обрыв или замыкание на массу",
+   "en": "Pressure Control Solenoid 4 Open Short To Ground",
+   "fam": "",
+   "node": "pressure control solenoid"
+  },
+  {
+   "code": "P1830",
+   "brand": "vag",
+   "ru": "Клапан регулирования давления 4 (коробка): замыкание на плюс",
+   "en": "Pressure Control Solenoid 4 Short To B+",
+   "fam": "",
+   "node": "pressure control solenoid"
+  },
+  {
+   "code": "P1834",
+   "brand": "vag",
+   "ru": "Клапан регулирования давления 5 (коробка): обрыв или замыкание на массу",
+   "en": "Pressure Control Solenoid 5 Open Short To Ground",
+   "fam": "",
+   "node": "pressure control solenoid"
+  },
+  {
+   "code": "P1835",
+   "brand": "vag",
+   "ru": "Клапан регулирования давления 5 (коробка): замыкание на плюс",
+   "en": "Pressure Control Solenoid 5 Short To B+",
+   "fam": "",
+   "node": "pressure control solenoid"
+  },
+  {
+   "code": "P1818",
+   "brand": "vag",
+   "ru": "Клапан регулирования давления 2 (коробка): электрическая неисправность",
+   "en": "Pressure Control Solenoid 2 Electrical",
+   "fam": "",
+   "node": "pressure control solenoid 2 electrical"
+  },
+  {
+   "code": "P1823",
+   "brand": "vag",
+   "ru": "Клапан регулирования давления 3 (коробка): электрическая неисправность",
+   "en": "Pressure Control Solenoid 3 Electrical",
+   "fam": "",
+   "node": "pressure control solenoid 3 electrical"
+  },
+  {
+   "code": "P1828",
+   "brand": "vag",
+   "ru": "Клапан регулирования давления 4 (коробка): электрическая неисправность",
+   "en": "Pressure Control Solenoid 4 Electrical",
+   "fam": "",
+   "node": "pressure control solenoid 4 electrical"
+  },
+  {
+   "code": "P1841",
+   "brand": "vag",
+   "ru": "Блоки двигателя и коробки не соответствуют друг другу",
+   "en": "Engine Transmission Control Do Not Match",
+   "fam": "",
+   "node": "engine transmission control do not match"
+  },
+  {
+   "code": "P1842",
+   "brand": "vag",
+   "ru": "Проверьте память ошибок приборной панели",
+   "en": "Check DTC Memory Of Instrument Panel ECU",
+   "fam": "",
+   "node": "check dtc memory of instrument panel ecu"
+  },
+  {
+   "code": "P1844",
+   "brand": "vag",
+   "ru": "Проверьте память ошибок центрального блока электроники",
+   "en": "Check DTC Memory Of Central Electronic Control ECU",
+   "fam": "",
+   "node": "check dtc memory of central electronic control ecu"
+  },
+  {
+   "code": "P1847",
+   "brand": "vag",
+   "ru": "Проверьте память ошибок блока тормозов",
+   "en": "Check DTC Memory Of Brake System ECU",
+   "fam": "",
+   "node": "check dtc memory of brake system ecu"
+  },
+  {
+   "code": "P1848",
+   "brand": "vag",
+   "ru": "Проверьте память ошибок блока двигателя",
+   "en": "Check DTC Memory Of Engine ECU",
+   "fam": "",
+   "node": "check dtc memory of engine ecu"
+  },
+  {
+   "code": "P1849",
+   "brand": "vag",
+   "ru": "Проверьте память ошибок блока коробки",
+   "en": "Check DTC Memory Of Transmission ECU",
+   "fam": "",
+   "node": "check dtc memory of transmission ecu"
+  },
+  {
+   "code": "P1850",
+   "brand": "vag",
+   "ru": "Шина CAN: нет сообщения от блока двигателя",
+   "en": "CAN Bus Missing Message From Engine Control",
+   "fam": "",
+   "node": "can bus missing message from engine"
+  },
+  {
+   "code": "P1851",
+   "brand": "vag",
+   "ru": "Шина CAN: нет сообщения от блока тормозов",
+   "en": "CAN Bus Missing Message From Brake Control",
+   "fam": "",
+   "node": "can bus missing message from brake"
+  },
+  {
+   "code": "P1852",
+   "brand": "vag",
+   "ru": "Шина CAN: недостоверное сообщение от блока двигателя",
+   "en": "CAN Bus Unplausible Message From Engine Control",
+   "fam": "",
+   "node": "can bus unplausible message from engine"
+  },
+  {
+   "code": "P1853",
+   "brand": "vag",
+   "ru": "Шина CAN: недостоверное сообщение от блока тормозов",
+   "en": "CAN Bus Unplausible Message From Brake Control",
+   "fam": "",
+   "node": "can bus unplausible message from brake"
+  },
+  {
+   "code": "P1854",
+   "brand": "vag",
+   "ru": "Шина CAN: аппаратная неисправность",
+   "en": "CAN Bus Hardware Defective",
+   "fam": "",
+   "node": "can bus hardware defective"
+  },
+  {
+   "code": "P1855",
+   "brand": "vag",
+   "ru": "Шина CAN: несоответствие версий программ",
+   "en": "CAN Bus Software Version Control",
+   "fam": "",
+   "node": "can bus software version"
+  },
+  {
+   "code": "P1856",
+   "brand": "vag",
+   "ru": "Датчик педали газа A: сообщение об ошибке от блока двигателя",
+   "en": "Throttle Pedal Position Sensor A Circuit Error Message From Engine Control",
+   "fam": "",
+   "node": "throttle pedal position sensor a"
+  },
+  {
+   "code": "P1858",
+   "brand": "vag",
+   "ru": "Сигнал оборотов: сообщение об ошибке от блока двигателя",
+   "en": "Engine Speed Input Circuit Error Message From Engine Control",
+   "fam": "",
+   "node": "engine speed"
+  },
+  {
+   "code": "P1859",
+   "brand": "vag",
+   "ru": "Выключатель тормоза: сообщение об ошибке от блока двигателя",
+   "en": "Brake Switch Circuit Error Message From Engine Control",
+   "fam": "",
+   "node": "ru:выключатель тормоза"
+  },
+  {
+   "code": "P1860",
+   "brand": "vag",
+   "ru": "Выключатель кикдауна: сообщение об ошибке от блока двигателя",
+   "en": "Kick Down Switch Error Message From Engine Control",
+   "fam": "",
+   "node": "kick down switch error message from engine"
+  },
+  {
+   "code": "P1861",
+   "brand": "vag",
+   "ru": "Датчик положения дросселя: сообщение об ошибке от блока двигателя",
+   "en": "Throttle Position Sensor Error Message From ECM",
+   "fam": "",
+   "node": "throttle position sensor error message from ecm"
+  },
+  {
+   "code": "P1863",
+   "brand": "vag",
+   "ru": "Шина силового агрегата: нет сообщения от датчика угла руля",
+   "en": "Data Bus Powertrain Missing Message From Steering Angle Sensor",
+   "fam": "",
+   "node": "data bus powertrain missing message from steering angle"
+  },
+  {
+   "code": "P1864",
+   "brand": "vag",
+   "ru": "Шина силового агрегата: нет сообщения от блока адаптивного круиза",
+   "en": "Data Bus Powertrain Missing Message From ADR Control Module",
+   "fam": "",
+   "node": "data bus powertrain missing message from adr control"
+  },
+  {
+   "code": "P1865",
+   "brand": "vag",
+   "ru": "Шина силового агрегата: нет сообщения от центральной электроники",
+   "en": "Data Bus Powertrain Missing Message From Central Electronics",
+   "fam": "",
+   "node": "data bus powertrain missing message from central electronics"
+  },
+  {
+   "code": "P3000",
+   "brand": "vag",
+   "ru": "Гибрид: мало топлива / неисправна или недозаряжена высоковольтная батарея",
+   "en": "Fuel level is too low, High voltage battery assembly failure, High voltage battery is not sufficiently charged",
+   "fam": "",
+   "node": "fuel level is too"
+  }
+ ]
+}

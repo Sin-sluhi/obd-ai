@@ -1,0 +1,62 @@
+{
+ "name": "brand-honda_038",
+ "series": "brand",
+ "brand": "honda",
+ "nodes": [
+  "tcm a t gear position",
+  "tcm a t lockup solenoid valve a fault",
+  "tcm a t lockup solenoid valve b fault",
+  "tcm a t tp",
+  "tcm a t vehicle speed"
+ ],
+ "codes": [
+  {
+   "code": "P1705",
+   "brand": "honda",
+   "ru": "Выключатель положения передач АКПП: замыкание",
+   "en": "TCM A/T Gear Position Switch Circuit Shorted",
+   "fam": "",
+   "node": "tcm a t gear position"
+  },
+  {
+   "code": "P1706",
+   "brand": "honda",
+   "ru": "Выключатель положения передач АКПП: обрыв",
+   "en": "TCM A/T Gear Position Switch Circuit Open",
+   "fam": "",
+   "node": "tcm a t gear position"
+  },
+  {
+   "code": "P1753",
+   "brand": "honda",
+   "ru": "Клапан блокировки ГДТ «A»: неисправность",
+   "en": "TCM A/T Lockup Solenoid Valve \"A\" Fault",
+   "fam": "",
+   "node": "tcm a t lockup solenoid valve a fault"
+  },
+  {
+   "code": "P1758",
+   "brand": "honda",
+   "ru": "Клапан блокировки ГДТ «B»: неисправность",
+   "en": "TCM A/T Lockup Solenoid Valve \"B\" Fault",
+   "fam": "",
+   "node": "tcm a t lockup solenoid valve b fault"
+  },
+  {
+   "code": "P1790",
+   "brand": "honda",
+   "ru": "Датчик положения дросселя для АКПП: неисправность цепи",
+   "en": "TCM A/T TP Sensor Circuit Fault",
+   "fam": "",
+   "node": "tcm a t tp"
+  },
+  {
+   "code": "P1791",
+   "brand": "honda",
+   "ru": "Датчик скорости для АКПП: неисправность цепи",
+   "en": "TCM A/T Vehicle Speed Sensor Circuit Fault",
+   "fam": "",
+   "node": "tcm a t vehicle speed"
+  }
+ ]
+}

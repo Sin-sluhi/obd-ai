@@ -1,0 +1,406 @@
+{
+ "name": "brand-gm_030",
+ "series": "brand",
+ "brand": "gm",
+ "nodes": [
+  "a c clutch relay",
+  "a c evaporator temperature",
+  "a c recirculation",
+  "a c refrigerant condition very",
+  "a c request",
+  "a c system",
+  "a c system ect overtemperature",
+  "air conditioning clutch feedback",
+  "control module throttle actuator position",
+  "cruise control power management mode",
+  "cruise control servo indicates",
+  "cruise control system transaxle not in drive",
+  "cruise engaged",
+  "cruise vacuum",
+  "cruise vehicle speed set speed difference too",
+  "cruise vent",
+  "electronic throttle control throttle return",
+  "electronic throttle module",
+  "electronic variable orifice",
+  "fam:etc",
+  "gear indicator system",
+  "governor",
+  "heated windshield request problem",
+  "ignition timing adjustment",
+  "park neutral to drive reverse at",
+  "ru:датчик температуры высокой стороны кондиционера",
+  "ru:датчик температуры низкой стороны кондиционера",
+  "ru:кондиционер",
+  "throttle actuator control module",
+  "throttle actuator control module serial data",
+  "throttle body",
+  "throttle body service required",
+  "throttle control system backup system",
+  "tp sensor learn not complete",
+  "tp sensor learned ci throttle angle out of",
+  "transmission",
+  "transmission engaged at"
+ ],
+ "codes": [
+  {
+   "code": "P1511",
+   "brand": "gm",
+   "ru": "Электронный дроссель: работа резервной системы",
+   "en": "Throttle Control System Backup System Performance",
+   "fam": "",
+   "node": "throttle control system backup system"
+  },
+  {
+   "code": "P1514",
+   "brand": "gm",
+   "ru": "Дроссельный узел: работа",
+   "en": "Throttle Body Performance",
+   "fam": "",
+   "node": "throttle body"
+  },
+  {
+   "code": "P1515",
+   "brand": "gm",
+   "ru": "Положение привода дросселя: работа",
+   "en": "Control Module Throttle Actuator Position Performance",
+   "fam": "",
+   "node": "control module throttle actuator position"
+  },
+  {
+   "code": "P1516",
+   "brand": "gm",
+   "ru": "Дроссельный узел: положение не соответствует команде",
+   "en": "",
+   "fam": "etc",
+   "node": "fam:etc"
+  },
+  {
+   "code": "P1517",
+   "brand": "gm",
+   "ru": "Модуль управления приводом дросселя (TAC): работа",
+   "en": "Throttle Actuator Control (TAC) Module Performance",
+   "fam": "",
+   "node": "throttle actuator control module"
+  },
+  {
+   "code": "P1518",
+   "brand": "gm",
+   "ru": "Модуль управления приводом дросселя (TAC): линия данных",
+   "en": "Throttle Actuator Control (TAC) Module Serial Data Circuit",
+   "fam": "",
+   "node": "throttle actuator control module serial data"
+  },
+  {
+   "code": "P1519",
+   "brand": "gm",
+   "ru": "Электронный дроссель: связь отключена из-за низкого напряжения",
+   "en": "Electronic Throttle Module Low Volts Communication Disable",
+   "fam": "",
+   "node": "electronic throttle module"
+  },
+  {
+   "code": "P1520",
+   "brand": "gm",
+   "ru": "Система индикации передачи",
+   "en": "Gear Indicator System",
+   "fam": "",
+   "node": "gear indicator system"
+  },
+  {
+   "code": "P1521",
+   "brand": "gm",
+   "ru": "Передача включена при большом открытии дросселя",
+   "en": "Transmission Engaged At High Throttle Angle",
+   "fam": "",
+   "node": "transmission engaged at"
+  },
+  {
+   "code": "P1522",
+   "brand": "gm",
+   "ru": "Переключение из P/N в D/R на высоких оборотах",
+   "en": "Park Neutral To Drive Reverse At High RPM",
+   "fam": "",
+   "node": "park neutral to drive reverse at"
+  },
+  {
+   "code": "P1523",
+   "brand": "gm",
+   "ru": "Электронный дроссель: возврат заслонки",
+   "en": "Electronic Throttle Control Throttle Return",
+   "fam": "",
+   "node": "electronic throttle control throttle return"
+  },
+  {
+   "code": "P1524",
+   "brand": "gm",
+   "ru": "Обученный угол закрытого дросселя вне диапазона",
+   "en": "TP Sensor Learned CI Throttle Angle Out Of Range",
+   "fam": "",
+   "node": "tp sensor learned ci throttle angle out of"
+  },
+  {
+   "code": "P1525",
+   "brand": "gm",
+   "ru": "Требуется обслуживание дроссельного узла",
+   "en": "Throttle Body Service Required",
+   "fam": "",
+   "node": "throttle body service required"
+  },
+  {
+   "code": "P1526",
+   "brand": "gm",
+   "ru": "Обучение датчика положения дросселя не завершено",
+   "en": "TP Sensor Learn Not Complete",
+   "fam": "",
+   "node": "tp sensor learn not complete"
+  },
+  {
+   "code": "P1527",
+   "brand": "gm",
+   "ru": "Датчик давления диапазона коробки: сравнение",
+   "en": "Transmission Range Pressure Switch Comparison",
+   "fam": "",
+   "node": "transmission"
+  },
+  {
+   "code": "P1815",
+   "brand": "gm",
+   "ru": "Выключатель диапазона: пуск не в том положении",
+   "en": "Transmission Range Switch Start In Wrong Range",
+   "fam": "",
+   "node": "transmission"
+  },
+  {
+   "code": "P1528",
+   "brand": "gm",
+   "ru": "Регулятор (governor) коробки",
+   "en": "Governor",
+   "fam": "",
+   "node": "governor"
+  },
+  {
+   "code": "P1529",
+   "brand": "gm",
+   "ru": "Запрос обогрева лобового стекла: неисправность",
+   "en": "Heated Windshield Request Problem",
+   "fam": "",
+   "node": "heated windshield request problem"
+  },
+  {
+   "code": "P1530",
+   "brand": "gm",
+   "ru": "Выключатель регулировки угла зажигания: цепь",
+   "en": "Ignition Timing Adjustment Switch Circuit",
+   "fam": "",
+   "node": "ignition timing adjustment"
+  },
+  {
+   "code": "P1531",
+   "brand": "gm",
+   "ru": "Датчик температуры низкой стороны кондиционера: неисправность",
+   "en": "A/C Low Side Temerature Sensor Fault",
+   "fam": "",
+   "node": "ru:датчик температуры низкой стороны кондиционера"
+  },
+  {
+   "code": "P1532",
+   "brand": "gm",
+   "ru": "Датчик температуры испарителя: низкое напряжение",
+   "en": "A/C Evaporator Temperature Sensor Circuit Low Voltage",
+   "fam": "",
+   "node": "a c evaporator temperature"
+  },
+  {
+   "code": "P1533",
+   "brand": "gm",
+   "ru": "Датчик температуры испарителя: высокое напряжение",
+   "en": "A/C Evaporator Temperature Sensor Circuit High Voltage",
+   "fam": "",
+   "node": "a c evaporator temperature"
+  },
+  {
+   "code": "P1534",
+   "brand": "gm",
+   "ru": "Датчик температуры высокой стороны кондиционера: низкое напряжение",
+   "en": "A/C High Side Temperature Sensor Low Voltage",
+   "fam": "",
+   "node": "ru:датчик температуры высокой стороны кондиционера"
+  },
+  {
+   "code": "P1535",
+   "brand": "gm",
+   "ru": "Датчик температуры высокой стороны кондиционера: цепь",
+   "en": "A/C High Side Temperature Sensor Circuit",
+   "fam": "",
+   "node": "ru:датчик температуры высокой стороны кондиционера"
+  },
+  {
+   "code": "P1536",
+   "brand": "gm",
+   "ru": "Кондиционер отключён из-за перегрева ОЖ",
+   "en": "A/C System ECT Overtemperature",
+   "fam": "",
+   "node": "a c system ect overtemperature"
+  },
+  {
+   "code": "P1537",
+   "brand": "gm",
+   "ru": "Цепь запроса кондиционера: низкое напряжение",
+   "en": "A/C Request Circuit Low Voltage",
+   "fam": "",
+   "node": "a c request"
+  },
+  {
+   "code": "P1538",
+   "brand": "gm",
+   "ru": "Цепь запроса кондиционера: высокое напряжение",
+   "en": "A/C Request Circuit High Voltage",
+   "fam": "",
+   "node": "a c request"
+  },
+  {
+   "code": "P1539",
+   "brand": "gm",
+   "ru": "Обратная связь муфты кондиционера: высокое напряжение",
+   "en": "Air Conditioning (A/C) Clutch Feedback Circuit High Voltage",
+   "fam": "",
+   "node": "air conditioning clutch feedback"
+  },
+  {
+   "code": "P1546",
+   "brand": "gm",
+   "ru": "Обратная связь муфты кондиционера: низкое напряжение",
+   "en": "Air Conditioning (A/C) Clutch Feedback Circuit Low Voltage",
+   "fam": "",
+   "node": "air conditioning clutch feedback"
+  },
+  {
+   "code": "P1540",
+   "brand": "gm",
+   "ru": "Кондиционер: высокое давление",
+   "en": "A/C System High Pressure",
+   "fam": "",
+   "node": "a c system"
+  },
+  {
+   "code": "P1542",
+   "brand": "gm",
+   "ru": "Кондиционер: высокое давление и температура",
+   "en": "A/C System High Pressure High Temperature",
+   "fam": "",
+   "node": "a c system"
+  },
+  {
+   "code": "P1543",
+   "brand": "gm",
+   "ru": "Кондиционер: работа",
+   "en": "A/C System Performance",
+   "fam": "",
+   "node": "a c system"
+  },
+  {
+   "code": "P1547",
+   "brand": "gm",
+   "ru": "Кондиционер: эффективность снижена",
+   "en": "A/C System Performance Degraded",
+   "fam": "",
+   "node": "a c system"
+  },
+  {
+   "code": "P1541",
+   "brand": "gm",
+   "ru": "Кондиционер: перегрев на высокой стороне",
+   "en": "A/C High Side Over Temperature",
+   "fam": "",
+   "node": "ru:кондиционер"
+  },
+  {
+   "code": "P1544",
+   "brand": "gm",
+   "ru": "Кондиционер: хладагента очень мало",
+   "en": "A/C Refrigerant Condition Very Low",
+   "fam": "",
+   "node": "a c refrigerant condition very"
+  },
+  {
+   "code": "P1545",
+   "brand": "gm",
+   "ru": "Реле муфты кондиционера: цепь управления",
+   "en": "A/C Clutch Relay Control Circuit",
+   "fam": "",
+   "node": "a c clutch relay"
+  },
+  {
+   "code": "P1548",
+   "brand": "gm",
+   "ru": "Рециркуляция кондиционера: цепь",
+   "en": "A/C Recirculation Circuit",
+   "fam": "",
+   "node": "a c recirculation"
+  },
+  {
+   "code": "P1554",
+   "brand": "gm",
+   "ru": "Цепь «круиз включён»: высокое напряжение",
+   "en": "Cruise Engaged Circuit High Voltage",
+   "fam": "",
+   "node": "cruise engaged"
+  },
+  {
+   "code": "P1555",
+   "brand": "gm",
+   "ru": "Выход электронного регулируемого дросселя (EVO)",
+   "en": "Electronic Variable Orifice Output",
+   "fam": "",
+   "node": "electronic variable orifice"
+  },
+  {
+   "code": "P1558",
+   "brand": "gm",
+   "ru": "Сервопривод круиз-контроля: низкий сигнал",
+   "en": "Cruise Control Servo Indicates Low",
+   "fam": "",
+   "node": "cruise control servo indicates"
+  },
+  {
+   "code": "P1559",
+   "brand": "gm",
+   "ru": "Круиз-контроль: режим управления питанием",
+   "en": "Cruise Control Power Management Mode",
+   "fam": "",
+   "node": "cruise control power management mode"
+  },
+  {
+   "code": "P1560",
+   "brand": "gm",
+   "ru": "Круиз-контроль: коробка не в режиме D",
+   "en": "Cruise Control System Transaxle Not In Drive",
+   "fam": "",
+   "node": "cruise control system transaxle not in drive"
+  },
+  {
+   "code": "P1561",
+   "brand": "gm",
+   "ru": "Клапан сброса вакуума круиз-контроля",
+   "en": "Cruise Vent Solenoid",
+   "fam": "",
+   "node": "cruise vent"
+  },
+  {
+   "code": "P1562",
+   "brand": "gm",
+   "ru": "Вакуумный клапан круиз-контроля",
+   "en": "Cruise Vacuum Solenoid",
+   "fam": "",
+   "node": "cruise vacuum"
+  },
+  {
+   "code": "P1563",
+   "brand": "gm",
+   "ru": "Круиз-контроль: слишком большая разница скорости и уставки",
+   "en": "Cruise Vehicle Speed Set Speed Difference Too High",
+   "fam": "",
+   "node": "cruise vehicle speed set speed difference too"
+  }
+ ]
+}

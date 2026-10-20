@@ -1,0 +1,377 @@
+{
+ "name": "brand-vag_068",
+ "series": "brand",
+ "brand": "vag",
+ "nodes": [
+  "fuel consumption",
+  "fuel injector",
+  "fuel level too",
+  "injection start control deviation",
+  "injector",
+  "intake valves for cylinder shut off",
+  "needle lift",
+  "start of injection"
+ ],
+ "codes": [
+  {
+   "code": "P1201",
+   "brand": "vag",
+   "ru": "Форсунка цилиндра 1: электрическая неисправность цепи",
+   "en": "Cylinder 1 Fuel Injector Circuit Electrical Malfunction",
+   "fam": "",
+   "node": "fuel injector"
+  },
+  {
+   "code": "P1202",
+   "brand": "vag",
+   "ru": "Форсунка цилиндра 2: электрическая неисправность цепи",
+   "en": "Cylinder 2 Fuel Injector Circuit Electrical Malfunction",
+   "fam": "",
+   "node": "fuel injector"
+  },
+  {
+   "code": "P1203",
+   "brand": "vag",
+   "ru": "Форсунка цилиндра 3: электрическая неисправность цепи",
+   "en": "Cylinder 3 Fuel Injector Circuit Electrical Malfunction",
+   "fam": "",
+   "node": "fuel injector"
+  },
+  {
+   "code": "P1204",
+   "brand": "vag",
+   "ru": "Форсунка цилиндра 4: электрическая неисправность цепи",
+   "en": "Cylinder 4 Fuel Injector Circuit Electrical Malfunction",
+   "fam": "",
+   "node": "fuel injector"
+  },
+  {
+   "code": "P1205",
+   "brand": "vag",
+   "ru": "Форсунка цилиндра 5: электрическая неисправность цепи",
+   "en": "Cylinder 5 Fuel Injector Circuit Electrical Malfunction",
+   "fam": "",
+   "node": "fuel injector"
+  },
+  {
+   "code": "P1206",
+   "brand": "vag",
+   "ru": "Форсунка цилиндра 6: электрическая неисправность цепи",
+   "en": "Cylinder 6 Fuel Injector Circuit Electrical Malfunction",
+   "fam": "",
+   "node": "fuel injector"
+  },
+  {
+   "code": "P1207",
+   "brand": "vag",
+   "ru": "Форсунка цилиндра 7: электрическая неисправность цепи",
+   "en": "Cylinder 7 Fuel Injector Circuit Electrical Malfunction",
+   "fam": "",
+   "node": "fuel injector"
+  },
+  {
+   "code": "P1208",
+   "brand": "vag",
+   "ru": "Форсунка цилиндра 8: электрическая неисправность цепи",
+   "en": "Cylinder 8 Fuel Injector Circuit Electrical Malfunction",
+   "fam": "",
+   "node": "fuel injector"
+  },
+  {
+   "code": "P1213",
+   "brand": "vag",
+   "ru": "Форсунка цилиндра 1: замыкание на плюс",
+   "en": "Cylinder 1 Fuel Injector Circuit Short To B+",
+   "fam": "",
+   "node": "fuel injector"
+  },
+  {
+   "code": "P1214",
+   "brand": "vag",
+   "ru": "Форсунка цилиндра 2: замыкание на плюс",
+   "en": "Cylinder 2 Fuel Injector Circuit Short To B+",
+   "fam": "",
+   "node": "fuel injector"
+  },
+  {
+   "code": "P1215",
+   "brand": "vag",
+   "ru": "Форсунка цилиндра 3: замыкание на плюс",
+   "en": "Cylinder 3 Fuel Injector Circuit Short To B+",
+   "fam": "",
+   "node": "fuel injector"
+  },
+  {
+   "code": "P1216",
+   "brand": "vag",
+   "ru": "Форсунка цилиндра 4: замыкание на плюс",
+   "en": "Cylinder 4 Fuel Injector Circuit Short To B+",
+   "fam": "",
+   "node": "fuel injector"
+  },
+  {
+   "code": "P1217",
+   "brand": "vag",
+   "ru": "Форсунка цилиндра 5: замыкание на плюс",
+   "en": "Cylinder 5 Fuel Injector Circuit Short To B+",
+   "fam": "",
+   "node": "fuel injector"
+  },
+  {
+   "code": "P1218",
+   "brand": "vag",
+   "ru": "Форсунка цилиндра 6: замыкание на плюс",
+   "en": "Cylinder 6 Fuel Injector Circuit Short To B+",
+   "fam": "",
+   "node": "fuel injector"
+  },
+  {
+   "code": "P1219",
+   "brand": "vag",
+   "ru": "Форсунка цилиндра 7: замыкание на плюс",
+   "en": "Cylinder 7 Fuel Injector Circuit Short To B+",
+   "fam": "",
+   "node": "fuel injector"
+  },
+  {
+   "code": "P1220",
+   "brand": "vag",
+   "ru": "Форсунка цилиндра 8: замыкание на плюс",
+   "en": "Cylinder 8 Fuel Injector Circuit Short To B+",
+   "fam": "",
+   "node": "fuel injector"
+  },
+  {
+   "code": "P1209",
+   "brand": "vag",
+   "ru": "Клапаны отключения цилиндров на впуске: замыкание на массу",
+   "en": "Intake Valves For Cylinder Shut-Off Short Circuit To Ground",
+   "fam": "",
+   "node": "intake valves for cylinder shut off"
+  },
+  {
+   "code": "P1210",
+   "brand": "vag",
+   "ru": "Клапаны отключения цилиндров на впуске: замыкание на плюс",
+   "en": "Intake Valves For Cylinder Shut-Off Short To B+",
+   "fam": "",
+   "node": "intake valves for cylinder shut off"
+  },
+  {
+   "code": "P1211",
+   "brand": "vag",
+   "ru": "Клапаны отключения цилиндров на впуске: обрыв",
+   "en": "Intake Valves For Cylinder Shut-Off Open Circuit",
+   "fam": "",
+   "node": "intake valves for cylinder shut off"
+  },
+  {
+   "code": "P1225",
+   "brand": "vag",
+   "ru": "Форсунка цилиндра 1: замыкание на массу",
+   "en": "Cylinder 1 Injector Circuit Short To Ground",
+   "fam": "",
+   "node": "injector"
+  },
+  {
+   "code": "P1226",
+   "brand": "vag",
+   "ru": "Форсунка цилиндра 2: замыкание на массу",
+   "en": "Cylinder 2 Injector Circuit Short To Ground",
+   "fam": "",
+   "node": "injector"
+  },
+  {
+   "code": "P1227",
+   "brand": "vag",
+   "ru": "Форсунка цилиндра 3: замыкание на массу",
+   "en": "Cylinder 3 Injector Circuit Short To Ground",
+   "fam": "",
+   "node": "injector"
+  },
+  {
+   "code": "P1228",
+   "brand": "vag",
+   "ru": "Форсунка цилиндра 4: замыкание на массу",
+   "en": "Cylinder 4 Injector Circuit Short To Ground",
+   "fam": "",
+   "node": "injector"
+  },
+  {
+   "code": "P1229",
+   "brand": "vag",
+   "ru": "Форсунка цилиндра 5: замыкание на массу",
+   "en": "Cylinder 5 Injector Circuit Short To Ground",
+   "fam": "",
+   "node": "injector"
+  },
+  {
+   "code": "P1230",
+   "brand": "vag",
+   "ru": "Форсунка цилиндра 6: замыкание на массу",
+   "en": "Cylinder 6 Injector Circuit Short To Ground",
+   "fam": "",
+   "node": "injector"
+  },
+  {
+   "code": "P1231",
+   "brand": "vag",
+   "ru": "Форсунка цилиндра 7: замыкание на массу",
+   "en": "Cylinder 7 Injector Circuit Short To Ground",
+   "fam": "",
+   "node": "injector"
+  },
+  {
+   "code": "P1232",
+   "brand": "vag",
+   "ru": "Форсунка цилиндра 8: замыкание на массу",
+   "en": "Cylinder 8 Injector Circuit Short To Ground",
+   "fam": "",
+   "node": "injector"
+  },
+  {
+   "code": "P1237",
+   "brand": "vag",
+   "ru": "Форсунка цилиндра 1: обрыв цепи",
+   "en": "Cylinder 1 Injector Circuit Open Circuit",
+   "fam": "",
+   "node": "injector"
+  },
+  {
+   "code": "P1238",
+   "brand": "vag",
+   "ru": "Форсунка цилиндра 2: обрыв цепи",
+   "en": "Cylinder 2 Injector Circuit Open Circuit",
+   "fam": "",
+   "node": "injector"
+  },
+  {
+   "code": "P1239",
+   "brand": "vag",
+   "ru": "Форсунка цилиндра 3: обрыв цепи",
+   "en": "Cylinder 3 Injector Circuit Open Circuit",
+   "fam": "",
+   "node": "injector"
+  },
+  {
+   "code": "P1240",
+   "brand": "vag",
+   "ru": "Форсунка цилиндра 4: обрыв цепи",
+   "en": "Cylinder 4 Injector Circuit Open Circuit",
+   "fam": "",
+   "node": "injector"
+  },
+  {
+   "code": "P1241",
+   "brand": "vag",
+   "ru": "Форсунка цилиндра 5: обрыв цепи",
+   "en": "Cylinder 5 Injector Circuit Open Circuit",
+   "fam": "",
+   "node": "injector"
+  },
+  {
+   "code": "P1242",
+   "brand": "vag",
+   "ru": "Форсунка цилиндра 6: обрыв цепи",
+   "en": "Cylinder 6 Injector Circuit Open Circuit",
+   "fam": "",
+   "node": "injector"
+  },
+  {
+   "code": "P1243",
+   "brand": "vag",
+   "ru": "Форсунка цилиндра 7: обрыв цепи",
+   "en": "Cylinder 7 Injector Circuit Open Circuit",
+   "fam": "",
+   "node": "injector"
+  },
+  {
+   "code": "P1244",
+   "brand": "vag",
+   "ru": "Форсунка цилиндра 8: обрыв цепи",
+   "en": "Cylinder 8 Injector Circuit Open Circuit",
+   "fam": "",
+   "node": "injector"
+  },
+  {
+   "code": "P1245",
+   "brand": "vag",
+   "ru": "Датчик подъёма иглы: замыкание на массу",
+   "en": "Needle Lift Sensor Circuit Short To Ground",
+   "fam": "",
+   "node": "needle lift"
+  },
+  {
+   "code": "P1246",
+   "brand": "vag",
+   "ru": "Датчик подъёма иглы: выход за диапазон",
+   "en": "Needle Lift Sensor Circuit Range Performance",
+   "fam": "",
+   "node": "needle lift"
+  },
+  {
+   "code": "P1247",
+   "brand": "vag",
+   "ru": "Датчик подъёма иглы: обрыв или замыкание на плюс",
+   "en": "Needle Lift Sensor Circuit Open/Short To B+",
+   "fam": "",
+   "node": "needle lift"
+  },
+  {
+   "code": "P1248",
+   "brand": "vag",
+   "ru": "Регулирование начала впрыска: отклонение",
+   "en": "Injection Start Control Deviation",
+   "fam": "",
+   "node": "injection start control deviation"
+  },
+  {
+   "code": "P1249",
+   "brand": "vag",
+   "ru": "Сигнал расхода топлива: электрическая неисправность цепи",
+   "en": "Fuel Consumption Signal Electrical Fault In Circuit",
+   "fam": "",
+   "node": "fuel consumption"
+  },
+  {
+   "code": "P1253",
+   "brand": "vag",
+   "ru": "Сигнал расхода топлива: замыкание на массу",
+   "en": "Fuel Consumption Signal Short To Ground",
+   "fam": "",
+   "node": "fuel consumption"
+  },
+  {
+   "code": "P1254",
+   "brand": "vag",
+   "ru": "Сигнал расхода топлива: замыкание на плюс",
+   "en": "Fuel Consumption Signal Short To B+",
+   "fam": "",
+   "node": "fuel consumption"
+  },
+  {
+   "code": "P1250",
+   "brand": "vag",
+   "ru": "Слишком мало топлива в баке",
+   "en": "Fuel Level Too Low",
+   "fam": "",
+   "node": "fuel level too"
+  },
+  {
+   "code": "P1251",
+   "brand": "vag",
+   "ru": "Клапан начала впрыска: замыкание на плюс",
+   "en": "Start Of Injection Solenoid Circuit Short To B+",
+   "fam": "",
+   "node": "start of injection"
+  },
+  {
+   "code": "P1252",
+   "brand": "vag",
+   "ru": "Клапан начала впрыска: обрыв или замыкание на массу",
+   "en": "Start Of Injection Solenoid Circuit Open/Short To Ground",
+   "fam": "",
+   "node": "start of injection"
+  }
+ ]
+}

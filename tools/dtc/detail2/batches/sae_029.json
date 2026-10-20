@@ -1,0 +1,358 @@
+{
+ "name": "sae_029",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "engine coolant temperature fuel temperature correlation",
+  "fam:fuel_high",
+  "fam:fuel_low",
+  "fuel cooler pump",
+  "intake air temperature ambient air temperature correlation"
+ ],
+ "codes": [
+  {
+   "code": "P0087",
+   "brand": "",
+   "ru": "Давление топлива в рампе слишком низкое",
+   "en": "",
+   "fam": "fuel_low",
+   "node": "fam:fuel_low"
+  },
+  {
+   "code": "P0089",
+   "brand": "",
+   "ru": "Регулятор давления топлива 1: не отрабатывает",
+   "en": "",
+   "fam": "fuel_low",
+   "node": "fam:fuel_low"
+  },
+  {
+   "code": "P008A",
+   "brand": "",
+   "ru": "Давление в контуре низкого давления топлива слишком низкое",
+   "en": "",
+   "fam": "fuel_low",
+   "node": "fam:fuel_low"
+  },
+  {
+   "code": "P0090",
+   "brand": "",
+   "ru": "Регулятор давления топлива 1: цепь",
+   "en": "",
+   "fam": "fuel_low",
+   "node": "fam:fuel_low"
+  },
+  {
+   "code": "P0091",
+   "brand": "",
+   "ru": "Регулятор давления топлива 1: низкий уровень",
+   "en": "",
+   "fam": "fuel_low",
+   "node": "fam:fuel_low"
+  },
+  {
+   "code": "P0092",
+   "brand": "",
+   "ru": "Регулятор давления топлива 1: высокий уровень",
+   "en": "",
+   "fam": "fuel_low",
+   "node": "fam:fuel_low"
+  },
+  {
+   "code": "P0093",
+   "brand": "",
+   "ru": "Утечка в топливной системе: большая",
+   "en": "",
+   "fam": "fuel_low",
+   "node": "fam:fuel_low"
+  },
+  {
+   "code": "P0094",
+   "brand": "",
+   "ru": "Утечка в топливной системе: малая",
+   "en": "",
+   "fam": "fuel_low",
+   "node": "fam:fuel_low"
+  },
+  {
+   "code": "P0148",
+   "brand": "",
+   "ru": "Ошибка подачи топлива",
+   "en": "",
+   "fam": "fuel_low",
+   "node": "fam:fuel_low"
+  },
+  {
+   "code": "P0149",
+   "brand": "",
+   "ru": "Ошибка момента впрыска",
+   "en": "",
+   "fam": "fuel_low",
+   "node": "fam:fuel_low"
+  },
+  {
+   "code": "P0216",
+   "brand": "",
+   "ru": "Управление моментом впрыска: цепь",
+   "en": "",
+   "fam": "fuel_low",
+   "node": "fam:fuel_low"
+  },
+  {
+   "code": "P0251",
+   "brand": "",
+   "ru": "Дозирование топлива ТНВД A (дизель): цепь",
+   "en": "",
+   "fam": "fuel_low",
+   "node": "fam:fuel_low"
+  },
+  {
+   "code": "P0252",
+   "brand": "",
+   "ru": "Дозирование топлива ТНВД A (дизель): не отрабатывает команду",
+   "en": "",
+   "fam": "fuel_low",
+   "node": "fam:fuel_low"
+  },
+  {
+   "code": "P0253",
+   "brand": "",
+   "ru": "Дозирование топлива ТНВД A (дизель): низкий уровень в цепи",
+   "en": "",
+   "fam": "fuel_low",
+   "node": "fam:fuel_low"
+  },
+  {
+   "code": "P0254",
+   "brand": "",
+   "ru": "Дозирование топлива ТНВД A (дизель): высокий уровень в цепи",
+   "en": "",
+   "fam": "fuel_low",
+   "node": "fam:fuel_low"
+  },
+  {
+   "code": "P0255",
+   "brand": "",
+   "ru": "Дозирование топлива ТНВД A (дизель): прерывистая цепь",
+   "en": "",
+   "fam": "fuel_low",
+   "node": "fam:fuel_low"
+  },
+  {
+   "code": "P0256",
+   "brand": "",
+   "ru": "Дозирование топлива ТНВД B (дизель): цепь",
+   "en": "",
+   "fam": "fuel_low",
+   "node": "fam:fuel_low"
+  },
+  {
+   "code": "P0257",
+   "brand": "",
+   "ru": "Дозирование топлива ТНВД B (дизель): не отрабатывает команду",
+   "en": "",
+   "fam": "fuel_low",
+   "node": "fam:fuel_low"
+  },
+  {
+   "code": "P0258",
+   "brand": "",
+   "ru": "Дозирование топлива ТНВД B (дизель): низкий уровень в цепи",
+   "en": "",
+   "fam": "fuel_low",
+   "node": "fam:fuel_low"
+  },
+  {
+   "code": "P0259",
+   "brand": "",
+   "ru": "Дозирование топлива ТНВД B (дизель): высокий уровень в цепи",
+   "en": "",
+   "fam": "fuel_low",
+   "node": "fam:fuel_low"
+  },
+  {
+   "code": "P0260",
+   "brand": "",
+   "ru": "Дозирование топлива ТНВД B (дизель): прерывистая цепь",
+   "en": "",
+   "fam": "fuel_low",
+   "node": "fam:fuel_low"
+  },
+  {
+   "code": "P2269",
+   "brand": "",
+   "ru": "Обнаружена вода в топливе",
+   "en": "",
+   "fam": "fuel_low",
+   "node": "fam:fuel_low"
+  },
+  {
+   "code": "P2290",
+   "brand": "",
+   "ru": "Давление управления форсунками слишком низкое",
+   "en": "",
+   "fam": "fuel_low",
+   "node": "fam:fuel_low"
+  },
+  {
+   "code": "P2291",
+   "brand": "",
+   "ru": "Давление управления форсунками слишком низкое при прокрутке",
+   "en": "",
+   "fam": "fuel_low",
+   "node": "fam:fuel_low"
+  },
+  {
+   "code": "P2292",
+   "brand": "",
+   "ru": "Давление управления форсунками нестабильно",
+   "en": "",
+   "fam": "fuel_low",
+   "node": "fam:fuel_low"
+  },
+  {
+   "code": "P2293",
+   "brand": "",
+   "ru": "Регулятор давления топлива 2: не отрабатывает",
+   "en": "",
+   "fam": "fuel_low",
+   "node": "fam:fuel_low"
+  },
+  {
+   "code": "P2294",
+   "brand": "",
+   "ru": "Регулятор давления топлива 2: цепь / обрыв",
+   "en": "",
+   "fam": "fuel_low",
+   "node": "fam:fuel_low"
+  },
+  {
+   "code": "P2295",
+   "brand": "",
+   "ru": "Регулятор давления топлива 2: низкий уровень",
+   "en": "",
+   "fam": "fuel_low",
+   "node": "fam:fuel_low"
+  },
+  {
+   "code": "P2296",
+   "brand": "",
+   "ru": "Регулятор давления топлива 2: высокий уровень",
+   "en": "",
+   "fam": "fuel_low",
+   "node": "fam:fuel_low"
+  },
+  {
+   "code": "P2623",
+   "brand": "",
+   "ru": "Регулятор давления управления форсунками: цепь / обрыв",
+   "en": "",
+   "fam": "fuel_low",
+   "node": "fam:fuel_low"
+  },
+  {
+   "code": "P2624",
+   "brand": "",
+   "ru": "Регулятор давления управления форсунками: низкий уровень",
+   "en": "",
+   "fam": "fuel_low",
+   "node": "fam:fuel_low"
+  },
+  {
+   "code": "P2625",
+   "brand": "",
+   "ru": "Регулятор давления управления форсунками: высокий уровень",
+   "en": "",
+   "fam": "fuel_low",
+   "node": "fam:fuel_low"
+  },
+  {
+   "code": "P2635",
+   "brand": "",
+   "ru": "Топливный насос A: низкая производительность",
+   "en": "",
+   "fam": "fuel_low",
+   "node": "fam:fuel_low"
+  },
+  {
+   "code": "P2636",
+   "brand": "",
+   "ru": "Топливный насос B: низкая производительность",
+   "en": "",
+   "fam": "fuel_low",
+   "node": "fam:fuel_low"
+  },
+  {
+   "code": "P0088",
+   "brand": "",
+   "ru": "Давление топлива в рампе слишком высокое",
+   "en": "",
+   "fam": "fuel_high",
+   "node": "fam:fuel_high"
+  },
+  {
+   "code": "P008B",
+   "brand": "",
+   "ru": "Давление в контуре низкого давления топлива слишком высокое",
+   "en": "",
+   "fam": "fuel_high",
+   "node": "fam:fuel_high"
+  },
+  {
+   "code": "P2288",
+   "brand": "",
+   "ru": "Давление управления форсунками слишком высокое",
+   "en": "",
+   "fam": "fuel_high",
+   "node": "fam:fuel_high"
+  },
+  {
+   "code": "P2289",
+   "brand": "",
+   "ru": "Давление управления форсунками слишком высокое при выключенном двигателе",
+   "en": "",
+   "fam": "fuel_high",
+   "node": "fam:fuel_high"
+  },
+  {
+   "code": "P008C",
+   "brand": "",
+   "ru": "Насос охладителя топлива: обрыв цепи управления",
+   "en": "Fuel Cooler Pump Control Circuit/Open",
+   "fam": "",
+   "node": "fuel cooler pump"
+  },
+  {
+   "code": "P008D",
+   "brand": "",
+   "ru": "Насос охладителя топлива: низкий уровень в цепи управления",
+   "en": "Fuel Cooler Pump Control Circuit Low",
+   "fam": "",
+   "node": "fuel cooler pump"
+  },
+  {
+   "code": "P008E",
+   "brand": "",
+   "ru": "Насос охладителя топлива: высокий уровень в цепи управления",
+   "en": "Fuel Cooler Pump Control Circuit High",
+   "fam": "",
+   "node": "fuel cooler pump"
+  },
+  {
+   "code": "P008F",
+   "brand": "",
+   "ru": "Рассогласование температуры охлаждающей жидкости и топлива",
+   "en": "Engine Coolant Temperature/Fuel Temperature Correlation",
+   "fam": "",
+   "node": "engine coolant temperature fuel temperature correlation"
+  },
+  {
+   "code": "P009A",
+   "brand": "",
+   "ru": "Рассогласование температуры впускного и наружного воздуха",
+   "en": "Intake Air Temperature/Ambient Air Temperature Correlation",
+   "fam": "",
+   "node": "intake air temperature ambient air temperature correlation"
+  }
+ ]
+}

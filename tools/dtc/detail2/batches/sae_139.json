@@ -1,0 +1,319 @@
+{
+ "name": "sae_139",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "air flow restriction air leak between air filter and maf",
+  "barometric pressure sensor c",
+  "fuel pressure regulator a exceeded control limits pressure too",
+  "fuel pressure regulator a exceeded learning limits too",
+  "fuel pressure regulator a forced engine shutdown",
+  "fuel pressure regulator b exceeded control limits pressure too",
+  "fuel pressure regulator b exceeded learning limits too",
+  "fuel pressure regulator b forced engine shutdown",
+  "nox sensor",
+  "particulate filter deteriorated missing substrate",
+  "turbocharger boost control a",
+  "turbocharger boost control b",
+  "turbocharger supercharger a boost pressure too",
+  "water in fuel lamp"
+ ],
+ "codes": [
+  {
+   "code": "P225C",
+   "brand": "",
+   "ru": "Датчик NOx: сигнал смещён/застыл: высокий уровень (банк 1, датчик 1)",
+   "en": "NOx Sensor Performance - Signal Biased/Stuck High Bank 1 Sensor 1",
+   "fam": "",
+   "node": "nox sensor"
+  },
+  {
+   "code": "P225D",
+   "brand": "",
+   "ru": "Датчик NOx: сигнал смещён/застыл: низкий уровень (банк 1, датчик 1)",
+   "en": "NOx Sensor Performance - Signal Biased/Stuck Low Bank 1 Sensor 1",
+   "fam": "",
+   "node": "nox sensor"
+  },
+  {
+   "code": "P225E",
+   "brand": "",
+   "ru": "Датчик NOx: сигнал смещён/застыл: высокий уровень (банк 1, датчик 2)",
+   "en": "NOx Sensor Performance - Signal Biased/Stuck High Bank 1 Sensor 2",
+   "fam": "",
+   "node": "nox sensor"
+  },
+  {
+   "code": "P225F",
+   "brand": "",
+   "ru": "Датчик NOx: сигнал смещён/застыл: низкий уровень (банк 1, датчик 2)",
+   "en": "NOx Sensor Performance - Signal Biased/Stuck Low Bank 1 Sensor 2",
+   "fam": "",
+   "node": "nox sensor"
+  },
+  {
+   "code": "P22F9",
+   "brand": "",
+   "ru": "Датчик NOx: медленный отклик «низко → высоко» (банк 1, датчик 1)",
+   "en": "NOx Sensor Performance - Slow Response Low to High Bank 1 Sensor 1",
+   "fam": "",
+   "node": "nox sensor"
+  },
+  {
+   "code": "P22FA",
+   "brand": "",
+   "ru": "Датчик NOx: медленный отклик «высоко → низко» (банк 1, датчик 1)",
+   "en": "NOx Sensor Performance - Slow Response High to Low Bank 1 Sensor 1",
+   "fam": "",
+   "node": "nox sensor"
+  },
+  {
+   "code": "P22FB",
+   "brand": "",
+   "ru": "Датчик NOx: чувствительный элемент (банк 1, датчик 1)",
+   "en": "NOx Sensor Performance - Sensing Element Bank 1 Sensor 1",
+   "fam": "",
+   "node": "nox sensor"
+  },
+  {
+   "code": "P22FC",
+   "brand": "",
+   "ru": "Датчик NOx: медленный отклик «низко → высоко» (банк 1, датчик 2)",
+   "en": "NOx Sensor Performance - Slow Response Low to High Bank 1 Sensor 2",
+   "fam": "",
+   "node": "nox sensor"
+  },
+  {
+   "code": "P22FD",
+   "brand": "",
+   "ru": "Датчик NOx: медленный отклик «высоко → низко» (банк 1, датчик 2)",
+   "en": "NOx Sensor Performance - Slow Response High to Low Bank 1 Sensor 2",
+   "fam": "",
+   "node": "nox sensor"
+  },
+  {
+   "code": "P22FE",
+   "brand": "",
+   "ru": "Датчик NOx: чувствительный элемент (банк 1, датчик 2)",
+   "en": "NOx Sensor Performance - Sensing Element Bank 1 Sensor 2",
+   "fam": "",
+   "node": "nox sensor"
+  },
+  {
+   "code": "P23BD",
+   "brand": "",
+   "ru": "Датчик NOx: сигнал смещён/застыл: высокий уровень (банк 1, датчик 3)",
+   "en": "NOx Sensor Performance - Signal Biased/Stuck High Bank 1 Sensor 3",
+   "fam": "",
+   "node": "nox sensor"
+  },
+  {
+   "code": "P23BE",
+   "brand": "",
+   "ru": "Датчик NOx: сигнал смещён/застыл: низкий уровень (банк 1, датчик 3)",
+   "en": "NOx Sensor Performance - Signal Biased/Stuck Low Bank 1 Sensor 3",
+   "fam": "",
+   "node": "nox sensor"
+  },
+  {
+   "code": "P23BF",
+   "brand": "",
+   "ru": "Датчик NOx: медленный отклик «низко → высоко» (банк 1, датчик 3)",
+   "en": "NOx Sensor Performance - Slow Response Low to High Bank 1 Sensor 3",
+   "fam": "",
+   "node": "nox sensor"
+  },
+  {
+   "code": "P23C0",
+   "brand": "",
+   "ru": "Датчик NOx: медленный отклик «высоко → низко» (банк 1, датчик 3)",
+   "en": "NOx Sensor Performance - Slow Response High to Low Bank 1 Sensor 3",
+   "fam": "",
+   "node": "nox sensor"
+  },
+  {
+   "code": "P23C1",
+   "brand": "",
+   "ru": "Датчик NOx: чувствительный элемент (банк 1, датчик 3)",
+   "en": "NOx Sensor Performance - Sensing Element Bank 1 Sensor 3",
+   "fam": "",
+   "node": "nox sensor"
+  },
+  {
+   "code": "P226A",
+   "brand": "",
+   "ru": "Лампа воды в топливе: цепь управления",
+   "en": "Water in Fuel Lamp Control Circuit",
+   "fam": "",
+   "node": "water in fuel lamp"
+  },
+  {
+   "code": "P226B",
+   "brand": "",
+   "ru": "Турбина/нагнетатель A: слишком высокое давление наддува (механика)",
+   "en": "Turbocharger/Supercharger A Boost Pressure Too High - Mechanical",
+   "fam": "",
+   "node": "turbocharger supercharger a boost pressure too"
+  },
+  {
+   "code": "P226C",
+   "brand": "",
+   "ru": "Регулятор наддува A: медленная реакция",
+   "en": "Turbocharger Boost Control A Slow Response",
+   "fam": "",
+   "node": "turbocharger boost control a"
+  },
+  {
+   "code": "P226D",
+   "brand": "",
+   "ru": "Сажевый фильтр разрушен / отсутствует наполнитель (банк 1)",
+   "en": "Particulate Filter Deteriorated/Missing Substrate Bank 1",
+   "fam": "",
+   "node": "particulate filter deteriorated missing substrate"
+  },
+  {
+   "code": "P226E",
+   "brand": "",
+   "ru": "Сажевый фильтр разрушен / отсутствует наполнитель (банк 2)",
+   "en": "Particulate Filter Deteriorated/Missing Substrate Bank 2",
+   "fam": "",
+   "node": "particulate filter deteriorated missing substrate"
+  },
+  {
+   "code": "P226F",
+   "brand": "",
+   "ru": "Регулятор наддува B: медленная реакция",
+   "en": "Turbocharger Boost Control B Slow Response",
+   "fam": "",
+   "node": "turbocharger boost control b"
+  },
+  {
+   "code": "P227A",
+   "brand": "",
+   "ru": "Датчик атмосферного давления C: цепь",
+   "en": "Barometric Pressure Sensor C Circuit",
+   "fam": "",
+   "node": "barometric pressure sensor c"
+  },
+  {
+   "code": "P227B",
+   "brand": "",
+   "ru": "Датчик атмосферного давления C: сигнал вне диапазона",
+   "en": "Barometric Pressure Sensor C Circuit Range/Performance",
+   "fam": "",
+   "node": "barometric pressure sensor c"
+  },
+  {
+   "code": "P227C",
+   "brand": "",
+   "ru": "Датчик атмосферного давления C: низкий уровень сигнала в цепи",
+   "en": "Barometric Pressure Sensor C Circuit Low",
+   "fam": "",
+   "node": "barometric pressure sensor c"
+  },
+  {
+   "code": "P227D",
+   "brand": "",
+   "ru": "Датчик атмосферного давления C: высокий уровень сигнала в цепи",
+   "en": "Barometric Pressure Sensor C Circuit High",
+   "fam": "",
+   "node": "barometric pressure sensor c"
+  },
+  {
+   "code": "P227E",
+   "brand": "",
+   "ru": "Датчик атмосферного давления C: прерывистый / нестабильный сигнал",
+   "en": "Barometric Pressure Sensor C Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "barometric pressure sensor c"
+  },
+  {
+   "code": "P227F",
+   "brand": "",
+   "ru": "Засорение или подсос воздуха между фильтром и ДМРВ (банк 2)",
+   "en": "Air Flow Restriction/Air Leak Between Air Filter and MAF Bank 2",
+   "fam": "",
+   "node": "air flow restriction air leak between air filter and maf"
+  },
+  {
+   "code": "P228A",
+   "brand": "",
+   "ru": "Регулятор давления топлива A — принудительная остановка двигателя",
+   "en": "Fuel Pressure Regulator A - Forced Engine Shutdown",
+   "fam": "",
+   "node": "fuel pressure regulator a forced engine shutdown"
+  },
+  {
+   "code": "P228B",
+   "brand": "",
+   "ru": "Регулятор давления топлива B — принудительная остановка двигателя",
+   "en": "Fuel Pressure Regulator B - Forced Engine Shutdown",
+   "fam": "",
+   "node": "fuel pressure regulator b forced engine shutdown"
+  },
+  {
+   "code": "P228C",
+   "brand": "",
+   "ru": "Регулятор давления топлива A вне пределов регулирования: давление слишком низкое",
+   "en": "Fuel Pressure Regulator A Exceeded Control Limits - Pressure Too Low",
+   "fam": "",
+   "node": "fuel pressure regulator a exceeded control limits pressure too"
+  },
+  {
+   "code": "P228D",
+   "brand": "",
+   "ru": "Регулятор давления топлива A вне пределов регулирования: давление слишком высокое",
+   "en": "Fuel Pressure Regulator A Exceeded Control Limits - Pressure Too High",
+   "fam": "",
+   "node": "fuel pressure regulator a exceeded control limits pressure too"
+  },
+  {
+   "code": "P228E",
+   "brand": "",
+   "ru": "Регулятор давления топлива A: адаптация ниже предела",
+   "en": "Fuel Pressure Regulator A Exceeded Learning Limits - Too Low",
+   "fam": "",
+   "node": "fuel pressure regulator a exceeded learning limits too"
+  },
+  {
+   "code": "P228F",
+   "brand": "",
+   "ru": "Регулятор давления топлива A: адаптация выше предела",
+   "en": "Fuel Pressure Regulator A Exceeded Learning Limits - Too High",
+   "fam": "",
+   "node": "fuel pressure regulator a exceeded learning limits too"
+  },
+  {
+   "code": "P229A",
+   "brand": "",
+   "ru": "Регулятор давления топлива B вне пределов регулирования: давление слишком низкое",
+   "en": "Fuel Pressure Regulator B Exceeded Control Limits - Pressure Too Low",
+   "fam": "",
+   "node": "fuel pressure regulator b exceeded control limits pressure too"
+  },
+  {
+   "code": "P229B",
+   "brand": "",
+   "ru": "Регулятор давления топлива B вне пределов регулирования: давление слишком высокое",
+   "en": "Fuel Pressure Regulator B Exceeded Control Limits - Pressure Too High",
+   "fam": "",
+   "node": "fuel pressure regulator b exceeded control limits pressure too"
+  },
+  {
+   "code": "P229C",
+   "brand": "",
+   "ru": "Регулятор давления топлива B: адаптация ниже предела",
+   "en": "Fuel Pressure Regulator B Exceeded Learning Limits - Too Low",
+   "fam": "",
+   "node": "fuel pressure regulator b exceeded learning limits too"
+  },
+  {
+   "code": "P229D",
+   "brand": "",
+   "ru": "Регулятор давления топлива B: адаптация выше предела",
+   "en": "Fuel Pressure Regulator B Exceeded Learning Limits - Too High",
+   "fam": "",
+   "node": "fuel pressure regulator b exceeded learning limits too"
+  }
+ ]
+}

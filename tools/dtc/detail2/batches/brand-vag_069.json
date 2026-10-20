@@ -1,0 +1,378 @@
+{
+ "name": "brand-vag_069",
+ "series": "brand",
+ "brand": "vag",
+ "nodes": [
+  "cmp sensor",
+  "crankshaft position engine speed sensor cross connected",
+  "engine coolant system valve",
+  "engine coolant temperature",
+  "engine torque adaptation at limit",
+  "engine torque monitoring 2 control limit exceeded",
+  "fam:thermostat",
+  "fam:turbo_under",
+  "fuel injection air control",
+  "ignition coil",
+  "knock control limit attained",
+  "misfire detected fuel level too",
+  "ru:датчик детонации 1",
+  "ru:датчик детонации 2",
+  "ru:датчик детонации 3",
+  "ru:датчик детонации 4",
+  "turbocharge bypass valve"
+ ],
+ "codes": [
+  {
+   "code": "P1255",
+   "brand": "vag",
+   "ru": "Датчик температуры ОЖ: замыкание на массу",
+   "en": "Engine Coolant Temperature Circuit Short To Ground",
+   "fam": "",
+   "node": "engine coolant temperature"
+  },
+  {
+   "code": "P1256",
+   "brand": "vag",
+   "ru": "Датчик температуры ОЖ: обрыв или замыкание на плюс",
+   "en": "Engine Coolant Temperature Circuit Open/Short To B+",
+   "fam": "",
+   "node": "engine coolant temperature"
+  },
+  {
+   "code": "P1620",
+   "brand": "vag",
+   "ru": "Сигнал температуры ОЖ: обрыв или замыкание на плюс",
+   "en": "Engine Coolant Temperature Signal Open Short To B+",
+   "fam": "",
+   "node": "engine coolant temperature"
+  },
+  {
+   "code": "P1621",
+   "brand": "vag",
+   "ru": "Сигнал температуры ОЖ: замыкание на массу",
+   "en": "Engine Coolant Temperature Signal Short To Ground",
+   "fam": "",
+   "node": "engine coolant temperature"
+  },
+  {
+   "code": "P1622",
+   "brand": "vag",
+   "ru": "Сигнал температуры ОЖ: выход за диапазон",
+   "en": "Engine Coolant Temperature Signal Range Performance",
+   "fam": "",
+   "node": "engine coolant temperature"
+  },
+  {
+   "code": "P1257",
+   "brand": "vag",
+   "ru": "Клапан системы охлаждения: обрыв",
+   "en": "Engine Coolant System Valve Open",
+   "fam": "",
+   "node": "engine coolant system valve"
+  },
+  {
+   "code": "P1258",
+   "brand": "vag",
+   "ru": "Клапан системы охлаждения: замыкание на плюс",
+   "en": "Engine Coolant System Valve Short To B+",
+   "fam": "",
+   "node": "engine coolant system valve"
+  },
+  {
+   "code": "P1259",
+   "brand": "vag",
+   "ru": "Клапан системы охлаждения: замыкание на массу",
+   "en": "Engine Coolant System Valve Short To Ground",
+   "fam": "",
+   "node": "engine coolant system valve"
+  },
+  {
+   "code": "P1280",
+   "brand": "vag",
+   "ru": "Клапан подачи воздуха к форсункам: слишком малый поток",
+   "en": "Fuel Injection Air Control Valve Circuit Flow Too Low",
+   "fam": "",
+   "node": "fuel injection air control"
+  },
+  {
+   "code": "P1283",
+   "brand": "vag",
+   "ru": "Клапан подачи воздуха к форсункам: электрическая неисправность",
+   "en": "Fuel Injection Air Control Valve Circuit Electrical Malfunction",
+   "fam": "",
+   "node": "fuel injection air control"
+  },
+  {
+   "code": "P1284",
+   "brand": "vag",
+   "ru": "Клапан подачи воздуха к форсункам: обрыв",
+   "en": "Fuel Injection Air Control Valve Circuit Open",
+   "fam": "",
+   "node": "fuel injection air control"
+  },
+  {
+   "code": "P1285",
+   "brand": "vag",
+   "ru": "Клапан подачи воздуха к форсункам: замыкание на массу",
+   "en": "Fuel Injection Air Control Valve Circuit Short To Ground",
+   "fam": "",
+   "node": "fuel injection air control"
+  },
+  {
+   "code": "P1286",
+   "brand": "vag",
+   "ru": "Клапан подачи воздуха к форсункам: замыкание на плюс",
+   "en": "Fuel Injection Air Control Valve Circuit Short To B+",
+   "fam": "",
+   "node": "fuel injection air control"
+  },
+  {
+   "code": "P1287",
+   "brand": "vag",
+   "ru": "Перепускной клапан турбины: обрыв",
+   "en": "Turbocharge Bypass Valve Open",
+   "fam": "",
+   "node": "turbocharge bypass valve"
+  },
+  {
+   "code": "P1288",
+   "brand": "vag",
+   "ru": "Перепускной клапан турбины: замыкание на плюс",
+   "en": "Turbocharge Bypass Valve Short To B+",
+   "fam": "",
+   "node": "turbocharge bypass valve"
+  },
+  {
+   "code": "P1289",
+   "brand": "vag",
+   "ru": "Перепускной клапан турбины: замыкание на массу",
+   "en": "Turbocharge Bypass Valve Short To Ground",
+   "fam": "",
+   "node": "turbocharge bypass valve"
+  },
+  {
+   "code": "P1296",
+   "brand": "vag",
+   "ru": "Система охлаждения: неисправность (термостат)",
+   "en": "",
+   "fam": "thermostat",
+   "node": "fam:thermostat"
+  },
+  {
+   "code": "P1297",
+   "brand": "vag",
+   "ru": "Падение давления между турбиной и дросселем",
+   "en": "",
+   "fam": "turbo_under",
+   "node": "fam:turbo_under"
+  },
+  {
+   "code": "P1556",
+   "brand": "vag",
+   "ru": "Регулирование наддува: отрицательное отклонение (недодув)",
+   "en": "",
+   "fam": "turbo_under",
+   "node": "fam:turbo_under"
+  },
+  {
+   "code": "P1300",
+   "brand": "vag",
+   "ru": "Пропуски воспламенения из-за нехватки топлива",
+   "en": "Misfire Detected Fuel Level Too Low",
+   "fam": "",
+   "node": "misfire detected fuel level too"
+  },
+  {
+   "code": "P1319",
+   "brand": "vag",
+   "ru": "Датчик детонации 1: замыкание на массу",
+   "en": "Knock Sensor 1 Circuit Short To Ground",
+   "fam": "",
+   "node": "ru:датчик детонации 1"
+  },
+  {
+   "code": "P1320",
+   "brand": "vag",
+   "ru": "Датчик детонации 2: замыкание на массу",
+   "en": "Knock Sensor 2 Circuit Short To Ground",
+   "fam": "",
+   "node": "ru:датчик детонации 2"
+  },
+  {
+   "code": "P1321",
+   "brand": "vag",
+   "ru": "Датчик детонации 3: низкий сигнал",
+   "en": "Knock Sensor 3 Circuit Low Input",
+   "fam": "",
+   "node": "ru:датчик детонации 3"
+  },
+  {
+   "code": "P1322",
+   "brand": "vag",
+   "ru": "Датчик детонации 3: высокий сигнал",
+   "en": "Knock Sensor 3 Circuit High Input",
+   "fam": "",
+   "node": "ru:датчик детонации 3"
+  },
+  {
+   "code": "P1323",
+   "brand": "vag",
+   "ru": "Датчик детонации 4: низкий сигнал",
+   "en": "Knock Sensor 4 Circuit Low Input",
+   "fam": "",
+   "node": "ru:датчик детонации 4"
+  },
+  {
+   "code": "P1324",
+   "brand": "vag",
+   "ru": "Датчик детонации 4: высокий сигнал",
+   "en": "Knock Sensor 4 Circuit High Input",
+   "fam": "",
+   "node": "ru:датчик детонации 4"
+  },
+  {
+   "code": "P1325",
+   "brand": "vag",
+   "ru": "Цилиндр 1: достигнут предел отката угла по детонации",
+   "en": "Cylinder 1 Knock Control Limit Attained",
+   "fam": "",
+   "node": "knock control limit attained"
+  },
+  {
+   "code": "P1326",
+   "brand": "vag",
+   "ru": "Цилиндр 2: достигнут предел отката угла по детонации",
+   "en": "Cylinder 2 Knock Control Limit Attained",
+   "fam": "",
+   "node": "knock control limit attained"
+  },
+  {
+   "code": "P1327",
+   "brand": "vag",
+   "ru": "Цилиндр 3: достигнут предел отката угла по детонации",
+   "en": "Cylinder 3 Knock Control Limit Attained",
+   "fam": "",
+   "node": "knock control limit attained"
+  },
+  {
+   "code": "P1328",
+   "brand": "vag",
+   "ru": "Цилиндр 4: достигнут предел отката угла по детонации",
+   "en": "Cylinder 4 Knock Control Limit Attained",
+   "fam": "",
+   "node": "knock control limit attained"
+  },
+  {
+   "code": "P1329",
+   "brand": "vag",
+   "ru": "Цилиндр 5: достигнут предел отката угла по детонации",
+   "en": "Cylinder 5 Knock Control Limit Attained",
+   "fam": "",
+   "node": "knock control limit attained"
+  },
+  {
+   "code": "P1330",
+   "brand": "vag",
+   "ru": "Цилиндр 6: достигнут предел отката угла по детонации",
+   "en": "Cylinder 6 Knock Control Limit Attained",
+   "fam": "",
+   "node": "knock control limit attained"
+  },
+  {
+   "code": "P1331",
+   "brand": "vag",
+   "ru": "Цилиндр 7: достигнут предел отката угла по детонации",
+   "en": "Cylinder 7 Knock Control Limit Attained",
+   "fam": "",
+   "node": "knock control limit attained"
+  },
+  {
+   "code": "P1332",
+   "brand": "vag",
+   "ru": "Цилиндр 8: достигнут предел отката угла по детонации",
+   "en": "Cylinder 8 Knock Control Limit Attained",
+   "fam": "",
+   "node": "knock control limit attained"
+  },
+  {
+   "code": "P1335",
+   "brand": "vag",
+   "ru": "Контроль момента двигателя 2: превышен предел",
+   "en": "Engine Torque Monitoring 2 Control Limit Exceeded",
+   "fam": "",
+   "node": "engine torque monitoring 2 control limit exceeded"
+  },
+  {
+   "code": "P1336",
+   "brand": "vag",
+   "ru": "Адаптация момента двигателя: достигнут предел",
+   "en": "Engine Torque Adaptation At Limit",
+   "fam": "",
+   "node": "engine torque adaptation at limit"
+  },
+  {
+   "code": "P1337",
+   "brand": "vag",
+   "ru": "Датчик распредвала (ряд 1): замыкание на массу",
+   "en": "CMP Sensor Bank 1 Short To Ground",
+   "fam": "",
+   "node": "cmp sensor"
+  },
+  {
+   "code": "P1338",
+   "brand": "vag",
+   "ru": "Датчик распредвала (ряд 1): обрыв или замыкание на плюс",
+   "en": "CMP Sensor Bank 1 Open Circuit Or Short To B+",
+   "fam": "",
+   "node": "cmp sensor"
+  },
+  {
+   "code": "P1391",
+   "brand": "vag",
+   "ru": "Датчик распредвала (ряд 2): замыкание на массу",
+   "en": "CMP Sensor Bank 2 Short To Ground",
+   "fam": "",
+   "node": "cmp sensor"
+  },
+  {
+   "code": "P1392",
+   "brand": "vag",
+   "ru": "Датчик распредвала (ряд 2): обрыв или замыкание на плюс",
+   "en": "CMP Sensor Bank 2 Open Circuit Short To B+",
+   "fam": "",
+   "node": "cmp sensor"
+  },
+  {
+   "code": "P1339",
+   "brand": "vag",
+   "ru": "Датчики коленвала и оборотов перепутаны",
+   "en": "Crankshaft Position Engine Speed Sensor Cross Connected",
+   "fam": "",
+   "node": "crankshaft position engine speed sensor cross connected"
+  },
+  {
+   "code": "P1341",
+   "brand": "vag",
+   "ru": "Выходной каскад катушки зажигания 1: замыкание на массу",
+   "en": "Ignition Coil Output Stage 1 Short To Ground",
+   "fam": "",
+   "node": "ignition coil"
+  },
+  {
+   "code": "P1343",
+   "brand": "vag",
+   "ru": "Выходной каскад катушки зажигания 2: замыкание на массу",
+   "en": "Ignition Coil Output Stage 2 Short To Ground",
+   "fam": "",
+   "node": "ignition coil"
+  },
+  {
+   "code": "P1345",
+   "brand": "vag",
+   "ru": "Выходной каскад катушки зажигания 3: замыкание на массу",
+   "en": "Ignition Coil Output Stage 3 Short To Ground",
+   "fam": "",
+   "node": "ignition coil"
+  }
+ ]
+}

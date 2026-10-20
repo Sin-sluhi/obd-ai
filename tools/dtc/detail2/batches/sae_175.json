@@ -1,0 +1,376 @@
+{
+ "name": "sae_175",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "battery charging system negative contactor b",
+  "battery charging system positive contactor b",
+  "charge air cooler coolant pump a control module overtemperature",
+  "exhaust aftertreatment system a leak",
+  "exhaust aftertreatment system b leak",
+  "fuel control system a too lean",
+  "fuel control system a too rich",
+  "fuel control system b too lean",
+  "hybrid ev battery coolant level",
+  "hybrid ev battery coolant level sensor",
+  "hybrid ev battery pack current sensor c",
+  "motor electronics coolant pump c",
+  "motor electronics coolant pump c control",
+  "motor electronics coolant temperature sensor b",
+  "motor electronics coolant temperature sensor c"
+ ],
+ "codes": [
+  {
+   "code": "P2BC3",
+   "brand": "",
+   "ru": "Перегрев блока насоса охлаждения интеркулера A",
+   "en": "Charge Air Cooler Coolant Pump A Control Module Overtemperature",
+   "fam": "",
+   "node": "charge air cooler coolant pump a control module overtemperature"
+  },
+  {
+   "code": "P2BC4",
+   "brand": "",
+   "ru": "Плюсовой контактор системы зарядки B: цепь",
+   "en": "Battery Charging System Positive Contactor B Circuit",
+   "fam": "",
+   "node": "battery charging system positive contactor b"
+  },
+  {
+   "code": "P2BC5",
+   "brand": "",
+   "ru": "Плюсовой контактор системы зарядки B: заклинил закрытым",
+   "en": "Battery Charging System Positive Contactor B Stuck Closed",
+   "fam": "",
+   "node": "battery charging system positive contactor b"
+  },
+  {
+   "code": "P2BC6",
+   "brand": "",
+   "ru": "Плюсовой контактор системы зарядки B: заклинил открытым",
+   "en": "Battery Charging System Positive Contactor B Stuck Open",
+   "fam": "",
+   "node": "battery charging system positive contactor b"
+  },
+  {
+   "code": "P2BC7",
+   "brand": "",
+   "ru": "Плюсовой контактор системы зарядки B: обрыв цепи управления",
+   "en": "Battery Charging System Positive Contactor B Control Circuit/Open",
+   "fam": "",
+   "node": "battery charging system positive contactor b"
+  },
+  {
+   "code": "P2BC8",
+   "brand": "",
+   "ru": "Плюсовой контактор системы зарядки B: цепь управления вне диапазона",
+   "en": "Battery Charging System Positive Contactor B Control Circuit Range/Performance",
+   "fam": "",
+   "node": "battery charging system positive contactor b"
+  },
+  {
+   "code": "P2BC9",
+   "brand": "",
+   "ru": "Плюсовой контактор системы зарядки B: низкий уровень в цепи управления",
+   "en": "Battery Charging System Positive Contactor B Control Circuit Low",
+   "fam": "",
+   "node": "battery charging system positive contactor b"
+  },
+  {
+   "code": "P2BCA",
+   "brand": "",
+   "ru": "Плюсовой контактор системы зарядки B: высокий уровень в цепи управления",
+   "en": "Battery Charging System Positive Contactor B Control Circuit High",
+   "fam": "",
+   "node": "battery charging system positive contactor b"
+  },
+  {
+   "code": "P2BCB",
+   "brand": "",
+   "ru": "Минусовой контактор системы зарядки B: цепь",
+   "en": "Battery Charging System Negative Contactor B Circuit",
+   "fam": "",
+   "node": "battery charging system negative contactor b"
+  },
+  {
+   "code": "P2BCC",
+   "brand": "",
+   "ru": "Минусовой контактор системы зарядки B: заклинил закрытым",
+   "en": "Battery Charging System Negative Contactor B Stuck Closed",
+   "fam": "",
+   "node": "battery charging system negative contactor b"
+  },
+  {
+   "code": "P2BCD",
+   "brand": "",
+   "ru": "Минусовой контактор системы зарядки B: заклинил открытым",
+   "en": "Battery Charging System Negative Contactor B Stuck Open",
+   "fam": "",
+   "node": "battery charging system negative contactor b"
+  },
+  {
+   "code": "P2BCE",
+   "brand": "",
+   "ru": "Минусовой контактор системы зарядки B: обрыв цепи управления",
+   "en": "Battery Charging System Negative Contactor B Control Circuit/Open",
+   "fam": "",
+   "node": "battery charging system negative contactor b"
+  },
+  {
+   "code": "P2BCF",
+   "brand": "",
+   "ru": "Минусовой контактор системы зарядки B: цепь управления вне диапазона",
+   "en": "Battery Charging System Negative Contactor B Control Circuit Range/Performance",
+   "fam": "",
+   "node": "battery charging system negative contactor b"
+  },
+  {
+   "code": "P2BD0",
+   "brand": "",
+   "ru": "Минусовой контактор системы зарядки B: низкий уровень в цепи управления",
+   "en": "Battery Charging System Negative Contactor B Control Circuit Low",
+   "fam": "",
+   "node": "battery charging system negative contactor b"
+  },
+  {
+   "code": "P2BD1",
+   "brand": "",
+   "ru": "Минусовой контактор системы зарядки B: высокий уровень в цепи управления",
+   "en": "Battery Charging System Negative Contactor B Control Circuit High",
+   "fam": "",
+   "node": "battery charging system negative contactor b"
+  },
+  {
+   "code": "P2BD2",
+   "brand": "",
+   "ru": "Утечка в системе нейтрализации выхлопа A",
+   "en": "Exhaust Aftertreatment System A Leak",
+   "fam": "",
+   "node": "exhaust aftertreatment system a leak"
+  },
+  {
+   "code": "P2BD3",
+   "brand": "",
+   "ru": "Утечка в системе нейтрализации выхлопа B",
+   "en": "Exhaust Aftertreatment System B Leak",
+   "fam": "",
+   "node": "exhaust aftertreatment system b leak"
+  },
+  {
+   "code": "P2BD4",
+   "brand": "",
+   "ru": "Насос охлаждения электроники электромотора C: обрыв цепи управления",
+   "en": "Motor Electronics Coolant Pump C Control Circuit/Open",
+   "fam": "",
+   "node": "motor electronics coolant pump c"
+  },
+  {
+   "code": "P2BD5",
+   "brand": "",
+   "ru": "Насос охлаждения электроники электромотора C: низкий уровень в цепи управления",
+   "en": "Motor Electronics Coolant Pump C Control Circuit Low",
+   "fam": "",
+   "node": "motor electronics coolant pump c"
+  },
+  {
+   "code": "P2BD6",
+   "brand": "",
+   "ru": "Насос охлаждения электроники электромотора C: высокий уровень в цепи управления",
+   "en": "Motor Electronics Coolant Pump C Control Circuit High",
+   "fam": "",
+   "node": "motor electronics coolant pump c"
+  },
+  {
+   "code": "P2D0A",
+   "brand": "",
+   "ru": "Насос охлаждения электроники электромотора C: заклинивание / остановка",
+   "en": "Motor Electronics Coolant Pump C Stuck/Stalled",
+   "fam": "",
+   "node": "motor electronics coolant pump c"
+  },
+  {
+   "code": "P2BD7",
+   "brand": "",
+   "ru": "Насос охлаждения электроники электромотора C: нарушено управление",
+   "en": "Motor Electronics Coolant Pump C Control Performance",
+   "fam": "",
+   "node": "motor electronics coolant pump c control"
+  },
+  {
+   "code": "P2BD8",
+   "brand": "",
+   "ru": "Датчик температуры охлаждения электроники электромотора B: цепь",
+   "en": "Motor Electronics Coolant Temperature Sensor B Circuit",
+   "fam": "",
+   "node": "motor electronics coolant temperature sensor b"
+  },
+  {
+   "code": "P2BD9",
+   "brand": "",
+   "ru": "Датчик температуры охлаждения электроники электромотора B: сигнал вне диапазона",
+   "en": "Motor Electronics Coolant Temperature Sensor B Circuit Range/Performance",
+   "fam": "",
+   "node": "motor electronics coolant temperature sensor b"
+  },
+  {
+   "code": "P2BDA",
+   "brand": "",
+   "ru": "Датчик температуры охлаждения электроники электромотора B: низкий уровень сигнала в цепи",
+   "en": "Motor Electronics Coolant Temperature Sensor B Circuit Low",
+   "fam": "",
+   "node": "motor electronics coolant temperature sensor b"
+  },
+  {
+   "code": "P2BDB",
+   "brand": "",
+   "ru": "Датчик температуры охлаждения электроники электромотора B: высокий уровень сигнала в цепи",
+   "en": "Motor Electronics Coolant Temperature Sensor B Circuit High",
+   "fam": "",
+   "node": "motor electronics coolant temperature sensor b"
+  },
+  {
+   "code": "P2BDC",
+   "brand": "",
+   "ru": "Датчик температуры охлаждения электроники электромотора C: цепь",
+   "en": "Motor Electronics Coolant Temperature Sensor C Circuit",
+   "fam": "",
+   "node": "motor electronics coolant temperature sensor c"
+  },
+  {
+   "code": "P2BDD",
+   "brand": "",
+   "ru": "Датчик температуры охлаждения электроники электромотора C: сигнал вне диапазона",
+   "en": "Motor Electronics Coolant Temperature Sensor C Circuit Range/Performance",
+   "fam": "",
+   "node": "motor electronics coolant temperature sensor c"
+  },
+  {
+   "code": "P2BDE",
+   "brand": "",
+   "ru": "Датчик температуры охлаждения электроники электромотора C: низкий уровень сигнала в цепи",
+   "en": "Motor Electronics Coolant Temperature Sensor C Circuit Low",
+   "fam": "",
+   "node": "motor electronics coolant temperature sensor c"
+  },
+  {
+   "code": "P2BDF",
+   "brand": "",
+   "ru": "Датчик температуры охлаждения электроники электромотора C: высокий уровень сигнала в цепи",
+   "en": "Motor Electronics Coolant Temperature Sensor C Circuit High",
+   "fam": "",
+   "node": "motor electronics coolant temperature sensor c"
+  },
+  {
+   "code": "P2BE0",
+   "brand": "",
+   "ru": "Датчик уровня жидкости охлаждения тяговой батареи: обрыв цепи",
+   "en": "Hybrid/EV Battery Coolant Level Sensor Circuit/Open",
+   "fam": "",
+   "node": "hybrid ev battery coolant level"
+  },
+  {
+   "code": "P2BE2",
+   "brand": "",
+   "ru": "Датчик уровня жидкости охлаждения тяговой батареи: низкий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Coolant Level Sensor Circuit Low",
+   "fam": "",
+   "node": "hybrid ev battery coolant level"
+  },
+  {
+   "code": "P2BE3",
+   "brand": "",
+   "ru": "Датчик уровня жидкости охлаждения тяговой батареи: высокий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Coolant Level Sensor Circuit High",
+   "fam": "",
+   "node": "hybrid ev battery coolant level"
+  },
+  {
+   "code": "P2BE1",
+   "brand": "",
+   "ru": "Датчик уровня жидкости охлаждения тяговой батареи: вне допустимого диапазона",
+   "en": "Hybrid/EV Battery Coolant Level Sensor Range/Performance",
+   "fam": "",
+   "node": "hybrid ev battery coolant level sensor"
+  },
+  {
+   "code": "P2BE4",
+   "brand": "",
+   "ru": "Датчик тока тяговой батареи C: цепь",
+   "en": "Hybrid/EV Battery Pack Current Sensor C Circuit",
+   "fam": "",
+   "node": "hybrid ev battery pack current sensor c"
+  },
+  {
+   "code": "P2BE5",
+   "brand": "",
+   "ru": "Датчик тока тяговой батареи C: сигнал вне диапазона",
+   "en": "Hybrid/EV Battery Pack Current Sensor C Circuit Range/Performance",
+   "fam": "",
+   "node": "hybrid ev battery pack current sensor c"
+  },
+  {
+   "code": "P2BE6",
+   "brand": "",
+   "ru": "Датчик тока тяговой батареи C: низкий уровень",
+   "en": "Hybrid/EV Battery Pack Current Sensor C Low",
+   "fam": "",
+   "node": "hybrid ev battery pack current sensor c"
+  },
+  {
+   "code": "P2BE7",
+   "brand": "",
+   "ru": "Датчик тока тяговой батареи C: высокий уровень",
+   "en": "Hybrid/EV Battery Pack Current Sensor C High",
+   "fam": "",
+   "node": "hybrid ev battery pack current sensor c"
+  },
+  {
+   "code": "P2BEC",
+   "brand": "",
+   "ru": "Топливная система A: слишком бедно (банк 1)",
+   "en": "Fuel Control System A Too Lean Bank 1",
+   "fam": "",
+   "node": "fuel control system a too lean"
+  },
+  {
+   "code": "P2BEE",
+   "brand": "",
+   "ru": "Топливная система A: слишком бедно (банк 2)",
+   "en": "Fuel Control System A Too Lean Bank 2",
+   "fam": "",
+   "node": "fuel control system a too lean"
+  },
+  {
+   "code": "P2BED",
+   "brand": "",
+   "ru": "Топливная система A: слишком богато (банк 1)",
+   "en": "Fuel Control System A Too Rich Bank 1",
+   "fam": "",
+   "node": "fuel control system a too rich"
+  },
+  {
+   "code": "P2BEF",
+   "brand": "",
+   "ru": "Топливная система A: слишком богато (банк 2)",
+   "en": "Fuel Control System A Too Rich Bank 2",
+   "fam": "",
+   "node": "fuel control system a too rich"
+  },
+  {
+   "code": "P2BF0",
+   "brand": "",
+   "ru": "Топливная система B: слишком бедно (банк 1)",
+   "en": "Fuel Control System B Too Lean Bank 1",
+   "fam": "",
+   "node": "fuel control system b too lean"
+  },
+  {
+   "code": "P2BF2",
+   "brand": "",
+   "ru": "Топливная система B: слишком бедно (банк 2)",
+   "en": "Fuel Control System B Too Lean Bank 2",
+   "fam": "",
+   "node": "fuel control system b too lean"
+  }
+ ]
+}

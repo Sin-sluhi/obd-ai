@@ -1,0 +1,377 @@
+{
+ "name": "sae_213",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "accessory power",
+  "battery voltage",
+  "control",
+  "control module",
+  "control module ground a",
+  "control module ground b",
+  "control module improper shutdown",
+  "invalid data from ion sense",
+  "lost communication with coolant heater a",
+  "lost communication with coolant pump “e”",
+  "lost communication with coolant pump “f”",
+  "lost communication with egr temperature sensor b",
+  "lost communication with egr temperature sensor c",
+  "lost communication with egr temperature sensor d",
+  "lost communication with exhaust pressure sensor a",
+  "lost communication with exhaust pressure sensor b",
+  "lost communication with exhaust pressure sensor c",
+  "lost communication with humidity",
+  "lost communication with hybrid ev battery pack coolant pump a",
+  "lost communication with hybrid ev battery pack coolant pump b",
+  "lost communication with particulate filter pressure sensor c",
+  "lost communication with particulate filter pressure sensor d",
+  "retained accessory power",
+  "vehicle identification number"
+ ],
+ "codes": [
+  {
+   "code": "U068E",
+   "brand": "",
+   "ru": "Нет связи: датчик температуры EGR B",
+   "en": "Lost Communication With EGR Temperature Sensor B",
+   "fam": "",
+   "node": "lost communication with egr temperature sensor b"
+  },
+  {
+   "code": "U068F",
+   "brand": "",
+   "ru": "Нет связи: датчик температуры EGR C",
+   "en": "Lost Communication With EGR Temperature Sensor C",
+   "fam": "",
+   "node": "lost communication with egr temperature sensor c"
+  },
+  {
+   "code": "U0690",
+   "brand": "",
+   "ru": "Нет связи: датчик температуры EGR D",
+   "en": "Lost Communication With EGR Temperature Sensor D",
+   "fam": "",
+   "node": "lost communication with egr temperature sensor d"
+  },
+  {
+   "code": "U0691",
+   "brand": "",
+   "ru": "Нет связи: датчик давления отработавших газов A",
+   "en": "Lost Communication With Exhaust Pressure Sensor A",
+   "fam": "",
+   "node": "lost communication with exhaust pressure sensor a"
+  },
+  {
+   "code": "U0692",
+   "brand": "",
+   "ru": "Нет связи: датчик давления отработавших газов B",
+   "en": "Lost Communication With Exhaust Pressure Sensor B",
+   "fam": "",
+   "node": "lost communication with exhaust pressure sensor b"
+  },
+  {
+   "code": "U0693",
+   "brand": "",
+   "ru": "Нет связи: датчик влажности",
+   "en": "Lost Communication With Humidity Sensor",
+   "fam": "",
+   "node": "lost communication with humidity"
+  },
+  {
+   "code": "U0694",
+   "brand": "",
+   "ru": "Нет связи: насос охлаждения тяговой батареи A",
+   "en": "Lost Communication With Hybrid/EV Battery Pack Coolant Pump A",
+   "fam": "",
+   "node": "lost communication with hybrid ev battery pack coolant pump a"
+  },
+  {
+   "code": "U0695",
+   "brand": "",
+   "ru": "Нет связи: насос охлаждения тяговой батареи B",
+   "en": "Lost Communication With Hybrid/EV Battery Pack Coolant Pump B",
+   "fam": "",
+   "node": "lost communication with hybrid ev battery pack coolant pump b"
+  },
+  {
+   "code": "U0696",
+   "brand": "",
+   "ru": "Нет связи: датчик давления сажевого фильтра C",
+   "en": "Lost Communication With Particulate Filter Pressure Sensor C",
+   "fam": "",
+   "node": "lost communication with particulate filter pressure sensor c"
+  },
+  {
+   "code": "U0697",
+   "brand": "",
+   "ru": "Нет связи: датчик давления сажевого фильтра D",
+   "en": "Lost Communication With Particulate Filter Pressure Sensor D",
+   "fam": "",
+   "node": "lost communication with particulate filter pressure sensor d"
+  },
+  {
+   "code": "U0698",
+   "brand": "",
+   "ru": "Нет связи: насос охлаждающей жидкости E",
+   "en": "Lost Communication with Coolant Pump “E”",
+   "fam": "",
+   "node": "lost communication with coolant pump “e”"
+  },
+  {
+   "code": "U0699",
+   "brand": "",
+   "ru": "Нет связи: насос охлаждающей жидкости F",
+   "en": "Lost Communication with Coolant Pump “F”",
+   "fam": "",
+   "node": "lost communication with coolant pump “f”"
+  },
+  {
+   "code": "U069E",
+   "brand": "",
+   "ru": "Нет связи: подогреватель охлаждающей жидкости A",
+   "en": "Lost Communication with Coolant Heater A",
+   "fam": "",
+   "node": "lost communication with coolant heater a"
+  },
+  {
+   "code": "U069F",
+   "brand": "",
+   "ru": "Нет связи: датчик давления отработавших газов C",
+   "en": "Lost Communication With Exhaust Pressure Sensor C",
+   "fam": "",
+   "node": "lost communication with exhaust pressure sensor c"
+  },
+  {
+   "code": "U0901",
+   "brand": "",
+   "ru": "Неверные данные: блок ионного контроля зажигания",
+   "en": "Invalid Data from Ion Sense Module",
+   "fam": "",
+   "node": "invalid data from ion sense"
+  },
+  {
+   "code": "U3000",
+   "brand": "",
+   "ru": "Блок управления",
+   "en": "Control Module",
+   "fam": "",
+   "node": "control"
+  },
+  {
+   "code": "U3001",
+   "brand": "",
+   "ru": "Блок управления: некорректное выключение",
+   "en": "Control Module Improper Shutdown Performance",
+   "fam": "",
+   "node": "control module improper shutdown"
+  },
+  {
+   "code": "U3002",
+   "brand": "",
+   "ru": "VIN",
+   "en": "Vehicle Identification Number",
+   "fam": "",
+   "node": "vehicle identification number"
+  },
+  {
+   "code": "U3003",
+   "brand": "",
+   "ru": "Напряжение АКБ",
+   "en": "Battery Voltage",
+   "fam": "",
+   "node": "battery voltage"
+  },
+  {
+   "code": "U3004",
+   "brand": "",
+   "ru": "Реле питания аксессуаров",
+   "en": "Accessory Power Relay",
+   "fam": "",
+   "node": "accessory power"
+  },
+  {
+   "code": "U3005",
+   "brand": "",
+   "ru": "Сохранённое питание аксессуаров",
+   "en": "Retained Accessory Power",
+   "fam": "",
+   "node": "retained accessory power"
+  },
+  {
+   "code": "U3006",
+   "brand": "",
+   "ru": "Питание блока управления A: обрыв цепи",
+   "en": "Control Module Input Power A Circuit/Open",
+   "fam": "",
+   "node": "control module"
+  },
+  {
+   "code": "U3007",
+   "brand": "",
+   "ru": "Питание блока управления B: обрыв цепи",
+   "en": "Control Module Input Power B Circuit/Open",
+   "fam": "",
+   "node": "control module"
+  },
+  {
+   "code": "U3013",
+   "brand": "",
+   "ru": "Питание блока управления C: обрыв цепи",
+   "en": "Control Module Input Power C Circuit/Open",
+   "fam": "",
+   "node": "control module"
+  },
+  {
+   "code": "U3014",
+   "brand": "",
+   "ru": "Питание блока управления D: обрыв цепи",
+   "en": "Control Module Input Power D Circuit/Open",
+   "fam": "",
+   "node": "control module"
+  },
+  {
+   "code": "U3018",
+   "brand": "",
+   "ru": "Питание блока управления: рассогласование цепей A/B",
+   "en": "Control Module Input Power Circuit A/B Correlation",
+   "fam": "",
+   "node": "control module"
+  },
+  {
+   "code": "U3019",
+   "brand": "",
+   "ru": "Питание блока управления: рассогласование цепей B/C",
+   "en": "Control Module Input Power Circuit B/C Correlation",
+   "fam": "",
+   "node": "control module"
+  },
+  {
+   "code": "U3023",
+   "brand": "",
+   "ru": "Рассогласование питания блока A и входа зажигания «Вкл/Старт»",
+   "en": "Control Module Input Power Circuit A - Ignition Input On/Start Circuit Correlation",
+   "fam": "",
+   "node": "control module"
+  },
+  {
+   "code": "U3024",
+   "brand": "",
+   "ru": "Рассогласование питания блока B и входа зажигания «Вкл/Старт»",
+   "en": "Control Module Input Power Circuit B - Ignition Input On/Start Circuit Correlation",
+   "fam": "",
+   "node": "control module"
+  },
+  {
+   "code": "U3500",
+   "brand": "",
+   "ru": "Питание блока управления A: сигнал вне диапазона",
+   "en": "Control Module Input Power A Circuit Range/Performance",
+   "fam": "",
+   "node": "control module"
+  },
+  {
+   "code": "U3501",
+   "brand": "",
+   "ru": "Питание блока управления A: низкий уровень сигнала в цепи",
+   "en": "Control Module Input Power A Circuit Low",
+   "fam": "",
+   "node": "control module"
+  },
+  {
+   "code": "U3502",
+   "brand": "",
+   "ru": "Питание блока управления A: высокий уровень сигнала в цепи",
+   "en": "Control Module Input Power A Circuit High",
+   "fam": "",
+   "node": "control module"
+  },
+  {
+   "code": "U3503",
+   "brand": "",
+   "ru": "Питание блока управления A: прерывистый / нестабильный сигнал",
+   "en": "Control Module Input Power A Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "control module"
+  },
+  {
+   "code": "U3504",
+   "brand": "",
+   "ru": "Питание блока управления B: сигнал вне диапазона",
+   "en": "Control Module Input Power B Circuit Range/Performance",
+   "fam": "",
+   "node": "control module"
+  },
+  {
+   "code": "U3505",
+   "brand": "",
+   "ru": "Питание блока управления B: низкий уровень сигнала в цепи",
+   "en": "Control Module Input Power B Circuit Low",
+   "fam": "",
+   "node": "control module"
+  },
+  {
+   "code": "U3506",
+   "brand": "",
+   "ru": "Питание блока управления B: высокий уровень сигнала в цепи",
+   "en": "Control Module Input Power B Circuit High",
+   "fam": "",
+   "node": "control module"
+  },
+  {
+   "code": "U3507",
+   "brand": "",
+   "ru": "Питание блока управления B: прерывистый / нестабильный сигнал",
+   "en": "Control Module Input Power B Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "control module"
+  },
+  {
+   "code": "U3508",
+   "brand": "",
+   "ru": "Питание блока управления C: сигнал вне диапазона",
+   "en": "Control Module Input Power C Circuit Range/Performance",
+   "fam": "",
+   "node": "control module"
+  },
+  {
+   "code": "U3509",
+   "brand": "",
+   "ru": "Питание блока управления C: низкий уровень сигнала в цепи",
+   "en": "Control Module Input Power C Circuit Low",
+   "fam": "",
+   "node": "control module"
+  },
+  {
+   "code": "U350A",
+   "brand": "",
+   "ru": "Питание блока управления C: высокий уровень сигнала в цепи",
+   "en": "Control Module Input Power C Circuit High",
+   "fam": "",
+   "node": "control module"
+  },
+  {
+   "code": "U350B",
+   "brand": "",
+   "ru": "Питание блока управления C: прерывистый / нестабильный сигнал",
+   "en": "Control Module Input Power C Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "control module"
+  },
+  {
+   "code": "U3008",
+   "brand": "",
+   "ru": "Масса блока управления A",
+   "en": "Control Module Ground A",
+   "fam": "",
+   "node": "control module ground a"
+  },
+  {
+   "code": "U3009",
+   "brand": "",
+   "ru": "Масса блока управления B",
+   "en": "Control Module Ground B",
+   "fam": "",
+   "node": "control module ground b"
+  }
+ ]
+}

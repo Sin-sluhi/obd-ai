@@ -1,0 +1,406 @@
+{
+ "name": "sae_003",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "driver inflatable seat belt deployment",
+  "driver seat occupant classification sensor c",
+  "driver seat occupant classification sensor d",
+  "driver seat occupant classification sensor e",
+  "driver seat occupant position sensor a",
+  "driver seat occupant position sensor b",
+  "driver seat occupant position sensor c",
+  "driver seat occupant position sensor d",
+  "driver seat occupant position sensor e",
+  "driver seat recline position restraints",
+  "driver seat track position restraints",
+  "fam:srs_module",
+  "passenger inflatable seat belt deployment",
+  "passenger restraints disable",
+  "passenger seat occupant classification sensor b",
+  "passenger seat occupant classification sensor c",
+  "passenger seat occupant classification sensor d",
+  "passenger seat occupant classification sensor e",
+  "passenger seat occupant position sensor a",
+  "passenger seat occupant position sensor b",
+  "passenger seat occupant position sensor c",
+  "passenger seat occupant position sensor d",
+  "passenger seat occupant position sensor e",
+  "passenger seat recline position restraints",
+  "passenger seat track position restraints",
+  "restraint system",
+  "second row center inflatable seat belt deployment",
+  "second row center seat belt pretensioner c deployment",
+  "second row left inflatable seat belt deployment",
+  "second row left seat belt pretensioner c deployment",
+  "second row right seat belt pretensioner c deployment",
+  "third row center seat belt pretensioner b deployment",
+  "third row center seat belt pretensioner c deployment",
+  "third row left seat belt pretensioner b deployment",
+  "third row left seat belt pretensioner c deployment",
+  "third row right seat belt pretensioner b deployment",
+  "third row right seat belt pretensioner c deployment"
+ ],
+ "codes": [
+  {
+   "code": "B00B0",
+   "brand": "",
+   "ru": "Лампа отключения подушки пассажира: цепь",
+   "en": "",
+   "fam": "srs_module",
+   "node": "fam:srs_module"
+  },
+  {
+   "code": "B00B1",
+   "brand": "",
+   "ru": "Лампа подушек безопасности: цепь",
+   "en": "",
+   "fam": "srs_module",
+   "node": "fam:srs_module"
+  },
+  {
+   "code": "B00C0",
+   "brand": "",
+   "ru": "Выключатель подушки пассажира: цепь",
+   "en": "",
+   "fam": "srs_module",
+   "node": "fam:srs_module"
+  },
+  {
+   "code": "B00D0",
+   "brand": "",
+   "ru": "Блок подушек: записано срабатывание (авария)",
+   "en": "",
+   "fam": "srs_module",
+   "node": "fam:srs_module"
+  },
+  {
+   "code": "B00D1",
+   "brand": "",
+   "ru": "Блок подушек: внутренняя ошибка",
+   "en": "",
+   "fam": "srs_module",
+   "node": "fam:srs_module"
+  },
+  {
+   "code": "B00D2",
+   "brand": "",
+   "ru": "Блок подушек: низкое напряжение",
+   "en": "",
+   "fam": "srs_module",
+   "node": "fam:srs_module"
+  },
+  {
+   "code": "B00D3",
+   "brand": "",
+   "ru": "Блок подушек: высокое напряжение",
+   "en": "",
+   "fam": "srs_module",
+   "node": "fam:srs_module"
+  },
+  {
+   "code": "B00D5",
+   "brand": "",
+   "ru": "Блок подушек: не сконфигурирован",
+   "en": "",
+   "fam": "srs_module",
+   "node": "fam:srs_module"
+  },
+  {
+   "code": "B00D6",
+   "brand": "",
+   "ru": "Блок подушек: неверная конфигурация",
+   "en": "",
+   "fam": "srs_module",
+   "node": "fam:srs_module"
+  },
+  {
+   "code": "B00B2",
+   "brand": "",
+   "ru": "Датчик классификации водителя C",
+   "en": "Driver Seat Occupant Classification Sensor C",
+   "fam": "",
+   "node": "driver seat occupant classification sensor c"
+  },
+  {
+   "code": "B00B3",
+   "brand": "",
+   "ru": "Датчик классификации водителя D",
+   "en": "Driver Seat Occupant Classification Sensor D",
+   "fam": "",
+   "node": "driver seat occupant classification sensor d"
+  },
+  {
+   "code": "B00B4",
+   "brand": "",
+   "ru": "Датчик классификации водителя E",
+   "en": "Driver Seat Occupant Classification Sensor E",
+   "fam": "",
+   "node": "driver seat occupant classification sensor e"
+  },
+  {
+   "code": "B00B5",
+   "brand": "",
+   "ru": "Датчик положения сиденья водителя (продольный) для подушек",
+   "en": "Driver Seat Track Position Restraints Sensor",
+   "fam": "",
+   "node": "driver seat track position restraints"
+  },
+  {
+   "code": "B00B6",
+   "brand": "",
+   "ru": "Датчик наклона спинки сиденья водителя для подушек",
+   "en": "Driver Seat Recline Position Restraints Sensor",
+   "fam": "",
+   "node": "driver seat recline position restraints"
+  },
+  {
+   "code": "B00B7",
+   "brand": "",
+   "ru": "Датчик положения водителя на сиденье A",
+   "en": "Driver Seat Occupant Position Sensor A",
+   "fam": "",
+   "node": "driver seat occupant position sensor a"
+  },
+  {
+   "code": "B00B8",
+   "brand": "",
+   "ru": "Датчик положения водителя на сиденье B",
+   "en": "Driver Seat Occupant Position Sensor B",
+   "fam": "",
+   "node": "driver seat occupant position sensor b"
+  },
+  {
+   "code": "B00B9",
+   "brand": "",
+   "ru": "Датчик положения водителя на сиденье C",
+   "en": "Driver Seat Occupant Position Sensor C",
+   "fam": "",
+   "node": "driver seat occupant position sensor c"
+  },
+  {
+   "code": "B00BA",
+   "brand": "",
+   "ru": "Датчик положения водителя на сиденье D",
+   "en": "Driver Seat Occupant Position Sensor D",
+   "fam": "",
+   "node": "driver seat occupant position sensor d"
+  },
+  {
+   "code": "B00BB",
+   "brand": "",
+   "ru": "Датчик положения водителя на сиденье E",
+   "en": "Driver Seat Occupant Position Sensor E",
+   "fam": "",
+   "node": "driver seat occupant position sensor e"
+  },
+  {
+   "code": "B00C1",
+   "brand": "",
+   "ru": "Датчик классификации пассажира B",
+   "en": "Passenger Seat Occupant Classification Sensor B",
+   "fam": "",
+   "node": "passenger seat occupant classification sensor b"
+  },
+  {
+   "code": "B00C2",
+   "brand": "",
+   "ru": "Датчик классификации пассажира C",
+   "en": "Passenger Seat Occupant Classification Sensor C",
+   "fam": "",
+   "node": "passenger seat occupant classification sensor c"
+  },
+  {
+   "code": "B00C3",
+   "brand": "",
+   "ru": "Датчик классификации пассажира D",
+   "en": "Passenger Seat Occupant Classification Sensor D",
+   "fam": "",
+   "node": "passenger seat occupant classification sensor d"
+  },
+  {
+   "code": "B00C4",
+   "brand": "",
+   "ru": "Датчик классификации пассажира E",
+   "en": "Passenger Seat Occupant Classification Sensor E",
+   "fam": "",
+   "node": "passenger seat occupant classification sensor e"
+  },
+  {
+   "code": "B00C5",
+   "brand": "",
+   "ru": "Датчик положения сиденья пассажира (продольный) для подушек",
+   "en": "Passenger Seat Track Position Restraints Sensor",
+   "fam": "",
+   "node": "passenger seat track position restraints"
+  },
+  {
+   "code": "B00C6",
+   "brand": "",
+   "ru": "Датчик наклона спинки сиденья пассажира для подушек",
+   "en": "Passenger Seat Recline Position Restraints Sensor",
+   "fam": "",
+   "node": "passenger seat recline position restraints"
+  },
+  {
+   "code": "B00C7",
+   "brand": "",
+   "ru": "Датчик положения пассажира на сиденье A",
+   "en": "Passenger Seat Occupant Position Sensor A",
+   "fam": "",
+   "node": "passenger seat occupant position sensor a"
+  },
+  {
+   "code": "B00C8",
+   "brand": "",
+   "ru": "Датчик положения пассажира на сиденье B",
+   "en": "Passenger Seat Occupant Position Sensor B",
+   "fam": "",
+   "node": "passenger seat occupant position sensor b"
+  },
+  {
+   "code": "B00C9",
+   "brand": "",
+   "ru": "Датчик положения пассажира на сиденье C",
+   "en": "Passenger Seat Occupant Position Sensor C",
+   "fam": "",
+   "node": "passenger seat occupant position sensor c"
+  },
+  {
+   "code": "B00CA",
+   "brand": "",
+   "ru": "Датчик положения пассажира на сиденье D",
+   "en": "Passenger Seat Occupant Position Sensor D",
+   "fam": "",
+   "node": "passenger seat occupant position sensor d"
+  },
+  {
+   "code": "B00CB",
+   "brand": "",
+   "ru": "Датчик положения пассажира на сиденье E",
+   "en": "Passenger Seat Occupant Position Sensor E",
+   "fam": "",
+   "node": "passenger seat occupant position sensor e"
+  },
+  {
+   "code": "B00D4",
+   "brand": "",
+   "ru": "Звуковой сигнал неисправности подушек безопасности",
+   "en": "Restraint System Malfunction Audible Indicator",
+   "fam": "",
+   "node": "restraint system"
+  },
+  {
+   "code": "B00DF",
+   "brand": "",
+   "ru": "Выключатель подушки пассажира",
+   "en": "Passenger Restraints Disable Switch",
+   "fam": "",
+   "node": "passenger restraints disable"
+  },
+  {
+   "code": "B00E0",
+   "brand": "",
+   "ru": "Преднатяжитель ремня 3-го ряда слева B: управление срабатыванием",
+   "en": "Third Row Left Seat Belt Pretensioner B Deployment Control",
+   "fam": "",
+   "node": "third row left seat belt pretensioner b deployment"
+  },
+  {
+   "code": "B00E1",
+   "brand": "",
+   "ru": "Преднатяжитель ремня 3-го ряда справа B: управление срабатыванием",
+   "en": "Third Row Right Seat Belt Pretensioner B Deployment Control",
+   "fam": "",
+   "node": "third row right seat belt pretensioner b deployment"
+  },
+  {
+   "code": "B00E2",
+   "brand": "",
+   "ru": "Преднатяжитель ремня 3-го ряда в центре B: управление срабатыванием",
+   "en": "Third Row Center Seat Belt Pretensioner B Deployment Control",
+   "fam": "",
+   "node": "third row center seat belt pretensioner b deployment"
+  },
+  {
+   "code": "B00E3",
+   "brand": "",
+   "ru": "Преднатяжитель ремня 2-го ряда слева C: управление срабатыванием",
+   "en": "Second Row Left Seat Belt Pretensioner C Deployment Control",
+   "fam": "",
+   "node": "second row left seat belt pretensioner c deployment"
+  },
+  {
+   "code": "B00E4",
+   "brand": "",
+   "ru": "Преднатяжитель ремня 2-го ряда справа C: управление срабатыванием",
+   "en": "Second Row Right Seat Belt Pretensioner C Deployment Control",
+   "fam": "",
+   "node": "second row right seat belt pretensioner c deployment"
+  },
+  {
+   "code": "B00E5",
+   "brand": "",
+   "ru": "Преднатяжитель ремня 2-го ряда в центре C: управление срабатыванием",
+   "en": "Second Row Center Seat Belt Pretensioner C Deployment Control",
+   "fam": "",
+   "node": "second row center seat belt pretensioner c deployment"
+  },
+  {
+   "code": "B00E6",
+   "brand": "",
+   "ru": "Преднатяжитель ремня 3-го ряда справа C: управление срабатыванием",
+   "en": "Third Row Right Seat Belt Pretensioner C Deployment Control",
+   "fam": "",
+   "node": "third row right seat belt pretensioner c deployment"
+  },
+  {
+   "code": "B00E7",
+   "brand": "",
+   "ru": "Преднатяжитель ремня 3-го ряда слева C: управление срабатыванием",
+   "en": "Third Row Left Seat Belt Pretensioner C Deployment Control",
+   "fam": "",
+   "node": "third row left seat belt pretensioner c deployment"
+  },
+  {
+   "code": "B00E8",
+   "brand": "",
+   "ru": "Преднатяжитель ремня 3-го ряда в центре C: управление срабатыванием",
+   "en": "Third Row Center Seat Belt Pretensioner C Deployment Control",
+   "fam": "",
+   "node": "third row center seat belt pretensioner c deployment"
+  },
+  {
+   "code": "B00F0",
+   "brand": "",
+   "ru": "Надувной ремень водителя: управление срабатыванием",
+   "en": "Driver Inflatable Seat Belt Deployment Control",
+   "fam": "",
+   "node": "driver inflatable seat belt deployment"
+  },
+  {
+   "code": "B00F1",
+   "brand": "",
+   "ru": "Надувной ремень пассажира: управление срабатыванием",
+   "en": "Passenger Inflatable Seat Belt Deployment Control",
+   "fam": "",
+   "node": "passenger inflatable seat belt deployment"
+  },
+  {
+   "code": "B00F2",
+   "brand": "",
+   "ru": "Надувной ремень 2-го ряда слева: управление срабатыванием",
+   "en": "Second Row Left Inflatable Seat Belt Deployment Control",
+   "fam": "",
+   "node": "second row left inflatable seat belt deployment"
+  },
+  {
+   "code": "B00F3",
+   "brand": "",
+   "ru": "Надувной ремень 2-го ряда в центре: управление срабатыванием",
+   "en": "Second Row Center Inflatable Seat Belt Deployment Control",
+   "fam": "",
+   "node": "second row center inflatable seat belt deployment"
+  }
+ ]
+}

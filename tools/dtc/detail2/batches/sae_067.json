@@ -1,0 +1,366 @@
+{
+ "name": "sae_067",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "a c refrigerant pressure sensor a",
+  "a c refrigerant pressure sensor b",
+  "brake pedal position sensor a b correlation",
+  "brake pedal position sensor b",
+  "cold start a camshaft position timing",
+  "cold start b camshaft position timing",
+  "cold start injection timing",
+  "cold start scr nox catalyst inlet temperature too",
+  "driver mode select switch a",
+  "driver mode select switch b",
+  "engine oil bypass valve",
+  "park brake sensor",
+  "reductant heater control module supply voltage"
+ ],
+ "codes": [
+  {
+   "code": "P05CC",
+   "brand": "",
+   "ru": "Холодный пуск: фаза распредвала A: работа нарушена (банк 1)",
+   "en": "Cold Start A Camshaft Position Timing Performance Bank 1",
+   "fam": "",
+   "node": "cold start a camshaft position timing"
+  },
+  {
+   "code": "P05CD",
+   "brand": "",
+   "ru": "Холодный пуск: фаза распредвала A: работа нарушена (банк 2)",
+   "en": "Cold Start A Camshaft Position Timing Performance Bank 2",
+   "fam": "",
+   "node": "cold start a camshaft position timing"
+  },
+  {
+   "code": "P05CE",
+   "brand": "",
+   "ru": "Холодный пуск: фаза распредвала B: работа нарушена (банк 1)",
+   "en": "Cold Start B Camshaft Position Timing Performance Bank 1",
+   "fam": "",
+   "node": "cold start b camshaft position timing"
+  },
+  {
+   "code": "P05CF",
+   "brand": "",
+   "ru": "Холодный пуск: фаза распредвала B: работа нарушена (банк 2)",
+   "en": "Cold Start B Camshaft Position Timing Performance Bank 2",
+   "fam": "",
+   "node": "cold start b camshaft position timing"
+  },
+  {
+   "code": "P05D0",
+   "brand": "",
+   "ru": "Переключатель режимов движения A: цепь",
+   "en": "Driver Mode Select Switch A Circuit",
+   "fam": "",
+   "node": "driver mode select switch a"
+  },
+  {
+   "code": "P05D1",
+   "brand": "",
+   "ru": "Переключатель режимов движения A: низкий уровень сигнала в цепи",
+   "en": "Driver Mode Select Switch A Circuit Low",
+   "fam": "",
+   "node": "driver mode select switch a"
+  },
+  {
+   "code": "P05D2",
+   "brand": "",
+   "ru": "Переключатель режимов движения A: высокий уровень сигнала в цепи",
+   "en": "Driver Mode Select Switch A Circuit High",
+   "fam": "",
+   "node": "driver mode select switch a"
+  },
+  {
+   "code": "P05D3",
+   "brand": "",
+   "ru": "Переключатель режимов движения A: вне допустимого диапазона",
+   "en": "Driver Mode Select Switch A Range/Performance",
+   "fam": "",
+   "node": "driver mode select switch a"
+  },
+  {
+   "code": "P05D4",
+   "brand": "",
+   "ru": "Переключатель режимов движения B: цепь",
+   "en": "Driver Mode Select Switch B Circuit",
+   "fam": "",
+   "node": "driver mode select switch b"
+  },
+  {
+   "code": "P05D5",
+   "brand": "",
+   "ru": "Переключатель режимов движения B: низкий уровень сигнала в цепи",
+   "en": "Driver Mode Select Switch B Circuit Low",
+   "fam": "",
+   "node": "driver mode select switch b"
+  },
+  {
+   "code": "P05D6",
+   "brand": "",
+   "ru": "Переключатель режимов движения B: высокий уровень сигнала в цепи",
+   "en": "Driver Mode Select Switch B Circuit High",
+   "fam": "",
+   "node": "driver mode select switch b"
+  },
+  {
+   "code": "P05D7",
+   "brand": "",
+   "ru": "Переключатель режимов движения B: вне допустимого диапазона",
+   "en": "Driver Mode Select Switch B Range/Performance",
+   "fam": "",
+   "node": "driver mode select switch b"
+  },
+  {
+   "code": "P05DB",
+   "brand": "",
+   "ru": "Датчик положения педали тормоза B: обрыв цепи",
+   "en": "Brake Pedal Position Sensor B Circuit/Open",
+   "fam": "",
+   "node": "brake pedal position sensor b"
+  },
+  {
+   "code": "P05DC",
+   "brand": "",
+   "ru": "Датчик положения педали тормоза B: сигнал вне диапазона",
+   "en": "Brake Pedal Position Sensor B Circuit Range/Performance",
+   "fam": "",
+   "node": "brake pedal position sensor b"
+  },
+  {
+   "code": "P05DD",
+   "brand": "",
+   "ru": "Датчик положения педали тормоза B: низкий уровень сигнала в цепи",
+   "en": "Brake Pedal Position Sensor B Circuit Low",
+   "fam": "",
+   "node": "brake pedal position sensor b"
+  },
+  {
+   "code": "P05DE",
+   "brand": "",
+   "ru": "Датчик положения педали тормоза B: высокий уровень сигнала в цепи",
+   "en": "Brake Pedal Position Sensor B Circuit High",
+   "fam": "",
+   "node": "brake pedal position sensor b"
+  },
+  {
+   "code": "P05DF",
+   "brand": "",
+   "ru": "Датчик положения педали тормоза B: прерывистый / нестабильный сигнал",
+   "en": "Brake Pedal Position Sensor B Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "brake pedal position sensor b"
+  },
+  {
+   "code": "P05E0",
+   "brand": "",
+   "ru": "Датчик положения педали тормоза: рассогласование A/B",
+   "en": "Brake Pedal Position Sensor A/B Correlation",
+   "fam": "",
+   "node": "brake pedal position sensor a b correlation"
+  },
+  {
+   "code": "P05E1",
+   "brand": "",
+   "ru": "Датчик давления хладагента A: прерывистый / нестабильный сигнал",
+   "en": "A/C Refrigerant Pressure Sensor A Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "a c refrigerant pressure sensor a"
+  },
+  {
+   "code": "P05E2",
+   "brand": "",
+   "ru": "Датчик давления хладагента B: прерывистый / нестабильный сигнал",
+   "en": "A/C Refrigerant Pressure Sensor B Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "a c refrigerant pressure sensor b"
+  },
+  {
+   "code": "P05E3",
+   "brand": "",
+   "ru": "Датчик стояночного тормоза: цепь",
+   "en": "Park Brake Sensor/Switch Circuit",
+   "fam": "",
+   "node": "park brake sensor"
+  },
+  {
+   "code": "P05E4",
+   "brand": "",
+   "ru": "Датчик стояночного тормоза: низкий уровень сигнала в цепи",
+   "en": "Park Brake Sensor/Switch Circuit Low",
+   "fam": "",
+   "node": "park brake sensor"
+  },
+  {
+   "code": "P05E5",
+   "brand": "",
+   "ru": "Датчик стояночного тормоза: высокий уровень сигнала в цепи",
+   "en": "Park Brake Sensor/Switch Circuit High",
+   "fam": "",
+   "node": "park brake sensor"
+  },
+  {
+   "code": "P05E6",
+   "brand": "",
+   "ru": "Датчик стояночного тормоза: сигнал вне диапазона",
+   "en": "Park Brake Sensor/Switch Circuit Range/Performance",
+   "fam": "",
+   "node": "park brake sensor"
+  },
+  {
+   "code": "P05E7",
+   "brand": "",
+   "ru": "Датчик стояночного тормоза: прерывистый / нестабильный сигнал",
+   "en": "Park Brake Sensor/Switch Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "park brake sensor"
+  },
+  {
+   "code": "P05E8",
+   "brand": "",
+   "ru": "Перепускной клапан масла: обрыв цепи управления",
+   "en": "Engine Oil Bypass Valve Control Circuit/Open",
+   "fam": "",
+   "node": "engine oil bypass valve"
+  },
+  {
+   "code": "P05E9",
+   "brand": "",
+   "ru": "Перепускной клапан масла: низкий уровень в цепи управления",
+   "en": "Engine Oil Bypass Valve Control Circuit Low",
+   "fam": "",
+   "node": "engine oil bypass valve"
+  },
+  {
+   "code": "P05EA",
+   "brand": "",
+   "ru": "Перепускной клапан масла: высокий уровень в цепи управления",
+   "en": "Engine Oil Bypass Valve Control Circuit High",
+   "fam": "",
+   "node": "engine oil bypass valve"
+  },
+  {
+   "code": "P05EB",
+   "brand": "",
+   "ru": "Холодный пуск: слишком низкая температура на входе катализатора SCR",
+   "en": "Cold Start SCR NOx Catalyst Inlet Temperature Too Low",
+   "fam": "",
+   "node": "cold start scr nox catalyst inlet temperature too"
+  },
+  {
+   "code": "P05EC",
+   "brand": "",
+   "ru": "Момент впрыска при холодном пуске: работа нарушена",
+   "en": "Cold Start Injection Timing Performance",
+   "fam": "",
+   "node": "cold start injection timing"
+  },
+  {
+   "code": "P21B6",
+   "brand": "",
+   "ru": "Холодный пуск: момент впрыска цилиндра 1",
+   "en": "Cold Start Cylinder 1 Injection Timing",
+   "fam": "",
+   "node": "cold start injection timing"
+  },
+  {
+   "code": "P21B7",
+   "brand": "",
+   "ru": "Холодный пуск: момент впрыска цилиндра 2",
+   "en": "Cold Start Cylinder 2 Injection Timing",
+   "fam": "",
+   "node": "cold start injection timing"
+  },
+  {
+   "code": "P21B8",
+   "brand": "",
+   "ru": "Холодный пуск: момент впрыска цилиндра 3",
+   "en": "Cold Start Cylinder 3 Injection Timing",
+   "fam": "",
+   "node": "cold start injection timing"
+  },
+  {
+   "code": "P21B9",
+   "brand": "",
+   "ru": "Холодный пуск: момент впрыска цилиндра 4",
+   "en": "Cold Start Cylinder 4 Injection Timing",
+   "fam": "",
+   "node": "cold start injection timing"
+  },
+  {
+   "code": "P21BA",
+   "brand": "",
+   "ru": "Холодный пуск: момент впрыска цилиндра 5",
+   "en": "Cold Start Cylinder 5 Injection Timing",
+   "fam": "",
+   "node": "cold start injection timing"
+  },
+  {
+   "code": "P21BB",
+   "brand": "",
+   "ru": "Холодный пуск: момент впрыска цилиндра 6",
+   "en": "Cold Start Cylinder 6 Injection Timing",
+   "fam": "",
+   "node": "cold start injection timing"
+  },
+  {
+   "code": "P21BC",
+   "brand": "",
+   "ru": "Холодный пуск: момент впрыска цилиндра 7",
+   "en": "Cold Start Cylinder 7 Injection Timing",
+   "fam": "",
+   "node": "cold start injection timing"
+  },
+  {
+   "code": "P21BD",
+   "brand": "",
+   "ru": "Холодный пуск: момент впрыска цилиндра 8",
+   "en": "Cold Start Cylinder 8 Injection Timing",
+   "fam": "",
+   "node": "cold start injection timing"
+  },
+  {
+   "code": "P21BE",
+   "brand": "",
+   "ru": "Холодный пуск: момент впрыска цилиндра 9",
+   "en": "Cold Start Cylinder 9 Injection Timing",
+   "fam": "",
+   "node": "cold start injection timing"
+  },
+  {
+   "code": "P21BF",
+   "brand": "",
+   "ru": "Холодный пуск: момент впрыска цилиндра 10",
+   "en": "Cold Start Cylinder 10 Injection Timing",
+   "fam": "",
+   "node": "cold start injection timing"
+  },
+  {
+   "code": "P21C0",
+   "brand": "",
+   "ru": "Холодный пуск: момент впрыска цилиндра 11",
+   "en": "Cold Start Cylinder 11 Injection Timing",
+   "fam": "",
+   "node": "cold start injection timing"
+  },
+  {
+   "code": "P21C1",
+   "brand": "",
+   "ru": "Холодный пуск: момент впрыска цилиндра 12",
+   "en": "Cold Start Cylinder 12 Injection Timing",
+   "fam": "",
+   "node": "cold start injection timing"
+  },
+  {
+   "code": "P05ED",
+   "brand": "",
+   "ru": "Блок подогрева мочевины: напряжение питания",
+   "en": "Reductant Heater Control Module Supply Voltage",
+   "fam": "",
+   "node": "reductant heater control module supply voltage"
+  }
+ ]
+}

@@ -1,0 +1,274 @@
+{
+ "name": "sae_098",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "fam:hv_inverter"
+ ],
+ "codes": [
+  {
+   "code": "P0A08",
+   "brand": "",
+   "ru": "Преобразователь DC/DC: цепь статуса",
+   "en": "",
+   "fam": "hv_inverter",
+   "node": "fam:hv_inverter"
+  },
+  {
+   "code": "P0A09",
+   "brand": "",
+   "ru": "Преобразователь DC/DC: статус, низкий уровень",
+   "en": "",
+   "fam": "hv_inverter",
+   "node": "fam:hv_inverter"
+  },
+  {
+   "code": "P0A0A",
+   "brand": "",
+   "ru": "Преобразователь DC/DC: статус, высокий уровень",
+   "en": "",
+   "fam": "hv_inverter",
+   "node": "fam:hv_inverter"
+  },
+  {
+   "code": "P0A10",
+   "brand": "",
+   "ru": "Преобразователь DC/DC: цепь разрешения",
+   "en": "",
+   "fam": "hv_inverter",
+   "node": "fam:hv_inverter"
+  },
+  {
+   "code": "P0A11",
+   "brand": "",
+   "ru": "Преобразователь DC/DC: цепь разрешения, низкий уровень",
+   "en": "",
+   "fam": "hv_inverter",
+   "node": "fam:hv_inverter"
+  },
+  {
+   "code": "P0A12",
+   "brand": "",
+   "ru": "Преобразователь DC/DC: цепь разрешения, высокий уровень",
+   "en": "",
+   "fam": "hv_inverter",
+   "node": "fam:hv_inverter"
+  },
+  {
+   "code": "P0A1A",
+   "brand": "",
+   "ru": "Блок управления генератором (MG1)",
+   "en": "",
+   "fam": "hv_inverter",
+   "node": "fam:hv_inverter"
+  },
+  {
+   "code": "P0A1B",
+   "brand": "",
+   "ru": "Блок управления тяговым двигателем A (MG2)",
+   "en": "",
+   "fam": "hv_inverter",
+   "node": "fam:hv_inverter"
+  },
+  {
+   "code": "P0A1D",
+   "brand": "",
+   "ru": "Блок управления гибридной системой",
+   "en": "",
+   "fam": "hv_inverter",
+   "node": "fam:hv_inverter"
+  },
+  {
+   "code": "P0A3C",
+   "brand": "",
+   "ru": "Инвертор тягового двигателя A: перегрев",
+   "en": "",
+   "fam": "hv_inverter",
+   "node": "fam:hv_inverter"
+  },
+  {
+   "code": "P0A3D",
+   "brand": "",
+   "ru": "Инвертор генератора: перегрев",
+   "en": "",
+   "fam": "hv_inverter",
+   "node": "fam:hv_inverter"
+  },
+  {
+   "code": "P0A4E",
+   "brand": "",
+   "ru": "Датчик тока тягового двигателя A: цепь",
+   "en": "",
+   "fam": "hv_inverter",
+   "node": "fam:hv_inverter"
+  },
+  {
+   "code": "P0A4F",
+   "brand": "",
+   "ru": "Датчик тока тягового двигателя A: показания вне диапазона",
+   "en": "",
+   "fam": "hv_inverter",
+   "node": "fam:hv_inverter"
+  },
+  {
+   "code": "P0A50",
+   "brand": "",
+   "ru": "Датчик тока тягового двигателя A: низкий сигнал",
+   "en": "",
+   "fam": "hv_inverter",
+   "node": "fam:hv_inverter"
+  },
+  {
+   "code": "P0A51",
+   "brand": "",
+   "ru": "Датчик тока тягового двигателя A: высокий сигнал",
+   "en": "",
+   "fam": "hv_inverter",
+   "node": "fam:hv_inverter"
+  },
+  {
+   "code": "P0A52",
+   "brand": "",
+   "ru": "Датчик тока тягового двигателя A: прерывистый сигнал",
+   "en": "",
+   "fam": "hv_inverter",
+   "node": "fam:hv_inverter"
+  },
+  {
+   "code": "P0A53",
+   "brand": "",
+   "ru": "Датчик тока генератора: цепь",
+   "en": "",
+   "fam": "hv_inverter",
+   "node": "fam:hv_inverter"
+  },
+  {
+   "code": "P0A54",
+   "brand": "",
+   "ru": "Датчик тока генератора: показания вне диапазона",
+   "en": "",
+   "fam": "hv_inverter",
+   "node": "fam:hv_inverter"
+  },
+  {
+   "code": "P0A55",
+   "brand": "",
+   "ru": "Датчик тока генератора: низкий сигнал",
+   "en": "",
+   "fam": "hv_inverter",
+   "node": "fam:hv_inverter"
+  },
+  {
+   "code": "P0A56",
+   "brand": "",
+   "ru": "Датчик тока генератора: высокий сигнал",
+   "en": "",
+   "fam": "hv_inverter",
+   "node": "fam:hv_inverter"
+  },
+  {
+   "code": "P0A57",
+   "brand": "",
+   "ru": "Датчик тока генератора: прерывистый сигнал",
+   "en": "",
+   "fam": "hv_inverter",
+   "node": "fam:hv_inverter"
+  },
+  {
+   "code": "P0A58",
+   "brand": "",
+   "ru": "Датчик тока тягового двигателя B: цепь",
+   "en": "",
+   "fam": "hv_inverter",
+   "node": "fam:hv_inverter"
+  },
+  {
+   "code": "P0A59",
+   "brand": "",
+   "ru": "Датчик тока тягового двигателя B: показания вне диапазона",
+   "en": "",
+   "fam": "hv_inverter",
+   "node": "fam:hv_inverter"
+  },
+  {
+   "code": "P0A5A",
+   "brand": "",
+   "ru": "Датчик тока тягового двигателя B: низкий сигнал",
+   "en": "",
+   "fam": "hv_inverter",
+   "node": "fam:hv_inverter"
+  },
+  {
+   "code": "P0A5B",
+   "brand": "",
+   "ru": "Датчик тока тягового двигателя B: высокий сигнал",
+   "en": "",
+   "fam": "hv_inverter",
+   "node": "fam:hv_inverter"
+  },
+  {
+   "code": "P0A5C",
+   "brand": "",
+   "ru": "Датчик тока тягового двигателя B: прерывистый сигнал",
+   "en": "",
+   "fam": "hv_inverter",
+   "node": "fam:hv_inverter"
+  },
+  {
+   "code": "P0A78",
+   "brand": "",
+   "ru": "Инвертор тягового двигателя A: нарушение работы",
+   "en": "",
+   "fam": "hv_inverter",
+   "node": "fam:hv_inverter"
+  },
+  {
+   "code": "P0A79",
+   "brand": "",
+   "ru": "Инвертор тягового двигателя B: нарушение работы",
+   "en": "",
+   "fam": "hv_inverter",
+   "node": "fam:hv_inverter"
+  },
+  {
+   "code": "P0A7A",
+   "brand": "",
+   "ru": "Инвертор генератора: нарушение работы",
+   "en": "",
+   "fam": "hv_inverter",
+   "node": "fam:hv_inverter"
+  },
+  {
+   "code": "P0A8B",
+   "brand": "",
+   "ru": "Напряжение 14-вольтовой сети (модуль питания)",
+   "en": "",
+   "fam": "hv_inverter",
+   "node": "fam:hv_inverter"
+  },
+  {
+   "code": "P0A8C",
+   "brand": "",
+   "ru": "Напряжение 14-вольтовой сети: низкое",
+   "en": "",
+   "fam": "hv_inverter",
+   "node": "fam:hv_inverter"
+  },
+  {
+   "code": "P0A8D",
+   "brand": "",
+   "ru": "Напряжение 14-вольтовой сети: высокое",
+   "en": "",
+   "fam": "hv_inverter",
+   "node": "fam:hv_inverter"
+  },
+  {
+   "code": "P0A94",
+   "brand": "",
+   "ru": "Преобразователь DC/DC: нарушение работы",
+   "en": "",
+   "fam": "hv_inverter",
+   "node": "fam:hv_inverter"
+  }
+ ]
+}

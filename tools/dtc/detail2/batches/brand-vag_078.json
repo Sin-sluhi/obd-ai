@@ -1,0 +1,18 @@
+{
+ "name": "brand-vag_078",
+ "series": "brand",
+ "brand": "vag",
+ "nodes": [
+  "ru:гибрид"
+ ],
+ "codes": [
+  {
+   "code": "P3100",
+   "brand": "vag",
+   "ru": "Гибрид: неисправность блока высоковольтного привода",
+   "en": "High voltage powertrain control module failure",
+   "fam": "",
+   "node": "ru:гибрид"
+  }
+ ]
+}

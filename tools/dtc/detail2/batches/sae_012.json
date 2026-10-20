@@ -1,0 +1,391 @@
+{
+ "name": "sae_012",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "abs pump motor control",
+  "abs pump motor supply voltage",
+  "abs valves missing calibration",
+  "abs valves supply voltage",
+  "brake pressure sensor a",
+  "left front wheel speed sensor a incorrect component installed",
+  "longitudinal acceleration",
+  "longitudinal acceleration sensor",
+  "motor control a",
+  "motor control a supply voltage",
+  "motor control b",
+  "motor control b supply voltage",
+  "right front wheel speed sensor a incorrect component installed",
+  "steering angle sensor module",
+  "steering angle sensor module correlation",
+  "steering angle sensor module missing calibration",
+  "vacuum sensor a",
+  "vacuum sensor b",
+  "vacuum sensor supply voltage",
+  "vin not programmed or incompatible",
+  "vin not programmed or incompatible bscm",
+  "wheel speed sensor generic"
+ ],
+ "codes": [
+  {
+   "code": "C0528",
+   "brand": "",
+   "ru": "Блок датчика угла поворота руля: вне допустимого диапазона",
+   "en": "Steering Angle Sensor Module Range/Performance",
+   "fam": "",
+   "node": "steering angle sensor module"
+  },
+  {
+   "code": "C0529",
+   "brand": "",
+   "ru": "Блок датчика угла поворота руля: нет калибровки",
+   "en": "Steering Angle Sensor Module Missing Calibration",
+   "fam": "",
+   "node": "steering angle sensor module missing calibration"
+  },
+  {
+   "code": "C052A",
+   "brand": "",
+   "ru": "Блок датчика угла поворота руля: рассогласование показаний",
+   "en": "Steering Angle Sensor Module Correlation",
+   "fam": "",
+   "node": "steering angle sensor module correlation"
+  },
+  {
+   "code": "C052B",
+   "brand": "",
+   "ru": "Управление мотором насоса ABS: вне допустимого диапазона",
+   "en": "ABS Pump Motor Control Range/Performance",
+   "fam": "",
+   "node": "abs pump motor control"
+  },
+  {
+   "code": "C052F",
+   "brand": "",
+   "ru": "Мотор насоса ABS: обрыв цепи питания",
+   "en": "ABS Pump Motor Supply Voltage Circuit/Open",
+   "fam": "",
+   "node": "abs pump motor supply voltage"
+  },
+  {
+   "code": "C055A",
+   "brand": "",
+   "ru": "Цепь питания мотора насоса ABS A: высокий уровень",
+   "en": "ABS Pump Motor Supply Voltage Circuit A High",
+   "fam": "",
+   "node": "abs pump motor supply voltage"
+  },
+  {
+   "code": "C055B",
+   "brand": "",
+   "ru": "Цепь питания мотора насоса ABS A: низкий уровень",
+   "en": "ABS Pump Motor Supply Voltage Circuit A Low",
+   "fam": "",
+   "node": "abs pump motor supply voltage"
+  },
+  {
+   "code": "C055C",
+   "brand": "",
+   "ru": "Цепь питания мотора насоса ABS A: вне допустимого диапазона",
+   "en": "ABS Pump Motor Supply Voltage Circuit A Range/Performance",
+   "fam": "",
+   "node": "abs pump motor supply voltage"
+  },
+  {
+   "code": "C05A9",
+   "brand": "",
+   "ru": "Цепь питания мотора насоса ABS: рассогласование A/B",
+   "en": "ABS Pump Motor Supply Voltage Circuit A/B Correlation",
+   "fam": "",
+   "node": "abs pump motor supply voltage"
+  },
+  {
+   "code": "C0530",
+   "brand": "",
+   "ru": "Управление электромотором A: вне допустимого диапазона",
+   "en": "Motor Control A Range/Performance",
+   "fam": "",
+   "node": "motor control a"
+  },
+  {
+   "code": "C0531",
+   "brand": "",
+   "ru": "Управление электромотором A: обрыв цепи",
+   "en": "Motor Control A Circuit/Open",
+   "fam": "",
+   "node": "motor control a"
+  },
+  {
+   "code": "C0532",
+   "brand": "",
+   "ru": "Управление электромотором A: высокий уровень сигнала в цепи",
+   "en": "Motor Control A Circuit High",
+   "fam": "",
+   "node": "motor control a"
+  },
+  {
+   "code": "C0533",
+   "brand": "",
+   "ru": "Управление электромотором A: низкий уровень сигнала в цепи",
+   "en": "Motor Control A Circuit Low",
+   "fam": "",
+   "node": "motor control a"
+  },
+  {
+   "code": "C0534",
+   "brand": "",
+   "ru": "Управление электромотором A: обрыв цепи питания",
+   "en": "Motor Control A Supply Voltage Circuit/Open",
+   "fam": "",
+   "node": "motor control a supply voltage"
+  },
+  {
+   "code": "C0535",
+   "brand": "",
+   "ru": "Управление электромотором B: вне допустимого диапазона",
+   "en": "Motor Control B Range/Performance",
+   "fam": "",
+   "node": "motor control b"
+  },
+  {
+   "code": "C0536",
+   "brand": "",
+   "ru": "Управление электромотором B: обрыв цепи",
+   "en": "Motor Control B Circuit/Open",
+   "fam": "",
+   "node": "motor control b"
+  },
+  {
+   "code": "C0537",
+   "brand": "",
+   "ru": "Управление электромотором B: высокий уровень сигнала в цепи",
+   "en": "Motor Control B Circuit High",
+   "fam": "",
+   "node": "motor control b"
+  },
+  {
+   "code": "C0538",
+   "brand": "",
+   "ru": "Управление электромотором B: низкий уровень сигнала в цепи",
+   "en": "Motor Control B Circuit Low",
+   "fam": "",
+   "node": "motor control b"
+  },
+  {
+   "code": "C0539",
+   "brand": "",
+   "ru": "Управление электромотором B: обрыв цепи питания",
+   "en": "Motor Control B Supply Voltage Circuit/Open",
+   "fam": "",
+   "node": "motor control b supply voltage"
+  },
+  {
+   "code": "C053A",
+   "brand": "",
+   "ru": "Клапаны ABS: нет калибровки",
+   "en": "ABS Valves Missing Calibration",
+   "fam": "",
+   "node": "abs valves missing calibration"
+  },
+  {
+   "code": "C053B",
+   "brand": "",
+   "ru": "Клапаны ABS: обрыв цепи питания",
+   "en": "ABS Valves Supply Voltage Circuit/Open",
+   "fam": "",
+   "node": "abs valves supply voltage"
+  },
+  {
+   "code": "C053C",
+   "brand": "",
+   "ru": "Датчик скорости колеса: вне допустимого диапазона",
+   "en": "Wheel Speed Sensor Generic Range/Performance",
+   "fam": "",
+   "node": "wheel speed sensor generic"
+  },
+  {
+   "code": "C053D",
+   "brand": "",
+   "ru": "Датчик давления в тормозной системе A: вне допустимого диапазона",
+   "en": "Brake Pressure Sensor A Range/Performance",
+   "fam": "",
+   "node": "brake pressure sensor a"
+  },
+  {
+   "code": "C053E",
+   "brand": "",
+   "ru": "Датчик давления в тормозной системе A: низкий уровень сигнала в цепи",
+   "en": "Brake Pressure Sensor A Circuit Low",
+   "fam": "",
+   "node": "brake pressure sensor a"
+  },
+  {
+   "code": "C053F",
+   "brand": "",
+   "ru": "Датчик давления в тормозной системе A: высокий уровень сигнала в цепи",
+   "en": "Brake Pressure Sensor A Circuit High",
+   "fam": "",
+   "node": "brake pressure sensor a"
+  },
+  {
+   "code": "C0540",
+   "brand": "",
+   "ru": "Датчик давления в тормозной системе A: обрыв цепи",
+   "en": "Brake Pressure Sensor A Circuit/Open",
+   "fam": "",
+   "node": "brake pressure sensor a"
+  },
+  {
+   "code": "C056B",
+   "brand": "",
+   "ru": "Датчик давления в тормозной системе A: прерывистый / нестабильный сигнал",
+   "en": "Brake Pressure Sensor A Intermittent/Erratic",
+   "fam": "",
+   "node": "brake pressure sensor a"
+  },
+  {
+   "code": "C0545",
+   "brand": "",
+   "ru": "VIN не записан или не подходит (блок тормозной системы)",
+   "en": "VIN Not Programmed or Incompatible - BSCM",
+   "fam": "",
+   "node": "vin not programmed or incompatible bscm"
+  },
+  {
+   "code": "C0546",
+   "brand": "",
+   "ru": "VIN не записан или не подходит",
+   "en": "VIN Not Programmed or Incompatible",
+   "fam": "",
+   "node": "vin not programmed or incompatible"
+  },
+  {
+   "code": "C0547",
+   "brand": "",
+   "ru": "Датчик разрежения: обрыв цепи питания",
+   "en": "Vacuum Sensor Supply Voltage Circuit/Open",
+   "fam": "",
+   "node": "vacuum sensor supply voltage"
+  },
+  {
+   "code": "C0548",
+   "brand": "",
+   "ru": "Датчик разрежения: низкое напряжение питания",
+   "en": "Vacuum Sensor Supply Voltage Low",
+   "fam": "",
+   "node": "vacuum sensor supply voltage"
+  },
+  {
+   "code": "C0549",
+   "brand": "",
+   "ru": "Датчик разрежения A: обрыв цепи",
+   "en": "Vacuum Sensor A Circuit/Open",
+   "fam": "",
+   "node": "vacuum sensor a"
+  },
+  {
+   "code": "C054A",
+   "brand": "",
+   "ru": "Датчик разрежения A: вне допустимого диапазона",
+   "en": "Vacuum Sensor A Range/Performance",
+   "fam": "",
+   "node": "vacuum sensor a"
+  },
+  {
+   "code": "C054B",
+   "brand": "",
+   "ru": "Датчик разрежения A: низкий уровень сигнала в цепи",
+   "en": "Vacuum Sensor A Circuit Low",
+   "fam": "",
+   "node": "vacuum sensor a"
+  },
+  {
+   "code": "C054C",
+   "brand": "",
+   "ru": "Датчик разрежения A: высокий уровень сигнала в цепи",
+   "en": "Vacuum Sensor A Circuit High",
+   "fam": "",
+   "node": "vacuum sensor a"
+  },
+  {
+   "code": "C054D",
+   "brand": "",
+   "ru": "Датчик разрежения B: обрыв цепи",
+   "en": "Vacuum Sensor B Circuit/Open",
+   "fam": "",
+   "node": "vacuum sensor b"
+  },
+  {
+   "code": "C054E",
+   "brand": "",
+   "ru": "Датчик разрежения B: вне допустимого диапазона",
+   "en": "Vacuum Sensor B Range/Performance",
+   "fam": "",
+   "node": "vacuum sensor b"
+  },
+  {
+   "code": "C054F",
+   "brand": "",
+   "ru": "Датчик разрежения B: низкий уровень сигнала в цепи",
+   "en": "Vacuum Sensor B Circuit Low",
+   "fam": "",
+   "node": "vacuum sensor b"
+  },
+  {
+   "code": "C0550",
+   "brand": "",
+   "ru": "Датчик разрежения B: высокий уровень сигнала в цепи",
+   "en": "Vacuum Sensor B Circuit High",
+   "fam": "",
+   "node": "vacuum sensor b"
+  },
+  {
+   "code": "C0551",
+   "brand": "",
+   "ru": "Датчик продольного ускорения: обрыв цепи",
+   "en": "Longitudinal Acceleration Sensor Circuit/Open",
+   "fam": "",
+   "node": "longitudinal acceleration"
+  },
+  {
+   "code": "C0553",
+   "brand": "",
+   "ru": "Датчик продольного ускорения: низкий уровень сигнала в цепи",
+   "en": "Longitudinal Acceleration Sensor Circuit Low",
+   "fam": "",
+   "node": "longitudinal acceleration"
+  },
+  {
+   "code": "C0554",
+   "brand": "",
+   "ru": "Датчик продольного ускорения: высокий уровень сигнала в цепи",
+   "en": "Longitudinal Acceleration Sensor Circuit High",
+   "fam": "",
+   "node": "longitudinal acceleration"
+  },
+  {
+   "code": "C0552",
+   "brand": "",
+   "ru": "Датчик продольного ускорения: вне допустимого диапазона",
+   "en": "Longitudinal Acceleration Sensor Range/Performance",
+   "fam": "",
+   "node": "longitudinal acceleration sensor"
+  },
+  {
+   "code": "C0555",
+   "brand": "",
+   "ru": "Датчик скорости левого переднего колеса A: установлен не тот компонент",
+   "en": "Left Front Wheel Speed Sensor A Incorrect Component Installed",
+   "fam": "",
+   "node": "left front wheel speed sensor a incorrect component installed"
+  },
+  {
+   "code": "C0556",
+   "brand": "",
+   "ru": "Датчик скорости правого переднего колеса A: установлен не тот компонент",
+   "en": "Right Front Wheel Speed Sensor A Incorrect Component Installed",
+   "fam": "",
+   "node": "right front wheel speed sensor a incorrect component installed"
+  }
+ ]
+}

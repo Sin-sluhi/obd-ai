@@ -1,0 +1,372 @@
+{
+ "name": "sae_187",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "coolant pump e control module overtemperature",
+  "coolant pump e overspeed air in system",
+  "coolant pump e supply voltage",
+  "coolant pump e underspeed",
+  "drive motor a inverter voltage sensor a b correlation",
+  "engine disconnect clutch actuator position not learned",
+  "evap system purge pump",
+  "gear lever position sensor a",
+  "gear lever position sensor b",
+  "gear lever position sensor c",
+  "gear lever position sensor d",
+  "gear selection actuator position",
+  "gear selection actuator position sensor",
+  "hybrid ev battery coolant leak detected",
+  "intake valve lift",
+  "intake valve lift system",
+  "intermediate shaft selection actuator position",
+  "intermediate shaft selection actuator position sensor",
+  "intermediate shaft selection acutator position"
+ ],
+ "codes": [
+  {
+   "code": "P2DEA",
+   "brand": "",
+   "ru": "Цилиндр 1: подъём впускного клапана вне диапазона",
+   "en": "Cylinder 1 Intake Valve Lift Range/Performance",
+   "fam": "",
+   "node": "intake valve lift"
+  },
+  {
+   "code": "P2DEB",
+   "brand": "",
+   "ru": "Цилиндр 2: подъём впускного клапана вне диапазона",
+   "en": "Cylinder 2 Intake Valve Lift Range/Performance",
+   "fam": "",
+   "node": "intake valve lift"
+  },
+  {
+   "code": "P2DEC",
+   "brand": "",
+   "ru": "Цилиндр 3: подъём впускного клапана вне диапазона",
+   "en": "Cylinder 3 Intake Valve Lift Range/Performance",
+   "fam": "",
+   "node": "intake valve lift"
+  },
+  {
+   "code": "P2DED",
+   "brand": "",
+   "ru": "Цилиндр 4: подъём впускного клапана вне диапазона",
+   "en": "Cylinder 4 Intake Valve Lift Range/Performance",
+   "fam": "",
+   "node": "intake valve lift"
+  },
+  {
+   "code": "P2DEE",
+   "brand": "",
+   "ru": "Цилиндр 5: подъём впускного клапана вне диапазона",
+   "en": "Cylinder 5 Intake Valve Lift Range/Performance",
+   "fam": "",
+   "node": "intake valve lift"
+  },
+  {
+   "code": "P2DEF",
+   "brand": "",
+   "ru": "Цилиндр 6: подъём впускного клапана вне диапазона",
+   "en": "Cylinder 6 Intake Valve Lift Range/Performance",
+   "fam": "",
+   "node": "intake valve lift"
+  },
+  {
+   "code": "P2DF0",
+   "brand": "",
+   "ru": "Подъём впускных клапанов вне диапазона (банк 1)",
+   "en": "Intake Valve Lift Range/Performance Bank 1",
+   "fam": "",
+   "node": "intake valve lift"
+  },
+  {
+   "code": "P2DF1",
+   "brand": "",
+   "ru": "Подъём впускных клапанов вне диапазона (банк 2)",
+   "en": "Intake Valve Lift Range/Performance Bank 2",
+   "fam": "",
+   "node": "intake valve lift"
+  },
+  {
+   "code": "P2DF2",
+   "brand": "",
+   "ru": "Система изменения подъёма клапанов: вне допустимого диапазона",
+   "en": "Intake Valve Lift System Range/Performance",
+   "fam": "",
+   "node": "intake valve lift system"
+  },
+  {
+   "code": "P2DF3",
+   "brand": "",
+   "ru": "Привод муфты отключения двигателя: положение не обучено",
+   "en": "Engine Disconnect Clutch Actuator Position Not Learned",
+   "fam": "",
+   "node": "engine disconnect clutch actuator position not learned"
+  },
+  {
+   "code": "P2DF7",
+   "brand": "",
+   "ru": "Насос охлаждающей жидкости E: превышены обороты / воздух в системе",
+   "en": "Coolant Pump E Overspeed/Air in System",
+   "fam": "",
+   "node": "coolant pump e overspeed air in system"
+  },
+  {
+   "code": "P2DF8",
+   "brand": "",
+   "ru": "Насос охлаждающей жидкости E: заниженная скорость вращения",
+   "en": "Coolant Pump E Underspeed",
+   "fam": "",
+   "node": "coolant pump e underspeed"
+  },
+  {
+   "code": "P2DFA",
+   "brand": "",
+   "ru": "Насос охлаждающей жидкости E: цепь питания",
+   "en": "Coolant Pump E Supply Voltage Circuit",
+   "fam": "",
+   "node": "coolant pump e supply voltage"
+  },
+  {
+   "code": "P2DFB",
+   "brand": "",
+   "ru": "Перегрев блока насоса охлаждающей жидкости E",
+   "en": "Coolant Pump E Control Module Overtemperature",
+   "fam": "",
+   "node": "coolant pump e control module overtemperature"
+  },
+  {
+   "code": "P2DFC",
+   "brand": "",
+   "ru": "Обнаружена утечка жидкости охлаждения тяговой батареи",
+   "en": "Hybrid/EV Battery Coolant Leak Detected",
+   "fam": "",
+   "node": "hybrid ev battery coolant leak detected"
+  },
+  {
+   "code": "P2DFD",
+   "brand": "",
+   "ru": "Насос продувки адсорбера EVAP: работа нарушена",
+   "en": "EVAP System Purge Pump Performance",
+   "fam": "",
+   "node": "evap system purge pump"
+  },
+  {
+   "code": "P2E00",
+   "brand": "",
+   "ru": "Датчик положения рычага КПП A: цепь",
+   "en": "Gear Lever Position Sensor A Circuit",
+   "fam": "",
+   "node": "gear lever position sensor a"
+  },
+  {
+   "code": "P2E01",
+   "brand": "",
+   "ru": "Датчик положения рычага КПП A: вне допустимого диапазона",
+   "en": "Gear Lever Position Sensor A Range/Performance",
+   "fam": "",
+   "node": "gear lever position sensor a"
+  },
+  {
+   "code": "P2E02",
+   "brand": "",
+   "ru": "Датчик положения рычага КПП A: низкий уровень сигнала в цепи",
+   "en": "Gear Lever Position Sensor A Circuit Low",
+   "fam": "",
+   "node": "gear lever position sensor a"
+  },
+  {
+   "code": "P2E03",
+   "brand": "",
+   "ru": "Датчик положения рычага КПП A: высокий уровень сигнала в цепи",
+   "en": "Gear Lever Position Sensor A Circuit High",
+   "fam": "",
+   "node": "gear lever position sensor a"
+  },
+  {
+   "code": "P2E04",
+   "brand": "",
+   "ru": "Датчик положения рычага КПП B: цепь",
+   "en": "Gear Lever Position Sensor B Circuit",
+   "fam": "",
+   "node": "gear lever position sensor b"
+  },
+  {
+   "code": "P2E05",
+   "brand": "",
+   "ru": "Датчик положения рычага КПП B: вне допустимого диапазона",
+   "en": "Gear Lever Position Sensor B Range/Performance",
+   "fam": "",
+   "node": "gear lever position sensor b"
+  },
+  {
+   "code": "P2E06",
+   "brand": "",
+   "ru": "Датчик положения рычага КПП B: низкий уровень сигнала в цепи",
+   "en": "Gear Lever Position Sensor B Circuit Low",
+   "fam": "",
+   "node": "gear lever position sensor b"
+  },
+  {
+   "code": "P2E07",
+   "brand": "",
+   "ru": "Датчик положения рычага КПП B: высокий уровень сигнала в цепи",
+   "en": "Gear Lever Position Sensor B Circuit High",
+   "fam": "",
+   "node": "gear lever position sensor b"
+  },
+  {
+   "code": "P2E08",
+   "brand": "",
+   "ru": "Датчик положения рычага КПП C: цепь",
+   "en": "Gear Lever Position Sensor C Circuit",
+   "fam": "",
+   "node": "gear lever position sensor c"
+  },
+  {
+   "code": "P2E09",
+   "brand": "",
+   "ru": "Датчик положения рычага КПП C: вне допустимого диапазона",
+   "en": "Gear Lever Position Sensor C Range/Performance",
+   "fam": "",
+   "node": "gear lever position sensor c"
+  },
+  {
+   "code": "P2E0A",
+   "brand": "",
+   "ru": "Датчик положения рычага КПП C: низкий уровень сигнала в цепи",
+   "en": "Gear Lever Position Sensor C Circuit Low",
+   "fam": "",
+   "node": "gear lever position sensor c"
+  },
+  {
+   "code": "P2E0B",
+   "brand": "",
+   "ru": "Датчик положения рычага КПП C: высокий уровень сигнала в цепи",
+   "en": "Gear Lever Position Sensor C Circuit High",
+   "fam": "",
+   "node": "gear lever position sensor c"
+  },
+  {
+   "code": "P2E0C",
+   "brand": "",
+   "ru": "Датчик положения рычага КПП D: цепь",
+   "en": "Gear Lever Position Sensor D Circuit",
+   "fam": "",
+   "node": "gear lever position sensor d"
+  },
+  {
+   "code": "P2E0D",
+   "brand": "",
+   "ru": "Датчик положения рычага КПП D: вне допустимого диапазона",
+   "en": "Gear Lever Position Sensor D Range/Performance",
+   "fam": "",
+   "node": "gear lever position sensor d"
+  },
+  {
+   "code": "P2E0E",
+   "brand": "",
+   "ru": "Датчик положения рычага КПП D: низкий уровень сигнала в цепи",
+   "en": "Gear Lever Position Sensor D Circuit Low",
+   "fam": "",
+   "node": "gear lever position sensor d"
+  },
+  {
+   "code": "P2E0F",
+   "brand": "",
+   "ru": "Датчик положения рычага КПП D: высокий уровень сигнала в цепи",
+   "en": "Gear Lever Position Sensor D Circuit High",
+   "fam": "",
+   "node": "gear lever position sensor d"
+  },
+  {
+   "code": "P2E10",
+   "brand": "",
+   "ru": "Датчик положения привода выбора передачи: цепь",
+   "en": "Gear Selection Actuator Position Sensor Circuit",
+   "fam": "",
+   "node": "gear selection actuator position"
+  },
+  {
+   "code": "P2E12",
+   "brand": "",
+   "ru": "Датчик положения привода выбора передачи: низкий уровень сигнала в цепи",
+   "en": "Gear Selection Actuator Position Sensor Circuit Low",
+   "fam": "",
+   "node": "gear selection actuator position"
+  },
+  {
+   "code": "P2E13",
+   "brand": "",
+   "ru": "Датчик положения привода выбора передачи: высокий уровень сигнала в цепи",
+   "en": "Gear Selection Actuator Position Sensor Circuit High",
+   "fam": "",
+   "node": "gear selection actuator position"
+  },
+  {
+   "code": "P2E14",
+   "brand": "",
+   "ru": "Датчик положения привода выбора передачи: прерывистый / нестабильный сигнал",
+   "en": "Gear Selection Actuator Position Sensor Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "gear selection actuator position"
+  },
+  {
+   "code": "P2E11",
+   "brand": "",
+   "ru": "Датчик положения привода выбора передачи: работа нарушена",
+   "en": "Gear Selection Actuator Position Sensor Performance",
+   "fam": "",
+   "node": "gear selection actuator position sensor"
+  },
+  {
+   "code": "P2E15",
+   "brand": "",
+   "ru": "Датчик положения привода выбора промежуточного вала: цепь",
+   "en": "Intermediate Shaft Selection Actuator Position Sensor Circuit",
+   "fam": "",
+   "node": "intermediate shaft selection actuator position"
+  },
+  {
+   "code": "P2E17",
+   "brand": "",
+   "ru": "Датчик положения привода выбора промежуточного вала: низкий уровень сигнала в цепи",
+   "en": "Intermediate Shaft Selection Actuator Position Sensor Circuit Low",
+   "fam": "",
+   "node": "intermediate shaft selection actuator position"
+  },
+  {
+   "code": "P2E18",
+   "brand": "",
+   "ru": "Датчик положения привода выбора промежуточного вала: высокий уровень сигнала в цепи",
+   "en": "Intermediate Shaft Selection Actuator Position Sensor Circuit High",
+   "fam": "",
+   "node": "intermediate shaft selection actuator position"
+  },
+  {
+   "code": "P2E16",
+   "brand": "",
+   "ru": "Датчик положения привода выбора промежуточного вала: вне допустимого диапазона",
+   "en": "Intermediate Shaft Selection Actuator Position Sensor Range/Performance",
+   "fam": "",
+   "node": "intermediate shaft selection actuator position sensor"
+  },
+  {
+   "code": "P2E19",
+   "brand": "",
+   "ru": "Датчик положения привода выбора промежуточного вала: прерывистый / нестабильный сигнал",
+   "en": "Intermediate Shaft Selection Acutator Position Sensor Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "intermediate shaft selection acutator position"
+  },
+  {
+   "code": "P2E1A",
+   "brand": "",
+   "ru": "Датчик напряжения инвертора тягового электромотора A: рассогласование A/B",
+   "en": "Drive Motor A Inverter Voltage Sensor A/B Correlation",
+   "fam": "",
+   "node": "drive motor a inverter voltage sensor a b correlation"
+  }
+ ]
+}

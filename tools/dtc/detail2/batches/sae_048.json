@@ -1,0 +1,363 @@
+{
+ "name": "sae_048",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "cold start camshaft profile system",
+  "dc ac converter control module",
+  "fam:glow",
+  "glow plug heater indicator",
+  "glow plug sense",
+  "ignition e control",
+  "ignition f control",
+  "ignition g control",
+  "ignition h control",
+  "ignition i control"
+ ],
+ "codes": [
+  {
+   "code": "P035A",
+   "brand": "",
+   "ru": "Управление зажиганием E: обрыв сигнальной цепи",
+   "en": "Ignition E Control Signal Circuit/Open",
+   "fam": "",
+   "node": "ignition e control"
+  },
+  {
+   "code": "P035B",
+   "brand": "",
+   "ru": "Управление зажиганием E: низкий уровень в сигнальной цепи",
+   "en": "Ignition E Control Signal Circuit Low",
+   "fam": "",
+   "node": "ignition e control"
+  },
+  {
+   "code": "P035C",
+   "brand": "",
+   "ru": "Управление зажиганием E: высокий уровень в сигнальной цепи",
+   "en": "Ignition E Control Signal Circuit High",
+   "fam": "",
+   "node": "ignition e control"
+  },
+  {
+   "code": "P035D",
+   "brand": "",
+   "ru": "Управление зажиганием F: обрыв сигнальной цепи",
+   "en": "Ignition F Control Signal Circuit/Open",
+   "fam": "",
+   "node": "ignition f control"
+  },
+  {
+   "code": "P035E",
+   "brand": "",
+   "ru": "Управление зажиганием F: низкий уровень в сигнальной цепи",
+   "en": "Ignition F Control Signal Circuit Low",
+   "fam": "",
+   "node": "ignition f control"
+  },
+  {
+   "code": "P035F",
+   "brand": "",
+   "ru": "Управление зажиганием F: высокий уровень в сигнальной цепи",
+   "en": "Ignition F Control Signal Circuit High",
+   "fam": "",
+   "node": "ignition f control"
+  },
+  {
+   "code": "P0364",
+   "brand": "",
+   "ru": "Блок управления инвертором DC/AC: цепь управления вне диапазона",
+   "en": "DC/AC Converter Control Module Control Circuit Range/Performance",
+   "fam": "",
+   "node": "dc ac converter control module"
+  },
+  {
+   "code": "P036A",
+   "brand": "",
+   "ru": "Управление зажиганием G: обрыв сигнальной цепи",
+   "en": "Ignition G Control Signal Circuit/Open",
+   "fam": "",
+   "node": "ignition g control"
+  },
+  {
+   "code": "P036B",
+   "brand": "",
+   "ru": "Управление зажиганием G: низкий уровень в сигнальной цепи",
+   "en": "Ignition G Control Signal Circuit Low",
+   "fam": "",
+   "node": "ignition g control"
+  },
+  {
+   "code": "P036C",
+   "brand": "",
+   "ru": "Управление зажиганием G: высокий уровень в сигнальной цепи",
+   "en": "Ignition G Control Signal Circuit High",
+   "fam": "",
+   "node": "ignition g control"
+  },
+  {
+   "code": "P036D",
+   "brand": "",
+   "ru": "Управление зажиганием H: обрыв сигнальной цепи",
+   "en": "Ignition H Control Signal Circuit/Open",
+   "fam": "",
+   "node": "ignition h control"
+  },
+  {
+   "code": "P036E",
+   "brand": "",
+   "ru": "Управление зажиганием H: низкий уровень в сигнальной цепи",
+   "en": "Ignition H Control Signal Circuit Low",
+   "fam": "",
+   "node": "ignition h control"
+  },
+  {
+   "code": "P036F",
+   "brand": "",
+   "ru": "Управление зажиганием H: высокий уровень в сигнальной цепи",
+   "en": "Ignition H Control Signal Circuit High",
+   "fam": "",
+   "node": "ignition h control"
+  },
+  {
+   "code": "P037A",
+   "brand": "",
+   "ru": "Индикатор свечей накаливания: низкий уровень в цепи управления",
+   "en": "Glow Plug/Heater Indicator Control Circuit Low",
+   "fam": "",
+   "node": "glow plug heater indicator"
+  },
+  {
+   "code": "P037B",
+   "brand": "",
+   "ru": "Индикатор свечей накаливания: высокий уровень в цепи управления",
+   "en": "Glow Plug/Heater Indicator Control Circuit High",
+   "fam": "",
+   "node": "glow plug heater indicator"
+  },
+  {
+   "code": "P037C",
+   "brand": "",
+   "ru": "Профиль распредвала при холодном пуске: работа нарушена",
+   "en": "Cold Start Camshaft Profile System Performance",
+   "fam": "",
+   "node": "cold start camshaft profile system"
+  },
+  {
+   "code": "P037D",
+   "brand": "",
+   "ru": "Свеча накаливания: цепь обратной связи",
+   "en": "Glow Plug Sense Circuit",
+   "fam": "",
+   "node": "glow plug sense"
+  },
+  {
+   "code": "P037E",
+   "brand": "",
+   "ru": "Свеча накаливания: низкий уровень в цепи обратной связи",
+   "en": "Glow Plug Sense Circuit Low",
+   "fam": "",
+   "node": "glow plug sense"
+  },
+  {
+   "code": "P037F",
+   "brand": "",
+   "ru": "Свеча накаливания: высокий уровень в цепи обратной связи",
+   "en": "Glow Plug Sense Circuit High",
+   "fam": "",
+   "node": "glow plug sense"
+  },
+  {
+   "code": "P0380",
+   "brand": "",
+   "ru": "Свечи накаливания: цепь A",
+   "en": "",
+   "fam": "glow",
+   "node": "fam:glow"
+  },
+  {
+   "code": "P0381",
+   "brand": "",
+   "ru": "Индикатор свечей накаливания: цепь",
+   "en": "",
+   "fam": "glow",
+   "node": "fam:glow"
+  },
+  {
+   "code": "P0382",
+   "brand": "",
+   "ru": "Свечи накаливания: цепь B",
+   "en": "",
+   "fam": "glow",
+   "node": "fam:glow"
+  },
+  {
+   "code": "P0383",
+   "brand": "",
+   "ru": "Модуль свечей накаливания: низкий уровень",
+   "en": "",
+   "fam": "glow",
+   "node": "fam:glow"
+  },
+  {
+   "code": "P0384",
+   "brand": "",
+   "ru": "Модуль свечей накаливания: высокий уровень",
+   "en": "",
+   "fam": "glow",
+   "node": "fam:glow"
+  },
+  {
+   "code": "P064C",
+   "brand": "",
+   "ru": "Модуль свечей накаливания",
+   "en": "",
+   "fam": "glow",
+   "node": "fam:glow"
+  },
+  {
+   "code": "P0670",
+   "brand": "",
+   "ru": "Модуль свечей накаливания: цепь управления",
+   "en": "",
+   "fam": "glow",
+   "node": "fam:glow"
+  },
+  {
+   "code": "P0671",
+   "brand": "",
+   "ru": "Свеча накаливания цилиндра 1: цепь",
+   "en": "",
+   "fam": "glow",
+   "node": "fam:glow"
+  },
+  {
+   "code": "P0672",
+   "brand": "",
+   "ru": "Свеча накаливания цилиндра 2: цепь",
+   "en": "",
+   "fam": "glow",
+   "node": "fam:glow"
+  },
+  {
+   "code": "P0673",
+   "brand": "",
+   "ru": "Свеча накаливания цилиндра 3: цепь",
+   "en": "",
+   "fam": "glow",
+   "node": "fam:glow"
+  },
+  {
+   "code": "P0674",
+   "brand": "",
+   "ru": "Свеча накаливания цилиндра 4: цепь",
+   "en": "",
+   "fam": "glow",
+   "node": "fam:glow"
+  },
+  {
+   "code": "P0675",
+   "brand": "",
+   "ru": "Свеча накаливания цилиндра 5: цепь",
+   "en": "",
+   "fam": "glow",
+   "node": "fam:glow"
+  },
+  {
+   "code": "P0676",
+   "brand": "",
+   "ru": "Свеча накаливания цилиндра 6: цепь",
+   "en": "",
+   "fam": "glow",
+   "node": "fam:glow"
+  },
+  {
+   "code": "P0677",
+   "brand": "",
+   "ru": "Свеча накаливания цилиндра 7: цепь",
+   "en": "",
+   "fam": "glow",
+   "node": "fam:glow"
+  },
+  {
+   "code": "P0678",
+   "brand": "",
+   "ru": "Свеча накаливания цилиндра 8: цепь",
+   "en": "",
+   "fam": "glow",
+   "node": "fam:glow"
+  },
+  {
+   "code": "P0679",
+   "brand": "",
+   "ru": "Свеча накаливания цилиндра 9: цепь",
+   "en": "",
+   "fam": "glow",
+   "node": "fam:glow"
+  },
+  {
+   "code": "P0680",
+   "brand": "",
+   "ru": "Свеча накаливания цилиндра 10: цепь",
+   "en": "",
+   "fam": "glow",
+   "node": "fam:glow"
+  },
+  {
+   "code": "P0681",
+   "brand": "",
+   "ru": "Свеча накаливания цилиндра 11: цепь",
+   "en": "",
+   "fam": "glow",
+   "node": "fam:glow"
+  },
+  {
+   "code": "P0682",
+   "brand": "",
+   "ru": "Свеча накаливания цилиндра 12: цепь",
+   "en": "",
+   "fam": "glow",
+   "node": "fam:glow"
+  },
+  {
+   "code": "P0683",
+   "brand": "",
+   "ru": "Модуль свечей накаливания: нет связи с блоком",
+   "en": "",
+   "fam": "glow",
+   "node": "fam:glow"
+  },
+  {
+   "code": "P0684",
+   "brand": "",
+   "ru": "Модуль свечей накаливания: связь вне диапазона",
+   "en": "",
+   "fam": "glow",
+   "node": "fam:glow"
+  },
+  {
+   "code": "P038A",
+   "brand": "",
+   "ru": "Управление зажиганием I: обрыв сигнальной цепи",
+   "en": "Ignition I Control Signal Circuit/Open",
+   "fam": "",
+   "node": "ignition i control"
+  },
+  {
+   "code": "P038B",
+   "brand": "",
+   "ru": "Управление зажиганием I: низкий уровень в сигнальной цепи",
+   "en": "Ignition I Control Signal Circuit Low",
+   "fam": "",
+   "node": "ignition i control"
+  },
+  {
+   "code": "P038C",
+   "brand": "",
+   "ru": "Управление зажиганием I: высокий уровень в сигнальной цепи",
+   "en": "Ignition I Control Signal Circuit High",
+   "fam": "",
+   "node": "ignition i control"
+  }
+ ]
+}

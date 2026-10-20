@@ -1,0 +1,402 @@
+{
+ "name": "sae_162",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "clutch a",
+  "clutch a disengagement time",
+  "clutch a disengagement time too fast",
+  "clutch a engagement time",
+  "clutch a engagement time too fast",
+  "clutch a pressure charge",
+  "clutch a pressure discharge",
+  "clutch a pressure disengagement",
+  "clutch a pressure disengagement too",
+  "clutch a pressure engagement",
+  "clutch a pressure engagement too",
+  "clutch b",
+  "clutch b disengagement time",
+  "clutch b disengagement time too fast",
+  "clutch b engagement time",
+  "clutch b engagement time too fast",
+  "clutch b pressure charge",
+  "clutch b pressure discharge",
+  "clutch b pressure disengagement",
+  "clutch b pressure disengagement too",
+  "clutch b pressure engagement",
+  "clutch b pressure engagement too",
+  "electric auxiliary transmission fluid pump motor torque out of",
+  "shift fork a actuator",
+  "shift fork a calibration not learned",
+  "shift fork b actuator",
+  "shift fork e",
+  "shift fork e position",
+  "shift fork e position sensor incorrect neutral position indicated",
+  "shift fork e unrequested movement",
+  "shift fork position sensor a b correlation",
+  "shift fork position sensor c d correlation",
+  "transmission adaptive values not learned"
+ ],
+ "codes": [
+  {
+   "code": "P2851",
+   "brand": "",
+   "ru": "Датчики положения вилок A/B: рассогласование",
+   "en": "Shift Fork Position Sensor A/B Correlation",
+   "fam": "",
+   "node": "shift fork position sensor a b correlation"
+  },
+  {
+   "code": "P2852",
+   "brand": "",
+   "ru": "Датчики положения вилок C/D: рассогласование",
+   "en": "Shift Fork Position Sensor C/D Correlation",
+   "fam": "",
+   "node": "shift fork position sensor c d correlation"
+  },
+  {
+   "code": "P2853",
+   "brand": "",
+   "ru": "Сцепление A: сброс давления нарушен",
+   "en": "Clutch A Pressure Discharge Performance",
+   "fam": "",
+   "node": "clutch a pressure discharge"
+  },
+  {
+   "code": "P2854",
+   "brand": "",
+   "ru": "Сцепление B: сброс давления нарушен",
+   "en": "Clutch B Pressure Discharge Performance",
+   "fam": "",
+   "node": "clutch b pressure discharge"
+  },
+  {
+   "code": "P2855",
+   "brand": "",
+   "ru": "Сцепление A: набор давления нарушен",
+   "en": "Clutch A Pressure Charge Performance",
+   "fam": "",
+   "node": "clutch a pressure charge"
+  },
+  {
+   "code": "P2856",
+   "brand": "",
+   "ru": "Сцепление B: набор давления нарушен",
+   "en": "Clutch B Pressure Charge Performance",
+   "fam": "",
+   "node": "clutch b pressure charge"
+  },
+  {
+   "code": "P2857",
+   "brand": "",
+   "ru": "Сцепление A: давление включения нарушено / слишком низкое",
+   "en": "Clutch A Pressure Engagement Performance/Too Low",
+   "fam": "",
+   "node": "clutch a pressure engagement"
+  },
+  {
+   "code": "P2858",
+   "brand": "",
+   "ru": "Сцепление B: давление включения нарушено / слишком низкое",
+   "en": "Clutch B Pressure Engagement Performance/Too Low",
+   "fam": "",
+   "node": "clutch b pressure engagement"
+  },
+  {
+   "code": "P2859",
+   "brand": "",
+   "ru": "Сцепление A: давление выключения нарушено / слишком низкое",
+   "en": "Clutch A Pressure Disengagement Performance/Too Low",
+   "fam": "",
+   "node": "clutch a pressure disengagement"
+  },
+  {
+   "code": "P285A",
+   "brand": "",
+   "ru": "Сцепление B: давление выключения нарушено / слишком низкое",
+   "en": "Clutch B Pressure Disengagement Performance/Too Low",
+   "fam": "",
+   "node": "clutch b pressure disengagement"
+  },
+  {
+   "code": "P285B",
+   "brand": "",
+   "ru": "Привод вилки переключения A: обрыв цепи",
+   "en": "Shift Fork A Actuator Circuit/Open",
+   "fam": "",
+   "node": "shift fork a actuator"
+  },
+  {
+   "code": "P285C",
+   "brand": "",
+   "ru": "Привод вилки переключения A: работа нарушена",
+   "en": "Shift Fork A Actuator Performance",
+   "fam": "",
+   "node": "shift fork a actuator"
+  },
+  {
+   "code": "P285D",
+   "brand": "",
+   "ru": "Привод вилки переключения A: низкий уровень сигнала в цепи",
+   "en": "Shift Fork A Actuator Circuit Low",
+   "fam": "",
+   "node": "shift fork a actuator"
+  },
+  {
+   "code": "P285E",
+   "brand": "",
+   "ru": "Привод вилки переключения A: высокий уровень сигнала в цепи",
+   "en": "Shift Fork A Actuator Circuit High",
+   "fam": "",
+   "node": "shift fork a actuator"
+  },
+  {
+   "code": "P285F",
+   "brand": "",
+   "ru": "Привод вилки переключения B: обрыв цепи",
+   "en": "Shift Fork B Actuator Circuit/Open",
+   "fam": "",
+   "node": "shift fork b actuator"
+  },
+  {
+   "code": "P2860",
+   "brand": "",
+   "ru": "Привод вилки переключения B: работа нарушена",
+   "en": "Shift Fork B Actuator Performance",
+   "fam": "",
+   "node": "shift fork b actuator"
+  },
+  {
+   "code": "P2861",
+   "brand": "",
+   "ru": "Привод вилки переключения B: низкий уровень сигнала в цепи",
+   "en": "Shift Fork B Actuator Circuit Low",
+   "fam": "",
+   "node": "shift fork b actuator"
+  },
+  {
+   "code": "P2862",
+   "brand": "",
+   "ru": "Привод вилки переключения B: высокий уровень сигнала в цепи",
+   "en": "Shift Fork B Actuator Circuit High",
+   "fam": "",
+   "node": "shift fork b actuator"
+  },
+  {
+   "code": "P2863",
+   "brand": "",
+   "ru": "Положение вилки переключения E: цепь",
+   "en": "Shift Fork E Position Circuit",
+   "fam": "",
+   "node": "shift fork e position"
+  },
+  {
+   "code": "P2864",
+   "brand": "",
+   "ru": "Положение вилки переключения E: сигнал вне диапазона",
+   "en": "Shift Fork E Position Circuit Range/Performance",
+   "fam": "",
+   "node": "shift fork e position"
+  },
+  {
+   "code": "P2865",
+   "brand": "",
+   "ru": "Положение вилки переключения E: низкий уровень сигнала в цепи",
+   "en": "Shift Fork E Position Circuit Low",
+   "fam": "",
+   "node": "shift fork e position"
+  },
+  {
+   "code": "P2866",
+   "brand": "",
+   "ru": "Положение вилки переключения E: высокий уровень сигнала в цепи",
+   "en": "Shift Fork E Position Circuit High",
+   "fam": "",
+   "node": "shift fork e position"
+  },
+  {
+   "code": "P2867",
+   "brand": "",
+   "ru": "Положение вилки переключения E: прерывистый сигнал в цепи",
+   "en": "Shift Fork E Position Circuit Intermittent",
+   "fam": "",
+   "node": "shift fork e position"
+  },
+  {
+   "code": "P2868",
+   "brand": "",
+   "ru": "Датчик вилки переключения E: неверное положение нейтрали",
+   "en": "Shift Fork E Position Sensor Incorrect Neutral Position Indicated",
+   "fam": "",
+   "node": "shift fork e position sensor incorrect neutral position indicated"
+  },
+  {
+   "code": "P2869",
+   "brand": "",
+   "ru": "Вилка переключения передач E: заклинивание",
+   "en": "Shift Fork E Stuck",
+   "fam": "",
+   "node": "shift fork e"
+  },
+  {
+   "code": "P286A",
+   "brand": "",
+   "ru": "Вилка переключения E: самопроизвольное движение",
+   "en": "Shift Fork E Unrequested Movement",
+   "fam": "",
+   "node": "shift fork e unrequested movement"
+  },
+  {
+   "code": "P286B",
+   "brand": "",
+   "ru": "Сцепление A: слишком высокое давление включения",
+   "en": "Clutch A Pressure Engagement Too High",
+   "fam": "",
+   "node": "clutch a pressure engagement too"
+  },
+  {
+   "code": "P286C",
+   "brand": "",
+   "ru": "Сцепление A: слишком высокое давление выключения",
+   "en": "Clutch A Pressure Disengagement Too High",
+   "fam": "",
+   "node": "clutch a pressure disengagement too"
+  },
+  {
+   "code": "P286D",
+   "brand": "",
+   "ru": "Сцепление A: включение слишком медленное",
+   "en": "Clutch A Engagement Time Performance/Too Slow",
+   "fam": "",
+   "node": "clutch a engagement time"
+  },
+  {
+   "code": "P286E",
+   "brand": "",
+   "ru": "Сцепление A: включение слишком быстрое",
+   "en": "Clutch A Engagement Time Too Fast",
+   "fam": "",
+   "node": "clutch a engagement time too fast"
+  },
+  {
+   "code": "P286F",
+   "brand": "",
+   "ru": "Сцепление A: выключение слишком медленное",
+   "en": "Clutch A Disengagement Time Performance/Too Slow",
+   "fam": "",
+   "node": "clutch a disengagement time"
+  },
+  {
+   "code": "P2870",
+   "brand": "",
+   "ru": "Сцепление A: выключение слишком быстрое",
+   "en": "Clutch A Disengagement Time Too Fast",
+   "fam": "",
+   "node": "clutch a disengagement time too fast"
+  },
+  {
+   "code": "P2871",
+   "brand": "",
+   "ru": "Сцепление A: работа нарушена / не включается",
+   "en": "Clutch A Performance/Stuck Disengaged",
+   "fam": "",
+   "node": "clutch a"
+  },
+  {
+   "code": "P2872",
+   "brand": "",
+   "ru": "Сцепление A: не выключается",
+   "en": "Clutch A Stuck Engaged",
+   "fam": "",
+   "node": "clutch a"
+  },
+  {
+   "code": "P2873",
+   "brand": "",
+   "ru": "Сцепление B: слишком высокое давление включения",
+   "en": "Clutch B Pressure Engagement Too High",
+   "fam": "",
+   "node": "clutch b pressure engagement too"
+  },
+  {
+   "code": "P2874",
+   "brand": "",
+   "ru": "Сцепление B: слишком высокое давление выключения",
+   "en": "Clutch B Pressure Disengagement Too High",
+   "fam": "",
+   "node": "clutch b pressure disengagement too"
+  },
+  {
+   "code": "P2875",
+   "brand": "",
+   "ru": "Сцепление B: включение слишком медленное",
+   "en": "Clutch B Engagement Time Performance/Too Slow",
+   "fam": "",
+   "node": "clutch b engagement time"
+  },
+  {
+   "code": "P2876",
+   "brand": "",
+   "ru": "Сцепление B: включение слишком быстрое",
+   "en": "Clutch B Engagement Time Too Fast",
+   "fam": "",
+   "node": "clutch b engagement time too fast"
+  },
+  {
+   "code": "P2877",
+   "brand": "",
+   "ru": "Сцепление B: выключение слишком медленное",
+   "en": "Clutch B Disengagement Time Performance/Too Slow",
+   "fam": "",
+   "node": "clutch b disengagement time"
+  },
+  {
+   "code": "P2878",
+   "brand": "",
+   "ru": "Сцепление B: выключение слишком быстрое",
+   "en": "Clutch B Disengagement Time Too Fast",
+   "fam": "",
+   "node": "clutch b disengagement time too fast"
+  },
+  {
+   "code": "P2879",
+   "brand": "",
+   "ru": "Сцепление B: работа нарушена / не включается",
+   "en": "Clutch B Performance/Stuck Disengaged",
+   "fam": "",
+   "node": "clutch b"
+  },
+  {
+   "code": "P287A",
+   "brand": "",
+   "ru": "Сцепление B: не выключается",
+   "en": "Clutch B Stuck Engaged",
+   "fam": "",
+   "node": "clutch b"
+  },
+  {
+   "code": "P287B",
+   "brand": "",
+   "ru": "Вилка переключения передач A: калибровка не обучена",
+   "en": "Shift Fork A Calibration Not Learned",
+   "fam": "",
+   "node": "shift fork a calibration not learned"
+  },
+  {
+   "code": "P287C",
+   "brand": "",
+   "ru": "Адаптации КПП не обучены",
+   "en": "Transmission Adaptive Values Not Learned",
+   "fam": "",
+   "node": "transmission adaptive values not learned"
+  },
+  {
+   "code": "P287D",
+   "brand": "",
+   "ru": "Мотор доп. насоса масла КПП: момент вне диапазона",
+   "en": "Electric/Auxiliary Transmission Fluid Pump Motor Torque Out Of Range",
+   "fam": "",
+   "node": "electric auxiliary transmission fluid pump motor torque out of"
+  }
+ ]
+}

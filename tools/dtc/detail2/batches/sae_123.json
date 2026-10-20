@@ -1,0 +1,386 @@
+{
+ "name": "sae_123",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "battery charger coolant control valve",
+  "charge status indicator b",
+  "electric auxiliary transmission fluid pump a motor over temperature",
+  "generator inverter power supply a",
+  "generator inverter temperature sensor b",
+  "generator inverter temperature sensor c",
+  "generator phase u v w",
+  "generator phase u v w current sensor correlation",
+  "generator position exceeding learn limit",
+  "generator position sensor not learned",
+  "hybrid ev battery pack cell voltage",
+  "hybrid ev battery pack coolant control valve c",
+  "hybrid ev battery pack coolant heater a",
+  "hybrid ev battery pack coolant heater a control",
+  "hybrid ev battery pack coolant heater b",
+  "hybrid ev battery pack coolant heater b control",
+  "pedestrian alert control"
+ ],
+ "codes": [
+  {
+   "code": "P0DE4",
+   "brand": "",
+   "ru": "Мотор доп. насоса масла КПП A: перегрев",
+   "en": "Electric/Auxiliary Transmission Fluid Pump A Motor Over Temperature",
+   "fam": "",
+   "node": "electric auxiliary transmission fluid pump a motor over temperature"
+  },
+  {
+   "code": "P0DE5",
+   "brand": "",
+   "ru": "Индикатор состояния зарядки B: обрыв цепи управления",
+   "en": "Charge Status Indicator B Control Circuit/Open",
+   "fam": "",
+   "node": "charge status indicator b"
+  },
+  {
+   "code": "P0E41",
+   "brand": "",
+   "ru": "Индикатор состояния зарядки B: низкий уровень в цепи управления",
+   "en": "Charge Status Indicator B Control Circuit Low",
+   "fam": "",
+   "node": "charge status indicator b"
+  },
+  {
+   "code": "P0E42",
+   "brand": "",
+   "ru": "Индикатор состояния зарядки B: высокий уровень в цепи управления",
+   "en": "Charge Status Indicator B Control Circuit High",
+   "fam": "",
+   "node": "charge status indicator b"
+  },
+  {
+   "code": "P0DE6",
+   "brand": "",
+   "ru": "Тяговая батарея: низкое напряжение ячейки",
+   "en": "Hybrid/EV Battery Pack Cell Voltage Low",
+   "fam": "",
+   "node": "hybrid ev battery pack cell voltage"
+  },
+  {
+   "code": "P0DE7",
+   "brand": "",
+   "ru": "Тяговая батарея: высокое напряжение ячейки",
+   "en": "Hybrid/EV Battery Pack Cell Voltage High",
+   "fam": "",
+   "node": "hybrid ev battery pack cell voltage"
+  },
+  {
+   "code": "P0DE8",
+   "brand": "",
+   "ru": "Клапан охлаждения тяговой батареи C: обрыв цепи управления",
+   "en": "Hybrid/EV Battery Pack Coolant Control Valve C Control Circuit/Open",
+   "fam": "",
+   "node": "hybrid ev battery pack coolant control valve c"
+  },
+  {
+   "code": "P0DE9",
+   "brand": "",
+   "ru": "Клапан охлаждения тяговой батареи C: работа нарушена / не включается",
+   "en": "Hybrid/EV Battery Pack Coolant Control Valve C Performance/Stuck Off",
+   "fam": "",
+   "node": "hybrid ev battery pack coolant control valve c"
+  },
+  {
+   "code": "P0DEA",
+   "brand": "",
+   "ru": "Клапан охлаждения тяговой батареи C: постоянно включён",
+   "en": "Hybrid/EV Battery Pack Coolant Control Valve C Stuck On",
+   "fam": "",
+   "node": "hybrid ev battery pack coolant control valve c"
+  },
+  {
+   "code": "P0DEB",
+   "brand": "",
+   "ru": "Клапан охлаждения тяговой батареи C: низкий уровень в цепи управления",
+   "en": "Hybrid/EV Battery Pack Coolant Control Valve C Control Circuit Low",
+   "fam": "",
+   "node": "hybrid ev battery pack coolant control valve c"
+  },
+  {
+   "code": "P0DEC",
+   "brand": "",
+   "ru": "Клапан охлаждения тяговой батареи C: высокий уровень в цепи управления",
+   "en": "Hybrid/EV Battery Pack Coolant Control Valve C Control Circuit High",
+   "fam": "",
+   "node": "hybrid ev battery pack coolant control valve c"
+  },
+  {
+   "code": "P0E22",
+   "brand": "",
+   "ru": "Клапан охлаждения тяговой батареи C: перегрузка драйвера цепи управления по току / перегрев",
+   "en": "Hybrid/EV Battery Pack Coolant Control Valve C Control Circuit Driver Current/Temperature Too High",
+   "fam": "",
+   "node": "hybrid ev battery pack coolant control valve c"
+  },
+  {
+   "code": "P0DED",
+   "brand": "",
+   "ru": "Блок звукового оповещения пешеходов: обрыв цепи",
+   "en": "Pedestrian Alert Control Module Circuit/Open",
+   "fam": "",
+   "node": "pedestrian alert control"
+  },
+  {
+   "code": "P0DEE",
+   "brand": "",
+   "ru": "Блок звукового оповещения пешеходов: низкий уровень сигнала в цепи",
+   "en": "Pedestrian Alert Control Module Circuit Low",
+   "fam": "",
+   "node": "pedestrian alert control"
+  },
+  {
+   "code": "P0DEF",
+   "brand": "",
+   "ru": "Блок звукового оповещения пешеходов: высокий уровень сигнала в цепи",
+   "en": "Pedestrian Alert Control Module Circuit High",
+   "fam": "",
+   "node": "pedestrian alert control"
+  },
+  {
+   "code": "P0DF0",
+   "brand": "",
+   "ru": "Датчик температуры инвертора генератора B: цепь",
+   "en": "Generator Inverter Temperature Sensor B Circuit",
+   "fam": "",
+   "node": "generator inverter temperature sensor b"
+  },
+  {
+   "code": "P0DF1",
+   "brand": "",
+   "ru": "Датчик температуры инвертора генератора B: прерывистый / нестабильный сигнал",
+   "en": "Generator Inverter Temperature Sensor B Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "generator inverter temperature sensor b"
+  },
+  {
+   "code": "P0DF4",
+   "brand": "",
+   "ru": "Датчик температуры инвертора генератора B: сигнал вне диапазона",
+   "en": "Generator Inverter Temperature Sensor B Circuit Range/Performance",
+   "fam": "",
+   "node": "generator inverter temperature sensor b"
+  },
+  {
+   "code": "P0DF5",
+   "brand": "",
+   "ru": "Датчик температуры инвертора генератора B: низкий уровень сигнала в цепи",
+   "en": "Generator Inverter Temperature Sensor B Circuit Low",
+   "fam": "",
+   "node": "generator inverter temperature sensor b"
+  },
+  {
+   "code": "P0DF6",
+   "brand": "",
+   "ru": "Датчик температуры инвертора генератора B: высокий уровень сигнала в цепи",
+   "en": "Generator Inverter Temperature Sensor B Circuit High",
+   "fam": "",
+   "node": "generator inverter temperature sensor b"
+  },
+  {
+   "code": "P0DF2",
+   "brand": "",
+   "ru": "Датчик температуры инвертора генератора C: цепь",
+   "en": "Generator Inverter Temperature Sensor C Circuit",
+   "fam": "",
+   "node": "generator inverter temperature sensor c"
+  },
+  {
+   "code": "P0DF3",
+   "brand": "",
+   "ru": "Датчик температуры инвертора генератора C: прерывистый / нестабильный сигнал",
+   "en": "Generator Inverter Temperature Sensor C Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "generator inverter temperature sensor c"
+  },
+  {
+   "code": "P0DF7",
+   "brand": "",
+   "ru": "Датчик температуры инвертора генератора C: сигнал вне диапазона",
+   "en": "Generator Inverter Temperature Sensor C Circuit Range/Performance",
+   "fam": "",
+   "node": "generator inverter temperature sensor c"
+  },
+  {
+   "code": "P0DF8",
+   "brand": "",
+   "ru": "Датчик температуры инвертора генератора C: низкий уровень сигнала в цепи",
+   "en": "Generator Inverter Temperature Sensor C Circuit Low",
+   "fam": "",
+   "node": "generator inverter temperature sensor c"
+  },
+  {
+   "code": "P0DF9",
+   "brand": "",
+   "ru": "Датчик температуры инвертора генератора C: высокий уровень сигнала в цепи",
+   "en": "Generator Inverter Temperature Sensor C Circuit High",
+   "fam": "",
+   "node": "generator inverter temperature sensor c"
+  },
+  {
+   "code": "P0DFA",
+   "brand": "",
+   "ru": "Генератор (гибрид): рассогласование датчиков тока фаз U-V-W",
+   "en": "Generator Phase U-V-W Current Sensor Correlation",
+   "fam": "",
+   "node": "generator phase u v w current sensor correlation"
+  },
+  {
+   "code": "P0DFB",
+   "brand": "",
+   "ru": "Генератор (гибрид): положение превышает предел адаптации",
+   "en": "Generator Position Exceeding Learn Limit",
+   "fam": "",
+   "node": "generator position exceeding learn limit"
+  },
+  {
+   "code": "P0DFC",
+   "brand": "",
+   "ru": "Генератор (гибрид): датчик положения не обучен",
+   "en": "Generator Position Sensor Not Learned",
+   "fam": "",
+   "node": "generator position sensor not learned"
+  },
+  {
+   "code": "P0DFD",
+   "brand": "",
+   "ru": "Клапан охлаждения зарядного устройства: обрыв цепи управления",
+   "en": "Battery Charger Coolant Control Valve Control Circuit/Open",
+   "fam": "",
+   "node": "battery charger coolant control valve"
+  },
+  {
+   "code": "P0DFE",
+   "brand": "",
+   "ru": "Клапан охлаждения зарядного устройства: низкий уровень в цепи управления",
+   "en": "Battery Charger Coolant Control Valve Control Circuit Low",
+   "fam": "",
+   "node": "battery charger coolant control valve"
+  },
+  {
+   "code": "P0DFF",
+   "brand": "",
+   "ru": "Клапан охлаждения зарядного устройства: высокий уровень в цепи управления",
+   "en": "Battery Charger Coolant Control Valve Control Circuit High",
+   "fam": "",
+   "node": "battery charger coolant control valve"
+  },
+  {
+   "code": "P0E0C",
+   "brand": "",
+   "ru": "Генератор (гибрид), фазы U-V-W: обрыв цепи",
+   "en": "Generator Phase U-V-W Circuit/Open",
+   "fam": "",
+   "node": "generator phase u v w"
+  },
+  {
+   "code": "P0E0D",
+   "brand": "",
+   "ru": "Генератор (гибрид), фазы U-V-W: низкий уровень сигнала в цепи",
+   "en": "Generator Phase U-V-W Circuit Low",
+   "fam": "",
+   "node": "generator phase u v w"
+  },
+  {
+   "code": "P0E0E",
+   "brand": "",
+   "ru": "Генератор (гибрид), фазы U-V-W: высокий уровень сигнала в цепи",
+   "en": "Generator Phase U-V-W Circuit High",
+   "fam": "",
+   "node": "generator phase u v w"
+  },
+  {
+   "code": "P0E0F",
+   "brand": "",
+   "ru": "Питание инвертора генератора A: обрыв цепи",
+   "en": "Generator Inverter Power Supply A Circuit/Open",
+   "fam": "",
+   "node": "generator inverter power supply a"
+  },
+  {
+   "code": "P0E10",
+   "brand": "",
+   "ru": "Питание инвертора генератора A: низкий уровень сигнала в цепи",
+   "en": "Generator Inverter Power Supply A Circuit Low",
+   "fam": "",
+   "node": "generator inverter power supply a"
+  },
+  {
+   "code": "P0E11",
+   "brand": "",
+   "ru": "Питание инвертора генератора A: высокий уровень сигнала в цепи",
+   "en": "Generator Inverter Power Supply A Circuit High",
+   "fam": "",
+   "node": "generator inverter power supply a"
+  },
+  {
+   "code": "P0E12",
+   "brand": "",
+   "ru": "Подогреватель жидкости тяговой батареи A: обрыв цепи управления",
+   "en": "Hybrid/EV Battery Pack Coolant Heater A Control Circuit/Open",
+   "fam": "",
+   "node": "hybrid ev battery pack coolant heater a"
+  },
+  {
+   "code": "P0E13",
+   "brand": "",
+   "ru": "Подогреватель жидкости тяговой батареи A: низкий уровень в цепи управления",
+   "en": "Hybrid/EV Battery Pack Coolant Heater A Control Circuit Low",
+   "fam": "",
+   "node": "hybrid ev battery pack coolant heater a"
+  },
+  {
+   "code": "P0E14",
+   "brand": "",
+   "ru": "Подогреватель жидкости тяговой батареи A: высокий уровень в цепи управления",
+   "en": "Hybrid/EV Battery Pack Coolant Heater A Control Circuit High",
+   "fam": "",
+   "node": "hybrid ev battery pack coolant heater a"
+  },
+  {
+   "code": "P0E15",
+   "brand": "",
+   "ru": "Подогреватель жидкости тяговой батареи A: нарушено управление",
+   "en": "Hybrid/EV Battery Pack Coolant Heater A Control Performance",
+   "fam": "",
+   "node": "hybrid ev battery pack coolant heater a control"
+  },
+  {
+   "code": "P0E16",
+   "brand": "",
+   "ru": "Подогреватель жидкости тяговой батареи B: обрыв цепи управления",
+   "en": "Hybrid/EV Battery Pack Coolant Heater B Control Circuit/Open",
+   "fam": "",
+   "node": "hybrid ev battery pack coolant heater b"
+  },
+  {
+   "code": "P0E17",
+   "brand": "",
+   "ru": "Подогреватель жидкости тяговой батареи B: низкий уровень в цепи управления",
+   "en": "Hybrid/EV Battery Pack Coolant Heater B Control Circuit Low",
+   "fam": "",
+   "node": "hybrid ev battery pack coolant heater b"
+  },
+  {
+   "code": "P0E18",
+   "brand": "",
+   "ru": "Подогреватель жидкости тяговой батареи B: высокий уровень в цепи управления",
+   "en": "Hybrid/EV Battery Pack Coolant Heater B Control Circuit High",
+   "fam": "",
+   "node": "hybrid ev battery pack coolant heater b"
+  },
+  {
+   "code": "P0E19",
+   "brand": "",
+   "ru": "Подогреватель жидкости тяговой батареи B: нарушено управление",
+   "en": "Hybrid/EV Battery Pack Coolant Heater B Control Performance",
+   "fam": "",
+   "node": "hybrid ev battery pack coolant heater b control"
+  }
+ ]
+}

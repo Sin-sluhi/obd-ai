@@ -1,0 +1,381 @@
+{
+ "name": "sae_095",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "clutch pedal position sensor a",
+  "clutch pedal position sensor a b correlation",
+  "clutch pedal position sensor a not learned",
+  "clutch pedal position sensor b",
+  "neutral position sensor a b correlation",
+  "neutral position sensor b",
+  "neutral position sensor b not learned",
+  "pressure control solenoid l",
+  "pressure control solenoid l electrical",
+  "pressure control solenoid m",
+  "pressure control solenoid m electrical",
+  "shift solenoid j"
+ ],
+ "codes": [
+  {
+   "code": "P08A7",
+   "brand": "",
+   "ru": "Датчик положения педали сцепления A: обрыв цепи",
+   "en": "Clutch Pedal Position Sensor A Circuit/Open",
+   "fam": "",
+   "node": "clutch pedal position sensor a"
+  },
+  {
+   "code": "P08A8",
+   "brand": "",
+   "ru": "Датчик положения педали сцепления A: сигнал вне диапазона",
+   "en": "Clutch Pedal Position Sensor A Circuit Range/Performance",
+   "fam": "",
+   "node": "clutch pedal position sensor a"
+  },
+  {
+   "code": "P08A9",
+   "brand": "",
+   "ru": "Датчик положения педали сцепления A: низкий уровень сигнала в цепи",
+   "en": "Clutch Pedal Position Sensor A Circuit Low",
+   "fam": "",
+   "node": "clutch pedal position sensor a"
+  },
+  {
+   "code": "P08AA",
+   "brand": "",
+   "ru": "Датчик положения педали сцепления A: высокий уровень сигнала в цепи",
+   "en": "Clutch Pedal Position Sensor A Circuit High",
+   "fam": "",
+   "node": "clutch pedal position sensor a"
+  },
+  {
+   "code": "P08AB",
+   "brand": "",
+   "ru": "Датчик положения педали сцепления A: прерывистый / нестабильный сигнал",
+   "en": "Clutch Pedal Position Sensor A Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "clutch pedal position sensor a"
+  },
+  {
+   "code": "P08AC",
+   "brand": "",
+   "ru": "Датчик положения педали сцепления A: адаптация не выполнена",
+   "en": "Clutch Pedal Position Sensor A Not Learned",
+   "fam": "",
+   "node": "clutch pedal position sensor a not learned"
+  },
+  {
+   "code": "P08AD",
+   "brand": "",
+   "ru": "Датчик нейтрали B: обрыв цепи",
+   "en": "Neutral Position Sensor B Circuit/Open",
+   "fam": "",
+   "node": "neutral position sensor b"
+  },
+  {
+   "code": "P08AE",
+   "brand": "",
+   "ru": "Датчик нейтрали B: сигнал вне диапазона",
+   "en": "Neutral Position Sensor B Circuit Range/Performance",
+   "fam": "",
+   "node": "neutral position sensor b"
+  },
+  {
+   "code": "P08AF",
+   "brand": "",
+   "ru": "Датчик нейтрали B: низкий уровень сигнала в цепи",
+   "en": "Neutral Position Sensor B Circuit Low",
+   "fam": "",
+   "node": "neutral position sensor b"
+  },
+  {
+   "code": "P08B0",
+   "brand": "",
+   "ru": "Датчик нейтрали B: высокий уровень сигнала в цепи",
+   "en": "Neutral Position Sensor B Circuit High",
+   "fam": "",
+   "node": "neutral position sensor b"
+  },
+  {
+   "code": "P08B1",
+   "brand": "",
+   "ru": "Датчик нейтрали B: прерывистый / нестабильный сигнал",
+   "en": "Neutral Position Sensor B Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "neutral position sensor b"
+  },
+  {
+   "code": "P08B2",
+   "brand": "",
+   "ru": "Датчик нейтрали: рассогласование A/B",
+   "en": "Neutral Position Sensor A/B Correlation",
+   "fam": "",
+   "node": "neutral position sensor a b correlation"
+  },
+  {
+   "code": "P08B3",
+   "brand": "",
+   "ru": "Датчик нейтрали B: адаптация не выполнена",
+   "en": "Neutral Position Sensor B Not Learned",
+   "fam": "",
+   "node": "neutral position sensor b not learned"
+  },
+  {
+   "code": "P08B4",
+   "brand": "",
+   "ru": "Датчик положения педали сцепления B: обрыв цепи",
+   "en": "Clutch Pedal Position Sensor B Circuit/Open",
+   "fam": "",
+   "node": "clutch pedal position sensor b"
+  },
+  {
+   "code": "P08B5",
+   "brand": "",
+   "ru": "Датчик положения педали сцепления B: сигнал вне диапазона",
+   "en": "Clutch Pedal Position Sensor B Circuit Range/Performance",
+   "fam": "",
+   "node": "clutch pedal position sensor b"
+  },
+  {
+   "code": "P08B6",
+   "brand": "",
+   "ru": "Датчик положения педали сцепления B: низкий уровень сигнала в цепи",
+   "en": "Clutch Pedal Position Sensor B Circuit Low",
+   "fam": "",
+   "node": "clutch pedal position sensor b"
+  },
+  {
+   "code": "P08B7",
+   "brand": "",
+   "ru": "Датчик положения педали сцепления B: высокий уровень сигнала в цепи",
+   "en": "Clutch Pedal Position Sensor B Circuit High",
+   "fam": "",
+   "node": "clutch pedal position sensor b"
+  },
+  {
+   "code": "P08B8",
+   "brand": "",
+   "ru": "Датчик положения педали сцепления B: прерывистый / нестабильный сигнал",
+   "en": "Clutch Pedal Position Sensor B Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "clutch pedal position sensor b"
+  },
+  {
+   "code": "P08B9",
+   "brand": "",
+   "ru": "Датчик положения педали сцепления: рассогласование A/B",
+   "en": "Clutch Pedal Position Sensor A/B Correlation",
+   "fam": "",
+   "node": "clutch pedal position sensor a b correlation"
+  },
+  {
+   "code": "P08BA",
+   "brand": "",
+   "ru": "Соленоид регулирования давления АКПП L",
+   "en": "Pressure Control Solenoid L",
+   "fam": "",
+   "node": "pressure control solenoid l"
+  },
+  {
+   "code": "P08BB",
+   "brand": "",
+   "ru": "Соленоид регулирования давления АКПП L: работа нарушена / не включается",
+   "en": "Pressure Control Solenoid L Performance/Stuck Off",
+   "fam": "",
+   "node": "pressure control solenoid l"
+  },
+  {
+   "code": "P08BC",
+   "brand": "",
+   "ru": "Соленоид регулирования давления АКПП L: постоянно включён",
+   "en": "Pressure Control Solenoid L Stuck On",
+   "fam": "",
+   "node": "pressure control solenoid l"
+  },
+  {
+   "code": "P08BE",
+   "brand": "",
+   "ru": "Соленоид регулирования давления АКПП L: прерывистый сигнал",
+   "en": "Pressure Control Solenoid L Intermittent",
+   "fam": "",
+   "node": "pressure control solenoid l"
+  },
+  {
+   "code": "P08BF",
+   "brand": "",
+   "ru": "Соленоид регулирования давления АКПП L: обрыв цепи управления",
+   "en": "Pressure Control Solenoid L Control Circuit/Open",
+   "fam": "",
+   "node": "pressure control solenoid l"
+  },
+  {
+   "code": "P08C0",
+   "brand": "",
+   "ru": "Соленоид регулирования давления АКПП L: цепь управления вне диапазона",
+   "en": "Pressure Control Solenoid L Control Circuit Range/Performance",
+   "fam": "",
+   "node": "pressure control solenoid l"
+  },
+  {
+   "code": "P08C1",
+   "brand": "",
+   "ru": "Соленоид регулирования давления АКПП L: низкий уровень в цепи управления",
+   "en": "Pressure Control Solenoid L Control Circuit Low",
+   "fam": "",
+   "node": "pressure control solenoid l"
+  },
+  {
+   "code": "P08C2",
+   "brand": "",
+   "ru": "Соленоид регулирования давления АКПП L: высокий уровень в цепи управления",
+   "en": "Pressure Control Solenoid L Control Circuit High",
+   "fam": "",
+   "node": "pressure control solenoid l"
+  },
+  {
+   "code": "P08BD",
+   "brand": "",
+   "ru": "Соленоид регулирования давления L: электрическая неисправность",
+   "en": "Pressure Control Solenoid L Electrical",
+   "fam": "",
+   "node": "pressure control solenoid l electrical"
+  },
+  {
+   "code": "P08C3",
+   "brand": "",
+   "ru": "Соленоид регулирования давления АКПП M",
+   "en": "Pressure Control Solenoid M",
+   "fam": "",
+   "node": "pressure control solenoid m"
+  },
+  {
+   "code": "P08C4",
+   "brand": "",
+   "ru": "Соленоид регулирования давления АКПП M: работа нарушена / не включается",
+   "en": "Pressure Control Solenoid M Performance/Stuck Off",
+   "fam": "",
+   "node": "pressure control solenoid m"
+  },
+  {
+   "code": "P08C5",
+   "brand": "",
+   "ru": "Соленоид регулирования давления АКПП M: постоянно включён",
+   "en": "Pressure Control Solenoid M Stuck On",
+   "fam": "",
+   "node": "pressure control solenoid m"
+  },
+  {
+   "code": "P08C7",
+   "brand": "",
+   "ru": "Соленоид регулирования давления АКПП M: прерывистый сигнал",
+   "en": "Pressure Control Solenoid M Intermittent",
+   "fam": "",
+   "node": "pressure control solenoid m"
+  },
+  {
+   "code": "P08C8",
+   "brand": "",
+   "ru": "Соленоид регулирования давления АКПП M: обрыв цепи управления",
+   "en": "Pressure Control Solenoid M Control Circuit/Open",
+   "fam": "",
+   "node": "pressure control solenoid m"
+  },
+  {
+   "code": "P08C9",
+   "brand": "",
+   "ru": "Соленоид регулирования давления АКПП M: цепь управления вне диапазона",
+   "en": "Pressure Control Solenoid M Control Circuit Range/Performance",
+   "fam": "",
+   "node": "pressure control solenoid m"
+  },
+  {
+   "code": "P08CA",
+   "brand": "",
+   "ru": "Соленоид регулирования давления АКПП M: низкий уровень в цепи управления",
+   "en": "Pressure Control Solenoid M Control Circuit Low",
+   "fam": "",
+   "node": "pressure control solenoid m"
+  },
+  {
+   "code": "P08CB",
+   "brand": "",
+   "ru": "Соленоид регулирования давления АКПП M: высокий уровень в цепи управления",
+   "en": "Pressure Control Solenoid M Control Circuit High",
+   "fam": "",
+   "node": "pressure control solenoid m"
+  },
+  {
+   "code": "P08C6",
+   "brand": "",
+   "ru": "Соленоид регулирования давления M: электрическая неисправность",
+   "en": "Pressure Control Solenoid M Electrical",
+   "fam": "",
+   "node": "pressure control solenoid m electrical"
+  },
+  {
+   "code": "P08CC",
+   "brand": "",
+   "ru": "Соленоид переключения передач J",
+   "en": "Shift Solenoid J",
+   "fam": "",
+   "node": "shift solenoid j"
+  },
+  {
+   "code": "P08CD",
+   "brand": "",
+   "ru": "Соленоид переключения передач J: работа нарушена / не включается",
+   "en": "Shift Solenoid J Performance/Stuck Off",
+   "fam": "",
+   "node": "shift solenoid j"
+  },
+  {
+   "code": "P08CE",
+   "brand": "",
+   "ru": "Соленоид переключения передач J: постоянно включён",
+   "en": "Shift Solenoid J Stuck On",
+   "fam": "",
+   "node": "shift solenoid j"
+  },
+  {
+   "code": "P08D0",
+   "brand": "",
+   "ru": "Соленоид переключения передач J: прерывистый сигнал",
+   "en": "Shift Solenoid J Intermittent",
+   "fam": "",
+   "node": "shift solenoid j"
+  },
+  {
+   "code": "P08D1",
+   "brand": "",
+   "ru": "Соленоид переключения передач J: цепь управления вне диапазона",
+   "en": "Shift Solenoid J Control Circuit Range/Performance",
+   "fam": "",
+   "node": "shift solenoid j"
+  },
+  {
+   "code": "P08D2",
+   "brand": "",
+   "ru": "Соленоид переключения передач J: низкий уровень в цепи управления",
+   "en": "Shift Solenoid J Control Circuit Low",
+   "fam": "",
+   "node": "shift solenoid j"
+  },
+  {
+   "code": "P08D3",
+   "brand": "",
+   "ru": "Соленоид переключения передач J: высокий уровень в цепи управления",
+   "en": "Shift Solenoid J Control Circuit High",
+   "fam": "",
+   "node": "shift solenoid j"
+  },
+  {
+   "code": "P08D4",
+   "brand": "",
+   "ru": "Соленоид переключения передач J: обрыв цепи управления",
+   "en": "Shift Solenoid J Control Circuit/Open",
+   "fam": "",
+   "node": "shift solenoid j"
+  }
+ ]
+}

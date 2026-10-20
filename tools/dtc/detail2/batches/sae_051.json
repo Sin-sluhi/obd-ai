@@ -1,0 +1,359 @@
+{
+ "name": "sae_051",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "a camshaft position actuator position sensor c",
+  "a camshaft profile actuator position sensor a exceeded learning limit",
+  "a camshaft profile actuator position sensor b exceeded learning limit",
+  "a camshaft profile actuator position sensor c exceeded learning limit",
+  "combustion",
+  "pressure variation"
+ ],
+ "codes": [
+  {
+   "code": "P039C",
+   "brand": "",
+   "ru": "Колебания давления в цилиндре 1: низкий уровень",
+   "en": "Cylinder 1 Pressure Variation Low",
+   "fam": "",
+   "node": "pressure variation"
+  },
+  {
+   "code": "P039D",
+   "brand": "",
+   "ru": "Колебания давления в цилиндре 1: высокий уровень",
+   "en": "Cylinder 1 Pressure Variation High",
+   "fam": "",
+   "node": "pressure variation"
+  },
+  {
+   "code": "P03A6",
+   "brand": "",
+   "ru": "Колебания давления в цилиндре 2: низкий уровень",
+   "en": "Cylinder 2 Pressure Variation Low",
+   "fam": "",
+   "node": "pressure variation"
+  },
+  {
+   "code": "P03A7",
+   "brand": "",
+   "ru": "Колебания давления в цилиндре 2: высокий уровень",
+   "en": "Cylinder 2 Pressure Variation High",
+   "fam": "",
+   "node": "pressure variation"
+  },
+  {
+   "code": "P03B0",
+   "brand": "",
+   "ru": "Колебания давления в цилиндре 3: низкий уровень",
+   "en": "Cylinder 3 Pressure Variation Low",
+   "fam": "",
+   "node": "pressure variation"
+  },
+  {
+   "code": "P03B1",
+   "brand": "",
+   "ru": "Колебания давления в цилиндре 3: высокий уровень",
+   "en": "Cylinder 3 Pressure Variation High",
+   "fam": "",
+   "node": "pressure variation"
+  },
+  {
+   "code": "P03BA",
+   "brand": "",
+   "ru": "Колебания давления в цилиндре 4: низкий уровень",
+   "en": "Cylinder 4 Pressure Variation Low",
+   "fam": "",
+   "node": "pressure variation"
+  },
+  {
+   "code": "P03BB",
+   "brand": "",
+   "ru": "Колебания давления в цилиндре 4: высокий уровень",
+   "en": "Cylinder 4 Pressure Variation High",
+   "fam": "",
+   "node": "pressure variation"
+  },
+  {
+   "code": "P03C4",
+   "brand": "",
+   "ru": "Колебания давления в цилиндре 5: низкий уровень",
+   "en": "Cylinder 5 Pressure Variation Low",
+   "fam": "",
+   "node": "pressure variation"
+  },
+  {
+   "code": "P03C5",
+   "brand": "",
+   "ru": "Колебания давления в цилиндре 5: высокий уровень",
+   "en": "Cylinder 5 Pressure Variation High",
+   "fam": "",
+   "node": "pressure variation"
+  },
+  {
+   "code": "P03CE",
+   "brand": "",
+   "ru": "Колебания давления в цилиндре 6: низкий уровень",
+   "en": "Cylinder 6 Pressure Variation Low",
+   "fam": "",
+   "node": "pressure variation"
+  },
+  {
+   "code": "P03CF",
+   "brand": "",
+   "ru": "Колебания давления в цилиндре 6: высокий уровень",
+   "en": "Cylinder 6 Pressure Variation High",
+   "fam": "",
+   "node": "pressure variation"
+  },
+  {
+   "code": "P03D8",
+   "brand": "",
+   "ru": "Колебания давления в цилиндре 7: низкий уровень",
+   "en": "Cylinder 7 Pressure Variation Low",
+   "fam": "",
+   "node": "pressure variation"
+  },
+  {
+   "code": "P03D9",
+   "brand": "",
+   "ru": "Колебания давления в цилиндре 7: высокий уровень",
+   "en": "Cylinder 7 Pressure Variation High",
+   "fam": "",
+   "node": "pressure variation"
+  },
+  {
+   "code": "P03E2",
+   "brand": "",
+   "ru": "Колебания давления в цилиндре 8: низкий уровень",
+   "en": "Cylinder 8 Pressure Variation Low",
+   "fam": "",
+   "node": "pressure variation"
+  },
+  {
+   "code": "P03E3",
+   "brand": "",
+   "ru": "Колебания давления в цилиндре 8: высокий уровень",
+   "en": "Cylinder 8 Pressure Variation High",
+   "fam": "",
+   "node": "pressure variation"
+  },
+  {
+   "code": "P234F",
+   "brand": "",
+   "ru": "Колебания давления в цилиндре 9: низкий уровень",
+   "en": "Cylinder 9 Pressure Variation Low",
+   "fam": "",
+   "node": "pressure variation"
+  },
+  {
+   "code": "P2350",
+   "brand": "",
+   "ru": "Колебания давления в цилиндре 9: высокий уровень",
+   "en": "Cylinder 9 Pressure Variation High",
+   "fam": "",
+   "node": "pressure variation"
+  },
+  {
+   "code": "P2359",
+   "brand": "",
+   "ru": "Колебания давления в цилиндре 10: низкий уровень",
+   "en": "Cylinder 10 Pressure Variation Low",
+   "fam": "",
+   "node": "pressure variation"
+  },
+  {
+   "code": "P235A",
+   "brand": "",
+   "ru": "Колебания давления в цилиндре 10: высокий уровень",
+   "en": "Cylinder 10 Pressure Variation High",
+   "fam": "",
+   "node": "pressure variation"
+  },
+  {
+   "code": "P2363",
+   "brand": "",
+   "ru": "Колебания давления в цилиндре 11: низкий уровень",
+   "en": "Cylinder 11 Pressure Variation Low",
+   "fam": "",
+   "node": "pressure variation"
+  },
+  {
+   "code": "P2364",
+   "brand": "",
+   "ru": "Колебания давления в цилиндре 11: высокий уровень",
+   "en": "Cylinder 11 Pressure Variation High",
+   "fam": "",
+   "node": "pressure variation"
+  },
+  {
+   "code": "P236D",
+   "brand": "",
+   "ru": "Колебания давления в цилиндре 12: низкий уровень",
+   "en": "Cylinder 12 Pressure Variation Low",
+   "fam": "",
+   "node": "pressure variation"
+  },
+  {
+   "code": "P236E",
+   "brand": "",
+   "ru": "Колебания давления в цилиндре 12: высокий уровень",
+   "en": "Cylinder 12 Pressure Variation High",
+   "fam": "",
+   "node": "pressure variation"
+  },
+  {
+   "code": "P039E",
+   "brand": "",
+   "ru": "Цилиндр 1: нарушено сгорание",
+   "en": "Cylinder 1 Combustion Performance",
+   "fam": "",
+   "node": "combustion"
+  },
+  {
+   "code": "P03A8",
+   "brand": "",
+   "ru": "Цилиндр 2: нарушено сгорание",
+   "en": "Cylinder 2 Combustion Performance",
+   "fam": "",
+   "node": "combustion"
+  },
+  {
+   "code": "P03B2",
+   "brand": "",
+   "ru": "Цилиндр 3: нарушено сгорание",
+   "en": "Cylinder 3 Combustion Performance",
+   "fam": "",
+   "node": "combustion"
+  },
+  {
+   "code": "P03BC",
+   "brand": "",
+   "ru": "Цилиндр 4: нарушено сгорание",
+   "en": "Cylinder 4 Combustion Performance",
+   "fam": "",
+   "node": "combustion"
+  },
+  {
+   "code": "P03C6",
+   "brand": "",
+   "ru": "Цилиндр 5: нарушено сгорание",
+   "en": "Cylinder 5 Combustion Performance",
+   "fam": "",
+   "node": "combustion"
+  },
+  {
+   "code": "P03D0",
+   "brand": "",
+   "ru": "Цилиндр 6: нарушено сгорание",
+   "en": "Cylinder 6 Combustion Performance",
+   "fam": "",
+   "node": "combustion"
+  },
+  {
+   "code": "P03DA",
+   "brand": "",
+   "ru": "Цилиндр 7: нарушено сгорание",
+   "en": "Cylinder 7 Combustion Performance",
+   "fam": "",
+   "node": "combustion"
+  },
+  {
+   "code": "P03E4",
+   "brand": "",
+   "ru": "Цилиндр 8: нарушено сгорание",
+   "en": "Cylinder 8 Combustion Performance",
+   "fam": "",
+   "node": "combustion"
+  },
+  {
+   "code": "P2351",
+   "brand": "",
+   "ru": "Цилиндр 9: нарушено сгорание",
+   "en": "Cylinder 9 Combustion Performance",
+   "fam": "",
+   "node": "combustion"
+  },
+  {
+   "code": "P235B",
+   "brand": "",
+   "ru": "Цилиндр 10: нарушено сгорание",
+   "en": "Cylinder 10 Combustion Performance",
+   "fam": "",
+   "node": "combustion"
+  },
+  {
+   "code": "P2365",
+   "brand": "",
+   "ru": "Цилиндр 11: нарушено сгорание",
+   "en": "Cylinder 11 Combustion Performance",
+   "fam": "",
+   "node": "combustion"
+  },
+  {
+   "code": "P236F",
+   "brand": "",
+   "ru": "Цилиндр 12: нарушено сгорание",
+   "en": "Cylinder 12 Combustion Performance",
+   "fam": "",
+   "node": "combustion"
+  },
+  {
+   "code": "P03E5",
+   "brand": "",
+   "ru": "Датчик положения фазовращателя распредвала A (датчик C): цепь (банк 1)",
+   "en": "A Camshaft Position Actuator Position Sensor C Circuit Bank 1",
+   "fam": "",
+   "node": "a camshaft position actuator position sensor c"
+  },
+  {
+   "code": "P03E6",
+   "brand": "",
+   "ru": "Датчик положения фазовращателя распредвала A (датчик C): вне допустимого диапазона (банк 1)",
+   "en": "A Camshaft Position Actuator Position Sensor C Range/Performance Bank 1",
+   "fam": "",
+   "node": "a camshaft position actuator position sensor c"
+  },
+  {
+   "code": "P03E7",
+   "brand": "",
+   "ru": "Датчик положения фазовращателя распредвала A (датчик C): низкий уровень сигнала в цепи (банк 1)",
+   "en": "A Camshaft Position Actuator Position Sensor C Circuit Low Bank 1",
+   "fam": "",
+   "node": "a camshaft position actuator position sensor c"
+  },
+  {
+   "code": "P03E8",
+   "brand": "",
+   "ru": "Датчик положения фазовращателя распредвала A (датчик C): высокий уровень сигнала в цепи (банк 1)",
+   "en": "A Camshaft Position Actuator Position Sensor C Circuit High Bank 1",
+   "fam": "",
+   "node": "a camshaft position actuator position sensor c"
+  },
+  {
+   "code": "P03E9",
+   "brand": "",
+   "ru": "Датчик положения механизма профиля распредвала A (датчик A): превышен предел адаптации",
+   "en": "A Camshaft Profile Actuator Position Sensor A Exceeded Learning Limit",
+   "fam": "",
+   "node": "a camshaft profile actuator position sensor a exceeded learning limit"
+  },
+  {
+   "code": "P03EA",
+   "brand": "",
+   "ru": "Датчик положения механизма профиля распредвала A (датчик B): превышен предел адаптации",
+   "en": "A Camshaft Profile Actuator Position Sensor B Exceeded Learning Limit",
+   "fam": "",
+   "node": "a camshaft profile actuator position sensor b exceeded learning limit"
+  },
+  {
+   "code": "P03EB",
+   "brand": "",
+   "ru": "Датчик положения механизма профиля распредвала A (датчик C): превышен предел адаптации",
+   "en": "A Camshaft Profile Actuator Position Sensor C Exceeded Learning Limit",
+   "fam": "",
+   "node": "a camshaft profile actuator position sensor c exceeded learning limit"
+  }
+ ]
+}

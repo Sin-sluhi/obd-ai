@@ -1,0 +1,397 @@
+{
+ "name": "brand-ford_023",
+ "series": "brand",
+ "brand": "ford",
+ "nodes": [
+  "2 1 downshift error",
+  "3 2 downshift error",
+  "clutch",
+  "coast clutch",
+  "overdrive band failed off",
+  "pressure control solenoid b",
+  "ru:выключатель холостого хода",
+  "ru:переключатель режима «нормальный/зимний»",
+  "ru:цепь режима p/es",
+  "shift solenoid a",
+  "shift solenoid b",
+  "shift solenoid c",
+  "shift solenoid d",
+  "tfp valve position",
+  "torque converter clutch",
+  "transmission 4 wheel drive",
+  "transmission 4 wheel drive clutch",
+  "transmission 4 wheel drive mode select",
+  "transmission control",
+  "transmission control indicator lamp",
+  "transmission mechanical failure first and reverse",
+  "transmission mechanical failure first and second",
+  "transmission neutral safety switch",
+  "transmission over temperature condition",
+  "transmission transfer case 2 wheel drive",
+  "transmission transfer case clockwise shift relay coil",
+  "transmission transfer case contact plate a",
+  "transmission transfer case contact plate b",
+  "transmission transfer case contact plate c",
+  "transmission transfer case contact plate d",
+  "transmission transfer case contact plate general",
+  "transmission transfer case counter clockwise shift relay coil",
+  "transmission transfer case differential lock up",
+  "transmission transfer case differential lock up solenoid",
+  "transmission transfer case shift",
+  "transmission transfer case system concern servicing required"
+ ],
+ "codes": [
+  {
+   "code": "P1751",
+   "brand": "ford",
+   "ru": "Клапан переключения A: работа",
+   "en": "Shift Solenoid A Performance",
+   "fam": "",
+   "node": "shift solenoid a"
+  },
+  {
+   "code": "P1754",
+   "brand": "ford",
+   "ru": "Клапан муфты наката: неисправность цепи",
+   "en": "Coast Clutch Solenoid Circuit Malfunction",
+   "fam": "",
+   "node": "coast clutch"
+  },
+  {
+   "code": "P1756",
+   "brand": "ford",
+   "ru": "Клапан переключения B: работа",
+   "en": "Shift Solenoid B Performance",
+   "fam": "",
+   "node": "shift solenoid b"
+  },
+  {
+   "code": "P1761",
+   "brand": "ford",
+   "ru": "Клапан переключения C: работа",
+   "en": "Shift Solenoid C Performance",
+   "fam": "",
+   "node": "shift solenoid c"
+  },
+  {
+   "code": "P1762",
+   "brand": "ford",
+   "ru": "Тормозная лента повышающей передачи не включается",
+   "en": "Overdrive Band Failed Off",
+   "fam": "",
+   "node": "overdrive band failed off"
+  },
+  {
+   "code": "P1766",
+   "brand": "ford",
+   "ru": "Клапан переключения D: работа",
+   "en": "Shift Solenoid D Performance",
+   "fam": "",
+   "node": "shift solenoid d"
+  },
+  {
+   "code": "P1767",
+   "brand": "ford",
+   "ru": "Блокировка гидротрансформатора: неисправность цепи",
+   "en": "Torque Converter Clutch Circuit Malfunction",
+   "fam": "",
+   "node": "torque converter clutch"
+  },
+  {
+   "code": "P1768",
+   "brand": "ford",
+   "ru": "Переключатель режима «нормальный/зимний»: неисправность сигнала",
+   "en": "Performance Normal Winter Mode Input Malfunction",
+   "fam": "",
+   "node": "ru:переключатель режима «нормальный/зимний»"
+  },
+  {
+   "code": "P1770",
+   "brand": "ford",
+   "ru": "Клапан муфты: неисправность цепи",
+   "en": "Clutch Solenoid Circuit Malfunction",
+   "fam": "",
+   "node": "clutch"
+  },
+  {
+   "code": "P1779",
+   "brand": "ford",
+   "ru": "Лампа управления коробкой: неисправность цепи",
+   "en": "Transmission Control Indicator Lamp Circuit Malfunction",
+   "fam": "",
+   "node": "transmission control indicator lamp"
+  },
+  {
+   "code": "P1780",
+   "brand": "ford",
+   "ru": "Кнопка управления коробкой: вне диапазона самотеста",
+   "en": "Transmission Control Switch Circuit is Out of Self-Test Range",
+   "fam": "",
+   "node": "transmission control"
+  },
+  {
+   "code": "P1782",
+   "brand": "ford",
+   "ru": "Цепь режима P/ES: вне диапазона самотеста",
+   "en": "P/ES Circuit Out Of Self Test Range",
+   "fam": "",
+   "node": "ru:цепь режима p/es"
+  },
+  {
+   "code": "P1783",
+   "brand": "ford",
+   "ru": "Перегрев коробки",
+   "en": "Transmission Over-Temperature Condition",
+   "fam": "",
+   "node": "transmission over temperature condition"
+  },
+  {
+   "code": "P1784",
+   "brand": "ford",
+   "ru": "Механическая неисправность коробки: 1-я и задняя",
+   "en": "Transmission Mechanical Failure First And Reverse",
+   "fam": "",
+   "node": "transmission mechanical failure first and reverse"
+  },
+  {
+   "code": "P1785",
+   "brand": "ford",
+   "ru": "Механическая неисправность коробки: 1-я и 2-я",
+   "en": "Transmission Mechanical Failure First And Second",
+   "fam": "",
+   "node": "transmission mechanical failure first and second"
+  },
+  {
+   "code": "P1786",
+   "brand": "ford",
+   "ru": "Ошибка переключения 3-2",
+   "en": "3-2 Downshift Error",
+   "fam": "",
+   "node": "3 2 downshift error"
+  },
+  {
+   "code": "P1787",
+   "brand": "ford",
+   "ru": "Ошибка переключения 2-1",
+   "en": "2-1 Downshift Error",
+   "fam": "",
+   "node": "2 1 downshift error"
+  },
+  {
+   "code": "P1788",
+   "brand": "ford",
+   "ru": "Клапан регулирования давления B: обрыв",
+   "en": "Pressure Control Solenoid B Open Circuit",
+   "fam": "",
+   "node": "pressure control solenoid b"
+  },
+  {
+   "code": "P1789",
+   "brand": "ford",
+   "ru": "Клапан регулирования давления B: замыкание",
+   "en": "Pressure Control Solenoid B Short Circuit",
+   "fam": "",
+   "node": "pressure control solenoid b"
+  },
+  {
+   "code": "P1795",
+   "brand": "ford",
+   "ru": "Выключатель холостого хода: неисправность цепи",
+   "en": "Idle Switch Circuit Malfunction",
+   "fam": "",
+   "node": "ru:выключатель холостого хода"
+  },
+  {
+   "code": "P1804",
+   "brand": "ford",
+   "ru": "Индикатор повышенной 4WD: неисправность цепи",
+   "en": "Transmission 4-Wheel Drive High Indicator Circuit Failure",
+   "fam": "",
+   "node": "transmission 4 wheel drive"
+  },
+  {
+   "code": "P1806",
+   "brand": "ford",
+   "ru": "Индикатор повышенной 4WD: замыкание на плюс",
+   "en": "Transmission 4-Wheel Drive High Indicator Short Circuit To Battery",
+   "fam": "",
+   "node": "transmission 4 wheel drive"
+  },
+  {
+   "code": "P1808",
+   "brand": "ford",
+   "ru": "Индикатор пониженной 4WD: неисправность цепи",
+   "en": "Transmission 4-Wheel Drive Low Indicator Circuit Failure",
+   "fam": "",
+   "node": "transmission 4 wheel drive"
+  },
+  {
+   "code": "P1826",
+   "brand": "ford",
+   "ru": "Реле муфты пониженной 4WD: замыкание на плюс",
+   "en": "Transmission 4-Wheel Drive Low Clutch Relay Circuit To Battery",
+   "fam": "",
+   "node": "transmission 4 wheel drive"
+  },
+  {
+   "code": "P1810",
+   "brand": "ford",
+   "ru": "Индикатор пониженной 4WD: замыкание на плюс / выключатель клапана давления коробки",
+   "en": "TFP Valve Position Switch Circuit Transmission 4-Wheel Drive Low Indicator Short Circuit To Battery",
+   "fam": "",
+   "node": "tfp valve position"
+  },
+  {
+   "code": "P1812",
+   "brand": "ford",
+   "ru": "Выбор режима 4WD: неисправность цепи",
+   "en": "Transmission 4-Wheel Drive Mode Select Circuit Failure",
+   "fam": "",
+   "node": "transmission 4 wheel drive mode select"
+  },
+  {
+   "code": "P1815",
+   "brand": "ford",
+   "ru": "Выбор режима 4WD: замыкание на массу",
+   "en": "Transmission 4-Wheel Drive Mode Select Short Circuit To Ground",
+   "fam": "",
+   "node": "transmission 4 wheel drive mode select"
+  },
+  {
+   "code": "P1819",
+   "brand": "ford",
+   "ru": "Выключатель нейтрали (запрет пуска): замыкание на массу",
+   "en": "Transmission Neutral Safety Switch Short Circuit To Ground",
+   "fam": "",
+   "node": "transmission neutral safety switch"
+  },
+  {
+   "code": "P1820",
+   "brand": "ford",
+   "ru": "Реле переключения раздатки «по часовой»: неисправность цепи обмотки",
+   "en": "Transmission Transfer Case Clockwise Shift Relay Coil Circuit Failure",
+   "fam": "",
+   "node": "transmission transfer case clockwise shift relay coil"
+  },
+  {
+   "code": "P1822",
+   "brand": "ford",
+   "ru": "Реле переключения раздатки «по часовой»: замыкание на плюс",
+   "en": "Transmission Transfer Case Clockwise Shift Relay Coil Short Circuit To Battery",
+   "fam": "",
+   "node": "transmission transfer case clockwise shift relay coil"
+  },
+  {
+   "code": "P1824",
+   "brand": "ford",
+   "ru": "Реле муфты 4WD: неисправность цепи",
+   "en": "Transmission 4-Wheel Drive Clutch Relay Circuit Failure",
+   "fam": "",
+   "node": "transmission 4 wheel drive clutch"
+  },
+  {
+   "code": "P1828",
+   "brand": "ford",
+   "ru": "Реле переключения раздатки «против часовой»: неисправность цепи обмотки",
+   "en": "Transmission Transfer Case Counter Clockwise Shift Relay Coil Circuit Failure",
+   "fam": "",
+   "node": "transmission transfer case counter clockwise shift relay coil"
+  },
+  {
+   "code": "P1830",
+   "brand": "ford",
+   "ru": "Реле переключения раздатки «против часовой»: замыкание на плюс",
+   "en": "Transmission Transfer Case Counter Clockwise Shift Relay Coil Short Circuit To Battery",
+   "fam": "",
+   "node": "transmission transfer case counter clockwise shift relay coil"
+  },
+  {
+   "code": "P1832",
+   "brand": "ford",
+   "ru": "Клапан блокировки дифференциала раздатки: неисправность цепи",
+   "en": "Transmission Transfer Case Differential Lock-Up Solenoid Circuit Failure",
+   "fam": "",
+   "node": "transmission transfer case differential lock up"
+  },
+  {
+   "code": "P1834",
+   "brand": "ford",
+   "ru": "Клапан блокировки дифференциала раздатки: замыкание на плюс",
+   "en": "Transmission Transfer Case Differential Lock-Up Solenoid Short Circuit To Battery",
+   "fam": "",
+   "node": "transmission transfer case differential lock up solenoid"
+  },
+  {
+   "code": "P1838",
+   "brand": "ford",
+   "ru": "Мотор переключения раздатки: неисправность цепи",
+   "en": "Transmission Transfer Case Shift Motor Circuit Failure",
+   "fam": "",
+   "node": "transmission transfer case shift"
+  },
+  {
+   "code": "P1846",
+   "brand": "ford",
+   "ru": "Контактная пластина A раздатки: неисправность цепи",
+   "en": "Transmission Transfer Case Contact Plate A Circuit Failure",
+   "fam": "",
+   "node": "transmission transfer case contact plate a"
+  },
+  {
+   "code": "P1850",
+   "brand": "ford",
+   "ru": "Контактная пластина B раздатки: неисправность цепи",
+   "en": "Transmission Transfer Case Contact Plate B Circuit Failure",
+   "fam": "",
+   "node": "transmission transfer case contact plate b"
+  },
+  {
+   "code": "P1854",
+   "brand": "ford",
+   "ru": "Контактная пластина C раздатки: неисправность цепи",
+   "en": "Transmission Transfer Case Contact Plate C Circuit Failure",
+   "fam": "",
+   "node": "transmission transfer case contact plate c"
+  },
+  {
+   "code": "P1858",
+   "brand": "ford",
+   "ru": "Контактная пластина D раздатки: неисправность цепи",
+   "en": "Transmission Transfer Case Contact Plate D Circuit Failure",
+   "fam": "",
+   "node": "transmission transfer case contact plate d"
+  },
+  {
+   "code": "P1866",
+   "brand": "ford",
+   "ru": "Неисправность раздатки — требуется обслуживание",
+   "en": "Transmission Transfer Case System Concern Servicing Required",
+   "fam": "",
+   "node": "transmission transfer case system concern servicing required"
+  },
+  {
+   "code": "P1867",
+   "brand": "ford",
+   "ru": "Контактная пластина раздатки: общая неисправность цепи",
+   "en": "Transmission Transfer Case Contact Plate General Circuit Failure",
+   "fam": "",
+   "node": "transmission transfer case contact plate general"
+  },
+  {
+   "code": "P1876",
+   "brand": "ford",
+   "ru": "Клапан режима 2WD раздатки: неисправность цепи",
+   "en": "Transmission Transfer Case 2-Wheel Drive Solenoid Circuit Failure",
+   "fam": "",
+   "node": "transmission transfer case 2 wheel drive"
+  },
+  {
+   "code": "P1877",
+   "brand": "ford",
+   "ru": "Клапан режима 2WD раздатки: замыкание на плюс",
+   "en": "Transmission Transfer Case 2-Wheel Drive Solenoid Circuit Short To Battery",
+   "fam": "",
+   "node": "transmission transfer case 2 wheel drive"
+  }
+ ]
+}

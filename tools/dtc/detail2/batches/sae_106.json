@@ -1,0 +1,350 @@
+{
+ "name": "sae_106",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "hybrid ev battery a voltage",
+  "hybrid ev battery a voltage unstable",
+  "hybrid ev battery b voltage",
+  "hybrid ev battery b voltage unstable",
+  "hybrid ev battery c voltage",
+  "hybrid ev battery c voltage unstable",
+  "hybrid ev battery d voltage",
+  "hybrid ev battery d voltage unstable",
+  "hybrid ev battery pack voltage sense d",
+  "hybrid ev battery voltage sense a",
+  "hybrid ev battery voltage sense b",
+  "motor electronics coolant pump b",
+  "ru:сервисный разъединитель высоковольтной цепи"
+ ],
+ "codes": [
+  {
+   "code": "P0B1E",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения блока D: цепь",
+   "en": "Hybrid/EV Battery Pack Voltage Sense D Circuit",
+   "fam": "",
+   "node": "hybrid ev battery pack voltage sense d"
+  },
+  {
+   "code": "P0B1F",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения блока D: сигнал вне диапазона",
+   "en": "Hybrid/EV Battery Pack Voltage Sense D Circuit Range/Performance",
+   "fam": "",
+   "node": "hybrid ev battery pack voltage sense d"
+  },
+  {
+   "code": "P0B20",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения блока D: низкий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Pack Voltage Sense D Circuit Low",
+   "fam": "",
+   "node": "hybrid ev battery pack voltage sense d"
+  },
+  {
+   "code": "P0B21",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения блока D: высокий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Pack Voltage Sense D Circuit High",
+   "fam": "",
+   "node": "hybrid ev battery pack voltage sense d"
+  },
+  {
+   "code": "P0B22",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения блока D: прерывистый / нестабильный сигнал",
+   "en": "Hybrid/EV Battery Pack Voltage Sense D Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "hybrid ev battery pack voltage sense d"
+  },
+  {
+   "code": "P0B23",
+   "brand": "",
+   "ru": "Тяговая батарея A: напряжение",
+   "en": "Hybrid/EV Battery A Voltage",
+   "fam": "",
+   "node": "hybrid ev battery a voltage"
+  },
+  {
+   "code": "P0B25",
+   "brand": "",
+   "ru": "Тяговая батарея A: низкое напряжение",
+   "en": "Hybrid/EV Battery A Voltage Low",
+   "fam": "",
+   "node": "hybrid ev battery a voltage"
+  },
+  {
+   "code": "P0B26",
+   "brand": "",
+   "ru": "Тяговая батарея A: высокое напряжение",
+   "en": "Hybrid/EV Battery A Voltage High",
+   "fam": "",
+   "node": "hybrid ev battery a voltage"
+  },
+  {
+   "code": "P0B24",
+   "brand": "",
+   "ru": "Тяговая батарея A: напряжение нестабильно",
+   "en": "Hybrid/EV Battery A Voltage Unstable",
+   "fam": "",
+   "node": "hybrid ev battery a voltage unstable"
+  },
+  {
+   "code": "P0B27",
+   "brand": "",
+   "ru": "Тяговая батарея B: напряжение",
+   "en": "Hybrid/EV Battery B Voltage",
+   "fam": "",
+   "node": "hybrid ev battery b voltage"
+  },
+  {
+   "code": "P0B29",
+   "brand": "",
+   "ru": "Тяговая батарея B: низкое напряжение",
+   "en": "Hybrid/EV Battery B Voltage Low",
+   "fam": "",
+   "node": "hybrid ev battery b voltage"
+  },
+  {
+   "code": "P0B2A",
+   "brand": "",
+   "ru": "Тяговая батарея B: высокое напряжение",
+   "en": "Hybrid/EV Battery B Voltage High",
+   "fam": "",
+   "node": "hybrid ev battery b voltage"
+  },
+  {
+   "code": "P0B28",
+   "brand": "",
+   "ru": "Тяговая батарея B: напряжение нестабильно",
+   "en": "Hybrid/EV Battery B Voltage Unstable",
+   "fam": "",
+   "node": "hybrid ev battery b voltage unstable"
+  },
+  {
+   "code": "P0B2B",
+   "brand": "",
+   "ru": "Тяговая батарея C: напряжение",
+   "en": "Hybrid/EV Battery C Voltage",
+   "fam": "",
+   "node": "hybrid ev battery c voltage"
+  },
+  {
+   "code": "P0B2D",
+   "brand": "",
+   "ru": "Тяговая батарея C: низкое напряжение",
+   "en": "Hybrid/EV Battery C Voltage Low",
+   "fam": "",
+   "node": "hybrid ev battery c voltage"
+  },
+  {
+   "code": "P0B2E",
+   "brand": "",
+   "ru": "Тяговая батарея C: высокое напряжение",
+   "en": "Hybrid/EV Battery C Voltage High",
+   "fam": "",
+   "node": "hybrid ev battery c voltage"
+  },
+  {
+   "code": "P0B2C",
+   "brand": "",
+   "ru": "Тяговая батарея C: напряжение нестабильно",
+   "en": "Hybrid/EV Battery C Voltage Unstable",
+   "fam": "",
+   "node": "hybrid ev battery c voltage unstable"
+  },
+  {
+   "code": "P0B2F",
+   "brand": "",
+   "ru": "Тяговая батарея D: напряжение",
+   "en": "Hybrid/EV Battery D Voltage",
+   "fam": "",
+   "node": "hybrid ev battery d voltage"
+  },
+  {
+   "code": "P0B31",
+   "brand": "",
+   "ru": "Тяговая батарея D: низкое напряжение",
+   "en": "Hybrid/EV Battery D Voltage Low",
+   "fam": "",
+   "node": "hybrid ev battery d voltage"
+  },
+  {
+   "code": "P0B32",
+   "brand": "",
+   "ru": "Тяговая батарея D: высокое напряжение",
+   "en": "Hybrid/EV Battery D Voltage High",
+   "fam": "",
+   "node": "hybrid ev battery d voltage"
+  },
+  {
+   "code": "P0B30",
+   "brand": "",
+   "ru": "Тяговая батарея D: напряжение нестабильно",
+   "en": "Hybrid/EV Battery D Voltage Unstable",
+   "fam": "",
+   "node": "hybrid ev battery d voltage unstable"
+  },
+  {
+   "code": "P0B33",
+   "brand": "",
+   "ru": "Сервисный разъединитель высоковольтной цепи: цепь",
+   "en": "High Voltage Service Disconnect Circuit",
+   "fam": "",
+   "node": "ru:сервисный разъединитель высоковольтной цепи"
+  },
+  {
+   "code": "P0B34",
+   "brand": "",
+   "ru": "Сервисный разъединитель высоковольтной цепи: нарушена работа цепи",
+   "en": "High Voltage Service Disconnect Circuit Performance",
+   "fam": "",
+   "node": "ru:сервисный разъединитель высоковольтной цепи"
+  },
+  {
+   "code": "P0B35",
+   "brand": "",
+   "ru": "Сервисный разъединитель высоковольтной цепи: низкий уровень сигнала в цепи",
+   "en": "High Voltage Service Disconnect Circuit Low",
+   "fam": "",
+   "node": "ru:сервисный разъединитель высоковольтной цепи"
+  },
+  {
+   "code": "P0B36",
+   "brand": "",
+   "ru": "Сервисный разъединитель высоковольтной цепи: высокий уровень сигнала в цепи",
+   "en": "High Voltage Service Disconnect Circuit High",
+   "fam": "",
+   "node": "ru:сервисный разъединитель высоковольтной цепи"
+  },
+  {
+   "code": "P0B37",
+   "brand": "",
+   "ru": "Сервисный разъединитель высоковольтной цепи: обрыв",
+   "en": "High Voltage Service Disconnect Open",
+   "fam": "",
+   "node": "ru:сервисный разъединитель высоковольтной цепи"
+  },
+  {
+   "code": "P0B38",
+   "brand": "",
+   "ru": "Насос охлаждения электроники электромотора B: обрыв цепи управления",
+   "en": "Motor Electronics Coolant Pump B Control Circuit/Open",
+   "fam": "",
+   "node": "motor electronics coolant pump b"
+  },
+  {
+   "code": "P0B39",
+   "brand": "",
+   "ru": "Насос охлаждения электроники электромотора B: низкий уровень в цепи управления",
+   "en": "Motor Electronics Coolant Pump B Control Circuit Low",
+   "fam": "",
+   "node": "motor electronics coolant pump b"
+  },
+  {
+   "code": "P0B3A",
+   "brand": "",
+   "ru": "Насос охлаждения электроники электромотора B: высокий уровень в цепи управления",
+   "en": "Motor Electronics Coolant Pump B Control Circuit High",
+   "fam": "",
+   "node": "motor electronics coolant pump b"
+  },
+  {
+   "code": "P0E50",
+   "brand": "",
+   "ru": "Насос охлаждения электроники электромотора B: прерывистый / нестабильный сигнал управления",
+   "en": "Motor Electronics Coolant Pump B Control Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "motor electronics coolant pump b"
+  },
+  {
+   "code": "P2D05",
+   "brand": "",
+   "ru": "Насос охлаждения электроники электромотора B: заклинивание / остановка",
+   "en": "Motor Electronics Coolant Pump B Stuck/Stalled",
+   "fam": "",
+   "node": "motor electronics coolant pump b"
+  },
+  {
+   "code": "P0B3B",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения A: цепь",
+   "en": "Hybrid/EV Battery Voltage Sense A Circuit",
+   "fam": "",
+   "node": "hybrid ev battery voltage sense a"
+  },
+  {
+   "code": "P0B3C",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения A: сигнал вне диапазона",
+   "en": "Hybrid/EV Battery Voltage Sense A Circuit Range/Performance",
+   "fam": "",
+   "node": "hybrid ev battery voltage sense a"
+  },
+  {
+   "code": "P0B3D",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения A: низкий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Voltage Sense A Circuit Low",
+   "fam": "",
+   "node": "hybrid ev battery voltage sense a"
+  },
+  {
+   "code": "P0B3E",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения A: высокий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Voltage Sense A Circuit High",
+   "fam": "",
+   "node": "hybrid ev battery voltage sense a"
+  },
+  {
+   "code": "P0B3F",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения A: прерывистый / нестабильный сигнал",
+   "en": "Hybrid/EV Battery Voltage Sense A Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "hybrid ev battery voltage sense a"
+  },
+  {
+   "code": "P0B40",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения B: цепь",
+   "en": "Hybrid/EV Battery Voltage Sense B Circuit",
+   "fam": "",
+   "node": "hybrid ev battery voltage sense b"
+  },
+  {
+   "code": "P0B41",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения B: сигнал вне диапазона",
+   "en": "Hybrid/EV Battery Voltage Sense B Circuit Range/Performance",
+   "fam": "",
+   "node": "hybrid ev battery voltage sense b"
+  },
+  {
+   "code": "P0B42",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения B: низкий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Voltage Sense B Circuit Low",
+   "fam": "",
+   "node": "hybrid ev battery voltage sense b"
+  },
+  {
+   "code": "P0B43",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения B: высокий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Voltage Sense B Circuit High",
+   "fam": "",
+   "node": "hybrid ev battery voltage sense b"
+  },
+  {
+   "code": "P0B44",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения B: прерывистый / нестабильный сигнал",
+   "en": "Hybrid/EV Battery Voltage Sense B Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "hybrid ev battery voltage sense b"
+  }
+ ]
+}

@@ -1,0 +1,355 @@
+{
+ "name": "sae_172",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "a camshaft position actuator position sensor b",
+  "a camshaft profile actuator b",
+  "a camshaft profile actuator b control",
+  "b camshaft position actuator position sensor b",
+  "b camshaft profile actuator b",
+  "b camshaft profile actuator b control",
+  "engine coolant flow control valve motor current",
+  "ru:вентилятор 1",
+  "ru:вентилятор 2",
+  "ru:низкое давление масла — управление фазами отключено"
+ ],
+ "codes": [
+  {
+   "code": "P2B2F",
+   "brand": "",
+   "ru": "Вентилятор 1: работа нарушена / не включается",
+   "en": "Fan 1 Performance/Stuck Off",
+   "fam": "",
+   "node": "ru:вентилятор 1"
+  },
+  {
+   "code": "P2B30",
+   "brand": "",
+   "ru": "Вентилятор 1: постоянно включён",
+   "en": "Fan 1 Stuck On",
+   "fam": "",
+   "node": "ru:вентилятор 1"
+  },
+  {
+   "code": "P2B31",
+   "brand": "",
+   "ru": "Вентилятор 2: работа нарушена / не включается",
+   "en": "Fan 2 Performance/Stuck Off",
+   "fam": "",
+   "node": "ru:вентилятор 2"
+  },
+  {
+   "code": "P2B32",
+   "brand": "",
+   "ru": "Вентилятор 2: постоянно включён",
+   "en": "Fan 2 Stuck On",
+   "fam": "",
+   "node": "ru:вентилятор 2"
+  },
+  {
+   "code": "P2B33",
+   "brand": "",
+   "ru": "Механизм переключения профиля распредвала A (привод B): обрыв цепи управления (банк 1)",
+   "en": "A Camshaft Profile Actuator B Control Circuit/Open Bank 1",
+   "fam": "",
+   "node": "a camshaft profile actuator b"
+  },
+  {
+   "code": "P2B34",
+   "brand": "",
+   "ru": "Механизм переключения профиля распредвала A (привод B): низкий уровень в цепи управления (банк 1)",
+   "en": "A Camshaft Profile Actuator B Control Circuit Low Bank 1",
+   "fam": "",
+   "node": "a camshaft profile actuator b"
+  },
+  {
+   "code": "P2B35",
+   "brand": "",
+   "ru": "Механизм переключения профиля распредвала A (привод B): высокий уровень в цепи управления (банк 1)",
+   "en": "A Camshaft Profile Actuator B Control Circuit High Bank 1",
+   "fam": "",
+   "node": "a camshaft profile actuator b"
+  },
+  {
+   "code": "P2B36",
+   "brand": "",
+   "ru": "Механизм переключения профиля распредвала A (привод B): обрыв цепи управления (банк 2)",
+   "en": "A Camshaft Profile Actuator B Control Circuit/Open Bank 2",
+   "fam": "",
+   "node": "a camshaft profile actuator b"
+  },
+  {
+   "code": "P2B37",
+   "brand": "",
+   "ru": "Механизм переключения профиля распредвала A (привод B): низкий уровень в цепи управления (банк 2)",
+   "en": "A Camshaft Profile Actuator B Control Circuit Low Bank 2",
+   "fam": "",
+   "node": "a camshaft profile actuator b"
+  },
+  {
+   "code": "P2B38",
+   "brand": "",
+   "ru": "Механизм переключения профиля распредвала A (привод B): высокий уровень в цепи управления (банк 2)",
+   "en": "A Camshaft Profile Actuator B Control Circuit High Bank 2",
+   "fam": "",
+   "node": "a camshaft profile actuator b"
+  },
+  {
+   "code": "P2B39",
+   "brand": "",
+   "ru": "Механизм переключения профиля распредвала B (привод B): обрыв цепи управления (банк 1)",
+   "en": "B Camshaft Profile Actuator B Control Circuit/Open Bank 1",
+   "fam": "",
+   "node": "b camshaft profile actuator b"
+  },
+  {
+   "code": "P2B3A",
+   "brand": "",
+   "ru": "Механизм переключения профиля распредвала B (привод B): низкий уровень в цепи управления (банк 1)",
+   "en": "B Camshaft Profile Actuator B Control Circuit Low Bank 1",
+   "fam": "",
+   "node": "b camshaft profile actuator b"
+  },
+  {
+   "code": "P2B3B",
+   "brand": "",
+   "ru": "Механизм переключения профиля распредвала B (привод B): высокий уровень в цепи управления (банк 1)",
+   "en": "B Camshaft Profile Actuator B Control Circuit High Bank 1",
+   "fam": "",
+   "node": "b camshaft profile actuator b"
+  },
+  {
+   "code": "P2B3C",
+   "brand": "",
+   "ru": "Механизм переключения профиля распредвала B (привод B): обрыв цепи управления (банк 2)",
+   "en": "B Camshaft Profile Actuator B Control Circuit/Open Bank 2",
+   "fam": "",
+   "node": "b camshaft profile actuator b"
+  },
+  {
+   "code": "P2B3D",
+   "brand": "",
+   "ru": "Механизм переключения профиля распредвала B (привод B): низкий уровень в цепи управления (банк 2)",
+   "en": "B Camshaft Profile Actuator B Control Circuit Low Bank 2",
+   "fam": "",
+   "node": "b camshaft profile actuator b"
+  },
+  {
+   "code": "P2B3E",
+   "brand": "",
+   "ru": "Механизм переключения профиля распредвала B (привод B): высокий уровень в цепи управления (банк 2)",
+   "en": "B Camshaft Profile Actuator B Control Circuit High Bank 2",
+   "fam": "",
+   "node": "b camshaft profile actuator b"
+  },
+  {
+   "code": "P2B3F",
+   "brand": "",
+   "ru": "Датчик положения фазовращателя распредвала A (датчик B): цепь (банк 1)",
+   "en": "A Camshaft Position Actuator Position Sensor B Circuit Bank 1",
+   "fam": "",
+   "node": "a camshaft position actuator position sensor b"
+  },
+  {
+   "code": "P2B40",
+   "brand": "",
+   "ru": "Датчик положения фазовращателя распредвала A (датчик B): вне допустимого диапазона (банк 1)",
+   "en": "A Camshaft Position Actuator Position Sensor B Range/Performance Bank 1",
+   "fam": "",
+   "node": "a camshaft position actuator position sensor b"
+  },
+  {
+   "code": "P2B41",
+   "brand": "",
+   "ru": "Датчик положения фазовращателя распредвала A (датчик B): низкий уровень сигнала в цепи (банк 1)",
+   "en": "A Camshaft Position Actuator Position Sensor B Circuit Low Bank 1",
+   "fam": "",
+   "node": "a camshaft position actuator position sensor b"
+  },
+  {
+   "code": "P2B42",
+   "brand": "",
+   "ru": "Датчик положения фазовращателя распредвала A (датчик B): высокий уровень сигнала в цепи (банк 1)",
+   "en": "A Camshaft Position Actuator Position Sensor B Circuit High Bank 1",
+   "fam": "",
+   "node": "a camshaft position actuator position sensor b"
+  },
+  {
+   "code": "P2B43",
+   "brand": "",
+   "ru": "Датчик положения фазовращателя распредвала A (датчик B): цепь (банк 2)",
+   "en": "A Camshaft Position Actuator Position Sensor B Circuit Bank 2",
+   "fam": "",
+   "node": "a camshaft position actuator position sensor b"
+  },
+  {
+   "code": "P2B44",
+   "brand": "",
+   "ru": "Датчик положения фазовращателя распредвала A (датчик B): вне допустимого диапазона (банк 2)",
+   "en": "A Camshaft Position Actuator Position Sensor B Range/Performance Bank 2",
+   "fam": "",
+   "node": "a camshaft position actuator position sensor b"
+  },
+  {
+   "code": "P2B45",
+   "brand": "",
+   "ru": "Датчик положения фазовращателя распредвала A (датчик B): низкий уровень сигнала в цепи (банк 2)",
+   "en": "A Camshaft Position Actuator Position Sensor B Circuit Low Bank 2",
+   "fam": "",
+   "node": "a camshaft position actuator position sensor b"
+  },
+  {
+   "code": "P2B46",
+   "brand": "",
+   "ru": "Датчик положения фазовращателя распредвала A (датчик B): высокий уровень сигнала в цепи (банк 2)",
+   "en": "A Camshaft Position Actuator Position Sensor B Circuit High Bank 2",
+   "fam": "",
+   "node": "a camshaft position actuator position sensor b"
+  },
+  {
+   "code": "P2B47",
+   "brand": "",
+   "ru": "Датчик положения фазовращателя распредвала B (датчик B): цепь (банк 1)",
+   "en": "B Camshaft Position Actuator Position Sensor B Circuit Bank 1",
+   "fam": "",
+   "node": "b camshaft position actuator position sensor b"
+  },
+  {
+   "code": "P2B48",
+   "brand": "",
+   "ru": "Датчик положения фазовращателя распредвала B (датчик B): вне допустимого диапазона (банк 1)",
+   "en": "B Camshaft Position Actuator Position Sensor B Range/Performance Bank 1",
+   "fam": "",
+   "node": "b camshaft position actuator position sensor b"
+  },
+  {
+   "code": "P2B49",
+   "brand": "",
+   "ru": "Датчик положения фазовращателя распредвала B (датчик B): низкий уровень сигнала в цепи (банк 1)",
+   "en": "B Camshaft Position Actuator Position Sensor B Circuit Low Bank 1",
+   "fam": "",
+   "node": "b camshaft position actuator position sensor b"
+  },
+  {
+   "code": "P2B4A",
+   "brand": "",
+   "ru": "Датчик положения фазовращателя распредвала B (датчик B): высокий уровень сигнала в цепи (банк 1)",
+   "en": "B Camshaft Position Actuator Position Sensor B Circuit High Bank 1",
+   "fam": "",
+   "node": "b camshaft position actuator position sensor b"
+  },
+  {
+   "code": "P2B4B",
+   "brand": "",
+   "ru": "Датчик положения фазовращателя распредвала B (датчик B): цепь (банк 2)",
+   "en": "B Camshaft Position Actuator Position Sensor B Circuit Bank 2",
+   "fam": "",
+   "node": "b camshaft position actuator position sensor b"
+  },
+  {
+   "code": "P2B4C",
+   "brand": "",
+   "ru": "Датчик положения фазовращателя распредвала B (датчик B): вне допустимого диапазона (банк 2)",
+   "en": "B Camshaft Position Actuator Position Sensor B Range/Performance Bank 2",
+   "fam": "",
+   "node": "b camshaft position actuator position sensor b"
+  },
+  {
+   "code": "P2B4D",
+   "brand": "",
+   "ru": "Датчик положения фазовращателя распредвала B (датчик B): низкий уровень сигнала в цепи (банк 2)",
+   "en": "B Camshaft Position Actuator Position Sensor B Circuit Low Bank 2",
+   "fam": "",
+   "node": "b camshaft position actuator position sensor b"
+  },
+  {
+   "code": "P2B4E",
+   "brand": "",
+   "ru": "Датчик положения фазовращателя распредвала B (датчик B): высокий уровень сигнала в цепи (банк 2)",
+   "en": "B Camshaft Position Actuator Position Sensor B Circuit High Bank 2",
+   "fam": "",
+   "node": "b camshaft position actuator position sensor b"
+  },
+  {
+   "code": "P2B4F",
+   "brand": "",
+   "ru": "Механизм профиля распредвала A, управление B: работа нарушена / не включается (банк 1)",
+   "en": "A Camshaft Profile Actuator B Control Performance/Stuck Off Bank 1",
+   "fam": "",
+   "node": "a camshaft profile actuator b control"
+  },
+  {
+   "code": "P2B50",
+   "brand": "",
+   "ru": "Механизм профиля распредвала A, управление B: работа нарушена / не включается (банк 2)",
+   "en": "A Camshaft Profile Actuator B Control Performance/Stuck Off Bank 2",
+   "fam": "",
+   "node": "a camshaft profile actuator b control"
+  },
+  {
+   "code": "P2B53",
+   "brand": "",
+   "ru": "Механизм профиля распредвала A, управление B: постоянно включён (банк 1)",
+   "en": "A Camshaft Profile Actuator B Control Stuck On Bank 1",
+   "fam": "",
+   "node": "a camshaft profile actuator b control"
+  },
+  {
+   "code": "P2B54",
+   "brand": "",
+   "ru": "Механизм профиля распредвала A, управление B: постоянно включён (банк 2)",
+   "en": "A Camshaft Profile Actuator B Control Stuck On Bank 2",
+   "fam": "",
+   "node": "a camshaft profile actuator b control"
+  },
+  {
+   "code": "P2B51",
+   "brand": "",
+   "ru": "Механизм профиля распредвала B, управление B: работа нарушена / не включается (банк 1)",
+   "en": "B Camshaft Profile Actuator B Control Performance/Stuck Off Bank 1",
+   "fam": "",
+   "node": "b camshaft profile actuator b control"
+  },
+  {
+   "code": "P2B52",
+   "brand": "",
+   "ru": "Механизм профиля распредвала B, управление B: работа нарушена / не включается (банк 2)",
+   "en": "B Camshaft Profile Actuator B Control Performance/Stuck Off Bank 2",
+   "fam": "",
+   "node": "b camshaft profile actuator b control"
+  },
+  {
+   "code": "P2B55",
+   "brand": "",
+   "ru": "Механизм профиля распредвала B, управление B: постоянно включён (банк 1)",
+   "en": "B Camshaft Profile Actuator B Control Stuck On Bank 1",
+   "fam": "",
+   "node": "b camshaft profile actuator b control"
+  },
+  {
+   "code": "P2B56",
+   "brand": "",
+   "ru": "Механизм профиля распредвала B, управление B: постоянно включён (банк 2)",
+   "en": "B Camshaft Profile Actuator B Control Stuck On Bank 2",
+   "fam": "",
+   "node": "b camshaft profile actuator b control"
+  },
+  {
+   "code": "P2B57",
+   "brand": "",
+   "ru": "Низкое давление масла — управление фазами отключено",
+   "en": "Low Engine Oil Pressure - Camshaft Control Disabled",
+   "fam": "",
+   "node": "ru:низкое давление масла — управление фазами отключено"
+  },
+  {
+   "code": "P2B58",
+   "brand": "",
+   "ru": "Мотор клапана потока охлаждающей жидкости: большой ток",
+   "en": "Engine Coolant Flow Control Valve Motor Current High",
+   "fam": "",
+   "node": "engine coolant flow control valve motor current"
+  }
+ ]
+}

@@ -1,0 +1,351 @@
+{
+ "name": "sae_036",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "alternative fuel rail pressure",
+  "alternative fuel rail pressure sensor",
+  "alternative fuel rail system pressure too",
+  "alternative fuel rail temperature",
+  "alternative fuel rail temperature sensor",
+  "alternative fuel tank a level",
+  "alternative fuel tank a level sensor",
+  "alternative fuel tank a pressure sensor",
+  "alternative fuel tank temperature",
+  "alternative fuel tank temperature sensor",
+  "engine oil temperature sensor b",
+  "fuel pressure sensor a",
+  "fuel rail pressure",
+  "fuel rail system pressure too"
+ ],
+ "codes": [
+  {
+   "code": "P019F",
+   "brand": "",
+   "ru": "Датчик давления баллона ГБО A: работа нарушена",
+   "en": "Alternative Fuel Tank A Pressure Sensor Performance",
+   "fam": "",
+   "node": "alternative fuel tank a pressure sensor"
+  },
+  {
+   "code": "P01A3",
+   "brand": "",
+   "ru": "Датчик давления в рампе ГБО: цепь",
+   "en": "Alternative Fuel Rail Pressure Sensor Circuit",
+   "fam": "",
+   "node": "alternative fuel rail pressure"
+  },
+  {
+   "code": "P01A5",
+   "brand": "",
+   "ru": "Датчик давления в рампе ГБО: низкий уровень сигнала в цепи",
+   "en": "Alternative Fuel Rail Pressure Sensor Circuit Low",
+   "fam": "",
+   "node": "alternative fuel rail pressure"
+  },
+  {
+   "code": "P01A6",
+   "brand": "",
+   "ru": "Датчик давления в рампе ГБО: высокий уровень сигнала в цепи",
+   "en": "Alternative Fuel Rail Pressure Sensor Circuit High",
+   "fam": "",
+   "node": "alternative fuel rail pressure"
+  },
+  {
+   "code": "P01A7",
+   "brand": "",
+   "ru": "Датчик давления в рампе ГБО: прерывистый / нестабильный сигнал",
+   "en": "Alternative Fuel Rail Pressure Sensor Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "alternative fuel rail pressure"
+  },
+  {
+   "code": "P01A4",
+   "brand": "",
+   "ru": "Датчик давления в рампе ГБО: работа нарушена",
+   "en": "Alternative Fuel Rail Pressure Sensor Performance",
+   "fam": "",
+   "node": "alternative fuel rail pressure sensor"
+  },
+  {
+   "code": "P01A8",
+   "brand": "",
+   "ru": "Давление в рампе/системе ГБО: слишком низкое значение",
+   "en": "Alternative Fuel Rail/System Pressure - Too Low",
+   "fam": "",
+   "node": "alternative fuel rail system pressure too"
+  },
+  {
+   "code": "P01A9",
+   "brand": "",
+   "ru": "Давление в рампе/системе ГБО: слишком высокое значение",
+   "en": "Alternative Fuel Rail/System Pressure - Too High",
+   "fam": "",
+   "node": "alternative fuel rail system pressure too"
+  },
+  {
+   "code": "P01AA",
+   "brand": "",
+   "ru": "Датчик температуры баллона ГБО: цепь",
+   "en": "Alternative Fuel Tank Temperature Sensor Circuit",
+   "fam": "",
+   "node": "alternative fuel tank temperature"
+  },
+  {
+   "code": "P01AC",
+   "brand": "",
+   "ru": "Датчик температуры баллона ГБО: низкий уровень сигнала в цепи",
+   "en": "Alternative Fuel Tank Temperature Sensor Circuit Low",
+   "fam": "",
+   "node": "alternative fuel tank temperature"
+  },
+  {
+   "code": "P01AD",
+   "brand": "",
+   "ru": "Датчик температуры баллона ГБО: высокий уровень сигнала в цепи",
+   "en": "Alternative Fuel Tank Temperature Sensor Circuit High",
+   "fam": "",
+   "node": "alternative fuel tank temperature"
+  },
+  {
+   "code": "P01AE",
+   "brand": "",
+   "ru": "Датчик температуры баллона ГБО: прерывистый / нестабильный сигнал",
+   "en": "Alternative Fuel Tank Temperature Sensor Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "alternative fuel tank temperature"
+  },
+  {
+   "code": "P01AB",
+   "brand": "",
+   "ru": "Датчик температуры баллона ГБО: вне допустимого диапазона",
+   "en": "Alternative Fuel Tank Temperature Sensor Range/Performance",
+   "fam": "",
+   "node": "alternative fuel tank temperature sensor"
+  },
+  {
+   "code": "P01AF",
+   "brand": "",
+   "ru": "Датчик уровня в баллоне ГБО A: цепь",
+   "en": "Alternative Fuel Tank A Level Sensor Circuit",
+   "fam": "",
+   "node": "alternative fuel tank a level"
+  },
+  {
+   "code": "P01B1",
+   "brand": "",
+   "ru": "Датчик уровня в баллоне ГБО A: низкий уровень сигнала в цепи",
+   "en": "Alternative Fuel Tank A Level Sensor Circuit Low",
+   "fam": "",
+   "node": "alternative fuel tank a level"
+  },
+  {
+   "code": "P01B2",
+   "brand": "",
+   "ru": "Датчик уровня в баллоне ГБО A: высокий уровень сигнала в цепи",
+   "en": "Alternative Fuel Tank A Level Sensor Circuit High",
+   "fam": "",
+   "node": "alternative fuel tank a level"
+  },
+  {
+   "code": "P01B3",
+   "brand": "",
+   "ru": "Датчик уровня в баллоне ГБО A: прерывистый / нестабильный сигнал",
+   "en": "Alternative Fuel Tank A Level Sensor Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "alternative fuel tank a level"
+  },
+  {
+   "code": "P01B0",
+   "brand": "",
+   "ru": "Датчик уровня в баллоне ГБО A: вне допустимого диапазона",
+   "en": "Alternative Fuel Tank A Level Sensor Range/Performance",
+   "fam": "",
+   "node": "alternative fuel tank a level sensor"
+  },
+  {
+   "code": "P01B4",
+   "brand": "",
+   "ru": "Датчик температуры рампы ГБО: цепь",
+   "en": "Alternative Fuel Rail Temperature Sensor Circuit",
+   "fam": "",
+   "node": "alternative fuel rail temperature"
+  },
+  {
+   "code": "P01B6",
+   "brand": "",
+   "ru": "Датчик температуры рампы ГБО: низкий уровень сигнала в цепи",
+   "en": "Alternative Fuel Rail Temperature Sensor Circuit Low",
+   "fam": "",
+   "node": "alternative fuel rail temperature"
+  },
+  {
+   "code": "P01B7",
+   "brand": "",
+   "ru": "Датчик температуры рампы ГБО: высокий уровень сигнала в цепи",
+   "en": "Alternative Fuel Rail Temperature Sensor Circuit High",
+   "fam": "",
+   "node": "alternative fuel rail temperature"
+  },
+  {
+   "code": "P01B8",
+   "brand": "",
+   "ru": "Датчик температуры рампы ГБО: прерывистый / нестабильный сигнал",
+   "en": "Alternative Fuel Rail Temperature Sensor Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "alternative fuel rail temperature"
+  },
+  {
+   "code": "P01B5",
+   "brand": "",
+   "ru": "Датчик температуры рампы ГБО: работа нарушена",
+   "en": "Alternative Fuel Rail Temperature Sensor Performance",
+   "fam": "",
+   "node": "alternative fuel rail temperature sensor"
+  },
+  {
+   "code": "P01B9",
+   "brand": "",
+   "ru": "Датчик температуры масла двигателя B: цепь",
+   "en": "Engine Oil Temperature Sensor B Circuit",
+   "fam": "",
+   "node": "engine oil temperature sensor b"
+  },
+  {
+   "code": "P01BA",
+   "brand": "",
+   "ru": "Датчик температуры масла двигателя B: вне допустимого диапазона",
+   "en": "Engine Oil Temperature Sensor B Range/Performance",
+   "fam": "",
+   "node": "engine oil temperature sensor b"
+  },
+  {
+   "code": "P01BB",
+   "brand": "",
+   "ru": "Датчик температуры масла двигателя B: низкий уровень сигнала в цепи",
+   "en": "Engine Oil Temperature Sensor B Circuit Low",
+   "fam": "",
+   "node": "engine oil temperature sensor b"
+  },
+  {
+   "code": "P01BC",
+   "brand": "",
+   "ru": "Датчик температуры масла двигателя B: высокий уровень сигнала в цепи",
+   "en": "Engine Oil Temperature Sensor B Circuit High",
+   "fam": "",
+   "node": "engine oil temperature sensor b"
+  },
+  {
+   "code": "P01BD",
+   "brand": "",
+   "ru": "Датчик температуры масла двигателя B: прерывистый / нестабильный сигнал",
+   "en": "Engine Oil Temperature Sensor B Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "engine oil temperature sensor b"
+  },
+  {
+   "code": "P01BE",
+   "brand": "",
+   "ru": "Датчик давления в топливной рампе: цепь (банк 2)",
+   "en": "Fuel Rail Pressure Sensor Circuit Bank 2",
+   "fam": "",
+   "node": "fuel rail pressure"
+  },
+  {
+   "code": "P01BF",
+   "brand": "",
+   "ru": "Датчик давления в топливной рампе: сигнал вне диапазона (банк 2)",
+   "en": "Fuel Rail Pressure Sensor Circuit Range/Performance Bank 2",
+   "fam": "",
+   "node": "fuel rail pressure"
+  },
+  {
+   "code": "P01C0",
+   "brand": "",
+   "ru": "Датчик давления в топливной рампе: низкий уровень сигнала в цепи (банк 2)",
+   "en": "Fuel Rail Pressure Sensor Circuit Low Bank 2",
+   "fam": "",
+   "node": "fuel rail pressure"
+  },
+  {
+   "code": "P01C1",
+   "brand": "",
+   "ru": "Датчик давления в топливной рампе: высокий уровень сигнала в цепи (банк 2)",
+   "en": "Fuel Rail Pressure Sensor Circuit High Bank 2",
+   "fam": "",
+   "node": "fuel rail pressure"
+  },
+  {
+   "code": "P01C2",
+   "brand": "",
+   "ru": "Датчик давления в топливной рампе: прерывистый / нестабильный сигнал (банк 2)",
+   "en": "Fuel Rail Pressure Sensor Circuit Intermittent/Erratic Bank 2",
+   "fam": "",
+   "node": "fuel rail pressure"
+  },
+  {
+   "code": "P2E83",
+   "brand": "",
+   "ru": "Давление в топливной рампе при заглушённом двигателе не соответствует",
+   "en": "Fuel Rail Pressure Performance - Engine Off",
+   "fam": "",
+   "node": "fuel rail pressure"
+  },
+  {
+   "code": "P01C3",
+   "brand": "",
+   "ru": "Датчик давления топлива A: цепь",
+   "en": "Fuel Pressure Sensor A Circuit",
+   "fam": "",
+   "node": "fuel pressure sensor a"
+  },
+  {
+   "code": "P01C4",
+   "brand": "",
+   "ru": "Датчик давления топлива A: сигнал вне диапазона",
+   "en": "Fuel Pressure Sensor A Circuit Range/Performance",
+   "fam": "",
+   "node": "fuel pressure sensor a"
+  },
+  {
+   "code": "P01C5",
+   "brand": "",
+   "ru": "Датчик давления топлива A: низкий уровень сигнала в цепи",
+   "en": "Fuel Pressure Sensor A Circuit Low",
+   "fam": "",
+   "node": "fuel pressure sensor a"
+  },
+  {
+   "code": "P01C6",
+   "brand": "",
+   "ru": "Датчик давления топлива A: высокий уровень сигнала в цепи",
+   "en": "Fuel Pressure Sensor A Circuit High",
+   "fam": "",
+   "node": "fuel pressure sensor a"
+  },
+  {
+   "code": "P01C7",
+   "brand": "",
+   "ru": "Датчик давления топлива A: прерывистый / нестабильный сигнал",
+   "en": "Fuel Pressure Sensor A Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "fuel pressure sensor a"
+  },
+  {
+   "code": "P01C8",
+   "brand": "",
+   "ru": "Давление в рампе/топливной системе: слишком низкое значение (банк 2)",
+   "en": "Fuel Rail/System Pressure - Too Low Bank 2",
+   "fam": "",
+   "node": "fuel rail system pressure too"
+  },
+  {
+   "code": "P01C9",
+   "brand": "",
+   "ru": "Давление в рампе/топливной системе: слишком высокое значение (банк 2)",
+   "en": "Fuel Rail/System Pressure - Too High Bank 2",
+   "fam": "",
+   "node": "fuel rail system pressure too"
+  }
+ ]
+}

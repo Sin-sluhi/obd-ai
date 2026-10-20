@@ -1,0 +1,482 @@
+{
+ "name": "sae_069",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "fam:lost_comm"
+ ],
+ "codes": [
+  {
+   "code": "U0121",
+   "brand": "",
+   "ru": "Нет связи с блоком ABS",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0122",
+   "brand": "",
+   "ru": "Нет связи с блоком динамики (ESP)",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0123",
+   "brand": "",
+   "ru": "Нет связи с датчиком поворота (yaw)",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0124",
+   "brand": "",
+   "ru": "Нет связи с датчиком поперечного ускорения",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0125",
+   "brand": "",
+   "ru": "Нет связи с многоосевым датчиком ускорения",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0126",
+   "brand": "",
+   "ru": "Нет связи с датчиком угла поворота руля",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0127",
+   "brand": "",
+   "ru": "Нет связи с блоком давления в шинах",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0128",
+   "brand": "",
+   "ru": "Нет связи с блоком стояночного тормоза",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0129",
+   "brand": "",
+   "ru": "Нет связи с блоком тормозной системы",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0130",
+   "brand": "",
+   "ru": "Нет связи с блоком усилия на руле",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0131",
+   "brand": "",
+   "ru": "Нет связи с блоком усилителя руля",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0132",
+   "brand": "",
+   "ru": "Нет связи с блоком регулировки дорожного просвета",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0140",
+   "brand": "",
+   "ru": "Нет связи с кузовным блоком (BCM)",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0141",
+   "brand": "",
+   "ru": "Нет связи с кузовным блоком A",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0142",
+   "brand": "",
+   "ru": "Нет связи с кузовным блоком B",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0143",
+   "brand": "",
+   "ru": "Нет связи с кузовным блоком C",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0144",
+   "brand": "",
+   "ru": "Нет связи с кузовным блоком D",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0145",
+   "brand": "",
+   "ru": "Нет связи с кузовным блоком E",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0146",
+   "brand": "",
+   "ru": "Нет связи с шлюзом A",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0147",
+   "brand": "",
+   "ru": "Нет связи с шлюзом B",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0148",
+   "brand": "",
+   "ru": "Нет связи с шлюзом C",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0149",
+   "brand": "",
+   "ru": "Нет связи с шлюзом D",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0150",
+   "brand": "",
+   "ru": "Нет связи с шлюзом E",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0151",
+   "brand": "",
+   "ru": "Нет связи с блоком подушек безопасности (SRS)",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0152",
+   "brand": "",
+   "ru": "Нет связи с блоком боковых подушек слева",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0153",
+   "brand": "",
+   "ru": "Нет связи с блоком боковых подушек справа",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0154",
+   "brand": "",
+   "ru": "Нет связи с блоком датчика присутствия пассажира",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0155",
+   "brand": "",
+   "ru": "Нет связи с приборной панелью",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0156",
+   "brand": "",
+   "ru": "Нет связи с информационным дисплеем A",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0157",
+   "brand": "",
+   "ru": "Нет связи с информационным дисплеем B",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0158",
+   "brand": "",
+   "ru": "Нет связи с проекционным дисплеем",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0159",
+   "brand": "",
+   "ru": "Нет связи с блоком парктроников A",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0160",
+   "brand": "",
+   "ru": "Нет связи с блоком звукового оповещения",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0161",
+   "brand": "",
+   "ru": "Нет связи с компасом",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0162",
+   "brand": "",
+   "ru": "Нет связи с дисплеем навигации",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0163",
+   "brand": "",
+   "ru": "Нет связи с блоком навигации",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0164",
+   "brand": "",
+   "ru": "Нет связи с блоком климата",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0165",
+   "brand": "",
+   "ru": "Нет связи с блоком климата (задний)",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0166",
+   "brand": "",
+   "ru": "Нет связи с блоком вспомогательного отопителя",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0167",
+   "brand": "",
+   "ru": "Нет связи с блоком иммобилайзера",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0168",
+   "brand": "",
+   "ru": "Нет связи с блоком охранной системы",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0169",
+   "brand": "",
+   "ru": "Нет связи с блоком люка",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0170",
+   "brand": "",
+   "ru": "Нет связи с датчиком системы подушек A",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0171",
+   "brand": "",
+   "ru": "Нет связи с датчиком системы подушек B",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0172",
+   "brand": "",
+   "ru": "Нет связи с датчиком системы подушек C",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0173",
+   "brand": "",
+   "ru": "Нет связи с датчиком системы подушек D",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0174",
+   "brand": "",
+   "ru": "Нет связи с датчиком системы подушек E",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0175",
+   "brand": "",
+   "ru": "Нет связи с датчиком системы подушек F",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0176",
+   "brand": "",
+   "ru": "Нет связи с датчиком системы подушек G",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0177",
+   "brand": "",
+   "ru": "Нет связи с датчиком системы подушек H",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0178",
+   "brand": "",
+   "ru": "Нет связи с датчиком системы подушек I",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0179",
+   "brand": "",
+   "ru": "Нет связи с датчиком системы подушек J",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0180",
+   "brand": "",
+   "ru": "Нет связи с блоком автоматического света",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0181",
+   "brand": "",
+   "ru": "Нет связи с блоком корректора фар",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0182",
+   "brand": "",
+   "ru": "Нет связи с блоком переднего освещения",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0183",
+   "brand": "",
+   "ru": "Нет связи с блоком заднего освещения",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0184",
+   "brand": "",
+   "ru": "Нет связи с магнитолой",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0185",
+   "brand": "",
+   "ru": "Нет связи с блоком антенны",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0186",
+   "brand": "",
+   "ru": "Нет связи с аудиоусилителем",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  }
+ ]
+}

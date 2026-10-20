@@ -1,0 +1,397 @@
+{
+ "name": "sae_181",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "a c clutch",
+  "auxiliary thermostat a",
+  "auxiliary thermostat b",
+  "belt integrated starter generator belt tensioner",
+  "engine pre ignition above threshold",
+  "engine pre ignition above threshold forced limited power",
+  "exhaust flow control valve a position not learned",
+  "exhaust flow control valve b position not learned",
+  "exhaust flow control valve c",
+  "exhaust flow control valve c control",
+  "hybrid ev battery pack coolant pump a underspeed",
+  "hybrid ev battery pack coolant pump b overspeed air in system",
+  "hybrid ev battery pack coolant pump b supply voltage",
+  "hybrid ev battery pack coolant pump b underspeed",
+  "motor electronics coolant pump a control module overtemperature",
+  "motor electronics coolant pump a overspeed air in system",
+  "motor electronics coolant pump a supply voltage",
+  "motor electronics coolant pump a underspeed",
+  "motor electronics coolant pump b control module overtemperature",
+  "motor electronics coolant pump b overspeed air in system",
+  "motor electronics coolant pump b supply voltage",
+  "motor electronics coolant pump b underspeed",
+  "motor electronics coolant pump c control module overtemperature",
+  "motor electronics coolant pump c overspeed air in system",
+  "motor electronics coolant pump c supply voltage",
+  "motor electronics coolant pump c underspeed",
+  "particulate filter pressure sensor c",
+  "particulate filter pressure sensor d"
+ ],
+ "codes": [
+  {
+   "code": "P2CE5",
+   "brand": "",
+   "ru": "Датчик давления сажевого фильтра C: цепь",
+   "en": "Particulate Filter Pressure Sensor C Circuit",
+   "fam": "",
+   "node": "particulate filter pressure sensor c"
+  },
+  {
+   "code": "P2CE6",
+   "brand": "",
+   "ru": "Датчик давления сажевого фильтра C: сигнал вне диапазона",
+   "en": "Particulate Filter Pressure Sensor C Circuit Range/Performance",
+   "fam": "",
+   "node": "particulate filter pressure sensor c"
+  },
+  {
+   "code": "P2CE7",
+   "brand": "",
+   "ru": "Датчик давления сажевого фильтра C: низкий уровень сигнала в цепи",
+   "en": "Particulate Filter Pressure Sensor C Circuit Low",
+   "fam": "",
+   "node": "particulate filter pressure sensor c"
+  },
+  {
+   "code": "P2CE8",
+   "brand": "",
+   "ru": "Датчик давления сажевого фильтра C: высокий уровень сигнала в цепи",
+   "en": "Particulate Filter Pressure Sensor C Circuit High",
+   "fam": "",
+   "node": "particulate filter pressure sensor c"
+  },
+  {
+   "code": "P2CE9",
+   "brand": "",
+   "ru": "Датчик давления сажевого фильтра C: прерывистый / нестабильный сигнал",
+   "en": "Particulate Filter Pressure Sensor C Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "particulate filter pressure sensor c"
+  },
+  {
+   "code": "P2CEA",
+   "brand": "",
+   "ru": "Датчик давления сажевого фильтра D: цепь",
+   "en": "Particulate Filter Pressure Sensor D Circuit",
+   "fam": "",
+   "node": "particulate filter pressure sensor d"
+  },
+  {
+   "code": "P2CEB",
+   "brand": "",
+   "ru": "Датчик давления сажевого фильтра D: сигнал вне диапазона",
+   "en": "Particulate Filter Pressure Sensor D Circuit Range/Performance",
+   "fam": "",
+   "node": "particulate filter pressure sensor d"
+  },
+  {
+   "code": "P2CEC",
+   "brand": "",
+   "ru": "Датчик давления сажевого фильтра D: низкий уровень сигнала в цепи",
+   "en": "Particulate Filter Pressure Sensor D Circuit Low",
+   "fam": "",
+   "node": "particulate filter pressure sensor d"
+  },
+  {
+   "code": "P2CED",
+   "brand": "",
+   "ru": "Датчик давления сажевого фильтра D: высокий уровень сигнала в цепи",
+   "en": "Particulate Filter Pressure Sensor D Circuit High",
+   "fam": "",
+   "node": "particulate filter pressure sensor d"
+  },
+  {
+   "code": "P2CEE",
+   "brand": "",
+   "ru": "Датчик давления сажевого фильтра D: прерывистый / нестабильный сигнал",
+   "en": "Particulate Filter Pressure Sensor D Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "particulate filter pressure sensor d"
+  },
+  {
+   "code": "P2CEF",
+   "brand": "",
+   "ru": "Дополнительный термостат A: заклинил открытым",
+   "en": "Auxiliary Thermostat A Stuck Open",
+   "fam": "",
+   "node": "auxiliary thermostat a"
+  },
+  {
+   "code": "P2CF0",
+   "brand": "",
+   "ru": "Дополнительный термостат A: заклинил закрытым",
+   "en": "Auxiliary Thermostat A Stuck Closed",
+   "fam": "",
+   "node": "auxiliary thermostat a"
+  },
+  {
+   "code": "P2CF1",
+   "brand": "",
+   "ru": "Дополнительный термостат B: заклинил открытым",
+   "en": "Auxiliary Thermostat B Stuck Open",
+   "fam": "",
+   "node": "auxiliary thermostat b"
+  },
+  {
+   "code": "P2CF2",
+   "brand": "",
+   "ru": "Дополнительный термостат B: заклинил закрытым",
+   "en": "Auxiliary Thermostat B Stuck Closed",
+   "fam": "",
+   "node": "auxiliary thermostat b"
+  },
+  {
+   "code": "P2CF3",
+   "brand": "",
+   "ru": "Насос охлаждения тяговой батареи A: заниженная скорость вращения",
+   "en": "Hybrid/EV Battery Pack Coolant Pump A Underspeed",
+   "fam": "",
+   "node": "hybrid ev battery pack coolant pump a underspeed"
+  },
+  {
+   "code": "P2CF4",
+   "brand": "",
+   "ru": "Насос охлаждения тяговой батареи B: цепь питания",
+   "en": "Hybrid/EV Battery Pack Coolant Pump B Supply Voltage Circuit",
+   "fam": "",
+   "node": "hybrid ev battery pack coolant pump b supply voltage"
+  },
+  {
+   "code": "P2CF6",
+   "brand": "",
+   "ru": "Насос охлаждения тяговой батареи B: превышены обороты / воздух в системе",
+   "en": "Hybrid/EV Battery Pack Coolant Pump B Overspeed /Air in System",
+   "fam": "",
+   "node": "hybrid ev battery pack coolant pump b overspeed air in system"
+  },
+  {
+   "code": "P2CF7",
+   "brand": "",
+   "ru": "Насос охлаждения тяговой батареи B: заниженная скорость вращения",
+   "en": "Hybrid/EV Battery Pack Coolant Pump B Underspeed",
+   "fam": "",
+   "node": "hybrid ev battery pack coolant pump b underspeed"
+  },
+  {
+   "code": "P2CF9",
+   "brand": "",
+   "ru": "Натяжитель ремня стартер-генератора: обрыв цепи управления",
+   "en": "Belt Integrated Starter Generator Belt Tensioner Control Circuit/Open",
+   "fam": "",
+   "node": "belt integrated starter generator belt tensioner"
+  },
+  {
+   "code": "P2CFA",
+   "brand": "",
+   "ru": "Натяжитель ремня стартер-генератора: низкий уровень в цепи управления",
+   "en": "Belt Integrated Starter Generator Belt Tensioner Control Circuit Low",
+   "fam": "",
+   "node": "belt integrated starter generator belt tensioner"
+  },
+  {
+   "code": "P2CFB",
+   "brand": "",
+   "ru": "Натяжитель ремня стартер-генератора: высокий уровень в цепи управления",
+   "en": "Belt Integrated Starter Generator Belt Tensioner Control Circuit High",
+   "fam": "",
+   "node": "belt integrated starter generator belt tensioner"
+  },
+  {
+   "code": "P2CFC",
+   "brand": "",
+   "ru": "Муфта компрессора кондиционера: цепь управления",
+   "en": "A/C Clutch Control Circuit",
+   "fam": "",
+   "node": "a c clutch"
+  },
+  {
+   "code": "P2CFD",
+   "brand": "",
+   "ru": "Муфта компрессора кондиционера: низкий уровень в цепи управления",
+   "en": "A/C Clutch Control Circuit Low",
+   "fam": "",
+   "node": "a c clutch"
+  },
+  {
+   "code": "P2CFE",
+   "brand": "",
+   "ru": "Муфта компрессора кондиционера: высокий уровень в цепи управления",
+   "en": "A/C Clutch Control Circuit High",
+   "fam": "",
+   "node": "a c clutch"
+  },
+  {
+   "code": "P2CFF",
+   "brand": "",
+   "ru": "Муфта компрессора кондиционера: перегрузка драйвера цепи управления по току / перегрев",
+   "en": "A/C Clutch Control Circuit Driver Current/Temperature Too High",
+   "fam": "",
+   "node": "a c clutch"
+  },
+  {
+   "code": "P2D01",
+   "brand": "",
+   "ru": "Насос охлаждения электроники электромотора A: превышены обороты / воздух в системе",
+   "en": "Motor Electronics Coolant Pump A Overspeed/Air in System",
+   "fam": "",
+   "node": "motor electronics coolant pump a overspeed air in system"
+  },
+  {
+   "code": "P2D02",
+   "brand": "",
+   "ru": "Насос охлаждения электроники электромотора A: заниженная скорость вращения",
+   "en": "Motor Electronics Coolant Pump A Underspeed",
+   "fam": "",
+   "node": "motor electronics coolant pump a underspeed"
+  },
+  {
+   "code": "P2D03",
+   "brand": "",
+   "ru": "Насос охлаждения электроники электромотора A: цепь питания",
+   "en": "Motor Electronics Coolant Pump A Supply Voltage Circuit",
+   "fam": "",
+   "node": "motor electronics coolant pump a supply voltage"
+  },
+  {
+   "code": "P2D04",
+   "brand": "",
+   "ru": "Перегрев блока насоса охлаждения электроники электромотора A",
+   "en": "Motor Electronics Coolant Pump A Control Module Overtemperature",
+   "fam": "",
+   "node": "motor electronics coolant pump a control module overtemperature"
+  },
+  {
+   "code": "P2D06",
+   "brand": "",
+   "ru": "Насос охлаждения электроники электромотора B: превышены обороты / воздух в системе",
+   "en": "Motor Electronics Coolant Pump B Overspeed/Air in System",
+   "fam": "",
+   "node": "motor electronics coolant pump b overspeed air in system"
+  },
+  {
+   "code": "P2D07",
+   "brand": "",
+   "ru": "Насос охлаждения электроники электромотора B: заниженная скорость вращения",
+   "en": "Motor Electronics Coolant Pump B Underspeed",
+   "fam": "",
+   "node": "motor electronics coolant pump b underspeed"
+  },
+  {
+   "code": "P2D08",
+   "brand": "",
+   "ru": "Насос охлаждения электроники электромотора B: цепь питания",
+   "en": "Motor Electronics Coolant Pump B Supply Voltage Circuit",
+   "fam": "",
+   "node": "motor electronics coolant pump b supply voltage"
+  },
+  {
+   "code": "P2D09",
+   "brand": "",
+   "ru": "Перегрев блока насоса охлаждения электроники электромотора B",
+   "en": "Motor Electronics Coolant Pump B Control Module Overtemperature",
+   "fam": "",
+   "node": "motor electronics coolant pump b control module overtemperature"
+  },
+  {
+   "code": "P2D0B",
+   "brand": "",
+   "ru": "Насос охлаждения электроники электромотора C: превышены обороты / воздух в системе",
+   "en": "Motor Electronics Coolant Pump C Overspeed/Air in System",
+   "fam": "",
+   "node": "motor electronics coolant pump c overspeed air in system"
+  },
+  {
+   "code": "P2D0C",
+   "brand": "",
+   "ru": "Насос охлаждения электроники электромотора C: заниженная скорость вращения",
+   "en": "Motor Electronics Coolant Pump C Underspeed",
+   "fam": "",
+   "node": "motor electronics coolant pump c underspeed"
+  },
+  {
+   "code": "P2D0D",
+   "brand": "",
+   "ru": "Насос охлаждения электроники электромотора C: цепь питания",
+   "en": "Motor Electronics Coolant Pump C Supply Voltage Circuit",
+   "fam": "",
+   "node": "motor electronics coolant pump c supply voltage"
+  },
+  {
+   "code": "P2D0E",
+   "brand": "",
+   "ru": "Перегрев блока насоса охлаждения электроники электромотора C",
+   "en": "Motor Electronics Coolant Pump C Control Module Overtemperature",
+   "fam": "",
+   "node": "motor electronics coolant pump c control module overtemperature"
+  },
+  {
+   "code": "P2D0F",
+   "brand": "",
+   "ru": "Преждевременное воспламенение выше порога",
+   "en": "Engine Pre-Ignition Above Threshold",
+   "fam": "",
+   "node": "engine pre ignition above threshold"
+  },
+  {
+   "code": "P2D10",
+   "brand": "",
+   "ru": "Преждевременное воспламенение выше порога — принудительное ограничение мощности",
+   "en": "Engine Pre-Ignition Above Threshold - Forced Limited Power",
+   "fam": "",
+   "node": "engine pre ignition above threshold forced limited power"
+  },
+  {
+   "code": "P2D11",
+   "brand": "",
+   "ru": "Клапан управления потоком отработавших газов A: положение не обучено",
+   "en": "Exhaust Flow Control Valve A Position Not Learned",
+   "fam": "",
+   "node": "exhaust flow control valve a position not learned"
+  },
+  {
+   "code": "P2D12",
+   "brand": "",
+   "ru": "Клапан управления потоком отработавших газов B: положение не обучено",
+   "en": "Exhaust Flow Control Valve B Position Not Learned",
+   "fam": "",
+   "node": "exhaust flow control valve b position not learned"
+  },
+  {
+   "code": "P2D13",
+   "brand": "",
+   "ru": "Клапан управления потоком отработавших газов C: обрыв цепи управления",
+   "en": "Exhaust Flow Control Valve C Control Circuit/Open",
+   "fam": "",
+   "node": "exhaust flow control valve c"
+  },
+  {
+   "code": "P2D14",
+   "brand": "",
+   "ru": "Клапан управления потоком отработавших газов C: низкий уровень в цепи управления",
+   "en": "Exhaust Flow Control Valve C Control Circuit Low",
+   "fam": "",
+   "node": "exhaust flow control valve c"
+  },
+  {
+   "code": "P2D15",
+   "brand": "",
+   "ru": "Клапан управления потоком отработавших газов C: высокий уровень в цепи управления",
+   "en": "Exhaust Flow Control Valve C Control Circuit High",
+   "fam": "",
+   "node": "exhaust flow control valve c"
+  },
+  {
+   "code": "P2D16",
+   "brand": "",
+   "ru": "Клапан управления потоком отработавших газов C: нарушено управление",
+   "en": "Exhaust Flow Control Valve C Control Performance",
+   "fam": "",
+   "node": "exhaust flow control valve c control"
+  }
+ ]
+}

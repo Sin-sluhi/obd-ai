@@ -1,0 +1,391 @@
+{
+ "name": "brand-vag_067",
+ "series": "brand",
+ "brand": "vag",
+ "nodes": [
+  "fuel temperature",
+  "fuel temperature sensor",
+  "fuel trim different injection times",
+  "linear oxygen sensor common ground",
+  "linear oxygen sensor common ground wire",
+  "linear oxygen sensor compensation resistor",
+  "linear oxygen sensor pump current",
+  "linear oxygen sensor reference voltage",
+  "linear oxygen sensor reference voltage incorrect",
+  "load calculation cross check",
+  "load calculation cross check lower limit exceeded",
+  "load calculation cross check upper limit exceeded",
+  "long term fuel trim",
+  "long term fuel trim add fuel system too rich",
+  "manifold absolute pressure",
+  "manifold switch over",
+  "manifold temperature",
+  "mass or volume air flow",
+  "oxygen sensor control out of",
+  "oxygen sensor correction behind catalyst limit attained",
+  "rear oxygen sensor correction",
+  "throttle actuation potentiometer"
+ ],
+ "codes": [
+  {
+   "code": "P1139",
+   "brand": "vag",
+   "ru": "Аддитивная коррекция по топливу (ряд 2): смесь слишком богатая",
+   "en": "Long Term Fuel Trim Add Fuel Bank 2 System Too Rich",
+   "fam": "",
+   "node": "long term fuel trim add fuel system too rich"
+  },
+  {
+   "code": "P1141",
+   "brand": "vag",
+   "ru": "Перекрёстная проверка расчёта нагрузки: выход за диапазон",
+   "en": "Load Calculation Cross Check Range Performance",
+   "fam": "",
+   "node": "load calculation cross check"
+  },
+  {
+   "code": "P1142",
+   "brand": "vag",
+   "ru": "Перекрёстная проверка расчёта нагрузки: ниже нижнего предела",
+   "en": "Load Calculation Cross Check Lower Limit Exceeded",
+   "fam": "",
+   "node": "load calculation cross check lower limit exceeded"
+  },
+  {
+   "code": "P1143",
+   "brand": "vag",
+   "ru": "Перекрёстная проверка расчёта нагрузки: выше верхнего предела",
+   "en": "Load Calculation Cross Check Upper Limit Exceeded",
+   "fam": "",
+   "node": "load calculation cross check upper limit exceeded"
+  },
+  {
+   "code": "P1144",
+   "brand": "vag",
+   "ru": "Расходомер воздуха: обрыв или замыкание на массу",
+   "en": "Mass Or Volume Air Flow Circuit Open/Short To Ground",
+   "fam": "",
+   "node": "mass or volume air flow"
+  },
+  {
+   "code": "P1145",
+   "brand": "vag",
+   "ru": "Расходомер воздуха: замыкание на плюс",
+   "en": "Mass Or Volume Air Flow Circuit Short To B+",
+   "fam": "",
+   "node": "mass or volume air flow"
+  },
+  {
+   "code": "P1146",
+   "brand": "vag",
+   "ru": "Расходомер воздуха: неисправность питания",
+   "en": "Mass Or Volume Air Flow Circuit Power Supply Malfunction",
+   "fam": "",
+   "node": "mass or volume air flow"
+  },
+  {
+   "code": "P1149",
+   "brand": "vag",
+   "ru": "Лямбда-регулирование (ряд 1): выход за диапазон",
+   "en": "Oxygen Sensor Control Bank 1 Out Of Range",
+   "fam": "",
+   "node": "oxygen sensor control out of"
+  },
+  {
+   "code": "P1150",
+   "brand": "vag",
+   "ru": "Лямбда-регулирование (ряд 2): выход за диапазон",
+   "en": "Oxygen Sensor Control Bank 2 Out Of Range",
+   "fam": "",
+   "node": "oxygen sensor control out of"
+  },
+  {
+   "code": "P1151",
+   "brand": "vag",
+   "ru": "Долговременная коррекция, диапазон 1 (ряд 1): превышен бедный предел",
+   "en": "Bank 1 Long Term Fuel Trim Range 1 Lower Lean Limit Exceeded",
+   "fam": "",
+   "node": "long term fuel trim"
+  },
+  {
+   "code": "P1152",
+   "brand": "vag",
+   "ru": "Долговременная коррекция, диапазон 2 (ряд 1): превышен бедный предел",
+   "en": "Bank 1 Long Term Fuel Trim Range 2 Lower Lean Limit Exceeded",
+   "fam": "",
+   "node": "long term fuel trim"
+  },
+  {
+   "code": "P1165",
+   "brand": "vag",
+   "ru": "Долговременная коррекция, диапазон 1 (ряд 1): превышен бедный предел",
+   "en": "Bank 1 Long Term Fuel Trim Range 1 Lower Lean Limit Exceeded",
+   "fam": "",
+   "node": "long term fuel trim"
+  },
+  {
+   "code": "P1166",
+   "brand": "vag",
+   "ru": "Долговременная коррекция, диапазон 2 (ряд 1): превышен богатый предел",
+   "en": "Bank 1 Long Term Fuel Trim Range 2 Upper Rich Limit Exceeded",
+   "fam": "",
+   "node": "long term fuel trim"
+  },
+  {
+   "code": "P1154",
+   "brand": "vag",
+   "ru": "Переключение впускного коллектора: неисправность",
+   "en": "Manifold Switch Over Malfunction",
+   "fam": "",
+   "node": "manifold switch over"
+  },
+  {
+   "code": "P1155",
+   "brand": "vag",
+   "ru": "Датчик абсолютного давления во впуске: замыкание на плюс",
+   "en": "Manifold Absolute Pressure Sensor Circuit Short To B+",
+   "fam": "",
+   "node": "manifold absolute pressure"
+  },
+  {
+   "code": "P1156",
+   "brand": "vag",
+   "ru": "Датчик абсолютного давления во впуске: обрыв или замыкание на массу",
+   "en": "Manifold Absolute Pressure Sensor Circuit Open/Short To Ground",
+   "fam": "",
+   "node": "manifold absolute pressure"
+  },
+  {
+   "code": "P1157",
+   "brand": "vag",
+   "ru": "Датчик абсолютного давления во впуске: неисправность питания",
+   "en": "Manifold Absolute Pressure Sensor Circuit Power Supply Malfunction",
+   "fam": "",
+   "node": "manifold absolute pressure"
+  },
+  {
+   "code": "P1158",
+   "brand": "vag",
+   "ru": "Датчик абсолютного давления во впуске: выход за диапазон",
+   "en": "Manifold Absolute Pressure Sensor Circuit Range Performance",
+   "fam": "",
+   "node": "manifold absolute pressure"
+  },
+  {
+   "code": "P1160",
+   "brand": "vag",
+   "ru": "Датчик температуры во впускном коллекторе: замыкание на массу",
+   "en": "Manifold Temperature Sensor Circuit Short To Ground",
+   "fam": "",
+   "node": "manifold temperature"
+  },
+  {
+   "code": "P1161",
+   "brand": "vag",
+   "ru": "Датчик температуры во впускном коллекторе: обрыв или замыкание на плюс",
+   "en": "Manifold Temperature Sensor Circuit Open/Short To B+",
+   "fam": "",
+   "node": "manifold temperature"
+  },
+  {
+   "code": "P1162",
+   "brand": "vag",
+   "ru": "Датчик температуры топлива: замыкание на массу",
+   "en": "Fuel Temperature Sensor Circuit Short To Ground",
+   "fam": "",
+   "node": "fuel temperature"
+  },
+  {
+   "code": "P1163",
+   "brand": "vag",
+   "ru": "Датчик температуры топлива: обрыв или замыкание на плюс",
+   "en": "Fuel Temperature Sensor Circuit Open/Short To B+",
+   "fam": "",
+   "node": "fuel temperature"
+  },
+  {
+   "code": "P1164",
+   "brand": "vag",
+   "ru": "Датчик температуры топлива: выход за диапазон",
+   "en": "Fuel Temperature Sensor Range Performance",
+   "fam": "",
+   "node": "fuel temperature sensor"
+  },
+  {
+   "code": "P1171",
+   "brand": "vag",
+   "ru": "Потенциометр привода дросселя, сигнал 2: выход за диапазон",
+   "en": "Throttle Actuation Potentiometer Signal 2 Range Performance",
+   "fam": "",
+   "node": "throttle actuation potentiometer"
+  },
+  {
+   "code": "P1172",
+   "brand": "vag",
+   "ru": "Потенциометр привода дросселя, сигнал 2: слишком низкий",
+   "en": "Throttle Actuation Potentiometer Signal 2 Signal Too Low",
+   "fam": "",
+   "node": "throttle actuation potentiometer"
+  },
+  {
+   "code": "P1173",
+   "brand": "vag",
+   "ru": "Потенциометр привода дросселя, сигнал 2: слишком высокий",
+   "en": "Throttle Actuation Potentiometer Signal 2 Signal Too High",
+   "fam": "",
+   "node": "throttle actuation potentiometer"
+  },
+  {
+   "code": "P1542",
+   "brand": "vag",
+   "ru": "Потенциометр привода дросселя: выход за диапазон",
+   "en": "Throttle Actuation Potentiometer Range Performance",
+   "fam": "",
+   "node": "throttle actuation potentiometer"
+  },
+  {
+   "code": "P1543",
+   "brand": "vag",
+   "ru": "Потенциометр привода дросселя: сигнал слишком низкий",
+   "en": "Throttle Actuation Potentiometer Signal Too Low",
+   "fam": "",
+   "node": "throttle actuation potentiometer"
+  },
+  {
+   "code": "P1544",
+   "brand": "vag",
+   "ru": "Потенциометр привода дросселя: сигнал слишком высокий",
+   "en": "Throttle Actuation Potentiometer Signal Too High",
+   "fam": "",
+   "node": "throttle actuation potentiometer"
+  },
+  {
+   "code": "P1174",
+   "brand": "vag",
+   "ru": "Коррекция смеси (ряд 1): разное время впрыска по цилиндрам",
+   "en": "Fuel Trim Bank 1 Different Injection Times",
+   "fam": "",
+   "node": "fuel trim different injection times"
+  },
+  {
+   "code": "P1176",
+   "brand": "vag",
+   "ru": "Коррекция по заднему лямбда-зонду",
+   "en": "Rear Oxygen Sensor Correction",
+   "fam": "",
+   "node": "rear oxygen sensor correction"
+  },
+  {
+   "code": "P1177",
+   "brand": "vag",
+   "ru": "Коррекция по лямбда-зонду после катализатора (ряд 1): достигнут предел",
+   "en": "Oxygen Sensor Correction Behind Catalyst Bank 1 Limit Attained",
+   "fam": "",
+   "node": "oxygen sensor correction behind catalyst limit attained"
+  },
+  {
+   "code": "P1178",
+   "brand": "vag",
+   "ru": "Широкополосный лямбда-зонд, ток накачки: обрыв",
+   "en": "Linear Oxygen Sensor Pump Current Open",
+   "fam": "",
+   "node": "linear oxygen sensor pump current"
+  },
+  {
+   "code": "P1179",
+   "brand": "vag",
+   "ru": "Широкополосный лямбда-зонд, ток накачки: замыкание на массу",
+   "en": "Linear Oxygen Sensor Pump Current Short To Ground",
+   "fam": "",
+   "node": "linear oxygen sensor pump current"
+  },
+  {
+   "code": "P1180",
+   "brand": "vag",
+   "ru": "Широкополосный лямбда-зонд, ток накачки: замыкание на плюс",
+   "en": "Linear Oxygen Sensor Pump Current Short To B+",
+   "fam": "",
+   "node": "linear oxygen sensor pump current"
+  },
+  {
+   "code": "P1181",
+   "brand": "vag",
+   "ru": "Широкополосный лямбда-зонд, опорное напряжение: обрыв",
+   "en": "Linear Oxygen Sensor Reference Voltage Open",
+   "fam": "",
+   "node": "linear oxygen sensor reference voltage"
+  },
+  {
+   "code": "P1182",
+   "brand": "vag",
+   "ru": "Широкополосный лямбда-зонд, опорное напряжение: замыкание на массу",
+   "en": "Linear Oxygen Sensor Reference Voltage Short To Ground",
+   "fam": "",
+   "node": "linear oxygen sensor reference voltage"
+  },
+  {
+   "code": "P1183",
+   "brand": "vag",
+   "ru": "Широкополосный лямбда-зонд, опорное напряжение: замыкание на плюс",
+   "en": "Linear Oxygen Sensor Reference Voltage Short To B+",
+   "fam": "",
+   "node": "linear oxygen sensor reference voltage"
+  },
+  {
+   "code": "P1184",
+   "brand": "vag",
+   "ru": "Широкополосный лямбда-зонд, общий провод массы: обрыв",
+   "en": "Linear Oxygen Sensor Common Ground Wire Open",
+   "fam": "",
+   "node": "linear oxygen sensor common ground wire"
+  },
+  {
+   "code": "P1185",
+   "brand": "vag",
+   "ru": "Широкополосный лямбда-зонд, общий провод массы: замыкание на массу",
+   "en": "Linear Oxygen Sensor Common Ground Wire Short To Ground",
+   "fam": "",
+   "node": "linear oxygen sensor common ground wire"
+  },
+  {
+   "code": "P1186",
+   "brand": "vag",
+   "ru": "Широкополосный лямбда-зонд, общий провод массы: замыкание на плюс",
+   "en": "Linear Oxygen Sensor Common Ground Short To B+",
+   "fam": "",
+   "node": "linear oxygen sensor common ground"
+  },
+  {
+   "code": "P1187",
+   "brand": "vag",
+   "ru": "Широкополосный лямбда-зонд, компенсационный резистор: обрыв",
+   "en": "Linear Oxygen Sensor Compensation Resistor Open",
+   "fam": "",
+   "node": "linear oxygen sensor compensation resistor"
+  },
+  {
+   "code": "P1188",
+   "brand": "vag",
+   "ru": "Широкополосный лямбда-зонд, компенсационный резистор: замыкание на массу",
+   "en": "Linear Oxygen Sensor Compensation Resistor Short To Ground",
+   "fam": "",
+   "node": "linear oxygen sensor compensation resistor"
+  },
+  {
+   "code": "P1189",
+   "brand": "vag",
+   "ru": "Широкополосный лямбда-зонд, компенсационный резистор: замыкание на плюс",
+   "en": "Linear Oxygen Sensor Compensation Resistor Short To B+",
+   "fam": "",
+   "node": "linear oxygen sensor compensation resistor"
+  },
+  {
+   "code": "P1190",
+   "brand": "vag",
+   "ru": "Широкополосный лямбда-зонд, опорное напряжение: неверный сигнал",
+   "en": "Linear Oxygen Sensor Reference Voltage Incorrect Signal",
+   "fam": "",
+   "node": "linear oxygen sensor reference voltage incorrect"
+  }
+ ]
+}

@@ -1,0 +1,407 @@
+{
+ "name": "brand-ford_016",
+ "series": "brand",
+ "brand": "ford",
+ "nodes": [
+  "alternative fuel controller",
+  "calibration memory fault",
+  "calibration resistor out of",
+  "cam calibration fault",
+  "cam control fault",
+  "cam sensor fault",
+  "ecu a d converter",
+  "egr drive overcurrent",
+  "engine oil temperature",
+  "engine oil temperature out of self test",
+  "eso engine shut off solenoid fault",
+  "fuel delivery system",
+  "fuel rail sensor in",
+  "fuel restriction condition",
+  "fuel restriction indicator",
+  "injector control pressure above expected level",
+  "injector control pressure not detected during crank",
+  "injector control pressure sensor above below desired",
+  "injector control pressure system fault",
+  "key line voltage",
+  "key off voltage",
+  "pedal position sensor b",
+  "pedal position sensor c",
+  "pump rotor control underfueling",
+  "pump speed",
+  "rotor calibration fault",
+  "rotor control fault",
+  "rotor sensor fault",
+  "ru:датчик температуры тнвд",
+  "ru:сигнал определения цилиндра (cid)",
+  "scp hbcc failed to initialize",
+  "series throttle control fault",
+  "start injector",
+  "synchronization fault",
+  "traction control",
+  "traction control system",
+  "variant selection",
+  "voltage external"
+ ],
+ "codes": [
+  {
+   "code": "P1141",
+   "brand": "ford",
+   "ru": "Индикатор засорения топливного фильтра: неисправность цепи",
+   "en": "Fuel Restriction Indicator Circuit Malfunction",
+   "fam": "",
+   "node": "fuel restriction indicator"
+  },
+  {
+   "code": "P1142",
+   "brand": "ford",
+   "ru": "Засорение топливного фильтра",
+   "en": "Fuel Restriction Condition",
+   "fam": "",
+   "node": "fuel restriction condition"
+  },
+  {
+   "code": "P1155",
+   "brand": "ford",
+   "ru": "Блок альтернативного топлива (газ)",
+   "en": "Alternative Fuel Controller",
+   "fam": "",
+   "node": "alternative fuel controller"
+  },
+  {
+   "code": "P1168",
+   "brand": "ford",
+   "ru": "Датчик давления в рампе: в диапазоне, но слишком низко",
+   "en": "Fuel Rail Sensor In-Range Low Failure",
+   "fam": "",
+   "node": "fuel rail sensor in"
+  },
+  {
+   "code": "P1169",
+   "brand": "ford",
+   "ru": "Датчик давления в рампе: в диапазоне, но слишком высоко",
+   "en": "Fuel Rail Sensor In-Range High Failure",
+   "fam": "",
+   "node": "fuel rail sensor in"
+  },
+  {
+   "code": "P1170",
+   "brand": "ford",
+   "ru": "Клапан останова двигателя (ESO): неисправность",
+   "en": "ESO Engine Shut Off Solenoid Fault",
+   "fam": "",
+   "node": "eso engine shut off solenoid fault"
+  },
+  {
+   "code": "P1171",
+   "brand": "ford",
+   "ru": "ТНВД: неисправность датчика ротора",
+   "en": "Rotor Sensor Fault",
+   "fam": "",
+   "node": "rotor sensor fault"
+  },
+  {
+   "code": "P1172",
+   "brand": "ford",
+   "ru": "ТНВД: неисправность управления ротором",
+   "en": "Rotor Control Fault",
+   "fam": "",
+   "node": "rotor control fault"
+  },
+  {
+   "code": "P1173",
+   "brand": "ford",
+   "ru": "ТНВД: неисправность калибровки ротора",
+   "en": "Rotor Calibration Fault",
+   "fam": "",
+   "node": "rotor calibration fault"
+  },
+  {
+   "code": "P1174",
+   "brand": "ford",
+   "ru": "ТНВД: неисправность датчика кулачка",
+   "en": "Cam Sensor Fault",
+   "fam": "",
+   "node": "cam sensor fault"
+  },
+  {
+   "code": "P1175",
+   "brand": "ford",
+   "ru": "ТНВД: неисправность управления кулачком",
+   "en": "Cam Control Fault",
+   "fam": "",
+   "node": "cam control fault"
+  },
+  {
+   "code": "P1176",
+   "brand": "ford",
+   "ru": "ТНВД: неисправность калибровки кулачка",
+   "en": "Cam Calibration Fault",
+   "fam": "",
+   "node": "cam calibration fault"
+  },
+  {
+   "code": "P1177",
+   "brand": "ford",
+   "ru": "ТНВД: ошибка синхронизации",
+   "en": "Synchronization Fault",
+   "fam": "",
+   "node": "synchronization fault"
+  },
+  {
+   "code": "P1180",
+   "brand": "ford",
+   "ru": "Подача топлива: неисправность, низко",
+   "en": "Fuel Delivery System Malfunction Low",
+   "fam": "",
+   "node": "fuel delivery system"
+  },
+  {
+   "code": "P1181",
+   "brand": "ford",
+   "ru": "Подача топлива: неисправность, высоко",
+   "en": "Fuel Delivery System Malfunction High",
+   "fam": "",
+   "node": "fuel delivery system"
+  },
+  {
+   "code": "P1183",
+   "brand": "ford",
+   "ru": "Датчик температуры масла: неисправность цепи",
+   "en": "Engine Oil Temperature Circuit Malfunction",
+   "fam": "",
+   "node": "engine oil temperature"
+  },
+  {
+   "code": "P1184",
+   "brand": "ford",
+   "ru": "Температура масла: вне диапазона самотеста",
+   "en": "Engine Oil Temperature Out Of Self Test Range",
+   "fam": "",
+   "node": "engine oil temperature out of self test"
+  },
+  {
+   "code": "P1185",
+   "brand": "ford",
+   "ru": "Датчик температуры ТНВД: высокий сигнал",
+   "en": "FTS High Fuel Pump Temperature Sensor High",
+   "fam": "",
+   "node": "ru:датчик температуры тнвд"
+  },
+  {
+   "code": "P1186",
+   "brand": "ford",
+   "ru": "Датчик температуры ТНВД: низкий сигнал",
+   "en": "FTS Low Fuel Pump Temperature Sensor Low",
+   "fam": "",
+   "node": "ru:датчик температуры тнвд"
+  },
+  {
+   "code": "P1187",
+   "brand": "ford",
+   "ru": "ТНВД: выбор варианта",
+   "en": "Variant Selection",
+   "fam": "",
+   "node": "variant selection"
+  },
+  {
+   "code": "P1188",
+   "brand": "ford",
+   "ru": "ТНВД: ошибка памяти калибровки",
+   "en": "Calibration Memory Fault",
+   "fam": "",
+   "node": "calibration memory fault"
+  },
+  {
+   "code": "P1189",
+   "brand": "ford",
+   "ru": "ТНВД: неисправность сигнала оборотов",
+   "en": "Pump Speed Signal Fault",
+   "fam": "",
+   "node": "pump speed"
+  },
+  {
+   "code": "P1190",
+   "brand": "ford",
+   "ru": "ТНВД: калибровочный резистор вне диапазона",
+   "en": "Calibration Resistor Out Of Range",
+   "fam": "",
+   "node": "calibration resistor out of"
+  },
+  {
+   "code": "P1191",
+   "brand": "ford",
+   "ru": "ТНВД: напряжение линии ключа",
+   "en": "Key Line Voltage",
+   "fam": "",
+   "node": "key line voltage"
+  },
+  {
+   "code": "P1192",
+   "brand": "ford",
+   "ru": "ТНВД: внешнее напряжение",
+   "en": "Voltage External",
+   "fam": "",
+   "node": "voltage external"
+  },
+  {
+   "code": "P1193",
+   "brand": "ford",
+   "ru": "Привод ЕГР: перегрузка по току",
+   "en": "EGR Drive Overcurrent",
+   "fam": "",
+   "node": "egr drive overcurrent"
+  },
+  {
+   "code": "P1194",
+   "brand": "ford",
+   "ru": "Блок: ошибка АЦП",
+   "en": "ECU A/D Converter",
+   "fam": "",
+   "node": "ecu a d converter"
+  },
+  {
+   "code": "P1195",
+   "brand": "ford",
+   "ru": "Шина SCP: не удалось инициализировать",
+   "en": "SCP HBCC Failed To Initialize",
+   "fam": "",
+   "node": "scp hbcc failed to initialize"
+  },
+  {
+   "code": "P1196",
+   "brand": "ford",
+   "ru": "Напряжение при выключенном зажигании высокое",
+   "en": "Key Off Voltage High",
+   "fam": "",
+   "node": "key off voltage"
+  },
+  {
+   "code": "P1197",
+   "brand": "ford",
+   "ru": "Напряжение при выключенном зажигании низкое",
+   "en": "Key Off Voltage Low",
+   "fam": "",
+   "node": "key off voltage"
+  },
+  {
+   "code": "P1198",
+   "brand": "ford",
+   "ru": "ТНВД, управление ротором: недолив топлива",
+   "en": "Pump Rotor Control Underfueling",
+   "fam": "",
+   "node": "pump rotor control underfueling"
+  },
+  {
+   "code": "P1209",
+   "brand": "ford",
+   "ru": "Система давления управления форсунками (дизель): неисправность",
+   "en": "Injector Control Pressure System Fault",
+   "fam": "",
+   "node": "injector control pressure system fault"
+  },
+  {
+   "code": "P1210",
+   "brand": "ford",
+   "ru": "Давление управления форсунками выше ожидаемого",
+   "en": "Injector Control Pressure Above Expected Level",
+   "fam": "",
+   "node": "injector control pressure above expected level"
+  },
+  {
+   "code": "P1211",
+   "brand": "ford",
+   "ru": "Давление управления форсунками выше/ниже заданного",
+   "en": "Injector Control Pressure Sensor Above Below Desired",
+   "fam": "",
+   "node": "injector control pressure sensor above below desired"
+  },
+  {
+   "code": "P1212",
+   "brand": "ford",
+   "ru": "Давление управления форсунками не появляется при прокрутке",
+   "en": "Injector Control Pressure Not Detected During Crank",
+   "fam": "",
+   "node": "injector control pressure not detected during crank"
+  },
+  {
+   "code": "P1213",
+   "brand": "ford",
+   "ru": "Пусковая форсунка: неисправность цепи",
+   "en": "Start Injector Circuit Malfunction",
+   "fam": "",
+   "node": "start injector"
+  },
+  {
+   "code": "P1214",
+   "brand": "ford",
+   "ru": "Датчик педали газа B: прерывистый сигнал",
+   "en": "Pedal Position Sensor B Circuit Intermittent",
+   "fam": "",
+   "node": "pedal position sensor b"
+  },
+  {
+   "code": "P1215",
+   "brand": "ford",
+   "ru": "Датчик педали газа C: низкий сигнал",
+   "en": "Pedal Position Sensor C Circuit Low Input",
+   "fam": "",
+   "node": "pedal position sensor c"
+  },
+  {
+   "code": "P1216",
+   "brand": "ford",
+   "ru": "Датчик педали газа C: высокий сигнал",
+   "en": "Pedal Position Sensor C Circuit High Input",
+   "fam": "",
+   "node": "pedal position sensor c"
+  },
+  {
+   "code": "P1217",
+   "brand": "ford",
+   "ru": "Датчик педали газа C: прерывистый сигнал",
+   "en": "Pedal Position Sensor C Circuit Intermittent",
+   "fam": "",
+   "node": "pedal position sensor c"
+  },
+  {
+   "code": "P1218",
+   "brand": "ford",
+   "ru": "Сигнал определения цилиндра (CID): высокий",
+   "en": "CID High",
+   "fam": "",
+   "node": "ru:сигнал определения цилиндра (cid)"
+  },
+  {
+   "code": "P1219",
+   "brand": "ford",
+   "ru": "Сигнал определения цилиндра (CID): низкий",
+   "en": "CID Low",
+   "fam": "",
+   "node": "ru:сигнал определения цилиндра (cid)"
+  },
+  {
+   "code": "P1220",
+   "brand": "ford",
+   "ru": "Вторичная дроссельная заслонка: неисправность управления",
+   "en": "Series Throttle Control Fault",
+   "fam": "",
+   "node": "series throttle control fault"
+  },
+  {
+   "code": "P1221",
+   "brand": "ford",
+   "ru": "Противобуксовочная система: неисправность",
+   "en": "Traction Control System Malfunction",
+   "fam": "",
+   "node": "traction control system"
+  },
+  {
+   "code": "P1222",
+   "brand": "ford",
+   "ru": "Выход противобуксовочной системы: неисправность цепи",
+   "en": "Traction Control Output Circuit Malfunction",
+   "fam": "",
+   "node": "traction control"
+  }
+ ]
+}

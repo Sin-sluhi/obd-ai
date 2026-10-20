@@ -1,0 +1,368 @@
+{
+ "name": "sae_157",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "chassis control module 1 requested mil illumination",
+  "chassis control module 2 requested mil illumination",
+  "engine coolant bypass valve d",
+  "engine coolant pump",
+  "engine coolant pump clutch",
+  "engine coolant pump control module over temperature",
+  "engine coolant pump control module system voltage",
+  "engine coolant pump overspeed air in system",
+  "engine coolant pump supply voltage",
+  "engine sound control a",
+  "exhaust flow control valve a",
+  "fuel mode indicator lamp",
+  "internal control module clutch pedal",
+  "internal control module transmission",
+  "sensor power supply d"
+ ],
+ "codes": [
+  {
+   "code": "P26BD",
+   "brand": "",
+   "ru": "Перепускной клапан охлаждающей жидкости двигателя D: обрыв цепи управления",
+   "en": "Engine Coolant Bypass Valve D Control Circuit/Open",
+   "fam": "",
+   "node": "engine coolant bypass valve d"
+  },
+  {
+   "code": "P26BE",
+   "brand": "",
+   "ru": "Перепускной клапан охлаждающей жидкости двигателя D: низкий уровень в цепи управления",
+   "en": "Engine Coolant Bypass Valve D Control Circuit Low",
+   "fam": "",
+   "node": "engine coolant bypass valve d"
+  },
+  {
+   "code": "P26BF",
+   "brand": "",
+   "ru": "Перепускной клапан охлаждающей жидкости двигателя D: высокий уровень в цепи управления",
+   "en": "Engine Coolant Bypass Valve D Control Circuit High",
+   "fam": "",
+   "node": "engine coolant bypass valve d"
+  },
+  {
+   "code": "P26C0",
+   "brand": "",
+   "ru": "Перепускной клапан охлаждающей жидкости двигателя D: заклинил открытым",
+   "en": "Engine Coolant Bypass Valve D Stuck/Open",
+   "fam": "",
+   "node": "engine coolant bypass valve d"
+  },
+  {
+   "code": "P26C1",
+   "brand": "",
+   "ru": "Перепускной клапан охлаждающей жидкости двигателя D: вне допустимого диапазона",
+   "en": "Engine Coolant Bypass Valve D Range/Performance",
+   "fam": "",
+   "node": "engine coolant bypass valve d"
+  },
+  {
+   "code": "P26C2",
+   "brand": "",
+   "ru": "Перепускной клапан охлаждающей жидкости двигателя D: заклинил закрытым",
+   "en": "Engine Coolant Bypass Valve D Stuck Closed",
+   "fam": "",
+   "node": "engine coolant bypass valve d"
+  },
+  {
+   "code": "P2CF8",
+   "brand": "",
+   "ru": "Перепускной клапан охлаждающей жидкости двигателя D: перегрузка драйвера цепи управления по току / перегрев",
+   "en": "Engine Coolant Bypass Valve D Control Circuit Driver Current/Temperature Too High",
+   "fam": "",
+   "node": "engine coolant bypass valve d"
+  },
+  {
+   "code": "P26C3",
+   "brand": "",
+   "ru": "ЭБУ: ошибка обработки датчика диапазона КПП",
+   "en": "Internal Control Module Transmission Range Sensor Performance",
+   "fam": "",
+   "node": "internal control module transmission"
+  },
+  {
+   "code": "P27B1",
+   "brand": "",
+   "ru": "ЭБУ: ошибка выбора диапазона КПП",
+   "en": "Internal Control Module Transmission Range Select Performance",
+   "fam": "",
+   "node": "internal control module transmission"
+  },
+  {
+   "code": "P27B2",
+   "brand": "",
+   "ru": "ЭБУ: ошибка управления диапазоном КПП",
+   "en": "Internal Control Module Transmission Range Control Performance",
+   "fam": "",
+   "node": "internal control module transmission"
+  },
+  {
+   "code": "P26C4",
+   "brand": "",
+   "ru": "ЭБУ: ошибка обработки педали сцепления",
+   "en": "Internal Control Module Clutch Pedal Performance",
+   "fam": "",
+   "node": "internal control module clutch pedal"
+  },
+  {
+   "code": "P26C5",
+   "brand": "",
+   "ru": "Клапан управления потоком отработавших газов A: обрыв цепи управления",
+   "en": "Exhaust Flow Control Valve A Control Circuit/Open",
+   "fam": "",
+   "node": "exhaust flow control valve a"
+  },
+  {
+   "code": "P26C6",
+   "brand": "",
+   "ru": "Клапан управления потоком отработавших газов A: низкий уровень в цепи управления",
+   "en": "Exhaust Flow Control Valve A Control Circuit Low",
+   "fam": "",
+   "node": "exhaust flow control valve a"
+  },
+  {
+   "code": "P26C7",
+   "brand": "",
+   "ru": "Клапан управления потоком отработавших газов A: высокий уровень в цепи управления",
+   "en": "Exhaust Flow Control Valve A Control Circuit High",
+   "fam": "",
+   "node": "exhaust flow control valve a"
+  },
+  {
+   "code": "P26C8",
+   "brand": "",
+   "ru": "Блок шасси 1 запросил включение Check Engine",
+   "en": "Chassis Control Module 1 Requested MIL Illumination",
+   "fam": "",
+   "node": "chassis control module 1 requested mil illumination"
+  },
+  {
+   "code": "P26C9",
+   "brand": "",
+   "ru": "Блок шасси 2 запросил включение Check Engine",
+   "en": "Chassis Control Module 2 Requested MIL Illumination",
+   "fam": "",
+   "node": "chassis control module 2 requested mil illumination"
+  },
+  {
+   "code": "P26CA",
+   "brand": "",
+   "ru": "Насос охлаждающей жидкости двигателя: обрыв цепи управления",
+   "en": "Engine Coolant Pump Control Circuit/Open",
+   "fam": "",
+   "node": "engine coolant pump"
+  },
+  {
+   "code": "P26CB",
+   "brand": "",
+   "ru": "Насос охлаждающей жидкости двигателя: работа нарушена / не включается",
+   "en": "Engine Coolant Pump Performance/Stuck Off",
+   "fam": "",
+   "node": "engine coolant pump"
+  },
+  {
+   "code": "P26CC",
+   "brand": "",
+   "ru": "Насос охлаждающей жидкости двигателя: низкий уровень в цепи управления",
+   "en": "Engine Coolant Pump Control Circuit Low",
+   "fam": "",
+   "node": "engine coolant pump"
+  },
+  {
+   "code": "P26CD",
+   "brand": "",
+   "ru": "Насос охлаждающей жидкости двигателя: высокий уровень в цепи управления",
+   "en": "Engine Coolant Pump Control Circuit High",
+   "fam": "",
+   "node": "engine coolant pump"
+  },
+  {
+   "code": "P2BA2",
+   "brand": "",
+   "ru": "Насос охлаждающей жидкости двигателя: заклинивание / остановка",
+   "en": "Engine Coolant Pump Stuck/Stalled",
+   "fam": "",
+   "node": "engine coolant pump"
+  },
+  {
+   "code": "P26CE",
+   "brand": "",
+   "ru": "Насос охлаждающей жидкости: превышены обороты / воздух в системе",
+   "en": "Engine Coolant Pump Overspeed/Air In System",
+   "fam": "",
+   "node": "engine coolant pump overspeed air in system"
+  },
+  {
+   "code": "P26CF",
+   "brand": "",
+   "ru": "Блок насоса охлаждающей жидкости: напряжение питания",
+   "en": "Engine Coolant Pump Control Module System Voltage",
+   "fam": "",
+   "node": "engine coolant pump control module system voltage"
+  },
+  {
+   "code": "P26D0",
+   "brand": "",
+   "ru": "Блок управления насосом охлаждающей жидкости: низкое напряжение бортсети",
+   "en": "Engine Coolant Pump Control Module System Voltage Low",
+   "fam": "",
+   "node": "engine coolant pump control module system voltage"
+  },
+  {
+   "code": "P26D1",
+   "brand": "",
+   "ru": "Блок управления насосом охлаждающей жидкости: высокое напряжение бортсети",
+   "en": "Engine Coolant Pump Control Module System Voltage High",
+   "fam": "",
+   "node": "engine coolant pump control module system voltage"
+  },
+  {
+   "code": "P26D2",
+   "brand": "",
+   "ru": "Блок управления насосом охлаждающей жидкости: перегрев",
+   "en": "Engine Coolant Pump Control Module Over Temperature",
+   "fam": "",
+   "node": "engine coolant pump control module over temperature"
+  },
+  {
+   "code": "P26D3",
+   "brand": "",
+   "ru": "Насос охлаждающей жидкости двигателя: цепь питания",
+   "en": "Engine Coolant Pump Supply Voltage Circuit",
+   "fam": "",
+   "node": "engine coolant pump supply voltage"
+  },
+  {
+   "code": "P26D4",
+   "brand": "",
+   "ru": "Насос охлаждающей жидкости двигателя: низкое напряжение питания",
+   "en": "Engine Coolant Pump Supply Voltage Circuit Low",
+   "fam": "",
+   "node": "engine coolant pump supply voltage"
+  },
+  {
+   "code": "P26D5",
+   "brand": "",
+   "ru": "Насос охлаждающей жидкости двигателя: высокое напряжение питания",
+   "en": "Engine Coolant Pump Supply Voltage Circuit High",
+   "fam": "",
+   "node": "engine coolant pump supply voltage"
+  },
+  {
+   "code": "P26D6",
+   "brand": "",
+   "ru": "Муфта насоса охлаждающей жидкости: обрыв цепи управления",
+   "en": "Engine Coolant Pump Clutch Control Circuit/Open",
+   "fam": "",
+   "node": "engine coolant pump clutch"
+  },
+  {
+   "code": "P26D7",
+   "brand": "",
+   "ru": "Муфта насоса охлаждающей жидкости: работа нарушена / не включается",
+   "en": "Engine Coolant Pump Clutch Performance/Stuck Off",
+   "fam": "",
+   "node": "engine coolant pump clutch"
+  },
+  {
+   "code": "P26D8",
+   "brand": "",
+   "ru": "Муфта насоса охлаждающей жидкости: постоянно включён",
+   "en": "Engine Coolant Pump Clutch Stuck On",
+   "fam": "",
+   "node": "engine coolant pump clutch"
+  },
+  {
+   "code": "P26D9",
+   "brand": "",
+   "ru": "Муфта насоса охлаждающей жидкости: низкий уровень в цепи управления",
+   "en": "Engine Coolant Pump Clutch Control Circuit Low",
+   "fam": "",
+   "node": "engine coolant pump clutch"
+  },
+  {
+   "code": "P26DA",
+   "brand": "",
+   "ru": "Муфта насоса охлаждающей жидкости: высокий уровень в цепи управления",
+   "en": "Engine Coolant Pump Clutch Control Circuit High",
+   "fam": "",
+   "node": "engine coolant pump clutch"
+  },
+  {
+   "code": "P26DB",
+   "brand": "",
+   "ru": "Управление звуком двигателя A: обрыв цепи",
+   "en": "Engine Sound Control A Circuit/Open",
+   "fam": "",
+   "node": "engine sound control a"
+  },
+  {
+   "code": "P26DC",
+   "brand": "",
+   "ru": "Управление звуком двигателя A: низкий уровень сигнала в цепи",
+   "en": "Engine Sound Control A Circuit Low",
+   "fam": "",
+   "node": "engine sound control a"
+  },
+  {
+   "code": "P26DD",
+   "brand": "",
+   "ru": "Управление звуком двигателя A: высокий уровень сигнала в цепи",
+   "en": "Engine Sound Control A Circuit High",
+   "fam": "",
+   "node": "engine sound control a"
+  },
+  {
+   "code": "P26DE",
+   "brand": "",
+   "ru": "Управление звуком двигателя A: нарушена работа цепи",
+   "en": "Engine Sound Control A Circuit Performance",
+   "fam": "",
+   "node": "engine sound control a"
+  },
+  {
+   "code": "P26DF",
+   "brand": "",
+   "ru": "Питание датчиков D: обрыв цепи",
+   "en": "Sensor Power Supply D Circuit/Open",
+   "fam": "",
+   "node": "sensor power supply d"
+  },
+  {
+   "code": "P26E0",
+   "brand": "",
+   "ru": "Питание датчиков D: низкий уровень сигнала в цепи",
+   "en": "Sensor Power Supply D Circuit Low",
+   "fam": "",
+   "node": "sensor power supply d"
+  },
+  {
+   "code": "P26E1",
+   "brand": "",
+   "ru": "Питание датчиков D: высокий уровень сигнала в цепи",
+   "en": "Sensor Power Supply D Circuit High",
+   "fam": "",
+   "node": "sensor power supply d"
+  },
+  {
+   "code": "P26E2",
+   "brand": "",
+   "ru": "Индикатор вида топлива: низкий уровень в цепи управления",
+   "en": "Fuel Mode Indicator Lamp Control Circuit Low",
+   "fam": "",
+   "node": "fuel mode indicator lamp"
+  },
+  {
+   "code": "P26E3",
+   "brand": "",
+   "ru": "Индикатор вида топлива: высокий уровень в цепи управления",
+   "en": "Fuel Mode Indicator Lamp Control Circuit High",
+   "fam": "",
+   "node": "fuel mode indicator lamp"
+  }
+ ]
+}

@@ -1,0 +1,376 @@
+{
+ "name": "sae_091",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "gear 9 incorrect ratio",
+  "incorrect shift from gear",
+  "ru:застревание в «драйве»",
+  "ru:застревание в «паркинге»",
+  "transmission",
+  "unable to engage drive",
+  "unable to engage park"
+ ],
+ "codes": [
+  {
+   "code": "P07DC",
+   "brand": "",
+   "ru": "Неверное переключение с передачи 1",
+   "en": "Incorrect Shift from Gear 1",
+   "fam": "",
+   "node": "incorrect shift from gear"
+  },
+  {
+   "code": "P07DD",
+   "brand": "",
+   "ru": "Неверное переключение с передачи 2",
+   "en": "Incorrect Shift from Gear 2",
+   "fam": "",
+   "node": "incorrect shift from gear"
+  },
+  {
+   "code": "P07DE",
+   "brand": "",
+   "ru": "Неверное переключение с передачи 3",
+   "en": "Incorrect Shift from Gear 3",
+   "fam": "",
+   "node": "incorrect shift from gear"
+  },
+  {
+   "code": "P07DF",
+   "brand": "",
+   "ru": "Неверное переключение с передачи 4",
+   "en": "Incorrect Shift from Gear 4",
+   "fam": "",
+   "node": "incorrect shift from gear"
+  },
+  {
+   "code": "P07E0",
+   "brand": "",
+   "ru": "Неверное переключение с передачи 5",
+   "en": "Incorrect Shift from Gear 5",
+   "fam": "",
+   "node": "incorrect shift from gear"
+  },
+  {
+   "code": "P07E1",
+   "brand": "",
+   "ru": "Неверное переключение с передачи 6",
+   "en": "Incorrect Shift from Gear 6",
+   "fam": "",
+   "node": "incorrect shift from gear"
+  },
+  {
+   "code": "P07E2",
+   "brand": "",
+   "ru": "Неверное переключение с передачи 7",
+   "en": "Incorrect Shift from Gear 7",
+   "fam": "",
+   "node": "incorrect shift from gear"
+  },
+  {
+   "code": "P07E3",
+   "brand": "",
+   "ru": "Неверное переключение с передачи 8",
+   "en": "Incorrect Shift from Gear 8",
+   "fam": "",
+   "node": "incorrect shift from gear"
+  },
+  {
+   "code": "P07FA",
+   "brand": "",
+   "ru": "Неверное переключение с 9-й передачи",
+   "en": "Incorrect Shift From Gear 9",
+   "fam": "",
+   "node": "incorrect shift from gear"
+  },
+  {
+   "code": "P07FD",
+   "brand": "",
+   "ru": "Неверное переключение с 10-й передачи",
+   "en": "Incorrect Shift From Gear 10",
+   "fam": "",
+   "node": "incorrect shift from gear"
+  },
+  {
+   "code": "P07E4",
+   "brand": "",
+   "ru": "Не включается «Паркинг»",
+   "en": "Unable to Engage Park",
+   "fam": "",
+   "node": "unable to engage park"
+  },
+  {
+   "code": "P07E5",
+   "brand": "",
+   "ru": "Не включается «Драйв»",
+   "en": "Unable to Engage Drive",
+   "fam": "",
+   "node": "unable to engage drive"
+  },
+  {
+   "code": "P07E6",
+   "brand": "",
+   "ru": "Застревание в «Паркинге»",
+   "en": "Stuck in Park",
+   "fam": "",
+   "node": "ru:застревание в «паркинге»"
+  },
+  {
+   "code": "P07E7",
+   "brand": "",
+   "ru": "Застревание в «Драйве»",
+   "en": "Stuck in Drive",
+   "fam": "",
+   "node": "ru:застревание в «драйве»"
+  },
+  {
+   "code": "P07E8",
+   "brand": "",
+   "ru": "Управление диапазоном КПП A: обрыв цепи",
+   "en": "Transmission Range Control A Circuit/Open",
+   "fam": "",
+   "node": "transmission"
+  },
+  {
+   "code": "P07E9",
+   "brand": "",
+   "ru": "Управление диапазоном КПП A: нарушена работа цепи",
+   "en": "Transmission Range Control A Circuit Performance",
+   "fam": "",
+   "node": "transmission"
+  },
+  {
+   "code": "P07EA",
+   "brand": "",
+   "ru": "Управление диапазоном КПП A: низкий уровень сигнала в цепи",
+   "en": "Transmission Range Control A Circuit Low",
+   "fam": "",
+   "node": "transmission"
+  },
+  {
+   "code": "P07EB",
+   "brand": "",
+   "ru": "Управление диапазоном КПП A: высокий уровень сигнала в цепи",
+   "en": "Transmission Range Control A Circuit High",
+   "fam": "",
+   "node": "transmission"
+  },
+  {
+   "code": "P07EC",
+   "brand": "",
+   "ru": "Многофункциональный селектор КПП: цепь",
+   "en": "Transmission Range Multi-Function Select Circuit",
+   "fam": "",
+   "node": "transmission"
+  },
+  {
+   "code": "P07ED",
+   "brand": "",
+   "ru": "Многофункциональный селектор КПП: заклинивание",
+   "en": "Transmission Range Multi-Function Select Circuit Stuck",
+   "fam": "",
+   "node": "transmission"
+  },
+  {
+   "code": "P07EE",
+   "brand": "",
+   "ru": "Многофункциональный селектор КПП: сигнал вне диапазона",
+   "en": "Transmission Range Multi-Function Select Circuit Range/Performance",
+   "fam": "",
+   "node": "transmission"
+  },
+  {
+   "code": "P07EF",
+   "brand": "",
+   "ru": "Многофункциональный селектор КПП: низкий уровень сигнала в цепи",
+   "en": "Transmission Range Multi-Function Select Circuit Low",
+   "fam": "",
+   "node": "transmission"
+  },
+  {
+   "code": "P07F0",
+   "brand": "",
+   "ru": "Многофункциональный селектор КПП: высокий уровень сигнала в цепи",
+   "en": "Transmission Range Multi-Function Select Circuit High",
+   "fam": "",
+   "node": "transmission"
+  },
+  {
+   "code": "P07F2",
+   "brand": "",
+   "ru": "Связь с блоком селектора КПП: цепь",
+   "en": "Transmission Range Control Module Communication Circuit",
+   "fam": "",
+   "node": "transmission"
+  },
+  {
+   "code": "P07F3",
+   "brand": "",
+   "ru": "Связь с блоком селектора КПП: низкий уровень сигнала в цепи",
+   "en": "Transmission Range Control Module Communication Circuit Low",
+   "fam": "",
+   "node": "transmission"
+  },
+  {
+   "code": "P07F4",
+   "brand": "",
+   "ru": "Связь с блоком селектора КПП: высокий уровень сигнала в цепи",
+   "en": "Transmission Range Control Module Communication Circuit High",
+   "fam": "",
+   "node": "transmission"
+  },
+  {
+   "code": "P07F5",
+   "brand": "",
+   "ru": "Блок управления селектором КПП: низкое напряжение бортсети",
+   "en": "Transmission Range Control Module System Voltage Low",
+   "fam": "",
+   "node": "transmission"
+  },
+  {
+   "code": "P271E",
+   "brand": "",
+   "ru": "КПП: работа нарушена",
+   "en": "Transmission Performance",
+   "fam": "",
+   "node": "transmission"
+  },
+  {
+   "code": "P272A",
+   "brand": "",
+   "ru": "Мотор выбора диапазона КПП: цепь управления",
+   "en": "Transmission Range Select Motor Control Circuit",
+   "fam": "",
+   "node": "transmission"
+  },
+  {
+   "code": "P272B",
+   "brand": "",
+   "ru": "Мотор выбора диапазона КПП: слишком большой ток",
+   "en": "Transmission Range Select Motor Control Circuit Current Too High",
+   "fam": "",
+   "node": "transmission"
+  },
+  {
+   "code": "P27E7",
+   "brand": "",
+   "ru": "Управление диапазоном КПП B: обрыв цепи",
+   "en": "Transmission Range Control B Circuit/Open",
+   "fam": "",
+   "node": "transmission"
+  },
+  {
+   "code": "P27E8",
+   "brand": "",
+   "ru": "Управление диапазоном КПП B: нарушена работа цепи",
+   "en": "Transmission Range Control B Circuit Performance",
+   "fam": "",
+   "node": "transmission"
+  },
+  {
+   "code": "P27E9",
+   "brand": "",
+   "ru": "Управление диапазоном КПП B: низкий уровень сигнала в цепи",
+   "en": "Transmission Range Control B Circuit Low",
+   "fam": "",
+   "node": "transmission"
+  },
+  {
+   "code": "P27EA",
+   "brand": "",
+   "ru": "Управление диапазоном КПП B: высокий уровень сигнала в цепи",
+   "en": "Transmission Range Control B Circuit High",
+   "fam": "",
+   "node": "transmission"
+  },
+  {
+   "code": "P27EB",
+   "brand": "",
+   "ru": "Датчик положения селектора КПП A: обрыв цепи",
+   "en": "Transmission Range Control A Position Sensor/Switch Circuit/Open",
+   "fam": "",
+   "node": "transmission"
+  },
+  {
+   "code": "P27EC",
+   "brand": "",
+   "ru": "Датчик положения селектора КПП A: сигнал вне диапазона",
+   "en": "Transmission Range Control A Position Sensor/Switch Circuit Range/Performance",
+   "fam": "",
+   "node": "transmission"
+  },
+  {
+   "code": "P27ED",
+   "brand": "",
+   "ru": "Датчик положения селектора КПП A: низкий уровень сигнала в цепи",
+   "en": "Transmission Range Control A Position Sensor/Switch Circuit Low",
+   "fam": "",
+   "node": "transmission"
+  },
+  {
+   "code": "P27EE",
+   "brand": "",
+   "ru": "Датчик положения селектора КПП A: высокий уровень сигнала в цепи",
+   "en": "Transmission Range Control A Position Sensor/Switch Circuit High",
+   "fam": "",
+   "node": "transmission"
+  },
+  {
+   "code": "P27EF",
+   "brand": "",
+   "ru": "Датчик положения селектора КПП B: обрыв цепи",
+   "en": "Transmission Range Control B Position Sensor/Switch Circuit/Open",
+   "fam": "",
+   "node": "transmission"
+  },
+  {
+   "code": "P27F0",
+   "brand": "",
+   "ru": "Датчик положения селектора КПП B: сигнал вне диапазона",
+   "en": "Transmission Range Control B Position Sensor/Switch Circuit Range/Performance",
+   "fam": "",
+   "node": "transmission"
+  },
+  {
+   "code": "P27F1",
+   "brand": "",
+   "ru": "Датчик положения селектора КПП B: низкий уровень сигнала в цепи",
+   "en": "Transmission Range Control B Position Sensor/Switch Circuit Low",
+   "fam": "",
+   "node": "transmission"
+  },
+  {
+   "code": "P27F2",
+   "brand": "",
+   "ru": "Датчик положения селектора КПП B: высокий уровень сигнала в цепи",
+   "en": "Transmission Range Control B Position Sensor/Switch Circuit High",
+   "fam": "",
+   "node": "transmission"
+  },
+  {
+   "code": "P280A",
+   "brand": "",
+   "ru": "Датчик диапазона КПП A: не обучен",
+   "en": "Transmission Range Sensor A Circuit Not Learned",
+   "fam": "",
+   "node": "transmission"
+  },
+  {
+   "code": "P280B",
+   "brand": "",
+   "ru": "Датчик диапазона КПП B: не обучен",
+   "en": "Transmission Range Sensor B Circuit Not Learned",
+   "fam": "",
+   "node": "transmission"
+  },
+  {
+   "code": "P07F6",
+   "brand": "",
+   "ru": "9-я передача: неверное передаточное отношение",
+   "en": "Gear 9 Incorrect Ratio",
+   "fam": "",
+   "node": "gear 9 incorrect ratio"
+  }
+ ]
+}

@@ -1,0 +1,367 @@
+{
+ "name": "sae_151",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "a c request a",
+  "a c request b",
+  "cruise control front distance",
+  "direct ozone reduction catalyst efficiency below threshold",
+  "engine hood",
+  "engine idle speed selector sensor",
+  "engine idle speed selector sensor switch",
+  "fuel additive control module requested mil illumination",
+  "fuel additive control module warning lamp request",
+  "pto speed selector sensor",
+  "pto speed selector sensor switch",
+  "turbocharger boost control position sensor b",
+  "turbocharger supercharger speed sensor a",
+  "vacuum reservoir"
+ ],
+ "codes": [
+  {
+   "code": "P254A",
+   "brand": "",
+   "ru": "Переключатель оборотов отбора мощности 1: обрыв цепи",
+   "en": "PTO Speed Selector Sensor/Switch 1 Circuit/Open",
+   "fam": "",
+   "node": "pto speed selector sensor"
+  },
+  {
+   "code": "P254C",
+   "brand": "",
+   "ru": "Переключатель оборотов отбора мощности 1: низкий уровень сигнала в цепи",
+   "en": "PTO Speed Selector Sensor/Switch 1 Circuit Low",
+   "fam": "",
+   "node": "pto speed selector sensor"
+  },
+  {
+   "code": "P254D",
+   "brand": "",
+   "ru": "Переключатель оборотов отбора мощности 1: высокий уровень сигнала в цепи",
+   "en": "PTO Speed Selector Sensor/Switch 1 Circuit High",
+   "fam": "",
+   "node": "pto speed selector sensor"
+  },
+  {
+   "code": "P254E",
+   "brand": "",
+   "ru": "Переключатель оборотов отбора мощности 1: прерывистый / нестабильный сигнал",
+   "en": "PTO Speed Selector Sensor/Switch 1 Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "pto speed selector sensor"
+  },
+  {
+   "code": "P255A",
+   "brand": "",
+   "ru": "Переключатель оборотов отбора мощности 2: обрыв цепи",
+   "en": "PTO Speed Selector Sensor/Switch 2 Circuit/Open",
+   "fam": "",
+   "node": "pto speed selector sensor"
+  },
+  {
+   "code": "P255C",
+   "brand": "",
+   "ru": "Переключатель оборотов отбора мощности 2: низкий уровень сигнала в цепи",
+   "en": "PTO Speed Selector Sensor/Switch 2 Circuit Low",
+   "fam": "",
+   "node": "pto speed selector sensor"
+  },
+  {
+   "code": "P255D",
+   "brand": "",
+   "ru": "Переключатель оборотов отбора мощности 2: высокий уровень сигнала в цепи",
+   "en": "PTO Speed Selector Sensor/Switch 2 Circuit High",
+   "fam": "",
+   "node": "pto speed selector sensor"
+  },
+  {
+   "code": "P255E",
+   "brand": "",
+   "ru": "Переключатель оборотов отбора мощности 2: прерывистый / нестабильный сигнал",
+   "en": "PTO Speed Selector Sensor/Switch 2 Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "pto speed selector sensor"
+  },
+  {
+   "code": "P254B",
+   "brand": "",
+   "ru": "Переключатель оборотов отбора мощности 1: вне допустимого диапазона",
+   "en": "PTO Speed Selector Sensor/Switch 1 Range/Performance",
+   "fam": "",
+   "node": "pto speed selector sensor switch"
+  },
+  {
+   "code": "P255B",
+   "brand": "",
+   "ru": "Переключатель оборотов отбора мощности 2: вне допустимого диапазона",
+   "en": "PTO Speed Selector Sensor/Switch 2 Range/Performance",
+   "fam": "",
+   "node": "pto speed selector sensor switch"
+  },
+  {
+   "code": "P254F",
+   "brand": "",
+   "ru": "Датчик капота: цепь",
+   "en": "Engine Hood Switch Circuit",
+   "fam": "",
+   "node": "engine hood"
+  },
+  {
+   "code": "P257D",
+   "brand": "",
+   "ru": "Датчик капота: сигнал вне диапазона",
+   "en": "Engine Hood Switch Circuit Range/Performance",
+   "fam": "",
+   "node": "engine hood"
+  },
+  {
+   "code": "P257E",
+   "brand": "",
+   "ru": "Датчик капота: низкий уровень сигнала в цепи",
+   "en": "Engine Hood Switch Circuit Low",
+   "fam": "",
+   "node": "engine hood"
+  },
+  {
+   "code": "P257F",
+   "brand": "",
+   "ru": "Датчик капота: высокий уровень сигнала в цепи",
+   "en": "Engine Hood Switch Circuit High",
+   "fam": "",
+   "node": "engine hood"
+  },
+  {
+   "code": "P25A3",
+   "brand": "",
+   "ru": "Открыт капот",
+   "en": "Engine Hood Open",
+   "fam": "",
+   "node": "engine hood"
+  },
+  {
+   "code": "P255F",
+   "brand": "",
+   "ru": "Запрос кондиционера A: сигнал вне диапазона",
+   "en": "A/C Request A Circuit Range/Performance",
+   "fam": "",
+   "node": "a c request a"
+  },
+  {
+   "code": "P256A",
+   "brand": "",
+   "ru": "Переключатель оборотов холостого хода: обрыв цепи",
+   "en": "Engine Idle Speed Selector Sensor/Switch Circuit/Open",
+   "fam": "",
+   "node": "engine idle speed selector sensor"
+  },
+  {
+   "code": "P256C",
+   "brand": "",
+   "ru": "Переключатель оборотов холостого хода: низкий уровень сигнала в цепи",
+   "en": "Engine Idle Speed Selector Sensor/Switch Circuit Low",
+   "fam": "",
+   "node": "engine idle speed selector sensor"
+  },
+  {
+   "code": "P256D",
+   "brand": "",
+   "ru": "Переключатель оборотов холостого хода: высокий уровень сигнала в цепи",
+   "en": "Engine Idle Speed Selector Sensor/Switch Circuit High",
+   "fam": "",
+   "node": "engine idle speed selector sensor"
+  },
+  {
+   "code": "P256E",
+   "brand": "",
+   "ru": "Переключатель оборотов холостого хода: прерывистый / нестабильный сигнал",
+   "en": "Engine Idle Speed Selector Sensor/Switch Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "engine idle speed selector sensor"
+  },
+  {
+   "code": "P256B",
+   "brand": "",
+   "ru": "Переключатель оборотов холостого хода: вне допустимого диапазона",
+   "en": "Engine Idle Speed Selector Sensor/Switch Range/Performance",
+   "fam": "",
+   "node": "engine idle speed selector sensor switch"
+  },
+  {
+   "code": "P256F",
+   "brand": "",
+   "ru": "Запрос кондиционера B: сигнал вне диапазона",
+   "en": "A/C Request B Circuit Range/Performance",
+   "fam": "",
+   "node": "a c request b"
+  },
+  {
+   "code": "P2577",
+   "brand": "",
+   "ru": "Эффективность катализатора озона (DOR) ниже порога",
+   "en": "Direct Ozone Reduction Catalyst Efficiency Below Threshold",
+   "fam": "",
+   "node": "direct ozone reduction catalyst efficiency below threshold"
+  },
+  {
+   "code": "P2578",
+   "brand": "",
+   "ru": "Датчик оборотов турбины/нагнетателя A: цепь",
+   "en": "Turbocharger/Supercharger Speed Sensor A Circuit",
+   "fam": "",
+   "node": "turbocharger supercharger speed sensor a"
+  },
+  {
+   "code": "P2579",
+   "brand": "",
+   "ru": "Датчик оборотов турбины/нагнетателя A: сигнал вне диапазона",
+   "en": "Turbocharger/Supercharger Speed Sensor A Circuit Range/Performance",
+   "fam": "",
+   "node": "turbocharger supercharger speed sensor a"
+  },
+  {
+   "code": "P2580",
+   "brand": "",
+   "ru": "Датчик оборотов турбины/нагнетателя A: низкий уровень сигнала в цепи",
+   "en": "Turbocharger/Supercharger Speed Sensor A Circuit Low",
+   "fam": "",
+   "node": "turbocharger supercharger speed sensor a"
+  },
+  {
+   "code": "P2581",
+   "brand": "",
+   "ru": "Датчик оборотов турбины/нагнетателя A: высокий уровень сигнала в цепи",
+   "en": "Turbocharger/Supercharger Speed Sensor A Circuit High",
+   "fam": "",
+   "node": "turbocharger supercharger speed sensor a"
+  },
+  {
+   "code": "P2582",
+   "brand": "",
+   "ru": "Датчик оборотов турбины/нагнетателя A: прерывистый сигнал в цепи",
+   "en": "Turbocharger/Supercharger Speed Sensor A Circuit Intermittent",
+   "fam": "",
+   "node": "turbocharger supercharger speed sensor a"
+  },
+  {
+   "code": "P257A",
+   "brand": "",
+   "ru": "Вакуумный ресивер: обрыв цепи управления",
+   "en": "Vacuum Reservoir Control Circuit/Open",
+   "fam": "",
+   "node": "vacuum reservoir"
+  },
+  {
+   "code": "P257B",
+   "brand": "",
+   "ru": "Вакуумный ресивер: низкий уровень в цепи управления",
+   "en": "Vacuum Reservoir Control Circuit Low",
+   "fam": "",
+   "node": "vacuum reservoir"
+  },
+  {
+   "code": "P257C",
+   "brand": "",
+   "ru": "Вакуумный ресивер: высокий уровень в цепи управления",
+   "en": "Vacuum Reservoir Control Circuit High",
+   "fam": "",
+   "node": "vacuum reservoir"
+  },
+  {
+   "code": "P2583",
+   "brand": "",
+   "ru": "Датчик дистанции круиз-контроля: одиночный или центральный",
+   "en": "Cruise Control Front Distance Range Sensor Single Sensor or Center",
+   "fam": "",
+   "node": "cruise control front distance"
+  },
+  {
+   "code": "P2591",
+   "brand": "",
+   "ru": "Датчик дистанции круиз-контроля левый",
+   "en": "Cruise Control Front Distance Range Sensor Left",
+   "fam": "",
+   "node": "cruise control front distance"
+  },
+  {
+   "code": "P2592",
+   "brand": "",
+   "ru": "Датчик дистанции круиз-контроля правый",
+   "en": "Cruise Control Front Distance Range Sensor Right",
+   "fam": "",
+   "node": "cruise control front distance"
+  },
+  {
+   "code": "P2584",
+   "brand": "",
+   "ru": "Блок присадки к топливу запросил включение Check Engine",
+   "en": "Fuel Additive Control Module Requested MIL Illumination",
+   "fam": "",
+   "node": "fuel additive control module requested mil illumination"
+  },
+  {
+   "code": "P2585",
+   "brand": "",
+   "ru": "Блок присадки к топливу запросил предупреждающую лампу",
+   "en": "Fuel Additive Control Module Warning Lamp Request",
+   "fam": "",
+   "node": "fuel additive control module warning lamp request"
+  },
+  {
+   "code": "P2586",
+   "brand": "",
+   "ru": "Датчик положения регулятора наддува B: цепь",
+   "en": "Turbocharger Boost Control Position Sensor B Circuit",
+   "fam": "",
+   "node": "turbocharger boost control position sensor b"
+  },
+  {
+   "code": "P2587",
+   "brand": "",
+   "ru": "Датчик положения регулятора наддува B: сигнал вне диапазона",
+   "en": "Turbocharger Boost Control Position Sensor B Circuit Range/Performance",
+   "fam": "",
+   "node": "turbocharger boost control position sensor b"
+  },
+  {
+   "code": "P2588",
+   "brand": "",
+   "ru": "Датчик положения регулятора наддува B: низкий уровень сигнала в цепи",
+   "en": "Turbocharger Boost Control Position Sensor B Circuit Low",
+   "fam": "",
+   "node": "turbocharger boost control position sensor b"
+  },
+  {
+   "code": "P2589",
+   "brand": "",
+   "ru": "Датчик положения регулятора наддува B: высокий уровень сигнала в цепи",
+   "en": "Turbocharger Boost Control Position Sensor B Circuit High",
+   "fam": "",
+   "node": "turbocharger boost control position sensor b"
+  },
+  {
+   "code": "P2590",
+   "brand": "",
+   "ru": "Датчик положения регулятора наддува B: прерывистый / нестабильный сигнал",
+   "en": "Turbocharger Boost Control Position Sensor B Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "turbocharger boost control position sensor b"
+  },
+  {
+   "code": "P259A",
+   "brand": "",
+   "ru": "Датчик положения регулятора наддува B: застыл на низком уровне",
+   "en": "Turbocharger Boost Control Position Sensor B Performance - Stuck Low",
+   "fam": "",
+   "node": "turbocharger boost control position sensor b"
+  },
+  {
+   "code": "P259B",
+   "brand": "",
+   "ru": "Датчик положения регулятора наддува B: застыл на высоком уровне",
+   "en": "Turbocharger Boost Control Position Sensor B Performance - Stuck High",
+   "fam": "",
+   "node": "turbocharger boost control position sensor b"
+  }
+ ]
+}

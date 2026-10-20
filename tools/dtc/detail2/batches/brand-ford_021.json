@@ -1,0 +1,411 @@
+{
+ "name": "brand-ford_021",
+ "series": "brand",
+ "brand": "ford",
+ "nodes": [
+  "brake pedal",
+  "can link chip",
+  "can link pcm pcm",
+  "electronic throttle monitor",
+  "electronic throttle monitor cruise disable",
+  "electronic throttle monitor data available",
+  "electronic throttle monitor pcm override",
+  "etc in power limiting mode",
+  "etc power less than demand",
+  "fam:ps_pressure",
+  "fuel demand command",
+  "fuel pump monitor",
+  "fuel pump primary",
+  "fuel pump speed",
+  "idm_en",
+  "inductive signature chip communication error",
+  "loss of kam power",
+  "pcm idm communications error",
+  "pcm keep alive memory test error",
+  "pedal position not available",
+  "pedal position out of self test",
+  "pedal position sensor disagreement between sensors",
+  "power steering pressure switch",
+  "powertrain dtcs available in another",
+  "ru:линия вывода данных",
+  "ru:проверка выходной цепи",
+  "ru:цепь ci",
+  "speed control",
+  "speed control command switch out of",
+  "speed control unable to hold speed",
+  "throttle control detected etb",
+  "throttle control unit",
+  "throttle control unit detected loss of return spring",
+  "throttle control unit modulated command",
+  "throttle control unit throttle position",
+  "throttle control unit unable to control desired throttle angle",
+  "throttle position not available",
+  "throttle position sensor disagreement between sensors",
+  "tire axle ratio out of acceptable",
+  "vehicle id block corrupted or not programmed",
+  "voltage to vehicle load control",
+  "voltage to vehicle load control module fan"
+ ],
+ "codes": [
+  {
+   "code": "P1565",
+   "brand": "ford",
+   "ru": "Переключатель круиз-контроля: выше диапазона",
+   "en": "Speed Control Command Switch Out of Range High",
+   "fam": "",
+   "node": "speed control command switch out of"
+  },
+  {
+   "code": "P1566",
+   "brand": "ford",
+   "ru": "Переключатель круиз-контроля: ниже диапазона",
+   "en": "Speed Control Command Switch Out of Range Low",
+   "fam": "",
+   "node": "speed control command switch out of"
+  },
+  {
+   "code": "P1567",
+   "brand": "ford",
+   "ru": "Круиз-контроль: целостность выходной цепи",
+   "en": "Speed Control Output Circuit Continuity",
+   "fam": "",
+   "node": "speed control"
+  },
+  {
+   "code": "P1568",
+   "brand": "ford",
+   "ru": "Круиз-контроль не может удержать скорость",
+   "en": "Speed Control Unable to Hold Speed",
+   "fam": "",
+   "node": "speed control unable to hold speed"
+  },
+  {
+   "code": "P1572",
+   "brand": "ford",
+   "ru": "Выключатель педали тормоза: неисправность цепи",
+   "en": "Brake Pedal Switch Circuit Malfunction",
+   "fam": "",
+   "node": "brake pedal"
+  },
+  {
+   "code": "P1573",
+   "brand": "ford",
+   "ru": "Положение дросселя недоступно",
+   "en": "Throttle Position Not Available",
+   "fam": "",
+   "node": "throttle position not available"
+  },
+  {
+   "code": "P1574",
+   "brand": "ford",
+   "ru": "Датчики положения дросселя расходятся",
+   "en": "Throttle Position Sensor Disagreement Between Sensors",
+   "fam": "",
+   "node": "throttle position sensor disagreement between sensors"
+  },
+  {
+   "code": "P1575",
+   "brand": "ford",
+   "ru": "Положение педали газа: вне диапазона самотеста",
+   "en": "Pedal Position Out of Self Test Range",
+   "fam": "",
+   "node": "pedal position out of self test"
+  },
+  {
+   "code": "P1576",
+   "brand": "ford",
+   "ru": "Положение педали газа недоступно",
+   "en": "Pedal Position Not Available",
+   "fam": "",
+   "node": "pedal position not available"
+  },
+  {
+   "code": "P1577",
+   "brand": "ford",
+   "ru": "Датчики педали газа расходятся",
+   "en": "Pedal Position Sensor Disagreement Between Sensors",
+   "fam": "",
+   "node": "pedal position sensor disagreement between sensors"
+  },
+  {
+   "code": "P1578",
+   "brand": "ford",
+   "ru": "Электронный дроссель: мощности меньше, чем запрошено",
+   "en": "ETC Power Less Than Demand",
+   "fam": "",
+   "node": "etc power less than demand"
+  },
+  {
+   "code": "P1579",
+   "brand": "ford",
+   "ru": "Электронный дроссель в режиме ограничения мощности",
+   "en": "ETC In Power Limiting Mode",
+   "fam": "",
+   "node": "etc in power limiting mode"
+  },
+  {
+   "code": "P1580",
+   "brand": "ford",
+   "ru": "Контроль электронного дросселя: приоритет блока двигателя",
+   "en": "Electronic Throttle Monitor PCM Override",
+   "fam": "",
+   "node": "electronic throttle monitor pcm override"
+  },
+  {
+   "code": "P1581",
+   "brand": "ford",
+   "ru": "Контроль электронного дросселя: неисправность",
+   "en": "Electronic Throttle Monitor Malfunction",
+   "fam": "",
+   "node": "electronic throttle monitor"
+  },
+  {
+   "code": "P1582",
+   "brand": "ford",
+   "ru": "Контроль электронного дросселя: данные доступны",
+   "en": "Electronic Throttle Monitor Data Available",
+   "fam": "",
+   "node": "electronic throttle monitor data available"
+  },
+  {
+   "code": "P1583",
+   "brand": "ford",
+   "ru": "Контроль электронного дросселя: круиз-контроль отключён",
+   "en": "Electronic Throttle Monitor Cruise Disable",
+   "fam": "",
+   "node": "electronic throttle monitor cruise disable"
+  },
+  {
+   "code": "P1584",
+   "brand": "ford",
+   "ru": "Обнаружена неисправность блока электронного дросселя",
+   "en": "Throttle Control Detected ETB Malfunction",
+   "fam": "",
+   "node": "throttle control detected etb"
+  },
+  {
+   "code": "P1585",
+   "brand": "ford",
+   "ru": "Блок управления дросселем: неисправность",
+   "en": "Throttle Control Unit Malfunction",
+   "fam": "",
+   "node": "throttle control unit"
+  },
+  {
+   "code": "P1586",
+   "brand": "ford",
+   "ru": "Блок управления дросселем: неисправность положения",
+   "en": "Throttle Control Unit Throttle Position Malfunction",
+   "fam": "",
+   "node": "throttle control unit throttle position"
+  },
+  {
+   "code": "P1587",
+   "brand": "ford",
+   "ru": "Блок управления дросселем: неисправность модулированной команды",
+   "en": "Throttle Control Unit Modulated Command Malfunction",
+   "fam": "",
+   "node": "throttle control unit modulated command"
+  },
+  {
+   "code": "P1588",
+   "brand": "ford",
+   "ru": "Блок управления дросселем: нет возвратной пружины",
+   "en": "Throttle Control Unit Detected Loss of Return Spring",
+   "fam": "",
+   "node": "throttle control unit detected loss of return spring"
+  },
+  {
+   "code": "P1589",
+   "brand": "ford",
+   "ru": "Блок управления дросселем: не удаётся выставить заданный угол",
+   "en": "Throttle Control Unit Unable To Control Desired Throttle Angle",
+   "fam": "",
+   "node": "throttle control unit unable to control desired throttle angle"
+  },
+  {
+   "code": "P1600",
+   "brand": "ford",
+   "ru": "Потеря питания памяти (KAM): обрыв",
+   "en": "Loss of KAM Power Open Circuit",
+   "fam": "",
+   "node": "loss of kam power"
+  },
+  {
+   "code": "P1605",
+   "brand": "ford",
+   "ru": "Блок двигателя: ошибка теста постоянной памяти",
+   "en": "PCM Keep Alive Memory Test Error",
+   "fam": "",
+   "node": "pcm keep alive memory test error"
+  },
+  {
+   "code": "P1625",
+   "brand": "ford",
+   "ru": "Нет напряжения на цепи вентилятора модуля нагрузки",
+   "en": "Voltage to Vehicle Load Control Module Fan Circuit Not Detected",
+   "fam": "",
+   "node": "voltage to vehicle load control module fan"
+  },
+  {
+   "code": "P1626",
+   "brand": "ford",
+   "ru": "Нет напряжения на цепи модуля нагрузки",
+   "en": "Voltage to Vehicle Load Control Module Circuit Not Detected",
+   "fam": "",
+   "node": "voltage to vehicle load control"
+  },
+  {
+   "code": "P1634",
+   "brand": "ford",
+   "ru": "Линия вывода данных: неисправность цепи",
+   "en": "Data Output Link Circuit Failure",
+   "fam": "",
+   "node": "ru:линия вывода данных"
+  },
+  {
+   "code": "P1635",
+   "brand": "ford",
+   "ru": "Передаточное число моста / размер шин вне допустимого",
+   "en": "Tire Axle Ratio Out of Acceptable Range",
+   "fam": "",
+   "node": "tire axle ratio out of acceptable"
+  },
+  {
+   "code": "P1636",
+   "brand": "ford",
+   "ru": "Ошибка связи с микросхемой индуктивных сигнатур",
+   "en": "Inductive Signature Chip Communication Error",
+   "fam": "",
+   "node": "inductive signature chip communication error"
+  },
+  {
+   "code": "P1639",
+   "brand": "ford",
+   "ru": "Блок идентификации автомобиля повреждён или не запрограммирован",
+   "en": "Vehicle ID Block Corrupted or Not Programmed",
+   "fam": "",
+   "node": "vehicle id block corrupted or not programmed"
+  },
+  {
+   "code": "P1640",
+   "brand": "ford",
+   "ru": "Коды силового агрегата есть в другом блоке",
+   "en": "Powertrain DTCs Available in Another Module",
+   "fam": "",
+   "node": "powertrain dtcs available in another"
+  },
+  {
+   "code": "P1641",
+   "brand": "ford",
+   "ru": "Топливный насос: неисправность первичной цепи",
+   "en": "Fuel Pump Primary Circuit Failure",
+   "fam": "",
+   "node": "fuel pump primary"
+  },
+  {
+   "code": "P1642",
+   "brand": "ford",
+   "ru": "Контроль топливного насоса: высокий сигнал",
+   "en": "Fuel Pump Monitor Circuit High Input",
+   "fam": "",
+   "node": "fuel pump monitor"
+  },
+  {
+   "code": "P1643",
+   "brand": "ford",
+   "ru": "Контроль топливного насоса: низкий сигнал",
+   "en": "Fuel Pump Monitor Circuit Low Input",
+   "fam": "",
+   "node": "fuel pump monitor"
+  },
+  {
+   "code": "P1644",
+   "brand": "ford",
+   "ru": "Управление скоростью топливного насоса: неисправность цепи",
+   "en": "Fuel Pump Speed Control Circuit Malfunction",
+   "fam": "",
+   "node": "fuel pump speed"
+  },
+  {
+   "code": "P1650",
+   "brand": "ford",
+   "ru": "Датчик давления гидроусилителя: вне диапазона",
+   "en": "",
+   "fam": "ps_pressure",
+   "node": "fam:ps_pressure"
+  },
+  {
+   "code": "P1651",
+   "brand": "ford",
+   "ru": "Датчик давления гидроусилителя: неисправность сигнала",
+   "en": "Power Steering Pressure Switch Input Fault",
+   "fam": "",
+   "node": "power steering pressure switch"
+  },
+  {
+   "code": "P1656",
+   "brand": "ford",
+   "ru": "Связь CAN блока двигателя: неисправность сети",
+   "en": "CAN Link PCM PCM Circuit Network",
+   "fam": "",
+   "node": "can link pcm pcm"
+  },
+  {
+   "code": "P1657",
+   "brand": "ford",
+   "ru": "Микросхема связи CAN: неисправность",
+   "en": "CAN Link Chip Malfunction",
+   "fam": "",
+   "node": "can link chip"
+  },
+  {
+   "code": "P1660",
+   "brand": "ford",
+   "ru": "Проверка выходной цепи: высокий сигнал",
+   "en": "Output Circuit Check Signal High",
+   "fam": "",
+   "node": "ru:проверка выходной цепи"
+  },
+  {
+   "code": "P1661",
+   "brand": "ford",
+   "ru": "Проверка выходной цепи: низкий сигнал",
+   "en": "Output Circuit Check Signal Low",
+   "fam": "",
+   "node": "ru:проверка выходной цепи"
+  },
+  {
+   "code": "P1662",
+   "brand": "ford",
+   "ru": "Цепь включения драйвера форсунок (IDM_EN): неисправность",
+   "en": "IDM_EN Circuit Failure",
+   "fam": "",
+   "node": "idm_en"
+  },
+  {
+   "code": "P1663",
+   "brand": "ford",
+   "ru": "Сигнал команды подачи топлива: неисправность цепи",
+   "en": "Fuel Demand Command Signal Circuit Malfunction",
+   "fam": "",
+   "node": "fuel demand command"
+  },
+  {
+   "code": "P1667",
+   "brand": "ford",
+   "ru": "Цепь CI: неисправность",
+   "en": "CI Circuit Malfunction",
+   "fam": "",
+   "node": "ru:цепь ci"
+  },
+  {
+   "code": "P1668",
+   "brand": "ford",
+   "ru": "Ошибка связи блока двигателя с драйвером форсунок",
+   "en": "PCM IDM Communications Error",
+   "fam": "",
+   "node": "pcm idm communications error"
+  }
+ ]
+}

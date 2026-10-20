@@ -1,0 +1,362 @@
+{
+ "name": "sae_043",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "cold start fuel injection",
+  "diesel intake air flow a control motor current",
+  "diesel intake air flow a control system",
+  "diesel intake air flow a position",
+  "diesel intake air flow position sensor minimum maximum stop",
+  "fam:misfire",
+  "fam:misfire_random",
+  "injector",
+  "propulsion system inactive timer"
+ ],
+ "codes": [
+  {
+   "code": "P02E6",
+   "brand": "",
+   "ru": "Датчик положения впускной заслонки дизеля A: цепь",
+   "en": "Diesel Intake Air Flow A Position Sensor Circuit",
+   "fam": "",
+   "node": "diesel intake air flow a position"
+  },
+  {
+   "code": "P02E7",
+   "brand": "",
+   "ru": "Датчик положения впускной заслонки дизеля A: сигнал вне диапазона",
+   "en": "Diesel Intake Air Flow A Position Sensor Circuit Range/Performance",
+   "fam": "",
+   "node": "diesel intake air flow a position"
+  },
+  {
+   "code": "P02E8",
+   "brand": "",
+   "ru": "Датчик положения впускной заслонки дизеля A: низкий уровень сигнала в цепи",
+   "en": "Diesel Intake Air Flow A Position Sensor Circuit Low",
+   "fam": "",
+   "node": "diesel intake air flow a position"
+  },
+  {
+   "code": "P02E9",
+   "brand": "",
+   "ru": "Датчик положения впускной заслонки дизеля A: высокий уровень сигнала в цепи",
+   "en": "Diesel Intake Air Flow A Position Sensor Circuit High",
+   "fam": "",
+   "node": "diesel intake air flow a position"
+  },
+  {
+   "code": "P02EA",
+   "brand": "",
+   "ru": "Датчик положения впускной заслонки дизеля A: прерывистый / нестабильный сигнал",
+   "en": "Diesel Intake Air Flow A Position Sensor Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "diesel intake air flow a position"
+  },
+  {
+   "code": "P02EB",
+   "brand": "",
+   "ru": "Мотор впускной заслонки дизеля A: ток вне диапазона",
+   "en": "Diesel Intake Air Flow A Control Motor Current Range/Performance",
+   "fam": "",
+   "node": "diesel intake air flow a control motor current"
+  },
+  {
+   "code": "P02EC",
+   "brand": "",
+   "ru": "Впускная заслонка дизеля A: обнаружен слишком большой расход воздуха",
+   "en": "Diesel Intake Air Flow A Control System - High Air Flow Detected",
+   "fam": "",
+   "node": "diesel intake air flow a control system"
+  },
+  {
+   "code": "P02ED",
+   "brand": "",
+   "ru": "Впускная заслонка дизеля A: обнаружен слишком малый расход воздуха",
+   "en": "Diesel Intake Air Flow A Control System - Low Air Flow Detected",
+   "fam": "",
+   "node": "diesel intake air flow a control system"
+  },
+  {
+   "code": "P02EE",
+   "brand": "",
+   "ru": "Форсунка цилиндра 1: сигнал вне диапазона",
+   "en": "Cylinder 1 Injector Circuit Range/Performance",
+   "fam": "",
+   "node": "injector"
+  },
+  {
+   "code": "P02EF",
+   "brand": "",
+   "ru": "Форсунка цилиндра 2: сигнал вне диапазона",
+   "en": "Cylinder 2 Injector Circuit Range/Performance",
+   "fam": "",
+   "node": "injector"
+  },
+  {
+   "code": "P02F0",
+   "brand": "",
+   "ru": "Форсунка цилиндра 3: сигнал вне диапазона",
+   "en": "Cylinder 3 Injector Circuit Range/Performance",
+   "fam": "",
+   "node": "injector"
+  },
+  {
+   "code": "P02F1",
+   "brand": "",
+   "ru": "Форсунка цилиндра 4: сигнал вне диапазона",
+   "en": "Cylinder 4 Injector Circuit Range/Performance",
+   "fam": "",
+   "node": "injector"
+  },
+  {
+   "code": "P02F2",
+   "brand": "",
+   "ru": "Форсунка цилиндра 5: сигнал вне диапазона",
+   "en": "Cylinder 5 Injector Circuit Range/Performance",
+   "fam": "",
+   "node": "injector"
+  },
+  {
+   "code": "P02F3",
+   "brand": "",
+   "ru": "Форсунка цилиндра 6: сигнал вне диапазона",
+   "en": "Cylinder 6 Injector Circuit Range/Performance",
+   "fam": "",
+   "node": "injector"
+  },
+  {
+   "code": "P02F4",
+   "brand": "",
+   "ru": "Форсунка цилиндра 7: сигнал вне диапазона",
+   "en": "Cylinder 7 Injector Circuit Range/Performance",
+   "fam": "",
+   "node": "injector"
+  },
+  {
+   "code": "P02F5",
+   "brand": "",
+   "ru": "Форсунка цилиндра 8: сигнал вне диапазона",
+   "en": "Cylinder 8 Injector Circuit Range/Performance",
+   "fam": "",
+   "node": "injector"
+  },
+  {
+   "code": "P02F6",
+   "brand": "",
+   "ru": "Форсунка цилиндра 9: сигнал вне диапазона",
+   "en": "Cylinder 9 Injector Circuit Range/Performance",
+   "fam": "",
+   "node": "injector"
+  },
+  {
+   "code": "P02F7",
+   "brand": "",
+   "ru": "Форсунка цилиндра 10: сигнал вне диапазона",
+   "en": "Cylinder 10 Injector Circuit Range/Performance",
+   "fam": "",
+   "node": "injector"
+  },
+  {
+   "code": "P02F8",
+   "brand": "",
+   "ru": "Форсунка цилиндра 11: сигнал вне диапазона",
+   "en": "Cylinder 11 Injector Circuit Range/Performance",
+   "fam": "",
+   "node": "injector"
+  },
+  {
+   "code": "P02F9",
+   "brand": "",
+   "ru": "Форсунка цилиндра 12: сигнал вне диапазона",
+   "en": "Cylinder 12 Injector Circuit Range/Performance",
+   "fam": "",
+   "node": "injector"
+  },
+  {
+   "code": "P02FA",
+   "brand": "",
+   "ru": "Датчик положения впускной заслонки дизеля: ошибка упоров мин./макс.",
+   "en": "Diesel Intake Air Flow Position Sensor Minimum/Maximum Stop Performance",
+   "fam": "",
+   "node": "diesel intake air flow position sensor minimum maximum stop"
+  },
+  {
+   "code": "P02FB",
+   "brand": "",
+   "ru": "Впрыск топлива при холодном пуске: обрыв цепи управления",
+   "en": "Cold Start Fuel Injection Control Circuit/Open",
+   "fam": "",
+   "node": "cold start fuel injection"
+  },
+  {
+   "code": "P02FC",
+   "brand": "",
+   "ru": "Впрыск топлива при холодном пуске: низкий уровень в цепи управления",
+   "en": "Cold Start Fuel Injection Control Circuit Low",
+   "fam": "",
+   "node": "cold start fuel injection"
+  },
+  {
+   "code": "P02FD",
+   "brand": "",
+   "ru": "Впрыск топлива при холодном пуске: высокий уровень в цепи управления",
+   "en": "Cold Start Fuel Injection Control Circuit High",
+   "fam": "",
+   "node": "cold start fuel injection"
+  },
+  {
+   "code": "P02FE",
+   "brand": "",
+   "ru": "Впрыск топлива при холодном пуске: цепь управления вне диапазона",
+   "en": "Cold Start Fuel Injection Control Circuit Range/Performance",
+   "fam": "",
+   "node": "cold start fuel injection"
+  },
+  {
+   "code": "P02FF",
+   "brand": "",
+   "ru": "Таймер неактивности силовой установки: работа нарушена",
+   "en": "Propulsion System Inactive Timer Performance",
+   "fam": "",
+   "node": "propulsion system inactive timer"
+  },
+  {
+   "code": "P0300",
+   "brand": "",
+   "ru": "Случайные / множественные пропуски зажигания",
+   "en": "",
+   "fam": "misfire_random",
+   "node": "fam:misfire_random"
+  },
+  {
+   "code": "P0313",
+   "brand": "",
+   "ru": "Пропуски зажигания при низком уровне топлива",
+   "en": "",
+   "fam": "misfire_random",
+   "node": "fam:misfire_random"
+  },
+  {
+   "code": "P0316",
+   "brand": "",
+   "ru": "Пропуски зажигания при запуске (первые 1000 оборотов)",
+   "en": "",
+   "fam": "misfire_random",
+   "node": "fam:misfire_random"
+  },
+  {
+   "code": "P0301",
+   "brand": "",
+   "ru": "Пропуски зажигания в цилиндре 1",
+   "en": "",
+   "fam": "misfire",
+   "node": "fam:misfire"
+  },
+  {
+   "code": "P0302",
+   "brand": "",
+   "ru": "Пропуски зажигания в цилиндре 2",
+   "en": "",
+   "fam": "misfire",
+   "node": "fam:misfire"
+  },
+  {
+   "code": "P0303",
+   "brand": "",
+   "ru": "Пропуски зажигания в цилиндре 3",
+   "en": "",
+   "fam": "misfire",
+   "node": "fam:misfire"
+  },
+  {
+   "code": "P0304",
+   "brand": "",
+   "ru": "Пропуски зажигания в цилиндре 4",
+   "en": "",
+   "fam": "misfire",
+   "node": "fam:misfire"
+  },
+  {
+   "code": "P0305",
+   "brand": "",
+   "ru": "Пропуски зажигания в цилиндре 5",
+   "en": "",
+   "fam": "misfire",
+   "node": "fam:misfire"
+  },
+  {
+   "code": "P0306",
+   "brand": "",
+   "ru": "Пропуски зажигания в цилиндре 6",
+   "en": "",
+   "fam": "misfire",
+   "node": "fam:misfire"
+  },
+  {
+   "code": "P0307",
+   "brand": "",
+   "ru": "Пропуски зажигания в цилиндре 7",
+   "en": "",
+   "fam": "misfire",
+   "node": "fam:misfire"
+  },
+  {
+   "code": "P0308",
+   "brand": "",
+   "ru": "Пропуски зажигания в цилиндре 8",
+   "en": "",
+   "fam": "misfire",
+   "node": "fam:misfire"
+  },
+  {
+   "code": "P0309",
+   "brand": "",
+   "ru": "Пропуски зажигания в цилиндре 9",
+   "en": "",
+   "fam": "misfire",
+   "node": "fam:misfire"
+  },
+  {
+   "code": "P0310",
+   "brand": "",
+   "ru": "Пропуски зажигания в цилиндре 10",
+   "en": "",
+   "fam": "misfire",
+   "node": "fam:misfire"
+  },
+  {
+   "code": "P0311",
+   "brand": "",
+   "ru": "Пропуски зажигания в цилиндре 11",
+   "en": "",
+   "fam": "misfire",
+   "node": "fam:misfire"
+  },
+  {
+   "code": "P0312",
+   "brand": "",
+   "ru": "Пропуски зажигания в цилиндре 12",
+   "en": "",
+   "fam": "misfire",
+   "node": "fam:misfire"
+  },
+  {
+   "code": "P0314",
+   "brand": "",
+   "ru": "Пропуски зажигания в одном цилиндре (номер не определён)",
+   "en": "",
+   "fam": "misfire",
+   "node": "fam:misfire"
+  },
+  {
+   "code": "P0363",
+   "brand": "",
+   "ru": "Пропуски зажигания: подача топлива отключена",
+   "en": "",
+   "fam": "misfire",
+   "node": "fam:misfire"
+  }
+ ]
+}

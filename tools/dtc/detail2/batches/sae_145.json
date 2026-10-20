@@ -1,0 +1,377 @@
+{
+ "name": "sae_145",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "camshaft a position",
+  "camshaft b position",
+  "egr c control",
+  "egr c flow excessive detected",
+  "egr c flow insufficient detected",
+  "fuel heater",
+  "injector b air fuel ratio imbalance",
+  "ru:клапан egr c"
+ ],
+ "codes": [
+  {
+   "code": "P23D1",
+   "brand": "",
+   "ru": "Подогрев топлива цилиндра 1: обрыв цепи управления",
+   "en": "Cylinder 1 Fuel Heater Control Circuit/Open",
+   "fam": "",
+   "node": "fuel heater"
+  },
+  {
+   "code": "P23D2",
+   "brand": "",
+   "ru": "Подогрев топлива цилиндра 1: высокий уровень в цепи управления",
+   "en": "Cylinder 1 Fuel Heater Control Circuit High",
+   "fam": "",
+   "node": "fuel heater"
+  },
+  {
+   "code": "P23D3",
+   "brand": "",
+   "ru": "Подогрев топлива цилиндра 1: низкий уровень в цепи управления",
+   "en": "Cylinder 1 Fuel Heater Control Circuit Low",
+   "fam": "",
+   "node": "fuel heater"
+  },
+  {
+   "code": "P23D4",
+   "brand": "",
+   "ru": "Подогрев топлива цилиндра 1: работа нарушена",
+   "en": "Cylinder 1 Fuel Heater Performance",
+   "fam": "",
+   "node": "fuel heater"
+  },
+  {
+   "code": "P23D5",
+   "brand": "",
+   "ru": "Подогрев топлива цилиндра 2: обрыв цепи управления",
+   "en": "Cylinder 2 Fuel Heater Control Circuit/Open",
+   "fam": "",
+   "node": "fuel heater"
+  },
+  {
+   "code": "P23D6",
+   "brand": "",
+   "ru": "Подогрев топлива цилиндра 2: высокий уровень в цепи управления",
+   "en": "Cylinder 2 Fuel Heater Control Circuit High",
+   "fam": "",
+   "node": "fuel heater"
+  },
+  {
+   "code": "P23D7",
+   "brand": "",
+   "ru": "Подогрев топлива цилиндра 2: низкий уровень в цепи управления",
+   "en": "Cylinder 2 Fuel Heater Control Circuit Low",
+   "fam": "",
+   "node": "fuel heater"
+  },
+  {
+   "code": "P23D8",
+   "brand": "",
+   "ru": "Подогрев топлива цилиндра 2: работа нарушена",
+   "en": "Cylinder 2 Fuel Heater Performance",
+   "fam": "",
+   "node": "fuel heater"
+  },
+  {
+   "code": "P23D9",
+   "brand": "",
+   "ru": "Подогрев топлива цилиндра 3: обрыв цепи управления",
+   "en": "Cylinder 3 Fuel Heater Control Circuit/Open",
+   "fam": "",
+   "node": "fuel heater"
+  },
+  {
+   "code": "P23DA",
+   "brand": "",
+   "ru": "Подогрев топлива цилиндра 3: высокий уровень в цепи управления",
+   "en": "Cylinder 3 Fuel Heater Control Circuit High",
+   "fam": "",
+   "node": "fuel heater"
+  },
+  {
+   "code": "P23DB",
+   "brand": "",
+   "ru": "Подогрев топлива цилиндра 3: низкий уровень в цепи управления",
+   "en": "Cylinder 3 Fuel Heater Control Circuit Low",
+   "fam": "",
+   "node": "fuel heater"
+  },
+  {
+   "code": "P23DC",
+   "brand": "",
+   "ru": "Подогрев топлива цилиндра 3: работа нарушена",
+   "en": "Cylinder 3 Fuel Heater Performance",
+   "fam": "",
+   "node": "fuel heater"
+  },
+  {
+   "code": "P23DD",
+   "brand": "",
+   "ru": "Подогрев топлива цилиндра 4: обрыв цепи управления",
+   "en": "Cylinder 4 Fuel Heater Control Circuit/Open",
+   "fam": "",
+   "node": "fuel heater"
+  },
+  {
+   "code": "P23DE",
+   "brand": "",
+   "ru": "Подогрев топлива цилиндра 4: высокий уровень в цепи управления",
+   "en": "Cylinder 4 Fuel Heater Control Circuit High",
+   "fam": "",
+   "node": "fuel heater"
+  },
+  {
+   "code": "P23DF",
+   "brand": "",
+   "ru": "Подогрев топлива цилиндра 4: низкий уровень в цепи управления",
+   "en": "Cylinder 4 Fuel Heater Control Circuit Low",
+   "fam": "",
+   "node": "fuel heater"
+  },
+  {
+   "code": "P23E0",
+   "brand": "",
+   "ru": "Подогрев топлива цилиндра 4: работа нарушена",
+   "en": "Cylinder 4 Fuel Heater Performance",
+   "fam": "",
+   "node": "fuel heater"
+  },
+  {
+   "code": "P23E1",
+   "brand": "",
+   "ru": "Клапан EGR C: обрыв цепи управления",
+   "en": "EGR C Control Circuit/Open",
+   "fam": "",
+   "node": "ru:клапан egr c"
+  },
+  {
+   "code": "P23E2",
+   "brand": "",
+   "ru": "Клапан EGR C: нарушена работа цепи управления",
+   "en": "EGR C Control Circuit Performance",
+   "fam": "",
+   "node": "ru:клапан egr c"
+  },
+  {
+   "code": "P23E3",
+   "brand": "",
+   "ru": "Клапан EGR C: низкий уровень в цепи управления",
+   "en": "EGR C Control Circuit Low",
+   "fam": "",
+   "node": "ru:клапан egr c"
+  },
+  {
+   "code": "P23E4",
+   "brand": "",
+   "ru": "Клапан EGR C: высокий уровень в цепи управления",
+   "en": "EGR C Control Circuit High",
+   "fam": "",
+   "node": "ru:клапан egr c"
+  },
+  {
+   "code": "P23E5",
+   "brand": "",
+   "ru": "Управление EGR C: заклинил открытым",
+   "en": "EGR C Control Stuck Open",
+   "fam": "",
+   "node": "egr c control"
+  },
+  {
+   "code": "P23E6",
+   "brand": "",
+   "ru": "Управление EGR C: заклинил закрытым",
+   "en": "EGR C Control Stuck Closed",
+   "fam": "",
+   "node": "egr c control"
+  },
+  {
+   "code": "P23E7",
+   "brand": "",
+   "ru": "Недостаточный расход EGR C",
+   "en": "EGR C Flow Insufficient Detected",
+   "fam": "",
+   "node": "egr c flow insufficient detected"
+  },
+  {
+   "code": "P23E8",
+   "brand": "",
+   "ru": "Избыточный расход EGR C",
+   "en": "EGR C Flow Excessive Detected",
+   "fam": "",
+   "node": "egr c flow excessive detected"
+  },
+  {
+   "code": "P23E9",
+   "brand": "",
+   "ru": "Выходной сигнал положения распредвала A: обрыв цепи (банк 2)",
+   "en": "Camshaft A Position Signal Output Circuit/Open Bank 2",
+   "fam": "",
+   "node": "camshaft a position"
+  },
+  {
+   "code": "P23EA",
+   "brand": "",
+   "ru": "Выходной сигнал положения распредвала A: низкий уровень сигнала в цепи (банк 2)",
+   "en": "Camshaft A Position Signal Output Circuit Low Bank 2",
+   "fam": "",
+   "node": "camshaft a position"
+  },
+  {
+   "code": "P23EB",
+   "brand": "",
+   "ru": "Выходной сигнал положения распредвала A: высокий уровень сигнала в цепи (банк 2)",
+   "en": "Camshaft A Position Signal Output Circuit High Bank 2",
+   "fam": "",
+   "node": "camshaft a position"
+  },
+  {
+   "code": "P23EC",
+   "brand": "",
+   "ru": "Выходной сигнал положения распредвала B: обрыв цепи (банк 1)",
+   "en": "Camshaft B Position Signal Output Circuit/Open Bank 1",
+   "fam": "",
+   "node": "camshaft b position"
+  },
+  {
+   "code": "P23ED",
+   "brand": "",
+   "ru": "Выходной сигнал положения распредвала B: низкий уровень сигнала в цепи (банк 1)",
+   "en": "Camshaft B Position Signal Output Circuit Low Bank 1",
+   "fam": "",
+   "node": "camshaft b position"
+  },
+  {
+   "code": "P23EE",
+   "brand": "",
+   "ru": "Выходной сигнал положения распредвала B: высокий уровень сигнала в цепи (банк 1)",
+   "en": "Camshaft B Position Signal Output Circuit High Bank 1",
+   "fam": "",
+   "node": "camshaft b position"
+  },
+  {
+   "code": "P23EF",
+   "brand": "",
+   "ru": "Выходной сигнал положения распредвала B: обрыв цепи (банк 2)",
+   "en": "Camshaft B Position Signal Output Circuit/Open Bank 2",
+   "fam": "",
+   "node": "camshaft b position"
+  },
+  {
+   "code": "P23F0",
+   "brand": "",
+   "ru": "Выходной сигнал положения распредвала B: низкий уровень сигнала в цепи (банк 2)",
+   "en": "Camshaft B Position Signal Output Circuit Low Bank 2",
+   "fam": "",
+   "node": "camshaft b position"
+  },
+  {
+   "code": "P23F1",
+   "brand": "",
+   "ru": "Выходной сигнал положения распредвала B: высокий уровень сигнала в цепи (банк 2)",
+   "en": "Camshaft B Position Signal Output Circuit High Bank 2",
+   "fam": "",
+   "node": "camshaft b position"
+  },
+  {
+   "code": "P23F2",
+   "brand": "",
+   "ru": "Форсунка цилиндра 1 B: дисбаланс состава смеси между цилиндрами",
+   "en": "Cylinder 1 Injector B Air-Fuel Ratio Imbalance",
+   "fam": "",
+   "node": "injector b air fuel ratio imbalance"
+  },
+  {
+   "code": "P23F3",
+   "brand": "",
+   "ru": "Форсунка цилиндра 2 B: дисбаланс состава смеси между цилиндрами",
+   "en": "Cylinder 2 Injector B Air-Fuel Ratio Imbalance",
+   "fam": "",
+   "node": "injector b air fuel ratio imbalance"
+  },
+  {
+   "code": "P23F4",
+   "brand": "",
+   "ru": "Форсунка цилиндра 3 B: дисбаланс состава смеси между цилиндрами",
+   "en": "Cylinder 3 Injector B Air-Fuel Ratio Imbalance",
+   "fam": "",
+   "node": "injector b air fuel ratio imbalance"
+  },
+  {
+   "code": "P23F5",
+   "brand": "",
+   "ru": "Форсунка цилиндра 4 B: дисбаланс состава смеси между цилиндрами",
+   "en": "Cylinder 4 Injector B Air-Fuel Ratio Imbalance",
+   "fam": "",
+   "node": "injector b air fuel ratio imbalance"
+  },
+  {
+   "code": "P23F6",
+   "brand": "",
+   "ru": "Форсунка цилиндра 5 B: дисбаланс состава смеси между цилиндрами",
+   "en": "Cylinder 5 Injector B Air-Fuel Ratio Imbalance",
+   "fam": "",
+   "node": "injector b air fuel ratio imbalance"
+  },
+  {
+   "code": "P23F7",
+   "brand": "",
+   "ru": "Форсунка цилиндра 6 B: дисбаланс состава смеси между цилиндрами",
+   "en": "Cylinder 6 Injector B Air-Fuel Ratio Imbalance",
+   "fam": "",
+   "node": "injector b air fuel ratio imbalance"
+  },
+  {
+   "code": "P23F8",
+   "brand": "",
+   "ru": "Форсунка цилиндра 7 B: дисбаланс состава смеси между цилиндрами",
+   "en": "Cylinder 7 Injector B Air-Fuel Ratio Imbalance",
+   "fam": "",
+   "node": "injector b air fuel ratio imbalance"
+  },
+  {
+   "code": "P23F9",
+   "brand": "",
+   "ru": "Форсунка цилиндра 8 B: дисбаланс состава смеси между цилиндрами",
+   "en": "Cylinder 8 Injector B Air-Fuel Ratio Imbalance",
+   "fam": "",
+   "node": "injector b air fuel ratio imbalance"
+  },
+  {
+   "code": "P23FA",
+   "brand": "",
+   "ru": "Форсунка цилиндра 9 B: дисбаланс состава смеси между цилиндрами",
+   "en": "Cylinder 9 Injector B Air-Fuel Ratio Imbalance",
+   "fam": "",
+   "node": "injector b air fuel ratio imbalance"
+  },
+  {
+   "code": "P23FB",
+   "brand": "",
+   "ru": "Форсунка цилиндра 10 B: дисбаланс состава смеси между цилиндрами",
+   "en": "Cylinder 10 Injector B Air-Fuel Ratio Imbalance",
+   "fam": "",
+   "node": "injector b air fuel ratio imbalance"
+  },
+  {
+   "code": "P23FC",
+   "brand": "",
+   "ru": "Форсунка цилиндра 11 B: дисбаланс состава смеси между цилиндрами",
+   "en": "Cylinder 11 Injector B Air-Fuel Ratio Imbalance",
+   "fam": "",
+   "node": "injector b air fuel ratio imbalance"
+  },
+  {
+   "code": "P23FD",
+   "brand": "",
+   "ru": "Форсунка цилиндра 12 B: дисбаланс состава смеси между цилиндрами",
+   "en": "Cylinder 12 Injector B Air-Fuel Ratio Imbalance",
+   "fam": "",
+   "node": "injector b air fuel ratio imbalance"
+  }
+ ]
+}

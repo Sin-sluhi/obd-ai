@@ -1,0 +1,62 @@
+{
+ "name": "sae_217",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "coolant mixing",
+  "coolant mixing valve",
+  "coolant mixing valve position",
+  "stack differential pressure",
+  "stack outlet coolant temperature"
+ ],
+ "codes": [
+  {
+   "code": "U3571",
+   "brand": "",
+   "ru": "Датчик температуры жидкости на выходе стека 1: цепь",
+   "en": "Stack Outlet Coolant Temperature Sensor 1 Circuit",
+   "fam": "",
+   "node": "stack outlet coolant temperature"
+  },
+  {
+   "code": "U3572",
+   "brand": "",
+   "ru": "Датчик температуры жидкости на выходе стека 2: цепь",
+   "en": "Stack Outlet Coolant Temperature Sensor 2 Circuit",
+   "fam": "",
+   "node": "stack outlet coolant temperature"
+  },
+  {
+   "code": "U3573",
+   "brand": "",
+   "ru": "Смесительный клапан охлаждающей жидкости: цепь управления",
+   "en": "Coolant Mixing Valve Control Circuit",
+   "fam": "",
+   "node": "coolant mixing valve"
+  },
+  {
+   "code": "U3574",
+   "brand": "",
+   "ru": "Смесительный клапан охлаждающей жидкости",
+   "en": "Coolant Mixing Valve",
+   "fam": "",
+   "node": "coolant mixing"
+  },
+  {
+   "code": "U3575",
+   "brand": "",
+   "ru": "Датчик положения смесительного клапана: цепь",
+   "en": "Coolant Mixing Valve Position Sensor Circuit",
+   "fam": "",
+   "node": "coolant mixing valve position"
+  },
+  {
+   "code": "U3576",
+   "brand": "",
+   "ru": "Датчик перепада давления стека: цепь",
+   "en": "Stack Differential Pressure Sensor Circuit",
+   "fam": "",
+   "node": "stack differential pressure"
+  }
+ ]
+}

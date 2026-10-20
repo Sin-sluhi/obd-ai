@@ -1,0 +1,363 @@
+{
+ "name": "sae_090",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "6 7 shift",
+  "7 8 shift",
+  "gear 8 incorrect ratio",
+  "intermediate shaft speed sensor a",
+  "intermediate shaft speed sensor b",
+  "intermediate shaft speed sensor c",
+  "ru:датчик частоты вращения входного вала кпп a",
+  "ru:датчик частоты вращения входного вала кпп b",
+  "ru:датчик частоты вращения входного вала кпп c",
+  "ru:застревание на передаче 8",
+  "transmission fluid thermostat",
+  "transmission friction element h",
+  "transmission mode switch d",
+  "transmission mode switch e",
+  "transmission mode switch f",
+  "transmission park position sensor switch a",
+  "transmission park position sensor switch a b correlation",
+  "transmission park position sensor switch b"
+ ],
+ "codes": [
+  {
+   "code": "P07B0",
+   "brand": "",
+   "ru": "Фрикционный элемент КПП H: работа нарушена / не включается",
+   "en": "Transmission Friction Element H Performance/Stuck Off",
+   "fam": "",
+   "node": "transmission friction element h"
+  },
+  {
+   "code": "P07B1",
+   "brand": "",
+   "ru": "Фрикционный элемент КПП H: постоянно включён",
+   "en": "Transmission Friction Element H Stuck On",
+   "fam": "",
+   "node": "transmission friction element h"
+  },
+  {
+   "code": "P07B2",
+   "brand": "",
+   "ru": "Датчик положения «Паркинг» КПП A: обрыв цепи",
+   "en": "Transmission Park Position Sensor/Switch A Circuit/Open",
+   "fam": "",
+   "node": "transmission park position sensor switch a"
+  },
+  {
+   "code": "P07B3",
+   "brand": "",
+   "ru": "Датчик положения «Паркинг» КПП A: низкий уровень сигнала в цепи",
+   "en": "Transmission Park Position Sensor/Switch A Circuit Low",
+   "fam": "",
+   "node": "transmission park position sensor switch a"
+  },
+  {
+   "code": "P07B4",
+   "brand": "",
+   "ru": "Датчик положения «Паркинг» КПП A: высокий уровень сигнала в цепи",
+   "en": "Transmission Park Position Sensor/Switch A Circuit High",
+   "fam": "",
+   "node": "transmission park position sensor switch a"
+  },
+  {
+   "code": "P07B5",
+   "brand": "",
+   "ru": "Датчик положения «Паркинг» КПП A: работа нарушена / низкий уровень",
+   "en": "Transmission Park Position Sensor/Switch A Circuit Performance/Low",
+   "fam": "",
+   "node": "transmission park position sensor switch a"
+  },
+  {
+   "code": "P07B6",
+   "brand": "",
+   "ru": "Датчик положения «Паркинг» КПП A: работа нарушена / высокий уровень",
+   "en": "Transmission Park Position Sensor/Switch A Circuit Performance High",
+   "fam": "",
+   "node": "transmission park position sensor switch a"
+  },
+  {
+   "code": "P07B7",
+   "brand": "",
+   "ru": "Датчик положения «Паркинг» КПП A: прерывистый / нестабильный сигнал",
+   "en": "Transmission Park Position Sensor/Switch A Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "transmission park position sensor switch a"
+  },
+  {
+   "code": "P07B8",
+   "brand": "",
+   "ru": "Датчик положения «Паркинг» КПП B: обрыв цепи",
+   "en": "Transmission Park Position Sensor/Switch B Circuit/Open",
+   "fam": "",
+   "node": "transmission park position sensor switch b"
+  },
+  {
+   "code": "P07B9",
+   "brand": "",
+   "ru": "Датчик положения «Паркинг» КПП B: низкий уровень сигнала в цепи",
+   "en": "Transmission Park Position Sensor/Switch B Circuit Low",
+   "fam": "",
+   "node": "transmission park position sensor switch b"
+  },
+  {
+   "code": "P07BA",
+   "brand": "",
+   "ru": "Датчик положения «Паркинг» КПП B: высокий уровень сигнала в цепи",
+   "en": "Transmission Park Position Sensor/Switch B Circuit High",
+   "fam": "",
+   "node": "transmission park position sensor switch b"
+  },
+  {
+   "code": "P07BB",
+   "brand": "",
+   "ru": "Датчик положения «Паркинг» КПП B: работа нарушена / низкий уровень",
+   "en": "Transmission Park Position Sensor/Switch B Circuit Performance/Low",
+   "fam": "",
+   "node": "transmission park position sensor switch b"
+  },
+  {
+   "code": "P07BC",
+   "brand": "",
+   "ru": "Датчик положения «Паркинг» КПП B: работа нарушена / высокий уровень",
+   "en": "Transmission Park Position Sensor/Switch B Circuit Performance High",
+   "fam": "",
+   "node": "transmission park position sensor switch b"
+  },
+  {
+   "code": "P07BD",
+   "brand": "",
+   "ru": "Датчик положения «Паркинг» КПП B: прерывистый / нестабильный сигнал",
+   "en": "Transmission Park Position Sensor/Switch B Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "transmission park position sensor switch b"
+  },
+  {
+   "code": "P07BE",
+   "brand": "",
+   "ru": "Датчик положения «Паркинг» КПП: рассогласование A/B",
+   "en": "Transmission Park Position Sensor/Switch A/B Correlation",
+   "fam": "",
+   "node": "transmission park position sensor switch a b correlation"
+  },
+  {
+   "code": "P07BF",
+   "brand": "",
+   "ru": "Датчик частоты вращения входного вала КПП A: низкий уровень сигнала в цепи",
+   "en": "Input/Turbine Shaft Speed Sensor A Circuit Low",
+   "fam": "",
+   "node": "ru:датчик частоты вращения входного вала кпп a"
+  },
+  {
+   "code": "P07C0",
+   "brand": "",
+   "ru": "Датчик частоты вращения входного вала КПП A: высокий уровень сигнала в цепи",
+   "en": "Input/Turbine Shaft Speed Sensor A Circuit High",
+   "fam": "",
+   "node": "ru:датчик частоты вращения входного вала кпп a"
+  },
+  {
+   "code": "P07C1",
+   "brand": "",
+   "ru": "Датчик частоты вращения входного вала КПП B: низкий уровень сигнала в цепи",
+   "en": "Input/Turbine Shaft Speed Sensor B Circuit Low",
+   "fam": "",
+   "node": "ru:датчик частоты вращения входного вала кпп b"
+  },
+  {
+   "code": "P07C2",
+   "brand": "",
+   "ru": "Датчик частоты вращения входного вала КПП B: высокий уровень сигнала в цепи",
+   "en": "Input/Turbine Shaft Speed Sensor B Circuit High",
+   "fam": "",
+   "node": "ru:датчик частоты вращения входного вала кпп b"
+  },
+  {
+   "code": "P07C3",
+   "brand": "",
+   "ru": "Датчик частоты вращения входного вала КПП C: низкий уровень сигнала в цепи",
+   "en": "Input/Turbine Shaft Speed Sensor C Circuit Low",
+   "fam": "",
+   "node": "ru:датчик частоты вращения входного вала кпп c"
+  },
+  {
+   "code": "P07C4",
+   "brand": "",
+   "ru": "Датчик частоты вращения входного вала КПП C: высокий уровень сигнала в цепи",
+   "en": "Input/Turbine Shaft Speed Sensor C Circuit High",
+   "fam": "",
+   "node": "ru:датчик частоты вращения входного вала кпп c"
+  },
+  {
+   "code": "P07F1",
+   "brand": "",
+   "ru": "Датчик частоты вращения входного вала КПП C: цепь",
+   "en": "Input/Turbine Shaft Speed Sensor C Circuit",
+   "fam": "",
+   "node": "ru:датчик частоты вращения входного вала кпп c"
+  },
+  {
+   "code": "P07C5",
+   "brand": "",
+   "ru": "Датчик частоты вращения промежуточного вала A: низкий уровень сигнала в цепи",
+   "en": "Intermediate Shaft Speed Sensor A Circuit Low",
+   "fam": "",
+   "node": "intermediate shaft speed sensor a"
+  },
+  {
+   "code": "P07C6",
+   "brand": "",
+   "ru": "Датчик частоты вращения промежуточного вала A: высокий уровень сигнала в цепи",
+   "en": "Intermediate Shaft Speed Sensor A Circuit High",
+   "fam": "",
+   "node": "intermediate shaft speed sensor a"
+  },
+  {
+   "code": "P07C7",
+   "brand": "",
+   "ru": "Датчик частоты вращения промежуточного вала B: низкий уровень сигнала в цепи",
+   "en": "Intermediate Shaft Speed Sensor B Circuit Low",
+   "fam": "",
+   "node": "intermediate shaft speed sensor b"
+  },
+  {
+   "code": "P07C8",
+   "brand": "",
+   "ru": "Датчик частоты вращения промежуточного вала B: высокий уровень сигнала в цепи",
+   "en": "Intermediate Shaft Speed Sensor B Circuit High",
+   "fam": "",
+   "node": "intermediate shaft speed sensor b"
+  },
+  {
+   "code": "P07C9",
+   "brand": "",
+   "ru": "Датчик частоты вращения промежуточного вала C: низкий уровень сигнала в цепи",
+   "en": "Intermediate Shaft Speed Sensor C Circuit Low",
+   "fam": "",
+   "node": "intermediate shaft speed sensor c"
+  },
+  {
+   "code": "P07CA",
+   "brand": "",
+   "ru": "Датчик частоты вращения промежуточного вала C: высокий уровень сигнала в цепи",
+   "en": "Intermediate Shaft Speed Sensor C Circuit High",
+   "fam": "",
+   "node": "intermediate shaft speed sensor c"
+  },
+  {
+   "code": "P07CB",
+   "brand": "",
+   "ru": "Термостат масла КПП: работа нарушена",
+   "en": "Transmission Fluid Thermostat Performance",
+   "fam": "",
+   "node": "transmission fluid thermostat"
+  },
+  {
+   "code": "P07CE",
+   "brand": "",
+   "ru": "Переключатель режимов КПП D: цепь",
+   "en": "Transmission Mode Switch D Circuit",
+   "fam": "",
+   "node": "transmission mode switch d"
+  },
+  {
+   "code": "P07CF",
+   "brand": "",
+   "ru": "Переключатель режимов КПП D: низкий уровень сигнала в цепи",
+   "en": "Transmission Mode Switch D Circuit Low",
+   "fam": "",
+   "node": "transmission mode switch d"
+  },
+  {
+   "code": "P07D0",
+   "brand": "",
+   "ru": "Переключатель режимов КПП D: высокий уровень сигнала в цепи",
+   "en": "Transmission Mode Switch D Circuit High",
+   "fam": "",
+   "node": "transmission mode switch d"
+  },
+  {
+   "code": "P07D1",
+   "brand": "",
+   "ru": "Переключатель режимов КПП E: цепь",
+   "en": "Transmission Mode Switch E Circuit",
+   "fam": "",
+   "node": "transmission mode switch e"
+  },
+  {
+   "code": "P07D2",
+   "brand": "",
+   "ru": "Переключатель режимов КПП E: низкий уровень сигнала в цепи",
+   "en": "Transmission Mode Switch E Circuit Low",
+   "fam": "",
+   "node": "transmission mode switch e"
+  },
+  {
+   "code": "P07D3",
+   "brand": "",
+   "ru": "Переключатель режимов КПП E: высокий уровень сигнала в цепи",
+   "en": "Transmission Mode Switch E Circuit High",
+   "fam": "",
+   "node": "transmission mode switch e"
+  },
+  {
+   "code": "P07D4",
+   "brand": "",
+   "ru": "Переключатель режимов КПП F: цепь",
+   "en": "Transmission Mode Switch F Circuit",
+   "fam": "",
+   "node": "transmission mode switch f"
+  },
+  {
+   "code": "P07D5",
+   "brand": "",
+   "ru": "Переключатель режимов КПП F: низкий уровень сигнала в цепи",
+   "en": "Transmission Mode Switch F Circuit Low",
+   "fam": "",
+   "node": "transmission mode switch f"
+  },
+  {
+   "code": "P07D6",
+   "brand": "",
+   "ru": "Переключатель режимов КПП F: высокий уровень сигнала в цепи",
+   "en": "Transmission Mode Switch F Circuit High",
+   "fam": "",
+   "node": "transmission mode switch f"
+  },
+  {
+   "code": "P07D7",
+   "brand": "",
+   "ru": "Застревание на передаче 8",
+   "en": "Stuck in Gear 8",
+   "fam": "",
+   "node": "ru:застревание на передаче 8"
+  },
+  {
+   "code": "P07D9",
+   "brand": "",
+   "ru": "8-я передача: неверное передаточное отношение",
+   "en": "Gear 8 Incorrect Ratio",
+   "fam": "",
+   "node": "gear 8 incorrect ratio"
+  },
+  {
+   "code": "P07DA",
+   "brand": "",
+   "ru": "Переключение 6–7",
+   "en": "6-7 Shift",
+   "fam": "",
+   "node": "6 7 shift"
+  },
+  {
+   "code": "P07DB",
+   "brand": "",
+   "ru": "Переключение 7–8",
+   "en": "7-8 Shift",
+   "fam": "",
+   "node": "7 8 shift"
+  }
+ ]
+}

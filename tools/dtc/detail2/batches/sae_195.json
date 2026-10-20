@@ -1,0 +1,396 @@
+{
+ "name": "sae_195",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "lost communication with air conditioning control",
+  "lost communication with all wheel drive control",
+  "lost communication with chassis control module a",
+  "lost communication with coolant temperature control",
+  "lost communication with exhaust gas recirculation control module a",
+  "lost communication with exhaust gas recirculation control module b",
+  "lost communication with exhaust gas sensor module a",
+  "lost communication with fuel additive control",
+  "lost communication with fuel cell control",
+  "lost communication with pto control",
+  "lost communication with reductant control",
+  "lost communication with rocker arm control module a",
+  "lost communication with rocker arm control module b",
+  "lost communication with starter generator control",
+  "lost communication with throttle actuator b control",
+  "lost communication with turbocharger supercharger control module a",
+  "lost communication with turbocharger supercharger control module b",
+  "lost communication with v2x",
+  "vehicle communication bus f",
+  "vehicle communication bus f +",
+  "vehicle communication bus f shorted to bus f +",
+  "vehicle communication bus g",
+  "vehicle communication bus g shorted to bus g",
+  "vehicle communication bus h",
+  "vehicle communication bus h shorted to bus h",
+  "vehicle communication bus i",
+  "vehicle communication bus j"
+ ],
+ "codes": [
+  {
+   "code": "U0084",
+   "brand": "",
+   "ru": "Шина связи F (+): высокий уровень",
+   "en": "Vehicle Communication Bus F + High",
+   "fam": "",
+   "node": "vehicle communication bus f +"
+  },
+  {
+   "code": "U0085",
+   "brand": "",
+   "ru": "Шина связи автомобиля F: обрыв",
+   "en": "Vehicle Communication Bus F - Open",
+   "fam": "",
+   "node": "vehicle communication bus f"
+  },
+  {
+   "code": "U0086",
+   "brand": "",
+   "ru": "Шина связи автомобиля F: низкий уровень",
+   "en": "Vehicle Communication Bus F - Low",
+   "fam": "",
+   "node": "vehicle communication bus f"
+  },
+  {
+   "code": "U0087",
+   "brand": "",
+   "ru": "Шина связи автомобиля F: высокий уровень",
+   "en": "Vehicle Communication Bus F - High",
+   "fam": "",
+   "node": "vehicle communication bus f"
+  },
+  {
+   "code": "U0088",
+   "brand": "",
+   "ru": "Шина связи F: замыкание (−) на (+)",
+   "en": "Vehicle Communication Bus F - Shorted to Bus F +",
+   "fam": "",
+   "node": "vehicle communication bus f shorted to bus f +"
+  },
+  {
+   "code": "U0089",
+   "brand": "",
+   "ru": "Шина связи автомобиля G",
+   "en": "Vehicle Communication Bus G",
+   "fam": "",
+   "node": "vehicle communication bus g"
+  },
+  {
+   "code": "U008A",
+   "brand": "",
+   "ru": "Шина связи автомобиля G: работа нарушена",
+   "en": "Vehicle Communication Bus G Performance",
+   "fam": "",
+   "node": "vehicle communication bus g"
+  },
+  {
+   "code": "U008B",
+   "brand": "",
+   "ru": "Шина связи G (+): обрыв",
+   "en": "Vehicle Communication Bus G (+) Open",
+   "fam": "",
+   "node": "vehicle communication bus g"
+  },
+  {
+   "code": "U008C",
+   "brand": "",
+   "ru": "Шина связи G (+): низкий уровень",
+   "en": "Vehicle Communication Bus G (+) Low",
+   "fam": "",
+   "node": "vehicle communication bus g"
+  },
+  {
+   "code": "U008D",
+   "brand": "",
+   "ru": "Шина связи G (+): высокий уровень",
+   "en": "Vehicle Communication Bus G (+) High",
+   "fam": "",
+   "node": "vehicle communication bus g"
+  },
+  {
+   "code": "U008E",
+   "brand": "",
+   "ru": "Шина связи G (−): обрыв",
+   "en": "Vehicle Communication Bus G (-) Open",
+   "fam": "",
+   "node": "vehicle communication bus g"
+  },
+  {
+   "code": "U008F",
+   "brand": "",
+   "ru": "Шина связи G (−): низкий уровень",
+   "en": "Vehicle Communication Bus G (-) Low",
+   "fam": "",
+   "node": "vehicle communication bus g"
+  },
+  {
+   "code": "U0090",
+   "brand": "",
+   "ru": "Шина связи G (−): высокий уровень",
+   "en": "Vehicle Communication Bus G (-) High",
+   "fam": "",
+   "node": "vehicle communication bus g"
+  },
+  {
+   "code": "U0091",
+   "brand": "",
+   "ru": "Шина связи G: замыкание (−) на (+)",
+   "en": "Vehicle Communication Bus G (-) shorted to Bus G (+)",
+   "fam": "",
+   "node": "vehicle communication bus g shorted to bus g"
+  },
+  {
+   "code": "U0092",
+   "brand": "",
+   "ru": "Шина связи автомобиля H",
+   "en": "Vehicle Communication Bus H",
+   "fam": "",
+   "node": "vehicle communication bus h"
+  },
+  {
+   "code": "U0093",
+   "brand": "",
+   "ru": "Шина связи автомобиля H: работа нарушена",
+   "en": "Vehicle Communication Bus H Performance",
+   "fam": "",
+   "node": "vehicle communication bus h"
+  },
+  {
+   "code": "U0094",
+   "brand": "",
+   "ru": "Шина связи H (+): обрыв",
+   "en": "Vehicle Communication Bus H (+) Open",
+   "fam": "",
+   "node": "vehicle communication bus h"
+  },
+  {
+   "code": "U0095",
+   "brand": "",
+   "ru": "Шина связи H (+): низкий уровень",
+   "en": "Vehicle Communication Bus H (+) Low",
+   "fam": "",
+   "node": "vehicle communication bus h"
+  },
+  {
+   "code": "U0096",
+   "brand": "",
+   "ru": "Шина связи H (+): высокий уровень",
+   "en": "Vehicle Communication Bus H (+) High",
+   "fam": "",
+   "node": "vehicle communication bus h"
+  },
+  {
+   "code": "U0097",
+   "brand": "",
+   "ru": "Шина связи H (−): обрыв",
+   "en": "Vehicle Communication Bus H (-) Open",
+   "fam": "",
+   "node": "vehicle communication bus h"
+  },
+  {
+   "code": "U0098",
+   "brand": "",
+   "ru": "Шина связи H (−): низкий уровень",
+   "en": "Vehicle Communication Bus H (-) Low",
+   "fam": "",
+   "node": "vehicle communication bus h"
+  },
+  {
+   "code": "U0099",
+   "brand": "",
+   "ru": "Шина связи H (−): высокий уровень",
+   "en": "Vehicle Communication Bus H (-) High",
+   "fam": "",
+   "node": "vehicle communication bus h"
+  },
+  {
+   "code": "U009A",
+   "brand": "",
+   "ru": "Шина связи H: замыкание (−) на (+)",
+   "en": "Vehicle Communication Bus H (-) shorted to Bus H (+)",
+   "fam": "",
+   "node": "vehicle communication bus h shorted to bus h"
+  },
+  {
+   "code": "U009B",
+   "brand": "",
+   "ru": "Шина связи автомобиля I",
+   "en": "Vehicle Communication Bus I",
+   "fam": "",
+   "node": "vehicle communication bus i"
+  },
+  {
+   "code": "U009C",
+   "brand": "",
+   "ru": "Шина связи автомобиля I: работа нарушена",
+   "en": "Vehicle Communication Bus I Performance",
+   "fam": "",
+   "node": "vehicle communication bus i"
+  },
+  {
+   "code": "U009D",
+   "brand": "",
+   "ru": "Шина связи автомобиля J",
+   "en": "Vehicle Communication Bus J",
+   "fam": "",
+   "node": "vehicle communication bus j"
+  },
+  {
+   "code": "U009E",
+   "brand": "",
+   "ru": "Шина связи автомобиля J: работа нарушена",
+   "en": "Vehicle Communication Bus J Performance",
+   "fam": "",
+   "node": "vehicle communication bus j"
+  },
+  {
+   "code": "U010A",
+   "brand": "",
+   "ru": "Нет связи: блок управления EGR A",
+   "en": "Lost Communication With Exhaust Gas Recirculation Control Module A",
+   "fam": "",
+   "node": "lost communication with exhaust gas recirculation control module a"
+  },
+  {
+   "code": "U010B",
+   "brand": "",
+   "ru": "Нет связи: блок управления EGR B",
+   "en": "Lost Communication With Exhaust Gas Recirculation Control Module B",
+   "fam": "",
+   "node": "lost communication with exhaust gas recirculation control module b"
+  },
+  {
+   "code": "U010C",
+   "brand": "",
+   "ru": "Нет связи: блок управления турбиной/нагнетателем A",
+   "en": "Lost Communication With Turbocharger/Supercharger Control Module A",
+   "fam": "",
+   "node": "lost communication with turbocharger supercharger control module a"
+  },
+  {
+   "code": "U010D",
+   "brand": "",
+   "ru": "Нет связи: блок управления турбиной/нагнетателем B",
+   "en": "Lost Communication With Turbocharger/Supercharger Control Module B",
+   "fam": "",
+   "node": "lost communication with turbocharger supercharger control module b"
+  },
+  {
+   "code": "U010E",
+   "brand": "",
+   "ru": "Нет связи: блок управления системой мочевины",
+   "en": "Lost Communication With Reductant Control Module",
+   "fam": "",
+   "node": "lost communication with reductant control"
+  },
+  {
+   "code": "U010F",
+   "brand": "",
+   "ru": "Нет связи: блок кондиционера",
+   "en": "Lost Communication With Air Conditioning Control Module",
+   "fam": "",
+   "node": "lost communication with air conditioning control"
+  },
+  {
+   "code": "U0116",
+   "brand": "",
+   "ru": "Нет связи: блок терморегулирования",
+   "en": "Lost Communication With Coolant Temperature Control Module",
+   "fam": "",
+   "node": "lost communication with coolant temperature control"
+  },
+  {
+   "code": "U0117",
+   "brand": "",
+   "ru": "Нет связи: блок отбора мощности",
+   "en": "Lost Communication With PTO Control Module",
+   "fam": "",
+   "node": "lost communication with pto control"
+  },
+  {
+   "code": "U0118",
+   "brand": "",
+   "ru": "Нет связи: блок присадки к топливу",
+   "en": "Lost Communication With Fuel Additive Control Module",
+   "fam": "",
+   "node": "lost communication with fuel additive control"
+  },
+  {
+   "code": "U0119",
+   "brand": "",
+   "ru": "Нет связи: блок топливного элемента",
+   "en": "Lost Communication With Fuel Cell Control Module",
+   "fam": "",
+   "node": "lost communication with fuel cell control"
+  },
+  {
+   "code": "U011A",
+   "brand": "",
+   "ru": "Нет связи: блок датчика отработавших газов A",
+   "en": "Lost Communication With Exhaust Gas Sensor Module A",
+   "fam": "",
+   "node": "lost communication with exhaust gas sensor module a"
+  },
+  {
+   "code": "U011B",
+   "brand": "",
+   "ru": "Нет связи: блок управления коромыслами A",
+   "en": "Lost Communication With Rocker Arm Control Module A",
+   "fam": "",
+   "node": "lost communication with rocker arm control module a"
+  },
+  {
+   "code": "U011C",
+   "brand": "",
+   "ru": "Нет связи: блок управления коромыслами B",
+   "en": "Lost Communication With Rocker Arm Control Module B",
+   "fam": "",
+   "node": "lost communication with rocker arm control module b"
+  },
+  {
+   "code": "U011D",
+   "brand": "",
+   "ru": "Нет связи: блок полного привода (AWD)",
+   "en": "Lost Communication With All Wheel Drive Control Module",
+   "fam": "",
+   "node": "lost communication with all wheel drive control"
+  },
+  {
+   "code": "U011E",
+   "brand": "",
+   "ru": "Нет связи: блок привода дросселя B",
+   "en": "Lost Communication With Throttle Actuator B Control Module",
+   "fam": "",
+   "node": "lost communication with throttle actuator b control"
+  },
+  {
+   "code": "U011F",
+   "brand": "",
+   "ru": "Нет связи: модуль V2X",
+   "en": "Lost Communication With V2X Module",
+   "fam": "",
+   "node": "lost communication with v2x"
+  },
+  {
+   "code": "U0120",
+   "brand": "",
+   "ru": "Нет связи: блок стартер-генератора",
+   "en": "Lost Communication With Starter / Generator Control Module",
+   "fam": "",
+   "node": "lost communication with starter generator control"
+  },
+  {
+   "code": "U012A",
+   "brand": "",
+   "ru": "Нет связи: блок управления шасси A",
+   "en": "Lost Communication With Chassis Control Module A",
+   "fam": "",
+   "node": "lost communication with chassis control module a"
+  }
+ ]
+}

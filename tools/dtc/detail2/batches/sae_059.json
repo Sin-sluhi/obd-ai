@@ -1,0 +1,382 @@
+{
+ "name": "sae_059",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "egr a control position exceeded learning limit",
+  "egr b control position exceeded learning limit",
+  "egr b flow",
+  "egr b flow excessive detected",
+  "egr b flow insufficient detected",
+  "evap system purge control valve b",
+  "exhaust pressure control valve a position sensor",
+  "exhaust pressure control valve b",
+  "exhaust pressure control valve b position sensor",
+  "fuel fill door",
+  "fuel fill door position sensor",
+  "refueling vapor control",
+  "refueling vapor control valve"
+ ],
+ "codes": [
+  {
+   "code": "P048B",
+   "brand": "",
+   "ru": "Датчик положения клапана давления выхлопа A: цепь",
+   "en": "Exhaust Pressure Control Valve A Position Sensor/Switch Circuit",
+   "fam": "",
+   "node": "exhaust pressure control valve a position sensor"
+  },
+  {
+   "code": "P048C",
+   "brand": "",
+   "ru": "Датчик положения клапана давления выхлопа A: сигнал вне диапазона",
+   "en": "Exhaust Pressure Control Valve A Position Sensor/Switch Circuit Range/Performance",
+   "fam": "",
+   "node": "exhaust pressure control valve a position sensor"
+  },
+  {
+   "code": "P048D",
+   "brand": "",
+   "ru": "Датчик положения клапана давления выхлопа A: низкий уровень сигнала в цепи",
+   "en": "Exhaust Pressure Control Valve A Position Sensor/Switch Circuit Low",
+   "fam": "",
+   "node": "exhaust pressure control valve a position sensor"
+  },
+  {
+   "code": "P048E",
+   "brand": "",
+   "ru": "Датчик положения клапана давления выхлопа A: высокий уровень сигнала в цепи",
+   "en": "Exhaust Pressure Control Valve A Position Sensor/Switch Circuit High",
+   "fam": "",
+   "node": "exhaust pressure control valve a position sensor"
+  },
+  {
+   "code": "P048F",
+   "brand": "",
+   "ru": "Датчик положения клапана давления выхлопа A: прерывистый / нестабильный сигнал",
+   "en": "Exhaust Pressure Control Valve A Position Sensor/Switch Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "exhaust pressure control valve a position sensor"
+  },
+  {
+   "code": "P049A",
+   "brand": "",
+   "ru": "Расход EGR B",
+   "en": "EGR B Flow",
+   "fam": "",
+   "node": "egr b flow"
+  },
+  {
+   "code": "P049B",
+   "brand": "",
+   "ru": "Недостаточный расход EGR B",
+   "en": "EGR B Flow Insufficient Detected",
+   "fam": "",
+   "node": "egr b flow insufficient detected"
+  },
+  {
+   "code": "P049C",
+   "brand": "",
+   "ru": "Избыточный расход EGR B",
+   "en": "EGR B Flow Excessive Detected",
+   "fam": "",
+   "node": "egr b flow excessive detected"
+  },
+  {
+   "code": "P049D",
+   "brand": "",
+   "ru": "Управление EGR A: превышен предел адаптации положения",
+   "en": "EGR A Control Position Exceeded Learning Limit",
+   "fam": "",
+   "node": "egr a control position exceeded learning limit"
+  },
+  {
+   "code": "P049E",
+   "brand": "",
+   "ru": "Управление EGR B: превышен предел адаптации положения",
+   "en": "EGR B Control Position Exceeded Learning Limit",
+   "fam": "",
+   "node": "egr b control position exceeded learning limit"
+  },
+  {
+   "code": "P049F",
+   "brand": "",
+   "ru": "Клапан регулирования давления выхлопа B",
+   "en": "Exhaust Pressure Control Valve B",
+   "fam": "",
+   "node": "exhaust pressure control valve b"
+  },
+  {
+   "code": "P04A0",
+   "brand": "",
+   "ru": "Клапан регулирования давления выхлопа B: вне допустимого диапазона",
+   "en": "Exhaust Pressure Control Valve B Range/Performance",
+   "fam": "",
+   "node": "exhaust pressure control valve b"
+  },
+  {
+   "code": "P04A1",
+   "brand": "",
+   "ru": "Клапан регулирования давления выхлопа B: низкий уровень",
+   "en": "Exhaust Pressure Control Valve B Low",
+   "fam": "",
+   "node": "exhaust pressure control valve b"
+  },
+  {
+   "code": "P04A2",
+   "brand": "",
+   "ru": "Клапан регулирования давления выхлопа B: высокий уровень",
+   "en": "Exhaust Pressure Control Valve B High",
+   "fam": "",
+   "node": "exhaust pressure control valve b"
+  },
+  {
+   "code": "P04A3",
+   "brand": "",
+   "ru": "Клапан регулирования давления выхлопа B: прерывистый сигнал",
+   "en": "Exhaust Pressure Control Valve B Intermittent",
+   "fam": "",
+   "node": "exhaust pressure control valve b"
+  },
+  {
+   "code": "P04A4",
+   "brand": "",
+   "ru": "Клапан регулирования давления выхлопа B: заклинил открытым",
+   "en": "Exhaust Pressure Control Valve B Stuck Open",
+   "fam": "",
+   "node": "exhaust pressure control valve b"
+  },
+  {
+   "code": "P04A5",
+   "brand": "",
+   "ru": "Клапан регулирования давления выхлопа B: заклинил закрытым",
+   "en": "Exhaust Pressure Control Valve B Stuck Closed",
+   "fam": "",
+   "node": "exhaust pressure control valve b"
+  },
+  {
+   "code": "P04A6",
+   "brand": "",
+   "ru": "Датчик положения клапана давления выхлопа B: цепь",
+   "en": "Exhaust Pressure Control Valve B Position Sensor/Switch Circuit",
+   "fam": "",
+   "node": "exhaust pressure control valve b position sensor"
+  },
+  {
+   "code": "P04A7",
+   "brand": "",
+   "ru": "Датчик положения клапана давления выхлопа B: сигнал вне диапазона",
+   "en": "Exhaust Pressure Control Valve B Position Sensor/Switch Circuit Range/Performance",
+   "fam": "",
+   "node": "exhaust pressure control valve b position sensor"
+  },
+  {
+   "code": "P04A8",
+   "brand": "",
+   "ru": "Датчик положения клапана давления выхлопа B: низкий уровень сигнала в цепи",
+   "en": "Exhaust Pressure Control Valve B Position Sensor/Switch Circuit Low",
+   "fam": "",
+   "node": "exhaust pressure control valve b position sensor"
+  },
+  {
+   "code": "P04A9",
+   "brand": "",
+   "ru": "Датчик положения клапана давления выхлопа B: высокий уровень сигнала в цепи",
+   "en": "Exhaust Pressure Control Valve B Position Sensor/Switch Circuit High",
+   "fam": "",
+   "node": "exhaust pressure control valve b position sensor"
+  },
+  {
+   "code": "P04AA",
+   "brand": "",
+   "ru": "Датчик положения клапана давления выхлопа B: прерывистый / нестабильный сигнал",
+   "en": "Exhaust Pressure Control Valve B Position Sensor/Switch Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "exhaust pressure control valve b position sensor"
+  },
+  {
+   "code": "P04AB",
+   "brand": "",
+   "ru": "Клапан продувки адсорбера B: обрыв цепи",
+   "en": "EVAP System Purge Control Valve B Circuit/Open",
+   "fam": "",
+   "node": "evap system purge control valve b"
+  },
+  {
+   "code": "P04AC",
+   "brand": "",
+   "ru": "Клапан продувки адсорбера B: низкий уровень сигнала в цепи",
+   "en": "EVAP System Purge Control Valve B Circuit Low",
+   "fam": "",
+   "node": "evap system purge control valve b"
+  },
+  {
+   "code": "P04AD",
+   "brand": "",
+   "ru": "Клапан продувки адсорбера B: высокий уровень сигнала в цепи",
+   "en": "EVAP System Purge Control Valve B Circuit High",
+   "fam": "",
+   "node": "evap system purge control valve b"
+  },
+  {
+   "code": "P04AE",
+   "brand": "",
+   "ru": "Клапан продувки адсорбера B: работа нарушена / заклинил открытым",
+   "en": "EVAP System Purge Control Valve B Performance/Stuck Open",
+   "fam": "",
+   "node": "evap system purge control valve b"
+  },
+  {
+   "code": "P04AF",
+   "brand": "",
+   "ru": "Клапан продувки адсорбера B: заклинил закрытым",
+   "en": "EVAP System Purge Control Valve B Stuck Closed",
+   "fam": "",
+   "node": "evap system purge control valve b"
+  },
+  {
+   "code": "P04B0",
+   "brand": "",
+   "ru": "Клапан улавливания паров при заправке: обрыв цепи",
+   "en": "Refueling Vapor Control Valve Circuit/Open",
+   "fam": "",
+   "node": "refueling vapor control"
+  },
+  {
+   "code": "P04B1",
+   "brand": "",
+   "ru": "Клапан улавливания паров при заправке: низкий уровень сигнала в цепи",
+   "en": "Refueling Vapor Control Valve Circuit Low",
+   "fam": "",
+   "node": "refueling vapor control"
+  },
+  {
+   "code": "P04B2",
+   "brand": "",
+   "ru": "Клапан улавливания паров при заправке: высокий уровень сигнала в цепи",
+   "en": "Refueling Vapor Control Valve Circuit High",
+   "fam": "",
+   "node": "refueling vapor control"
+  },
+  {
+   "code": "P04B3",
+   "brand": "",
+   "ru": "Клапан улавливания паров при заправке: заклинил открытым",
+   "en": "Refueling Vapor Control Valve Stuck Performance/Stuck Open",
+   "fam": "",
+   "node": "refueling vapor control valve"
+  },
+  {
+   "code": "P04B4",
+   "brand": "",
+   "ru": "Клапан улавливания паров при заправке: заклинил закрытым",
+   "en": "Refueling Vapor Control Valve Stuck Closed",
+   "fam": "",
+   "node": "refueling vapor control valve"
+  },
+  {
+   "code": "P04B5",
+   "brand": "",
+   "ru": "Лючок бензобака: заклинил открытым",
+   "en": "Fuel Fill Door Stuck Open",
+   "fam": "",
+   "node": "fuel fill door"
+  },
+  {
+   "code": "P04B6",
+   "brand": "",
+   "ru": "Лючок бензобака: заклинил закрытым",
+   "en": "Fuel Fill Door Stuck Closed",
+   "fam": "",
+   "node": "fuel fill door"
+  },
+  {
+   "code": "P04C8",
+   "brand": "",
+   "ru": "Кнопка открывания лючка бензобака: цепь",
+   "en": "Fuel Fill Door Open Request Sensor/Switch Circuit",
+   "fam": "",
+   "node": "fuel fill door"
+  },
+  {
+   "code": "P04C9",
+   "brand": "",
+   "ru": "Кнопка открывания лючка бензобака: работа нарушена / не включается",
+   "en": "Fuel Fill Door Open Request Sensor/Switch Performance/Stuck Off",
+   "fam": "",
+   "node": "fuel fill door"
+  },
+  {
+   "code": "P04CA",
+   "brand": "",
+   "ru": "Кнопка открывания лючка бензобака: низкий уровень сигнала в цепи",
+   "en": "Fuel Fill Door Open Request Sensor/Switch Circuit Low",
+   "fam": "",
+   "node": "fuel fill door"
+  },
+  {
+   "code": "P04CB",
+   "brand": "",
+   "ru": "Кнопка открывания лючка бензобака: высокий уровень сигнала в цепи",
+   "en": "Fuel Fill Door Open Request Sensor/Switch Circuit High",
+   "fam": "",
+   "node": "fuel fill door"
+  },
+  {
+   "code": "P04CC",
+   "brand": "",
+   "ru": "Кнопка открывания лючка бензобака: прерывистый / нестабильный сигнал",
+   "en": "Fuel Fill Door Open Request Sensor/Switch Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "fuel fill door"
+  },
+  {
+   "code": "P04CD",
+   "brand": "",
+   "ru": "Кнопка открывания лючка бензобака: постоянно включён",
+   "en": "Fuel Fill Door Open Request Sensor/Switch Stuck On",
+   "fam": "",
+   "node": "fuel fill door"
+  },
+  {
+   "code": "P04B7",
+   "brand": "",
+   "ru": "Датчик положения лючка бензобака: прерывистый / нестабильный сигнал",
+   "en": "Fuel Fill Door Position Sensor/Switch Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "fuel fill door position sensor"
+  },
+  {
+   "code": "P04B8",
+   "brand": "",
+   "ru": "Датчик положения лючка бензобака: цепь",
+   "en": "Fuel Fill Door Position Sensor/Switch Circuit",
+   "fam": "",
+   "node": "fuel fill door position sensor"
+  },
+  {
+   "code": "P04B9",
+   "brand": "",
+   "ru": "Датчик положения лючка бензобака: низкий уровень сигнала в цепи",
+   "en": "Fuel Fill Door Position Sensor/Switch Circuit Low",
+   "fam": "",
+   "node": "fuel fill door position sensor"
+  },
+  {
+   "code": "P04BA",
+   "brand": "",
+   "ru": "Датчик положения лючка бензобака: высокий уровень сигнала в цепи",
+   "en": "Fuel Fill Door Position Sensor/Switch Circuit High",
+   "fam": "",
+   "node": "fuel fill door position sensor"
+  },
+  {
+   "code": "P04DC",
+   "brand": "",
+   "ru": "Датчик положения лючка бензобака: сигнал вне диапазона",
+   "en": "Fuel Fill Door Position Sensor/Switch Circuit Range/Performance",
+   "fam": "",
+   "node": "fuel fill door position sensor"
+  }
+ ]
+}

@@ -1,0 +1,248 @@
+{
+ "name": "sae_192",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "a camshaft position actuator",
+  "a camshaft position actuator position sensor a",
+  "b camshaft position actuator",
+  "b camshaft position actuator position sensor a",
+  "b camshaft position actuator temperature",
+  "b camshaft position actuator temperature sensor",
+  "camshaft position control module"
+ ],
+ "codes": [
+  {
+   "code": "P34AC",
+   "brand": "",
+   "ru": "Датчик положения фазовращателя распредвала A (датчик A): цепь (банк 1)",
+   "en": "A Camshaft Position Actuator Position Sensor A Circuit Bank 1",
+   "fam": "",
+   "node": "a camshaft position actuator position sensor a"
+  },
+  {
+   "code": "P34AD",
+   "brand": "",
+   "ru": "Датчик положения фазовращателя распредвала A (датчик A): вне допустимого диапазона (банк 1)",
+   "en": "A Camshaft Position Actuator Position Sensor A Range/Performance Bank 1",
+   "fam": "",
+   "node": "a camshaft position actuator position sensor a"
+  },
+  {
+   "code": "P34AE",
+   "brand": "",
+   "ru": "Датчик положения фазовращателя распредвала A (датчик A): низкий уровень сигнала в цепи (банк 1)",
+   "en": "A Camshaft Position Actuator Position Sensor A Circuit Low Bank 1",
+   "fam": "",
+   "node": "a camshaft position actuator position sensor a"
+  },
+  {
+   "code": "P34AF",
+   "brand": "",
+   "ru": "Датчик положения фазовращателя распредвала A (датчик A): высокий уровень сигнала в цепи (банк 1)",
+   "en": "A Camshaft Position Actuator Position Sensor A Circuit High Bank 1",
+   "fam": "",
+   "node": "a camshaft position actuator position sensor a"
+  },
+  {
+   "code": "P34B0",
+   "brand": "",
+   "ru": "Датчик положения фазовращателя распредвала A (датчик A): цепь (банк 2)",
+   "en": "A Camshaft Position Actuator Position Sensor A Circuit Bank 2",
+   "fam": "",
+   "node": "a camshaft position actuator position sensor a"
+  },
+  {
+   "code": "P34B1",
+   "brand": "",
+   "ru": "Датчик положения фазовращателя распредвала A (датчик A): вне допустимого диапазона (банк 2)",
+   "en": "A Camshaft Position Actuator Position Sensor A Range/Performance Bank 2",
+   "fam": "",
+   "node": "a camshaft position actuator position sensor a"
+  },
+  {
+   "code": "P34B2",
+   "brand": "",
+   "ru": "Датчик положения фазовращателя распредвала A (датчик A): низкий уровень сигнала в цепи (банк 2)",
+   "en": "A Camshaft Position Actuator Position Sensor A Circuit Low Bank 2",
+   "fam": "",
+   "node": "a camshaft position actuator position sensor a"
+  },
+  {
+   "code": "P34B3",
+   "brand": "",
+   "ru": "Датчик положения фазовращателя распредвала A (датчик A): высокий уровень сигнала в цепи (банк 2)",
+   "en": "A Camshaft Position Actuator Position Sensor A Circuit High Bank 2",
+   "fam": "",
+   "node": "a camshaft position actuator position sensor a"
+  },
+  {
+   "code": "P34B4",
+   "brand": "",
+   "ru": "Датчик температуры фазовращателя распредвала B: цепь (банк 1)",
+   "en": "B Camshaft Position Actuator Temperature Sensor Circuit Bank 1",
+   "fam": "",
+   "node": "b camshaft position actuator temperature"
+  },
+  {
+   "code": "P34B6",
+   "brand": "",
+   "ru": "Датчик температуры фазовращателя распредвала B: низкий уровень сигнала в цепи (банк 1)",
+   "en": "B Camshaft Position Actuator Temperature Sensor Circuit Low Bank 1",
+   "fam": "",
+   "node": "b camshaft position actuator temperature"
+  },
+  {
+   "code": "P34B7",
+   "brand": "",
+   "ru": "Датчик температуры фазовращателя распредвала B: высокий уровень сигнала в цепи (банк 1)",
+   "en": "B Camshaft Position Actuator Temperature Sensor Circuit High Bank 1",
+   "fam": "",
+   "node": "b camshaft position actuator temperature"
+  },
+  {
+   "code": "P34B8",
+   "brand": "",
+   "ru": "Датчик температуры фазовращателя распредвала B: цепь (банк 2)",
+   "en": "B Camshaft Position Actuator Temperature Sensor Circuit Bank 2",
+   "fam": "",
+   "node": "b camshaft position actuator temperature"
+  },
+  {
+   "code": "P34BA",
+   "brand": "",
+   "ru": "Датчик температуры фазовращателя распредвала B: низкий уровень сигнала в цепи (банк 2)",
+   "en": "B Camshaft Position Actuator Temperature Sensor Circuit Low Bank 2",
+   "fam": "",
+   "node": "b camshaft position actuator temperature"
+  },
+  {
+   "code": "P34BB",
+   "brand": "",
+   "ru": "Датчик температуры фазовращателя распредвала B: высокий уровень сигнала в цепи (банк 2)",
+   "en": "B Camshaft Position Actuator Temperature Sensor Circuit High Bank 2",
+   "fam": "",
+   "node": "b camshaft position actuator temperature"
+  },
+  {
+   "code": "P34B5",
+   "brand": "",
+   "ru": "Датчик температуры фазовращателя распредвала B: вне допустимого диапазона (банк 1)",
+   "en": "B Camshaft Position Actuator Temperature Sensor Range/Performance Bank 1",
+   "fam": "",
+   "node": "b camshaft position actuator temperature sensor"
+  },
+  {
+   "code": "P34B9",
+   "brand": "",
+   "ru": "Датчик температуры фазовращателя распредвала B: вне допустимого диапазона (банк 2)",
+   "en": "B Camshaft Position Actuator Temperature Sensor Range/Performance Bank 2",
+   "fam": "",
+   "node": "b camshaft position actuator temperature sensor"
+  },
+  {
+   "code": "P34BC",
+   "brand": "",
+   "ru": "Датчик положения фазовращателя распредвала B (датчик A): цепь (банк 1)",
+   "en": "B Camshaft Position Actuator Position Sensor A Circuit Bank 1",
+   "fam": "",
+   "node": "b camshaft position actuator position sensor a"
+  },
+  {
+   "code": "P34BD",
+   "brand": "",
+   "ru": "Датчик положения фазовращателя распредвала B (датчик A): вне допустимого диапазона (банк 1)",
+   "en": "B Camshaft Position Actuator Position Sensor A Range/Performance Bank 1",
+   "fam": "",
+   "node": "b camshaft position actuator position sensor a"
+  },
+  {
+   "code": "P34BE",
+   "brand": "",
+   "ru": "Датчик положения фазовращателя распредвала B (датчик A): низкий уровень сигнала в цепи (банк 1)",
+   "en": "B Camshaft Position Actuator Position Sensor A Circuit Low Bank 1",
+   "fam": "",
+   "node": "b camshaft position actuator position sensor a"
+  },
+  {
+   "code": "P34BF",
+   "brand": "",
+   "ru": "Датчик положения фазовращателя распредвала B (датчик A): высокий уровень сигнала в цепи (банк 1)",
+   "en": "B Camshaft Position Actuator Position Sensor A Circuit High Bank 1",
+   "fam": "",
+   "node": "b camshaft position actuator position sensor a"
+  },
+  {
+   "code": "P34C0",
+   "brand": "",
+   "ru": "Датчик положения фазовращателя распредвала B (датчик A): цепь (банк 2)",
+   "en": "B Camshaft Position Actuator Position Sensor A Circuit Bank 2",
+   "fam": "",
+   "node": "b camshaft position actuator position sensor a"
+  },
+  {
+   "code": "P34C1",
+   "brand": "",
+   "ru": "Датчик положения фазовращателя распредвала B (датчик A): вне допустимого диапазона (банк 2)",
+   "en": "B Camshaft Position Actuator Position Sensor A Range/Performance Bank 2",
+   "fam": "",
+   "node": "b camshaft position actuator position sensor a"
+  },
+  {
+   "code": "P34C2",
+   "brand": "",
+   "ru": "Датчик положения фазовращателя распредвала B (датчик A): низкий уровень сигнала в цепи (банк 2)",
+   "en": "B Camshaft Position Actuator Position Sensor A Circuit Low Bank 2",
+   "fam": "",
+   "node": "b camshaft position actuator position sensor a"
+  },
+  {
+   "code": "P34C3",
+   "brand": "",
+   "ru": "Датчик положения фазовращателя распредвала B (датчик A): высокий уровень сигнала в цепи (банк 2)",
+   "en": "B Camshaft Position Actuator Position Sensor A Circuit High Bank 2",
+   "fam": "",
+   "node": "b camshaft position actuator position sensor a"
+  },
+  {
+   "code": "P34C4",
+   "brand": "",
+   "ru": "Фазовращатель распредвала A: драйвер — перегрузка по току / перегрев (банк 1)",
+   "en": "A Camshaft Position Actuator Control Circuit Driver Current/Temperature Too High Bank 1",
+   "fam": "",
+   "node": "a camshaft position actuator"
+  },
+  {
+   "code": "P34C5",
+   "brand": "",
+   "ru": "Фазовращатель распредвала A: драйвер — перегрузка по току / перегрев (банк 2)",
+   "en": "A Camshaft Position Actuator Control Circuit Driver Current/Temperature Too High Bank 2",
+   "fam": "",
+   "node": "a camshaft position actuator"
+  },
+  {
+   "code": "P34C6",
+   "brand": "",
+   "ru": "Фазовращатель распредвала B: драйвер — перегрузка по току / перегрев (банк 1)",
+   "en": "B Camshaft Position Actuator Control Circuit Driver Current/Temperature Too High Bank 1",
+   "fam": "",
+   "node": "b camshaft position actuator"
+  },
+  {
+   "code": "P34C7",
+   "brand": "",
+   "ru": "Фазовращатель распредвала B: драйвер — перегрузка по току / перегрев (банк 2)",
+   "en": "B Camshaft Position Actuator Control Circuit Driver Current/Temperature Too High Bank 2",
+   "fam": "",
+   "node": "b camshaft position actuator"
+  },
+  {
+   "code": "P34C8",
+   "brand": "",
+   "ru": "Блок управления фазами газораспределения: работа нарушена",
+   "en": "Camshaft Position Control Module Performance",
+   "fam": "",
+   "node": "camshaft position control module"
+  }
+ ]
+}

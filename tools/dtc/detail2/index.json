@@ -1,0 +1,2830 @@
+[
+ {
+  "name": "brand-bmw_001",
+  "series": "brand",
+  "brand": "bmw",
+  "n": 39,
+  "nodes": 11
+ },
+ {
+  "name": "brand-bmw_002",
+  "series": "brand",
+  "brand": "bmw",
+  "n": 40,
+  "nodes": 9
+ },
+ {
+  "name": "brand-bmw_003",
+  "series": "brand",
+  "brand": "bmw",
+  "n": 44,
+  "nodes": 14
+ },
+ {
+  "name": "brand-bmw_004",
+  "series": "brand",
+  "brand": "bmw",
+  "n": 45,
+  "nodes": 28
+ },
+ {
+  "name": "brand-bmw_005",
+  "series": "brand",
+  "brand": "bmw",
+  "n": 45,
+  "nodes": 16
+ },
+ {
+  "name": "brand-bmw_006",
+  "series": "brand",
+  "brand": "bmw",
+  "n": 37,
+  "nodes": 34
+ },
+ {
+  "name": "brand-chrysler_007",
+  "series": "brand",
+  "brand": "chrysler",
+  "n": 44,
+  "nodes": 24
+ },
+ {
+  "name": "brand-chrysler_008",
+  "series": "brand",
+  "brand": "chrysler",
+  "n": 45,
+  "nodes": 26
+ },
+ {
+  "name": "brand-chrysler_009",
+  "series": "brand",
+  "brand": "chrysler",
+  "n": 45,
+  "nodes": 30
+ },
+ {
+  "name": "brand-chrysler_010",
+  "series": "brand",
+  "brand": "chrysler",
+  "n": 45,
+  "nodes": 26
+ },
+ {
+  "name": "brand-chrysler_011",
+  "series": "brand",
+  "brand": "chrysler",
+  "n": 44,
+  "nodes": 38
+ },
+ {
+  "name": "brand-chrysler_012",
+  "series": "brand",
+  "brand": "chrysler",
+  "n": 45,
+  "nodes": 37
+ },
+ {
+  "name": "brand-chrysler_013",
+  "series": "brand",
+  "brand": "chrysler",
+  "n": 45,
+  "nodes": 38
+ },
+ {
+  "name": "brand-chrysler_014",
+  "series": "brand",
+  "brand": "chrysler",
+  "n": 18,
+  "nodes": 17
+ },
+ {
+  "name": "brand-ford_015",
+  "series": "brand",
+  "brand": "ford",
+  "n": 45,
+  "nodes": 35
+ },
+ {
+  "name": "brand-ford_016",
+  "series": "brand",
+  "brand": "ford",
+  "n": 45,
+  "nodes": 38
+ },
+ {
+  "name": "brand-ford_017",
+  "series": "brand",
+  "brand": "ford",
+  "n": 45,
+  "nodes": 32
+ },
+ {
+  "name": "brand-ford_018",
+  "series": "brand",
+  "brand": "ford",
+  "n": 45,
+  "nodes": 29
+ },
+ {
+  "name": "brand-ford_019",
+  "series": "brand",
+  "brand": "ford",
+  "n": 45,
+  "nodes": 30
+ },
+ {
+  "name": "brand-ford_020",
+  "series": "brand",
+  "brand": "ford",
+  "n": 44,
+  "nodes": 35
+ },
+ {
+  "name": "brand-ford_021",
+  "series": "brand",
+  "brand": "ford",
+  "n": 45,
+  "nodes": 42
+ },
+ {
+  "name": "brand-ford_022",
+  "series": "brand",
+  "brand": "ford",
+  "n": 45,
+  "nodes": 35
+ },
+ {
+  "name": "brand-ford_023",
+  "series": "brand",
+  "brand": "ford",
+  "n": 44,
+  "nodes": 36
+ },
+ {
+  "name": "brand-ford_024",
+  "series": "brand",
+  "brand": "ford",
+  "n": 10,
+  "nodes": 7
+ },
+ {
+  "name": "brand-gm_025",
+  "series": "brand",
+  "brand": "gm",
+  "n": 44,
+  "nodes": 25
+ },
+ {
+  "name": "brand-gm_026",
+  "series": "brand",
+  "brand": "gm",
+  "n": 45,
+  "nodes": 25
+ },
+ {
+  "name": "brand-gm_027",
+  "series": "brand",
+  "brand": "gm",
+  "n": 45,
+  "nodes": 29
+ },
+ {
+  "name": "brand-gm_028",
+  "series": "brand",
+  "brand": "gm",
+  "n": 45,
+  "nodes": 28
+ },
+ {
+  "name": "brand-gm_029",
+  "series": "brand",
+  "brand": "gm",
+  "n": 45,
+  "nodes": 38
+ },
+ {
+  "name": "brand-gm_030",
+  "series": "brand",
+  "brand": "gm",
+  "n": 45,
+  "nodes": 37
+ },
+ {
+  "name": "brand-gm_031",
+  "series": "brand",
+  "brand": "gm",
+  "n": 45,
+  "nodes": 36
+ },
+ {
+  "name": "brand-gm_032",
+  "series": "brand",
+  "brand": "gm",
+  "n": 45,
+  "nodes": 39
+ },
+ {
+  "name": "brand-gm_033",
+  "series": "brand",
+  "brand": "gm",
+  "n": 45,
+  "nodes": 32
+ },
+ {
+  "name": "brand-gm_034",
+  "series": "brand",
+  "brand": "gm",
+  "n": 44,
+  "nodes": 37
+ },
+ {
+  "name": "brand-gm_035",
+  "series": "brand",
+  "brand": "gm",
+  "n": 13,
+  "nodes": 10
+ },
+ {
+  "name": "brand-honda_036",
+  "series": "brand",
+  "brand": "honda",
+  "n": 45,
+  "nodes": 20
+ },
+ {
+  "name": "brand-honda_037",
+  "series": "brand",
+  "brand": "honda",
+  "n": 44,
+  "nodes": 25
+ },
+ {
+  "name": "brand-honda_038",
+  "series": "brand",
+  "brand": "honda",
+  "n": 6,
+  "nodes": 5
+ },
+ {
+  "name": "brand-hyundai_kia_039",
+  "series": "brand",
+  "brand": "hyundai_kia",
+  "n": 45,
+  "nodes": 12
+ },
+ {
+  "name": "brand-hyundai_kia_040",
+  "series": "brand",
+  "brand": "hyundai_kia",
+  "n": 45,
+  "nodes": 25
+ },
+ {
+  "name": "brand-hyundai_kia_041",
+  "series": "brand",
+  "brand": "hyundai_kia",
+  "n": 29,
+  "nodes": 20
+ },
+ {
+  "name": "brand-jaguar_042",
+  "series": "brand",
+  "brand": "jaguar",
+  "n": 45,
+  "nodes": 20
+ },
+ {
+  "name": "brand-jaguar_043",
+  "series": "brand",
+  "brand": "jaguar",
+  "n": 45,
+  "nodes": 25
+ },
+ {
+  "name": "brand-jaguar_044",
+  "series": "brand",
+  "brand": "jaguar",
+  "n": 45,
+  "nodes": 38
+ },
+ {
+  "name": "brand-jaguar_045",
+  "series": "brand",
+  "brand": "jaguar",
+  "n": 28,
+  "nodes": 20
+ },
+ {
+  "name": "brand-lada_046",
+  "series": "brand",
+  "brand": "lada",
+  "n": 39,
+  "nodes": 12
+ },
+ {
+  "name": "brand-mazda_047",
+  "series": "brand",
+  "brand": "mazda",
+  "n": 45,
+  "nodes": 28
+ },
+ {
+  "name": "brand-mazda_048",
+  "series": "brand",
+  "brand": "mazda",
+  "n": 45,
+  "nodes": 39
+ },
+ {
+  "name": "brand-mazda_049",
+  "series": "brand",
+  "brand": "mazda",
+  "n": 45,
+  "nodes": 35
+ },
+ {
+  "name": "brand-mazda_050",
+  "series": "brand",
+  "brand": "mazda",
+  "n": 45,
+  "nodes": 34
+ },
+ {
+  "name": "brand-mazda_051",
+  "series": "brand",
+  "brand": "mazda",
+  "n": 45,
+  "nodes": 37
+ },
+ {
+  "name": "brand-mazda_052",
+  "series": "brand",
+  "brand": "mazda",
+  "n": 8,
+  "nodes": 8
+ },
+ {
+  "name": "brand-mercedes_053",
+  "series": "brand",
+  "brand": "mercedes",
+  "n": 32,
+  "nodes": 31
+ },
+ {
+  "name": "brand-mitsubishi_054",
+  "series": "brand",
+  "brand": "mitsubishi",
+  "n": 33,
+  "nodes": 33
+ },
+ {
+  "name": "brand-nissan_055",
+  "series": "brand",
+  "brand": "nissan",
+  "n": 43,
+  "nodes": 21
+ },
+ {
+  "name": "brand-nissan_056",
+  "series": "brand",
+  "brand": "nissan",
+  "n": 45,
+  "nodes": 23
+ },
+ {
+  "name": "brand-nissan_057",
+  "series": "brand",
+  "brand": "nissan",
+  "n": 45,
+  "nodes": 37
+ },
+ {
+  "name": "brand-nissan_058",
+  "series": "brand",
+  "brand": "nissan",
+  "n": 45,
+  "nodes": 34
+ },
+ {
+  "name": "brand-subaru_059",
+  "series": "brand",
+  "brand": "subaru",
+  "n": 43,
+  "nodes": 21
+ },
+ {
+  "name": "brand-subaru_060",
+  "series": "brand",
+  "brand": "subaru",
+  "n": 44,
+  "nodes": 27
+ },
+ {
+  "name": "brand-subaru_061",
+  "series": "brand",
+  "brand": "subaru",
+  "n": 6,
+  "nodes": 4
+ },
+ {
+  "name": "brand-suzuki_062",
+  "series": "brand",
+  "brand": "suzuki",
+  "n": 17,
+  "nodes": 17
+ },
+ {
+  "name": "brand-toyota_063",
+  "series": "brand",
+  "brand": "toyota",
+  "n": 45,
+  "nodes": 30
+ },
+ {
+  "name": "brand-toyota_064",
+  "series": "brand",
+  "brand": "toyota",
+  "n": 45,
+  "nodes": 21
+ },
+ {
+  "name": "brand-toyota_065",
+  "series": "brand",
+  "brand": "toyota",
+  "n": 3,
+  "nodes": 1
+ },
+ {
+  "name": "brand-vag_066",
+  "series": "brand",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 15
+ },
+ {
+  "name": "brand-vag_067",
+  "series": "brand",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 22
+ },
+ {
+  "name": "brand-vag_068",
+  "series": "brand",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 8
+ },
+ {
+  "name": "brand-vag_069",
+  "series": "brand",
+  "brand": "vag",
+  "n": 44,
+  "nodes": 17
+ },
+ {
+  "name": "brand-vag_070",
+  "series": "brand",
+  "brand": "vag",
+  "n": 44,
+  "nodes": 11
+ },
+ {
+  "name": "brand-vag_071",
+  "series": "brand",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 21
+ },
+ {
+  "name": "brand-vag_072",
+  "series": "brand",
+  "brand": "vag",
+  "n": 42,
+  "nodes": 19
+ },
+ {
+  "name": "brand-vag_073",
+  "series": "brand",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 26
+ },
+ {
+  "name": "brand-vag_074",
+  "series": "brand",
+  "brand": "vag",
+  "n": 41,
+  "nodes": 27
+ },
+ {
+  "name": "brand-vag_075",
+  "series": "brand",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 29
+ },
+ {
+  "name": "brand-vag_076",
+  "series": "brand",
+  "brand": "vag",
+  "n": 44,
+  "nodes": 23
+ },
+ {
+  "name": "brand-vag_077",
+  "series": "brand",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 30
+ },
+ {
+  "name": "brand-vag_078",
+  "series": "brand",
+  "brand": "vag",
+  "n": 1,
+  "nodes": 1
+ },
+ {
+  "name": "sae_001",
+  "series": "sae",
+  "brand": "",
+  "n": 45,
+  "nodes": 21
+ },
+ {
+  "name": "sae_002",
+  "series": "sae",
+  "brand": "",
+  "n": 43,
+  "nodes": 17
+ },
+ {
+  "name": "sae_003",
+  "series": "sae",
+  "brand": "",
+  "n": 45,
+  "nodes": 37
+ },
+ {
+  "name": "sae_004",
+  "series": "sae",
+  "brand": "",
+  "n": 43,
+  "nodes": 41
+ },
+ {
+  "name": "sae_005",
+  "series": "sae",
+  "brand": "",
+  "n": 45,
+  "nodes": 25
+ },
+ {
+  "name": "sae_006",
+  "series": "sae",
+  "brand": "",
+  "n": 45,
+  "nodes": 16
+ },
+ {
+  "name": "sae_007",
+  "series": "sae",
+  "brand": "",
+  "n": 45,
+  "nodes": 28
+ },
+ {
+  "name": "sae_008",
+  "series": "sae",
+  "brand": "",
+  "n": 35,
+  "nodes": 15
+ },
+ {
+  "name": "sae_009",
+  "series": "sae",
+  "brand": "",
+  "n": 45,
+  "nodes": 16
+ },
+ {
+  "name": "sae_010",
+  "series": "sae",
+  "brand": "",
+  "n": 45,
+  "nodes": 36
+ },
+ {
+  "name": "sae_011",
+  "series": "sae",
+  "brand": "",
+  "n": 45,
+  "nodes": 25
+ },
+ {
+  "name": "sae_012",
+  "series": "sae",
+  "brand": "",
+  "n": 45,
+  "nodes": 22
+ },
+ {
+  "name": "sae_013",
+  "series": "sae",
+  "brand": "",
+  "n": 43,
+  "nodes": 20
+ },
+ {
+  "name": "sae_014",
+  "series": "sae",
+  "brand": "",
+  "n": 42,
+  "nodes": 25
+ },
+ {
+  "name": "sae_015",
+  "series": "sae",
+  "brand": "",
+  "n": 41,
+  "nodes": 23
+ },
+ {
+  "name": "sae_016",
+  "series": "sae",
+  "brand": "",
+  "n": 44,
+  "nodes": 14
+ },
+ {
+  "name": "sae_017",
+  "series": "sae",
+  "brand": "",
+  "n": 45,
+  "nodes": 20
+ },
+ {
+  "name": "sae_018",
+  "series": "sae",
+  "brand": "",
+  "n": 41,
+  "nodes": 15
+ },
+ {
+  "name": "sae_019",
+  "series": "sae",
+  "brand": "",
+  "n": 45,
+  "nodes": 11
+ },
+ {
+  "name": "sae_020",
+  "series": "sae",
+  "brand": "",
+  "n": 59,
+  "nodes": 1
+ },
+ {
+  "name": "sae_021",
+  "series": "sae",
+  "brand": "",
+  "n": 53,
+  "nodes": 1
+ },
+ {
+  "name": "sae_022",
+  "series": "sae",
+  "brand": "",
+  "n": 42,
+  "nodes": 1
+ },
+ {
+  "name": "sae_023",
+  "series": "sae",
+  "brand": "",
+  "n": 42,
+  "nodes": 3
+ },
+ {
+  "name": "sae_024",
+  "series": "sae",
+  "brand": "",
+  "n": 45,
+  "nodes": 5
+ },
+ {
+  "name": "sae_025",
+  "series": "sae",
+  "brand": "",
+  "n": 42,
+  "nodes": 2
+ },
+ {
+  "name": "sae_026",
+  "series": "sae",
+  "brand": "",
+  "n": 59,
+  "nodes": 5
+ },
+ {
+  "name": "sae_027",
+  "series": "sae",
+  "brand": "",
+  "n": 45,
+  "nodes": 4
+ },
+ {
+  "name": "sae_028",
+  "series": "sae",
+  "brand": "",
+  "n": 34,
+  "nodes": 7
+ },
+ {
+  "name": "sae_029",
+  "series": "sae",
+  "brand": "",
+  "n": 43,
+  "nodes": 5
+ },
+ {
+  "name": "sae_030",
+  "series": "sae",
+  "brand": "",
+  "n": 42,
+  "nodes": 14
+ },
+ {
+  "name": "sae_031",
+  "series": "sae",
+  "brand": "",
+  "n": 45,
+  "nodes": 18
+ },
+ {
+  "name": "sae_032",
+  "series": "sae",
+  "brand": "",
+  "n": 36,
+  "nodes": 13
+ },
+ {
+  "name": "sae_033",
+  "series": "sae",
+  "brand": "",
+  "n": 42,
+  "nodes": 5
+ },
+ {
+  "name": "sae_034",
+  "series": "sae",
+  "brand": "",
+  "n": 41,
+  "nodes": 9
+ },
+ {
+  "name": "sae_035",
+  "series": "sae",
+  "brand": "",
+  "n": 45,
+  "nodes": 8
+ },
+ {
+  "name": "sae_036",
+  "series": "sae",
+  "brand": "",
+  "n": 41,
+  "nodes": 14
+ },
+ {
+  "name": "sae_037",
+  "series": "sae",
+  "brand": "",
+  "n": 37,
+  "nodes": 1
+ },
+ {
+  "name": "sae_038",
+  "series": "sae",
+  "brand": "",
+  "n": 42,
+  "nodes": 7
+ },
+ {
+  "name": "sae_039",
+  "series": "sae",
+  "brand": "",
+  "n": 43,
+  "nodes": 11
+ },
+ {
+  "name": "sae_040",
+  "series": "sae",
+  "brand": "",
+  "n": 37,
+  "nodes": 13
+ },
+ {
+  "name": "sae_041",
+  "series": "sae",
+  "brand": "",
+  "n": 36,
+  "nodes": 3
+ },
+ {
+  "name": "sae_042",
+  "series": "sae",
+  "brand": "",
+  "n": 44,
+  "nodes": 7
+ },
+ {
+  "name": "sae_043",
+  "series": "sae",
+  "brand": "",
+  "n": 43,
+  "nodes": 9
+ },
+ {
+  "name": "sae_044",
+  "series": "sae",
+  "brand": "",
+  "n": 43,
+  "nodes": 5
+ },
+ {
+  "name": "sae_045",
+  "series": "sae",
+  "brand": "",
+  "n": 35,
+  "nodes": 5
+ },
+ {
+  "name": "sae_046",
+  "series": "sae",
+  "brand": "",
+  "n": 27,
+  "nodes": 5
+ },
+ {
+  "name": "sae_047",
+  "series": "sae",
+  "brand": "",
+  "n": 48,
+  "nodes": 1
+ },
+ {
+  "name": "sae_048",
+  "series": "sae",
+  "brand": "",
+  "n": 43,
+  "nodes": 10
+ },
+ {
+  "name": "sae_049",
+  "series": "sae",
+  "brand": "",
+  "n": 59,
+  "nodes": 2
+ },
+ {
+  "name": "sae_050",
+  "series": "sae",
+  "brand": "",
+  "n": 28,
+  "nodes": 2
+ },
+ {
+  "name": "sae_051",
+  "series": "sae",
+  "brand": "",
+  "n": 43,
+  "nodes": 6
+ },
+ {
+  "name": "sae_052",
+  "series": "sae",
+  "brand": "",
+  "n": 41,
+  "nodes": 9
+ },
+ {
+  "name": "sae_053",
+  "series": "sae",
+  "brand": "",
+  "n": 42,
+  "nodes": 3
+ },
+ {
+  "name": "sae_054",
+  "series": "sae",
+  "brand": "",
+  "n": 33,
+  "nodes": 3
+ },
+ {
+  "name": "sae_055",
+  "series": "sae",
+  "brand": "",
+  "n": 43,
+  "nodes": 1
+ },
+ {
+  "name": "sae_056",
+  "series": "sae",
+  "brand": "",
+  "n": 41,
+  "nodes": 6
+ },
+ {
+  "name": "sae_057",
+  "series": "sae",
+  "brand": "",
+  "n": 41,
+  "nodes": 9
+ },
+ {
+  "name": "sae_058",
+  "series": "sae",
+  "brand": "",
+  "n": 43,
+  "nodes": 4
+ },
+ {
+  "name": "sae_059",
+  "series": "sae",
+  "brand": "",
+  "n": 45,
+  "nodes": 13
+ },
+ {
+  "name": "sae_060",
+  "series": "sae",
+  "brand": "",
+  "n": 45,
+  "nodes": 20
+ },
+ {
+  "name": "sae_061",
+  "series": "sae",
+  "brand": "",
+  "n": 45,
+  "nodes": 15
+ },
+ {
+  "name": "sae_062",
+  "series": "sae",
+  "brand": "",
+  "n": 27,
+  "nodes": 10
+ },
+ {
+  "name": "sae_063",
+  "series": "sae",
+  "brand": "",
+  "n": 41,
+  "nodes": 5
+ },
+ {
+  "name": "sae_064",
+  "series": "sae",
+  "brand": "",
+  "n": 44,
+  "nodes": 7
+ },
+ {
+  "name": "sae_065",
+  "series": "sae",
+  "brand": "",
+  "n": 42,
+  "nodes": 22
+ },
+ {
+  "name": "sae_066",
+  "series": "sae",
+  "brand": "",
+  "n": 45,
+  "nodes": 15
+ },
+ {
+  "name": "sae_067",
+  "series": "sae",
+  "brand": "",
+  "n": 43,
+  "nodes": 13
+ },
+ {
+  "name": "sae_068",
+  "series": "sae",
+  "brand": "",
+  "n": 59,
+  "nodes": 8
+ },
+ {
+  "name": "sae_069",
+  "series": "sae",
+  "brand": "",
+  "n": 59,
+  "nodes": 1
+ },
+ {
+  "name": "sae_070",
+  "series": "sae",
+  "brand": "",
+  "n": 55,
+  "nodes": 1
+ },
+ {
+  "name": "sae_071",
+  "series": "sae",
+  "brand": "",
+  "n": 34,
+  "nodes": 1
+ },
+ {
+  "name": "sae_072",
+  "series": "sae",
+  "brand": "",
+  "n": 34,
+  "nodes": 2
+ },
+ {
+  "name": "sae_073",
+  "series": "sae",
+  "brand": "",
+  "n": 39,
+  "nodes": 1
+ },
+ {
+  "name": "sae_074",
+  "series": "sae",
+  "brand": "",
+  "n": 44,
+  "nodes": 10
+ },
+ {
+  "name": "sae_075",
+  "series": "sae",
+  "brand": "",
+  "n": 32,
+  "nodes": 7
+ },
+ {
+  "name": "sae_076",
+  "series": "sae",
+  "brand": "",
+  "n": 43,
+  "nodes": 4
+ },
+ {
+  "name": "sae_077",
+  "series": "sae",
+  "brand": "",
+  "n": 38,
+  "nodes": 2
+ },
+ {
+  "name": "sae_078",
+  "series": "sae",
+  "brand": "",
+  "n": 44,
+  "nodes": 5
+ },
+ {
+  "name": "sae_079",
+  "series": "sae",
+  "brand": "",
+  "n": 43,
+  "nodes": 15
+ },
+ {
+  "name": "sae_080",
+  "series": "sae",
+  "brand": "",
+  "n": 45,
+  "nodes": 18
+ },
+ {
+  "name": "sae_081",
+  "series": "sae",
+  "brand": "",
+  "n": 42,
+  "nodes": 6
+ },
+ {
+  "name": "sae_082",
+  "series": "sae",
+  "brand": "",
+  "n": 40,
+  "nodes": 5
+ },
+ {
+  "name": "sae_083",
+  "series": "sae",
+  "brand": "",
+  "n": 43,
+  "nodes": 13
+ },
+ {
+  "name": "sae_084",
+  "series": "sae",
+  "brand": "",
+  "n": 59,
+  "nodes": 2
+ },
+ {
+  "name": "sae_085",
+  "series": "sae",
+  "brand": "",
+  "n": 59,
+  "nodes": 1
+ },
+ {
+  "name": "sae_086",
+  "series": "sae",
+  "brand": "",
+  "n": 44,
+  "nodes": 1
+ },
+ {
+  "name": "sae_087",
+  "series": "sae",
+  "brand": "",
+  "n": 33,
+  "nodes": 10
+ },
+ {
+  "name": "sae_088",
+  "series": "sae",
+  "brand": "",
+  "n": 59,
+  "nodes": 1
+ },
+ {
+  "name": "sae_089",
+  "series": "sae",
+  "brand": "",
+  "n": 44,
+  "nodes": 16
+ },
+ {
+  "name": "sae_090",
+  "series": "sae",
+  "brand": "",
+  "n": 42,
+  "nodes": 18
+ },
+ {
+  "name": "sae_091",
+  "series": "sae",
+  "brand": "",
+  "n": 45,
+  "nodes": 7
+ },
+ {
+  "name": "sae_092",
+  "series": "sae",
+  "brand": "",
+  "n": 43,
+  "nodes": 13
+ },
+ {
+  "name": "sae_093",
+  "series": "sae",
+  "brand": "",
+  "n": 59,
+  "nodes": 4
+ },
+ {
+  "name": "sae_094",
+  "series": "sae",
+  "brand": "",
+  "n": 42,
+  "nodes": 18
+ },
+ {
+  "name": "sae_095",
+  "series": "sae",
+  "brand": "",
+  "n": 45,
+  "nodes": 12
+ },
+ {
+  "name": "sae_096",
+  "series": "sae",
+  "brand": "",
+  "n": 45,
+  "nodes": 11
+ },
+ {
+  "name": "sae_097",
+  "series": "sae",
+  "brand": "",
+  "n": 34,
+  "nodes": 13
+ },
+ {
+  "name": "sae_098",
+  "series": "sae",
+  "brand": "",
+  "n": 33,
+  "nodes": 1
+ },
+ {
+  "name": "sae_099",
+  "series": "sae",
+  "brand": "",
+  "n": 32,
+  "nodes": 6
+ },
+ {
+  "name": "sae_100",
+  "series": "sae",
+  "brand": "",
+  "n": 39,
+  "nodes": 3
+ },
+ {
+  "name": "sae_101",
+  "series": "sae",
+  "brand": "",
+  "n": 42,
+  "nodes": 4
+ },
+ {
+  "name": "sae_102",
+  "series": "sae",
+  "brand": "",
+  "n": 42,
+  "nodes": 6
+ },
+ {
+  "name": "sae_103",
+  "series": "sae",
+  "brand": "",
+  "n": 43,
+  "nodes": 11
+ },
+ {
+  "name": "sae_104",
+  "series": "sae",
+  "brand": "",
+  "n": 41,
+  "nodes": 10
+ },
+ {
+  "name": "sae_105",
+  "series": "sae",
+  "brand": "",
+  "n": 41,
+  "nodes": 17
+ },
+ {
+  "name": "sae_106",
+  "series": "sae",
+  "brand": "",
+  "n": 41,
+  "nodes": 13
+ },
+ {
+  "name": "sae_107",
+  "series": "sae",
+  "brand": "",
+  "n": 45,
+  "nodes": 9
+ },
+ {
+  "name": "sae_108",
+  "series": "sae",
+  "brand": "",
+  "n": 45,
+  "nodes": 9
+ },
+ {
+  "name": "sae_109",
+  "series": "sae",
+  "brand": "",
+  "n": 45,
+  "nodes": 11
+ },
+ {
+  "name": "sae_110",
+  "series": "sae",
+  "brand": "",
+  "n": 45,
+  "nodes": 13
+ },
+ {
+  "name": "sae_111",
+  "series": "sae",
+  "brand": "",
+  "n": 43,
+  "nodes": 23
+ },
+ {
+  "name": "sae_112",
+  "series": "sae",
+  "brand": "",
+  "n": 42,
+  "nodes": 9
+ },
+ {
+  "name": "sae_113",
+  "series": "sae",
+  "brand": "",
+  "n": 45,
+  "nodes": 19
+ },
+ {
+  "name": "sae_114",
+  "series": "sae",
+  "brand": "",
+  "n": 43,
+  "nodes": 15
+ },
+ {
+  "name": "sae_115",
+  "series": "sae",
+  "brand": "",
+  "n": 40,
+  "nodes": 9
+ },
+ {
+  "name": "sae_116",
+  "series": "sae",
+  "brand": "",
+  "n": 43,
+  "nodes": 9
+ },
+ {
+  "name": "sae_117",
+  "series": "sae",
+  "brand": "",
+  "n": 48,
+  "nodes": 6
+ },
+ {
+  "name": "sae_118",
+  "series": "sae",
+  "brand": "",
+  "n": 35,
+  "nodes": 11
+ },
+ {
+  "name": "sae_119",
+  "series": "sae",
+  "brand": "",
+  "n": 43,
+  "nodes": 8
+ },
+ {
+  "name": "sae_120",
+  "series": "sae",
+  "brand": "",
+  "n": 37,
+  "nodes": 10
+ },
+ {
+  "name": "sae_121",
+  "series": "sae",
+  "brand": "",
+  "n": 36,
+  "nodes": 10
+ },
+ {
+  "name": "sae_122",
+  "series": "sae",
+  "brand": "",
+  "n": 57,
+  "nodes": 1
+ },
+ {
+  "name": "sae_123",
+  "series": "sae",
+  "brand": "",
+  "n": 45,
+  "nodes": 17
+ },
+ {
+  "name": "sae_124",
+  "series": "sae",
+  "brand": "",
+  "n": 44,
+  "nodes": 17
+ },
+ {
+  "name": "sae_125",
+  "series": "sae",
+  "brand": "",
+  "n": 42,
+  "nodes": 15
+ },
+ {
+  "name": "sae_126",
+  "series": "sae",
+  "brand": "",
+  "n": 42,
+  "nodes": 15
+ },
+ {
+  "name": "sae_127",
+  "series": "sae",
+  "brand": "",
+  "n": 43,
+  "nodes": 20
+ },
+ {
+  "name": "sae_128",
+  "series": "sae",
+  "brand": "",
+  "n": 43,
+  "nodes": 16
+ },
+ {
+  "name": "sae_129",
+  "series": "sae",
+  "brand": "",
+  "n": 44,
+  "nodes": 6
+ },
+ {
+  "name": "sae_130",
+  "series": "sae",
+  "brand": "",
+  "n": 30,
+  "nodes": 8
+ },
+ {
+  "name": "sae_131",
+  "series": "sae",
+  "brand": "",
+  "n": 43,
+  "nodes": 7
+ },
+ {
+  "name": "sae_132",
+  "series": "sae",
+  "brand": "",
+  "n": 45,
+  "nodes": 13
+ },
+ {
+  "name": "sae_133",
+  "series": "sae",
+  "brand": "",
+  "n": 45,
+  "nodes": 19
+ },
+ {
+  "name": "sae_134",
+  "series": "sae",
+  "brand": "",
+  "n": 45,
+  "nodes": 23
+ },
+ {
+  "name": "sae_135",
+  "series": "sae",
+  "brand": "",
+  "n": 45,
+  "nodes": 12
+ },
+ {
+  "name": "sae_136",
+  "series": "sae",
+  "brand": "",
+  "n": 49,
+  "nodes": 7
+ },
+ {
+  "name": "sae_137",
+  "series": "sae",
+  "brand": "",
+  "n": 43,
+  "nodes": 8
+ },
+ {
+  "name": "sae_138",
+  "series": "sae",
+  "brand": "",
+  "n": 37,
+  "nodes": 13
+ },
+ {
+  "name": "sae_139",
+  "series": "sae",
+  "brand": "",
+  "n": 37,
+  "nodes": 14
+ },
+ {
+  "name": "sae_140",
+  "series": "sae",
+  "brand": "",
+  "n": 37,
+  "nodes": 4
+ },
+ {
+  "name": "sae_141",
+  "series": "sae",
+  "brand": "",
+  "n": 38,
+  "nodes": 6
+ },
+ {
+  "name": "sae_142",
+  "series": "sae",
+  "brand": "",
+  "n": 45,
+  "nodes": 3
+ },
+ {
+  "name": "sae_143",
+  "series": "sae",
+  "brand": "",
+  "n": 45,
+  "nodes": 12
+ },
+ {
+  "name": "sae_144",
+  "series": "sae",
+  "brand": "",
+  "n": 43,
+  "nodes": 16
+ },
+ {
+  "name": "sae_145",
+  "series": "sae",
+  "brand": "",
+  "n": 45,
+  "nodes": 8
+ },
+ {
+  "name": "sae_146",
+  "series": "sae",
+  "brand": "",
+  "n": 45,
+  "nodes": 17
+ },
+ {
+  "name": "sae_147",
+  "series": "sae",
+  "brand": "",
+  "n": 38,
+  "nodes": 9
+ },
+ {
+  "name": "sae_148",
+  "series": "sae",
+  "brand": "",
+  "n": 45,
+  "nodes": 14
+ },
+ {
+  "name": "sae_149",
+  "series": "sae",
+  "brand": "",
+  "n": 45,
+  "nodes": 13
+ },
+ {
+  "name": "sae_150",
+  "series": "sae",
+  "brand": "",
+  "n": 38,
+  "nodes": 15
+ },
+ {
+  "name": "sae_151",
+  "series": "sae",
+  "brand": "",
+  "n": 43,
+  "nodes": 14
+ },
+ {
+  "name": "sae_152",
+  "series": "sae",
+  "brand": "",
+  "n": 43,
+  "nodes": 20
+ },
+ {
+  "name": "sae_153",
+  "series": "sae",
+  "brand": "",
+  "n": 44,
+  "nodes": 13
+ },
+ {
+  "name": "sae_154",
+  "series": "sae",
+  "brand": "",
+  "n": 45,
+  "nodes": 20
+ },
+ {
+  "name": "sae_155",
+  "series": "sae",
+  "brand": "",
+  "n": 43,
+  "nodes": 14
+ },
+ {
+  "name": "sae_156",
+  "series": "sae",
+  "brand": "",
+  "n": 42,
+  "nodes": 12
+ },
+ {
+  "name": "sae_157",
+  "series": "sae",
+  "brand": "",
+  "n": 43,
+  "nodes": 15
+ },
+ {
+  "name": "sae_158",
+  "series": "sae",
+  "brand": "",
+  "n": 45,
+  "nodes": 27
+ },
+ {
+  "name": "sae_159",
+  "series": "sae",
+  "brand": "",
+  "n": 45,
+  "nodes": 21
+ },
+ {
+  "name": "sae_160",
+  "series": "sae",
+  "brand": "",
+  "n": 44,
+  "nodes": 21
+ },
+ {
+  "name": "sae_161",
+  "series": "sae",
+  "brand": "",
+  "n": 45,
+  "nodes": 25
+ },
+ {
+  "name": "sae_162",
+  "series": "sae",
+  "brand": "",
+  "n": 45,
+  "nodes": 33
+ },
+ {
+  "name": "sae_163",
+  "series": "sae",
+  "brand": "",
+  "n": 59,
+  "nodes": 10
+ },
+ {
+  "name": "sae_164",
+  "series": "sae",
+  "brand": "",
+  "n": 45,
+  "nodes": 17
+ },
+ {
+  "name": "sae_165",
+  "series": "sae",
+  "brand": "",
+  "n": 43,
+  "nodes": 15
+ },
+ {
+  "name": "sae_166",
+  "series": "sae",
+  "brand": "",
+  "n": 44,
+  "nodes": 16
+ },
+ {
+  "name": "sae_167",
+  "series": "sae",
+  "brand": "",
+  "n": 42,
+  "nodes": 17
+ },
+ {
+  "name": "sae_168",
+  "series": "sae",
+  "brand": "",
+  "n": 42,
+  "nodes": 19
+ },
+ {
+  "name": "sae_169",
+  "series": "sae",
+  "brand": "",
+  "n": 45,
+  "nodes": 14
+ },
+ {
+  "name": "sae_170",
+  "series": "sae",
+  "brand": "",
+  "n": 42,
+  "nodes": 11
+ },
+ {
+  "name": "sae_171",
+  "series": "sae",
+  "brand": "",
+  "n": 44,
+  "nodes": 8
+ },
+ {
+  "name": "sae_172",
+  "series": "sae",
+  "brand": "",
+  "n": 42,
+  "nodes": 10
+ },
+ {
+  "name": "sae_173",
+  "series": "sae",
+  "brand": "",
+  "n": 45,
+  "nodes": 21
+ },
+ {
+  "name": "sae_174",
+  "series": "sae",
+  "brand": "",
+  "n": 45,
+  "nodes": 34
+ },
+ {
+  "name": "sae_175",
+  "series": "sae",
+  "brand": "",
+  "n": 44,
+  "nodes": 15
+ },
+ {
+  "name": "sae_176",
+  "series": "sae",
+  "brand": "",
+  "n": 45,
+  "nodes": 14
+ },
+ {
+  "name": "sae_177",
+  "series": "sae",
+  "brand": "",
+  "n": 45,
+  "nodes": 19
+ },
+ {
+  "name": "sae_178",
+  "series": "sae",
+  "brand": "",
+  "n": 45,
+  "nodes": 24
+ },
+ {
+  "name": "sae_179",
+  "series": "sae",
+  "brand": "",
+  "n": 45,
+  "nodes": 23
+ },
+ {
+  "name": "sae_180",
+  "series": "sae",
+  "brand": "",
+  "n": 45,
+  "nodes": 27
+ },
+ {
+  "name": "sae_181",
+  "series": "sae",
+  "brand": "",
+  "n": 45,
+  "nodes": 28
+ },
+ {
+  "name": "sae_182",
+  "series": "sae",
+  "brand": "",
+  "n": 45,
+  "nodes": 28
+ },
+ {
+  "name": "sae_183",
+  "series": "sae",
+  "brand": "",
+  "n": 42,
+  "nodes": 24
+ },
+ {
+  "name": "sae_184",
+  "series": "sae",
+  "brand": "",
+  "n": 43,
+  "nodes": 16
+ },
+ {
+  "name": "sae_185",
+  "series": "sae",
+  "brand": "",
+  "n": 43,
+  "nodes": 18
+ },
+ {
+  "name": "sae_186",
+  "series": "sae",
+  "brand": "",
+  "n": 41,
+  "nodes": 24
+ },
+ {
+  "name": "sae_187",
+  "series": "sae",
+  "brand": "",
+  "n": 43,
+  "nodes": 19
+ },
+ {
+  "name": "sae_188",
+  "series": "sae",
+  "brand": "",
+  "n": 44,
+  "nodes": 18
+ },
+ {
+  "name": "sae_189",
+  "series": "sae",
+  "brand": "",
+  "n": 42,
+  "nodes": 13
+ },
+ {
+  "name": "sae_190",
+  "series": "sae",
+  "brand": "",
+  "n": 42,
+  "nodes": 16
+ },
+ {
+  "name": "sae_191",
+  "series": "sae",
+  "brand": "",
+  "n": 38,
+  "nodes": 8
+ },
+ {
+  "name": "sae_192",
+  "series": "sae",
+  "brand": "",
+  "n": 29,
+  "nodes": 7
+ },
+ {
+  "name": "sae_193",
+  "series": "sae",
+  "brand": "",
+  "n": 45,
+  "nodes": 5
+ },
+ {
+  "name": "sae_194",
+  "series": "sae",
+  "brand": "",
+  "n": 45,
+  "nodes": 17
+ },
+ {
+  "name": "sae_195",
+  "series": "sae",
+  "brand": "",
+  "n": 45,
+  "nodes": 27
+ },
+ {
+  "name": "sae_196",
+  "series": "sae",
+  "brand": "",
+  "n": 45,
+  "nodes": 44
+ },
+ {
+  "name": "sae_197",
+  "series": "sae",
+  "brand": "",
+  "n": 45,
+  "nodes": 43
+ },
+ {
+  "name": "sae_198",
+  "series": "sae",
+  "brand": "",
+  "n": 45,
+  "nodes": 44
+ },
+ {
+  "name": "sae_199",
+  "series": "sae",
+  "brand": "",
+  "n": 45,
+  "nodes": 45
+ },
+ {
+  "name": "sae_200",
+  "series": "sae",
+  "brand": "",
+  "n": 45,
+  "nodes": 43
+ },
+ {
+  "name": "sae_201",
+  "series": "sae",
+  "brand": "",
+  "n": 45,
+  "nodes": 45
+ },
+ {
+  "name": "sae_202",
+  "series": "sae",
+  "brand": "",
+  "n": 45,
+  "nodes": 24
+ },
+ {
+  "name": "sae_203",
+  "series": "sae",
+  "brand": "",
+  "n": 45,
+  "nodes": 43
+ },
+ {
+  "name": "sae_204",
+  "series": "sae",
+  "brand": "",
+  "n": 45,
+  "nodes": 45
+ },
+ {
+  "name": "sae_205",
+  "series": "sae",
+  "brand": "",
+  "n": 45,
+  "nodes": 45
+ },
+ {
+  "name": "sae_206",
+  "series": "sae",
+  "brand": "",
+  "n": 45,
+  "nodes": 43
+ },
+ {
+  "name": "sae_207",
+  "series": "sae",
+  "brand": "",
+  "n": 45,
+  "nodes": 45
+ },
+ {
+  "name": "sae_208",
+  "series": "sae",
+  "brand": "",
+  "n": 45,
+  "nodes": 45
+ },
+ {
+  "name": "sae_209",
+  "series": "sae",
+  "brand": "",
+  "n": 45,
+  "nodes": 45
+ },
+ {
+  "name": "sae_210",
+  "series": "sae",
+  "brand": "",
+  "n": 44,
+  "nodes": 32
+ },
+ {
+  "name": "sae_211",
+  "series": "sae",
+  "brand": "",
+  "n": 45,
+  "nodes": 41
+ },
+ {
+  "name": "sae_212",
+  "series": "sae",
+  "brand": "",
+  "n": 45,
+  "nodes": 41
+ },
+ {
+  "name": "sae_213",
+  "series": "sae",
+  "brand": "",
+  "n": 43,
+  "nodes": 24
+ },
+ {
+  "name": "sae_214",
+  "series": "sae",
+  "brand": "",
+  "n": 44,
+  "nodes": 14
+ },
+ {
+  "name": "sae_215",
+  "series": "sae",
+  "brand": "",
+  "n": 44,
+  "nodes": 11
+ },
+ {
+  "name": "sae_216",
+  "series": "sae",
+  "brand": "",
+  "n": 44,
+  "nodes": 32
+ },
+ {
+  "name": "sae_217",
+  "series": "sae",
+  "brand": "",
+  "n": 6,
+  "nodes": 5
+ },
+ {
+  "name": "vag5-vag_001",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 44
+ },
+ {
+  "name": "vag5-vag_002",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 45
+ },
+ {
+  "name": "vag5-vag_003",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 45
+ },
+ {
+  "name": "vag5-vag_004",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 40
+ },
+ {
+  "name": "vag5-vag_005",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 37
+ },
+ {
+  "name": "vag5-vag_006",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 39
+ },
+ {
+  "name": "vag5-vag_007",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 41
+ },
+ {
+  "name": "vag5-vag_008",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 45
+ },
+ {
+  "name": "vag5-vag_009",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 41
+ },
+ {
+  "name": "vag5-vag_010",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 41
+ },
+ {
+  "name": "vag5-vag_011",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 45
+ },
+ {
+  "name": "vag5-vag_012",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 43
+ },
+ {
+  "name": "vag5-vag_013",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 42
+ },
+ {
+  "name": "vag5-vag_014",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 34
+ },
+ {
+  "name": "vag5-vag_015",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 45
+ },
+ {
+  "name": "vag5-vag_016",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 32
+ },
+ {
+  "name": "vag5-vag_017",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 44
+ },
+ {
+  "name": "vag5-vag_018",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 45
+ },
+ {
+  "name": "vag5-vag_019",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 45
+ },
+ {
+  "name": "vag5-vag_020",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 43
+ },
+ {
+  "name": "vag5-vag_021",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 45
+ },
+ {
+  "name": "vag5-vag_022",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 40
+ },
+ {
+  "name": "vag5-vag_023",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 44
+ },
+ {
+  "name": "vag5-vag_024",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 34,
+  "nodes": 34
+ },
+ {
+  "name": "vag5-vag_025",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 10
+ },
+ {
+  "name": "vag5-vag_026",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 43
+ },
+ {
+  "name": "vag5-vag_027",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 39
+ },
+ {
+  "name": "vag5-vag_028",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 40
+ },
+ {
+  "name": "vag5-vag_029",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 40
+ },
+ {
+  "name": "vag5-vag_030",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 45
+ },
+ {
+  "name": "vag5-vag_031",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 43
+ },
+ {
+  "name": "vag5-vag_032",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 44
+ },
+ {
+  "name": "vag5-vag_033",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 45
+ },
+ {
+  "name": "vag5-vag_034",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 43
+ },
+ {
+  "name": "vag5-vag_035",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 41
+ },
+ {
+  "name": "vag5-vag_036",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 41
+ },
+ {
+  "name": "vag5-vag_037",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 43
+ },
+ {
+  "name": "vag5-vag_038",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 44
+ },
+ {
+  "name": "vag5-vag_039",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 40
+ },
+ {
+  "name": "vag5-vag_040",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 43
+ },
+ {
+  "name": "vag5-vag_041",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 41
+ },
+ {
+  "name": "vag5-vag_042",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 42
+ },
+ {
+  "name": "vag5-vag_043",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 44
+ },
+ {
+  "name": "vag5-vag_044",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 36
+ },
+ {
+  "name": "vag5-vag_045",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 37
+ },
+ {
+  "name": "vag5-vag_046",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 41
+ },
+ {
+  "name": "vag5-vag_047",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 41
+ },
+ {
+  "name": "vag5-vag_048",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 39
+ },
+ {
+  "name": "vag5-vag_049",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 42
+ },
+ {
+  "name": "vag5-vag_050",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 45
+ },
+ {
+  "name": "vag5-vag_051",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 43
+ },
+ {
+  "name": "vag5-vag_052",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 37,
+  "nodes": 32
+ },
+ {
+  "name": "vag5-vag_053",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 36
+ },
+ {
+  "name": "vag5-vag_054",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 45
+ },
+ {
+  "name": "vag5-vag_055",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 39
+ },
+ {
+  "name": "vag5-vag_056",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 42
+ },
+ {
+  "name": "vag5-vag_057",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 43
+ },
+ {
+  "name": "vag5-vag_058",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 45
+ },
+ {
+  "name": "vag5-vag_059",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 36
+ },
+ {
+  "name": "vag5-vag_060",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 42,
+  "nodes": 40
+ },
+ {
+  "name": "vag5-vag_061",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 41
+ },
+ {
+  "name": "vag5-vag_062",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 39
+ },
+ {
+  "name": "vag5-vag_063",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 43
+ },
+ {
+  "name": "vag5-vag_064",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 45
+ },
+ {
+  "name": "vag5-vag_065",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 42
+ },
+ {
+  "name": "vag5-vag_066",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 44
+ },
+ {
+  "name": "vag5-vag_067",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 40
+ },
+ {
+  "name": "vag5-vag_068",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 40
+ },
+ {
+  "name": "vag5-vag_069",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 45
+ },
+ {
+  "name": "vag5-vag_070",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 43
+ },
+ {
+  "name": "vag5-vag_071",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 45
+ },
+ {
+  "name": "vag5-vag_072",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 37
+ },
+ {
+  "name": "vag5-vag_073",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 44,
+  "nodes": 44
+ },
+ {
+  "name": "vag5-vag_074",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 41
+ },
+ {
+  "name": "vag5-vag_075",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 43
+ },
+ {
+  "name": "vag5-vag_076",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 38
+ },
+ {
+  "name": "vag5-vag_077",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 40
+ },
+ {
+  "name": "vag5-vag_078",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 43
+ },
+ {
+  "name": "vag5-vag_079",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 45
+ },
+ {
+  "name": "vag5-vag_080",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 45
+ },
+ {
+  "name": "vag5-vag_081",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 41
+ },
+ {
+  "name": "vag5-vag_082",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 45
+ },
+ {
+  "name": "vag5-vag_083",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 42
+ },
+ {
+  "name": "vag5-vag_084",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 43
+ },
+ {
+  "name": "vag5-vag_085",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 39
+ },
+ {
+  "name": "vag5-vag_086",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 39
+ },
+ {
+  "name": "vag5-vag_087",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 37
+ },
+ {
+  "name": "vag5-vag_088",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 45
+ },
+ {
+  "name": "vag5-vag_089",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 41
+ },
+ {
+  "name": "vag5-vag_090",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 31
+ },
+ {
+  "name": "vag5-vag_091",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 39
+ },
+ {
+  "name": "vag5-vag_092",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 37
+ },
+ {
+  "name": "vag5-vag_093",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 43,
+  "nodes": 34
+ },
+ {
+  "name": "vag5-vag_094",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 44,
+  "nodes": 33
+ },
+ {
+  "name": "vag5-vag_095",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 27,
+  "nodes": 15
+ },
+ {
+  "name": "vag5-vag_096",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 11
+ },
+ {
+  "name": "vag5-vag_097",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 42,
+  "nodes": 21
+ },
+ {
+  "name": "vag5-vag_098",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 44,
+  "nodes": 14
+ },
+ {
+  "name": "vag5-vag_099",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 12
+ },
+ {
+  "name": "vag5-vag_100",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 19
+ },
+ {
+  "name": "vag5-vag_101",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 44,
+  "nodes": 20
+ },
+ {
+  "name": "vag5-vag_102",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 25
+ },
+ {
+  "name": "vag5-vag_103",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 42,
+  "nodes": 16
+ },
+ {
+  "name": "vag5-vag_104",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 10
+ },
+ {
+  "name": "vag5-vag_105",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 45
+ },
+ {
+  "name": "vag5-vag_106",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 45
+ },
+ {
+  "name": "vag5-vag_107",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 45
+ },
+ {
+  "name": "vag5-vag_108",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 45,
+  "nodes": 41
+ },
+ {
+  "name": "vag5-vag_109",
+  "series": "vag5",
+  "brand": "vag",
+  "n": 17,
+  "nodes": 17
+ }
+]

@@ -1,0 +1,397 @@
+{
+ "name": "sae_007",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "active aerodynamic feature a position",
+  "active aerodynamic feature a position not plausible",
+  "active aerodynamic feature b actuator",
+  "active aerodynamic feature b actuator position sensor not learned",
+  "active aerodynamic feature b actuator temperature not plausible",
+  "active aerodynamic feature b actuator temperature too",
+  "active aerodynamic feature b position",
+  "active aerodynamic feature b position not plausible",
+  "active aerodynamic feature c actuator",
+  "active aerodynamic feature c actuator position sensor not learned",
+  "active aerodynamic feature c actuator temperature not plausible",
+  "active aerodynamic feature c actuator temperature too",
+  "active aerodynamic feature c position",
+  "active aerodynamic feature c position not plausible",
+  "active aerodynamic feature d actuator",
+  "active aerodynamic feature d actuator position sensor not learned",
+  "active aerodynamic feature d actuator temperature not plausible",
+  "active aerodynamic feature d actuator temperature too",
+  "active aerodynamic feature d position",
+  "active aerodynamic feature d position not plausible",
+  "left front hydraulic release too long",
+  "left front inlet",
+  "left front outlet",
+  "right front hydraulic release too long",
+  "right front inlet",
+  "right front outlet",
+  "tcs control channel a",
+  "tcs control channel b"
+ ],
+ "codes": [
+  {
+   "code": "B3A39",
+   "brand": "",
+   "ru": "Активная аэродинамика A: недостоверное положение",
+   "en": "Active Aerodynamic Feature A Position Not Plausible",
+   "fam": "",
+   "node": "active aerodynamic feature a position not plausible"
+  },
+  {
+   "code": "B3A3A",
+   "brand": "",
+   "ru": "Датчик положения активной аэродинамики A (датчик 1): высокое напряжение в цепи",
+   "en": "Active Aerodynamic Feature A Position Sensor 1 Circuit High Voltage",
+   "fam": "",
+   "node": "active aerodynamic feature a position"
+  },
+  {
+   "code": "B3A3B",
+   "brand": "",
+   "ru": "Датчик положения активной аэродинамики A (датчик 1): низкое напряжение в цепи",
+   "en": "Active Aerodynamic Feature A Position Sensor 1 Circuit Low Voltage",
+   "fam": "",
+   "node": "active aerodynamic feature a position"
+  },
+  {
+   "code": "B3A3C",
+   "brand": "",
+   "ru": "Датчик положения активной аэродинамики A (датчик 2): высокое напряжение в цепи",
+   "en": "Active Aerodynamic Feature A Position Sensor 2 Circuit High Voltage",
+   "fam": "",
+   "node": "active aerodynamic feature a position"
+  },
+  {
+   "code": "B3A3D",
+   "brand": "",
+   "ru": "Датчик положения активной аэродинамики A (датчик 2): низкое напряжение в цепи",
+   "en": "Active Aerodynamic Feature A Position Sensor 2 Circuit Low Voltage",
+   "fam": "",
+   "node": "active aerodynamic feature a position"
+  },
+  {
+   "code": "B3A3E",
+   "brand": "",
+   "ru": "Привод активной аэродинамики B: работа нарушена",
+   "en": "Active Aerodynamic Feature B Actuator Performance",
+   "fam": "",
+   "node": "active aerodynamic feature b actuator"
+  },
+  {
+   "code": "B3A3F",
+   "brand": "",
+   "ru": "Привод активной аэродинамики B: датчик положения не обучен",
+   "en": "Active Aerodynamic Feature B Actuator Position Sensor Not Learned",
+   "fam": "",
+   "node": "active aerodynamic feature b actuator position sensor not learned"
+  },
+  {
+   "code": "B3A40",
+   "brand": "",
+   "ru": "Привод активной аэродинамики B: недостоверная температура",
+   "en": "Active Aerodynamic Feature B Actuator Temperature Not Plausible",
+   "fam": "",
+   "node": "active aerodynamic feature b actuator temperature not plausible"
+  },
+  {
+   "code": "B3A41",
+   "brand": "",
+   "ru": "Привод активной аэродинамики B: слишком высокая температура",
+   "en": "Active Aerodynamic Feature B Actuator Temperature Too High",
+   "fam": "",
+   "node": "active aerodynamic feature b actuator temperature too"
+  },
+  {
+   "code": "B3A42",
+   "brand": "",
+   "ru": "Привод активной аэродинамики B: слишком низкая температура",
+   "en": "Active Aerodynamic Feature B Actuator Temperature Too Low",
+   "fam": "",
+   "node": "active aerodynamic feature b actuator temperature too"
+  },
+  {
+   "code": "B3A43",
+   "brand": "",
+   "ru": "Активная аэродинамика B: недостоверное положение",
+   "en": "Active Aerodynamic Feature B Position Not Plausible",
+   "fam": "",
+   "node": "active aerodynamic feature b position not plausible"
+  },
+  {
+   "code": "B3A44",
+   "brand": "",
+   "ru": "Датчик положения активной аэродинамики B (датчик 1): высокое напряжение в цепи",
+   "en": "Active Aerodynamic Feature B Position Sensor 1 Circuit High Voltage",
+   "fam": "",
+   "node": "active aerodynamic feature b position"
+  },
+  {
+   "code": "B3A45",
+   "brand": "",
+   "ru": "Датчик положения активной аэродинамики B (датчик 1): низкое напряжение в цепи",
+   "en": "Active Aerodynamic Feature B Position Sensor 1 Circuit Low Voltage",
+   "fam": "",
+   "node": "active aerodynamic feature b position"
+  },
+  {
+   "code": "B3A46",
+   "brand": "",
+   "ru": "Датчик положения активной аэродинамики B (датчик 2): высокое напряжение в цепи",
+   "en": "Active Aerodynamic Feature B Position Sensor 2 Circuit High Voltage",
+   "fam": "",
+   "node": "active aerodynamic feature b position"
+  },
+  {
+   "code": "B3A47",
+   "brand": "",
+   "ru": "Датчик положения активной аэродинамики B (датчик 2): низкое напряжение в цепи",
+   "en": "Active Aerodynamic Feature B Position Sensor 2 Circuit Low Voltage",
+   "fam": "",
+   "node": "active aerodynamic feature b position"
+  },
+  {
+   "code": "B3A48",
+   "brand": "",
+   "ru": "Привод активной аэродинамики C: работа нарушена",
+   "en": "Active Aerodynamic Feature C Actuator Performance",
+   "fam": "",
+   "node": "active aerodynamic feature c actuator"
+  },
+  {
+   "code": "B3A49",
+   "brand": "",
+   "ru": "Привод активной аэродинамики C: датчик положения не обучен",
+   "en": "Active Aerodynamic Feature C Actuator Position Sensor Not Learned",
+   "fam": "",
+   "node": "active aerodynamic feature c actuator position sensor not learned"
+  },
+  {
+   "code": "B3A4A",
+   "brand": "",
+   "ru": "Привод активной аэродинамики C: недостоверная температура",
+   "en": "Active Aerodynamic Feature C Actuator Temperature Not Plausible",
+   "fam": "",
+   "node": "active aerodynamic feature c actuator temperature not plausible"
+  },
+  {
+   "code": "B3A4B",
+   "brand": "",
+   "ru": "Привод активной аэродинамики C: слишком высокая температура",
+   "en": "Active Aerodynamic Feature C Actuator Temperature Too High",
+   "fam": "",
+   "node": "active aerodynamic feature c actuator temperature too"
+  },
+  {
+   "code": "B3A4C",
+   "brand": "",
+   "ru": "Привод активной аэродинамики C: слишком низкая температура",
+   "en": "Active Aerodynamic Feature C Actuator Temperature Too Low",
+   "fam": "",
+   "node": "active aerodynamic feature c actuator temperature too"
+  },
+  {
+   "code": "B3A4D",
+   "brand": "",
+   "ru": "Активная аэродинамика C: недостоверное положение",
+   "en": "Active Aerodynamic Feature C Position Not Plausible",
+   "fam": "",
+   "node": "active aerodynamic feature c position not plausible"
+  },
+  {
+   "code": "B3A4E",
+   "brand": "",
+   "ru": "Датчик положения активной аэродинамики C (датчик 1): высокое напряжение в цепи",
+   "en": "Active Aerodynamic Feature C Position Sensor 1 Circuit High Voltage",
+   "fam": "",
+   "node": "active aerodynamic feature c position"
+  },
+  {
+   "code": "B3A4F",
+   "brand": "",
+   "ru": "Датчик положения активной аэродинамики C (датчик 1): низкое напряжение в цепи",
+   "en": "Active Aerodynamic Feature C Position Sensor 1 Circuit Low Voltage",
+   "fam": "",
+   "node": "active aerodynamic feature c position"
+  },
+  {
+   "code": "B3A50",
+   "brand": "",
+   "ru": "Датчик положения активной аэродинамики C (датчик 2): высокое напряжение в цепи",
+   "en": "Active Aerodynamic Feature C Position Sensor 2 Circuit High Voltage",
+   "fam": "",
+   "node": "active aerodynamic feature c position"
+  },
+  {
+   "code": "B3A51",
+   "brand": "",
+   "ru": "Датчик положения активной аэродинамики C (датчик 2): низкое напряжение в цепи",
+   "en": "Active Aerodynamic Feature C Position Sensor 2 Circuit Low Voltage",
+   "fam": "",
+   "node": "active aerodynamic feature c position"
+  },
+  {
+   "code": "B3A52",
+   "brand": "",
+   "ru": "Привод активной аэродинамики D: работа нарушена",
+   "en": "Active Aerodynamic Feature D Actuator Performance",
+   "fam": "",
+   "node": "active aerodynamic feature d actuator"
+  },
+  {
+   "code": "B3A53",
+   "brand": "",
+   "ru": "Привод активной аэродинамики D: датчик положения не обучен",
+   "en": "Active Aerodynamic Feature D Actuator Position Sensor Not Learned",
+   "fam": "",
+   "node": "active aerodynamic feature d actuator position sensor not learned"
+  },
+  {
+   "code": "B3A54",
+   "brand": "",
+   "ru": "Привод активной аэродинамики D: недостоверная температура",
+   "en": "Active Aerodynamic Feature D Actuator Temperature Not Plausible",
+   "fam": "",
+   "node": "active aerodynamic feature d actuator temperature not plausible"
+  },
+  {
+   "code": "B3A55",
+   "brand": "",
+   "ru": "Привод активной аэродинамики D: слишком высокая температура",
+   "en": "Active Aerodynamic Feature D Actuator Temperature Too High",
+   "fam": "",
+   "node": "active aerodynamic feature d actuator temperature too"
+  },
+  {
+   "code": "B3A56",
+   "brand": "",
+   "ru": "Привод активной аэродинамики D: слишком низкая температура",
+   "en": "Active Aerodynamic Feature D Actuator Temperature Too Low",
+   "fam": "",
+   "node": "active aerodynamic feature d actuator temperature too"
+  },
+  {
+   "code": "B3A57",
+   "brand": "",
+   "ru": "Активная аэродинамика D: недостоверное положение",
+   "en": "Active Aerodynamic Feature D Position Not Plausible",
+   "fam": "",
+   "node": "active aerodynamic feature d position not plausible"
+  },
+  {
+   "code": "B3A58",
+   "brand": "",
+   "ru": "Датчик положения активной аэродинамики D (датчик 1): высокое напряжение в цепи",
+   "en": "Active Aerodynamic Feature D Position Sensor 1 Circuit High Voltage",
+   "fam": "",
+   "node": "active aerodynamic feature d position"
+  },
+  {
+   "code": "B3A59",
+   "brand": "",
+   "ru": "Датчик положения активной аэродинамики D (датчик 1): низкое напряжение в цепи",
+   "en": "Active Aerodynamic Feature D Position Sensor 1 Circuit Low Voltage",
+   "fam": "",
+   "node": "active aerodynamic feature d position"
+  },
+  {
+   "code": "B3A5A",
+   "brand": "",
+   "ru": "Датчик положения активной аэродинамики D (датчик 2): высокое напряжение в цепи",
+   "en": "Active Aerodynamic Feature D Position Sensor 2 Circuit High Voltage",
+   "fam": "",
+   "node": "active aerodynamic feature d position"
+  },
+  {
+   "code": "B3A5B",
+   "brand": "",
+   "ru": "Датчик положения активной аэродинамики D (датчик 2): низкое напряжение в цепи",
+   "en": "Active Aerodynamic Feature D Position Sensor 2 Circuit Low Voltage",
+   "fam": "",
+   "node": "active aerodynamic feature d position"
+  },
+  {
+   "code": "C0001",
+   "brand": "",
+   "ru": "Канал A противобуксовочной системы, клапан 1",
+   "en": "TCS Control Channel A Valve 1",
+   "fam": "",
+   "node": "tcs control channel a"
+  },
+  {
+   "code": "C0002",
+   "brand": "",
+   "ru": "Канал A противобуксовочной системы, клапан 2",
+   "en": "TCS Control Channel A Valve 2",
+   "fam": "",
+   "node": "tcs control channel a"
+  },
+  {
+   "code": "C0003",
+   "brand": "",
+   "ru": "Канал B противобуксовочной системы, клапан 1",
+   "en": "TCS Control Channel B Valve 1",
+   "fam": "",
+   "node": "tcs control channel b"
+  },
+  {
+   "code": "C0004",
+   "brand": "",
+   "ru": "Канал B противобуксовочной системы, клапан 2",
+   "en": "TCS Control Channel B Valve 2",
+   "fam": "",
+   "node": "tcs control channel b"
+  },
+  {
+   "code": "C0010",
+   "brand": "",
+   "ru": "ABS, левое переднее: впускной клапан",
+   "en": "Left Front Inlet Control",
+   "fam": "",
+   "node": "left front inlet"
+  },
+  {
+   "code": "C0011",
+   "brand": "",
+   "ru": "ABS, левое переднее: выпускной клапан",
+   "en": "Left Front Outlet Control",
+   "fam": "",
+   "node": "left front outlet"
+  },
+  {
+   "code": "C0012",
+   "brand": "",
+   "ru": "ABS, левое переднее: слишком долгий сброс давления",
+   "en": "Left Front Hydraulic Release Too Long",
+   "fam": "",
+   "node": "left front hydraulic release too long"
+  },
+  {
+   "code": "C0014",
+   "brand": "",
+   "ru": "ABS, правое переднее: впускной клапан",
+   "en": "Right Front Inlet Control",
+   "fam": "",
+   "node": "right front inlet"
+  },
+  {
+   "code": "C0015",
+   "brand": "",
+   "ru": "ABS, правое переднее: выпускной клапан",
+   "en": "Right Front Outlet Control",
+   "fam": "",
+   "node": "right front outlet"
+  },
+  {
+   "code": "C0016",
+   "brand": "",
+   "ru": "ABS, правое переднее: слишком долгий сброс давления",
+   "en": "Right Front Hydraulic Release Too Long",
+   "fam": "",
+   "node": "right front hydraulic release too long"
+  }
+ ]
+}

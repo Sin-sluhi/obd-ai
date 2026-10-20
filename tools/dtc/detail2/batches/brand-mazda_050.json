@@ -1,0 +1,403 @@
+{
+ "name": "brand-mazda_050",
+ "series": "brand",
+ "brand": "mazda",
+ "nodes": [
+  "alternator regulator",
+  "battery overcharge fault",
+  "battery voltage detection",
+  "brake on off switch out of self test",
+  "clutch",
+  "clutch pedal position",
+  "fuel injection pump",
+  "fuel pump resistor",
+  "generator",
+  "generator terminal b",
+  "metering oil pump failure",
+  "metering oil pump position",
+  "metering oil pump stepping motor cont",
+  "metering oil pump temperature",
+  "oil pressure control",
+  "power steering pressure",
+  "power steering pressure switch out of",
+  "powertrain control module ecm cpu dtc test fault",
+  "powertrain control module ecm cpu knock",
+  "powertrain control module ecm tcs any line communication error",
+  "powertrain control module ecm tcs line communication error",
+  "ru:высокая скорость при селекторе в p",
+  "shift solenoid 1 mechanical fault",
+  "shift solenoid 2 mechanical fault",
+  "shift solenoid 3 mechanical fault",
+  "shift solenoid 4 mechanical fault",
+  "transmission",
+  "transmission control module solenoid internal ground",
+  "transmission fluid temperature",
+  "turbo charge",
+  "turbo charge relief",
+  "turbo control",
+  "turbo pressure control",
+  "wastegate"
+ ],
+ "codes": [
+  {
+   "code": "P1608",
+   "brand": "mazda",
+   "ru": "Блок двигателя: ошибка теста процессора",
+   "en": "Powertrain Control Module ECM CPU DTC Test Fault",
+   "fam": "",
+   "node": "powertrain control module ecm cpu dtc test fault"
+  },
+  {
+   "code": "P1609",
+   "brand": "mazda",
+   "ru": "Блок двигателя: цепь датчика детонации в процессоре",
+   "en": "Powertrain Control Module ECM CPU Knock Sensor Circuit",
+   "fam": "",
+   "node": "powertrain control module ecm cpu knock"
+  },
+  {
+   "code": "P1627",
+   "brand": "mazda",
+   "ru": "Блок двигателя: ошибка линии связи с противобуксовкой",
+   "en": "Powertrain Control Module ECM TCS Line Communication Error",
+   "fam": "",
+   "node": "powertrain control module ecm tcs line communication error"
+  },
+  {
+   "code": "P1628",
+   "brand": "mazda",
+   "ru": "Блок двигателя: ошибка любой линии связи с противобуксовкой",
+   "en": "Powertrain Control Module ECM TCS Any Line Communication Error",
+   "fam": "",
+   "node": "powertrain control module ecm tcs any line communication error"
+  },
+  {
+   "code": "P1630",
+   "brand": "mazda",
+   "ru": "Регулятор генератора 1: цепь управления",
+   "en": "Alternator Regulator 1 Control Circuit",
+   "fam": "",
+   "node": "alternator regulator"
+  },
+  {
+   "code": "P1631",
+   "brand": "mazda",
+   "ru": "Генератор: нет выходного напряжения",
+   "en": "Generator Output Voltage Signal No Output",
+   "fam": "",
+   "node": "generator"
+  },
+  {
+   "code": "P1632",
+   "brand": "mazda",
+   "ru": "Цепь контроля напряжения АКБ для регулятора генератора",
+   "en": "Battery Voltage Detection Circuit for Alternator Regulator",
+   "fam": "",
+   "node": "battery voltage detection"
+  },
+  {
+   "code": "P1633",
+   "brand": "mazda",
+   "ru": "Перезаряд АКБ",
+   "en": "Battery Overcharge Fault",
+   "fam": "",
+   "node": "battery overcharge fault"
+  },
+  {
+   "code": "P1634",
+   "brand": "mazda",
+   "ru": "Генератор, клемма B: обрыв",
+   "en": "Generator Terminal B Circuit Open",
+   "fam": "",
+   "node": "generator terminal b"
+  },
+  {
+   "code": "P1645",
+   "brand": "mazda",
+   "ru": "Резистор топливного насоса: цепь",
+   "en": "Fuel Pump Resistor Switch Circuit",
+   "fam": "",
+   "node": "fuel pump resistor"
+  },
+  {
+   "code": "P1649",
+   "brand": "mazda",
+   "ru": "Модуль ТНВД",
+   "en": "Fuel Injection Pump Module",
+   "fam": "",
+   "node": "fuel injection pump"
+  },
+  {
+   "code": "P1650",
+   "brand": "mazda",
+   "ru": "Датчик давления гидроусилителя: вне диапазона",
+   "en": "Power Steering Pressure Switch Out Of Range Fault",
+   "fam": "",
+   "node": "power steering pressure switch out of"
+  },
+  {
+   "code": "P1651",
+   "brand": "mazda",
+   "ru": "Датчик давления гидроусилителя: цепь",
+   "en": "Power Steering Pressure Switch Circuit",
+   "fam": "",
+   "node": "power steering pressure"
+  },
+  {
+   "code": "P1652",
+   "brand": "mazda",
+   "ru": "Датчик давления гидроусилителя: цепь",
+   "en": "Power Steering Pressure Switch Circuit",
+   "fam": "",
+   "node": "power steering pressure"
+  },
+  {
+   "code": "P1680",
+   "brand": "mazda",
+   "ru": "Масляный дозирующий насос (роторный двигатель): неисправность",
+   "en": "Metering Oil Pump Failure",
+   "fam": "",
+   "node": "metering oil pump failure"
+  },
+  {
+   "code": "P1682",
+   "brand": "mazda",
+   "ru": "Масляный дозирующий насос (роторный двигатель): неисправность",
+   "en": "Metering Oil Pump Failure",
+   "fam": "",
+   "node": "metering oil pump failure"
+  },
+  {
+   "code": "P1683",
+   "brand": "mazda",
+   "ru": "Датчик температуры масляного дозирующего насоса: цепь",
+   "en": "Metering Oil Pump Temperature Sensor Circuit",
+   "fam": "",
+   "node": "metering oil pump temperature"
+  },
+  {
+   "code": "P1684",
+   "brand": "mazda",
+   "ru": "Датчик положения масляного дозирующего насоса: цепь",
+   "en": "Metering Oil Pump Position Sensor Circuit",
+   "fam": "",
+   "node": "metering oil pump position"
+  },
+  {
+   "code": "P1685",
+   "brand": "mazda",
+   "ru": "Шаговый мотор масляного дозирующего насоса: цепь",
+   "en": "Metering Oil Pump Stepping Motor Cont Circuit",
+   "fam": "",
+   "node": "metering oil pump stepping motor cont"
+  },
+  {
+   "code": "P1686",
+   "brand": "mazda",
+   "ru": "Шаговый мотор масляного дозирующего насоса: цепь",
+   "en": "Metering Oil Pump Stepping Motor Cont Circuit",
+   "fam": "",
+   "node": "metering oil pump stepping motor cont"
+  },
+  {
+   "code": "P1687",
+   "brand": "mazda",
+   "ru": "Шаговый мотор масляного дозирующего насоса: цепь",
+   "en": "Metering Oil Pump Stepping Motor Cont Circuit",
+   "fam": "",
+   "node": "metering oil pump stepping motor cont"
+  },
+  {
+   "code": "P1688",
+   "brand": "mazda",
+   "ru": "Шаговый мотор масляного дозирующего насоса: цепь",
+   "en": "Metering Oil Pump Stepping Motor Cont Circuit",
+   "fam": "",
+   "node": "metering oil pump stepping motor cont"
+  },
+  {
+   "code": "P1689",
+   "brand": "mazda",
+   "ru": "Клапан регулирования давления масла: цепь",
+   "en": "Oil Pressure Control Solenoid Circuit",
+   "fam": "",
+   "node": "oil pressure control"
+  },
+  {
+   "code": "P1690",
+   "brand": "mazda",
+   "ru": "Клапан вестгейта: цепь",
+   "en": "Wastegate Solenoid Circuit",
+   "fam": "",
+   "node": "wastegate"
+  },
+  {
+   "code": "P1691",
+   "brand": "mazda",
+   "ru": "Клапан регулирования давления турбины: цепь",
+   "en": "Turbo Pressure Control Solenoid Circuit",
+   "fam": "",
+   "node": "turbo pressure control"
+  },
+  {
+   "code": "P1692",
+   "brand": "mazda",
+   "ru": "Клапан управления турбиной: цепь",
+   "en": "Turbo Control Solenoid Circuit",
+   "fam": "",
+   "node": "turbo control"
+  },
+  {
+   "code": "P1693",
+   "brand": "mazda",
+   "ru": "Управление наддувом: цепь",
+   "en": "Turbo Charge Control Circuit",
+   "fam": "",
+   "node": "turbo charge"
+  },
+  {
+   "code": "P1694",
+   "brand": "mazda",
+   "ru": "Сброс наддува: цепь",
+   "en": "Turbo Charge Relief Circuit",
+   "fam": "",
+   "node": "turbo charge relief"
+  },
+  {
+   "code": "P1701",
+   "brand": "mazda",
+   "ru": "Датчик диапазона коробки: ошибка включения задней",
+   "en": "Transmission Range Sensor Reverse Engagement Error",
+   "fam": "",
+   "node": "transmission"
+  },
+  {
+   "code": "P1702",
+   "brand": "mazda",
+   "ru": "Датчик диапазона коробки: прерывистый сигнал",
+   "en": "Transmission Range Sensor Circuit Intermittent",
+   "fam": "",
+   "node": "transmission"
+  },
+  {
+   "code": "P1705",
+   "brand": "mazda",
+   "ru": "Датчик диапазона коробки: вне диапазона самотеста",
+   "en": "Transmission Range Sensor Out Of Self Test Range",
+   "fam": "",
+   "node": "transmission"
+  },
+  {
+   "code": "P1703",
+   "brand": "mazda",
+   "ru": "Выключатель тормоза: вне диапазона самотеста",
+   "en": "Brake On Off Switch Out Of Self Test Range",
+   "fam": "",
+   "node": "brake on off switch out of self test"
+  },
+  {
+   "code": "P1706",
+   "brand": "mazda",
+   "ru": "Высокая скорость при селекторе в P",
+   "en": "High Vehicle Speed Observed In Park",
+   "fam": "",
+   "node": "ru:высокая скорость при селекторе в p"
+  },
+  {
+   "code": "P1708",
+   "brand": "mazda",
+   "ru": "Выключатель сцепления: цепь",
+   "en": "Clutch Switch Circuit",
+   "fam": "",
+   "node": "clutch"
+  },
+  {
+   "code": "P1770",
+   "brand": "mazda",
+   "ru": "Клапан муфты: цепь",
+   "en": "Clutch Solenoid Circuit",
+   "fam": "",
+   "node": "clutch"
+  },
+  {
+   "code": "P1709",
+   "brand": "mazda",
+   "ru": "Выключатель положения педали сцепления: цепь",
+   "en": "Clutch Pedal Position Switch Circuit",
+   "fam": "",
+   "node": "clutch pedal position"
+  },
+  {
+   "code": "P1710",
+   "brand": "mazda",
+   "ru": "Блок коробки: внутренняя масса клапанов",
+   "en": "Transmission Control Module Solenoid Internal Ground Circuit",
+   "fam": "",
+   "node": "transmission control module solenoid internal ground"
+  },
+  {
+   "code": "P1711",
+   "brand": "mazda",
+   "ru": "Датчик температуры масла коробки: вне диапазона самотеста",
+   "en": "Transmission Fluid Temperature Sensor Circuit Out Of Self Test Range",
+   "fam": "",
+   "node": "transmission fluid temperature"
+  },
+  {
+   "code": "P1713",
+   "brand": "mazda",
+   "ru": "Датчик температуры масла коробки: цепь",
+   "en": "Transmission Fluid Temperature Sensor Circuit",
+   "fam": "",
+   "node": "transmission fluid temperature"
+  },
+  {
+   "code": "P1718",
+   "brand": "mazda",
+   "ru": "Датчик температуры масла коробки: цепь",
+   "en": "Transmission Fluid Temperature Sensor Circuit",
+   "fam": "",
+   "node": "transmission fluid temperature"
+  },
+  {
+   "code": "P1783",
+   "brand": "mazda",
+   "ru": "Температура масла коробки: высокий сигнал",
+   "en": "Transmission Fluid Temperature High Input",
+   "fam": "",
+   "node": "transmission fluid temperature"
+  },
+  {
+   "code": "P1714",
+   "brand": "mazda",
+   "ru": "Клапан переключения 1: механическая неисправность",
+   "en": "Shift Solenoid 1 Mechanical Fault",
+   "fam": "",
+   "node": "shift solenoid 1 mechanical fault"
+  },
+  {
+   "code": "P1715",
+   "brand": "mazda",
+   "ru": "Клапан переключения 2: механическая неисправность",
+   "en": "Shift Solenoid 2 Mechanical Fault",
+   "fam": "",
+   "node": "shift solenoid 2 mechanical fault"
+  },
+  {
+   "code": "P1716",
+   "brand": "mazda",
+   "ru": "Клапан переключения 3: механическая неисправность",
+   "en": "Shift Solenoid 3 Mechanical Fault",
+   "fam": "",
+   "node": "shift solenoid 3 mechanical fault"
+  },
+  {
+   "code": "P1717",
+   "brand": "mazda",
+   "ru": "Клапан переключения 4: механическая неисправность",
+   "en": "Shift Solenoid 4 Mechanical Fault",
+   "fam": "",
+   "node": "shift solenoid 4 mechanical fault"
+  }
+ ]
+}

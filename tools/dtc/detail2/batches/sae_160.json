@@ -1,0 +1,382 @@
+{
+ "name": "sae_160",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "internal control module transmission gear direction control",
+  "internal control module transmission gear ratio control",
+  "internal control module transmission gear select",
+  "internal control module transmission speed sensor",
+  "pressure control solenoid c data incompatible",
+  "pressure control solenoid d data incompatible",
+  "pressure control solenoid e data incompatible",
+  "pressure control solenoid f data incompatible",
+  "pressure control solenoid g data incompatible",
+  "pressure control solenoid h data incompatible",
+  "pressure control solenoid j data incompatible",
+  "pressure control solenoid k data incompatible",
+  "pressure control solenoid n",
+  "pressure control solenoid n electrical",
+  "pressure control solenoid p",
+  "pressure control solenoid p electrical",
+  "pressure control solenoid r",
+  "pressure control solenoid r electrical",
+  "pressure control solenoid s",
+  "pressure control solenoid s electrical",
+  "pressure control solenoid s”"
+ ],
+ "codes": [
+  {
+   "code": "P27A9",
+   "brand": "",
+   "ru": "Соленоид регулирования давления АКПП C: несовместимые данные",
+   "en": "Pressure Control Solenoid C Data Incompatible",
+   "fam": "",
+   "node": "pressure control solenoid c data incompatible"
+  },
+  {
+   "code": "P27AA",
+   "brand": "",
+   "ru": "Соленоид регулирования давления АКПП D: несовместимые данные",
+   "en": "Pressure Control Solenoid D Data Incompatible",
+   "fam": "",
+   "node": "pressure control solenoid d data incompatible"
+  },
+  {
+   "code": "P27AB",
+   "brand": "",
+   "ru": "Соленоид регулирования давления АКПП E: несовместимые данные",
+   "en": "Pressure Control Solenoid E Data Incompatible",
+   "fam": "",
+   "node": "pressure control solenoid e data incompatible"
+  },
+  {
+   "code": "P27AC",
+   "brand": "",
+   "ru": "Соленоид регулирования давления АКПП F: несовместимые данные",
+   "en": "Pressure Control Solenoid F Data Incompatible",
+   "fam": "",
+   "node": "pressure control solenoid f data incompatible"
+  },
+  {
+   "code": "P27AD",
+   "brand": "",
+   "ru": "Соленоид регулирования давления АКПП G: несовместимые данные",
+   "en": "Pressure Control Solenoid G Data Incompatible",
+   "fam": "",
+   "node": "pressure control solenoid g data incompatible"
+  },
+  {
+   "code": "P27AE",
+   "brand": "",
+   "ru": "Соленоид регулирования давления АКПП H: несовместимые данные",
+   "en": "Pressure Control Solenoid H Data Incompatible",
+   "fam": "",
+   "node": "pressure control solenoid h data incompatible"
+  },
+  {
+   "code": "P27AF",
+   "brand": "",
+   "ru": "Соленоид регулирования давления АКПП J: несовместимые данные",
+   "en": "Pressure Control Solenoid J Data Incompatible",
+   "fam": "",
+   "node": "pressure control solenoid j data incompatible"
+  },
+  {
+   "code": "P27B0",
+   "brand": "",
+   "ru": "Соленоид регулирования давления АКПП K: несовместимые данные",
+   "en": "Pressure Control Solenoid K Data Incompatible",
+   "fam": "",
+   "node": "pressure control solenoid k data incompatible"
+  },
+  {
+   "code": "P27B3",
+   "brand": "",
+   "ru": "ЭБУ: ошибка выбора передачи",
+   "en": "Internal Control Module Transmission Gear Select Performance",
+   "fam": "",
+   "node": "internal control module transmission gear select"
+  },
+  {
+   "code": "P27B4",
+   "brand": "",
+   "ru": "ЭБУ: ошибка управления направлением движения КПП",
+   "en": "Internal Control Module Transmission Gear Direction Control Performance",
+   "fam": "",
+   "node": "internal control module transmission gear direction control"
+  },
+  {
+   "code": "P27B5",
+   "brand": "",
+   "ru": "ЭБУ: ошибка управления передаточным отношением",
+   "en": "Internal Control Module Transmission Gear Ratio Control Performance",
+   "fam": "",
+   "node": "internal control module transmission gear ratio control"
+  },
+  {
+   "code": "P27B6",
+   "brand": "",
+   "ru": "ЭБУ: ошибка обработки датчика скорости КПП",
+   "en": "Internal Control Module Transmission Speed Sensor Performance",
+   "fam": "",
+   "node": "internal control module transmission speed sensor"
+  },
+  {
+   "code": "P27B9",
+   "brand": "",
+   "ru": "Соленоид регулирования давления АКПП N: работа нарушена / не включается",
+   "en": "Pressure Control Solenoid N Performance/Stuck Off",
+   "fam": "",
+   "node": "pressure control solenoid n"
+  },
+  {
+   "code": "P27BA",
+   "brand": "",
+   "ru": "Соленоид регулирования давления АКПП N: постоянно включён",
+   "en": "Pressure Control Solenoid N Stuck On",
+   "fam": "",
+   "node": "pressure control solenoid n"
+  },
+  {
+   "code": "P27BC",
+   "brand": "",
+   "ru": "Соленоид регулирования давления АКПП N: прерывистый сигнал",
+   "en": "Pressure Control Solenoid N Intermittent",
+   "fam": "",
+   "node": "pressure control solenoid n"
+  },
+  {
+   "code": "P27BD",
+   "brand": "",
+   "ru": "Соленоид регулирования давления АКПП N: обрыв цепи управления",
+   "en": "Pressure Control Solenoid N Control Circuit/Open",
+   "fam": "",
+   "node": "pressure control solenoid n"
+  },
+  {
+   "code": "P27BE",
+   "brand": "",
+   "ru": "Соленоид регулирования давления АКПП N: цепь управления вне диапазона",
+   "en": "Pressure Control Solenoid N Control Circuit Range/Performance",
+   "fam": "",
+   "node": "pressure control solenoid n"
+  },
+  {
+   "code": "P27BF",
+   "brand": "",
+   "ru": "Соленоид регулирования давления АКПП N: низкий уровень в цепи управления",
+   "en": "Pressure Control Solenoid N Control Circuit Low",
+   "fam": "",
+   "node": "pressure control solenoid n"
+  },
+  {
+   "code": "P27C0",
+   "brand": "",
+   "ru": "Соленоид регулирования давления АКПП N: высокий уровень в цепи управления",
+   "en": "Pressure Control Solenoid N Control Circuit High",
+   "fam": "",
+   "node": "pressure control solenoid n"
+  },
+  {
+   "code": "P27BB",
+   "brand": "",
+   "ru": "Соленоид регулирования давления N: электрическая неисправность",
+   "en": "Pressure Control Solenoid N Electrical",
+   "fam": "",
+   "node": "pressure control solenoid n electrical"
+  },
+  {
+   "code": "P27C1",
+   "brand": "",
+   "ru": "Соленоид регулирования давления АКПП P: работа нарушена / не включается",
+   "en": "Pressure Control Solenoid P Performance/Stuck Off",
+   "fam": "",
+   "node": "pressure control solenoid p"
+  },
+  {
+   "code": "P27C2",
+   "brand": "",
+   "ru": "Соленоид регулирования давления АКПП P: постоянно включён",
+   "en": "Pressure Control Solenoid P Stuck On",
+   "fam": "",
+   "node": "pressure control solenoid p"
+  },
+  {
+   "code": "P27C4",
+   "brand": "",
+   "ru": "Соленоид регулирования давления АКПП P: прерывистый сигнал",
+   "en": "Pressure Control Solenoid P Intermittent",
+   "fam": "",
+   "node": "pressure control solenoid p"
+  },
+  {
+   "code": "P27C5",
+   "brand": "",
+   "ru": "Соленоид регулирования давления АКПП P: обрыв цепи управления",
+   "en": "Pressure Control Solenoid P Control Circuit/Open",
+   "fam": "",
+   "node": "pressure control solenoid p"
+  },
+  {
+   "code": "P27C6",
+   "brand": "",
+   "ru": "Соленоид регулирования давления АКПП P: цепь управления вне диапазона",
+   "en": "Pressure Control Solenoid P Control Circuit Range/Performance",
+   "fam": "",
+   "node": "pressure control solenoid p"
+  },
+  {
+   "code": "P27C7",
+   "brand": "",
+   "ru": "Соленоид регулирования давления АКПП P: низкий уровень в цепи управления",
+   "en": "Pressure Control Solenoid P Control Circuit Low",
+   "fam": "",
+   "node": "pressure control solenoid p"
+  },
+  {
+   "code": "P27C8",
+   "brand": "",
+   "ru": "Соленоид регулирования давления АКПП P: высокий уровень в цепи управления",
+   "en": "Pressure Control Solenoid P Control Circuit High",
+   "fam": "",
+   "node": "pressure control solenoid p"
+  },
+  {
+   "code": "P27C3",
+   "brand": "",
+   "ru": "Соленоид регулирования давления P: электрическая неисправность",
+   "en": "Pressure Control Solenoid P Electrical",
+   "fam": "",
+   "node": "pressure control solenoid p electrical"
+  },
+  {
+   "code": "P27C9",
+   "brand": "",
+   "ru": "Соленоид регулирования давления АКПП R: работа нарушена / не включается",
+   "en": "Pressure Control Solenoid R Performance/Stuck Off",
+   "fam": "",
+   "node": "pressure control solenoid r"
+  },
+  {
+   "code": "P27CA",
+   "brand": "",
+   "ru": "Соленоид регулирования давления АКПП R: постоянно включён",
+   "en": "Pressure Control Solenoid R Stuck On",
+   "fam": "",
+   "node": "pressure control solenoid r"
+  },
+  {
+   "code": "P27CC",
+   "brand": "",
+   "ru": "Соленоид регулирования давления АКПП R: прерывистый сигнал",
+   "en": "Pressure Control Solenoid R Intermittent",
+   "fam": "",
+   "node": "pressure control solenoid r"
+  },
+  {
+   "code": "P27CD",
+   "brand": "",
+   "ru": "Соленоид регулирования давления АКПП R: обрыв цепи управления",
+   "en": "Pressure Control Solenoid R Control Circuit/Open",
+   "fam": "",
+   "node": "pressure control solenoid r"
+  },
+  {
+   "code": "P27CE",
+   "brand": "",
+   "ru": "Соленоид регулирования давления АКПП R: цепь управления вне диапазона",
+   "en": "Pressure Control Solenoid R Control Circuit Range/Performance",
+   "fam": "",
+   "node": "pressure control solenoid r"
+  },
+  {
+   "code": "P27CF",
+   "brand": "",
+   "ru": "Соленоид регулирования давления АКПП R: низкий уровень в цепи управления",
+   "en": "Pressure Control Solenoid R Control Circuit Low",
+   "fam": "",
+   "node": "pressure control solenoid r"
+  },
+  {
+   "code": "P27D0",
+   "brand": "",
+   "ru": "Соленоид регулирования давления АКПП R: высокий уровень в цепи управления",
+   "en": "Pressure Control Solenoid R Control Circuit High",
+   "fam": "",
+   "node": "pressure control solenoid r"
+  },
+  {
+   "code": "P27CB",
+   "brand": "",
+   "ru": "Соленоид регулирования давления R: электрическая неисправность",
+   "en": "Pressure Control Solenoid R Electrical",
+   "fam": "",
+   "node": "pressure control solenoid r electrical"
+  },
+  {
+   "code": "P27D1",
+   "brand": "",
+   "ru": "Соленоид регулирования давления АКПП S: работа нарушена / не включается",
+   "en": "Pressure Control Solenoid S Performance/Stuck Off",
+   "fam": "",
+   "node": "pressure control solenoid s"
+  },
+  {
+   "code": "P27D2",
+   "brand": "",
+   "ru": "Соленоид регулирования давления АКПП S: постоянно включён",
+   "en": "Pressure Control Solenoid S Stuck On",
+   "fam": "",
+   "node": "pressure control solenoid s"
+  },
+  {
+   "code": "P27D4",
+   "brand": "",
+   "ru": "Соленоид регулирования давления АКПП S: прерывистый сигнал",
+   "en": "Pressure Control Solenoid S Intermittent",
+   "fam": "",
+   "node": "pressure control solenoid s"
+  },
+  {
+   "code": "P27D6",
+   "brand": "",
+   "ru": "Соленоид регулирования давления АКПП S: цепь управления вне диапазона",
+   "en": "Pressure Control Solenoid S Control Circuit Range/Performance",
+   "fam": "",
+   "node": "pressure control solenoid s"
+  },
+  {
+   "code": "P27D7",
+   "brand": "",
+   "ru": "Соленоид регулирования давления АКПП S: низкий уровень в цепи управления",
+   "en": "Pressure Control Solenoid S Control Circuit Low",
+   "fam": "",
+   "node": "pressure control solenoid s"
+  },
+  {
+   "code": "P27D8",
+   "brand": "",
+   "ru": "Соленоид регулирования давления АКПП S: высокий уровень в цепи управления",
+   "en": "Pressure Control Solenoid S Control Circuit High",
+   "fam": "",
+   "node": "pressure control solenoid s"
+  },
+  {
+   "code": "P27D3",
+   "brand": "",
+   "ru": "Соленоид регулирования давления S: электрическая неисправность",
+   "en": "Pressure Control Solenoid S Electrical",
+   "fam": "",
+   "node": "pressure control solenoid s electrical"
+  },
+  {
+   "code": "P27D5",
+   "brand": "",
+   "ru": "Соленоид регулирования давления АКПП S: обрыв цепи управления",
+   "en": "Pressure Control Solenoid S” Control Circuit/Open",
+   "fam": "",
+   "node": "pressure control solenoid s”"
+  }
+ ]
+}

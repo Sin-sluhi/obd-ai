@@ -1,0 +1,491 @@
+{
+ "name": "sae_163",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "engine disconnect clutch",
+  "engine disconnect clutch actuator",
+  "engine disconnect clutch engagement fault",
+  "engine disconnect clutch excessive slippage",
+  "engine disconnect clutch temperature too",
+  "ion current sense",
+  "park lock pawl actuator",
+  "shift fork b calibration not learned",
+  "shift fork “a” actuator",
+  "shift fork “b” actuator"
+ ],
+ "codes": [
+  {
+   "code": "P287E",
+   "brand": "",
+   "ru": "Привод муфты отключения двигателя: обрыв цепи",
+   "en": "Engine Disconnect Clutch Actuator Circuit/Open",
+   "fam": "",
+   "node": "engine disconnect clutch actuator"
+  },
+  {
+   "code": "P287F",
+   "brand": "",
+   "ru": "Привод муфты отключения двигателя: сигнал вне диапазона",
+   "en": "Engine Disconnect Clutch Actuator Circuit Range/Performance",
+   "fam": "",
+   "node": "engine disconnect clutch actuator"
+  },
+  {
+   "code": "P2880",
+   "brand": "",
+   "ru": "Привод муфты отключения двигателя: низкий уровень сигнала в цепи",
+   "en": "Engine Disconnect Clutch Actuator Circuit Low",
+   "fam": "",
+   "node": "engine disconnect clutch actuator"
+  },
+  {
+   "code": "P2881",
+   "brand": "",
+   "ru": "Привод муфты отключения двигателя: высокий уровень сигнала в цепи",
+   "en": "Engine Disconnect Clutch Actuator Circuit High",
+   "fam": "",
+   "node": "engine disconnect clutch actuator"
+  },
+  {
+   "code": "P288C",
+   "brand": "",
+   "ru": "Привод муфты отключения двигателя: перегрузка драйвера цепи управления по току / перегрев",
+   "en": "Engine Disconnect Clutch Actuator Control Circuit Driver Current/Temperature Too High",
+   "fam": "",
+   "node": "engine disconnect clutch actuator"
+  },
+  {
+   "code": "P28EF",
+   "brand": "",
+   "ru": "Привод муфты отключения двигателя: работа нарушена / не включается",
+   "en": "Engine Disconnect Clutch Actuator Performance/Stuck Off",
+   "fam": "",
+   "node": "engine disconnect clutch actuator"
+  },
+  {
+   "code": "P28F0",
+   "brand": "",
+   "ru": "Привод муфты отключения двигателя: постоянно включён",
+   "en": "Engine Disconnect Clutch Actuator Stuck On",
+   "fam": "",
+   "node": "engine disconnect clutch actuator"
+  },
+  {
+   "code": "P28F6",
+   "brand": "",
+   "ru": "Привод муфты отключения двигателя: прерывистый сигнал в цепи",
+   "en": "Engine Disconnect Clutch Actuator Circuit Intermittent",
+   "fam": "",
+   "node": "engine disconnect clutch actuator"
+  },
+  {
+   "code": "P2882",
+   "brand": "",
+   "ru": "Муфта отключения двигателя: чрезмерное проскальзывание",
+   "en": "Engine Disconnect Clutch Excessive Slippage",
+   "fam": "",
+   "node": "engine disconnect clutch excessive slippage"
+  },
+  {
+   "code": "P2883",
+   "brand": "",
+   "ru": "Муфта отключения двигателя: слишком высокая температура",
+   "en": "Engine Disconnect Clutch Temperature Too High",
+   "fam": "",
+   "node": "engine disconnect clutch temperature too"
+  },
+  {
+   "code": "P2884",
+   "brand": "",
+   "ru": "Муфта отключения двигателя: заклинил открытым",
+   "en": "Engine Disconnect Clutch Stuck Open",
+   "fam": "",
+   "node": "engine disconnect clutch"
+  },
+  {
+   "code": "P2886",
+   "brand": "",
+   "ru": "Муфта отключения двигателя: заклинил закрытым",
+   "en": "Engine Disconnect Clutch Stuck Closed",
+   "fam": "",
+   "node": "engine disconnect clutch"
+  },
+  {
+   "code": "P2885",
+   "brand": "",
+   "ru": "Муфта отключения двигателя: ошибка включения",
+   "en": "Engine Disconnect Clutch Engagement Fault",
+   "fam": "",
+   "node": "engine disconnect clutch engagement fault"
+  },
+  {
+   "code": "P2887",
+   "brand": "",
+   "ru": "Привод блокировки «Паркинг»: цепь",
+   "en": "Park Lock/Pawl Actuator Circuit",
+   "fam": "",
+   "node": "park lock pawl actuator"
+  },
+  {
+   "code": "P2888",
+   "brand": "",
+   "ru": "Привод блокировки «Паркинг»: обрыв цепи",
+   "en": "Park Lock/Pawl Actuator Circuit/Open",
+   "fam": "",
+   "node": "park lock pawl actuator"
+  },
+  {
+   "code": "P2889",
+   "brand": "",
+   "ru": "Привод блокировки «Паркинг»: низкий уровень сигнала в цепи",
+   "en": "Park Lock/Pawl Actuator Circuit Low",
+   "fam": "",
+   "node": "park lock pawl actuator"
+  },
+  {
+   "code": "P288A",
+   "brand": "",
+   "ru": "Привод блокировки «Паркинг»: высокий уровень сигнала в цепи",
+   "en": "Park Lock/Pawl Actuator Circuit High",
+   "fam": "",
+   "node": "park lock pawl actuator"
+  },
+  {
+   "code": "P288B",
+   "brand": "",
+   "ru": "Привод блокировки «Паркинг»: нарушена работа цепи",
+   "en": "Park Lock/Pawl Actuator Circuit Performance",
+   "fam": "",
+   "node": "park lock pawl actuator"
+  },
+  {
+   "code": "P288D",
+   "brand": "",
+   "ru": "Вилка переключения передач B: калибровка не обучена",
+   "en": "Shift Fork B Calibration Not Learned",
+   "fam": "",
+   "node": "shift fork b calibration not learned"
+  },
+  {
+   "code": "P288E",
+   "brand": "",
+   "ru": "Привод вилки переключения A: драйвер цепи управления — перегрузка по току / перегрев",
+   "en": "Shift Fork “A” Actuator Control Circuit Driver Current/Temperature Too High",
+   "fam": "",
+   "node": "shift fork “a” actuator"
+  },
+  {
+   "code": "P288F",
+   "brand": "",
+   "ru": "Привод вилки переключения B: драйвер цепи управления — перегрузка по току / перегрев",
+   "en": "Shift Fork “B” Actuator Control Circuit Driver Current/Temperature Too High",
+   "fam": "",
+   "node": "shift fork “b” actuator"
+  },
+  {
+   "code": "P2890",
+   "brand": "",
+   "ru": "Ионный ток цилиндра 1: цепь обратной связи",
+   "en": "Cylinder 1 Ion Current Sense Circuit",
+   "fam": "",
+   "node": "ion current sense"
+  },
+  {
+   "code": "P2891",
+   "brand": "",
+   "ru": "Ионный ток цилиндра 1: цепь обратной связи вне диапазона",
+   "en": "Cylinder 1 Ion Current Sense Circuit Range/Performance",
+   "fam": "",
+   "node": "ion current sense"
+  },
+  {
+   "code": "P2892",
+   "brand": "",
+   "ru": "Ионный ток цилиндра 1: низкий уровень в цепи обратной связи",
+   "en": "Cylinder 1 Ion Current Sense Circuit Low",
+   "fam": "",
+   "node": "ion current sense"
+  },
+  {
+   "code": "P2893",
+   "brand": "",
+   "ru": "Ионный ток цилиндра 1: высокий уровень в цепи обратной связи",
+   "en": "Cylinder 1 Ion Current Sense Circuit High",
+   "fam": "",
+   "node": "ion current sense"
+  },
+  {
+   "code": "P2894",
+   "brand": "",
+   "ru": "Ионный ток цилиндра 2: цепь обратной связи",
+   "en": "Cylinder 2 Ion Current Sense Circuit",
+   "fam": "",
+   "node": "ion current sense"
+  },
+  {
+   "code": "P2895",
+   "brand": "",
+   "ru": "Ионный ток цилиндра 2: цепь обратной связи вне диапазона",
+   "en": "Cylinder 2 Ion Current Sense Circuit Range/Performance",
+   "fam": "",
+   "node": "ion current sense"
+  },
+  {
+   "code": "P2896",
+   "brand": "",
+   "ru": "Ионный ток цилиндра 2: низкий уровень в цепи обратной связи",
+   "en": "Cylinder 2 Ion Current Sense Circuit Low",
+   "fam": "",
+   "node": "ion current sense"
+  },
+  {
+   "code": "P2897",
+   "brand": "",
+   "ru": "Ионный ток цилиндра 2: высокий уровень в цепи обратной связи",
+   "en": "Cylinder 2 Ion Current Sense Circuit High",
+   "fam": "",
+   "node": "ion current sense"
+  },
+  {
+   "code": "P2898",
+   "brand": "",
+   "ru": "Ионный ток цилиндра 3: цепь обратной связи",
+   "en": "Cylinder 3 Ion Current Sense Circuit",
+   "fam": "",
+   "node": "ion current sense"
+  },
+  {
+   "code": "P2899",
+   "brand": "",
+   "ru": "Ионный ток цилиндра 3: цепь обратной связи вне диапазона",
+   "en": "Cylinder 3 Ion Current Sense Circuit Range/Performance",
+   "fam": "",
+   "node": "ion current sense"
+  },
+  {
+   "code": "P289A",
+   "brand": "",
+   "ru": "Ионный ток цилиндра 3: низкий уровень в цепи обратной связи",
+   "en": "Cylinder 3 Ion Current Sense Circuit Low",
+   "fam": "",
+   "node": "ion current sense"
+  },
+  {
+   "code": "P289B",
+   "brand": "",
+   "ru": "Ионный ток цилиндра 3: высокий уровень в цепи обратной связи",
+   "en": "Cylinder 3 Ion Current Sense Circuit High",
+   "fam": "",
+   "node": "ion current sense"
+  },
+  {
+   "code": "P289C",
+   "brand": "",
+   "ru": "Ионный ток цилиндра 4: цепь обратной связи",
+   "en": "Cylinder 4 Ion Current Sense Circuit",
+   "fam": "",
+   "node": "ion current sense"
+  },
+  {
+   "code": "P289D",
+   "brand": "",
+   "ru": "Ионный ток цилиндра 4: цепь обратной связи вне диапазона",
+   "en": "Cylinder 4 Ion Current Sense Circuit Range/Performance",
+   "fam": "",
+   "node": "ion current sense"
+  },
+  {
+   "code": "P289E",
+   "brand": "",
+   "ru": "Ионный ток цилиндра 4: низкий уровень в цепи обратной связи",
+   "en": "Cylinder 4 Ion Current Sense Circuit Low",
+   "fam": "",
+   "node": "ion current sense"
+  },
+  {
+   "code": "P289F",
+   "brand": "",
+   "ru": "Ионный ток цилиндра 4: высокий уровень в цепи обратной связи",
+   "en": "Cylinder 4 Ion Current Sense Circuit High",
+   "fam": "",
+   "node": "ion current sense"
+  },
+  {
+   "code": "P28A0",
+   "brand": "",
+   "ru": "Ионный ток цилиндра 5: цепь обратной связи",
+   "en": "Cylinder 5 Ion Current Sense Circuit",
+   "fam": "",
+   "node": "ion current sense"
+  },
+  {
+   "code": "P28A1",
+   "brand": "",
+   "ru": "Ионный ток цилиндра 5: цепь обратной связи вне диапазона",
+   "en": "Cylinder 5 Ion Current Sense Circuit Range/Performance",
+   "fam": "",
+   "node": "ion current sense"
+  },
+  {
+   "code": "P28A2",
+   "brand": "",
+   "ru": "Ионный ток цилиндра 5: низкий уровень в цепи обратной связи",
+   "en": "Cylinder 5 Ion Current Sense Circuit Low",
+   "fam": "",
+   "node": "ion current sense"
+  },
+  {
+   "code": "P28A3",
+   "brand": "",
+   "ru": "Ионный ток цилиндра 5: высокий уровень в цепи обратной связи",
+   "en": "Cylinder 5 Ion Current Sense Circuit High",
+   "fam": "",
+   "node": "ion current sense"
+  },
+  {
+   "code": "P28A4",
+   "brand": "",
+   "ru": "Ионный ток цилиндра 6: цепь обратной связи",
+   "en": "Cylinder 6 Ion Current Sense Circuit",
+   "fam": "",
+   "node": "ion current sense"
+  },
+  {
+   "code": "P28A5",
+   "brand": "",
+   "ru": "Ионный ток цилиндра 6: цепь обратной связи вне диапазона",
+   "en": "Cylinder 6 Ion Current Sense Circuit Range/Performance",
+   "fam": "",
+   "node": "ion current sense"
+  },
+  {
+   "code": "P28A6",
+   "brand": "",
+   "ru": "Ионный ток цилиндра 6: низкий уровень в цепи обратной связи",
+   "en": "Cylinder 6 Ion Current Sense Circuit Low",
+   "fam": "",
+   "node": "ion current sense"
+  },
+  {
+   "code": "P28A7",
+   "brand": "",
+   "ru": "Ионный ток цилиндра 6: высокий уровень в цепи обратной связи",
+   "en": "Cylinder 6 Ion Current Sense Circuit High",
+   "fam": "",
+   "node": "ion current sense"
+  },
+  {
+   "code": "P28A8",
+   "brand": "",
+   "ru": "Ионный ток цилиндра 7: цепь обратной связи",
+   "en": "Cylinder 7 Ion Current Sense Circuit",
+   "fam": "",
+   "node": "ion current sense"
+  },
+  {
+   "code": "P28A9",
+   "brand": "",
+   "ru": "Ионный ток цилиндра 7: цепь обратной связи вне диапазона",
+   "en": "Cylinder 7 Ion Current Sense Circuit Range/Performance",
+   "fam": "",
+   "node": "ion current sense"
+  },
+  {
+   "code": "P28AA",
+   "brand": "",
+   "ru": "Ионный ток цилиндра 7: низкий уровень в цепи обратной связи",
+   "en": "Cylinder 7 Ion Current Sense Circuit Low",
+   "fam": "",
+   "node": "ion current sense"
+  },
+  {
+   "code": "P28AB",
+   "brand": "",
+   "ru": "Ионный ток цилиндра 7: высокий уровень в цепи обратной связи",
+   "en": "Cylinder 7 Ion Current Sense Circuit High",
+   "fam": "",
+   "node": "ion current sense"
+  },
+  {
+   "code": "P28AC",
+   "brand": "",
+   "ru": "Ионный ток цилиндра 8: цепь обратной связи",
+   "en": "Cylinder 8 Ion Current Sense Circuit",
+   "fam": "",
+   "node": "ion current sense"
+  },
+  {
+   "code": "P28AD",
+   "brand": "",
+   "ru": "Ионный ток цилиндра 8: цепь обратной связи вне диапазона",
+   "en": "Cylinder 8 Ion Current Sense Circuit Range/Performance",
+   "fam": "",
+   "node": "ion current sense"
+  },
+  {
+   "code": "P28AE",
+   "brand": "",
+   "ru": "Ионный ток цилиндра 8: низкий уровень в цепи обратной связи",
+   "en": "Cylinder 8 Ion Current Sense Circuit Low",
+   "fam": "",
+   "node": "ion current sense"
+  },
+  {
+   "code": "P28AF",
+   "brand": "",
+   "ru": "Ионный ток цилиндра 8: высокий уровень в цепи обратной связи",
+   "en": "Cylinder 8 Ion Current Sense Circuit High",
+   "fam": "",
+   "node": "ion current sense"
+  },
+  {
+   "code": "P28B0",
+   "brand": "",
+   "ru": "Ионный ток цилиндра 9: цепь обратной связи",
+   "en": "Cylinder 9 Ion Current Sense Circuit",
+   "fam": "",
+   "node": "ion current sense"
+  },
+  {
+   "code": "P28B1",
+   "brand": "",
+   "ru": "Ионный ток цилиндра 9: цепь обратной связи вне диапазона",
+   "en": "Cylinder 9 Ion Current Sense Circuit Range/Performance",
+   "fam": "",
+   "node": "ion current sense"
+  },
+  {
+   "code": "P28B2",
+   "brand": "",
+   "ru": "Ионный ток цилиндра 9: низкий уровень в цепи обратной связи",
+   "en": "Cylinder 9 Ion Current Sense Circuit Low",
+   "fam": "",
+   "node": "ion current sense"
+  },
+  {
+   "code": "P28B3",
+   "brand": "",
+   "ru": "Ионный ток цилиндра 9: высокий уровень в цепи обратной связи",
+   "en": "Cylinder 9 Ion Current Sense Circuit High",
+   "fam": "",
+   "node": "ion current sense"
+  },
+  {
+   "code": "P28B4",
+   "brand": "",
+   "ru": "Ионный ток цилиндра 10: цепь обратной связи",
+   "en": "Cylinder 10 Ion Current Sense Circuit",
+   "fam": "",
+   "node": "ion current sense"
+  },
+  {
+   "code": "P28B5",
+   "brand": "",
+   "ru": "Ионный ток цилиндра 10: цепь обратной связи вне диапазона",
+   "en": "Cylinder 10 Ion Current Sense Circuit Range/Performance",
+   "fam": "",
+   "node": "ion current sense"
+  }
+ ]
+}

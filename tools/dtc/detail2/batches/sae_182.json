@@ -1,0 +1,397 @@
+{
+ "name": "sae_182",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "a c compressor motor stalled",
+  "cold start egr a b ratio",
+  "cold start hybrid ev drive motor",
+  "cold start hybrid ev drive motor inverter torque",
+  "cold start intake manifold runner",
+  "cold start propulsion torque",
+  "cold start turbocharger supercharger a overboost",
+  "cold start turbocharger supercharger a underboost",
+  "coolant pump e",
+  "coolant pump f",
+  "engine coolant temperature measurement system multiple sensor correlation",
+  "exhaust flow control valve c position",
+  "exhaust flow control valve c position not learned",
+  "forced hybrid ev battery disconnect",
+  "forced hybrid ev system shutdown",
+  "hybrid ev battery inductive charger",
+  "hybrid ev battery inductive charger control module processor",
+  "hybrid ev battery inductive charging system",
+  "hybrid ev battery pack coolant temperature sensor a b correlation",
+  "hybrid ev battery pack heater",
+  "hybrid ev discharge system fault",
+  "hybrid ev electronics coolant temperature sensor a b correlation",
+  "intake manifold tuning valve exceeded learning limit",
+  "reductant system flow – blocked",
+  "reductant system flow – restricted",
+  "reductant system leak detected – large leak",
+  "reductant system leak detected – small leak",
+  "turbocharger interstage pressure sensor a"
+ ],
+ "codes": [
+  {
+   "code": "P2D17",
+   "brand": "",
+   "ru": "Положение клапана потока выхлопа C: цепь",
+   "en": "Exhaust Flow Control Valve C Position Circuit",
+   "fam": "",
+   "node": "exhaust flow control valve c position"
+  },
+  {
+   "code": "P2D18",
+   "brand": "",
+   "ru": "Положение клапана потока выхлопа C: сигнал вне диапазона",
+   "en": "Exhaust Flow Control Valve C Position Circuit Range/Performance",
+   "fam": "",
+   "node": "exhaust flow control valve c position"
+  },
+  {
+   "code": "P2D19",
+   "brand": "",
+   "ru": "Положение клапана потока выхлопа C: низкий уровень сигнала в цепи",
+   "en": "Exhaust Flow Control Valve C Position Circuit Low",
+   "fam": "",
+   "node": "exhaust flow control valve c position"
+  },
+  {
+   "code": "P2D1A",
+   "brand": "",
+   "ru": "Положение клапана потока выхлопа C: высокий уровень сигнала в цепи",
+   "en": "Exhaust Flow Control Valve C Position Circuit High",
+   "fam": "",
+   "node": "exhaust flow control valve c position"
+  },
+  {
+   "code": "P2D1B",
+   "brand": "",
+   "ru": "Клапан управления потоком отработавших газов C: положение не обучено",
+   "en": "Exhaust Flow Control Valve C Position Not Learned",
+   "fam": "",
+   "node": "exhaust flow control valve c position not learned"
+  },
+  {
+   "code": "P2D1C",
+   "brand": "",
+   "ru": "Холодный пуск: соотношение EGR A/B не соответствует",
+   "en": "Cold Start EGR A/B Ratio Performance",
+   "fam": "",
+   "node": "cold start egr a b ratio"
+  },
+  {
+   "code": "P2D1D",
+   "brand": "",
+   "ru": "Система мочевины: малая утечка",
+   "en": "Reductant System Leak Detected – Small Leak",
+   "fam": "",
+   "node": "reductant system leak detected – small leak"
+  },
+  {
+   "code": "P2D1E",
+   "brand": "",
+   "ru": "Система мочевины: большая утечка",
+   "en": "Reductant System Leak Detected – Large Leak",
+   "fam": "",
+   "node": "reductant system leak detected – large leak"
+  },
+  {
+   "code": "P2D1F",
+   "brand": "",
+   "ru": "Система мочевины: поток затруднён",
+   "en": "Reductant System Flow – Restricted",
+   "fam": "",
+   "node": "reductant system flow – restricted"
+  },
+  {
+   "code": "P2D20",
+   "brand": "",
+   "ru": "Система мочевины: поток перекрыт",
+   "en": "Reductant System Flow – Blocked",
+   "fam": "",
+   "node": "reductant system flow – blocked"
+  },
+  {
+   "code": "P2D21",
+   "brand": "",
+   "ru": "Датчик давления между ступенями турбины A: цепь",
+   "en": "Turbocharger Interstage Pressure Sensor A Circuit",
+   "fam": "",
+   "node": "turbocharger interstage pressure sensor a"
+  },
+  {
+   "code": "P2D22",
+   "brand": "",
+   "ru": "Датчик давления между ступенями турбины A: сигнал вне диапазона",
+   "en": "Turbocharger Interstage Pressure Sensor A Circuit Range/Performance",
+   "fam": "",
+   "node": "turbocharger interstage pressure sensor a"
+  },
+  {
+   "code": "P2D23",
+   "brand": "",
+   "ru": "Датчик давления между ступенями турбины A: низкий уровень сигнала в цепи",
+   "en": "Turbocharger Interstage Pressure Sensor A Circuit Low",
+   "fam": "",
+   "node": "turbocharger interstage pressure sensor a"
+  },
+  {
+   "code": "P2D24",
+   "brand": "",
+   "ru": "Датчик давления между ступенями турбины A: высокий уровень сигнала в цепи",
+   "en": "Turbocharger Interstage Pressure Sensor A Circuit High",
+   "fam": "",
+   "node": "turbocharger interstage pressure sensor a"
+  },
+  {
+   "code": "P2D25",
+   "brand": "",
+   "ru": "Датчик давления между ступенями турбины A: прерывистый / нестабильный сигнал",
+   "en": "Turbocharger Interstage Pressure Sensor A Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "turbocharger interstage pressure sensor a"
+  },
+  {
+   "code": "P2D26",
+   "brand": "",
+   "ru": "Насос охлаждающей жидкости E: цепь управления: работа нарушена / не включается",
+   "en": "Coolant Pump E Control Circuit Performance/Stuck Off",
+   "fam": "",
+   "node": "coolant pump e"
+  },
+  {
+   "code": "P2DF4",
+   "brand": "",
+   "ru": "Насос охлаждающей жидкости E: обрыв цепи управления",
+   "en": "Coolant Pump E Control Circuit/Open",
+   "fam": "",
+   "node": "coolant pump e"
+  },
+  {
+   "code": "P2DF5",
+   "brand": "",
+   "ru": "Насос охлаждающей жидкости E: низкий уровень в цепи управления",
+   "en": "Coolant Pump E Control Circuit Low",
+   "fam": "",
+   "node": "coolant pump e"
+  },
+  {
+   "code": "P2DF6",
+   "brand": "",
+   "ru": "Насос охлаждающей жидкости E: высокий уровень в цепи управления",
+   "en": "Coolant Pump E Control Circuit High",
+   "fam": "",
+   "node": "coolant pump e"
+  },
+  {
+   "code": "P2DF9",
+   "brand": "",
+   "ru": "Насос охлаждающей жидкости E: заклинивание / остановка",
+   "en": "Coolant Pump E Stuck/Stalled",
+   "fam": "",
+   "node": "coolant pump e"
+  },
+  {
+   "code": "P2D27",
+   "brand": "",
+   "ru": "Насос охлаждающей жидкости F: цепь управления: работа нарушена / не включается",
+   "en": "Coolant Pump F Control Circuit Performance/Stuck Off",
+   "fam": "",
+   "node": "coolant pump f"
+  },
+  {
+   "code": "P2D28",
+   "brand": "",
+   "ru": "Холодный пуск: момент силовой установки не соответствует",
+   "en": "Cold Start Propulsion Torque Performance",
+   "fam": "",
+   "node": "cold start propulsion torque"
+  },
+  {
+   "code": "P2D29",
+   "brand": "",
+   "ru": "Электромотор компрессора кондиционера остановился",
+   "en": "A/C Compressor Motor Stalled",
+   "fam": "",
+   "node": "a c compressor motor stalled"
+  },
+  {
+   "code": "P2D2A",
+   "brand": "",
+   "ru": "Датчик температуры охлаждения электроники гибрида/электромобиля: рассогласование A/B",
+   "en": "Hybrid/EV Electronics Coolant Temperature Sensor A/B Correlation",
+   "fam": "",
+   "node": "hybrid ev electronics coolant temperature sensor a b correlation"
+  },
+  {
+   "code": "P2D2B",
+   "brand": "",
+   "ru": "Датчик температуры охлаждающей жидкости тяговой батареи: рассогласование A/B",
+   "en": "Hybrid/EV Battery Pack Coolant Temperature Sensor A/B Correlation",
+   "fam": "",
+   "node": "hybrid ev battery pack coolant temperature sensor a b correlation"
+  },
+  {
+   "code": "P2D2C",
+   "brand": "",
+   "ru": "Датчики температуры охлаждающей жидкости: рассогласование нескольких датчиков",
+   "en": "Engine Coolant Temperature Measurement System - Multiple Sensor Correlation",
+   "fam": "",
+   "node": "engine coolant temperature measurement system multiple sensor correlation"
+  },
+  {
+   "code": "P2D2D",
+   "brand": "",
+   "ru": "Заслонки впускного коллектора при холодном пуске: работа нарушена (банк 1)",
+   "en": "Cold Start Intake Manifold Runner Performance Bank 1",
+   "fam": "",
+   "node": "cold start intake manifold runner"
+  },
+  {
+   "code": "P2D2E",
+   "brand": "",
+   "ru": "Заслонки впускного коллектора при холодном пуске: работа нарушена (банк 2)",
+   "en": "Cold Start Intake Manifold Runner Performance Bank 2",
+   "fam": "",
+   "node": "cold start intake manifold runner"
+  },
+  {
+   "code": "P2D2F",
+   "brand": "",
+   "ru": "Холодный пуск: недостаточный наддув турбины/нагнетателя A",
+   "en": "Cold Start Turbocharger/Supercharger A Underboost",
+   "fam": "",
+   "node": "cold start turbocharger supercharger a underboost"
+  },
+  {
+   "code": "P2D30",
+   "brand": "",
+   "ru": "Холодный пуск: избыточный наддув турбины/нагнетателя A",
+   "en": "Cold Start Turbocharger/Supercharger A Overboost",
+   "fam": "",
+   "node": "cold start turbocharger supercharger a overboost"
+  },
+  {
+   "code": "P2D31",
+   "brand": "",
+   "ru": "Заслонка изменения длины впуска: превышен предел адаптации (банк 1)",
+   "en": "Intake Manifold Tuning Valve Exceeded Learning Limit Bank 1",
+   "fam": "",
+   "node": "intake manifold tuning valve exceeded learning limit"
+  },
+  {
+   "code": "P2D33",
+   "brand": "",
+   "ru": "Процессор блока индуктивной зарядки тяговой батареи: работа нарушена",
+   "en": "Hybrid/EV Battery Inductive Charger Control Module Processor Performance",
+   "fam": "",
+   "node": "hybrid ev battery inductive charger control module processor"
+  },
+  {
+   "code": "P2D34",
+   "brand": "",
+   "ru": "Управление индуктивной зарядкой: вне допустимого диапазона",
+   "en": "Hybrid/EV Battery Inductive Charger Control Circuit Range/Performance",
+   "fam": "",
+   "node": "hybrid ev battery inductive charger"
+  },
+  {
+   "code": "P2D36",
+   "brand": "",
+   "ru": "Индуктивная зарядка: выходное напряжение не соответствует",
+   "en": "Hybrid/EV Battery Inductive Charger Output Voltage Performance",
+   "fam": "",
+   "node": "hybrid ev battery inductive charger"
+  },
+  {
+   "code": "P2D37",
+   "brand": "",
+   "ru": "Вход индуктивной зарядки тяговой батареи: сигнал вне диапазона",
+   "en": "Hybrid/EV Battery Inductive Charger Input Circuit Range/Performance",
+   "fam": "",
+   "node": "hybrid ev battery inductive charger"
+  },
+  {
+   "code": "P2EB4",
+   "brand": "",
+   "ru": "Индуктивная зарядка: обрыв цепи высоковольтной блокировки",
+   "en": "Hybrid/EV Battery Inductive Charger High Voltage Interlock Circuit/Open",
+   "fam": "",
+   "node": "hybrid ev battery inductive charger"
+  },
+  {
+   "code": "P2EB5",
+   "brand": "",
+   "ru": "Вход индуктивной зарядки тяговой батареи: низкое напряжение",
+   "en": "Hybrid/EV Battery Inductive Charger Input Voltage Low",
+   "fam": "",
+   "node": "hybrid ev battery inductive charger"
+  },
+  {
+   "code": "P2EB6",
+   "brand": "",
+   "ru": "Вход индуктивной зарядки тяговой батареи: высокое напряжение",
+   "en": "Hybrid/EV Battery Inductive Charger Input Voltage High",
+   "fam": "",
+   "node": "hybrid ev battery inductive charger"
+  },
+  {
+   "code": "P2D35",
+   "brand": "",
+   "ru": "Индуктивная зарядка: нарушена работа цепи высоковольтной блокировки",
+   "en": "Hybrid/EV Battery Inductive Charging System High Voltage Interlock Circuit Performance",
+   "fam": "",
+   "node": "hybrid ev battery inductive charging system"
+  },
+  {
+   "code": "P2D38",
+   "brand": "",
+   "ru": "Подогреватель тяговой батареи: работа нарушена",
+   "en": "Hybrid/EV Battery Pack Heater Performance",
+   "fam": "",
+   "node": "hybrid ev battery pack heater"
+  },
+  {
+   "code": "P2D39",
+   "brand": "",
+   "ru": "Принудительное отключение тяговой батареи",
+   "en": "Forced Hybrid/EV Battery Disconnect",
+   "fam": "",
+   "node": "forced hybrid ev battery disconnect"
+  },
+  {
+   "code": "P2D3A",
+   "brand": "",
+   "ru": "Принудительное выключение гибридной системы / электропривода",
+   "en": "Forced Hybrid/EV System Shutdown",
+   "fam": "",
+   "node": "forced hybrid ev system shutdown"
+  },
+  {
+   "code": "P2D3B",
+   "brand": "",
+   "ru": "Неисправность системы разряда гибрида/электромобиля",
+   "en": "Hybrid/EV Discharge System Fault",
+   "fam": "",
+   "node": "hybrid ev discharge system fault"
+  },
+  {
+   "code": "P2D3C",
+   "brand": "",
+   "ru": "Холодный пуск: тяговый электромотор работает с нарушением",
+   "en": "Cold Start Hybrid/EV Drive Motor Performance",
+   "fam": "",
+   "node": "cold start hybrid ev drive motor"
+  },
+  {
+   "code": "P2D3D",
+   "brand": "",
+   "ru": "Холодный пуск: момент инвертора тягового электромотора не соответствует",
+   "en": "Cold Start Hybrid/EV Drive Motor Inverter Torque Performance",
+   "fam": "",
+   "node": "cold start hybrid ev drive motor inverter torque"
+  }
+ ]
+}

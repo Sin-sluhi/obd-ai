@@ -1,0 +1,61 @@
+{
+ "name": "brand-subaru_061",
+ "series": "brand",
+ "brand": "subaru",
+ "nodes": [
+  "2 4 brake pressure solenoid valve solenoid d",
+  "2 4 brake timing solenoid",
+  "auto trans diagnosis",
+  "ru:клапан синхронизации муфты пониженной"
+ ],
+ "codes": [
+  {
+   "code": "P1702",
+   "brand": "subaru",
+   "ru": "Сигнал диагностики АКПП: цепь",
+   "en": "Auto Trans Diagnosis Input Signal Circuit",
+   "fam": "",
+   "node": "auto trans diagnosis"
+  },
+  {
+   "code": "P1722",
+   "brand": "subaru",
+   "ru": "Сигнал диагностики АКПП: высокий",
+   "en": "Auto Trans Diagnosis Input Signal High Input",
+   "fam": "",
+   "node": "auto trans diagnosis"
+  },
+  {
+   "code": "P1742",
+   "brand": "subaru",
+   "ru": "Сигнал диагностики АКПП: неисправность",
+   "en": "Auto Trans Diagnosis Input Signal Malfunction",
+   "fam": "",
+   "node": "auto trans diagnosis"
+  },
+  {
+   "code": "P1703",
+   "brand": "subaru",
+   "ru": "Клапан синхронизации муфты пониженной: неисправность цепи",
+   "en": "Low Clutch Timing Control Solenoid Valve Circuit Malfunction",
+   "fam": "",
+   "node": "ru:клапан синхронизации муфты пониженной"
+  },
+  {
+   "code": "P1704",
+   "brand": "subaru",
+   "ru": "Клапан синхронизации тормоза 2-4: неисправность цепи",
+   "en": "2-4 Brake Timing Solenoid Valve Circuit Malfunction",
+   "fam": "",
+   "node": "2 4 brake timing solenoid"
+  },
+  {
+   "code": "P1705",
+   "brand": "subaru",
+   "ru": "Клапан давления тормоза 2-4 (клапан D): цепь",
+   "en": "2-4 Brake Pressure Solenoid Valve Solenoid D Circuit",
+   "fam": "",
+   "node": "2 4 brake pressure solenoid valve solenoid d"
+  }
+ ]
+}

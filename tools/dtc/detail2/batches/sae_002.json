@@ -1,0 +1,370 @@
+{
+ "name": "sae_002",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "driver seat belt pretensioner b deployment",
+  "driver seat belt pretensioner c deployment",
+  "fam:crash_sensor",
+  "fam:srs_occupant",
+  "left side restraints",
+  "passenger seat belt pretensioner b deployment",
+  "passenger seat belt pretensioner c deployment",
+  "right side restraints",
+  "second row center seat belt load limiter deployment",
+  "second row center seat belt pretensioner b deployment",
+  "second row left seat belt pretensioner b deployment",
+  "second row right seat belt load limiter deployment",
+  "second row right seat belt pretensioner b deployment",
+  "third row center seat belt load limiter deployment",
+  "third row left seat belt load limiter deployment",
+  "third row right seat belt load limiter deployment",
+  "third row right seat belt pretensioner deployment"
+ ],
+ "codes": [
+  {
+   "code": "B0070",
+   "brand": "",
+   "ru": "Датчик положения сиденья водителя: цепь",
+   "en": "",
+   "fam": "srs_occupant",
+   "node": "fam:srs_occupant"
+  },
+  {
+   "code": "B0071",
+   "brand": "",
+   "ru": "Датчик положения сиденья пассажира: цепь",
+   "en": "",
+   "fam": "srs_occupant",
+   "node": "fam:srs_occupant"
+  },
+  {
+   "code": "B0072",
+   "brand": "",
+   "ru": "Датчик положения сиденья водителя: не соответствует",
+   "en": "",
+   "fam": "srs_occupant",
+   "node": "fam:srs_occupant"
+  },
+  {
+   "code": "B0073",
+   "brand": "",
+   "ru": "Датчик положения сиденья пассажира: не соответствует",
+   "en": "",
+   "fam": "srs_occupant",
+   "node": "fam:srs_occupant"
+  },
+  {
+   "code": "B0074",
+   "brand": "",
+   "ru": "Датчик замка ремня водителя: цепь",
+   "en": "",
+   "fam": "srs_occupant",
+   "node": "fam:srs_occupant"
+  },
+  {
+   "code": "B0075",
+   "brand": "",
+   "ru": "Датчик замка ремня пассажира: цепь",
+   "en": "",
+   "fam": "srs_occupant",
+   "node": "fam:srs_occupant"
+  },
+  {
+   "code": "B0076",
+   "brand": "",
+   "ru": "Датчик замка ремня водителя: не соответствует",
+   "en": "",
+   "fam": "srs_occupant",
+   "node": "fam:srs_occupant"
+  },
+  {
+   "code": "B0077",
+   "brand": "",
+   "ru": "Датчик замка ремня пассажира: не соответствует",
+   "en": "",
+   "fam": "srs_occupant",
+   "node": "fam:srs_occupant"
+  },
+  {
+   "code": "B0080",
+   "brand": "",
+   "ru": "Датчик присутствия пассажира: цепь",
+   "en": "",
+   "fam": "srs_occupant",
+   "node": "fam:srs_occupant"
+  },
+  {
+   "code": "B0081",
+   "brand": "",
+   "ru": "Датчик присутствия пассажира: не соответствует",
+   "en": "",
+   "fam": "srs_occupant",
+   "node": "fam:srs_occupant"
+  },
+  {
+   "code": "B0082",
+   "brand": "",
+   "ru": "Датчик присутствия пассажира: не откалиброван",
+   "en": "",
+   "fam": "srs_occupant",
+   "node": "fam:srs_occupant"
+  },
+  {
+   "code": "B0083",
+   "brand": "",
+   "ru": "Датчик присутствия пассажира: внутренняя ошибка",
+   "en": "",
+   "fam": "srs_occupant",
+   "node": "fam:srs_occupant"
+  },
+  {
+   "code": "B0078",
+   "brand": "",
+   "ru": "Преднатяжитель ремня 3-го ряда справа: управление срабатыванием",
+   "en": "Third Row Right Seat Belt Pretensioner Deployment Control",
+   "fam": "",
+   "node": "third row right seat belt pretensioner deployment"
+  },
+  {
+   "code": "B0079",
+   "brand": "",
+   "ru": "Преднатяжитель ремня водителя B: управление срабатыванием",
+   "en": "Driver Seat Belt Pretensioner B Deployment Control",
+   "fam": "",
+   "node": "driver seat belt pretensioner b deployment"
+  },
+  {
+   "code": "B007A",
+   "brand": "",
+   "ru": "Преднатяжитель ремня пассажира B: управление срабатыванием",
+   "en": "Passenger Seat Belt Pretensioner B Deployment Control",
+   "fam": "",
+   "node": "passenger seat belt pretensioner b deployment"
+  },
+  {
+   "code": "B007B",
+   "brand": "",
+   "ru": "Преднатяжитель ремня 2-го ряда слева B: управление срабатыванием",
+   "en": "Second Row Left Seat Belt Pretensioner B Deployment Control",
+   "fam": "",
+   "node": "second row left seat belt pretensioner b deployment"
+  },
+  {
+   "code": "B007C",
+   "brand": "",
+   "ru": "Преднатяжитель ремня 2-го ряда справа B: управление срабатыванием",
+   "en": "Second Row Right Seat Belt Pretensioner B Deployment Control",
+   "fam": "",
+   "node": "second row right seat belt pretensioner b deployment"
+  },
+  {
+   "code": "B007D",
+   "brand": "",
+   "ru": "Преднатяжитель ремня 2-го ряда в центре B: управление срабатыванием",
+   "en": "Second Row Center Seat Belt Pretensioner B Deployment Control",
+   "fam": "",
+   "node": "second row center seat belt pretensioner b deployment"
+  },
+  {
+   "code": "B007E",
+   "brand": "",
+   "ru": "Преднатяжитель ремня водителя C: управление срабатыванием",
+   "en": "Driver Seat Belt Pretensioner C Deployment Control",
+   "fam": "",
+   "node": "driver seat belt pretensioner c deployment"
+  },
+  {
+   "code": "B007F",
+   "brand": "",
+   "ru": "Преднатяжитель ремня пассажира C: управление срабатыванием",
+   "en": "Passenger Seat Belt Pretensioner C Deployment Control",
+   "fam": "",
+   "node": "passenger seat belt pretensioner c deployment"
+  },
+  {
+   "code": "B0084",
+   "brand": "",
+   "ru": "Ограничитель натяжения ремня 2-го ряда в центре: управление срабатыванием",
+   "en": "Second Row Center Seat Belt Load Limiter Deployment Control",
+   "fam": "",
+   "node": "second row center seat belt load limiter deployment"
+  },
+  {
+   "code": "B0085",
+   "brand": "",
+   "ru": "Ограничитель натяжения ремня 2-го ряда справа: управление срабатыванием",
+   "en": "Second Row Right Seat Belt Load Limiter Deployment Control",
+   "fam": "",
+   "node": "second row right seat belt load limiter deployment"
+  },
+  {
+   "code": "B0086",
+   "brand": "",
+   "ru": "Ограничитель натяжения ремня 3-го ряда слева: управление срабатыванием",
+   "en": "Third Row Left Seat Belt Load Limiter Deployment Control",
+   "fam": "",
+   "node": "third row left seat belt load limiter deployment"
+  },
+  {
+   "code": "B0087",
+   "brand": "",
+   "ru": "Ограничитель натяжения ремня 3-го ряда в центре: управление срабатыванием",
+   "en": "Third Row Center Seat Belt Load Limiter Deployment Control",
+   "fam": "",
+   "node": "third row center seat belt load limiter deployment"
+  },
+  {
+   "code": "B0088",
+   "brand": "",
+   "ru": "Ограничитель натяжения ремня 3-го ряда справа: управление срабатыванием",
+   "en": "Third Row Right Seat Belt Load Limiter Deployment Control",
+   "fam": "",
+   "node": "third row right seat belt load limiter deployment"
+  },
+  {
+   "code": "B0090",
+   "brand": "",
+   "ru": "Датчик удара спереди слева: цепь",
+   "en": "",
+   "fam": "crash_sensor",
+   "node": "fam:crash_sensor"
+  },
+  {
+   "code": "B0091",
+   "brand": "",
+   "ru": "Датчик удара спереди справа: цепь",
+   "en": "",
+   "fam": "crash_sensor",
+   "node": "fam:crash_sensor"
+  },
+  {
+   "code": "B0092",
+   "brand": "",
+   "ru": "Датчик удара спереди слева: не соответствует",
+   "en": "",
+   "fam": "crash_sensor",
+   "node": "fam:crash_sensor"
+  },
+  {
+   "code": "B0093",
+   "brand": "",
+   "ru": "Датчик удара спереди справа: не соответствует",
+   "en": "",
+   "fam": "crash_sensor",
+   "node": "fam:crash_sensor"
+  },
+  {
+   "code": "B0094",
+   "brand": "",
+   "ru": "Датчик бокового удара слева (1-й ряд): цепь",
+   "en": "",
+   "fam": "crash_sensor",
+   "node": "fam:crash_sensor"
+  },
+  {
+   "code": "B0095",
+   "brand": "",
+   "ru": "Датчик бокового удара справа (1-й ряд): цепь",
+   "en": "",
+   "fam": "crash_sensor",
+   "node": "fam:crash_sensor"
+  },
+  {
+   "code": "B0096",
+   "brand": "",
+   "ru": "Датчик бокового удара слева (2-й ряд): цепь",
+   "en": "",
+   "fam": "crash_sensor",
+   "node": "fam:crash_sensor"
+  },
+  {
+   "code": "B0097",
+   "brand": "",
+   "ru": "Датчик бокового удара справа (2-й ряд): цепь",
+   "en": "",
+   "fam": "crash_sensor",
+   "node": "fam:crash_sensor"
+  },
+  {
+   "code": "B0098",
+   "brand": "",
+   "ru": "Датчик бокового удара слева: не соответствует",
+   "en": "",
+   "fam": "crash_sensor",
+   "node": "fam:crash_sensor"
+  },
+  {
+   "code": "B0099",
+   "brand": "",
+   "ru": "Датчик бокового удара справа: не соответствует",
+   "en": "",
+   "fam": "crash_sensor",
+   "node": "fam:crash_sensor"
+  },
+  {
+   "code": "B00A0",
+   "brand": "",
+   "ru": "Датчик удара сзади: цепь",
+   "en": "",
+   "fam": "crash_sensor",
+   "node": "fam:crash_sensor"
+  },
+  {
+   "code": "B00A1",
+   "brand": "",
+   "ru": "Датчик удара сзади: не соответствует",
+   "en": "",
+   "fam": "crash_sensor",
+   "node": "fam:crash_sensor"
+  },
+  {
+   "code": "B009A",
+   "brand": "",
+   "ru": "Левый боковой датчик удара 4",
+   "en": "Left Side Restraints Sensor 4",
+   "fam": "",
+   "node": "left side restraints"
+  },
+  {
+   "code": "B009B",
+   "brand": "",
+   "ru": "Левый боковой датчик удара 5",
+   "en": "Left Side Restraints Sensor 5",
+   "fam": "",
+   "node": "left side restraints"
+  },
+  {
+   "code": "B009C",
+   "brand": "",
+   "ru": "Левый боковой датчик удара 6",
+   "en": "Left Side Restraints Sensor 6",
+   "fam": "",
+   "node": "left side restraints"
+  },
+  {
+   "code": "B009D",
+   "brand": "",
+   "ru": "Правый боковой датчик удара 4",
+   "en": "Right Side Restraints Sensor 4",
+   "fam": "",
+   "node": "right side restraints"
+  },
+  {
+   "code": "B009E",
+   "brand": "",
+   "ru": "Правый боковой датчик удара 5",
+   "en": "Right Side Restraints Sensor 5",
+   "fam": "",
+   "node": "right side restraints"
+  },
+  {
+   "code": "B009F",
+   "brand": "",
+   "ru": "Правый боковой датчик удара 6",
+   "en": "Right Side Restraints Sensor 6",
+   "fam": "",
+   "node": "right side restraints"
+  }
+ ]
+}

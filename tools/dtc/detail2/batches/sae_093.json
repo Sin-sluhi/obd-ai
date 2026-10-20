@@ -1,0 +1,485 @@
+{
+ "name": "sae_093",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "clutch pedal switch a b correlation",
+  "fam:trans_pressure",
+  "gear lever y position",
+  "transmission fluid pressure sensor switch g"
+ ],
+ "codes": [
+  {
+   "code": "P082D",
+   "brand": "",
+   "ru": "Датчик положения рычага КПП по оси Y (датчик 1): сигнал вне диапазона",
+   "en": "Gear Lever Y Position Sensor 1 Circuit Range/Performance",
+   "fam": "",
+   "node": "gear lever y position"
+  },
+  {
+   "code": "P082E",
+   "brand": "",
+   "ru": "Датчик положения рычага КПП по оси Y (датчик 1): низкий уровень сигнала в цепи",
+   "en": "Gear Lever Y Position Sensor 1 Circuit Low",
+   "fam": "",
+   "node": "gear lever y position"
+  },
+  {
+   "code": "P082F",
+   "brand": "",
+   "ru": "Датчик положения рычага КПП по оси Y (датчик 1): высокий уровень сигнала в цепи",
+   "en": "Gear Lever Y Position Sensor 1 Circuit High",
+   "fam": "",
+   "node": "gear lever y position"
+  },
+  {
+   "code": "P089F",
+   "brand": "",
+   "ru": "Датчик положения рычага КПП по оси Y (датчик 2): цепь",
+   "en": "Gear Lever Y Position Sensor 2 Circuit",
+   "fam": "",
+   "node": "gear lever y position"
+  },
+  {
+   "code": "P08A0",
+   "brand": "",
+   "ru": "Датчик положения рычага КПП по оси Y (датчик 2): сигнал вне диапазона",
+   "en": "Gear Lever Y Position Sensor 2 Circuit Range/Performance",
+   "fam": "",
+   "node": "gear lever y position"
+  },
+  {
+   "code": "P08A1",
+   "brand": "",
+   "ru": "Датчик положения рычага КПП по оси Y (датчик 2): низкий уровень сигнала в цепи",
+   "en": "Gear Lever Y Position Sensor 2 Circuit Low",
+   "fam": "",
+   "node": "gear lever y position"
+  },
+  {
+   "code": "P08A2",
+   "brand": "",
+   "ru": "Датчик положения рычага КПП по оси Y (датчик 2): высокий уровень сигнала в цепи",
+   "en": "Gear Lever Y Position Sensor 2 Circuit High",
+   "fam": "",
+   "node": "gear lever y position"
+  },
+  {
+   "code": "P08A3",
+   "brand": "",
+   "ru": "Датчик положения рычага КПП по оси Y (датчик 2): прерывистый / нестабильный сигнал",
+   "en": "Gear Lever Y Position Sensor 2 Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "gear lever y position"
+  },
+  {
+   "code": "P083A",
+   "brand": "",
+   "ru": "Датчик давления масла КПП G: цепь",
+   "en": "Transmission Fluid Pressure Sensor/Switch G Circuit",
+   "fam": "",
+   "node": "transmission fluid pressure sensor switch g"
+  },
+  {
+   "code": "P083B",
+   "brand": "",
+   "ru": "Датчик давления масла КПП G: сигнал вне диапазона",
+   "en": "Transmission Fluid Pressure Sensor/Switch G Circuit Range/Performance",
+   "fam": "",
+   "node": "transmission fluid pressure sensor switch g"
+  },
+  {
+   "code": "P083C",
+   "brand": "",
+   "ru": "Датчик давления масла КПП G: низкий уровень сигнала в цепи",
+   "en": "Transmission Fluid Pressure Sensor/Switch G Circuit Low",
+   "fam": "",
+   "node": "transmission fluid pressure sensor switch g"
+  },
+  {
+   "code": "P083D",
+   "brand": "",
+   "ru": "Датчик давления масла КПП G: высокий уровень сигнала в цепи",
+   "en": "Transmission Fluid Pressure Sensor/Switch G Circuit High",
+   "fam": "",
+   "node": "transmission fluid pressure sensor switch g"
+  },
+  {
+   "code": "P083E",
+   "brand": "",
+   "ru": "Датчик давления масла КПП G: прерывистый сигнал в цепи",
+   "en": "Transmission Fluid Pressure Sensor/Switch G Circuit Intermittent",
+   "fam": "",
+   "node": "transmission fluid pressure sensor switch g"
+  },
+  {
+   "code": "P083F",
+   "brand": "",
+   "ru": "Выключатели педали сцепления A/B: рассогласование",
+   "en": "Clutch Pedal Switch A/B Correlation",
+   "fam": "",
+   "node": "clutch pedal switch a b correlation"
+  },
+  {
+   "code": "P0840",
+   "brand": "",
+   "ru": "Датчик давления масла коробки A: цепь",
+   "en": "",
+   "fam": "trans_pressure",
+   "node": "fam:trans_pressure"
+  },
+  {
+   "code": "P0841",
+   "brand": "",
+   "ru": "Датчик давления масла коробки A: показания вне диапазона",
+   "en": "",
+   "fam": "trans_pressure",
+   "node": "fam:trans_pressure"
+  },
+  {
+   "code": "P0842",
+   "brand": "",
+   "ru": "Датчик давления масла коробки A: низкий сигнал",
+   "en": "",
+   "fam": "trans_pressure",
+   "node": "fam:trans_pressure"
+  },
+  {
+   "code": "P0843",
+   "brand": "",
+   "ru": "Датчик давления масла коробки A: высокий сигнал",
+   "en": "",
+   "fam": "trans_pressure",
+   "node": "fam:trans_pressure"
+  },
+  {
+   "code": "P0844",
+   "brand": "",
+   "ru": "Датчик давления масла коробки A: прерывистый сигнал",
+   "en": "",
+   "fam": "trans_pressure",
+   "node": "fam:trans_pressure"
+  },
+  {
+   "code": "P0845",
+   "brand": "",
+   "ru": "Датчик давления масла коробки B: цепь",
+   "en": "",
+   "fam": "trans_pressure",
+   "node": "fam:trans_pressure"
+  },
+  {
+   "code": "P0846",
+   "brand": "",
+   "ru": "Датчик давления масла коробки B: показания вне диапазона",
+   "en": "",
+   "fam": "trans_pressure",
+   "node": "fam:trans_pressure"
+  },
+  {
+   "code": "P0847",
+   "brand": "",
+   "ru": "Датчик давления масла коробки B: низкий сигнал",
+   "en": "",
+   "fam": "trans_pressure",
+   "node": "fam:trans_pressure"
+  },
+  {
+   "code": "P0848",
+   "brand": "",
+   "ru": "Датчик давления масла коробки B: высокий сигнал",
+   "en": "",
+   "fam": "trans_pressure",
+   "node": "fam:trans_pressure"
+  },
+  {
+   "code": "P0849",
+   "brand": "",
+   "ru": "Датчик давления масла коробки B: прерывистый сигнал",
+   "en": "",
+   "fam": "trans_pressure",
+   "node": "fam:trans_pressure"
+  },
+  {
+   "code": "P0867",
+   "brand": "",
+   "ru": "Давление масла в коробке: неисправность",
+   "en": "",
+   "fam": "trans_pressure",
+   "node": "fam:trans_pressure"
+  },
+  {
+   "code": "P0868",
+   "brand": "",
+   "ru": "Давление масла в коробке: низкое",
+   "en": "",
+   "fam": "trans_pressure",
+   "node": "fam:trans_pressure"
+  },
+  {
+   "code": "P0869",
+   "brand": "",
+   "ru": "Давление масла в коробке: высокое",
+   "en": "",
+   "fam": "trans_pressure",
+   "node": "fam:trans_pressure"
+  },
+  {
+   "code": "P0870",
+   "brand": "",
+   "ru": "Датчик давления масла коробки C: цепь",
+   "en": "",
+   "fam": "trans_pressure",
+   "node": "fam:trans_pressure"
+  },
+  {
+   "code": "P0871",
+   "brand": "",
+   "ru": "Датчик давления масла коробки C: показания вне диапазона",
+   "en": "",
+   "fam": "trans_pressure",
+   "node": "fam:trans_pressure"
+  },
+  {
+   "code": "P0872",
+   "brand": "",
+   "ru": "Датчик давления масла коробки C: низкий сигнал",
+   "en": "",
+   "fam": "trans_pressure",
+   "node": "fam:trans_pressure"
+  },
+  {
+   "code": "P0873",
+   "brand": "",
+   "ru": "Датчик давления масла коробки C: высокий сигнал",
+   "en": "",
+   "fam": "trans_pressure",
+   "node": "fam:trans_pressure"
+  },
+  {
+   "code": "P0874",
+   "brand": "",
+   "ru": "Датчик давления масла коробки C: прерывистый сигнал",
+   "en": "",
+   "fam": "trans_pressure",
+   "node": "fam:trans_pressure"
+  },
+  {
+   "code": "P0875",
+   "brand": "",
+   "ru": "Датчик давления масла коробки D: цепь",
+   "en": "",
+   "fam": "trans_pressure",
+   "node": "fam:trans_pressure"
+  },
+  {
+   "code": "P0876",
+   "brand": "",
+   "ru": "Датчик давления масла коробки D: показания вне диапазона",
+   "en": "",
+   "fam": "trans_pressure",
+   "node": "fam:trans_pressure"
+  },
+  {
+   "code": "P0877",
+   "brand": "",
+   "ru": "Датчик давления масла коробки D: низкий сигнал",
+   "en": "",
+   "fam": "trans_pressure",
+   "node": "fam:trans_pressure"
+  },
+  {
+   "code": "P0878",
+   "brand": "",
+   "ru": "Датчик давления масла коробки D: высокий сигнал",
+   "en": "",
+   "fam": "trans_pressure",
+   "node": "fam:trans_pressure"
+  },
+  {
+   "code": "P0879",
+   "brand": "",
+   "ru": "Датчик давления масла коробки D: прерывистый сигнал",
+   "en": "",
+   "fam": "trans_pressure",
+   "node": "fam:trans_pressure"
+  },
+  {
+   "code": "P0932",
+   "brand": "",
+   "ru": "Датчик давления гидросистемы коробки (робот/DSG): цепь",
+   "en": "",
+   "fam": "trans_pressure",
+   "node": "fam:trans_pressure"
+  },
+  {
+   "code": "P0933",
+   "brand": "",
+   "ru": "Датчик давления гидросистемы коробки (робот/DSG): показания вне диапазона",
+   "en": "",
+   "fam": "trans_pressure",
+   "node": "fam:trans_pressure"
+  },
+  {
+   "code": "P0934",
+   "brand": "",
+   "ru": "Датчик давления гидросистемы коробки (робот/DSG): низкий сигнал",
+   "en": "",
+   "fam": "trans_pressure",
+   "node": "fam:trans_pressure"
+  },
+  {
+   "code": "P0935",
+   "brand": "",
+   "ru": "Датчик давления гидросистемы коробки (робот/DSG): высокий сигнал",
+   "en": "",
+   "fam": "trans_pressure",
+   "node": "fam:trans_pressure"
+  },
+  {
+   "code": "P0936",
+   "brand": "",
+   "ru": "Датчик давления гидросистемы коробки (робот/DSG): прерывистый сигнал",
+   "en": "",
+   "fam": "trans_pressure",
+   "node": "fam:trans_pressure"
+  },
+  {
+   "code": "P0942",
+   "brand": "",
+   "ru": "Гидравлический блок коробки: неисправность",
+   "en": "",
+   "fam": "trans_pressure",
+   "node": "fam:trans_pressure"
+  },
+  {
+   "code": "P0943",
+   "brand": "",
+   "ru": "Гидравлический блок: слишком частые включения насоса",
+   "en": "",
+   "fam": "trans_pressure",
+   "node": "fam:trans_pressure"
+  },
+  {
+   "code": "P0944",
+   "brand": "",
+   "ru": "Потеря давления в гидросистеме коробки",
+   "en": "",
+   "fam": "trans_pressure",
+   "node": "fam:trans_pressure"
+  },
+  {
+   "code": "P0945",
+   "brand": "",
+   "ru": "Реле насоса гидросистемы коробки: цепь / обрыв",
+   "en": "",
+   "fam": "trans_pressure",
+   "node": "fam:trans_pressure"
+  },
+  {
+   "code": "P0946",
+   "brand": "",
+   "ru": "Реле насоса гидросистемы коробки: не отрабатывает команду",
+   "en": "",
+   "fam": "trans_pressure",
+   "node": "fam:trans_pressure"
+  },
+  {
+   "code": "P0947",
+   "brand": "",
+   "ru": "Реле насоса гидросистемы коробки: низкий уровень в цепи",
+   "en": "",
+   "fam": "trans_pressure",
+   "node": "fam:trans_pressure"
+  },
+  {
+   "code": "P0948",
+   "brand": "",
+   "ru": "Реле насоса гидросистемы коробки: высокий уровень в цепи",
+   "en": "",
+   "fam": "trans_pressure",
+   "node": "fam:trans_pressure"
+  },
+  {
+   "code": "P0987",
+   "brand": "",
+   "ru": "Датчик давления масла коробки E: цепь",
+   "en": "",
+   "fam": "trans_pressure",
+   "node": "fam:trans_pressure"
+  },
+  {
+   "code": "P0988",
+   "brand": "",
+   "ru": "Датчик давления масла коробки E: показания вне диапазона",
+   "en": "",
+   "fam": "trans_pressure",
+   "node": "fam:trans_pressure"
+  },
+  {
+   "code": "P0989",
+   "brand": "",
+   "ru": "Датчик давления масла коробки E: низкий сигнал",
+   "en": "",
+   "fam": "trans_pressure",
+   "node": "fam:trans_pressure"
+  },
+  {
+   "code": "P0990",
+   "brand": "",
+   "ru": "Датчик давления масла коробки E: высокий сигнал",
+   "en": "",
+   "fam": "trans_pressure",
+   "node": "fam:trans_pressure"
+  },
+  {
+   "code": "P0991",
+   "brand": "",
+   "ru": "Датчик давления масла коробки E: прерывистый сигнал",
+   "en": "",
+   "fam": "trans_pressure",
+   "node": "fam:trans_pressure"
+  },
+  {
+   "code": "P0992",
+   "brand": "",
+   "ru": "Датчик давления масла коробки F: цепь",
+   "en": "",
+   "fam": "trans_pressure",
+   "node": "fam:trans_pressure"
+  },
+  {
+   "code": "P0993",
+   "brand": "",
+   "ru": "Датчик давления масла коробки F: показания вне диапазона",
+   "en": "",
+   "fam": "trans_pressure",
+   "node": "fam:trans_pressure"
+  },
+  {
+   "code": "P0994",
+   "brand": "",
+   "ru": "Датчик давления масла коробки F: низкий сигнал",
+   "en": "",
+   "fam": "trans_pressure",
+   "node": "fam:trans_pressure"
+  },
+  {
+   "code": "P0995",
+   "brand": "",
+   "ru": "Датчик давления масла коробки F: высокий сигнал",
+   "en": "",
+   "fam": "trans_pressure",
+   "node": "fam:trans_pressure"
+  },
+  {
+   "code": "P0996",
+   "brand": "",
+   "ru": "Датчик давления масла коробки F: прерывистый сигнал",
+   "en": "",
+   "fam": "trans_pressure",
+   "node": "fam:trans_pressure"
+  }
+ ]
+}

@@ -1,0 +1,34 @@
+{
+ "name": "brand-toyota_065",
+ "series": "brand",
+ "brand": "toyota",
+ "nodes": [
+  "fam:hybrid_engine"
+ ],
+ "codes": [
+  {
+   "code": "P3101",
+   "brand": "toyota",
+   "ru": "Двигатель гибрида: неисправность системы",
+   "en": "",
+   "fam": "hybrid_engine",
+   "node": "fam:hybrid_engine"
+  },
+  {
+   "code": "P3190",
+   "brand": "toyota",
+   "ru": "Двигатель гибрида: недостаточная мощность",
+   "en": "",
+   "fam": "hybrid_engine",
+   "node": "fam:hybrid_engine"
+  },
+  {
+   "code": "P3191",
+   "brand": "toyota",
+   "ru": "Двигатель гибрида не запустился",
+   "en": "",
+   "fam": "hybrid_engine",
+   "node": "fam:hybrid_engine"
+  }
+ ]
+}

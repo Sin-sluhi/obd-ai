@@ -1,0 +1,378 @@
+{
+ "name": "sae_108",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "hybrid ev battery voltage sense l",
+  "hybrid ev battery voltage sense m",
+  "hybrid ev battery voltage sense n",
+  "hybrid ev battery voltage sense o",
+  "hybrid ev battery voltage sense p",
+  "hybrid ev battery voltage sense q",
+  "hybrid ev battery voltage sense r",
+  "hybrid ev battery voltage sense s",
+  "hybrid ev battery voltage sense t"
+ ],
+ "codes": [
+  {
+   "code": "P0B72",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения L: цепь",
+   "en": "Hybrid/EV Battery Voltage Sense L Circuit",
+   "fam": "",
+   "node": "hybrid ev battery voltage sense l"
+  },
+  {
+   "code": "P0B73",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения L: сигнал вне диапазона",
+   "en": "Hybrid/EV Battery Voltage Sense L Circuit Range/Performance",
+   "fam": "",
+   "node": "hybrid ev battery voltage sense l"
+  },
+  {
+   "code": "P0B74",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения L: низкий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Voltage Sense L Circuit Low",
+   "fam": "",
+   "node": "hybrid ev battery voltage sense l"
+  },
+  {
+   "code": "P0B75",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения L: высокий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Voltage Sense L Circuit High",
+   "fam": "",
+   "node": "hybrid ev battery voltage sense l"
+  },
+  {
+   "code": "P0B76",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения L: прерывистый / нестабильный сигнал",
+   "en": "Hybrid/EV Battery Voltage Sense L Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "hybrid ev battery voltage sense l"
+  },
+  {
+   "code": "P0B77",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения M: цепь",
+   "en": "Hybrid/EV Battery Voltage Sense M Circuit",
+   "fam": "",
+   "node": "hybrid ev battery voltage sense m"
+  },
+  {
+   "code": "P0B78",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения M: сигнал вне диапазона",
+   "en": "Hybrid/EV Battery Voltage Sense M Circuit Range/Performance",
+   "fam": "",
+   "node": "hybrid ev battery voltage sense m"
+  },
+  {
+   "code": "P0B79",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения M: низкий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Voltage Sense M Circuit Low",
+   "fam": "",
+   "node": "hybrid ev battery voltage sense m"
+  },
+  {
+   "code": "P0B7A",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения M: высокий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Voltage Sense M Circuit High",
+   "fam": "",
+   "node": "hybrid ev battery voltage sense m"
+  },
+  {
+   "code": "P0B7B",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения M: прерывистый / нестабильный сигнал",
+   "en": "Hybrid/EV Battery Voltage Sense M Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "hybrid ev battery voltage sense m"
+  },
+  {
+   "code": "P0B7C",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения N: цепь",
+   "en": "Hybrid/EV Battery Voltage Sense N Circuit",
+   "fam": "",
+   "node": "hybrid ev battery voltage sense n"
+  },
+  {
+   "code": "P0B7D",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения N: сигнал вне диапазона",
+   "en": "Hybrid/EV Battery Voltage Sense N Circuit Range/Performance",
+   "fam": "",
+   "node": "hybrid ev battery voltage sense n"
+  },
+  {
+   "code": "P0B7E",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения N: низкий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Voltage Sense N Circuit Low",
+   "fam": "",
+   "node": "hybrid ev battery voltage sense n"
+  },
+  {
+   "code": "P0B7F",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения N: высокий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Voltage Sense N Circuit High",
+   "fam": "",
+   "node": "hybrid ev battery voltage sense n"
+  },
+  {
+   "code": "P0B80",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения N: прерывистый / нестабильный сигнал",
+   "en": "Hybrid/EV Battery Voltage Sense N Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "hybrid ev battery voltage sense n"
+  },
+  {
+   "code": "P0B81",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения O: цепь",
+   "en": "Hybrid/EV Battery Voltage Sense O Circuit",
+   "fam": "",
+   "node": "hybrid ev battery voltage sense o"
+  },
+  {
+   "code": "P0B82",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения O: сигнал вне диапазона",
+   "en": "Hybrid/EV Battery Voltage Sense O Circuit Range/Performance",
+   "fam": "",
+   "node": "hybrid ev battery voltage sense o"
+  },
+  {
+   "code": "P0B83",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения O: низкий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Voltage Sense O Circuit Low",
+   "fam": "",
+   "node": "hybrid ev battery voltage sense o"
+  },
+  {
+   "code": "P0B84",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения O: высокий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Voltage Sense O Circuit High",
+   "fam": "",
+   "node": "hybrid ev battery voltage sense o"
+  },
+  {
+   "code": "P0B85",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения O: прерывистый / нестабильный сигнал",
+   "en": "Hybrid/EV Battery Voltage Sense O Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "hybrid ev battery voltage sense o"
+  },
+  {
+   "code": "P0B86",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения P: цепь",
+   "en": "Hybrid/EV Battery Voltage Sense P Circuit",
+   "fam": "",
+   "node": "hybrid ev battery voltage sense p"
+  },
+  {
+   "code": "P0B87",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения P: сигнал вне диапазона",
+   "en": "Hybrid/EV Battery Voltage Sense P Circuit Range/Performance",
+   "fam": "",
+   "node": "hybrid ev battery voltage sense p"
+  },
+  {
+   "code": "P0B88",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения P: низкий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Voltage Sense P Circuit Low",
+   "fam": "",
+   "node": "hybrid ev battery voltage sense p"
+  },
+  {
+   "code": "P0B89",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения P: высокий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Voltage Sense P Circuit High",
+   "fam": "",
+   "node": "hybrid ev battery voltage sense p"
+  },
+  {
+   "code": "P0B8A",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения P: прерывистый / нестабильный сигнал",
+   "en": "Hybrid/EV Battery Voltage Sense P Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "hybrid ev battery voltage sense p"
+  },
+  {
+   "code": "P0B8B",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения Q: цепь",
+   "en": "Hybrid/EV Battery Voltage Sense Q Circuit",
+   "fam": "",
+   "node": "hybrid ev battery voltage sense q"
+  },
+  {
+   "code": "P0B8C",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения Q: сигнал вне диапазона",
+   "en": "Hybrid/EV Battery Voltage Sense Q Circuit Range/Performance",
+   "fam": "",
+   "node": "hybrid ev battery voltage sense q"
+  },
+  {
+   "code": "P0B8D",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения Q: низкий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Voltage Sense Q Circuit Low",
+   "fam": "",
+   "node": "hybrid ev battery voltage sense q"
+  },
+  {
+   "code": "P0B8E",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения Q: высокий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Voltage Sense Q Circuit High",
+   "fam": "",
+   "node": "hybrid ev battery voltage sense q"
+  },
+  {
+   "code": "P0B8F",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения Q: прерывистый / нестабильный сигнал",
+   "en": "Hybrid/EV Battery Voltage Sense Q Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "hybrid ev battery voltage sense q"
+  },
+  {
+   "code": "P0B90",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения R: цепь",
+   "en": "Hybrid/EV Battery Voltage Sense R Circuit",
+   "fam": "",
+   "node": "hybrid ev battery voltage sense r"
+  },
+  {
+   "code": "P0B91",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения R: сигнал вне диапазона",
+   "en": "Hybrid/EV Battery Voltage Sense R Circuit Range/Performance",
+   "fam": "",
+   "node": "hybrid ev battery voltage sense r"
+  },
+  {
+   "code": "P0B92",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения R: низкий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Voltage Sense R Circuit Low",
+   "fam": "",
+   "node": "hybrid ev battery voltage sense r"
+  },
+  {
+   "code": "P0B93",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения R: высокий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Voltage Sense R Circuit High",
+   "fam": "",
+   "node": "hybrid ev battery voltage sense r"
+  },
+  {
+   "code": "P0B94",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения R: прерывистый / нестабильный сигнал",
+   "en": "Hybrid/EV Battery Voltage Sense R Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "hybrid ev battery voltage sense r"
+  },
+  {
+   "code": "P0B95",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения S: цепь",
+   "en": "Hybrid/EV Battery Voltage Sense S Circuit",
+   "fam": "",
+   "node": "hybrid ev battery voltage sense s"
+  },
+  {
+   "code": "P0B96",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения S: сигнал вне диапазона",
+   "en": "Hybrid/EV Battery Voltage Sense S Circuit Range/Performance",
+   "fam": "",
+   "node": "hybrid ev battery voltage sense s"
+  },
+  {
+   "code": "P0B97",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения S: низкий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Voltage Sense S Circuit Low",
+   "fam": "",
+   "node": "hybrid ev battery voltage sense s"
+  },
+  {
+   "code": "P0B98",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения S: высокий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Voltage Sense S Circuit High",
+   "fam": "",
+   "node": "hybrid ev battery voltage sense s"
+  },
+  {
+   "code": "P0B99",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения S: прерывистый / нестабильный сигнал",
+   "en": "Hybrid/EV Battery Voltage Sense S Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "hybrid ev battery voltage sense s"
+  },
+  {
+   "code": "P0B9A",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения T: цепь",
+   "en": "Hybrid/EV Battery Voltage Sense T Circuit",
+   "fam": "",
+   "node": "hybrid ev battery voltage sense t"
+  },
+  {
+   "code": "P0B9B",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения T: сигнал вне диапазона",
+   "en": "Hybrid/EV Battery Voltage Sense T Circuit Range/Performance",
+   "fam": "",
+   "node": "hybrid ev battery voltage sense t"
+  },
+  {
+   "code": "P0B9C",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения T: низкий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Voltage Sense T Circuit Low",
+   "fam": "",
+   "node": "hybrid ev battery voltage sense t"
+  },
+  {
+   "code": "P0B9D",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения T: высокий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Voltage Sense T Circuit High",
+   "fam": "",
+   "node": "hybrid ev battery voltage sense t"
+  },
+  {
+   "code": "P0B9E",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения T: прерывистый / нестабильный сигнал",
+   "en": "Hybrid/EV Battery Voltage Sense T Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "hybrid ev battery voltage sense t"
+  }
+ ]
+}

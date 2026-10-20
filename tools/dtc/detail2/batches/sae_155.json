@@ -1,0 +1,367 @@
+{
+ "name": "sae_155",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "a rocker arm actuator position",
+  "actuator supply voltage c",
+  "air cleaner inlet",
+  "b rocker arm actuator position",
+  "control module internal temperature sensor a",
+  "coolant degassing valve",
+  "engine coolant bypass valve a",
+  "engine serial number not programmed or incompatible",
+  "glow plug control module 1 over temperature",
+  "glow plug control module 2 over temperature",
+  "injection pump fuel calibration not learned",
+  "injection pump timing calibration not learned",
+  "injection pump timing offset",
+  "reductant heater driver"
+ ],
+ "codes": [
+  {
+   "code": "P263D",
+   "brand": "",
+   "ru": "Драйвер подогрева мочевины: работа нарушена",
+   "en": "Reductant Heater Driver Performance",
+   "fam": "",
+   "node": "reductant heater driver"
+  },
+  {
+   "code": "P263E",
+   "brand": "",
+   "ru": "Блок управления свечами накаливания 1: перегрев",
+   "en": "Glow Plug Control Module 1 Over Temperature",
+   "fam": "",
+   "node": "glow plug control module 1 over temperature"
+  },
+  {
+   "code": "P263F",
+   "brand": "",
+   "ru": "Блок управления свечами накаливания 2: перегрев",
+   "en": "Glow Plug Control Module 2 Over Temperature",
+   "fam": "",
+   "node": "glow plug control module 2 over temperature"
+  },
+  {
+   "code": "P264A",
+   "brand": "",
+   "ru": "Датчик положения привода коромысел A: цепь (банк 1)",
+   "en": "A Rocker Arm Actuator Position Sensor Circuit Bank 1",
+   "fam": "",
+   "node": "a rocker arm actuator position"
+  },
+  {
+   "code": "P264B",
+   "brand": "",
+   "ru": "Датчик положения привода коромысел A: сигнал вне диапазона (банк 1)",
+   "en": "A Rocker Arm Actuator Position Sensor Circuit Range/Performance Bank 1",
+   "fam": "",
+   "node": "a rocker arm actuator position"
+  },
+  {
+   "code": "P264C",
+   "brand": "",
+   "ru": "Датчик положения привода коромысел A: низкий уровень сигнала в цепи (банк 1)",
+   "en": "A Rocker Arm Actuator Position Sensor Circuit Low Bank 1",
+   "fam": "",
+   "node": "a rocker arm actuator position"
+  },
+  {
+   "code": "P264D",
+   "brand": "",
+   "ru": "Датчик положения привода коромысел A: высокий уровень сигнала в цепи (банк 1)",
+   "en": "A Rocker Arm Actuator Position Sensor Circuit High Bank 1",
+   "fam": "",
+   "node": "a rocker arm actuator position"
+  },
+  {
+   "code": "P264E",
+   "brand": "",
+   "ru": "Датчик положения привода коромысел A: прерывистый / нестабильный сигнал (банк 1)",
+   "en": "A Rocker Arm Actuator Position Sensor Circuit Intermittent/Erratic Bank 1",
+   "fam": "",
+   "node": "a rocker arm actuator position"
+  },
+  {
+   "code": "P266A",
+   "brand": "",
+   "ru": "Датчик положения привода коромысел A: цепь (банк 2)",
+   "en": "A Rocker Arm Actuator Position Sensor Circuit Bank 2",
+   "fam": "",
+   "node": "a rocker arm actuator position"
+  },
+  {
+   "code": "P266B",
+   "brand": "",
+   "ru": "Датчик положения привода коромысел A: сигнал вне диапазона (банк 2)",
+   "en": "A Rocker Arm Actuator Position Sensor Circuit Range/Performance Bank 2",
+   "fam": "",
+   "node": "a rocker arm actuator position"
+  },
+  {
+   "code": "P266C",
+   "brand": "",
+   "ru": "Датчик положения привода коромысел A: низкий уровень сигнала в цепи (банк 2)",
+   "en": "A Rocker Arm Actuator Position Sensor Circuit Low Bank 2",
+   "fam": "",
+   "node": "a rocker arm actuator position"
+  },
+  {
+   "code": "P266D",
+   "brand": "",
+   "ru": "Датчик положения привода коромысел A: высокий уровень сигнала в цепи (банк 2)",
+   "en": "A Rocker Arm Actuator Position Sensor Circuit High Bank 2",
+   "fam": "",
+   "node": "a rocker arm actuator position"
+  },
+  {
+   "code": "P266E",
+   "brand": "",
+   "ru": "Датчик положения привода коромысел A: прерывистый / нестабильный сигнал (банк 2)",
+   "en": "A Rocker Arm Actuator Position Sensor Circuit Intermittent/Erratic Bank 2",
+   "fam": "",
+   "node": "a rocker arm actuator position"
+  },
+  {
+   "code": "P264F",
+   "brand": "",
+   "ru": "Серийный номер двигателя не записан или не подходит",
+   "en": "Engine Serial Number Not Programmed or Incompatible",
+   "fam": "",
+   "node": "engine serial number not programmed or incompatible"
+  },
+  {
+   "code": "P265A",
+   "brand": "",
+   "ru": "Датчик положения привода коромысел B: цепь (банк 1)",
+   "en": "B Rocker Arm Actuator Position Sensor Circuit Bank 1",
+   "fam": "",
+   "node": "b rocker arm actuator position"
+  },
+  {
+   "code": "P265B",
+   "brand": "",
+   "ru": "Датчик положения привода коромысел B: сигнал вне диапазона (банк 1)",
+   "en": "B Rocker Arm Actuator Position Sensor Circuit Range/Performance Bank 1",
+   "fam": "",
+   "node": "b rocker arm actuator position"
+  },
+  {
+   "code": "P265C",
+   "brand": "",
+   "ru": "Датчик положения привода коромысел B: низкий уровень сигнала в цепи (банк 1)",
+   "en": "B Rocker Arm Actuator Position Sensor Circuit Low Bank 1",
+   "fam": "",
+   "node": "b rocker arm actuator position"
+  },
+  {
+   "code": "P265D",
+   "brand": "",
+   "ru": "Датчик положения привода коромысел B: высокий уровень сигнала в цепи (банк 1)",
+   "en": "B Rocker Arm Actuator Position Sensor Circuit High Bank 1",
+   "fam": "",
+   "node": "b rocker arm actuator position"
+  },
+  {
+   "code": "P265E",
+   "brand": "",
+   "ru": "Датчик положения привода коромысел B: прерывистый / нестабильный сигнал (банк 1)",
+   "en": "B Rocker Arm Actuator Position Sensor Circuit Intermittent/Erratic Bank 1",
+   "fam": "",
+   "node": "b rocker arm actuator position"
+  },
+  {
+   "code": "P267A",
+   "brand": "",
+   "ru": "Датчик положения привода коромысел B: цепь (банк 2)",
+   "en": "B Rocker Arm Actuator Position Sensor Circuit Bank 2",
+   "fam": "",
+   "node": "b rocker arm actuator position"
+  },
+  {
+   "code": "P267B",
+   "brand": "",
+   "ru": "Датчик положения привода коромысел B: сигнал вне диапазона (банк 2)",
+   "en": "B Rocker Arm Actuator Position Sensor Circuit Range/Performance Bank 2",
+   "fam": "",
+   "node": "b rocker arm actuator position"
+  },
+  {
+   "code": "P267C",
+   "brand": "",
+   "ru": "Датчик положения привода коромысел B: низкий уровень сигнала в цепи (банк 2)",
+   "en": "B Rocker Arm Actuator Position Sensor Circuit Low Bank 2",
+   "fam": "",
+   "node": "b rocker arm actuator position"
+  },
+  {
+   "code": "P267D",
+   "brand": "",
+   "ru": "Датчик положения привода коромысел B: высокий уровень сигнала в цепи (банк 2)",
+   "en": "B Rocker Arm Actuator Position Sensor Circuit High Bank 2",
+   "fam": "",
+   "node": "b rocker arm actuator position"
+  },
+  {
+   "code": "P267E",
+   "brand": "",
+   "ru": "Датчик положения привода коромысел B: прерывистый / нестабильный сигнал (банк 2)",
+   "en": "B Rocker Arm Actuator Position Sensor Circuit Intermittent/Erratic Bank 2",
+   "fam": "",
+   "node": "b rocker arm actuator position"
+  },
+  {
+   "code": "P2672",
+   "brand": "",
+   "ru": "Смещение момента впрыска ТНВД",
+   "en": "Injection Pump Timing Offset",
+   "fam": "",
+   "node": "injection pump timing offset"
+  },
+  {
+   "code": "P2673",
+   "brand": "",
+   "ru": "Калибровка момента впрыска ТНВД не обучена",
+   "en": "Injection Pump Timing Calibration Not Learned",
+   "fam": "",
+   "node": "injection pump timing calibration not learned"
+  },
+  {
+   "code": "P2674",
+   "brand": "",
+   "ru": "Калибровка подачи ТНВД не обучена",
+   "en": "Injection Pump Fuel Calibration Not Learned",
+   "fam": "",
+   "node": "injection pump fuel calibration not learned"
+  },
+  {
+   "code": "P2675",
+   "brand": "",
+   "ru": "Заслонка на входе воздушного фильтра: обрыв цепи управления",
+   "en": "Air Cleaner Inlet Control Circuit/Open",
+   "fam": "",
+   "node": "air cleaner inlet"
+  },
+  {
+   "code": "P2676",
+   "brand": "",
+   "ru": "Заслонка на входе воздушного фильтра: низкий уровень в цепи управления",
+   "en": "Air Cleaner Inlet Control Circuit Low",
+   "fam": "",
+   "node": "air cleaner inlet"
+  },
+  {
+   "code": "P2677",
+   "brand": "",
+   "ru": "Заслонка на входе воздушного фильтра: высокий уровень в цепи управления",
+   "en": "Air Cleaner Inlet Control Circuit High",
+   "fam": "",
+   "node": "air cleaner inlet"
+  },
+  {
+   "code": "P2678",
+   "brand": "",
+   "ru": "Клапан дегазации охлаждающей жидкости: обрыв цепи управления",
+   "en": "Coolant Degassing Valve Control Circuit/Open",
+   "fam": "",
+   "node": "coolant degassing valve"
+  },
+  {
+   "code": "P2679",
+   "brand": "",
+   "ru": "Клапан дегазации охлаждающей жидкости: низкий уровень в цепи управления",
+   "en": "Coolant Degassing Valve Control Circuit Low",
+   "fam": "",
+   "node": "coolant degassing valve"
+  },
+  {
+   "code": "P2680",
+   "brand": "",
+   "ru": "Клапан дегазации охлаждающей жидкости: высокий уровень в цепи управления",
+   "en": "Coolant Degassing Valve Control Circuit High",
+   "fam": "",
+   "node": "coolant degassing valve"
+  },
+  {
+   "code": "P267F",
+   "brand": "",
+   "ru": "Внутренний датчик температуры блока управления A: прерывистый / нестабильный сигнал",
+   "en": "Control Module Internal Temperature Sensor A Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "control module internal temperature sensor a"
+  },
+  {
+   "code": "P2681",
+   "brand": "",
+   "ru": "Перепускной клапан охлаждающей жидкости двигателя A: обрыв цепи управления",
+   "en": "Engine Coolant Bypass Valve A Control Circuit/Open",
+   "fam": "",
+   "node": "engine coolant bypass valve a"
+  },
+  {
+   "code": "P2682",
+   "brand": "",
+   "ru": "Перепускной клапан охлаждающей жидкости двигателя A: низкий уровень в цепи управления",
+   "en": "Engine Coolant Bypass Valve A Control Circuit Low",
+   "fam": "",
+   "node": "engine coolant bypass valve a"
+  },
+  {
+   "code": "P2683",
+   "brand": "",
+   "ru": "Перепускной клапан охлаждающей жидкости двигателя A: высокий уровень в цепи управления",
+   "en": "Engine Coolant Bypass Valve A Control Circuit High",
+   "fam": "",
+   "node": "engine coolant bypass valve a"
+  },
+  {
+   "code": "P26A3",
+   "brand": "",
+   "ru": "Перепускной клапан охлаждающей жидкости двигателя A: вне допустимого диапазона",
+   "en": "Engine Coolant Bypass Valve A Range/Performance",
+   "fam": "",
+   "node": "engine coolant bypass valve a"
+  },
+  {
+   "code": "P26AB",
+   "brand": "",
+   "ru": "Перепускной клапан охлаждающей жидкости двигателя A: заклинил открытым",
+   "en": "Engine Coolant Bypass Valve A Stuck/Open",
+   "fam": "",
+   "node": "engine coolant bypass valve a"
+  },
+  {
+   "code": "P26B1",
+   "brand": "",
+   "ru": "Перепускной клапан охлаждающей жидкости двигателя A: заклинил закрытым",
+   "en": "Engine Coolant Bypass Valve A Stuck Closed",
+   "fam": "",
+   "node": "engine coolant bypass valve a"
+  },
+  {
+   "code": "P2684",
+   "brand": "",
+   "ru": "Питание исполнительных механизмов C: обрыв цепи",
+   "en": "Actuator Supply Voltage C Circuit/Open",
+   "fam": "",
+   "node": "actuator supply voltage c"
+  },
+  {
+   "code": "P2685",
+   "brand": "",
+   "ru": "Питание исполнительных механизмов C: низкий уровень сигнала в цепи",
+   "en": "Actuator Supply Voltage C Circuit Low",
+   "fam": "",
+   "node": "actuator supply voltage c"
+  },
+  {
+   "code": "P2686",
+   "brand": "",
+   "ru": "Питание исполнительных механизмов C: высокий уровень сигнала в цепи",
+   "en": "Actuator Supply Voltage C Circuit High",
+   "fam": "",
+   "node": "actuator supply voltage c"
+  }
+ ]
+}

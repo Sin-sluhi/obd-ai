@@ -1,0 +1,315 @@
+{
+ "name": "sae_120",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "a c compressor control module",
+  "a c compressor control module internal temperature sensor a",
+  "a c compressor control module internaltemperature sensor a",
+  "a c compressor motor current",
+  "a c compressor motor phase u current",
+  "a c compressor motor phase v current",
+  "a c compressor motor phase w current",
+  "a c compressor motor voltage a",
+  "a c compressor motor voltage sensor a",
+  "battery charging"
+ ],
+ "codes": [
+  {
+   "code": "P0D68",
+   "brand": "",
+   "ru": "Датчик напряжения электромотора компрессора кондиционера A: цепь",
+   "en": "A/C Compressor Motor Voltage Sensor A Circuit",
+   "fam": "",
+   "node": "a c compressor motor voltage sensor a"
+  },
+  {
+   "code": "P0D69",
+   "brand": "",
+   "ru": "Датчик напряжения электромотора компрессора кондиционера A: работа нарушена",
+   "en": "A/C Compressor Motor Voltage Sensor A Performance",
+   "fam": "",
+   "node": "a c compressor motor voltage sensor a"
+  },
+  {
+   "code": "P0D6A",
+   "brand": "",
+   "ru": "Датчик напряжения электромотора компрессора кондиционера A: высокий уровень сигнала в цепи",
+   "en": "A/C Compressor Motor Voltage Sensor A Circuit High",
+   "fam": "",
+   "node": "a c compressor motor voltage sensor a"
+  },
+  {
+   "code": "P0D6B",
+   "brand": "",
+   "ru": "Датчик напряжения электромотора компрессора кондиционера A: низкий уровень сигнала в цепи",
+   "en": "A/C Compressor Motor Voltage Sensor A Circuit Low",
+   "fam": "",
+   "node": "a c compressor motor voltage sensor a"
+  },
+  {
+   "code": "P0D6C",
+   "brand": "",
+   "ru": "Датчик напряжения электромотора компрессора кондиционера A: прерывистый / нестабильный сигнал",
+   "en": "A/C Compressor Motor Voltage Sensor A Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "a c compressor motor voltage sensor a"
+  },
+  {
+   "code": "P0D6D",
+   "brand": "",
+   "ru": "Напряжение электромотора компрессора кондиционера A: низкий уровень",
+   "en": "A/C Compressor Motor Voltage A Low",
+   "fam": "",
+   "node": "a c compressor motor voltage a"
+  },
+  {
+   "code": "P0D6E",
+   "brand": "",
+   "ru": "Напряжение электромотора компрессора кондиционера A: высокий уровень",
+   "en": "A/C Compressor Motor Voltage A High",
+   "fam": "",
+   "node": "a c compressor motor voltage a"
+  },
+  {
+   "code": "P0D6F",
+   "brand": "",
+   "ru": "Электромотор компрессора кондиционера: большой ток",
+   "en": "A/C Compressor Motor Current High",
+   "fam": "",
+   "node": "a c compressor motor current"
+  },
+  {
+   "code": "P0EAD",
+   "brand": "",
+   "ru": "Электромотор компрессора кондиционера: цепь датчика тока",
+   "en": "A/C Compressor Motor Current Sensor Circuit",
+   "fam": "",
+   "node": "a c compressor motor current"
+  },
+  {
+   "code": "P0EAF",
+   "brand": "",
+   "ru": "Электромотор компрессора кондиционера: низкий уровень в цепи датчика тока",
+   "en": "A/C Compressor Motor Current Sensor Circuit Low",
+   "fam": "",
+   "node": "a c compressor motor current"
+  },
+  {
+   "code": "P0EB0",
+   "brand": "",
+   "ru": "Электромотор компрессора кондиционера: высокий уровень в цепи датчика тока",
+   "en": "A/C Compressor Motor Current Sensor Circuit High",
+   "fam": "",
+   "node": "a c compressor motor current"
+  },
+  {
+   "code": "P0D70",
+   "brand": "",
+   "ru": "Внутренний датчик температуры блока компрессора кондиционера A: цепь",
+   "en": "A/C Compressor Control Module Internal Temperature Sensor A Circuit",
+   "fam": "",
+   "node": "a c compressor control module internal temperature sensor a"
+  },
+  {
+   "code": "P0D71",
+   "brand": "",
+   "ru": "Внутренний датчик температуры блока компрессора кондиционера A: работа нарушена",
+   "en": "A/C Compressor Control Module Internal Temperature Sensor A Performance",
+   "fam": "",
+   "node": "a c compressor control module internal temperature sensor a"
+  },
+  {
+   "code": "P0D72",
+   "brand": "",
+   "ru": "Внутренний датчик температуры блока компрессора кондиционера A: высокий уровень сигнала в цепи",
+   "en": "A/C Compressor Control Module Internal Temperature Sensor A Circuit High",
+   "fam": "",
+   "node": "a c compressor control module internal temperature sensor a"
+  },
+  {
+   "code": "P0D73",
+   "brand": "",
+   "ru": "Внутренний датчик температуры блока компрессора кондиционера A: низкий уровень сигнала в цепи",
+   "en": "A/C Compressor Control Module Internal Temperature Sensor A Circuit Low",
+   "fam": "",
+   "node": "a c compressor control module internal temperature sensor a"
+  },
+  {
+   "code": "P0D74",
+   "brand": "",
+   "ru": "Внутренний датчик температуры блока компрессора кондиционера A: прерывистый / нестабильный сигнал",
+   "en": "A/C Compressor Control Module InternalTemperature Sensor A Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "a c compressor control module internaltemperature sensor a"
+  },
+  {
+   "code": "P0D75",
+   "brand": "",
+   "ru": "Датчик температуры выходного драйвера блока компрессора кондиционера: цепь",
+   "en": "A/C Compressor Control Module Output Driver Temperature Sensor Circuit",
+   "fam": "",
+   "node": "a c compressor control module"
+  },
+  {
+   "code": "P0D76",
+   "brand": "",
+   "ru": "Датчик температуры выходного драйвера блока компрессора кондиционера: работа нарушена",
+   "en": "A/C Compressor Control Module Output Driver Temperature Sensor Performance",
+   "fam": "",
+   "node": "a c compressor control module"
+  },
+  {
+   "code": "P0D77",
+   "brand": "",
+   "ru": "Датчик температуры выходного драйвера блока компрессора кондиционера: высокий уровень сигнала в цепи",
+   "en": "A/C Compressor Control Module Output Driver Temperature Sensor Circuit High",
+   "fam": "",
+   "node": "a c compressor control module"
+  },
+  {
+   "code": "P0D78",
+   "brand": "",
+   "ru": "Датчик температуры выходного драйвера блока компрессора кондиционера: низкий уровень сигнала в цепи",
+   "en": "A/C Compressor Control Module Output Driver Temperature Sensor Circuit Low",
+   "fam": "",
+   "node": "a c compressor control module"
+  },
+  {
+   "code": "P0D79",
+   "brand": "",
+   "ru": "Датчик температуры выходного драйвера блока компрессора кондиционера: прерывистый / нестабильный сигнал",
+   "en": "A/C Compressor Control Module Output Driver Temperature Sensor Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "a c compressor control module"
+  },
+  {
+   "code": "P0D7A",
+   "brand": "",
+   "ru": "Электромотор компрессора кондиционера, фаза U: малый ток",
+   "en": "A/C Compressor Motor Phase U Current Low",
+   "fam": "",
+   "node": "a c compressor motor phase u current"
+  },
+  {
+   "code": "P0D7B",
+   "brand": "",
+   "ru": "Электромотор компрессора кондиционера, фаза U: большой ток",
+   "en": "A/C Compressor Motor Phase U Current High",
+   "fam": "",
+   "node": "a c compressor motor phase u current"
+  },
+  {
+   "code": "P0EB1",
+   "brand": "",
+   "ru": "Электромотор компрессора кондиционера, фаза U: цепь датчика тока",
+   "en": "A/C Compressor Motor Phase U Current Sensor Circuit",
+   "fam": "",
+   "node": "a c compressor motor phase u current"
+  },
+  {
+   "code": "P0EB2",
+   "brand": "",
+   "ru": "Электромотор компрессора кондиционера, фаза U: высокий уровень в цепи датчика тока",
+   "en": "A/C Compressor Motor Phase U Current Sensor Circuit High",
+   "fam": "",
+   "node": "a c compressor motor phase u current"
+  },
+  {
+   "code": "P0EB3",
+   "brand": "",
+   "ru": "Электромотор компрессора кондиционера, фаза U: низкий уровень в цепи датчика тока",
+   "en": "A/C Compressor Motor Phase U Current Sensor Circuit Low",
+   "fam": "",
+   "node": "a c compressor motor phase u current"
+  },
+  {
+   "code": "P0D7C",
+   "brand": "",
+   "ru": "Электромотор компрессора кондиционера, фаза V: малый ток",
+   "en": "A/C Compressor Motor Phase V Current Low",
+   "fam": "",
+   "node": "a c compressor motor phase v current"
+  },
+  {
+   "code": "P0D7D",
+   "brand": "",
+   "ru": "Электромотор компрессора кондиционера, фаза V: большой ток",
+   "en": "A/C Compressor Motor Phase V Current High",
+   "fam": "",
+   "node": "a c compressor motor phase v current"
+  },
+  {
+   "code": "P0EB5",
+   "brand": "",
+   "ru": "Электромотор компрессора кондиционера, фаза V: высокий уровень в цепи датчика тока",
+   "en": "A/C Compressor Motor Phase V Current Sensor Circuit High",
+   "fam": "",
+   "node": "a c compressor motor phase v current"
+  },
+  {
+   "code": "P0EB6",
+   "brand": "",
+   "ru": "Электромотор компрессора кондиционера, фаза V: низкий уровень в цепи датчика тока",
+   "en": "A/C Compressor Motor Phase V Current Sensor Circuit Low",
+   "fam": "",
+   "node": "a c compressor motor phase v current"
+  },
+  {
+   "code": "P0EBB",
+   "brand": "",
+   "ru": "Электромотор компрессора кондиционера, фаза V: цепь датчика тока",
+   "en": "A/C Compressor Motor Phase V Current Sensor Circuit",
+   "fam": "",
+   "node": "a c compressor motor phase v current"
+  },
+  {
+   "code": "P0D7E",
+   "brand": "",
+   "ru": "Электромотор компрессора кондиционера, фаза W: малый ток",
+   "en": "A/C Compressor Motor Phase W Current Low",
+   "fam": "",
+   "node": "a c compressor motor phase w current"
+  },
+  {
+   "code": "P0D7F",
+   "brand": "",
+   "ru": "Электромотор компрессора кондиционера, фаза W: большой ток",
+   "en": "A/C Compressor Motor Phase W Current High",
+   "fam": "",
+   "node": "a c compressor motor phase w current"
+  },
+  {
+   "code": "P0EB8",
+   "brand": "",
+   "ru": "Электромотор компрессора кондиционера, фаза W: высокий уровень в цепи датчика тока",
+   "en": "A/C Compressor Motor Phase W Current Sensor Circuit High",
+   "fam": "",
+   "node": "a c compressor motor phase w current"
+  },
+  {
+   "code": "P0EB9",
+   "brand": "",
+   "ru": "Электромотор компрессора кондиционера, фаза W: низкий уровень в цепи датчика тока",
+   "en": "A/C Compressor Motor Phase W Current Sensor Circuit Low",
+   "fam": "",
+   "node": "a c compressor motor phase w current"
+  },
+  {
+   "code": "P0EC0",
+   "brand": "",
+   "ru": "Электромотор компрессора кондиционера, фаза W: цепь датчика тока",
+   "en": "A/C Compressor Motor Phase W Current Sensor Circuit",
+   "fam": "",
+   "node": "a c compressor motor phase w current"
+  },
+  {
+   "code": "P0D85",
+   "brand": "",
+   "ru": "Слишком высокое выходное напряжение зарядки",
+   "en": "Battery Charging Output Voltage Too High",
+   "fam": "",
+   "node": "battery charging"
+  }
+ ]
+}

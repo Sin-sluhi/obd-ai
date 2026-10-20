@@ -1,0 +1,376 @@
+{
+ "name": "sae_111",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "drive motor a inverter phase u over temperature",
+  "drive motor a inverter phase v over temperature",
+  "drive motor a inverter phase w over temperature",
+  "drive motor a position sensor not learned",
+  "drive motor a torque delivered",
+  "drive motor b inverter phase u over temperature",
+  "drive motor b inverter phase v over temperature",
+  "drive motor b inverter phase w over temperature",
+  "drive motor b position sensor not learned",
+  "drive motor b torque delivered",
+  "electric auxiliary transmission fluid pump a driver",
+  "electric auxiliary transmission fluid pump a motor current",
+  "electric auxiliary transmission fluid pump a motor stalled",
+  "electric auxiliary transmission fluid pump control",
+  "electric auxiliary transmission fluid pump control module feedback",
+  "electric auxiliary transmission fluid pump control module internal temperature",
+  "electric auxiliary transmission fluid pump control module internal temperature too",
+  "electric auxiliary transmission fluid pump phase u v w",
+  "hybrid ev battery cooling system a",
+  "hybrid ev battery pack state of charge",
+  "hybrid ev battery temperature sensor f",
+  "internal control module drive motor generator engine speed sensor",
+  "inverter b cooling system"
+ ],
+ "codes": [
+  {
+   "code": "P0C11",
+   "brand": "",
+   "ru": "Инвертор тягового электромотора A, фаза U: перегрев",
+   "en": "Drive Motor A Inverter Phase U Over Temperature",
+   "fam": "",
+   "node": "drive motor a inverter phase u over temperature"
+  },
+  {
+   "code": "P0C12",
+   "brand": "",
+   "ru": "Инвертор тягового электромотора A, фаза V: перегрев",
+   "en": "Drive Motor A Inverter Phase V Over Temperature",
+   "fam": "",
+   "node": "drive motor a inverter phase v over temperature"
+  },
+  {
+   "code": "P0C13",
+   "brand": "",
+   "ru": "Инвертор тягового электромотора A, фаза W: перегрев",
+   "en": "Drive Motor A Inverter Phase W Over Temperature",
+   "fam": "",
+   "node": "drive motor a inverter phase w over temperature"
+  },
+  {
+   "code": "P0C14",
+   "brand": "",
+   "ru": "Инвертор тягового электромотора B, фаза U: перегрев",
+   "en": "Drive Motor B Inverter Phase U Over Temperature",
+   "fam": "",
+   "node": "drive motor b inverter phase u over temperature"
+  },
+  {
+   "code": "P0C15",
+   "brand": "",
+   "ru": "Инвертор тягового электромотора B, фаза V: перегрев",
+   "en": "Drive Motor B Inverter Phase V Over Temperature",
+   "fam": "",
+   "node": "drive motor b inverter phase v over temperature"
+  },
+  {
+   "code": "P0C16",
+   "brand": "",
+   "ru": "Инвертор тягового электромотора B, фаза W: перегрев",
+   "en": "Drive Motor B Inverter Phase W Over Temperature",
+   "fam": "",
+   "node": "drive motor b inverter phase w over temperature"
+  },
+  {
+   "code": "P0C17",
+   "brand": "",
+   "ru": "Тяговый электромотор A: датчик положения не обучен",
+   "en": "Drive Motor A Position Sensor Not Learned",
+   "fam": "",
+   "node": "drive motor a position sensor not learned"
+  },
+  {
+   "code": "P0C18",
+   "brand": "",
+   "ru": "Тяговый электромотор B: датчик положения не обучен",
+   "en": "Drive Motor B Position Sensor Not Learned",
+   "fam": "",
+   "node": "drive motor b position sensor not learned"
+  },
+  {
+   "code": "P0C19",
+   "brand": "",
+   "ru": "Тяговый электромотор A: выдаваемый момент не соответствует",
+   "en": "Drive Motor A Torque Delivered Performance",
+   "fam": "",
+   "node": "drive motor a torque delivered"
+  },
+  {
+   "code": "P0C1A",
+   "brand": "",
+   "ru": "Тяговый электромотор B: выдаваемый момент не соответствует",
+   "en": "Drive Motor B Torque Delivered Performance",
+   "fam": "",
+   "node": "drive motor b torque delivered"
+  },
+  {
+   "code": "P0C1B",
+   "brand": "",
+   "ru": "Блок доп. насоса масла КПП: слишком высокая внутренняя температура",
+   "en": "Electric/Auxiliary Transmission Fluid Pump Control Module Internal Temperature Too High",
+   "fam": "",
+   "node": "electric auxiliary transmission fluid pump control module internal temperature too"
+  },
+  {
+   "code": "P0C1C",
+   "brand": "",
+   "ru": "Внутренний датчик температуры блока доп. насоса масла КПП: цепь",
+   "en": "Electric/Auxiliary Transmission Fluid Pump Control Module Internal Temperature Sensor Circuit",
+   "fam": "",
+   "node": "electric auxiliary transmission fluid pump control module internal temperature"
+  },
+  {
+   "code": "P0C1D",
+   "brand": "",
+   "ru": "Внутренний датчик температуры блока доп. насоса масла КПП: сигнал вне диапазона",
+   "en": "Electric/Auxiliary Transmission Fluid Pump Control Module Internal Temperature Sensor Circuit Range/Performance",
+   "fam": "",
+   "node": "electric auxiliary transmission fluid pump control module internal temperature"
+  },
+  {
+   "code": "P0C1E",
+   "brand": "",
+   "ru": "Внутренний датчик температуры блока доп. насоса масла КПП: низкий уровень сигнала в цепи",
+   "en": "Electric/Auxiliary Transmission Fluid Pump Control Module Internal Temperature Sensor Circuit Low",
+   "fam": "",
+   "node": "electric auxiliary transmission fluid pump control module internal temperature"
+  },
+  {
+   "code": "P0C1F",
+   "brand": "",
+   "ru": "Внутренний датчик температуры блока доп. насоса масла КПП: высокий уровень сигнала в цепи",
+   "en": "Electric/Auxiliary Transmission Fluid Pump Control Module Internal Temperature Sensor Circuit High",
+   "fam": "",
+   "node": "electric auxiliary transmission fluid pump control module internal temperature"
+  },
+  {
+   "code": "P0C20",
+   "brand": "",
+   "ru": "Доп. насос масла КПП, фазы U-V-W: обрыв цепи",
+   "en": "Electric/Auxiliary Transmission Fluid Pump Phase U-V-W Circuit/Open",
+   "fam": "",
+   "node": "electric auxiliary transmission fluid pump phase u v w"
+  },
+  {
+   "code": "P0C21",
+   "brand": "",
+   "ru": "Доп. насос масла КПП, фазы U-V-W: низкий уровень сигнала в цепи",
+   "en": "Electric/Auxiliary Transmission Fluid Pump Phase U-V-W Circuit Low",
+   "fam": "",
+   "node": "electric auxiliary transmission fluid pump phase u v w"
+  },
+  {
+   "code": "P0C22",
+   "brand": "",
+   "ru": "Доп. насос масла КПП, фазы U-V-W: высокий уровень сигнала в цепи",
+   "en": "Electric/Auxiliary Transmission Fluid Pump Phase U-V-W Circuit High",
+   "fam": "",
+   "node": "electric auxiliary transmission fluid pump phase u v w"
+  },
+  {
+   "code": "P0C23",
+   "brand": "",
+   "ru": "Блок доп. насоса масла КПП: обрыв цепи",
+   "en": "Electric/Auxiliary Transmission Fluid Pump Control Module Circuit/Open",
+   "fam": "",
+   "node": "electric auxiliary transmission fluid pump control"
+  },
+  {
+   "code": "P0C24",
+   "brand": "",
+   "ru": "Блок доп. насоса масла КПП: низкий уровень сигнала в цепи",
+   "en": "Electric/Auxiliary Transmission Fluid Pump Control Module Circuit Low",
+   "fam": "",
+   "node": "electric auxiliary transmission fluid pump control"
+  },
+  {
+   "code": "P0C25",
+   "brand": "",
+   "ru": "Блок доп. насоса масла КПП: высокий уровень сигнала в цепи",
+   "en": "Electric/Auxiliary Transmission Fluid Pump Control Module Circuit High",
+   "fam": "",
+   "node": "electric auxiliary transmission fluid pump control"
+  },
+  {
+   "code": "P27E3",
+   "brand": "",
+   "ru": "Клапан доп. насоса масла КПП: обрыв цепи",
+   "en": "Electric/Auxiliary Transmission Fluid Pump Control Valve Circuit/Open",
+   "fam": "",
+   "node": "electric auxiliary transmission fluid pump control"
+  },
+  {
+   "code": "P27E4",
+   "brand": "",
+   "ru": "Клапан доп. насоса масла КПП: сигнал вне диапазона",
+   "en": "Electric/Auxiliary Transmission Fluid Pump Control Valve Circuit Range/Performance",
+   "fam": "",
+   "node": "electric auxiliary transmission fluid pump control"
+  },
+  {
+   "code": "P27E5",
+   "brand": "",
+   "ru": "Клапан доп. насоса масла КПП: низкий уровень сигнала в цепи",
+   "en": "Electric/Auxiliary Transmission Fluid Pump Control Valve Circuit Low",
+   "fam": "",
+   "node": "electric auxiliary transmission fluid pump control"
+  },
+  {
+   "code": "P27E6",
+   "brand": "",
+   "ru": "Клапан доп. насоса масла КПП: высокий уровень сигнала в цепи",
+   "en": "Electric/Auxiliary Transmission Fluid Pump Control Valve Circuit High",
+   "fam": "",
+   "node": "electric auxiliary transmission fluid pump control"
+  },
+  {
+   "code": "P0C26",
+   "brand": "",
+   "ru": "Доп. насос масла КПП A: ток мотора",
+   "en": "Electric/Auxiliary Transmission Fluid Pump A Motor Current",
+   "fam": "",
+   "node": "electric auxiliary transmission fluid pump a motor current"
+  },
+  {
+   "code": "P0C27",
+   "brand": "",
+   "ru": "Мотор доп. насоса масла КПП A: малый ток",
+   "en": "Electric/Auxiliary Transmission Fluid Pump A Motor Current Low",
+   "fam": "",
+   "node": "electric auxiliary transmission fluid pump a motor current"
+  },
+  {
+   "code": "P0C28",
+   "brand": "",
+   "ru": "Мотор доп. насоса масла КПП A: большой ток",
+   "en": "Electric/Auxiliary Transmission Fluid Pump A Motor Current High",
+   "fam": "",
+   "node": "electric auxiliary transmission fluid pump a motor current"
+  },
+  {
+   "code": "P0C29",
+   "brand": "",
+   "ru": "Доп. насос масла КПП A: нарушена работа цепи драйвера",
+   "en": "Electric/Auxiliary Transmission Fluid Pump A Driver Circuit Performance",
+   "fam": "",
+   "node": "electric auxiliary transmission fluid pump a driver"
+  },
+  {
+   "code": "P0C2A",
+   "brand": "",
+   "ru": "Доп. насос масла КПП A: мотор остановился",
+   "en": "Electric/Auxiliary Transmission Fluid Pump A Motor Stalled",
+   "fam": "",
+   "node": "electric auxiliary transmission fluid pump a motor stalled"
+  },
+  {
+   "code": "P0C2B",
+   "brand": "",
+   "ru": "Сигнал обратной связи блока доп. насоса масла КПП",
+   "en": "Electric/Auxiliary Transmission Fluid Pump Control Module Feedback Signal",
+   "fam": "",
+   "node": "electric auxiliary transmission fluid pump control module feedback"
+  },
+  {
+   "code": "P0C2C",
+   "brand": "",
+   "ru": "Сигнал обратной связи блока доп. насоса масла КПП: вне допустимого диапазона",
+   "en": "Electric/Auxiliary Transmission Fluid Pump Control Module Feedback Signal Range/Performance",
+   "fam": "",
+   "node": "electric auxiliary transmission fluid pump control module feedback"
+  },
+  {
+   "code": "P0C2D",
+   "brand": "",
+   "ru": "Сигнал обратной связи блока доп. насоса масла КПП: низкий уровень",
+   "en": "Electric/Auxiliary Transmission Fluid Pump Control Module Feedback Signal Low",
+   "fam": "",
+   "node": "electric auxiliary transmission fluid pump control module feedback"
+  },
+  {
+   "code": "P0C2E",
+   "brand": "",
+   "ru": "Сигнал обратной связи блока доп. насоса масла КПП: высокий уровень",
+   "en": "Electric/Auxiliary Transmission Fluid Pump Control Module Feedback Signal High",
+   "fam": "",
+   "node": "electric auxiliary transmission fluid pump control module feedback"
+  },
+  {
+   "code": "P0C2F",
+   "brand": "",
+   "ru": "ЭБУ: датчик оборотов (электромотор/генератор — двигатель) работает с ошибкой",
+   "en": "Internal Control Module Drive Motor/Generator - Engine Speed Sensor Performance",
+   "fam": "",
+   "node": "internal control module drive motor generator engine speed sensor"
+  },
+  {
+   "code": "P0C30",
+   "brand": "",
+   "ru": "Тяговая батарея: слишком высокий уровень заряда",
+   "en": "Hybrid/EV Battery Pack State of Charge High",
+   "fam": "",
+   "node": "hybrid ev battery pack state of charge"
+  },
+  {
+   "code": "P0C31",
+   "brand": "",
+   "ru": "Система охлаждения инвертора B: работа нарушена",
+   "en": "Inverter B Cooling System Performance",
+   "fam": "",
+   "node": "inverter b cooling system"
+  },
+  {
+   "code": "P0C32",
+   "brand": "",
+   "ru": "Система охлаждения тяговой батареи A: работа нарушена",
+   "en": "Hybrid/EV Battery Cooling System A Performance",
+   "fam": "",
+   "node": "hybrid ev battery cooling system a"
+  },
+  {
+   "code": "P0C33",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи F: цепь",
+   "en": "Hybrid/EV Battery Temperature Sensor F Circuit",
+   "fam": "",
+   "node": "hybrid ev battery temperature sensor f"
+  },
+  {
+   "code": "P0C34",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи F: сигнал вне диапазона",
+   "en": "Hybrid/EV Battery Temperature Sensor F Circuit Range/Performance",
+   "fam": "",
+   "node": "hybrid ev battery temperature sensor f"
+  },
+  {
+   "code": "P0C35",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи F: низкий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Temperature Sensor F Circuit Low",
+   "fam": "",
+   "node": "hybrid ev battery temperature sensor f"
+  },
+  {
+   "code": "P0C36",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи F: высокий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Temperature Sensor F Circuit High",
+   "fam": "",
+   "node": "hybrid ev battery temperature sensor f"
+  },
+  {
+   "code": "P0C37",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи F: прерывистый / нестабильный сигнал",
+   "en": "Hybrid/EV Battery Temperature Sensor F Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "hybrid ev battery temperature sensor f"
+  }
+ ]
+}

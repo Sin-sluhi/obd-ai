@@ -1,0 +1,398 @@
+{
+ "name": "brand-gm_034",
+ "series": "brand",
+ "brand": "gm",
+ "nodes": [
+  "1 2 shift",
+  "2 3 shift",
+  "a t solenoids power",
+  "brake band apply",
+  "brake band apply solenoid",
+  "can bus throttle body position",
+  "engine torque delivered to tcm",
+  "ground control",
+  "internal mode",
+  "internal mode switch illegal",
+  "internal mode switch no start wrong",
+  "kick down",
+  "kick down switch failed",
+  "maximum adapt and long shift",
+  "park neutral position",
+  "pc solenoid power",
+  "ru:переключатель режима движения",
+  "ru:реле обхода выключателя сцепления",
+  "tcc pwm",
+  "tcm power control",
+  "tfp valve position",
+  "tfp valve position switch drive without drive ratio",
+  "tfp valve position switch park neutral with drive ratio",
+  "tfp valve position switch reverse with drive ratio",
+  "torque",
+  "torque converter clutch",
+  "torque converter overstressed",
+  "torque reduction",
+  "transmission component slipping",
+  "transmission control module checksum",
+  "transmission control module loop",
+  "transmission control module reprogrammable memory",
+  "transmission control module stack overrun",
+  "transmission fluid life",
+  "transmission gear ratio",
+  "transmission over temperature condition",
+  "undefined gear ratio"
+ ],
+ "codes": [
+  {
+   "code": "P1779",
+   "brand": "gm",
+   "ru": "Сигнал отдаваемого момента для блока коробки",
+   "en": "Engine Torque Delivered To TCM Signal",
+   "fam": "",
+   "node": "engine torque delivered to tcm"
+  },
+  {
+   "code": "P1780",
+   "brand": "gm",
+   "ru": "Выключатель P/N / сигнал момента двигателя: цепь",
+   "en": "Park Neutral Position (PNP) Switch Circuit Engine Torque Signal Circuit",
+   "fam": "",
+   "node": "park neutral position"
+  },
+  {
+   "code": "P1790",
+   "brand": "gm",
+   "ru": "Блок коробки: контрольная сумма",
+   "en": "Transmission Control Module Checksum",
+   "fam": "",
+   "node": "transmission control module checksum"
+  },
+  {
+   "code": "P1791",
+   "brand": "gm",
+   "ru": "Блок коробки: ошибка цикла",
+   "en": "Transmission Control Module Loop",
+   "fam": "",
+   "node": "transmission control module loop"
+  },
+  {
+   "code": "P1792",
+   "brand": "gm",
+   "ru": "Блок коробки: перепрограммируемая память",
+   "en": "Transmission Control Module Reprogrammable Memory",
+   "fam": "",
+   "node": "transmission control module reprogrammable memory"
+  },
+  {
+   "code": "P1793",
+   "brand": "gm",
+   "ru": "Блок коробки: переполнение стека",
+   "en": "Transmission Control Module Stack Overrun",
+   "fam": "",
+   "node": "transmission control module stack overrun"
+  },
+  {
+   "code": "P1795",
+   "brand": "gm",
+   "ru": "Шина CAN: положение дроссельного узла",
+   "en": "CAN Bus Throttle Body Position",
+   "fam": "",
+   "node": "can bus throttle body position"
+  },
+  {
+   "code": "P1800",
+   "brand": "gm",
+   "ru": "Реле питания блока коробки: обрыв",
+   "en": "TCM Power Control Relay Circuit Open",
+   "fam": "",
+   "node": "tcm power control"
+  },
+  {
+   "code": "P1801",
+   "brand": "gm",
+   "ru": "Переключатель режима движения: неисправность",
+   "en": "Performance Selector Switch Failure",
+   "fam": "",
+   "node": "ru:переключатель режима движения"
+  },
+  {
+   "code": "P1804",
+   "brand": "gm",
+   "ru": "Реле управления массой",
+   "en": "Ground Control Relay",
+   "fam": "",
+   "node": "ground control"
+  },
+  {
+   "code": "P1810",
+   "brand": "gm",
+   "ru": "Датчик-выключатель давления масла коробки: цепь",
+   "en": "TFP Valve Position Switch Circuit",
+   "fam": "",
+   "node": "tfp valve position"
+  },
+  {
+   "code": "P1811",
+   "brand": "gm",
+   "ru": "Максимальная адаптация и затянутое переключение",
+   "en": "Maximum Adapt And Long Shift",
+   "fam": "",
+   "node": "maximum adapt and long shift"
+  },
+  {
+   "code": "P1812",
+   "brand": "gm",
+   "ru": "Перегрев коробки",
+   "en": "Transmission Over Temperature Condition",
+   "fam": "",
+   "node": "transmission over temperature condition"
+  },
+  {
+   "code": "P1813",
+   "brand": "gm",
+   "ru": "Управление моментом",
+   "en": "Torque Control",
+   "fam": "",
+   "node": "torque"
+  },
+  {
+   "code": "P1814",
+   "brand": "gm",
+   "ru": "Перегрузка гидротрансформатора",
+   "en": "Torque Converter Overstressed",
+   "fam": "",
+   "node": "torque converter overstressed"
+  },
+  {
+   "code": "P1816",
+   "brand": "gm",
+   "ru": "Датчик давления масла коробки: P/N при включённой передаче",
+   "en": "TFP Valve Position Switch Park Neutral With Drive Ratio",
+   "fam": "",
+   "node": "tfp valve position switch park neutral with drive ratio"
+  },
+  {
+   "code": "P1817",
+   "brand": "gm",
+   "ru": "Датчик давления масла коробки: задняя при включённой передаче",
+   "en": "TFP Valve Position Switch Reverse With Drive Ratio",
+   "fam": "",
+   "node": "tfp valve position switch reverse with drive ratio"
+  },
+  {
+   "code": "P1818",
+   "brand": "gm",
+   "ru": "Датчик давления масла коробки: D без передачи",
+   "en": "TFP Valve Position Switch Drive Without Drive Ratio",
+   "fam": "",
+   "node": "tfp valve position switch drive without drive ratio"
+  },
+  {
+   "code": "P1819",
+   "brand": "gm",
+   "ru": "Внутренний переключатель режима: пуск не в том положении",
+   "en": "Internal Mode Switch No Start Wrong Range",
+   "fam": "",
+   "node": "internal mode switch no start wrong"
+  },
+  {
+   "code": "P1820",
+   "brand": "gm",
+   "ru": "Внутренний переключатель режима, цепь A: низкий сигнал",
+   "en": "Internal Mode Switch Circuit A Low",
+   "fam": "",
+   "node": "internal mode"
+  },
+  {
+   "code": "P1822",
+   "brand": "gm",
+   "ru": "Внутренний переключатель режима, цепь B: высокий сигнал",
+   "en": "Internal Mode Switch Circuit B High",
+   "fam": "",
+   "node": "internal mode"
+  },
+  {
+   "code": "P1823",
+   "brand": "gm",
+   "ru": "Внутренний переключатель режима, цепь P: низкий сигнал",
+   "en": "Internal Mode Switch Circuit P Low",
+   "fam": "",
+   "node": "internal mode"
+  },
+  {
+   "code": "P1826",
+   "brand": "gm",
+   "ru": "Внутренний переключатель режима, цепь C: высокий сигнал",
+   "en": "Internal Mode Switch Circuit C High",
+   "fam": "",
+   "node": "internal mode"
+  },
+  {
+   "code": "P1825",
+   "brand": "gm",
+   "ru": "Внутренний переключатель режима: недопустимое положение",
+   "en": "Internal Mode Switch Illegal Range",
+   "fam": "",
+   "node": "internal mode switch illegal"
+  },
+  {
+   "code": "P1830",
+   "brand": "gm",
+   "ru": "Реле обхода выключателя сцепления: обрыв или замыкание",
+   "en": "Open Or Shorted Condition Detected In The Clutch Pedal Switch Over-Ride Relay Control",
+   "fam": "",
+   "node": "ru:реле обхода выключателя сцепления"
+  },
+  {
+   "code": "P1831",
+   "brand": "gm",
+   "ru": "Клапан регулирования давления: низкое напряжение питания",
+   "en": "PC Solenoid Power Circuit Low Voltage",
+   "fam": "",
+   "node": "pc solenoid power"
+  },
+  {
+   "code": "P1833",
+   "brand": "gm",
+   "ru": "Клапаны АКПП: низкое напряжение питания",
+   "en": "A/T Solenoids Power Circuit Low Voltage",
+   "fam": "",
+   "node": "a t solenoids power"
+  },
+  {
+   "code": "P1835",
+   "brand": "gm",
+   "ru": "Выключатель кикдауна",
+   "en": "Kick-Down Switch",
+   "fam": "",
+   "node": "kick down"
+  },
+  {
+   "code": "P1836",
+   "brand": "gm",
+   "ru": "Выключатель кикдауна: обрыв",
+   "en": "Kick-Down Switch Failed Open",
+   "fam": "",
+   "node": "kick down switch failed"
+  },
+  {
+   "code": "P1837",
+   "brand": "gm",
+   "ru": "Выключатель кикдауна: замыкание",
+   "en": "Kick-Down Switch Failed Short",
+   "fam": "",
+   "node": "kick down switch failed"
+  },
+  {
+   "code": "P1842",
+   "brand": "gm",
+   "ru": "Клапан переключения 1-2: низкое напряжение",
+   "en": "1 2 Shift Solenoid Circuit Low Voltage",
+   "fam": "",
+   "node": "1 2 shift"
+  },
+  {
+   "code": "P1843",
+   "brand": "gm",
+   "ru": "Клапан переключения 1-2: высокое напряжение",
+   "en": "1 2 Shift Solenoid Circuit High Voltage",
+   "fam": "",
+   "node": "1 2 shift"
+  },
+  {
+   "code": "P1844",
+   "brand": "gm",
+   "ru": "Цепь запроса снижения момента от блока коробки",
+   "en": "Torque Reduction Signal Circuit Desired By TCM",
+   "fam": "",
+   "node": "torque reduction"
+  },
+  {
+   "code": "P1845",
+   "brand": "gm",
+   "ru": "Выход передаточного числа коробки: цепь",
+   "en": "Transmission Gear Ratio Output Circuit",
+   "fam": "",
+   "node": "transmission gear ratio"
+  },
+  {
+   "code": "P1847",
+   "brand": "gm",
+   "ru": "Клапан переключения 2-3: высокое напряжение",
+   "en": "2 3 Shift Solenoid Circuit High Voltage",
+   "fam": "",
+   "node": "2 3 shift"
+  },
+  {
+   "code": "P1850",
+   "brand": "gm",
+   "ru": "Клапан включения тормозной ленты: цепь",
+   "en": "Brake Band Apply Solenoid Circuit",
+   "fam": "",
+   "node": "brake band apply"
+  },
+  {
+   "code": "P1851",
+   "brand": "gm",
+   "ru": "Клапан включения тормозной ленты: работа",
+   "en": "Brake Band Apply Solenoid Performance",
+   "fam": "",
+   "node": "brake band apply solenoid"
+  },
+  {
+   "code": "P1852",
+   "brand": "gm",
+   "ru": "Клапан включения тормозной ленты: низкое напряжение",
+   "en": "Brake Band Apply Solenoid Low Voltage",
+   "fam": "",
+   "node": "brake band apply solenoid"
+  },
+  {
+   "code": "P1853",
+   "brand": "gm",
+   "ru": "Клапан включения тормозной ленты: высокое напряжение",
+   "en": "Brake Band Apply Solenoid High Voltage",
+   "fam": "",
+   "node": "brake band apply solenoid"
+  },
+  {
+   "code": "P1860",
+   "brand": "gm",
+   "ru": "ШИМ-клапан блокировки гидротрансформатора: электрическая неисправность",
+   "en": "TCC PWM Solenoid Circuit Electrical",
+   "fam": "",
+   "node": "tcc pwm"
+  },
+  {
+   "code": "P1864",
+   "brand": "gm",
+   "ru": "Блокировка гидротрансформатора: цепь",
+   "en": "Torque Converter Clutch Circuit",
+   "fam": "",
+   "node": "torque converter clutch"
+  },
+  {
+   "code": "P1868",
+   "brand": "gm",
+   "ru": "Ресурс масла коробки",
+   "en": "Transmission Fluid Life",
+   "fam": "",
+   "node": "transmission fluid life"
+  },
+  {
+   "code": "P1870",
+   "brand": "gm",
+   "ru": "Проскальзывание в коробке",
+   "en": "Transmission Component Slipping",
+   "fam": "",
+   "node": "transmission component slipping"
+  },
+  {
+   "code": "P1871",
+   "brand": "gm",
+   "ru": "Неопределённое передаточное число",
+   "en": "Undefined Gear Ratio",
+   "fam": "",
+   "node": "undefined gear ratio"
+  }
+ ]
+}

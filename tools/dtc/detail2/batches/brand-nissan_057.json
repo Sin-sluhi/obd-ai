@@ -1,0 +1,406 @@
+{
+ "name": "brand-nissan_057",
+ "series": "brand",
+ "brand": "nissan",
+ "nodes": [
+  "at diagnostic communication line",
+  "canister purge volume control solenoid",
+  "ckp sensor b",
+  "ckp tdc",
+  "crankshaft position sensor ckps",
+  "cyp sensor a",
+  "cyp sensor a no",
+  "cyp sensor b",
+  "cyp sensor b no",
+  "ecm internal",
+  "egr system",
+  "egr temperature",
+  "egr valve lift sensor",
+  "egrc solenoid",
+  "evap canister control vacuum",
+  "evap canister purge control solenoid",
+  "evap canister purge control valve solenoid",
+  "evap canister purge volume control",
+  "evap canister vent control valve",
+  "evap canister vent control valve closed",
+  "evap control system purge flow monitoring",
+  "evap control system small leak",
+  "evap purge flow switch",
+  "evaporative emission control system leak detected control canister system",
+  "evaporative emission control system leak detected fuel tank system",
+  "fam:alternator",
+  "fam:cruise",
+  "fam:immo",
+  "fam:vss",
+  "fuel level",
+  "ru:регулятор холостого хода",
+  "tdc sensor",
+  "tdc1 sensor no",
+  "tdc2 sensor",
+  "tdc2 sensor no",
+  "tma or tmb",
+  "vacuum cut valve bypass"
+ ],
+ "codes": [
+  {
+   "code": "P1336",
+   "brand": "nissan",
+   "ru": "Датчик положения коленвала (CKPS)",
+   "en": "Crankshaft Position Sensor CKPS",
+   "fam": "",
+   "node": "crankshaft position sensor ckps"
+  },
+  {
+   "code": "P1337",
+   "brand": "nissan",
+   "ru": "Датчик коленвала B: низкий сигнал",
+   "en": "CKP Sensor B Low Input",
+   "fam": "",
+   "node": "ckp sensor b"
+  },
+  {
+   "code": "P1359",
+   "brand": "nissan",
+   "ru": "Датчик коленвала / ВМТ: разъём отсоединён",
+   "en": "CKP TDC Sensor Circuit Connector Disconnection",
+   "fam": "",
+   "node": "ckp tdc"
+  },
+  {
+   "code": "P1361",
+   "brand": "nissan",
+   "ru": "Датчик ВМТ: прерывистый сигнал",
+   "en": "TDC Sensor Intermittent Interruption",
+   "fam": "",
+   "node": "tdc sensor"
+  },
+  {
+   "code": "P1362",
+   "brand": "nissan",
+   "ru": "Датчик ВМТ 1: нет сигнала",
+   "en": "TDC1 Sensor No Signal",
+   "fam": "",
+   "node": "tdc1 sensor no"
+  },
+  {
+   "code": "P1366",
+   "brand": "nissan",
+   "ru": "Датчик ВМТ 2: прерывистый сигнал",
+   "en": "TDC2 Sensor Intermittent",
+   "fam": "",
+   "node": "tdc2 sensor"
+  },
+  {
+   "code": "P1367",
+   "brand": "nissan",
+   "ru": "Датчик ВМТ 2: нет сигнала",
+   "en": "TDC2 Sensor No Signal",
+   "fam": "",
+   "node": "tdc2 sensor no"
+  },
+  {
+   "code": "P1381",
+   "brand": "nissan",
+   "ru": "Датчик положения цилиндра A: прерывистый сигнал",
+   "en": "CYP Sensor A Intermittent Interruption",
+   "fam": "",
+   "node": "cyp sensor a"
+  },
+  {
+   "code": "P1382",
+   "brand": "nissan",
+   "ru": "Датчик положения цилиндра A: нет сигнала",
+   "en": "CYP Sensor A No Signal",
+   "fam": "",
+   "node": "cyp sensor a no"
+  },
+  {
+   "code": "P1386",
+   "brand": "nissan",
+   "ru": "Датчик положения цилиндра B: прерывистый сигнал",
+   "en": "CYP Sensor B Intermittent Interruption",
+   "fam": "",
+   "node": "cyp sensor b"
+  },
+  {
+   "code": "P1387",
+   "brand": "nissan",
+   "ru": "Датчик положения цилиндра B: нет сигнала",
+   "en": "CYP Sensor B No Signal",
+   "fam": "",
+   "node": "cyp sensor b no"
+  },
+  {
+   "code": "P1400",
+   "brand": "nissan",
+   "ru": "Клапан управления ЕГР (EGRC)",
+   "en": "EGRC Solenoid Valve",
+   "fam": "",
+   "node": "egrc solenoid"
+  },
+  {
+   "code": "P1401",
+   "brand": "nissan",
+   "ru": "Датчик температуры ЕГР",
+   "en": "EGR Temperature Sensor",
+   "fam": "",
+   "node": "egr temperature"
+  },
+  {
+   "code": "P1402",
+   "brand": "nissan",
+   "ru": "Система ЕГР",
+   "en": "EGR System",
+   "fam": "",
+   "node": "egr system"
+  },
+  {
+   "code": "P1440",
+   "brand": "nissan",
+   "ru": "Система улавливания паров: малая утечка",
+   "en": "EVAP Control System Small Leak",
+   "fam": "",
+   "node": "evap control system small leak"
+  },
+  {
+   "code": "P1441",
+   "brand": "nissan",
+   "ru": "Отсечной / перепускной вакуумный клапан",
+   "en": "Vacuum Cut Valve Bypass Valve",
+   "fam": "",
+   "node": "vacuum cut valve bypass"
+  },
+  {
+   "code": "P1490",
+   "brand": "nissan",
+   "ru": "Отсечной / перепускной вакуумный клапан: цепь",
+   "en": "Vacuum Cut Valve Bypass Valve Circuit",
+   "fam": "",
+   "node": "vacuum cut valve bypass"
+  },
+  {
+   "code": "P1491",
+   "brand": "nissan",
+   "ru": "Отсечной / перепускной вакуумный клапан",
+   "en": "Vacuum Cut Valve Bypass Valve",
+   "fam": "",
+   "node": "vacuum cut valve bypass"
+  },
+  {
+   "code": "P1443",
+   "brand": "nissan",
+   "ru": "Вакуумный выключатель адсорбера: неисправность цепи",
+   "en": "EVAP Canister Control Vacuum Switch Circuit Fault",
+   "fam": "",
+   "node": "evap canister control vacuum"
+  },
+  {
+   "code": "P1444",
+   "brand": "nissan",
+   "ru": "Клапан объёма продувки адсорбера",
+   "en": "Canister Purge Volume Control Solenoid Valve",
+   "fam": "",
+   "node": "canister purge volume control solenoid"
+  },
+  {
+   "code": "P1445",
+   "brand": "nissan",
+   "ru": "Клапан объёма продувки адсорбера",
+   "en": "EVAP Canister Purge Volume Control Valve",
+   "fam": "",
+   "node": "evap canister purge volume control"
+  },
+  {
+   "code": "P1446",
+   "brand": "nissan",
+   "ru": "Клапан вентиляции адсорбера закрыт",
+   "en": "EVAP Canister Vent Control Valve Closed",
+   "fam": "",
+   "node": "evap canister vent control valve closed"
+  },
+  {
+   "code": "P1447",
+   "brand": "nissan",
+   "ru": "Контроль потока продувки адсорбера",
+   "en": "EVAP Control System Purge Flow Monitoring",
+   "fam": "",
+   "node": "evap control system purge flow monitoring"
+  },
+  {
+   "code": "P1448",
+   "brand": "nissan",
+   "ru": "Клапан вентиляции адсорбера открыт",
+   "en": "EVAP Canister Vent Control Valve Open",
+   "fam": "",
+   "node": "evap canister vent control valve"
+  },
+  {
+   "code": "P1456",
+   "brand": "nissan",
+   "ru": "Система улавливания паров: утечка (бак)",
+   "en": "Evaporative Emission Control System Leak Detected Fuel Tank System",
+   "fam": "",
+   "node": "evaporative emission control system leak detected fuel tank system"
+  },
+  {
+   "code": "P1457",
+   "brand": "nissan",
+   "ru": "Система улавливания паров: утечка (адсорбер)",
+   "en": "Evaporative Emission Control System Leak Detected Control Canister System",
+   "fam": "",
+   "node": "evaporative emission control system leak detected control canister system"
+  },
+  {
+   "code": "P1459",
+   "brand": "nissan",
+   "ru": "Выключатель потока продувки: неисправность",
+   "en": "EVAP Purge Flow Switch Malfunction",
+   "fam": "",
+   "node": "evap purge flow switch"
+  },
+  {
+   "code": "P1464",
+   "brand": "nissan",
+   "ru": "Датчик уровня топлива: сигнал массы",
+   "en": "Fuel Level Sensor Circuit Ground Signal",
+   "fam": "",
+   "node": "fuel level"
+  },
+  {
+   "code": "P1492",
+   "brand": "nissan",
+   "ru": "Клапан продувки адсорбера: цепь",
+   "en": "EVAP Canister Purge Control Solenoid Valve Circuit",
+   "fam": "",
+   "node": "evap canister purge control solenoid"
+  },
+  {
+   "code": "P1493",
+   "brand": "nissan",
+   "ru": "Клапан продувки адсорбера",
+   "en": "EVAP Canister Purge Control Valve Solenoid Valve",
+   "fam": "",
+   "node": "evap canister purge control valve solenoid"
+  },
+  {
+   "code": "P1498",
+   "brand": "nissan",
+   "ru": "Датчик подъёма клапана ЕГР: высокое напряжение",
+   "en": "EGR Valve Lift Sensor High Voltage",
+   "fam": "",
+   "node": "egr valve lift sensor"
+  },
+  {
+   "code": "P1508",
+   "brand": "nissan",
+   "ru": "Регулятор холостого хода: неисправность цепи",
+   "en": "IAC Valve Circuit Failure",
+   "fam": "",
+   "node": "ru:регулятор холостого хода"
+  },
+  {
+   "code": "P1519",
+   "brand": "nissan",
+   "ru": "Регулятор холостого хода: неисправность цепи",
+   "en": "IAC Valve Circuit Failure",
+   "fam": "",
+   "node": "ru:регулятор холостого хода"
+  },
+  {
+   "code": "P1550",
+   "brand": "nissan",
+   "ru": "Датчик тока аккумулятора: неисправность",
+   "en": "",
+   "fam": "alternator",
+   "node": "fam:alternator"
+  },
+  {
+   "code": "P1564",
+   "brand": "nissan",
+   "ru": "Кнопки круиза на руле: неисправность",
+   "en": "",
+   "fam": "cruise",
+   "node": "fam:cruise"
+  },
+  {
+   "code": "P1574",
+   "brand": "nissan",
+   "ru": "Датчик скорости для круиза: неисправность",
+   "en": "",
+   "fam": "vss",
+   "node": "fam:vss"
+  },
+  {
+   "code": "P1605",
+   "brand": "nissan",
+   "ru": "Линия диагностической связи с АКПП",
+   "en": "AT Diagnostic Communication Line",
+   "fam": "",
+   "node": "at diagnostic communication line"
+  },
+  {
+   "code": "P1607",
+   "brand": "nissan",
+   "ru": "Блок двигателя: внутренняя неисправность A",
+   "en": "ECM Internal Circuit Failure A",
+   "fam": "",
+   "node": "ecm internal"
+  },
+  {
+   "code": "P1608",
+   "brand": "nissan",
+   "ru": "Блок двигателя: внутренняя неисправность B",
+   "en": "ECM Internal Circuit Failure B",
+   "fam": "",
+   "node": "ecm internal"
+  },
+  {
+   "code": "P1610",
+   "brand": "nissan",
+   "ru": "Иммобилайзер (NATS): режим блокировки",
+   "en": "",
+   "fam": "immo",
+   "node": "fam:immo"
+  },
+  {
+   "code": "P1611",
+   "brand": "nissan",
+   "ru": "Иммобилайзер: несовпадение кодов блока и иммобилайзера",
+   "en": "",
+   "fam": "immo",
+   "node": "fam:immo"
+  },
+  {
+   "code": "P1612",
+   "brand": "nissan",
+   "ru": "Иммобилайзер: нет связи блока двигателя с иммобилайзером",
+   "en": "",
+   "fam": "immo",
+   "node": "fam:immo"
+  },
+  {
+   "code": "P1614",
+   "brand": "nissan",
+   "ru": "Иммобилайзер: нет связи с ключом",
+   "en": "",
+   "fam": "immo",
+   "node": "fam:immo"
+  },
+  {
+   "code": "P1615",
+   "brand": "nissan",
+   "ru": "Иммобилайзер: ключ не совпадает",
+   "en": "",
+   "fam": "immo",
+   "node": "fam:immo"
+  },
+  {
+   "code": "P1655",
+   "brand": "nissan",
+   "ru": "Сигнальная линия TMA или TMB: неисправность",
+   "en": "TMA or TMB Signal Line Fault",
+   "fam": "",
+   "node": "tma or tmb"
+  }
+ ]
+}

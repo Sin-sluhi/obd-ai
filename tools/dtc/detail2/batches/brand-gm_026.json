@@ -1,0 +1,394 @@
+{
+ "name": "brand-gm_026",
+ "series": "brand",
+ "brand": "gm",
+ "nodes": [
+  "alternative fuel gas mass",
+  "bank to bank fuel trim offset",
+  "early fuel evaporation",
+  "engine oil pressure",
+  "engine oil temperature",
+  "engine vacuum leak",
+  "fam:injector_balance",
+  "fam:lean",
+  "fuel solenoid",
+  "ground fault detection indicated",
+  "ho2s cross counts",
+  "ho2s heater power stage",
+  "ho2s lean system or",
+  "incorrect or irrational",
+  "injection pump calibration",
+  "injection pump timing offset",
+  "injector",
+  "inlet air temp",
+  "intake air duct air leak",
+  "intake plenum switchover",
+  "mass air flow",
+  "radiator temperature sensor voltage too",
+  "ru:датчик температуры масла",
+  "throttle position 2 correlation",
+  "throttle position sensor reference voltage"
+ ],
+ "codes": [
+  {
+   "code": "P1145",
+   "brand": "gm",
+   "ru": "Лямбда-зонд 3 (ряд 1): число переходов",
+   "en": "HO2S Cross Counts Bank 1 Sensor 3",
+   "fam": "",
+   "node": "ho2s cross counts"
+  },
+  {
+   "code": "P1159",
+   "brand": "gm",
+   "ru": "Лямбда-зонд 2 (ряд 2): число переходов",
+   "en": "HO2S Cross Counts Bank 2 Sensor 2",
+   "fam": "",
+   "node": "ho2s cross counts"
+  },
+  {
+   "code": "P1165",
+   "brand": "gm",
+   "ru": "Лямбда-зонд 2 (ряд 2): число переходов",
+   "en": "HO2S Cross Counts Bank 2 Sensor 2",
+   "fam": "",
+   "node": "ho2s cross counts"
+  },
+  {
+   "code": "P1157",
+   "brand": "gm",
+   "ru": "Лямбда-зонд 2 (ряд 2): бедно или низкое напряжение",
+   "en": "HO2S Bank 2 Sensor 2 Lean System Or Low Voltage",
+   "fam": "",
+   "node": "ho2s lean system or"
+  },
+  {
+   "code": "P1163",
+   "brand": "gm",
+   "ru": "Лямбда-зонд 3 (ряд 2): бедно или низкое напряжение",
+   "en": "HO2S Bank 2 Sensor 3 Lean System Or Low Voltage",
+   "fam": "",
+   "node": "ho2s lean system or"
+  },
+  {
+   "code": "P1161",
+   "brand": "gm",
+   "ru": "Подогрев лямбда-зонда 2 (ряд 2): цепь силового каскада",
+   "en": "HO2S Heater Power Stage Circuit Bank 2 Sensor 2",
+   "fam": "",
+   "node": "ho2s heater power stage"
+  },
+  {
+   "code": "P1170",
+   "brand": "gm",
+   "ru": "Разница коррекции смеси между рядами",
+   "en": "Bank To Bank Fuel Trim Offset",
+   "fam": "",
+   "node": "bank to bank fuel trim offset"
+  },
+  {
+   "code": "P1171",
+   "brand": "gm",
+   "ru": "Бедная смесь при разгоне",
+   "en": "",
+   "fam": "lean",
+   "node": "fam:lean"
+  },
+  {
+   "code": "P1174",
+   "brand": "gm",
+   "ru": "Баланс топлива по цилиндрам (банк 1)",
+   "en": "",
+   "fam": "injector_balance",
+   "node": "fam:injector_balance"
+  },
+  {
+   "code": "P1175",
+   "brand": "gm",
+   "ru": "Баланс топлива по цилиндрам (банк 2)",
+   "en": "",
+   "fam": "injector_balance",
+   "node": "fam:injector_balance"
+  },
+  {
+   "code": "P1185",
+   "brand": "gm",
+   "ru": "Датчик температуры масла: цепь",
+   "en": "Engine Oil Temperature Circuit",
+   "fam": "",
+   "node": "engine oil temperature"
+  },
+  {
+   "code": "P1186",
+   "brand": "gm",
+   "ru": "Датчик температуры масла: работа",
+   "en": "EOT Circuit Performance",
+   "fam": "",
+   "node": "ru:датчик температуры масла"
+  },
+  {
+   "code": "P1187",
+   "brand": "gm",
+   "ru": "Датчик температуры масла: низкое напряжение",
+   "en": "EOT Sensor Circuit Low Voltage",
+   "fam": "",
+   "node": "ru:датчик температуры масла"
+  },
+  {
+   "code": "P1188",
+   "brand": "gm",
+   "ru": "Датчик температуры масла: высокое напряжение",
+   "en": "EOT Sensor Circuit High Voltage",
+   "fam": "",
+   "node": "ru:датчик температуры масла"
+  },
+  {
+   "code": "P1189",
+   "brand": "gm",
+   "ru": "Датчик давления масла: цепь",
+   "en": "Engine Oil Pressure Switch Circuit",
+   "fam": "",
+   "node": "engine oil pressure"
+  },
+  {
+   "code": "P1190",
+   "brand": "gm",
+   "ru": "Подсос воздуха в двигатель",
+   "en": "Engine Vacuum Leak",
+   "fam": "",
+   "node": "engine vacuum leak"
+  },
+  {
+   "code": "P1191",
+   "brand": "gm",
+   "ru": "Подсос воздуха во впускном воздуховоде",
+   "en": "Intake Air Duct Air Leak",
+   "fam": "",
+   "node": "intake air duct air leak"
+  },
+  {
+   "code": "P1192",
+   "brand": "gm",
+   "ru": "Датчик температуры входящего воздуха: низкий сигнал",
+   "en": "Inlet Air Temp Circuit Low",
+   "fam": "",
+   "node": "inlet air temp"
+  },
+  {
+   "code": "P1193",
+   "brand": "gm",
+   "ru": "Датчик температуры входящего воздуха: высокий сигнал",
+   "en": "Inlet Air Temp Circuit High",
+   "fam": "",
+   "node": "inlet air temp"
+  },
+  {
+   "code": "P1194",
+   "brand": "gm",
+   "ru": "Недостоверная работа ШИМ-сигнала",
+   "en": "Incorrect Or Irrational Performance Has Been Detected For The PWM",
+   "fam": "",
+   "node": "incorrect or irrational"
+  },
+  {
+   "code": "P1198",
+   "brand": "gm",
+   "ru": "Датчик температуры радиатора: напряжение слишком высокое",
+   "en": "Radiator Temperature Sensor Voltage Too High",
+   "fam": "",
+   "node": "radiator temperature sensor voltage too"
+  },
+  {
+   "code": "P1199",
+   "brand": "gm",
+   "ru": "Датчик температуры радиатора: напряжение слишком низкое",
+   "en": "Radiator Temperature Sensor Voltage Too Low",
+   "fam": "",
+   "node": "radiator temperature sensor voltage too"
+  },
+  {
+   "code": "P1200",
+   "brand": "gm",
+   "ru": "Форсунки: цепь управления",
+   "en": "Injector Control Circuit",
+   "fam": "",
+   "node": "injector"
+  },
+  {
+   "code": "P1222",
+   "brand": "gm",
+   "ru": "Форсунки: временами неисправность цепи управления",
+   "en": "Injector Control Circuit Intermittent",
+   "fam": "",
+   "node": "injector"
+  },
+  {
+   "code": "P1225",
+   "brand": "gm",
+   "ru": "Форсунка цилиндра 2: прерывистая неисправность цепи",
+   "en": "Injector Circuit Cylinder 2 Intermittent",
+   "fam": "",
+   "node": "injector"
+  },
+  {
+   "code": "P1228",
+   "brand": "gm",
+   "ru": "Форсунка цилиндра 3: прерывистая неисправность цепи",
+   "en": "Injector Circuit Cylinder 3 Intermittent",
+   "fam": "",
+   "node": "injector"
+  },
+  {
+   "code": "P1231",
+   "brand": "gm",
+   "ru": "Форсунка цилиндра 4: прерывистая неисправность цепи",
+   "en": "Injector Circuit Cylinder 4 Intermittent",
+   "fam": "",
+   "node": "injector"
+  },
+  {
+   "code": "P1234",
+   "brand": "gm",
+   "ru": "Форсунка цилиндра 5: прерывистая неисправность цепи",
+   "en": "Injector Circuit Cylinder 5 Intermittent",
+   "fam": "",
+   "node": "injector"
+  },
+  {
+   "code": "P1237",
+   "brand": "gm",
+   "ru": "Форсунка цилиндра 6: прерывистая неисправность цепи",
+   "en": "Injector Circuit Cylinder 6 Intermittent",
+   "fam": "",
+   "node": "injector"
+  },
+  {
+   "code": "P1240",
+   "brand": "gm",
+   "ru": "Форсунка цилиндра 7: прерывистая неисправность цепи",
+   "en": "Injector Circuit Cylinder 7 Intermittent",
+   "fam": "",
+   "node": "injector"
+  },
+  {
+   "code": "P1243",
+   "brand": "gm",
+   "ru": "Форсунка цилиндра 8: прерывистая неисправность цепи",
+   "en": "Injector Circuit Cylinder 8 Intermittent",
+   "fam": "",
+   "node": "injector"
+  },
+  {
+   "code": "P1201",
+   "brand": "gm",
+   "ru": "Датчик массы газа (альт. топливо): выход за диапазон",
+   "en": "Alternative Fuel Gas Mass Sensor Circuit Range Performance",
+   "fam": "",
+   "node": "alternative fuel gas mass"
+  },
+  {
+   "code": "P1202",
+   "brand": "gm",
+   "ru": "Датчик массы газа (альт. топливо): низкая частота",
+   "en": "Alternative Fuel Gas Mass Sensor Circuit Low Frequency",
+   "fam": "",
+   "node": "alternative fuel gas mass"
+  },
+  {
+   "code": "P1203",
+   "brand": "gm",
+   "ru": "Датчик массы газа (альт. топливо): высокая частота",
+   "en": "Alternative Fuel Gas Mass Sensor Circuit High Frequency",
+   "fam": "",
+   "node": "alternative fuel gas mass"
+  },
+  {
+   "code": "P1211",
+   "brand": "gm",
+   "ru": "Расходомер воздуха: временами высокий сигнал",
+   "en": "Mass Air Flow Circuit Intermittent High",
+   "fam": "",
+   "node": "mass air flow"
+  },
+  {
+   "code": "P1212",
+   "brand": "gm",
+   "ru": "Расходомер воздуха: временами низкий сигнал",
+   "en": "Mass Air Flow Circuit Intermittent Low",
+   "fam": "",
+   "node": "mass air flow"
+  },
+  {
+   "code": "P1214",
+   "brand": "gm",
+   "ru": "ТНВД: смещение угла впрыска",
+   "en": "Injection Pump Timing Offset",
+   "fam": "",
+   "node": "injection pump timing offset"
+  },
+  {
+   "code": "P1215",
+   "brand": "gm",
+   "ru": "Обнаружено замыкание на массу",
+   "en": "Ground Fault Detection Indicated",
+   "fam": "",
+   "node": "ground fault detection indicated"
+  },
+  {
+   "code": "P1216",
+   "brand": "gm",
+   "ru": "Клапан ТНВД: время срабатывания слишком короткое",
+   "en": "Fuel Solenoid Response Time Too Short",
+   "fam": "",
+   "node": "fuel solenoid"
+  },
+  {
+   "code": "P1217",
+   "brand": "gm",
+   "ru": "Клапан ТНВД: время срабатывания слишком длинное",
+   "en": "Fuel Solenoid Response Time Too Long",
+   "fam": "",
+   "node": "fuel solenoid"
+  },
+  {
+   "code": "P1218",
+   "brand": "gm",
+   "ru": "ТНВД: цепь калибровки",
+   "en": "Injection Pump Calibration Circuit",
+   "fam": "",
+   "node": "injection pump calibration"
+  },
+  {
+   "code": "P1219",
+   "brand": "gm",
+   "ru": "Датчик положения дросселя: опорное напряжение",
+   "en": "Throttle Position Sensor Reference Voltage",
+   "fam": "",
+   "node": "throttle position sensor reference voltage"
+  },
+  {
+   "code": "P1221",
+   "brand": "gm",
+   "ru": "Датчики положения дросселя 1 и 2: рассогласование",
+   "en": "Throttle Position (TP) Sensor 1 2 Correlation",
+   "fam": "",
+   "node": "throttle position 2 correlation"
+  },
+  {
+   "code": "P1245",
+   "brand": "gm",
+   "ru": "Клапан переключения впускного ресивера",
+   "en": "Intake Plenum Switchover Valve",
+   "fam": "",
+   "node": "intake plenum switchover"
+  },
+  {
+   "code": "P1250",
+   "brand": "gm",
+   "ru": "Подогреватель раннего испарения топлива: цепь",
+   "en": "Early Fuel Evaporation Heater Circuit",
+   "fam": "",
+   "node": "early fuel evaporation"
+  }
+ ]
+}

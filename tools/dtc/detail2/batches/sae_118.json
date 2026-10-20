@@ -1,0 +1,300 @@
+{
+ "name": "sae_118",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "battery charger",
+  "battery charger a temperature too",
+  "battery charger system precharge time too",
+  "battery charger system precharge time too long",
+  "charge status indicator a",
+  "control pilot indicator",
+  "dc dc converter a over temperature",
+  "dc dc converter current",
+  "drive motor a inverter voltage sensor a”",
+  "hybrid ev battery system current",
+  "hybrid ev battery system current unstable"
+ ],
+ "codes": [
+  {
+   "code": "P0D24",
+   "brand": "",
+   "ru": "Зарядное устройство A: слишком высокая температура",
+   "en": "Battery Charger A Temperature Too High",
+   "fam": "",
+   "node": "battery charger a temperature too"
+  },
+  {
+   "code": "P0D25",
+   "brand": "",
+   "ru": "Зарядное устройство: время предзаряда слишком короткое",
+   "en": "Battery Charger System Precharge Time Too Short",
+   "fam": "",
+   "node": "battery charger system precharge time too"
+  },
+  {
+   "code": "P0D26",
+   "brand": "",
+   "ru": "Зарядное устройство: время предзаряда слишком долгое",
+   "en": "Battery Charger System Precharge Time Too Long",
+   "fam": "",
+   "node": "battery charger system precharge time too long"
+  },
+  {
+   "code": "P0D27",
+   "brand": "",
+   "ru": "Зарядное устройство: слишком низкое входное напряжение",
+   "en": "Battery Charger Input Voltage Too Low",
+   "fam": "",
+   "node": "battery charger"
+  },
+  {
+   "code": "P0D28",
+   "brand": "",
+   "ru": "Зарядное устройство: слишком высокое входное напряжение",
+   "en": "Battery Charger Input Voltage Too High",
+   "fam": "",
+   "node": "battery charger"
+  },
+  {
+   "code": "P0D29",
+   "brand": "",
+   "ru": "Зарядное устройство: слишком малый входной ток",
+   "en": "Battery Charger Input Current Too Low",
+   "fam": "",
+   "node": "battery charger"
+  },
+  {
+   "code": "P0D2A",
+   "brand": "",
+   "ru": "Зарядное устройство: слишком большой входной ток",
+   "en": "Battery Charger Input Current Too High",
+   "fam": "",
+   "node": "battery charger"
+  },
+  {
+   "code": "P0D80",
+   "brand": "",
+   "ru": "Вход зарядного устройства: обрыв цепи",
+   "en": "Battery Charger Input Circuit/Open",
+   "fam": "",
+   "node": "battery charger"
+  },
+  {
+   "code": "P0D81",
+   "brand": "",
+   "ru": "Вход зарядного устройства: сигнал вне диапазона",
+   "en": "Battery Charger Input Circuit Range/Performance",
+   "fam": "",
+   "node": "battery charger"
+  },
+  {
+   "code": "P0D82",
+   "brand": "",
+   "ru": "Вход зарядного устройства: низкий уровень сигнала в цепи",
+   "en": "Battery Charger Input Circuit Low",
+   "fam": "",
+   "node": "battery charger"
+  },
+  {
+   "code": "P0D83",
+   "brand": "",
+   "ru": "Вход зарядного устройства: высокий уровень сигнала в цепи",
+   "en": "Battery Charger Input Circuit High",
+   "fam": "",
+   "node": "battery charger"
+  },
+  {
+   "code": "P0D84",
+   "brand": "",
+   "ru": "Вход зарядного устройства: прерывистый / нестабильный сигнал",
+   "en": "Battery Charger Input Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "battery charger"
+  },
+  {
+   "code": "P0D90",
+   "brand": "",
+   "ru": "Зарядное устройство: неверная частота на входе",
+   "en": "Battery Charger Input Frequency Incorrect",
+   "fam": "",
+   "node": "battery charger"
+  },
+  {
+   "code": "P0E65",
+   "brand": "",
+   "ru": "Зарядное устройство: обрыв цепи управления",
+   "en": "Battery Charger Control Circuit/Open",
+   "fam": "",
+   "node": "battery charger"
+  },
+  {
+   "code": "P0E66",
+   "brand": "",
+   "ru": "Зарядное устройство: низкий уровень в цепи управления",
+   "en": "Battery Charger Control Circuit Low",
+   "fam": "",
+   "node": "battery charger"
+  },
+  {
+   "code": "P0E67",
+   "brand": "",
+   "ru": "Зарядное устройство: высокий уровень в цепи управления",
+   "en": "Battery Charger Control Circuit High",
+   "fam": "",
+   "node": "battery charger"
+  },
+  {
+   "code": "P0E68",
+   "brand": "",
+   "ru": "Зарядное устройство: цепь управления вне диапазона",
+   "en": "Battery Charger Control Circuit Range/Performance",
+   "fam": "",
+   "node": "battery charger"
+  },
+  {
+   "code": "P0D2B",
+   "brand": "",
+   "ru": "Индикатор сигнала Control Pilot: обрыв цепи управления",
+   "en": "Control Pilot Indicator Control Circuit/Open",
+   "fam": "",
+   "node": "control pilot indicator"
+  },
+  {
+   "code": "P0E3D",
+   "brand": "",
+   "ru": "Индикатор сигнала Control Pilot: низкий уровень в цепи управления",
+   "en": "Control Pilot Indicator Control Circuit Low",
+   "fam": "",
+   "node": "control pilot indicator"
+  },
+  {
+   "code": "P0E3E",
+   "brand": "",
+   "ru": "Индикатор сигнала Control Pilot: высокий уровень в цепи управления",
+   "en": "Control Pilot Indicator Control Circuit High",
+   "fam": "",
+   "node": "control pilot indicator"
+  },
+  {
+   "code": "P0E69",
+   "brand": "",
+   "ru": "Индикатор сигнала Control Pilot: цепь управления вне диапазона",
+   "en": "Control Pilot Indicator Control Circuit Range/Performance",
+   "fam": "",
+   "node": "control pilot indicator"
+  },
+  {
+   "code": "P0D2C",
+   "brand": "",
+   "ru": "Индикатор состояния зарядки A: обрыв цепи управления",
+   "en": "Charge Status Indicator A Control Circuit/Open",
+   "fam": "",
+   "node": "charge status indicator a"
+  },
+  {
+   "code": "P0E3F",
+   "brand": "",
+   "ru": "Индикатор состояния зарядки A: низкий уровень в цепи управления",
+   "en": "Charge Status Indicator A Control Circuit Low",
+   "fam": "",
+   "node": "charge status indicator a"
+  },
+  {
+   "code": "P0E40",
+   "brand": "",
+   "ru": "Индикатор состояния зарядки A: высокий уровень в цепи управления",
+   "en": "Charge Status Indicator A Control Circuit High",
+   "fam": "",
+   "node": "charge status indicator a"
+  },
+  {
+   "code": "P0D2D",
+   "brand": "",
+   "ru": "Датчик напряжения инвертора тягового электромотора A (датчик A): цепь",
+   "en": "Drive Motor A Inverter Voltage Sensor A” Circuit",
+   "fam": "",
+   "node": "drive motor a inverter voltage sensor a”"
+  },
+  {
+   "code": "P0D2E",
+   "brand": "",
+   "ru": "Датчик напряжения инвертора тягового электромотора A (датчик A): сигнал вне диапазона",
+   "en": "Drive Motor A Inverter Voltage Sensor A” Circuit Range/Performance",
+   "fam": "",
+   "node": "drive motor a inverter voltage sensor a”"
+  },
+  {
+   "code": "P0D2F",
+   "brand": "",
+   "ru": "Датчик напряжения инвертора тягового электромотора A (датчик A): низкий уровень сигнала в цепи",
+   "en": "Drive Motor A Inverter Voltage Sensor A” Circuit Low",
+   "fam": "",
+   "node": "drive motor a inverter voltage sensor a”"
+  },
+  {
+   "code": "P0D30",
+   "brand": "",
+   "ru": "Датчик напряжения инвертора тягового электромотора A (датчик A): высокий уровень сигнала в цепи",
+   "en": "Drive Motor A Inverter Voltage Sensor A” Circuit High",
+   "fam": "",
+   "node": "drive motor a inverter voltage sensor a”"
+  },
+  {
+   "code": "P0D31",
+   "brand": "",
+   "ru": "Датчик напряжения инвертора тягового электромотора A (датчик A): прерывистый / нестабильный сигнал",
+   "en": "Drive Motor A Inverter Voltage Sensor A” Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "drive motor a inverter voltage sensor a”"
+  },
+  {
+   "code": "P0D32",
+   "brand": "",
+   "ru": "Преобразователь DC/DC A: перегрев",
+   "en": "DC/DC Converter A Over Temperature",
+   "fam": "",
+   "node": "dc dc converter a over temperature"
+  },
+  {
+   "code": "P0D33",
+   "brand": "",
+   "ru": "Преобразователь DC/DC: большой ток",
+   "en": "DC/DC Converter Current High",
+   "fam": "",
+   "node": "dc dc converter current"
+  },
+  {
+   "code": "P0D34",
+   "brand": "",
+   "ru": "Ток системы тяговой батареи",
+   "en": "Hybrid/EV Battery System Current",
+   "fam": "",
+   "node": "hybrid ev battery system current"
+  },
+  {
+   "code": "P0D36",
+   "brand": "",
+   "ru": "Малый ток системы тяговой батареи",
+   "en": "Hybrid/EV Battery System Current Low",
+   "fam": "",
+   "node": "hybrid ev battery system current"
+  },
+  {
+   "code": "P0D37",
+   "brand": "",
+   "ru": "Большой ток системы тяговой батареи",
+   "en": "Hybrid/EV Battery System Current High",
+   "fam": "",
+   "node": "hybrid ev battery system current"
+  },
+  {
+   "code": "P0D35",
+   "brand": "",
+   "ru": "Ток системы тяговой батареи нестабилен",
+   "en": "Hybrid/EV Battery System Current Unstable",
+   "fam": "",
+   "node": "hybrid ev battery system current unstable"
+  }
+ ]
+}

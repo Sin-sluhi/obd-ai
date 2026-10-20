@@ -1,0 +1,374 @@
+{
+ "name": "sae_024",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "a camshaft profile actuator a control",
+  "fam:boost_ctrl",
+  "fam:lambda1",
+  "turbocharger supercharger boost control a position exceeded learning limit",
+  "turbocharger supercharger boost control b position exceeded learning limit"
+ ],
+ "codes": [
+  {
+   "code": "P0033",
+   "brand": "",
+   "ru": "Клапан перепуска турбины (bypass): цепь",
+   "en": "",
+   "fam": "boost_ctrl",
+   "node": "fam:boost_ctrl"
+  },
+  {
+   "code": "P0034",
+   "brand": "",
+   "ru": "Клапан перепуска турбины: низкий уровень",
+   "en": "",
+   "fam": "boost_ctrl",
+   "node": "fam:boost_ctrl"
+  },
+  {
+   "code": "P0035",
+   "brand": "",
+   "ru": "Клапан перепуска турбины: высокий уровень",
+   "en": "",
+   "fam": "boost_ctrl",
+   "node": "fam:boost_ctrl"
+  },
+  {
+   "code": "P0039",
+   "brand": "",
+   "ru": "Клапан перепуска турбины: не отрабатывает",
+   "en": "",
+   "fam": "boost_ctrl",
+   "node": "fam:boost_ctrl"
+  },
+  {
+   "code": "P0045",
+   "brand": "",
+   "ru": "Управление наддувом (соленоид / привод геометрии): цепь",
+   "en": "",
+   "fam": "boost_ctrl",
+   "node": "fam:boost_ctrl"
+  },
+  {
+   "code": "P0046",
+   "brand": "",
+   "ru": "Управление наддувом (соленоид / привод геометрии): не отрабатывает команду",
+   "en": "",
+   "fam": "boost_ctrl",
+   "node": "fam:boost_ctrl"
+  },
+  {
+   "code": "P0047",
+   "brand": "",
+   "ru": "Управление наддувом (соленоид / привод геометрии): низкий уровень в цепи",
+   "en": "",
+   "fam": "boost_ctrl",
+   "node": "fam:boost_ctrl"
+  },
+  {
+   "code": "P0048",
+   "brand": "",
+   "ru": "Управление наддувом (соленоид / привод геометрии): высокий уровень в цепи",
+   "en": "",
+   "fam": "boost_ctrl",
+   "node": "fam:boost_ctrl"
+  },
+  {
+   "code": "P0243",
+   "brand": "",
+   "ru": "Соленоид перепускного клапана турбины A: цепь",
+   "en": "",
+   "fam": "boost_ctrl",
+   "node": "fam:boost_ctrl"
+  },
+  {
+   "code": "P0244",
+   "brand": "",
+   "ru": "Соленоид перепускного клапана турбины A: не отрабатывает команду",
+   "en": "",
+   "fam": "boost_ctrl",
+   "node": "fam:boost_ctrl"
+  },
+  {
+   "code": "P0245",
+   "brand": "",
+   "ru": "Соленоид перепускного клапана турбины A: низкий уровень в цепи",
+   "en": "",
+   "fam": "boost_ctrl",
+   "node": "fam:boost_ctrl"
+  },
+  {
+   "code": "P0246",
+   "brand": "",
+   "ru": "Соленоид перепускного клапана турбины A: высокий уровень в цепи",
+   "en": "",
+   "fam": "boost_ctrl",
+   "node": "fam:boost_ctrl"
+  },
+  {
+   "code": "P0247",
+   "brand": "",
+   "ru": "Соленоид перепускного клапана турбины B: цепь",
+   "en": "",
+   "fam": "boost_ctrl",
+   "node": "fam:boost_ctrl"
+  },
+  {
+   "code": "P0248",
+   "brand": "",
+   "ru": "Соленоид перепускного клапана турбины B: не отрабатывает команду",
+   "en": "",
+   "fam": "boost_ctrl",
+   "node": "fam:boost_ctrl"
+  },
+  {
+   "code": "P0249",
+   "brand": "",
+   "ru": "Соленоид перепускного клапана турбины B: низкий уровень в цепи",
+   "en": "",
+   "fam": "boost_ctrl",
+   "node": "fam:boost_ctrl"
+  },
+  {
+   "code": "P0250",
+   "brand": "",
+   "ru": "Соленоид перепускного клапана турбины B: высокий уровень в цепи",
+   "en": "",
+   "fam": "boost_ctrl",
+   "node": "fam:boost_ctrl"
+  },
+  {
+   "code": "P2261",
+   "brand": "",
+   "ru": "Клапан перепуска турбины: механическая неисправность",
+   "en": "",
+   "fam": "boost_ctrl",
+   "node": "fam:boost_ctrl"
+  },
+  {
+   "code": "P2562",
+   "brand": "",
+   "ru": "Датчик положения привода наддува (геометрии турбины): цепь",
+   "en": "",
+   "fam": "boost_ctrl",
+   "node": "fam:boost_ctrl"
+  },
+  {
+   "code": "P2563",
+   "brand": "",
+   "ru": "Датчик положения привода наддува (геометрии турбины): показания вне диапазона",
+   "en": "",
+   "fam": "boost_ctrl",
+   "node": "fam:boost_ctrl"
+  },
+  {
+   "code": "P2564",
+   "brand": "",
+   "ru": "Датчик положения привода наддува (геометрии турбины): низкий сигнал",
+   "en": "",
+   "fam": "boost_ctrl",
+   "node": "fam:boost_ctrl"
+  },
+  {
+   "code": "P2565",
+   "brand": "",
+   "ru": "Датчик положения привода наддува (геометрии турбины): высокий сигнал",
+   "en": "",
+   "fam": "boost_ctrl",
+   "node": "fam:boost_ctrl"
+  },
+  {
+   "code": "P2566",
+   "brand": "",
+   "ru": "Датчик положения привода наддува (геометрии турбины): прерывистый сигнал",
+   "en": "",
+   "fam": "boost_ctrl",
+   "node": "fam:boost_ctrl"
+  },
+  {
+   "code": "P003A",
+   "brand": "",
+   "ru": "Регулятор наддува A: превышен предел адаптации положения",
+   "en": "Turbocharger/Supercharger Boost Control A Position Exceeded Learning Limit",
+   "fam": "",
+   "node": "turbocharger supercharger boost control a position exceeded learning limit"
+  },
+  {
+   "code": "P003B",
+   "brand": "",
+   "ru": "Регулятор наддува B: превышен предел адаптации положения",
+   "en": "Turbocharger/Supercharger Boost Control B Position Exceeded Learning Limit",
+   "fam": "",
+   "node": "turbocharger supercharger boost control b position exceeded learning limit"
+  },
+  {
+   "code": "P003C",
+   "brand": "",
+   "ru": "Механизм профиля распредвала A, управление A: работа нарушена / не включается (банк 1)",
+   "en": "A Camshaft Profile Actuator A Control Performance/Stuck Off Bank 1",
+   "fam": "",
+   "node": "a camshaft profile actuator a control"
+  },
+  {
+   "code": "P003D",
+   "brand": "",
+   "ru": "Механизм профиля распредвала A, управление A: постоянно включён (банк 1)",
+   "en": "A Camshaft Profile Actuator A Control Stuck On Bank 1",
+   "fam": "",
+   "node": "a camshaft profile actuator a control"
+  },
+  {
+   "code": "P003E",
+   "brand": "",
+   "ru": "Механизм профиля распредвала A, управление A: работа нарушена / не включается (банк 2)",
+   "en": "A Camshaft Profile Actuator A Control Performance/Stuck Off Bank 2",
+   "fam": "",
+   "node": "a camshaft profile actuator a control"
+  },
+  {
+   "code": "P003F",
+   "brand": "",
+   "ru": "Механизм профиля распредвала A, управление A: постоянно включён (банк 2)",
+   "en": "A Camshaft Profile Actuator A Control Stuck On Bank 2",
+   "fam": "",
+   "node": "a camshaft profile actuator a control"
+  },
+  {
+   "code": "P0040",
+   "brand": "",
+   "ru": "Сигналы лямбда-зондов перепутаны (банк 1 / банк 2, датчик 1)",
+   "en": "",
+   "fam": "lambda1",
+   "node": "fam:lambda1"
+  },
+  {
+   "code": "P0130",
+   "brand": "",
+   "ru": "Лямбда-зонд (банк 1, датчик 1): цепь",
+   "en": "",
+   "fam": "lambda1",
+   "node": "fam:lambda1"
+  },
+  {
+   "code": "P0131",
+   "brand": "",
+   "ru": "Лямбда-зонд (банк 1, датчик 1): низкое напряжение (постоянно «бедно»)",
+   "en": "",
+   "fam": "lambda1",
+   "node": "fam:lambda1"
+  },
+  {
+   "code": "P0132",
+   "brand": "",
+   "ru": "Лямбда-зонд (банк 1, датчик 1): высокое напряжение (постоянно «богато»)",
+   "en": "",
+   "fam": "lambda1",
+   "node": "fam:lambda1"
+  },
+  {
+   "code": "P0133",
+   "brand": "",
+   "ru": "Лямбда-зонд (банк 1, датчик 1): медленный отклик",
+   "en": "",
+   "fam": "lambda1",
+   "node": "fam:lambda1"
+  },
+  {
+   "code": "P0134",
+   "brand": "",
+   "ru": "Лямбда-зонд (банк 1, датчик 1): нет активности",
+   "en": "",
+   "fam": "lambda1",
+   "node": "fam:lambda1"
+  },
+  {
+   "code": "P0150",
+   "brand": "",
+   "ru": "Лямбда-зонд (банк 2, датчик 1): цепь",
+   "en": "",
+   "fam": "lambda1",
+   "node": "fam:lambda1"
+  },
+  {
+   "code": "P0151",
+   "brand": "",
+   "ru": "Лямбда-зонд (банк 2, датчик 1): низкое напряжение (постоянно «бедно»)",
+   "en": "",
+   "fam": "lambda1",
+   "node": "fam:lambda1"
+  },
+  {
+   "code": "P0152",
+   "brand": "",
+   "ru": "Лямбда-зонд (банк 2, датчик 1): высокое напряжение (постоянно «богато»)",
+   "en": "",
+   "fam": "lambda1",
+   "node": "fam:lambda1"
+  },
+  {
+   "code": "P0153",
+   "brand": "",
+   "ru": "Лямбда-зонд (банк 2, датчик 1): медленный отклик",
+   "en": "",
+   "fam": "lambda1",
+   "node": "fam:lambda1"
+  },
+  {
+   "code": "P0154",
+   "brand": "",
+   "ru": "Лямбда-зонд (банк 2, датчик 1): нет активности",
+   "en": "",
+   "fam": "lambda1",
+   "node": "fam:lambda1"
+  },
+  {
+   "code": "P2231",
+   "brand": "",
+   "ru": "Лямбда-зонд (банк 1, датчик 1): сигнал замкнут на цепь подогрева",
+   "en": "",
+   "fam": "lambda1",
+   "node": "fam:lambda1"
+  },
+  {
+   "code": "P2232",
+   "brand": "",
+   "ru": "Лямбда-зонд (банк 1, датчик 2): сигнал замкнут на цепь подогрева",
+   "en": "",
+   "fam": "lambda1",
+   "node": "fam:lambda1"
+  },
+  {
+   "code": "P2233",
+   "brand": "",
+   "ru": "Лямбда-зонд (банк 1, датчик 3): сигнал замкнут на цепь подогрева",
+   "en": "",
+   "fam": "lambda1",
+   "node": "fam:lambda1"
+  },
+  {
+   "code": "P2234",
+   "brand": "",
+   "ru": "Лямбда-зонд (банк 2, датчик 1): сигнал замкнут на цепь подогрева",
+   "en": "",
+   "fam": "lambda1",
+   "node": "fam:lambda1"
+  },
+  {
+   "code": "P2235",
+   "brand": "",
+   "ru": "Лямбда-зонд (банк 2, датчик 2): сигнал замкнут на цепь подогрева",
+   "en": "",
+   "fam": "lambda1",
+   "node": "fam:lambda1"
+  },
+  {
+   "code": "P2236",
+   "brand": "",
+   "ru": "Лямбда-зонд (банк 2, датчик 3): сигнал замкнут на цепь подогрева",
+   "en": "",
+   "fam": "lambda1",
+   "node": "fam:lambda1"
+  }
+ ]
+}

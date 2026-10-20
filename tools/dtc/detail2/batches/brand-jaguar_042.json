@@ -1,0 +1,389 @@
+{
+ "name": "brand-jaguar_042",
+ "series": "brand",
+ "brand": "jaguar",
+ "nodes": [
+  "air assisted injector control",
+  "air assisted injector control valve",
+  "control box fan",
+  "electronic throttle control position error",
+  "fuel level",
+  "injector",
+  "lack of ho2s12 switches sensor indicates lean",
+  "lack of ho2s12 switches sensor indicates rich",
+  "lack of ho2s22 switches sensor indicates lean",
+  "lack of ho2s22 switches sensor indicates rich",
+  "long term fuel trim too lean banks 1 and",
+  "long term fuel trim too rich banks 1 and",
+  "mass air flow",
+  "o2 sensor",
+  "obd systems readiness test not complete",
+  "pedal demand sensor b",
+  "pedal position sensor a",
+  "system pass",
+  "system too lean banks 1 and",
+  "system too rich banks 1 and"
+ ],
+ "codes": [
+  {
+   "code": "P1000",
+   "brand": "jaguar",
+   "ru": "Проверка готовности систем OBD не завершена (после сброса)",
+   "en": "OBD Systems Readiness Test Not Complete",
+   "fam": "",
+   "node": "obd systems readiness test not complete"
+  },
+  {
+   "code": "P1104",
+   "brand": "jaguar",
+   "ru": "Расходомер воздуха: цепь массы",
+   "en": "Mass Air Flow Sensor Circuit Ground",
+   "fam": "",
+   "node": "mass air flow"
+  },
+  {
+   "code": "P1111",
+   "brand": "jaguar",
+   "ru": "Система в порядке (служебный код)",
+   "en": "System Pass",
+   "fam": "",
+   "node": "system pass"
+  },
+  {
+   "code": "P1121",
+   "brand": "jaguar",
+   "ru": "Датчик педали газа A: выход за диапазон",
+   "en": "Pedal Position Sensor A Circuit Range Performance",
+   "fam": "",
+   "node": "pedal position sensor a"
+  },
+  {
+   "code": "P1122",
+   "brand": "jaguar",
+   "ru": "Датчик педали газа A: низкий сигнал",
+   "en": "Pedal Position Sensor A Circuit Low Input",
+   "fam": "",
+   "node": "pedal position sensor a"
+  },
+  {
+   "code": "P1123",
+   "brand": "jaguar",
+   "ru": "Датчик педали газа A: высокий сигнал",
+   "en": "Pedal Position Sensor A Circuit High Input",
+   "fam": "",
+   "node": "pedal position sensor a"
+  },
+  {
+   "code": "P1136",
+   "brand": "jaguar",
+   "ru": "Вентилятор блока управления: цепь",
+   "en": "Control Box Fan Circuit",
+   "fam": "",
+   "node": "control box fan"
+  },
+  {
+   "code": "P1137",
+   "brand": "jaguar",
+   "ru": "Лямбда-зонд 2 (ряд 1) не переключается, показывает бедно",
+   "en": "Lack Of HO2S12 Switches Sensor Indicates Lean",
+   "fam": "",
+   "node": "lack of ho2s12 switches sensor indicates lean"
+  },
+  {
+   "code": "P1138",
+   "brand": "jaguar",
+   "ru": "Лямбда-зонд 2 (ряд 1) не переключается, показывает богато",
+   "en": "Lack Of HO2S12 Switches Sensor Indicates Rich",
+   "fam": "",
+   "node": "lack of ho2s12 switches sensor indicates rich"
+  },
+  {
+   "code": "P1143",
+   "brand": "jaguar",
+   "ru": "Клапан подачи воздуха к форсункам: выход за диапазон",
+   "en": "Air Assisted Injector Control Valve Range Performance",
+   "fam": "",
+   "node": "air assisted injector control valve"
+  },
+  {
+   "code": "P1144",
+   "brand": "jaguar",
+   "ru": "Клапан подачи воздуха к форсункам: цепь",
+   "en": "Air Assisted Injector Control Valve Circuit",
+   "fam": "",
+   "node": "air assisted injector control"
+  },
+  {
+   "code": "P1157",
+   "brand": "jaguar",
+   "ru": "Лямбда-зонд 2 (ряд 2) не переключается, показывает бедно",
+   "en": "Lack Of HO2S22 Switches Sensor Indicates Lean",
+   "fam": "",
+   "node": "lack of ho2s22 switches sensor indicates lean"
+  },
+  {
+   "code": "P1158",
+   "brand": "jaguar",
+   "ru": "Лямбда-зонд 2 (ряд 2) не переключается, показывает богато",
+   "en": "Lack Of HO2S22 Switches Sensor Indicates Rich",
+   "fam": "",
+   "node": "lack of ho2s22 switches sensor indicates rich"
+  },
+  {
+   "code": "P1171",
+   "brand": "jaguar",
+   "ru": "Смесь слишком бедная, ряды 1 и 2 (неисправность подачи)",
+   "en": "System Too Lean Banks 1 And 2 (Lean Fuel Fault)",
+   "fam": "",
+   "node": "system too lean banks 1 and"
+  },
+  {
+   "code": "P1174",
+   "brand": "jaguar",
+   "ru": "Смесь слишком бедная, ряды 1 и 2 (подозрение на лямбда-зонд)",
+   "en": "System Too Lean Banks 1 And 2 (Suspect HO2S)",
+   "fam": "",
+   "node": "system too lean banks 1 and"
+  },
+  {
+   "code": "P1172",
+   "brand": "jaguar",
+   "ru": "Смесь слишком богатая, ряды 1 и 2 (неисправность подачи)",
+   "en": "System Too Rich Banks 1 And 2 (Rich Fuel Fault)",
+   "fam": "",
+   "node": "system too rich banks 1 and"
+  },
+  {
+   "code": "P1175",
+   "brand": "jaguar",
+   "ru": "Смесь слишком богатая, ряды 1 и 2 (подозрение на лямбда-зонд)",
+   "en": "System Too Rich Banks 1 And 2 (Suspect HO2S)",
+   "fam": "",
+   "node": "system too rich banks 1 and"
+  },
+  {
+   "code": "P1176",
+   "brand": "jaguar",
+   "ru": "Долговременная коррекция слишком бедная, ряды 1 и 2 (FMFR)",
+   "en": "Long Term Fuel Trim Too Lean Banks 1 And 2 (FMFR)",
+   "fam": "",
+   "node": "long term fuel trim too lean banks 1 and"
+  },
+  {
+   "code": "P1178",
+   "brand": "jaguar",
+   "ru": "Долговременная коррекция слишком бедная, ряды 1 и 2 (AMFR)",
+   "en": "Long Term Fuel Trim Too Lean Banks 1 And 2 (AMFR)",
+   "fam": "",
+   "node": "long term fuel trim too lean banks 1 and"
+  },
+  {
+   "code": "P1177",
+   "brand": "jaguar",
+   "ru": "Долговременная коррекция слишком богатая, ряды 1 и 2 (FMFR)",
+   "en": "Long Term Fuel Trim Too Rich Banks 1 And 2 (FMFR)",
+   "fam": "",
+   "node": "long term fuel trim too rich banks 1 and"
+  },
+  {
+   "code": "P1179",
+   "brand": "jaguar",
+   "ru": "Долговременная коррекция слишком богатая, ряды 1 и 2 (AMFR)",
+   "en": "Long Term Fuel Trim Too Rich Banks 1 And 2 (AMFR)",
+   "fam": "",
+   "node": "long term fuel trim too rich banks 1 and"
+  },
+  {
+   "code": "P1185",
+   "brand": "jaguar",
+   "ru": "Подогрев лямбда-зонда: обрыв (аппаратная неисправность)",
+   "en": "O2 Sensor Heater Circuit Open, Hardware Fault",
+   "fam": "",
+   "node": "o2 sensor"
+  },
+  {
+   "code": "P1186",
+   "brand": "jaguar",
+   "ru": "Подогрев лямбда-зонда: замыкание (аппаратная неисправность)",
+   "en": "O2 Sensor Heater Circuit Shorted, Hardware Fault",
+   "fam": "",
+   "node": "o2 sensor"
+  },
+  {
+   "code": "P1187",
+   "brand": "jaguar",
+   "ru": "Подогрев лямбда-зонда: обрыв (по косвенным признакам)",
+   "en": "O2 Sensor Heater Circuit Open, Inferred Fault",
+   "fam": "",
+   "node": "o2 sensor"
+  },
+  {
+   "code": "P1188",
+   "brand": "jaguar",
+   "ru": "Подогрев лямбда-зонда: сопротивление",
+   "en": "O2 Sensor Heater Circuit Resistance",
+   "fam": "",
+   "node": "o2 sensor"
+  },
+  {
+   "code": "P1189",
+   "brand": "jaguar",
+   "ru": "Подогрев лямбда-зонда: низкое сопротивление, неисправность 1",
+   "en": "O2 Sensor Heater Circuit Low Resistance Fault 1",
+   "fam": "",
+   "node": "o2 sensor"
+  },
+  {
+   "code": "P1190",
+   "brand": "jaguar",
+   "ru": "Подогрев лямбда-зонда: низкое сопротивление, неисправность 2",
+   "en": "O2 Sensor Heater Circuit Low Resistance Fault 2",
+   "fam": "",
+   "node": "o2 sensor"
+  },
+  {
+   "code": "P1191",
+   "brand": "jaguar",
+   "ru": "Подогрев лямбда-зонда: обрыв (аппаратная неисправность)",
+   "en": "O2 Sensor Heater Circuit Open, HArdware Fault",
+   "fam": "",
+   "node": "o2 sensor"
+  },
+  {
+   "code": "P1192",
+   "brand": "jaguar",
+   "ru": "Подогрев лямбда-зонда: замыкание",
+   "en": "O2 Sensor Heater Circuit Shorted",
+   "fam": "",
+   "node": "o2 sensor"
+  },
+  {
+   "code": "P1193",
+   "brand": "jaguar",
+   "ru": "Подогрев лямбда-зонда: обрыв (по косвенным признакам)",
+   "en": "O2 Sensor Heater Circuit Open, Inferred Fault",
+   "fam": "",
+   "node": "o2 sensor"
+  },
+  {
+   "code": "P1194",
+   "brand": "jaguar",
+   "ru": "Подогрев лямбда-зонда: неисправность сопротивления",
+   "en": "O2 Sensor Heater Circuit Resistance Fault",
+   "fam": "",
+   "node": "o2 sensor"
+  },
+  {
+   "code": "P1195",
+   "brand": "jaguar",
+   "ru": "Подогрев лямбда-зонда: низкое сопротивление, неисправность 1",
+   "en": "O2 Sensor Heater Circuit Low Resistance Fault 1",
+   "fam": "",
+   "node": "o2 sensor"
+  },
+  {
+   "code": "P1196",
+   "brand": "jaguar",
+   "ru": "Подогрев лямбда-зонда: низкое сопротивление, неисправность 2",
+   "en": "O2 Sensor Heater Circuit Low Resistance Fault 2",
+   "fam": "",
+   "node": "o2 sensor"
+  },
+  {
+   "code": "P1198",
+   "brand": "jaguar",
+   "ru": "Сигнал уровня топлива: высокий",
+   "en": "Fuel Level Input Circuit High",
+   "fam": "",
+   "node": "fuel level"
+  },
+  {
+   "code": "P1199",
+   "brand": "jaguar",
+   "ru": "Сигнал уровня топлива: низкий",
+   "en": "Fuel Level Input Circuit Low",
+   "fam": "",
+   "node": "fuel level"
+  },
+  {
+   "code": "P1201",
+   "brand": "jaguar",
+   "ru": "Форсунка цилиндра 1: обрыв или замыкание",
+   "en": "Cylinder 1 Injector Circuit Open/Shorted",
+   "fam": "",
+   "node": "injector"
+  },
+  {
+   "code": "P1202",
+   "brand": "jaguar",
+   "ru": "Форсунка цилиндра 2: обрыв или замыкание",
+   "en": "Cylinder 2 Injector Circuit Open/Shorted",
+   "fam": "",
+   "node": "injector"
+  },
+  {
+   "code": "P1203",
+   "brand": "jaguar",
+   "ru": "Форсунка цилиндра 3: обрыв или замыкание",
+   "en": "Cylinder 3 Injector Circuit Open/Shorted",
+   "fam": "",
+   "node": "injector"
+  },
+  {
+   "code": "P1204",
+   "brand": "jaguar",
+   "ru": "Форсунка цилиндра 4: обрыв или замыкание",
+   "en": "Cylinder 4 Injector Circuit Open/Shorted",
+   "fam": "",
+   "node": "injector"
+  },
+  {
+   "code": "P1205",
+   "brand": "jaguar",
+   "ru": "Форсунка цилиндра 5: обрыв или замыкание",
+   "en": "Cylinder 5 Injector Circuit Open/Shorted",
+   "fam": "",
+   "node": "injector"
+  },
+  {
+   "code": "P1206",
+   "brand": "jaguar",
+   "ru": "Форсунка цилиндра 6: обрыв или замыкание",
+   "en": "Cylinder 6 Injector Circuit Open/Shorted",
+   "fam": "",
+   "node": "injector"
+  },
+  {
+   "code": "P1207",
+   "brand": "jaguar",
+   "ru": "Форсунка цилиндра 7: обрыв или замыкание",
+   "en": "Cylinder 7 Injector Circuit Open/Shorted",
+   "fam": "",
+   "node": "injector"
+  },
+  {
+   "code": "P1208",
+   "brand": "jaguar",
+   "ru": "Форсунка цилиндра 8: обрыв или замыкание",
+   "en": "Cylinder 8 Injector Circuit Open/Shorted",
+   "fam": "",
+   "node": "injector"
+  },
+  {
+   "code": "P1221",
+   "brand": "jaguar",
+   "ru": "Датчик педали газа B: выход за диапазон",
+   "en": "Pedal Demand Sensor B Circuit Range Performance",
+   "fam": "",
+   "node": "pedal demand sensor b"
+  },
+  {
+   "code": "P1224",
+   "brand": "jaguar",
+   "ru": "Электронный дроссель: ошибка положения",
+   "en": "Electronic Throttle Control Position Error",
+   "fam": "",
+   "node": "electronic throttle control position error"
+  }
+ ]
+}

@@ -1,0 +1,398 @@
+{
+ "name": "brand-vag_075",
+ "series": "brand",
+ "brand": "vag",
+ "nodes": [
+  "a c clutch relays",
+  "accelerator pedal position",
+  "accelerator pedal position power supply",
+  "check coding of ecus in data bus powertrain",
+  "check dtc memory of air condition ecu",
+  "check dtc memory of airbag ecu",
+  "check dtc memory of all wheel drive ecu",
+  "check dtc memory of brake ecu",
+  "check dtc memory of central ecu",
+  "check dtc memory of clutch ecu",
+  "check dtc memory of control panel ecu",
+  "check dtc memory of distance control ecu",
+  "check dtc memory of transmissions ecu",
+  "control module programming not finished",
+  "control unit error programming",
+  "control unit programming communication error",
+  "data bus powertrain",
+  "data bus powertrain defect",
+  "data bus powertrain missing message from air condition",
+  "data bus powertrain missing message from airbag",
+  "data bus powertrain missing message from brake controller",
+  "data bus powertrain missing message from central electronic",
+  "data bus powertrain missing message from clutch",
+  "data bus powertrain missing message from instrument panel ecu",
+  "data bus powertrain missing messages",
+  "drive by wire mil",
+  "internal control module eeprom error",
+  "kick down switch",
+  "ru:лампа неисправности"
+ ],
+ "codes": [
+  {
+   "code": "P1630",
+   "brand": "vag",
+   "ru": "Датчик педали газа 1: сигнал слишком низкий",
+   "en": "Accelerator Pedal Position Sensor 1 Signal Too Low",
+   "fam": "",
+   "node": "accelerator pedal position"
+  },
+  {
+   "code": "P1631",
+   "brand": "vag",
+   "ru": "Датчик педали газа 1: сигнал слишком высокий",
+   "en": "Accelerator Pedal Position Sensor 1 Signal Too High",
+   "fam": "",
+   "node": "accelerator pedal position"
+  },
+  {
+   "code": "P1633",
+   "brand": "vag",
+   "ru": "Датчик педали газа 2: сигнал слишком низкий",
+   "en": "Accelerator Pedal Position Sensor 2 Signal Too Low",
+   "fam": "",
+   "node": "accelerator pedal position"
+  },
+  {
+   "code": "P1634",
+   "brand": "vag",
+   "ru": "Датчик педали газа 2: сигнал слишком высокий",
+   "en": "Accelerator Pedal Position Sensor 2 Signal Too High",
+   "fam": "",
+   "node": "accelerator pedal position"
+  },
+  {
+   "code": "P1639",
+   "brand": "vag",
+   "ru": "Датчики педали газа 1/2: выход за диапазон",
+   "en": "Accelerator Pedal Position Sensor 1/2 Range Performance",
+   "fam": "",
+   "node": "accelerator pedal position"
+  },
+  {
+   "code": "P1632",
+   "brand": "vag",
+   "ru": "Датчик педали газа 1: неисправность питания",
+   "en": "Accelerator Pedal Position Sensor 1 Power Supply Malfunction",
+   "fam": "",
+   "node": "accelerator pedal position power supply"
+  },
+  {
+   "code": "P1635",
+   "brand": "vag",
+   "ru": "Шина силового агрегата: нет сообщения от блока кондиционера",
+   "en": "Data Bus Powertrain Missing Message From Air Condition Control",
+   "fam": "",
+   "node": "data bus powertrain missing message from air condition"
+  },
+  {
+   "code": "P1636",
+   "brand": "vag",
+   "ru": "Шина силового агрегата: нет сообщения от блока подушек",
+   "en": "Data Bus Powertrain Missing Message From Airbag Control",
+   "fam": "",
+   "node": "data bus powertrain missing message from airbag"
+  },
+  {
+   "code": "P1637",
+   "brand": "vag",
+   "ru": "Шина силового агрегата: нет сообщения от центрального блока электроники",
+   "en": "Data Bus Powertrain Missing Message From Central Electronic Control",
+   "fam": "",
+   "node": "data bus powertrain missing message from central electronic"
+  },
+  {
+   "code": "P1638",
+   "brand": "vag",
+   "ru": "Шина силового агрегата: нет сообщения от блока сцепления",
+   "en": "Data Bus Powertrain Missing Message From Clutch Control",
+   "fam": "",
+   "node": "data bus powertrain missing message from clutch"
+  },
+  {
+   "code": "P1640",
+   "brand": "vag",
+   "ru": "Блок двигателя: внутренняя ошибка EEPROM",
+   "en": "Internal Control Module EEPROM Error",
+   "fam": "",
+   "node": "internal control module eeprom error"
+  },
+  {
+   "code": "P1641",
+   "brand": "vag",
+   "ru": "Проверьте память ошибок блока кондиционера",
+   "en": "Check DTC Memory Of Air Condition ECU",
+   "fam": "",
+   "node": "check dtc memory of air condition ecu"
+  },
+  {
+   "code": "P1642",
+   "brand": "vag",
+   "ru": "Проверьте память ошибок блока подушек",
+   "en": "Check DTC Memory Of Airbag ECU",
+   "fam": "",
+   "node": "check dtc memory of airbag ecu"
+  },
+  {
+   "code": "P1643",
+   "brand": "vag",
+   "ru": "Проверьте память ошибок центрального блока",
+   "en": "Check DTC Memory Of Central ECU",
+   "fam": "",
+   "node": "check dtc memory of central ecu"
+  },
+  {
+   "code": "P1644",
+   "brand": "vag",
+   "ru": "Проверьте память ошибок блока сцепления",
+   "en": "Check DTC Memory Of Clutch ECU",
+   "fam": "",
+   "node": "check dtc memory of clutch ecu"
+  },
+  {
+   "code": "P1645",
+   "brand": "vag",
+   "ru": "Шина силового агрегата: неисправность",
+   "en": "Data Bus Powertrain Defect",
+   "fam": "",
+   "node": "data bus powertrain defect"
+  },
+  {
+   "code": "P1646",
+   "brand": "vag",
+   "ru": "Проверьте память ошибок блока полного привода",
+   "en": "Check DTC Memory Of All Wheel Drive ECU",
+   "fam": "",
+   "node": "check dtc memory of all wheel drive ecu"
+  },
+  {
+   "code": "P1647",
+   "brand": "vag",
+   "ru": "Проверьте кодировку блоков на шине силового агрегата",
+   "en": "Check Coding Of ECUs In Data Bus Powertrain",
+   "fam": "",
+   "node": "check coding of ecus in data bus powertrain"
+  },
+  {
+   "code": "P1648",
+   "brand": "vag",
+   "ru": "Шина силового агрегата: неисправность",
+   "en": "Data Bus Powertrain Malfunction",
+   "fam": "",
+   "node": "data bus powertrain"
+  },
+  {
+   "code": "P1658",
+   "brand": "vag",
+   "ru": "Шина силового агрегата: недостоверные данные от адаптивного круиза",
+   "en": "Data Bus Powertrain Range Performance From Distance Control",
+   "fam": "",
+   "node": "data bus powertrain"
+  },
+  {
+   "code": "P1649",
+   "brand": "vag",
+   "ru": "Шина силового агрегата: нет сообщения от блока тормозов",
+   "en": "Data Bus Powertrain Missing Message From Brake Controller",
+   "fam": "",
+   "node": "data bus powertrain missing message from brake controller"
+  },
+  {
+   "code": "P1650",
+   "brand": "vag",
+   "ru": "Шина силового агрегата: нет сообщения от приборной панели",
+   "en": "Data Bus Powertrain Missing Message From Instrument Panel ECU",
+   "fam": "",
+   "node": "data bus powertrain missing message from instrument panel ecu"
+  },
+  {
+   "code": "P1862",
+   "brand": "vag",
+   "ru": "Шина силового агрегата: нет сообщения от приборной панели",
+   "en": "Data Bus Powertrain Missing Message From Instrument Panel ECU",
+   "fam": "",
+   "node": "data bus powertrain missing message from instrument panel ecu"
+  },
+  {
+   "code": "P1651",
+   "brand": "vag",
+   "ru": "Шина силового агрегата: нет сообщений",
+   "en": "Data Bus Powertrain Missing Messages",
+   "fam": "",
+   "node": "data bus powertrain missing messages"
+  },
+  {
+   "code": "P1866",
+   "brand": "vag",
+   "ru": "Шина силового агрегата: нет сообщений",
+   "en": "Data Bus Powertrain Missing Messages",
+   "fam": "",
+   "node": "data bus powertrain missing messages"
+  },
+  {
+   "code": "P1652",
+   "brand": "vag",
+   "ru": "Проверьте память ошибок блока коробки",
+   "en": "Check DTC Memory Of Transmissions ECU",
+   "fam": "",
+   "node": "check dtc memory of transmissions ecu"
+  },
+  {
+   "code": "P1653",
+   "brand": "vag",
+   "ru": "Проверьте память ошибок блока тормозов",
+   "en": "Check DTC Memory Of Brake ECU",
+   "fam": "",
+   "node": "check dtc memory of brake ecu"
+  },
+  {
+   "code": "P1654",
+   "brand": "vag",
+   "ru": "Проверьте память ошибок приборной панели",
+   "en": "Check DTC Memory Of Control Panel ECU",
+   "fam": "",
+   "node": "check dtc memory of control panel ecu"
+  },
+  {
+   "code": "P1655",
+   "brand": "vag",
+   "ru": "Проверьте память ошибок блока адаптивного круиза",
+   "en": "Check DTC Memory Of Distance Control ECU",
+   "fam": "",
+   "node": "check dtc memory of distance control ecu"
+  },
+  {
+   "code": "P1843",
+   "brand": "vag",
+   "ru": "Проверьте память ошибок блока адаптивного круиза",
+   "en": "Check DTC Memory Of Distance Control ECU",
+   "fam": "",
+   "node": "check dtc memory of distance control ecu"
+  },
+  {
+   "code": "P1656",
+   "brand": "vag",
+   "ru": "Реле муфты кондиционера: замыкание на массу",
+   "en": "A/C Clutch Relays Circuit Short To Ground",
+   "fam": "",
+   "node": "a c clutch relays"
+  },
+  {
+   "code": "P1657",
+   "brand": "vag",
+   "ru": "Реле муфты кондиционера: замыкание на плюс",
+   "en": "A/C Clutch Relays Circuit Short To B+",
+   "fam": "",
+   "node": "a c clutch relays"
+  },
+  {
+   "code": "P1676",
+   "brand": "vag",
+   "ru": "Лампа электронного газа (EPC): электрическая неисправность",
+   "en": "Drive By Wire MIL Circuit Electrical Malfunction",
+   "fam": "",
+   "node": "drive by wire mil"
+  },
+  {
+   "code": "P1677",
+   "brand": "vag",
+   "ru": "Лампа электронного газа (EPC): замыкание на плюс",
+   "en": "Drive By Wire MIL Circuit Short To B+",
+   "fam": "",
+   "node": "drive by wire mil"
+  },
+  {
+   "code": "P1678",
+   "brand": "vag",
+   "ru": "Лампа электронного газа (EPC): замыкание на массу",
+   "en": "Drive By Wire MIL Circuit Short To Ground",
+   "fam": "",
+   "node": "drive by wire mil"
+  },
+  {
+   "code": "P1679",
+   "brand": "vag",
+   "ru": "Лампа электронного газа (EPC): обрыв",
+   "en": "Drive By Wire MIL Circuit Open Circuit",
+   "fam": "",
+   "node": "drive by wire mil"
+  },
+  {
+   "code": "P1681",
+   "brand": "vag",
+   "ru": "Программирование блока не завершено",
+   "en": "Control Module Programming Not Finished",
+   "fam": "",
+   "node": "control module programming not finished"
+  },
+  {
+   "code": "P1684",
+   "brand": "vag",
+   "ru": "Программирование блока: ошибка связи",
+   "en": "Control Unit Programming Communication Error",
+   "fam": "",
+   "node": "control unit programming communication error"
+  },
+  {
+   "code": "P1686",
+   "brand": "vag",
+   "ru": "Программирование блока: ошибка",
+   "en": "Control Unit Error Programming",
+   "fam": "",
+   "node": "control unit error programming"
+  },
+  {
+   "code": "P1690",
+   "brand": "vag",
+   "ru": "Лампа неисправности: неисправность",
+   "en": "MIL Malfunction",
+   "fam": "",
+   "node": "ru:лампа неисправности"
+  },
+  {
+   "code": "P1691",
+   "brand": "vag",
+   "ru": "Лампа неисправности: обрыв",
+   "en": "MIL Open Circuit",
+   "fam": "",
+   "node": "ru:лампа неисправности"
+  },
+  {
+   "code": "P1692",
+   "brand": "vag",
+   "ru": "Лампа неисправности: замыкание на массу",
+   "en": "MIL Short To Ground",
+   "fam": "",
+   "node": "ru:лампа неисправности"
+  },
+  {
+   "code": "P1693",
+   "brand": "vag",
+   "ru": "Лампа неисправности: замыкание на плюс",
+   "en": "MIL Short To B+",
+   "fam": "",
+   "node": "ru:лампа неисправности"
+  },
+  {
+   "code": "P1694",
+   "brand": "vag",
+   "ru": "Лампа неисправности: обрыв или замыкание на массу",
+   "en": "MIL Open Short To Ground",
+   "fam": "",
+   "node": "ru:лампа неисправности"
+  },
+  {
+   "code": "P1704",
+   "brand": "vag",
+   "ru": "Выключатель кикдауна: неисправность",
+   "en": "Kick Down Switch Malfunction",
+   "fam": "",
+   "node": "kick down switch"
+  }
+ ]
+}

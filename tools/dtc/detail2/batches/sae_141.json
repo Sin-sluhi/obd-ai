@@ -1,0 +1,319 @@
+{
+ "name": "sae_141",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "o2 sensor negative current",
+  "o2 sensor pumping current trim",
+  "turbocharger compressor outlet switching valve",
+  "turbocharger compressor outlet valve",
+  "turbocharger turbine inlet valve",
+  "turbocharger turbine inlet valve position"
+ ],
+ "codes": [
+  {
+   "code": "P22B2",
+   "brand": "",
+   "ru": "Лямбда-зонд, отрицательный ток: обрыв цепи управления (банк 1, датчик 2)",
+   "en": "O2 Sensor Negative Current Control Circuit/Open Bank 1 Sensor 2",
+   "fam": "",
+   "node": "o2 sensor negative current"
+  },
+  {
+   "code": "P22B3",
+   "brand": "",
+   "ru": "Лямбда-зонд, отрицательный ток: низкий уровень в цепи управления (банк 1, датчик 2)",
+   "en": "O2 Sensor Negative Current Control Circuit Low Bank 1 Sensor 2",
+   "fam": "",
+   "node": "o2 sensor negative current"
+  },
+  {
+   "code": "P22B4",
+   "brand": "",
+   "ru": "Лямбда-зонд, отрицательный ток: высокий уровень в цепи управления (банк 1, датчик 2)",
+   "en": "O2 Sensor Negative Current Control Circuit High Bank 1 Sensor 2",
+   "fam": "",
+   "node": "o2 sensor negative current"
+  },
+  {
+   "code": "P22BF",
+   "brand": "",
+   "ru": "Лямбда-зонд, отрицательный ток: обрыв цепи управления (банк 2, датчик 2)",
+   "en": "O2 Sensor Negative Current Control Circuit/Open Bank 2 Sensor 2",
+   "fam": "",
+   "node": "o2 sensor negative current"
+  },
+  {
+   "code": "P22C0",
+   "brand": "",
+   "ru": "Лямбда-зонд, отрицательный ток: низкий уровень в цепи управления (банк 2, датчик 2)",
+   "en": "O2 Sensor Negative Current Control Circuit Low Bank 2 Sensor 2",
+   "fam": "",
+   "node": "o2 sensor negative current"
+  },
+  {
+   "code": "P22C1",
+   "brand": "",
+   "ru": "Лямбда-зонд, отрицательный ток: высокий уровень в цепи управления (банк 2, датчик 2)",
+   "en": "O2 Sensor Negative Current Control Circuit High Bank 2 Sensor 2",
+   "fam": "",
+   "node": "o2 sensor negative current"
+  },
+  {
+   "code": "P2A3B",
+   "brand": "",
+   "ru": "Лямбда-зонд, отрицательный ток: обрыв цепи управления (банк 1, датчик 3)",
+   "en": "O2 Sensor Negative Current Control Circuit/Open Bank 1 Sensor 3",
+   "fam": "",
+   "node": "o2 sensor negative current"
+  },
+  {
+   "code": "P2A3C",
+   "brand": "",
+   "ru": "Лямбда-зонд, отрицательный ток: низкий уровень в цепи управления (банк 1, датчик 3)",
+   "en": "O2 Sensor Negative Current Control Circuit Low Bank 1 Sensor 3",
+   "fam": "",
+   "node": "o2 sensor negative current"
+  },
+  {
+   "code": "P2A3D",
+   "brand": "",
+   "ru": "Лямбда-зонд, отрицательный ток: высокий уровень в цепи управления (банк 1, датчик 3)",
+   "en": "O2 Sensor Negative Current Control Circuit High Bank 1 Sensor 3",
+   "fam": "",
+   "node": "o2 sensor negative current"
+  },
+  {
+   "code": "P22B5",
+   "brand": "",
+   "ru": "Лямбда-зонд, коррекция тока накачки: обрыв цепи (банк 1, датчик 2)",
+   "en": "O2 Sensor Pumping Current Trim Circuit/Open Bank 1 Sensor 2",
+   "fam": "",
+   "node": "o2 sensor pumping current trim"
+  },
+  {
+   "code": "P22B6",
+   "brand": "",
+   "ru": "Лямбда-зонд, коррекция тока накачки: низкий уровень сигнала в цепи (банк 1, датчик 2)",
+   "en": "O2 Sensor Pumping Current Trim Circuit Low Bank 1 Sensor 2",
+   "fam": "",
+   "node": "o2 sensor pumping current trim"
+  },
+  {
+   "code": "P22B7",
+   "brand": "",
+   "ru": "Лямбда-зонд, коррекция тока накачки: высокий уровень сигнала в цепи (банк 1, датчик 2)",
+   "en": "O2 Sensor Pumping Current Trim Circuit High Bank 1 Sensor 2",
+   "fam": "",
+   "node": "o2 sensor pumping current trim"
+  },
+  {
+   "code": "P22C2",
+   "brand": "",
+   "ru": "Лямбда-зонд, коррекция тока накачки: обрыв цепи (банк 2, датчик 2)",
+   "en": "O2 Sensor Pumping Current Trim Circuit/Open Bank 2 Sensor 2",
+   "fam": "",
+   "node": "o2 sensor pumping current trim"
+  },
+  {
+   "code": "P22C3",
+   "brand": "",
+   "ru": "Лямбда-зонд, коррекция тока накачки: низкий уровень сигнала в цепи (банк 2, датчик 2)",
+   "en": "O2 Sensor Pumping Current Trim Circuit Low Bank 2 Sensor 2",
+   "fam": "",
+   "node": "o2 sensor pumping current trim"
+  },
+  {
+   "code": "P22C4",
+   "brand": "",
+   "ru": "Лямбда-зонд, коррекция тока накачки: высокий уровень сигнала в цепи (банк 2, датчик 2)",
+   "en": "O2 Sensor Pumping Current Trim Circuit High Bank 2 Sensor 2",
+   "fam": "",
+   "node": "o2 sensor pumping current trim"
+  },
+  {
+   "code": "P2C62",
+   "brand": "",
+   "ru": "Лямбда-зонд, коррекция тока накачки: обрыв цепи (банк 1, датчик 3)",
+   "en": "O2 Sensor Pumping Current Trim Circuit/Open Bank 1 Sensor 3",
+   "fam": "",
+   "node": "o2 sensor pumping current trim"
+  },
+  {
+   "code": "P2C63",
+   "brand": "",
+   "ru": "Лямбда-зонд, коррекция тока накачки: низкий уровень сигнала в цепи (банк 1, датчик 3)",
+   "en": "O2 Sensor Pumping Current Trim Circuit Low Bank 1 Sensor 3",
+   "fam": "",
+   "node": "o2 sensor pumping current trim"
+  },
+  {
+   "code": "P2C64",
+   "brand": "",
+   "ru": "Лямбда-зонд, коррекция тока накачки: высокий уровень сигнала в цепи (банк 1, датчик 3)",
+   "en": "O2 Sensor Pumping Current Trim Circuit High Bank 1 Sensor 3",
+   "fam": "",
+   "node": "o2 sensor pumping current trim"
+  },
+  {
+   "code": "P22C5",
+   "brand": "",
+   "ru": "Клапан на выходе компрессора турбины: обрыв цепи управления",
+   "en": "Turbocharger Compressor Outlet Valve Control Circuit/Open",
+   "fam": "",
+   "node": "turbocharger compressor outlet valve"
+  },
+  {
+   "code": "P22C6",
+   "brand": "",
+   "ru": "Клапан на выходе компрессора турбины: низкий уровень в цепи управления",
+   "en": "Turbocharger Compressor Outlet Valve Control Circuit Low",
+   "fam": "",
+   "node": "turbocharger compressor outlet valve"
+  },
+  {
+   "code": "P22C7",
+   "brand": "",
+   "ru": "Клапан на выходе компрессора турбины: высокий уровень в цепи управления",
+   "en": "Turbocharger Compressor Outlet Valve Control Circuit High",
+   "fam": "",
+   "node": "turbocharger compressor outlet valve"
+  },
+  {
+   "code": "P22C8",
+   "brand": "",
+   "ru": "Клапан на выходе компрессора турбины: заклинил открытым",
+   "en": "Turbocharger Compressor Outlet Valve Stuck Open",
+   "fam": "",
+   "node": "turbocharger compressor outlet valve"
+  },
+  {
+   "code": "P22C9",
+   "brand": "",
+   "ru": "Клапан на выходе компрессора турбины: заклинил закрытым",
+   "en": "Turbocharger Compressor Outlet Valve Stuck Closed",
+   "fam": "",
+   "node": "turbocharger compressor outlet valve"
+  },
+  {
+   "code": "P22CA",
+   "brand": "",
+   "ru": "Переключающий клапан на выходе компрессора турбины: обрыв цепи управления",
+   "en": "Turbocharger Compressor Outlet Switching Valve Control Circuit/Open",
+   "fam": "",
+   "node": "turbocharger compressor outlet switching valve"
+  },
+  {
+   "code": "P22CB",
+   "brand": "",
+   "ru": "Переключающий клапан на выходе компрессора турбины: низкий уровень в цепи управления",
+   "en": "Turbocharger Compressor Outlet Switching Valve Control Circuit Low",
+   "fam": "",
+   "node": "turbocharger compressor outlet switching valve"
+  },
+  {
+   "code": "P22CC",
+   "brand": "",
+   "ru": "Переключающий клапан на выходе компрессора турбины: высокий уровень в цепи управления",
+   "en": "Turbocharger Compressor Outlet Switching Valve Control Circuit High",
+   "fam": "",
+   "node": "turbocharger compressor outlet switching valve"
+  },
+  {
+   "code": "P22CD",
+   "brand": "",
+   "ru": "Переключающий клапан на выходе компрессора турбины: заклинил открытым",
+   "en": "Turbocharger Compressor Outlet Switching Valve Stuck Open",
+   "fam": "",
+   "node": "turbocharger compressor outlet switching valve"
+  },
+  {
+   "code": "P22CE",
+   "brand": "",
+   "ru": "Переключающий клапан на выходе компрессора турбины: заклинил закрытым",
+   "en": "Turbocharger Compressor Outlet Switching Valve Stuck Closed",
+   "fam": "",
+   "node": "turbocharger compressor outlet switching valve"
+  },
+  {
+   "code": "P22CF",
+   "brand": "",
+   "ru": "Клапан на входе турбины: обрыв цепи управления",
+   "en": "Turbocharger Turbine Inlet Valve Control Circuit/Open",
+   "fam": "",
+   "node": "turbocharger turbine inlet valve"
+  },
+  {
+   "code": "P22D0",
+   "brand": "",
+   "ru": "Клапан на входе турбины: низкий уровень в цепи управления",
+   "en": "Turbocharger Turbine Inlet Valve Control Circuit Low",
+   "fam": "",
+   "node": "turbocharger turbine inlet valve"
+  },
+  {
+   "code": "P22D1",
+   "brand": "",
+   "ru": "Клапан на входе турбины: высокий уровень в цепи управления",
+   "en": "Turbocharger Turbine Inlet Valve Control Circuit High",
+   "fam": "",
+   "node": "turbocharger turbine inlet valve"
+  },
+  {
+   "code": "P22D2",
+   "brand": "",
+   "ru": "Клапан на входе турбины: заклинил открытым",
+   "en": "Turbocharger Turbine Inlet Valve Stuck Open",
+   "fam": "",
+   "node": "turbocharger turbine inlet valve"
+  },
+  {
+   "code": "P22D3",
+   "brand": "",
+   "ru": "Клапан на входе турбины: заклинил закрытым",
+   "en": "Turbocharger Turbine Inlet Valve Stuck Closed",
+   "fam": "",
+   "node": "turbocharger turbine inlet valve"
+  },
+  {
+   "code": "P22D4",
+   "brand": "",
+   "ru": "Датчик положения клапана на входе турбины: цепь",
+   "en": "Turbocharger Turbine Inlet Valve Position Sensor Circuit",
+   "fam": "",
+   "node": "turbocharger turbine inlet valve position"
+  },
+  {
+   "code": "P22D5",
+   "brand": "",
+   "ru": "Датчик положения клапана на входе турбины: сигнал вне диапазона",
+   "en": "Turbocharger Turbine Inlet Valve Position Sensor Circuit Range/Performance",
+   "fam": "",
+   "node": "turbocharger turbine inlet valve position"
+  },
+  {
+   "code": "P22D6",
+   "brand": "",
+   "ru": "Датчик положения клапана на входе турбины: низкий уровень сигнала в цепи",
+   "en": "Turbocharger Turbine Inlet Valve Position Sensor Circuit Low",
+   "fam": "",
+   "node": "turbocharger turbine inlet valve position"
+  },
+  {
+   "code": "P22D7",
+   "brand": "",
+   "ru": "Датчик положения клапана на входе турбины: высокий уровень сигнала в цепи",
+   "en": "Turbocharger Turbine Inlet Valve Position Sensor Circuit High",
+   "fam": "",
+   "node": "turbocharger turbine inlet valve position"
+  },
+  {
+   "code": "P22D8",
+   "brand": "",
+   "ru": "Датчик положения клапана на входе турбины: прерывистый / нестабильный сигнал",
+   "en": "Turbocharger Turbine Inlet Valve Position Sensor Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "turbocharger turbine inlet valve position"
+  }
+ ]
+}

@@ -1,0 +1,412 @@
+{
+ "name": "sae_200",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "lost communication with active radiator air flow control module a",
+  "lost communication with charge air cooler coolant pump a",
+  "lost communication with comfort and convenience display a",
+  "lost communication with comfort and convenience display b",
+  "lost communication with driver monitoring system",
+  "lost communication with engine disconnect clutch",
+  "lost communication with engine sound",
+  "lost communication with front radar module a",
+  "lost communication with front radar module b",
+  "lost communication with hybrid ev electronics coolant pump b",
+  "lost communication with hybrid ev electronics coolant pump c",
+  "lost communication with interior lighting control module b",
+  "lost communication with localization and mapping",
+  "lost communication with night vision control",
+  "lost communication with rear radar module a",
+  "lost communication with rear radar module b",
+  "lost communication with rear radar module c",
+  "lost communication with rear radar module d",
+  "lost communication with reductant heater control",
+  "lost communication with safety integration control",
+  "lost communication with trailer backup assist control",
+  "lost communication with turbocharger supercharger boost control a",
+  "lost communication with turbocharger supercharger boost control b",
+  "lost communication with turbocharger supercharger boost control b position",
+  "lost communication with turbocharger turbine inlet valve position",
+  "lost communication with vehicle thermal management control",
+  "lost communications with evap system purge pump",
+  "lost communications with hybrid ev battery coolant pump",
+  "software incompatibility with alternative fuel control",
+  "software incompatibility with battery energy control module a",
+  "software incompatibility with battery energy control module b",
+  "software incompatibility with drive motor control",
+  "software incompatibility with evaporative emission system leak detection control",
+  "software incompatibility with four wheel drive clutch control",
+  "software incompatibility with fuel injector control",
+  "software incompatibility with fuel pump control",
+  "software incompatibility with glow plug control",
+  "software incompatibility with nox sensor a",
+  "software incompatibility with nox sensor b",
+  "software incompatibility with reductant control",
+  "software incompatibility with reductant quality",
+  "software incompatibility with throttle actuator control",
+  "software incompatibility with transfer case control"
+ ],
+ "codes": [
+  {
+   "code": "U02A5",
+   "brand": "",
+   "ru": "Нет связи: блок подогрева мочевины",
+   "en": "Lost Communication With Reductant Heater Control Module",
+   "fam": "",
+   "node": "lost communication with reductant heater control"
+  },
+  {
+   "code": "U02A6",
+   "brand": "",
+   "ru": "Нет связи: блок интеграции систем безопасности",
+   "en": "Lost Communication With Safety Integration Control Module",
+   "fam": "",
+   "node": "lost communication with safety integration control"
+  },
+  {
+   "code": "U02A7",
+   "brand": "",
+   "ru": "Нет связи: управление звуком двигателя 1",
+   "en": "Lost Communication With Engine Sound Control 1",
+   "fam": "",
+   "node": "lost communication with engine sound"
+  },
+  {
+   "code": "U02A8",
+   "brand": "",
+   "ru": "Нет связи: управление звуком двигателя 2",
+   "en": "Lost Communication With Engine Sound Control 2",
+   "fam": "",
+   "node": "lost communication with engine sound"
+  },
+  {
+   "code": "U02A9",
+   "brand": "",
+   "ru": "Нет связи: насос охлаждения интеркулера A",
+   "en": "Lost Communication With Charge Air Cooler Coolant Pump A",
+   "fam": "",
+   "node": "lost communication with charge air cooler coolant pump a"
+  },
+  {
+   "code": "U02AA",
+   "brand": "",
+   "ru": "Нет связи: муфта отключения двигателя",
+   "en": "Lost Communication With Engine Disconnect Clutch",
+   "fam": "",
+   "node": "lost communication with engine disconnect clutch"
+  },
+  {
+   "code": "U02AB",
+   "brand": "",
+   "ru": "Нет связи: блок терморегулирования автомобиля",
+   "en": "Lost Communication With Vehicle Thermal Management Control Module",
+   "fam": "",
+   "node": "lost communication with vehicle thermal management control"
+  },
+  {
+   "code": "U02AC",
+   "brand": "",
+   "ru": "Нет связи: регулирование давления наддува A",
+   "en": "Lost Communication With Turbocharger/Supercharger Boost Control A",
+   "fam": "",
+   "node": "lost communication with turbocharger supercharger boost control a"
+  },
+  {
+   "code": "U02AD",
+   "brand": "",
+   "ru": "Нет связи: регулирование давления наддува B",
+   "en": "Lost Communication With Turbocharger/Supercharger Boost Control B",
+   "fam": "",
+   "node": "lost communication with turbocharger supercharger boost control b"
+  },
+  {
+   "code": "U02AE",
+   "brand": "",
+   "ru": "Нет связи: насос охлаждения тяговой батареи",
+   "en": "Lost Communications With Hybrid/EV Battery Coolant Pump",
+   "fam": "",
+   "node": "lost communications with hybrid ev battery coolant pump"
+  },
+  {
+   "code": "U02AF",
+   "brand": "",
+   "ru": "Нет связи: датчик положения клапана на входе турбины",
+   "en": "Lost Communication With Turbocharger Turbine Inlet Valve Position Sensor",
+   "fam": "",
+   "node": "lost communication with turbocharger turbine inlet valve position"
+  },
+  {
+   "code": "U02B0",
+   "brand": "",
+   "ru": "Нет связи: датчик положения регулятора наддува B",
+   "en": "Lost Communication With Turbocharger/Supercharger Boost Control B Position Sensor",
+   "fam": "",
+   "node": "lost communication with turbocharger supercharger boost control b position"
+  },
+  {
+   "code": "U02B1",
+   "brand": "",
+   "ru": "Нет связи: дисплей комфорта A",
+   "en": "Lost Communication With Comfort and Convenience Display A",
+   "fam": "",
+   "node": "lost communication with comfort and convenience display a"
+  },
+  {
+   "code": "U02B2",
+   "brand": "",
+   "ru": "Нет связи: дисплей комфорта B",
+   "en": "Lost Communication With Comfort and Convenience Display B",
+   "fam": "",
+   "node": "lost communication with comfort and convenience display b"
+  },
+  {
+   "code": "U02B3",
+   "brand": "",
+   "ru": "Нет связи: система контроля водителя",
+   "en": "Lost Communication With Driver Monitoring System Module",
+   "fam": "",
+   "node": "lost communication with driver monitoring system"
+  },
+  {
+   "code": "U02B4",
+   "brand": "",
+   "ru": "Нет связи: передний радар A",
+   "en": "Lost Communication With Front Radar Module A",
+   "fam": "",
+   "node": "lost communication with front radar module a"
+  },
+  {
+   "code": "U02B5",
+   "brand": "",
+   "ru": "Нет связи: передний радар B",
+   "en": "Lost Communication With Front Radar Module B",
+   "fam": "",
+   "node": "lost communication with front radar module b"
+  },
+  {
+   "code": "U02B6",
+   "brand": "",
+   "ru": "Нет связи: задний радар A",
+   "en": "Lost Communication With Rear Radar Module A",
+   "fam": "",
+   "node": "lost communication with rear radar module a"
+  },
+  {
+   "code": "U02B7",
+   "brand": "",
+   "ru": "Нет связи: задний радар B",
+   "en": "Lost Communication With Rear Radar Module B",
+   "fam": "",
+   "node": "lost communication with rear radar module b"
+  },
+  {
+   "code": "U02B8",
+   "brand": "",
+   "ru": "Нет связи: задний радар C",
+   "en": "Lost Communication With Rear Radar Module C",
+   "fam": "",
+   "node": "lost communication with rear radar module c"
+  },
+  {
+   "code": "U02B9",
+   "brand": "",
+   "ru": "Нет связи: задний радар D",
+   "en": "Lost Communication With Rear Radar Module D",
+   "fam": "",
+   "node": "lost communication with rear radar module d"
+  },
+  {
+   "code": "U02BA",
+   "brand": "",
+   "ru": "Нет связи: насос охлаждения электроники гибрида/электромобиля B",
+   "en": "Lost Communication With Hybrid/EV Electronics Coolant Pump B",
+   "fam": "",
+   "node": "lost communication with hybrid ev electronics coolant pump b"
+  },
+  {
+   "code": "U02BB",
+   "brand": "",
+   "ru": "Нет связи: насос продувки адсорбера EVAP",
+   "en": "Lost Communications with EVAP System Purge Pump",
+   "fam": "",
+   "node": "lost communications with evap system purge pump"
+  },
+  {
+   "code": "U02BC",
+   "brand": "",
+   "ru": "Нет связи: модуль локализации и карт",
+   "en": "Lost Communication With Localization and Mapping Module",
+   "fam": "",
+   "node": "lost communication with localization and mapping"
+  },
+  {
+   "code": "U02BD",
+   "brand": "",
+   "ru": "Нет связи: блок ночного видения",
+   "en": "Lost Communication With Night Vision Control Module",
+   "fam": "",
+   "node": "lost communication with night vision control"
+  },
+  {
+   "code": "U02BE",
+   "brand": "",
+   "ru": "Нет связи: блок помощи при движении задним ходом с прицепом",
+   "en": "Lost Communication With Trailer Backup Assist Control Module",
+   "fam": "",
+   "node": "lost communication with trailer backup assist control"
+  },
+  {
+   "code": "U02BF",
+   "brand": "",
+   "ru": "Нет связи: блок освещения салона B",
+   "en": "Lost Communication With Interior Lighting Control Module B",
+   "fam": "",
+   "node": "lost communication with interior lighting control module b"
+  },
+  {
+   "code": "U02C0",
+   "brand": "",
+   "ru": "Нет связи: блок управления потоком воздуха через радиатор A",
+   "en": "Lost Communication With Active Radiator Air Flow Control Module A",
+   "fam": "",
+   "node": "lost communication with active radiator air flow control module a"
+  },
+  {
+   "code": "U02C1",
+   "brand": "",
+   "ru": "Нет связи: насос охлаждения электроники гибрида/электромобиля C",
+   "en": "Lost Communication With Hybrid/EV Electronics Coolant Pump C",
+   "fam": "",
+   "node": "lost communication with hybrid ev electronics coolant pump c"
+  },
+  {
+   "code": "U0303",
+   "brand": "",
+   "ru": "Несовместимость ПО: блок раздаточной коробки",
+   "en": "Software Incompatibility With Transfer Case Control Module",
+   "fam": "",
+   "node": "software incompatibility with transfer case control"
+  },
+  {
+   "code": "U0306",
+   "brand": "",
+   "ru": "Несовместимость ПО: блок управления форсунками",
+   "en": "Software Incompatibility With Fuel Injector Control Module",
+   "fam": "",
+   "node": "software incompatibility with fuel injector control"
+  },
+  {
+   "code": "U0307",
+   "brand": "",
+   "ru": "Несовместимость ПО: блок управления свечами накаливания 1",
+   "en": "Software Incompatibility With Glow Plug Control Module 1",
+   "fam": "",
+   "node": "software incompatibility with glow plug control"
+  },
+  {
+   "code": "U030B",
+   "brand": "",
+   "ru": "Несовместимость ПО: блок управления свечами накаливания 2",
+   "en": "Software Incompatibility With Glow Plug Control Module 2",
+   "fam": "",
+   "node": "software incompatibility with glow plug control"
+  },
+  {
+   "code": "U0308",
+   "brand": "",
+   "ru": "Несовместимость ПО: блок привода дросселя",
+   "en": "Software Incompatibility With Throttle Actuator Control Module",
+   "fam": "",
+   "node": "software incompatibility with throttle actuator control"
+  },
+  {
+   "code": "U0309",
+   "brand": "",
+   "ru": "Несовместимость ПО: блок ГБО",
+   "en": "Software Incompatibility With Alternative Fuel Control Module",
+   "fam": "",
+   "node": "software incompatibility with alternative fuel control"
+  },
+  {
+   "code": "U030A",
+   "brand": "",
+   "ru": "Несовместимость ПО: блок проверки утечек системы EVAP",
+   "en": "Software Incompatibility With Evaporative Emission System Leak Detection Control Module",
+   "fam": "",
+   "node": "software incompatibility with evaporative emission system leak detection control"
+  },
+  {
+   "code": "U030C",
+   "brand": "",
+   "ru": "Несовместимость ПО: модуль качества мочевины",
+   "en": "Software Incompatibility With Reductant Quality Module",
+   "fam": "",
+   "node": "software incompatibility with reductant quality"
+  },
+  {
+   "code": "U030D",
+   "brand": "",
+   "ru": "Несовместимость ПО: датчик NOx A",
+   "en": "Software Incompatibility With NOx Sensor A",
+   "fam": "",
+   "node": "software incompatibility with nox sensor a"
+  },
+  {
+   "code": "U030E",
+   "brand": "",
+   "ru": "Несовместимость ПО: датчик NOx B",
+   "en": "Software Incompatibility With NOx Sensor B",
+   "fam": "",
+   "node": "software incompatibility with nox sensor b"
+  },
+  {
+   "code": "U030F",
+   "brand": "",
+   "ru": "Несовместимость ПО: блок управления системой мочевины",
+   "en": "Software Incompatibility With Reductant Control Module",
+   "fam": "",
+   "node": "software incompatibility with reductant control"
+  },
+  {
+   "code": "U0310",
+   "brand": "",
+   "ru": "Несовместимость ПО: блок управления топливным насосом",
+   "en": "Software Incompatibility With Fuel Pump Control Module",
+   "fam": "",
+   "node": "software incompatibility with fuel pump control"
+  },
+  {
+   "code": "U0311",
+   "brand": "",
+   "ru": "Несовместимость ПО: блок управления тяговым электромотором",
+   "en": "Software Incompatibility With Drive Motor Control Module",
+   "fam": "",
+   "node": "software incompatibility with drive motor control"
+  },
+  {
+   "code": "U0312",
+   "brand": "",
+   "ru": "Несовместимость ПО: блок управления энергией батареи A",
+   "en": "Software Incompatibility With Battery Energy Control Module A",
+   "fam": "",
+   "node": "software incompatibility with battery energy control module a"
+  },
+  {
+   "code": "U0313",
+   "brand": "",
+   "ru": "Несовместимость ПО: блок управления энергией батареи B",
+   "en": "Software Incompatibility With Battery Energy Control Module B",
+   "fam": "",
+   "node": "software incompatibility with battery energy control module b"
+  },
+  {
+   "code": "U0314",
+   "brand": "",
+   "ru": "Несовместимость ПО: блок муфты полного привода",
+   "en": "Software Incompatibility With Four-Wheel Drive Clutch Control Module",
+   "fam": "",
+   "node": "software incompatibility with four wheel drive clutch control"
+  }
+ ]
+}

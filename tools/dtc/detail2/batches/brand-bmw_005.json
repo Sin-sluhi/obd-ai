@@ -1,0 +1,385 @@
+{
+ "name": "brand-bmw_005",
+ "series": "brand",
+ "brand": "bmw",
+ "nodes": [
+  "a camshaft position actuator",
+  "a camshaft position actuator control",
+  "b camshaft position actuator",
+  "b camshaft position actuator control",
+  "control module selection",
+  "idle speed control valve",
+  "idle speed control valve closing solenoid",
+  "idle speed control valve closing solenoid control",
+  "idle speed control valve opening solenoid",
+  "idle speed control valve opening solenoid control",
+  "leakage diagnostic pump clamped tube",
+  "leakage diagnostic pump reed switch did not",
+  "pedal position sensor double error",
+  "pedal position sensor electrical",
+  "ru:заслонка изменения длины впуска (disa)",
+  "throttle valve mechanically"
+ ],
+ "codes": [
+  {
+   "code": "P1476",
+   "brand": "bmw",
+   "ru": "Насос проверки утечек: пережат шланг",
+   "en": "Leakage Diagnostic Pump Clamped Tube",
+   "fam": "",
+   "node": "leakage diagnostic pump clamped tube"
+  },
+  {
+   "code": "P1477",
+   "brand": "bmw",
+   "ru": "Насос проверки утечек: геркон не разомкнулся",
+   "en": "Leakage Diagnostic Pump Reed Switch Did Not Open",
+   "fam": "",
+   "node": "leakage diagnostic pump reed switch did not"
+  },
+  {
+   "code": "P1500",
+   "brand": "bmw",
+   "ru": "Регулятор холостого хода заклинил открытым",
+   "en": "Idle Speed Control Valve Stuck Open",
+   "fam": "",
+   "node": "idle speed control valve"
+  },
+  {
+   "code": "P1501",
+   "brand": "bmw",
+   "ru": "Регулятор холостого хода заклинил закрытым",
+   "en": "Idle Speed Control Valve Stuck Closed",
+   "fam": "",
+   "node": "idle speed control valve"
+  },
+  {
+   "code": "P1506",
+   "brand": "bmw",
+   "ru": "Регулятор холостого хода, обмотка открытия: высокий сигнал",
+   "en": "Idle Speed Control Valve Open Solenoid Control Circuit Signal High",
+   "fam": "",
+   "node": "idle speed control valve"
+  },
+  {
+   "code": "P1507",
+   "brand": "bmw",
+   "ru": "Регулятор холостого хода, обмотка открытия: низкий сигнал",
+   "en": "Idle Speed Control Valve Open Solenoid Control Circuit Signal Low",
+   "fam": "",
+   "node": "idle speed control valve"
+  },
+  {
+   "code": "P1510",
+   "brand": "bmw",
+   "ru": "Регулятор холостого хода заклинил",
+   "en": "Idle Speed Control Valve Stuck",
+   "fam": "",
+   "node": "idle speed control valve"
+  },
+  {
+   "code": "P1502",
+   "brand": "bmw",
+   "ru": "Регулятор холостого хода, обмотка закрытия: высокий или низкий сигнал",
+   "en": "Idle Speed Control Valve Closing Solenoid Control Circuit Signal High Or Low",
+   "fam": "",
+   "node": "idle speed control valve closing solenoid"
+  },
+  {
+   "code": "P1503",
+   "brand": "bmw",
+   "ru": "Регулятор холостого хода, обмотка закрытия: низкий сигнал",
+   "en": "Idle Speed Control Valve Closing Solenoid Control Circuit Signal Low",
+   "fam": "",
+   "node": "idle speed control valve closing solenoid"
+  },
+  {
+   "code": "P1505",
+   "brand": "bmw",
+   "ru": "Регулятор холостого хода, обмотка закрытия: электрическая неисправность",
+   "en": "Idle Speed Control Valve Closing Solenoid Control Circuit Electrical",
+   "fam": "",
+   "node": "idle speed control valve closing solenoid"
+  },
+  {
+   "code": "P1550",
+   "brand": "bmw",
+   "ru": "Регулятор холостого хода, обмотка закрытия: электрическая неисправность",
+   "en": "Idle Speed Control Valve Closing Solenoid Control Circuit Electrical",
+   "fam": "",
+   "node": "idle speed control valve closing solenoid"
+  },
+  {
+   "code": "P1504",
+   "brand": "bmw",
+   "ru": "Регулятор холостого хода, обмотка закрытия: обрыв",
+   "en": "Idle Speed Control Valve Closing Solenoid Control Open Circuit",
+   "fam": "",
+   "node": "idle speed control valve closing solenoid control"
+  },
+  {
+   "code": "P1508",
+   "brand": "bmw",
+   "ru": "Регулятор холостого хода, обмотка открытия: обрыв",
+   "en": "Idle Speed Control Valve Opening Solenoid Control Open Circuit",
+   "fam": "",
+   "node": "idle speed control valve opening solenoid control"
+  },
+  {
+   "code": "P1509",
+   "brand": "bmw",
+   "ru": "Регулятор холостого хода, обмотка открытия: электрическая неисправность",
+   "en": "Idle Speed Control Valve Opening Solenoid Control Circuit Electrical",
+   "fam": "",
+   "node": "idle speed control valve opening solenoid"
+  },
+  {
+   "code": "P1511",
+   "brand": "bmw",
+   "ru": "Заслонка изменения длины впуска (DISA): электрическая неисправность цепи",
+   "en": "DISA Control Circuit Electrical",
+   "fam": "",
+   "node": "ru:заслонка изменения длины впуска (disa)"
+  },
+  {
+   "code": "P1512",
+   "brand": "bmw",
+   "ru": "Заслонка изменения длины впуска (DISA): низкий сигнал",
+   "en": "DISA Control Circuit Signal Low",
+   "fam": "",
+   "node": "ru:заслонка изменения длины впуска (disa)"
+  },
+  {
+   "code": "P1513",
+   "brand": "bmw",
+   "ru": "Заслонка изменения длины впуска (DISA): высокий сигнал",
+   "en": "DISA Control Circuit Signal High",
+   "fam": "",
+   "node": "ru:заслонка изменения длины впуска (disa)"
+  },
+  {
+   "code": "P1593",
+   "brand": "bmw",
+   "ru": "Заслонка изменения длины впуска (DISA): электрическая неисправность цепи",
+   "en": "DISA Control Circuit Electrical",
+   "fam": "",
+   "node": "ru:заслонка изменения длины впуска (disa)"
+  },
+  {
+   "code": "P1519",
+   "brand": "bmw",
+   "ru": "Привод фаз распредвала A (ряд 1)",
+   "en": "A Camshaft Position Actuator Bank 1",
+   "fam": "",
+   "node": "a camshaft position actuator"
+  },
+  {
+   "code": "P1522",
+   "brand": "bmw",
+   "ru": "Привод фаз распредвала A (ряд 2)",
+   "en": "A Camshaft Position Actuator Bank 2",
+   "fam": "",
+   "node": "a camshaft position actuator"
+  },
+  {
+   "code": "P1523",
+   "brand": "bmw",
+   "ru": "Привод фаз распредвала A (ряд 1): низкий сигнал",
+   "en": "A Camshaft Position Actuator Signal Low Bank 1",
+   "fam": "",
+   "node": "a camshaft position actuator"
+  },
+  {
+   "code": "P1524",
+   "brand": "bmw",
+   "ru": "Привод фаз распредвала A (ряд 1): высокий сигнал",
+   "en": "A Camshaft Position Actuator Signal High Bank 1",
+   "fam": "",
+   "node": "a camshaft position actuator"
+  },
+  {
+   "code": "P1527",
+   "brand": "bmw",
+   "ru": "Привод фаз распредвала A (ряд 1): низкий сигнал цепи управления",
+   "en": "A Camshaft Position Actuator Control Circuit Signal Low Bank 1",
+   "fam": "",
+   "node": "a camshaft position actuator"
+  },
+  {
+   "code": "P1528",
+   "brand": "bmw",
+   "ru": "Привод фаз распредвала A (ряд 1): высокий сигнал цепи управления",
+   "en": "A Camshaft Position Actuator Control Circuit Signal High Bank 1",
+   "fam": "",
+   "node": "a camshaft position actuator"
+  },
+  {
+   "code": "P1520",
+   "brand": "bmw",
+   "ru": "Привод фаз распредвала B (ряд 1)",
+   "en": "B Camshaft Position Actuator Bank 1",
+   "fam": "",
+   "node": "b camshaft position actuator"
+  },
+  {
+   "code": "P1529",
+   "brand": "bmw",
+   "ru": "Привод фаз распредвала B (ряд 1): низкий сигнал цепи управления",
+   "en": "B Camshaft Position Actuator Control Circuit Signal Low Bank 1",
+   "fam": "",
+   "node": "b camshaft position actuator"
+  },
+  {
+   "code": "P1530",
+   "brand": "bmw",
+   "ru": "Привод фаз распредвала B (ряд 1): высокий сигнал цепи управления",
+   "en": "B Camshaft Position Actuator Control Circuit Signal High Bank 1",
+   "fam": "",
+   "node": "b camshaft position actuator"
+  },
+  {
+   "code": "P1533",
+   "brand": "bmw",
+   "ru": "Привод фаз распредвала B (ряд 2): низкий сигнал цепи управления",
+   "en": "B Camshaft Position Actuator Control Circuit Signal Low Bank 2",
+   "fam": "",
+   "node": "b camshaft position actuator"
+  },
+  {
+   "code": "P1534",
+   "brand": "bmw",
+   "ru": "Привод фаз распредвала B (ряд 2): высокий сигнал цепи управления",
+   "en": "B Camshaft Position Actuator Control Circuit Signal High Bank 2",
+   "fam": "",
+   "node": "b camshaft position actuator"
+  },
+  {
+   "code": "P1525",
+   "brand": "bmw",
+   "ru": "Привод фаз распредвала A (ряд 1): обрыв цепи управления",
+   "en": "A Camshaft Position Actuator Control Open Circuit Bank 1",
+   "fam": "",
+   "node": "a camshaft position actuator control"
+  },
+  {
+   "code": "P1526",
+   "brand": "bmw",
+   "ru": "Привод фаз распредвала A (ряд 2): обрыв цепи управления",
+   "en": "A Camshaft Position Actuator Control Open Circuit Bank 2",
+   "fam": "",
+   "node": "a camshaft position actuator control"
+  },
+  {
+   "code": "P1551",
+   "brand": "bmw",
+   "ru": "Привод фаз распредвала A (ряд 1): обрыв цепи управления",
+   "en": "A Camshaft Position Actuator Control Open Circuit Bank 1",
+   "fam": "",
+   "node": "a camshaft position actuator control"
+  },
+  {
+   "code": "P1552",
+   "brand": "bmw",
+   "ru": "Привод фаз распредвала A (ряд 1): обрыв цепи управления",
+   "en": "A Camshaft Position Actuator Control Open Circuit Bank 1",
+   "fam": "",
+   "node": "a camshaft position actuator control"
+  },
+  {
+   "code": "P1556",
+   "brand": "bmw",
+   "ru": "Привод фаз распредвала A (ряд 1): обрыв цепи управления",
+   "en": "A Camshaft Position Actuator Control Open Circuit Bank 1",
+   "fam": "",
+   "node": "a camshaft position actuator control"
+  },
+  {
+   "code": "P1569",
+   "brand": "bmw",
+   "ru": "Привод фаз распредвала A (ряд 2): обрыв цепи управления",
+   "en": "A Camshaft Position Actuator Control Open Circuit Bank 2",
+   "fam": "",
+   "node": "a camshaft position actuator control"
+  },
+  {
+   "code": "P1531",
+   "brand": "bmw",
+   "ru": "Привод фаз распредвала B (ряд 1): обрыв цепи управления",
+   "en": "B Camshaft Position Actuator Control Open Circuit Bank 1",
+   "fam": "",
+   "node": "b camshaft position actuator control"
+  },
+  {
+   "code": "P1532",
+   "brand": "bmw",
+   "ru": "Привод фаз распредвала B (ряд 2): обрыв цепи управления",
+   "en": "B Camshaft Position Actuator Control Open Circuit Bank 2",
+   "fam": "",
+   "node": "b camshaft position actuator control"
+  },
+  {
+   "code": "P1560",
+   "brand": "bmw",
+   "ru": "Привод фаз распредвала B (ряд 1): обрыв цепи управления",
+   "en": "B Camshaft Position Actuator Control Open Circuit Bank 1",
+   "fam": "",
+   "node": "b camshaft position actuator control"
+  },
+  {
+   "code": "P1565",
+   "brand": "bmw",
+   "ru": "Привод фаз распредвала B (ряд 1): обрыв цепи управления",
+   "en": "B Camshaft Position Actuator Control Open Circuit Bank 1",
+   "fam": "",
+   "node": "b camshaft position actuator control"
+  },
+  {
+   "code": "P1581",
+   "brand": "bmw",
+   "ru": "Привод фаз распредвала B (ряд 2): обрыв цепи управления",
+   "en": "B Camshaft Position Actuator Control Open Circuit Bank 2",
+   "fam": "",
+   "node": "b camshaft position actuator control"
+  },
+  {
+   "code": "P1594",
+   "brand": "bmw",
+   "ru": "Привод фаз распредвала B (ряд 2): обрыв цепи управления",
+   "en": "B Camshaft Position Actuator Control Open Circuit Bank 2",
+   "fam": "",
+   "node": "b camshaft position actuator control"
+  },
+  {
+   "code": "P1541",
+   "brand": "bmw",
+   "ru": "Датчик педали газа: двойная ошибка",
+   "en": "Pedal Position Sensor Double Error",
+   "fam": "",
+   "node": "pedal position sensor double error"
+  },
+  {
+   "code": "P1542",
+   "brand": "bmw",
+   "ru": "Датчик педали газа: электрическая неисправность",
+   "en": "Pedal Position Sensor Electrical",
+   "fam": "",
+   "node": "pedal position sensor electrical"
+  },
+  {
+   "code": "P1564",
+   "brand": "bmw",
+   "ru": "Выбор блока управления",
+   "en": "Control Module Selection",
+   "fam": "",
+   "node": "control module selection"
+  },
+  {
+   "code": "P1580",
+   "brand": "bmw",
+   "ru": "Дроссельная заслонка механически заклинила",
+   "en": "Throttle Valve Mechanically Stuck",
+   "fam": "",
+   "node": "throttle valve mechanically"
+  }
+ ]
+}

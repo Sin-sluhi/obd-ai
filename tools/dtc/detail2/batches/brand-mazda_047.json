@@ -1,0 +1,397 @@
+{
+ "name": "brand-mazda_047",
+ "series": "brand",
+ "brand": "mazda",
+ "nodes": [
+  "downstream h02s sensors swapped",
+  "ect sensor",
+  "fuel control shifted lean",
+  "fuel control shifted lean faosc",
+  "fuel control shifted rich",
+  "fuel control shifted rich faosc",
+  "ho2s heater not on during key on engine running self test",
+  "ho2s not switching fuel control limit reached",
+  "ho2s signals swapped in key on engine running self test",
+  "intake air temperature",
+  "intake air temperature sensor",
+  "mass air flow",
+  "mass air flow sensor",
+  "obd ii monitor testing not completed",
+  "ru:датчик температуры ож",
+  "ru:лямбда- (ряд 1)",
+  "ru:лямбда- (ряд 1) выше 0,45 в — смесь слишком богатая",
+  "ru:лямбда- (ряд 1) ниже 0,45 в — смесь слишком бедная",
+  "ru:лямбда- (ряд 2)",
+  "ru:лямбда- (ряд 2) выше 0,45 в — смесь слишком богатая",
+  "ru:лямбда- (ряд 2) ниже 0,45 в — смесь слишком бедная",
+  "ru:подогрев лямбда-зонда 1 (ряд 1)",
+  "ru:подогрев лямбда-зонда 2 (ряд 1)",
+  "throttle position",
+  "throttle position narrow",
+  "throttle position sensor",
+  "throttle position sensor out of",
+  "unable to achieve self test function or scp error"
+ ],
+ "codes": [
+  {
+   "code": "P1000",
+   "brand": "mazda",
+   "ru": "Проверка мониторов OBD II не завершена (после сброса)",
+   "en": "OBD II Monitor Testing Not Completed",
+   "fam": "",
+   "node": "obd ii monitor testing not completed"
+  },
+  {
+   "code": "P1001",
+   "brand": "mazda",
+   "ru": "Самотест не выполняется или ошибка шины SCP",
+   "en": "Unable to Achieve Self-Test Function Or SCP Error",
+   "fam": "",
+   "node": "unable to achieve self test function or scp error"
+  },
+  {
+   "code": "P1100",
+   "brand": "mazda",
+   "ru": "Расходомер воздуха: прерывистый сигнал",
+   "en": "Mass Air Flow Sensor Circuit Intermittent",
+   "fam": "",
+   "node": "mass air flow"
+  },
+  {
+   "code": "P1101",
+   "brand": "mazda",
+   "ru": "Расходомер воздуха: вне диапазона самотеста",
+   "en": "Mass Air Flow Sensor Circuit Out Of Self-Test Range",
+   "fam": "",
+   "node": "mass air flow"
+  },
+  {
+   "code": "P1102",
+   "brand": "mazda",
+   "ru": "Сигнал расходомера воздуха не согласуется с датчиком дросселя",
+   "en": "Mass Air Flow Sensor Signal Inconsistent With Throttle Position Sensor",
+   "fam": "",
+   "node": "mass air flow sensor"
+  },
+  {
+   "code": "P1103",
+   "brand": "mazda",
+   "ru": "Сигнал расходомера воздуха не согласуется с оборотами",
+   "en": "Mass Air Flow Sensor Signal Inconsistent With Engine Speed",
+   "fam": "",
+   "node": "mass air flow sensor"
+  },
+  {
+   "code": "P1110",
+   "brand": "mazda",
+   "ru": "Датчик температуры воздуха в динамической камере: цепь",
+   "en": "Intake Air Temperature Sensor Signal Dynamic Chamber Circuit",
+   "fam": "",
+   "node": "intake air temperature sensor"
+  },
+  {
+   "code": "P1113",
+   "brand": "mazda",
+   "ru": "Датчик температуры воздуха в динамической камере: цепь",
+   "en": "Intake Air Temperature Sensor Signal Dynamic Chamber Circuit",
+   "fam": "",
+   "node": "intake air temperature sensor"
+  },
+  {
+   "code": "P1112",
+   "brand": "mazda",
+   "ru": "Датчик температуры впускного воздуха: прерывистый сигнал",
+   "en": "Intake Air Temperature Sensor Circuit Intermittent",
+   "fam": "",
+   "node": "intake air temperature"
+  },
+  {
+   "code": "P1114",
+   "brand": "mazda",
+   "ru": "Датчик температуры впускного воздуха: низкий сигнал",
+   "en": "Intake Air Temperature Sensor Circuit Low Input",
+   "fam": "",
+   "node": "intake air temperature"
+  },
+  {
+   "code": "P1116",
+   "brand": "mazda",
+   "ru": "Датчик температуры ОЖ: вне диапазона самотеста",
+   "en": "ECT Sensor Circuit Out Of Self Test Range",
+   "fam": "",
+   "node": "ru:датчик температуры ож"
+  },
+  {
+   "code": "P1117",
+   "brand": "mazda",
+   "ru": "Датчик температуры ОЖ: прерывистый сигнал",
+   "en": "ECT Sensor Signal Intermittent",
+   "fam": "",
+   "node": "ect sensor"
+  },
+  {
+   "code": "P1120",
+   "brand": "mazda",
+   "ru": "Датчик положения дросселя: ниже диапазона",
+   "en": "Throttle Position Sensor Out Of Range Low",
+   "fam": "",
+   "node": "throttle position sensor out of"
+  },
+  {
+   "code": "P1121",
+   "brand": "mazda",
+   "ru": "Сигнал датчика дросселя не согласуется с расходомером воздуха",
+   "en": "Throttle Position Sensor Signal Not Consistent With Mass Air Flow Signal",
+   "fam": "",
+   "node": "throttle position sensor"
+  },
+  {
+   "code": "P1124",
+   "brand": "mazda",
+   "ru": "Датчик положения дросселя: вне диапазона самотеста",
+   "en": "Throttle Position Sensor Signal Out Of Self Test Range",
+   "fam": "",
+   "node": "throttle position sensor"
+  },
+  {
+   "code": "P1125",
+   "brand": "mazda",
+   "ru": "Датчик положения дросселя: прерывистый сигнал",
+   "en": "Throttle Position Sensor Signal Intermittent",
+   "fam": "",
+   "node": "throttle position sensor"
+  },
+  {
+   "code": "P1122",
+   "brand": "mazda",
+   "ru": "Дроссель застрял закрытым",
+   "en": "Throttle Position Stuck Closed",
+   "fam": "",
+   "node": "throttle position"
+  },
+  {
+   "code": "P1123",
+   "brand": "mazda",
+   "ru": "Дроссель застрял открытым",
+   "en": "Throttle Position Stuck Open",
+   "fam": "",
+   "node": "throttle position"
+  },
+  {
+   "code": "P1771",
+   "brand": "mazda",
+   "ru": "Датчик положения дросселя к блоку коробки: обрыв",
+   "en": "Throttle Position Sensor Circuit Open To Transmission Control Module",
+   "fam": "",
+   "node": "throttle position"
+  },
+  {
+   "code": "P1772",
+   "brand": "mazda",
+   "ru": "Датчик положения дросселя к блоку коробки: замыкание",
+   "en": "Throttle Position Sensor Circuit Shorted To Transmission Control Module",
+   "fam": "",
+   "node": "throttle position"
+  },
+  {
+   "code": "P1126",
+   "brand": "mazda",
+   "ru": "Датчик положения дросселя узкого диапазона: цепь",
+   "en": "Throttle Position Narrow Range Sensor Circuit",
+   "fam": "",
+   "node": "throttle position narrow"
+  },
+  {
+   "code": "P1127",
+   "brand": "mazda",
+   "ru": "Подогрев лямбда-зонда 2 (ряд 1) не включён во время самотеста",
+   "en": "HO2S Bank 1 Sensor 2 Heater Not On During Key On Engine Running Self Test",
+   "fam": "",
+   "node": "ho2s heater not on during key on engine running self test"
+  },
+  {
+   "code": "P1128",
+   "brand": "mazda",
+   "ru": "Сигналы лямбда-зонда 1 (ряд 1) перепутаны при самотесте",
+   "en": "HO2S Bank 1 Sensor 1 Signals Swapped In Key On Engine Running Self Test",
+   "fam": "",
+   "node": "ho2s signals swapped in key on engine running self test"
+  },
+  {
+   "code": "P1129",
+   "brand": "mazda",
+   "ru": "Задние лямбда-зонды перепутаны",
+   "en": "Downstream H02S Sensors Swapped",
+   "fam": "",
+   "node": "downstream h02s sensors swapped"
+  },
+  {
+   "code": "P1130",
+   "brand": "mazda",
+   "ru": "Лямбда-зонд 1 (ряд 1) не переключается, достигнут предел коррекции",
+   "en": "HO2S Bank 1 Sensor 1 Not Switching Fuel Control Limit Reached",
+   "fam": "",
+   "node": "ho2s not switching fuel control limit reached"
+  },
+  {
+   "code": "P1137",
+   "brand": "mazda",
+   "ru": "Лямбда-зонд 2 (ряд 1) не переключается, достигнут предел коррекции",
+   "en": "HO2S Bank 1 Sensor 2 Not Switching Fuel Control Limit Reached",
+   "fam": "",
+   "node": "ho2s not switching fuel control limit reached"
+  },
+  {
+   "code": "P1150",
+   "brand": "mazda",
+   "ru": "Лямбда-зонд 1 (ряд 2) не переключается, достигнут предел коррекции",
+   "en": "HO2S Bank 2 Sensor 1 Not Switching Fuel Control Limit Reached",
+   "fam": "",
+   "node": "ho2s not switching fuel control limit reached"
+  },
+  {
+   "code": "P1131",
+   "brand": "mazda",
+   "ru": "Лямбда-зонд 1 (ряд 1) ниже 0,45 В — смесь слишком бедная",
+   "en": "HO2S Bank 1 Sensor 1 Signal Below 0.45v AF Ratio Too Lean",
+   "fam": "",
+   "node": "ru:лямбда- (ряд 1) ниже 0,45 в — смесь слишком бедная"
+  },
+  {
+   "code": "P1143",
+   "brand": "mazda",
+   "ru": "Лямбда-зонд 3 (ряд 1) ниже 0,45 В — смесь слишком бедная",
+   "en": "HO2S Bank 1 Sensor 3 Signal Below 0.45v AF Ratio Too Lean",
+   "fam": "",
+   "node": "ru:лямбда- (ряд 1) ниже 0,45 в — смесь слишком бедная"
+  },
+  {
+   "code": "P1132",
+   "brand": "mazda",
+   "ru": "Лямбда-зонд 1 (ряд 1) выше 0,45 В — смесь слишком богатая",
+   "en": "HO2S Bank 1 Sensor 1 Signal Above 0.45v AF Ratio Too Rich",
+   "fam": "",
+   "node": "ru:лямбда- (ряд 1) выше 0,45 в — смесь слишком богатая"
+  },
+  {
+   "code": "P1138",
+   "brand": "mazda",
+   "ru": "Лямбда-зонд 2 (ряд 1) выше 0,45 В — смесь слишком богатая",
+   "en": "HO2S Bank 1 Sensor 2 Signal Above 0.45v AF Ratio Too Rich",
+   "fam": "",
+   "node": "ru:лямбда- (ряд 1) выше 0,45 в — смесь слишком богатая"
+  },
+  {
+   "code": "P1144",
+   "brand": "mazda",
+   "ru": "Лямбда-зонд 3 (ряд 1) выше 0,45 В — смесь слишком богатая",
+   "en": "HO2S Bank 1 Sensor 3 Signal Above 0.45v AF Ratio Too Rich",
+   "fam": "",
+   "node": "ru:лямбда- (ряд 1) выше 0,45 в — смесь слишком богатая"
+  },
+  {
+   "code": "P1133",
+   "brand": "mazda",
+   "ru": "Регулирование смеси (ряд 1) смещено в бедную сторону",
+   "en": "Bank 1 Fuel Control Shifted Lean",
+   "fam": "",
+   "node": "fuel control shifted lean"
+  },
+  {
+   "code": "P1134",
+   "brand": "mazda",
+   "ru": "Регулирование смеси (ряд 1) смещено в богатую сторону",
+   "en": "Bank 1 Fuel Control Shifted Rich",
+   "fam": "",
+   "node": "fuel control shifted rich"
+  },
+  {
+   "code": "P1135",
+   "brand": "mazda",
+   "ru": "Подогрев лямбда-зонда 1 (ряд 1): низкий сигнал",
+   "en": "HO2S Bank 1 Sensor 1 Heater Circuit Low Input",
+   "fam": "",
+   "node": "ru:подогрев лямбда-зонда 1 (ряд 1)"
+  },
+  {
+   "code": "P1136",
+   "brand": "mazda",
+   "ru": "Подогрев лямбда-зонда 1 (ряд 1): высокий сигнал",
+   "en": "HO2S Bank 1 Sensor 1 Heater Circuit High Input",
+   "fam": "",
+   "node": "ru:подогрев лямбда-зонда 1 (ряд 1)"
+  },
+  {
+   "code": "P1141",
+   "brand": "mazda",
+   "ru": "Подогрев лямбда-зонда 2 (ряд 1): низкий сигнал",
+   "en": "HO2S Bank 1 Sensor 2 Heater Circuit Low Input",
+   "fam": "",
+   "node": "ru:подогрев лямбда-зонда 2 (ряд 1)"
+  },
+  {
+   "code": "P1142",
+   "brand": "mazda",
+   "ru": "Подогрев лямбда-зонда 2 (ряд 1): высокий сигнал",
+   "en": "HO2S Bank 1 Sensor 2 Heater Circuit High Input",
+   "fam": "",
+   "node": "ru:подогрев лямбда-зонда 2 (ряд 1)"
+  },
+  {
+   "code": "P1151",
+   "brand": "mazda",
+   "ru": "Лямбда-зонд 1 (ряд 2) ниже 0,45 В — смесь слишком бедная",
+   "en": "HO2S Bank 2 Sensor 1 Signal Below 0.45v AF Ratio Too Lean",
+   "fam": "",
+   "node": "ru:лямбда- (ряд 2) ниже 0,45 в — смесь слишком бедная"
+  },
+  {
+   "code": "P1152",
+   "brand": "mazda",
+   "ru": "Лямбда-зонд 1 (ряд 2) выше 0,45 В — смесь слишком богатая",
+   "en": "HO2S Bank 2 Sensor 1 Signal Above 0.45v AF Ratio Too Rich",
+   "fam": "",
+   "node": "ru:лямбда- (ряд 2) выше 0,45 в — смесь слишком богатая"
+  },
+  {
+   "code": "P1153",
+   "brand": "mazda",
+   "ru": "Регулирование смеси (ряд 2) смещено в бедную сторону",
+   "en": "Bank 2 Fuel Control Shifted Lean FAOSC",
+   "fam": "",
+   "node": "fuel control shifted lean faosc"
+  },
+  {
+   "code": "P1154",
+   "brand": "mazda",
+   "ru": "Регулирование смеси (ряд 2) смещено в богатую сторону",
+   "en": "Bank 2 Fuel Control Shifted Rich FAOSC",
+   "fam": "",
+   "node": "fuel control shifted rich faosc"
+  },
+  {
+   "code": "P1169",
+   "brand": "mazda",
+   "ru": "Лямбда-зонд 1 (ряд 1): сигнал застыл",
+   "en": "HO2S Bank 1 Sensor 1 Circuit Fixed Bank 1 Sensor 1",
+   "fam": "",
+   "node": "ru:лямбда- (ряд 1)"
+  },
+  {
+   "code": "P1170",
+   "brand": "mazda",
+   "ru": "Лямбда-зонд 1 (ряд 1): сигнал застыл",
+   "en": "HO2S Bank 1 Sensor 1 Circuit Fixed Bank 1 Sensor 1",
+   "fam": "",
+   "node": "ru:лямбда- (ряд 1)"
+  },
+  {
+   "code": "P1173",
+   "brand": "mazda",
+   "ru": "Лямбда-зонд 1 (ряд 2): сигнал застыл",
+   "en": "HO2S Bank 2 Sensor 1 Circuit Fixed Bank 2 Sensor 1",
+   "fam": "",
+   "node": "ru:лямбда- (ряд 2)"
+  }
+ ]
+}

@@ -1,0 +1,398 @@
+{
+ "name": "brand-gm_027",
+ "series": "brand",
+ "brand": "gm",
+ "nodes": [
+  "24x reference",
+  "accelerator pedal position",
+  "accelerator pedal position sensor a d converter error",
+  "cng fuel pressure too",
+  "cng pressure sensor voltage too",
+  "crank rpm too",
+  "ei system or ignition control missing",
+  "electronic ignition system fault line",
+  "engine coolant overtemperature protection mode active",
+  "fam:ckp",
+  "fuel injection pump battery voltage out of",
+  "ic module 4x ref",
+  "ignition coil 2 primary feedback",
+  "ignition coil 3 primary feedback",
+  "ignition coil 4 primary feedback",
+  "ignitor",
+  "injectors wired incorrectly",
+  "last test failed scc or theft detected vehicle immobilized",
+  "lean operation at wide",
+  "loss of 5 volts to map",
+  "loss of 5 volts to tp",
+  "manifold tune valve",
+  "no change in map from start to run",
+  "no temp rise seen from fuel heaters",
+  "ru:датчик коленвала",
+  "ru:датчики педали газа 1 и 2",
+  "supercharger system overboost",
+  "target idle not reached",
+  "vacuum leak found iac fully seated"
+ ],
+ "codes": [
+  {
+   "code": "P1257",
+   "brand": "gm",
+   "ru": "Нагнетатель: избыточный наддув",
+   "en": "Supercharger System Overboost",
+   "fam": "",
+   "node": "supercharger system overboost"
+  },
+  {
+   "code": "P1258",
+   "brand": "gm",
+   "ru": "Включён режим защиты от перегрева ОЖ",
+   "en": "Engine Coolant Overtemperature Protection Mode Active",
+   "fam": "",
+   "node": "engine coolant overtemperature protection mode active"
+  },
+  {
+   "code": "P1260",
+   "brand": "gm",
+   "ru": "Обнаружена попытка угона — машина обездвижена",
+   "en": "Last Test Failed SCC Or Theft Detected Vehicle Immobilized",
+   "fam": "",
+   "node": "last test failed scc or theft detected vehicle immobilized"
+  },
+  {
+   "code": "P1270",
+   "brand": "gm",
+   "ru": "Датчик педали газа: ошибка АЦП",
+   "en": "Accelerator Pedal Position Sensor A/D Converter Error",
+   "fam": "",
+   "node": "accelerator pedal position sensor a d converter error"
+  },
+  {
+   "code": "P1271",
+   "brand": "gm",
+   "ru": "Датчики педали газа 1 и 2: работа",
+   "en": "APP Sensor 1 2 Performance",
+   "fam": "",
+   "node": "ru:датчики педали газа 1 и 2"
+  },
+  {
+   "code": "P1272",
+   "brand": "gm",
+   "ru": "Датчик педали газа 2",
+   "en": "Accelerator Pedal Position Sensor 2",
+   "fam": "",
+   "node": "accelerator pedal position"
+  },
+  {
+   "code": "P1273",
+   "brand": "gm",
+   "ru": "Датчик педали газа 1",
+   "en": "Accelerator Pedal Position Sensor 1",
+   "fam": "",
+   "node": "accelerator pedal position"
+  },
+  {
+   "code": "P1275",
+   "brand": "gm",
+   "ru": "Датчик педали газа 1: цепь",
+   "en": "Accelerator Pedal Position (APP) Sensor 1 Circuit",
+   "fam": "",
+   "node": "accelerator pedal position"
+  },
+  {
+   "code": "P1276",
+   "brand": "gm",
+   "ru": "Датчик педали газа 1: работа",
+   "en": "Accelerator Pedal Position (APP) Sensor 1 Performance",
+   "fam": "",
+   "node": "accelerator pedal position"
+  },
+  {
+   "code": "P1277",
+   "brand": "gm",
+   "ru": "Датчик педали газа 1: низкое напряжение",
+   "en": "Accelerator Pedal Position Sensor 1 Circuit Low Voltage",
+   "fam": "",
+   "node": "accelerator pedal position"
+  },
+  {
+   "code": "P1278",
+   "brand": "gm",
+   "ru": "Датчик педали газа 1: высокое напряжение",
+   "en": "Accelerator Pedal Position Sensor 1 Circuit High Voltage",
+   "fam": "",
+   "node": "accelerator pedal position"
+  },
+  {
+   "code": "P1280",
+   "brand": "gm",
+   "ru": "Датчик педали газа 2: цепь",
+   "en": "Accelerator Pedal Position (APP) Sensor 2 Circuit",
+   "fam": "",
+   "node": "accelerator pedal position"
+  },
+  {
+   "code": "P1281",
+   "brand": "gm",
+   "ru": "Датчик педали газа 2: работа",
+   "en": "Accelerator Pedal Position (APP) Sensor 2 Performance",
+   "fam": "",
+   "node": "accelerator pedal position"
+  },
+  {
+   "code": "P1282",
+   "brand": "gm",
+   "ru": "Датчик педали газа 2: низкое напряжение",
+   "en": "Accelerator Pedal Position Sensor 2 Circuit Low Voltage",
+   "fam": "",
+   "node": "accelerator pedal position"
+  },
+  {
+   "code": "P1283",
+   "brand": "gm",
+   "ru": "Датчик педали газа 2: высокое напряжение",
+   "en": "Accelerator Pedal Position Sensor 2 Circuit High Voltage",
+   "fam": "",
+   "node": "accelerator pedal position"
+  },
+  {
+   "code": "P1285",
+   "brand": "gm",
+   "ru": "Датчик педали газа 3: цепь",
+   "en": "Accelerator Pedal Position (APP) Sensor 3 Circuit",
+   "fam": "",
+   "node": "accelerator pedal position"
+  },
+  {
+   "code": "P1286",
+   "brand": "gm",
+   "ru": "Датчик педали газа 3: работа",
+   "en": "Accelerator Pedal Position (APP) Sensor 3 Performance",
+   "fam": "",
+   "node": "accelerator pedal position"
+  },
+  {
+   "code": "P1287",
+   "brand": "gm",
+   "ru": "Датчик педали газа 3: низкое напряжение",
+   "en": "Accelerator Pedal Position Sensor 3 Circuit Low Voltage",
+   "fam": "",
+   "node": "accelerator pedal position"
+  },
+  {
+   "code": "P1288",
+   "brand": "gm",
+   "ru": "Датчик педали газа 3: высокое напряжение",
+   "en": "Accelerator Pedal Position Sensor 3 Circuit High Voltage",
+   "fam": "",
+   "node": "accelerator pedal position"
+  },
+  {
+   "code": "P1274",
+   "brand": "gm",
+   "ru": "Форсунки подключены неправильно",
+   "en": "Injectors Wired Incorrectly",
+   "fam": "",
+   "node": "injectors wired incorrectly"
+  },
+  {
+   "code": "P1284",
+   "brand": "gm",
+   "ru": "ТНВД: напряжение питания вне диапазона",
+   "en": "Fuel Injection Pump Battery Voltage Out Of Range",
+   "fam": "",
+   "node": "fuel injection pump battery voltage out of"
+  },
+  {
+   "code": "P1289",
+   "brand": "gm",
+   "ru": "Клапан настройки коллектора: обрыв или замыкание",
+   "en": "Manifold Tune Valve Solenoid Circuit Open Or Shorted",
+   "fam": "",
+   "node": "manifold tune valve"
+  },
+  {
+   "code": "P1290",
+   "brand": "gm",
+   "ru": "Давление газа (метан) слишком высокое",
+   "en": "CNG Fuel Pressure Too High",
+   "fam": "",
+   "node": "cng fuel pressure too"
+  },
+  {
+   "code": "P1291",
+   "brand": "gm",
+   "ru": "Подогреватели топлива не дают роста температуры",
+   "en": "No Temp Rise Seen From Fuel Heaters",
+   "fam": "",
+   "node": "no temp rise seen from fuel heaters"
+  },
+  {
+   "code": "P1292",
+   "brand": "gm",
+   "ru": "Датчик давления газа (метан): напряжение слишком высокое",
+   "en": "CNG Pressure Sensor Voltage Too High",
+   "fam": "",
+   "node": "cng pressure sensor voltage too"
+  },
+  {
+   "code": "P1293",
+   "brand": "gm",
+   "ru": "Датчик давления газа (метан): напряжение слишком низкое",
+   "en": "CNG Pressure Sensor Voltage Too Low",
+   "fam": "",
+   "node": "cng pressure sensor voltage too"
+  },
+  {
+   "code": "P1294",
+   "brand": "gm",
+   "ru": "Заданные обороты холостого хода не достигнуты",
+   "en": "Target Idle Not Reached",
+   "fam": "",
+   "node": "target idle not reached"
+  },
+  {
+   "code": "P1295",
+   "brand": "gm",
+   "ru": "Пропало питание 5 В датчика положения дросселя",
+   "en": "Loss Of 5 Volts To TP Sensor",
+   "fam": "",
+   "node": "loss of 5 volts to tp"
+  },
+  {
+   "code": "P1296",
+   "brand": "gm",
+   "ru": "Пропало питание 5 В датчика давления во впуске",
+   "en": "Loss Of 5 Volts To MAP Sensor",
+   "fam": "",
+   "node": "loss of 5 volts to map"
+  },
+  {
+   "code": "P1297",
+   "brand": "gm",
+   "ru": "Давление во впуске не меняется после пуска",
+   "en": "No Change In MAP From Start To Run",
+   "fam": "",
+   "node": "no change in map from start to run"
+  },
+  {
+   "code": "P1298",
+   "brand": "gm",
+   "ru": "Бедная смесь при полном газе",
+   "en": "Lean Operation At Wide Open Throttle",
+   "fam": "",
+   "node": "lean operation at wide"
+  },
+  {
+   "code": "P1299",
+   "brand": "gm",
+   "ru": "Подсос воздуха: регулятор холостого хода полностью закрыт",
+   "en": "Vacuum Leak Found IAC Fully Seated",
+   "fam": "",
+   "node": "vacuum leak found iac fully seated"
+  },
+  {
+   "code": "P1300",
+   "brand": "gm",
+   "ru": "Цепь воспламенителя",
+   "en": "Ignitor Circuit",
+   "fam": "",
+   "node": "ignitor"
+  },
+  {
+   "code": "P1305",
+   "brand": "gm",
+   "ru": "Катушка зажигания 2: цепь обратной связи первичной обмотки",
+   "en": "Ignition Coil 2 Primary Feedback Circuit",
+   "fam": "",
+   "node": "ignition coil 2 primary feedback"
+  },
+  {
+   "code": "P1310",
+   "brand": "gm",
+   "ru": "Катушка зажигания 3: цепь обратной связи первичной обмотки",
+   "en": "Ignition Coil 3 Primary Feedback Circuit",
+   "fam": "",
+   "node": "ignition coil 3 primary feedback"
+  },
+  {
+   "code": "P1315",
+   "brand": "gm",
+   "ru": "Катушка зажигания 4: цепь обратной связи первичной обмотки",
+   "en": "Ignition Coil 4 Primary Feedback Circuit",
+   "fam": "",
+   "node": "ignition coil 4 primary feedback"
+  },
+  {
+   "code": "P1320",
+   "brand": "gm",
+   "ru": "Модуль зажигания, опорный сигнал 4X: временами нет импульсов",
+   "en": "IC Module 4X Ref Circuit Intermittent No Pulses",
+   "fam": "",
+   "node": "ic module 4x ref"
+  },
+  {
+   "code": "P1321",
+   "brand": "gm",
+   "ru": "Электронное зажигание: линия неисправности",
+   "en": "Electronic Ignition System Fault Line",
+   "fam": "",
+   "node": "electronic ignition system fault line"
+  },
+  {
+   "code": "P1322",
+   "brand": "gm",
+   "ru": "Электронное зажигание: нет сигнала управления",
+   "en": "EI System Or Ignition Control Missing",
+   "fam": "",
+   "node": "ei system or ignition control missing"
+  },
+  {
+   "code": "P1323",
+   "brand": "gm",
+   "ru": "Опорный сигнал 24X: низкая частота",
+   "en": "24X Reference Circuit Low Frequency",
+   "fam": "",
+   "node": "24x reference"
+  },
+  {
+   "code": "P1375",
+   "brand": "gm",
+   "ru": "Опорный сигнал 24X: высокое напряжение",
+   "en": "24X Reference Circuit High Voltage",
+   "fam": "",
+   "node": "24x reference"
+  },
+  {
+   "code": "P1324",
+   "brand": "gm",
+   "ru": "Слишком низкие обороты прокрутки",
+   "en": "Crank RPM Too Low",
+   "fam": "",
+   "node": "crank rpm too"
+  },
+  {
+   "code": "P1335",
+   "brand": "gm",
+   "ru": "Датчик коленвала: цепь",
+   "en": "CKP Circuit",
+   "fam": "",
+   "node": "ru:датчик коленвала"
+  },
+  {
+   "code": "P1336",
+   "brand": "gm",
+   "ru": "Вариация задающего диска коленвала не обучена",
+   "en": "",
+   "fam": "ckp",
+   "node": "fam:ckp"
+  },
+  {
+   "code": "P1380",
+   "brand": "gm",
+   "ru": "Данные о неровной дороге от ABS недоступны",
+   "en": "",
+   "fam": "ckp",
+   "node": "fam:ckp"
+  }
+ ]
+}

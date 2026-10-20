@@ -1,0 +1,414 @@
+{
+ "name": "sae_208",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "invalid data received from ac ac converter control",
+  "invalid data received from ac dc converter control module a",
+  "invalid data received from ac dc converter control module b",
+  "invalid data received from active grille air shutter module a",
+  "invalid data received from active grille air shutter module b",
+  "invalid data received from active grille air shutter module c",
+  "invalid data received from active grille air shutter module d",
+  "invalid data received from audio amplifier b",
+  "invalid data received from battery charger control module c",
+  "invalid data received from battery charger control module d",
+  "invalid data received from camera module rear",
+  "invalid data received from dc ac converter control module a",
+  "invalid data received from dc ac converter control module b",
+  "invalid data received from drive motor control module b",
+  "invalid data received from gear shift control module b",
+  "invalid data received from haptic control",
+  "invalid data received from hybrid ev powertrain control",
+  "invalid data received from image processing sensor a",
+  "invalid data received from image processing sensor b",
+  "invalid data received from image processing sensor c",
+  "invalid data received from image processing sensor d",
+  "invalid data received from image processing sensor e",
+  "invalid data received from image processing sensor f",
+  "invalid data received from image processing sensor g",
+  "invalid data received from image processing sensor h",
+  "invalid data received from image processing sensor i",
+  "invalid data received from image processing sensor j",
+  "invalid data received from image processing sensor k",
+  "invalid data received from image processing sensor l",
+  "invalid data received from lighting driver control module “a”",
+  "invalid data received from lighting driver control module “b”",
+  "invalid data received from lighting driver control module “c”",
+  "invalid data received from lighting driver control module “d”",
+  "invalid data received from off board charger control",
+  "invalid data received from powertrain control monitor",
+  "invalid data received from seat control switch module a",
+  "invalid data received from seat control switch module b",
+  "invalid data received from seat module k",
+  "invalid data received from seat module l",
+  "invalid data received from speech recognition",
+  "invalid data received from transmission fluid pump module a",
+  "invalid data received from transmission fluid pump module b",
+  "invalid data received from vehicle motion control module a",
+  "invalid data received from vehicle motion control module b",
+  "invalid data received from with radiator anti tamper device"
+ ],
+ "codes": [
+  {
+   "code": "U0561",
+   "brand": "",
+   "ru": "Неверные данные: блок кнопок управления сиденьем A",
+   "en": "Invalid Data Received From Seat Control Switch Module A",
+   "fam": "",
+   "node": "invalid data received from seat control switch module a"
+  },
+  {
+   "code": "U0562",
+   "brand": "",
+   "ru": "Неверные данные: блок кнопок управления сиденьем B",
+   "en": "Invalid Data Received From Seat Control Switch Module B",
+   "fam": "",
+   "node": "invalid data received from seat control switch module b"
+  },
+  {
+   "code": "U0563",
+   "brand": "",
+   "ru": "Неверные данные: усилитель аудиосистемы B",
+   "en": "Invalid Data Received From Audio Amplifier B",
+   "fam": "",
+   "node": "invalid data received from audio amplifier b"
+  },
+  {
+   "code": "U0564",
+   "brand": "",
+   "ru": "Неверные данные: модуль распознавания речи",
+   "en": "Invalid Data Received From Speech Recognition Module",
+   "fam": "",
+   "node": "invalid data received from speech recognition"
+  },
+  {
+   "code": "U0565",
+   "brand": "",
+   "ru": "Неверные данные: камера заднего вида",
+   "en": "Invalid Data Received From Camera Module - Rear",
+   "fam": "",
+   "node": "invalid data received from camera module rear"
+  },
+  {
+   "code": "U0566",
+   "brand": "",
+   "ru": "Неверные данные: датчик обработки изображения (камера) A",
+   "en": "Invalid Data Received From Image Processing Sensor A",
+   "fam": "",
+   "node": "invalid data received from image processing sensor a"
+  },
+  {
+   "code": "U0567",
+   "brand": "",
+   "ru": "Неверные данные: датчик обработки изображения (камера) B",
+   "en": "Invalid Data Received From Image Processing Sensor B",
+   "fam": "",
+   "node": "invalid data received from image processing sensor b"
+  },
+  {
+   "code": "U0568",
+   "brand": "",
+   "ru": "Неверные данные: датчик обработки изображения (камера) C",
+   "en": "Invalid Data Received From Image Processing Sensor C",
+   "fam": "",
+   "node": "invalid data received from image processing sensor c"
+  },
+  {
+   "code": "U0569",
+   "brand": "",
+   "ru": "Неверные данные: датчик обработки изображения (камера) D",
+   "en": "Invalid Data Received From Image Processing Sensor D",
+   "fam": "",
+   "node": "invalid data received from image processing sensor d"
+  },
+  {
+   "code": "U056A",
+   "brand": "",
+   "ru": "Неверные данные: датчик обработки изображения (камера) E",
+   "en": "Invalid Data Received From Image Processing Sensor E",
+   "fam": "",
+   "node": "invalid data received from image processing sensor e"
+  },
+  {
+   "code": "U056B",
+   "brand": "",
+   "ru": "Неверные данные: датчик обработки изображения (камера) F",
+   "en": "Invalid Data Received From Image Processing Sensor F",
+   "fam": "",
+   "node": "invalid data received from image processing sensor f"
+  },
+  {
+   "code": "U056C",
+   "brand": "",
+   "ru": "Неверные данные: датчик обработки изображения (камера) G",
+   "en": "Invalid Data Received From Image Processing Sensor G",
+   "fam": "",
+   "node": "invalid data received from image processing sensor g"
+  },
+  {
+   "code": "U056D",
+   "brand": "",
+   "ru": "Неверные данные: датчик обработки изображения (камера) H",
+   "en": "Invalid Data Received From Image Processing Sensor H",
+   "fam": "",
+   "node": "invalid data received from image processing sensor h"
+  },
+  {
+   "code": "U056E",
+   "brand": "",
+   "ru": "Неверные данные: датчик обработки изображения (камера) I",
+   "en": "Invalid Data Received From Image Processing Sensor I",
+   "fam": "",
+   "node": "invalid data received from image processing sensor i"
+  },
+  {
+   "code": "U056F",
+   "brand": "",
+   "ru": "Неверные данные: датчик обработки изображения (камера) J",
+   "en": "Invalid Data Received From Image Processing Sensor J",
+   "fam": "",
+   "node": "invalid data received from image processing sensor j"
+  },
+  {
+   "code": "U0570",
+   "brand": "",
+   "ru": "Неверные данные: датчик обработки изображения (камера) K",
+   "en": "Invalid Data Received From Image Processing Sensor K",
+   "fam": "",
+   "node": "invalid data received from image processing sensor k"
+  },
+  {
+   "code": "U0571",
+   "brand": "",
+   "ru": "Неверные данные: датчик обработки изображения (камера) L",
+   "en": "Invalid Data Received From Image Processing Sensor L",
+   "fam": "",
+   "node": "invalid data received from image processing sensor l"
+  },
+  {
+   "code": "U0572",
+   "brand": "",
+   "ru": "Неверные данные: блок управления движением A",
+   "en": "Invalid Data Received from Vehicle Motion Control Module A",
+   "fam": "",
+   "node": "invalid data received from vehicle motion control module a"
+  },
+  {
+   "code": "U0573",
+   "brand": "",
+   "ru": "Неверные данные: блок управления движением B",
+   "en": "Invalid Data Received from Vehicle Motion Control Module B",
+   "fam": "",
+   "node": "invalid data received from vehicle motion control module b"
+  },
+  {
+   "code": "U0574",
+   "brand": "",
+   "ru": "Неверные данные: блок драйвера освещения A",
+   "en": "Invalid Data Received From Lighting Driver Control Module “A”",
+   "fam": "",
+   "node": "invalid data received from lighting driver control module “a”"
+  },
+  {
+   "code": "U0575",
+   "brand": "",
+   "ru": "Неверные данные: блок драйвера освещения B",
+   "en": "Invalid Data Received From Lighting Driver Control Module “B”",
+   "fam": "",
+   "node": "invalid data received from lighting driver control module “b”"
+  },
+  {
+   "code": "U0576",
+   "brand": "",
+   "ru": "Неверные данные: блок драйвера освещения C",
+   "en": "Invalid Data Received From Lighting Driver Control Module “C”",
+   "fam": "",
+   "node": "invalid data received from lighting driver control module “c”"
+  },
+  {
+   "code": "U0577",
+   "brand": "",
+   "ru": "Неверные данные: блок драйвера освещения D",
+   "en": "Invalid Data Received From Lighting Driver Control Module “D”",
+   "fam": "",
+   "node": "invalid data received from lighting driver control module “d”"
+  },
+  {
+   "code": "U0578",
+   "brand": "",
+   "ru": "Неверные данные: блок сиденья K",
+   "en": "Invalid Data Received From Seat Module K",
+   "fam": "",
+   "node": "invalid data received from seat module k"
+  },
+  {
+   "code": "U0579",
+   "brand": "",
+   "ru": "Неверные данные: блок сиденья L",
+   "en": "Invalid Data Received From Seat Module L",
+   "fam": "",
+   "node": "invalid data received from seat module l"
+  },
+  {
+   "code": "U057B",
+   "brand": "",
+   "ru": "Неверные данные: блок управления зарядным устройством C",
+   "en": "Invalid Data Received From Battery Charger Control Module C",
+   "fam": "",
+   "node": "invalid data received from battery charger control module c"
+  },
+  {
+   "code": "U057C",
+   "brand": "",
+   "ru": "Неверные данные: блок управления зарядным устройством D",
+   "en": "Invalid Data Received From Battery Charger Control Module D",
+   "fam": "",
+   "node": "invalid data received from battery charger control module d"
+  },
+  {
+   "code": "U057D",
+   "brand": "",
+   "ru": "Неверные данные: блок внешнего зарядного устройства",
+   "en": "Invalid Data Received From Off-Board Charger Control Module",
+   "fam": "",
+   "node": "invalid data received from off board charger control"
+  },
+  {
+   "code": "U0580",
+   "brand": "",
+   "ru": "Неверные данные: блок тактильной обратной связи",
+   "en": "Invalid Data Received From Haptic Control Module",
+   "fam": "",
+   "node": "invalid data received from haptic control"
+  },
+  {
+   "code": "U0585",
+   "brand": "",
+   "ru": "Неверные данные: блок активных жалюзи радиатора A",
+   "en": "Invalid Data Received From Active Grille Air Shutter Module A",
+   "fam": "",
+   "node": "invalid data received from active grille air shutter module a"
+  },
+  {
+   "code": "U0586",
+   "brand": "",
+   "ru": "Неверные данные: блок активных жалюзи радиатора B",
+   "en": "Invalid Data Received From Active Grille Air Shutter Module B",
+   "fam": "",
+   "node": "invalid data received from active grille air shutter module b"
+  },
+  {
+   "code": "U0587",
+   "brand": "",
+   "ru": "Неверные данные: защита радиатора от вскрытия",
+   "en": "Invalid Data Received From With Radiator Anti Tamper Device",
+   "fam": "",
+   "node": "invalid data received from with radiator anti tamper device"
+  },
+  {
+   "code": "U0588",
+   "brand": "",
+   "ru": "Неверные данные: модуль насоса масла КПП A",
+   "en": "Invalid Data Received From Transmission Fluid Pump Module A",
+   "fam": "",
+   "node": "invalid data received from transmission fluid pump module a"
+  },
+  {
+   "code": "U0589",
+   "brand": "",
+   "ru": "Неверные данные: блок управления инвертором DC/AC A",
+   "en": "Invalid Data Received From DC/AC Converter Control Module A",
+   "fam": "",
+   "node": "invalid data received from dc ac converter control module a"
+  },
+  {
+   "code": "U058A",
+   "brand": "",
+   "ru": "Неверные данные: блок управления инвертором DC/AC B",
+   "en": "Invalid Data Received From DC/AC Converter Control Module B",
+   "fam": "",
+   "node": "invalid data received from dc ac converter control module b"
+  },
+  {
+   "code": "U058B",
+   "brand": "",
+   "ru": "Неверные данные: модуль насоса масла КПП B",
+   "en": "Invalid Data Received From Transmission Fluid Pump Module B",
+   "fam": "",
+   "node": "invalid data received from transmission fluid pump module b"
+  },
+  {
+   "code": "U058C",
+   "brand": "",
+   "ru": "Неверные данные: блок активных жалюзи радиатора C",
+   "en": "Invalid Data Received From Active Grille Air Shutter Module C",
+   "fam": "",
+   "node": "invalid data received from active grille air shutter module c"
+  },
+  {
+   "code": "U058D",
+   "brand": "",
+   "ru": "Неверные данные: блок активных жалюзи радиатора D",
+   "en": "Invalid Data Received From Active Grille Air Shutter Module D",
+   "fam": "",
+   "node": "invalid data received from active grille air shutter module d"
+  },
+  {
+   "code": "U0592",
+   "brand": "",
+   "ru": "Неверные данные: блок управления переключением передач B",
+   "en": "Invalid Data Received From Gear Shift Control Module B",
+   "fam": "",
+   "node": "invalid data received from gear shift control module b"
+  },
+  {
+   "code": "U0593",
+   "brand": "",
+   "ru": "Неверные данные: блок управления тяговым электромотором B",
+   "en": "Invalid Data Received From Drive Motor Control Module B",
+   "fam": "",
+   "node": "invalid data received from drive motor control module b"
+  },
+  {
+   "code": "U0594",
+   "brand": "",
+   "ru": "Неверные данные: блок управления гибридной силовой установкой",
+   "en": "Invalid Data Received From Hybrid/EV Powertrain Control Module",
+   "fam": "",
+   "node": "invalid data received from hybrid ev powertrain control"
+  },
+  {
+   "code": "U0595",
+   "brand": "",
+   "ru": "Неверные данные: блок контроля силовой установки",
+   "en": "Invalid Data Received From Powertrain Control Monitor Module",
+   "fam": "",
+   "node": "invalid data received from powertrain control monitor"
+  },
+  {
+   "code": "U0596",
+   "brand": "",
+   "ru": "Неверные данные: блок преобразователя AC/AC",
+   "en": "Invalid Data Received From AC/AC Converter Control Module",
+   "fam": "",
+   "node": "invalid data received from ac ac converter control"
+  },
+  {
+   "code": "U0597",
+   "brand": "",
+   "ru": "Неверные данные: блок преобразователя AC/DC A",
+   "en": "Invalid Data Received From AC/DC Converter Control Module A",
+   "fam": "",
+   "node": "invalid data received from ac dc converter control module a"
+  },
+  {
+   "code": "U0598",
+   "brand": "",
+   "ru": "Неверные данные: блок преобразователя AC/DC B",
+   "en": "Invalid Data Received From AC/DC Converter Control Module B",
+   "fam": "",
+   "node": "invalid data received from ac dc converter control module b"
+  }
+ ]
+}

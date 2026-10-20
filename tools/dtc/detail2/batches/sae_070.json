@@ -1,0 +1,450 @@
+{
+ "name": "sae_070",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "fam:lost_comm"
+ ],
+ "codes": [
+  {
+   "code": "U0187",
+   "brand": "",
+   "ru": "Нет связи с проигрывателем дисков A",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0188",
+   "brand": "",
+   "ru": "Нет связи с проигрывателем дисков B",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0189",
+   "brand": "",
+   "ru": "Нет связи с проигрывателем дисков C",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0190",
+   "brand": "",
+   "ru": "Нет связи с проигрывателем дисков D",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0191",
+   "brand": "",
+   "ru": "Нет связи с телевизором",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0192",
+   "brand": "",
+   "ru": "Нет связи с бортовым компьютером",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0193",
+   "brand": "",
+   "ru": "Нет связи с цифровым аудиоблоком A",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0194",
+   "brand": "",
+   "ru": "Нет связи с цифровым аудиоблоком B",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0195",
+   "brand": "",
+   "ru": "Нет связи с приёмником спутникового радио",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0196",
+   "brand": "",
+   "ru": "Нет связи с блоком развлечений заднего ряда",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0197",
+   "brand": "",
+   "ru": "Нет связи с блоком телефона",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0198",
+   "brand": "",
+   "ru": "Нет связи с блоком телематики",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0199",
+   "brand": "",
+   "ru": "Нет связи с блоком двери A",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0200",
+   "brand": "",
+   "ru": "Нет связи с блоком двери B",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0201",
+   "brand": "",
+   "ru": "Нет связи с блоком двери C",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0202",
+   "brand": "",
+   "ru": "Нет связи с блоком двери D",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0203",
+   "brand": "",
+   "ru": "Нет связи с блоком двери E",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0204",
+   "brand": "",
+   "ru": "Нет связи с блоком двери F",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0205",
+   "brand": "",
+   "ru": "Нет связи с блоком двери G",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0206",
+   "brand": "",
+   "ru": "Нет связи с блоком складной крыши",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0207",
+   "brand": "",
+   "ru": "Нет связи с блоком сдвижной крыши",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0208",
+   "brand": "",
+   "ru": "Нет связи с блоком сиденья A",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0209",
+   "brand": "",
+   "ru": "Нет связи с блоком сиденья B",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0210",
+   "brand": "",
+   "ru": "Нет связи с блоком сиденья C",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0211",
+   "brand": "",
+   "ru": "Нет связи с блоком сиденья D",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0212",
+   "brand": "",
+   "ru": "Нет связи с блоком рулевой колонки",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0213",
+   "brand": "",
+   "ru": "Нет связи с блоком зеркал",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0214",
+   "brand": "",
+   "ru": "Нет связи с блоком дистанционного управления (ключ)",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0215",
+   "brand": "",
+   "ru": "Нет связи с выключателем двери A",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0216",
+   "brand": "",
+   "ru": "Нет связи с выключателем двери B",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0217",
+   "brand": "",
+   "ru": "Нет связи с выключателем двери C",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0218",
+   "brand": "",
+   "ru": "Нет связи с выключателем двери D",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0219",
+   "brand": "",
+   "ru": "Нет связи с выключателем двери E",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0220",
+   "brand": "",
+   "ru": "Нет связи с выключателем двери F",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0221",
+   "brand": "",
+   "ru": "Нет связи с выключателем двери G",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0222",
+   "brand": "",
+   "ru": "Нет связи с мотором стекла A",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0223",
+   "brand": "",
+   "ru": "Нет связи с мотором стекла B",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0224",
+   "brand": "",
+   "ru": "Нет связи с мотором стекла C",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0225",
+   "brand": "",
+   "ru": "Нет связи с мотором стекла D",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0226",
+   "brand": "",
+   "ru": "Нет связи с мотором стекла E",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0227",
+   "brand": "",
+   "ru": "Нет связи с мотором стекла F",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0228",
+   "brand": "",
+   "ru": "Нет связи с мотором стекла G",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0229",
+   "brand": "",
+   "ru": "Нет связи с блоком обогрева руля",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0230",
+   "brand": "",
+   "ru": "Нет связи с блоком задней двери (багажника)",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0231",
+   "brand": "",
+   "ru": "Нет связи с датчиком дождя",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0232",
+   "brand": "",
+   "ru": "Нет связи с блоком контроля слепых зон слева",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0233",
+   "brand": "",
+   "ru": "Нет связи с блоком контроля слепых зон справа",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0234",
+   "brand": "",
+   "ru": "Нет связи с блоком памяти настроек",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0235",
+   "brand": "",
+   "ru": "Нет связи с радаром адаптивного круиз-контроля",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0293",
+   "brand": "",
+   "ru": "Нет связи с блоком управления гибридной системой",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0294",
+   "brand": "",
+   "ru": "Нет связи с блоком контроля силовой установки",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0295",
+   "brand": "",
+   "ru": "Нет связи с преобразователем AC/AC",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0296",
+   "brand": "",
+   "ru": "Нет связи с преобразователем AC/DC",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0297",
+   "brand": "",
+   "ru": "Нет связи с преобразователем DC/AC",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0298",
+   "brand": "",
+   "ru": "Нет связи с преобразователем DC/DC",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  }
+ ]
+}

@@ -1,0 +1,399 @@
+{
+ "name": "brand-toyota_063",
+ "series": "brand",
+ "brand": "toyota",
+ "nodes": [
+  "accelerator pedal position",
+  "accelerator pedal position sensor",
+  "air fuel",
+  "air fuel sensor",
+  "egr valve position",
+  "electric throttle control system",
+  "etcs actuator power source",
+  "fam:abs_module",
+  "fam:brake_switch",
+  "fam:cmp",
+  "fam:coil",
+  "fam:steering_angle",
+  "fam:wss",
+  "fam:yaw",
+  "fuel pump",
+  "igniter",
+  "magnetic clutch",
+  "no crankshaft position sensor",
+  "ru:датчик атмосферного давления",
+  "ru:датчик фаз vvt (ряд 1)",
+  "ru:датчик фаз vvt (ряд 2)",
+  "starter",
+  "sub throttle position",
+  "sub throttle position sensor",
+  "throttle control",
+  "throttle control motor lock",
+  "turbo pressure",
+  "turbo pressure sensor",
+  "vvt sensor",
+  "vvt system"
+ ],
+ "codes": [
+  {
+   "code": "C0200",
+   "brand": "toyota",
+   "ru": "Датчик ABS правого переднего колеса: неисправность",
+   "en": "",
+   "fam": "wss",
+   "node": "fam:wss"
+  },
+  {
+   "code": "C0205",
+   "brand": "toyota",
+   "ru": "Датчик ABS левого переднего колеса: неисправность",
+   "en": "",
+   "fam": "wss",
+   "node": "fam:wss"
+  },
+  {
+   "code": "C0210",
+   "brand": "toyota",
+   "ru": "Датчик ABS правого заднего колеса: неисправность",
+   "en": "",
+   "fam": "wss",
+   "node": "fam:wss"
+  },
+  {
+   "code": "C0215",
+   "brand": "toyota",
+   "ru": "Датчик ABS левого заднего колеса: неисправность",
+   "en": "",
+   "fam": "wss",
+   "node": "fam:wss"
+  },
+  {
+   "code": "C1210",
+   "brand": "toyota",
+   "ru": "Датчик поворота (yaw): нулевая точка не откалибрована",
+   "en": "",
+   "fam": "yaw",
+   "node": "fam:yaw"
+  },
+  {
+   "code": "C1336",
+   "brand": "toyota",
+   "ru": "Датчик ускорения/поворота: нулевая точка не откалибрована",
+   "en": "",
+   "fam": "yaw",
+   "node": "fam:yaw"
+  },
+  {
+   "code": "C1231",
+   "brand": "toyota",
+   "ru": "Датчик угла поворота руля: неисправность",
+   "en": "",
+   "fam": "steering_angle",
+   "node": "fam:steering_angle"
+  },
+  {
+   "code": "C1241",
+   "brand": "toyota",
+   "ru": "Блок ABS: напряжение питания вне нормы",
+   "en": "",
+   "fam": "abs_module",
+   "node": "fam:abs_module"
+  },
+  {
+   "code": "C1249",
+   "brand": "toyota",
+   "ru": "Выключатель стоп-сигналов: обрыв",
+   "en": "",
+   "fam": "brake_switch",
+   "node": "fam:brake_switch"
+  },
+  {
+   "code": "P1100",
+   "brand": "toyota",
+   "ru": "Датчик атмосферного давления: цепь",
+   "en": "BARO Sensor Circuit",
+   "fam": "",
+   "node": "ru:датчик атмосферного давления"
+  },
+  {
+   "code": "P1120",
+   "brand": "toyota",
+   "ru": "Датчик положения педали газа: цепь",
+   "en": "Accelerator Pedal Position Sensor Circuit",
+   "fam": "",
+   "node": "accelerator pedal position"
+  },
+  {
+   "code": "P1121",
+   "brand": "toyota",
+   "ru": "Датчик положения педали газа: выход за диапазон",
+   "en": "Accelerator Pedal Position Sensor Range Performance Problem",
+   "fam": "",
+   "node": "accelerator pedal position sensor"
+  },
+  {
+   "code": "P1125",
+   "brand": "toyota",
+   "ru": "Мотор электронного дросселя: цепь",
+   "en": "Throttle Control Motor Circuit",
+   "fam": "",
+   "node": "throttle control"
+  },
+  {
+   "code": "P1126",
+   "brand": "toyota",
+   "ru": "Электромагнитная муфта дросселя: цепь",
+   "en": "Magnetic Clutch Circuit",
+   "fam": "",
+   "node": "magnetic clutch"
+  },
+  {
+   "code": "P1127",
+   "brand": "toyota",
+   "ru": "Питание привода электронного дросселя (ETCS): цепь",
+   "en": "ETCS Actuator Power Source Circuit",
+   "fam": "",
+   "node": "etcs actuator power source"
+  },
+  {
+   "code": "P1128",
+   "brand": "toyota",
+   "ru": "Мотор электронного дросселя заклинил",
+   "en": "Throttle Control Motor Lock",
+   "fam": "",
+   "node": "throttle control motor lock"
+  },
+  {
+   "code": "P1129",
+   "brand": "toyota",
+   "ru": "Система электронного дросселя",
+   "en": "Electric Throttle Control System",
+   "fam": "",
+   "node": "electric throttle control system"
+  },
+  {
+   "code": "P1130",
+   "brand": "toyota",
+   "ru": "Датчик состава смеси 1 (ряд 1): выход за диапазон",
+   "en": "Air/Fuel Sensor Circuit Range Performance Bank 1 Sensor 1",
+   "fam": "",
+   "node": "air fuel"
+  },
+  {
+   "code": "P1133",
+   "brand": "toyota",
+   "ru": "Датчик состава смеси 1 (ряд 1): медленный отклик",
+   "en": "Air/Fuel Sensor Circuit Response Bank 1 Sensor 1",
+   "fam": "",
+   "node": "air fuel"
+  },
+  {
+   "code": "P1150",
+   "brand": "toyota",
+   "ru": "Датчик состава смеси 1 (ряд 2): выход за диапазон",
+   "en": "Air/Fuel Sensor Circuit Range Performance Bank 1 Sensor 2",
+   "fam": "",
+   "node": "air fuel"
+  },
+  {
+   "code": "P1153",
+   "brand": "toyota",
+   "ru": "Датчик состава смеси 1 (ряд 2): медленный отклик",
+   "en": "Air/Fuel Sensor Circuit Response Bank 1 Sensor 2",
+   "fam": "",
+   "node": "air fuel"
+  },
+  {
+   "code": "P1135",
+   "brand": "toyota",
+   "ru": "Подогрев датчика состава смеси 1 (ряд 1): цепь, отклик",
+   "en": "Air/Fuel Sensor Heater Circuit Response Bank 1 Sensor 1",
+   "fam": "",
+   "node": "air fuel sensor"
+  },
+  {
+   "code": "P1155",
+   "brand": "toyota",
+   "ru": "Подогрев датчика состава смеси 1 (ряд 2): цепь",
+   "en": "Air/Fuel Sensor Heater Circuit Bank 1 Sensor 2",
+   "fam": "",
+   "node": "air fuel sensor"
+  },
+  {
+   "code": "P1200",
+   "brand": "toyota",
+   "ru": "Реле топливного насоса: цепь",
+   "en": "Fuel Pump Relay Circuit",
+   "fam": "",
+   "node": "fuel pump"
+  },
+  {
+   "code": "P1300",
+   "brand": "toyota",
+   "ru": "Катушка/коммутатор зажигания цилиндра 1: цепь (IGF)",
+   "en": "",
+   "fam": "coil",
+   "node": "fam:coil"
+  },
+  {
+   "code": "P1305",
+   "brand": "toyota",
+   "ru": "Катушка/коммутатор зажигания цилиндра 2: цепь (IGF)",
+   "en": "",
+   "fam": "coil",
+   "node": "fam:coil"
+  },
+  {
+   "code": "P1310",
+   "brand": "toyota",
+   "ru": "Катушка/коммутатор зажигания цилиндра 3: цепь (IGF)",
+   "en": "",
+   "fam": "coil",
+   "node": "fam:coil"
+  },
+  {
+   "code": "P1315",
+   "brand": "toyota",
+   "ru": "Катушка/коммутатор зажигания цилиндра 4: цепь (IGF)",
+   "en": "",
+   "fam": "coil",
+   "node": "fam:coil"
+  },
+  {
+   "code": "P1320",
+   "brand": "toyota",
+   "ru": "Катушка/коммутатор зажигания цилиндра 5: цепь (IGF)",
+   "en": "",
+   "fam": "coil",
+   "node": "fam:coil"
+  },
+  {
+   "code": "P1325",
+   "brand": "toyota",
+   "ru": "Катушка/коммутатор зажигания цилиндра 6: цепь (IGF)",
+   "en": "",
+   "fam": "coil",
+   "node": "fam:coil"
+  },
+  {
+   "code": "P1330",
+   "brand": "toyota",
+   "ru": "Коммутатор зажигания № 7: неисправность цепи",
+   "en": "Igniter Circuit Malfunction No 7",
+   "fam": "",
+   "node": "igniter"
+  },
+  {
+   "code": "P1340",
+   "brand": "toyota",
+   "ru": "Коммутатор зажигания № 8: неисправность цепи",
+   "en": "Igniter Circuit Malfunction No 8",
+   "fam": "",
+   "node": "igniter"
+  },
+  {
+   "code": "P1335",
+   "brand": "toyota",
+   "ru": "Нет сигнала датчика коленвала при работающем двигателе",
+   "en": "No Crankshaft Position Sensor Signal Engine Running",
+   "fam": "",
+   "node": "no crankshaft position sensor"
+  },
+  {
+   "code": "P1345",
+   "brand": "toyota",
+   "ru": "Датчик фаз VVT (ряд 1): неисправность цепи",
+   "en": "VVT Sensor Circuit Malfunction Bank 1",
+   "fam": "",
+   "node": "ru:датчик фаз vvt (ряд 1)"
+  },
+  {
+   "code": "P1346",
+   "brand": "toyota",
+   "ru": "Датчик положения распредвала VVT (банк 1): сигнал вне диапазона",
+   "en": "",
+   "fam": "cmp",
+   "node": "fam:cmp"
+  },
+  {
+   "code": "P1350",
+   "brand": "toyota",
+   "ru": "Датчик фаз VVT (ряд 2): неисправность цепи",
+   "en": "VVT Sensor Circuit Malfunction Bank 2",
+   "fam": "",
+   "node": "ru:датчик фаз vvt (ряд 2)"
+  },
+  {
+   "code": "P1351",
+   "brand": "toyota",
+   "ru": "Датчик фаз VVT (ряд 2): выход за диапазон",
+   "en": "VVT Sensor Range Performance Problem Bank 2",
+   "fam": "",
+   "node": "vvt sensor"
+  },
+  {
+   "code": "P1354",
+   "brand": "toyota",
+   "ru": "Система VVT (ряд 2): неисправность",
+   "en": "VVT System Malfunction Bank 2",
+   "fam": "",
+   "node": "vvt system"
+  },
+  {
+   "code": "P1400",
+   "brand": "toyota",
+   "ru": "Датчик положения дополнительной дроссельной заслонки",
+   "en": "Sub-Throttle Position Sensor",
+   "fam": "",
+   "node": "sub throttle position"
+  },
+  {
+   "code": "P1401",
+   "brand": "toyota",
+   "ru": "Датчик дополнительной дроссельной заслонки: выход за диапазон",
+   "en": "Sub-Throttle Position Sensor Range Performance Problem",
+   "fam": "",
+   "node": "sub throttle position sensor"
+  },
+  {
+   "code": "P1405",
+   "brand": "toyota",
+   "ru": "Датчик давления наддува: цепь",
+   "en": "Turbo Pressure Sensor Circuit",
+   "fam": "",
+   "node": "turbo pressure"
+  },
+  {
+   "code": "P1406",
+   "brand": "toyota",
+   "ru": "Датчик давления наддува: выход за диапазон",
+   "en": "Turbo Pressure Sensor Range Performance Problem",
+   "fam": "",
+   "node": "turbo pressure sensor"
+  },
+  {
+   "code": "P1410",
+   "brand": "toyota",
+   "ru": "Датчик положения клапана ЕГР: неисправность цепи",
+   "en": "EGR Valve Position Sensor Circuit Malfunction",
+   "fam": "",
+   "node": "egr valve position"
+  },
+  {
+   "code": "P1411",
+   "brand": "toyota",
+   "ru": "Датчик положения клапана ЕГР: выход за диапазон",
+   "en": "EGR Valve Position Sensor Circuit Range Performance",
+   "fam": "",
+   "node": "egr valve position"
+  },
+  {
+   "code": "P1500",
+   "brand": "toyota",
+   "ru": "Сигнал стартера: цепь",
+   "en": "Starter Signal Circuit",
+   "fam": "",
+   "node": "starter"
+  }
+ ]
+}

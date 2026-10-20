@@ -1,0 +1,377 @@
+{
+ "name": "sae_166",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "afcm power relay",
+  "afcm power relay sense",
+  "alternative fuel delivery error",
+  "alternative fuel system injector leakage to rail detected",
+  "alternative fuel tank b pressure",
+  "alternative fuel tank b pressure sensor",
+  "alternative fuel tank c pressure",
+  "alternative fuel tank c pressure sensor",
+  "alternative fuel tank shutoff valve b",
+  "alternative fuel tank shutoff valve c",
+  "alternative fuel tank shutoff valve d",
+  "alternative fuel tank shutoff valve e",
+  "alternative fuel temperature",
+  "alternative fuel temperature sensor",
+  "excessive time to enter alternative fuel",
+  "injection pump fuel metering control f"
+ ],
+ "codes": [
+  {
+   "code": "P2A1E",
+   "brand": "",
+   "ru": "Дозирование топлива ТНВД F",
+   "en": "Injection Pump Fuel Metering Control F (Cam/Rotor/Injector)",
+   "fam": "",
+   "node": "injection pump fuel metering control f"
+  },
+  {
+   "code": "P2A1F",
+   "brand": "",
+   "ru": "Дозирование топлива ТНВД F: вне допустимого диапазона",
+   "en": "Injection Pump Fuel Metering Control F Range/Performance (Cam/Rotor/Injector)",
+   "fam": "",
+   "node": "injection pump fuel metering control f"
+  },
+  {
+   "code": "P2A20",
+   "brand": "",
+   "ru": "Дозирование топлива ТНВД F: низкий уровень",
+   "en": "Injection Pump Fuel Metering Control F Low (Cam/Rotor/Injector)",
+   "fam": "",
+   "node": "injection pump fuel metering control f"
+  },
+  {
+   "code": "P2A21",
+   "brand": "",
+   "ru": "Дозирование топлива ТНВД F: высокий уровень",
+   "en": "Injection Pump Fuel Metering Control F High (Cam/Rotor/Injector)",
+   "fam": "",
+   "node": "injection pump fuel metering control f"
+  },
+  {
+   "code": "P2A22",
+   "brand": "",
+   "ru": "Запорный клапан баллона ГБО B: обрыв цепи управления",
+   "en": "Alternative Fuel Tank Shutoff Valve B Control Circuit/Open",
+   "fam": "",
+   "node": "alternative fuel tank shutoff valve b"
+  },
+  {
+   "code": "P2A23",
+   "brand": "",
+   "ru": "Запорный клапан баллона ГБО B: цепь управления: работа нарушена / не включается",
+   "en": "Alternative Fuel Tank Shutoff Valve B Control Circuit Performance/Stuck Off",
+   "fam": "",
+   "node": "alternative fuel tank shutoff valve b"
+  },
+  {
+   "code": "P2A24",
+   "brand": "",
+   "ru": "Запорный клапан баллона ГБО B: низкий уровень в цепи управления",
+   "en": "Alternative Fuel Tank Shutoff Valve B Control Circuit Low",
+   "fam": "",
+   "node": "alternative fuel tank shutoff valve b"
+  },
+  {
+   "code": "P2A25",
+   "brand": "",
+   "ru": "Запорный клапан баллона ГБО B: высокий уровень в цепи управления",
+   "en": "Alternative Fuel Tank Shutoff Valve B Control Circuit High",
+   "fam": "",
+   "node": "alternative fuel tank shutoff valve b"
+  },
+  {
+   "code": "P2A26",
+   "brand": "",
+   "ru": "Запорный клапан баллона ГБО C: обрыв цепи управления",
+   "en": "Alternative Fuel Tank Shutoff Valve C Control Circuit/Open",
+   "fam": "",
+   "node": "alternative fuel tank shutoff valve c"
+  },
+  {
+   "code": "P2A27",
+   "brand": "",
+   "ru": "Запорный клапан баллона ГБО C: цепь управления: работа нарушена / не включается",
+   "en": "Alternative Fuel Tank Shutoff Valve C Control Circuit Performance/Stuck Off",
+   "fam": "",
+   "node": "alternative fuel tank shutoff valve c"
+  },
+  {
+   "code": "P2A28",
+   "brand": "",
+   "ru": "Запорный клапан баллона ГБО C: низкий уровень в цепи управления",
+   "en": "Alternative Fuel Tank Shutoff Valve C Control Circuit Low",
+   "fam": "",
+   "node": "alternative fuel tank shutoff valve c"
+  },
+  {
+   "code": "P2A29",
+   "brand": "",
+   "ru": "Запорный клапан баллона ГБО C: высокий уровень в цепи управления",
+   "en": "Alternative Fuel Tank Shutoff Valve C Control Circuit High",
+   "fam": "",
+   "node": "alternative fuel tank shutoff valve c"
+  },
+  {
+   "code": "P2A2A",
+   "brand": "",
+   "ru": "Запорный клапан баллона ГБО D: обрыв цепи управления",
+   "en": "Alternative Fuel Tank Shutoff Valve D Control Circuit/Open",
+   "fam": "",
+   "node": "alternative fuel tank shutoff valve d"
+  },
+  {
+   "code": "P2A2B",
+   "brand": "",
+   "ru": "Запорный клапан баллона ГБО D: цепь управления: работа нарушена / не включается",
+   "en": "Alternative Fuel Tank Shutoff Valve D Control Circuit Performance/Stuck Off",
+   "fam": "",
+   "node": "alternative fuel tank shutoff valve d"
+  },
+  {
+   "code": "P2A2C",
+   "brand": "",
+   "ru": "Запорный клапан баллона ГБО D: низкий уровень в цепи управления",
+   "en": "Alternative Fuel Tank Shutoff Valve D Control Circuit Low",
+   "fam": "",
+   "node": "alternative fuel tank shutoff valve d"
+  },
+  {
+   "code": "P2A2D",
+   "brand": "",
+   "ru": "Запорный клапан баллона ГБО D: высокий уровень в цепи управления",
+   "en": "Alternative Fuel Tank Shutoff Valve D Control Circuit High",
+   "fam": "",
+   "node": "alternative fuel tank shutoff valve d"
+  },
+  {
+   "code": "P2A2E",
+   "brand": "",
+   "ru": "Запорный клапан баллона ГБО E: обрыв цепи управления",
+   "en": "Alternative Fuel Tank Shutoff Valve E Control Circuit/Open",
+   "fam": "",
+   "node": "alternative fuel tank shutoff valve e"
+  },
+  {
+   "code": "P2A2F",
+   "brand": "",
+   "ru": "Запорный клапан баллона ГБО E: цепь управления: работа нарушена / не включается",
+   "en": "Alternative Fuel Tank Shutoff Valve E Control Circuit Performance/Stuck Off",
+   "fam": "",
+   "node": "alternative fuel tank shutoff valve e"
+  },
+  {
+   "code": "P2A30",
+   "brand": "",
+   "ru": "Запорный клапан баллона ГБО E: низкий уровень в цепи управления",
+   "en": "Alternative Fuel Tank Shutoff Valve E Control Circuit Low",
+   "fam": "",
+   "node": "alternative fuel tank shutoff valve e"
+  },
+  {
+   "code": "P2A31",
+   "brand": "",
+   "ru": "Запорный клапан баллона ГБО E: высокий уровень в цепи управления",
+   "en": "Alternative Fuel Tank Shutoff Valve E Control Circuit High",
+   "fam": "",
+   "node": "alternative fuel tank shutoff valve e"
+  },
+  {
+   "code": "P2A32",
+   "brand": "",
+   "ru": "Реле питания блока ГБО: обрыв цепи управления",
+   "en": "AFCM Power Relay Control Circuit/Open",
+   "fam": "",
+   "node": "afcm power relay"
+  },
+  {
+   "code": "P2A33",
+   "brand": "",
+   "ru": "Реле питания блока ГБО: низкий уровень в цепи управления",
+   "en": "AFCM Power Relay Control Circuit Low",
+   "fam": "",
+   "node": "afcm power relay"
+  },
+  {
+   "code": "P2A34",
+   "brand": "",
+   "ru": "Реле питания блока ГБО: высокий уровень в цепи управления",
+   "en": "AFCM Power Relay Control Circuit High",
+   "fam": "",
+   "node": "afcm power relay"
+  },
+  {
+   "code": "P2A35",
+   "brand": "",
+   "ru": "Реле питания блока ГБО: цепь обратной связи",
+   "en": "AFCM Power Relay Sense Circuit",
+   "fam": "",
+   "node": "afcm power relay sense"
+  },
+  {
+   "code": "P2A36",
+   "brand": "",
+   "ru": "Реле питания блока ГБО: низкий уровень в цепи обратной связи",
+   "en": "AFCM Power Relay Sense Circuit Low",
+   "fam": "",
+   "node": "afcm power relay sense"
+  },
+  {
+   "code": "P2A37",
+   "brand": "",
+   "ru": "Реле питания блока ГБО: высокий уровень в цепи обратной связи",
+   "en": "AFCM Power Relay Sense Circuit High",
+   "fam": "",
+   "node": "afcm power relay sense"
+  },
+  {
+   "code": "P2A3E",
+   "brand": "",
+   "ru": "ГБО: ошибка подачи газа",
+   "en": "Alternative Fuel Delivery Error",
+   "fam": "",
+   "node": "alternative fuel delivery error"
+  },
+  {
+   "code": "P2A3F",
+   "brand": "",
+   "ru": "ГБО: слишком долгий переход на газ",
+   "en": "Excessive Time to Enter Alternative Fuel Control",
+   "fam": "",
+   "node": "excessive time to enter alternative fuel"
+  },
+  {
+   "code": "P2A40",
+   "brand": "",
+   "ru": "ГБО: обнаружена утечка через форсунку в рампу",
+   "en": "Alternative Fuel System - Injector Leakage to Rail Detected",
+   "fam": "",
+   "node": "alternative fuel system injector leakage to rail detected"
+  },
+  {
+   "code": "P2A41",
+   "brand": "",
+   "ru": "Датчик давления баллона ГБО B: цепь",
+   "en": "Alternative Fuel Tank B Pressure Sensor Circuit",
+   "fam": "",
+   "node": "alternative fuel tank b pressure"
+  },
+  {
+   "code": "P2A43",
+   "brand": "",
+   "ru": "Датчик давления баллона ГБО B: низкий уровень сигнала в цепи",
+   "en": "Alternative Fuel Tank B Pressure Sensor Circuit Low",
+   "fam": "",
+   "node": "alternative fuel tank b pressure"
+  },
+  {
+   "code": "P2A44",
+   "brand": "",
+   "ru": "Датчик давления баллона ГБО B: высокий уровень сигнала в цепи",
+   "en": "Alternative Fuel Tank B Pressure Sensor Circuit High",
+   "fam": "",
+   "node": "alternative fuel tank b pressure"
+  },
+  {
+   "code": "P2A45",
+   "brand": "",
+   "ru": "Датчик давления баллона ГБО B: прерывистый / нестабильный сигнал",
+   "en": "Alternative Fuel Tank B Pressure Sensor Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "alternative fuel tank b pressure"
+  },
+  {
+   "code": "P2A42",
+   "brand": "",
+   "ru": "Датчик давления баллона ГБО B: вне допустимого диапазона",
+   "en": "Alternative Fuel Tank B Pressure Sensor Range/Performance",
+   "fam": "",
+   "node": "alternative fuel tank b pressure sensor"
+  },
+  {
+   "code": "P2A46",
+   "brand": "",
+   "ru": "Датчик давления баллона ГБО C: цепь",
+   "en": "Alternative Fuel Tank C Pressure Sensor Circuit",
+   "fam": "",
+   "node": "alternative fuel tank c pressure"
+  },
+  {
+   "code": "P2A48",
+   "brand": "",
+   "ru": "Датчик давления баллона ГБО C: низкий уровень сигнала в цепи",
+   "en": "Alternative Fuel Tank C Pressure Sensor Circuit Low",
+   "fam": "",
+   "node": "alternative fuel tank c pressure"
+  },
+  {
+   "code": "P2A49",
+   "brand": "",
+   "ru": "Датчик давления баллона ГБО C: высокий уровень сигнала в цепи",
+   "en": "Alternative Fuel Tank C Pressure Sensor Circuit High",
+   "fam": "",
+   "node": "alternative fuel tank c pressure"
+  },
+  {
+   "code": "P2A4A",
+   "brand": "",
+   "ru": "Датчик давления баллона ГБО C: прерывистый / нестабильный сигнал",
+   "en": "Alternative Fuel Tank C Pressure Sensor Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "alternative fuel tank c pressure"
+  },
+  {
+   "code": "P2A47",
+   "brand": "",
+   "ru": "Датчик давления баллона ГБО C: вне допустимого диапазона",
+   "en": "Alternative Fuel Tank C Pressure Sensor Range/Performance",
+   "fam": "",
+   "node": "alternative fuel tank c pressure sensor"
+  },
+  {
+   "code": "P2A4B",
+   "brand": "",
+   "ru": "Датчик температуры газа ГБО: цепь",
+   "en": "Alternative Fuel Temperature Sensor Circuit",
+   "fam": "",
+   "node": "alternative fuel temperature"
+  },
+  {
+   "code": "P2A4D",
+   "brand": "",
+   "ru": "Датчик температуры газа ГБО: низкий уровень сигнала в цепи",
+   "en": "Alternative Fuel Temperature Sensor Circuit Low",
+   "fam": "",
+   "node": "alternative fuel temperature"
+  },
+  {
+   "code": "P2A4E",
+   "brand": "",
+   "ru": "Датчик температуры газа ГБО: высокий уровень сигнала в цепи",
+   "en": "Alternative Fuel Temperature Sensor Circuit High",
+   "fam": "",
+   "node": "alternative fuel temperature"
+  },
+  {
+   "code": "P2A4F",
+   "brand": "",
+   "ru": "Датчик температуры газа ГБО: прерывистый / нестабильный сигнал",
+   "en": "Alternative Fuel Temperature Sensor Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "alternative fuel temperature"
+  },
+  {
+   "code": "P2A4C",
+   "brand": "",
+   "ru": "Датчик температуры газа ГБО: вне допустимого диапазона",
+   "en": "Alternative Fuel Temperature Sensor Range/Performance",
+   "fam": "",
+   "node": "alternative fuel temperature sensor"
+  }
+ ]
+}

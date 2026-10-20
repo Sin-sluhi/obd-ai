@@ -1,0 +1,351 @@
+{
+ "name": "sae_081",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "economy mode lamp",
+  "fam:clutch_switch",
+  "fam:trans_range",
+  "fam:trans_temp",
+  "transmission fluid level",
+  "transmission fluid level too"
+ ],
+ "codes": [
+  {
+   "code": "P06FF",
+   "brand": "",
+   "ru": "Лампа экономичного режима: цепь управления",
+   "en": "Economy Mode Lamp Control Circuit",
+   "fam": "",
+   "node": "economy mode lamp"
+  },
+  {
+   "code": "P0704",
+   "brand": "",
+   "ru": "Выключатель сцепления: цепь",
+   "en": "",
+   "fam": "clutch_switch",
+   "node": "fam:clutch_switch"
+  },
+  {
+   "code": "P0830",
+   "brand": "",
+   "ru": "Выключатель педали сцепления A: цепь",
+   "en": "",
+   "fam": "clutch_switch",
+   "node": "fam:clutch_switch"
+  },
+  {
+   "code": "P0831",
+   "brand": "",
+   "ru": "Выключатель педали сцепления A: низкий уровень",
+   "en": "",
+   "fam": "clutch_switch",
+   "node": "fam:clutch_switch"
+  },
+  {
+   "code": "P0832",
+   "brand": "",
+   "ru": "Выключатель педали сцепления A: высокий уровень",
+   "en": "",
+   "fam": "clutch_switch",
+   "node": "fam:clutch_switch"
+  },
+  {
+   "code": "P0833",
+   "brand": "",
+   "ru": "Выключатель педали сцепления B: цепь",
+   "en": "",
+   "fam": "clutch_switch",
+   "node": "fam:clutch_switch"
+  },
+  {
+   "code": "P0834",
+   "brand": "",
+   "ru": "Выключатель педали сцепления B: низкий уровень",
+   "en": "",
+   "fam": "clutch_switch",
+   "node": "fam:clutch_switch"
+  },
+  {
+   "code": "P0835",
+   "brand": "",
+   "ru": "Выключатель педали сцепления B: высокий уровень",
+   "en": "",
+   "fam": "clutch_switch",
+   "node": "fam:clutch_switch"
+  },
+  {
+   "code": "P0705",
+   "brand": "",
+   "ru": "Датчик положения селектора (диапазона) коробки: цепь",
+   "en": "",
+   "fam": "trans_range",
+   "node": "fam:trans_range"
+  },
+  {
+   "code": "P0706",
+   "brand": "",
+   "ru": "Датчик положения селектора (диапазона) коробки: вне диапазона",
+   "en": "",
+   "fam": "trans_range",
+   "node": "fam:trans_range"
+  },
+  {
+   "code": "P0707",
+   "brand": "",
+   "ru": "Датчик положения селектора (диапазона) коробки: низкий уровень",
+   "en": "",
+   "fam": "trans_range",
+   "node": "fam:trans_range"
+  },
+  {
+   "code": "P0708",
+   "brand": "",
+   "ru": "Датчик положения селектора (диапазона) коробки: высокий уровень",
+   "en": "",
+   "fam": "trans_range",
+   "node": "fam:trans_range"
+  },
+  {
+   "code": "P0709",
+   "brand": "",
+   "ru": "Датчик положения селектора (диапазона) коробки: прерывистый",
+   "en": "",
+   "fam": "trans_range",
+   "node": "fam:trans_range"
+  },
+  {
+   "code": "P2800",
+   "brand": "",
+   "ru": "Датчик положения селектора B: цепь",
+   "en": "",
+   "fam": "trans_range",
+   "node": "fam:trans_range"
+  },
+  {
+   "code": "P2801",
+   "brand": "",
+   "ru": "Датчик положения селектора B: вне диапазона",
+   "en": "",
+   "fam": "trans_range",
+   "node": "fam:trans_range"
+  },
+  {
+   "code": "P2802",
+   "brand": "",
+   "ru": "Датчик положения селектора B: низкий уровень",
+   "en": "",
+   "fam": "trans_range",
+   "node": "fam:trans_range"
+  },
+  {
+   "code": "P2803",
+   "brand": "",
+   "ru": "Датчик положения селектора B: высокий уровень",
+   "en": "",
+   "fam": "trans_range",
+   "node": "fam:trans_range"
+  },
+  {
+   "code": "P2804",
+   "brand": "",
+   "ru": "Датчик положения селектора B: прерывистый",
+   "en": "",
+   "fam": "trans_range",
+   "node": "fam:trans_range"
+  },
+  {
+   "code": "P2805",
+   "brand": "",
+   "ru": "Датчики положения селектора A и B не согласуются",
+   "en": "",
+   "fam": "trans_range",
+   "node": "fam:trans_range"
+  },
+  {
+   "code": "P2806",
+   "brand": "",
+   "ru": "Датчик положения селектора: не отрегулирован",
+   "en": "",
+   "fam": "trans_range",
+   "node": "fam:trans_range"
+  },
+  {
+   "code": "P070A",
+   "brand": "",
+   "ru": "Датчик уровня масла КПП: цепь",
+   "en": "Transmission Fluid Level Sensor Circuit",
+   "fam": "",
+   "node": "transmission fluid level"
+  },
+  {
+   "code": "P070B",
+   "brand": "",
+   "ru": "Датчик уровня масла КПП: сигнал вне диапазона",
+   "en": "Transmission Fluid Level Sensor Circuit Range/Performance",
+   "fam": "",
+   "node": "transmission fluid level"
+  },
+  {
+   "code": "P070C",
+   "brand": "",
+   "ru": "Датчик уровня масла КПП: низкий уровень сигнала в цепи",
+   "en": "Transmission Fluid Level Sensor Circuit Low",
+   "fam": "",
+   "node": "transmission fluid level"
+  },
+  {
+   "code": "P070D",
+   "brand": "",
+   "ru": "Датчик уровня масла КПП: высокий уровень сигнала в цепи",
+   "en": "Transmission Fluid Level Sensor Circuit High",
+   "fam": "",
+   "node": "transmission fluid level"
+  },
+  {
+   "code": "P070E",
+   "brand": "",
+   "ru": "Датчик уровня масла КПП: прерывистый / нестабильный сигнал",
+   "en": "Transmission Fluid Level Sensor Circuit intermittent/Erratic",
+   "fam": "",
+   "node": "transmission fluid level"
+  },
+  {
+   "code": "P070F",
+   "brand": "",
+   "ru": "Слишком низкий уровень масла КПП",
+   "en": "Transmission Fluid Level Too Low",
+   "fam": "",
+   "node": "transmission fluid level too"
+  },
+  {
+   "code": "P075F",
+   "brand": "",
+   "ru": "Слишком высокий уровень масла КПП",
+   "en": "Transmission Fluid Level Too High",
+   "fam": "",
+   "node": "transmission fluid level too"
+  },
+  {
+   "code": "P0710",
+   "brand": "",
+   "ru": "Датчик температуры масла коробки A: цепь",
+   "en": "",
+   "fam": "trans_temp",
+   "node": "fam:trans_temp"
+  },
+  {
+   "code": "P0711",
+   "brand": "",
+   "ru": "Датчик температуры масла коробки A: показания вне диапазона",
+   "en": "",
+   "fam": "trans_temp",
+   "node": "fam:trans_temp"
+  },
+  {
+   "code": "P0712",
+   "brand": "",
+   "ru": "Датчик температуры масла коробки A: низкий сигнал",
+   "en": "",
+   "fam": "trans_temp",
+   "node": "fam:trans_temp"
+  },
+  {
+   "code": "P0713",
+   "brand": "",
+   "ru": "Датчик температуры масла коробки A: высокий сигнал",
+   "en": "",
+   "fam": "trans_temp",
+   "node": "fam:trans_temp"
+  },
+  {
+   "code": "P0714",
+   "brand": "",
+   "ru": "Датчик температуры масла коробки A: прерывистый сигнал",
+   "en": "",
+   "fam": "trans_temp",
+   "node": "fam:trans_temp"
+  },
+  {
+   "code": "P0937",
+   "brand": "",
+   "ru": "Датчик температуры гидросистемы коробки: цепь",
+   "en": "",
+   "fam": "trans_temp",
+   "node": "fam:trans_temp"
+  },
+  {
+   "code": "P0938",
+   "brand": "",
+   "ru": "Датчик температуры гидросистемы коробки: показания вне диапазона",
+   "en": "",
+   "fam": "trans_temp",
+   "node": "fam:trans_temp"
+  },
+  {
+   "code": "P0939",
+   "brand": "",
+   "ru": "Датчик температуры гидросистемы коробки: низкий сигнал",
+   "en": "",
+   "fam": "trans_temp",
+   "node": "fam:trans_temp"
+  },
+  {
+   "code": "P0940",
+   "brand": "",
+   "ru": "Датчик температуры гидросистемы коробки: высокий сигнал",
+   "en": "",
+   "fam": "trans_temp",
+   "node": "fam:trans_temp"
+  },
+  {
+   "code": "P0941",
+   "brand": "",
+   "ru": "Датчик температуры гидросистемы коробки: прерывистый сигнал",
+   "en": "",
+   "fam": "trans_temp",
+   "node": "fam:trans_temp"
+  },
+  {
+   "code": "P2740",
+   "brand": "",
+   "ru": "Датчик температуры масла коробки B: цепь",
+   "en": "",
+   "fam": "trans_temp",
+   "node": "fam:trans_temp"
+  },
+  {
+   "code": "P2741",
+   "brand": "",
+   "ru": "Датчик температуры масла коробки B: показания вне диапазона",
+   "en": "",
+   "fam": "trans_temp",
+   "node": "fam:trans_temp"
+  },
+  {
+   "code": "P2742",
+   "brand": "",
+   "ru": "Датчик температуры масла коробки B: низкий сигнал",
+   "en": "",
+   "fam": "trans_temp",
+   "node": "fam:trans_temp"
+  },
+  {
+   "code": "P2743",
+   "brand": "",
+   "ru": "Датчик температуры масла коробки B: высокий сигнал",
+   "en": "",
+   "fam": "trans_temp",
+   "node": "fam:trans_temp"
+  },
+  {
+   "code": "P2744",
+   "brand": "",
+   "ru": "Датчик температуры масла коробки B: прерывистый сигнал",
+   "en": "",
+   "fam": "trans_temp",
+   "node": "fam:trans_temp"
+  }
+ ]
+}

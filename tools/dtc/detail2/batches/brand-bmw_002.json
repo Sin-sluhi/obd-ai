@@ -1,0 +1,338 @@
+{
+ "name": "brand-bmw_002",
+ "series": "brand",
+ "brand": "bmw",
+ "nodes": [
+  "ambient air pressure sensor electrical",
+  "control module self test torque monitoring",
+  "fuel control",
+  "fuel trim adaptation additive",
+  "fuel trim adaptation additive per ignition",
+  "o2 sensor",
+  "post catalyst fuel trim system",
+  "pre catalyst fuel trim system",
+  "solenoid valve running losses"
+ ],
+ "codes": [
+  {
+   "code": "P1134",
+   "brand": "bmw",
+   "ru": "Подогрев лямбда-зонда 1 (ряд 1): прерывистый сигнал",
+   "en": "O2 Sensor Heater Circuit Signal Intermittent Bank 1 Sensor 1",
+   "fam": "",
+   "node": "o2 sensor"
+  },
+  {
+   "code": "P1135",
+   "brand": "bmw",
+   "ru": "Подогрев лямбда-зонда 1 (ряд 1): низкое напряжение",
+   "en": "O2 Sensor Heater Circuit Low Voltage Bank 1 Sensor 1",
+   "fam": "",
+   "node": "o2 sensor"
+  },
+  {
+   "code": "P1136",
+   "brand": "bmw",
+   "ru": "Подогрев лямбда-зонда 1 (ряд 1): высокое напряжение",
+   "en": "O2 Sensor Heater Circuit High Voltage Bank 1 Sensor 1",
+   "fam": "",
+   "node": "o2 sensor"
+  },
+  {
+   "code": "P1137",
+   "brand": "bmw",
+   "ru": "Подогрев лямбда-зонда 2 (ряд 1): прерывистый сигнал",
+   "en": "O2 Sensor Heater Circuit Signal Intermittent Bank 1 Sensor 2",
+   "fam": "",
+   "node": "o2 sensor"
+  },
+  {
+   "code": "P1138",
+   "brand": "bmw",
+   "ru": "Подогрев лямбда-зонда 2 (ряд 1): низкое напряжение",
+   "en": "O2 Sensor Heater Circuit Low Voltage Bank 1 Sensor 2",
+   "fam": "",
+   "node": "o2 sensor"
+  },
+  {
+   "code": "P1139",
+   "brand": "bmw",
+   "ru": "Подогрев лямбда-зонда 2 (ряд 1): высокое напряжение",
+   "en": "O2 Sensor Heater Circuit High Voltage Bank 1 Sensor 2",
+   "fam": "",
+   "node": "o2 sensor"
+  },
+  {
+   "code": "P1151",
+   "brand": "bmw",
+   "ru": "Подогрев лямбда-зонда 1 (ряд 2): прерывистый сигнал",
+   "en": "O2 Sensor Heater Circuit Signal Intermittent Bank 2 Sensor 1",
+   "fam": "",
+   "node": "o2 sensor"
+  },
+  {
+   "code": "P1152",
+   "brand": "bmw",
+   "ru": "Подогрев лямбда-зонда 1 (ряд 2): низкое напряжение",
+   "en": "O2 Sensor Heater Circuit Low Voltage Bank 2 Sensor 1",
+   "fam": "",
+   "node": "o2 sensor"
+  },
+  {
+   "code": "P1153",
+   "brand": "bmw",
+   "ru": "Подогрев лямбда-зонда 1 (ряд 2): высокое напряжение",
+   "en": "O2 Sensor Heater Circuit High Voltage Bank 2 Sensor 1",
+   "fam": "",
+   "node": "o2 sensor"
+  },
+  {
+   "code": "P1155",
+   "brand": "bmw",
+   "ru": "Подогрев лямбда-зонда 2 (ряд 2): прерывистый сигнал",
+   "en": "O2 Sensor Heater Circuit Intermittent Bank 2 Sensor 2",
+   "fam": "",
+   "node": "o2 sensor"
+  },
+  {
+   "code": "P1156",
+   "brand": "bmw",
+   "ru": "Подогрев лямбда-зонда 2 (ряд 2): низкое напряжение",
+   "en": "O2 Sensor Heater Circuit Low Voltage Bank 2 Sensor 2",
+   "fam": "",
+   "node": "o2 sensor"
+  },
+  {
+   "code": "P1157",
+   "brand": "bmw",
+   "ru": "Подогрев лямбда-зонда 2 (ряд 2): высокое напряжение",
+   "en": "O2 Sensor Heater Circuit High Voltage Bank 2 Sensor 2",
+   "fam": "",
+   "node": "o2 sensor"
+  },
+  {
+   "code": "P1176",
+   "brand": "bmw",
+   "ru": "Лямбда-зонд (ряд 1): медленный отклик",
+   "en": "O2 Sensor Slow Response Bank 1",
+   "fam": "",
+   "node": "o2 sensor"
+  },
+  {
+   "code": "P1177",
+   "brand": "bmw",
+   "ru": "Лямбда-зонд (ряд 2): медленный отклик",
+   "en": "O2 Sensor Slow Response Bank 2",
+   "fam": "",
+   "node": "o2 sensor"
+  },
+  {
+   "code": "P1178",
+   "brand": "bmw",
+   "ru": "Лямбда-зонд 1 (ряд 1): медленное переключение с богатой на бедную",
+   "en": "O2 Sensor Signal Circuit Slow Switching From Rich to Lean Bank 1 Sensor 1",
+   "fam": "",
+   "node": "o2 sensor"
+  },
+  {
+   "code": "P1179",
+   "brand": "bmw",
+   "ru": "Лямбда-зонд 1 (ряд 2): медленное переключение с богатой на бедную",
+   "en": "O2 Sensor Signal Circuit Slow Switching From Rich to Lean Bank 2 Sensor 1",
+   "fam": "",
+   "node": "o2 sensor"
+  },
+  {
+   "code": "P1180",
+   "brand": "bmw",
+   "ru": "Лямбда-зонд 2 (ряд 1): медленное переключение с богатой на бедную",
+   "en": "O2 Sensor Signal Circuit Slow Switching From Rich to Lean Bank 1 Sensor 2",
+   "fam": "",
+   "node": "o2 sensor"
+  },
+  {
+   "code": "P1181",
+   "brand": "bmw",
+   "ru": "Лямбда-зонд 2 (ряд 2): медленное переключение с богатой на бедную",
+   "en": "O2 Sensor Signal Circuit Slow Switching From Rich to Lean Bank 2 Sensor 2",
+   "fam": "",
+   "node": "o2 sensor"
+  },
+  {
+   "code": "P1182",
+   "brand": "bmw",
+   "ru": "Лямбда-зонд 2 (ряд 1): обрыв при отсечке топлива",
+   "en": "O2 Sensor Bank 1 Sensor 2 Open Circuit During Coast Down Fuel Cut-off",
+   "fam": "",
+   "node": "o2 sensor"
+  },
+  {
+   "code": "P1183",
+   "brand": "bmw",
+   "ru": "Лямбда-зонд 2 (ряд 2): обрыв при отсечке топлива",
+   "en": "O2 Sensor Bank 2 Sensor 2 Open Circuit During Coast Down Fuel Cut-off",
+   "fam": "",
+   "node": "o2 sensor"
+  },
+  {
+   "code": "P1145",
+   "brand": "bmw",
+   "ru": "Клапан ходовых потерь (испарения): электрическая неисправность цепи",
+   "en": "Solenoid Valve Running Losses Control Circuit Electrical",
+   "fam": "",
+   "node": "solenoid valve running losses"
+  },
+  {
+   "code": "P1158",
+   "brand": "bmw",
+   "ru": "Аддитивная адаптация смеси (ряд 1): низко",
+   "en": "Fuel Trim Adaptation Additive Bank 1 Low",
+   "fam": "",
+   "node": "fuel trim adaptation additive"
+  },
+  {
+   "code": "P1159",
+   "brand": "bmw",
+   "ru": "Аддитивная адаптация смеси (ряд 1): высоко",
+   "en": "Fuel Trim Adaptation Additive Bank 1 High",
+   "fam": "",
+   "node": "fuel trim adaptation additive"
+  },
+  {
+   "code": "P1160",
+   "brand": "bmw",
+   "ru": "Аддитивная адаптация смеси (ряд 2): низко",
+   "en": "Fuel Trim Adaptation Additive Bank 2 Low",
+   "fam": "",
+   "node": "fuel trim adaptation additive"
+  },
+  {
+   "code": "P1161",
+   "brand": "bmw",
+   "ru": "Аддитивная адаптация смеси (ряд 2): высоко",
+   "en": "Fuel Trim Adaptation Additive Bank 2 High",
+   "fam": "",
+   "node": "fuel trim adaptation additive"
+  },
+  {
+   "code": "P1174",
+   "brand": "bmw",
+   "ru": "Аддитивная адаптация смеси (ряд 1): неисправность",
+   "en": "Fuel Trim Adaptation Additive Bank 1 Malfunction",
+   "fam": "",
+   "node": "fuel trim adaptation additive"
+  },
+  {
+   "code": "P1175",
+   "brand": "bmw",
+   "ru": "Аддитивная адаптация смеси (ряд 2): неисправность",
+   "en": "Fuel Trim Adaptation Additive Bank 2 Malfunction",
+   "fam": "",
+   "node": "fuel trim adaptation additive"
+  },
+  {
+   "code": "P1162",
+   "brand": "bmw",
+   "ru": "Аддитивная адаптация смеси на такт (ряд 1): низко",
+   "en": "Fuel Trim Adaptation Additive Per Ignition Bank 1 Low",
+   "fam": "",
+   "node": "fuel trim adaptation additive per ignition"
+  },
+  {
+   "code": "P1163",
+   "brand": "bmw",
+   "ru": "Аддитивная адаптация смеси на такт (ряд 1): высоко",
+   "en": "Fuel Trim Adaptation Additive Per Ignition Bank 1 High",
+   "fam": "",
+   "node": "fuel trim adaptation additive per ignition"
+  },
+  {
+   "code": "P1164",
+   "brand": "bmw",
+   "ru": "Аддитивная адаптация смеси на такт (ряд 2): низко",
+   "en": "Fuel Trim Adaptation Additive Per Ignition Bank 2 Low",
+   "fam": "",
+   "node": "fuel trim adaptation additive per ignition"
+  },
+  {
+   "code": "P1165",
+   "brand": "bmw",
+   "ru": "Аддитивная адаптация смеси на такт (ряд 2): высоко",
+   "en": "Fuel Trim Adaptation Additive Per Ignition Bank 2 High",
+   "fam": "",
+   "node": "fuel trim adaptation additive per ignition"
+  },
+  {
+   "code": "P1188",
+   "brand": "bmw",
+   "ru": "Регулирование смеси (ряд 1, зонд 1)",
+   "en": "Fuel Control Bank 1 Sensor 1",
+   "fam": "",
+   "node": "fuel control"
+  },
+  {
+   "code": "P1189",
+   "brand": "bmw",
+   "ru": "Регулирование смеси (ряд 2, зонд 1)",
+   "en": "Fuel Control Bank 2 Sensor 1",
+   "fam": "",
+   "node": "fuel control"
+  },
+  {
+   "code": "P1190",
+   "brand": "bmw",
+   "ru": "Коррекция до катализатора (ряд 1)",
+   "en": "Pre-Catalyst Fuel Trim System Bank 1",
+   "fam": "",
+   "node": "pre catalyst fuel trim system"
+  },
+  {
+   "code": "P1191",
+   "brand": "bmw",
+   "ru": "Коррекция до катализатора (ряд 2)",
+   "en": "Pre-Catalyst Fuel Trim System Bank 2",
+   "fam": "",
+   "node": "pre catalyst fuel trim system"
+  },
+  {
+   "code": "P1192",
+   "brand": "bmw",
+   "ru": "Коррекция после катализатора (ряд 1)",
+   "en": "Post-Catalyst Fuel Trim System Bank 1",
+   "fam": "",
+   "node": "post catalyst fuel trim system"
+  },
+  {
+   "code": "P1193",
+   "brand": "bmw",
+   "ru": "Коррекция после катализатора (ряд 2)",
+   "en": "Post-Catalyst Fuel Trim System Bank 2",
+   "fam": "",
+   "node": "post catalyst fuel trim system"
+  },
+  {
+   "code": "P1270",
+   "brand": "bmw",
+   "ru": "Самотест блока: контроль момента",
+   "en": "Control Module Self-Test Torque Monitoring",
+   "fam": "",
+   "node": "control module self test torque monitoring"
+  },
+  {
+   "code": "P1603",
+   "brand": "bmw",
+   "ru": "Самотест блока: контроль момента",
+   "en": "Control Module Self Test Torque Monitoring",
+   "fam": "",
+   "node": "control module self test torque monitoring"
+  },
+  {
+   "code": "P1271",
+   "brand": "bmw",
+   "ru": "Датчик атмосферного давления: электрическая неисправность",
+   "en": "Ambient Air Pressure Sensor Electrical",
+   "fam": "",
+   "node": "ambient air pressure sensor electrical"
+  }
+ ]
+}

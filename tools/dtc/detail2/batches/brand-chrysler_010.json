@@ -1,0 +1,395 @@
+{
+ "name": "brand-chrysler_010",
+ "series": "brand",
+ "brand": "chrysler",
+ "nodes": [
+  "3x reference",
+  "auto shutdown relay",
+  "crankshaft position",
+  "egr air intrusion in exhaust supply to egr",
+  "egr vacuum system leak",
+  "egr valve pintle position",
+  "exhaust gas recirculation system",
+  "ic module 4x reference",
+  "ic module cam pulse to 4x reference pulse comparison",
+  "ic not toggling after enable",
+  "ignition",
+  "ignition ground",
+  "intake manifold pressure",
+  "misfire detected no communication with brake control",
+  "misfire detected rough road data not available",
+  "no auto shutdown relay",
+  "ru:зажигание",
+  "ru:зажигание цилиндра 2",
+  "ru:зажигание цилиндра 3",
+  "ru:зажигание цилиндра 4",
+  "ru:зажигание цилиндра 5",
+  "ru:зажигание цилиндра 6",
+  "ru:зажигание цилиндра 7",
+  "ru:зажигание цилиндра 8",
+  "ru:цепь управления зажиганием",
+  "wheel speed g"
+ ],
+ "codes": [
+  {
+   "code": "P1351",
+   "brand": "chrysler",
+   "ru": "Цепь управления зажиганием: высокое напряжение",
+   "en": "IC Circuit High Voltage",
+   "fam": "",
+   "node": "ru:цепь управления зажиганием"
+  },
+  {
+   "code": "P1361",
+   "brand": "chrysler",
+   "ru": "Цепь управления зажиганием: низкое напряжение",
+   "en": "IC Circuit Low Voltage",
+   "fam": "",
+   "node": "ru:цепь управления зажиганием"
+  },
+  {
+   "code": "P1352",
+   "brand": "chrysler",
+   "ru": "Зажигание цилиндра 2: высокий импульс при замыкании на массу",
+   "en": "IC Output High Pulse Detected When Grounded Cyl 2",
+   "fam": "",
+   "node": "ru:зажигание цилиндра 2"
+  },
+  {
+   "code": "P1353",
+   "brand": "chrysler",
+   "ru": "Зажигание цилиндра 3: высокий импульс при замыкании на массу",
+   "en": "IC Output High Pulse Detected When Grounded Cyl 3",
+   "fam": "",
+   "node": "ru:зажигание цилиндра 3"
+  },
+  {
+   "code": "P1354",
+   "brand": "chrysler",
+   "ru": "Зажигание цилиндра 4: высокий импульс при замыкании на массу",
+   "en": "IC Output High Pulse Detected When Grounded Cyl 4",
+   "fam": "",
+   "node": "ru:зажигание цилиндра 4"
+  },
+  {
+   "code": "P1355",
+   "brand": "chrysler",
+   "ru": "Зажигание цилиндра 5: высокий импульс при замыкании на массу",
+   "en": "IC Output High Pulse Detected When Grounded Cyl 5",
+   "fam": "",
+   "node": "ru:зажигание цилиндра 5"
+  },
+  {
+   "code": "P1356",
+   "brand": "chrysler",
+   "ru": "Зажигание цилиндра 6: высокий импульс при замыкании на массу",
+   "en": "IC Output High Pulse Detected When Grounded Cyl 6",
+   "fam": "",
+   "node": "ru:зажигание цилиндра 6"
+  },
+  {
+   "code": "P1357",
+   "brand": "chrysler",
+   "ru": "Зажигание цилиндра 7: высокий импульс при замыкании на массу",
+   "en": "IC Output High Pulse Detected When Grounded Cyl 7",
+   "fam": "",
+   "node": "ru:зажигание цилиндра 7"
+  },
+  {
+   "code": "P1358",
+   "brand": "chrysler",
+   "ru": "Зажигание цилиндра 8: высокий импульс при замыкании на массу",
+   "en": "IC Output High Pulse Detected When Grounded Cyl 8",
+   "fam": "",
+   "node": "ru:зажигание цилиндра 8"
+  },
+  {
+   "code": "P1359",
+   "brand": "chrysler",
+   "ru": "Цепь управления зажиганием, группа A",
+   "en": "Ignition Control Circuit Group A",
+   "fam": "",
+   "node": "ignition"
+  },
+  {
+   "code": "P1360",
+   "brand": "chrysler",
+   "ru": "Цепь управления зажиганием, группа B",
+   "en": "Ignition Control Circuit Group B",
+   "fam": "",
+   "node": "ignition"
+  },
+  {
+   "code": "P1362",
+   "brand": "chrysler",
+   "ru": "Зажигание цилиндра 2: нет переключений после включения",
+   "en": "IC Cylinder 2 Not Toggling After Enable",
+   "fam": "",
+   "node": "ic not toggling after enable"
+  },
+  {
+   "code": "P1363",
+   "brand": "chrysler",
+   "ru": "Зажигание цилиндра 3: нет переключений после включения",
+   "en": "IC Cylinder 3 Not Toggling After Enable",
+   "fam": "",
+   "node": "ic not toggling after enable"
+  },
+  {
+   "code": "P1364",
+   "brand": "chrysler",
+   "ru": "Зажигание цилиндра 4: нет переключений после включения",
+   "en": "IC Cylinder 4 Not Toggling After Enable",
+   "fam": "",
+   "node": "ic not toggling after enable"
+  },
+  {
+   "code": "P1365",
+   "brand": "chrysler",
+   "ru": "Зажигание цилиндра 5: нет переключений после включения",
+   "en": "IC Cylinder 5 Not Toggling After Enable",
+   "fam": "",
+   "node": "ic not toggling after enable"
+  },
+  {
+   "code": "P1366",
+   "brand": "chrysler",
+   "ru": "Зажигание цилиндра 6: нет переключений после включения",
+   "en": "IC Cylinder 6 Not Toggling After Enable",
+   "fam": "",
+   "node": "ic not toggling after enable"
+  },
+  {
+   "code": "P1367",
+   "brand": "chrysler",
+   "ru": "Зажигание цилиндра 7: нет переключений после включения",
+   "en": "IC Cylinder 7 Not Toggling After Enable",
+   "fam": "",
+   "node": "ic not toggling after enable"
+  },
+  {
+   "code": "P1368",
+   "brand": "chrysler",
+   "ru": "Зажигание цилиндра 8: нет переключений после включения",
+   "en": "IC Cylinder 8 Not Toggling After Enable",
+   "fam": "",
+   "node": "ic not toggling after enable"
+  },
+  {
+   "code": "P1370",
+   "brand": "chrysler",
+   "ru": "Модуль зажигания, опорный сигнал 4X: слишком много импульсов",
+   "en": "IC Module 4X Reference Circuit Too Many Pulses",
+   "fam": "",
+   "node": "ic module 4x reference"
+  },
+  {
+   "code": "P1371",
+   "brand": "chrysler",
+   "ru": "Зажигание: цепь сигнала низкого разрешения",
+   "en": "DI Low Resolution Circuit",
+   "fam": "",
+   "node": "ru:зажигание"
+  },
+  {
+   "code": "P1372",
+   "brand": "chrysler",
+   "ru": "Датчик коленвала: работа цепи",
+   "en": "Crankshaft Position Sensor Circuit Performance",
+   "fam": "",
+   "node": "crankshaft position"
+  },
+  {
+   "code": "P1374",
+   "brand": "chrysler",
+   "ru": "Опорный сигнал 3X: цепь",
+   "en": "3X Reference Circuit",
+   "fam": "",
+   "node": "3x reference"
+  },
+  {
+   "code": "P1376",
+   "brand": "chrysler",
+   "ru": "Масса зажигания: цепь",
+   "en": "Ignition Ground Circuit",
+   "fam": "",
+   "node": "ignition ground"
+  },
+  {
+   "code": "P1377",
+   "brand": "chrysler",
+   "ru": "Модуль зажигания: сравнение импульсов распредвала и опорного 4X",
+   "en": "IC Module CAM Pulse To 4X Reference Pulse Comparison",
+   "fam": "",
+   "node": "ic module cam pulse to 4x reference pulse comparison"
+  },
+  {
+   "code": "P1380",
+   "brand": "chrysler",
+   "ru": "Пропуски: нет данных о плохой дороге",
+   "en": "Misfire Detected Rough Road Data Not Available",
+   "fam": "",
+   "node": "misfire detected rough road data not available"
+  },
+  {
+   "code": "P1381",
+   "brand": "chrysler",
+   "ru": "Пропуски: нет связи с блоком тормозов",
+   "en": "Misfire Detected No Communication with Brake Control Module",
+   "fam": "",
+   "node": "misfire detected no communication with brake control"
+  },
+  {
+   "code": "P1388",
+   "brand": "chrysler",
+   "ru": "Реле автоотключения (ASD): обрыв или замыкание цепи управления",
+   "en": "Auto Shutdown (ASD) Relay Control Circuit Open Or Shorted",
+   "fam": "",
+   "node": "auto shutdown relay"
+  },
+  {
+   "code": "P1389",
+   "brand": "chrysler",
+   "ru": "Нет выходного напряжения реле автоотключения (ASD) на блоке",
+   "en": "No Auto Shutdown (ASD) Relay Output Voltage At PCM",
+   "fam": "",
+   "node": "no auto shutdown relay"
+  },
+  {
+   "code": "P1390",
+   "brand": "chrysler",
+   "ru": "Датчик скорости колеса 1 / датчик ускорения: цепь",
+   "en": "Wheel Speed Sensor 1, G-Sensor Circuit",
+   "fam": "",
+   "node": "wheel speed g"
+  },
+  {
+   "code": "P1391",
+   "brand": "chrysler",
+   "ru": "Датчик скорости колеса 1 / датчик ускорения: работа",
+   "en": "Wheel Speed Sensor 1, G-Sensor Circuit Performance",
+   "fam": "",
+   "node": "wheel speed g"
+  },
+  {
+   "code": "P1392",
+   "brand": "chrysler",
+   "ru": "Датчик скорости колеса 1 / датчик ускорения: низкое напряжение",
+   "en": "Wheel Speed Sensor 1, G-Sensor Circuit Low Voltage",
+   "fam": "",
+   "node": "wheel speed g"
+  },
+  {
+   "code": "P1393",
+   "brand": "chrysler",
+   "ru": "Датчик скорости колеса 1 / датчик ускорения: высокое напряжение",
+   "en": "Wheel Speed Sensor 1, G-Sensor Circuit High Voltage",
+   "fam": "",
+   "node": "wheel speed g"
+  },
+  {
+   "code": "P1394",
+   "brand": "chrysler",
+   "ru": "Датчик скорости колеса 1 / датчик ускорения: прерывистый сигнал",
+   "en": "Wheel Speed Sensor 1, G-Sensor Circuit Intermittent",
+   "fam": "",
+   "node": "wheel speed g"
+  },
+  {
+   "code": "P1395",
+   "brand": "chrysler",
+   "ru": "Датчик скорости колеса 2 / датчик ускорения: цепь",
+   "en": "Wheel Speed Sensor 2, G-Sensor Circuit",
+   "fam": "",
+   "node": "wheel speed g"
+  },
+  {
+   "code": "P1396",
+   "brand": "chrysler",
+   "ru": "Датчик скорости колеса 2 / датчик ускорения: работа",
+   "en": "Wheel Speed Sensor 2, G-Sensor Circuit Performance",
+   "fam": "",
+   "node": "wheel speed g"
+  },
+  {
+   "code": "P1397",
+   "brand": "chrysler",
+   "ru": "Датчик скорости колеса 2 / датчик ускорения: низкое напряжение",
+   "en": "Wheel Speed Sensor 2, G-Sensor Circuit Low Voltage",
+   "fam": "",
+   "node": "wheel speed g"
+  },
+  {
+   "code": "P1398",
+   "brand": "chrysler",
+   "ru": "Датчик скорости колеса 2 / датчик ускорения: высокое напряжение",
+   "en": "Wheel Speed Sensor 2, G-Sensor Circuit High Voltage",
+   "fam": "",
+   "node": "wheel speed g"
+  },
+  {
+   "code": "P1399",
+   "brand": "chrysler",
+   "ru": "Датчик скорости колеса 2 / датчик ускорения: прерывистый сигнал",
+   "en": "Wheel Speed Sensor 2, G-Sensor Circuit Intermittent",
+   "fam": "",
+   "node": "wheel speed g"
+  },
+  {
+   "code": "P1403",
+   "brand": "chrysler",
+   "ru": "Клапан ЕГР 1",
+   "en": "Exhaust Gas Recirculation System Valve 1",
+   "fam": "",
+   "node": "exhaust gas recirculation system"
+  },
+  {
+   "code": "P1404",
+   "brand": "chrysler",
+   "ru": "Клапан ЕГР 2",
+   "en": "Exhaust Gas Recirculation System Valve 2",
+   "fam": "",
+   "node": "exhaust gas recirculation system"
+  },
+  {
+   "code": "P1405",
+   "brand": "chrysler",
+   "ru": "Клапан ЕГР 3",
+   "en": "Exhaust Gas Recirculation System Valve 3",
+   "fam": "",
+   "node": "exhaust gas recirculation system"
+  },
+  {
+   "code": "P1406",
+   "brand": "chrysler",
+   "ru": "Датчик положения штока клапана ЕГР: цепь",
+   "en": "EGR Valve Pintle Position Circuit",
+   "fam": "",
+   "node": "egr valve pintle position"
+  },
+  {
+   "code": "P1407",
+   "brand": "chrysler",
+   "ru": "ЕГР: подсос воздуха в выхлопную магистраль к клапану",
+   "en": "EGR Air Intrusion In Exhaust Supply To EGR Valve",
+   "fam": "",
+   "node": "egr air intrusion in exhaust supply to egr"
+  },
+  {
+   "code": "P1408",
+   "brand": "chrysler",
+   "ru": "Датчик давления во впускном коллекторе: цепь",
+   "en": "Intake Manifold Pressure Sensor Circuit",
+   "fam": "",
+   "node": "intake manifold pressure"
+  },
+  {
+   "code": "P1409",
+   "brand": "chrysler",
+   "ru": "ЕГР: утечка в вакуумной системе",
+   "en": "EGR Vacuum System Leak",
+   "fam": "",
+   "node": "egr vacuum system leak"
+  }
+ ]
+}

@@ -1,0 +1,318 @@
+{
+ "name": "sae_040",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "charge air cooler cooling fan",
+  "charge air cooler efficiency below threshold",
+  "cold start fuel injection quantity a higher than expected",
+  "cold start fuel injection quantity a lower than expected",
+  "coolant thermostat",
+  "fam:injector_balance",
+  "fam:turbo_under",
+  "fuel injection quantity a higher than expected",
+  "fuel injection quantity a lower than expected",
+  "fuel pump module a",
+  "fuel pump module b",
+  "turbocharger supercharger boost sensor a",
+  "turbocharger supercharger boost sensor b"
+ ],
+ "codes": [
+  {
+   "code": "P025A",
+   "brand": "",
+   "ru": "Модуль топливного насоса A: обрыв цепи управления",
+   "en": "Fuel Pump Module A Control Circuit/Open",
+   "fam": "",
+   "node": "fuel pump module a"
+  },
+  {
+   "code": "P025B",
+   "brand": "",
+   "ru": "Модуль топливного насоса A: цепь управления вне диапазона",
+   "en": "Fuel Pump Module A Control Circuit Range/Performance",
+   "fam": "",
+   "node": "fuel pump module a"
+  },
+  {
+   "code": "P025C",
+   "brand": "",
+   "ru": "Модуль топливного насоса A: низкий уровень в цепи управления",
+   "en": "Fuel Pump Module A Control Circuit Low",
+   "fam": "",
+   "node": "fuel pump module a"
+  },
+  {
+   "code": "P025D",
+   "brand": "",
+   "ru": "Модуль топливного насоса A: высокий уровень в цепи управления",
+   "en": "Fuel Pump Module A Control Circuit High",
+   "fam": "",
+   "node": "fuel pump module a"
+  },
+  {
+   "code": "P025E",
+   "brand": "",
+   "ru": "Датчик давления наддува A: прерывистый / нестабильный сигнал",
+   "en": "Turbocharger/Supercharger Boost Sensor A Intermittent/Erratic",
+   "fam": "",
+   "node": "turbocharger supercharger boost sensor a"
+  },
+  {
+   "code": "P025F",
+   "brand": "",
+   "ru": "Датчик давления наддува B: прерывистый / нестабильный сигнал",
+   "en": "Turbocharger/Supercharger Boost Sensor B Intermittent/Erratic",
+   "fam": "",
+   "node": "turbocharger supercharger boost sensor b"
+  },
+  {
+   "code": "P0263",
+   "brand": "",
+   "ru": "Цилиндр 1: вклад в работу двигателя не соответствует",
+   "en": "",
+   "fam": "injector_balance",
+   "node": "fam:injector_balance"
+  },
+  {
+   "code": "P0266",
+   "brand": "",
+   "ru": "Цилиндр 2: вклад в работу двигателя не соответствует",
+   "en": "",
+   "fam": "injector_balance",
+   "node": "fam:injector_balance"
+  },
+  {
+   "code": "P0269",
+   "brand": "",
+   "ru": "Цилиндр 3: вклад в работу двигателя не соответствует",
+   "en": "",
+   "fam": "injector_balance",
+   "node": "fam:injector_balance"
+  },
+  {
+   "code": "P0272",
+   "brand": "",
+   "ru": "Цилиндр 4: вклад в работу двигателя не соответствует",
+   "en": "",
+   "fam": "injector_balance",
+   "node": "fam:injector_balance"
+  },
+  {
+   "code": "P0275",
+   "brand": "",
+   "ru": "Цилиндр 5: вклад в работу двигателя не соответствует",
+   "en": "",
+   "fam": "injector_balance",
+   "node": "fam:injector_balance"
+  },
+  {
+   "code": "P0278",
+   "brand": "",
+   "ru": "Цилиндр 6: вклад в работу двигателя не соответствует",
+   "en": "",
+   "fam": "injector_balance",
+   "node": "fam:injector_balance"
+  },
+  {
+   "code": "P0281",
+   "brand": "",
+   "ru": "Цилиндр 7: вклад в работу двигателя не соответствует",
+   "en": "",
+   "fam": "injector_balance",
+   "node": "fam:injector_balance"
+  },
+  {
+   "code": "P0284",
+   "brand": "",
+   "ru": "Цилиндр 8: вклад в работу двигателя не соответствует",
+   "en": "",
+   "fam": "injector_balance",
+   "node": "fam:injector_balance"
+  },
+  {
+   "code": "P0287",
+   "brand": "",
+   "ru": "Цилиндр 9: вклад в работу двигателя не соответствует",
+   "en": "",
+   "fam": "injector_balance",
+   "node": "fam:injector_balance"
+  },
+  {
+   "code": "P0290",
+   "brand": "",
+   "ru": "Цилиндр 10: вклад в работу двигателя не соответствует",
+   "en": "",
+   "fam": "injector_balance",
+   "node": "fam:injector_balance"
+  },
+  {
+   "code": "P0293",
+   "brand": "",
+   "ru": "Цилиндр 11: вклад в работу двигателя не соответствует",
+   "en": "",
+   "fam": "injector_balance",
+   "node": "fam:injector_balance"
+  },
+  {
+   "code": "P0296",
+   "brand": "",
+   "ru": "Цилиндр 12: вклад в работу двигателя не соответствует",
+   "en": "",
+   "fam": "injector_balance",
+   "node": "fam:injector_balance"
+  },
+  {
+   "code": "P026A",
+   "brand": "",
+   "ru": "Эффективность интеркулера ниже порога",
+   "en": "Charge Air Cooler Efficiency Below Threshold",
+   "fam": "",
+   "node": "charge air cooler efficiency below threshold"
+  },
+  {
+   "code": "P026C",
+   "brand": "",
+   "ru": "Количество впрыскиваемого топлива A: ниже ожидаемого",
+   "en": "Fuel Injection Quantity A Lower Than Expected",
+   "fam": "",
+   "node": "fuel injection quantity a lower than expected"
+  },
+  {
+   "code": "P026D",
+   "brand": "",
+   "ru": "Количество впрыскиваемого топлива A: выше ожидаемого",
+   "en": "Fuel Injection Quantity A Higher Than Expected",
+   "fam": "",
+   "node": "fuel injection quantity a higher than expected"
+  },
+  {
+   "code": "P026F",
+   "brand": "",
+   "ru": "Термостат: работа нарушена",
+   "en": "Coolant Thermostat Performance",
+   "fam": "",
+   "node": "coolant thermostat"
+  },
+  {
+   "code": "P027A",
+   "brand": "",
+   "ru": "Модуль топливного насоса B: обрыв цепи управления",
+   "en": "Fuel Pump Module B Control Circuit/Open",
+   "fam": "",
+   "node": "fuel pump module b"
+  },
+  {
+   "code": "P027B",
+   "brand": "",
+   "ru": "Модуль топливного насоса B: цепь управления вне диапазона",
+   "en": "Fuel Pump Module B Control Circuit Range/Performance",
+   "fam": "",
+   "node": "fuel pump module b"
+  },
+  {
+   "code": "P027C",
+   "brand": "",
+   "ru": "Модуль топливного насоса B: низкий уровень в цепи управления",
+   "en": "Fuel Pump Module B Control Circuit Low",
+   "fam": "",
+   "node": "fuel pump module b"
+  },
+  {
+   "code": "P027D",
+   "brand": "",
+   "ru": "Модуль топливного насоса B: высокий уровень в цепи управления",
+   "en": "Fuel Pump Module B Control Circuit High",
+   "fam": "",
+   "node": "fuel pump module b"
+  },
+  {
+   "code": "P027E",
+   "brand": "",
+   "ru": "Количество топлива при холодном пуске A: ниже ожидаемого",
+   "en": "Cold Start Fuel Injection Quantity A Lower Than Expected",
+   "fam": "",
+   "node": "cold start fuel injection quantity a lower than expected"
+  },
+  {
+   "code": "P027F",
+   "brand": "",
+   "ru": "Количество топлива при холодном пуске A: выше ожидаемого",
+   "en": "Cold Start Fuel Injection Quantity A Higher Than Expected",
+   "fam": "",
+   "node": "cold start fuel injection quantity a higher than expected"
+  },
+  {
+   "code": "P028A",
+   "brand": "",
+   "ru": "Вентилятор интеркулера: обрыв цепи управления",
+   "en": "Charge Air Cooler Cooling Fan Control Circuit/Open",
+   "fam": "",
+   "node": "charge air cooler cooling fan"
+  },
+  {
+   "code": "P028B",
+   "brand": "",
+   "ru": "Вентилятор интеркулера: работа нарушена / не включается",
+   "en": "Charge Air Cooler Cooling Fan Performance/Stuck Off",
+   "fam": "",
+   "node": "charge air cooler cooling fan"
+  },
+  {
+   "code": "P028C",
+   "brand": "",
+   "ru": "Вентилятор интеркулера: постоянно включён",
+   "en": "Charge Air Cooler Cooling Fan Stuck On",
+   "fam": "",
+   "node": "charge air cooler cooling fan"
+  },
+  {
+   "code": "P028D",
+   "brand": "",
+   "ru": "Вентилятор интеркулера: низкий уровень в цепи управления",
+   "en": "Charge Air Cooler Cooling Fan Control Circuit Low",
+   "fam": "",
+   "node": "charge air cooler cooling fan"
+  },
+  {
+   "code": "P028E",
+   "brand": "",
+   "ru": "Вентилятор интеркулера: высокий уровень в цепи управления",
+   "en": "Charge Air Cooler Cooling Fan Control Circuit High",
+   "fam": "",
+   "node": "charge air cooler cooling fan"
+  },
+  {
+   "code": "P028F",
+   "brand": "",
+   "ru": "Вентилятор интеркулера: нарушена работа драйвера цепи управления",
+   "en": "Charge Air Cooler Cooling Fan Control Circuit Driver Performance",
+   "fam": "",
+   "node": "charge air cooler cooling fan"
+  },
+  {
+   "code": "P0299",
+   "brand": "",
+   "ru": "Недостаточное давление наддува (турбина не дует)",
+   "en": "",
+   "fam": "turbo_under",
+   "node": "fam:turbo_under"
+  },
+  {
+   "code": "P2262",
+   "brand": "",
+   "ru": "Давление наддува не обнаружено (механика турбины)",
+   "en": "",
+   "fam": "turbo_under",
+   "node": "fam:turbo_under"
+  },
+  {
+   "code": "P2263",
+   "brand": "",
+   "ru": "Система наддува: работа не соответствует",
+   "en": "",
+   "fam": "turbo_under",
+   "node": "fam:turbo_under"
+  }
+ ]
+}

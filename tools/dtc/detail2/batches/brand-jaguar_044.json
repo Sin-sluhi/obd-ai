@@ -1,0 +1,407 @@
+{
+ "name": "brand-jaguar_044",
+ "series": "brand",
+ "brand": "jaguar",
+ "nodes": [
+  "can link",
+  "can link ecm abs control",
+  "can link ecm instm",
+  "can link engine control module cruise control",
+  "can link engine control module transmission control",
+  "cranking neutral drive fault",
+  "ecm control relay",
+  "eeprom",
+  "elc system",
+  "elc system closure valve flow",
+  "electronic throttle monitor data available",
+  "evaporative emission control system vacuum test",
+  "exhaust gas recirculation",
+  "exhaust gas recirculation thermister",
+  "exhaust gas recirculation valve postion",
+  "fan relay",
+  "fuel pump primary",
+  "fuel tank pressure relief valve",
+  "gear change neutral drive fault",
+  "idle air",
+  "internal control module cpu to cpu communication failure",
+  "keep alive memory test failure",
+  "knock sensor",
+  "linear o2 sensor control chip",
+  "loss of kam power",
+  "purge valve",
+  "restraint deployment indicator",
+  "ru:выключатель тормоза",
+  "ru:высокая нагрузка в нейтрали / драйве",
+  "ru:лампа неисправности",
+  "speed control",
+  "speed control command switch out",
+  "speed control command switch out of",
+  "speed control unable to hold speed",
+  "throttle offset",
+  "throttle target",
+  "variable valve timing solenoid b",
+  "watchdog"
+ ],
+ "codes": [
+  {
+   "code": "P1396",
+   "brand": "jaguar",
+   "ru": "Клапан фазовращателя B: цепь",
+   "en": "Variable Valve Timing Solenoid B Circuit",
+   "fam": "",
+   "node": "variable valve timing solenoid b"
+  },
+  {
+   "code": "P1397",
+   "brand": "jaguar",
+   "ru": "Клапан фазовращателя B: низкий сигнал",
+   "en": "Variable Valve Timing Solenoid B Circuit Low Input",
+   "fam": "",
+   "node": "variable valve timing solenoid b"
+  },
+  {
+   "code": "P1398",
+   "brand": "jaguar",
+   "ru": "Клапан фазовращателя B: высокий сигнал",
+   "en": "Variable Valve Timing Solenoid B Circuit High Input",
+   "fam": "",
+   "node": "variable valve timing solenoid b"
+  },
+  {
+   "code": "P1400",
+   "brand": "jaguar",
+   "ru": "Клапан ЕГР: регулирование положения",
+   "en": "Exhaust Gas Recirculation Valve Postion Control",
+   "fam": "",
+   "node": "exhaust gas recirculation valve postion"
+  },
+  {
+   "code": "P1401",
+   "brand": "jaguar",
+   "ru": "Клапан ЕГР: цепь положения",
+   "en": "Exhaust Gas Recirculation Valve Postion Circuit",
+   "fam": "",
+   "node": "exhaust gas recirculation valve postion"
+  },
+  {
+   "code": "P1408",
+   "brand": "jaguar",
+   "ru": "Термистор ЕГР",
+   "en": "Exhaust Gas Recirculation Thermister",
+   "fam": "",
+   "node": "exhaust gas recirculation thermister"
+  },
+  {
+   "code": "P1409",
+   "brand": "jaguar",
+   "ru": "Клапан ЕГР: цепь",
+   "en": "Exhaust Gas Recirculation Valve Circuit",
+   "fam": "",
+   "node": "exhaust gas recirculation"
+  },
+  {
+   "code": "P1440",
+   "brand": "jaguar",
+   "ru": "Клапан продувки адсорбера заклинил открытым",
+   "en": "Purge Valve Stuck Open",
+   "fam": "",
+   "node": "purge valve"
+  },
+  {
+   "code": "P1441",
+   "brand": "jaguar",
+   "ru": "Система проверки герметичности (ELC) 1",
+   "en": "ELC System 1",
+   "fam": "",
+   "node": "elc system"
+  },
+  {
+   "code": "P1448",
+   "brand": "jaguar",
+   "ru": "Система проверки герметичности (ELC) 2",
+   "en": "ELC System 2",
+   "fam": "",
+   "node": "elc system"
+  },
+  {
+   "code": "P1447",
+   "brand": "jaguar",
+   "ru": "Система ELC: поток через запорный клапан",
+   "en": "ELC System Closure Valve Flow",
+   "fam": "",
+   "node": "elc system closure valve flow"
+  },
+  {
+   "code": "P1453",
+   "brand": "jaguar",
+   "ru": "Предохранительный клапан давления в баке: неисправность",
+   "en": "Fuel Tank Pressure Relief Valve Malfunction",
+   "fam": "",
+   "node": "fuel tank pressure relief valve"
+  },
+  {
+   "code": "P1454",
+   "brand": "jaguar",
+   "ru": "Система улавливания паров: вакуумный тест",
+   "en": "Evaporative Emission Control System Vacuum Test",
+   "fam": "",
+   "node": "evaporative emission control system vacuum test"
+  },
+  {
+   "code": "P1475",
+   "brand": "jaguar",
+   "ru": "Реле вентилятора, низкая скорость: цепь",
+   "en": "Fan Relay Low Circuit",
+   "fam": "",
+   "node": "fan relay"
+  },
+  {
+   "code": "P1476",
+   "brand": "jaguar",
+   "ru": "Реле вентилятора, высокая скорость: цепь",
+   "en": "Fan Relay High Circuit",
+   "fam": "",
+   "node": "fan relay"
+  },
+  {
+   "code": "P1508",
+   "brand": "jaguar",
+   "ru": "Регулятор холостого хода: обрыв цепи",
+   "en": "Idle Air Control Circuit Open",
+   "fam": "",
+   "node": "idle air"
+  },
+  {
+   "code": "P1509",
+   "brand": "jaguar",
+   "ru": "Регулятор холостого хода: замыкание цепи",
+   "en": "Idle Air Control Circuit Shorted",
+   "fam": "",
+   "node": "idle air"
+  },
+  {
+   "code": "P1514",
+   "brand": "jaguar",
+   "ru": "Высокая нагрузка в нейтрали / драйве: неисправность",
+   "en": "High Load Neutral Drive Fault",
+   "fam": "",
+   "node": "ru:высокая нагрузка в нейтрали / драйве"
+  },
+  {
+   "code": "P1516",
+   "brand": "jaguar",
+   "ru": "Переключение нейтраль / драйв: неисправность",
+   "en": "Gear Change Neutral Drive Fault",
+   "fam": "",
+   "node": "gear change neutral drive fault"
+  },
+  {
+   "code": "P1517",
+   "brand": "jaguar",
+   "ru": "Прокрутка в нейтрали / драйве: неисправность",
+   "en": "Cranking Neutral Drive Fault",
+   "fam": "",
+   "node": "cranking neutral drive fault"
+  },
+  {
+   "code": "P1534",
+   "brand": "jaguar",
+   "ru": "Индикатор срабатывания системы безопасности: цепь",
+   "en": "Restraint Deployment Indicator Circuit",
+   "fam": "",
+   "node": "restraint deployment indicator"
+  },
+  {
+   "code": "P1565",
+   "brand": "jaguar",
+   "ru": "Переключатель круиз-контроля: выше диапазона",
+   "en": "Speed Control Command Switch Out Of Range High",
+   "fam": "",
+   "node": "speed control command switch out of"
+  },
+  {
+   "code": "P1566",
+   "brand": "jaguar",
+   "ru": "Переключатель круиз-контроля: ниже диапазона",
+   "en": "Speed Control Command Switch Out Range Low",
+   "fam": "",
+   "node": "speed control command switch out"
+  },
+  {
+   "code": "P1567",
+   "brand": "jaguar",
+   "ru": "Выход круиз-контроля: цепь",
+   "en": "Speed Control Output Circuit",
+   "fam": "",
+   "node": "speed control"
+  },
+  {
+   "code": "P1568",
+   "brand": "jaguar",
+   "ru": "Круиз-контроль не может удержать скорость",
+   "en": "Speed Control Unable To Hold Speed",
+   "fam": "",
+   "node": "speed control unable to hold speed"
+  },
+  {
+   "code": "P1571",
+   "brand": "jaguar",
+   "ru": "Выключатель тормоза",
+   "en": "Brake Switch",
+   "fam": "",
+   "node": "ru:выключатель тормоза"
+  },
+  {
+   "code": "P1582",
+   "brand": "jaguar",
+   "ru": "Контроль электронного дросселя: данные доступны",
+   "en": "Electronic Throttle Monitor Data Available",
+   "fam": "",
+   "node": "electronic throttle monitor data available"
+  },
+  {
+   "code": "P1600",
+   "brand": "jaguar",
+   "ru": "Потеря питания памяти (KAM): обрыв",
+   "en": "Loss Of Kam Power Circuit Open",
+   "fam": "",
+   "node": "loss of kam power"
+  },
+  {
+   "code": "P1603",
+   "brand": "jaguar",
+   "ru": "Неисправность EEPROM",
+   "en": "EEPROM Malfunction",
+   "fam": "",
+   "node": "eeprom"
+  },
+  {
+   "code": "P1605",
+   "brand": "jaguar",
+   "ru": "Тест постоянной памяти не пройден",
+   "en": "Keep Alive Memory Test Failure",
+   "fam": "",
+   "node": "keep alive memory test failure"
+  },
+  {
+   "code": "P1606",
+   "brand": "jaguar",
+   "ru": "Реле блока двигателя: выходная цепь",
+   "en": "ECM Control Relay Output Circuit",
+   "fam": "",
+   "node": "ecm control relay"
+  },
+  {
+   "code": "P1607",
+   "brand": "jaguar",
+   "ru": "Лампа неисправности: выходная цепь",
+   "en": "MIL Output Circuit",
+   "fam": "",
+   "node": "ru:лампа неисправности"
+  },
+  {
+   "code": "P1608",
+   "brand": "jaguar",
+   "ru": "Неисправность сторожевого таймера",
+   "en": "Watchdog Malfunction",
+   "fam": "",
+   "node": "watchdog"
+  },
+  {
+   "code": "P1609",
+   "brand": "jaguar",
+   "ru": "Блок: ошибка связи между процессорами",
+   "en": "Internal Control Module CPU To CPU Communication Failure",
+   "fam": "",
+   "node": "internal control module cpu to cpu communication failure"
+  },
+  {
+   "code": "P1611",
+   "brand": "jaguar",
+   "ru": "Заданное положение дросселя: неисправность 1",
+   "en": "Throttle Target Malfunction 1",
+   "fam": "",
+   "node": "throttle target"
+  },
+  {
+   "code": "P1612",
+   "brand": "jaguar",
+   "ru": "Смещение дросселя: неисправность",
+   "en": "Throttle Offset Malfunction",
+   "fam": "",
+   "node": "throttle offset"
+  },
+  {
+   "code": "P1637",
+   "brand": "jaguar",
+   "ru": "Связь CAN блок двигателя — блок ABS: неисправность сети",
+   "en": "CAN Link ECM ABS Control Module Circuit Network",
+   "fam": "",
+   "node": "can link ecm abs control"
+  },
+  {
+   "code": "P1638",
+   "brand": "jaguar",
+   "ru": "Связь CAN блок двигателя — приборная панель: неисправность сети",
+   "en": "CAN Link ECM INSTM Circuit Network",
+   "fam": "",
+   "node": "can link ecm instm"
+  },
+  {
+   "code": "P1641",
+   "brand": "jaguar",
+   "ru": "Топливный насос: первичная цепь",
+   "en": "Fuel Pump Primary Circuit",
+   "fam": "",
+   "node": "fuel pump primary"
+  },
+  {
+   "code": "P1642",
+   "brand": "jaguar",
+   "ru": "Связь CAN: цепь",
+   "en": "CAN Link Circuit",
+   "fam": "",
+   "node": "can link"
+  },
+  {
+   "code": "P1643",
+   "brand": "jaguar",
+   "ru": "Связь CAN блок двигателя — блок коробки: неисправность сети",
+   "en": "CAN Link Engine Control Module Transmission Control Module Circuit Network",
+   "fam": "",
+   "node": "can link engine control module transmission control"
+  },
+  {
+   "code": "P1646",
+   "brand": "jaguar",
+   "ru": "Микросхема управления широкополосным лямбда-зондом (ряд 1)",
+   "en": "Linear O2 Sensor Control Chip Bank 1",
+   "fam": "",
+   "node": "linear o2 sensor control chip"
+  },
+  {
+   "code": "P1647",
+   "brand": "jaguar",
+   "ru": "Микросхема управления широкополосным лямбда-зондом (ряд 2)",
+   "en": "Linear O2 Sensor Control Chip Bank 2",
+   "fam": "",
+   "node": "linear o2 sensor control chip"
+  },
+  {
+   "code": "P1648",
+   "brand": "jaguar",
+   "ru": "Микросхема входа датчика детонации",
+   "en": "Knock Sensor Input Chip",
+   "fam": "",
+   "node": "knock sensor"
+  },
+  {
+   "code": "P1696",
+   "brand": "jaguar",
+   "ru": "Связь CAN блок двигателя — блок круиз-контроля: неисправность сети",
+   "en": "CAN Link Engine Control Module Cruise Control Module Circuit Network",
+   "fam": "",
+   "node": "can link engine control module cruise control"
+  }
+ ]
+}

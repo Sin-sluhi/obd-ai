@@ -1,0 +1,367 @@
+{
+ "name": "sae_129",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "fam:body_generic",
+  "fam:scr",
+  "reductant leakage",
+  "reductant pump a",
+  "reductant regeneration supply",
+  "reductant tank heater"
+ ],
+ "codes": [
+  {
+   "code": "P201F",
+   "brand": "",
+   "ru": "Насос мочевины (AdBlue) A: постоянно включён",
+   "en": "Reductant Pump A Stuck On",
+   "fam": "",
+   "node": "reductant pump a"
+  },
+  {
+   "code": "P208A",
+   "brand": "",
+   "ru": "Насос мочевины (AdBlue) A: обрыв цепи управления",
+   "en": "Reductant Pump A Control Circuit/Open",
+   "fam": "",
+   "node": "reductant pump a"
+  },
+  {
+   "code": "P208C",
+   "brand": "",
+   "ru": "Насос мочевины (AdBlue) A: низкий уровень в цепи управления",
+   "en": "Reductant Pump A Control Circuit Low",
+   "fam": "",
+   "node": "reductant pump a"
+  },
+  {
+   "code": "P208D",
+   "brand": "",
+   "ru": "Насос мочевины (AdBlue) A: высокий уровень в цепи управления",
+   "en": "Reductant Pump A Control Circuit High",
+   "fam": "",
+   "node": "reductant pump a"
+  },
+  {
+   "code": "P2029",
+   "brand": "",
+   "ru": "Топливный отопитель отключён",
+   "en": "",
+   "fam": "body_generic",
+   "node": "fam:body_generic"
+  },
+  {
+   "code": "P2030",
+   "brand": "",
+   "ru": "Топливный отопитель: работа не соответствует",
+   "en": "",
+   "fam": "body_generic",
+   "node": "fam:body_generic"
+  },
+  {
+   "code": "P2530",
+   "brand": "",
+   "ru": "Замок зажигания: положение «зажигание», цепь",
+   "en": "",
+   "fam": "body_generic",
+   "node": "fam:body_generic"
+  },
+  {
+   "code": "P2531",
+   "brand": "",
+   "ru": "Замок зажигания: положение «зажигание», низкий уровень",
+   "en": "",
+   "fam": "body_generic",
+   "node": "fam:body_generic"
+  },
+  {
+   "code": "P2532",
+   "brand": "",
+   "ru": "Замок зажигания: положение «зажигание», высокий уровень",
+   "en": "",
+   "fam": "body_generic",
+   "node": "fam:body_generic"
+  },
+  {
+   "code": "P2533",
+   "brand": "",
+   "ru": "Замок зажигания: положение «зажигание/стартер», цепь",
+   "en": "",
+   "fam": "body_generic",
+   "node": "fam:body_generic"
+  },
+  {
+   "code": "P2534",
+   "brand": "",
+   "ru": "Замок зажигания: положение «зажигание/стартер», низкий уровень",
+   "en": "",
+   "fam": "body_generic",
+   "node": "fam:body_generic"
+  },
+  {
+   "code": "P2535",
+   "brand": "",
+   "ru": "Замок зажигания: положение «зажигание/стартер», высокий уровень",
+   "en": "",
+   "fam": "body_generic",
+   "node": "fam:body_generic"
+  },
+  {
+   "code": "P2536",
+   "brand": "",
+   "ru": "Замок зажигания: положение «аксессуары», цепь",
+   "en": "",
+   "fam": "body_generic",
+   "node": "fam:body_generic"
+  },
+  {
+   "code": "P2537",
+   "brand": "",
+   "ru": "Замок зажигания: положение «аксессуары», низкий уровень",
+   "en": "",
+   "fam": "body_generic",
+   "node": "fam:body_generic"
+  },
+  {
+   "code": "P2538",
+   "brand": "",
+   "ru": "Замок зажигания: положение «аксессуары», высокий уровень",
+   "en": "",
+   "fam": "body_generic",
+   "node": "fam:body_generic"
+  },
+  {
+   "code": "P2668",
+   "brand": "",
+   "ru": "Лампа режима топлива: цепь",
+   "en": "",
+   "fam": "body_generic",
+   "node": "fam:body_generic"
+  },
+  {
+   "code": "P202A",
+   "brand": "",
+   "ru": "Подогрев бака мочевины: обрыв цепи управления",
+   "en": "Reductant Tank Heater Control Circuit/Open",
+   "fam": "",
+   "node": "reductant tank heater"
+  },
+  {
+   "code": "P202B",
+   "brand": "",
+   "ru": "Подогрев бака мочевины: низкий уровень в цепи управления",
+   "en": "Reductant Tank Heater Control Circuit Low",
+   "fam": "",
+   "node": "reductant tank heater"
+  },
+  {
+   "code": "P202C",
+   "brand": "",
+   "ru": "Подогрев бака мочевины: высокий уровень в цепи управления",
+   "en": "Reductant Tank Heater Control Circuit High",
+   "fam": "",
+   "node": "reductant tank heater"
+  },
+  {
+   "code": "P209F",
+   "brand": "",
+   "ru": "Подогрев бака мочевины: нарушена работа цепи управления",
+   "en": "Reductant Tank Heater Control Circuit Performance",
+   "fam": "",
+   "node": "reductant tank heater"
+  },
+  {
+   "code": "P202D",
+   "brand": "",
+   "ru": "Утечка мочевины",
+   "en": "Reductant Leakage",
+   "fam": "",
+   "node": "reductant leakage"
+  },
+  {
+   "code": "P202F",
+   "brand": "",
+   "ru": "Подача мочевины/топлива на регенерацию: цепь управления вне диапазона",
+   "en": "Reductant/Regeneration Supply Control Circuit Range/Performance",
+   "fam": "",
+   "node": "reductant regeneration supply"
+  },
+  {
+   "code": "P2037",
+   "brand": "",
+   "ru": "Датчик давления воздуха впрыска реагента (SCR): цепь",
+   "en": "",
+   "fam": "scr",
+   "node": "fam:scr"
+  },
+  {
+   "code": "P2038",
+   "brand": "",
+   "ru": "Датчик давления воздуха впрыска реагента (SCR): показания вне диапазона",
+   "en": "",
+   "fam": "scr",
+   "node": "fam:scr"
+  },
+  {
+   "code": "P2039",
+   "brand": "",
+   "ru": "Датчик давления воздуха впрыска реагента (SCR): низкий сигнал",
+   "en": "",
+   "fam": "scr",
+   "node": "fam:scr"
+  },
+  {
+   "code": "P2040",
+   "brand": "",
+   "ru": "Датчик давления воздуха впрыска реагента (SCR): высокий сигнал",
+   "en": "",
+   "fam": "scr",
+   "node": "fam:scr"
+  },
+  {
+   "code": "P2041",
+   "brand": "",
+   "ru": "Датчик давления воздуха впрыска реагента (SCR): прерывистый сигнал",
+   "en": "",
+   "fam": "scr",
+   "node": "fam:scr"
+  },
+  {
+   "code": "P2042",
+   "brand": "",
+   "ru": "Датчик температуры реагента AdBlue: цепь",
+   "en": "",
+   "fam": "scr",
+   "node": "fam:scr"
+  },
+  {
+   "code": "P2043",
+   "brand": "",
+   "ru": "Датчик температуры реагента AdBlue: показания вне диапазона",
+   "en": "",
+   "fam": "scr",
+   "node": "fam:scr"
+  },
+  {
+   "code": "P2044",
+   "brand": "",
+   "ru": "Датчик температуры реагента AdBlue: низкий сигнал",
+   "en": "",
+   "fam": "scr",
+   "node": "fam:scr"
+  },
+  {
+   "code": "P2045",
+   "brand": "",
+   "ru": "Датчик температуры реагента AdBlue: высокий сигнал",
+   "en": "",
+   "fam": "scr",
+   "node": "fam:scr"
+  },
+  {
+   "code": "P2046",
+   "brand": "",
+   "ru": "Датчик температуры реагента AdBlue: прерывистый сигнал",
+   "en": "",
+   "fam": "scr",
+   "node": "fam:scr"
+  },
+  {
+   "code": "P2047",
+   "brand": "",
+   "ru": "Форсунка реагента AdBlue (банк 1): цепь / обрыв",
+   "en": "",
+   "fam": "scr",
+   "node": "fam:scr"
+  },
+  {
+   "code": "P2048",
+   "brand": "",
+   "ru": "Форсунка реагента AdBlue (банк 1): низкий уровень",
+   "en": "",
+   "fam": "scr",
+   "node": "fam:scr"
+  },
+  {
+   "code": "P2049",
+   "brand": "",
+   "ru": "Форсунка реагента AdBlue (банк 1): высокий уровень",
+   "en": "",
+   "fam": "scr",
+   "node": "fam:scr"
+  },
+  {
+   "code": "P2050",
+   "brand": "",
+   "ru": "Форсунка реагента AdBlue (банк 2): цепь / обрыв",
+   "en": "",
+   "fam": "scr",
+   "node": "fam:scr"
+  },
+  {
+   "code": "P2051",
+   "brand": "",
+   "ru": "Форсунка реагента AdBlue (банк 2): низкий уровень",
+   "en": "",
+   "fam": "scr",
+   "node": "fam:scr"
+  },
+  {
+   "code": "P2052",
+   "brand": "",
+   "ru": "Форсунка реагента AdBlue (банк 2): высокий уровень",
+   "en": "",
+   "fam": "scr",
+   "node": "fam:scr"
+  },
+  {
+   "code": "P2059",
+   "brand": "",
+   "ru": "Насос подачи воздуха реагента: цепь",
+   "en": "",
+   "fam": "scr",
+   "node": "fam:scr"
+  },
+  {
+   "code": "P2060",
+   "brand": "",
+   "ru": "Насос подачи воздуха реагента: низкий уровень",
+   "en": "",
+   "fam": "scr",
+   "node": "fam:scr"
+  },
+  {
+   "code": "P2061",
+   "brand": "",
+   "ru": "Насос подачи воздуха реагента: высокий уровень",
+   "en": "",
+   "fam": "scr",
+   "node": "fam:scr"
+  },
+  {
+   "code": "P2062",
+   "brand": "",
+   "ru": "Управление подачей реагента: цепь / обрыв",
+   "en": "",
+   "fam": "scr",
+   "node": "fam:scr"
+  },
+  {
+   "code": "P2063",
+   "brand": "",
+   "ru": "Управление подачей реагента: низкий уровень",
+   "en": "",
+   "fam": "scr",
+   "node": "fam:scr"
+  },
+  {
+   "code": "P2064",
+   "brand": "",
+   "ru": "Управление подачей реагента: высокий уровень",
+   "en": "",
+   "fam": "scr",
+   "node": "fam:scr"
+  }
+ ]
+}

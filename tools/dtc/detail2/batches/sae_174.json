@@ -1,0 +1,403 @@
+{
+ "name": "sae_174",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "alternative fuel consumption too",
+  "alternative fuel tank empty",
+  "catalyst feedgas",
+  "charge air cooler coolant pump a supply voltage",
+  "coolant pump a control module overtemperature",
+  "coolant pump a supply voltage",
+  "coolant pump b underspeed",
+  "coolant pump c underspeed",
+  "coolant pump d underspeed",
+  "exhaust pressure control valve a driver current temperature too",
+  "exhaust pressure control valve a position exceeded learning limit",
+  "exhaust pressure control valve a supply",
+  "intake air o2",
+  "intake air o2 sensor heater",
+  "nox exceedance scr nox catalyst",
+  "nox exceedence",
+  "nox exceedence deactivation of egr",
+  "nox exceedence empty reagent tank",
+  "nox exceedence incorrect egr flow",
+  "nox exceedence insufficient reagent quality",
+  "nox exceedence interruption of reagent dosing activity",
+  "nox exceedence nox control monitoring system",
+  "nox exceedence root cause unknown",
+  "nox system driver inducement active",
+  "particulate filter feedgas",
+  "starter generator mechanical",
+  "turbocharger supercharger b temperature",
+  "turbocharger supercharger bypass valve a driver current temperature too",
+  "turbocharger supercharger bypass valve a position",
+  "turbocharger supercharger bypass valve a position exceeded learning limit",
+  "turbocharger supercharger bypass valve a supply voltage",
+  "vehicle conditions incorrect for particulate matter sensor regeneration",
+  "wastegate position sensor a exceeded learning limit",
+  "wastegate position sensor b exceeded learning limit"
+ ],
+ "codes": [
+  {
+   "code": "P2B88",
+   "brand": "",
+   "ru": "Кислородный датчик во впуске: цепь (банк 1)",
+   "en": "Intake Air O2 Sensor Circuit Bank 1",
+   "fam": "",
+   "node": "intake air o2"
+  },
+  {
+   "code": "P2B89",
+   "brand": "",
+   "ru": "Кислородный датчик во впуске: низкое напряжение в цепи (банк 1)",
+   "en": "Intake Air O2 Sensor Circuit Low Voltage Bank 1",
+   "fam": "",
+   "node": "intake air o2"
+  },
+  {
+   "code": "P2B8A",
+   "brand": "",
+   "ru": "Кислородный датчик во впуске: высокое напряжение в цепи (банк 1)",
+   "en": "Intake Air O2 Sensor Circuit High Voltage Bank 1",
+   "fam": "",
+   "node": "intake air o2"
+  },
+  {
+   "code": "P2B8B",
+   "brand": "",
+   "ru": "Подогрев кислородного датчика во впуске: обрыв цепи управления (банк 1)",
+   "en": "Intake Air O2 Sensor Heater Control Circuit/Open Bank 1",
+   "fam": "",
+   "node": "intake air o2 sensor heater"
+  },
+  {
+   "code": "P2B8C",
+   "brand": "",
+   "ru": "Подогрев кислородного датчика во впуске: цепь управления вне диапазона (банк 1)",
+   "en": "Intake Air O2 Sensor Heater Control Circuit Range/Performance Bank 1",
+   "fam": "",
+   "node": "intake air o2 sensor heater"
+  },
+  {
+   "code": "P2B8D",
+   "brand": "",
+   "ru": "Подогрев кислородного датчика во впуске: низкий уровень в цепи управления (банк 1)",
+   "en": "Intake Air O2 Sensor Heater Control Circuit Low Bank 1",
+   "fam": "",
+   "node": "intake air o2 sensor heater"
+  },
+  {
+   "code": "P2B8E",
+   "brand": "",
+   "ru": "Подогрев кислородного датчика во впуске: высокий уровень в цепи управления (банк 1)",
+   "en": "Intake Air O2 Sensor Heater Control Circuit High Bank 1",
+   "fam": "",
+   "node": "intake air o2 sensor heater"
+  },
+  {
+   "code": "P2B8F",
+   "brand": "",
+   "ru": "Датчик температуры турбины/нагнетателя B: цепь",
+   "en": "Turbocharger/Supercharger B Temperature Sensor Circuit",
+   "fam": "",
+   "node": "turbocharger supercharger b temperature"
+  },
+  {
+   "code": "P2B90",
+   "brand": "",
+   "ru": "Датчик температуры турбины/нагнетателя B: низкий уровень сигнала в цепи",
+   "en": "Turbocharger/Supercharger B Temperature Sensor Circuit Low",
+   "fam": "",
+   "node": "turbocharger supercharger b temperature"
+  },
+  {
+   "code": "P2B91",
+   "brand": "",
+   "ru": "Датчик температуры турбины/нагнетателя B: высокий уровень сигнала в цепи",
+   "en": "Turbocharger/Supercharger B Temperature Sensor Circuit High",
+   "fam": "",
+   "node": "turbocharger supercharger b temperature"
+  },
+  {
+   "code": "P2B92",
+   "brand": "",
+   "ru": "Датчик температуры турбины/нагнетателя B: сигнал вне диапазона",
+   "en": "Turbocharger/Supercharger B Temperature Sensor Circuit Circuit Range/Performance",
+   "fam": "",
+   "node": "turbocharger supercharger b temperature"
+  },
+  {
+   "code": "P2B93",
+   "brand": "",
+   "ru": "Датчик положения вейстгейта A: превышен предел адаптации",
+   "en": "Wastegate Position Sensor A Exceeded Learning Limit",
+   "fam": "",
+   "node": "wastegate position sensor a exceeded learning limit"
+  },
+  {
+   "code": "P2B94",
+   "brand": "",
+   "ru": "Датчик положения вейстгейта B: превышен предел адаптации",
+   "en": "Wastegate Position Sensor B Exceeded Learning Limit",
+   "fam": "",
+   "node": "wastegate position sensor b exceeded learning limit"
+  },
+  {
+   "code": "P2B97",
+   "brand": "",
+   "ru": "Клапан давления выхлопа A: превышен предел адаптации положения",
+   "en": "Exhaust Pressure Control Valve A Position Exceeded Learning Limit",
+   "fam": "",
+   "node": "exhaust pressure control valve a position exceeded learning limit"
+  },
+  {
+   "code": "P2B98",
+   "brand": "",
+   "ru": "Клапан давления выхлопа A: низкое напряжение питания",
+   "en": "Exhaust Pressure Control Valve A Supply Low",
+   "fam": "",
+   "node": "exhaust pressure control valve a supply"
+  },
+  {
+   "code": "P2B99",
+   "brand": "",
+   "ru": "Клапан регулирования давления выхлопа A: перегрузка драйвера по току / перегрев",
+   "en": "Exhaust Pressure Control Valve A Driver Current/Temperature Too High",
+   "fam": "",
+   "node": "exhaust pressure control valve a driver current temperature too"
+  },
+  {
+   "code": "P2B9B",
+   "brand": "",
+   "ru": "Условия движения не позволяют регенерацию датчика сажи",
+   "en": "Vehicle Conditions Incorrect for Particulate Matter Sensor Regeneration",
+   "fam": "",
+   "node": "vehicle conditions incorrect for particulate matter sensor regeneration"
+  },
+  {
+   "code": "P2B9D",
+   "brand": "",
+   "ru": "Насос охлаждающей жидкости A: цепь питания",
+   "en": "Coolant Pump A Supply Voltage Circuit",
+   "fam": "",
+   "node": "coolant pump a supply voltage"
+  },
+  {
+   "code": "P2B9E",
+   "brand": "",
+   "ru": "Перегрев блока насоса охлаждающей жидкости A",
+   "en": "Coolant Pump A Control Module Overtemperature",
+   "fam": "",
+   "node": "coolant pump a control module overtemperature"
+  },
+  {
+   "code": "P2B9F",
+   "brand": "",
+   "ru": "Насос охлаждающей жидкости B: заниженная скорость вращения",
+   "en": "Coolant Pump B Underspeed",
+   "fam": "",
+   "node": "coolant pump b underspeed"
+  },
+  {
+   "code": "P2BA0",
+   "brand": "",
+   "ru": "Насос охлаждающей жидкости C: заниженная скорость вращения",
+   "en": "Coolant Pump C Underspeed",
+   "fam": "",
+   "node": "coolant pump c underspeed"
+  },
+  {
+   "code": "P2BA1",
+   "brand": "",
+   "ru": "Насос охлаждающей жидкости D: заниженная скорость вращения",
+   "en": "Coolant Pump D Underspeed",
+   "fam": "",
+   "node": "coolant pump d underspeed"
+  },
+  {
+   "code": "P2BA3",
+   "brand": "",
+   "ru": "Стартер-генератор: механическая неисправность",
+   "en": "Starter/Generator Mechanical Performance",
+   "fam": "",
+   "node": "starter generator mechanical"
+  },
+  {
+   "code": "P2BA4",
+   "brand": "",
+   "ru": "Состав газа на входе катализатора не соответствует",
+   "en": "Catalyst Feedgas Performance",
+   "fam": "",
+   "node": "catalyst feedgas"
+  },
+  {
+   "code": "P2BA5",
+   "brand": "",
+   "ru": "Состав газа на входе сажевого фильтра не соответствует",
+   "en": "Particulate Filter Feedgas Performance",
+   "fam": "",
+   "node": "particulate filter feedgas"
+  },
+  {
+   "code": "P2BA6",
+   "brand": "",
+   "ru": "Превышение NOx — катализатор SCR работает плохо",
+   "en": "NOx Exceedance - SCR NOx Catalyst Performance",
+   "fam": "",
+   "node": "nox exceedance scr nox catalyst"
+  },
+  {
+   "code": "P2BA7",
+   "brand": "",
+   "ru": "Превышение NOx — бак мочевины пуст",
+   "en": "NOx Exceedence - Empty Reagent Tank",
+   "fam": "",
+   "node": "nox exceedence empty reagent tank"
+  },
+  {
+   "code": "P2BA8",
+   "brand": "",
+   "ru": "Превышение NOx — прерван впрыск мочевины",
+   "en": "NOx Exceedence - Interruption of Reagent Dosing Activity",
+   "fam": "",
+   "node": "nox exceedence interruption of reagent dosing activity"
+  },
+  {
+   "code": "P2BA9",
+   "brand": "",
+   "ru": "Превышение NOx — плохое качество мочевины",
+   "en": "NOx Exceedence - Insufficient Reagent Quality",
+   "fam": "",
+   "node": "nox exceedence insufficient reagent quality"
+  },
+  {
+   "code": "P2BAA",
+   "brand": "",
+   "ru": "Превышение NOx — малый расход мочевины",
+   "en": "NOx Exceedence - Low Reagent Consumption",
+   "fam": "",
+   "node": "nox exceedence"
+  },
+  {
+   "code": "P2BAB",
+   "brand": "",
+   "ru": "Превышение NOx — неверный расход EGR",
+   "en": "NOx Exceedence - Incorrect EGR Flow",
+   "fam": "",
+   "node": "nox exceedence incorrect egr flow"
+  },
+  {
+   "code": "P2BAC",
+   "brand": "",
+   "ru": "Превышение NOx — EGR отключён",
+   "en": "NOx Exceedence - Deactivation of EGR",
+   "fam": "",
+   "node": "nox exceedence deactivation of egr"
+  },
+  {
+   "code": "P2BAD",
+   "brand": "",
+   "ru": "Превышение NOx — причина неизвестна",
+   "en": "NOx Exceedence - Root Cause Unknown",
+   "fam": "",
+   "node": "nox exceedence root cause unknown"
+  },
+  {
+   "code": "P2BAE",
+   "brand": "",
+   "ru": "Превышение NOx — система контроля NOx",
+   "en": "NOx Exceedence - NOx control monitoring system",
+   "fam": "",
+   "node": "nox exceedence nox control monitoring system"
+  },
+  {
+   "code": "P2BAF",
+   "brand": "",
+   "ru": "Активно принуждение водителя по системе NOx (ограничения)",
+   "en": "NOx System Driver Inducement Active",
+   "fam": "",
+   "node": "nox system driver inducement active"
+  },
+  {
+   "code": "P2BB0",
+   "brand": "",
+   "ru": "ГБО: слишком малый расход газа",
+   "en": "Alternative Fuel Consumption Too Low",
+   "fam": "",
+   "node": "alternative fuel consumption too"
+  },
+  {
+   "code": "P2BB1",
+   "brand": "",
+   "ru": "ГБО: слишком большой расход газа",
+   "en": "Alternative Fuel Consumption Too High",
+   "fam": "",
+   "node": "alternative fuel consumption too"
+  },
+  {
+   "code": "P2BB2",
+   "brand": "",
+   "ru": "Баллон ГБО пуст",
+   "en": "Alternative Fuel Tank Empty",
+   "fam": "",
+   "node": "alternative fuel tank empty"
+  },
+  {
+   "code": "P2BBB",
+   "brand": "",
+   "ru": "Датчик положения перепускного клапана турбины A: цепь",
+   "en": "Turbocharger/Supercharger Bypass Valve A Position Sensor Circuit",
+   "fam": "",
+   "node": "turbocharger supercharger bypass valve a position"
+  },
+  {
+   "code": "P2BBC",
+   "brand": "",
+   "ru": "Датчик положения перепускного клапана турбины A: низкий уровень сигнала в цепи",
+   "en": "Turbocharger/Supercharger Bypass Valve A Position Sensor Circuit Low",
+   "fam": "",
+   "node": "turbocharger supercharger bypass valve a position"
+  },
+  {
+   "code": "P2BBD",
+   "brand": "",
+   "ru": "Датчик положения перепускного клапана турбины A: высокий уровень сигнала в цепи",
+   "en": "Turbocharger/Supercharger Bypass Valve A Position Sensor Circuit High",
+   "fam": "",
+   "node": "turbocharger supercharger bypass valve a position"
+  },
+  {
+   "code": "P2BBE",
+   "brand": "",
+   "ru": "Перепускной клапан турбины A: превышен предел адаптации положения",
+   "en": "Turbocharger/Supercharger Bypass Valve A Position Exceeded Learning Limit",
+   "fam": "",
+   "node": "turbocharger supercharger bypass valve a position exceeded learning limit"
+  },
+  {
+   "code": "P2BBF",
+   "brand": "",
+   "ru": "Перепускной клапан турбины/нагнетателя A: низкое напряжение питания",
+   "en": "Turbocharger/Supercharger Bypass Valve A Supply Voltage Low",
+   "fam": "",
+   "node": "turbocharger supercharger bypass valve a supply voltage"
+  },
+  {
+   "code": "P2BC0",
+   "brand": "",
+   "ru": "Перепускной клапан турбины/нагнетателя A: перегрузка драйвера по току / перегрев",
+   "en": "Turbocharger/Supercharger Bypass Valve A Driver Current/Temperature Too High",
+   "fam": "",
+   "node": "turbocharger supercharger bypass valve a driver current temperature too"
+  },
+  {
+   "code": "P2BC2",
+   "brand": "",
+   "ru": "Насос охлаждения интеркулера A: цепь питания",
+   "en": "Charge Air Cooler Coolant Pump A Supply Voltage Circuit",
+   "fam": "",
+   "node": "charge air cooler coolant pump a supply voltage"
+  }
+ ]
+}

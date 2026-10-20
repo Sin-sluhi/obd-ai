@@ -1,0 +1,283 @@
+{
+ "name": "sae_087",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "gear 7 incorrect ratio",
+  "reverse 2 incorrect ratio",
+  "ru:датчик скорости выходного вала",
+  "shift solenoid g",
+  "shift solenoid g electrical",
+  "shift solenoid h",
+  "shift solenoid h electrical",
+  "shift timing solenoid b",
+  "transmission fluid temperature measurement system multiple sensor correlation",
+  "transmission mode switch c"
+ ],
+ "codes": [
+  {
+   "code": "P075A",
+   "brand": "",
+   "ru": "Соленоид переключения передач G",
+   "en": "Shift Solenoid G",
+   "fam": "",
+   "node": "shift solenoid g"
+  },
+  {
+   "code": "P075B",
+   "brand": "",
+   "ru": "Соленоид переключения передач G: работа нарушена / не включается",
+   "en": "Shift Solenoid G Performance/Stuck Off",
+   "fam": "",
+   "node": "shift solenoid g"
+  },
+  {
+   "code": "P075C",
+   "brand": "",
+   "ru": "Соленоид переключения передач G: постоянно включён",
+   "en": "Shift Solenoid G Stuck On",
+   "fam": "",
+   "node": "shift solenoid g"
+  },
+  {
+   "code": "P075E",
+   "brand": "",
+   "ru": "Соленоид переключения передач G: прерывистый сигнал",
+   "en": "Shift Solenoid G Intermittent",
+   "fam": "",
+   "node": "shift solenoid g"
+  },
+  {
+   "code": "P099A",
+   "brand": "",
+   "ru": "Соленоид переключения передач G: цепь управления вне диапазона",
+   "en": "Shift Solenoid G Control Circuit Range/Performance",
+   "fam": "",
+   "node": "shift solenoid g"
+  },
+  {
+   "code": "P099B",
+   "brand": "",
+   "ru": "Соленоид переключения передач G: низкий уровень в цепи управления",
+   "en": "Shift Solenoid G Control Circuit Low",
+   "fam": "",
+   "node": "shift solenoid g"
+  },
+  {
+   "code": "P099C",
+   "brand": "",
+   "ru": "Соленоид переключения передач G: высокий уровень в цепи управления",
+   "en": "Shift Solenoid G Control Circuit High",
+   "fam": "",
+   "node": "shift solenoid g"
+  },
+  {
+   "code": "P09A0",
+   "brand": "",
+   "ru": "Соленоид переключения передач G: обрыв цепи управления",
+   "en": "Shift Solenoid G Control Circuit/Open",
+   "fam": "",
+   "node": "shift solenoid g"
+  },
+  {
+   "code": "P075D",
+   "brand": "",
+   "ru": "Соленоид переключения G: электрическая неисправность",
+   "en": "Shift Solenoid G Electrical",
+   "fam": "",
+   "node": "shift solenoid g electrical"
+  },
+  {
+   "code": "P076A",
+   "brand": "",
+   "ru": "Соленоид переключения передач H",
+   "en": "Shift Solenoid H",
+   "fam": "",
+   "node": "shift solenoid h"
+  },
+  {
+   "code": "P076B",
+   "brand": "",
+   "ru": "Соленоид переключения передач H: работа нарушена / не включается",
+   "en": "Shift Solenoid H Performance/Stuck Off",
+   "fam": "",
+   "node": "shift solenoid h"
+  },
+  {
+   "code": "P076C",
+   "brand": "",
+   "ru": "Соленоид переключения передач H: постоянно включён",
+   "en": "Shift Solenoid H Stuck On",
+   "fam": "",
+   "node": "shift solenoid h"
+  },
+  {
+   "code": "P076E",
+   "brand": "",
+   "ru": "Соленоид переключения передач H: прерывистый сигнал",
+   "en": "Shift Solenoid H Intermittent",
+   "fam": "",
+   "node": "shift solenoid h"
+  },
+  {
+   "code": "P099D",
+   "brand": "",
+   "ru": "Соленоид переключения передач H: цепь управления вне диапазона",
+   "en": "Shift Solenoid H Control Circuit Range/Performance",
+   "fam": "",
+   "node": "shift solenoid h"
+  },
+  {
+   "code": "P099E",
+   "brand": "",
+   "ru": "Соленоид переключения передач H: низкий уровень в цепи управления",
+   "en": "Shift Solenoid H Control Circuit Low",
+   "fam": "",
+   "node": "shift solenoid h"
+  },
+  {
+   "code": "P099F",
+   "brand": "",
+   "ru": "Соленоид переключения передач H: высокий уровень в цепи управления",
+   "en": "Shift Solenoid H Control Circuit High",
+   "fam": "",
+   "node": "shift solenoid h"
+  },
+  {
+   "code": "P09A1",
+   "brand": "",
+   "ru": "Соленоид переключения передач H: обрыв цепи управления",
+   "en": "Shift Solenoid H Control Circuit/Open",
+   "fam": "",
+   "node": "shift solenoid h"
+  },
+  {
+   "code": "P076D",
+   "brand": "",
+   "ru": "Соленоид переключения H: электрическая неисправность",
+   "en": "Shift Solenoid H Electrical",
+   "fam": "",
+   "node": "shift solenoid h electrical"
+  },
+  {
+   "code": "P076F",
+   "brand": "",
+   "ru": "7-я передача: неверное передаточное отношение",
+   "en": "Gear 7 Incorrect Ratio",
+   "fam": "",
+   "node": "gear 7 incorrect ratio"
+  },
+  {
+   "code": "P077A",
+   "brand": "",
+   "ru": "Датчик скорости выходного вала: потерян сигнал направления",
+   "en": "Output Shaft Speed Sensor Circuit - Loss of Direction Signal",
+   "fam": "",
+   "node": "ru:датчик скорости выходного вала"
+  },
+  {
+   "code": "P077B",
+   "brand": "",
+   "ru": "Датчик скорости выходного вала: ошибка направления",
+   "en": "Output Shaft Speed Sensor Circuit - Direction Error",
+   "fam": "",
+   "node": "ru:датчик скорости выходного вала"
+  },
+  {
+   "code": "P077C",
+   "brand": "",
+   "ru": "Датчик скорости выходного вала: низкий уровень сигнала в цепи",
+   "en": "Output Shaft Speed Sensor Circuit Low",
+   "fam": "",
+   "node": "ru:датчик скорости выходного вала"
+  },
+  {
+   "code": "P077D",
+   "brand": "",
+   "ru": "Датчик скорости выходного вала: высокий уровень сигнала в цепи",
+   "en": "Output Shaft Speed Sensor Circuit High",
+   "fam": "",
+   "node": "ru:датчик скорости выходного вала"
+  },
+  {
+   "code": "P077E",
+   "brand": "",
+   "ru": "Датчики температуры масла КПП: рассогласование",
+   "en": "Transmission Fluid Temperature Measurement System - Multiple Sensor Correlation",
+   "fam": "",
+   "node": "transmission fluid temperature measurement system multiple sensor correlation"
+  },
+  {
+   "code": "P077F",
+   "brand": "",
+   "ru": "2-я задняя передача: неверное передаточное отношение",
+   "en": "Reverse 2 Incorrect Ratio",
+   "fam": "",
+   "node": "reverse 2 incorrect ratio"
+  },
+  {
+   "code": "P078A",
+   "brand": "",
+   "ru": "Соленоид синхронизации переключения B",
+   "en": "Shift Timing Solenoid B",
+   "fam": "",
+   "node": "shift timing solenoid b"
+  },
+  {
+   "code": "P078B",
+   "brand": "",
+   "ru": "Соленоид синхронизации переключения B: вне допустимого диапазона",
+   "en": "Shift Timing Solenoid B Range/Performance",
+   "fam": "",
+   "node": "shift timing solenoid b"
+  },
+  {
+   "code": "P078C",
+   "brand": "",
+   "ru": "Соленоид синхронизации переключения B: низкий уровень",
+   "en": "Shift Timing Solenoid B Low",
+   "fam": "",
+   "node": "shift timing solenoid b"
+  },
+  {
+   "code": "P078D",
+   "brand": "",
+   "ru": "Соленоид синхронизации переключения B: высокий уровень",
+   "en": "Shift Timing Solenoid B High",
+   "fam": "",
+   "node": "shift timing solenoid b"
+  },
+  {
+   "code": "P078E",
+   "brand": "",
+   "ru": "Соленоид синхронизации переключения B: прерывистый сигнал",
+   "en": "Shift Timing Solenoid B Intermittent",
+   "fam": "",
+   "node": "shift timing solenoid b"
+  },
+  {
+   "code": "P078F",
+   "brand": "",
+   "ru": "Переключатель режимов КПП C: цепь",
+   "en": "Transmission Mode Switch C Circuit",
+   "fam": "",
+   "node": "transmission mode switch c"
+  },
+  {
+   "code": "P07CC",
+   "brand": "",
+   "ru": "Переключатель режимов КПП C: низкий уровень сигнала в цепи",
+   "en": "Transmission Mode Switch C Circuit Low",
+   "fam": "",
+   "node": "transmission mode switch c"
+  },
+  {
+   "code": "P07CD",
+   "brand": "",
+   "ru": "Переключатель режимов КПП C: высокий уровень сигнала в цепи",
+   "en": "Transmission Mode Switch C Circuit High",
+   "fam": "",
+   "node": "transmission mode switch c"
+  }
+ ]
+}

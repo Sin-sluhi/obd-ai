@@ -1,0 +1,306 @@
+{
+ "name": "sae_037",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "injection timing"
+ ],
+ "codes": [
+  {
+   "code": "P01CB",
+   "brand": "",
+   "ru": "Цилиндр 1: впрыск слишком поздно",
+   "en": "Cylinder 1 Injection Timing Performance - Over Retarded",
+   "fam": "",
+   "node": "injection timing"
+  },
+  {
+   "code": "P01CC",
+   "brand": "",
+   "ru": "Цилиндр 1: впрыск слишком рано",
+   "en": "Cylinder 1 Injection Timing Performance - Over Advanced",
+   "fam": "",
+   "node": "injection timing"
+  },
+  {
+   "code": "P01CD",
+   "brand": "",
+   "ru": "Цилиндр 2: впрыск слишком поздно",
+   "en": "Cylinder 2 Injection Timing Performance - Over Retarded",
+   "fam": "",
+   "node": "injection timing"
+  },
+  {
+   "code": "P01CE",
+   "brand": "",
+   "ru": "Цилиндр 2: впрыск слишком рано",
+   "en": "Cylinder 2 Injection Timing Performance - Over Advanced",
+   "fam": "",
+   "node": "injection timing"
+  },
+  {
+   "code": "P01CF",
+   "brand": "",
+   "ru": "Цилиндр 3: впрыск слишком поздно",
+   "en": "Cylinder 3 Injection Timing Performance - Over Retarded",
+   "fam": "",
+   "node": "injection timing"
+  },
+  {
+   "code": "P01D0",
+   "brand": "",
+   "ru": "Цилиндр 3: впрыск слишком рано",
+   "en": "Cylinder 3 Injection Timing Performance - Over Advanced",
+   "fam": "",
+   "node": "injection timing"
+  },
+  {
+   "code": "P01D1",
+   "brand": "",
+   "ru": "Цилиндр 4: впрыск слишком поздно",
+   "en": "Cylinder 4 Injection Timing Performance - Over Retarded",
+   "fam": "",
+   "node": "injection timing"
+  },
+  {
+   "code": "P01D2",
+   "brand": "",
+   "ru": "Цилиндр 4: впрыск слишком рано",
+   "en": "Cylinder 4 Injection Timing Performance - Over Advanced",
+   "fam": "",
+   "node": "injection timing"
+  },
+  {
+   "code": "P01D3",
+   "brand": "",
+   "ru": "Цилиндр 5: впрыск слишком поздно",
+   "en": "Cylinder 5 Injection Timing Performance - Over Retarded",
+   "fam": "",
+   "node": "injection timing"
+  },
+  {
+   "code": "P01D4",
+   "brand": "",
+   "ru": "Цилиндр 5: впрыск слишком рано",
+   "en": "Cylinder 5 Injection Timing Performance - Over Advanced",
+   "fam": "",
+   "node": "injection timing"
+  },
+  {
+   "code": "P01D5",
+   "brand": "",
+   "ru": "Цилиндр 6: впрыск слишком поздно",
+   "en": "Cylinder 6 Injection Timing Performance - Over Retarded",
+   "fam": "",
+   "node": "injection timing"
+  },
+  {
+   "code": "P01D6",
+   "brand": "",
+   "ru": "Цилиндр 6: впрыск слишком рано",
+   "en": "Cylinder 6 Injection Timing Performance - Over Advanced",
+   "fam": "",
+   "node": "injection timing"
+  },
+  {
+   "code": "P01D7",
+   "brand": "",
+   "ru": "Цилиндр 7: впрыск слишком поздно",
+   "en": "Cylinder 7 Injection Timing Performance - Over Retarded",
+   "fam": "",
+   "node": "injection timing"
+  },
+  {
+   "code": "P01D8",
+   "brand": "",
+   "ru": "Цилиндр 7: впрыск слишком рано",
+   "en": "Cylinder 7 Injection Timing Performance - Over Advanced",
+   "fam": "",
+   "node": "injection timing"
+  },
+  {
+   "code": "P01D9",
+   "brand": "",
+   "ru": "Цилиндр 8: впрыск слишком поздно",
+   "en": "Cylinder 8 Injection Timing Performance - Over Retarded",
+   "fam": "",
+   "node": "injection timing"
+  },
+  {
+   "code": "P01DA",
+   "brand": "",
+   "ru": "Цилиндр 8: впрыск слишком рано",
+   "en": "Cylinder 8 Injection Timing Performance - Over Advanced",
+   "fam": "",
+   "node": "injection timing"
+  },
+  {
+   "code": "P01DB",
+   "brand": "",
+   "ru": "Цилиндр 9: впрыск слишком поздно",
+   "en": "Cylinder 9 Injection Timing Performance - Over Retarded",
+   "fam": "",
+   "node": "injection timing"
+  },
+  {
+   "code": "P01DC",
+   "brand": "",
+   "ru": "Цилиндр 9: впрыск слишком рано",
+   "en": "Cylinder 9 Injection Timing Performance - Over Advanced",
+   "fam": "",
+   "node": "injection timing"
+  },
+  {
+   "code": "P01DD",
+   "brand": "",
+   "ru": "Цилиндр 10: впрыск слишком поздно",
+   "en": "Cylinder 10 Injection Timing Performance - Over Retarded",
+   "fam": "",
+   "node": "injection timing"
+  },
+  {
+   "code": "P01DE",
+   "brand": "",
+   "ru": "Цилиндр 10: впрыск слишком рано",
+   "en": "Cylinder 10 Injection Timing Performance - Over Advanced",
+   "fam": "",
+   "node": "injection timing"
+  },
+  {
+   "code": "P01DF",
+   "brand": "",
+   "ru": "Цилиндр 11: впрыск слишком поздно",
+   "en": "Cylinder 11 Injection Timing Performance - Over Retarded",
+   "fam": "",
+   "node": "injection timing"
+  },
+  {
+   "code": "P01E0",
+   "brand": "",
+   "ru": "Цилиндр 11: впрыск слишком рано",
+   "en": "Cylinder 11 Injection Timing Performance - Over Advanced",
+   "fam": "",
+   "node": "injection timing"
+  },
+  {
+   "code": "P01E1",
+   "brand": "",
+   "ru": "Цилиндр 12: впрыск слишком поздно",
+   "en": "Cylinder 12 Injection Timing Performance - Over Retarded",
+   "fam": "",
+   "node": "injection timing"
+  },
+  {
+   "code": "P01E2",
+   "brand": "",
+   "ru": "Цилиндр 12: впрыск слишком рано",
+   "en": "Cylinder 12 Injection Timing Performance - Over Advanced",
+   "fam": "",
+   "node": "injection timing"
+  },
+  {
+   "code": "P020A",
+   "brand": "",
+   "ru": "Цилиндр 1: момент впрыска",
+   "en": "Cylinder 1 Injection Timing",
+   "fam": "",
+   "node": "injection timing"
+  },
+  {
+   "code": "P020B",
+   "brand": "",
+   "ru": "Цилиндр 2: момент впрыска",
+   "en": "Cylinder 2 Injection Timing",
+   "fam": "",
+   "node": "injection timing"
+  },
+  {
+   "code": "P020C",
+   "brand": "",
+   "ru": "Цилиндр 3: момент впрыска",
+   "en": "Cylinder 3 Injection Timing",
+   "fam": "",
+   "node": "injection timing"
+  },
+  {
+   "code": "P020D",
+   "brand": "",
+   "ru": "Цилиндр 4: момент впрыска",
+   "en": "Cylinder 4 Injection Timing",
+   "fam": "",
+   "node": "injection timing"
+  },
+  {
+   "code": "P020E",
+   "brand": "",
+   "ru": "Цилиндр 5: момент впрыска",
+   "en": "Cylinder 5 Injection Timing",
+   "fam": "",
+   "node": "injection timing"
+  },
+  {
+   "code": "P020F",
+   "brand": "",
+   "ru": "Цилиндр 6: момент впрыска",
+   "en": "Cylinder 6 Injection Timing",
+   "fam": "",
+   "node": "injection timing"
+  },
+  {
+   "code": "P021A",
+   "brand": "",
+   "ru": "Цилиндр 7: момент впрыска",
+   "en": "Cylinder 7 Injection Timing",
+   "fam": "",
+   "node": "injection timing"
+  },
+  {
+   "code": "P021B",
+   "brand": "",
+   "ru": "Цилиндр 8: момент впрыска",
+   "en": "Cylinder 8 Injection Timing",
+   "fam": "",
+   "node": "injection timing"
+  },
+  {
+   "code": "P021C",
+   "brand": "",
+   "ru": "Цилиндр 9: момент впрыска",
+   "en": "Cylinder 9 Injection Timing",
+   "fam": "",
+   "node": "injection timing"
+  },
+  {
+   "code": "P021D",
+   "brand": "",
+   "ru": "Цилиндр 10: момент впрыска",
+   "en": "Cylinder 10 Injection Timing",
+   "fam": "",
+   "node": "injection timing"
+  },
+  {
+   "code": "P021E",
+   "brand": "",
+   "ru": "Цилиндр 11: момент впрыска",
+   "en": "Cylinder 11 Injection Timing",
+   "fam": "",
+   "node": "injection timing"
+  },
+  {
+   "code": "P021F",
+   "brand": "",
+   "ru": "Цилиндр 12: момент впрыска",
+   "en": "Cylinder 12 Injection Timing",
+   "fam": "",
+   "node": "injection timing"
+  },
+  {
+   "code": "P026B",
+   "brand": "",
+   "ru": "Момент впрыска: работа нарушена",
+   "en": "Injection Timing Performance",
+   "fam": "",
+   "node": "injection timing"
+  }
+ ]
+}

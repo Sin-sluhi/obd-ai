@@ -1,0 +1,360 @@
+{
+ "name": "sae_015",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "4wd awd clutch a",
+  "4wd awd clutch a actuator",
+  "4wd awd clutch a engagement fault",
+  "4wd awd clutch a temperature too",
+  "brake booster motor a over temperature",
+  "brake booster motor a position sensor supply",
+  "brake booster motor a supply",
+  "brake booster motor b position sensor supply",
+  "brake master cylinder cut off",
+  "brake master cylinder piston position sensor a",
+  "brake master cylinder piston position sensor a b correlation",
+  "brake master cylinder piston position sensor b",
+  "brake master cylinder piston position sensor calibration not learned",
+  "brake master cylinder piston position sensor supply",
+  "brake pedal position sensor a not learned",
+  "brake pedal position sensor b not learned",
+  "brake pressure sensor f",
+  "brake pressure sensor f missing calibration",
+  "brake pressure sensor supply",
+  "brake transmission shift interlock",
+  "driver applied pressure higher than expected",
+  "master cylinder piston position higher than expected",
+  "power steering control module processor"
+ ],
+ "codes": [
+  {
+   "code": "C05B8",
+   "brand": "",
+   "ru": "Датчик положения мотора A усилителя тормозов: обрыв цепи питания",
+   "en": "Brake Booster Motor A Position Sensor Supply Circuit/Open",
+   "fam": "",
+   "node": "brake booster motor a position sensor supply"
+  },
+  {
+   "code": "C05B9",
+   "brand": "",
+   "ru": "Датчик положения мотора A усилителя тормозов: низкое напряжение питания",
+   "en": "Brake Booster Motor A Position Sensor Supply Circuit Low",
+   "fam": "",
+   "node": "brake booster motor a position sensor supply"
+  },
+  {
+   "code": "C05BA",
+   "brand": "",
+   "ru": "Датчик положения мотора A усилителя тормозов: высокое напряжение питания",
+   "en": "Brake Booster Motor A Position Sensor Supply Circuit High",
+   "fam": "",
+   "node": "brake booster motor a position sensor supply"
+  },
+  {
+   "code": "C05BB",
+   "brand": "",
+   "ru": "Датчик положения мотора A усилителя тормозов: питание вне диапазона",
+   "en": "Brake Booster Motor A Position Sensor Supply Circuit Range/Performance",
+   "fam": "",
+   "node": "brake booster motor a position sensor supply"
+  },
+  {
+   "code": "C05BC",
+   "brand": "",
+   "ru": "Датчик положения мотора B усилителя тормозов: обрыв цепи питания",
+   "en": "Brake Booster Motor B Position Sensor Supply Circuit/Open",
+   "fam": "",
+   "node": "brake booster motor b position sensor supply"
+  },
+  {
+   "code": "C05BD",
+   "brand": "",
+   "ru": "Датчик положения мотора B усилителя тормозов: низкое напряжение питания",
+   "en": "Brake Booster Motor B Position Sensor Supply Circuit Low",
+   "fam": "",
+   "node": "brake booster motor b position sensor supply"
+  },
+  {
+   "code": "C05BE",
+   "brand": "",
+   "ru": "Датчик положения мотора B усилителя тормозов: высокое напряжение питания",
+   "en": "Brake Booster Motor B Position Sensor Supply Circuit High",
+   "fam": "",
+   "node": "brake booster motor b position sensor supply"
+  },
+  {
+   "code": "C05BF",
+   "brand": "",
+   "ru": "Датчик положения мотора B усилителя тормозов: питание вне диапазона",
+   "en": "Brake Booster Motor B Position Sensor Supply Circuit Range/Performance",
+   "fam": "",
+   "node": "brake booster motor b position sensor supply"
+  },
+  {
+   "code": "C05C0",
+   "brand": "",
+   "ru": "Датчик положения педали тормоза A: адаптация не выполнена",
+   "en": "Brake Pedal Position Sensor A Not Learned",
+   "fam": "",
+   "node": "brake pedal position sensor a not learned"
+  },
+  {
+   "code": "C05C1",
+   "brand": "",
+   "ru": "Датчик положения педали тормоза B: адаптация не выполнена",
+   "en": "Brake Pedal Position Sensor B Not Learned",
+   "fam": "",
+   "node": "brake pedal position sensor b not learned"
+  },
+  {
+   "code": "C05C2",
+   "brand": "",
+   "ru": "Мотор усилителя тормозов A: перегрев",
+   "en": "Brake Booster Motor A Over Temperature",
+   "fam": "",
+   "node": "brake booster motor a over temperature"
+  },
+  {
+   "code": "C05C3",
+   "brand": "",
+   "ru": "Мотор усилителя тормозов A: цепь питания",
+   "en": "Brake Booster Motor A Supply Circuit",
+   "fam": "",
+   "node": "brake booster motor a supply"
+  },
+  {
+   "code": "C05C4",
+   "brand": "",
+   "ru": "Датчик давления в тормозной системе F: нет калибровки",
+   "en": "Brake Pressure Sensor F Missing Calibration",
+   "fam": "",
+   "node": "brake pressure sensor f missing calibration"
+  },
+  {
+   "code": "C05C5",
+   "brand": "",
+   "ru": "Датчик давления в тормозной системе F: сигнал вне диапазона",
+   "en": "Brake Pressure Sensor F Circuit Range/Performance",
+   "fam": "",
+   "node": "brake pressure sensor f"
+  },
+  {
+   "code": "C05C6",
+   "brand": "",
+   "ru": "Датчик давления в тормозной системе F: низкий уровень сигнала в цепи",
+   "en": "Brake Pressure Sensor F Circuit Low",
+   "fam": "",
+   "node": "brake pressure sensor f"
+  },
+  {
+   "code": "C05C7",
+   "brand": "",
+   "ru": "Датчик давления в тормозной системе F: высокий уровень сигнала в цепи",
+   "en": "Brake Pressure Sensor F Circuit High",
+   "fam": "",
+   "node": "brake pressure sensor f"
+  },
+  {
+   "code": "C05C8",
+   "brand": "",
+   "ru": "Датчик давления в тормозной системе F: обрыв цепи",
+   "en": "Brake Pressure Sensor F Circuit/Open",
+   "fam": "",
+   "node": "brake pressure sensor f"
+  },
+  {
+   "code": "C05C9",
+   "brand": "",
+   "ru": "Датчик давления в тормозной системе: цепь питания",
+   "en": "Brake Pressure Sensor Supply Circuit",
+   "fam": "",
+   "node": "brake pressure sensor supply"
+  },
+  {
+   "code": "C05CA",
+   "brand": "",
+   "ru": "Датчик положения поршня главного тормозного цилиндра A: высокое напряжение в цепи",
+   "en": "Brake Master Cylinder Piston Position Sensor A Circuit Voltage High",
+   "fam": "",
+   "node": "brake master cylinder piston position sensor a"
+  },
+  {
+   "code": "C05CB",
+   "brand": "",
+   "ru": "Датчик положения поршня главного тормозного цилиндра A: низкое напряжение в цепи",
+   "en": "Brake Master Cylinder Piston Position Sensor A Circuit Voltage Low",
+   "fam": "",
+   "node": "brake master cylinder piston position sensor a"
+  },
+  {
+   "code": "C05CC",
+   "brand": "",
+   "ru": "Датчик положения поршня главного тормозного цилиндра A: сигнал вне диапазона",
+   "en": "Brake Master Cylinder Piston Position Sensor A Circuit Range/Performance",
+   "fam": "",
+   "node": "brake master cylinder piston position sensor a"
+  },
+  {
+   "code": "C05CD",
+   "brand": "",
+   "ru": "Датчик положения поршня главного тормозного цилиндра B: высокое напряжение в цепи",
+   "en": "Brake Master Cylinder Piston Position Sensor B Circuit Voltage High",
+   "fam": "",
+   "node": "brake master cylinder piston position sensor b"
+  },
+  {
+   "code": "C05CE",
+   "brand": "",
+   "ru": "Датчик положения поршня главного тормозного цилиндра B: низкое напряжение в цепи",
+   "en": "Brake Master Cylinder Piston Position Sensor B Circuit Voltage Low",
+   "fam": "",
+   "node": "brake master cylinder piston position sensor b"
+  },
+  {
+   "code": "C05CF",
+   "brand": "",
+   "ru": "Датчик положения поршня главного тормозного цилиндра B: сигнал вне диапазона",
+   "en": "Brake Master Cylinder Piston Position Sensor B Circuit Range/Performance",
+   "fam": "",
+   "node": "brake master cylinder piston position sensor b"
+  },
+  {
+   "code": "C05D0",
+   "brand": "",
+   "ru": "Датчик положения поршня главного тормозного цилиндра: рассогласование A/B",
+   "en": "Brake Master Cylinder Piston Position Sensor A/B Correlation",
+   "fam": "",
+   "node": "brake master cylinder piston position sensor a b correlation"
+  },
+  {
+   "code": "C05D1",
+   "brand": "",
+   "ru": "Датчик положения поршня главного тормозного цилиндра: цепь питания",
+   "en": "Brake Master Cylinder Piston Position Sensor Supply Circuit",
+   "fam": "",
+   "node": "brake master cylinder piston position sensor supply"
+  },
+  {
+   "code": "C05D2",
+   "brand": "",
+   "ru": "Положение поршня главного тормозного цилиндра выше ожидаемого",
+   "en": "Master Cylinder Piston Position Higher Than Expected",
+   "fam": "",
+   "node": "master cylinder piston position higher than expected"
+  },
+  {
+   "code": "C05D3",
+   "brand": "",
+   "ru": "Давление от водителя на педали выше ожидаемого",
+   "en": "Driver Applied Pressure Higher Than Expected",
+   "fam": "",
+   "node": "driver applied pressure higher than expected"
+  },
+  {
+   "code": "C05D4",
+   "brand": "",
+   "ru": "Датчик положения поршня главного тормозного цилиндра: калибровка не обучена",
+   "en": "Brake Master Cylinder Piston Position Sensor Calibration Not Learned",
+   "fam": "",
+   "node": "brake master cylinder piston position sensor calibration not learned"
+  },
+  {
+   "code": "C05D5",
+   "brand": "",
+   "ru": "Отсечной клапан главного тормозного цилиндра",
+   "en": "Brake Master Cylinder Cut Off Valve",
+   "fam": "",
+   "node": "brake master cylinder cut off"
+  },
+  {
+   "code": "C05D6",
+   "brand": "",
+   "ru": "Процессор блока усилителя руля: работа нарушена",
+   "en": "Power Steering Control Module Processor Performance",
+   "fam": "",
+   "node": "power steering control module processor"
+  },
+  {
+   "code": "C05D7",
+   "brand": "",
+   "ru": "Блокировка селектора КПП от педали тормоза (BTSI): цепь управления",
+   "en": "Brake Transmission Shift Interlock (BTSI) Control Circuit",
+   "fam": "",
+   "node": "brake transmission shift interlock"
+  },
+  {
+   "code": "P081F",
+   "brand": "",
+   "ru": "Блокировка селектора от педали тормоза (BTSI): рассогласование сигнала",
+   "en": "Brake Transmission Shift Interlock (BTSI) Signal Correlation",
+   "fam": "",
+   "node": "brake transmission shift interlock"
+  },
+  {
+   "code": "C05D8",
+   "brand": "",
+   "ru": "Привод муфты полного привода A: обрыв цепи управления",
+   "en": "4WD/AWD Clutch A Actuator Control Circuit/Open",
+   "fam": "",
+   "node": "4wd awd clutch a actuator"
+  },
+  {
+   "code": "C05D9",
+   "brand": "",
+   "ru": "Привод муфты полного привода A: нарушена работа цепи управления",
+   "en": "4WD/AWD Clutch A Actuator Control Circuit Performance",
+   "fam": "",
+   "node": "4wd awd clutch a actuator"
+  },
+  {
+   "code": "C05DA",
+   "brand": "",
+   "ru": "Привод муфты полного привода A: низкий уровень в цепи управления",
+   "en": "4WD/AWD Clutch A Actuator Control Circuit Low",
+   "fam": "",
+   "node": "4wd awd clutch a actuator"
+  },
+  {
+   "code": "C05DB",
+   "brand": "",
+   "ru": "Привод муфты полного привода A: высокий уровень в цепи управления",
+   "en": "4WD/AWD Clutch A Actuator Control Circuit High",
+   "fam": "",
+   "node": "4wd awd clutch a actuator"
+  },
+  {
+   "code": "C05DC",
+   "brand": "",
+   "ru": "Муфта полного привода A: слишком высокая температура",
+   "en": "4WD/AWD Clutch A Temperature Too High",
+   "fam": "",
+   "node": "4wd awd clutch a temperature too"
+  },
+  {
+   "code": "C05DD",
+   "brand": "",
+   "ru": "Муфта полного привода A: работа нарушена / не включается",
+   "en": "4WD/AWD Clutch A Performance/Stuck Disengaged",
+   "fam": "",
+   "node": "4wd awd clutch a"
+  },
+  {
+   "code": "C05DE",
+   "brand": "",
+   "ru": "Муфта полного привода A: не выключается",
+   "en": "4WD/AWD Clutch A Stuck Engaged",
+   "fam": "",
+   "node": "4wd awd clutch a"
+  },
+  {
+   "code": "C05DF",
+   "brand": "",
+   "ru": "Муфта полного привода A: ошибка включения",
+   "en": "4WD/AWD Clutch A Engagement Fault",
+   "fam": "",
+   "node": "4wd awd clutch a engagement fault"
+  }
+ ]
+}

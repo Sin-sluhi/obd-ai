@@ -1,0 +1,392 @@
+{
+ "name": "sae_134",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "egr throttle",
+  "fam:tps_corr",
+  "fuel injection system fault forced engine shutdown",
+  "fuel pump system fault forced engine shutdown",
+  "reductant control module",
+  "reductant heater a current too",
+  "reductant heater d current too",
+  "reductant pump a current too",
+  "ru:рассогласование оборотов выходного вала и скорости колёс",
+  "scr nox catalyst inlet temperature too",
+  "scr nox catalyst outlet temperature too",
+  "throttle actuator b control",
+  "throttle actuator b control module",
+  "throttle actuator b control module processor",
+  "throttle actuator b control motor current",
+  "throttle actuator b control system",
+  "throttle actuator b control system forced limited rpm",
+  "throttle actuator b control throttle body",
+  "throttle pedal position sensor switch c f voltage correlation",
+  "throttle pedal position sensor switch f g voltage correlation",
+  "throttle position sensor switch g",
+  "vehicle speed",
+  "vehicle speed wheel speed correlation"
+ ],
+ "codes": [
+  {
+   "code": "P20FF",
+   "brand": "",
+   "ru": "Блок системы мочевины: работа нарушена",
+   "en": "Reductant Control Module Performance",
+   "fam": "",
+   "node": "reductant control module"
+  },
+  {
+   "code": "P210A",
+   "brand": "",
+   "ru": "Мотор привода дроссельной заслонки B: обрыв цепи",
+   "en": "Throttle Actuator B Control Motor Circuit/Open",
+   "fam": "",
+   "node": "throttle actuator b control"
+  },
+  {
+   "code": "P210B",
+   "brand": "",
+   "ru": "Мотор привода дроссельной заслонки B: сигнал вне диапазона",
+   "en": "Throttle Actuator B Control Motor Circuit Range/Performance",
+   "fam": "",
+   "node": "throttle actuator b control"
+  },
+  {
+   "code": "P210C",
+   "brand": "",
+   "ru": "Мотор привода дроссельной заслонки B: низкий уровень сигнала в цепи",
+   "en": "Throttle Actuator B Control Motor Circuit Low",
+   "fam": "",
+   "node": "throttle actuator b control"
+  },
+  {
+   "code": "P210D",
+   "brand": "",
+   "ru": "Мотор привода дроссельной заслонки B: высокий уровень сигнала в цепи",
+   "en": "Throttle Actuator B Control Motor Circuit High",
+   "fam": "",
+   "node": "throttle actuator b control"
+  },
+  {
+   "code": "P210E",
+   "brand": "",
+   "ru": "Датчики положения дросселя/педали C/F: рассогласование напряжений",
+   "en": "Throttle/Pedal Position Sensor/Switch C/F Voltage Correlation",
+   "fam": "",
+   "node": "throttle pedal position sensor switch c f voltage correlation"
+  },
+  {
+   "code": "P210F",
+   "brand": "",
+   "ru": "Привод дросселя B: принудительное ограничение оборотов",
+   "en": "Throttle Actuator B Control System - Forced Limited RPM",
+   "fam": "",
+   "node": "throttle actuator b control system forced limited rpm"
+  },
+  {
+   "code": "P211A",
+   "brand": "",
+   "ru": "Привод дросселя B: заклинил открытым",
+   "en": "Throttle Actuator B Control System - Stuck Open",
+   "fam": "",
+   "node": "throttle actuator b control system"
+  },
+  {
+   "code": "P211B",
+   "brand": "",
+   "ru": "Привод дросселя B: заклинил закрытым",
+   "en": "Throttle Actuator B Control System - Stuck Close",
+   "fam": "",
+   "node": "throttle actuator b control system"
+  },
+  {
+   "code": "P211C",
+   "brand": "",
+   "ru": "Мотор привода дросселя B: ток вне диапазона",
+   "en": "Throttle Actuator B Control Motor Current Range/Performance",
+   "fam": "",
+   "node": "throttle actuator b control motor current"
+  },
+  {
+   "code": "P211D",
+   "brand": "",
+   "ru": "Дроссельный узел B: вне допустимого диапазона",
+   "en": "Throttle Actuator B Control Throttle Body Range/Performance",
+   "fam": "",
+   "node": "throttle actuator b control throttle body"
+  },
+  {
+   "code": "P211E",
+   "brand": "",
+   "ru": "Процессор блока привода дросселя B",
+   "en": "Throttle Actuator B Control Module Processor",
+   "fam": "",
+   "node": "throttle actuator b control module processor"
+  },
+  {
+   "code": "P211F",
+   "brand": "",
+   "ru": "Блок привода дросселя B: работа нарушена",
+   "en": "Throttle Actuator B Control Module Performance",
+   "fam": "",
+   "node": "throttle actuator b control module"
+  },
+  {
+   "code": "P212A",
+   "brand": "",
+   "ru": "Датчик положения дроссельной заслонки G: цепь",
+   "en": "Throttle Position Sensor/Switch G Circuit",
+   "fam": "",
+   "node": "throttle position sensor switch g"
+  },
+  {
+   "code": "P212B",
+   "brand": "",
+   "ru": "Датчик положения дроссельной заслонки G: сигнал вне диапазона",
+   "en": "Throttle Position Sensor/Switch G Circuit Range/Performance",
+   "fam": "",
+   "node": "throttle position sensor switch g"
+  },
+  {
+   "code": "P212C",
+   "brand": "",
+   "ru": "Датчик положения дроссельной заслонки G: низкий уровень сигнала в цепи",
+   "en": "Throttle Position Sensor/Switch G Circuit Low",
+   "fam": "",
+   "node": "throttle position sensor switch g"
+  },
+  {
+   "code": "P212D",
+   "brand": "",
+   "ru": "Датчик положения дроссельной заслонки G: высокий уровень сигнала в цепи",
+   "en": "Throttle Position Sensor/Switch G Circuit High",
+   "fam": "",
+   "node": "throttle position sensor switch g"
+  },
+  {
+   "code": "P212E",
+   "brand": "",
+   "ru": "Датчик положения дроссельной заслонки G: прерывистый сигнал в цепи",
+   "en": "Throttle Position Sensor/Switch G Circuit Intermittent",
+   "fam": "",
+   "node": "throttle position sensor switch g"
+  },
+  {
+   "code": "P212F",
+   "brand": "",
+   "ru": "Датчики положения дросселя/педали F/G: рассогласование напряжений",
+   "en": "Throttle/Pedal Position Sensor/Switch F/G Voltage Correlation",
+   "fam": "",
+   "node": "throttle pedal position sensor switch f g voltage correlation"
+  },
+  {
+   "code": "P2135",
+   "brand": "",
+   "ru": "Датчики дросселя A и B не согласуются",
+   "en": "",
+   "fam": "tps_corr",
+   "node": "fam:tps_corr"
+  },
+  {
+   "code": "P2136",
+   "brand": "",
+   "ru": "Датчики дросселя A и C не согласуются",
+   "en": "",
+   "fam": "tps_corr",
+   "node": "fam:tps_corr"
+  },
+  {
+   "code": "P2137",
+   "brand": "",
+   "ru": "Датчики дросселя B и C не согласуются",
+   "en": "",
+   "fam": "tps_corr",
+   "node": "fam:tps_corr"
+  },
+  {
+   "code": "P2138",
+   "brand": "",
+   "ru": "Датчики педали газа D и E не согласуются",
+   "en": "",
+   "fam": "tps_corr",
+   "node": "fam:tps_corr"
+  },
+  {
+   "code": "P2139",
+   "brand": "",
+   "ru": "Датчики педали газа D и F не согласуются",
+   "en": "",
+   "fam": "tps_corr",
+   "node": "fam:tps_corr"
+  },
+  {
+   "code": "P2140",
+   "brand": "",
+   "ru": "Датчики педали газа E и F не согласуются",
+   "en": "",
+   "fam": "tps_corr",
+   "node": "fam:tps_corr"
+  },
+  {
+   "code": "P213A",
+   "brand": "",
+   "ru": "Цепь управления дросселем EGR B: обрыв",
+   "en": "EGR Throttle Control Circuit B /Open",
+   "fam": "",
+   "node": "egr throttle"
+  },
+  {
+   "code": "P213B",
+   "brand": "",
+   "ru": "Цепь управления дросселем EGR B: вне допустимого диапазона",
+   "en": "EGR Throttle Control Circuit B Range/Performance",
+   "fam": "",
+   "node": "egr throttle"
+  },
+  {
+   "code": "P213C",
+   "brand": "",
+   "ru": "Цепь управления дросселем EGR B: низкий уровень",
+   "en": "EGR Throttle Control Circuit B Low",
+   "fam": "",
+   "node": "egr throttle"
+  },
+  {
+   "code": "P213D",
+   "brand": "",
+   "ru": "Цепь управления дросселем EGR B: высокий уровень",
+   "en": "EGR Throttle Control Circuit B High",
+   "fam": "",
+   "node": "egr throttle"
+  },
+  {
+   "code": "P213E",
+   "brand": "",
+   "ru": "Неисправность системы впрыска — принудительная остановка двигателя",
+   "en": "Fuel Injection System Fault - Forced Engine Shutdown",
+   "fam": "",
+   "node": "fuel injection system fault forced engine shutdown"
+  },
+  {
+   "code": "P213F",
+   "brand": "",
+   "ru": "Неисправность топливного насоса — принудительная остановка двигателя",
+   "en": "Fuel Pump System Fault - Forced Engine Shutdown",
+   "fam": "",
+   "node": "fuel pump system fault forced engine shutdown"
+  },
+  {
+   "code": "P214A",
+   "brand": "",
+   "ru": "Слишком высокая температура на входе катализатора SCR",
+   "en": "SCR NOx Catalyst Inlet Temperature Too High",
+   "fam": "",
+   "node": "scr nox catalyst inlet temperature too"
+  },
+  {
+   "code": "P214B",
+   "brand": "",
+   "ru": "Слишком высокая температура на входе катализатора SCR при регенерации сажевого фильтра",
+   "en": "SCR NOx Catalyst Inlet Temperature Too High During Particulate Filter Regeneration",
+   "fam": "",
+   "node": "scr nox catalyst inlet temperature too"
+  },
+  {
+   "code": "P22FF",
+   "brand": "",
+   "ru": "Слишком низкая температура на входе катализатора SCR",
+   "en": "SCR NOx Catalyst Inlet Temperature Too Low",
+   "fam": "",
+   "node": "scr nox catalyst inlet temperature too"
+  },
+  {
+   "code": "P214C",
+   "brand": "",
+   "ru": "Слишком высокая температура на выходе катализатора SCR",
+   "en": "SCR NOx Catalyst Outlet Temperature Too High",
+   "fam": "",
+   "node": "scr nox catalyst outlet temperature too"
+  },
+  {
+   "code": "P214D",
+   "brand": "",
+   "ru": "Слишком высокая температура на выходе катализатора SCR при регенерации сажевого фильтра",
+   "en": "SCR NOx Catalyst Outlet Temperature Too High During Particulate Filter Regeneration",
+   "fam": "",
+   "node": "scr nox catalyst outlet temperature too"
+  },
+  {
+   "code": "P214E",
+   "brand": "",
+   "ru": "Насос мочевины A: слишком большой ток",
+   "en": "Reductant Pump A Current Too High",
+   "fam": "",
+   "node": "reductant pump a current too"
+  },
+  {
+   "code": "P2C11",
+   "brand": "",
+   "ru": "Насос мочевины A: слишком малый ток",
+   "en": "Reductant Pump A Current Too Low",
+   "fam": "",
+   "node": "reductant pump a current too"
+  },
+  {
+   "code": "P214F",
+   "brand": "",
+   "ru": "Подогреватель мочевины A: слишком большой ток",
+   "en": "Reductant Heater A Current Too High",
+   "fam": "",
+   "node": "reductant heater a current too"
+  },
+  {
+   "code": "P21DD",
+   "brand": "",
+   "ru": "Подогреватель мочевины A: слишком малый ток",
+   "en": "Reductant Heater A Current Too Low",
+   "fam": "",
+   "node": "reductant heater a current too"
+  },
+  {
+   "code": "P215A",
+   "brand": "",
+   "ru": "Рассогласование скорости автомобиля и скорости колёс",
+   "en": "Vehicle Speed - Wheel Speed Correlation",
+   "fam": "",
+   "node": "vehicle speed wheel speed correlation"
+  },
+  {
+   "code": "P215B",
+   "brand": "",
+   "ru": "Рассогласование скорости автомобиля и оборотов выходного вала",
+   "en": "Vehicle Speed - Output Shaft Speed Correlation",
+   "fam": "",
+   "node": "vehicle speed"
+  },
+  {
+   "code": "P215C",
+   "brand": "",
+   "ru": "Рассогласование оборотов выходного вала и скорости колёс",
+   "en": "Output Shaft Speed - Wheel Speed Correlation",
+   "fam": "",
+   "node": "ru:рассогласование оборотов выходного вала и скорости колёс"
+  },
+  {
+   "code": "P215E",
+   "brand": "",
+   "ru": "Подогреватель мочевины D: слишком малый ток",
+   "en": "Reductant Heater D Current Too Low",
+   "fam": "",
+   "node": "reductant heater d current too"
+  },
+  {
+   "code": "P215F",
+   "brand": "",
+   "ru": "Подогреватель мочевины D: слишком большой ток",
+   "en": "Reductant Heater D Current Too High",
+   "fam": "",
+   "node": "reductant heater d current too"
+  }
+ ]
+}

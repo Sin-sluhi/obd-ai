@@ -1,0 +1,392 @@
+{
+ "name": "sae_179",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "charge air cooler coolant pump b",
+  "charge air cooler coolant pump b overspeed air in system",
+  "charge air cooler coolant pump sense",
+  "cold start turbocharger supercharger wastegate actuator a",
+  "cold start turbocharger supercharger wastegate actuator b",
+  "crankcase ventilation system hose a disconnected",
+  "crankcase ventilation system hose b disconnected",
+  "dc dc converter temperature sensor d",
+  "dc dc converter temperature sensor e",
+  "dc dc converter temperature sensor f",
+  "fuel pressure regulator c exceeded control limits pressure too",
+  "fuel pressure regulator d exceeded control limits pressure too",
+  "hybrid ev battery contactor control supply",
+  "hybrid ev battery disable",
+  "hybrid ev battery interface control module a",
+  "hybrid ev battery interface control module b",
+  "hybrid ev battery system precharge current too",
+  "hybrid ev battery voltage external isolation warning",
+  "hybrid ev battery voltage internal isolation warning",
+  "hybrid ev battery voltage system isolation warning",
+  "particulate filter pressure sensor signals swapped a b",
+  "throttle actuator a control exceeded learning limit",
+  "throttle actuator b control exceeded learning limit"
+ ],
+ "codes": [
+  {
+   "code": "P2C86",
+   "brand": "",
+   "ru": "Тяговая батарея: предупреждение о внутренней изоляции",
+   "en": "Hybrid/EV Battery Voltage Internal Isolation Warning",
+   "fam": "",
+   "node": "hybrid ev battery voltage internal isolation warning"
+  },
+  {
+   "code": "P2C87",
+   "brand": "",
+   "ru": "Тяговая батарея: предупреждение о внешней изоляции",
+   "en": "Hybrid/EV Battery Voltage External Isolation Warning",
+   "fam": "",
+   "node": "hybrid ev battery voltage external isolation warning"
+  },
+  {
+   "code": "P2C88",
+   "brand": "",
+   "ru": "Тяговая батарея: предупреждение об изоляции системы",
+   "en": "Hybrid/EV Battery Voltage System Isolation Warning",
+   "fam": "",
+   "node": "hybrid ev battery voltage system isolation warning"
+  },
+  {
+   "code": "P2C89",
+   "brand": "",
+   "ru": "Система тяговой батареи: слишком большой ток предзаряда",
+   "en": "Hybrid/EV Battery System Precharge Current Too High",
+   "fam": "",
+   "node": "hybrid ev battery system precharge current too"
+  },
+  {
+   "code": "P2C8A",
+   "brand": "",
+   "ru": "Блок управления тяговой батареей A: работа нарушена",
+   "en": "Hybrid/EV Battery Interface Control Module A Performance",
+   "fam": "",
+   "node": "hybrid ev battery interface control module a"
+  },
+  {
+   "code": "P2C8B",
+   "brand": "",
+   "ru": "Блок управления тяговой батареей B: работа нарушена",
+   "en": "Hybrid/EV Battery Interface Control Module B Performance",
+   "fam": "",
+   "node": "hybrid ev battery interface control module b"
+  },
+  {
+   "code": "P2C8C",
+   "brand": "",
+   "ru": "Датчик температуры преобразователя DC/DC D: цепь",
+   "en": "DC/DC Converter Temperature Sensor D Circuit",
+   "fam": "",
+   "node": "dc dc converter temperature sensor d"
+  },
+  {
+   "code": "P2C8D",
+   "brand": "",
+   "ru": "Датчик температуры преобразователя DC/DC D: сигнал вне диапазона",
+   "en": "DC/DC Converter Temperature Sensor D Circuit Range/Performance",
+   "fam": "",
+   "node": "dc dc converter temperature sensor d"
+  },
+  {
+   "code": "P2C8E",
+   "brand": "",
+   "ru": "Датчик температуры преобразователя DC/DC D: низкий уровень сигнала в цепи",
+   "en": "DC/DC Converter Temperature Sensor D Circuit Low",
+   "fam": "",
+   "node": "dc dc converter temperature sensor d"
+  },
+  {
+   "code": "P2C8F",
+   "brand": "",
+   "ru": "Датчик температуры преобразователя DC/DC D: высокий уровень сигнала в цепи",
+   "en": "DC/DC Converter Temperature Sensor D Circuit High",
+   "fam": "",
+   "node": "dc dc converter temperature sensor d"
+  },
+  {
+   "code": "P2C90",
+   "brand": "",
+   "ru": "Вентиляция картера: отсоединён шланг A",
+   "en": "Crankcase Ventilation System - Hose A Disconnected",
+   "fam": "",
+   "node": "crankcase ventilation system hose a disconnected"
+  },
+  {
+   "code": "P2C91",
+   "brand": "",
+   "ru": "Вентиляция картера: отсоединён шланг B",
+   "en": "Crankcase Ventilation System - Hose B Disconnected",
+   "fam": "",
+   "node": "crankcase ventilation system hose b disconnected"
+  },
+  {
+   "code": "P2C92",
+   "brand": "",
+   "ru": "Управление контакторами тяговой батареи: обрыв цепи питания",
+   "en": "Hybrid/EV Battery Contactor Control Supply Circuit/Open",
+   "fam": "",
+   "node": "hybrid ev battery contactor control supply"
+  },
+  {
+   "code": "P2C93",
+   "brand": "",
+   "ru": "Управление контакторами тяговой батареи: питание вне диапазона",
+   "en": "Hybrid/EV Battery Contactor Control Supply Circuit Range/Performance",
+   "fam": "",
+   "node": "hybrid ev battery contactor control supply"
+  },
+  {
+   "code": "P2C94",
+   "brand": "",
+   "ru": "Управление контакторами тяговой батареи: низкое напряжение питания",
+   "en": "Hybrid/EV Battery Contactor Control Supply Circuit Low",
+   "fam": "",
+   "node": "hybrid ev battery contactor control supply"
+  },
+  {
+   "code": "P2C95",
+   "brand": "",
+   "ru": "Управление контакторами тяговой батареи: высокое напряжение питания",
+   "en": "Hybrid/EV Battery Contactor Control Supply Circuit High",
+   "fam": "",
+   "node": "hybrid ev battery contactor control supply"
+  },
+  {
+   "code": "P2C96",
+   "brand": "",
+   "ru": "Отключение тяговой батареи: обрыв цепи",
+   "en": "Hybrid/EV Battery Disable Circuit/Open",
+   "fam": "",
+   "node": "hybrid ev battery disable"
+  },
+  {
+   "code": "P2C97",
+   "brand": "",
+   "ru": "Отключение тяговой батареи: низкий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Disable Circuit Low",
+   "fam": "",
+   "node": "hybrid ev battery disable"
+  },
+  {
+   "code": "P2C98",
+   "brand": "",
+   "ru": "Отключение тяговой батареи: высокий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Disable Circuit High",
+   "fam": "",
+   "node": "hybrid ev battery disable"
+  },
+  {
+   "code": "P2C99",
+   "brand": "",
+   "ru": "Привод дросселя A: превышен предел адаптации",
+   "en": "Throttle Actuator A Control Exceeded Learning Limit",
+   "fam": "",
+   "node": "throttle actuator a control exceeded learning limit"
+  },
+  {
+   "code": "P2C9A",
+   "brand": "",
+   "ru": "Привод дросселя B: превышен предел адаптации",
+   "en": "Throttle Actuator B Control Exceeded Learning Limit",
+   "fam": "",
+   "node": "throttle actuator b control exceeded learning limit"
+  },
+  {
+   "code": "P2C9B",
+   "brand": "",
+   "ru": "Привод вейстгейта A при холодном пуске: вне допустимого диапазона",
+   "en": "Cold Start Turbocharger/Supercharger Wastegate Actuator A Range/Performance",
+   "fam": "",
+   "node": "cold start turbocharger supercharger wastegate actuator a"
+  },
+  {
+   "code": "P2C9C",
+   "brand": "",
+   "ru": "Привод вейстгейта B при холодном пуске: вне допустимого диапазона",
+   "en": "Cold Start Turbocharger/Supercharger Wastegate Actuator B Range/Performance",
+   "fam": "",
+   "node": "cold start turbocharger supercharger wastegate actuator b"
+  },
+  {
+   "code": "P2C9D",
+   "brand": "",
+   "ru": "Регулятор давления топлива C вне пределов регулирования: давление слишком высокое",
+   "en": "Fuel Pressure Regulator C Exceeded Control Limits - Pressure Too High",
+   "fam": "",
+   "node": "fuel pressure regulator c exceeded control limits pressure too"
+  },
+  {
+   "code": "P2C9E",
+   "brand": "",
+   "ru": "Регулятор давления топлива C вне пределов регулирования: давление слишком низкое",
+   "en": "Fuel Pressure Regulator C Exceeded Control Limits - Pressure Too Low",
+   "fam": "",
+   "node": "fuel pressure regulator c exceeded control limits pressure too"
+  },
+  {
+   "code": "P2C9F",
+   "brand": "",
+   "ru": "Регулятор давления топлива D вне пределов регулирования: давление слишком высокое",
+   "en": "Fuel Pressure Regulator D Exceeded Control Limits - Pressure Too High",
+   "fam": "",
+   "node": "fuel pressure regulator d exceeded control limits pressure too"
+  },
+  {
+   "code": "P2CA0",
+   "brand": "",
+   "ru": "Регулятор давления топлива D вне пределов регулирования: давление слишком низкое",
+   "en": "Fuel Pressure Regulator D Exceeded Control Limits - Pressure Too Low",
+   "fam": "",
+   "node": "fuel pressure regulator d exceeded control limits pressure too"
+  },
+  {
+   "code": "P2CA1",
+   "brand": "",
+   "ru": "Насос охлаждения интеркулера: высокий уровень в цепи обратной связи",
+   "en": "Charge Air Cooler Coolant Pump Sense Circuit High",
+   "fam": "",
+   "node": "charge air cooler coolant pump sense"
+  },
+  {
+   "code": "P2CA2",
+   "brand": "",
+   "ru": "Насос охлаждения интеркулера: низкий уровень в цепи обратной связи",
+   "en": "Charge Air Cooler Coolant Pump Sense Circuit Low",
+   "fam": "",
+   "node": "charge air cooler coolant pump sense"
+  },
+  {
+   "code": "P2CA3",
+   "brand": "",
+   "ru": "Насос охлаждения интеркулера: нарушена цепь обратной связи",
+   "en": "Charge Air Cooler Coolant Pump Sense Circuit Performance",
+   "fam": "",
+   "node": "charge air cooler coolant pump sense"
+  },
+  {
+   "code": "P2CA4",
+   "brand": "",
+   "ru": "Датчики давления сажевого фильтра: перепутаны сигналы A/B",
+   "en": "Particulate Filter Pressure Sensor Signals Swapped A/B",
+   "fam": "",
+   "node": "particulate filter pressure sensor signals swapped a b"
+  },
+  {
+   "code": "P2CA5",
+   "brand": "",
+   "ru": "Датчик температуры преобразователя DC/DC E: цепь",
+   "en": "DC/DC Converter Temperature Sensor E Circuit",
+   "fam": "",
+   "node": "dc dc converter temperature sensor e"
+  },
+  {
+   "code": "P2CA6",
+   "brand": "",
+   "ru": "Датчик температуры преобразователя DC/DC E: низкий уровень сигнала в цепи",
+   "en": "DC/DC Converter Temperature Sensor E Circuit Low",
+   "fam": "",
+   "node": "dc dc converter temperature sensor e"
+  },
+  {
+   "code": "P2CA7",
+   "brand": "",
+   "ru": "Датчик температуры преобразователя DC/DC E: высокий уровень сигнала в цепи",
+   "en": "DC/DC Converter Temperature Sensor E Circuit High",
+   "fam": "",
+   "node": "dc dc converter temperature sensor e"
+  },
+  {
+   "code": "P2CA8",
+   "brand": "",
+   "ru": "Датчик температуры преобразователя DC/DC E: сигнал вне диапазона",
+   "en": "DC/DC Converter Temperature Sensor E Circuit Range/Performance",
+   "fam": "",
+   "node": "dc dc converter temperature sensor e"
+  },
+  {
+   "code": "P2CA9",
+   "brand": "",
+   "ru": "Датчик температуры преобразователя DC/DC F: цепь",
+   "en": "DC/DC Converter Temperature Sensor F Circuit",
+   "fam": "",
+   "node": "dc dc converter temperature sensor f"
+  },
+  {
+   "code": "P2CAA",
+   "brand": "",
+   "ru": "Датчик температуры преобразователя DC/DC F: низкий уровень сигнала в цепи",
+   "en": "DC/DC Converter Temperature Sensor F Circuit Low",
+   "fam": "",
+   "node": "dc dc converter temperature sensor f"
+  },
+  {
+   "code": "P2CAB",
+   "brand": "",
+   "ru": "Датчик температуры преобразователя DC/DC F: высокий уровень сигнала в цепи",
+   "en": "DC/DC Converter Temperature Sensor F Circuit High",
+   "fam": "",
+   "node": "dc dc converter temperature sensor f"
+  },
+  {
+   "code": "P2CAC",
+   "brand": "",
+   "ru": "Датчик температуры преобразователя DC/DC F: сигнал вне диапазона",
+   "en": "DC/DC Converter Temperature Sensor F Circuit Range/Performance",
+   "fam": "",
+   "node": "dc dc converter temperature sensor f"
+  },
+  {
+   "code": "P2CAD",
+   "brand": "",
+   "ru": "Насос охлаждения интеркулера B: обрыв цепи управления",
+   "en": "Charge Air Cooler Coolant Pump B Control Circuit/Open",
+   "fam": "",
+   "node": "charge air cooler coolant pump b"
+  },
+  {
+   "code": "P2CAE",
+   "brand": "",
+   "ru": "Насос охлаждения интеркулера B: низкий уровень в цепи управления",
+   "en": "Charge Air Cooler Coolant Pump B Control Circuit Low",
+   "fam": "",
+   "node": "charge air cooler coolant pump b"
+  },
+  {
+   "code": "P2CAF",
+   "brand": "",
+   "ru": "Насос охлаждения интеркулера B: высокий уровень в цепи управления",
+   "en": "Charge Air Cooler Coolant Pump B Control Circuit High",
+   "fam": "",
+   "node": "charge air cooler coolant pump b"
+  },
+  {
+   "code": "P2CB0",
+   "brand": "",
+   "ru": "Насос охлаждения интеркулера B: работа нарушена",
+   "en": "Charge Air Cooler Coolant Pump B Performance",
+   "fam": "",
+   "node": "charge air cooler coolant pump b"
+  },
+  {
+   "code": "P2CB3",
+   "brand": "",
+   "ru": "Насос охлаждения интеркулера B: заклинивание / остановка",
+   "en": "Charge Air Cooler Coolant Pump B Stuck/Stalled",
+   "fam": "",
+   "node": "charge air cooler coolant pump b"
+  },
+  {
+   "code": "P2CB1",
+   "brand": "",
+   "ru": "Насос охлаждения интеркулера B: превышены обороты / воздух в системе",
+   "en": "Charge Air Cooler Coolant Pump B Overspeed/Air In System",
+   "fam": "",
+   "node": "charge air cooler coolant pump b overspeed air in system"
+  }
+ ]
+}

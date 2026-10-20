@@ -1,0 +1,162 @@
+{
+ "name": "brand-suzuki_062",
+ "series": "brand",
+ "brand": "suzuki",
+ "nodes": [
+  "at drive",
+  "back up",
+  "barometric pressure sensor",
+  "barometric pressure sensor too",
+  "engine starter",
+  "fuel tank pressure control",
+  "ignition timing adjustment",
+  "maniforld differential pressure",
+  "pcm backup power supply",
+  "pcm tcm serial communication",
+  "radiator fan control system fault",
+  "ru:выключатель p/n",
+  "ru:выключатель понижающей 4wd",
+  "ru:подогреватель раннего испарения топлива",
+  "tcm ect",
+  "tcm throttle position",
+  "tcm to ecm torque reduction"
+ ],
+ "codes": [
+  {
+   "code": "P1250",
+   "brand": "suzuki",
+   "ru": "Подогреватель раннего испарения топлива: неисправность цепи",
+   "en": "EFE Heater Circuit Fault",
+   "fam": "",
+   "node": "ru:подогреватель раннего испарения топлива"
+  },
+  {
+   "code": "P1408",
+   "brand": "suzuki",
+   "ru": "Датчик перепада давления во впуске: неисправность цепи",
+   "en": "Maniforld Differential Pressure Sensor Circuit Fault",
+   "fam": "",
+   "node": "maniforld differential pressure"
+  },
+  {
+   "code": "P1410",
+   "brand": "suzuki",
+   "ru": "Клапан регулирования давления в баке: неисправность цепи",
+   "en": "Fuel Tank Pressure Control Solenoid Circuit Fault",
+   "fam": "",
+   "node": "fuel tank pressure control"
+  },
+  {
+   "code": "P1450",
+   "brand": "suzuki",
+   "ru": "Датчик атмосферного давления: слишком низко или высоко",
+   "en": "Barometric Pressure Sensor Too Low Or Too High",
+   "fam": "",
+   "node": "barometric pressure sensor too"
+  },
+  {
+   "code": "P1451",
+   "brand": "suzuki",
+   "ru": "Датчик атмосферного давления: работа",
+   "en": "Barometric Pressure Sensor Performance",
+   "fam": "",
+   "node": "barometric pressure sensor"
+  },
+  {
+   "code": "P1460",
+   "brand": "suzuki",
+   "ru": "Система управления вентилятором радиатора: неисправность",
+   "en": "Radiator Fan Control System Fault",
+   "fam": "",
+   "node": "radiator fan control system fault"
+  },
+  {
+   "code": "P1500",
+   "brand": "suzuki",
+   "ru": "Сигнал стартера: неисправность цепи",
+   "en": "Engine Starter Signal Circuit Fault",
+   "fam": "",
+   "node": "engine starter"
+  },
+  {
+   "code": "P1510",
+   "brand": "suzuki",
+   "ru": "Резервное питание блока двигателя: неисправность цепи",
+   "en": "PCM Backup Power Supply Circuit Fault",
+   "fam": "",
+   "node": "pcm backup power supply"
+  },
+  {
+   "code": "P1530",
+   "brand": "suzuki",
+   "ru": "Регулировка угла зажигания: неисправность цепи",
+   "en": "Ignition Timing Adjustment Switch Circuit Fault",
+   "fam": "",
+   "node": "ignition timing adjustment"
+  },
+  {
+   "code": "P1600",
+   "brand": "suzuki",
+   "ru": "Связь блок двигателя — блок коробки: неисправность цепи",
+   "en": "PCM TCM Serial Communication Circuit Fault",
+   "fam": "",
+   "node": "pcm tcm serial communication"
+  },
+  {
+   "code": "P1700",
+   "brand": "suzuki",
+   "ru": "Датчик положения дросселя для блока коробки: неисправность цепи",
+   "en": "TCM Throttle Position Sensor Circuit Fault",
+   "fam": "",
+   "node": "tcm throttle position"
+  },
+  {
+   "code": "P1705",
+   "brand": "suzuki",
+   "ru": "Датчик температуры ОЖ для блока коробки: неисправность цепи",
+   "en": "TCM ECT Sensor Circuit Fault",
+   "fam": "",
+   "node": "tcm ect"
+  },
+  {
+   "code": "P1710",
+   "brand": "suzuki",
+   "ru": "Резервный сигнал датчика скорости: неисправность цепи",
+   "en": "Back-Up Signal For Speed Sensor Circuit Malfunction",
+   "fam": "",
+   "node": "back up"
+  },
+  {
+   "code": "P1715",
+   "brand": "suzuki",
+   "ru": "Выключатель P/N: неисправность цепи",
+   "en": "PNP Switch Circuit Fault",
+   "fam": "",
+   "node": "ru:выключатель p/n"
+  },
+  {
+   "code": "P1717",
+   "brand": "suzuki",
+   "ru": "Сигнал диапазона D АКПП: неисправность цепи",
+   "en": "AT Drive Range Signal Circuit Fault",
+   "fam": "",
+   "node": "at drive"
+  },
+  {
+   "code": "P1875",
+   "brand": "suzuki",
+   "ru": "Выключатель понижающей 4WD: неисправность цепи",
+   "en": "4WD Low Switch Circuit Malfunction",
+   "fam": "",
+   "node": "ru:выключатель понижающей 4wd"
+  },
+  {
+   "code": "P1895",
+   "brand": "suzuki",
+   "ru": "Цепь снижения момента (блок коробки → блок двигателя): неисправность",
+   "en": "TCM To ECM Torque Reduction Circuit Malfunction",
+   "fam": "",
+   "node": "tcm to ecm torque reduction"
+  }
+ ]
+}

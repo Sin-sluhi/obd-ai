@@ -1,0 +1,170 @@
+{
+ "name": "brand-chrysler_014",
+ "series": "brand",
+ "brand": "chrysler",
+ "nodes": [
+  "dtc detected in ecm or pcm",
+  "fuel injection pump controller calibration failure",
+  "governor pressure above 3 psi when request is 0 psi",
+  "governor pressure not equal to target at 15 20 psi",
+  "governor pressure sensor offset improper voltage",
+  "governor pressure sensor voltage too",
+  "no ccd j1850 message from bcm",
+  "no ccd j1850 messages received from the climate control module",
+  "no ccd messages received from ecm",
+  "no ccd messages received from pcm",
+  "park neutral position switch",
+  "pcm failure eeprom write denied",
+  "pcm failure sri mile not stored",
+  "ru:реле обхода выключателя сцепления",
+  "skip shift",
+  "tcc or od solenoid",
+  "trans 12 volt supply relay"
+ ],
+ "codes": [
+  {
+   "code": "P1691",
+   "brand": "chrysler",
+   "ru": "Контроллер ТНВД: ошибка калибровки",
+   "en": "Fuel Injection Pump Controller Calibration Failure",
+   "fam": "",
+   "node": "fuel injection pump controller calibration failure"
+  },
+  {
+   "code": "P1693",
+   "brand": "chrysler",
+   "ru": "В блоке двигателя есть коды неисправностей (дизель: связанный блок)",
+   "en": "DTC Detected In ECM Or PCM",
+   "fam": "",
+   "node": "dtc detected in ecm or pcm"
+  },
+  {
+   "code": "P1694",
+   "brand": "chrysler",
+   "ru": "Нет сообщений CCD от блока двигателя",
+   "en": "No CCD Messages Received From ECM",
+   "fam": "",
+   "node": "no ccd messages received from ecm"
+  },
+  {
+   "code": "P1695",
+   "brand": "chrysler",
+   "ru": "Нет сообщений CCD/J1850 от кузовного блока",
+   "en": "No CCD J1850 Message From BCM",
+   "fam": "",
+   "node": "no ccd j1850 message from bcm"
+  },
+  {
+   "code": "P1696",
+   "brand": "chrysler",
+   "ru": "Блок двигателя: запись в EEPROM запрещена",
+   "en": "PCM Failure EEPROM Write Denied",
+   "fam": "",
+   "node": "pcm failure eeprom write denied"
+  },
+  {
+   "code": "P1697",
+   "brand": "chrysler",
+   "ru": "Неисправность блока двигателя: пробег не записан",
+   "en": "PCM Failure SRI Mile Not Stored",
+   "fam": "",
+   "node": "pcm failure sri mile not stored"
+  },
+  {
+   "code": "P1698",
+   "brand": "chrysler",
+   "ru": "Нет сообщений CCD от блока двигателя",
+   "en": "No CCD Messages Received From PCM",
+   "fam": "",
+   "node": "no ccd messages received from pcm"
+  },
+  {
+   "code": "P1699",
+   "brand": "chrysler",
+   "ru": "Нет сообщений CCD/J1850 от блока климата",
+   "en": "No CCD J1850 Messages Received From The Climate Control Module (CCM)",
+   "fam": "",
+   "node": "no ccd j1850 messages received from the climate control module"
+  },
+  {
+   "code": "P1719",
+   "brand": "chrysler",
+   "ru": "Клапан пропуска передачи: обрыв или замыкание",
+   "en": "Skip Shift Solenoid Circuit Open Or Shorted",
+   "fam": "",
+   "node": "skip shift"
+  },
+  {
+   "code": "P1740",
+   "brand": "chrysler",
+   "ru": "Клапан блокировки ГДТ или повышающей передачи: работа",
+   "en": "TCC Or OD Solenoid Performance",
+   "fam": "",
+   "node": "tcc or od solenoid"
+  },
+  {
+   "code": "P1756",
+   "brand": "chrysler",
+   "ru": "Давление регулятора не равно заданному при 15–20 psi",
+   "en": "Governor Pressure Not Equal To Target At 15-20 PSI",
+   "fam": "",
+   "node": "governor pressure not equal to target at 15 20 psi"
+  },
+  {
+   "code": "P1757",
+   "brand": "chrysler",
+   "ru": "Давление регулятора выше 3 psi при запросе 0",
+   "en": "Governor Pressure Above 3 PSI When Request Is 0 PSI",
+   "fam": "",
+   "node": "governor pressure above 3 psi when request is 0 psi"
+  },
+  {
+   "code": "P1762",
+   "brand": "chrysler",
+   "ru": "Датчик давления регулятора: неверное смещение",
+   "en": "Governor Pressure Sensor Offset Improper Voltage",
+   "fam": "",
+   "node": "governor pressure sensor offset improper voltage"
+  },
+  {
+   "code": "P1763",
+   "brand": "chrysler",
+   "ru": "Датчик давления регулятора: напряжение слишком высокое",
+   "en": "Governor Pressure Sensor Voltage Too High",
+   "fam": "",
+   "node": "governor pressure sensor voltage too"
+  },
+  {
+   "code": "P1764",
+   "brand": "chrysler",
+   "ru": "Датчик давления регулятора: напряжение слишком низкое",
+   "en": "Governor Pressure Sensor Voltage Too Low",
+   "fam": "",
+   "node": "governor pressure sensor voltage too"
+  },
+  {
+   "code": "P1765",
+   "brand": "chrysler",
+   "ru": "Реле питания 12 В коробки: обрыв или замыкание",
+   "en": "Trans 12 Volt Supply Relay Control Circuit Open Or Shorted",
+   "fam": "",
+   "node": "trans 12 volt supply relay"
+  },
+  {
+   "code": "P1830",
+   "brand": "chrysler",
+   "ru": "Реле обхода выключателя сцепления: обрыв или замыкание",
+   "en": "Open Or Shorted Condition Detected In The Clutch Pedal Switch Override Relay Control",
+   "fam": "",
+   "node": "ru:реле обхода выключателя сцепления"
+  },
+  {
+   "code": "P1899",
+   "brand": "chrysler",
+   "ru": "Выключатель P/N застрял в P или на передаче",
+   "en": "Park Neutral Position Switch Stuck In Park Or In Gear",
+   "fam": "",
+   "node": "park neutral position switch"
+  }
+ ]
+}

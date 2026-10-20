@@ -1,0 +1,332 @@
+{
+ "name": "brand-bmw_001",
+ "series": "brand",
+ "brand": "bmw",
+ "nodes": [
+  "coolant temperature sensor",
+  "engine coolant temperature radiator outlet sensor",
+  "fuel control mixture lean",
+  "fuel control mixture rich",
+  "mass or volume air flow",
+  "o2 sensor heater",
+  "pedal position",
+  "pre catalyst fuel trim too lean",
+  "pre catalyst fuel trim too rich",
+  "ru:лямбда- (ряд 1)",
+  "ru:лямбда- (ряд 2)"
+ ],
+ "codes": [
+  {
+   "code": "P1083",
+   "brand": "bmw",
+   "ru": "Регулирование смеси (ряд 1, зонд 1): бедно",
+   "en": "Fuel Control Mixture Lean Bank 1 Sensor 1",
+   "fam": "",
+   "node": "fuel control mixture lean"
+  },
+  {
+   "code": "P1085",
+   "brand": "bmw",
+   "ru": "Регулирование смеси (ряд 2, зонд 1): бедно",
+   "en": "Fuel Control Mixture Lean Bank 2 Sensor 1",
+   "fam": "",
+   "node": "fuel control mixture lean"
+  },
+  {
+   "code": "P1084",
+   "brand": "bmw",
+   "ru": "Регулирование смеси (ряд 1, зонд 1): богато",
+   "en": "Fuel Control Mixture Rich Bank 1 Sensor 1",
+   "fam": "",
+   "node": "fuel control mixture rich"
+  },
+  {
+   "code": "P1086",
+   "brand": "bmw",
+   "ru": "Регулирование смеси (ряд 2, зонд 1): богато",
+   "en": "Fuel Control Mixture Rich Bank 2 Sensor 1",
+   "fam": "",
+   "node": "fuel control mixture rich"
+  },
+  {
+   "code": "P1087",
+   "brand": "bmw",
+   "ru": "Лямбда-зонд 1 (ряд 1): медленный отклик в бедной области",
+   "en": "O2 Sensor Circuit Slow Response in Lean Control Range Bank 1 Sensor 1",
+   "fam": "",
+   "node": "ru:лямбда- (ряд 1)"
+  },
+  {
+   "code": "P1088",
+   "brand": "bmw",
+   "ru": "Лямбда-зонд 1 (ряд 1): медленный отклик в богатой области",
+   "en": "O2 Sensor Circuit Slow Response in Rich Control Range Bank 1 Sensor 1",
+   "fam": "",
+   "node": "ru:лямбда- (ряд 1)"
+  },
+  {
+   "code": "P1089",
+   "brand": "bmw",
+   "ru": "Лямбда-зонд 2 (ряд 1): медленный отклик в бедной области",
+   "en": "O2 Sensor Circuit Slow Response in Lean Control Range Bank 1 Sensor 2",
+   "fam": "",
+   "node": "ru:лямбда- (ряд 1)"
+  },
+  {
+   "code": "P1095",
+   "brand": "bmw",
+   "ru": "Лямбда-зонд 1 (ряд 1): медленное переключение с бедной на богатую",
+   "en": "O2 Sensor Circuit Slow Switching From Lean to Rich Bank 1 Sensor 1",
+   "fam": "",
+   "node": "ru:лямбда- (ряд 1)"
+  },
+  {
+   "code": "P1097",
+   "brand": "bmw",
+   "ru": "Лямбда-зонд 2 (ряд 1): медленный отклик после отсечки топлива",
+   "en": "O2 Sensor Circuit Slow Response After Coast Down Fuel Cut-off Bank 1 Sensor 2",
+   "fam": "",
+   "node": "ru:лямбда- (ряд 1)"
+  },
+  {
+   "code": "P1090",
+   "brand": "bmw",
+   "ru": "Коррекция до катализатора (ряд 1): слишком бедно",
+   "en": "Pre-Catalyst Fuel Trim Too Lean Bank 1",
+   "fam": "",
+   "node": "pre catalyst fuel trim too lean"
+  },
+  {
+   "code": "P1092",
+   "brand": "bmw",
+   "ru": "Коррекция до катализатора (ряд 2): слишком бедно",
+   "en": "Pre-Catalyst Fuel Trim Too Lean Bank 2",
+   "fam": "",
+   "node": "pre catalyst fuel trim too lean"
+  },
+  {
+   "code": "P1091",
+   "brand": "bmw",
+   "ru": "Коррекция до катализатора (ряд 1): слишком богато",
+   "en": "Pre-Catalyst Fuel Trim Too Rich Bank 1",
+   "fam": "",
+   "node": "pre catalyst fuel trim too rich"
+  },
+  {
+   "code": "P1093",
+   "brand": "bmw",
+   "ru": "Коррекция до катализатора (ряд 2): слишком богато",
+   "en": "Pre-Catalyst Fuel Trim Too Rich Bank 2",
+   "fam": "",
+   "node": "pre catalyst fuel trim too rich"
+  },
+  {
+   "code": "P1094",
+   "brand": "bmw",
+   "ru": "Лямбда-зонд 1 (ряд 2): медленный отклик в богатой области",
+   "en": "O2 Sensor Circuit Slow Response in Rich Control Range Bank 2 Sensor 1",
+   "fam": "",
+   "node": "ru:лямбда- (ряд 2)"
+  },
+  {
+   "code": "P1096",
+   "brand": "bmw",
+   "ru": "Лямбда-зонд 1 (ряд 2): медленное переключение с бедной на богатую",
+   "en": "O2 Sensor Circuit Slow Switching From Lean to Rich Bank 2 Sensor 1",
+   "fam": "",
+   "node": "ru:лямбда- (ряд 2)"
+  },
+  {
+   "code": "P1098",
+   "brand": "bmw",
+   "ru": "Лямбда-зонд 2 (ряд 2): медленный отклик после отсечки топлива",
+   "en": "O2 Sensor Circuit Slow Response After Coast Down Fuel Cutoff Bank 2 Sensor 2",
+   "fam": "",
+   "node": "ru:лямбда- (ряд 2)"
+  },
+  {
+   "code": "P1111",
+   "brand": "bmw",
+   "ru": "Датчик температуры ОЖ на выходе радиатора: низкий сигнал",
+   "en": "Engine Coolant Temperature Radiator Outlet Sensor Low Input",
+   "fam": "",
+   "node": "engine coolant temperature radiator outlet sensor"
+  },
+  {
+   "code": "P1112",
+   "brand": "bmw",
+   "ru": "Датчик температуры ОЖ на выходе радиатора: высокий сигнал",
+   "en": "Engine Coolant Temperature Radiator Outlet Sensor High Input",
+   "fam": "",
+   "node": "engine coolant temperature radiator outlet sensor"
+  },
+  {
+   "code": "P1115",
+   "brand": "bmw",
+   "ru": "Датчик температуры ОЖ: достоверность",
+   "en": "Coolant Temperature Sensor Plausibility",
+   "fam": "",
+   "node": "coolant temperature sensor"
+  },
+  {
+   "code": "P1116",
+   "brand": "bmw",
+   "ru": "Расходомер воздуха (ряд 2): выход за диапазон",
+   "en": "Mass Or Volume Air Flow Circuit Range Performance Problem Bank 2",
+   "fam": "",
+   "node": "mass or volume air flow"
+  },
+  {
+   "code": "P1117",
+   "brand": "bmw",
+   "ru": "Расходомер воздуха (ряд 2): низкий сигнал",
+   "en": "Mass Or Volume Air Flow Circuit Low Input Bank 2",
+   "fam": "",
+   "node": "mass or volume air flow"
+  },
+  {
+   "code": "P1118",
+   "brand": "bmw",
+   "ru": "Расходомер воздуха (ряд 2): высокий сигнал",
+   "en": "Mass Or Volume Air Flow Circuit High Input Bank 2",
+   "fam": "",
+   "node": "mass or volume air flow"
+  },
+  {
+   "code": "P1140",
+   "brand": "bmw",
+   "ru": "Расходомер воздуха: выход за диапазон",
+   "en": "Mass Or Volume Air Flow Circuit Range Performance Problem",
+   "fam": "",
+   "node": "mass or volume air flow"
+  },
+  {
+   "code": "P1120",
+   "brand": "bmw",
+   "ru": "Датчик педали газа: цепь",
+   "en": "Pedal Position Sensor Circuit",
+   "fam": "",
+   "node": "pedal position"
+  },
+  {
+   "code": "P1121",
+   "brand": "bmw",
+   "ru": "Датчик педали газа 1: выход за диапазон",
+   "en": "Pedal Position Sensor 1 Range Performance Problem",
+   "fam": "",
+   "node": "pedal position"
+  },
+  {
+   "code": "P1122",
+   "brand": "bmw",
+   "ru": "Датчик педали газа 1: низкий сигнал",
+   "en": "Pedal Position Sensor 1 Low Input",
+   "fam": "",
+   "node": "pedal position"
+  },
+  {
+   "code": "P1123",
+   "brand": "bmw",
+   "ru": "Датчик педали газа 1: высокий сигнал",
+   "en": "Pedal Position Sensor 1 High Input",
+   "fam": "",
+   "node": "pedal position"
+  },
+  {
+   "code": "P1221",
+   "brand": "bmw",
+   "ru": "Датчик педали газа 2: выход за диапазон",
+   "en": "Pedal Position Sensor 2 Range Performance Problem",
+   "fam": "",
+   "node": "pedal position"
+  },
+  {
+   "code": "P1222",
+   "brand": "bmw",
+   "ru": "Датчик педали газа 2: низкий сигнал",
+   "en": "Pedal Position Sensor 2 Low Input",
+   "fam": "",
+   "node": "pedal position"
+  },
+  {
+   "code": "P1223",
+   "brand": "bmw",
+   "ru": "Датчик педали газа 2: высокий сигнал",
+   "en": "Pedal Position Sensor 2 High Input",
+   "fam": "",
+   "node": "pedal position"
+  },
+  {
+   "code": "P1540",
+   "brand": "bmw",
+   "ru": "Датчик педали газа",
+   "en": "Pedal Position Sensor",
+   "fam": "",
+   "node": "pedal position"
+  },
+  {
+   "code": "P1543",
+   "brand": "bmw",
+   "ru": "Датчик педали газа",
+   "en": "Pedal Position Sensor",
+   "fam": "",
+   "node": "pedal position"
+  },
+  {
+   "code": "P1544",
+   "brand": "bmw",
+   "ru": "Датчик педали газа",
+   "en": "Pedal Position Sensor",
+   "fam": "",
+   "node": "pedal position"
+  },
+  {
+   "code": "P1545",
+   "brand": "bmw",
+   "ru": "Датчик педали газа",
+   "en": "Pedal Position Sensor",
+   "fam": "",
+   "node": "pedal position"
+  },
+  {
+   "code": "P1546",
+   "brand": "bmw",
+   "ru": "Датчик педали газа",
+   "en": "Pedal Position Sensor",
+   "fam": "",
+   "node": "pedal position"
+  },
+  {
+   "code": "P1132",
+   "brand": "bmw",
+   "ru": "Подогрев лямбда-зонда 1 (ряд 1): цепь управления",
+   "en": "O2 Sensor Heater Control Circuit Bank 1 Sensor 1",
+   "fam": "",
+   "node": "o2 sensor heater"
+  },
+  {
+   "code": "P1133",
+   "brand": "bmw",
+   "ru": "Подогрев лямбда-зонда 1 (ряд 2): цепь управления",
+   "en": "O2 Sensor Heater Control Circuit Bank 2 Sensor 1",
+   "fam": "",
+   "node": "o2 sensor heater"
+  },
+  {
+   "code": "P1186",
+   "brand": "bmw",
+   "ru": "Подогрев лямбда-зонда 2 (ряд 1): цепь управления",
+   "en": "O2 Sensor Heater Control Circuit Bank 1 Sensor 2",
+   "fam": "",
+   "node": "o2 sensor heater"
+  },
+  {
+   "code": "P1187",
+   "brand": "bmw",
+   "ru": "Подогрев лямбда-зонда 2 (ряд 2): цепь управления",
+   "en": "O2 Sensor Heater Control Circuit Bank 2 Sensor 2",
+   "fam": "",
+   "node": "o2 sensor heater"
+  }
+ ]
+}

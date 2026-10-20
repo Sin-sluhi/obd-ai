@@ -1,0 +1,346 @@
+{
+ "name": "sae_057",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "catalyst temperature 2 correlation",
+  "egr b control",
+  "egr sensor a",
+  "egr sensor b",
+  "egr sensor c",
+  "fam:evap_pressure",
+  "fam:evap_vent",
+  "fam:fuel_level",
+  "ru:клапан egr b"
+ ],
+ "codes": [
+  {
+   "code": "P0446",
+   "brand": "",
+   "ru": "Клапан вентиляции адсорбера: цепь / не закрывается",
+   "en": "",
+   "fam": "evap_vent",
+   "node": "fam:evap_vent"
+  },
+  {
+   "code": "P0447",
+   "brand": "",
+   "ru": "Клапан вентиляции адсорбера: обрыв",
+   "en": "",
+   "fam": "evap_vent",
+   "node": "fam:evap_vent"
+  },
+  {
+   "code": "P0448",
+   "brand": "",
+   "ru": "Клапан вентиляции адсорбера: замыкание",
+   "en": "",
+   "fam": "evap_vent",
+   "node": "fam:evap_vent"
+  },
+  {
+   "code": "P0449",
+   "brand": "",
+   "ru": "Клапан вентиляции адсорбера: цепь управления",
+   "en": "",
+   "fam": "evap_vent",
+   "node": "fam:evap_vent"
+  },
+  {
+   "code": "P0498",
+   "brand": "",
+   "ru": "Клапан вентиляции адсорбера: низкий уровень в цепи",
+   "en": "",
+   "fam": "evap_vent",
+   "node": "fam:evap_vent"
+  },
+  {
+   "code": "P0499",
+   "brand": "",
+   "ru": "Клапан вентиляции адсорбера: высокий уровень в цепи",
+   "en": "",
+   "fam": "evap_vent",
+   "node": "fam:evap_vent"
+  },
+  {
+   "code": "P2421",
+   "brand": "",
+   "ru": "Клапан вентиляции адсорбера застрял открытым",
+   "en": "",
+   "fam": "evap_vent",
+   "node": "fam:evap_vent"
+  },
+  {
+   "code": "P2422",
+   "brand": "",
+   "ru": "Клапан вентиляции адсорбера застрял закрытым",
+   "en": "",
+   "fam": "evap_vent",
+   "node": "fam:evap_vent"
+  },
+  {
+   "code": "P044A",
+   "brand": "",
+   "ru": "Датчик EGR C: цепь",
+   "en": "EGR Sensor C Circuit",
+   "fam": "",
+   "node": "egr sensor c"
+  },
+  {
+   "code": "P044B",
+   "brand": "",
+   "ru": "Датчик EGR C: сигнал вне диапазона",
+   "en": "EGR Sensor C Circuit Range/Performance",
+   "fam": "",
+   "node": "egr sensor c"
+  },
+  {
+   "code": "P044C",
+   "brand": "",
+   "ru": "Датчик EGR C: низкий уровень сигнала в цепи",
+   "en": "EGR Sensor C Circuit Low",
+   "fam": "",
+   "node": "egr sensor c"
+  },
+  {
+   "code": "P044D",
+   "brand": "",
+   "ru": "Датчик EGR C: высокий уровень сигнала в цепи",
+   "en": "EGR Sensor C Circuit High",
+   "fam": "",
+   "node": "egr sensor c"
+  },
+  {
+   "code": "P044E",
+   "brand": "",
+   "ru": "Датчик EGR C: прерывистый / нестабильный сигнал",
+   "en": "EGR Sensor C Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "egr sensor c"
+  },
+  {
+   "code": "P0450",
+   "brand": "",
+   "ru": "Датчик давления в системе паров топлива: цепь",
+   "en": "",
+   "fam": "evap_pressure",
+   "node": "fam:evap_pressure"
+  },
+  {
+   "code": "P0451",
+   "brand": "",
+   "ru": "Датчик давления в системе паров топлива: показания вне диапазона",
+   "en": "",
+   "fam": "evap_pressure",
+   "node": "fam:evap_pressure"
+  },
+  {
+   "code": "P0452",
+   "brand": "",
+   "ru": "Датчик давления в системе паров топлива: низкий сигнал",
+   "en": "",
+   "fam": "evap_pressure",
+   "node": "fam:evap_pressure"
+  },
+  {
+   "code": "P0453",
+   "brand": "",
+   "ru": "Датчик давления в системе паров топлива: высокий сигнал",
+   "en": "",
+   "fam": "evap_pressure",
+   "node": "fam:evap_pressure"
+  },
+  {
+   "code": "P0454",
+   "brand": "",
+   "ru": "Датчик давления в системе паров топлива: прерывистый сигнал",
+   "en": "",
+   "fam": "evap_pressure",
+   "node": "fam:evap_pressure"
+  },
+  {
+   "code": "P045A",
+   "brand": "",
+   "ru": "Клапан EGR B: цепь управления",
+   "en": "EGR B Control Circuit",
+   "fam": "",
+   "node": "ru:клапан egr b"
+  },
+  {
+   "code": "P045B",
+   "brand": "",
+   "ru": "Клапан EGR B: цепь управления вне диапазона",
+   "en": "EGR B Control Circuit Range/Performance",
+   "fam": "",
+   "node": "ru:клапан egr b"
+  },
+  {
+   "code": "P045C",
+   "brand": "",
+   "ru": "Клапан EGR B: низкий уровень в цепи управления",
+   "en": "EGR B Control Circuit Low",
+   "fam": "",
+   "node": "ru:клапан egr b"
+  },
+  {
+   "code": "P045D",
+   "brand": "",
+   "ru": "Клапан EGR B: высокий уровень в цепи управления",
+   "en": "EGR B Control Circuit High",
+   "fam": "",
+   "node": "ru:клапан egr b"
+  },
+  {
+   "code": "P045E",
+   "brand": "",
+   "ru": "Управление EGR B: заклинил открытым",
+   "en": "EGR B Control Stuck Open",
+   "fam": "",
+   "node": "egr b control"
+  },
+  {
+   "code": "P045F",
+   "brand": "",
+   "ru": "Управление EGR B: заклинил закрытым",
+   "en": "EGR B Control Stuck Closed",
+   "fam": "",
+   "node": "egr b control"
+  },
+  {
+   "code": "P0460",
+   "brand": "",
+   "ru": "Датчик уровня топлива: цепь",
+   "en": "",
+   "fam": "fuel_level",
+   "node": "fam:fuel_level"
+  },
+  {
+   "code": "P0461",
+   "brand": "",
+   "ru": "Датчик уровня топлива: показания вне диапазона",
+   "en": "",
+   "fam": "fuel_level",
+   "node": "fam:fuel_level"
+  },
+  {
+   "code": "P0462",
+   "brand": "",
+   "ru": "Датчик уровня топлива: низкий сигнал",
+   "en": "",
+   "fam": "fuel_level",
+   "node": "fam:fuel_level"
+  },
+  {
+   "code": "P0463",
+   "brand": "",
+   "ru": "Датчик уровня топлива: высокий сигнал",
+   "en": "",
+   "fam": "fuel_level",
+   "node": "fam:fuel_level"
+  },
+  {
+   "code": "P0464",
+   "brand": "",
+   "ru": "Датчик уровня топлива: прерывистый сигнал",
+   "en": "",
+   "fam": "fuel_level",
+   "node": "fam:fuel_level"
+  },
+  {
+   "code": "P0656",
+   "brand": "",
+   "ru": "Выход сигнала уровня топлива: цепь",
+   "en": "",
+   "fam": "fuel_level",
+   "node": "fam:fuel_level"
+  },
+  {
+   "code": "P2065",
+   "brand": "",
+   "ru": "Датчик уровня топлива B: цепь",
+   "en": "",
+   "fam": "fuel_level",
+   "node": "fam:fuel_level"
+  },
+  {
+   "code": "P2066",
+   "brand": "",
+   "ru": "Датчик уровня топлива B: показания вне диапазона",
+   "en": "",
+   "fam": "fuel_level",
+   "node": "fam:fuel_level"
+  },
+  {
+   "code": "P2067",
+   "brand": "",
+   "ru": "Датчик уровня топлива B: низкий сигнал",
+   "en": "",
+   "fam": "fuel_level",
+   "node": "fam:fuel_level"
+  },
+  {
+   "code": "P2068",
+   "brand": "",
+   "ru": "Датчик уровня топлива B: высокий сигнал",
+   "en": "",
+   "fam": "fuel_level",
+   "node": "fam:fuel_level"
+  },
+  {
+   "code": "P2069",
+   "brand": "",
+   "ru": "Датчик уровня топлива B: прерывистый сигнал",
+   "en": "",
+   "fam": "fuel_level",
+   "node": "fam:fuel_level"
+  },
+  {
+   "code": "P046A",
+   "brand": "",
+   "ru": "Датчики температуры катализатора 1 и 2: рассогласование показаний (банк 1)",
+   "en": "Catalyst Temperature Sensor 1/2 Correlation Bank 1",
+   "fam": "",
+   "node": "catalyst temperature 2 correlation"
+  },
+  {
+   "code": "P046B",
+   "brand": "",
+   "ru": "Датчики температуры катализатора 1 и 2: рассогласование показаний (банк 2)",
+   "en": "Catalyst Temperature Sensor 1/2 Correlation Bank 2",
+   "fam": "",
+   "node": "catalyst temperature 2 correlation"
+  },
+  {
+   "code": "P046C",
+   "brand": "",
+   "ru": "Датчик EGR A: сигнал вне диапазона",
+   "en": "EGR Sensor A Circuit Range/Performance",
+   "fam": "",
+   "node": "egr sensor a"
+  },
+  {
+   "code": "P046D",
+   "brand": "",
+   "ru": "Датчик EGR A: прерывистый / нестабильный сигнал",
+   "en": "EGR Sensor A Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "egr sensor a"
+  },
+  {
+   "code": "P046E",
+   "brand": "",
+   "ru": "Датчик EGR B: сигнал вне диапазона",
+   "en": "EGR Sensor B Circuit Range/Performance",
+   "fam": "",
+   "node": "egr sensor b"
+  },
+  {
+   "code": "P046F",
+   "brand": "",
+   "ru": "Датчик EGR B: прерывистый / нестабильный сигнал",
+   "en": "EGR Sensor B Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "egr sensor b"
+  }
+ ]
+}

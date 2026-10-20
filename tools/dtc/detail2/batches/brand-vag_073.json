@@ -1,0 +1,395 @@
+{
+ "name": "brand-vag_073",
+ "series": "brand",
+ "brand": "vag",
+ "nodes": [
+  "barometric manifold pressure",
+  "barometric pressure",
+  "boost pressure control valve",
+  "charge pressure deviation",
+  "charge pressure upper limit exceeded",
+  "clutch pedal switch",
+  "control unit locked",
+  "engine shutoff solenoid",
+  "fam:etc",
+  "fam:turbo_over",
+  "idle speed control throttle position",
+  "idle speed control throttle position adaptation",
+  "idle speed control throttle position lower limit not obtained",
+  "idle speed control throttle position mechanical",
+  "idle speed control throttle position missing adaptation conditions",
+  "intake camshaft",
+  "left engine mount solenoid valve",
+  "left engine mount solenoid valve electrical fault in",
+  "maximum engine speed exceeded",
+  "quantity adjuster deviation",
+  "quantity adjuster lower limit attained",
+  "quantity adjuster upper limit attained",
+  "ru:сигнал нагрузки компрессора кондиционера",
+  "switch for ccs",
+  "throttle actuator electrical",
+  "vehicle speed sensor"
+ ],
+ "codes": [
+  {
+   "code": "P1525",
+   "brand": "vag",
+   "ru": "Регулирование впускного распредвала (ряд 1): электрическая неисправность цепи",
+   "en": "Intake Camshaft Control Circuit Bank 1 Electrical Malfunction",
+   "fam": "",
+   "node": "intake camshaft"
+  },
+  {
+   "code": "P1526",
+   "brand": "vag",
+   "ru": "Регулирование впускного распредвала (ряд 1): замыкание на плюс",
+   "en": "Intake Camshaft Control Circuit Bank 1 Short To B+",
+   "fam": "",
+   "node": "intake camshaft"
+  },
+  {
+   "code": "P1527",
+   "brand": "vag",
+   "ru": "Регулирование впускного распредвала (ряд 1): замыкание на массу",
+   "en": "Intake Camshaft Control Circuit Bank 1 Short To Ground",
+   "fam": "",
+   "node": "intake camshaft"
+  },
+  {
+   "code": "P1528",
+   "brand": "vag",
+   "ru": "Регулирование впускного распредвала (ряд 1): обрыв",
+   "en": "Intake Camshaft Control Circuit Bank 1 Open",
+   "fam": "",
+   "node": "intake camshaft"
+  },
+  {
+   "code": "P1529",
+   "brand": "vag",
+   "ru": "Регулирование распредвала: замыкание на плюс",
+   "en": "Intake Camshaft Control Circuit Short To B+",
+   "fam": "",
+   "node": "intake camshaft"
+  },
+  {
+   "code": "P1530",
+   "brand": "vag",
+   "ru": "Регулирование распредвала: замыкание на массу",
+   "en": "Intake Camshaft Control Circuit Short To Ground",
+   "fam": "",
+   "node": "intake camshaft"
+  },
+  {
+   "code": "P1531",
+   "brand": "vag",
+   "ru": "Регулирование распредвала: обрыв",
+   "en": "Intake Camshaft Control Circuit Open",
+   "fam": "",
+   "node": "intake camshaft"
+  },
+  {
+   "code": "P1533",
+   "brand": "vag",
+   "ru": "Регулирование впускного распредвала (ряд 2): электрическая неисправность цепи",
+   "en": "Intake Camshaft Control Circuit Bank 2 Electrical Malfunction",
+   "fam": "",
+   "node": "intake camshaft"
+  },
+  {
+   "code": "P1534",
+   "brand": "vag",
+   "ru": "Регулирование впускного распредвала (ряд 2): замыкание на плюс",
+   "en": "Intake Camshaft Control Circuit Bank 2 Short To B+",
+   "fam": "",
+   "node": "intake camshaft"
+  },
+  {
+   "code": "P1535",
+   "brand": "vag",
+   "ru": "Регулирование впускного распредвала (ряд 2): замыкание на массу",
+   "en": "Intake Camshaft Control Circuit Bank 2 Short To Ground",
+   "fam": "",
+   "node": "intake camshaft"
+  },
+  {
+   "code": "P1536",
+   "brand": "vag",
+   "ru": "Регулирование впускного распредвала (ряд 2): обрыв",
+   "en": "Intake Camshaft Control Circuit Bank 2 Open",
+   "fam": "",
+   "node": "intake camshaft"
+  },
+  {
+   "code": "P1537",
+   "brand": "vag",
+   "ru": "Клапан останова двигателя (дизель): неисправность",
+   "en": "Engine Shutoff Solenoid Malfunction",
+   "fam": "",
+   "node": "engine shutoff solenoid"
+  },
+  {
+   "code": "P1538",
+   "brand": "vag",
+   "ru": "Клапан останова двигателя (дизель): обрыв или замыкание на массу",
+   "en": "Engine Shutoff Solenoid Open Short To Ground",
+   "fam": "",
+   "node": "engine shutoff solenoid"
+  },
+  {
+   "code": "P1539",
+   "brand": "vag",
+   "ru": "Выключатель педали сцепления: неисправность сигнала",
+   "en": "Clutch Pedal Switch Signal Fault",
+   "fam": "",
+   "node": "clutch pedal switch"
+  },
+  {
+   "code": "P1540",
+   "brand": "vag",
+   "ru": "Датчик скорости: сигнал слишком высокий",
+   "en": "Vehicle Speed Sensor High Input",
+   "fam": "",
+   "node": "vehicle speed sensor"
+  },
+  {
+   "code": "P1545",
+   "brand": "vag",
+   "ru": "Управление положением дросселя: неисправность",
+   "en": "",
+   "fam": "etc",
+   "node": "fam:etc"
+  },
+  {
+   "code": "P1580",
+   "brand": "vag",
+   "ru": "Привод дроссельной заслонки (банк 1): неисправность",
+   "en": "",
+   "fam": "etc",
+   "node": "fam:etc"
+  },
+  {
+   "code": "P1546",
+   "brand": "vag",
+   "ru": "Клапан регулирования давления наддува: замыкание на плюс",
+   "en": "Boost Pressure Control Valve Short To B+",
+   "fam": "",
+   "node": "boost pressure control valve"
+  },
+  {
+   "code": "P1547",
+   "brand": "vag",
+   "ru": "Клапан регулирования давления наддува: замыкание на массу",
+   "en": "Boost Pressure Control Valve Short To Ground",
+   "fam": "",
+   "node": "boost pressure control valve"
+  },
+  {
+   "code": "P1548",
+   "brand": "vag",
+   "ru": "Клапан регулирования давления наддува: обрыв",
+   "en": "Boost Pressure Control Valve Open",
+   "fam": "",
+   "node": "boost pressure control valve"
+  },
+  {
+   "code": "P1549",
+   "brand": "vag",
+   "ru": "Клапан регулирования давления наддува: обрыв или замыкание на массу",
+   "en": "Boost Pressure Control Valve Open Short To Ground",
+   "fam": "",
+   "node": "boost pressure control valve"
+  },
+  {
+   "code": "P1550",
+   "brand": "vag",
+   "ru": "Давление наддува: отклонение от заданного",
+   "en": "Charge Pressure Deviation",
+   "fam": "",
+   "node": "charge pressure deviation"
+  },
+  {
+   "code": "P1551",
+   "brand": "vag",
+   "ru": "Датчик атмосферного давления: замыкание на плюс",
+   "en": "Barometric Pressure Sensor Circuit Short To B+",
+   "fam": "",
+   "node": "barometric pressure"
+  },
+  {
+   "code": "P1552",
+   "brand": "vag",
+   "ru": "Датчик атмосферного давления: обрыв или замыкание на массу",
+   "en": "Barometric Pressure Sensor Circuit Open Short To Ground",
+   "fam": "",
+   "node": "barometric pressure"
+  },
+  {
+   "code": "P1553",
+   "brand": "vag",
+   "ru": "Соотношение атмосферного давления и давления во впуске: вне диапазона",
+   "en": "Barometric Manifold Pressure Signal Ratio Out Of Range",
+   "fam": "",
+   "node": "barometric manifold pressure"
+  },
+  {
+   "code": "P1554",
+   "brand": "vag",
+   "ru": "Регулирование холостого хода дросселем: нет условий для адаптации",
+   "en": "Idle Speed Control Throttle Position Missing Adaptation Conditions",
+   "fam": "",
+   "node": "idle speed control throttle position missing adaptation conditions"
+  },
+  {
+   "code": "P1555",
+   "brand": "vag",
+   "ru": "Давление наддува: превышен верхний предел",
+   "en": "Charge Pressure Upper Limit Exceeded",
+   "fam": "",
+   "node": "charge pressure upper limit exceeded"
+  },
+  {
+   "code": "P1557",
+   "brand": "vag",
+   "ru": "Регулирование наддува: положительное отклонение (передув)",
+   "en": "",
+   "fam": "turbo_over",
+   "node": "fam:turbo_over"
+  },
+  {
+   "code": "P1558",
+   "brand": "vag",
+   "ru": "Привод дроссельной заслонки: электрическая неисправность",
+   "en": "Throttle Actuator Electrical Malfunction",
+   "fam": "",
+   "node": "throttle actuator electrical"
+  },
+  {
+   "code": "P1559",
+   "brand": "vag",
+   "ru": "Регулирование холостого хода дросселем: неисправность адаптации",
+   "en": "Idle Speed Control Throttle Position Adaptation Malfunction",
+   "fam": "",
+   "node": "idle speed control throttle position adaptation"
+  },
+  {
+   "code": "P1560",
+   "brand": "vag",
+   "ru": "Превышены максимальные обороты двигателя",
+   "en": "Maximum Engine Speed Exceeded",
+   "fam": "",
+   "node": "maximum engine speed exceeded"
+  },
+  {
+   "code": "P1561",
+   "brand": "vag",
+   "ru": "Дозатор ТНВД: отклонение",
+   "en": "Quantity Adjuster Deviation",
+   "fam": "",
+   "node": "quantity adjuster deviation"
+  },
+  {
+   "code": "P1562",
+   "brand": "vag",
+   "ru": "Дозатор ТНВД: достигнут верхний предел",
+   "en": "Quantity Adjuster Upper Limit Attained",
+   "fam": "",
+   "node": "quantity adjuster upper limit attained"
+  },
+  {
+   "code": "P1563",
+   "brand": "vag",
+   "ru": "Дозатор ТНВД: достигнут нижний предел",
+   "en": "Quantity Adjuster Lower Limit Attained",
+   "fam": "",
+   "node": "quantity adjuster lower limit attained"
+  },
+  {
+   "code": "P1564",
+   "brand": "vag",
+   "ru": "Регулирование холостого хода дросселем: низкое напряжение при адаптации",
+   "en": "Idle Speed Control Throttle Position Low Voltage During Adaptation",
+   "fam": "",
+   "node": "idle speed control throttle position"
+  },
+  {
+   "code": "P1565",
+   "brand": "vag",
+   "ru": "Регулирование холостого хода дросселем: не достигнут нижний предел",
+   "en": "Idle Speed Control Throttle Position Lower Limit Not Obtained",
+   "fam": "",
+   "node": "idle speed control throttle position lower limit not obtained"
+  },
+  {
+   "code": "P1566",
+   "brand": "vag",
+   "ru": "Сигнал нагрузки компрессора кондиционера: выход за диапазон",
+   "en": "Load Signal From A/C Compressor Range Performance",
+   "fam": "",
+   "node": "ru:сигнал нагрузки компрессора кондиционера"
+  },
+  {
+   "code": "P1567",
+   "brand": "vag",
+   "ru": "Сигнал нагрузки компрессора кондиционера: нет сигнала",
+   "en": "Load Signal From A/C Compressor No Signal",
+   "fam": "",
+   "node": "ru:сигнал нагрузки компрессора кондиционера"
+  },
+  {
+   "code": "P1568",
+   "brand": "vag",
+   "ru": "Регулирование холостого хода дросселем: механическая неисправность",
+   "en": "Idle Speed Control Throttle Position Mechanical Malfunction",
+   "fam": "",
+   "node": "idle speed control throttle position mechanical"
+  },
+  {
+   "code": "P1569",
+   "brand": "vag",
+   "ru": "Выключатель круиз-контроля: неверный сигнал",
+   "en": "Switch For CCS Signal Faulty",
+   "fam": "",
+   "node": "switch for ccs"
+  },
+  {
+   "code": "P1570",
+   "brand": "vag",
+   "ru": "Блок двигателя заблокирован (иммобилайзер)",
+   "en": "Control Unit Locked",
+   "fam": "",
+   "node": "control unit locked"
+  },
+  {
+   "code": "P1571",
+   "brand": "vag",
+   "ru": "Клапан левой опоры двигателя: замыкание на плюс",
+   "en": "Left Engine Mount Solenoid Valve Short To B+",
+   "fam": "",
+   "node": "left engine mount solenoid valve"
+  },
+  {
+   "code": "P1572",
+   "brand": "vag",
+   "ru": "Клапан левой опоры двигателя: замыкание на массу",
+   "en": "Left Engine Mount Solenoid Valve Short To Ground",
+   "fam": "",
+   "node": "left engine mount solenoid valve"
+  },
+  {
+   "code": "P1573",
+   "brand": "vag",
+   "ru": "Клапан левой опоры двигателя: обрыв",
+   "en": "Left Engine Mount Solenoid Valve Open Circuit",
+   "fam": "",
+   "node": "left engine mount solenoid valve"
+  },
+  {
+   "code": "P1574",
+   "brand": "vag",
+   "ru": "Клапан левой опоры двигателя: электрическая неисправность цепи",
+   "en": "Left Engine Mount Solenoid Valve Electrical Fault In Circuit",
+   "fam": "",
+   "node": "left engine mount solenoid valve electrical fault in"
+  }
+ ]
+}

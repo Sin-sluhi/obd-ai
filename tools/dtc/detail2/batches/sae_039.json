@@ -1,0 +1,364 @@
+{
+ "name": "sae_039",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "charge air cooler bypass control a",
+  "charge air cooler bypass control b",
+  "charge air cooler bypass position sensor a",
+  "charge air cooler coolant pump a",
+  "fam:boost_sensor",
+  "fam:overspeed",
+  "fam:overtemp",
+  "fam:trans_overtemp",
+  "fuel pump secondary",
+  "manifold absolute pressure turbocharger supercharger boost sensor a correlation",
+  "manifold absolute pressure turbocharger supercharger boost sensor b correlation"
+ ],
+ "codes": [
+  {
+   "code": "P0217",
+   "brand": "",
+   "ru": "Перегрев двигателя",
+   "en": "",
+   "fam": "overtemp",
+   "node": "fam:overtemp"
+  },
+  {
+   "code": "P2556",
+   "brand": "",
+   "ru": "Датчик уровня охлаждающей жидкости: цепь",
+   "en": "",
+   "fam": "overtemp",
+   "node": "fam:overtemp"
+  },
+  {
+   "code": "P2557",
+   "brand": "",
+   "ru": "Датчик уровня охлаждающей жидкости: не соответствует",
+   "en": "",
+   "fam": "overtemp",
+   "node": "fam:overtemp"
+  },
+  {
+   "code": "P2558",
+   "brand": "",
+   "ru": "Датчик уровня охлаждающей жидкости: низкий уровень",
+   "en": "",
+   "fam": "overtemp",
+   "node": "fam:overtemp"
+  },
+  {
+   "code": "P2559",
+   "brand": "",
+   "ru": "Датчик уровня охлаждающей жидкости: высокий уровень",
+   "en": "",
+   "fam": "overtemp",
+   "node": "fam:overtemp"
+  },
+  {
+   "code": "P2560",
+   "brand": "",
+   "ru": "Низкий уровень охлаждающей жидкости",
+   "en": "",
+   "fam": "overtemp",
+   "node": "fam:overtemp"
+  },
+  {
+   "code": "P0218",
+   "brand": "",
+   "ru": "Перегрев коробки передач",
+   "en": "",
+   "fam": "trans_overtemp",
+   "node": "fam:trans_overtemp"
+  },
+  {
+   "code": "P0897",
+   "brand": "",
+   "ru": "Масло в коробке деградировало",
+   "en": "",
+   "fam": "trans_overtemp",
+   "node": "fam:trans_overtemp"
+  },
+  {
+   "code": "P2753",
+   "brand": "",
+   "ru": "Охладитель масла коробки: цепь управления / обрыв",
+   "en": "",
+   "fam": "trans_overtemp",
+   "node": "fam:trans_overtemp"
+  },
+  {
+   "code": "P2754",
+   "brand": "",
+   "ru": "Охладитель масла коробки: низкий уровень",
+   "en": "",
+   "fam": "trans_overtemp",
+   "node": "fam:trans_overtemp"
+  },
+  {
+   "code": "P2755",
+   "brand": "",
+   "ru": "Охладитель масла коробки: высокий уровень",
+   "en": "",
+   "fam": "trans_overtemp",
+   "node": "fam:trans_overtemp"
+  },
+  {
+   "code": "P2783",
+   "brand": "",
+   "ru": "Гидротрансформатор: температура слишком высокая",
+   "en": "",
+   "fam": "trans_overtemp",
+   "node": "fam:trans_overtemp"
+  },
+  {
+   "code": "P0219",
+   "brand": "",
+   "ru": "Превышение оборотов двигателя",
+   "en": "",
+   "fam": "overspeed",
+   "node": "fam:overspeed"
+  },
+  {
+   "code": "P0297",
+   "brand": "",
+   "ru": "Превышение скорости автомобиля",
+   "en": "",
+   "fam": "overspeed",
+   "node": "fam:overspeed"
+  },
+  {
+   "code": "P022A",
+   "brand": "",
+   "ru": "Управление байпасом интеркулера A: обрыв цепи",
+   "en": "Charge Air Cooler Bypass Control A Circuit /Open",
+   "fam": "",
+   "node": "charge air cooler bypass control a"
+  },
+  {
+   "code": "P022B",
+   "brand": "",
+   "ru": "Управление байпасом интеркулера A: низкий уровень сигнала в цепи",
+   "en": "Charge Air Cooler Bypass Control A Circuit Low",
+   "fam": "",
+   "node": "charge air cooler bypass control a"
+  },
+  {
+   "code": "P022C",
+   "brand": "",
+   "ru": "Управление байпасом интеркулера A: высокий уровень сигнала в цепи",
+   "en": "Charge Air Cooler Bypass Control A Circuit High",
+   "fam": "",
+   "node": "charge air cooler bypass control a"
+  },
+  {
+   "code": "P024A",
+   "brand": "",
+   "ru": "Управление байпасом интеркулера A: вне допустимого диапазона",
+   "en": "Charge Air Cooler Bypass Control A Range/Performance",
+   "fam": "",
+   "node": "charge air cooler bypass control a"
+  },
+  {
+   "code": "P024B",
+   "brand": "",
+   "ru": "Управление байпасом интеркулера A: заклинивание",
+   "en": "Charge Air Cooler Bypass Control A Stuck",
+   "fam": "",
+   "node": "charge air cooler bypass control a"
+  },
+  {
+   "code": "P022D",
+   "brand": "",
+   "ru": "Управление байпасом интеркулера B: обрыв цепи",
+   "en": "Charge Air Cooler Bypass Control B Circuit /Open",
+   "fam": "",
+   "node": "charge air cooler bypass control b"
+  },
+  {
+   "code": "P022E",
+   "brand": "",
+   "ru": "Управление байпасом интеркулера B: низкий уровень сигнала в цепи",
+   "en": "Charge Air Cooler Bypass Control B Circuit Low",
+   "fam": "",
+   "node": "charge air cooler bypass control b"
+  },
+  {
+   "code": "P022F",
+   "brand": "",
+   "ru": "Управление байпасом интеркулера B: высокий уровень сигнала в цепи",
+   "en": "Charge Air Cooler Bypass Control B Circuit High",
+   "fam": "",
+   "node": "charge air cooler bypass control b"
+  },
+  {
+   "code": "P0235",
+   "brand": "",
+   "ru": "Датчик давления наддува A: цепь",
+   "en": "",
+   "fam": "boost_sensor",
+   "node": "fam:boost_sensor"
+  },
+  {
+   "code": "P0236",
+   "brand": "",
+   "ru": "Датчик давления наддува A: показания вне диапазона",
+   "en": "",
+   "fam": "boost_sensor",
+   "node": "fam:boost_sensor"
+  },
+  {
+   "code": "P0237",
+   "brand": "",
+   "ru": "Датчик давления наддува A: низкий сигнал",
+   "en": "",
+   "fam": "boost_sensor",
+   "node": "fam:boost_sensor"
+  },
+  {
+   "code": "P0238",
+   "brand": "",
+   "ru": "Датчик давления наддува A: высокий сигнал",
+   "en": "",
+   "fam": "boost_sensor",
+   "node": "fam:boost_sensor"
+  },
+  {
+   "code": "P0239",
+   "brand": "",
+   "ru": "Датчик давления наддува B: цепь",
+   "en": "",
+   "fam": "boost_sensor",
+   "node": "fam:boost_sensor"
+  },
+  {
+   "code": "P0240",
+   "brand": "",
+   "ru": "Датчик давления наддува B: показания вне диапазона",
+   "en": "",
+   "fam": "boost_sensor",
+   "node": "fam:boost_sensor"
+  },
+  {
+   "code": "P0241",
+   "brand": "",
+   "ru": "Датчик давления наддува B: низкий сигнал",
+   "en": "",
+   "fam": "boost_sensor",
+   "node": "fam:boost_sensor"
+  },
+  {
+   "code": "P0242",
+   "brand": "",
+   "ru": "Датчик давления наддува B: высокий сигнал",
+   "en": "",
+   "fam": "boost_sensor",
+   "node": "fam:boost_sensor"
+  },
+  {
+   "code": "P023A",
+   "brand": "",
+   "ru": "Насос охлаждения интеркулера A: обрыв цепи управления",
+   "en": "Charge Air Cooler Coolant Pump A Control Circuit/Open",
+   "fam": "",
+   "node": "charge air cooler coolant pump a"
+  },
+  {
+   "code": "P023B",
+   "brand": "",
+   "ru": "Насос охлаждения интеркулера A: низкий уровень в цепи управления",
+   "en": "Charge Air Cooler Coolant Pump A Control Circuit Low",
+   "fam": "",
+   "node": "charge air cooler coolant pump a"
+  },
+  {
+   "code": "P023C",
+   "brand": "",
+   "ru": "Насос охлаждения интеркулера A: высокий уровень в цепи управления",
+   "en": "Charge Air Cooler Coolant Pump A Control Circuit High",
+   "fam": "",
+   "node": "charge air cooler coolant pump a"
+  },
+  {
+   "code": "P026E",
+   "brand": "",
+   "ru": "Насос охлаждения интеркулера A: работа нарушена",
+   "en": "Charge Air Cooler Coolant Pump A Performance",
+   "fam": "",
+   "node": "charge air cooler coolant pump a"
+  },
+  {
+   "code": "P2BC1",
+   "brand": "",
+   "ru": "Насос охлаждения интеркулера A: заклинивание / остановка",
+   "en": "Charge Air Cooler Coolant Pump A Stuck/Stalled",
+   "fam": "",
+   "node": "charge air cooler coolant pump a"
+  },
+  {
+   "code": "P023D",
+   "brand": "",
+   "ru": "Датчик MAP / датчик наддува A: рассогласование показаний",
+   "en": "Manifold Absolute Pressure - Turbocharger/Supercharger Boost Sensor A Correlation",
+   "fam": "",
+   "node": "manifold absolute pressure turbocharger supercharger boost sensor a correlation"
+  },
+  {
+   "code": "P023E",
+   "brand": "",
+   "ru": "Датчик MAP / датчик наддува B: рассогласование показаний",
+   "en": "Manifold Absolute Pressure - Turbocharger/Supercharger Boost Sensor B Correlation",
+   "fam": "",
+   "node": "manifold absolute pressure turbocharger supercharger boost sensor b correlation"
+  },
+  {
+   "code": "P023F",
+   "brand": "",
+   "ru": "Вторичная цепь топливного насоса: обрыв цепи",
+   "en": "Fuel Pump Secondary Circuit/Open",
+   "fam": "",
+   "node": "fuel pump secondary"
+  },
+  {
+   "code": "P2BB3",
+   "brand": "",
+   "ru": "Вторичная цепь топливного насоса: нарушена работа цепи",
+   "en": "Fuel Pump Secondary Circuit Performance",
+   "fam": "",
+   "node": "fuel pump secondary"
+  },
+  {
+   "code": "P024C",
+   "brand": "",
+   "ru": "Датчик положения байпаса интеркулера A: цепь",
+   "en": "Charge Air Cooler Bypass Position Sensor A Circuit",
+   "fam": "",
+   "node": "charge air cooler bypass position sensor a"
+  },
+  {
+   "code": "P024D",
+   "brand": "",
+   "ru": "Датчик положения байпаса интеркулера A: сигнал вне диапазона",
+   "en": "Charge Air Cooler Bypass Position Sensor A Circuit Range/Performance",
+   "fam": "",
+   "node": "charge air cooler bypass position sensor a"
+  },
+  {
+   "code": "P024E",
+   "brand": "",
+   "ru": "Датчик положения байпаса интеркулера A: низкий уровень сигнала в цепи",
+   "en": "Charge Air Cooler Bypass Position Sensor A Circuit Low",
+   "fam": "",
+   "node": "charge air cooler bypass position sensor a"
+  },
+  {
+   "code": "P024F",
+   "brand": "",
+   "ru": "Датчик положения байпаса интеркулера A: высокий уровень сигнала в цепи",
+   "en": "Charge Air Cooler Bypass Position Sensor A Circuit High",
+   "fam": "",
+   "node": "charge air cooler bypass position sensor a"
+  }
+ ]
+}

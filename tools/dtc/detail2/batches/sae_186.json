@@ -1,0 +1,361 @@
+{
+ "name": "sae_186",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "battery charger b coupler lock position",
+  "cold start engine coolant bypass valve c",
+  "cold start engine coolant bypass valve d",
+  "cold start engine coolant pump underspeed",
+  "cold start fuel injection quantity b higher than expected",
+  "cold start fuel injection quantity b lower than expected",
+  "cold start fuel injection quantity c higher than expected",
+  "cold start fuel injection quantity c lower than expected",
+  "cold start fuel injection quantity d higher than expected",
+  "cold start fuel injection quantity d lower than expected",
+  "control pilot charging switch b",
+  "drive motor a clutch",
+  "drive motor a clutch actuator",
+  "evap system leak detection pump",
+  "fuel injection quantity b higher than expected",
+  "fuel injection quantity b lower than expected",
+  "fuel injection quantity c higher than expected",
+  "fuel injection quantity c lower than expected",
+  "fuel injection quantity d higher than expected",
+  "fuel injection quantity d lower than expected",
+  "particulate filter b incorrect",
+  "starter generator excitation current",
+  "starter generator phase x y z current sensor correlation",
+  "starter generator position sensor correlation"
+ ],
+ "codes": [
+  {
+   "code": "P2DBC",
+   "brand": "",
+   "ru": "Датчик фиксатора зарядного разъёма B: цепь",
+   "en": "Battery Charger B Coupler Lock Position Sensor Circuit",
+   "fam": "",
+   "node": "battery charger b coupler lock position"
+  },
+  {
+   "code": "P2DBD",
+   "brand": "",
+   "ru": "Датчик фиксатора зарядного разъёма B: сигнал вне диапазона",
+   "en": "Battery Charger B Coupler Lock Position Sensor Circuit Range/Performance",
+   "fam": "",
+   "node": "battery charger b coupler lock position"
+  },
+  {
+   "code": "P2DBE",
+   "brand": "",
+   "ru": "Датчик фиксатора зарядного разъёма B: низкий уровень сигнала в цепи",
+   "en": "Battery Charger B Coupler Lock Position Sensor Circuit Low",
+   "fam": "",
+   "node": "battery charger b coupler lock position"
+  },
+  {
+   "code": "P2DBF",
+   "brand": "",
+   "ru": "Датчик фиксатора зарядного разъёма B: высокий уровень сигнала в цепи",
+   "en": "Battery Charger B Coupler Lock Position Sensor Circuit High",
+   "fam": "",
+   "node": "battery charger b coupler lock position"
+  },
+  {
+   "code": "P2DC0",
+   "brand": "",
+   "ru": "Датчик фиксатора зарядного разъёма B: прерывистый / нестабильный сигнал",
+   "en": "Battery Charger B Coupler Lock Position Sensor Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "battery charger b coupler lock position"
+  },
+  {
+   "code": "P2DC7",
+   "brand": "",
+   "ru": "Стартер-генератор: ток возбуждения",
+   "en": "Starter/Generator Excitation Current",
+   "fam": "",
+   "node": "starter generator excitation current"
+  },
+  {
+   "code": "P2DC8",
+   "brand": "",
+   "ru": "Стартер-генератор: малый ток возбуждения",
+   "en": "Starter/Generator Excitation Current Low",
+   "fam": "",
+   "node": "starter generator excitation current"
+  },
+  {
+   "code": "P2DC9",
+   "brand": "",
+   "ru": "Стартер-генератор: большой ток возбуждения",
+   "en": "Starter/Generator Excitation Current High",
+   "fam": "",
+   "node": "starter generator excitation current"
+  },
+  {
+   "code": "P2DCA",
+   "brand": "",
+   "ru": "Стартер-генератор: прерывистый ток возбуждения",
+   "en": "Starter/Generator Excitation Current Intermittent",
+   "fam": "",
+   "node": "starter generator excitation current"
+  },
+  {
+   "code": "P2DCB",
+   "brand": "",
+   "ru": "Стартер-генератор: рассогласование датчиков тока фаз X-Y-Z",
+   "en": "Starter/Generator Phase X-Y-Z Current Sensor Correlation",
+   "fam": "",
+   "node": "starter generator phase x y z current sensor correlation"
+  },
+  {
+   "code": "P2DCC",
+   "brand": "",
+   "ru": "Стартер-генератор: рассогласование датчиков положения",
+   "en": "Starter/Generator Position Sensor Correlation",
+   "fam": "",
+   "node": "starter generator position sensor correlation"
+  },
+  {
+   "code": "P2DCD",
+   "brand": "",
+   "ru": "Установлен не тот сажевый фильтр B",
+   "en": "Particulate Filter B Incorrect",
+   "fam": "",
+   "node": "particulate filter b incorrect"
+  },
+  {
+   "code": "P2DCE",
+   "brand": "",
+   "ru": "Сигнал Control Pilot зарядной станции B: обрыв цепи",
+   "en": "Control Pilot Charging Switch B Circuit/Open",
+   "fam": "",
+   "node": "control pilot charging switch b"
+  },
+  {
+   "code": "P2DCF",
+   "brand": "",
+   "ru": "Сигнал Control Pilot зарядной станции B: вне допустимого диапазона",
+   "en": "Control Pilot Charging Switch B Range/Performance",
+   "fam": "",
+   "node": "control pilot charging switch b"
+  },
+  {
+   "code": "P2DD0",
+   "brand": "",
+   "ru": "Сигнал Control Pilot зарядной станции B: низкий уровень сигнала в цепи",
+   "en": "Control Pilot Charging Switch B Circuit Low",
+   "fam": "",
+   "node": "control pilot charging switch b"
+  },
+  {
+   "code": "P2DD1",
+   "brand": "",
+   "ru": "Сигнал Control Pilot зарядной станции B: высокий уровень сигнала в цепи",
+   "en": "Control Pilot Charging Switch B Circuit High",
+   "fam": "",
+   "node": "control pilot charging switch b"
+  },
+  {
+   "code": "P2DD2",
+   "brand": "",
+   "ru": "Сигнал Control Pilot зарядной станции B: прерывистый / нестабильный сигнал",
+   "en": "Control Pilot Charging Switch B Intermittent/Erratic",
+   "fam": "",
+   "node": "control pilot charging switch b"
+  },
+  {
+   "code": "P2DD3",
+   "brand": "",
+   "ru": "Сигнал Control Pilot зарядной станции B: не включается",
+   "en": "Control Pilot Charging Switch B Stuck Off",
+   "fam": "",
+   "node": "control pilot charging switch b"
+  },
+  {
+   "code": "P2DD4",
+   "brand": "",
+   "ru": "Сигнал Control Pilot зарядной станции B: постоянно включён",
+   "en": "Control Pilot Charging Switch B Stuck On",
+   "fam": "",
+   "node": "control pilot charging switch b"
+  },
+  {
+   "code": "P2DD5",
+   "brand": "",
+   "ru": "Количество впрыскиваемого топлива B: ниже ожидаемого",
+   "en": "Fuel Injection Quantity B Lower Than Expected",
+   "fam": "",
+   "node": "fuel injection quantity b lower than expected"
+  },
+  {
+   "code": "P2DD6",
+   "brand": "",
+   "ru": "Количество впрыскиваемого топлива B: выше ожидаемого",
+   "en": "Fuel Injection Quantity B Higher Than Expected",
+   "fam": "",
+   "node": "fuel injection quantity b higher than expected"
+  },
+  {
+   "code": "P2DD7",
+   "brand": "",
+   "ru": "Количество топлива при холодном пуске B: ниже ожидаемого",
+   "en": "Cold Start Fuel Injection Quantity B Lower Than Expected",
+   "fam": "",
+   "node": "cold start fuel injection quantity b lower than expected"
+  },
+  {
+   "code": "P2DD8",
+   "brand": "",
+   "ru": "Количество топлива при холодном пуске B: выше ожидаемого",
+   "en": "Cold Start Fuel Injection Quantity B Higher Than Expected",
+   "fam": "",
+   "node": "cold start fuel injection quantity b higher than expected"
+  },
+  {
+   "code": "P2DD9",
+   "brand": "",
+   "ru": "Насос проверки утечек EVAP: нарушена работа цепи управления",
+   "en": "EVAP System Leak Detection Pump Control Circuit Performance",
+   "fam": "",
+   "node": "evap system leak detection pump"
+  },
+  {
+   "code": "P2DDA",
+   "brand": "",
+   "ru": "Насос проверки утечек EVAP: работа нарушена / не включается",
+   "en": "EVAP System Leak Detection Pump Performance/Stuck Off",
+   "fam": "",
+   "node": "evap system leak detection pump"
+  },
+  {
+   "code": "P2DDB",
+   "brand": "",
+   "ru": "Насос проверки утечек EVAP: постоянно включён",
+   "en": "EVAP System Leak Detection Pump Stuck On",
+   "fam": "",
+   "node": "evap system leak detection pump"
+  },
+  {
+   "code": "P2DDC",
+   "brand": "",
+   "ru": "Количество впрыскиваемого топлива C: ниже ожидаемого",
+   "en": "Fuel Injection Quantity C Lower Than Expected",
+   "fam": "",
+   "node": "fuel injection quantity c lower than expected"
+  },
+  {
+   "code": "P2DDD",
+   "brand": "",
+   "ru": "Количество впрыскиваемого топлива C: выше ожидаемого",
+   "en": "Fuel Injection Quantity C Higher Than Expected",
+   "fam": "",
+   "node": "fuel injection quantity c higher than expected"
+  },
+  {
+   "code": "P2DDE",
+   "brand": "",
+   "ru": "Количество впрыскиваемого топлива D: ниже ожидаемого",
+   "en": "Fuel Injection Quantity D Lower Than Expected",
+   "fam": "",
+   "node": "fuel injection quantity d lower than expected"
+  },
+  {
+   "code": "P2DDF",
+   "brand": "",
+   "ru": "Количество впрыскиваемого топлива D: выше ожидаемого",
+   "en": "Fuel Injection Quantity D Higher Than Expected",
+   "fam": "",
+   "node": "fuel injection quantity d higher than expected"
+  },
+  {
+   "code": "P2DE0",
+   "brand": "",
+   "ru": "Количество топлива при холодном пуске C: ниже ожидаемого",
+   "en": "Cold Start Fuel Injection Quantity C Lower Than Expected",
+   "fam": "",
+   "node": "cold start fuel injection quantity c lower than expected"
+  },
+  {
+   "code": "P2DE1",
+   "brand": "",
+   "ru": "Количество топлива при холодном пуске C: выше ожидаемого",
+   "en": "Cold Start Fuel Injection Quantity C Higher Than Expected",
+   "fam": "",
+   "node": "cold start fuel injection quantity c higher than expected"
+  },
+  {
+   "code": "P2DE2",
+   "brand": "",
+   "ru": "Количество топлива при холодном пуске D: ниже ожидаемого",
+   "en": "Cold Start Fuel Injection Quantity D Lower Than Expected",
+   "fam": "",
+   "node": "cold start fuel injection quantity d lower than expected"
+  },
+  {
+   "code": "P2DE3",
+   "brand": "",
+   "ru": "Количество топлива при холодном пуске D: выше ожидаемого",
+   "en": "Cold Start Fuel Injection Quantity D Higher Than Expected",
+   "fam": "",
+   "node": "cold start fuel injection quantity d higher than expected"
+  },
+  {
+   "code": "P2DE4",
+   "brand": "",
+   "ru": "Муфта тягового электромотора A: не выключается",
+   "en": "Drive Motor A Clutch Stuck Engaged",
+   "fam": "",
+   "node": "drive motor a clutch"
+  },
+  {
+   "code": "P2DE5",
+   "brand": "",
+   "ru": "Муфта тягового электромотора A: не включается",
+   "en": "Drive Motor A Clutch Stuck Disengaged",
+   "fam": "",
+   "node": "drive motor a clutch"
+  },
+  {
+   "code": "P2DE6",
+   "brand": "",
+   "ru": "Привод муфты тягового электромотора A: работа нарушена",
+   "en": "Drive Motor A Clutch Actuator Performance",
+   "fam": "",
+   "node": "drive motor a clutch actuator"
+  },
+  {
+   "code": "P2DE7",
+   "brand": "",
+   "ru": "Перепускной клапан охлаждающей жидкости при холодном пуске C: вне допустимого диапазона",
+   "en": "Cold Start Engine Coolant Bypass Valve C Range/Performance",
+   "fam": "",
+   "node": "cold start engine coolant bypass valve c"
+  },
+  {
+   "code": "P2DE8",
+   "brand": "",
+   "ru": "Перепускной клапан охлаждающей жидкости при холодном пуске D: заклинил открытым",
+   "en": "Cold Start Engine Coolant Bypass Valve D Stuck Open",
+   "fam": "",
+   "node": "cold start engine coolant bypass valve d"
+  },
+  {
+   "code": "P2E81",
+   "brand": "",
+   "ru": "Перепускной клапан охлаждающей жидкости при холодном пуске D: заклинил закрытым",
+   "en": "Cold Start Engine Coolant Bypass Valve D Stuck Closed",
+   "fam": "",
+   "node": "cold start engine coolant bypass valve d"
+  },
+  {
+   "code": "P2DE9",
+   "brand": "",
+   "ru": "Насос охлаждающей жидкости при холодном пуске: заниженная скорость вращения",
+   "en": "Cold Start Engine Coolant Pump Underspeed",
+   "fam": "",
+   "node": "cold start engine coolant pump underspeed"
+  }
+ ]
+}

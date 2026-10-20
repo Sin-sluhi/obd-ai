@@ -1,0 +1,386 @@
+{
+ "name": "brand-gm_025",
+ "series": "brand",
+ "brand": "gm",
+ "nodes": [
+  "accelerator pedal position system",
+  "baro to map",
+  "engine coolant temp",
+  "engine coolant temperature",
+  "fam:lambda1",
+  "ho2s average voltage level",
+  "ho2s heater current monitor",
+  "ho2s heater warm up",
+  "ho2s insufficient switching",
+  "ho2s lean average",
+  "ho2s lean or",
+  "ho2s rich average",
+  "ho2s rich or",
+  "ho2s transition time ratio",
+  "intake air temperature",
+  "intake resonance switchover",
+  "ru:датчик давления во впуске",
+  "ru:датчик положения дросселя",
+  "ru:лямбда- (ряд 1)",
+  "ru:лямбда- (ряд 2)",
+  "ru:сигнал температуры ож не согласуется с датчиком температуры масла коробки",
+  "ru:сигнал температуры ож нестабильный или прерывистый",
+  "secondary port throttle system",
+  "secondary vacuum",
+  "throttle position"
+ ],
+ "codes": [
+  {
+   "code": "P1031",
+   "brand": "gm",
+   "ru": "Подогрев лямбда-зондов 1: цепь контроля тока",
+   "en": "HO2S Heater Current Monitor Control Circuit Sensors 1",
+   "fam": "",
+   "node": "ho2s heater current monitor"
+  },
+  {
+   "code": "P1032",
+   "brand": "gm",
+   "ru": "Подогрев лямбда-зондов 1: цепь прогрева",
+   "en": "HO2S Heater Warm Up Control Circuit Sensors 1",
+   "fam": "",
+   "node": "ho2s heater warm up"
+  },
+  {
+   "code": "P1105",
+   "brand": "gm",
+   "ru": "Датчик вторичного разрежения: цепь",
+   "en": "Secondary Vacuum Sensor Circuit",
+   "fam": "",
+   "node": "secondary vacuum"
+  },
+  {
+   "code": "P1106",
+   "brand": "gm",
+   "ru": "Датчик давления во впуске: временами высокое напряжение",
+   "en": "MAP Sensor Circuit Intermittent High Voltage",
+   "fam": "",
+   "node": "ru:датчик давления во впуске"
+  },
+  {
+   "code": "P1107",
+   "brand": "gm",
+   "ru": "Датчик давления во впуске: временами низкое напряжение",
+   "en": "MAP Sensor Circuit Intermittent Low Voltage",
+   "fam": "",
+   "node": "ru:датчик давления во впуске"
+  },
+  {
+   "code": "P1108",
+   "brand": "gm",
+   "ru": "Сравнение атмосферного давления и давления во впуске: слишком большое",
+   "en": "BARO To MAP Sensor Circuit Comparison Too High",
+   "fam": "",
+   "node": "baro to map"
+  },
+  {
+   "code": "P1109",
+   "brand": "gm",
+   "ru": "Система дополнительных дроссельных заслонок",
+   "en": "Secondary Port Throttle System",
+   "fam": "",
+   "node": "secondary port throttle system"
+  },
+  {
+   "code": "P1111",
+   "brand": "gm",
+   "ru": "Датчик температуры впускного воздуха: временами высокое напряжение",
+   "en": "Intake Air Temperature (IAT) Sensor Circuit Intermittent High Voltage",
+   "fam": "",
+   "node": "intake air temperature"
+  },
+  {
+   "code": "P1112",
+   "brand": "gm",
+   "ru": "Датчик температуры впускного воздуха: временами низкое напряжение",
+   "en": "Intake Air Temperature (IAT) Sensor Circuit Intermittent Low Voltage",
+   "fam": "",
+   "node": "intake air temperature"
+  },
+  {
+   "code": "P1113",
+   "brand": "gm",
+   "ru": "Клапан резонансного переключения впуска: цепь",
+   "en": "Intake Resonance Switchover Valve Circuit",
+   "fam": "",
+   "node": "intake resonance switchover"
+  },
+  {
+   "code": "P1114",
+   "brand": "gm",
+   "ru": "Датчик температуры ОЖ: временами низкое напряжение",
+   "en": "Engine Coolant Temperature (ECT) Sensor Circuit Intermittent Low Voltage",
+   "fam": "",
+   "node": "engine coolant temperature"
+  },
+  {
+   "code": "P1115",
+   "brand": "gm",
+   "ru": "Датчик температуры ОЖ: временами высокое напряжение",
+   "en": "Engine Coolant Temperature (ECT) Sensor Circuit Intermittent High Voltage",
+   "fam": "",
+   "node": "engine coolant temperature"
+  },
+  {
+   "code": "P1116",
+   "brand": "gm",
+   "ru": "Сигнал температуры ОЖ нестабильный или прерывистый",
+   "en": "ECT Signal Unstable Or Intermittent",
+   "fam": "",
+   "node": "ru:сигнал температуры ож нестабильный или прерывистый"
+  },
+  {
+   "code": "P1117",
+   "brand": "gm",
+   "ru": "Сигнал температуры ОЖ ниже диапазона",
+   "en": "Engine Coolant Temp Signal Out Of Range Low",
+   "fam": "",
+   "node": "engine coolant temp"
+  },
+  {
+   "code": "P1118",
+   "brand": "gm",
+   "ru": "Сигнал температуры ОЖ выше диапазона",
+   "en": "Engine Coolant Temp Signal Out Of Range High",
+   "fam": "",
+   "node": "engine coolant temp"
+  },
+  {
+   "code": "P1119",
+   "brand": "gm",
+   "ru": "Сигнал температуры ОЖ не согласуется с датчиком температуры масла коробки",
+   "en": "ECT Signal Out Of Range With TFT Sensor",
+   "fam": "",
+   "node": "ru:сигнал температуры ож не согласуется с датчиком температуры масла коробки"
+  },
+  {
+   "code": "P1120",
+   "brand": "gm",
+   "ru": "Датчик положения дросселя 1: цепь",
+   "en": "Throttle Position (TP) Sensor 1 Circuit",
+   "fam": "",
+   "node": "throttle position"
+  },
+  {
+   "code": "P1220",
+   "brand": "gm",
+   "ru": "Датчик положения дросселя 2: цепь",
+   "en": "Throttle Position (TP) Sensor 2 Circuit",
+   "fam": "",
+   "node": "throttle position"
+  },
+  {
+   "code": "P1121",
+   "brand": "gm",
+   "ru": "Датчик положения дросселя: временами высокое напряжение",
+   "en": "TP Sensor Circuit Intermittent High Voltage",
+   "fam": "",
+   "node": "ru:датчик положения дросселя"
+  },
+  {
+   "code": "P1122",
+   "brand": "gm",
+   "ru": "Датчик положения дросселя: временами низкое напряжение",
+   "en": "TP Sensor Circuit Intermittent Low Voltage",
+   "fam": "",
+   "node": "ru:датчик положения дросселя"
+  },
+  {
+   "code": "P1125",
+   "brand": "gm",
+   "ru": "Система датчиков педали газа",
+   "en": "Accelerator Pedal Position (APP) System",
+   "fam": "",
+   "node": "accelerator pedal position system"
+  },
+  {
+   "code": "P1130",
+   "brand": "gm",
+   "ru": "Лямбда-зонд 1 (ряд 1): слишком малые колебания сигнала",
+   "en": "HO2S Circuit Low Variance Bank 1 Sensor 1",
+   "fam": "",
+   "node": "ru:лямбда- (ряд 1)"
+  },
+  {
+   "code": "P1131",
+   "brand": "gm",
+   "ru": "Лямбда-зонд 2 (ряд 1): слишком малые колебания сигнала",
+   "en": "HO2S Circuit Low Variance Bank 1 Sensor 2",
+   "fam": "",
+   "node": "ru:лямбда- (ряд 1)"
+  },
+  {
+   "code": "P1195",
+   "brand": "gm",
+   "ru": "Лямбда-зонд 1 (ряд 1): медленный при проверке катализатора",
+   "en": "O2 Sensor 1/1 (Bank 1 Sensor 1) Slow During Catalyst Monitor",
+   "fam": "",
+   "node": "ru:лямбда- (ряд 1)"
+  },
+  {
+   "code": "P1197",
+   "brand": "gm",
+   "ru": "Лямбда-зонд 2 (ряд 1): медленный при проверке катализатора",
+   "en": "O2 Sensor 1/2 (Bank 1 Sensor 2) Slow During Catalyst Monitor",
+   "fam": "",
+   "node": "ru:лямбда- (ряд 1)"
+  },
+  {
+   "code": "P1132",
+   "brand": "gm",
+   "ru": "Лямбда-зонд 1 (ряд 2): слишком малые колебания сигнала",
+   "en": "H02S Circuit Low Variance Bank 2 Sensor 1",
+   "fam": "",
+   "node": "ru:лямбда- (ряд 2)"
+  },
+  {
+   "code": "P1196",
+   "brand": "gm",
+   "ru": "Лямбда-зонд 1 (ряд 2): медленный при проверке катализатора",
+   "en": "O2 Sensor 2/1 (Bank 2 Sensor 1) Slow During Catalyst Monitor",
+   "fam": "",
+   "node": "ru:лямбда- (ряд 2)"
+  },
+  {
+   "code": "P1133",
+   "brand": "gm",
+   "ru": "Лямбда-зонд (банк 1, датчик 1): мало переключений",
+   "en": "",
+   "fam": "lambda1",
+   "node": "fam:lambda1"
+  },
+  {
+   "code": "P1134",
+   "brand": "gm",
+   "ru": "Лямбда-зонд (банк 1, датчик 1): соотношение времени переходов",
+   "en": "",
+   "fam": "lambda1",
+   "node": "fam:lambda1"
+  },
+  {
+   "code": "P1153",
+   "brand": "gm",
+   "ru": "Лямбда-зонд (банк 2, датчик 1): мало переключений",
+   "en": "",
+   "fam": "lambda1",
+   "node": "fam:lambda1"
+  },
+  {
+   "code": "P1154",
+   "brand": "gm",
+   "ru": "Лямбда-зонд (банк 2, датчик 1): соотношение времени переходов",
+   "en": "",
+   "fam": "lambda1",
+   "node": "fam:lambda1"
+  },
+  {
+   "code": "P1135",
+   "brand": "gm",
+   "ru": "Лямбда-зонд 1 (ряд 1): в среднем бедно",
+   "en": "HO2S Lean Average Bank 1 Sensor 1",
+   "fam": "",
+   "node": "ho2s lean average"
+  },
+  {
+   "code": "P1155",
+   "brand": "gm",
+   "ru": "Лямбда-зонд 1 (ряд 2): в среднем бедно",
+   "en": "HO2S Lean Average Bank 2 Sensor 1",
+   "fam": "",
+   "node": "ho2s lean average"
+  },
+  {
+   "code": "P1136",
+   "brand": "gm",
+   "ru": "Лямбда-зонд 1 (ряд 1): в среднем богато",
+   "en": "HO2S Rich Average Bank 1 Sensor 1",
+   "fam": "",
+   "node": "ho2s rich average"
+  },
+  {
+   "code": "P1156",
+   "brand": "gm",
+   "ru": "Лямбда-зонд 1 (ряд 2): в среднем богато",
+   "en": "HO2S Rich Average Bank 2 Sensor 1",
+   "fam": "",
+   "node": "ho2s rich average"
+  },
+  {
+   "code": "P1137",
+   "brand": "gm",
+   "ru": "Лямбда-зонд 2 (ряд 1): бедно или низкое напряжение",
+   "en": "HO2S Bank 1 Sensor 2 Lean Or Low Voltage",
+   "fam": "",
+   "node": "ho2s lean or"
+  },
+  {
+   "code": "P1143",
+   "brand": "gm",
+   "ru": "Лямбда-зонд 3 (ряд 1): бедно или низкое напряжение",
+   "en": "HO2S Bank 1 Sensor 3 Lean Or Low Voltage",
+   "fam": "",
+   "node": "ho2s lean or"
+  },
+  {
+   "code": "P1138",
+   "brand": "gm",
+   "ru": "Лямбда-зонд 2 (ряд 1): богато или высокое напряжение",
+   "en": "HO2S Bank 1 Sensor 2 Rich Or High Voltage",
+   "fam": "",
+   "node": "ho2s rich or"
+  },
+  {
+   "code": "P1144",
+   "brand": "gm",
+   "ru": "Лямбда-зонд 3 (ряд 1): богато или высокое напряжение",
+   "en": "HO2S Bank 1 Sensor 3 Rich Or High Voltage",
+   "fam": "",
+   "node": "ho2s rich or"
+  },
+  {
+   "code": "P1158",
+   "brand": "gm",
+   "ru": "Лямбда-зонд 2 (ряд 2): богато или высокое напряжение",
+   "en": "HO2S Bank 2 Sensor 2 Rich Or High Voltage",
+   "fam": "",
+   "node": "ho2s rich or"
+  },
+  {
+   "code": "P1164",
+   "brand": "gm",
+   "ru": "Лямбда-зонд 3 (ряд 2): богато или высокое напряжение",
+   "en": "HO2S Bank 2 Sensor 3 Rich Or High Voltage",
+   "fam": "",
+   "node": "ho2s rich or"
+  },
+  {
+   "code": "P1139",
+   "brand": "gm",
+   "ru": "Лямбда-зонд 2 (ряд 1): недостаточно переключений",
+   "en": "HO2S Insufficient Switching Bank 1 Sensor 2",
+   "fam": "",
+   "node": "ho2s insufficient switching"
+  },
+  {
+   "code": "P1140",
+   "brand": "gm",
+   "ru": "Лямбда-зонд 2 (ряд 1): соотношение времени переходов",
+   "en": "HO2S Transition Time Ratio Bank 1 Sensor 2",
+   "fam": "",
+   "node": "ho2s transition time ratio"
+  },
+  {
+   "code": "P1141",
+   "brand": "gm",
+   "ru": "Лямбда-зонд 2 (ряд 1): средний уровень напряжения",
+   "en": "HO2S Bank 1 Sensor 2 Average Voltage Level",
+   "fam": "",
+   "node": "ho2s average voltage level"
+  }
+ ]
+}

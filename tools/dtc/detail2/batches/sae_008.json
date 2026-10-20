@@ -1,0 +1,304 @@
+{
+ "name": "sae_008",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "abs pump motor",
+  "brake booster",
+  "brake pedal feedback pressure",
+  "fam:wss",
+  "left front tone wheel",
+  "left rear hydraulic release too long",
+  "left rear inlet",
+  "left rear outlet",
+  "rear wheel speed",
+  "rear wheel speed sensor supply",
+  "right rear hydraulic release too long",
+  "right rear inlet",
+  "right rear outlet",
+  "stop lamp",
+  "wheel speed sensors rotation direction correlation"
+ ],
+ "codes": [
+  {
+   "code": "C0018",
+   "brand": "",
+   "ru": "ABS, левое заднее: впускной клапан",
+   "en": "Left Rear Inlet Control",
+   "fam": "",
+   "node": "left rear inlet"
+  },
+  {
+   "code": "C0019",
+   "brand": "",
+   "ru": "ABS, левое заднее: выпускной клапан",
+   "en": "Left Rear Outlet Control",
+   "fam": "",
+   "node": "left rear outlet"
+  },
+  {
+   "code": "C001A",
+   "brand": "",
+   "ru": "ABS, левое заднее: слишком долгий сброс давления",
+   "en": "Left Rear Hydraulic Release Too Long",
+   "fam": "",
+   "node": "left rear hydraulic release too long"
+  },
+  {
+   "code": "C001C",
+   "brand": "",
+   "ru": "ABS, правое заднее: впускной клапан",
+   "en": "Right Rear Inlet Control",
+   "fam": "",
+   "node": "right rear inlet"
+  },
+  {
+   "code": "C001D",
+   "brand": "",
+   "ru": "ABS, правое заднее: выпускной клапан",
+   "en": "Right Rear Outlet Control",
+   "fam": "",
+   "node": "right rear outlet"
+  },
+  {
+   "code": "C001E",
+   "brand": "",
+   "ru": "ABS, правое заднее: слишком долгий сброс давления",
+   "en": "Right Rear Hydraulic Release Too Long",
+   "fam": "",
+   "node": "right rear hydraulic release too long"
+  },
+  {
+   "code": "C0020",
+   "brand": "",
+   "ru": "Мотор насоса ABS: управление",
+   "en": "ABS Pump Motor Control",
+   "fam": "",
+   "node": "abs pump motor"
+  },
+  {
+   "code": "C052C",
+   "brand": "",
+   "ru": "Мотор насоса ABS: обрыв цепи управления",
+   "en": "ABS Pump Motor Control Circuit/Open",
+   "fam": "",
+   "node": "abs pump motor"
+  },
+  {
+   "code": "C052D",
+   "brand": "",
+   "ru": "Мотор насоса ABS: высокий уровень в цепи управления",
+   "en": "ABS Pump Motor Control Circuit High",
+   "fam": "",
+   "node": "abs pump motor"
+  },
+  {
+   "code": "C052E",
+   "brand": "",
+   "ru": "Мотор насоса ABS: низкий уровень в цепи управления",
+   "en": "ABS Pump Motor Control Circuit Low",
+   "fam": "",
+   "node": "abs pump motor"
+  },
+  {
+   "code": "C0021",
+   "brand": "",
+   "ru": "Усилитель тормозов: работа нарушена",
+   "en": "Brake Booster Performance",
+   "fam": "",
+   "node": "brake booster"
+  },
+  {
+   "code": "C0022",
+   "brand": "",
+   "ru": "Соленоид усилителя тормозов",
+   "en": "Brake Booster Solenoid",
+   "fam": "",
+   "node": "brake booster"
+  },
+  {
+   "code": "C0566",
+   "brand": "",
+   "ru": "Соленоид усилителя тормозов: обрыв цепи",
+   "en": "Brake Booster Solenoid Circuit/Open",
+   "fam": "",
+   "node": "brake booster"
+  },
+  {
+   "code": "C0567",
+   "brand": "",
+   "ru": "Соленоид усилителя тормозов: низкий уровень сигнала в цепи",
+   "en": "Brake Booster Solenoid Circuit Low",
+   "fam": "",
+   "node": "brake booster"
+  },
+  {
+   "code": "C0568",
+   "brand": "",
+   "ru": "Соленоид усилителя тормозов: высокий уровень сигнала в цепи",
+   "en": "Brake Booster Solenoid Circuit High",
+   "fam": "",
+   "node": "brake booster"
+  },
+  {
+   "code": "C0569",
+   "brand": "",
+   "ru": "Соленоид усилителя тормозов: нарушена работа цепи",
+   "en": "Brake Booster Solenoid Circuit Performance",
+   "fam": "",
+   "node": "brake booster"
+  },
+  {
+   "code": "C0023",
+   "brand": "",
+   "ru": "Управление стоп-сигналами",
+   "en": "Stop Lamp Control",
+   "fam": "",
+   "node": "stop lamp"
+  },
+  {
+   "code": "C0024",
+   "brand": "",
+   "ru": "Соленоид обратной связи педали тормоза: цепь",
+   "en": "Brake Pedal Feedback Pressure Solenoid Circuit",
+   "fam": "",
+   "node": "brake pedal feedback pressure"
+  },
+  {
+   "code": "C0025",
+   "brand": "",
+   "ru": "Датчик давления обратной связи педали тормоза: цепь",
+   "en": "Brake Pedal Feedback Pressure Sensor Circuit",
+   "fam": "",
+   "node": "brake pedal feedback pressure"
+  },
+  {
+   "code": "C0030",
+   "brand": "",
+   "ru": "Задающий диск датчика ABS левого переднего колеса",
+   "en": "Left Front Tone Wheel",
+   "fam": "",
+   "node": "left front tone wheel"
+  },
+  {
+   "code": "C0031",
+   "brand": "",
+   "ru": "Датчик скорости левого переднего колеса: цепь",
+   "en": "",
+   "fam": "wss",
+   "node": "fam:wss"
+  },
+  {
+   "code": "C0032",
+   "brand": "",
+   "ru": "Датчик скорости левого переднего колеса: вне диапазона",
+   "en": "",
+   "fam": "wss",
+   "node": "fam:wss"
+  },
+  {
+   "code": "C0033",
+   "brand": "",
+   "ru": "Датчик скорости левого переднего колеса: прерывистый",
+   "en": "",
+   "fam": "wss",
+   "node": "fam:wss"
+  },
+  {
+   "code": "C0034",
+   "brand": "",
+   "ru": "Датчик скорости правого переднего колеса: цепь",
+   "en": "",
+   "fam": "wss",
+   "node": "fam:wss"
+  },
+  {
+   "code": "C0035",
+   "brand": "",
+   "ru": "Датчик скорости правого переднего колеса: вне диапазона",
+   "en": "",
+   "fam": "wss",
+   "node": "fam:wss"
+  },
+  {
+   "code": "C0036",
+   "brand": "",
+   "ru": "Датчик скорости правого переднего колеса: прерывистый",
+   "en": "",
+   "fam": "wss",
+   "node": "fam:wss"
+  },
+  {
+   "code": "C0037",
+   "brand": "",
+   "ru": "Датчик скорости левого заднего колеса: цепь",
+   "en": "",
+   "fam": "wss",
+   "node": "fam:wss"
+  },
+  {
+   "code": "C0038",
+   "brand": "",
+   "ru": "Датчик скорости левого заднего колеса: вне диапазона",
+   "en": "",
+   "fam": "wss",
+   "node": "fam:wss"
+  },
+  {
+   "code": "C0039",
+   "brand": "",
+   "ru": "Датчик скорости левого заднего колеса: прерывистый",
+   "en": "",
+   "fam": "wss",
+   "node": "fam:wss"
+  },
+  {
+   "code": "C003A",
+   "brand": "",
+   "ru": "Датчик скорости правого заднего колеса: цепь",
+   "en": "",
+   "fam": "wss",
+   "node": "fam:wss"
+  },
+  {
+   "code": "C003B",
+   "brand": "",
+   "ru": "Датчик скорости правого заднего колеса: вне диапазона",
+   "en": "",
+   "fam": "wss",
+   "node": "fam:wss"
+  },
+  {
+   "code": "C003C",
+   "brand": "",
+   "ru": "Датчик скорости правого заднего колеса: прерывистый",
+   "en": "",
+   "fam": "wss",
+   "node": "fam:wss"
+  },
+  {
+   "code": "C003D",
+   "brand": "",
+   "ru": "Датчик скорости заднего колеса",
+   "en": "Rear Wheel Speed Sensor",
+   "fam": "",
+   "node": "rear wheel speed"
+  },
+  {
+   "code": "C003E",
+   "brand": "",
+   "ru": "Питание датчика скорости заднего колеса",
+   "en": "Rear Wheel Speed Sensor Supply",
+   "fam": "",
+   "node": "rear wheel speed sensor supply"
+  },
+  {
+   "code": "C003F",
+   "brand": "",
+   "ru": "Датчики скорости колёс: рассогласование направления вращения",
+   "en": "Wheel Speed Sensors Rotation Direction Correlation",
+   "fam": "",
+   "node": "wheel speed sensors rotation direction correlation"
+  }
+ ]
+}

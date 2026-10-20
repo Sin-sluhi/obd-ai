@@ -1,0 +1,358 @@
+{
+ "name": "sae_189",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "alternative fuel misfire detected",
+  "alternative fuel misfire detected with",
+  "alternative fuel random multiple cylinder misfire detected",
+  "battery charger coupler temperature c too",
+  "battery charger coupler temperature d too",
+  "battery charger coupler temperature sensor c",
+  "battery charger coupler temperature sensor d",
+  "engine coolant bypass valve e",
+  "exhaust pressure sensor c",
+  "hybrid ev battery pack b cell thickness",
+  "hybrid ev battery pack “a” cell thickness",
+  "system too lean during cylinder deactivation",
+  "system too rich during cylinder deactivation"
+ ],
+ "codes": [
+  {
+   "code": "P2E4A",
+   "brand": "",
+   "ru": "Датчик температуры зарядного разъёма C: цепь",
+   "en": "Battery Charger Coupler Temperature Sensor C Circuit",
+   "fam": "",
+   "node": "battery charger coupler temperature sensor c"
+  },
+  {
+   "code": "P2E4B",
+   "brand": "",
+   "ru": "Датчик температуры зарядного разъёма C: сигнал вне диапазона",
+   "en": "Battery Charger Coupler Temperature Sensor C Circuit Range/Performance",
+   "fam": "",
+   "node": "battery charger coupler temperature sensor c"
+  },
+  {
+   "code": "P2E4C",
+   "brand": "",
+   "ru": "Датчик температуры зарядного разъёма C: низкий уровень сигнала в цепи",
+   "en": "Battery Charger Coupler Temperature Sensor C Circuit Low",
+   "fam": "",
+   "node": "battery charger coupler temperature sensor c"
+  },
+  {
+   "code": "P2E4D",
+   "brand": "",
+   "ru": "Датчик температуры зарядного разъёма C: высокий уровень сигнала в цепи",
+   "en": "Battery Charger Coupler Temperature Sensor C Circuit High",
+   "fam": "",
+   "node": "battery charger coupler temperature sensor c"
+  },
+  {
+   "code": "P2E4E",
+   "brand": "",
+   "ru": "Температура зарядного разъёма C: слишком высокое значение",
+   "en": "Battery Charger Coupler Temperature C Too High",
+   "fam": "",
+   "node": "battery charger coupler temperature c too"
+  },
+  {
+   "code": "P2E4F",
+   "brand": "",
+   "ru": "Датчик температуры зарядного разъёма D: цепь",
+   "en": "Battery Charger Coupler Temperature Sensor D Circuit",
+   "fam": "",
+   "node": "battery charger coupler temperature sensor d"
+  },
+  {
+   "code": "P2E50",
+   "brand": "",
+   "ru": "Датчик температуры зарядного разъёма D: сигнал вне диапазона",
+   "en": "Battery Charger Coupler Temperature Sensor D Circuit Range/Performance",
+   "fam": "",
+   "node": "battery charger coupler temperature sensor d"
+  },
+  {
+   "code": "P2E51",
+   "brand": "",
+   "ru": "Датчик температуры зарядного разъёма D: низкий уровень сигнала в цепи",
+   "en": "Battery Charger Coupler Temperature Sensor D Circuit Low",
+   "fam": "",
+   "node": "battery charger coupler temperature sensor d"
+  },
+  {
+   "code": "P2E52",
+   "brand": "",
+   "ru": "Датчик температуры зарядного разъёма D: высокий уровень сигнала в цепи",
+   "en": "Battery Charger Coupler Temperature Sensor D Circuit High",
+   "fam": "",
+   "node": "battery charger coupler temperature sensor d"
+  },
+  {
+   "code": "P2E53",
+   "brand": "",
+   "ru": "Температура зарядного разъёма D: слишком высокое значение",
+   "en": "Battery Charger Coupler Temperature D Too High",
+   "fam": "",
+   "node": "battery charger coupler temperature d too"
+  },
+  {
+   "code": "P2E54",
+   "brand": "",
+   "ru": "Датчик давления отработавших газов C: цепь",
+   "en": "Exhaust Pressure Sensor C Circuit",
+   "fam": "",
+   "node": "exhaust pressure sensor c"
+  },
+  {
+   "code": "P2E55",
+   "brand": "",
+   "ru": "Датчик давления отработавших газов C: сигнал вне диапазона",
+   "en": "Exhaust Pressure Sensor C Circuit Range/Performance",
+   "fam": "",
+   "node": "exhaust pressure sensor c"
+  },
+  {
+   "code": "P2E56",
+   "brand": "",
+   "ru": "Датчик давления отработавших газов C: низкий уровень сигнала в цепи",
+   "en": "Exhaust Pressure Sensor C Circuit Low",
+   "fam": "",
+   "node": "exhaust pressure sensor c"
+  },
+  {
+   "code": "P2E57",
+   "brand": "",
+   "ru": "Датчик давления отработавших газов C: высокий уровень сигнала в цепи",
+   "en": "Exhaust Pressure Sensor C Circuit High",
+   "fam": "",
+   "node": "exhaust pressure sensor c"
+  },
+  {
+   "code": "P2E58",
+   "brand": "",
+   "ru": "Пропуски зажигания на газу: случайные / в нескольких цилиндрах",
+   "en": "Alternative Fuel Random/Multiple Cylinder Misfire Detected",
+   "fam": "",
+   "node": "alternative fuel random multiple cylinder misfire detected"
+  },
+  {
+   "code": "P2E59",
+   "brand": "",
+   "ru": "Пропуски зажигания на газу в цилиндре 1",
+   "en": "Cylinder 1 Alternative Fuel Misfire Detected",
+   "fam": "",
+   "node": "alternative fuel misfire detected"
+  },
+  {
+   "code": "P2E5A",
+   "brand": "",
+   "ru": "Пропуски зажигания на газу в цилиндре 2",
+   "en": "Cylinder 2 Alternative Fuel Misfire Detected",
+   "fam": "",
+   "node": "alternative fuel misfire detected"
+  },
+  {
+   "code": "P2E5B",
+   "brand": "",
+   "ru": "Пропуски зажигания на газу в цилиндре 3",
+   "en": "Cylinder 3 Alternative Fuel Misfire Detected",
+   "fam": "",
+   "node": "alternative fuel misfire detected"
+  },
+  {
+   "code": "P2E5C",
+   "brand": "",
+   "ru": "Пропуски зажигания на газу в цилиндре 4",
+   "en": "Cylinder 4 Alternative Fuel Misfire Detected",
+   "fam": "",
+   "node": "alternative fuel misfire detected"
+  },
+  {
+   "code": "P2E5D",
+   "brand": "",
+   "ru": "Пропуски зажигания на газу в цилиндре 5",
+   "en": "Cylinder 5 Alternative Fuel Misfire Detected",
+   "fam": "",
+   "node": "alternative fuel misfire detected"
+  },
+  {
+   "code": "P2E5E",
+   "brand": "",
+   "ru": "Пропуски зажигания на газу в цилиндре 6",
+   "en": "Cylinder 6 Alternative Fuel Misfire Detected",
+   "fam": "",
+   "node": "alternative fuel misfire detected"
+  },
+  {
+   "code": "P2E5F",
+   "brand": "",
+   "ru": "Пропуски зажигания на газу в цилиндре 7",
+   "en": "Cylinder 7 Alternative Fuel Misfire Detected",
+   "fam": "",
+   "node": "alternative fuel misfire detected"
+  },
+  {
+   "code": "P2E60",
+   "brand": "",
+   "ru": "Пропуски зажигания на газу в цилиндре 8",
+   "en": "Cylinder 8 Alternative Fuel Misfire Detected",
+   "fam": "",
+   "node": "alternative fuel misfire detected"
+  },
+  {
+   "code": "P2E61",
+   "brand": "",
+   "ru": "Пропуски зажигания на газу при малом остатке газа",
+   "en": "Alternative Fuel Misfire Detected With Low Fuel",
+   "fam": "",
+   "node": "alternative fuel misfire detected with"
+  },
+  {
+   "code": "P2E62",
+   "brand": "",
+   "ru": "Перепускной клапан охлаждающей жидкости двигателя E: обрыв цепи управления",
+   "en": "Engine Coolant Bypass Valve E Control Circuit/Open",
+   "fam": "",
+   "node": "engine coolant bypass valve e"
+  },
+  {
+   "code": "P2E63",
+   "brand": "",
+   "ru": "Перепускной клапан охлаждающей жидкости двигателя E: низкий уровень в цепи управления",
+   "en": "Engine Coolant Bypass Valve E Control Circuit Low",
+   "fam": "",
+   "node": "engine coolant bypass valve e"
+  },
+  {
+   "code": "P2E64",
+   "brand": "",
+   "ru": "Перепускной клапан охлаждающей жидкости двигателя E: высокий уровень в цепи управления",
+   "en": "Engine Coolant Bypass Valve E Control Circuit High",
+   "fam": "",
+   "node": "engine coolant bypass valve e"
+  },
+  {
+   "code": "P2E65",
+   "brand": "",
+   "ru": "Перепускной клапан охлаждающей жидкости двигателя E: заклинил открытым",
+   "en": "Engine Coolant Bypass Valve E Stuck/Open",
+   "fam": "",
+   "node": "engine coolant bypass valve e"
+  },
+  {
+   "code": "P2E66",
+   "brand": "",
+   "ru": "Перепускной клапан охлаждающей жидкости двигателя E: вне допустимого диапазона",
+   "en": "Engine Coolant Bypass Valve E Range/Performance",
+   "fam": "",
+   "node": "engine coolant bypass valve e"
+  },
+  {
+   "code": "P2E67",
+   "brand": "",
+   "ru": "Перепускной клапан охлаждающей жидкости двигателя E: заклинил закрытым",
+   "en": "Engine Coolant Bypass Valve E Stuck Closed",
+   "fam": "",
+   "node": "engine coolant bypass valve e"
+  },
+  {
+   "code": "P2E68",
+   "brand": "",
+   "ru": "Слишком бедная смесь при отключении цилиндров (банк 1)",
+   "en": "System Too Lean During Cylinder Deactivation Bank 1",
+   "fam": "",
+   "node": "system too lean during cylinder deactivation"
+  },
+  {
+   "code": "P2E6A",
+   "brand": "",
+   "ru": "Слишком бедная смесь при отключении цилиндров (банк 2)",
+   "en": "System Too Lean During Cylinder Deactivation Bank 2",
+   "fam": "",
+   "node": "system too lean during cylinder deactivation"
+  },
+  {
+   "code": "P2E69",
+   "brand": "",
+   "ru": "Слишком богатая смесь при отключении цилиндров (банк 1)",
+   "en": "System Too Rich During Cylinder Deactivation Bank 1",
+   "fam": "",
+   "node": "system too rich during cylinder deactivation"
+  },
+  {
+   "code": "P2E6B",
+   "brand": "",
+   "ru": "Слишком богатая смесь при отключении цилиндров (банк 2)",
+   "en": "System Too Rich During Cylinder Deactivation Bank 2",
+   "fam": "",
+   "node": "system too rich during cylinder deactivation"
+  },
+  {
+   "code": "P2E6C",
+   "brand": "",
+   "ru": "Тяговая батарея A: толщина ячеек",
+   "en": "Hybrid/EV Battery Pack “A” Cell Thickness",
+   "fam": "",
+   "node": "hybrid ev battery pack “a” cell thickness"
+  },
+  {
+   "code": "P2E6D",
+   "brand": "",
+   "ru": "Датчик толщины ячеек тяговой батареи A: высокий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Pack “A” Cell Thickness Sensor Circuit High",
+   "fam": "",
+   "node": "hybrid ev battery pack “a” cell thickness"
+  },
+  {
+   "code": "P2E6E",
+   "brand": "",
+   "ru": "Датчик толщины ячеек тяговой батареи A: низкий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Pack “A” Cell Thickness Sensor Circuit Low",
+   "fam": "",
+   "node": "hybrid ev battery pack “a” cell thickness"
+  },
+  {
+   "code": "P2E6F",
+   "brand": "",
+   "ru": "Датчик толщины ячеек тяговой батареи A: нарушена работа цепи",
+   "en": "Hybrid/EV Battery Pack “A” Cell Thickness Sensor Circuit Performance",
+   "fam": "",
+   "node": "hybrid ev battery pack “a” cell thickness"
+  },
+  {
+   "code": "P2E70",
+   "brand": "",
+   "ru": "Тяговая батарея B: толщина ячеек",
+   "en": "Hybrid/EV Battery Pack B Cell Thickness",
+   "fam": "",
+   "node": "hybrid ev battery pack b cell thickness"
+  },
+  {
+   "code": "P2E71",
+   "brand": "",
+   "ru": "Датчик толщины ячеек тяговой батареи B: высокий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Pack B Cell Thickness Sensor Circuit High",
+   "fam": "",
+   "node": "hybrid ev battery pack b cell thickness"
+  },
+  {
+   "code": "P2E72",
+   "brand": "",
+   "ru": "Датчик толщины ячеек тяговой батареи B: низкий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Pack B Cell Thickness Sensor Circuit Low",
+   "fam": "",
+   "node": "hybrid ev battery pack b cell thickness"
+  },
+  {
+   "code": "P2E73",
+   "brand": "",
+   "ru": "Датчик толщины ячеек тяговой батареи B: нарушена работа цепи",
+   "en": "Hybrid/EV Battery Pack B Cell Thickness Sensor Circuit Performance",
+   "fam": "",
+   "node": "hybrid ev battery pack b cell thickness"
+  }
+ ]
+}

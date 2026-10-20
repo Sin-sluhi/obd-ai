@@ -1,0 +1,393 @@
+{
+ "name": "sae_202",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "fam:invalid_data",
+  "invalid data received from air conditioning control",
+  "invalid data received from alternative fuel control",
+  "invalid data received from battery energy control module a",
+  "invalid data received from battery energy control module b",
+  "invalid data received from drive motor control module a",
+  "invalid data received from exhaust gas recirculation control module a",
+  "invalid data received from exhaust gas recirculation control module b",
+  "invalid data received from four wheel drive clutch control",
+  "invalid data received from fuel injector control",
+  "invalid data received from fuel pump control module a",
+  "invalid data received from glow plug control",
+  "invalid data received from reductant control",
+  "invalid data received from throttle actuator a control",
+  "invalid data received from turbocharger supercharger control module a",
+  "invalid data received from turbocharger supercharger control module b",
+  "software incompatibility with active grille air shutter module a",
+  "software incompatibility with active grille air shutter module b",
+  "software incompatibility with active grille air shutter module c",
+  "software incompatibility with active grille air shutter module d",
+  "software incompatibility with hybrid ev battery inductive charger control",
+  "software incompatibility with ion sense",
+  "software incompatibility with nox sensor c",
+  "software incompatibility with vehicle thermal management control"
+ ],
+ "codes": [
+  {
+   "code": "U034D",
+   "brand": "",
+   "ru": "Несовместимость ПО: блок терморегулирования автомобиля",
+   "en": "Software Incompatibility With Vehicle Thermal Management Control Module",
+   "fam": "",
+   "node": "software incompatibility with vehicle thermal management control"
+  },
+  {
+   "code": "U034E",
+   "brand": "",
+   "ru": "Несовместимость ПО: блок активных жалюзи радиатора A",
+   "en": "Software Incompatibility With Active Grille Air Shutter Module A",
+   "fam": "",
+   "node": "software incompatibility with active grille air shutter module a"
+  },
+  {
+   "code": "U034F",
+   "brand": "",
+   "ru": "Несовместимость ПО: блок активных жалюзи радиатора B",
+   "en": "Software Incompatibility With Active Grille Air Shutter Module B",
+   "fam": "",
+   "node": "software incompatibility with active grille air shutter module b"
+  },
+  {
+   "code": "U0350",
+   "brand": "",
+   "ru": "Несовместимость ПО: блок активных жалюзи радиатора C",
+   "en": "Software Incompatibility With Active Grille Air Shutter Module C",
+   "fam": "",
+   "node": "software incompatibility with active grille air shutter module c"
+  },
+  {
+   "code": "U0351",
+   "brand": "",
+   "ru": "Несовместимость ПО: блок активных жалюзи радиатора D",
+   "en": "Software Incompatibility With Active Grille Air Shutter Module D",
+   "fam": "",
+   "node": "software incompatibility with active grille air shutter module d"
+  },
+  {
+   "code": "U0352",
+   "brand": "",
+   "ru": "Несовместимость ПО: датчик NOx C",
+   "en": "Software Incompatibility With NOx Sensor C",
+   "fam": "",
+   "node": "software incompatibility with nox sensor c"
+  },
+  {
+   "code": "U0353",
+   "brand": "",
+   "ru": "Несовместимость ПО: блок ионного контроля зажигания",
+   "en": "Software Incompatibility With Ion Sense Module",
+   "fam": "",
+   "node": "software incompatibility with ion sense"
+  },
+  {
+   "code": "U0354",
+   "brand": "",
+   "ru": "Несовместимость ПО: блок индуктивной зарядки тяговой батареи",
+   "en": "Software Incompatibility With Hybrid/EV Battery Inductive Charger Control Module",
+   "fam": "",
+   "node": "software incompatibility with hybrid ev battery inductive charger control"
+  },
+  {
+   "code": "U0400",
+   "brand": "",
+   "ru": "Неверные данные получены",
+   "en": "",
+   "fam": "invalid_data",
+   "node": "fam:invalid_data"
+  },
+  {
+   "code": "U0401",
+   "brand": "",
+   "ru": "Неверные данные от блока двигателя",
+   "en": "",
+   "fam": "invalid_data",
+   "node": "fam:invalid_data"
+  },
+  {
+   "code": "U0402",
+   "brand": "",
+   "ru": "Неверные данные от блока коробки",
+   "en": "",
+   "fam": "invalid_data",
+   "node": "fam:invalid_data"
+  },
+  {
+   "code": "U0403",
+   "brand": "",
+   "ru": "Неверные данные от блока раздатки",
+   "en": "",
+   "fam": "invalid_data",
+   "node": "fam:invalid_data"
+  },
+  {
+   "code": "U0404",
+   "brand": "",
+   "ru": "Неверные данные от селектора",
+   "en": "",
+   "fam": "invalid_data",
+   "node": "fam:invalid_data"
+  },
+  {
+   "code": "U0405",
+   "brand": "",
+   "ru": "Неверные данные от блока круиза",
+   "en": "",
+   "fam": "invalid_data",
+   "node": "fam:invalid_data"
+  },
+  {
+   "code": "U0415",
+   "brand": "",
+   "ru": "Неверные данные от блока ABS",
+   "en": "",
+   "fam": "invalid_data",
+   "node": "fam:invalid_data"
+  },
+  {
+   "code": "U0416",
+   "brand": "",
+   "ru": "Неверные данные от блока ESP",
+   "en": "",
+   "fam": "invalid_data",
+   "node": "fam:invalid_data"
+  },
+  {
+   "code": "U0417",
+   "brand": "",
+   "ru": "Неверные данные от блока стояночного тормоза",
+   "en": "",
+   "fam": "invalid_data",
+   "node": "fam:invalid_data"
+  },
+  {
+   "code": "U0418",
+   "brand": "",
+   "ru": "Неверные данные от блока тормозов",
+   "en": "",
+   "fam": "invalid_data",
+   "node": "fam:invalid_data"
+  },
+  {
+   "code": "U0420",
+   "brand": "",
+   "ru": "Неверные данные от блока усилителя руля",
+   "en": "",
+   "fam": "invalid_data",
+   "node": "fam:invalid_data"
+  },
+  {
+   "code": "U0422",
+   "brand": "",
+   "ru": "Неверные данные от кузовного блока",
+   "en": "",
+   "fam": "invalid_data",
+   "node": "fam:invalid_data"
+  },
+  {
+   "code": "U0423",
+   "brand": "",
+   "ru": "Неверные данные от приборной панели",
+   "en": "",
+   "fam": "invalid_data",
+   "node": "fam:invalid_data"
+  },
+  {
+   "code": "U0424",
+   "brand": "",
+   "ru": "Неверные данные от блока климата",
+   "en": "",
+   "fam": "invalid_data",
+   "node": "fam:invalid_data"
+  },
+  {
+   "code": "U0426",
+   "brand": "",
+   "ru": "Неверные данные от иммобилайзера",
+   "en": "",
+   "fam": "invalid_data",
+   "node": "fam:invalid_data"
+  },
+  {
+   "code": "U0428",
+   "brand": "",
+   "ru": "Неверные данные от датчика угла руля",
+   "en": "",
+   "fam": "invalid_data",
+   "node": "fam:invalid_data"
+  },
+  {
+   "code": "U0431",
+   "brand": "",
+   "ru": "Неверные данные от блока подушек",
+   "en": "",
+   "fam": "invalid_data",
+   "node": "fam:invalid_data"
+  },
+  {
+   "code": "U0435",
+   "brand": "",
+   "ru": "Неверные данные от блока парктроников",
+   "en": "",
+   "fam": "invalid_data",
+   "node": "fam:invalid_data"
+  },
+  {
+   "code": "U0447",
+   "brand": "",
+   "ru": "Неверные данные от шлюза",
+   "en": "",
+   "fam": "invalid_data",
+   "node": "fam:invalid_data"
+  },
+  {
+   "code": "U0452",
+   "brand": "",
+   "ru": "Неверные данные от блока подушек",
+   "en": "",
+   "fam": "invalid_data",
+   "node": "fam:invalid_data"
+  },
+  {
+   "code": "U0455",
+   "brand": "",
+   "ru": "Неверные данные от приборной панели",
+   "en": "",
+   "fam": "invalid_data",
+   "node": "fam:invalid_data"
+  },
+  {
+   "code": "U0406",
+   "brand": "",
+   "ru": "Неверные данные: блок управления форсунками",
+   "en": "Invalid Data Received From Fuel Injector Control Module",
+   "fam": "",
+   "node": "invalid data received from fuel injector control"
+  },
+  {
+   "code": "U0407",
+   "brand": "",
+   "ru": "Неверные данные: блок управления свечами накаливания 1",
+   "en": "Invalid Data Received From Glow Plug Control Module 1",
+   "fam": "",
+   "node": "invalid data received from glow plug control"
+  },
+  {
+   "code": "U049D",
+   "brand": "",
+   "ru": "Неверные данные: блок управления свечами накаливания 2",
+   "en": "Invalid Data Received From Glow Plug Control Module 2",
+   "fam": "",
+   "node": "invalid data received from glow plug control"
+  },
+  {
+   "code": "U0408",
+   "brand": "",
+   "ru": "Неверные данные: блок привода дросселя A",
+   "en": "Invalid Data Received From Throttle Actuator A Control Module",
+   "fam": "",
+   "node": "invalid data received from throttle actuator a control"
+  },
+  {
+   "code": "U0409",
+   "brand": "",
+   "ru": "Неверные данные: блок ГБО",
+   "en": "Invalid Data Received From Alternative Fuel Control Module",
+   "fam": "",
+   "node": "invalid data received from alternative fuel control"
+  },
+  {
+   "code": "U040A",
+   "brand": "",
+   "ru": "Неверные данные: блок кондиционера",
+   "en": "Invalid Data Received From Air Conditioning Control Module",
+   "fam": "",
+   "node": "invalid data received from air conditioning control"
+  },
+  {
+   "code": "U040B",
+   "brand": "",
+   "ru": "Неверные данные: блок управления EGR A",
+   "en": "Invalid Data Received From Exhaust Gas Recirculation Control Module A",
+   "fam": "",
+   "node": "invalid data received from exhaust gas recirculation control module a"
+  },
+  {
+   "code": "U040C",
+   "brand": "",
+   "ru": "Неверные данные: блок управления EGR B",
+   "en": "Invalid Data Received From Exhaust Gas Recirculation Control Module B",
+   "fam": "",
+   "node": "invalid data received from exhaust gas recirculation control module b"
+  },
+  {
+   "code": "U040D",
+   "brand": "",
+   "ru": "Неверные данные: блок управления турбиной/нагнетателем A",
+   "en": "Invalid Data Received From Turbocharger/Supercharger Control Module A",
+   "fam": "",
+   "node": "invalid data received from turbocharger supercharger control module a"
+  },
+  {
+   "code": "U040E",
+   "brand": "",
+   "ru": "Неверные данные: блок управления турбиной/нагнетателем B",
+   "en": "Invalid Data Received From Turbocharger/Supercharger Control Module B",
+   "fam": "",
+   "node": "invalid data received from turbocharger supercharger control module b"
+  },
+  {
+   "code": "U040F",
+   "brand": "",
+   "ru": "Неверные данные: блок управления системой мочевины",
+   "en": "Invalid Data Received From Reductant Control Module",
+   "fam": "",
+   "node": "invalid data received from reductant control"
+  },
+  {
+   "code": "U0410",
+   "brand": "",
+   "ru": "Неверные данные: блок управления топливным насосом A",
+   "en": "Invalid Data Received From Fuel Pump Control Module A",
+   "fam": "",
+   "node": "invalid data received from fuel pump control module a"
+  },
+  {
+   "code": "U0411",
+   "brand": "",
+   "ru": "Неверные данные: блок управления тяговым электромотором A",
+   "en": "Invalid Data Received From Drive Motor Control Module A",
+   "fam": "",
+   "node": "invalid data received from drive motor control module a"
+  },
+  {
+   "code": "U0412",
+   "brand": "",
+   "ru": "Неверные данные: блок управления энергией батареи A",
+   "en": "Invalid Data Received From Battery Energy Control Module A",
+   "fam": "",
+   "node": "invalid data received from battery energy control module a"
+  },
+  {
+   "code": "U0413",
+   "brand": "",
+   "ru": "Неверные данные: блок управления энергией батареи B",
+   "en": "Invalid Data Received From Battery Energy Control Module B",
+   "fam": "",
+   "node": "invalid data received from battery energy control module b"
+  },
+  {
+   "code": "U0414",
+   "brand": "",
+   "ru": "Неверные данные: блок муфты полного привода",
+   "en": "Invalid Data Received From Four-Wheel Drive Clutch Control Module",
+   "fam": "",
+   "node": "invalid data received from four wheel drive clutch control"
+  }
+ ]
+}

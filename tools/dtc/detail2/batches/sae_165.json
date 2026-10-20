@@ -1,0 +1,368 @@
+{
+ "name": "sae_165",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "electric auxiliary transmission fluid pump b overspeed",
+  "electric auxiliary transmission fluid pump b underspeed",
+  "engine disconnect clutch pressure",
+  "exhaust pressure too",
+  "injection pump fuel metering control c",
+  "injection pump fuel metering control d",
+  "injection pump fuel metering control e",
+  "manifold absolute pressure sensor b",
+  "o2 sensor negative voltage",
+  "shift motor",
+  "shift motor driver current temperature too",
+  "shift motor overspeed",
+  "shift motor position",
+  "shift motor position not learned",
+  "shift motor position sensor exceeded learning limit"
+ ],
+ "codes": [
+  {
+   "code": "P28E4",
+   "brand": "",
+   "ru": "Мотор переключения передач: перегрузка драйвера по току / перегрев",
+   "en": "Shift Motor Driver Current/Temperature Too High",
+   "fam": "",
+   "node": "shift motor driver current temperature too"
+  },
+  {
+   "code": "P28E5",
+   "brand": "",
+   "ru": "Мотор переключения передач: работа нарушена",
+   "en": "Shift Motor Performance",
+   "fam": "",
+   "node": "shift motor"
+  },
+  {
+   "code": "P28E6",
+   "brand": "",
+   "ru": "Мотор переключения передач: превышена скорость вращения",
+   "en": "Shift Motor Overspeed",
+   "fam": "",
+   "node": "shift motor overspeed"
+  },
+  {
+   "code": "P28E7",
+   "brand": "",
+   "ru": "Датчик положения мотора переключения передач: обрыв цепи",
+   "en": "Shift Motor Position Sensor Circuit/Open",
+   "fam": "",
+   "node": "shift motor position"
+  },
+  {
+   "code": "P28E8",
+   "brand": "",
+   "ru": "Датчик положения мотора переключения передач: высокий уровень сигнала в цепи",
+   "en": "Shift Motor Position Sensor Circuit High",
+   "fam": "",
+   "node": "shift motor position"
+  },
+  {
+   "code": "P28E9",
+   "brand": "",
+   "ru": "Датчик положения мотора переключения передач: низкий уровень сигнала в цепи",
+   "en": "Shift Motor Position Sensor Circuit Low",
+   "fam": "",
+   "node": "shift motor position"
+  },
+  {
+   "code": "P28EA",
+   "brand": "",
+   "ru": "Датчик положения мотора переключения передач: сигнал вне диапазона",
+   "en": "Shift Motor Position Sensor Circuit Range/Performance",
+   "fam": "",
+   "node": "shift motor position"
+  },
+  {
+   "code": "P28EB",
+   "brand": "",
+   "ru": "Мотор переключения передач: положение не обучено",
+   "en": "Shift Motor Position Not Learned",
+   "fam": "",
+   "node": "shift motor position not learned"
+  },
+  {
+   "code": "P28EC",
+   "brand": "",
+   "ru": "Датчик положения мотора переключения передач: превышен предел адаптации",
+   "en": "Shift Motor Position Sensor Exceeded Learning Limit",
+   "fam": "",
+   "node": "shift motor position sensor exceeded learning limit"
+  },
+  {
+   "code": "P28ED",
+   "brand": "",
+   "ru": "Электрический доп. насос масла КПП B: превышена скорость вращения",
+   "en": "Electric/Auxiliary Transmission Fluid Pump B Overspeed",
+   "fam": "",
+   "node": "electric auxiliary transmission fluid pump b overspeed"
+  },
+  {
+   "code": "P28EE",
+   "brand": "",
+   "ru": "Электрический доп. насос масла КПП B: заниженная скорость вращения",
+   "en": "Electric/Auxiliary Transmission Fluid Pump B Underspeed",
+   "fam": "",
+   "node": "electric auxiliary transmission fluid pump b underspeed"
+  },
+  {
+   "code": "P28F1",
+   "brand": "",
+   "ru": "Датчик давления муфты отключения двигателя: цепь",
+   "en": "Engine Disconnect Clutch Pressure Sensor Circuit",
+   "fam": "",
+   "node": "engine disconnect clutch pressure"
+  },
+  {
+   "code": "P28F2",
+   "brand": "",
+   "ru": "Датчик давления муфты отключения двигателя: сигнал вне диапазона",
+   "en": "Engine Disconnect Clutch Pressure Sensor Circuit Range/Performance",
+   "fam": "",
+   "node": "engine disconnect clutch pressure"
+  },
+  {
+   "code": "P28F3",
+   "brand": "",
+   "ru": "Датчик давления муфты отключения двигателя: низкий уровень сигнала в цепи",
+   "en": "Engine Disconnect Clutch Pressure Sensor Circuit Low",
+   "fam": "",
+   "node": "engine disconnect clutch pressure"
+  },
+  {
+   "code": "P28F4",
+   "brand": "",
+   "ru": "Датчик давления муфты отключения двигателя: высокий уровень сигнала в цепи",
+   "en": "Engine Disconnect Clutch Pressure Sensor Circuit High",
+   "fam": "",
+   "node": "engine disconnect clutch pressure"
+  },
+  {
+   "code": "P28F5",
+   "brand": "",
+   "ru": "Датчик давления муфты отключения двигателя: прерывистый / нестабильный сигнал",
+   "en": "Engine Disconnect Clutch Pressure Sensor Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "engine disconnect clutch pressure"
+  },
+  {
+   "code": "P28F7",
+   "brand": "",
+   "ru": "Выхлоп: слишком высокое давление (банк 1)",
+   "en": "Exhaust Pressure Too High Bank 1",
+   "fam": "",
+   "node": "exhaust pressure too"
+  },
+  {
+   "code": "P28F8",
+   "brand": "",
+   "ru": "Выхлоп: слишком высокое давление (банк 2)",
+   "en": "Exhaust Pressure Too High Bank 2",
+   "fam": "",
+   "node": "exhaust pressure too"
+  },
+  {
+   "code": "P28F9",
+   "brand": "",
+   "ru": "Выхлоп: слишком низкое давление (банк 1)",
+   "en": "Exhaust Pressure Too Low Bank 1",
+   "fam": "",
+   "node": "exhaust pressure too"
+  },
+  {
+   "code": "P28FA",
+   "brand": "",
+   "ru": "Выхлоп: слишком низкое давление (банк 2)",
+   "en": "Exhaust Pressure Too Low Bank 2",
+   "fam": "",
+   "node": "exhaust pressure too"
+  },
+  {
+   "code": "P2A06",
+   "brand": "",
+   "ru": "Лямбда-зонд: отрицательное напряжение (банк 1, датчик 1)",
+   "en": "O2 Sensor Negative Voltage Bank 1 Sensor 1",
+   "fam": "",
+   "node": "o2 sensor negative voltage"
+  },
+  {
+   "code": "P2A07",
+   "brand": "",
+   "ru": "Лямбда-зонд: отрицательное напряжение (банк 1, датчик 2)",
+   "en": "O2 Sensor Negative Voltage Bank 1 Sensor 2",
+   "fam": "",
+   "node": "o2 sensor negative voltage"
+  },
+  {
+   "code": "P2A08",
+   "brand": "",
+   "ru": "Лямбда-зонд: отрицательное напряжение (банк 1, датчик 3)",
+   "en": "O2 Sensor Negative Voltage Bank 1 Sensor 3",
+   "fam": "",
+   "node": "o2 sensor negative voltage"
+  },
+  {
+   "code": "P2A09",
+   "brand": "",
+   "ru": "Лямбда-зонд: отрицательное напряжение (банк 2, датчик 1)",
+   "en": "O2 Sensor Negative Voltage Bank 2 Sensor 1",
+   "fam": "",
+   "node": "o2 sensor negative voltage"
+  },
+  {
+   "code": "P2A10",
+   "brand": "",
+   "ru": "Лямбда-зонд: отрицательное напряжение (банк 2, датчик 2)",
+   "en": "O2 Sensor Negative Voltage Bank 2 Sensor 2",
+   "fam": "",
+   "node": "o2 sensor negative voltage"
+  },
+  {
+   "code": "P2A11",
+   "brand": "",
+   "ru": "Лямбда-зонд: отрицательное напряжение (банк 2, датчик 3)",
+   "en": "O2 Sensor Negative Voltage Bank 2 Sensor 3",
+   "fam": "",
+   "node": "o2 sensor negative voltage"
+  },
+  {
+   "code": "P2A0A",
+   "brand": "",
+   "ru": "Датчик абсолютного давления во впуске (MAP) B: цепь",
+   "en": "Manifold Absolute Pressure Sensor B Circuit",
+   "fam": "",
+   "node": "manifold absolute pressure sensor b"
+  },
+  {
+   "code": "P2A0B",
+   "brand": "",
+   "ru": "Датчик абсолютного давления во впуске (MAP) B: сигнал вне диапазона",
+   "en": "Manifold Absolute Pressure Sensor B Circuit Range/Performance",
+   "fam": "",
+   "node": "manifold absolute pressure sensor b"
+  },
+  {
+   "code": "P2A0C",
+   "brand": "",
+   "ru": "Датчик абсолютного давления во впуске (MAP) B: низкий уровень сигнала в цепи",
+   "en": "Manifold Absolute Pressure Sensor B Circuit Low",
+   "fam": "",
+   "node": "manifold absolute pressure sensor b"
+  },
+  {
+   "code": "P2A0D",
+   "brand": "",
+   "ru": "Датчик абсолютного давления во впуске (MAP) B: высокий уровень сигнала в цепи",
+   "en": "Manifold Absolute Pressure Sensor B Circuit High",
+   "fam": "",
+   "node": "manifold absolute pressure sensor b"
+  },
+  {
+   "code": "P2A0E",
+   "brand": "",
+   "ru": "Датчик абсолютного давления во впуске (MAP) B: прерывистый / нестабильный сигнал",
+   "en": "Manifold Absolute Pressure Sensor B Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "manifold absolute pressure sensor b"
+  },
+  {
+   "code": "P2A12",
+   "brand": "",
+   "ru": "Дозирование топлива ТНВД C",
+   "en": "Injection Pump Fuel Metering Control C (Cam/Rotor/Injector)",
+   "fam": "",
+   "node": "injection pump fuel metering control c"
+  },
+  {
+   "code": "P2A13",
+   "brand": "",
+   "ru": "Дозирование топлива ТНВД C: вне допустимого диапазона",
+   "en": "Injection Pump Fuel Metering Control C Range/Performance (Cam/Rotor/Injector)",
+   "fam": "",
+   "node": "injection pump fuel metering control c"
+  },
+  {
+   "code": "P2A14",
+   "brand": "",
+   "ru": "Дозирование топлива ТНВД C: низкий уровень",
+   "en": "Injection Pump Fuel Metering Control C Low (Cam/Rotor/Injector)",
+   "fam": "",
+   "node": "injection pump fuel metering control c"
+  },
+  {
+   "code": "P2A15",
+   "brand": "",
+   "ru": "Дозирование топлива ТНВД C: высокий уровень",
+   "en": "Injection Pump Fuel Metering Control C High (Cam/Rotor/Injector)",
+   "fam": "",
+   "node": "injection pump fuel metering control c"
+  },
+  {
+   "code": "P2A16",
+   "brand": "",
+   "ru": "Дозирование топлива ТНВД D",
+   "en": "Injection Pump Fuel Metering Control D (Cam/Rotor/Injector)",
+   "fam": "",
+   "node": "injection pump fuel metering control d"
+  },
+  {
+   "code": "P2A17",
+   "brand": "",
+   "ru": "Дозирование топлива ТНВД D: вне допустимого диапазона",
+   "en": "Injection Pump Fuel Metering Control D Range/Performance (Cam/Rotor/Injector)",
+   "fam": "",
+   "node": "injection pump fuel metering control d"
+  },
+  {
+   "code": "P2A18",
+   "brand": "",
+   "ru": "Дозирование топлива ТНВД D: низкий уровень",
+   "en": "Injection Pump Fuel Metering Control D Low (Cam/Rotor/Injector)",
+   "fam": "",
+   "node": "injection pump fuel metering control d"
+  },
+  {
+   "code": "P2A19",
+   "brand": "",
+   "ru": "Дозирование топлива ТНВД D: высокий уровень",
+   "en": "Injection Pump Fuel Metering Control D High (Cam/Rotor/Injector)",
+   "fam": "",
+   "node": "injection pump fuel metering control d"
+  },
+  {
+   "code": "P2A1A",
+   "brand": "",
+   "ru": "Дозирование топлива ТНВД E",
+   "en": "Injection Pump Fuel Metering Control E (Cam/Rotor/Injector)",
+   "fam": "",
+   "node": "injection pump fuel metering control e"
+  },
+  {
+   "code": "P2A1B",
+   "brand": "",
+   "ru": "Дозирование топлива ТНВД E: вне допустимого диапазона",
+   "en": "Injection Pump Fuel Metering Control E Range/Performance (Cam/Rotor/Injector)",
+   "fam": "",
+   "node": "injection pump fuel metering control e"
+  },
+  {
+   "code": "P2A1C",
+   "brand": "",
+   "ru": "Дозирование топлива ТНВД E: низкий уровень",
+   "en": "Injection Pump Fuel Metering Control E Low (Cam/Rotor/Injector)",
+   "fam": "",
+   "node": "injection pump fuel metering control e"
+  },
+  {
+   "code": "P2A1D",
+   "brand": "",
+   "ru": "Дозирование топлива ТНВД E: высокий уровень",
+   "en": "Injection Pump Fuel Metering Control E High (Cam/Rotor/Injector)",
+   "fam": "",
+   "node": "injection pump fuel metering control e"
+  }
+ ]
+}

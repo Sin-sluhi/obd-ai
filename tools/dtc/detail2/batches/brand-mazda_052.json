@@ -1,0 +1,81 @@
+{
+ "name": "brand-mazda_052",
+ "series": "brand",
+ "brand": "mazda",
+ "nodes": [
+  "coolant temperature",
+  "intake air volume",
+  "kick down",
+  "p n switch",
+  "powertrain control module battery direct power",
+  "ru:выключатель холостого хода",
+  "ru:кнопка удержания передачи (hold)",
+  "turbine speed"
+ ],
+ "codes": [
+  {
+   "code": "P1793",
+   "brand": "mazda",
+   "ru": "Сигнал объёма впускного воздуха: цепь",
+   "en": "Intake Air Volume Circuit",
+   "fam": "",
+   "node": "intake air volume"
+  },
+  {
+   "code": "P1794",
+   "brand": "mazda",
+   "ru": "Прямое питание блока двигателя от АКБ: цепь",
+   "en": "Powertrain Control Module Battery Direct Power Circuit",
+   "fam": "",
+   "node": "powertrain control module battery direct power"
+  },
+  {
+   "code": "P1795",
+   "brand": "mazda",
+   "ru": "Выключатель холостого хода: цепь",
+   "en": "Idle Switch Circuit",
+   "fam": "",
+   "node": "ru:выключатель холостого хода"
+  },
+  {
+   "code": "P1796",
+   "brand": "mazda",
+   "ru": "Выключатель кикдауна: цепь",
+   "en": "Kick Down Switch Circuit",
+   "fam": "",
+   "node": "kick down"
+  },
+  {
+   "code": "P1797",
+   "brand": "mazda",
+   "ru": "Выключатель P/N: обрыв или замыкание",
+   "en": "P/N Switch Open Or Short Circuit",
+   "fam": "",
+   "node": "p n switch"
+  },
+  {
+   "code": "P1798",
+   "brand": "mazda",
+   "ru": "Сигнал температуры ОЖ: цепь",
+   "en": "Coolant Temperature Circuit",
+   "fam": "",
+   "node": "coolant temperature"
+  },
+  {
+   "code": "P1799",
+   "brand": "mazda",
+   "ru": "Кнопка удержания передачи (HOLD): цепь",
+   "en": "Hold Switch Circuit",
+   "fam": "",
+   "node": "ru:кнопка удержания передачи (hold)"
+  },
+  {
+   "code": "P1900",
+   "brand": "mazda",
+   "ru": "Датчик оборотов турбины: прерывистый сигнал",
+   "en": "Turbine Speed Sensor Circuit Intermittent",
+   "fam": "",
+   "node": "turbine speed"
+  }
+ ]
+}

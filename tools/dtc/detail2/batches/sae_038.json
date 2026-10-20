@@ -1,0 +1,352 @@
+{
+ "name": "sae_038",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "coolant temperature relapsed below diagnostic monitoring temperature",
+  "engine coolant heater a",
+  "engine coolant heater b",
+  "engine coolant temperature",
+  "ru:лямбда-зонд",
+  "turbocharger outlet pressure sensor a b correlation",
+  "turbocharger outlet pressure sensor b"
+ ],
+ "codes": [
+  {
+   "code": "P01E3",
+   "brand": "",
+   "ru": "Датчик температуры охлаждающей жидкости 3: цепь",
+   "en": "Engine Coolant Temperature Sensor 3 Circuit",
+   "fam": "",
+   "node": "engine coolant temperature"
+  },
+  {
+   "code": "P01E4",
+   "brand": "",
+   "ru": "Датчик температуры охлаждающей жидкости 3: сигнал вне диапазона",
+   "en": "Engine Coolant Temperature Sensor 3 Circuit Range/Performance",
+   "fam": "",
+   "node": "engine coolant temperature"
+  },
+  {
+   "code": "P01E5",
+   "brand": "",
+   "ru": "Датчик температуры охлаждающей жидкости 3: низкий уровень сигнала в цепи",
+   "en": "Engine Coolant Temperature Sensor 3 Circuit Low",
+   "fam": "",
+   "node": "engine coolant temperature"
+  },
+  {
+   "code": "P01E6",
+   "brand": "",
+   "ru": "Датчик температуры охлаждающей жидкости 3: высокий уровень сигнала в цепи",
+   "en": "Engine Coolant Temperature Sensor 3 Circuit High",
+   "fam": "",
+   "node": "engine coolant temperature"
+  },
+  {
+   "code": "P01E7",
+   "brand": "",
+   "ru": "Датчик температуры охлаждающей жидкости 3: прерывистый / нестабильный сигнал",
+   "en": "Engine Coolant Temperature Sensor 3 Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "engine coolant temperature"
+  },
+  {
+   "code": "P2AFC",
+   "brand": "",
+   "ru": "Датчик температуры охлаждающей жидкости 4: цепь",
+   "en": "Engine Coolant Temperature Sensor 4 Circuit",
+   "fam": "",
+   "node": "engine coolant temperature"
+  },
+  {
+   "code": "P2AFD",
+   "brand": "",
+   "ru": "Датчик температуры охлаждающей жидкости 4: сигнал вне диапазона",
+   "en": "Engine Coolant Temperature Sensor 4 Circuit Range/Performance",
+   "fam": "",
+   "node": "engine coolant temperature"
+  },
+  {
+   "code": "P2AFE",
+   "brand": "",
+   "ru": "Датчик температуры охлаждающей жидкости 4: низкий уровень сигнала в цепи",
+   "en": "Engine Coolant Temperature Sensor 4 Circuit Low",
+   "fam": "",
+   "node": "engine coolant temperature"
+  },
+  {
+   "code": "P2AFF",
+   "brand": "",
+   "ru": "Датчик температуры охлаждающей жидкости 4: высокий уровень сигнала в цепи",
+   "en": "Engine Coolant Temperature Sensor 4 Circuit High",
+   "fam": "",
+   "node": "engine coolant temperature"
+  },
+  {
+   "code": "P2B2B",
+   "brand": "",
+   "ru": "Датчик температуры охлаждающей жидкости 5: цепь",
+   "en": "Engine Coolant Temperature Sensor 5 Circuit",
+   "fam": "",
+   "node": "engine coolant temperature"
+  },
+  {
+   "code": "P2B2C",
+   "brand": "",
+   "ru": "Датчик температуры охлаждающей жидкости 5: сигнал вне диапазона",
+   "en": "Engine Coolant Temperature Sensor 5 Circuit Range/Performance",
+   "fam": "",
+   "node": "engine coolant temperature"
+  },
+  {
+   "code": "P2B2D",
+   "brand": "",
+   "ru": "Датчик температуры охлаждающей жидкости 5: низкий уровень сигнала в цепи",
+   "en": "Engine Coolant Temperature Sensor 5 Circuit Low",
+   "fam": "",
+   "node": "engine coolant temperature"
+  },
+  {
+   "code": "P2B2E",
+   "brand": "",
+   "ru": "Датчик температуры охлаждающей жидкости 5: высокий уровень сигнала в цепи",
+   "en": "Engine Coolant Temperature Sensor 5 Circuit High",
+   "fam": "",
+   "node": "engine coolant temperature"
+  },
+  {
+   "code": "P2BB4",
+   "brand": "",
+   "ru": "Датчик температуры охлаждающей жидкости 4: прерывистый / нестабильный сигнал",
+   "en": "Engine Coolant Temperature Sensor 4 Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "engine coolant temperature"
+  },
+  {
+   "code": "P2BB5",
+   "brand": "",
+   "ru": "Датчик температуры охлаждающей жидкости 5: прерывистый / нестабильный сигнал",
+   "en": "Engine Coolant Temperature Sensor 5 Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "engine coolant temperature"
+  },
+  {
+   "code": "P2BB6",
+   "brand": "",
+   "ru": "Датчик температуры охлаждающей жидкости 6: цепь",
+   "en": "Engine Coolant Temperature Sensor 6 Circuit",
+   "fam": "",
+   "node": "engine coolant temperature"
+  },
+  {
+   "code": "P2BB7",
+   "brand": "",
+   "ru": "Датчик температуры охлаждающей жидкости 6: сигнал вне диапазона",
+   "en": "Engine Coolant Temperature Sensor 6 Circuit Range/Performance",
+   "fam": "",
+   "node": "engine coolant temperature"
+  },
+  {
+   "code": "P2BB8",
+   "brand": "",
+   "ru": "Датчик температуры охлаждающей жидкости 6: низкий уровень сигнала в цепи",
+   "en": "Engine Coolant Temperature Sensor 6 Circuit Low",
+   "fam": "",
+   "node": "engine coolant temperature"
+  },
+  {
+   "code": "P2BB9",
+   "brand": "",
+   "ru": "Датчик температуры охлаждающей жидкости 6: высокий уровень сигнала в цепи",
+   "en": "Engine Coolant Temperature Sensor 6 Circuit High",
+   "fam": "",
+   "node": "engine coolant temperature"
+  },
+  {
+   "code": "P2BBA",
+   "brand": "",
+   "ru": "Датчик температуры охлаждающей жидкости 6: прерывистый / нестабильный сигнал",
+   "en": "Engine Coolant Temperature Sensor 6 Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "engine coolant temperature"
+  },
+  {
+   "code": "P01E8",
+   "brand": "",
+   "ru": "Подогреватель охлаждающей жидкости A: обрыв цепи управления",
+   "en": "Engine Coolant Heater A Control Circuit/Open",
+   "fam": "",
+   "node": "engine coolant heater a"
+  },
+  {
+   "code": "P01E9",
+   "brand": "",
+   "ru": "Подогреватель охлаждающей жидкости A: низкий уровень в цепи управления",
+   "en": "Engine Coolant Heater A Control Circuit Low",
+   "fam": "",
+   "node": "engine coolant heater a"
+  },
+  {
+   "code": "P01EA",
+   "brand": "",
+   "ru": "Подогреватель охлаждающей жидкости A: высокий уровень в цепи управления",
+   "en": "Engine Coolant Heater A Control Circuit High",
+   "fam": "",
+   "node": "engine coolant heater a"
+  },
+  {
+   "code": "P01EB",
+   "brand": "",
+   "ru": "Подогреватель охлаждающей жидкости A: нарушена работа цепи управления",
+   "en": "Engine Coolant Heater A Control Circuit Performance",
+   "fam": "",
+   "node": "engine coolant heater a"
+  },
+  {
+   "code": "P01F8",
+   "brand": "",
+   "ru": "Подогреватель охлаждающей жидкости A: перегрузка драйвера цепи управления по току / перегрев",
+   "en": "Engine Coolant Heater A Control Circuit Driver Current/Temperature Too High",
+   "fam": "",
+   "node": "engine coolant heater a"
+  },
+  {
+   "code": "P01EC",
+   "brand": "",
+   "ru": "Подогреватель охлаждающей жидкости B: обрыв цепи управления",
+   "en": "Engine Coolant Heater B Control Circuit/Open",
+   "fam": "",
+   "node": "engine coolant heater b"
+  },
+  {
+   "code": "P01ED",
+   "brand": "",
+   "ru": "Подогреватель охлаждающей жидкости B: низкий уровень в цепи управления",
+   "en": "Engine Coolant Heater B Control Circuit Low",
+   "fam": "",
+   "node": "engine coolant heater b"
+  },
+  {
+   "code": "P01EE",
+   "brand": "",
+   "ru": "Подогреватель охлаждающей жидкости B: высокий уровень в цепи управления",
+   "en": "Engine Coolant Heater B Control Circuit High",
+   "fam": "",
+   "node": "engine coolant heater b"
+  },
+  {
+   "code": "P01EF",
+   "brand": "",
+   "ru": "Подогреватель охлаждающей жидкости B: нарушена работа цепи управления",
+   "en": "Engine Coolant Heater B Control Circuit Performance",
+   "fam": "",
+   "node": "engine coolant heater b"
+  },
+  {
+   "code": "P01F9",
+   "brand": "",
+   "ru": "Подогреватель охлаждающей жидкости B: перегрузка драйвера цепи управления по току / перегрев",
+   "en": "Engine Coolant Heater B Control Circuit Driver Current/Temperature Too High",
+   "fam": "",
+   "node": "engine coolant heater b"
+  },
+  {
+   "code": "P01F0",
+   "brand": "",
+   "ru": "Температура охлаждающей жидкости опустилась ниже порога диагностики",
+   "en": "Coolant Temperature Relapsed Below Diagnostic Monitoring Temperature",
+   "fam": "",
+   "node": "coolant temperature relapsed below diagnostic monitoring temperature"
+  },
+  {
+   "code": "P01F1",
+   "brand": "",
+   "ru": "Лямбда-зонд: цепь (банк 1, датчик 4)",
+   "en": "O2 Sensor Circuit Bank 1 Sensor 4",
+   "fam": "",
+   "node": "ru:лямбда-зонд"
+  },
+  {
+   "code": "P01F2",
+   "brand": "",
+   "ru": "Лямбда-зонд: низкое напряжение в цепи (банк 1, датчик 4)",
+   "en": "O2 Sensor Circuit Low Voltage Bank 1 Sensor 4",
+   "fam": "",
+   "node": "ru:лямбда-зонд"
+  },
+  {
+   "code": "P01F3",
+   "brand": "",
+   "ru": "Лямбда-зонд: высокое напряжение в цепи (банк 1, датчик 4)",
+   "en": "O2 Sensor Circuit High Voltage Bank 1 Sensor 4",
+   "fam": "",
+   "node": "ru:лямбда-зонд"
+  },
+  {
+   "code": "P01F4",
+   "brand": "",
+   "ru": "Лямбда-зонд: медленный отклик (банк 1, датчик 4)",
+   "en": "O2 Sensor Circuit Slow Response Bank 1 Sensor 4",
+   "fam": "",
+   "node": "ru:лямбда-зонд"
+  },
+  {
+   "code": "P01F5",
+   "brand": "",
+   "ru": "Лямбда-зонд: нет активности (банк 1, датчик 4)",
+   "en": "O2 Sensor Circuit No Activity Detected Bank 1 Sensor 4",
+   "fam": "",
+   "node": "ru:лямбда-зонд"
+  },
+  {
+   "code": "P01FA",
+   "brand": "",
+   "ru": "Датчик давления на выходе турбины B: цепь",
+   "en": "Turbocharger Outlet Pressure Sensor B Circuit",
+   "fam": "",
+   "node": "turbocharger outlet pressure sensor b"
+  },
+  {
+   "code": "P01FB",
+   "brand": "",
+   "ru": "Датчик давления на выходе турбины B: вне допустимого диапазона",
+   "en": "Turbocharger Outlet Pressure Sensor B Range/Performance",
+   "fam": "",
+   "node": "turbocharger outlet pressure sensor b"
+  },
+  {
+   "code": "P01FC",
+   "brand": "",
+   "ru": "Датчик давления на выходе турбины B: низкий уровень сигнала в цепи",
+   "en": "Turbocharger Outlet Pressure Sensor B Circuit Low",
+   "fam": "",
+   "node": "turbocharger outlet pressure sensor b"
+  },
+  {
+   "code": "P01FD",
+   "brand": "",
+   "ru": "Датчик давления на выходе турбины B: высокий уровень сигнала в цепи",
+   "en": "Turbocharger Outlet Pressure Sensor B Circuit High",
+   "fam": "",
+   "node": "turbocharger outlet pressure sensor b"
+  },
+  {
+   "code": "P01FE",
+   "brand": "",
+   "ru": "Датчик давления на выходе турбины B: прерывистый / нестабильный сигнал",
+   "en": "Turbocharger Outlet Pressure Sensor B Intermittent/Erratic",
+   "fam": "",
+   "node": "turbocharger outlet pressure sensor b"
+  },
+  {
+   "code": "P01FF",
+   "brand": "",
+   "ru": "Датчик давления на выходе турбины: рассогласование A/B",
+   "en": "Turbocharger Outlet Pressure Sensor A/B Correlation",
+   "fam": "",
+   "node": "turbocharger outlet pressure sensor a b correlation"
+  }
+ ]
+}

@@ -1,0 +1,388 @@
+{
+ "name": "sae_113",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "drive motor a inverter voltage too",
+  "drive motor b inverter voltage too",
+  "drive motor b position",
+  "generator inverter voltage too",
+  "generator position",
+  "hybrid ev battery system discharge time too",
+  "hybrid ev battery system discharge time too long",
+  "hybrid ev battery system precharge time too",
+  "hybrid ev battery system precharge time too long",
+  "hybrid ev battery temperature sensor a b correlation",
+  "hybrid ev battery temperature sensor b c correlation",
+  "hybrid ev battery temperature sensor c d correlation",
+  "hybrid ev battery temperature sensor d e correlation",
+  "hybrid ev battery temperature sensor e f correlation",
+  "hybrid ev battery temperature sensor f g correlation",
+  "hybrid ev battery temperature sensor g",
+  "hybrid ev battery temperature sensor h",
+  "motor electronics coolant pump a control",
+  "motor electronics coolant pump b control"
+ ],
+ "codes": [
+  {
+   "code": "P0C55",
+   "brand": "",
+   "ru": "Цепь датчика положения тягового электромотора B, A",
+   "en": "Drive Motor B Position Sensor Circuit A",
+   "fam": "",
+   "node": "drive motor b position"
+  },
+  {
+   "code": "P0C56",
+   "brand": "",
+   "ru": "Цепь датчика положения тягового электромотора B, A: вне допустимого диапазона",
+   "en": "Drive Motor B Position Sensor Circuit A Range/Performance",
+   "fam": "",
+   "node": "drive motor b position"
+  },
+  {
+   "code": "P0C57",
+   "brand": "",
+   "ru": "Цепь датчика положения тягового электромотора B, A: низкий уровень",
+   "en": "Drive Motor B Position Sensor Circuit A Low",
+   "fam": "",
+   "node": "drive motor b position"
+  },
+  {
+   "code": "P0C58",
+   "brand": "",
+   "ru": "Цепь датчика положения тягового электромотора B, A: высокий уровень",
+   "en": "Drive Motor B Position Sensor Circuit A High",
+   "fam": "",
+   "node": "drive motor b position"
+  },
+  {
+   "code": "P0C59",
+   "brand": "",
+   "ru": "Цепь датчика положения тягового электромотора B, A: прерывистый / нестабильный сигнал",
+   "en": "Drive Motor B Position Sensor Circuit A Intermittent/Erratic",
+   "fam": "",
+   "node": "drive motor b position"
+  },
+  {
+   "code": "P0C5F",
+   "brand": "",
+   "ru": "Цепь датчика положения тягового электромотора B, B",
+   "en": "Drive Motor B Position Sensor Circuit B",
+   "fam": "",
+   "node": "drive motor b position"
+  },
+  {
+   "code": "P0C60",
+   "brand": "",
+   "ru": "Цепь датчика положения тягового электромотора B, B: вне допустимого диапазона",
+   "en": "Drive Motor B Position Sensor Circuit B Range/Performance",
+   "fam": "",
+   "node": "drive motor b position"
+  },
+  {
+   "code": "P0C61",
+   "brand": "",
+   "ru": "Цепь датчика положения тягового электромотора B, B: низкий уровень",
+   "en": "Drive Motor B Position Sensor Circuit B Low",
+   "fam": "",
+   "node": "drive motor b position"
+  },
+  {
+   "code": "P0C62",
+   "brand": "",
+   "ru": "Цепь датчика положения тягового электромотора B, B: высокий уровень",
+   "en": "Drive Motor B Position Sensor Circuit B High",
+   "fam": "",
+   "node": "drive motor b position"
+  },
+  {
+   "code": "P0C63",
+   "brand": "",
+   "ru": "Цепь датчика положения тягового электромотора B, B: прерывистый / нестабильный сигнал",
+   "en": "Drive Motor B Position Sensor Circuit B Intermittent/Erratic",
+   "fam": "",
+   "node": "drive motor b position"
+  },
+  {
+   "code": "P0C64",
+   "brand": "",
+   "ru": "Цепь датчика положения генератора A",
+   "en": "Generator Position Sensor Circuit A",
+   "fam": "",
+   "node": "generator position"
+  },
+  {
+   "code": "P0C65",
+   "brand": "",
+   "ru": "Цепь датчика положения генератора A: вне допустимого диапазона",
+   "en": "Generator Position Sensor Circuit A Range/Performance",
+   "fam": "",
+   "node": "generator position"
+  },
+  {
+   "code": "P0C66",
+   "brand": "",
+   "ru": "Цепь датчика положения генератора A: низкий уровень",
+   "en": "Generator Position Sensor Circuit A Low",
+   "fam": "",
+   "node": "generator position"
+  },
+  {
+   "code": "P0C67",
+   "brand": "",
+   "ru": "Цепь датчика положения генератора A: высокий уровень",
+   "en": "Generator Position Sensor Circuit A High",
+   "fam": "",
+   "node": "generator position"
+  },
+  {
+   "code": "P0C68",
+   "brand": "",
+   "ru": "Цепь датчика положения генератора A: прерывистый / нестабильный сигнал",
+   "en": "Generator Position Sensor Circuit A Intermittent/Erratic",
+   "fam": "",
+   "node": "generator position"
+  },
+  {
+   "code": "P0C69",
+   "brand": "",
+   "ru": "Цепь датчика положения генератора B",
+   "en": "Generator Position Sensor Circuit B",
+   "fam": "",
+   "node": "generator position"
+  },
+  {
+   "code": "P0C6A",
+   "brand": "",
+   "ru": "Цепь датчика положения генератора B: вне допустимого диапазона",
+   "en": "Generator Position Sensor Circuit B Range/Performance",
+   "fam": "",
+   "node": "generator position"
+  },
+  {
+   "code": "P0C6B",
+   "brand": "",
+   "ru": "Цепь датчика положения генератора B: низкий уровень",
+   "en": "Generator Position Sensor Circuit B Low",
+   "fam": "",
+   "node": "generator position"
+  },
+  {
+   "code": "P0C6C",
+   "brand": "",
+   "ru": "Цепь датчика положения генератора B: высокий уровень",
+   "en": "Generator Position Sensor Circuit B High",
+   "fam": "",
+   "node": "generator position"
+  },
+  {
+   "code": "P0C6D",
+   "brand": "",
+   "ru": "Цепь датчика положения генератора B: прерывистый / нестабильный сигнал",
+   "en": "Generator Position Sensor Circuit B Intermittent/Erratic",
+   "fam": "",
+   "node": "generator position"
+  },
+  {
+   "code": "P0C6E",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи: рассогласование A/B",
+   "en": "Hybrid/EV Battery Temperature Sensor A/B Correlation",
+   "fam": "",
+   "node": "hybrid ev battery temperature sensor a b correlation"
+  },
+  {
+   "code": "P0C6F",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи B/C: рассогласование показаний",
+   "en": "Hybrid/EV Battery Temperature Sensor B/C Correlation",
+   "fam": "",
+   "node": "hybrid ev battery temperature sensor b c correlation"
+  },
+  {
+   "code": "P0C70",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи C/D: рассогласование показаний",
+   "en": "Hybrid/EV Battery Temperature Sensor C/D Correlation",
+   "fam": "",
+   "node": "hybrid ev battery temperature sensor c d correlation"
+  },
+  {
+   "code": "P0C71",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи D/E: рассогласование показаний",
+   "en": "Hybrid/EV Battery Temperature Sensor D/E Correlation",
+   "fam": "",
+   "node": "hybrid ev battery temperature sensor d e correlation"
+  },
+  {
+   "code": "P0C72",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи E/F: рассогласование показаний",
+   "en": "Hybrid/EV Battery Temperature Sensor E/F Correlation",
+   "fam": "",
+   "node": "hybrid ev battery temperature sensor e f correlation"
+  },
+  {
+   "code": "P0C73",
+   "brand": "",
+   "ru": "Насос охлаждения электроники электромотора A: нарушено управление",
+   "en": "Motor Electronics Coolant Pump A Control Performance",
+   "fam": "",
+   "node": "motor electronics coolant pump a control"
+  },
+  {
+   "code": "P0C74",
+   "brand": "",
+   "ru": "Насос охлаждения электроники электромотора B: нарушено управление",
+   "en": "Motor Electronics Coolant Pump B Control Performance",
+   "fam": "",
+   "node": "motor electronics coolant pump b control"
+  },
+  {
+   "code": "P0C75",
+   "brand": "",
+   "ru": "Система тяговой батареи: время разряда слишком короткое",
+   "en": "Hybrid/EV Battery System Discharge Time Too Short",
+   "fam": "",
+   "node": "hybrid ev battery system discharge time too"
+  },
+  {
+   "code": "P0C76",
+   "brand": "",
+   "ru": "Система тяговой батареи: время разряда слишком долгое",
+   "en": "Hybrid/EV Battery System Discharge Time Too Long",
+   "fam": "",
+   "node": "hybrid ev battery system discharge time too long"
+  },
+  {
+   "code": "P0C77",
+   "brand": "",
+   "ru": "Система тяговой батареи: время предзаряда слишком короткое",
+   "en": "Hybrid/EV Battery System Precharge Time Too Short",
+   "fam": "",
+   "node": "hybrid ev battery system precharge time too"
+  },
+  {
+   "code": "P0C78",
+   "brand": "",
+   "ru": "Система тяговой батареи: время предзаряда слишком долгое",
+   "en": "Hybrid/EV Battery System Precharge Time Too Long",
+   "fam": "",
+   "node": "hybrid ev battery system precharge time too long"
+  },
+  {
+   "code": "P0C79",
+   "brand": "",
+   "ru": "Инвертор тягового электромотора A: слишком высокое напряжение",
+   "en": "Drive Motor A Inverter Voltage Too High",
+   "fam": "",
+   "node": "drive motor a inverter voltage too"
+  },
+  {
+   "code": "P0C7A",
+   "brand": "",
+   "ru": "Инвертор тягового электромотора B: слишком высокое напряжение",
+   "en": "Drive Motor B Inverter Voltage Too High",
+   "fam": "",
+   "node": "drive motor b inverter voltage too"
+  },
+  {
+   "code": "P0C7B",
+   "brand": "",
+   "ru": "Инвертор генератора: слишком высокое напряжение",
+   "en": "Generator Inverter Voltage Too High",
+   "fam": "",
+   "node": "generator inverter voltage too"
+  },
+  {
+   "code": "P0C7C",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи G: цепь",
+   "en": "Hybrid/EV Battery Temperature Sensor G Circuit",
+   "fam": "",
+   "node": "hybrid ev battery temperature sensor g"
+  },
+  {
+   "code": "P0C7D",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи G: сигнал вне диапазона",
+   "en": "Hybrid/EV Battery Temperature Sensor G Circuit Range/Performance",
+   "fam": "",
+   "node": "hybrid ev battery temperature sensor g"
+  },
+  {
+   "code": "P0C7E",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи G: низкий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Temperature Sensor G Circuit Low",
+   "fam": "",
+   "node": "hybrid ev battery temperature sensor g"
+  },
+  {
+   "code": "P0C7F",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи G: высокий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Temperature Sensor G Circuit High",
+   "fam": "",
+   "node": "hybrid ev battery temperature sensor g"
+  },
+  {
+   "code": "P0C80",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи G: прерывистый / нестабильный сигнал",
+   "en": "Hybrid/EV Battery Temperature Sensor G Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "hybrid ev battery temperature sensor g"
+  },
+  {
+   "code": "P0C81",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи H: цепь",
+   "en": "Hybrid/EV Battery Temperature Sensor H Circuit",
+   "fam": "",
+   "node": "hybrid ev battery temperature sensor h"
+  },
+  {
+   "code": "P0C82",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи H: сигнал вне диапазона",
+   "en": "Hybrid/EV Battery Temperature Sensor H Circuit Range/Performance",
+   "fam": "",
+   "node": "hybrid ev battery temperature sensor h"
+  },
+  {
+   "code": "P0C83",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи H: низкий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Temperature Sensor H Circuit Low",
+   "fam": "",
+   "node": "hybrid ev battery temperature sensor h"
+  },
+  {
+   "code": "P0C84",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи H: высокий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Temperature Sensor H Circuit High",
+   "fam": "",
+   "node": "hybrid ev battery temperature sensor h"
+  },
+  {
+   "code": "P0C85",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи H: прерывистый / нестабильный сигнал",
+   "en": "Hybrid/EV Battery Temperature Sensor H Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "hybrid ev battery temperature sensor h"
+  },
+  {
+   "code": "P0C86",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи F/G: рассогласование показаний",
+   "en": "Hybrid/EV Battery Temperature Sensor F/G Correlation",
+   "fam": "",
+   "node": "hybrid ev battery temperature sensor f g correlation"
+  }
+ ]
+}

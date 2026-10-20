@@ -1,0 +1,230 @@
+{
+ "name": "sae_046",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "crankshaft position sensor crankshaft direction incorrect",
+  "crankshaft position sensor crankshaft start position incorrect",
+  "fam:cmp",
+  "fam:ignition_module",
+  "ion sense system"
+ ],
+ "codes": [
+  {
+   "code": "P0340",
+   "brand": "",
+   "ru": "Датчик положения распредвала A (банк 1): цепь / нет сигнала",
+   "en": "",
+   "fam": "cmp",
+   "node": "fam:cmp"
+  },
+  {
+   "code": "P0341",
+   "brand": "",
+   "ru": "Датчик положения распредвала A (банк 1): сигнал вне диапазона",
+   "en": "",
+   "fam": "cmp",
+   "node": "fam:cmp"
+  },
+  {
+   "code": "P0342",
+   "brand": "",
+   "ru": "Датчик положения распредвала A (банк 1): низкий сигнал",
+   "en": "",
+   "fam": "cmp",
+   "node": "fam:cmp"
+  },
+  {
+   "code": "P0343",
+   "brand": "",
+   "ru": "Датчик положения распредвала A (банк 1): высокий сигнал",
+   "en": "",
+   "fam": "cmp",
+   "node": "fam:cmp"
+  },
+  {
+   "code": "P0344",
+   "brand": "",
+   "ru": "Датчик положения распредвала A (банк 1): прерывистый сигнал",
+   "en": "",
+   "fam": "cmp",
+   "node": "fam:cmp"
+  },
+  {
+   "code": "P0345",
+   "brand": "",
+   "ru": "Датчик положения распредвала A (банк 2): цепь / нет сигнала",
+   "en": "",
+   "fam": "cmp",
+   "node": "fam:cmp"
+  },
+  {
+   "code": "P0346",
+   "brand": "",
+   "ru": "Датчик положения распредвала A (банк 2): сигнал вне диапазона",
+   "en": "",
+   "fam": "cmp",
+   "node": "fam:cmp"
+  },
+  {
+   "code": "P0347",
+   "brand": "",
+   "ru": "Датчик положения распредвала A (банк 2): низкий сигнал",
+   "en": "",
+   "fam": "cmp",
+   "node": "fam:cmp"
+  },
+  {
+   "code": "P0348",
+   "brand": "",
+   "ru": "Датчик положения распредвала A (банк 2): высокий сигнал",
+   "en": "",
+   "fam": "cmp",
+   "node": "fam:cmp"
+  },
+  {
+   "code": "P0349",
+   "brand": "",
+   "ru": "Датчик положения распредвала A (банк 2): прерывистый сигнал",
+   "en": "",
+   "fam": "cmp",
+   "node": "fam:cmp"
+  },
+  {
+   "code": "P0365",
+   "brand": "",
+   "ru": "Датчик положения распредвала B (банк 1): цепь / нет сигнала",
+   "en": "",
+   "fam": "cmp",
+   "node": "fam:cmp"
+  },
+  {
+   "code": "P0366",
+   "brand": "",
+   "ru": "Датчик положения распредвала B (банк 1): сигнал вне диапазона",
+   "en": "",
+   "fam": "cmp",
+   "node": "fam:cmp"
+  },
+  {
+   "code": "P0367",
+   "brand": "",
+   "ru": "Датчик положения распредвала B (банк 1): низкий сигнал",
+   "en": "",
+   "fam": "cmp",
+   "node": "fam:cmp"
+  },
+  {
+   "code": "P0368",
+   "brand": "",
+   "ru": "Датчик положения распредвала B (банк 1): высокий сигнал",
+   "en": "",
+   "fam": "cmp",
+   "node": "fam:cmp"
+  },
+  {
+   "code": "P0369",
+   "brand": "",
+   "ru": "Датчик положения распредвала B (банк 1): прерывистый сигнал",
+   "en": "",
+   "fam": "cmp",
+   "node": "fam:cmp"
+  },
+  {
+   "code": "P0390",
+   "brand": "",
+   "ru": "Датчик положения распредвала B (банк 2): цепь / нет сигнала",
+   "en": "",
+   "fam": "cmp",
+   "node": "fam:cmp"
+  },
+  {
+   "code": "P0391",
+   "brand": "",
+   "ru": "Датчик положения распредвала B (банк 2): сигнал вне диапазона",
+   "en": "",
+   "fam": "cmp",
+   "node": "fam:cmp"
+  },
+  {
+   "code": "P0392",
+   "brand": "",
+   "ru": "Датчик положения распредвала B (банк 2): низкий сигнал",
+   "en": "",
+   "fam": "cmp",
+   "node": "fam:cmp"
+  },
+  {
+   "code": "P0393",
+   "brand": "",
+   "ru": "Датчик положения распредвала B (банк 2): высокий сигнал",
+   "en": "",
+   "fam": "cmp",
+   "node": "fam:cmp"
+  },
+  {
+   "code": "P0394",
+   "brand": "",
+   "ru": "Датчик положения распредвала B (банк 2): прерывистый сигнал",
+   "en": "",
+   "fam": "cmp",
+   "node": "fam:cmp"
+  },
+  {
+   "code": "P2614",
+   "brand": "",
+   "ru": "Выход сигнала распредвала: цепь / обрыв",
+   "en": "",
+   "fam": "cmp",
+   "node": "fam:cmp"
+  },
+  {
+   "code": "P2615",
+   "brand": "",
+   "ru": "Выход сигнала распредвала: низкий уровень",
+   "en": "",
+   "fam": "cmp",
+   "node": "fam:cmp"
+  },
+  {
+   "code": "P2616",
+   "brand": "",
+   "ru": "Выход сигнала распредвала: высокий уровень",
+   "en": "",
+   "fam": "cmp",
+   "node": "fam:cmp"
+  },
+  {
+   "code": "P034A",
+   "brand": "",
+   "ru": "Датчик положения коленвала: неверное стартовое положение",
+   "en": "Crankshaft Position Sensor - Crankshaft Start Position Incorrect",
+   "fam": "",
+   "node": "crankshaft position sensor crankshaft start position incorrect"
+  },
+  {
+   "code": "P034B",
+   "brand": "",
+   "ru": "Датчик положения коленвала: неверное направление вращения",
+   "en": "Crankshaft Position Sensor - Crankshaft Direction Incorrect",
+   "fam": "",
+   "node": "crankshaft position sensor crankshaft direction incorrect"
+  },
+  {
+   "code": "P034C",
+   "brand": "",
+   "ru": "Система ионного контроля: работа нарушена",
+   "en": "Ion Sense System Performance",
+   "fam": "",
+   "node": "ion sense system"
+  },
+  {
+   "code": "P0350",
+   "brand": "",
+   "ru": "Катушка зажигания: первичная/вторичная цепь",
+   "en": "",
+   "fam": "ignition_module",
+   "node": "fam:ignition_module"
+  }
+ ]
+}

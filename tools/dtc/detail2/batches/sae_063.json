@@ -1,0 +1,342 @@
+{
+ "name": "sae_063",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "cold start a camshaft position timing over advanced",
+  "cold start a camshaft position timing over retarded",
+  "fam:cruise",
+  "glow plug control module 1 system voltage",
+  "pcv regulator valve"
+ ],
+ "codes": [
+  {
+   "code": "P0525",
+   "brand": "",
+   "ru": "Сервопривод круиз-контроля: вне диапазона",
+   "en": "",
+   "fam": "cruise",
+   "node": "fam:cruise"
+  },
+  {
+   "code": "P0564",
+   "brand": "",
+   "ru": "Круиз-контроль: многофункциональный вход A, цепь",
+   "en": "",
+   "fam": "cruise",
+   "node": "fam:cruise"
+  },
+  {
+   "code": "P0565",
+   "brand": "",
+   "ru": "Круиз-контроль: сигнал «вкл» — неисправность",
+   "en": "",
+   "fam": "cruise",
+   "node": "fam:cruise"
+  },
+  {
+   "code": "P0566",
+   "brand": "",
+   "ru": "Круиз-контроль: сигнал «выкл» — неисправность",
+   "en": "",
+   "fam": "cruise",
+   "node": "fam:cruise"
+  },
+  {
+   "code": "P0567",
+   "brand": "",
+   "ru": "Круиз-контроль: сигнал «возобновить» — неисправность",
+   "en": "",
+   "fam": "cruise",
+   "node": "fam:cruise"
+  },
+  {
+   "code": "P0568",
+   "brand": "",
+   "ru": "Круиз-контроль: сигнал «установить» — неисправность",
+   "en": "",
+   "fam": "cruise",
+   "node": "fam:cruise"
+  },
+  {
+   "code": "P0569",
+   "brand": "",
+   "ru": "Круиз-контроль: сигнал «медленнее» — неисправность",
+   "en": "",
+   "fam": "cruise",
+   "node": "fam:cruise"
+  },
+  {
+   "code": "P0570",
+   "brand": "",
+   "ru": "Круиз-контроль: сигнал «быстрее» — неисправность",
+   "en": "",
+   "fam": "cruise",
+   "node": "fam:cruise"
+  },
+  {
+   "code": "P0574",
+   "brand": "",
+   "ru": "Круиз-контроль: скорость слишком высокая",
+   "en": "",
+   "fam": "cruise",
+   "node": "fam:cruise"
+  },
+  {
+   "code": "P0575",
+   "brand": "",
+   "ru": "Круиз-контроль: входная цепь",
+   "en": "",
+   "fam": "cruise",
+   "node": "fam:cruise"
+  },
+  {
+   "code": "P0576",
+   "brand": "",
+   "ru": "Круиз-контроль: входная цепь, низкий уровень",
+   "en": "",
+   "fam": "cruise",
+   "node": "fam:cruise"
+  },
+  {
+   "code": "P0577",
+   "brand": "",
+   "ru": "Круиз-контроль: входная цепь, высокий уровень",
+   "en": "",
+   "fam": "cruise",
+   "node": "fam:cruise"
+  },
+  {
+   "code": "P0578",
+   "brand": "",
+   "ru": "Круиз-контроль: вход A залип",
+   "en": "",
+   "fam": "cruise",
+   "node": "fam:cruise"
+  },
+  {
+   "code": "P0579",
+   "brand": "",
+   "ru": "Круиз-контроль: вход A вне диапазона",
+   "en": "",
+   "fam": "cruise",
+   "node": "fam:cruise"
+  },
+  {
+   "code": "P0580",
+   "brand": "",
+   "ru": "Круиз-контроль: вход A низкий уровень",
+   "en": "",
+   "fam": "cruise",
+   "node": "fam:cruise"
+  },
+  {
+   "code": "P0581",
+   "brand": "",
+   "ru": "Круиз-контроль: вход A высокий уровень",
+   "en": "",
+   "fam": "cruise",
+   "node": "fam:cruise"
+  },
+  {
+   "code": "P0582",
+   "brand": "",
+   "ru": "Круиз-контроль: вакуумный привод, цепь",
+   "en": "",
+   "fam": "cruise",
+   "node": "fam:cruise"
+  },
+  {
+   "code": "P0583",
+   "brand": "",
+   "ru": "Круиз-контроль: вакуумный привод, низкий уровень",
+   "en": "",
+   "fam": "cruise",
+   "node": "fam:cruise"
+  },
+  {
+   "code": "P0584",
+   "brand": "",
+   "ru": "Круиз-контроль: вакуумный привод, высокий уровень",
+   "en": "",
+   "fam": "cruise",
+   "node": "fam:cruise"
+  },
+  {
+   "code": "P0585",
+   "brand": "",
+   "ru": "Круиз-контроль: входы A и B не согласуются",
+   "en": "",
+   "fam": "cruise",
+   "node": "fam:cruise"
+  },
+  {
+   "code": "P0586",
+   "brand": "",
+   "ru": "Круиз-контроль: клапан сброса, цепь",
+   "en": "",
+   "fam": "cruise",
+   "node": "fam:cruise"
+  },
+  {
+   "code": "P0587",
+   "brand": "",
+   "ru": "Круиз-контроль: клапан сброса, низкий уровень",
+   "en": "",
+   "fam": "cruise",
+   "node": "fam:cruise"
+  },
+  {
+   "code": "P0588",
+   "brand": "",
+   "ru": "Круиз-контроль: клапан сброса, высокий уровень",
+   "en": "",
+   "fam": "cruise",
+   "node": "fam:cruise"
+  },
+  {
+   "code": "P0589",
+   "brand": "",
+   "ru": "Круиз-контроль: вход B, цепь",
+   "en": "",
+   "fam": "cruise",
+   "node": "fam:cruise"
+  },
+  {
+   "code": "P0590",
+   "brand": "",
+   "ru": "Круиз-контроль: вход B залип",
+   "en": "",
+   "fam": "cruise",
+   "node": "fam:cruise"
+  },
+  {
+   "code": "P0591",
+   "brand": "",
+   "ru": "Круиз-контроль: вход B вне диапазона",
+   "en": "",
+   "fam": "cruise",
+   "node": "fam:cruise"
+  },
+  {
+   "code": "P0592",
+   "brand": "",
+   "ru": "Круиз-контроль: вход B низкий уровень",
+   "en": "",
+   "fam": "cruise",
+   "node": "fam:cruise"
+  },
+  {
+   "code": "P0593",
+   "brand": "",
+   "ru": "Круиз-контроль: вход B высокий уровень",
+   "en": "",
+   "fam": "cruise",
+   "node": "fam:cruise"
+  },
+  {
+   "code": "P0594",
+   "brand": "",
+   "ru": "Круиз-контроль: сервопривод, цепь",
+   "en": "",
+   "fam": "cruise",
+   "node": "fam:cruise"
+  },
+  {
+   "code": "P0595",
+   "brand": "",
+   "ru": "Круиз-контроль: сервопривод, низкий уровень",
+   "en": "",
+   "fam": "cruise",
+   "node": "fam:cruise"
+  },
+  {
+   "code": "P0596",
+   "brand": "",
+   "ru": "Круиз-контроль: сервопривод, высокий уровень",
+   "en": "",
+   "fam": "cruise",
+   "node": "fam:cruise"
+  },
+  {
+   "code": "P0649",
+   "brand": "",
+   "ru": "Лампа круиз-контроля: цепь",
+   "en": "",
+   "fam": "cruise",
+   "node": "fam:cruise"
+  },
+  {
+   "code": "P052A",
+   "brand": "",
+   "ru": "Холодный пуск: распредвал A слишком рано (банк 1)",
+   "en": "Cold Start A Camshaft Position Timing Over-Advanced Bank 1",
+   "fam": "",
+   "node": "cold start a camshaft position timing over advanced"
+  },
+  {
+   "code": "P052C",
+   "brand": "",
+   "ru": "Холодный пуск: распредвал A слишком рано (банк 2)",
+   "en": "Cold Start A Camshaft Position Timing Over-Advanced Bank 2",
+   "fam": "",
+   "node": "cold start a camshaft position timing over advanced"
+  },
+  {
+   "code": "P052B",
+   "brand": "",
+   "ru": "Холодный пуск: распредвал A слишком поздно (банк 1)",
+   "en": "Cold Start A Camshaft Position Timing Over-Retarded Bank 1",
+   "fam": "",
+   "node": "cold start a camshaft position timing over retarded"
+  },
+  {
+   "code": "P052D",
+   "brand": "",
+   "ru": "Холодный пуск: распредвал A слишком поздно (банк 2)",
+   "en": "Cold Start A Camshaft Position Timing Over-Retarded Bank 2",
+   "fam": "",
+   "node": "cold start a camshaft position timing over retarded"
+  },
+  {
+   "code": "P052E",
+   "brand": "",
+   "ru": "Регулирующий клапан вентиляции картера: работа нарушена",
+   "en": "PCV Regulator Valve Performance",
+   "fam": "",
+   "node": "pcv regulator valve"
+  },
+  {
+   "code": "P05D8",
+   "brand": "",
+   "ru": "Регулирующий клапан вентиляции картера: обрыв цепи управления",
+   "en": "PCV Regulator Valve Control Circuit/Open",
+   "fam": "",
+   "node": "pcv regulator valve"
+  },
+  {
+   "code": "P05D9",
+   "brand": "",
+   "ru": "Регулирующий клапан вентиляции картера: низкий уровень в цепи управления",
+   "en": "PCV Regulator Valve Control Circuit Low",
+   "fam": "",
+   "node": "pcv regulator valve"
+  },
+  {
+   "code": "P05DA",
+   "brand": "",
+   "ru": "Регулирующий клапан вентиляции картера: высокий уровень в цепи управления",
+   "en": "PCV Regulator Valve Control Circuit High",
+   "fam": "",
+   "node": "pcv regulator valve"
+  },
+  {
+   "code": "P052F",
+   "brand": "",
+   "ru": "Блок свечей накаливания 1: напряжение питания",
+   "en": "Glow Plug Control Module 1 System Voltage",
+   "fam": "",
+   "node": "glow plug control module 1 system voltage"
+  }
+ ]
+}

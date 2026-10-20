@@ -1,0 +1,389 @@
+{
+ "name": "sae_154",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "air system b",
+  "air system b incorrect flow detected",
+  "b camshaft position control",
+  "control module power off timer",
+  "coolant pump a",
+  "coolant pump b",
+  "electrical system voltage stabilizer control module",
+  "evap system monitoring processor",
+  "fuel injector pilot injection not learned",
+  "glow plug control driver",
+  "particulate filter regeneration lamp",
+  "pto engaged lamp",
+  "ru:лампа check engine",
+  "ru:отбор мощности (pto)",
+  "sensor reference voltage g",
+  "supercharger disconnect clutch",
+  "turbocharger supercharger boost sensor c",
+  "turbocharger supercharger bypass valve c",
+  "turbocharger supercharger bypass valve c temperature too",
+  "turbocharger supercharger bypass valve c – mechanical"
+ ],
+ "codes": [
+  {
+   "code": "P25E5",
+   "brand": "",
+   "ru": "Положение распредвала B: нарушено управление (банк 1)",
+   "en": "B Camshaft Position Control Performance Bank 1",
+   "fam": "",
+   "node": "b camshaft position control"
+  },
+  {
+   "code": "P25E8",
+   "brand": "",
+   "ru": "Положение распредвала B: нарушено управление (банк 2)",
+   "en": "B Camshaft Position Control Performance Bank 2",
+   "fam": "",
+   "node": "b camshaft position control"
+  },
+  {
+   "code": "P25E9",
+   "brand": "",
+   "ru": "Муфта отключения нагнетателя: заклинил открытым",
+   "en": "Supercharger Disconnect Clutch Stuck Open",
+   "fam": "",
+   "node": "supercharger disconnect clutch"
+  },
+  {
+   "code": "P25EA",
+   "brand": "",
+   "ru": "Муфта отключения нагнетателя: заклинил закрытым",
+   "en": "Supercharger Disconnect Clutch Stuck Closed",
+   "fam": "",
+   "node": "supercharger disconnect clutch"
+  },
+  {
+   "code": "P25EB",
+   "brand": "",
+   "ru": "Муфта отключения нагнетателя: сигнал вне диапазона",
+   "en": "Supercharger Disconnect Clutch Circuit Range/Performance",
+   "fam": "",
+   "node": "supercharger disconnect clutch"
+  },
+  {
+   "code": "P25EC",
+   "brand": "",
+   "ru": "Муфта отключения нагнетателя: низкий уровень сигнала в цепи",
+   "en": "Supercharger Disconnect Clutch Circuit Low",
+   "fam": "",
+   "node": "supercharger disconnect clutch"
+  },
+  {
+   "code": "P25ED",
+   "brand": "",
+   "ru": "Муфта отключения нагнетателя: высокий уровень сигнала в цепи",
+   "en": "Supercharger Disconnect Clutch Circuit High",
+   "fam": "",
+   "node": "supercharger disconnect clutch"
+  },
+  {
+   "code": "P25FE",
+   "brand": "",
+   "ru": "Муфта отключения нагнетателя",
+   "en": "Supercharger Disconnect Clutch",
+   "fam": "",
+   "node": "supercharger disconnect clutch"
+  },
+  {
+   "code": "P25F2",
+   "brand": "",
+   "ru": "Датчик давления наддува C: цепь",
+   "en": "Turbocharger/Supercharger Boost Sensor C Circuit",
+   "fam": "",
+   "node": "turbocharger supercharger boost sensor c"
+  },
+  {
+   "code": "P25F3",
+   "brand": "",
+   "ru": "Датчик давления наддува C: сигнал вне диапазона",
+   "en": "Turbocharger/Supercharger Boost Sensor C Circuit Range/Performance",
+   "fam": "",
+   "node": "turbocharger supercharger boost sensor c"
+  },
+  {
+   "code": "P25F4",
+   "brand": "",
+   "ru": "Датчик давления наддува C: низкий уровень сигнала в цепи",
+   "en": "Turbocharger/Supercharger Boost Sensor C Circuit Low",
+   "fam": "",
+   "node": "turbocharger supercharger boost sensor c"
+  },
+  {
+   "code": "P25F5",
+   "brand": "",
+   "ru": "Датчик давления наддува C: высокий уровень сигнала в цепи",
+   "en": "Turbocharger/Supercharger Boost Sensor C Circuit High",
+   "fam": "",
+   "node": "turbocharger supercharger boost sensor c"
+  },
+  {
+   "code": "P25F6",
+   "brand": "",
+   "ru": "Система вторичного воздуха B",
+   "en": "AIR System B",
+   "fam": "",
+   "node": "air system b"
+  },
+  {
+   "code": "P25F7",
+   "brand": "",
+   "ru": "Система вторичного воздуха B: неверный расход",
+   "en": "AIR System B Incorrect Flow Detected",
+   "fam": "",
+   "node": "air system b incorrect flow detected"
+  },
+  {
+   "code": "P25F8",
+   "brand": "",
+   "ru": "Перепускной клапан турбины/нагнетателя C: цепь управления",
+   "en": "Turbocharger/Supercharger Bypass Valve C Control Circuit",
+   "fam": "",
+   "node": "turbocharger supercharger bypass valve c"
+  },
+  {
+   "code": "P25F9",
+   "brand": "",
+   "ru": "Перепускной клапан турбины/нагнетателя C: низкий уровень в цепи управления",
+   "en": "Turbocharger/Supercharger Bypass Valve C Control Circuit Low",
+   "fam": "",
+   "node": "turbocharger supercharger bypass valve c"
+  },
+  {
+   "code": "P25FA",
+   "brand": "",
+   "ru": "Перепускной клапан турбины/нагнетателя C: высокий уровень в цепи управления",
+   "en": "Turbocharger/Supercharger Bypass Valve C Control Circuit High",
+   "fam": "",
+   "node": "turbocharger supercharger bypass valve c"
+  },
+  {
+   "code": "P25FB",
+   "brand": "",
+   "ru": "Перепускной клапан турбины/нагнетателя C: цепь управления вне диапазона",
+   "en": "Turbocharger/Supercharger Bypass Valve C Control Circuit Range/Performance",
+   "fam": "",
+   "node": "turbocharger supercharger bypass valve c"
+  },
+  {
+   "code": "P2CD5",
+   "brand": "",
+   "ru": "Перепускной клапан турбины/нагнетателя C: заклинивание",
+   "en": "Turbocharger/Supercharger Bypass Valve C Stuck",
+   "fam": "",
+   "node": "turbocharger supercharger bypass valve c"
+  },
+  {
+   "code": "P25FC",
+   "brand": "",
+   "ru": "Перепускной клапан турбины/нагнетателя C: механическая неисправность",
+   "en": "Turbocharger/Supercharger Bypass Valve C – Mechanical",
+   "fam": "",
+   "node": "turbocharger supercharger bypass valve c – mechanical"
+  },
+  {
+   "code": "P25FD",
+   "brand": "",
+   "ru": "Перепускной клапан турбины/нагнетателя C: слишком высокая температура",
+   "en": "Turbocharger/Supercharger Bypass Valve C Temperature Too High",
+   "fam": "",
+   "node": "turbocharger supercharger bypass valve c temperature too"
+  },
+  {
+   "code": "P25FF",
+   "brand": "",
+   "ru": "Блок стабилизации напряжения бортсети: работа нарушена",
+   "en": "Electrical System Voltage Stabilizer Control Module Performance",
+   "fam": "",
+   "node": "electrical system voltage stabilizer control module"
+  },
+  {
+   "code": "P260A",
+   "brand": "",
+   "ru": "Отбор мощности (PTO): обрыв цепи управления",
+   "en": "PTO Control Circuit/Open",
+   "fam": "",
+   "node": "ru:отбор мощности (pto)"
+  },
+  {
+   "code": "P260B",
+   "brand": "",
+   "ru": "Отбор мощности (PTO): низкий уровень в цепи управления",
+   "en": "PTO Control Circuit Low",
+   "fam": "",
+   "node": "ru:отбор мощности (pto)"
+  },
+  {
+   "code": "P260C",
+   "brand": "",
+   "ru": "Отбор мощности (PTO): высокий уровень в цепи управления",
+   "en": "PTO Control Circuit High",
+   "fam": "",
+   "node": "ru:отбор мощности (pto)"
+  },
+  {
+   "code": "P260D",
+   "brand": "",
+   "ru": "Лампа включённого отбора мощности: цепь управления",
+   "en": "PTO Engaged Lamp Control Circuit",
+   "fam": "",
+   "node": "pto engaged lamp"
+  },
+  {
+   "code": "P260E",
+   "brand": "",
+   "ru": "Лампа регенерации сажевого фильтра: цепь управления",
+   "en": "Particulate Filter Regeneration Lamp Control Circuit",
+   "fam": "",
+   "node": "particulate filter regeneration lamp"
+  },
+  {
+   "code": "P260F",
+   "brand": "",
+   "ru": "Процессор контроля системы EVAP: работа нарушена",
+   "en": "EVAP System Monitoring Processor Performance",
+   "fam": "",
+   "node": "evap system monitoring processor"
+  },
+  {
+   "code": "P261A",
+   "brand": "",
+   "ru": "Насос охлаждающей жидкости B: обрыв цепи управления",
+   "en": "Coolant Pump B Control Circuit/Open",
+   "fam": "",
+   "node": "coolant pump b"
+  },
+  {
+   "code": "P261B",
+   "brand": "",
+   "ru": "Насос охлаждающей жидкости B: цепь управления: работа нарушена / не включается",
+   "en": "Coolant Pump B Control Circuit Performance/Stuck Off",
+   "fam": "",
+   "node": "coolant pump b"
+  },
+  {
+   "code": "P261C",
+   "brand": "",
+   "ru": "Насос охлаждающей жидкости B: низкий уровень в цепи управления",
+   "en": "Coolant Pump B Control Circuit Low",
+   "fam": "",
+   "node": "coolant pump b"
+  },
+  {
+   "code": "P261D",
+   "brand": "",
+   "ru": "Насос охлаждающей жидкости B: высокий уровень в цепи управления",
+   "en": "Coolant Pump B Control Circuit High",
+   "fam": "",
+   "node": "coolant pump b"
+  },
+  {
+   "code": "P261E",
+   "brand": "",
+   "ru": "Насос охлаждающей жидкости B: постоянно включён",
+   "en": "Coolant Pump B Control Circuit Stuck On",
+   "fam": "",
+   "node": "coolant pump b"
+  },
+  {
+   "code": "P2B63",
+   "brand": "",
+   "ru": "Насос охлаждающей жидкости B: заклинивание / остановка",
+   "en": "Coolant Pump B Stuck/Stalled",
+   "fam": "",
+   "node": "coolant pump b"
+  },
+  {
+   "code": "P261F",
+   "brand": "",
+   "ru": "Насос охлаждающей жидкости A: постоянно включён",
+   "en": "Coolant Pump A Control Circuit Stuck On",
+   "fam": "",
+   "node": "coolant pump a"
+  },
+  {
+   "code": "P2B9C",
+   "brand": "",
+   "ru": "Насос охлаждающей жидкости A: заклинивание / остановка",
+   "en": "Coolant Pump A Stuck/Stalled",
+   "fam": "",
+   "node": "coolant pump a"
+  },
+  {
+   "code": "P262A",
+   "brand": "",
+   "ru": "Форсунка: пилотный впрыск не обучен",
+   "en": "Fuel Injector - Pilot Injection Not Learned",
+   "fam": "",
+   "node": "fuel injector pilot injection not learned"
+  },
+  {
+   "code": "P262B",
+   "brand": "",
+   "ru": "Таймер выключения блока управления: работа нарушена",
+   "en": "Control Module Power Off Timer Performance",
+   "fam": "",
+   "node": "control module power off timer"
+  },
+  {
+   "code": "P262C",
+   "brand": "",
+   "ru": "Опорное напряжение датчиков G: обрыв цепи",
+   "en": "Sensor Reference Voltage G Circuit/Open",
+   "fam": "",
+   "node": "sensor reference voltage g"
+  },
+  {
+   "code": "P262D",
+   "brand": "",
+   "ru": "Опорное напряжение датчиков G: низкий уровень сигнала в цепи",
+   "en": "Sensor Reference Voltage G Circuit Low",
+   "fam": "",
+   "node": "sensor reference voltage g"
+  },
+  {
+   "code": "P262E",
+   "brand": "",
+   "ru": "Опорное напряжение датчиков G: высокий уровень сигнала в цепи",
+   "en": "Sensor Reference Voltage G Circuit High",
+   "fam": "",
+   "node": "sensor reference voltage g"
+  },
+  {
+   "code": "P262F",
+   "brand": "",
+   "ru": "Опорное напряжение датчиков G: вне диапазона",
+   "en": "Sensor Reference Voltage G Circuit Range/Perfomance",
+   "fam": "",
+   "node": "sensor reference voltage g"
+  },
+  {
+   "code": "P263A",
+   "brand": "",
+   "ru": "Лампа Check Engine: низкий уровень в цепи управления",
+   "en": "MIL Control Circuit Low",
+   "fam": "",
+   "node": "ru:лампа check engine"
+  },
+  {
+   "code": "P263B",
+   "brand": "",
+   "ru": "Лампа Check Engine: высокий уровень в цепи управления",
+   "en": "MIL Control Circuit High",
+   "fam": "",
+   "node": "ru:лампа check engine"
+  },
+  {
+   "code": "P263C",
+   "brand": "",
+   "ru": "Драйвер управления свечами накаливания: работа нарушена",
+   "en": "Glow Plug Control Driver Performance",
+   "fam": "",
+   "node": "glow plug control driver"
+  }
+ ]
+}

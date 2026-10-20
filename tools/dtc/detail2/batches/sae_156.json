@@ -1,0 +1,357 @@
+{
+ "name": "sae_156",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "engine coolant bypass valve a position",
+  "engine coolant bypass valve a position sensor maximum stop",
+  "engine coolant bypass valve a position sensor stop minimum stop",
+  "engine coolant bypass valve b",
+  "exhaust aftertreatment glow plug",
+  "exhaust aftertreatment glow plug control",
+  "fuel injector calibration not learned programmed",
+  "fuel shutoff valve a",
+  "fuel shutoff valve b",
+  "fuel supply heater",
+  "injector data incompatible",
+  "ru:калибровка тнвд высокого давления не обучена/не записана"
+ ],
+ "codes": [
+  {
+   "code": "P2687",
+   "brand": "",
+   "ru": "Подогрев топлива: обрыв цепи управления",
+   "en": "Fuel Supply Heater Control Circuit/Open",
+   "fam": "",
+   "node": "fuel supply heater"
+  },
+  {
+   "code": "P2688",
+   "brand": "",
+   "ru": "Подогрев топлива: низкий уровень в цепи управления",
+   "en": "Fuel Supply Heater Control Circuit Low",
+   "fam": "",
+   "node": "fuel supply heater"
+  },
+  {
+   "code": "P2689",
+   "brand": "",
+   "ru": "Подогрев топлива: высокий уровень в цепи управления",
+   "en": "Fuel Supply Heater Control Circuit High",
+   "fam": "",
+   "node": "fuel supply heater"
+  },
+  {
+   "code": "P2A0F",
+   "brand": "",
+   "ru": "Подогрев топлива: работа нарушена",
+   "en": "Fuel Supply Heater Performance",
+   "fam": "",
+   "node": "fuel supply heater"
+  },
+  {
+   "code": "P268A",
+   "brand": "",
+   "ru": "Калибровка форсунок не обучена/не записана",
+   "en": "Fuel Injector Calibration Not Learned/Programmed",
+   "fam": "",
+   "node": "fuel injector calibration not learned programmed"
+  },
+  {
+   "code": "P268B",
+   "brand": "",
+   "ru": "Калибровка ТНВД высокого давления не обучена/не записана",
+   "en": "High Pressure Fuel Pump Calibration Not Learned/Programmed",
+   "fam": "",
+   "node": "ru:калибровка тнвд высокого давления не обучена/не записана"
+  },
+  {
+   "code": "P268C",
+   "brand": "",
+   "ru": "Форсунка цилиндра 1: несовместимые данные",
+   "en": "Cylinder 1 Injector Data Incompatible",
+   "fam": "",
+   "node": "injector data incompatible"
+  },
+  {
+   "code": "P268D",
+   "brand": "",
+   "ru": "Форсунка цилиндра 2: несовместимые данные",
+   "en": "Cylinder 2 Injector Data Incompatible",
+   "fam": "",
+   "node": "injector data incompatible"
+  },
+  {
+   "code": "P268E",
+   "brand": "",
+   "ru": "Форсунка цилиндра 3: несовместимые данные",
+   "en": "Cylinder 3 Injector Data Incompatible",
+   "fam": "",
+   "node": "injector data incompatible"
+  },
+  {
+   "code": "P268F",
+   "brand": "",
+   "ru": "Форсунка цилиндра 4: несовместимые данные",
+   "en": "Cylinder 4 Injector Data Incompatible",
+   "fam": "",
+   "node": "injector data incompatible"
+  },
+  {
+   "code": "P2690",
+   "brand": "",
+   "ru": "Форсунка цилиндра 5: несовместимые данные",
+   "en": "Cylinder 5 Injector Data Incompatible",
+   "fam": "",
+   "node": "injector data incompatible"
+  },
+  {
+   "code": "P2691",
+   "brand": "",
+   "ru": "Форсунка цилиндра 6: несовместимые данные",
+   "en": "Cylinder 6 Injector Data Incompatible",
+   "fam": "",
+   "node": "injector data incompatible"
+  },
+  {
+   "code": "P2692",
+   "brand": "",
+   "ru": "Форсунка цилиндра 7: несовместимые данные",
+   "en": "Cylinder 7 Injector Data Incompatible",
+   "fam": "",
+   "node": "injector data incompatible"
+  },
+  {
+   "code": "P2693",
+   "brand": "",
+   "ru": "Форсунка цилиндра 8: несовместимые данные",
+   "en": "Cylinder 8 Injector Data Incompatible",
+   "fam": "",
+   "node": "injector data incompatible"
+  },
+  {
+   "code": "P2694",
+   "brand": "",
+   "ru": "Форсунка цилиндра 9: несовместимые данные",
+   "en": "Cylinder 9 Injector Data Incompatible",
+   "fam": "",
+   "node": "injector data incompatible"
+  },
+  {
+   "code": "P2695",
+   "brand": "",
+   "ru": "Форсунка цилиндра 10: несовместимые данные",
+   "en": "Cylinder 10 Injector Data Incompatible",
+   "fam": "",
+   "node": "injector data incompatible"
+  },
+  {
+   "code": "P2696",
+   "brand": "",
+   "ru": "Несовместимые данные форсунок",
+   "en": "Injector Data Incompatible",
+   "fam": "",
+   "node": "injector data incompatible"
+  },
+  {
+   "code": "P269B",
+   "brand": "",
+   "ru": "Свеча накаливания системы нейтрализации: обрыв цепи управления",
+   "en": "Exhaust Aftertreatment Glow Plug Control Circuit/Open",
+   "fam": "",
+   "node": "exhaust aftertreatment glow plug"
+  },
+  {
+   "code": "P269D",
+   "brand": "",
+   "ru": "Свеча накаливания системы нейтрализации: низкий уровень в цепи управления",
+   "en": "Exhaust Aftertreatment Glow Plug Control Circuit Low",
+   "fam": "",
+   "node": "exhaust aftertreatment glow plug"
+  },
+  {
+   "code": "P269E",
+   "brand": "",
+   "ru": "Свеча накаливания системы нейтрализации: высокий уровень в цепи управления",
+   "en": "Exhaust Aftertreatment Glow Plug Control Circuit High",
+   "fam": "",
+   "node": "exhaust aftertreatment glow plug"
+  },
+  {
+   "code": "P269F",
+   "brand": "",
+   "ru": "Свеча накаливания системы нейтрализации: обрыв цепи",
+   "en": "Exhaust Aftertreatment Glow Plug Circuit/Open",
+   "fam": "",
+   "node": "exhaust aftertreatment glow plug"
+  },
+  {
+   "code": "P26A0",
+   "brand": "",
+   "ru": "Свеча накаливания системы нейтрализации: работа нарушена",
+   "en": "Exhaust Aftertreatment Glow Plug Performance",
+   "fam": "",
+   "node": "exhaust aftertreatment glow plug"
+  },
+  {
+   "code": "P26A1",
+   "brand": "",
+   "ru": "Свеча накаливания системы нейтрализации: низкий уровень сигнала в цепи",
+   "en": "Exhaust Aftertreatment Glow Plug Circuit Low",
+   "fam": "",
+   "node": "exhaust aftertreatment glow plug"
+  },
+  {
+   "code": "P26A2",
+   "brand": "",
+   "ru": "Свеча накаливания системы нейтрализации: высокий уровень сигнала в цепи",
+   "en": "Exhaust Aftertreatment Glow Plug Circuit High",
+   "fam": "",
+   "node": "exhaust aftertreatment glow plug"
+  },
+  {
+   "code": "P269C",
+   "brand": "",
+   "ru": "Свеча накаливания системы нейтрализации: нарушено управление",
+   "en": "Exhaust Aftertreatment Glow Plug Control Performance",
+   "fam": "",
+   "node": "exhaust aftertreatment glow plug control"
+  },
+  {
+   "code": "P26A4",
+   "brand": "",
+   "ru": "Датчик положения перепускного клапана охлаждающей жидкости A: цепь",
+   "en": "Engine Coolant Bypass Valve A Position Sensor Circuit",
+   "fam": "",
+   "node": "engine coolant bypass valve a position"
+  },
+  {
+   "code": "P26A5",
+   "brand": "",
+   "ru": "Датчик положения перепускного клапана охлаждающей жидкости A: сигнал вне диапазона",
+   "en": "Engine Coolant Bypass Valve A Position Sensor Circuit Range/Performance",
+   "fam": "",
+   "node": "engine coolant bypass valve a position"
+  },
+  {
+   "code": "P26A6",
+   "brand": "",
+   "ru": "Датчик положения перепускного клапана охлаждающей жидкости A: низкий уровень сигнала в цепи",
+   "en": "Engine Coolant Bypass Valve A Position Sensor Circuit Low",
+   "fam": "",
+   "node": "engine coolant bypass valve a position"
+  },
+  {
+   "code": "P26A7",
+   "brand": "",
+   "ru": "Датчик положения перепускного клапана охлаждающей жидкости A: высокий уровень сигнала в цепи",
+   "en": "Engine Coolant Bypass Valve A Position Sensor Circuit High",
+   "fam": "",
+   "node": "engine coolant bypass valve a position"
+  },
+  {
+   "code": "P26A8",
+   "brand": "",
+   "ru": "Датчик положения перепускного клапана охлаждающей жидкости A: прерывистый / нестабильный сигнал",
+   "en": "Engine Coolant Bypass Valve A Position Sensor Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "engine coolant bypass valve a position"
+  },
+  {
+   "code": "P26A9",
+   "brand": "",
+   "ru": "Датчик положения перепускного клапана охлаждающей жидкости A: ошибка минимального упора",
+   "en": "Engine Coolant Bypass Valve A Position Sensor Stop/Minimum Stop Performance",
+   "fam": "",
+   "node": "engine coolant bypass valve a position sensor stop minimum stop"
+  },
+  {
+   "code": "P26AA",
+   "brand": "",
+   "ru": "Датчик положения перепускного клапана охлаждающей жидкости A: ошибка максимального упора",
+   "en": "Engine Coolant Bypass Valve A Position Sensor Maximum Stop Performance",
+   "fam": "",
+   "node": "engine coolant bypass valve a position sensor maximum stop"
+  },
+  {
+   "code": "P26AC",
+   "brand": "",
+   "ru": "Перепускной клапан охлаждающей жидкости двигателя B: обрыв цепи управления",
+   "en": "Engine Coolant Bypass Valve B Control Circuit/Open",
+   "fam": "",
+   "node": "engine coolant bypass valve b"
+  },
+  {
+   "code": "P26AD",
+   "brand": "",
+   "ru": "Перепускной клапан охлаждающей жидкости двигателя B: низкий уровень в цепи управления",
+   "en": "Engine Coolant Bypass Valve B Control Circuit Low",
+   "fam": "",
+   "node": "engine coolant bypass valve b"
+  },
+  {
+   "code": "P26AE",
+   "brand": "",
+   "ru": "Перепускной клапан охлаждающей жидкости двигателя B: высокий уровень в цепи управления",
+   "en": "Engine Coolant Bypass Valve B Control Circuit High",
+   "fam": "",
+   "node": "engine coolant bypass valve b"
+  },
+  {
+   "code": "P26AF",
+   "brand": "",
+   "ru": "Перепускной клапан охлаждающей жидкости двигателя B: заклинил открытым",
+   "en": "Engine Coolant Bypass Valve B Stuck/Open",
+   "fam": "",
+   "node": "engine coolant bypass valve b"
+  },
+  {
+   "code": "P26B0",
+   "brand": "",
+   "ru": "Перепускной клапан охлаждающей жидкости двигателя B: вне допустимого диапазона",
+   "en": "Engine Coolant Bypass Valve B Range/Performance",
+   "fam": "",
+   "node": "engine coolant bypass valve b"
+  },
+  {
+   "code": "P26B2",
+   "brand": "",
+   "ru": "Перепускной клапан охлаждающей жидкости двигателя B: заклинил закрытым",
+   "en": "Engine Coolant Bypass Valve B Stuck Closed",
+   "fam": "",
+   "node": "engine coolant bypass valve b"
+  },
+  {
+   "code": "P26B3",
+   "brand": "",
+   "ru": "Отсечной топливный клапан A: работа нарушена / не включается",
+   "en": "Fuel Shutoff Valve A Control Circuit Performance/Stuck Off",
+   "fam": "",
+   "node": "fuel shutoff valve a"
+  },
+  {
+   "code": "P26B4",
+   "brand": "",
+   "ru": "Отсечной топливный клапан A: постоянно включён",
+   "en": "Fuel Shutoff Valve A Control Circuit Stuck On",
+   "fam": "",
+   "node": "fuel shutoff valve a"
+  },
+  {
+   "code": "P26B5",
+   "brand": "",
+   "ru": "Отсечной топливный клапан B: работа нарушена / не включается",
+   "en": "Fuel Shutoff Valve B Control Circuit Performance/Stuck Off",
+   "fam": "",
+   "node": "fuel shutoff valve b"
+  },
+  {
+   "code": "P26B6",
+   "brand": "",
+   "ru": "Отсечной топливный клапан B: постоянно включён",
+   "en": "Fuel Shutoff Valve B Control Circuit Stuck On",
+   "fam": "",
+   "node": "fuel shutoff valve b"
+  }
+ ]
+}

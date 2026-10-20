@@ -1,0 +1,386 @@
+{
+ "name": "brand-honda_037",
+ "series": "brand",
+ "brand": "honda",
+ "nodes": [
+  "a t fi",
+  "a t fi data line failure",
+  "a t fi data line no",
+  "automatic transmission system",
+  "ckp sensor b",
+  "ckp tdc",
+  "cyp sensor b",
+  "cyp sensor b no",
+  "ecm internal",
+  "egr valve lift sensor",
+  "evap purge flow switch",
+  "fam:cmp",
+  "fam:ecu",
+  "fam:egr",
+  "fam:evap_leak",
+  "knock sensor power source",
+  "ru:регулятор холостого хода",
+  "ru:сигнальная линия fptdr",
+  "tdc2 sensor",
+  "tdc2 sensor no",
+  "tma or tmb",
+  "traction control fuel cut",
+  "traction control system fi data line failure",
+  "traction control system fi data line no",
+  "traction control system stb line failure"
+ ],
+ "codes": [
+  {
+   "code": "P1324",
+   "brand": "honda",
+   "ru": "Питание датчика детонации: низкое напряжение",
+   "en": "Knock Sensor Power Source Circuit Low Voltage",
+   "fam": "",
+   "node": "knock sensor power source"
+  },
+  {
+   "code": "P1336",
+   "brand": "honda",
+   "ru": "Датчик коленвала B: выход за диапазон",
+   "en": "CKP Sensor B Range Performance",
+   "fam": "",
+   "node": "ckp sensor b"
+  },
+  {
+   "code": "P1337",
+   "brand": "honda",
+   "ru": "Датчик коленвала B: низкий сигнал",
+   "en": "CKP Sensor B Low Input",
+   "fam": "",
+   "node": "ckp sensor b"
+  },
+  {
+   "code": "P1359",
+   "brand": "honda",
+   "ru": "Датчик коленвала / ВМТ: разъём отсоединён",
+   "en": "CKP TDC Sensor Circuit Connector Disconnection",
+   "fam": "",
+   "node": "ckp tdc"
+  },
+  {
+   "code": "P1361",
+   "brand": "honda",
+   "ru": "Датчик ВМТ (TDC): прерывистый сигнал",
+   "en": "",
+   "fam": "cmp",
+   "node": "fam:cmp"
+  },
+  {
+   "code": "P1362",
+   "brand": "honda",
+   "ru": "Датчик ВМТ (TDC): нет сигнала",
+   "en": "",
+   "fam": "cmp",
+   "node": "fam:cmp"
+  },
+  {
+   "code": "P1381",
+   "brand": "honda",
+   "ru": "Датчик положения цилиндра (CYP): прерывистый сигнал",
+   "en": "",
+   "fam": "cmp",
+   "node": "fam:cmp"
+  },
+  {
+   "code": "P1382",
+   "brand": "honda",
+   "ru": "Датчик положения цилиндра (CYP): нет сигнала",
+   "en": "",
+   "fam": "cmp",
+   "node": "fam:cmp"
+  },
+  {
+   "code": "P1366",
+   "brand": "honda",
+   "ru": "Датчик ВМТ 2: прерывистый сигнал",
+   "en": "TDC2 Sensor Intermittent",
+   "fam": "",
+   "node": "tdc2 sensor"
+  },
+  {
+   "code": "P1367",
+   "brand": "honda",
+   "ru": "Датчик ВМТ 2: нет сигнала",
+   "en": "TDC2 Sensor No Signal",
+   "fam": "",
+   "node": "tdc2 sensor no"
+  },
+  {
+   "code": "P1386",
+   "brand": "honda",
+   "ru": "Датчик положения цилиндра B: прерывистый сигнал",
+   "en": "CYP Sensor B Intermittent Interruption",
+   "fam": "",
+   "node": "cyp sensor b"
+  },
+  {
+   "code": "P1387",
+   "brand": "honda",
+   "ru": "Датчик положения цилиндра B: нет сигнала",
+   "en": "CYP Sensor B No Signal",
+   "fam": "",
+   "node": "cyp sensor b no"
+  },
+  {
+   "code": "P1456",
+   "brand": "honda",
+   "ru": "Утечка в системе паров: со стороны бака",
+   "en": "",
+   "fam": "evap_leak",
+   "node": "fam:evap_leak"
+  },
+  {
+   "code": "P1457",
+   "brand": "honda",
+   "ru": "Утечка в системе паров: со стороны адсорбера",
+   "en": "",
+   "fam": "evap_leak",
+   "node": "fam:evap_leak"
+  },
+  {
+   "code": "P1459",
+   "brand": "honda",
+   "ru": "Выключатель потока продувки: неисправность",
+   "en": "EVAP Purge Flow Switch Malfunction",
+   "fam": "",
+   "node": "evap purge flow switch"
+  },
+  {
+   "code": "P1491",
+   "brand": "honda",
+   "ru": "EGR: недостаточный подъём клапана",
+   "en": "",
+   "fam": "egr",
+   "node": "fam:egr"
+  },
+  {
+   "code": "P1498",
+   "brand": "honda",
+   "ru": "Датчик подъёма клапана ЕГР: высокое напряжение",
+   "en": "EGR Valve Lift Sensor High Voltage",
+   "fam": "",
+   "node": "egr valve lift sensor"
+  },
+  {
+   "code": "P1508",
+   "brand": "honda",
+   "ru": "Регулятор холостого хода: неисправность цепи",
+   "en": "IAC Valve Circuit Failure",
+   "fam": "",
+   "node": "ru:регулятор холостого хода"
+  },
+  {
+   "code": "P1519",
+   "brand": "honda",
+   "ru": "Регулятор холостого хода: неисправность цепи",
+   "en": "IAC Valve Circuit Failure",
+   "fam": "",
+   "node": "ru:регулятор холостого хода"
+  },
+  {
+   "code": "P1607",
+   "brand": "honda",
+   "ru": "Блок управления: внутренняя ошибка A",
+   "en": "",
+   "fam": "ecu",
+   "node": "fam:ecu"
+  },
+  {
+   "code": "P1608",
+   "brand": "honda",
+   "ru": "Блок двигателя: внутренняя неисправность B",
+   "en": "ECM Internal Circuit Failure B",
+   "fam": "",
+   "node": "ecm internal"
+  },
+  {
+   "code": "P1655",
+   "brand": "honda",
+   "ru": "Сигнальная линия TMA или TMB: неисправность",
+   "en": "TMA or TMB Signal Line Fault",
+   "fam": "",
+   "node": "tma or tmb"
+  },
+  {
+   "code": "P1656",
+   "brand": "honda",
+   "ru": "Неисправность системы АКПП",
+   "en": "Automatic Transmission System Malfunction",
+   "fam": "",
+   "node": "automatic transmission system"
+  },
+  {
+   "code": "P1709",
+   "brand": "honda",
+   "ru": "Неисправность системы АКПП",
+   "en": "Automatic Transmission System Malfunction",
+   "fam": "",
+   "node": "automatic transmission system"
+  },
+  {
+   "code": "P1738",
+   "brand": "honda",
+   "ru": "Неисправность системы АКПП",
+   "en": "Automatic Transmission System Malfunction",
+   "fam": "",
+   "node": "automatic transmission system"
+  },
+  {
+   "code": "P1739",
+   "brand": "honda",
+   "ru": "Неисправность системы АКПП",
+   "en": "Automatic Transmission System Malfunction",
+   "fam": "",
+   "node": "automatic transmission system"
+  },
+  {
+   "code": "P1768",
+   "brand": "honda",
+   "ru": "Неисправность системы АКПП",
+   "en": "Automatic Transmission System Malfunction",
+   "fam": "",
+   "node": "automatic transmission system"
+  },
+  {
+   "code": "P1773",
+   "brand": "honda",
+   "ru": "Неисправность системы АКПП",
+   "en": "Automatic Transmission System Malfunction",
+   "fam": "",
+   "node": "automatic transmission system"
+  },
+  {
+   "code": "P1788",
+   "brand": "honda",
+   "ru": "Неисправность системы АКПП",
+   "en": "Automatic Transmission System Malfunction",
+   "fam": "",
+   "node": "automatic transmission system"
+  },
+  {
+   "code": "P1793",
+   "brand": "honda",
+   "ru": "Неисправность системы АКПП",
+   "en": "Automatic Transmission System Malfunction",
+   "fam": "",
+   "node": "automatic transmission system"
+  },
+  {
+   "code": "P1795",
+   "brand": "honda",
+   "ru": "Неисправность системы АКПП",
+   "en": "Automatic Transmission System Malfunction",
+   "fam": "",
+   "node": "automatic transmission system"
+  },
+  {
+   "code": "P1660",
+   "brand": "honda",
+   "ru": "Линия данных АКПП — двигатель: неисправность",
+   "en": "A/T FI Data Line Failure",
+   "fam": "",
+   "node": "a t fi data line failure"
+  },
+  {
+   "code": "P1672",
+   "brand": "honda",
+   "ru": "Линия данных АКПП — двигатель: неисправность",
+   "en": "A/T FI Data Line Failure",
+   "fam": "",
+   "node": "a t fi data line failure"
+  },
+  {
+   "code": "P1671",
+   "brand": "honda",
+   "ru": "Линия данных АКПП — двигатель: нет сигнала",
+   "en": "A/T FI Data Line No Signal",
+   "fam": "",
+   "node": "a t fi data line no"
+  },
+  {
+   "code": "P1676",
+   "brand": "honda",
+   "ru": "Линия данных противобуксовки — двигатель: нет сигнала",
+   "en": "Traction Control System FI Data Line No Signal",
+   "fam": "",
+   "node": "traction control system fi data line no"
+  },
+  {
+   "code": "P1677",
+   "brand": "honda",
+   "ru": "Линия данных противобуксовки — двигатель: неисправность",
+   "en": "Traction Control System FI Data Line Failure",
+   "fam": "",
+   "node": "traction control system fi data line failure"
+  },
+  {
+   "code": "P1678",
+   "brand": "honda",
+   "ru": "Сигнальная линия FPTDR: неисправность",
+   "en": "FPTDR Signal Line Failure",
+   "fam": "",
+   "node": "ru:сигнальная линия fptdr"
+  },
+  {
+   "code": "P1681",
+   "brand": "honda",
+   "ru": "Сигнал A АКПП — двигатель: низкий",
+   "en": "A/T FI Signal A Low Input",
+   "fam": "",
+   "node": "a t fi"
+  },
+  {
+   "code": "P1682",
+   "brand": "honda",
+   "ru": "Сигнал A АКПП — двигатель: высокий",
+   "en": "A/T FI Signal A High Input",
+   "fam": "",
+   "node": "a t fi"
+  },
+  {
+   "code": "P1686",
+   "brand": "honda",
+   "ru": "Сигнал B АКПП — двигатель: низкий",
+   "en": "A/T FI Signal B Low Input",
+   "fam": "",
+   "node": "a t fi"
+  },
+  {
+   "code": "P1687",
+   "brand": "honda",
+   "ru": "Сигнал B АКПП — двигатель: высокий",
+   "en": "A/T FI Signal B High Input",
+   "fam": "",
+   "node": "a t fi"
+  },
+  {
+   "code": "P1690",
+   "brand": "honda",
+   "ru": "Линия STB противобуксовки: неисправность",
+   "en": "Traction Control System STB Line Failure",
+   "fam": "",
+   "node": "traction control system stb line failure"
+  },
+  {
+   "code": "P1696",
+   "brand": "honda",
+   "ru": "Сигнал отсечки топлива от противобуксовки: низкий",
+   "en": "Traction Control Fuel Cut Signal Low Input",
+   "fam": "",
+   "node": "traction control fuel cut"
+  },
+  {
+   "code": "P1697",
+   "brand": "honda",
+   "ru": "Сигнал отсечки топлива от противобуксовки: высокий",
+   "en": "Traction Control Fuel Cut Signal High Input",
+   "fam": "",
+   "node": "traction control fuel cut"
+  }
+ ]
+}

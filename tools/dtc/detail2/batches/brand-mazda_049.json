@@ -1,0 +1,404 @@
+{
+ "name": "brand-mazda_049",
+ "series": "brand",
+ "brand": "mazda",
+ "nodes": [
+  "a c compressor clutch",
+  "air pump",
+  "canister vent",
+  "cranking neutral drive fault",
+  "dpfe sensor downstream hose off or plugged",
+  "egr boost solenoid valve",
+  "egr system flow out of key on engine running self test",
+  "egr vacuum regulator",
+  "evap purge flow",
+  "evap system purge flow fault",
+  "evaporative check",
+  "evaporative vacuum",
+  "exhaust gas recirculation valve frozen",
+  "fan relay",
+  "floor temp",
+  "fuel tank level",
+  "fuel tank temperature",
+  "gear change neutral drive fault",
+  "idle air",
+  "immobilizer system fault",
+  "loss of kam power",
+  "no egr flow detected",
+  "port air",
+  "port air relief",
+  "powertrain control module +b voltage",
+  "powertrain control module communication line to tcm error",
+  "powertrain control module communication line to tcm error immobilizer system communication error with powertrain control",
+  "powertrain control module keep alive memory test error",
+  "purge solenoid control system",
+  "restraint deployment indicator",
+  "ru:высокая нагрузка в нейтрали / драйве",
+  "ru:заслонки впускного коллектора (imrc)",
+  "split air",
+  "tcm b+ voltage",
+  "unable to bleed up fuel tank vacuum"
+ ],
+ "codes": [
+  {
+   "code": "P1406",
+   "brand": "mazda",
+   "ru": "Датчик DPFE: нижний шланг слетел или засорён",
+   "en": "DPFE Sensor Downstream Hose Off Or Plugged",
+   "fam": "",
+   "node": "dpfe sensor downstream hose off or plugged"
+  },
+  {
+   "code": "P1407",
+   "brand": "mazda",
+   "ru": "ЕГР: потока нет",
+   "en": "No EGR Flow Detected",
+   "fam": "",
+   "node": "no egr flow detected"
+  },
+  {
+   "code": "P1408",
+   "brand": "mazda",
+   "ru": "Поток ЕГР вне диапазона самотеста на работающем двигателе",
+   "en": "EGR System Flow Out Of Key On Engine Running Self Test Range",
+   "fam": "",
+   "node": "egr system flow out of key on engine running self test"
+  },
+  {
+   "code": "P1409",
+   "brand": "mazda",
+   "ru": "Вакуумный клапан ЕГР: цепь",
+   "en": "EGR Vacuum Regulator Solenoid Circuit",
+   "fam": "",
+   "node": "egr vacuum regulator"
+  },
+  {
+   "code": "P1410",
+   "brand": "mazda",
+   "ru": "Клапан наддува ЕГР заклинил",
+   "en": "EGR Boost Solenoid Valve Stuck",
+   "fam": "",
+   "node": "egr boost solenoid valve"
+  },
+  {
+   "code": "P1412",
+   "brand": "mazda",
+   "ru": "Клапан ЕГР замёрз",
+   "en": "Exhaust Gas Recirculation Valve Frozen",
+   "fam": "",
+   "node": "exhaust gas recirculation valve frozen"
+  },
+  {
+   "code": "P1415",
+   "brand": "mazda",
+   "ru": "Воздушный насос: цепь",
+   "en": "Air Pump Circuit",
+   "fam": "",
+   "node": "air pump"
+  },
+  {
+   "code": "P1416",
+   "brand": "mazda",
+   "ru": "Подача воздуха в каналы: цепь",
+   "en": "Port Air Circuit",
+   "fam": "",
+   "node": "port air"
+  },
+  {
+   "code": "P1417",
+   "brand": "mazda",
+   "ru": "Сброс воздуха из каналов: цепь",
+   "en": "Port Air Relief Circuit",
+   "fam": "",
+   "node": "port air relief"
+  },
+  {
+   "code": "P1418",
+   "brand": "mazda",
+   "ru": "Разделение воздуха 1: цепь",
+   "en": "Split Air 1 Circuit",
+   "fam": "",
+   "node": "split air"
+  },
+  {
+   "code": "P1419",
+   "brand": "mazda",
+   "ru": "Разделение воздуха 2: цепь",
+   "en": "Split Air 2 Circuit",
+   "fam": "",
+   "node": "split air"
+  },
+  {
+   "code": "P1439",
+   "brand": "mazda",
+   "ru": "Датчик температуры пола: цепь",
+   "en": "Floor Temp Switch Circuit",
+   "fam": "",
+   "node": "floor temp"
+  },
+  {
+   "code": "P1443",
+   "brand": "mazda",
+   "ru": "Система улавливания паров: неисправность потока продувки",
+   "en": "EVAP System Purge Flow Fault",
+   "fam": "",
+   "node": "evap system purge flow fault"
+  },
+  {
+   "code": "P1444",
+   "brand": "mazda",
+   "ru": "Датчик потока продувки: низкое напряжение",
+   "en": "EVAP Purge Flow Sensor Circuit Low Voltage",
+   "fam": "",
+   "node": "evap purge flow"
+  },
+  {
+   "code": "P1445",
+   "brand": "mazda",
+   "ru": "Датчик потока продувки: высокое напряжение",
+   "en": "EVAP Purge Flow Sensor Circuit High Voltage",
+   "fam": "",
+   "node": "evap purge flow"
+  },
+  {
+   "code": "P1446",
+   "brand": "mazda",
+   "ru": "Вакуумный клапан системы улавливания паров: цепь",
+   "en": "Evaporative Vacuum Solenoid Circuit",
+   "fam": "",
+   "node": "evaporative vacuum"
+  },
+  {
+   "code": "P1449",
+   "brand": "mazda",
+   "ru": "Контрольный клапан системы улавливания паров: цепь",
+   "en": "Evaporative Check Solenoid Circuit",
+   "fam": "",
+   "node": "evaporative check"
+  },
+  {
+   "code": "P1450",
+   "brand": "mazda",
+   "ru": "Не удаётся стравить разрежение в баке",
+   "en": "Unable To Bleed Up Fuel Tank Vacuum",
+   "fam": "",
+   "node": "unable to bleed up fuel tank vacuum"
+  },
+  {
+   "code": "P1451",
+   "brand": "mazda",
+   "ru": "Клапан вентиляции адсорбера: цепь",
+   "en": "Canister Vent Solenoid Circuit",
+   "fam": "",
+   "node": "canister vent"
+  },
+  {
+   "code": "P1455",
+   "brand": "mazda",
+   "ru": "Датчик уровня топлива: цепь",
+   "en": "Fuel Tank Level Sensor Circuit",
+   "fam": "",
+   "node": "fuel tank level"
+  },
+  {
+   "code": "P1456",
+   "brand": "mazda",
+   "ru": "Датчик температуры топлива в баке: цепь",
+   "en": "Fuel Tank Temperature Sensor Circuit",
+   "fam": "",
+   "node": "fuel tank temperature"
+  },
+  {
+   "code": "P1457",
+   "brand": "mazda",
+   "ru": "Система клапана продувки",
+   "en": "Purge Solenoid Control System",
+   "fam": "",
+   "node": "purge solenoid control system"
+  },
+  {
+   "code": "P1458",
+   "brand": "mazda",
+   "ru": "Сигнал муфты компрессора кондиционера: неисправность",
+   "en": "A/C Compressor Clutch Signal Fault",
+   "fam": "",
+   "node": "a c compressor clutch"
+  },
+  {
+   "code": "P1475",
+   "brand": "mazda",
+   "ru": "Реле вентилятора, низкая скорость: цепь",
+   "en": "Fan Relay Low Circuit",
+   "fam": "",
+   "node": "fan relay"
+  },
+  {
+   "code": "P1476",
+   "brand": "mazda",
+   "ru": "Реле вентилятора, высокая скорость: цепь",
+   "en": "Fan Relay High Circuit",
+   "fam": "",
+   "node": "fan relay"
+  },
+  {
+   "code": "P1508",
+   "brand": "mazda",
+   "ru": "Регулятор холостого хода: обрыв цепи",
+   "en": "Idle Air Control Circuit Open",
+   "fam": "",
+   "node": "idle air"
+  },
+  {
+   "code": "P1509",
+   "brand": "mazda",
+   "ru": "Регулятор холостого хода: замыкание цепи",
+   "en": "Idle Air Control Circuit Shorted",
+   "fam": "",
+   "node": "idle air"
+  },
+  {
+   "code": "P1514",
+   "brand": "mazda",
+   "ru": "Высокая нагрузка в нейтрали / драйве: неисправность",
+   "en": "High Load Neutral Drive Fault",
+   "fam": "",
+   "node": "ru:высокая нагрузка в нейтрали / драйве"
+  },
+  {
+   "code": "P1516",
+   "brand": "mazda",
+   "ru": "Переключение нейтраль / драйв: неисправность",
+   "en": "Gear Change Neutral Drive Fault",
+   "fam": "",
+   "node": "gear change neutral drive fault"
+  },
+  {
+   "code": "P1517",
+   "brand": "mazda",
+   "ru": "Прокрутка в нейтрали / драйве: неисправность",
+   "en": "Cranking Neutral Drive Fault",
+   "fam": "",
+   "node": "cranking neutral drive fault"
+  },
+  {
+   "code": "P1534",
+   "brand": "mazda",
+   "ru": "Индикатор срабатывания системы безопасности: цепь",
+   "en": "Restraint Deployment Indicator Circuit",
+   "fam": "",
+   "node": "restraint deployment indicator"
+  },
+  {
+   "code": "P1562",
+   "brand": "mazda",
+   "ru": "Блок двигателя: низкое напряжение +B",
+   "en": "Powertrain Control Module +B Voltage Low",
+   "fam": "",
+   "node": "powertrain control module +b voltage"
+  },
+  {
+   "code": "P1566",
+   "brand": "mazda",
+   "ru": "Блок коробки: низкое напряжение +B",
+   "en": "TCM B+ Voltage Low",
+   "fam": "",
+   "node": "tcm b+ voltage"
+  },
+  {
+   "code": "P1569",
+   "brand": "mazda",
+   "ru": "Заслонки впускного коллектора (IMRC): низкий сигнал",
+   "en": "IMRC Circuit Low",
+   "fam": "",
+   "node": "ru:заслонки впускного коллектора (imrc)"
+  },
+  {
+   "code": "P1570",
+   "brand": "mazda",
+   "ru": "Заслонки впускного коллектора (IMRC): высокий сигнал",
+   "en": "IMRC Circuit High",
+   "fam": "",
+   "node": "ru:заслонки впускного коллектора (imrc)"
+  },
+  {
+   "code": "P1600",
+   "brand": "mazda",
+   "ru": "Потеря питания памяти (KAM): обрыв",
+   "en": "Loss Of KAM Power Circuit Open",
+   "fam": "",
+   "node": "loss of kam power"
+  },
+  {
+   "code": "P1601",
+   "brand": "mazda",
+   "ru": "Ошибка линии связи блока двигателя с блоком коробки",
+   "en": "Powertrain Control Module Communication Line To TCM Error",
+   "fam": "",
+   "node": "powertrain control module communication line to tcm error"
+  },
+  {
+   "code": "P1602",
+   "brand": "mazda",
+   "ru": "Ошибка связи блока двигателя с коробкой или иммобилайзером",
+   "en": "Powertrain Control Module Communication Line To TCM Error, Immobilizer System Communication Error With Powertrain Control Module",
+   "fam": "",
+   "node": "powertrain control module communication line to tcm error immobilizer system communication error with powertrain control"
+  },
+  {
+   "code": "P1603",
+   "brand": "mazda",
+   "ru": "Неисправность иммобилайзера",
+   "en": "Immobilizer System Fault",
+   "fam": "",
+   "node": "immobilizer system fault"
+  },
+  {
+   "code": "P1604",
+   "brand": "mazda",
+   "ru": "Неисправность иммобилайзера",
+   "en": "Immobilizer System Fault",
+   "fam": "",
+   "node": "immobilizer system fault"
+  },
+  {
+   "code": "P1621",
+   "brand": "mazda",
+   "ru": "Неисправность иммобилайзера",
+   "en": "Immobilizer System Fault",
+   "fam": "",
+   "node": "immobilizer system fault"
+  },
+  {
+   "code": "P1622",
+   "brand": "mazda",
+   "ru": "Неисправность иммобилайзера",
+   "en": "Immobilizer System Fault",
+   "fam": "",
+   "node": "immobilizer system fault"
+  },
+  {
+   "code": "P1623",
+   "brand": "mazda",
+   "ru": "Неисправность иммобилайзера",
+   "en": "Immobilizer System Fault",
+   "fam": "",
+   "node": "immobilizer system fault"
+  },
+  {
+   "code": "P1624",
+   "brand": "mazda",
+   "ru": "Неисправность иммобилайзера",
+   "en": "Immobilizer System Fault",
+   "fam": "",
+   "node": "immobilizer system fault"
+  },
+  {
+   "code": "P1605",
+   "brand": "mazda",
+   "ru": "Блок двигателя: ошибка теста постоянной памяти",
+   "en": "Powertrain Control Module Keep Alive Memory Test Error",
+   "fam": "",
+   "node": "powertrain control module keep alive memory test error"
+  }
+ ]
+}

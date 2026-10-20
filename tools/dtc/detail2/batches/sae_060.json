@@ -1,0 +1,389 @@
+{
+ "name": "sae_060",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "closed loop egr control at limit flow too",
+  "cold start egr a flow excessive detected",
+  "cold start egr a flow insufficient detected",
+  "crankcase ventilation hose connection",
+  "egr temperature sensor c",
+  "egr temperature sensor d",
+  "evap system large leak detected fresh air side",
+  "evap system large leak detected fuel tank side",
+  "evap system purge control valve a",
+  "evap system small leak detected fresh air side",
+  "evap system small leak detected fuel tank side",
+  "evap system very small leak detected fuel tank side",
+  "excessive time to enter closed loop egr",
+  "exhaust brake",
+  "fam:crankcase_vent",
+  "fuel fill door lock",
+  "fuel fill door lock control",
+  "fuel fill door lock position sensor",
+  "fuel fill door unlock",
+  "fuel fill door unlock control"
+ ],
+ "codes": [
+  {
+   "code": "P04BB",
+   "brand": "",
+   "ru": "Блокировка лючка бензобака: обрыв цепи управления",
+   "en": "Fuel Fill Door Lock Control Circuit/Open",
+   "fam": "",
+   "node": "fuel fill door lock"
+  },
+  {
+   "code": "P04BD",
+   "brand": "",
+   "ru": "Блокировка лючка бензобака: низкий уровень в цепи управления",
+   "en": "Fuel Fill Door Lock Control Circuit Low",
+   "fam": "",
+   "node": "fuel fill door lock"
+  },
+  {
+   "code": "P04BE",
+   "brand": "",
+   "ru": "Блокировка лючка бензобака: высокий уровень в цепи управления",
+   "en": "Fuel Fill Door Lock Control Circuit High",
+   "fam": "",
+   "node": "fuel fill door lock"
+  },
+  {
+   "code": "P04BC",
+   "brand": "",
+   "ru": "Блокировка лючка бензобака: вне допустимого диапазона",
+   "en": "Fuel Fill Door Lock Control Range/Performance",
+   "fam": "",
+   "node": "fuel fill door lock control"
+  },
+  {
+   "code": "P04BF",
+   "brand": "",
+   "ru": "Разблокировка лючка бензобака: обрыв цепи управления",
+   "en": "Fuel Fill Door Unlock Control Circuit/Open",
+   "fam": "",
+   "node": "fuel fill door unlock"
+  },
+  {
+   "code": "P04C1",
+   "brand": "",
+   "ru": "Разблокировка лючка бензобака: низкий уровень в цепи управления",
+   "en": "Fuel Fill Door Unlock Control Circuit Low",
+   "fam": "",
+   "node": "fuel fill door unlock"
+  },
+  {
+   "code": "P04C2",
+   "brand": "",
+   "ru": "Разблокировка лючка бензобака: высокий уровень в цепи управления",
+   "en": "Fuel Fill Door Unlock Control Circuit High",
+   "fam": "",
+   "node": "fuel fill door unlock"
+  },
+  {
+   "code": "P04C0",
+   "brand": "",
+   "ru": "Разблокировка лючка бензобака: вне допустимого диапазона",
+   "en": "Fuel Fill Door Unlock Control Range/Performance",
+   "fam": "",
+   "node": "fuel fill door unlock control"
+  },
+  {
+   "code": "P04C3",
+   "brand": "",
+   "ru": "Датчик замка лючка бензобака: цепь",
+   "en": "Fuel Fill Door Lock Position Sensor/Switch Circuit",
+   "fam": "",
+   "node": "fuel fill door lock position sensor"
+  },
+  {
+   "code": "P04C4",
+   "brand": "",
+   "ru": "Датчик замка лючка бензобака: сигнал вне диапазона",
+   "en": "Fuel Fill Door Lock Position Sensor/Switch Circuit Range/Performance",
+   "fam": "",
+   "node": "fuel fill door lock position sensor"
+  },
+  {
+   "code": "P04C5",
+   "brand": "",
+   "ru": "Датчик замка лючка бензобака: низкий уровень сигнала в цепи",
+   "en": "Fuel Fill Door Lock Position Sensor/Switch Circuit Low",
+   "fam": "",
+   "node": "fuel fill door lock position sensor"
+  },
+  {
+   "code": "P04C6",
+   "brand": "",
+   "ru": "Датчик замка лючка бензобака: высокий уровень сигнала в цепи",
+   "en": "Fuel Fill Door Lock Position Sensor/Switch Circuit High",
+   "fam": "",
+   "node": "fuel fill door lock position sensor"
+  },
+  {
+   "code": "P04C7",
+   "brand": "",
+   "ru": "Датчик замка лючка бензобака: прерывистый / нестабильный сигнал",
+   "en": "Fuel Fill Door Lock Position Sensor/Switch Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "fuel fill door lock position sensor"
+  },
+  {
+   "code": "P04CE",
+   "brand": "",
+   "ru": "Датчик температуры EGR C: цепь",
+   "en": "EGR Temperature Sensor C Circuit",
+   "fam": "",
+   "node": "egr temperature sensor c"
+  },
+  {
+   "code": "P04CF",
+   "brand": "",
+   "ru": "Датчик температуры EGR C: сигнал вне диапазона",
+   "en": "EGR Temperature Sensor C Circuit Range/Performance",
+   "fam": "",
+   "node": "egr temperature sensor c"
+  },
+  {
+   "code": "P04D0",
+   "brand": "",
+   "ru": "Датчик температуры EGR C: низкий уровень сигнала в цепи",
+   "en": "EGR Temperature Sensor C Circuit Low",
+   "fam": "",
+   "node": "egr temperature sensor c"
+  },
+  {
+   "code": "P04D1",
+   "brand": "",
+   "ru": "Датчик температуры EGR C: высокий уровень сигнала в цепи",
+   "en": "EGR Temperature Sensor C Circuit High",
+   "fam": "",
+   "node": "egr temperature sensor c"
+  },
+  {
+   "code": "P04D2",
+   "brand": "",
+   "ru": "Датчик температуры EGR C: прерывистый / нестабильный сигнал",
+   "en": "EGR Temperature Sensor C Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "egr temperature sensor c"
+  },
+  {
+   "code": "P04D3",
+   "brand": "",
+   "ru": "Вход моторного тормоза: цепь",
+   "en": "Exhaust Brake Input Circuit",
+   "fam": "",
+   "node": "exhaust brake"
+  },
+  {
+   "code": "P04D4",
+   "brand": "",
+   "ru": "Вход моторного тормоза: сигнал вне диапазона",
+   "en": "Exhaust Brake Input Circuit Range/Performance",
+   "fam": "",
+   "node": "exhaust brake"
+  },
+  {
+   "code": "P04D5",
+   "brand": "",
+   "ru": "Вход моторного тормоза: низкий уровень сигнала в цепи",
+   "en": "Exhaust Brake Input Circuit Low",
+   "fam": "",
+   "node": "exhaust brake"
+  },
+  {
+   "code": "P04D6",
+   "brand": "",
+   "ru": "Вход моторного тормоза: высокий уровень сигнала в цепи",
+   "en": "Exhaust Brake Input Circuit High",
+   "fam": "",
+   "node": "exhaust brake"
+  },
+  {
+   "code": "P04D7",
+   "brand": "",
+   "ru": "Вход моторного тормоза: прерывистый / нестабильный сигнал",
+   "en": "Exhaust Brake Input Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "exhaust brake"
+  },
+  {
+   "code": "P04D8",
+   "brand": "",
+   "ru": "Слишком долгий переход к замкнутому регулированию EGR",
+   "en": "Excessive Time To Enter Closed Loop EGR Control",
+   "fam": "",
+   "node": "excessive time to enter closed loop egr"
+  },
+  {
+   "code": "P04D9",
+   "brand": "",
+   "ru": "Регулирование EGR на пределе: расход: слишком низкое значение",
+   "en": "Closed Loop EGR Control At Limit - Flow Too Low",
+   "fam": "",
+   "node": "closed loop egr control at limit flow too"
+  },
+  {
+   "code": "P04DA",
+   "brand": "",
+   "ru": "Регулирование EGR на пределе: расход: слишком высокое значение",
+   "en": "Closed Loop EGR Control At Limit - Flow Too High",
+   "fam": "",
+   "node": "closed loop egr control at limit flow too"
+  },
+  {
+   "code": "P04DB",
+   "brand": "",
+   "ru": "Вентиляция картера: система отсоединена",
+   "en": "",
+   "fam": "crankcase_vent",
+   "node": "fam:crankcase_vent"
+  },
+  {
+   "code": "P04DD",
+   "brand": "",
+   "ru": "Холодный пуск: недостаточный расход EGR A",
+   "en": "Cold Start EGR A Flow Insufficient Detected",
+   "fam": "",
+   "node": "cold start egr a flow insufficient detected"
+  },
+  {
+   "code": "P04DE",
+   "brand": "",
+   "ru": "Холодный пуск: избыточный расход EGR A",
+   "en": "Cold Start EGR A Flow Excessive Detected",
+   "fam": "",
+   "node": "cold start egr a flow excessive detected"
+  },
+  {
+   "code": "P04DF",
+   "brand": "",
+   "ru": "Клапан продувки адсорбера A: работа нарушена / заклинил открытым",
+   "en": "EVAP System Purge Control Valve A Performance/Stuck Open",
+   "fam": "",
+   "node": "evap system purge control valve a"
+  },
+  {
+   "code": "P04E0",
+   "brand": "",
+   "ru": "Клапан продувки адсорбера A: заклинил закрытым",
+   "en": "EVAP System Purge Control Valve A Stuck Closed",
+   "fam": "",
+   "node": "evap system purge control valve a"
+  },
+  {
+   "code": "P04E1",
+   "brand": "",
+   "ru": "Датчик подключения шланга вентиляции картера: цепь",
+   "en": "Crankcase Ventilation Hose Connection Sensor Circuit",
+   "fam": "",
+   "node": "crankcase ventilation hose connection"
+  },
+  {
+   "code": "P04E2",
+   "brand": "",
+   "ru": "Датчик подключения шланга вентиляции картера: низкий уровень сигнала в цепи",
+   "en": "Crankcase Ventilation Hose Connection Sensor Circuit Low",
+   "fam": "",
+   "node": "crankcase ventilation hose connection"
+  },
+  {
+   "code": "P04E3",
+   "brand": "",
+   "ru": "Датчик подключения шланга вентиляции картера: высокий уровень сигнала в цепи",
+   "en": "Crankcase Ventilation Hose Connection Sensor Circuit High",
+   "fam": "",
+   "node": "crankcase ventilation hose connection"
+  },
+  {
+   "code": "P04E4",
+   "brand": "",
+   "ru": "Датчик подключения шланга вентиляции картера: прерывистый / нестабильный сигнал",
+   "en": "Crankcase Ventilation Hose Connection Sensor Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "crankcase ventilation hose connection"
+  },
+  {
+   "code": "P04E5",
+   "brand": "",
+   "ru": "Датчик температуры EGR D: цепь",
+   "en": "EGR Temperature Sensor D Circuit",
+   "fam": "",
+   "node": "egr temperature sensor d"
+  },
+  {
+   "code": "P04E6",
+   "brand": "",
+   "ru": "Датчик температуры EGR D: сигнал вне диапазона",
+   "en": "EGR Temperature Sensor D Circuit Range/Performance",
+   "fam": "",
+   "node": "egr temperature sensor d"
+  },
+  {
+   "code": "P04E7",
+   "brand": "",
+   "ru": "Датчик температуры EGR D: низкий уровень сигнала в цепи",
+   "en": "EGR Temperature Sensor D Circuit Low",
+   "fam": "",
+   "node": "egr temperature sensor d"
+  },
+  {
+   "code": "P04E8",
+   "brand": "",
+   "ru": "Датчик температуры EGR D: высокий уровень сигнала в цепи",
+   "en": "EGR Temperature Sensor D Circuit High",
+   "fam": "",
+   "node": "egr temperature sensor d"
+  },
+  {
+   "code": "P04E9",
+   "brand": "",
+   "ru": "Датчик температуры EGR D: прерывистый / нестабильный сигнал",
+   "en": "EGR Temperature Sensor D Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "egr temperature sensor d"
+  },
+  {
+   "code": "P04EA",
+   "brand": "",
+   "ru": "EVAP: малая утечка со стороны бака",
+   "en": "EVAP System Small Leak Detected - Fuel Tank Side",
+   "fam": "",
+   "node": "evap system small leak detected fuel tank side"
+  },
+  {
+   "code": "P04EB",
+   "brand": "",
+   "ru": "EVAP: малая утечка со стороны свежего воздуха",
+   "en": "EVAP System Small Leak Detected - Fresh Air Side",
+   "fam": "",
+   "node": "evap system small leak detected fresh air side"
+  },
+  {
+   "code": "P04EC",
+   "brand": "",
+   "ru": "EVAP: большая утечка со стороны бака",
+   "en": "EVAP System Large Leak Detected - Fuel Tank Side",
+   "fam": "",
+   "node": "evap system large leak detected fuel tank side"
+  },
+  {
+   "code": "P04ED",
+   "brand": "",
+   "ru": "EVAP: большая утечка со стороны свежего воздуха",
+   "en": "EVAP System Large Leak Detected - Fresh Air Side",
+   "fam": "",
+   "node": "evap system large leak detected fresh air side"
+  },
+  {
+   "code": "P04EE",
+   "brand": "",
+   "ru": "EVAP: очень малая утечка со стороны бака",
+   "en": "EVAP System Very Small Leak Detected - Fuel Tank Side",
+   "fam": "",
+   "node": "evap system very small leak detected fuel tank side"
+  }
+ ]
+}

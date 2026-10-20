@@ -1,0 +1,396 @@
+{
+ "name": "sae_158",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "a c compressor internal control module",
+  "actuator supply voltage d",
+  "alternative fuel control module system voltage",
+  "coolant pump c",
+  "coolant pump c control module overtemperature",
+  "coolant pump c overspeed air in system",
+  "coolant pump c supply voltage",
+  "electronic gear shift position not learned",
+  "engine sound control b",
+  "exhaust flow control valve a control",
+  "fuel pump control module b",
+  "gear shift control module a over temperature",
+  "gear shift control module a supply voltage",
+  "park pawl motor",
+  "park pawl position sensor a",
+  "park pawl position sensor b",
+  "starter relay a",
+  "starter relay b",
+  "transmission fluid temperature sensor b over temperature condition",
+  "transmission friction element a temperature too",
+  "transmission friction element b temperature too",
+  "transmission friction element c temperature too",
+  "transmission friction element d temperature too",
+  "transmission friction element e temperature too",
+  "transmission friction element f temperature too",
+  "transmission friction element g apply time",
+  "transmission friction element h apply time"
+ ],
+ "codes": [
+  {
+   "code": "P26E4",
+   "brand": "",
+   "ru": "Реле стартера B: цепь",
+   "en": "Starter Relay B Circuit",
+   "fam": "",
+   "node": "starter relay b"
+  },
+  {
+   "code": "P26E5",
+   "brand": "",
+   "ru": "Реле стартера B: низкий уровень сигнала в цепи",
+   "en": "Starter Relay B Circuit Low",
+   "fam": "",
+   "node": "starter relay b"
+  },
+  {
+   "code": "P26E6",
+   "brand": "",
+   "ru": "Реле стартера B: высокий уровень сигнала в цепи",
+   "en": "Starter Relay B Circuit High",
+   "fam": "",
+   "node": "starter relay b"
+  },
+  {
+   "code": "P26F2",
+   "brand": "",
+   "ru": "Реле стартера B: постоянно включён",
+   "en": "Starter Relay B Stuck On",
+   "fam": "",
+   "node": "starter relay b"
+  },
+  {
+   "code": "P26F3",
+   "brand": "",
+   "ru": "Реле стартера B: не включается",
+   "en": "Starter Relay B Stuck Off",
+   "fam": "",
+   "node": "starter relay b"
+  },
+  {
+   "code": "P26E7",
+   "brand": "",
+   "ru": "Питание исполнительных механизмов D: обрыв цепи",
+   "en": "Actuator Supply Voltage D Circuit/Open",
+   "fam": "",
+   "node": "actuator supply voltage d"
+  },
+  {
+   "code": "P26E8",
+   "brand": "",
+   "ru": "Питание исполнительных механизмов D: низкий уровень сигнала в цепи",
+   "en": "Actuator Supply Voltage D Circuit Low",
+   "fam": "",
+   "node": "actuator supply voltage d"
+  },
+  {
+   "code": "P26E9",
+   "brand": "",
+   "ru": "Питание исполнительных механизмов D: высокий уровень сигнала в цепи",
+   "en": "Actuator Supply Voltage D Circuit High",
+   "fam": "",
+   "node": "actuator supply voltage d"
+  },
+  {
+   "code": "P26EA",
+   "brand": "",
+   "ru": "Блок управления топливным насосом B",
+   "en": "Fuel Pump Control Module B",
+   "fam": "",
+   "node": "fuel pump control module b"
+  },
+  {
+   "code": "P26EB",
+   "brand": "",
+   "ru": "Блок ГБО: напряжение питания",
+   "en": "Alternative Fuel Control Module System Voltage",
+   "fam": "",
+   "node": "alternative fuel control module system voltage"
+  },
+  {
+   "code": "P26EC",
+   "brand": "",
+   "ru": "Управление звуком двигателя B: обрыв цепи",
+   "en": "Engine Sound Control B Circuit/Open",
+   "fam": "",
+   "node": "engine sound control b"
+  },
+  {
+   "code": "P26ED",
+   "brand": "",
+   "ru": "Управление звуком двигателя B: низкий уровень сигнала в цепи",
+   "en": "Engine Sound Control B Circuit Low",
+   "fam": "",
+   "node": "engine sound control b"
+  },
+  {
+   "code": "P26EE",
+   "brand": "",
+   "ru": "Управление звуком двигателя B: высокий уровень сигнала в цепи",
+   "en": "Engine Sound Control B Circuit High",
+   "fam": "",
+   "node": "engine sound control b"
+  },
+  {
+   "code": "P26EF",
+   "brand": "",
+   "ru": "Управление звуком двигателя B: нарушена работа цепи",
+   "en": "Engine Sound Control B Circuit Performance",
+   "fam": "",
+   "node": "engine sound control b"
+  },
+  {
+   "code": "P26F0",
+   "brand": "",
+   "ru": "Реле стартера A: постоянно включён",
+   "en": "Starter Relay A Stuck On",
+   "fam": "",
+   "node": "starter relay a"
+  },
+  {
+   "code": "P26F1",
+   "brand": "",
+   "ru": "Реле стартера A: не включается",
+   "en": "Starter Relay A Stuck Off",
+   "fam": "",
+   "node": "starter relay a"
+  },
+  {
+   "code": "P26F4",
+   "brand": "",
+   "ru": "Насос охлаждающей жидкости C: обрыв цепи управления",
+   "en": "Coolant Pump C Control Circuit/Open",
+   "fam": "",
+   "node": "coolant pump c"
+  },
+  {
+   "code": "P26F5",
+   "brand": "",
+   "ru": "Насос охлаждающей жидкости C: низкий уровень в цепи управления",
+   "en": "Coolant Pump C Control Circuit Low",
+   "fam": "",
+   "node": "coolant pump c"
+  },
+  {
+   "code": "P26F6",
+   "brand": "",
+   "ru": "Насос охлаждающей жидкости C: высокий уровень в цепи управления",
+   "en": "Coolant Pump C Control Circuit High",
+   "fam": "",
+   "node": "coolant pump c"
+  },
+  {
+   "code": "P26F8",
+   "brand": "",
+   "ru": "Насос охлаждающей жидкости C: заклинивание / остановка",
+   "en": "Coolant Pump C Stuck/Stalled",
+   "fam": "",
+   "node": "coolant pump c"
+  },
+  {
+   "code": "P2C48",
+   "brand": "",
+   "ru": "Насос охлаждающей жидкости C: цепь управления: работа нарушена / не включается",
+   "en": "Coolant Pump C Control Circuit Performance/Stuck Off",
+   "fam": "",
+   "node": "coolant pump c"
+  },
+  {
+   "code": "P26F7",
+   "brand": "",
+   "ru": "Насос охлаждающей жидкости C: цепь питания",
+   "en": "Coolant Pump C Supply Voltage Circuit",
+   "fam": "",
+   "node": "coolant pump c supply voltage"
+  },
+  {
+   "code": "P26F9",
+   "brand": "",
+   "ru": "Перегрев блока насоса охлаждающей жидкости C",
+   "en": "Coolant Pump C Control Module Overtemperature",
+   "fam": "",
+   "node": "coolant pump c control module overtemperature"
+  },
+  {
+   "code": "P26FA",
+   "brand": "",
+   "ru": "Насос охлаждающей жидкости C: превышены обороты / воздух в системе",
+   "en": "Coolant Pump C Overspeed/Air in System",
+   "fam": "",
+   "node": "coolant pump c overspeed air in system"
+  },
+  {
+   "code": "P26FD",
+   "brand": "",
+   "ru": "Внутренний блок компрессора кондиционера: работа нарушена",
+   "en": "A/C Compressor Internal Control Module Performance",
+   "fam": "",
+   "node": "a c compressor internal control module"
+  },
+  {
+   "code": "P26FE",
+   "brand": "",
+   "ru": "Клапан управления потоком отработавших газов A: нарушено управление",
+   "en": "Exhaust Flow Control Valve A Control Performance",
+   "fam": "",
+   "node": "exhaust flow control valve a control"
+  },
+  {
+   "code": "P270A",
+   "brand": "",
+   "ru": "Фрикционный элемент КПП A: слишком высокая температура",
+   "en": "Transmission Friction Element A Temperature Too High",
+   "fam": "",
+   "node": "transmission friction element a temperature too"
+  },
+  {
+   "code": "P270B",
+   "brand": "",
+   "ru": "Фрикционный элемент КПП B: слишком высокая температура",
+   "en": "Transmission Friction Element B Temperature Too High",
+   "fam": "",
+   "node": "transmission friction element b temperature too"
+  },
+  {
+   "code": "P270C",
+   "brand": "",
+   "ru": "Фрикционный элемент КПП C: слишком высокая температура",
+   "en": "Transmission Friction Element C Temperature Too High",
+   "fam": "",
+   "node": "transmission friction element c temperature too"
+  },
+  {
+   "code": "P270D",
+   "brand": "",
+   "ru": "Фрикционный элемент КПП D: слишком высокая температура",
+   "en": "Transmission Friction Element D Temperature Too High",
+   "fam": "",
+   "node": "transmission friction element d temperature too"
+  },
+  {
+   "code": "P270E",
+   "brand": "",
+   "ru": "Фрикционный элемент КПП E: слишком высокая температура",
+   "en": "Transmission Friction Element E Temperature Too High",
+   "fam": "",
+   "node": "transmission friction element e temperature too"
+  },
+  {
+   "code": "P270F",
+   "brand": "",
+   "ru": "Фрикционный элемент КПП F: слишком высокая температура",
+   "en": "Transmission Friction Element F Temperature Too High",
+   "fam": "",
+   "node": "transmission friction element f temperature too"
+  },
+  {
+   "code": "P271A",
+   "brand": "",
+   "ru": "Датчик положения блокировки «Паркинг» A: низкий уровень сигнала в цепи",
+   "en": "Park Pawl Position Sensor A Circuit Low",
+   "fam": "",
+   "node": "park pawl position sensor a"
+  },
+  {
+   "code": "P271B",
+   "brand": "",
+   "ru": "Датчик положения блокировки «Паркинг» A: высокий уровень сигнала в цепи",
+   "en": "Park Pawl Position Sensor A Circuit High",
+   "fam": "",
+   "node": "park pawl position sensor a"
+  },
+  {
+   "code": "P271C",
+   "brand": "",
+   "ru": "Датчик положения блокировки «Паркинг» B: низкий уровень сигнала в цепи",
+   "en": "Park Pawl Position Sensor B Circuit Low",
+   "fam": "",
+   "node": "park pawl position sensor b"
+  },
+  {
+   "code": "P271D",
+   "brand": "",
+   "ru": "Датчик положения блокировки «Паркинг» B: высокий уровень сигнала в цепи",
+   "en": "Park Pawl Position Sensor B Circuit High",
+   "fam": "",
+   "node": "park pawl position sensor b"
+  },
+  {
+   "code": "P271F",
+   "brand": "",
+   "ru": "Электронный селектор: положение не обучено",
+   "en": "Electronic Gear Shift - Position Not Learned",
+   "fam": "",
+   "node": "electronic gear shift position not learned"
+  },
+  {
+   "code": "P272C",
+   "brand": "",
+   "ru": "Мотор блокировки «Паркинг»: цепь управления",
+   "en": "Park Pawl Motor Control Circuit",
+   "fam": "",
+   "node": "park pawl motor"
+  },
+  {
+   "code": "P272D",
+   "brand": "",
+   "ru": "Мотор блокировки «Паркинг»: слишком большой ток",
+   "en": "Park Pawl Motor Control Circuit Current Too High",
+   "fam": "",
+   "node": "park pawl motor"
+  },
+  {
+   "code": "P273A",
+   "brand": "",
+   "ru": "Фрикционный элемент КПП G: время включения вне диапазона",
+   "en": "Transmission Friction Element G Apply Time Range/Performance",
+   "fam": "",
+   "node": "transmission friction element g apply time"
+  },
+  {
+   "code": "P273B",
+   "brand": "",
+   "ru": "Фрикционный элемент КПП H: время включения вне диапазона",
+   "en": "Transmission Friction Element H Apply Time Range/Performance",
+   "fam": "",
+   "node": "transmission friction element h apply time"
+  },
+  {
+   "code": "P273C",
+   "brand": "",
+   "ru": "Блок управления переключением передач A: низкое напряжение питания",
+   "en": "Gear Shift Control Module A Supply Voltage Low",
+   "fam": "",
+   "node": "gear shift control module a supply voltage"
+  },
+  {
+   "code": "P273D",
+   "brand": "",
+   "ru": "Блок управления переключением передач A: высокое напряжение питания",
+   "en": "Gear Shift Control Module A Supply Voltage High",
+   "fam": "",
+   "node": "gear shift control module a supply voltage"
+  },
+  {
+   "code": "P273E",
+   "brand": "",
+   "ru": "Блок управления переключением передач A: перегрев",
+   "en": "Gear Shift Control Module A Over Temperature",
+   "fam": "",
+   "node": "gear shift control module a over temperature"
+  },
+  {
+   "code": "P273F",
+   "brand": "",
+   "ru": "Датчик температуры масла КПП B: перегрев",
+   "en": "Transmission Fluid Temperature Sensor B Over Temperature Condition",
+   "fam": "",
+   "node": "transmission fluid temperature sensor b over temperature condition"
+  }
+ ]
+}

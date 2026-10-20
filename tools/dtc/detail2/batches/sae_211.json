@@ -1,0 +1,410 @@
+{
+ "name": "sae_211",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "lost communication with active air dam",
+  "lost communication with air intake actuator",
+  "lost communication with coolant bypass valve actuator a",
+  "lost communication with coolant bypass valve actuator b",
+  "lost communication with coolant pump d",
+  "lost communication with diesel intake air flow a position",
+  "lost communication with diesel intake air flow b position",
+  "lost communication with egr cooler bypass position sensor",
+  "lost communication with egr sensor a",
+  "lost communication with egr sensor b",
+  "lost communication with egr sensor c",
+  "lost communication with engine coolant flow control valve position",
+  "lost communication with evap fuel vapor temperature",
+  "lost communication with evap system pressure sensor",
+  "lost communication with exhaust heat exchanger bypass valve actuator a",
+  "lost communication with exhaust pressure control valve a sensor",
+  "lost communication with fan",
+  "lost communication with hybrid ev battery pack coolant control valve a",
+  "lost communication with hybrid ev battery pack coolant control valve b",
+  "lost communication with hybrid ev battery pack coolant temperature sensor a",
+  "lost communication with hybrid ev battery pack coolant temperature sensor b",
+  "lost communication with hybrid ev battery pack current sensor a",
+  "lost communication with hybrid ev battery pack current sensor b",
+  "lost communication with hybrid ev battery pack current sensor c",
+  "lost communication with hybrid ev electronics coolant pump a",
+  "lost communication with hybrid ev electronics coolant temperature sensor a",
+  "lost communication with hybrid ev electronics coolant temperature sensor b",
+  "lost communication with hybrid ev electronics coolant temperature sensor c",
+  "lost communication with intake manifold runner position sensor",
+  "lost communication with left front mode actuator",
+  "lost communication with left front temperature actuator",
+  "lost communication with motor electronics coolant pump a",
+  "lost communication with motor electronics coolant pump b",
+  "lost communication with motor electronics coolant pump c",
+  "lost communication with right front mode actuator",
+  "lost communication with right front temperature actuator",
+  "lost communication with turbocharger supercharger a temperature",
+  "lost communication with turbocharger supercharger boost control a position",
+  "lost communication with turbocharger supercharger bypass valve a position",
+  "lost communication with wastegate position sensor a",
+  "lost communication with windshield temperature"
+ ],
+ "codes": [
+  {
+   "code": "U0632",
+   "brand": "",
+   "ru": "Нет связи: вентилятор 1",
+   "en": "Lost Communication With Fan 1",
+   "fam": "",
+   "node": "lost communication with fan"
+  },
+  {
+   "code": "U0633",
+   "brand": "",
+   "ru": "Нет связи: вентилятор 2",
+   "en": "Lost Communication With Fan 2",
+   "fam": "",
+   "node": "lost communication with fan"
+  },
+  {
+   "code": "U067C",
+   "brand": "",
+   "ru": "Нет связи: вентилятор 3",
+   "en": "Lost Communication With Fan 3",
+   "fam": "",
+   "node": "lost communication with fan"
+  },
+  {
+   "code": "U067D",
+   "brand": "",
+   "ru": "Нет связи: вентилятор 4",
+   "en": "Lost Communication With Fan 4",
+   "fam": "",
+   "node": "lost communication with fan"
+  },
+  {
+   "code": "U0634",
+   "brand": "",
+   "ru": "Нет связи: датчик температуры охлаждающей жидкости тяговой батареи A",
+   "en": "Lost Communication With Hybrid/EV Battery Pack Coolant Temperature Sensor A",
+   "fam": "",
+   "node": "lost communication with hybrid ev battery pack coolant temperature sensor a"
+  },
+  {
+   "code": "U0635",
+   "brand": "",
+   "ru": "Нет связи: датчик температуры охлаждающей жидкости тяговой батареи B",
+   "en": "Lost Communication With Hybrid/EV Battery Pack Coolant Temperature Sensor B",
+   "fam": "",
+   "node": "lost communication with hybrid ev battery pack coolant temperature sensor b"
+  },
+  {
+   "code": "U0636",
+   "brand": "",
+   "ru": "Нет связи: клапан охлаждения тяговой батареи A",
+   "en": "Lost Communication With Hybrid/EV Battery Pack Coolant Control Valve A",
+   "fam": "",
+   "node": "lost communication with hybrid ev battery pack coolant control valve a"
+  },
+  {
+   "code": "U0637",
+   "brand": "",
+   "ru": "Нет связи: клапан охлаждения тяговой батареи B",
+   "en": "Lost Communication With Hybrid/EV Battery Pack Coolant Control Valve B",
+   "fam": "",
+   "node": "lost communication with hybrid ev battery pack coolant control valve b"
+  },
+  {
+   "code": "U0638",
+   "brand": "",
+   "ru": "Нет связи: датчик температуры охлаждения электроники гибрида/электромобиля A",
+   "en": "Lost Communication With Hybrid/EV Electronics Coolant Temperature Sensor A",
+   "fam": "",
+   "node": "lost communication with hybrid ev electronics coolant temperature sensor a"
+  },
+  {
+   "code": "U0639",
+   "brand": "",
+   "ru": "Нет связи: датчик температуры охлаждения электроники гибрида/электромобиля B",
+   "en": "Lost Communication With Hybrid/EV Electronics Coolant Temperature Sensor B",
+   "fam": "",
+   "node": "lost communication with hybrid ev electronics coolant temperature sensor b"
+  },
+  {
+   "code": "U063A",
+   "brand": "",
+   "ru": "Нет связи: датчик температуры охлаждения электроники гибрида/электромобиля C",
+   "en": "Lost Communication With Hybrid/EV Electronics Coolant Temperature Sensor C",
+   "fam": "",
+   "node": "lost communication with hybrid ev electronics coolant temperature sensor c"
+  },
+  {
+   "code": "U063B",
+   "brand": "",
+   "ru": "Нет связи: привод перепускного клапана охлаждающей жидкости A",
+   "en": "Lost Communication With Coolant Bypass Valve Actuator A",
+   "fam": "",
+   "node": "lost communication with coolant bypass valve actuator a"
+  },
+  {
+   "code": "U063C",
+   "brand": "",
+   "ru": "Нет связи: привод перепускного клапана охлаждающей жидкости B",
+   "en": "Lost Communication With Coolant Bypass Valve Actuator B",
+   "fam": "",
+   "node": "lost communication with coolant bypass valve actuator b"
+  },
+  {
+   "code": "U063D",
+   "brand": "",
+   "ru": "Нет связи: насос охлаждения электроники гибрида/электромобиля A",
+   "en": "Lost Communication With Hybrid/EV Electronics Coolant Pump A",
+   "fam": "",
+   "node": "lost communication with hybrid ev electronics coolant pump a"
+  },
+  {
+   "code": "U063E",
+   "brand": "",
+   "ru": "Нет связи: привод перепускного клапана теплообменника выхлопа A",
+   "en": "Lost Communication With Exhaust Heat Exchanger Bypass Valve Actuator A",
+   "fam": "",
+   "node": "lost communication with exhaust heat exchanger bypass valve actuator a"
+  },
+  {
+   "code": "U063F",
+   "brand": "",
+   "ru": "Нет связи: датчик положения клапана потока охлаждающей жидкости",
+   "en": "Lost Communication With Engine Coolant Flow Control Valve Position Sensor",
+   "fam": "",
+   "node": "lost communication with engine coolant flow control valve position"
+  },
+  {
+   "code": "U0640",
+   "brand": "",
+   "ru": "Нет связи: датчик температуры паров топлива EVAP",
+   "en": "Lost Communication With EVAP Fuel Vapor Temperature Sensor Circuit",
+   "fam": "",
+   "node": "lost communication with evap fuel vapor temperature"
+  },
+  {
+   "code": "U0641",
+   "brand": "",
+   "ru": "Нет связи: датчик давления системы EVAP A",
+   "en": "Lost Communication With EVAP System Pressure Sensor/Switch Circuit A",
+   "fam": "",
+   "node": "lost communication with evap system pressure sensor"
+  },
+  {
+   "code": "U0642",
+   "brand": "",
+   "ru": "Нет связи: датчик давления системы EVAP B",
+   "en": "Lost Communication With EVAP System Pressure Sensor/Switch Circuit B",
+   "fam": "",
+   "node": "lost communication with evap system pressure sensor"
+  },
+  {
+   "code": "U0643",
+   "brand": "",
+   "ru": "Нет связи: датчик температуры турбины/нагнетателя A",
+   "en": "Lost Communication With Turbocharger/Supercharger A Temperature Sensor",
+   "fam": "",
+   "node": "lost communication with turbocharger supercharger a temperature"
+  },
+  {
+   "code": "U0644",
+   "brand": "",
+   "ru": "Нет связи: датчик положения вейстгейта A",
+   "en": "Lost Communication With Wastegate Position Sensor A",
+   "fam": "",
+   "node": "lost communication with wastegate position sensor a"
+  },
+  {
+   "code": "U0645",
+   "brand": "",
+   "ru": "Нет связи: модуль активного переднего спойлера",
+   "en": "Lost Communication With Active Air Dam Module",
+   "fam": "",
+   "node": "lost communication with active air dam"
+  },
+  {
+   "code": "U0646",
+   "brand": "",
+   "ru": "Нет связи: насос охлаждения электроники электромотора A",
+   "en": "Lost Communication With Motor Electronics Coolant Pump A",
+   "fam": "",
+   "node": "lost communication with motor electronics coolant pump a"
+  },
+  {
+   "code": "U0647",
+   "brand": "",
+   "ru": "Нет связи: насос охлаждения электроники электромотора B",
+   "en": "Lost Communication With Motor Electronics Coolant Pump B",
+   "fam": "",
+   "node": "lost communication with motor electronics coolant pump b"
+  },
+  {
+   "code": "U0648",
+   "brand": "",
+   "ru": "Нет связи: насос охлаждения электроники электромотора C",
+   "en": "Lost Communication With Motor Electronics Coolant Pump C",
+   "fam": "",
+   "node": "lost communication with motor electronics coolant pump c"
+  },
+  {
+   "code": "U0649",
+   "brand": "",
+   "ru": "Нет связи: насос охлаждающей жидкости D",
+   "en": "Lost Communication With Coolant Pump D",
+   "fam": "",
+   "node": "lost communication with coolant pump d"
+  },
+  {
+   "code": "U064A",
+   "brand": "",
+   "ru": "Нет связи: датчик тока тяговой батареи A",
+   "en": "Lost Communication With Hybrid/EV Battery Pack Current Sensor A",
+   "fam": "",
+   "node": "lost communication with hybrid ev battery pack current sensor a"
+  },
+  {
+   "code": "U064B",
+   "brand": "",
+   "ru": "Нет связи: датчик тока тяговой батареи B",
+   "en": "Lost Communication With Hybrid/EV Battery Pack Current Sensor B",
+   "fam": "",
+   "node": "lost communication with hybrid ev battery pack current sensor b"
+  },
+  {
+   "code": "U064C",
+   "brand": "",
+   "ru": "Нет связи: датчик тока тяговой батареи C",
+   "en": "Lost Communication With Hybrid/EV Battery Pack Current Sensor C",
+   "fam": "",
+   "node": "lost communication with hybrid ev battery pack current sensor c"
+  },
+  {
+   "code": "U064E",
+   "brand": "",
+   "ru": "Нет связи: датчик положения байпаса радиатора EGR (банк 1)",
+   "en": "Lost Communication With EGR Cooler Bypass Position Sensor Bank 1",
+   "fam": "",
+   "node": "lost communication with egr cooler bypass position sensor"
+  },
+  {
+   "code": "U064F",
+   "brand": "",
+   "ru": "Нет связи: датчик положения заслонок впускного коллектора (банк 1)",
+   "en": "Lost Communication With Intake Manifold Runner Position Sensor Bank 1",
+   "fam": "",
+   "node": "lost communication with intake manifold runner position sensor"
+  },
+  {
+   "code": "U0650",
+   "brand": "",
+   "ru": "Нет связи: датчик клапана давления выхлопа A",
+   "en": "Lost Communication With Exhaust Pressure Control Valve A Sensor/Switch",
+   "fam": "",
+   "node": "lost communication with exhaust pressure control valve a sensor"
+  },
+  {
+   "code": "U0651",
+   "brand": "",
+   "ru": "Нет связи: датчик EGR A",
+   "en": "Lost Communication With EGR Sensor A",
+   "fam": "",
+   "node": "lost communication with egr sensor a"
+  },
+  {
+   "code": "U0652",
+   "brand": "",
+   "ru": "Нет связи: датчик EGR B",
+   "en": "Lost Communication With EGR Sensor B",
+   "fam": "",
+   "node": "lost communication with egr sensor b"
+  },
+  {
+   "code": "U0653",
+   "brand": "",
+   "ru": "Нет связи: датчик EGR C",
+   "en": "Lost Communication With EGR Sensor C",
+   "fam": "",
+   "node": "lost communication with egr sensor c"
+  },
+  {
+   "code": "U0654",
+   "brand": "",
+   "ru": "Нет связи: датчик положения впускной заслонки дизеля A",
+   "en": "Lost Communication With Diesel Intake Air Flow A Position Sensor",
+   "fam": "",
+   "node": "lost communication with diesel intake air flow a position"
+  },
+  {
+   "code": "U0655",
+   "brand": "",
+   "ru": "Нет связи: датчик положения впускной заслонки дизеля B",
+   "en": "Lost Communication With Diesel Intake Air Flow B Position Sensor",
+   "fam": "",
+   "node": "lost communication with diesel intake air flow b position"
+  },
+  {
+   "code": "U0656",
+   "brand": "",
+   "ru": "Нет связи: датчик положения регулятора наддува A",
+   "en": "Lost Communication With Turbocharger/Supercharger Boost Control A Position Sensor",
+   "fam": "",
+   "node": "lost communication with turbocharger supercharger boost control a position"
+  },
+  {
+   "code": "U0657",
+   "brand": "",
+   "ru": "Нет связи: датчик положения перепускного клапана турбины A",
+   "en": "Lost Communication With Turbocharger/Supercharger Bypass Valve A Position Sensor",
+   "fam": "",
+   "node": "lost communication with turbocharger supercharger bypass valve a position"
+  },
+  {
+   "code": "U0658",
+   "brand": "",
+   "ru": "Нет связи: датчик температуры лобового стекла",
+   "en": "Lost Communication With Windshield Temperature Sensor",
+   "fam": "",
+   "node": "lost communication with windshield temperature"
+  },
+  {
+   "code": "U0659",
+   "brand": "",
+   "ru": "Нет связи: привод заслонки температуры спереди слева",
+   "en": "Lost Communication With Left Front Temperature Actuator",
+   "fam": "",
+   "node": "lost communication with left front temperature actuator"
+  },
+  {
+   "code": "U065A",
+   "brand": "",
+   "ru": "Нет связи: привод заслонки температуры спереди справа",
+   "en": "Lost Communication With Right Front Temperature Actuator",
+   "fam": "",
+   "node": "lost communication with right front temperature actuator"
+  },
+  {
+   "code": "U065B",
+   "brand": "",
+   "ru": "Нет связи: привод заслонки режима обдува спереди слева",
+   "en": "Lost Communication With Left Front Mode Actuator",
+   "fam": "",
+   "node": "lost communication with left front mode actuator"
+  },
+  {
+   "code": "U065C",
+   "brand": "",
+   "ru": "Нет связи: привод заслонки режима обдува спереди справа",
+   "en": "Lost Communication With Right Front Mode Actuator",
+   "fam": "",
+   "node": "lost communication with right front mode actuator"
+  },
+  {
+   "code": "U065D",
+   "brand": "",
+   "ru": "Нет связи: привод заслонки забора воздуха",
+   "en": "Lost Communication With Air Intake Actuator",
+   "fam": "",
+   "node": "lost communication with air intake actuator"
+  }
+ ]
+}

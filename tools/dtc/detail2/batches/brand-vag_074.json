@@ -1,0 +1,364 @@
+{
+ "name": "brand-vag_074",
+ "series": "brand",
+ "brand": "vag",
+ "nodes": [
+  "can bus unplausible message from transmission",
+  "crash shut down activated",
+  "data bus drive missing command from m t",
+  "data bus powertrain missing message from distance",
+  "data bus powertrain missing message from fuel injection pump",
+  "data bus powertrain no communication",
+  "engine control module incorrect coding",
+  "engine mount solenoid valves",
+  "engine oil temperature",
+  "fam:system_voltage",
+  "glow plug heater",
+  "glow plug heater indicator",
+  "idle adaptation at limit",
+  "idle speed control throttle position adaptation not carried out",
+  "idle speed control throttle position adaptation not started",
+  "internal control module driver error",
+  "internal control module self check",
+  "mil call up",
+  "mil request",
+  "power supply terminal no",
+  "right engine mount solenoid valve",
+  "right engine mount solenoid valve electrical fault in",
+  "rough road acceleration sensor electrical",
+  "rough road spec engine torque abs ecu electrical",
+  "steering angle",
+  "transmission mount valves",
+  "vehicle speed"
+ ],
+ "codes": [
+  {
+   "code": "P1575",
+   "brand": "vag",
+   "ru": "Клапан правой опоры двигателя: замыкание на плюс",
+   "en": "Right Engine Mount Solenoid Valve Short To B+",
+   "fam": "",
+   "node": "right engine mount solenoid valve"
+  },
+  {
+   "code": "P1576",
+   "brand": "vag",
+   "ru": "Клапан правой опоры двигателя: замыкание на массу",
+   "en": "Right Engine Mount Solenoid Valve Short To Ground",
+   "fam": "",
+   "node": "right engine mount solenoid valve"
+  },
+  {
+   "code": "P1577",
+   "brand": "vag",
+   "ru": "Клапан правой опоры двигателя: обрыв",
+   "en": "Right Engine Mount Solenoid Valve Open Circuit",
+   "fam": "",
+   "node": "right engine mount solenoid valve"
+  },
+  {
+   "code": "P1578",
+   "brand": "vag",
+   "ru": "Клапан правой опоры двигателя: электрическая неисправность цепи",
+   "en": "Right Engine Mount Solenoid Valve Electrical Fault In Circuit",
+   "fam": "",
+   "node": "right engine mount solenoid valve electrical fault in"
+  },
+  {
+   "code": "P1579",
+   "brand": "vag",
+   "ru": "Регулирование холостого хода дросселем: адаптация не начата",
+   "en": "Idle Speed Control Throttle Position Adaptation Not Started",
+   "fam": "",
+   "node": "idle speed control throttle position adaptation not started"
+  },
+  {
+   "code": "P1581",
+   "brand": "vag",
+   "ru": "Регулирование холостого хода дросселем: адаптация не выполнена",
+   "en": "Idle Speed Control Throttle Position Adaptation Not Carried Out",
+   "fam": "",
+   "node": "idle speed control throttle position adaptation not carried out"
+  },
+  {
+   "code": "P1582",
+   "brand": "vag",
+   "ru": "Адаптация холостого хода: достигнут предел",
+   "en": "Idle Adaptation At Limit",
+   "fam": "",
+   "node": "idle adaptation at limit"
+  },
+  {
+   "code": "P1583",
+   "brand": "vag",
+   "ru": "Клапаны опоры коробки: замыкание на плюс",
+   "en": "Transmission Mount Valves Short To B+",
+   "fam": "",
+   "node": "transmission mount valves"
+  },
+  {
+   "code": "P1584",
+   "brand": "vag",
+   "ru": "Клапаны опоры коробки: замыкание на массу",
+   "en": "Transmission Mount Valves Short To Ground",
+   "fam": "",
+   "node": "transmission mount valves"
+  },
+  {
+   "code": "P1585",
+   "brand": "vag",
+   "ru": "Клапаны опоры коробки: обрыв",
+   "en": "Transmission Mount Valves Open Circuit",
+   "fam": "",
+   "node": "transmission mount valves"
+  },
+  {
+   "code": "P1586",
+   "brand": "vag",
+   "ru": "Клапаны опор двигателя: замыкание на плюс",
+   "en": "Engine Mount Solenoid Valves Short To B+",
+   "fam": "",
+   "node": "engine mount solenoid valves"
+  },
+  {
+   "code": "P1587",
+   "brand": "vag",
+   "ru": "Клапаны опор двигателя: замыкание на массу",
+   "en": "Engine Mount Solenoid Valves Short To Ground",
+   "fam": "",
+   "node": "engine mount solenoid valves"
+  },
+  {
+   "code": "P1588",
+   "brand": "vag",
+   "ru": "Клапаны опор двигателя: обрыв",
+   "en": "Engine Mount Solenoid Valves Open Circuit",
+   "fam": "",
+   "node": "engine mount solenoid valves"
+  },
+  {
+   "code": "P1600",
+   "brand": "vag",
+   "ru": "Питание клеммы 15: низкое напряжение",
+   "en": "Power Supply Terminal No 15 Low Voltage",
+   "fam": "",
+   "node": "power supply terminal no"
+  },
+  {
+   "code": "P1602",
+   "brand": "vag",
+   "ru": "Напряжение питания (клемма 30) слишком низкое",
+   "en": "",
+   "fam": "system_voltage",
+   "node": "fam:system_voltage"
+  },
+  {
+   "code": "P1603",
+   "brand": "vag",
+   "ru": "Блок двигателя: внутренняя самопроверка",
+   "en": "Internal Control Module Self Check",
+   "fam": "",
+   "node": "internal control module self check"
+  },
+  {
+   "code": "P1604",
+   "brand": "vag",
+   "ru": "Блок двигателя: внутренняя ошибка драйвера",
+   "en": "Internal Control Module Driver Error",
+   "fam": "",
+   "node": "internal control module driver error"
+  },
+  {
+   "code": "P1605",
+   "brand": "vag",
+   "ru": "Датчик ускорения плохой дороги: электрическая неисправность",
+   "en": "Rough Road Acceleration Sensor Electrical Malfunction",
+   "fam": "",
+   "node": "rough road acceleration sensor electrical"
+  },
+  {
+   "code": "P1606",
+   "brand": "vag",
+   "ru": "Сигнал плохой дороги / момента от блока ABS: электрическая неисправность",
+   "en": "Rough Road Spec Engine Torque ABS ECU Electrical Malfunction",
+   "fam": "",
+   "node": "rough road spec engine torque abs ecu electrical"
+  },
+  {
+   "code": "P1607",
+   "brand": "vag",
+   "ru": "Сигнал скорости: сообщение об ошибке от приборной панели",
+   "en": "Vehicle Speed Signal Error Message From Instrument Cluster",
+   "fam": "",
+   "node": "vehicle speed"
+  },
+  {
+   "code": "P1795",
+   "brand": "vag",
+   "ru": "Сигнал скорости: обрыв цепи",
+   "en": "Vehicle Speed Signal Circuit Open",
+   "fam": "",
+   "node": "vehicle speed"
+  },
+  {
+   "code": "P1796",
+   "brand": "vag",
+   "ru": "Сигнал скорости: замыкание на массу",
+   "en": "Vehicle Speed Signal Short To Ground",
+   "fam": "",
+   "node": "vehicle speed"
+  },
+  {
+   "code": "P1797",
+   "brand": "vag",
+   "ru": "Сигнал скорости: замыкание на плюс",
+   "en": "Vehicle Speed Signal Short To B+",
+   "fam": "",
+   "node": "vehicle speed"
+  },
+  {
+   "code": "P1608",
+   "brand": "vag",
+   "ru": "Сигнал угла руля: сообщение об ошибке от датчика угла",
+   "en": "Steering Angle Signal Error Message From Steering Angle Sensor",
+   "fam": "",
+   "node": "steering angle"
+  },
+  {
+   "code": "P1609",
+   "brand": "vag",
+   "ru": "Сработало аварийное отключение (после удара)",
+   "en": "Crash Shut Down Activated",
+   "fam": "",
+   "node": "crash shut down activated"
+  },
+  {
+   "code": "P1611",
+   "brand": "vag",
+   "ru": "Цепь вызова лампы от блока коробки: замыкание на массу",
+   "en": "MIL Call-Up Circuit TCM Short To Ground",
+   "fam": "",
+   "node": "mil call up"
+  },
+  {
+   "code": "P1613",
+   "brand": "vag",
+   "ru": "Цепь вызова лампы: обрыв или замыкание на плюс",
+   "en": "MIL Call-Up Circuit Open Short To B+",
+   "fam": "",
+   "node": "mil call up"
+  },
+  {
+   "code": "P1614",
+   "brand": "vag",
+   "ru": "Цепь вызова лампы от блока коробки: выход за диапазон",
+   "en": "MIL Call-Up Circuit Transmission Control Module Range Performance",
+   "fam": "",
+   "node": "mil call up"
+  },
+  {
+   "code": "P1612",
+   "brand": "vag",
+   "ru": "Блок двигателя закодирован неверно",
+   "en": "Engine Control Module Incorrect Coding",
+   "fam": "",
+   "node": "engine control module incorrect coding"
+  },
+  {
+   "code": "P1615",
+   "brand": "vag",
+   "ru": "Датчик температуры масла: выход за диапазон",
+   "en": "Engine Oil Temperature Sensor Circuit Range Performance",
+   "fam": "",
+   "node": "engine oil temperature"
+  },
+  {
+   "code": "P1616",
+   "brand": "vag",
+   "ru": "Лампа свечей накаливания: замыкание на плюс",
+   "en": "Glow Plug Heater Indicator Circuit Short To B+",
+   "fam": "",
+   "node": "glow plug heater indicator"
+  },
+  {
+   "code": "P1617",
+   "brand": "vag",
+   "ru": "Лампа свечей накаливания: обрыв или замыкание на массу",
+   "en": "Glow Plug Heater Indicator Circuit Open Short To Ground",
+   "fam": "",
+   "node": "glow plug heater indicator"
+  },
+  {
+   "code": "P1618",
+   "brand": "vag",
+   "ru": "Реле свечей накаливания: замыкание на плюс",
+   "en": "Glow Plug Heater Relay Circuit Short To B+",
+   "fam": "",
+   "node": "glow plug heater"
+  },
+  {
+   "code": "P1619",
+   "brand": "vag",
+   "ru": "Реле свечей накаливания: обрыв или замыкание на массу",
+   "en": "Glow Plug Heater Relay Circuit Open Short To Ground",
+   "fam": "",
+   "node": "glow plug heater"
+  },
+  {
+   "code": "P1623",
+   "brand": "vag",
+   "ru": "Шина силового агрегата: нет связи",
+   "en": "Data Bus Powertrain No Communication",
+   "fam": "",
+   "node": "data bus powertrain no communication"
+  },
+  {
+   "code": "P1624",
+   "brand": "vag",
+   "ru": "Активен запрос лампы неисправности",
+   "en": "MIL Request Signal Active",
+   "fam": "",
+   "node": "mil request"
+  },
+  {
+   "code": "P1625",
+   "brand": "vag",
+   "ru": "Шина CAN: недостоверное сообщение от блока коробки",
+   "en": "CAN Bus Unplausible Message From Transmission Control",
+   "fam": "",
+   "node": "can bus unplausible message from transmission"
+  },
+  {
+   "code": "P1626",
+   "brand": "vag",
+   "ru": "Шина силового агрегата: нет сообщения от роботизированной КПП",
+   "en": "Data Bus Drive Missing Command From M/T",
+   "fam": "",
+   "node": "data bus drive missing command from m t"
+  },
+  {
+   "code": "P1627",
+   "brand": "vag",
+   "ru": "Шина силового агрегата: нет сообщения от ТНВД",
+   "en": "Data Bus Powertrain Missing Message From Fuel Injection Pump",
+   "fam": "",
+   "node": "data bus powertrain missing message from fuel injection pump"
+  },
+  {
+   "code": "P1628",
+   "brand": "vag",
+   "ru": "Шина силового агрегата: нет сообщения от адаптивного круиза",
+   "en": "Data Bus Powertrain Missing Message From Distance Control",
+   "fam": "",
+   "node": "data bus powertrain missing message from distance"
+  },
+  {
+   "code": "P1629",
+   "brand": "vag",
+   "ru": "Шина силового агрегата: нет сообщения от адаптивного круиза",
+   "en": "Data Bus Powertrain Missing Message From Distance Control",
+   "fam": "",
+   "node": "data bus powertrain missing message from distance"
+  }
+ ]
+}

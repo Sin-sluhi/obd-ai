@@ -1,0 +1,346 @@
+{
+ "name": "sae_034",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "closed loop air fuel ratio control at limit system too lean",
+  "closed loop air fuel ratio control at limit system too rich",
+  "closed loop fuel pressure control at limit pressure too",
+  "excessive time to enter closed loop air fuel ratio",
+  "excessive time to enter closed loop cylinder balance",
+  "excessive time to enter closed loop fuel pressure",
+  "excessive time to enter closed loop fuel timing",
+  "fam:fuel_temp",
+  "o2 sensor delayed"
+ ],
+ "codes": [
+  {
+   "code": "P013E",
+   "brand": "",
+   "ru": "Лямбда-зонд: запаздывание переключения «богато → бедно» (банк 1, датчик 2)",
+   "en": "O2 Sensor Delayed Response - Rich to Lean Bank 1 Sensor 2",
+   "fam": "",
+   "node": "o2 sensor delayed"
+  },
+  {
+   "code": "P013F",
+   "brand": "",
+   "ru": "Лямбда-зонд: запаздывание переключения «бедно → богато» (банк 1, датчик 2)",
+   "en": "O2 Sensor Delayed Response - Lean to Rich Bank 1 Sensor 2",
+   "fam": "",
+   "node": "o2 sensor delayed"
+  },
+  {
+   "code": "P014A",
+   "brand": "",
+   "ru": "Лямбда-зонд: запаздывание переключения «богато → бедно» (банк 2, датчик 2)",
+   "en": "O2 Sensor Delayed Response - Rich to Lean Bank 2 Sensor 2",
+   "fam": "",
+   "node": "o2 sensor delayed"
+  },
+  {
+   "code": "P014B",
+   "brand": "",
+   "ru": "Лямбда-зонд: запаздывание переключения «бедно → богато» (банк 2, датчик 2)",
+   "en": "O2 Sensor Delayed Response - Lean to Rich Bank 2 Sensor 2",
+   "fam": "",
+   "node": "o2 sensor delayed"
+  },
+  {
+   "code": "P015A",
+   "brand": "",
+   "ru": "Лямбда-зонд: запаздывание переключения «богато → бедно» (банк 1, датчик 1)",
+   "en": "O2 Sensor Delayed Response - Rich to Lean Bank 1 Sensor 1",
+   "fam": "",
+   "node": "o2 sensor delayed"
+  },
+  {
+   "code": "P015B",
+   "brand": "",
+   "ru": "Лямбда-зонд: запаздывание переключения «бедно → богато» (банк 1, датчик 1)",
+   "en": "O2 Sensor Delayed Response - Lean to Rich Bank 1 Sensor 1",
+   "fam": "",
+   "node": "o2 sensor delayed"
+  },
+  {
+   "code": "P015C",
+   "brand": "",
+   "ru": "Лямбда-зонд: запаздывание переключения «богато → бедно» (банк 2, датчик 1)",
+   "en": "O2 Sensor Delayed Response - Rich to Lean Bank 2 Sensor 1",
+   "fam": "",
+   "node": "o2 sensor delayed"
+  },
+  {
+   "code": "P015D",
+   "brand": "",
+   "ru": "Лямбда-зонд: запаздывание переключения «бедно → богато» (банк 2, датчик 1)",
+   "en": "O2 Sensor Delayed Response - Lean to Rich Bank 2 Sensor 1",
+   "fam": "",
+   "node": "o2 sensor delayed"
+  },
+  {
+   "code": "P019A",
+   "brand": "",
+   "ru": "Лямбда-зонд: запаздывание переключения «богато → бедно» (банк 1, датчик 3)",
+   "en": "O2 Sensor Delayed Response - Rich to Lean Bank 1 Sensor 3",
+   "fam": "",
+   "node": "o2 sensor delayed"
+  },
+  {
+   "code": "P019B",
+   "brand": "",
+   "ru": "Лямбда-зонд: запаздывание переключения «бедно → богато» (банк 1, датчик 3)",
+   "en": "O2 Sensor Delayed Response - Lean to Rich Bank 1 Sensor 3",
+   "fam": "",
+   "node": "o2 sensor delayed"
+  },
+  {
+   "code": "P019C",
+   "brand": "",
+   "ru": "Лямбда-зонд: запаздывание переключения «богато → бедно» (банк 2, датчик 3)",
+   "en": "O2 Sensor Delayed Response - Rich to Lean Bank 2 Sensor 3",
+   "fam": "",
+   "node": "o2 sensor delayed"
+  },
+  {
+   "code": "P019D",
+   "brand": "",
+   "ru": "Лямбда-зонд: запаздывание переключения «бедно → богато» (банк 2, датчик 3)",
+   "en": "O2 Sensor Delayed Response - Lean to Rich Bank 2 Sensor 3",
+   "fam": "",
+   "node": "o2 sensor delayed"
+  },
+  {
+   "code": "P015E",
+   "brand": "",
+   "ru": "Слишком долгий переход к замкнутому регулированию момента впрыска",
+   "en": "Excessive Time to Enter Closed Loop Fuel Timing Control",
+   "fam": "",
+   "node": "excessive time to enter closed loop fuel timing"
+  },
+  {
+   "code": "P015F",
+   "brand": "",
+   "ru": "Слишком долгий переход к замкнутой балансировке цилиндров",
+   "en": "Excessive Time to Enter Closed Loop Cylinder Balance Control",
+   "fam": "",
+   "node": "excessive time to enter closed loop cylinder balance"
+  },
+  {
+   "code": "P0168",
+   "brand": "",
+   "ru": "Температура топлива слишком высокая",
+   "en": "",
+   "fam": "fuel_temp",
+   "node": "fam:fuel_temp"
+  },
+  {
+   "code": "P0169",
+   "brand": "",
+   "ru": "Неверный состав топлива",
+   "en": "",
+   "fam": "fuel_temp",
+   "node": "fam:fuel_temp"
+  },
+  {
+   "code": "P0176",
+   "brand": "",
+   "ru": "Датчик состава топлива: цепь",
+   "en": "",
+   "fam": "fuel_temp",
+   "node": "fam:fuel_temp"
+  },
+  {
+   "code": "P0177",
+   "brand": "",
+   "ru": "Датчик состава топлива: показания вне диапазона",
+   "en": "",
+   "fam": "fuel_temp",
+   "node": "fam:fuel_temp"
+  },
+  {
+   "code": "P0178",
+   "brand": "",
+   "ru": "Датчик состава топлива: низкий сигнал",
+   "en": "",
+   "fam": "fuel_temp",
+   "node": "fam:fuel_temp"
+  },
+  {
+   "code": "P0179",
+   "brand": "",
+   "ru": "Датчик состава топлива: высокий сигнал",
+   "en": "",
+   "fam": "fuel_temp",
+   "node": "fam:fuel_temp"
+  },
+  {
+   "code": "P0180",
+   "brand": "",
+   "ru": "Датчик температуры топлива A: цепь",
+   "en": "",
+   "fam": "fuel_temp",
+   "node": "fam:fuel_temp"
+  },
+  {
+   "code": "P0181",
+   "brand": "",
+   "ru": "Датчик температуры топлива A: показания вне диапазона",
+   "en": "",
+   "fam": "fuel_temp",
+   "node": "fam:fuel_temp"
+  },
+  {
+   "code": "P0182",
+   "brand": "",
+   "ru": "Датчик температуры топлива A: низкий сигнал",
+   "en": "",
+   "fam": "fuel_temp",
+   "node": "fam:fuel_temp"
+  },
+  {
+   "code": "P0183",
+   "brand": "",
+   "ru": "Датчик температуры топлива A: высокий сигнал",
+   "en": "",
+   "fam": "fuel_temp",
+   "node": "fam:fuel_temp"
+  },
+  {
+   "code": "P0184",
+   "brand": "",
+   "ru": "Датчик температуры топлива A: прерывистый сигнал",
+   "en": "",
+   "fam": "fuel_temp",
+   "node": "fam:fuel_temp"
+  },
+  {
+   "code": "P0185",
+   "brand": "",
+   "ru": "Датчик температуры топлива B: цепь",
+   "en": "",
+   "fam": "fuel_temp",
+   "node": "fam:fuel_temp"
+  },
+  {
+   "code": "P0186",
+   "brand": "",
+   "ru": "Датчик температуры топлива B: показания вне диапазона",
+   "en": "",
+   "fam": "fuel_temp",
+   "node": "fam:fuel_temp"
+  },
+  {
+   "code": "P0187",
+   "brand": "",
+   "ru": "Датчик температуры топлива B: низкий сигнал",
+   "en": "",
+   "fam": "fuel_temp",
+   "node": "fam:fuel_temp"
+  },
+  {
+   "code": "P0188",
+   "brand": "",
+   "ru": "Датчик температуры топлива B: высокий сигнал",
+   "en": "",
+   "fam": "fuel_temp",
+   "node": "fam:fuel_temp"
+  },
+  {
+   "code": "P0189",
+   "brand": "",
+   "ru": "Датчик температуры топлива B: прерывистый сигнал",
+   "en": "",
+   "fam": "fuel_temp",
+   "node": "fam:fuel_temp"
+  },
+  {
+   "code": "P2264",
+   "brand": "",
+   "ru": "Датчик воды в топливе: цепь",
+   "en": "",
+   "fam": "fuel_temp",
+   "node": "fam:fuel_temp"
+  },
+  {
+   "code": "P2265",
+   "brand": "",
+   "ru": "Датчик воды в топливе: показания вне диапазона",
+   "en": "",
+   "fam": "fuel_temp",
+   "node": "fam:fuel_temp"
+  },
+  {
+   "code": "P2266",
+   "brand": "",
+   "ru": "Датчик воды в топливе: низкий сигнал",
+   "en": "",
+   "fam": "fuel_temp",
+   "node": "fam:fuel_temp"
+  },
+  {
+   "code": "P2267",
+   "brand": "",
+   "ru": "Датчик воды в топливе: высокий сигнал",
+   "en": "",
+   "fam": "fuel_temp",
+   "node": "fam:fuel_temp"
+  },
+  {
+   "code": "P2268",
+   "brand": "",
+   "ru": "Датчик воды в топливе: прерывистый сигнал",
+   "en": "",
+   "fam": "fuel_temp",
+   "node": "fam:fuel_temp"
+  },
+  {
+   "code": "P016A",
+   "brand": "",
+   "ru": "Слишком долгий переход к замкнутому регулированию состава смеси",
+   "en": "Excessive Time To Enter Closed Loop Air/Fuel Ratio Control",
+   "fam": "",
+   "node": "excessive time to enter closed loop air fuel ratio"
+  },
+  {
+   "code": "P016B",
+   "brand": "",
+   "ru": "Регулирование состава смеси на пределе: смесь слишком богатая",
+   "en": "Closed Loop Air/Fuel Ratio Control At Limit - System Too Rich",
+   "fam": "",
+   "node": "closed loop air fuel ratio control at limit system too rich"
+  },
+  {
+   "code": "P016C",
+   "brand": "",
+   "ru": "Регулирование состава смеси на пределе: смесь слишком бедная",
+   "en": "Closed Loop Air/Fuel Ratio Control At Limit - System Too Lean",
+   "fam": "",
+   "node": "closed loop air fuel ratio control at limit system too lean"
+  },
+  {
+   "code": "P016D",
+   "brand": "",
+   "ru": "Слишком долгий переход к замкнутому регулированию давления топлива",
+   "en": "Excessive Time To Enter Closed Loop Fuel Pressure Control",
+   "fam": "",
+   "node": "excessive time to enter closed loop fuel pressure"
+  },
+  {
+   "code": "P016E",
+   "brand": "",
+   "ru": "Регулирование давления топлива на пределе: слишком высокое давление",
+   "en": "Closed Loop Fuel Pressure Control At Limit - Pressure Too High",
+   "fam": "",
+   "node": "closed loop fuel pressure control at limit pressure too"
+  },
+  {
+   "code": "P016F",
+   "brand": "",
+   "ru": "Регулирование давления топлива на пределе: слишком низкое давление",
+   "en": "Closed Loop Fuel Pressure Control At Limit - Pressure Too Low",
+   "fam": "",
+   "node": "closed loop fuel pressure control at limit pressure too"
+  }
+ ]
+}

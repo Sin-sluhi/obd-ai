@@ -1,0 +1,371 @@
+{
+ "name": "sae_074",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "fam:alternator",
+  "fam:eps",
+  "fam:tcm",
+  "internal control module brake",
+  "internal control module engine air mass",
+  "internal control module engine rpm",
+  "internal control module throttle actuator controller",
+  "internal control module torque",
+  "internal control module torque calculation",
+  "internal control module vehicle speed"
+ ],
+ "codes": [
+  {
+   "code": "P0613",
+   "brand": "",
+   "ru": "Блок управления коробкой: процессор",
+   "en": "",
+   "fam": "tcm",
+   "node": "fam:tcm"
+  },
+  {
+   "code": "P0700",
+   "brand": "",
+   "ru": "Блок управления коробкой сообщил об ошибке",
+   "en": "",
+   "fam": "tcm",
+   "node": "fam:tcm"
+  },
+  {
+   "code": "P0701",
+   "brand": "",
+   "ru": "Система управления коробкой: вне диапазона",
+   "en": "",
+   "fam": "tcm",
+   "node": "fam:tcm"
+  },
+  {
+   "code": "P0702",
+   "brand": "",
+   "ru": "Система управления коробкой: электрическая",
+   "en": "",
+   "fam": "tcm",
+   "node": "fam:tcm"
+  },
+  {
+   "code": "P0802",
+   "brand": "",
+   "ru": "Запрос лампы от блока коробки: обрыв",
+   "en": "",
+   "fam": "tcm",
+   "node": "fam:tcm"
+  },
+  {
+   "code": "P0880",
+   "brand": "",
+   "ru": "Питание блока коробки (сигнал): цепь",
+   "en": "",
+   "fam": "tcm",
+   "node": "fam:tcm"
+  },
+  {
+   "code": "P0881",
+   "brand": "",
+   "ru": "Питание блока коробки (сигнал): показания вне диапазона",
+   "en": "",
+   "fam": "tcm",
+   "node": "fam:tcm"
+  },
+  {
+   "code": "P0882",
+   "brand": "",
+   "ru": "Питание блока коробки (сигнал): низкий сигнал",
+   "en": "",
+   "fam": "tcm",
+   "node": "fam:tcm"
+  },
+  {
+   "code": "P0883",
+   "brand": "",
+   "ru": "Питание блока коробки (сигнал): высокий сигнал",
+   "en": "",
+   "fam": "tcm",
+   "node": "fam:tcm"
+  },
+  {
+   "code": "P0884",
+   "brand": "",
+   "ru": "Питание блока коробки (сигнал): прерывистый сигнал",
+   "en": "",
+   "fam": "tcm",
+   "node": "fam:tcm"
+  },
+  {
+   "code": "P0885",
+   "brand": "",
+   "ru": "Реле питания блока коробки: цепь / обрыв",
+   "en": "",
+   "fam": "tcm",
+   "node": "fam:tcm"
+  },
+  {
+   "code": "P0886",
+   "brand": "",
+   "ru": "Реле питания блока коробки: низкий уровень",
+   "en": "",
+   "fam": "tcm",
+   "node": "fam:tcm"
+  },
+  {
+   "code": "P0887",
+   "brand": "",
+   "ru": "Реле питания блока коробки: высокий уровень",
+   "en": "",
+   "fam": "tcm",
+   "node": "fam:tcm"
+  },
+  {
+   "code": "P0888",
+   "brand": "",
+   "ru": "Реле питания блока коробки: контроль",
+   "en": "",
+   "fam": "tcm",
+   "node": "fam:tcm"
+  },
+  {
+   "code": "P0889",
+   "brand": "",
+   "ru": "Реле питания блока коробки: контроль вне диапазона",
+   "en": "",
+   "fam": "tcm",
+   "node": "fam:tcm"
+  },
+  {
+   "code": "P0890",
+   "brand": "",
+   "ru": "Реле питания блока коробки: контроль, низкий уровень",
+   "en": "",
+   "fam": "tcm",
+   "node": "fam:tcm"
+  },
+  {
+   "code": "P0891",
+   "brand": "",
+   "ru": "Реле питания блока коробки: контроль, высокий уровень",
+   "en": "",
+   "fam": "tcm",
+   "node": "fam:tcm"
+  },
+  {
+   "code": "P0892",
+   "brand": "",
+   "ru": "Реле питания блока коробки: контроль, прерывистый",
+   "en": "",
+   "fam": "tcm",
+   "node": "fam:tcm"
+  },
+  {
+   "code": "P0898",
+   "brand": "",
+   "ru": "Запрос лампы от блока коробки: низкий уровень",
+   "en": "",
+   "fam": "tcm",
+   "node": "fam:tcm"
+  },
+  {
+   "code": "P0899",
+   "brand": "",
+   "ru": "Запрос лампы от блока коробки: высокий уровень",
+   "en": "",
+   "fam": "tcm",
+   "node": "fam:tcm"
+  },
+  {
+   "code": "P061A",
+   "brand": "",
+   "ru": "ЭБУ: ошибка расчёта крутящего момента",
+   "en": "Internal Control Module Torque Performance",
+   "fam": "",
+   "node": "internal control module torque"
+  },
+  {
+   "code": "P061B",
+   "brand": "",
+   "ru": "ЭБУ: ошибка вычисления крутящего момента",
+   "en": "Internal Control Module Torque Calculation Performance",
+   "fam": "",
+   "node": "internal control module torque calculation"
+  },
+  {
+   "code": "P061C",
+   "brand": "",
+   "ru": "ЭБУ: ошибка расчёта оборотов двигателя",
+   "en": "Internal Control Module Engine RPM Performance",
+   "fam": "",
+   "node": "internal control module engine rpm"
+  },
+  {
+   "code": "P061D",
+   "brand": "",
+   "ru": "ЭБУ: ошибка расчёта массы воздуха",
+   "en": "Internal Control Module Engine Air Mass Performance",
+   "fam": "",
+   "node": "internal control module engine air mass"
+  },
+  {
+   "code": "P061E",
+   "brand": "",
+   "ru": "ЭБУ: ошибка обработки сигнала тормоза",
+   "en": "Internal Control Module Brake Signal Performance",
+   "fam": "",
+   "node": "internal control module brake"
+  },
+  {
+   "code": "P061F",
+   "brand": "",
+   "ru": "ЭБУ: ошибка контроллера привода дросселя",
+   "en": "Internal Control Module Throttle Actuator Controller Performance",
+   "fam": "",
+   "node": "internal control module throttle actuator controller"
+  },
+  {
+   "code": "P0620",
+   "brand": "",
+   "ru": "Генератор: цепь управления",
+   "en": "",
+   "fam": "alternator",
+   "node": "fam:alternator"
+  },
+  {
+   "code": "P0621",
+   "brand": "",
+   "ru": "Генератор: цепь лампы зарядки (L)",
+   "en": "",
+   "fam": "alternator",
+   "node": "fam:alternator"
+  },
+  {
+   "code": "P0622",
+   "brand": "",
+   "ru": "Генератор: цепь обмотки возбуждения (F)",
+   "en": "",
+   "fam": "alternator",
+   "node": "fam:alternator"
+  },
+  {
+   "code": "P0623",
+   "brand": "",
+   "ru": "Лампа зарядки: цепь управления",
+   "en": "",
+   "fam": "alternator",
+   "node": "fam:alternator"
+  },
+  {
+   "code": "P0625",
+   "brand": "",
+   "ru": "Генератор: обмотка возбуждения, низкий уровень",
+   "en": "",
+   "fam": "alternator",
+   "node": "fam:alternator"
+  },
+  {
+   "code": "P0626",
+   "brand": "",
+   "ru": "Генератор: обмотка возбуждения, высокий уровень",
+   "en": "",
+   "fam": "alternator",
+   "node": "fam:alternator"
+  },
+  {
+   "code": "P063A",
+   "brand": "",
+   "ru": "Генератор: датчик напряжения",
+   "en": "",
+   "fam": "alternator",
+   "node": "fam:alternator"
+  },
+  {
+   "code": "P065A",
+   "brand": "",
+   "ru": "Генератор: работа не соответствует",
+   "en": "",
+   "fam": "alternator",
+   "node": "fam:alternator"
+  },
+  {
+   "code": "P065B",
+   "brand": "",
+   "ru": "Генератор: управление вне диапазона",
+   "en": "",
+   "fam": "alternator",
+   "node": "fam:alternator"
+  },
+  {
+   "code": "P2500",
+   "brand": "",
+   "ru": "Генератор: цепь лампы (L), низкий уровень",
+   "en": "",
+   "fam": "alternator",
+   "node": "fam:alternator"
+  },
+  {
+   "code": "P2501",
+   "brand": "",
+   "ru": "Генератор: цепь лампы (L), высокий уровень",
+   "en": "",
+   "fam": "alternator",
+   "node": "fam:alternator"
+  },
+  {
+   "code": "P2502",
+   "brand": "",
+   "ru": "Система зарядки: напряжение неправдоподобно",
+   "en": "",
+   "fam": "alternator",
+   "node": "fam:alternator"
+  },
+  {
+   "code": "P2503",
+   "brand": "",
+   "ru": "Система зарядки: напряжение низкое",
+   "en": "",
+   "fam": "alternator",
+   "node": "fam:alternator"
+  },
+  {
+   "code": "P2504",
+   "brand": "",
+   "ru": "Система зарядки: напряжение высокое",
+   "en": "",
+   "fam": "alternator",
+   "node": "fam:alternator"
+  },
+  {
+   "code": "P062C",
+   "brand": "",
+   "ru": "ЭБУ: ошибка расчёта скорости автомобиля",
+   "en": "Internal Control Module Vehicle Speed Performance",
+   "fam": "",
+   "node": "internal control module vehicle speed"
+  },
+  {
+   "code": "P0635",
+   "brand": "",
+   "ru": "Усилитель руля: цепь управления",
+   "en": "",
+   "fam": "eps",
+   "node": "fam:eps"
+  },
+  {
+   "code": "P0636",
+   "brand": "",
+   "ru": "Усилитель руля: цепь управления, низкий уровень",
+   "en": "",
+   "fam": "eps",
+   "node": "fam:eps"
+  },
+  {
+   "code": "P0637",
+   "brand": "",
+   "ru": "Усилитель руля: цепь управления, высокий уровень",
+   "en": "",
+   "fam": "eps",
+   "node": "fam:eps"
+  }
+ ]
+}

@@ -1,0 +1,386 @@
+{
+ "name": "sae_146",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "alternative fuel",
+  "egr cooler b efficiency below threshold",
+  "evap system leak detection pump heater",
+  "fam:egr_cooler",
+  "fam:evap_pump",
+  "o2 sensor signals swapped",
+  "particulate filter differential pressure too",
+  "particulate filter regeneration duration",
+  "particulate filter regeneration frequency",
+  "particulate filter regeneration incomplete",
+  "particulate filter restriction ash accumulation",
+  "particulate filter restriction forced limited power",
+  "particulate filter restriction soot accumulation too",
+  "ru:клапан egr",
+  "scr inducement forced engine shutdown",
+  "system b air fuel ratio imbalance",
+  "throttle actuator control system ice blockage"
+ ],
+ "codes": [
+  {
+   "code": "P23FE",
+   "brand": "",
+   "ru": "Банк 1, система B: дисбаланс состава смеси",
+   "en": "Bank 1 System B Air-Fuel Ratio Imbalance",
+   "fam": "",
+   "node": "system b air fuel ratio imbalance"
+  },
+  {
+   "code": "P23FF",
+   "brand": "",
+   "ru": "Банк 2, система B: дисбаланс состава смеси",
+   "en": "Bank 2 System B Air-Fuel Ratio Imbalance",
+   "fam": "",
+   "node": "system b air fuel ratio imbalance"
+  },
+  {
+   "code": "P2400",
+   "brand": "",
+   "ru": "Насос проверки утечек системы паров топлива: цепь / обрыв",
+   "en": "",
+   "fam": "evap_pump",
+   "node": "fam:evap_pump"
+  },
+  {
+   "code": "P2401",
+   "brand": "",
+   "ru": "Насос проверки утечек системы паров топлива: низкий уровень",
+   "en": "",
+   "fam": "evap_pump",
+   "node": "fam:evap_pump"
+  },
+  {
+   "code": "P2402",
+   "brand": "",
+   "ru": "Насос проверки утечек системы паров топлива: высокий уровень",
+   "en": "",
+   "fam": "evap_pump",
+   "node": "fam:evap_pump"
+  },
+  {
+   "code": "P2403",
+   "brand": "",
+   "ru": "Насос проверки утечек: цепь контроля: цепь",
+   "en": "",
+   "fam": "evap_pump",
+   "node": "fam:evap_pump"
+  },
+  {
+   "code": "P2404",
+   "brand": "",
+   "ru": "Насос проверки утечек: цепь контроля: показания вне диапазона",
+   "en": "",
+   "fam": "evap_pump",
+   "node": "fam:evap_pump"
+  },
+  {
+   "code": "P2405",
+   "brand": "",
+   "ru": "Насос проверки утечек: цепь контроля: низкий сигнал",
+   "en": "",
+   "fam": "evap_pump",
+   "node": "fam:evap_pump"
+  },
+  {
+   "code": "P2406",
+   "brand": "",
+   "ru": "Насос проверки утечек: цепь контроля: высокий сигнал",
+   "en": "",
+   "fam": "evap_pump",
+   "node": "fam:evap_pump"
+  },
+  {
+   "code": "P2407",
+   "brand": "",
+   "ru": "Насос проверки утечек: цепь контроля: прерывистый сигнал",
+   "en": "",
+   "fam": "evap_pump",
+   "node": "fam:evap_pump"
+  },
+  {
+   "code": "P2418",
+   "brand": "",
+   "ru": "Переключающий клапан системы паров топлива: цепь / обрыв",
+   "en": "",
+   "fam": "evap_pump",
+   "node": "fam:evap_pump"
+  },
+  {
+   "code": "P2419",
+   "brand": "",
+   "ru": "Переключающий клапан системы паров топлива: низкий уровень",
+   "en": "",
+   "fam": "evap_pump",
+   "node": "fam:evap_pump"
+  },
+  {
+   "code": "P2420",
+   "brand": "",
+   "ru": "Переключающий клапан системы паров топлива: высокий уровень",
+   "en": "",
+   "fam": "evap_pump",
+   "node": "fam:evap_pump"
+  },
+  {
+   "code": "P2450",
+   "brand": "",
+   "ru": "Переключающий клапан системы паров: застрял открытым",
+   "en": "",
+   "fam": "evap_pump",
+   "node": "fam:evap_pump"
+  },
+  {
+   "code": "P2451",
+   "brand": "",
+   "ru": "Переключающий клапан системы паров: застрял закрытым",
+   "en": "",
+   "fam": "evap_pump",
+   "node": "fam:evap_pump"
+  },
+  {
+   "code": "P240A",
+   "brand": "",
+   "ru": "Подогрев насоса проверки утечек EVAP: обрыв цепи управления",
+   "en": "EVAP System Leak Detection Pump Heater Control Circuit/Open",
+   "fam": "",
+   "node": "evap system leak detection pump heater"
+  },
+  {
+   "code": "P240B",
+   "brand": "",
+   "ru": "Подогрев насоса проверки утечек EVAP: низкий уровень в цепи управления",
+   "en": "EVAP System Leak Detection Pump Heater Control Circuit Low",
+   "fam": "",
+   "node": "evap system leak detection pump heater"
+  },
+  {
+   "code": "P240C",
+   "brand": "",
+   "ru": "Подогрев насоса проверки утечек EVAP: высокий уровень в цепи управления",
+   "en": "EVAP System Leak Detection Pump Heater Control Circuit High",
+   "fam": "",
+   "node": "evap system leak detection pump heater"
+  },
+  {
+   "code": "P240D",
+   "brand": "",
+   "ru": "Утечка в контуре низкого давления ГБО",
+   "en": "Alternative Fuel Low Pressure System Leak",
+   "fam": "",
+   "node": "alternative fuel"
+  },
+  {
+   "code": "P240E",
+   "brand": "",
+   "ru": "Утечка в контуре высокого давления ГБО",
+   "en": "Alternative Fuel High Pressure System Leak",
+   "fam": "",
+   "node": "alternative fuel"
+  },
+  {
+   "code": "P2A9D",
+   "brand": "",
+   "ru": "ГБО: малая утечка в контуре высокого давления",
+   "en": "Alternative Fuel High Pressure System Small Leak",
+   "fam": "",
+   "node": "alternative fuel"
+  },
+  {
+   "code": "P240F",
+   "brand": "",
+   "ru": "Клапан EGR: медленная реакция",
+   "en": "EGR Slow Response",
+   "fam": "",
+   "node": "ru:клапан egr"
+  },
+  {
+   "code": "P241A",
+   "brand": "",
+   "ru": "Перепутаны сигналы лямбда-зондов 1 и 2 (банк 1)",
+   "en": "O2 Sensor Signals Swapped Bank 1 Sensor 1/Bank 1 Sensor 2",
+   "fam": "",
+   "node": "o2 sensor signals swapped"
+  },
+  {
+   "code": "P241B",
+   "brand": "",
+   "ru": "Перепутаны сигналы лямбда-зондов 1 и 2 (банк 2)",
+   "en": "O2 Sensor Signals Swapped Bank 2 Sensor 1/Bank 2 Sensor 2",
+   "fam": "",
+   "node": "o2 sensor signals swapped"
+  },
+  {
+   "code": "P241C",
+   "brand": "",
+   "ru": "Привод дросселя: обледенение (банк 2)",
+   "en": "Throttle Actuator Control System - Ice Blockage Bank 2",
+   "fam": "",
+   "node": "throttle actuator control system ice blockage"
+  },
+  {
+   "code": "P241D",
+   "brand": "",
+   "ru": "Принуждение SCR (нет мочевины) — принудительная остановка двигателя",
+   "en": "SCR Inducement - Forced Engine Shutdown",
+   "fam": "",
+   "node": "scr inducement forced engine shutdown"
+  },
+  {
+   "code": "P241F",
+   "brand": "",
+   "ru": "Эффективность радиатора EGR B ниже порога",
+   "en": "EGR Cooler B Efficiency Below Threshold",
+   "fam": "",
+   "node": "egr cooler b efficiency below threshold"
+  },
+  {
+   "code": "P2425",
+   "brand": "",
+   "ru": "Клапан охлаждения EGR: цепь / обрыв",
+   "en": "",
+   "fam": "egr_cooler",
+   "node": "fam:egr_cooler"
+  },
+  {
+   "code": "P2426",
+   "brand": "",
+   "ru": "Клапан охлаждения EGR: низкий уровень",
+   "en": "",
+   "fam": "egr_cooler",
+   "node": "fam:egr_cooler"
+  },
+  {
+   "code": "P2427",
+   "brand": "",
+   "ru": "Клапан охлаждения EGR: высокий уровень",
+   "en": "",
+   "fam": "egr_cooler",
+   "node": "fam:egr_cooler"
+  },
+  {
+   "code": "P2457",
+   "brand": "",
+   "ru": "Охлаждение EGR: эффективность ниже нормы",
+   "en": "",
+   "fam": "egr_cooler",
+   "node": "fam:egr_cooler"
+  },
+  {
+   "code": "P242F",
+   "brand": "",
+   "ru": "Сажевый фильтр забит золой (банк 1)",
+   "en": "Particulate Filter Restriction - Ash Accumulation Bank 1",
+   "fam": "",
+   "node": "particulate filter restriction ash accumulation"
+  },
+  {
+   "code": "P243A",
+   "brand": "",
+   "ru": "Сажевый фильтр забит золой (банк 2)",
+   "en": "Particulate Filter Restriction - Ash Accumulation Bank 2",
+   "fam": "",
+   "node": "particulate filter restriction ash accumulation"
+  },
+  {
+   "code": "P243B",
+   "brand": "",
+   "ru": "Сажевый фильтр забит — принудительное ограничение мощности (банк 2)",
+   "en": "Particulate Filter Restriction - Forced Limited Power Bank 2",
+   "fam": "",
+   "node": "particulate filter restriction forced limited power"
+  },
+  {
+   "code": "P246C",
+   "brand": "",
+   "ru": "Сажевый фильтр забит — принудительное ограничение мощности (банк 1)",
+   "en": "Particulate Filter Restriction - Forced Limited Power Bank 1",
+   "fam": "",
+   "node": "particulate filter restriction forced limited power"
+  },
+  {
+   "code": "P243C",
+   "brand": "",
+   "ru": "Частота регенерации сажевого фильтра (банк 2)",
+   "en": "Particulate Filter Regeneration Frequency Bank 2",
+   "fam": "",
+   "node": "particulate filter regeneration frequency"
+  },
+  {
+   "code": "P243D",
+   "brand": "",
+   "ru": "Длительность регенерации сажевого фильтра (банк 2)",
+   "en": "Particulate Filter Regeneration Duration Bank 2",
+   "fam": "",
+   "node": "particulate filter regeneration duration"
+  },
+  {
+   "code": "P243E",
+   "brand": "",
+   "ru": "Регенерация сажевого фильтра не завершена (банк 2)",
+   "en": "Particulate Filter Regeneration Incomplete Bank 2",
+   "fam": "",
+   "node": "particulate filter regeneration incomplete"
+  },
+  {
+   "code": "P24A2",
+   "brand": "",
+   "ru": "Регенерация сажевого фильтра не завершена (банк 1)",
+   "en": "Particulate Filter Regeneration Incomplete Bank 1",
+   "fam": "",
+   "node": "particulate filter regeneration incomplete"
+  },
+  {
+   "code": "P243F",
+   "brand": "",
+   "ru": "Сажевый фильтр: накопление сажи: слишком высокое значение (банк 2)",
+   "en": "Particulate Filter Restriction - Soot Accumulation Too High Bank 2",
+   "fam": "",
+   "node": "particulate filter restriction soot accumulation too"
+  },
+  {
+   "code": "P24A4",
+   "brand": "",
+   "ru": "Сажевый фильтр: накопление сажи: слишком высокое значение (банк 1)",
+   "en": "Particulate Filter Restriction - Soot Accumulation Too High Bank 1",
+   "fam": "",
+   "node": "particulate filter restriction soot accumulation too"
+  },
+  {
+   "code": "P244A",
+   "brand": "",
+   "ru": "Перепад на сажевом фильтре: слишком низкое давление (банк 1)",
+   "en": "Particulate Filter Differential Pressure Too Low Bank 1",
+   "fam": "",
+   "node": "particulate filter differential pressure too"
+  },
+  {
+   "code": "P244B",
+   "brand": "",
+   "ru": "Перепад на сажевом фильтре: слишком высокое давление (банк 1)",
+   "en": "Particulate Filter Differential Pressure Too High Bank 1",
+   "fam": "",
+   "node": "particulate filter differential pressure too"
+  },
+  {
+   "code": "P2464",
+   "brand": "",
+   "ru": "Перепад на сажевом фильтре: слишком низкое давление (банк 2)",
+   "en": "Particulate Filter Differential Pressure Too Low Bank 2",
+   "fam": "",
+   "node": "particulate filter differential pressure too"
+  },
+  {
+   "code": "P2465",
+   "brand": "",
+   "ru": "Перепад на сажевом фильтре: слишком высокое давление (банк 2)",
+   "en": "Particulate Filter Differential Pressure Too High Bank 2",
+   "fam": "",
+   "node": "particulate filter differential pressure too"
+  }
+ ]
+}

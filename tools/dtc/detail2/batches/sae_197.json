@@ -1,0 +1,412 @@
+{
+ "name": "sae_197",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "lost communication with battery charger control module b",
+  "lost communication with battery management control",
+  "lost communication with battery monitor",
+  "lost communication with brake blending actuator",
+  "lost communication with brake system control module b",
+  "lost communication with catalyst heater control",
+  "lost communication with charge air cooler coolant pump b",
+  "lost communication with column lock",
+  "lost communication with dc dc converter control module c",
+  "lost communication with digital audio control module c",
+  "lost communication with digital audio control module d",
+  "lost communication with door control module h",
+  "lost communication with drive motor a clutch actuator",
+  "lost communication with entrapment control module a",
+  "lost communication with fuel heater control",
+  "lost communication with hybrid ev battery interface control module a",
+  "lost communication with hybrid ev battery interface control module b",
+  "lost communication with hybrid ev battery interface control module c",
+  "lost communication with hybrid ev battery interface control module d",
+  "lost communication with hybrid ev battery interface control module e",
+  "lost communication with hybrid ev battery interface control module f",
+  "lost communication with hybrid ev battery interface control module g",
+  "lost communication with hybrid ev battery interface control module h",
+  "lost communication with hybrid ev battery interface control module i",
+  "lost communication with hybrid ev battery interface control module j",
+  "lost communication with hybrid ev battery interface control module k",
+  "lost communication with hybrid ev battery interface control module l",
+  "lost communication with hybrid ev battery interface control module m",
+  "lost communication with hybrid ev battery interface control module n",
+  "lost communication with hybrid ev battery interface control module o",
+  "lost communication with hybrid ev battery interface control module p",
+  "lost communication with image processing module a",
+  "lost communication with image processing module b",
+  "lost communication with image processing module c",
+  "lost communication with moveable roof control module “b”",
+  "lost communication with object detection maintenance control module a",
+  "lost communication with object detection maintenance control module b",
+  "lost communication with park lock pawl control",
+  "lost communication with particulate matter sensor b",
+  "lost communication with planetary gear set control",
+  "lost communication with switch",
+  "lost communication with wireless accessory charging module a",
+  "lost communication with wireless accessory charging module b"
+ ],
+ "codes": [
+  {
+   "code": "U01A0",
+   "brand": "",
+   "ru": "Нет связи: блок управления тяговой батареей A",
+   "en": "Lost Communication With Hybrid/EV Battery Interface Control Module A",
+   "fam": "",
+   "node": "lost communication with hybrid ev battery interface control module a"
+  },
+  {
+   "code": "U01A1",
+   "brand": "",
+   "ru": "Нет связи: блок управления тяговой батареей B",
+   "en": "Lost Communication With Hybrid/EV Battery Interface Control Module B",
+   "fam": "",
+   "node": "lost communication with hybrid ev battery interface control module b"
+  },
+  {
+   "code": "U01A2",
+   "brand": "",
+   "ru": "Нет связи: блок управления тяговой батареей C",
+   "en": "Lost Communication With Hybrid/EV Battery Interface Control Module C",
+   "fam": "",
+   "node": "lost communication with hybrid ev battery interface control module c"
+  },
+  {
+   "code": "U01A3",
+   "brand": "",
+   "ru": "Нет связи: блок управления тяговой батареей D",
+   "en": "Lost Communication With Hybrid/EV Battery Interface Control Module D",
+   "fam": "",
+   "node": "lost communication with hybrid ev battery interface control module d"
+  },
+  {
+   "code": "U01A4",
+   "brand": "",
+   "ru": "Нет связи: блок управления тяговой батареей E",
+   "en": "Lost Communication With Hybrid/EV Battery Interface Control Module E",
+   "fam": "",
+   "node": "lost communication with hybrid ev battery interface control module e"
+  },
+  {
+   "code": "U01A5",
+   "brand": "",
+   "ru": "Нет связи: блок управления тяговой батареей F",
+   "en": "Lost Communication With Hybrid/EV Battery Interface Control Module F",
+   "fam": "",
+   "node": "lost communication with hybrid ev battery interface control module f"
+  },
+  {
+   "code": "U01A6",
+   "brand": "",
+   "ru": "Нет связи: блок управления тяговой батареей G",
+   "en": "Lost Communication With Hybrid/EV Battery Interface Control Module G",
+   "fam": "",
+   "node": "lost communication with hybrid ev battery interface control module g"
+  },
+  {
+   "code": "U01A7",
+   "brand": "",
+   "ru": "Нет связи: блок управления тяговой батареей H",
+   "en": "Lost Communication With Hybrid/EV Battery Interface Control Module H",
+   "fam": "",
+   "node": "lost communication with hybrid ev battery interface control module h"
+  },
+  {
+   "code": "U01A8",
+   "brand": "",
+   "ru": "Нет связи: блок управления тяговой батареей I",
+   "en": "Lost Communication With Hybrid/EV Battery Interface Control Module I",
+   "fam": "",
+   "node": "lost communication with hybrid ev battery interface control module i"
+  },
+  {
+   "code": "U01A9",
+   "brand": "",
+   "ru": "Нет связи: блок управления тяговой батареей J",
+   "en": "Lost Communication With Hybrid/EV Battery Interface Control Module J",
+   "fam": "",
+   "node": "lost communication with hybrid ev battery interface control module j"
+  },
+  {
+   "code": "U01AA",
+   "brand": "",
+   "ru": "Нет связи: блок управления тяговой батареей K",
+   "en": "Lost Communication With Hybrid/EV Battery Interface Control Module K",
+   "fam": "",
+   "node": "lost communication with hybrid ev battery interface control module k"
+  },
+  {
+   "code": "U01AB",
+   "brand": "",
+   "ru": "Нет связи: блок управления тяговой батареей L",
+   "en": "Lost Communication With Hybrid/EV Battery Interface Control Module L",
+   "fam": "",
+   "node": "lost communication with hybrid ev battery interface control module l"
+  },
+  {
+   "code": "U01AC",
+   "brand": "",
+   "ru": "Нет связи: блок управления тяговой батареей M",
+   "en": "Lost Communication With Hybrid/EV Battery Interface Control Module M",
+   "fam": "",
+   "node": "lost communication with hybrid ev battery interface control module m"
+  },
+  {
+   "code": "U01AD",
+   "brand": "",
+   "ru": "Нет связи: блок управления тяговой батареей N",
+   "en": "Lost Communication With Hybrid/EV Battery Interface Control Module N",
+   "fam": "",
+   "node": "lost communication with hybrid ev battery interface control module n"
+  },
+  {
+   "code": "U01AE",
+   "brand": "",
+   "ru": "Нет связи: блок управления тяговой батареей O",
+   "en": "Lost Communication With Hybrid/EV Battery Interface Control Module O",
+   "fam": "",
+   "node": "lost communication with hybrid ev battery interface control module o"
+  },
+  {
+   "code": "U01AF",
+   "brand": "",
+   "ru": "Нет связи: блок управления тяговой батареей P",
+   "en": "Lost Communication With Hybrid/EV Battery Interface Control Module P",
+   "fam": "",
+   "node": "lost communication with hybrid ev battery interface control module p"
+  },
+  {
+   "code": "U01B0",
+   "brand": "",
+   "ru": "Нет связи: датчик состояния АКБ",
+   "en": "Lost Communication With Battery Monitor Module",
+   "fam": "",
+   "node": "lost communication with battery monitor"
+  },
+  {
+   "code": "U01B1",
+   "brand": "",
+   "ru": "Нет связи: датчик сажи B",
+   "en": "Lost Communication With Particulate Matter Sensor B",
+   "fam": "",
+   "node": "lost communication with particulate matter sensor b"
+  },
+  {
+   "code": "U01B2",
+   "brand": "",
+   "ru": "Нет связи: блок планетарного ряда",
+   "en": "Lost Communication With Planetary Gear Set Control Module",
+   "fam": "",
+   "node": "lost communication with planetary gear set control"
+  },
+  {
+   "code": "U01B3",
+   "brand": "",
+   "ru": "Нет связи: привод смешивания торможения",
+   "en": "Lost Communication With Brake Blending Actuator",
+   "fam": "",
+   "node": "lost communication with brake blending actuator"
+  },
+  {
+   "code": "U01B4",
+   "brand": "",
+   "ru": "Нет связи: блок управления тормозной системой B",
+   "en": "Lost Communication With Brake System Control Module B",
+   "fam": "",
+   "node": "lost communication with brake system control module b"
+  },
+  {
+   "code": "U01B5",
+   "brand": "",
+   "ru": "Нет связи: блок подогрева катализатора",
+   "en": "Lost Communication With Catalyst Heater Control Module",
+   "fam": "",
+   "node": "lost communication with catalyst heater control"
+  },
+  {
+   "code": "U01B6",
+   "brand": "",
+   "ru": "Нет связи: блок подогрева топлива",
+   "en": "Lost Communication With Fuel Heater Control Module",
+   "fam": "",
+   "node": "lost communication with fuel heater control"
+  },
+  {
+   "code": "U01B7",
+   "brand": "",
+   "ru": "Нет связи: блок кнопок A",
+   "en": "Lost Communication With Switch Input Module “A”",
+   "fam": "",
+   "node": "lost communication with switch"
+  },
+  {
+   "code": "U01B8",
+   "brand": "",
+   "ru": "Нет связи: блок кнопок B",
+   "en": "Lost Communication With Switch Input Module “B”",
+   "fam": "",
+   "node": "lost communication with switch"
+  },
+  {
+   "code": "U01B9",
+   "brand": "",
+   "ru": "Нет связи: блок кнопок C",
+   "en": "Lost Communication With Switch Input Module “C”",
+   "fam": "",
+   "node": "lost communication with switch"
+  },
+  {
+   "code": "U01BA",
+   "brand": "",
+   "ru": "Нет связи: блок блокировки «Паркинг»",
+   "en": "Lost Communication With Park Lock/Pawl Control Module",
+   "fam": "",
+   "node": "lost communication with park lock pawl control"
+  },
+  {
+   "code": "U01BB",
+   "brand": "",
+   "ru": "Нет связи: блок управления зарядным устройством B",
+   "en": "Lost Communication With Battery Charger Control Module B",
+   "fam": "",
+   "node": "lost communication with battery charger control module b"
+  },
+  {
+   "code": "U01BC",
+   "brand": "",
+   "ru": "Нет связи: насос охлаждения интеркулера B",
+   "en": "Lost Communication With Charge Air Cooler Coolant Pump B",
+   "fam": "",
+   "node": "lost communication with charge air cooler coolant pump b"
+  },
+  {
+   "code": "U01BD",
+   "brand": "",
+   "ru": "Нет связи: блок управления преобразователем DC/DC C",
+   "en": "Lost Communication With DC/DC Converter Control Module C",
+   "fam": "",
+   "node": "lost communication with dc dc converter control module c"
+  },
+  {
+   "code": "U01BE",
+   "brand": "",
+   "ru": "Нет связи: привод муфты тягового электромотора A",
+   "en": "Lost Communication with Drive Motor A Clutch Actuator",
+   "fam": "",
+   "node": "lost communication with drive motor a clutch actuator"
+  },
+  {
+   "code": "U01BF",
+   "brand": "",
+   "ru": "Нет связи: блок управления батареей (BMS)",
+   "en": "Lost Communication with Battery Management Control Module",
+   "fam": "",
+   "node": "lost communication with battery management control"
+  },
+  {
+   "code": "U020A",
+   "brand": "",
+   "ru": "Нет связи: блок складной крыши B",
+   "en": "Lost Communication With Moveable Roof Control Module “B”",
+   "fam": "",
+   "node": "lost communication with moveable roof control module “b”"
+  },
+  {
+   "code": "U020B",
+   "brand": "",
+   "ru": "Нет связи: блок управления двери H",
+   "en": "Lost Communication With Door Control Module H",
+   "fam": "",
+   "node": "lost communication with door control module h"
+  },
+  {
+   "code": "U020C",
+   "brand": "",
+   "ru": "Нет связи: блок беспроводной зарядки A",
+   "en": "Lost Communication With Wireless Accessory Charging Module A",
+   "fam": "",
+   "node": "lost communication with wireless accessory charging module a"
+  },
+  {
+   "code": "U020D",
+   "brand": "",
+   "ru": "Нет связи: блок беспроводной зарядки B",
+   "en": "Lost Communication With Wireless Accessory Charging Module B",
+   "fam": "",
+   "node": "lost communication with wireless accessory charging module b"
+  },
+  {
+   "code": "U022E",
+   "brand": "",
+   "ru": "Нет связи: блок обслуживания датчиков обнаружения объектов A",
+   "en": "Lost Communication With Object Detection Maintenance Control Module A",
+   "fam": "",
+   "node": "lost communication with object detection maintenance control module a"
+  },
+  {
+   "code": "U022F",
+   "brand": "",
+   "ru": "Нет связи: блок обслуживания датчиков обнаружения объектов B",
+   "en": "Lost Communication With Object Detection Maintenance Control Module B",
+   "fam": "",
+   "node": "lost communication with object detection maintenance control module b"
+  },
+  {
+   "code": "U0236",
+   "brand": "",
+   "ru": "Нет связи: модуль блокировки рулевой колонки",
+   "en": "Lost Communication With Column Lock Module",
+   "fam": "",
+   "node": "lost communication with column lock"
+  },
+  {
+   "code": "U0237",
+   "brand": "",
+   "ru": "Нет связи: блок цифрового аудио C",
+   "en": "Lost Communication With Digital Audio Control Module C",
+   "fam": "",
+   "node": "lost communication with digital audio control module c"
+  },
+  {
+   "code": "U0238",
+   "brand": "",
+   "ru": "Нет связи: блок цифрового аудио D",
+   "en": "Lost Communication With Digital Audio Control Module D",
+   "fam": "",
+   "node": "lost communication with digital audio control module d"
+  },
+  {
+   "code": "U0239",
+   "brand": "",
+   "ru": "Нет связи: блок защиты от защемления A",
+   "en": "Lost Communication With Entrapment Control Module A",
+   "fam": "",
+   "node": "lost communication with entrapment control module a"
+  },
+  {
+   "code": "U023A",
+   "brand": "",
+   "ru": "Нет связи: блок обработки изображения A",
+   "en": "Lost Communication With Image Processing Module A",
+   "fam": "",
+   "node": "lost communication with image processing module a"
+  },
+  {
+   "code": "U023B",
+   "brand": "",
+   "ru": "Нет связи: блок обработки изображения B",
+   "en": "Lost Communication With Image Processing Module B",
+   "fam": "",
+   "node": "lost communication with image processing module b"
+  },
+  {
+   "code": "U023C",
+   "brand": "",
+   "ru": "Нет связи: блок обработки изображения C",
+   "en": "Lost Communication With Image Processing Module C",
+   "fam": "",
+   "node": "lost communication with image processing module c"
+  }
+ ]
+}

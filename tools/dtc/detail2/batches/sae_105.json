@@ -1,0 +1,354 @@
+{
+ "name": "sae_105",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "14 volt power module internal temperature too",
+  "drive motor inverter temperature sensor b",
+  "electric auxiliary transmission fluid pump a hydraulic leakage",
+  "electric auxiliary transmission fluid pump a motor supply voltage",
+  "electric auxiliary transmission fluid pump motor control",
+  "electric auxiliary transmission fluid pump motor phase u current",
+  "electric auxiliary transmission fluid pump motor phase v current",
+  "electric auxiliary transmission fluid pump motor phase w current",
+  "hybrid ev battery pack current sensor a b correlation",
+  "hybrid ev battery pack current sensor b",
+  "hybrid ev battery pack temperature too",
+  "hybrid ev battery pack voltage sense b",
+  "hybrid ev battery pack voltage sense c",
+  "hybrid ev battery system voltage",
+  "hybrid ev battery system voltage too",
+  "hybrid ev battery system voltage unstable",
+  "system voltage too"
+ ],
+ "codes": [
+  {
+   "code": "P0AF2",
+   "brand": "",
+   "ru": "Датчик температуры инвертора тягового электромотора B: цепь",
+   "en": "Drive Motor Inverter Temperature Sensor B Circuit",
+   "fam": "",
+   "node": "drive motor inverter temperature sensor b"
+  },
+  {
+   "code": "P0AF3",
+   "brand": "",
+   "ru": "Датчик температуры инвертора тягового электромотора B: сигнал вне диапазона",
+   "en": "Drive Motor Inverter Temperature Sensor B Circuit Range/Performance",
+   "fam": "",
+   "node": "drive motor inverter temperature sensor b"
+  },
+  {
+   "code": "P0AF4",
+   "brand": "",
+   "ru": "Датчик температуры инвертора тягового электромотора B: низкий уровень сигнала в цепи",
+   "en": "Drive Motor Inverter Temperature Sensor B Circuit Low",
+   "fam": "",
+   "node": "drive motor inverter temperature sensor b"
+  },
+  {
+   "code": "P0AF5",
+   "brand": "",
+   "ru": "Датчик температуры инвертора тягового электромотора B: высокий уровень сигнала в цепи",
+   "en": "Drive Motor Inverter Temperature Sensor B Circuit High",
+   "fam": "",
+   "node": "drive motor inverter temperature sensor b"
+  },
+  {
+   "code": "P0AF6",
+   "brand": "",
+   "ru": "Датчик температуры инвертора тягового электромотора B: прерывистый / нестабильный сигнал",
+   "en": "Drive Motor Inverter Temperature Sensor B Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "drive motor inverter temperature sensor b"
+  },
+  {
+   "code": "P0AF7",
+   "brand": "",
+   "ru": "Модуль питания 14 В: слишком высокая внутренняя температура",
+   "en": "14 Volt Power Module Internal Temperature Too High",
+   "fam": "",
+   "node": "14 volt power module internal temperature too"
+  },
+  {
+   "code": "P0AF8",
+   "brand": "",
+   "ru": "Напряжение системы тяговой батареи",
+   "en": "Hybrid/EV Battery System Voltage",
+   "fam": "",
+   "node": "hybrid ev battery system voltage"
+  },
+  {
+   "code": "P0AF9",
+   "brand": "",
+   "ru": "Напряжение системы тяговой батареи нестабильно",
+   "en": "Hybrid/EV Battery System Voltage Unstable",
+   "fam": "",
+   "node": "hybrid ev battery system voltage unstable"
+  },
+  {
+   "code": "P0AFD",
+   "brand": "",
+   "ru": "Тяговая батарея: слишком низкая температура",
+   "en": "Hybrid/EV Battery Pack Temperature Too Low",
+   "fam": "",
+   "node": "hybrid ev battery pack temperature too"
+  },
+  {
+   "code": "P0AFE",
+   "brand": "",
+   "ru": "Напряжение тяговой батареи слишком низкое для повышающего преобразования",
+   "en": "Hybrid/EV Battery System Voltage Too Low for Voltage Step Up Conversion",
+   "fam": "",
+   "node": "hybrid ev battery system voltage too"
+  },
+  {
+   "code": "P0AFF",
+   "brand": "",
+   "ru": "Напряжение системы слишком низкое для понижающего преобразования",
+   "en": "System Voltage Too Low for Voltage Step Down Conversion",
+   "fam": "",
+   "node": "system voltage too"
+  },
+  {
+   "code": "P0B00",
+   "brand": "",
+   "ru": "Мотор доп. насоса масла КПП, фаза U: ток",
+   "en": "Electric/Auxiliary Transmission Fluid Pump Motor Phase U Current",
+   "fam": "",
+   "node": "electric auxiliary transmission fluid pump motor phase u current"
+  },
+  {
+   "code": "P0B01",
+   "brand": "",
+   "ru": "Мотор доп. насоса масла КПП, фаза U: малый ток",
+   "en": "Electric/Auxiliary Transmission Fluid Pump Motor Phase U Current Low",
+   "fam": "",
+   "node": "electric auxiliary transmission fluid pump motor phase u current"
+  },
+  {
+   "code": "P0B02",
+   "brand": "",
+   "ru": "Мотор доп. насоса масла КПП, фаза U: большой ток",
+   "en": "Electric/Auxiliary Transmission Fluid Pump Motor Phase U Current High",
+   "fam": "",
+   "node": "electric auxiliary transmission fluid pump motor phase u current"
+  },
+  {
+   "code": "P0B03",
+   "brand": "",
+   "ru": "Мотор доп. насоса масла КПП, фаза V: ток",
+   "en": "Electric/Auxiliary Transmission Fluid Pump Motor Phase V Current",
+   "fam": "",
+   "node": "electric auxiliary transmission fluid pump motor phase v current"
+  },
+  {
+   "code": "P0B04",
+   "brand": "",
+   "ru": "Мотор доп. насоса масла КПП, фаза V: малый ток",
+   "en": "Electric/Auxiliary Transmission Fluid Pump Motor Phase V Current Low",
+   "fam": "",
+   "node": "electric auxiliary transmission fluid pump motor phase v current"
+  },
+  {
+   "code": "P0B05",
+   "brand": "",
+   "ru": "Мотор доп. насоса масла КПП, фаза V: большой ток",
+   "en": "Electric/Auxiliary Transmission Fluid Pump Motor Phase V Current High",
+   "fam": "",
+   "node": "electric auxiliary transmission fluid pump motor phase v current"
+  },
+  {
+   "code": "P0B06",
+   "brand": "",
+   "ru": "Мотор доп. насоса масла КПП, фаза W: ток",
+   "en": "Electric/Auxiliary Transmission Fluid Pump Motor Phase W Current",
+   "fam": "",
+   "node": "electric auxiliary transmission fluid pump motor phase w current"
+  },
+  {
+   "code": "P0B07",
+   "brand": "",
+   "ru": "Мотор доп. насоса масла КПП, фаза W: малый ток",
+   "en": "Electric/Auxiliary Transmission Fluid Pump Motor Phase W Current Low",
+   "fam": "",
+   "node": "electric auxiliary transmission fluid pump motor phase w current"
+  },
+  {
+   "code": "P0B08",
+   "brand": "",
+   "ru": "Мотор доп. насоса масла КПП, фаза W: большой ток",
+   "en": "Electric/Auxiliary Transmission Fluid Pump Motor Phase W Current High",
+   "fam": "",
+   "node": "electric auxiliary transmission fluid pump motor phase w current"
+  },
+  {
+   "code": "P0B09",
+   "brand": "",
+   "ru": "Мотор доп. насоса масла КПП A: обрыв цепи питания",
+   "en": "Electric/Auxiliary Transmission Fluid Pump A Motor Supply Voltage Circuit/Open",
+   "fam": "",
+   "node": "electric auxiliary transmission fluid pump a motor supply voltage"
+  },
+  {
+   "code": "P0B0A",
+   "brand": "",
+   "ru": "Мотор доп. насоса масла КПП A: низкое напряжение питания",
+   "en": "Electric/Auxiliary Transmission Fluid Pump A Motor Supply Voltage Circuit Low",
+   "fam": "",
+   "node": "electric auxiliary transmission fluid pump a motor supply voltage"
+  },
+  {
+   "code": "P0B0B",
+   "brand": "",
+   "ru": "Мотор доп. насоса масла КПП A: высокое напряжение питания",
+   "en": "Electric/Auxiliary Transmission Fluid Pump A Motor Supply Voltage Circuit High",
+   "fam": "",
+   "node": "electric auxiliary transmission fluid pump a motor supply voltage"
+  },
+  {
+   "code": "P0B0C",
+   "brand": "",
+   "ru": "Доп. насос масла КПП A: утечка в гидравлике",
+   "en": "Electric/Auxiliary Transmission Fluid Pump A Hydraulic Leakage",
+   "fam": "",
+   "node": "electric auxiliary transmission fluid pump a hydraulic leakage"
+  },
+  {
+   "code": "P0B0D",
+   "brand": "",
+   "ru": "Блок мотора доп. насоса масла КПП",
+   "en": "Electric/Auxiliary Transmission Fluid Pump Motor Control Module",
+   "fam": "",
+   "node": "electric auxiliary transmission fluid pump motor control"
+  },
+  {
+   "code": "P0B0E",
+   "brand": "",
+   "ru": "Датчик тока тяговой батареи B: цепь",
+   "en": "Hybrid/EV Battery Pack Current Sensor B Circuit",
+   "fam": "",
+   "node": "hybrid ev battery pack current sensor b"
+  },
+  {
+   "code": "P0B0F",
+   "brand": "",
+   "ru": "Датчик тока тяговой батареи B: сигнал вне диапазона",
+   "en": "Hybrid/EV Battery Pack Current Sensor B Circuit Range/Performance",
+   "fam": "",
+   "node": "hybrid ev battery pack current sensor b"
+  },
+  {
+   "code": "P0B10",
+   "brand": "",
+   "ru": "Датчик тока тяговой батареи B: низкий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Pack Current Sensor B Circuit Low",
+   "fam": "",
+   "node": "hybrid ev battery pack current sensor b"
+  },
+  {
+   "code": "P0B11",
+   "brand": "",
+   "ru": "Датчик тока тяговой батареи B: высокий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Pack Current Sensor B Circuit High",
+   "fam": "",
+   "node": "hybrid ev battery pack current sensor b"
+  },
+  {
+   "code": "P0B12",
+   "brand": "",
+   "ru": "Датчик тока тяговой батареи B: прерывистый / нестабильный сигнал",
+   "en": "Hybrid/EV Battery Pack Current Sensor B Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "hybrid ev battery pack current sensor b"
+  },
+  {
+   "code": "P0B13",
+   "brand": "",
+   "ru": "Датчик тока тяговой батареи: рассогласование A/B",
+   "en": "Hybrid/EV Battery Pack Current Sensor A/B Correlation",
+   "fam": "",
+   "node": "hybrid ev battery pack current sensor a b correlation"
+  },
+  {
+   "code": "P0B14",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения блока B: цепь",
+   "en": "Hybrid/EV Battery Pack Voltage Sense B Circuit",
+   "fam": "",
+   "node": "hybrid ev battery pack voltage sense b"
+  },
+  {
+   "code": "P0B15",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения блока B: сигнал вне диапазона",
+   "en": "Hybrid/EV Battery Pack Voltage Sense B Circuit Range/Performance",
+   "fam": "",
+   "node": "hybrid ev battery pack voltage sense b"
+  },
+  {
+   "code": "P0B16",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения блока B: низкий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Pack Voltage Sense B Circuit Low",
+   "fam": "",
+   "node": "hybrid ev battery pack voltage sense b"
+  },
+  {
+   "code": "P0B17",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения блока B: высокий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Pack Voltage Sense B Circuit High",
+   "fam": "",
+   "node": "hybrid ev battery pack voltage sense b"
+  },
+  {
+   "code": "P0B18",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения блока B: прерывистый / нестабильный сигнал",
+   "en": "Hybrid/EV Battery Pack Voltage Sense B Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "hybrid ev battery pack voltage sense b"
+  },
+  {
+   "code": "P0B19",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения блока C: цепь",
+   "en": "Hybrid/EV Battery Pack Voltage Sense C Circuit",
+   "fam": "",
+   "node": "hybrid ev battery pack voltage sense c"
+  },
+  {
+   "code": "P0B1A",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения блока C: сигнал вне диапазона",
+   "en": "Hybrid/EV Battery Pack Voltage Sense C Circuit Range/Performance",
+   "fam": "",
+   "node": "hybrid ev battery pack voltage sense c"
+  },
+  {
+   "code": "P0B1B",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения блока C: низкий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Pack Voltage Sense C Circuit Low",
+   "fam": "",
+   "node": "hybrid ev battery pack voltage sense c"
+  },
+  {
+   "code": "P0B1C",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения блока C: высокий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Pack Voltage Sense C Circuit High",
+   "fam": "",
+   "node": "hybrid ev battery pack voltage sense c"
+  },
+  {
+   "code": "P0B1D",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения блока C: прерывистый / нестабильный сигнал",
+   "en": "Hybrid/EV Battery Pack Voltage Sense C Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "hybrid ev battery pack voltage sense c"
+  }
+ ]
+}

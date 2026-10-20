@@ -1,0 +1,408 @@
+{
+ "name": "sae_136",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "injector b",
+  "nox adsorber over temperature",
+  "reductant control module power relay relays",
+  "reductant control module supply voltage",
+  "reductant heater relay",
+  "reductant quality module",
+  "reductant quality module supply voltage"
+ ],
+ "codes": [
+  {
+   "code": "P21B4",
+   "brand": "",
+   "ru": "Перегрев накопительного катализатора NOx (банк 1)",
+   "en": "NOx Adsorber - Over Temperature Bank 1",
+   "fam": "",
+   "node": "nox adsorber over temperature"
+  },
+  {
+   "code": "P21B5",
+   "brand": "",
+   "ru": "Перегрев накопительного катализатора NOx (банк 2)",
+   "en": "NOx Adsorber - Over Temperature Bank 2",
+   "fam": "",
+   "node": "nox adsorber over temperature"
+  },
+  {
+   "code": "P21C2",
+   "brand": "",
+   "ru": "Реле подогрева мочевины: обрыв цепи управления",
+   "en": "Reductant Heater Relay Control Circuit/Open",
+   "fam": "",
+   "node": "reductant heater relay"
+  },
+  {
+   "code": "P21C3",
+   "brand": "",
+   "ru": "Реле подогрева мочевины: низкий уровень в цепи управления",
+   "en": "Reductant Heater Relay Control Circuit Low",
+   "fam": "",
+   "node": "reductant heater relay"
+  },
+  {
+   "code": "P21C4",
+   "brand": "",
+   "ru": "Реле подогрева мочевины: высокий уровень в цепи управления",
+   "en": "Reductant Heater Relay Control Circuit High",
+   "fam": "",
+   "node": "reductant heater relay"
+  },
+  {
+   "code": "P21C7",
+   "brand": "",
+   "ru": "Реле питания блока системы мочевины: обрыв цепи управления",
+   "en": "Reductant Control Module Power Relay/Relays Control Circuit/Open",
+   "fam": "",
+   "node": "reductant control module power relay relays"
+  },
+  {
+   "code": "P21C8",
+   "brand": "",
+   "ru": "Реле питания блока системы мочевины: низкий уровень в цепи управления",
+   "en": "Reductant Control Module Power Relay/Relays Control Circuit Low",
+   "fam": "",
+   "node": "reductant control module power relay relays"
+  },
+  {
+   "code": "P21C9",
+   "brand": "",
+   "ru": "Реле питания блока системы мочевины: высокий уровень в цепи управления",
+   "en": "Reductant Control Module Power Relay/Relays Control Circuit High",
+   "fam": "",
+   "node": "reductant control module power relay relays"
+  },
+  {
+   "code": "P21CA",
+   "brand": "",
+   "ru": "Блок управления системой мочевины: цепь питания",
+   "en": "Reductant Control Module Supply Voltage Circuit",
+   "fam": "",
+   "node": "reductant control module supply voltage"
+  },
+  {
+   "code": "P21CB",
+   "brand": "",
+   "ru": "Блок управления системой мочевины: низкое напряжение питания",
+   "en": "Reductant Control Module Supply Voltage Low",
+   "fam": "",
+   "node": "reductant control module supply voltage"
+  },
+  {
+   "code": "P21CC",
+   "brand": "",
+   "ru": "Блок управления системой мочевины: высокое напряжение питания",
+   "en": "Reductant Control Module Supply Voltage High",
+   "fam": "",
+   "node": "reductant control module supply voltage"
+  },
+  {
+   "code": "P21CD",
+   "brand": "",
+   "ru": "Модуль качества мочевины: низкое напряжение питания",
+   "en": "Reductant Quality Module Supply Voltage Low",
+   "fam": "",
+   "node": "reductant quality module supply voltage"
+  },
+  {
+   "code": "P21CE",
+   "brand": "",
+   "ru": "Модуль качества мочевины: работа нарушена",
+   "en": "Reductant Quality Module Performance",
+   "fam": "",
+   "node": "reductant quality module"
+  },
+  {
+   "code": "P21CF",
+   "brand": "",
+   "ru": "Форсунка цилиндра 1 B: обрыв цепи",
+   "en": "Cylinder 1 Injector B Circuit/Open",
+   "fam": "",
+   "node": "injector b"
+  },
+  {
+   "code": "P21D0",
+   "brand": "",
+   "ru": "Форсунка цилиндра 2 B: обрыв цепи",
+   "en": "Cylinder 2 Injector B Circuit/Open",
+   "fam": "",
+   "node": "injector b"
+  },
+  {
+   "code": "P21D1",
+   "brand": "",
+   "ru": "Форсунка цилиндра 3 B: обрыв цепи",
+   "en": "Cylinder 3 Injector B Circuit/Open",
+   "fam": "",
+   "node": "injector b"
+  },
+  {
+   "code": "P21D2",
+   "brand": "",
+   "ru": "Форсунка цилиндра 4 B: обрыв цепи",
+   "en": "Cylinder 4 Injector B Circuit/Open",
+   "fam": "",
+   "node": "injector b"
+  },
+  {
+   "code": "P21D3",
+   "brand": "",
+   "ru": "Форсунка цилиндра 5 B: обрыв цепи",
+   "en": "Cylinder 5 Injector B Circuit/Open",
+   "fam": "",
+   "node": "injector b"
+  },
+  {
+   "code": "P21D4",
+   "brand": "",
+   "ru": "Форсунка цилиндра 6 B: обрыв цепи",
+   "en": "Cylinder 6 Injector B Circuit/Open",
+   "fam": "",
+   "node": "injector b"
+  },
+  {
+   "code": "P21D5",
+   "brand": "",
+   "ru": "Форсунка цилиндра 7 B: обрыв цепи",
+   "en": "Cylinder 7 Injector B Circuit/Open",
+   "fam": "",
+   "node": "injector b"
+  },
+  {
+   "code": "P21D6",
+   "brand": "",
+   "ru": "Форсунка цилиндра 8 B: обрыв цепи",
+   "en": "Cylinder 8 Injector B Circuit/Open",
+   "fam": "",
+   "node": "injector b"
+  },
+  {
+   "code": "P21D7",
+   "brand": "",
+   "ru": "Форсунка цилиндра 9 B: обрыв цепи",
+   "en": "Cylinder 9 Injector B Circuit/Open",
+   "fam": "",
+   "node": "injector b"
+  },
+  {
+   "code": "P21D8",
+   "brand": "",
+   "ru": "Форсунка цилиндра 10 B: обрыв цепи",
+   "en": "Cylinder 10 Injector B Circuit/Open",
+   "fam": "",
+   "node": "injector b"
+  },
+  {
+   "code": "P21D9",
+   "brand": "",
+   "ru": "Форсунка цилиндра 11 B: обрыв цепи",
+   "en": "Cylinder 11 Injector B Circuit/Open",
+   "fam": "",
+   "node": "injector b"
+  },
+  {
+   "code": "P21DA",
+   "brand": "",
+   "ru": "Форсунка цилиндра 12 B: обрыв цепи",
+   "en": "Cylinder 12 Injector B Circuit/Open",
+   "fam": "",
+   "node": "injector b"
+  },
+  {
+   "code": "P21DB",
+   "brand": "",
+   "ru": "Форсунка цилиндра 1 B: низкий уровень сигнала в цепи",
+   "en": "Cylinder 1 Injector B Circuit Low",
+   "fam": "",
+   "node": "injector b"
+  },
+  {
+   "code": "P21DC",
+   "brand": "",
+   "ru": "Форсунка цилиндра 1 B: высокий уровень сигнала в цепи",
+   "en": "Cylinder 1 Injector B Circuit High",
+   "fam": "",
+   "node": "injector b"
+  },
+  {
+   "code": "P21DE",
+   "brand": "",
+   "ru": "Форсунка цилиндра 2 B: низкий уровень сигнала в цепи",
+   "en": "Cylinder 2 Injector B Circuit Low",
+   "fam": "",
+   "node": "injector b"
+  },
+  {
+   "code": "P21DF",
+   "brand": "",
+   "ru": "Форсунка цилиндра 2 B: высокий уровень сигнала в цепи",
+   "en": "Cylinder 2 Injector B Circuit High",
+   "fam": "",
+   "node": "injector b"
+  },
+  {
+   "code": "P21E0",
+   "brand": "",
+   "ru": "Форсунка цилиндра 3 B: низкий уровень сигнала в цепи",
+   "en": "Cylinder 3 Injector B Circuit Low",
+   "fam": "",
+   "node": "injector b"
+  },
+  {
+   "code": "P21E1",
+   "brand": "",
+   "ru": "Форсунка цилиндра 3 B: высокий уровень сигнала в цепи",
+   "en": "Cylinder 3 Injector B Circuit High",
+   "fam": "",
+   "node": "injector b"
+  },
+  {
+   "code": "P21E2",
+   "brand": "",
+   "ru": "Форсунка цилиндра 4 B: низкий уровень сигнала в цепи",
+   "en": "Cylinder 4 Injector B Circuit Low",
+   "fam": "",
+   "node": "injector b"
+  },
+  {
+   "code": "P21E3",
+   "brand": "",
+   "ru": "Форсунка цилиндра 4 B: высокий уровень сигнала в цепи",
+   "en": "Cylinder 4 Injector B Circuit High",
+   "fam": "",
+   "node": "injector b"
+  },
+  {
+   "code": "P21E4",
+   "brand": "",
+   "ru": "Форсунка цилиндра 5 B: низкий уровень сигнала в цепи",
+   "en": "Cylinder 5 Injector B Circuit Low",
+   "fam": "",
+   "node": "injector b"
+  },
+  {
+   "code": "P21E5",
+   "brand": "",
+   "ru": "Форсунка цилиндра 5 B: высокий уровень сигнала в цепи",
+   "en": "Cylinder 5 Injector B Circuit High",
+   "fam": "",
+   "node": "injector b"
+  },
+  {
+   "code": "P21E6",
+   "brand": "",
+   "ru": "Форсунка цилиндра 6 B: низкий уровень сигнала в цепи",
+   "en": "Cylinder 6 Injector B Circuit Low",
+   "fam": "",
+   "node": "injector b"
+  },
+  {
+   "code": "P21E7",
+   "brand": "",
+   "ru": "Форсунка цилиндра 6 B: высокий уровень сигнала в цепи",
+   "en": "Cylinder 6 Injector B Circuit High",
+   "fam": "",
+   "node": "injector b"
+  },
+  {
+   "code": "P21E8",
+   "brand": "",
+   "ru": "Форсунка цилиндра 7 B: низкий уровень сигнала в цепи",
+   "en": "Cylinder 7 Injector B Circuit Low",
+   "fam": "",
+   "node": "injector b"
+  },
+  {
+   "code": "P21E9",
+   "brand": "",
+   "ru": "Форсунка цилиндра 7 B: высокий уровень сигнала в цепи",
+   "en": "Cylinder 7 Injector B Circuit High",
+   "fam": "",
+   "node": "injector b"
+  },
+  {
+   "code": "P21EA",
+   "brand": "",
+   "ru": "Форсунка цилиндра 8 B: низкий уровень сигнала в цепи",
+   "en": "Cylinder 8 Injector B Circuit Low",
+   "fam": "",
+   "node": "injector b"
+  },
+  {
+   "code": "P21EB",
+   "brand": "",
+   "ru": "Форсунка цилиндра 8 B: высокий уровень сигнала в цепи",
+   "en": "Cylinder 8 Injector B Circuit High",
+   "fam": "",
+   "node": "injector b"
+  },
+  {
+   "code": "P21EC",
+   "brand": "",
+   "ru": "Форсунка цилиндра 9 B: низкий уровень сигнала в цепи",
+   "en": "Cylinder 9 Injector B Circuit Low",
+   "fam": "",
+   "node": "injector b"
+  },
+  {
+   "code": "P21ED",
+   "brand": "",
+   "ru": "Форсунка цилиндра 9 B: высокий уровень сигнала в цепи",
+   "en": "Cylinder 9 Injector B Circuit High",
+   "fam": "",
+   "node": "injector b"
+  },
+  {
+   "code": "P21EE",
+   "brand": "",
+   "ru": "Форсунка цилиндра 10 B: низкий уровень сигнала в цепи",
+   "en": "Cylinder 10 Injector B Circuit Low",
+   "fam": "",
+   "node": "injector b"
+  },
+  {
+   "code": "P21EF",
+   "brand": "",
+   "ru": "Форсунка цилиндра 10 B: высокий уровень сигнала в цепи",
+   "en": "Cylinder 10 Injector B Circuit High",
+   "fam": "",
+   "node": "injector b"
+  },
+  {
+   "code": "P21F0",
+   "brand": "",
+   "ru": "Форсунка цилиндра 11 B: низкий уровень сигнала в цепи",
+   "en": "Cylinder 11 Injector B Circuit Low",
+   "fam": "",
+   "node": "injector b"
+  },
+  {
+   "code": "P21F1",
+   "brand": "",
+   "ru": "Форсунка цилиндра 11 B: высокий уровень сигнала в цепи",
+   "en": "Cylinder 11 Injector B Circuit High",
+   "fam": "",
+   "node": "injector b"
+  },
+  {
+   "code": "P21F2",
+   "brand": "",
+   "ru": "Форсунка цилиндра 12 B: низкий уровень сигнала в цепи",
+   "en": "Cylinder 12 Injector B Circuit Low",
+   "fam": "",
+   "node": "injector b"
+  },
+  {
+   "code": "P21F3",
+   "brand": "",
+   "ru": "Форсунка цилиндра 12 B: высокий уровень сигнала в цепи",
+   "en": "Cylinder 12 Injector B Circuit High",
+   "fam": "",
+   "node": "injector b"
+  }
+ ]
+}

@@ -1,0 +1,387 @@
+{
+ "name": "sae_080",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "cold start diesel intake air flow control",
+  "control module wake up",
+  "engine oil pressure",
+  "engine restart",
+  "engine rpm",
+  "engine starter",
+  "fuel injector control module requested mil illumination",
+  "glow plug control",
+  "glow plug control module",
+  "glow plug control module 1 memory checksum error",
+  "glow plug control module 2 memory checksum error",
+  "glow plug control module 2 system voltage",
+  "glow plug control module 2 to pcm communication",
+  "nox sensor processor",
+  "reductant control module internal temperature",
+  "reductant control module internal temperature sensor",
+  "sensor power supply c",
+  "stop start mode lamp"
+ ],
+ "codes": [
+  {
+   "code": "P06DA",
+   "brand": "",
+   "ru": "Давление масла двигателя: обрыв цепи управления",
+   "en": "Engine Oil Pressure Control Circuit/Open",
+   "fam": "",
+   "node": "engine oil pressure"
+  },
+  {
+   "code": "P06DB",
+   "brand": "",
+   "ru": "Давление масла двигателя: низкий уровень в цепи управления",
+   "en": "Engine Oil Pressure Control Circuit Low",
+   "fam": "",
+   "node": "engine oil pressure"
+  },
+  {
+   "code": "P06DC",
+   "brand": "",
+   "ru": "Давление масла двигателя: высокий уровень в цепи управления",
+   "en": "Engine Oil Pressure Control Circuit High",
+   "fam": "",
+   "node": "engine oil pressure"
+  },
+  {
+   "code": "P06DD",
+   "brand": "",
+   "ru": "Давление масла двигателя: цепь управления: работа нарушена / не включается",
+   "en": "Engine Oil Pressure Control Circuit Performance/Stuck Off",
+   "fam": "",
+   "node": "engine oil pressure"
+  },
+  {
+   "code": "P06DE",
+   "brand": "",
+   "ru": "Управление давлением масла: постоянно включено",
+   "en": "Engine Oil Pressure Control Circuit Stuck On",
+   "fam": "",
+   "node": "engine oil pressure"
+  },
+  {
+   "code": "P06DF",
+   "brand": "",
+   "ru": "Блок свечей накаливания 1: ошибка контрольной суммы памяти",
+   "en": "Glow Plug Control Module 1 Memory Checksum Error",
+   "fam": "",
+   "node": "glow plug control module 1 memory checksum error"
+  },
+  {
+   "code": "P06E4",
+   "brand": "",
+   "ru": "Пробуждение блока управления: нарушена работа цепи",
+   "en": "Control Module Wake-up Circuit Performance",
+   "fam": "",
+   "node": "control module wake up"
+  },
+  {
+   "code": "P24EF",
+   "brand": "",
+   "ru": "Пробуждение блока управления: обрыв цепи",
+   "en": "Control Module Wake-up Circuit/Open",
+   "fam": "",
+   "node": "control module wake up"
+  },
+  {
+   "code": "P24F0",
+   "brand": "",
+   "ru": "Пробуждение блока управления: низкий уровень сигнала в цепи",
+   "en": "Control Module Wake-up Circuit Low",
+   "fam": "",
+   "node": "control module wake up"
+  },
+  {
+   "code": "P24F1",
+   "brand": "",
+   "ru": "Пробуждение блока управления: высокий уровень сигнала в цепи",
+   "en": "Control Module Wake-up Circuit High",
+   "fam": "",
+   "node": "control module wake up"
+  },
+  {
+   "code": "U301A",
+   "brand": "",
+   "ru": "Пробуждение блока управления A: обрыв цепи",
+   "en": "Control Module Wake-up Circuit A/Open",
+   "fam": "",
+   "node": "control module wake up"
+  },
+  {
+   "code": "U301B",
+   "brand": "",
+   "ru": "Цепь пробуждения блока управления A: низкий уровень",
+   "en": "Control Module Wake-up Circuit A Low",
+   "fam": "",
+   "node": "control module wake up"
+  },
+  {
+   "code": "U301C",
+   "brand": "",
+   "ru": "Цепь пробуждения блока управления A: высокий уровень",
+   "en": "Control Module Wake-up Circuit A High",
+   "fam": "",
+   "node": "control module wake up"
+  },
+  {
+   "code": "U301D",
+   "brand": "",
+   "ru": "Цепь пробуждения блока управления A: работа нарушена",
+   "en": "Control Module Wake-up Circuit A Performance",
+   "fam": "",
+   "node": "control module wake up"
+  },
+  {
+   "code": "U301E",
+   "brand": "",
+   "ru": "Пробуждение блока управления B: обрыв цепи",
+   "en": "Control Module Wake-up Circuit B/Open",
+   "fam": "",
+   "node": "control module wake up"
+  },
+  {
+   "code": "U301F",
+   "brand": "",
+   "ru": "Цепь пробуждения блока управления B: низкий уровень",
+   "en": "Control Module Wake-up Circuit B Low",
+   "fam": "",
+   "node": "control module wake up"
+  },
+  {
+   "code": "U3020",
+   "brand": "",
+   "ru": "Цепь пробуждения блока управления B: высокий уровень",
+   "en": "Control Module Wake-up Circuit B High",
+   "fam": "",
+   "node": "control module wake up"
+  },
+  {
+   "code": "U3021",
+   "brand": "",
+   "ru": "Цепь пробуждения блока управления B: работа нарушена",
+   "en": "Control Module Wake-up Circuit B Performance",
+   "fam": "",
+   "node": "control module wake up"
+  },
+  {
+   "code": "P06E5",
+   "brand": "",
+   "ru": "Блок управления свечами накаливания 1: работа нарушена",
+   "en": "Glow Plug Control Module 1 Performance",
+   "fam": "",
+   "node": "glow plug control module"
+  },
+  {
+   "code": "P06F6",
+   "brand": "",
+   "ru": "Блок управления свечами накаливания 2: обрыв цепи управления",
+   "en": "Glow Plug Control Module 2 Control Circuit/Open",
+   "fam": "",
+   "node": "glow plug control module"
+  },
+  {
+   "code": "P06F7",
+   "brand": "",
+   "ru": "Блок управления свечами накаливания 2: низкий уровень в цепи управления",
+   "en": "Glow Plug Control Module 2 Control Circuit Low",
+   "fam": "",
+   "node": "glow plug control module"
+  },
+  {
+   "code": "P06F8",
+   "brand": "",
+   "ru": "Блок управления свечами накаливания 2: высокий уровень в цепи управления",
+   "en": "Glow Plug Control Module 2 Control Circuit High",
+   "fam": "",
+   "node": "glow plug control module"
+  },
+  {
+   "code": "P06FA",
+   "brand": "",
+   "ru": "Блок управления свечами накаливания 2: работа нарушена",
+   "en": "Glow Plug Control Module 2 Performance",
+   "fam": "",
+   "node": "glow plug control module"
+  },
+  {
+   "code": "P06E6",
+   "brand": "",
+   "ru": "Питание датчиков C: обрыв цепи",
+   "en": "Sensor Power Supply C Circuit/Open",
+   "fam": "",
+   "node": "sensor power supply c"
+  },
+  {
+   "code": "P06E7",
+   "brand": "",
+   "ru": "Питание датчиков C: низкий уровень сигнала в цепи",
+   "en": "Sensor Power Supply C Circuit Low",
+   "fam": "",
+   "node": "sensor power supply c"
+  },
+  {
+   "code": "P06E8",
+   "brand": "",
+   "ru": "Питание датчиков C: высокий уровень сигнала в цепи",
+   "en": "Sensor Power Supply C Circuit High",
+   "fam": "",
+   "node": "sensor power supply c"
+  },
+  {
+   "code": "P06E9",
+   "brand": "",
+   "ru": "Стартер: работа нарушена",
+   "en": "Engine Starter Performance",
+   "fam": "",
+   "node": "engine starter"
+  },
+  {
+   "code": "P06EA",
+   "brand": "",
+   "ru": "Процессор датчика NOx: работа нарушена (банк 1, датчик 1)",
+   "en": "NOx Sensor Processor Performance Bank 1 Sensor 1",
+   "fam": "",
+   "node": "nox sensor processor"
+  },
+  {
+   "code": "P06EB",
+   "brand": "",
+   "ru": "Процессор датчика NOx: работа нарушена (банк 1, датчик 2)",
+   "en": "NOx Sensor Processor Performance Bank 1 Sensor 2",
+   "fam": "",
+   "node": "nox sensor processor"
+  },
+  {
+   "code": "P23AB",
+   "brand": "",
+   "ru": "Процессор датчика NOx: работа нарушена (банк 1, датчик 3)",
+   "en": "NOx Sensor Processor Performance Bank 1 Sensor 3",
+   "fam": "",
+   "node": "nox sensor processor"
+  },
+  {
+   "code": "P06EC",
+   "brand": "",
+   "ru": "Блок управления форсунками запросил включение Check Engine",
+   "en": "Fuel Injector Control Module Requested MIL Illumination",
+   "fam": "",
+   "node": "fuel injector control module requested mil illumination"
+  },
+  {
+   "code": "P06ED",
+   "brand": "",
+   "ru": "Выход сигнала оборотов: низкий уровень",
+   "en": "Engine RPM Output Circuit Low",
+   "fam": "",
+   "node": "engine rpm"
+  },
+  {
+   "code": "P06EE",
+   "brand": "",
+   "ru": "Выход сигнала оборотов: высокий уровень",
+   "en": "Engine RPM Output Circuit High",
+   "fam": "",
+   "node": "engine rpm"
+  },
+  {
+   "code": "P06EF",
+   "brand": "",
+   "ru": "Повторный пуск двигателя (старт-стоп): работа нарушена",
+   "en": "Engine Restart Performance",
+   "fam": "",
+   "node": "engine restart"
+  },
+  {
+   "code": "P06F0",
+   "brand": "",
+   "ru": "Внутренний датчик температуры блока системы мочевины: цепь",
+   "en": "Reductant Control Module Internal Temperature Sensor Circuit",
+   "fam": "",
+   "node": "reductant control module internal temperature"
+  },
+  {
+   "code": "P06F2",
+   "brand": "",
+   "ru": "Внутренний датчик температуры блока системы мочевины: низкий уровень сигнала в цепи",
+   "en": "Reductant Control Module Internal Temperature Sensor Circuit Low",
+   "fam": "",
+   "node": "reductant control module internal temperature"
+  },
+  {
+   "code": "P06F3",
+   "brand": "",
+   "ru": "Внутренний датчик температуры блока системы мочевины: высокий уровень сигнала в цепи",
+   "en": "Reductant Control Module Internal Temperature Sensor Circuit High",
+   "fam": "",
+   "node": "reductant control module internal temperature"
+  },
+  {
+   "code": "P06F1",
+   "brand": "",
+   "ru": "Внутренний датчик температуры блока системы мочевины: вне допустимого диапазона",
+   "en": "Reductant Control Module Internal Temperature Sensor Range/Performance",
+   "fam": "",
+   "node": "reductant control module internal temperature sensor"
+  },
+  {
+   "code": "P06F4",
+   "brand": "",
+   "ru": "Лампа режима «старт-стоп»: цепь управления",
+   "en": "Stop-Start Mode Lamp Control Circuit",
+   "fam": "",
+   "node": "stop start mode lamp"
+  },
+  {
+   "code": "P06F5",
+   "brand": "",
+   "ru": "Блок управления свечами накаливания 2",
+   "en": "Glow Plug Control Module 2",
+   "fam": "",
+   "node": "glow plug control"
+  },
+  {
+   "code": "P06F9",
+   "brand": "",
+   "ru": "Блок свечей накаливания 2: напряжение питания",
+   "en": "Glow Plug Control Module 2 System Voltage",
+   "fam": "",
+   "node": "glow plug control module 2 system voltage"
+  },
+  {
+   "code": "P06FB",
+   "brand": "",
+   "ru": "Блок свечей накаливания 2: ошибка контрольной суммы памяти",
+   "en": "Glow Plug Control Module 2 Memory Checksum Error",
+   "fam": "",
+   "node": "glow plug control module 2 memory checksum error"
+  },
+  {
+   "code": "P06FC",
+   "brand": "",
+   "ru": "Связь блока свечей накаливания 2 с ЭБУ: цепь",
+   "en": "Glow Plug Control Module 2 to PCM Communication Circuit",
+   "fam": "",
+   "node": "glow plug control module 2 to pcm communication"
+  },
+  {
+   "code": "P06FD",
+   "brand": "",
+   "ru": "Связь блока свечей накаливания 2 с ЭБУ: вне допустимого диапазона",
+   "en": "Glow Plug Control Module 2 to PCM Communication Circuit Range/Performance",
+   "fam": "",
+   "node": "glow plug control module 2 to pcm communication"
+  },
+  {
+   "code": "P06FE",
+   "brand": "",
+   "ru": "Впускная заслонка дизеля при холодном пуске: работа нарушена",
+   "en": "Cold Start Diesel Intake Air Flow Control Performance",
+   "fam": "",
+   "node": "cold start diesel intake air flow control"
+  }
+ ]
+}

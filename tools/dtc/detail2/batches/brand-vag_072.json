@@ -1,0 +1,364 @@
+{
+ "name": "brand-vag_072",
+ "series": "brand",
+ "brand": "vag",
+ "nodes": [
+  "additive pump",
+  "closed throttle position does not close",
+  "closed throttle position switch does not",
+  "evap canister purge solenoid valve",
+  "evap emission control system ldp",
+  "evap emission control system ldp clamped tube detected",
+  "exhaust gas temperature control",
+  "exhaust gas temperature control limit attained",
+  "fuel pump",
+  "fuel pump relay electrical",
+  "idle air",
+  "idle system learned value lower limit attained",
+  "idle system learned value upper limit attained",
+  "intake air system bypass leak detected",
+  "intake camshaft control",
+  "intake manifold changeover",
+  "ru:главное реле",
+  "ru:сигнал аварии от блока подушек",
+  "ru:сигнал нагрузки генератора"
+ ],
+ "codes": [
+  {
+   "code": "P1456",
+   "brand": "vag",
+   "ru": "Регулирование температуры выхлопа (ряд 1): достигнут предел",
+   "en": "Exhaust Gas Temperature Control Bank 1 Limit Attained",
+   "fam": "",
+   "node": "exhaust gas temperature control limit attained"
+  },
+  {
+   "code": "P1460",
+   "brand": "vag",
+   "ru": "Регулирование температуры выхлопа (ряд 2): достигнут предел",
+   "en": "Exhaust Gas Temperature Control Bank 2 Limit Attained",
+   "fam": "",
+   "node": "exhaust gas temperature control limit attained"
+  },
+  {
+   "code": "P1461",
+   "brand": "vag",
+   "ru": "Регулирование температуры выхлопа (ряд 1): выход за диапазон",
+   "en": "Exhaust Gas Temperature Control Bank 1 Range Performance",
+   "fam": "",
+   "node": "exhaust gas temperature control"
+  },
+  {
+   "code": "P1462",
+   "brand": "vag",
+   "ru": "Регулирование температуры выхлопа (ряд 2): выход за диапазон",
+   "en": "Exhaust Gas Temperature Control Bank 2 Range Performance",
+   "fam": "",
+   "node": "exhaust gas temperature control"
+  },
+  {
+   "code": "P1465",
+   "brand": "vag",
+   "ru": "Насос присадки (сажевый фильтр): замыкание на плюс",
+   "en": "Additive Pump Short To B+",
+   "fam": "",
+   "node": "additive pump"
+  },
+  {
+   "code": "P1466",
+   "brand": "vag",
+   "ru": "Насос присадки (сажевый фильтр): обрыв или замыкание на массу",
+   "en": "Additive Pump Open Short To Ground",
+   "fam": "",
+   "node": "additive pump"
+  },
+  {
+   "code": "P1467",
+   "brand": "vag",
+   "ru": "Клапан продувки адсорбера: замыкание на плюс",
+   "en": "EVAP Canister Purge Solenoid Valve Short To B+",
+   "fam": "",
+   "node": "evap canister purge solenoid valve"
+  },
+  {
+   "code": "P1468",
+   "brand": "vag",
+   "ru": "Клапан продувки адсорбера: замыкание на массу",
+   "en": "EVAP Canister Purge Solenoid Valve Short To Ground",
+   "fam": "",
+   "node": "evap canister purge solenoid valve"
+  },
+  {
+   "code": "P1469",
+   "brand": "vag",
+   "ru": "Клапан продувки адсорбера: обрыв",
+   "en": "EVAP Canister Purge Solenoid Valve Open",
+   "fam": "",
+   "node": "evap canister purge solenoid valve"
+  },
+  {
+   "code": "P1470",
+   "brand": "vag",
+   "ru": "Насос проверки герметичности бака (LDP): электрическая неисправность",
+   "en": "EVAP Emission Control System LDP Circuit Electrical Malfunction",
+   "fam": "",
+   "node": "evap emission control system ldp"
+  },
+  {
+   "code": "P1471",
+   "brand": "vag",
+   "ru": "Насос проверки герметичности бака (LDP): замыкание на плюс",
+   "en": "EVAP Emission Control System LDP Circuit Short To B+",
+   "fam": "",
+   "node": "evap emission control system ldp"
+  },
+  {
+   "code": "P1472",
+   "brand": "vag",
+   "ru": "Насос проверки герметичности бака (LDP): замыкание на массу",
+   "en": "EVAP Emission Control System LDP Circuit Short To Ground",
+   "fam": "",
+   "node": "evap emission control system ldp"
+  },
+  {
+   "code": "P1473",
+   "brand": "vag",
+   "ru": "Насос проверки герметичности бака (LDP): обрыв",
+   "en": "EVAP Emission Control System LDP Open Circuit",
+   "fam": "",
+   "node": "evap emission control system ldp"
+  },
+  {
+   "code": "P1475",
+   "brand": "vag",
+   "ru": "Насос LDP: обрыв сигнальной цепи",
+   "en": "EVAP Emission Control System LDP Malfunction Signal Circuit Open",
+   "fam": "",
+   "node": "evap emission control system ldp"
+  },
+  {
+   "code": "P1476",
+   "brand": "vag",
+   "ru": "Насос LDP: недостаточное разрежение",
+   "en": "EVAP Emission Control System LDP Malfunction Insufficient Vacuum",
+   "fam": "",
+   "node": "evap emission control system ldp"
+  },
+  {
+   "code": "P1477",
+   "brand": "vag",
+   "ru": "Насос LDP: неисправность",
+   "en": "EVAP Emission Control System LDP Malfunction",
+   "fam": "",
+   "node": "evap emission control system ldp"
+  },
+  {
+   "code": "P1478",
+   "brand": "vag",
+   "ru": "Насос LDP: пережат шланг",
+   "en": "EVAP Emission Control System LDP Clamped Tube Detected",
+   "fam": "",
+   "node": "evap emission control system ldp clamped tube detected"
+  },
+  {
+   "code": "P1500",
+   "brand": "vag",
+   "ru": "Реле топливного насоса: электрическая неисправность",
+   "en": "Fuel Pump Relay Electrical Circuit Malfunction",
+   "fam": "",
+   "node": "fuel pump relay electrical"
+  },
+  {
+   "code": "P1501",
+   "brand": "vag",
+   "ru": "Реле топливного насоса: замыкание на массу",
+   "en": "Fuel Pump Relay Circuit Short To Ground",
+   "fam": "",
+   "node": "fuel pump"
+  },
+  {
+   "code": "P1502",
+   "brand": "vag",
+   "ru": "Реле топливного насоса: замыкание на плюс",
+   "en": "Fuel Pump Relay Circuit Short To B+",
+   "fam": "",
+   "node": "fuel pump"
+  },
+  {
+   "code": "P1541",
+   "brand": "vag",
+   "ru": "Реле топливного насоса: обрыв цепи",
+   "en": "Fuel Pump Relay Circuit Open",
+   "fam": "",
+   "node": "fuel pump"
+  },
+  {
+   "code": "P1503",
+   "brand": "vag",
+   "ru": "Сигнал нагрузки генератора: выход за диапазон",
+   "en": "Load Signal From Generator Range Performance",
+   "fam": "",
+   "node": "ru:сигнал нагрузки генератора"
+  },
+  {
+   "code": "P1504",
+   "brand": "vag",
+   "ru": "Подсос воздуха в обход (впуск)",
+   "en": "Intake Air System Bypass Leak Detected",
+   "fam": "",
+   "node": "intake air system bypass leak detected"
+  },
+  {
+   "code": "P1505",
+   "brand": "vag",
+   "ru": "Выключатель холостого хода не замыкается: обрыв",
+   "en": "Closed Throttle Position Does Not Close Open Circuit",
+   "fam": "",
+   "node": "closed throttle position does not close"
+  },
+  {
+   "code": "P1506",
+   "brand": "vag",
+   "ru": "Выключатель холостого хода не размыкается: замыкание на массу",
+   "en": "Closed Throttle Position Switch Does Not Open Short To Ground",
+   "fam": "",
+   "node": "closed throttle position switch does not"
+  },
+  {
+   "code": "P1507",
+   "brand": "vag",
+   "ru": "Обучение холостого хода: достигнут нижний предел",
+   "en": "Idle System Learned Value Lower Limit Attained",
+   "fam": "",
+   "node": "idle system learned value lower limit attained"
+  },
+  {
+   "code": "P1508",
+   "brand": "vag",
+   "ru": "Обучение холостого хода: достигнут верхний предел",
+   "en": "Idle System Learned Value Upper Limit Attained",
+   "fam": "",
+   "node": "idle system learned value upper limit attained"
+  },
+  {
+   "code": "P1509",
+   "brand": "vag",
+   "ru": "Регулятор холостого хода: электрическая неисправность",
+   "en": "Idle Air Control Circuit Electrical Malfunction",
+   "fam": "",
+   "node": "idle air"
+  },
+  {
+   "code": "P1510",
+   "brand": "vag",
+   "ru": "Регулятор холостого хода: замыкание на плюс",
+   "en": "Idle Air Control Circuit Short To B+",
+   "fam": "",
+   "node": "idle air"
+  },
+  {
+   "code": "P1511",
+   "brand": "vag",
+   "ru": "Клапан переключения впускного коллектора: электрическая неисправность",
+   "en": "Intake Manifold Changeover Valve Circuit Electrical Malfunction",
+   "fam": "",
+   "node": "intake manifold changeover"
+  },
+  {
+   "code": "P1512",
+   "brand": "vag",
+   "ru": "Клапан переключения впускного коллектора: замыкание на плюс",
+   "en": "Intake Manifold Changeover Valve Circuit Short To B+",
+   "fam": "",
+   "node": "intake manifold changeover"
+  },
+  {
+   "code": "P1513",
+   "brand": "vag",
+   "ru": "Клапан 2 переключения впускного коллектора: замыкание на плюс",
+   "en": "Intake Manifold Changeover Valve 2 Circuit Short To B+",
+   "fam": "",
+   "node": "intake manifold changeover"
+  },
+  {
+   "code": "P1514",
+   "brand": "vag",
+   "ru": "Клапан 2 переключения впускного коллектора: замыкание на массу",
+   "en": "Intake Manifold Changeover Valve 2 Circuit Short To Ground",
+   "fam": "",
+   "node": "intake manifold changeover"
+  },
+  {
+   "code": "P1515",
+   "brand": "vag",
+   "ru": "Клапан переключения впускного коллектора: замыкание на массу",
+   "en": "Intake Manifold Changeover Valve Circuit Short To Ground",
+   "fam": "",
+   "node": "intake manifold changeover"
+  },
+  {
+   "code": "P1516",
+   "brand": "vag",
+   "ru": "Клапан переключения впускного коллектора: обрыв",
+   "en": "Intake Manifold Changeover Valve Circuit Open",
+   "fam": "",
+   "node": "intake manifold changeover"
+  },
+  {
+   "code": "P1520",
+   "brand": "vag",
+   "ru": "Клапан 2 переключения впускного коллектора: обрыв",
+   "en": "Intake Manifold Changeover Valve 2 Circuit Open",
+   "fam": "",
+   "node": "intake manifold changeover"
+  },
+  {
+   "code": "P1521",
+   "brand": "vag",
+   "ru": "Клапан 2 переключения впускного коллектора: электрическая неисправность",
+   "en": "Intake Manifold Changeover Valve 2 Circuit Electrical Malfunction",
+   "fam": "",
+   "node": "intake manifold changeover"
+  },
+  {
+   "code": "P1517",
+   "brand": "vag",
+   "ru": "Главное реле: электрическая неисправность",
+   "en": "Main Relay Circuit Electrical Malfunction",
+   "fam": "",
+   "node": "ru:главное реле"
+  },
+  {
+   "code": "P1518",
+   "brand": "vag",
+   "ru": "Главное реле: замыкание на плюс",
+   "en": "Main Relay Circuit Short To B+",
+   "fam": "",
+   "node": "ru:главное реле"
+  },
+  {
+   "code": "P1519",
+   "brand": "vag",
+   "ru": "Регулирование впускного распредвала (ряд 1): неисправность",
+   "en": "Intake Camshaft Control Bank 1 Malfunction",
+   "fam": "",
+   "node": "intake camshaft control"
+  },
+  {
+   "code": "P1522",
+   "brand": "vag",
+   "ru": "Регулирование впускного распредвала (ряд 2): неисправность",
+   "en": "Intake Camshaft Control Bank 2 Malfunction",
+   "fam": "",
+   "node": "intake camshaft control"
+  },
+  {
+   "code": "P1523",
+   "brand": "vag",
+   "ru": "Сигнал аварии от блока подушек: выход за диапазон",
+   "en": "Crash Signal From Airbag Control Unit Range Performance",
+   "fam": "",
+   "node": "ru:сигнал аварии от блока подушек"
+  }
+ ]
+}

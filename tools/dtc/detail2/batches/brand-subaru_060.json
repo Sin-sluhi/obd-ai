@@ -1,0 +1,388 @@
+{
+ "name": "brand-subaru_060",
+ "series": "brand",
+ "brand": "subaru",
+ "nodes": [
+  "automatic transmission diagnosis",
+  "back up voltage",
+  "cooling fan",
+  "cruise control set",
+  "evap control system vent control function problem",
+  "evap purge control solenoid",
+  "evap vent control",
+  "exhaust gas recirculation",
+  "exhaust temperature sensor",
+  "fire due to increased exhaust temperature",
+  "front oxygen sensor",
+  "fuel level",
+  "fuel level pressure",
+  "fuel pump control unit",
+  "fuel tank pressure control solenoid",
+  "fuel tank pressure control system",
+  "idle air control solenoid",
+  "idle control system",
+  "pressure",
+  "radiator fan",
+  "radiator fan function problem",
+  "rear oxygen sensor",
+  "ru:датчик детонации",
+  "ru:обнаружена высокая температура выхлопа",
+  "throttle position",
+  "vehicle speed sensor",
+  "wastegate control solenoid valve"
+ ],
+ "codes": [
+  {
+   "code": "P1143",
+   "brand": "subaru",
+   "ru": "Датчик давления: низкий сигнал",
+   "en": "Pressure Sensor Circuit Low Input",
+   "fam": "",
+   "node": "pressure"
+  },
+  {
+   "code": "P1144",
+   "brand": "subaru",
+   "ru": "Датчик давления: высокий сигнал",
+   "en": "Pressure Sensor Circuit High Input",
+   "fam": "",
+   "node": "pressure"
+  },
+  {
+   "code": "P1146",
+   "brand": "subaru",
+   "ru": "Датчик давления: выход за диапазон, высокий сигнал",
+   "en": "Pressure Sensor Circuit Range Performance Problem High Input",
+   "fam": "",
+   "node": "pressure"
+  },
+  {
+   "code": "P1150",
+   "brand": "subaru",
+   "ru": "Подогрев переднего лямбда-зонда: высокий сигнал",
+   "en": "Front Oxygen Sensor Heater Circuit High Input",
+   "fam": "",
+   "node": "front oxygen sensor"
+  },
+  {
+   "code": "P1151",
+   "brand": "subaru",
+   "ru": "Подогрев заднего лямбда-зонда: высокий сигнал",
+   "en": "Rear Oxygen Sensor Heater Circuit High Input",
+   "fam": "",
+   "node": "rear oxygen sensor"
+  },
+  {
+   "code": "P1230",
+   "brand": "subaru",
+   "ru": "Блок управления топливным насосом: неисправность",
+   "en": "Fuel Pump Control Unit Malfunction",
+   "fam": "",
+   "node": "fuel pump control unit"
+  },
+  {
+   "code": "P1244",
+   "brand": "subaru",
+   "ru": "Клапан управления вестгейтом: неисправность, низкий сигнал",
+   "en": "Wastegate Control Solenoid Valve Malfunction Low Input",
+   "fam": "",
+   "node": "wastegate control solenoid valve"
+  },
+  {
+   "code": "P1245",
+   "brand": "subaru",
+   "ru": "Клапан управления вестгейтом: неисправность, аварийный режим",
+   "en": "Wastegate Control Solenoid Valve Malfunction Fail Safe",
+   "fam": "",
+   "node": "wastegate control solenoid valve"
+  },
+  {
+   "code": "P1301",
+   "brand": "subaru",
+   "ru": "Пропуски из-за повышенной температуры выхлопа",
+   "en": "Fire Due To Increased Exhaust Temperature",
+   "fam": "",
+   "node": "fire due to increased exhaust temperature"
+  },
+  {
+   "code": "P1312",
+   "brand": "subaru",
+   "ru": "Датчик температуры выхлопа: неисправность",
+   "en": "Exhaust Temperature Sensor Malfunction",
+   "fam": "",
+   "node": "exhaust temperature sensor"
+  },
+  {
+   "code": "P1325",
+   "brand": "subaru",
+   "ru": "Датчик детонации: низкий сигнал",
+   "en": "Knock Sensor Circuit Low Input",
+   "fam": "",
+   "node": "ru:датчик детонации"
+  },
+  {
+   "code": "P1400",
+   "brand": "subaru",
+   "ru": "Клапан регулирования давления в баке: низкий сигнал",
+   "en": "Fuel Tank Pressure Control Solenoid Low Input",
+   "fam": "",
+   "node": "fuel tank pressure control solenoid"
+  },
+  {
+   "code": "P1420",
+   "brand": "subaru",
+   "ru": "Клапан регулирования давления в баке: высокий сигнал",
+   "en": "Fuel Tank Pressure Control Solenoid High Input",
+   "fam": "",
+   "node": "fuel tank pressure control solenoid"
+  },
+  {
+   "code": "P1401",
+   "brand": "subaru",
+   "ru": "Регулирование давления в баке: работа",
+   "en": "Fuel Tank Pressure Control System Performance",
+   "fam": "",
+   "node": "fuel tank pressure control system"
+  },
+  {
+   "code": "P1440",
+   "brand": "subaru",
+   "ru": "Регулирование давления в баке: низкий сигнал",
+   "en": "Fuel Tank Pressure Control System Low Input",
+   "fam": "",
+   "node": "fuel tank pressure control system"
+  },
+  {
+   "code": "P1441",
+   "brand": "subaru",
+   "ru": "Регулирование давления в баке: высокий сигнал",
+   "en": "Fuel Tank Pressure Control System High Input",
+   "fam": "",
+   "node": "fuel tank pressure control system"
+  },
+  {
+   "code": "P1402",
+   "brand": "subaru",
+   "ru": "Датчик давления / уровня топлива: неисправность цепи",
+   "en": "Fuel Level Pressure Sensor Circuit Fault",
+   "fam": "",
+   "node": "fuel level pressure"
+  },
+  {
+   "code": "P1421",
+   "brand": "subaru",
+   "ru": "ЕГР: высокий сигнал цепи",
+   "en": "Exhaust Gas Recirculation Circuit High Input",
+   "fam": "",
+   "node": "exhaust gas recirculation"
+  },
+  {
+   "code": "P1422",
+   "brand": "subaru",
+   "ru": "Клапан продувки адсорбера: высокий сигнал цепи",
+   "en": "EVAP Purge Control Solenoid Valve Circuit High Input",
+   "fam": "",
+   "node": "evap purge control solenoid"
+  },
+  {
+   "code": "P1423",
+   "brand": "subaru",
+   "ru": "Вентиляция адсорбера: высокий сигнал",
+   "en": "EVAP Vent Control High Input",
+   "fam": "",
+   "node": "evap vent control"
+  },
+  {
+   "code": "P1442",
+   "brand": "subaru",
+   "ru": "Датчик уровня топлива: выход за диапазон",
+   "en": "Fuel Level Sensor Circuit Range Performance",
+   "fam": "",
+   "node": "fuel level"
+  },
+  {
+   "code": "P1443",
+   "brand": "subaru",
+   "ru": "Система улавливания паров: неисправность вентиляции",
+   "en": "EVAP Control System Vent Control Function Problem",
+   "fam": "",
+   "node": "evap control system vent control function problem"
+  },
+  {
+   "code": "P1480",
+   "brand": "subaru",
+   "ru": "Реле вентилятора 1: высокий сигнал цепи",
+   "en": "Cooling Fan Relay 1 Circuit High Input",
+   "fam": "",
+   "node": "cooling fan"
+  },
+  {
+   "code": "P1500",
+   "brand": "subaru",
+   "ru": "Реле вентилятора радиатора 1: неисправность цепи",
+   "en": "Radiator Fan Relay 1 Circuit Malfunction",
+   "fam": "",
+   "node": "radiator fan"
+  },
+  {
+   "code": "P1520",
+   "brand": "subaru",
+   "ru": "Реле вентилятора радиатора 1: высокий сигнал",
+   "en": "Radiator Fan Relay 1 Circuit High Input",
+   "fam": "",
+   "node": "radiator fan"
+  },
+  {
+   "code": "P1501",
+   "brand": "subaru",
+   "ru": "Система холостого хода: неисправность, аварийный режим",
+   "en": "Idle Control System Malfunction Fail Safe",
+   "fam": "",
+   "node": "idle control system"
+  },
+  {
+   "code": "P1507",
+   "brand": "subaru",
+   "ru": "Система холостого хода: неисправность, аварийный режим",
+   "en": "Idle Control System Malfunction Fail Safe",
+   "fam": "",
+   "node": "idle control system"
+  },
+  {
+   "code": "P1502",
+   "brand": "subaru",
+   "ru": "Вентилятор радиатора: неисправность работы",
+   "en": "Radiator Fan Function Problem",
+   "fam": "",
+   "node": "radiator fan function problem"
+  },
+  {
+   "code": "P1510",
+   "brand": "subaru",
+   "ru": "Регулятор холостого хода, сигнал 1: низкий",
+   "en": "Idle Air Control Solenoid Signal 1 Circuit Low Input",
+   "fam": "",
+   "node": "idle air control solenoid"
+  },
+  {
+   "code": "P1511",
+   "brand": "subaru",
+   "ru": "Регулятор холостого хода, сигнал 1: высокий",
+   "en": "Idle Air Control Solenoid Signal 1 Circuit High Input",
+   "fam": "",
+   "node": "idle air control solenoid"
+  },
+  {
+   "code": "P1512",
+   "brand": "subaru",
+   "ru": "Регулятор холостого хода, сигнал 2: низкий",
+   "en": "Idle Air Control Solenoid Signal 2 Circuit Low Input",
+   "fam": "",
+   "node": "idle air control solenoid"
+  },
+  {
+   "code": "P1513",
+   "brand": "subaru",
+   "ru": "Регулятор холостого хода, сигнал 2: высокий",
+   "en": "Idle Air Control Solenoid Signal 2 Circuit High Input",
+   "fam": "",
+   "node": "idle air control solenoid"
+  },
+  {
+   "code": "P1514",
+   "brand": "subaru",
+   "ru": "Регулятор холостого хода, сигнал 3: низкий",
+   "en": "Idle Air Control Solenoid Signal 3 Circuit Low Input",
+   "fam": "",
+   "node": "idle air control solenoid"
+  },
+  {
+   "code": "P1515",
+   "brand": "subaru",
+   "ru": "Регулятор холостого хода, сигнал 3: высокий",
+   "en": "Idle Air Control Solenoid Signal 3 Circuit High Input",
+   "fam": "",
+   "node": "idle air control solenoid"
+  },
+  {
+   "code": "P1516",
+   "brand": "subaru",
+   "ru": "Регулятор холостого хода, сигнал 4: низкий",
+   "en": "Idle Air Control Solenoid Signal 4 Circuit Low Input",
+   "fam": "",
+   "node": "idle air control solenoid"
+  },
+  {
+   "code": "P1517",
+   "brand": "subaru",
+   "ru": "Регулятор холостого хода, сигнал 4: высокий",
+   "en": "Idle Air Control Solenoid Signal 4 Circuit High Input",
+   "fam": "",
+   "node": "idle air control solenoid"
+  },
+  {
+   "code": "P1540",
+   "brand": "subaru",
+   "ru": "Датчик скорости: неисправность",
+   "en": "Vehicle Speed Sensor Malfunction",
+   "fam": "",
+   "node": "vehicle speed sensor"
+  },
+  {
+   "code": "P1544",
+   "brand": "subaru",
+   "ru": "Обнаружена высокая температура выхлопа",
+   "en": "High Exhaust Temperature Detected",
+   "fam": "",
+   "node": "ru:обнаружена высокая температура выхлопа"
+  },
+  {
+   "code": "P1560",
+   "brand": "subaru",
+   "ru": "Цепь резервного питания: неисправность",
+   "en": "Back-Up Voltage Circuit Malfunction",
+   "fam": "",
+   "node": "back up voltage"
+  },
+  {
+   "code": "P1594",
+   "brand": "subaru",
+   "ru": "Сигнал диагностики АКПП: неисправность цепи",
+   "en": "Automatic Transmission Diagnosis Input Signal Circuit Malfunction",
+   "fam": "",
+   "node": "automatic transmission diagnosis"
+  },
+  {
+   "code": "P1595",
+   "brand": "subaru",
+   "ru": "Сигнал диагностики АКПП: низкий",
+   "en": "Automatic Transmission Diagnosis Input Signal Circuit Low Input",
+   "fam": "",
+   "node": "automatic transmission diagnosis"
+  },
+  {
+   "code": "P1596",
+   "brand": "subaru",
+   "ru": "Сигнал диагностики АКПП: высокий",
+   "en": "Automatic Transmission Diagnosis Input Signal Circuit High Input",
+   "fam": "",
+   "node": "automatic transmission diagnosis"
+  },
+  {
+   "code": "P1700",
+   "brand": "subaru",
+   "ru": "Датчик положения дросселя для АКПП: неисправность цепи",
+   "en": "Throttle Position Sensor Circuit Malfunction AT",
+   "fam": "",
+   "node": "throttle position"
+  },
+  {
+   "code": "P1701",
+   "brand": "subaru",
+   "ru": "Сигнал установки круиз-контроля для АКПП: неисправность цепи",
+   "en": "Cruise Control Set Signal Circuit Malfunction AT",
+   "fam": "",
+   "node": "cruise control set"
+  }
+ ]
+}

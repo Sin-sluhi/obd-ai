@@ -1,0 +1,366 @@
+{
+ "name": "sae_092",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "cold start transmission",
+  "excessive clutch b slippage",
+  "fam:awd",
+  "fam:trans_slip",
+  "gear 10 incorrect ratio",
+  "gear lever x position",
+  "neutral",
+  "ru:вход «паркинг»",
+  "ru:застревание на передаче (не указано)",
+  "ru:застревание на передаче 10",
+  "ru:застревание на передаче 9",
+  "starter disable",
+  "upshift skip shift solenoid"
+ ],
+ "codes": [
+  {
+   "code": "P07F7",
+   "brand": "",
+   "ru": "10-я передача: неверное передаточное отношение",
+   "en": "Gear 10 Incorrect Ratio",
+   "fam": "",
+   "node": "gear 10 incorrect ratio"
+  },
+  {
+   "code": "P07F8",
+   "brand": "",
+   "ru": "Застревание на передаче 9",
+   "en": "Stuck in Gear 9",
+   "fam": "",
+   "node": "ru:застревание на передаче 9"
+  },
+  {
+   "code": "P07FB",
+   "brand": "",
+   "ru": "Застревание на передаче 10",
+   "en": "Stuck in Gear 10",
+   "fam": "",
+   "node": "ru:застревание на передаче 10"
+  },
+  {
+   "code": "P07FE",
+   "brand": "",
+   "ru": "Застревание на передаче (не указано)",
+   "en": "Stuck In Gear - Not Specified",
+   "fam": "",
+   "node": "ru:застревание на передаче (не указано)"
+  },
+  {
+   "code": "P07FF",
+   "brand": "",
+   "ru": "КПП при холодном пуске: работа нарушена",
+   "en": "Cold Start Transmission Performance",
+   "fam": "",
+   "node": "cold start transmission"
+  },
+  {
+   "code": "P0800",
+   "brand": "",
+   "ru": "Раздаточная коробка: система управления",
+   "en": "",
+   "fam": "awd",
+   "node": "fam:awd"
+  },
+  {
+   "code": "P0836",
+   "brand": "",
+   "ru": "Переключатель полного привода: цепь",
+   "en": "",
+   "fam": "awd",
+   "node": "fam:awd"
+  },
+  {
+   "code": "P0837",
+   "brand": "",
+   "ru": "Переключатель полного привода: не соответствует",
+   "en": "",
+   "fam": "awd",
+   "node": "fam:awd"
+  },
+  {
+   "code": "P0838",
+   "brand": "",
+   "ru": "Переключатель полного привода: низкий уровень",
+   "en": "",
+   "fam": "awd",
+   "node": "fam:awd"
+  },
+  {
+   "code": "P0839",
+   "brand": "",
+   "ru": "Переключатель полного привода: высокий уровень",
+   "en": "",
+   "fam": "awd",
+   "node": "fam:awd"
+  },
+  {
+   "code": "P2771",
+   "brand": "",
+   "ru": "Переключатель пониженной передачи полного привода: цепь",
+   "en": "",
+   "fam": "awd",
+   "node": "fam:awd"
+  },
+  {
+   "code": "P2772",
+   "brand": "",
+   "ru": "Переключатель пониженной передачи полного привода: не соответствует",
+   "en": "",
+   "fam": "awd",
+   "node": "fam:awd"
+  },
+  {
+   "code": "P2773",
+   "brand": "",
+   "ru": "Переключатель пониженной передачи полного привода: низкий уровень",
+   "en": "",
+   "fam": "awd",
+   "node": "fam:awd"
+  },
+  {
+   "code": "P2774",
+   "brand": "",
+   "ru": "Переключатель пониженной передачи полного привода: высокий уровень",
+   "en": "",
+   "fam": "awd",
+   "node": "fam:awd"
+  },
+  {
+   "code": "P080A",
+   "brand": "",
+   "ru": "Положение сцепления не обучено (робот)",
+   "en": "",
+   "fam": "trans_slip",
+   "node": "fam:trans_slip"
+  },
+  {
+   "code": "P0810",
+   "brand": "",
+   "ru": "Ошибка управления положением сцепления (робот)",
+   "en": "",
+   "fam": "trans_slip",
+   "node": "fam:trans_slip"
+  },
+  {
+   "code": "P0811",
+   "brand": "",
+   "ru": "Чрезмерная пробуксовка сцепления (робот)",
+   "en": "",
+   "fam": "trans_slip",
+   "node": "fam:trans_slip"
+  },
+  {
+   "code": "P0894",
+   "brand": "",
+   "ru": "Пробуксовка элемента коробки",
+   "en": "",
+   "fam": "trans_slip",
+   "node": "fam:trans_slip"
+  },
+  {
+   "code": "P0900",
+   "brand": "",
+   "ru": "Актуатор сцепления (робот): цепь / обрыв",
+   "en": "",
+   "fam": "trans_slip",
+   "node": "fam:trans_slip"
+  },
+  {
+   "code": "P0901",
+   "brand": "",
+   "ru": "Актуатор сцепления (робот): не отрабатывает команду",
+   "en": "",
+   "fam": "trans_slip",
+   "node": "fam:trans_slip"
+  },
+  {
+   "code": "P0902",
+   "brand": "",
+   "ru": "Актуатор сцепления (робот): низкий уровень в цепи",
+   "en": "",
+   "fam": "trans_slip",
+   "node": "fam:trans_slip"
+  },
+  {
+   "code": "P0903",
+   "brand": "",
+   "ru": "Актуатор сцепления (робот): высокий уровень в цепи",
+   "en": "",
+   "fam": "trans_slip",
+   "node": "fam:trans_slip"
+  },
+  {
+   "code": "P0949",
+   "brand": "",
+   "ru": "Адаптация коробки (ASM) не выполнена",
+   "en": "",
+   "fam": "trans_slip",
+   "node": "fam:trans_slip"
+  },
+  {
+   "code": "P2785",
+   "brand": "",
+   "ru": "Актуатор сцепления (робот): перегрев",
+   "en": "",
+   "fam": "trans_slip",
+   "node": "fam:trans_slip"
+  },
+  {
+   "code": "P2787",
+   "brand": "",
+   "ru": "Сцепление (робот): перегрев",
+   "en": "",
+   "fam": "trans_slip",
+   "node": "fam:trans_slip"
+  },
+  {
+   "code": "P2788",
+   "brand": "",
+   "ru": "Адаптация робота на пределе",
+   "en": "",
+   "fam": "trans_slip",
+   "node": "fam:trans_slip"
+  },
+  {
+   "code": "P2789",
+   "brand": "",
+   "ru": "Адаптация сцепления на пределе",
+   "en": "",
+   "fam": "trans_slip",
+   "node": "fam:trans_slip"
+  },
+  {
+   "code": "P080B",
+   "brand": "",
+   "ru": "Соленоид повышения/пропуска передачи: цепь управления вне диапазона",
+   "en": "Upshift/Skip Shift Solenoid Control Circuit Range/Performance",
+   "fam": "",
+   "node": "upshift skip shift solenoid"
+  },
+  {
+   "code": "P080C",
+   "brand": "",
+   "ru": "Соленоид повышения/пропуска передачи: низкий уровень в цепи управления",
+   "en": "Upshift/Skip Shift Solenoid Control Circuit Low",
+   "fam": "",
+   "node": "upshift skip shift solenoid"
+  },
+  {
+   "code": "P080D",
+   "brand": "",
+   "ru": "Соленоид повышения/пропуска передачи: высокий уровень в цепи управления",
+   "en": "Upshift/Skip Shift Solenoid Control Circuit High",
+   "fam": "",
+   "node": "upshift skip shift solenoid"
+  },
+  {
+   "code": "P081A",
+   "brand": "",
+   "ru": "Блокировка стартера: низкий уровень сигнала в цепи",
+   "en": "Starter Disable Circuit Low",
+   "fam": "",
+   "node": "starter disable"
+  },
+  {
+   "code": "P081B",
+   "brand": "",
+   "ru": "Блокировка стартера: высокий уровень сигнала в цепи",
+   "en": "Starter Disable Circuit High",
+   "fam": "",
+   "node": "starter disable"
+  },
+  {
+   "code": "P081C",
+   "brand": "",
+   "ru": "Вход «Паркинг»: цепь",
+   "en": "Park Input Circuit",
+   "fam": "",
+   "node": "ru:вход «паркинг»"
+  },
+  {
+   "code": "P081D",
+   "brand": "",
+   "ru": "Вход «Нейтраль»: цепь",
+   "en": "Neutral Input Circuit",
+   "fam": "",
+   "node": "neutral"
+  },
+  {
+   "code": "P081E",
+   "brand": "",
+   "ru": "Чрезмерное проскальзывание сцепления B",
+   "en": "Excessive Clutch B Slippage",
+   "fam": "",
+   "node": "excessive clutch b slippage"
+  },
+  {
+   "code": "P082A",
+   "brand": "",
+   "ru": "Датчик положения рычага КПП по оси X (датчик 1): сигнал вне диапазона",
+   "en": "Gear Lever X Position Sensor 1 Circuit Range/Performance",
+   "fam": "",
+   "node": "gear lever x position"
+  },
+  {
+   "code": "P082B",
+   "brand": "",
+   "ru": "Датчик положения рычага КПП по оси X (датчик 1): низкий уровень сигнала в цепи",
+   "en": "Gear Lever X Position Sensor 1 Circuit Low",
+   "fam": "",
+   "node": "gear lever x position"
+  },
+  {
+   "code": "P082C",
+   "brand": "",
+   "ru": "Датчик положения рычага КПП по оси X (датчик 1): высокий уровень сигнала в цепи",
+   "en": "Gear Lever X Position Sensor 1 Circuit High",
+   "fam": "",
+   "node": "gear lever x position"
+  },
+  {
+   "code": "P089A",
+   "brand": "",
+   "ru": "Датчик положения рычага КПП по оси X (датчик 2): цепь",
+   "en": "Gear Lever X Position Sensor 2 Circuit",
+   "fam": "",
+   "node": "gear lever x position"
+  },
+  {
+   "code": "P089B",
+   "brand": "",
+   "ru": "Датчик положения рычага КПП по оси X (датчик 2): сигнал вне диапазона",
+   "en": "Gear Lever X Position Sensor 2 Circuit Range/Performance",
+   "fam": "",
+   "node": "gear lever x position"
+  },
+  {
+   "code": "P089C",
+   "brand": "",
+   "ru": "Датчик положения рычага КПП по оси X (датчик 2): низкий уровень сигнала в цепи",
+   "en": "Gear Lever X Position Sensor 2 Circuit Low",
+   "fam": "",
+   "node": "gear lever x position"
+  },
+  {
+   "code": "P089D",
+   "brand": "",
+   "ru": "Датчик положения рычага КПП по оси X (датчик 2): высокий уровень сигнала в цепи",
+   "en": "Gear Lever X Position Sensor 2 Circuit High",
+   "fam": "",
+   "node": "gear lever x position"
+  },
+  {
+   "code": "P089E",
+   "brand": "",
+   "ru": "Датчик положения рычага КПП по оси X (датчик 2): прерывистый / нестабильный сигнал",
+   "en": "Gear Lever X Position Sensor 2 Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "gear lever x position"
+  }
+ ]
+}

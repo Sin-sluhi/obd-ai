@@ -1,0 +1,123 @@
+{
+ "name": "brand-gm_035",
+ "series": "brand",
+ "brand": "gm",
+ "nodes": [
+  "ecm data",
+  "engine torque",
+  "park neutral position switch",
+  "ru:выключатель понижающей 4wd",
+  "shift timing",
+  "tcc enable shift light",
+  "tcc release",
+  "tcc stator temp",
+  "tcm to ecm torque reduction",
+  "throttle position sensor pwm"
+ ],
+ "codes": [
+  {
+   "code": "P1873",
+   "brand": "gm",
+   "ru": "Датчик температуры статора ГДТ: низкий сигнал",
+   "en": "TCC Stator Temp Switch Circuit Low",
+   "fam": "",
+   "node": "tcc stator temp"
+  },
+  {
+   "code": "P1874",
+   "brand": "gm",
+   "ru": "Датчик температуры статора ГДТ: высокий сигнал",
+   "en": "TCC Stator Temp Switch Circuit High",
+   "fam": "",
+   "node": "tcc stator temp"
+  },
+  {
+   "code": "P1875",
+   "brand": "gm",
+   "ru": "Выключатель понижающей 4WD: цепь",
+   "en": "4WD Low Switch Circuit",
+   "fam": "",
+   "node": "ru:выключатель понижающей 4wd"
+  },
+  {
+   "code": "P1884",
+   "brand": "gm",
+   "ru": "Лампа разрешения блокировки ГДТ / переключения: цепь",
+   "en": "TCC Enable Shift Light Circuit",
+   "fam": "",
+   "node": "tcc enable shift light"
+  },
+  {
+   "code": "P1886",
+   "brand": "gm",
+   "ru": "Клапан момента переключения",
+   "en": "Shift Timing Solenoid",
+   "fam": "",
+   "node": "shift timing"
+  },
+  {
+   "code": "P1887",
+   "brand": "gm",
+   "ru": "Выключатель отпускания блокировки ГДТ: цепь",
+   "en": "TCC Release Switch Circuit",
+   "fam": "",
+   "node": "tcc release"
+  },
+  {
+   "code": "P1890",
+   "brand": "gm",
+   "ru": "Вход данных от блока двигателя: цепь",
+   "en": "ECM Data Input Circuit",
+   "fam": "",
+   "node": "ecm data"
+  },
+  {
+   "code": "P1891",
+   "brand": "gm",
+   "ru": "ШИМ-сигнал датчика положения дросселя: низкий",
+   "en": "Throttle Position Sensor PWM Signal Low",
+   "fam": "",
+   "node": "throttle position sensor pwm"
+  },
+  {
+   "code": "P1892",
+   "brand": "gm",
+   "ru": "ШИМ-сигнал датчика положения дросселя: высокий",
+   "en": "Throttle Position Sensor PWM Signal High",
+   "fam": "",
+   "node": "throttle position sensor pwm"
+  },
+  {
+   "code": "P1893",
+   "brand": "gm",
+   "ru": "Сигнал момента двигателя: низкое напряжение",
+   "en": "Engine Torque Signal Low Voltage",
+   "fam": "",
+   "node": "engine torque"
+  },
+  {
+   "code": "P1894",
+   "brand": "gm",
+   "ru": "Сигнал момента двигателя: высокое напряжение",
+   "en": "Engine Torque Signal High Voltage",
+   "fam": "",
+   "node": "engine torque"
+  },
+  {
+   "code": "P1895",
+   "brand": "gm",
+   "ru": "Цепь снижения момента (блок коробки → блок двигателя)",
+   "en": "TCM To ECM Torque Reduction Circuit",
+   "fam": "",
+   "node": "tcm to ecm torque reduction"
+  },
+  {
+   "code": "P1899",
+   "brand": "gm",
+   "ru": "Выключатель P/N застрял в P или на передаче",
+   "en": "Park Neutral Position Switch Stuck In Park or In Gear",
+   "fam": "",
+   "node": "park neutral position switch"
+  }
+ ]
+}

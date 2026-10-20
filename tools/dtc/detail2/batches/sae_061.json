@@ -1,0 +1,384 @@
+{
+ "name": "sae_061",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "catalyst",
+  "catalyst heater supply voltage",
+  "cold start idle control system",
+  "cold start ignition timing",
+  "crankcase ventilation hose connection sensor",
+  "crankcase ventilation system",
+  "egr a control temperature too",
+  "egr actuator a control processor",
+  "evap system",
+  "evap system purge line",
+  "evap system very small leak detected fresh air side",
+  "fam:brake_switch",
+  "fam:iac",
+  "fam:idle",
+  "fam:vss"
+ ],
+ "codes": [
+  {
+   "code": "P04EF",
+   "brand": "",
+   "ru": "EVAP: очень малая утечка со стороны свежего воздуха",
+   "en": "EVAP System Very Small Leak Detected - Fresh Air Side",
+   "fam": "",
+   "node": "evap system very small leak detected fresh air side"
+  },
+  {
+   "code": "P04F0",
+   "brand": "",
+   "ru": "Линия продувки адсорбера при высокой нагрузке A: работа нарушена",
+   "en": "EVAP System High Load Purge Line A Performance",
+   "fam": "",
+   "node": "evap system"
+  },
+  {
+   "code": "P28C3",
+   "brand": "",
+   "ru": "Линия продувки адсорбера при высокой нагрузке B: работа нарушена",
+   "en": "EVAP System High Load Purge Line B Performance",
+   "fam": "",
+   "node": "evap system"
+  },
+  {
+   "code": "P04F1",
+   "brand": "",
+   "ru": "Линия продувки адсорбера: работа нарушена",
+   "en": "EVAP System Purge Line Performance",
+   "fam": "",
+   "node": "evap system purge line"
+  },
+  {
+   "code": "P04F2",
+   "brand": "",
+   "ru": "Питание подогрева катализатора (банк 1)",
+   "en": "Catalyst Heater Supply Voltage Bank 1",
+   "fam": "",
+   "node": "catalyst heater supply voltage"
+  },
+  {
+   "code": "P04F3",
+   "brand": "",
+   "ru": "Питание подогрева катализатора (банк 2)",
+   "en": "Catalyst Heater Supply Voltage Bank 2",
+   "fam": "",
+   "node": "catalyst heater supply voltage"
+  },
+  {
+   "code": "P04F4",
+   "brand": "",
+   "ru": "Подогрев катализатора: низкий уровень сигнала в цепи (банк 1)",
+   "en": "Catalyst Heater Circuit Low Bank 1",
+   "fam": "",
+   "node": "catalyst"
+  },
+  {
+   "code": "P04F5",
+   "brand": "",
+   "ru": "Подогрев катализатора: низкий уровень сигнала в цепи (банк 2)",
+   "en": "Catalyst Heater Circuit Low Bank 2",
+   "fam": "",
+   "node": "catalyst"
+  },
+  {
+   "code": "P04F6",
+   "brand": "",
+   "ru": "Подогрев катализатора: высокий уровень сигнала в цепи (банк 1)",
+   "en": "Catalyst Heater Circuit High Bank 1",
+   "fam": "",
+   "node": "catalyst"
+  },
+  {
+   "code": "P04F7",
+   "brand": "",
+   "ru": "Подогрев катализатора: высокий уровень сигнала в цепи (банк 2)",
+   "en": "Catalyst Heater Circuit High Bank 2",
+   "fam": "",
+   "node": "catalyst"
+  },
+  {
+   "code": "P04F8",
+   "brand": "",
+   "ru": "Подогрев катализатора: прерывистый сигнал в цепи (банк 1)",
+   "en": "Catalyst Heater Circuit Intermittent Bank 1",
+   "fam": "",
+   "node": "catalyst"
+  },
+  {
+   "code": "P04F9",
+   "brand": "",
+   "ru": "Подогрев катализатора: прерывистый сигнал в цепи (банк 2)",
+   "en": "Catalyst Heater Circuit Intermittent Bank 2",
+   "fam": "",
+   "node": "catalyst"
+  },
+  {
+   "code": "P04FE",
+   "brand": "",
+   "ru": "Подогрев катализатора: нарушена работа цепи (банк 1)",
+   "en": "Catalyst Heater Circuit Performance Bank 1",
+   "fam": "",
+   "node": "catalyst"
+  },
+  {
+   "code": "P04FF",
+   "brand": "",
+   "ru": "Подогрев катализатора: нарушена работа цепи (банк 2)",
+   "en": "Catalyst Heater Circuit Performance Bank 2",
+   "fam": "",
+   "node": "catalyst"
+  },
+  {
+   "code": "P04FA",
+   "brand": "",
+   "ru": "Управление EGR A: слишком высокая температура",
+   "en": "EGR A Control Temperature Too High",
+   "fam": "",
+   "node": "egr a control temperature too"
+  },
+  {
+   "code": "P04FB",
+   "brand": "",
+   "ru": "Датчик подключения шланга вентиляции картера: вне допустимого диапазона",
+   "en": "Crankcase Ventilation Hose Connection Sensor Range/Performance",
+   "fam": "",
+   "node": "crankcase ventilation hose connection sensor"
+  },
+  {
+   "code": "P04FC",
+   "brand": "",
+   "ru": "Система вентиляции картера: работа нарушена",
+   "en": "Crankcase Ventilation System Performance",
+   "fam": "",
+   "node": "crankcase ventilation system"
+  },
+  {
+   "code": "P04FD",
+   "brand": "",
+   "ru": "Процессор привода EGR A: работа нарушена",
+   "en": "EGR Actuator A Control Processor Performance",
+   "fam": "",
+   "node": "egr actuator a control processor"
+  },
+  {
+   "code": "P0500",
+   "brand": "",
+   "ru": "Датчик скорости автомобиля A: неисправность",
+   "en": "",
+   "fam": "vss",
+   "node": "fam:vss"
+  },
+  {
+   "code": "P0501",
+   "brand": "",
+   "ru": "Датчик скорости: вне диапазона",
+   "en": "",
+   "fam": "vss",
+   "node": "fam:vss"
+  },
+  {
+   "code": "P0502",
+   "brand": "",
+   "ru": "Датчик скорости: низкий сигнал / нет сигнала",
+   "en": "",
+   "fam": "vss",
+   "node": "fam:vss"
+  },
+  {
+   "code": "P0503",
+   "brand": "",
+   "ru": "Датчик скорости: прерывистый / скачущий сигнал",
+   "en": "",
+   "fam": "vss",
+   "node": "fam:vss"
+  },
+  {
+   "code": "P0608",
+   "brand": "",
+   "ru": "Блок управления: выход сигнала скорости A",
+   "en": "",
+   "fam": "vss",
+   "node": "fam:vss"
+  },
+  {
+   "code": "P0609",
+   "brand": "",
+   "ru": "Блок управления: выход сигнала скорости B",
+   "en": "",
+   "fam": "vss",
+   "node": "fam:vss"
+  },
+  {
+   "code": "P2158",
+   "brand": "",
+   "ru": "Датчик скорости автомобиля B: цепь",
+   "en": "",
+   "fam": "vss",
+   "node": "fam:vss"
+  },
+  {
+   "code": "P2159",
+   "brand": "",
+   "ru": "Датчик скорости автомобиля A: вне диапазона",
+   "en": "",
+   "fam": "vss",
+   "node": "fam:vss"
+  },
+  {
+   "code": "P2160",
+   "brand": "",
+   "ru": "Датчик скорости автомобиля B: вне диапазона",
+   "en": "",
+   "fam": "vss",
+   "node": "fam:vss"
+  },
+  {
+   "code": "P2161",
+   "brand": "",
+   "ru": "Датчик скорости автомобиля B: прерывистый",
+   "en": "",
+   "fam": "vss",
+   "node": "fam:vss"
+  },
+  {
+   "code": "P2162",
+   "brand": "",
+   "ru": "Датчики скорости A и B не согласуются",
+   "en": "",
+   "fam": "vss",
+   "node": "fam:vss"
+  },
+  {
+   "code": "P0504",
+   "brand": "",
+   "ru": "Выключатели педали тормоза A и B не согласуются",
+   "en": "",
+   "fam": "brake_switch",
+   "node": "fam:brake_switch"
+  },
+  {
+   "code": "P0571",
+   "brand": "",
+   "ru": "Выключатель педали тормоза A: цепь",
+   "en": "",
+   "fam": "brake_switch",
+   "node": "fam:brake_switch"
+  },
+  {
+   "code": "P0572",
+   "brand": "",
+   "ru": "Выключатель педали тормоза A: низкий уровень",
+   "en": "",
+   "fam": "brake_switch",
+   "node": "fam:brake_switch"
+  },
+  {
+   "code": "P0573",
+   "brand": "",
+   "ru": "Выключатель педали тормоза A: высокий уровень",
+   "en": "",
+   "fam": "brake_switch",
+   "node": "fam:brake_switch"
+  },
+  {
+   "code": "P0703",
+   "brand": "",
+   "ru": "Выключатель тормоза B (для коробки): цепь",
+   "en": "",
+   "fam": "brake_switch",
+   "node": "fam:brake_switch"
+  },
+  {
+   "code": "P2299",
+   "brand": "",
+   "ru": "Педаль тормоза и педаль газа нажаты одновременно (несовместимо)",
+   "en": "",
+   "fam": "brake_switch",
+   "node": "fam:brake_switch"
+  },
+  {
+   "code": "P0505",
+   "brand": "",
+   "ru": "Система холостого хода: неисправность",
+   "en": "",
+   "fam": "idle",
+   "node": "fam:idle"
+  },
+  {
+   "code": "P0506",
+   "brand": "",
+   "ru": "Обороты холостого хода ниже нормы",
+   "en": "",
+   "fam": "idle",
+   "node": "fam:idle"
+  },
+  {
+   "code": "P0507",
+   "brand": "",
+   "ru": "Обороты холостого хода выше нормы",
+   "en": "",
+   "fam": "idle",
+   "node": "fam:idle"
+  },
+  {
+   "code": "P0519",
+   "brand": "",
+   "ru": "Система холостого хода: не отрабатывает",
+   "en": "",
+   "fam": "idle",
+   "node": "fam:idle"
+  },
+  {
+   "code": "P0508",
+   "brand": "",
+   "ru": "Регулятор холостого хода: низкий уровень в цепи",
+   "en": "",
+   "fam": "iac",
+   "node": "fam:iac"
+  },
+  {
+   "code": "P0509",
+   "brand": "",
+   "ru": "Регулятор холостого хода: высокий уровень в цепи",
+   "en": "",
+   "fam": "iac",
+   "node": "fam:iac"
+  },
+  {
+   "code": "P0511",
+   "brand": "",
+   "ru": "Регулятор холостого хода: цепь",
+   "en": "",
+   "fam": "iac",
+   "node": "fam:iac"
+  },
+  {
+   "code": "P0518",
+   "brand": "",
+   "ru": "Регулятор холостого хода: прерывистая цепь",
+   "en": "",
+   "fam": "iac",
+   "node": "fam:iac"
+  },
+  {
+   "code": "P050A",
+   "brand": "",
+   "ru": "Регулирование холостого хода при холодном пуске: работа нарушена",
+   "en": "Cold Start Idle Control System Performance",
+   "fam": "",
+   "node": "cold start idle control system"
+  },
+  {
+   "code": "P050B",
+   "brand": "",
+   "ru": "Угол зажигания при холодном пуске: работа нарушена",
+   "en": "Cold Start Ignition Timing Performance",
+   "fam": "",
+   "node": "cold start ignition timing"
+  }
+ ]
+}

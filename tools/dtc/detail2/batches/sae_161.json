@@ -1,0 +1,394 @@
+{
+ "name": "sae_161",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "clutch b temperature too",
+  "electric auxiliary transmission fluid pump a pressure too",
+  "electric auxiliary transmission fluid pump b pressure too",
+  "gear shift lock solenoid actuator a",
+  "pressure control solenoid h",
+  "pressure control solenoid j",
+  "pressure control solenoid k",
+  "pressure control solenoid k electrical",
+  "pressure control solenoid t",
+  "pressure control solenoid t electrical",
+  "shift fork a",
+  "shift fork a position sensor incorrect neutral position indicated",
+  "shift fork a unrequested movement",
+  "shift fork b",
+  "shift fork b position",
+  "shift fork b position sensor incorrect neutral position indicated",
+  "shift fork b unrequested movement",
+  "shift fork c",
+  "shift fork c position",
+  "shift fork c position sensor incorrect neutral position indicated",
+  "shift fork c unrequested movement",
+  "shift fork d",
+  "shift fork d position",
+  "shift fork d position sensor incorrect neutral position indicated",
+  "shift fork d unrequested movement"
+ ],
+ "codes": [
+  {
+   "code": "P27D9",
+   "brand": "",
+   "ru": "Соленоид регулирования давления АКПП T: работа нарушена / не включается",
+   "en": "Pressure Control Solenoid T Performance/Stuck Off",
+   "fam": "",
+   "node": "pressure control solenoid t"
+  },
+  {
+   "code": "P27DA",
+   "brand": "",
+   "ru": "Соленоид регулирования давления АКПП T: постоянно включён",
+   "en": "Pressure Control Solenoid T Stuck On",
+   "fam": "",
+   "node": "pressure control solenoid t"
+  },
+  {
+   "code": "P27DC",
+   "brand": "",
+   "ru": "Соленоид регулирования давления АКПП T: прерывистый сигнал",
+   "en": "Pressure Control Solenoid T Intermittent",
+   "fam": "",
+   "node": "pressure control solenoid t"
+  },
+  {
+   "code": "P27DD",
+   "brand": "",
+   "ru": "Соленоид регулирования давления АКПП T: обрыв цепи управления",
+   "en": "Pressure Control Solenoid T Control Circuit/Open",
+   "fam": "",
+   "node": "pressure control solenoid t"
+  },
+  {
+   "code": "P27DE",
+   "brand": "",
+   "ru": "Соленоид регулирования давления АКПП T: цепь управления вне диапазона",
+   "en": "Pressure Control Solenoid T Control Circuit Range/Performance",
+   "fam": "",
+   "node": "pressure control solenoid t"
+  },
+  {
+   "code": "P27DF",
+   "brand": "",
+   "ru": "Соленоид регулирования давления АКПП T: низкий уровень в цепи управления",
+   "en": "Pressure Control Solenoid T Control Circuit Low",
+   "fam": "",
+   "node": "pressure control solenoid t"
+  },
+  {
+   "code": "P27E0",
+   "brand": "",
+   "ru": "Соленоид регулирования давления АКПП T: высокий уровень в цепи управления",
+   "en": "Pressure Control Solenoid T Control Circuit High",
+   "fam": "",
+   "node": "pressure control solenoid t"
+  },
+  {
+   "code": "P27DB",
+   "brand": "",
+   "ru": "Соленоид регулирования давления T: электрическая неисправность",
+   "en": "Pressure Control Solenoid T Electrical",
+   "fam": "",
+   "node": "pressure control solenoid t electrical"
+  },
+  {
+   "code": "P27E1",
+   "brand": "",
+   "ru": "Электрический доп. насос масла КПП A: слишком низкое давление",
+   "en": "Electric/Auxiliary Transmission Fluid Pump A Pressure Too Low",
+   "fam": "",
+   "node": "electric auxiliary transmission fluid pump a pressure too"
+  },
+  {
+   "code": "P27E2",
+   "brand": "",
+   "ru": "Электрический доп. насос масла КПП B: слишком низкое давление",
+   "en": "Electric/Auxiliary Transmission Fluid Pump B Pressure Too Low",
+   "fam": "",
+   "node": "electric auxiliary transmission fluid pump b pressure too"
+  },
+  {
+   "code": "P27F3",
+   "brand": "",
+   "ru": "Сцепление B: слишком высокая температура",
+   "en": "Clutch B Temperature Too High",
+   "fam": "",
+   "node": "clutch b temperature too"
+  },
+  {
+   "code": "P27F4",
+   "brand": "",
+   "ru": "Блокировка селектора КПП A: работа нарушена / постоянно включена",
+   "en": "Gear Shift Lock Solenoid/Actuator A Performance/Stuck On",
+   "fam": "",
+   "node": "gear shift lock solenoid actuator a"
+  },
+  {
+   "code": "P27F5",
+   "brand": "",
+   "ru": "Блокировка селектора КПП A: не включается",
+   "en": "Gear Shift Lock Solenoid/Actuator A Stuck Off",
+   "fam": "",
+   "node": "gear shift lock solenoid actuator a"
+  },
+  {
+   "code": "P281A",
+   "brand": "",
+   "ru": "Соленоид регулирования давления АКПП H: прерывистый сигнал",
+   "en": "Pressure Control Solenoid H Intermittent",
+   "fam": "",
+   "node": "pressure control solenoid h"
+  },
+  {
+   "code": "P281B",
+   "brand": "",
+   "ru": "Соленоид регулирования давления АКПП H: обрыв цепи управления",
+   "en": "Pressure Control Solenoid H Control Circuit/Open",
+   "fam": "",
+   "node": "pressure control solenoid h"
+  },
+  {
+   "code": "P281C",
+   "brand": "",
+   "ru": "Соленоид регулирования давления АКПП H: цепь управления вне диапазона",
+   "en": "Pressure Control Solenoid H Control Circuit Range/Performance",
+   "fam": "",
+   "node": "pressure control solenoid h"
+  },
+  {
+   "code": "P281D",
+   "brand": "",
+   "ru": "Соленоид регулирования давления АКПП H: низкий уровень в цепи управления",
+   "en": "Pressure Control Solenoid H Control Circuit Low",
+   "fam": "",
+   "node": "pressure control solenoid h"
+  },
+  {
+   "code": "P281E",
+   "brand": "",
+   "ru": "Соленоид регулирования давления АКПП H: высокий уровень в цепи управления",
+   "en": "Pressure Control Solenoid H Control Circuit High",
+   "fam": "",
+   "node": "pressure control solenoid h"
+  },
+  {
+   "code": "P281F",
+   "brand": "",
+   "ru": "Соленоид регулирования давления АКПП J",
+   "en": "Pressure Control Solenoid J",
+   "fam": "",
+   "node": "pressure control solenoid j"
+  },
+  {
+   "code": "P282A",
+   "brand": "",
+   "ru": "Соленоид регулирования давления АКПП K: постоянно включён",
+   "en": "Pressure Control Solenoid K Stuck On",
+   "fam": "",
+   "node": "pressure control solenoid k"
+  },
+  {
+   "code": "P282C",
+   "brand": "",
+   "ru": "Соленоид регулирования давления АКПП K: прерывистый сигнал",
+   "en": "Pressure Control Solenoid K Intermittent",
+   "fam": "",
+   "node": "pressure control solenoid k"
+  },
+  {
+   "code": "P282D",
+   "brand": "",
+   "ru": "Соленоид регулирования давления АКПП K: обрыв цепи управления",
+   "en": "Pressure Control Solenoid K Control Circuit/Open",
+   "fam": "",
+   "node": "pressure control solenoid k"
+  },
+  {
+   "code": "P282E",
+   "brand": "",
+   "ru": "Соленоид регулирования давления АКПП K: цепь управления вне диапазона",
+   "en": "Pressure Control Solenoid K Control Circuit Range/Performance",
+   "fam": "",
+   "node": "pressure control solenoid k"
+  },
+  {
+   "code": "P282F",
+   "brand": "",
+   "ru": "Соленоид регулирования давления АКПП K: низкий уровень в цепи управления",
+   "en": "Pressure Control Solenoid K Control Circuit Low",
+   "fam": "",
+   "node": "pressure control solenoid k"
+  },
+  {
+   "code": "P282B",
+   "brand": "",
+   "ru": "Соленоид регулирования давления K: электрическая неисправность",
+   "en": "Pressure Control Solenoid K Electrical",
+   "fam": "",
+   "node": "pressure control solenoid k electrical"
+  },
+  {
+   "code": "P283A",
+   "brand": "",
+   "ru": "Положение вилки переключения B: прерывистый сигнал в цепи",
+   "en": "Shift Fork B Position Circuit Intermittent",
+   "fam": "",
+   "node": "shift fork b position"
+  },
+  {
+   "code": "P283B",
+   "brand": "",
+   "ru": "Положение вилки переключения C: цепь",
+   "en": "Shift Fork C Position Circuit",
+   "fam": "",
+   "node": "shift fork c position"
+  },
+  {
+   "code": "P283C",
+   "brand": "",
+   "ru": "Положение вилки переключения C: сигнал вне диапазона",
+   "en": "Shift Fork C Position Circuit Range/Performance",
+   "fam": "",
+   "node": "shift fork c position"
+  },
+  {
+   "code": "P283D",
+   "brand": "",
+   "ru": "Положение вилки переключения C: низкий уровень сигнала в цепи",
+   "en": "Shift Fork C Position Circuit Low",
+   "fam": "",
+   "node": "shift fork c position"
+  },
+  {
+   "code": "P283E",
+   "brand": "",
+   "ru": "Положение вилки переключения C: высокий уровень сигнала в цепи",
+   "en": "Shift Fork C Position Circuit High",
+   "fam": "",
+   "node": "shift fork c position"
+  },
+  {
+   "code": "P283F",
+   "brand": "",
+   "ru": "Положение вилки переключения C: прерывистый сигнал в цепи",
+   "en": "Shift Fork C Position Circuit Intermittent",
+   "fam": "",
+   "node": "shift fork c position"
+  },
+  {
+   "code": "P2843",
+   "brand": "",
+   "ru": "Положение вилки переключения D: высокий уровень сигнала в цепи",
+   "en": "Shift Fork D Position Circuit High",
+   "fam": "",
+   "node": "shift fork d position"
+  },
+  {
+   "code": "P2844",
+   "brand": "",
+   "ru": "Положение вилки переключения D: прерывистый сигнал в цепи",
+   "en": "Shift Fork D Position Circuit Intermittent",
+   "fam": "",
+   "node": "shift fork d position"
+  },
+  {
+   "code": "P2845",
+   "brand": "",
+   "ru": "Датчик вилки переключения A: неверное положение нейтрали",
+   "en": "Shift Fork A Position Sensor Incorrect Neutral Position Indicated",
+   "fam": "",
+   "node": "shift fork a position sensor incorrect neutral position indicated"
+  },
+  {
+   "code": "P2846",
+   "brand": "",
+   "ru": "Датчик вилки переключения B: неверное положение нейтрали",
+   "en": "Shift Fork B Position Sensor Incorrect Neutral Position Indicated",
+   "fam": "",
+   "node": "shift fork b position sensor incorrect neutral position indicated"
+  },
+  {
+   "code": "P2847",
+   "brand": "",
+   "ru": "Датчик вилки переключения C: неверное положение нейтрали",
+   "en": "Shift Fork C Position Sensor Incorrect Neutral Position Indicated",
+   "fam": "",
+   "node": "shift fork c position sensor incorrect neutral position indicated"
+  },
+  {
+   "code": "P2848",
+   "brand": "",
+   "ru": "Датчик вилки переключения D: неверное положение нейтрали",
+   "en": "Shift Fork D Position Sensor Incorrect Neutral Position Indicated",
+   "fam": "",
+   "node": "shift fork d position sensor incorrect neutral position indicated"
+  },
+  {
+   "code": "P2849",
+   "brand": "",
+   "ru": "Вилка переключения передач A: заклинивание",
+   "en": "Shift Fork A Stuck",
+   "fam": "",
+   "node": "shift fork a"
+  },
+  {
+   "code": "P284A",
+   "brand": "",
+   "ru": "Вилка переключения передач B: заклинивание",
+   "en": "Shift Fork B Stuck",
+   "fam": "",
+   "node": "shift fork b"
+  },
+  {
+   "code": "P284B",
+   "brand": "",
+   "ru": "Вилка переключения передач C: заклинивание",
+   "en": "Shift Fork C Stuck",
+   "fam": "",
+   "node": "shift fork c"
+  },
+  {
+   "code": "P284C",
+   "brand": "",
+   "ru": "Вилка переключения передач D: заклинивание",
+   "en": "Shift Fork D Stuck",
+   "fam": "",
+   "node": "shift fork d"
+  },
+  {
+   "code": "P284D",
+   "brand": "",
+   "ru": "Вилка переключения A: самопроизвольное движение",
+   "en": "Shift Fork A Unrequested Movement",
+   "fam": "",
+   "node": "shift fork a unrequested movement"
+  },
+  {
+   "code": "P284E",
+   "brand": "",
+   "ru": "Вилка переключения B: самопроизвольное движение",
+   "en": "Shift Fork B Unrequested Movement",
+   "fam": "",
+   "node": "shift fork b unrequested movement"
+  },
+  {
+   "code": "P284F",
+   "brand": "",
+   "ru": "Вилка переключения C: самопроизвольное движение",
+   "en": "Shift Fork C Unrequested Movement",
+   "fam": "",
+   "node": "shift fork c unrequested movement"
+  },
+  {
+   "code": "P2850",
+   "brand": "",
+   "ru": "Вилка переключения D: самопроизвольное движение",
+   "en": "Shift Fork D Unrequested Movement",
+   "fam": "",
+   "node": "shift fork d unrequested movement"
+  }
+ ]
+}

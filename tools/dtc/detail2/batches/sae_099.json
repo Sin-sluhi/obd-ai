@@ -1,0 +1,271 @@
+{
+ "name": "sae_099",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "dc dc converter enable",
+  "engine mount a",
+  "fam:hv_contactor",
+  "fam:hybrid_engine",
+  "motor torque",
+  "ru:блокировочная цепь высоковольтной системы a"
+ ],
+ "codes": [
+  {
+   "code": "P0A0B",
+   "brand": "",
+   "ru": "Блокировка высоковольтной системы: цепь",
+   "en": "",
+   "fam": "hv_contactor",
+   "node": "fam:hv_contactor"
+  },
+  {
+   "code": "P0A0C",
+   "brand": "",
+   "ru": "Блокировка высоковольтной системы: низкий уровень",
+   "en": "",
+   "fam": "hv_contactor",
+   "node": "fam:hv_contactor"
+  },
+  {
+   "code": "P0A0D",
+   "brand": "",
+   "ru": "Блокировка высоковольтной системы: высокий уровень",
+   "en": "",
+   "fam": "hv_contactor",
+   "node": "fam:hv_contactor"
+  },
+  {
+   "code": "P0A27",
+   "brand": "",
+   "ru": "Цепь отключения питания батареи",
+   "en": "",
+   "fam": "hv_contactor",
+   "node": "fam:hv_contactor"
+  },
+  {
+   "code": "P0A28",
+   "brand": "",
+   "ru": "Цепь отключения питания батареи: низкий уровень",
+   "en": "",
+   "fam": "hv_contactor",
+   "node": "fam:hv_contactor"
+  },
+  {
+   "code": "P0A29",
+   "brand": "",
+   "ru": "Цепь отключения питания батареи: высокий уровень",
+   "en": "",
+   "fam": "hv_contactor",
+   "node": "fam:hv_contactor"
+  },
+  {
+   "code": "P0A95",
+   "brand": "",
+   "ru": "Высоковольтный предохранитель",
+   "en": "",
+   "fam": "hv_contactor",
+   "node": "fam:hv_contactor"
+  },
+  {
+   "code": "P0AA1",
+   "brand": "",
+   "ru": "Плюсовой контактор батареи: залип замкнутым",
+   "en": "",
+   "fam": "hv_contactor",
+   "node": "fam:hv_contactor"
+  },
+  {
+   "code": "P0AA2",
+   "brand": "",
+   "ru": "Минусовой контактор батареи: залип замкнутым",
+   "en": "",
+   "fam": "hv_contactor",
+   "node": "fam:hv_contactor"
+  },
+  {
+   "code": "P0AA3",
+   "brand": "",
+   "ru": "Плюсовой контактор батареи: не замыкается",
+   "en": "",
+   "fam": "hv_contactor",
+   "node": "fam:hv_contactor"
+  },
+  {
+   "code": "P0AA4",
+   "brand": "",
+   "ru": "Минусовой контактор батареи: не замыкается",
+   "en": "",
+   "fam": "hv_contactor",
+   "node": "fam:hv_contactor"
+  },
+  {
+   "code": "P0AA5",
+   "brand": "",
+   "ru": "Контактор предзаряда: цепь",
+   "en": "",
+   "fam": "hv_contactor",
+   "node": "fam:hv_contactor"
+  },
+  {
+   "code": "P0AD9",
+   "brand": "",
+   "ru": "Плюсовой контактор батареи: цепь управления",
+   "en": "",
+   "fam": "hv_contactor",
+   "node": "fam:hv_contactor"
+  },
+  {
+   "code": "P0ADA",
+   "brand": "",
+   "ru": "Плюсовой контактор батареи: управление, низкий уровень",
+   "en": "",
+   "fam": "hv_contactor",
+   "node": "fam:hv_contactor"
+  },
+  {
+   "code": "P0ADB",
+   "brand": "",
+   "ru": "Плюсовой контактор батареи: управление, высокий уровень",
+   "en": "",
+   "fam": "hv_contactor",
+   "node": "fam:hv_contactor"
+  },
+  {
+   "code": "P0ADC",
+   "brand": "",
+   "ru": "Минусовой контактор батареи: цепь управления",
+   "en": "",
+   "fam": "hv_contactor",
+   "node": "fam:hv_contactor"
+  },
+  {
+   "code": "P0ADD",
+   "brand": "",
+   "ru": "Минусовой контактор батареи: управление, низкий уровень",
+   "en": "",
+   "fam": "hv_contactor",
+   "node": "fam:hv_contactor"
+  },
+  {
+   "code": "P0ADE",
+   "brand": "",
+   "ru": "Минусовой контактор батареи: управление, высокий уровень",
+   "en": "",
+   "fam": "hv_contactor",
+   "node": "fam:hv_contactor"
+  },
+  {
+   "code": "P0ADF",
+   "brand": "",
+   "ru": "Контактор предзаряда: цепь управления",
+   "en": "",
+   "fam": "hv_contactor",
+   "node": "fam:hv_contactor"
+  },
+  {
+   "code": "P0AE0",
+   "brand": "",
+   "ru": "Контактор предзаряда: управление, низкий уровень",
+   "en": "",
+   "fam": "hv_contactor",
+   "node": "fam:hv_contactor"
+  },
+  {
+   "code": "P0AE1",
+   "brand": "",
+   "ru": "Контактор предзаряда: управление, высокий уровень",
+   "en": "",
+   "fam": "hv_contactor",
+   "node": "fam:hv_contactor"
+  },
+  {
+   "code": "P0A0E",
+   "brand": "",
+   "ru": "Блокировочная цепь высоковольтной системы A: прерывистый сигнал",
+   "en": "High Voltage System Interlock Circuit A Intermittent",
+   "fam": "",
+   "node": "ru:блокировочная цепь высоковольтной системы a"
+  },
+  {
+   "code": "P0A0F",
+   "brand": "",
+   "ru": "Двигатель не запустился (гибрид)",
+   "en": "",
+   "fam": "hybrid_engine",
+   "node": "fam:hybrid_engine"
+  },
+  {
+   "code": "P0A13",
+   "brand": "",
+   "ru": "Включение преобразователя DC/DC: высокий уровень сигнала в цепи",
+   "en": "DC/DC Converter Enable Circuit High",
+   "fam": "",
+   "node": "dc dc converter enable"
+  },
+  {
+   "code": "P0E5D",
+   "brand": "",
+   "ru": "Включение преобразователя DC/DC: прерывистый / нестабильный сигнал",
+   "en": "DC/DC Converter Enable Circuit intermittent/Erratic",
+   "fam": "",
+   "node": "dc dc converter enable"
+  },
+  {
+   "code": "P0A14",
+   "brand": "",
+   "ru": "Активная опора двигателя A: обрыв цепи управления",
+   "en": "Engine Mount A Control Circuit/Open",
+   "fam": "",
+   "node": "engine mount a"
+  },
+  {
+   "code": "P0A15",
+   "brand": "",
+   "ru": "Активная опора двигателя A: низкий уровень в цепи управления",
+   "en": "Engine Mount A Control Circuit Low",
+   "fam": "",
+   "node": "engine mount a"
+  },
+  {
+   "code": "P0A16",
+   "brand": "",
+   "ru": "Активная опора двигателя A: высокий уровень в цепи управления",
+   "en": "Engine Mount A Control Circuit High",
+   "fam": "",
+   "node": "engine mount a"
+  },
+  {
+   "code": "P0A17",
+   "brand": "",
+   "ru": "Датчик момента электромотора: цепь",
+   "en": "Motor Torque Sensor Circuit",
+   "fam": "",
+   "node": "motor torque"
+  },
+  {
+   "code": "P0A19",
+   "brand": "",
+   "ru": "Датчик момента электромотора: низкий уровень сигнала в цепи",
+   "en": "Motor Torque Sensor Circuit Low",
+   "fam": "",
+   "node": "motor torque"
+  },
+  {
+   "code": "P0A20",
+   "brand": "",
+   "ru": "Датчик момента электромотора: высокий уровень сигнала в цепи",
+   "en": "Motor Torque Sensor Circuit High",
+   "fam": "",
+   "node": "motor torque"
+  },
+  {
+   "code": "P0A21",
+   "brand": "",
+   "ru": "Датчик момента электромотора: прерывистый сигнал в цепи",
+   "en": "Motor Torque Sensor Circuit Intermittent",
+   "fam": "",
+   "node": "motor torque"
+  }
+ ]
+}

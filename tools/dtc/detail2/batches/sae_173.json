@@ -1,0 +1,390 @@
+{
+ "name": "sae_173",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "charge air cooler coolant pump a overspeed air in system",
+  "charge air cooler coolant pump a underspeed",
+  "coolant heater a",
+  "coolant heater b",
+  "coolant pump a overspeed air in system",
+  "coolant pump a underspeed",
+  "coolant pump b control module overtemperature",
+  "coolant pump b overspeed air in system",
+  "coolant pump b supply voltage",
+  "coolant pump d",
+  "coolant pump d control module overtemperature",
+  "coolant pump d overspeed air in system",
+  "coolant pump d supply voltage",
+  "engine coolant flow control valve",
+  "engine coolant flow control valve position",
+  "engine coolant flow control valve supply",
+  "engine coolant pump underspeed",
+  "evap system pressure sensor switch c",
+  "turbocharger supercharger a temperature",
+  "turbocharger supercharger boost control module a calibration not learned programmed",
+  "turbocharger supercharger boost control module b calibration not learned programmed"
+ ],
+ "codes": [
+  {
+   "code": "P2B59",
+   "brand": "",
+   "ru": "Клапан потока охлаждающей жидкости: обрыв цепи управления",
+   "en": "Engine Coolant Flow Control Valve Control Circuit/Open",
+   "fam": "",
+   "node": "engine coolant flow control valve"
+  },
+  {
+   "code": "P2B5A",
+   "brand": "",
+   "ru": "Клапан потока охлаждающей жидкости: низкий уровень в цепи управления",
+   "en": "Engine Coolant Flow Control Valve Control Circuit Low",
+   "fam": "",
+   "node": "engine coolant flow control valve"
+  },
+  {
+   "code": "P2B5B",
+   "brand": "",
+   "ru": "Клапан потока охлаждающей жидкости: высокий уровень в цепи управления",
+   "en": "Engine Coolant Flow Control Valve Control Circuit High",
+   "fam": "",
+   "node": "engine coolant flow control valve"
+  },
+  {
+   "code": "P2B61",
+   "brand": "",
+   "ru": "Клапан потока охлаждающей жидкости: заклинил закрытым",
+   "en": "Engine Coolant Flow Control Valve Stuck Closed",
+   "fam": "",
+   "node": "engine coolant flow control valve"
+  },
+  {
+   "code": "P2B5C",
+   "brand": "",
+   "ru": "Клапан потока охлаждающей жидкости: низкое напряжение питания",
+   "en": "Engine Coolant Flow Control Valve Supply Circuit Low",
+   "fam": "",
+   "node": "engine coolant flow control valve supply"
+  },
+  {
+   "code": "P2B5D",
+   "brand": "",
+   "ru": "Датчик положения клапана потока охлаждающей жидкости: цепь",
+   "en": "Engine Coolant Flow Control Valve Position Sensor Circuit",
+   "fam": "",
+   "node": "engine coolant flow control valve position"
+  },
+  {
+   "code": "P2B5E",
+   "brand": "",
+   "ru": "Датчик положения клапана потока охлаждающей жидкости: низкий уровень сигнала в цепи",
+   "en": "Engine Coolant Flow Control Valve Position Sensor Circuit Low",
+   "fam": "",
+   "node": "engine coolant flow control valve position"
+  },
+  {
+   "code": "P2B5F",
+   "brand": "",
+   "ru": "Датчик положения клапана потока охлаждающей жидкости: высокий уровень сигнала в цепи",
+   "en": "Engine Coolant Flow Control Valve Position Sensor Circuit High",
+   "fam": "",
+   "node": "engine coolant flow control valve position"
+  },
+  {
+   "code": "P2B60",
+   "brand": "",
+   "ru": "Датчик положения клапана потока охлаждающей жидкости: сигнал вне диапазона",
+   "en": "Engine Coolant Flow Control Valve Position Sensor Circuit Range/Performance",
+   "fam": "",
+   "node": "engine coolant flow control valve position"
+  },
+  {
+   "code": "P2B6D",
+   "brand": "",
+   "ru": "Датчик положения клапана потока охлаждающей жидкости: прерывистый / нестабильный сигнал",
+   "en": "Engine Coolant Flow Control Valve Position Sensor Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "engine coolant flow control valve position"
+  },
+  {
+   "code": "P2B62",
+   "brand": "",
+   "ru": "Насос охлаждающей жидкости B: цепь питания",
+   "en": "Coolant Pump B Supply Voltage Circuit",
+   "fam": "",
+   "node": "coolant pump b supply voltage"
+  },
+  {
+   "code": "P2B64",
+   "brand": "",
+   "ru": "Перегрев блока насоса охлаждающей жидкости B",
+   "en": "Coolant Pump B Control Module Overtemperature",
+   "fam": "",
+   "node": "coolant pump b control module overtemperature"
+  },
+  {
+   "code": "P2B65",
+   "brand": "",
+   "ru": "Насос охлаждающей жидкости B: превышены обороты / воздух в системе",
+   "en": "Coolant Pump B Overspeed/Air in System",
+   "fam": "",
+   "node": "coolant pump b overspeed air in system"
+  },
+  {
+   "code": "P2B66",
+   "brand": "",
+   "ru": "Насос охлаждающей жидкости D: обрыв цепи управления",
+   "en": "Coolant Pump D Control Circuit/Open",
+   "fam": "",
+   "node": "coolant pump d"
+  },
+  {
+   "code": "P2B67",
+   "brand": "",
+   "ru": "Насос охлаждающей жидкости D: низкий уровень в цепи управления",
+   "en": "Coolant Pump D Control Circuit Low",
+   "fam": "",
+   "node": "coolant pump d"
+  },
+  {
+   "code": "P2B68",
+   "brand": "",
+   "ru": "Насос охлаждающей жидкости D: высокий уровень в цепи управления",
+   "en": "Coolant Pump D Control Circuit High",
+   "fam": "",
+   "node": "coolant pump d"
+  },
+  {
+   "code": "P2B6A",
+   "brand": "",
+   "ru": "Насос охлаждающей жидкости D: заклинивание / остановка",
+   "en": "Coolant Pump D Stuck/Stalled",
+   "fam": "",
+   "node": "coolant pump d"
+  },
+  {
+   "code": "P2C49",
+   "brand": "",
+   "ru": "Насос охлаждающей жидкости D: цепь управления: работа нарушена / не включается",
+   "en": "Coolant Pump D Control Circuit Performance/Stuck Off",
+   "fam": "",
+   "node": "coolant pump d"
+  },
+  {
+   "code": "P2B69",
+   "brand": "",
+   "ru": "Насос охлаждающей жидкости D: цепь питания",
+   "en": "Coolant Pump D Supply Voltage Circuit",
+   "fam": "",
+   "node": "coolant pump d supply voltage"
+  },
+  {
+   "code": "P2B6B",
+   "brand": "",
+   "ru": "Перегрев блока насоса охлаждающей жидкости D",
+   "en": "Coolant Pump D Control Module Overtemperature",
+   "fam": "",
+   "node": "coolant pump d control module overtemperature"
+  },
+  {
+   "code": "P2B6C",
+   "brand": "",
+   "ru": "Насос охлаждающей жидкости D: превышены обороты / воздух в системе",
+   "en": "Coolant Pump D Overspeed/Air in System",
+   "fam": "",
+   "node": "coolant pump d overspeed air in system"
+  },
+  {
+   "code": "P2B6E",
+   "brand": "",
+   "ru": "Датчик температуры турбины/нагнетателя A: цепь",
+   "en": "Turbocharger/Supercharger A Temperature Sensor Circuit",
+   "fam": "",
+   "node": "turbocharger supercharger a temperature"
+  },
+  {
+   "code": "P2B6F",
+   "brand": "",
+   "ru": "Датчик температуры турбины/нагнетателя A: низкий уровень сигнала в цепи",
+   "en": "Turbocharger/Supercharger A Temperature Sensor Circuit Low",
+   "fam": "",
+   "node": "turbocharger supercharger a temperature"
+  },
+  {
+   "code": "P2B70",
+   "brand": "",
+   "ru": "Датчик температуры турбины/нагнетателя A: высокий уровень сигнала в цепи",
+   "en": "Turbocharger/Supercharger A Temperature Sensor Circuit High",
+   "fam": "",
+   "node": "turbocharger supercharger a temperature"
+  },
+  {
+   "code": "P2B71",
+   "brand": "",
+   "ru": "Датчик температуры турбины/нагнетателя A: сигнал вне диапазона",
+   "en": "Turbocharger/Supercharger A Temperature Sensor Circuit Circuit Range/Performance",
+   "fam": "",
+   "node": "turbocharger supercharger a temperature"
+  },
+  {
+   "code": "P2B72",
+   "brand": "",
+   "ru": "Подогреватель охлаждающей жидкости A: обрыв цепи управления",
+   "en": "Coolant Heater A Control Circuit/Open",
+   "fam": "",
+   "node": "coolant heater a"
+  },
+  {
+   "code": "P2B73",
+   "brand": "",
+   "ru": "Подогреватель охлаждающей жидкости A: низкий уровень в цепи управления",
+   "en": "Coolant Heater A Control Circuit Low",
+   "fam": "",
+   "node": "coolant heater a"
+  },
+  {
+   "code": "P2B74",
+   "brand": "",
+   "ru": "Подогреватель охлаждающей жидкости A: высокий уровень в цепи управления",
+   "en": "Coolant Heater A Control Circuit High",
+   "fam": "",
+   "node": "coolant heater a"
+  },
+  {
+   "code": "P2B75",
+   "brand": "",
+   "ru": "Подогреватель охлаждающей жидкости A: нарушена работа цепи управления",
+   "en": "Coolant Heater A Control Circuit Performance",
+   "fam": "",
+   "node": "coolant heater a"
+  },
+  {
+   "code": "P2B76",
+   "brand": "",
+   "ru": "Подогреватель охлаждающей жидкости B: обрыв цепи управления",
+   "en": "Coolant Heater B Control Circuit/Open",
+   "fam": "",
+   "node": "coolant heater b"
+  },
+  {
+   "code": "P2B77",
+   "brand": "",
+   "ru": "Подогреватель охлаждающей жидкости B: низкий уровень в цепи управления",
+   "en": "Coolant Heater B Control Circuit Low",
+   "fam": "",
+   "node": "coolant heater b"
+  },
+  {
+   "code": "P2B78",
+   "brand": "",
+   "ru": "Подогреватель охлаждающей жидкости B: высокий уровень в цепи управления",
+   "en": "Coolant Heater B Control Circuit High",
+   "fam": "",
+   "node": "coolant heater b"
+  },
+  {
+   "code": "P2B79",
+   "brand": "",
+   "ru": "Подогреватель охлаждающей жидкости B: нарушена работа цепи управления",
+   "en": "Coolant Heater B Control Circuit Performance",
+   "fam": "",
+   "node": "coolant heater b"
+  },
+  {
+   "code": "P2B7A",
+   "brand": "",
+   "ru": "Датчик давления системы улавливания паров C: цепь",
+   "en": "EVAP System Pressure Sensor/Switch C Circuit",
+   "fam": "",
+   "node": "evap system pressure sensor switch c"
+  },
+  {
+   "code": "P2B7B",
+   "brand": "",
+   "ru": "Датчик давления системы улавливания паров C: сигнал вне диапазона",
+   "en": "EVAP System Pressure Sensor/Switch C Circuit Range/Performance",
+   "fam": "",
+   "node": "evap system pressure sensor switch c"
+  },
+  {
+   "code": "P2B7C",
+   "brand": "",
+   "ru": "Датчик давления системы улавливания паров C: низкий уровень сигнала в цепи",
+   "en": "EVAP System Pressure Sensor/Switch C Circuit Low",
+   "fam": "",
+   "node": "evap system pressure sensor switch c"
+  },
+  {
+   "code": "P2B7D",
+   "brand": "",
+   "ru": "Датчик давления системы улавливания паров C: высокий уровень сигнала в цепи",
+   "en": "EVAP System Pressure Sensor/Switch C Circuit High",
+   "fam": "",
+   "node": "evap system pressure sensor switch c"
+  },
+  {
+   "code": "P2B7E",
+   "brand": "",
+   "ru": "Датчик давления системы улавливания паров C: прерывистый сигнал в цепи",
+   "en": "EVAP System Pressure Sensor/Switch C Circuit Intermittent",
+   "fam": "",
+   "node": "evap system pressure sensor switch c"
+  },
+  {
+   "code": "P2B7F",
+   "brand": "",
+   "ru": "Блок регулирования наддува A: калибровка не обучена/не записана",
+   "en": "Turbocharger/Supercharger Boost Control Module A Calibration Not Learned/Programmed",
+   "fam": "",
+   "node": "turbocharger supercharger boost control module a calibration not learned programmed"
+  },
+  {
+   "code": "P2B80",
+   "brand": "",
+   "ru": "Блок регулирования наддува B: калибровка не обучена/не записана",
+   "en": "Turbocharger/Supercharger Boost Control Module B Calibration Not Learned/Programmed",
+   "fam": "",
+   "node": "turbocharger supercharger boost control module b calibration not learned programmed"
+  },
+  {
+   "code": "P2B83",
+   "brand": "",
+   "ru": "Насос охлаждения интеркулера A: превышены обороты / воздух в системе",
+   "en": "Charge Air Cooler Coolant Pump A Overspeed/Air In System",
+   "fam": "",
+   "node": "charge air cooler coolant pump a overspeed air in system"
+  },
+  {
+   "code": "P2B84",
+   "brand": "",
+   "ru": "Насос охлаждения интеркулера A: заниженная скорость вращения",
+   "en": "Charge Air Cooler Coolant Pump A Underspeed",
+   "fam": "",
+   "node": "charge air cooler coolant pump a underspeed"
+  },
+  {
+   "code": "P2B85",
+   "brand": "",
+   "ru": "Насос охлаждающей жидкости двигателя: заниженная скорость вращения",
+   "en": "Engine Coolant Pump Underspeed",
+   "fam": "",
+   "node": "engine coolant pump underspeed"
+  },
+  {
+   "code": "P2B86",
+   "brand": "",
+   "ru": "Насос охлаждающей жидкости A: превышены обороты / воздух в системе",
+   "en": "Coolant Pump A Overspeed/Air in System",
+   "fam": "",
+   "node": "coolant pump a overspeed air in system"
+  },
+  {
+   "code": "P2B87",
+   "brand": "",
+   "ru": "Насос охлаждающей жидкости A: заниженная скорость вращения",
+   "en": "Coolant Pump A Underspeed",
+   "fam": "",
+   "node": "coolant pump a underspeed"
+  }
+ ]
+}

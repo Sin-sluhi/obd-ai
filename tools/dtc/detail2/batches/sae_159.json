@@ -1,0 +1,390 @@
+{
+ "name": "sae_159",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "clutch a unexpected mechanical gear disengagement",
+  "clutch b adaptive learning at limit",
+  "clutch b unexpected mechanical gear disengagement",
+  "electric auxiliary transmission fluid pump a",
+  "electric auxiliary transmission fluid pump b",
+  "electric auxiliary transmission fluid pump b driver",
+  "electric auxiliary transmission fluid pump b hydraulic leakage",
+  "electric auxiliary transmission fluid pump b motor current",
+  "electric auxiliary transmission fluid pump b motor over temperature",
+  "electric auxiliary transmission fluid pump b motor stalled",
+  "electric auxiliary transmission fluid pump b motor supply voltage",
+  "four wheel drive",
+  "kick down",
+  "pressure control solenoid a data incompatible",
+  "pressure control solenoid b data incompatible",
+  "transfer case gear",
+  "transfer case gear neutral incorrect ratio",
+  "transmission fluid temperature sensor c",
+  "transmission fluid temperature sensor c over temperature condition",
+  "transmission fluid temperature sensor d",
+  "transmission fluid temperature sensor d over temperature condition"
+ ],
+ "codes": [
+  {
+   "code": "P274A",
+   "brand": "",
+   "ru": "Датчик температуры масла КПП C: цепь",
+   "en": "Transmission Fluid Temperature Sensor C Circuit",
+   "fam": "",
+   "node": "transmission fluid temperature sensor c"
+  },
+  {
+   "code": "P274B",
+   "brand": "",
+   "ru": "Датчик температуры масла КПП C: сигнал вне диапазона",
+   "en": "Transmission Fluid Temperature Sensor C Circuit Range/Performance",
+   "fam": "",
+   "node": "transmission fluid temperature sensor c"
+  },
+  {
+   "code": "P274C",
+   "brand": "",
+   "ru": "Датчик температуры масла КПП C: низкий уровень сигнала в цепи",
+   "en": "Transmission Fluid Temperature Sensor C Circuit Low",
+   "fam": "",
+   "node": "transmission fluid temperature sensor c"
+  },
+  {
+   "code": "P274D",
+   "brand": "",
+   "ru": "Датчик температуры масла КПП C: высокий уровень сигнала в цепи",
+   "en": "Transmission Fluid Temperature Sensor C Circuit High",
+   "fam": "",
+   "node": "transmission fluid temperature sensor c"
+  },
+  {
+   "code": "P274E",
+   "brand": "",
+   "ru": "Датчик температуры масла КПП C: прерывистый сигнал в цепи",
+   "en": "Transmission Fluid Temperature Sensor C Circuit Intermittent",
+   "fam": "",
+   "node": "transmission fluid temperature sensor c"
+  },
+  {
+   "code": "P274F",
+   "brand": "",
+   "ru": "Датчик температуры масла КПП C: перегрев",
+   "en": "Transmission Fluid Temperature Sensor C Over Temperature Condition",
+   "fam": "",
+   "node": "transmission fluid temperature sensor c over temperature condition"
+  },
+  {
+   "code": "P275A",
+   "brand": "",
+   "ru": "Датчик температуры масла КПП D: цепь",
+   "en": "Transmission Fluid Temperature Sensor D Circuit",
+   "fam": "",
+   "node": "transmission fluid temperature sensor d"
+  },
+  {
+   "code": "P275B",
+   "brand": "",
+   "ru": "Датчик температуры масла КПП D: сигнал вне диапазона",
+   "en": "Transmission Fluid Temperature Sensor D Circuit Range/Performance",
+   "fam": "",
+   "node": "transmission fluid temperature sensor d"
+  },
+  {
+   "code": "P275C",
+   "brand": "",
+   "ru": "Датчик температуры масла КПП D: низкий уровень сигнала в цепи",
+   "en": "Transmission Fluid Temperature Sensor D Circuit Low",
+   "fam": "",
+   "node": "transmission fluid temperature sensor d"
+  },
+  {
+   "code": "P275D",
+   "brand": "",
+   "ru": "Датчик температуры масла КПП D: высокий уровень сигнала в цепи",
+   "en": "Transmission Fluid Temperature Sensor D Circuit High",
+   "fam": "",
+   "node": "transmission fluid temperature sensor d"
+  },
+  {
+   "code": "P275E",
+   "brand": "",
+   "ru": "Датчик температуры масла КПП D: прерывистый сигнал в цепи",
+   "en": "Transmission Fluid Temperature Sensor D Circuit Intermittent",
+   "fam": "",
+   "node": "transmission fluid temperature sensor d"
+  },
+  {
+   "code": "P275F",
+   "brand": "",
+   "ru": "Датчик температуры масла КПП D: перегрев",
+   "en": "Transmission Fluid Temperature Sensor D Over Temperature Condition",
+   "fam": "",
+   "node": "transmission fluid temperature sensor d over temperature condition"
+  },
+  {
+   "code": "P276A",
+   "brand": "",
+   "ru": "Мотор доп. насоса масла КПП B: обрыв цепи питания",
+   "en": "Electric/Auxiliary Transmission Fluid Pump B Motor Supply Voltage Circuit/Open",
+   "fam": "",
+   "node": "electric auxiliary transmission fluid pump b motor supply voltage"
+  },
+  {
+   "code": "P276B",
+   "brand": "",
+   "ru": "Мотор доп. насоса масла КПП B: низкое напряжение питания",
+   "en": "Electric/Auxiliary Transmission Fluid Pump B Motor Supply Voltage Circuit Low",
+   "fam": "",
+   "node": "electric auxiliary transmission fluid pump b motor supply voltage"
+  },
+  {
+   "code": "P276C",
+   "brand": "",
+   "ru": "Мотор доп. насоса масла КПП B: высокое напряжение питания",
+   "en": "Electric/Auxiliary Transmission Fluid Pump B Motor Supply Voltage Circuit High",
+   "fam": "",
+   "node": "electric auxiliary transmission fluid pump b motor supply voltage"
+  },
+  {
+   "code": "P276D",
+   "brand": "",
+   "ru": "Доп. насос масла КПП B: ток мотора",
+   "en": "Electric/Auxiliary Transmission Fluid Pump B Motor Current",
+   "fam": "",
+   "node": "electric auxiliary transmission fluid pump b motor current"
+  },
+  {
+   "code": "P276E",
+   "brand": "",
+   "ru": "Мотор доп. насоса масла КПП B: малый ток",
+   "en": "Electric/Auxiliary Transmission Fluid Pump B Motor Current Low",
+   "fam": "",
+   "node": "electric auxiliary transmission fluid pump b motor current"
+  },
+  {
+   "code": "P276F",
+   "brand": "",
+   "ru": "Мотор доп. насоса масла КПП B: большой ток",
+   "en": "Electric/Auxiliary Transmission Fluid Pump B Motor Current High",
+   "fam": "",
+   "node": "electric auxiliary transmission fluid pump b motor current"
+  },
+  {
+   "code": "P277A",
+   "brand": "",
+   "ru": "Доп. насос масла КПП B: утечка в гидравлике",
+   "en": "Electric/Auxiliary Transmission Fluid Pump B Hydraulic Leakage",
+   "fam": "",
+   "node": "electric auxiliary transmission fluid pump b hydraulic leakage"
+  },
+  {
+   "code": "P277B",
+   "brand": "",
+   "ru": "Доп. насос масла КПП B: нарушена работа цепи драйвера",
+   "en": "Electric/Auxiliary Transmission Fluid Pump B Driver Circuit Performance",
+   "fam": "",
+   "node": "electric auxiliary transmission fluid pump b driver"
+  },
+  {
+   "code": "P277C",
+   "brand": "",
+   "ru": "Доп. насос масла КПП B: мотор остановился",
+   "en": "Electric/Auxiliary Transmission Fluid Pump B Motor Stalled",
+   "fam": "",
+   "node": "electric auxiliary transmission fluid pump b motor stalled"
+  },
+  {
+   "code": "P277D",
+   "brand": "",
+   "ru": "Мотор доп. насоса масла КПП B: перегрев",
+   "en": "Electric/Auxiliary Transmission Fluid Pump B Motor Over Temperature",
+   "fam": "",
+   "node": "electric auxiliary transmission fluid pump b motor over temperature"
+  },
+  {
+   "code": "P277E",
+   "brand": "",
+   "ru": "Сцепление A: самопроизвольное выключение передачи",
+   "en": "Clutch A Unexpected Mechanical Gear Disengagement",
+   "fam": "",
+   "node": "clutch a unexpected mechanical gear disengagement"
+  },
+  {
+   "code": "P277F",
+   "brand": "",
+   "ru": "Сцепление B: самопроизвольное выключение передачи",
+   "en": "Clutch B Unexpected Mechanical Gear Disengagement",
+   "fam": "",
+   "node": "clutch b unexpected mechanical gear disengagement"
+  },
+  {
+   "code": "P278A",
+   "brand": "",
+   "ru": "Выключатель kick-down: цепь",
+   "en": "Kick Down Switch Circuit",
+   "fam": "",
+   "node": "kick down"
+  },
+  {
+   "code": "P278B",
+   "brand": "",
+   "ru": "Выключатель kick-down: сигнал вне диапазона",
+   "en": "Kick Down Switch Circuit Range/Performance",
+   "fam": "",
+   "node": "kick down"
+  },
+  {
+   "code": "P278C",
+   "brand": "",
+   "ru": "Выключатель kick-down: низкий уровень сигнала в цепи",
+   "en": "Kick Down Switch Circuit Low",
+   "fam": "",
+   "node": "kick down"
+  },
+  {
+   "code": "P278D",
+   "brand": "",
+   "ru": "Выключатель kick-down: высокий уровень сигнала в цепи",
+   "en": "Kick Down Switch Circuit High",
+   "fam": "",
+   "node": "kick down"
+  },
+  {
+   "code": "P278E",
+   "brand": "",
+   "ru": "Выключатель kick-down: прерывистый / нестабильный сигнал",
+   "en": "Kick Down Switch Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "kick down"
+  },
+  {
+   "code": "P278F",
+   "brand": "",
+   "ru": "Адаптация сцепления B на пределе",
+   "en": "Clutch B Adaptive Learning at Limit",
+   "fam": "",
+   "node": "clutch b adaptive learning at limit"
+  },
+  {
+   "code": "P279A",
+   "brand": "",
+   "ru": "Раздаточная коробка, повышенная: неверное передаточное отношение",
+   "en": "Transfer Case Gear High Incorrect Ratio",
+   "fam": "",
+   "node": "transfer case gear"
+  },
+  {
+   "code": "P279B",
+   "brand": "",
+   "ru": "Раздаточная коробка, пониженная: неверное передаточное отношение",
+   "en": "Transfer Case Gear Low Incorrect Ratio",
+   "fam": "",
+   "node": "transfer case gear"
+  },
+  {
+   "code": "P279C",
+   "brand": "",
+   "ru": "Раздаточная коробка, нейтраль: неверное передаточное отношение",
+   "en": "Transfer Case Gear Neutral Incorrect Ratio",
+   "fam": "",
+   "node": "transfer case gear neutral incorrect ratio"
+  },
+  {
+   "code": "P279D",
+   "brand": "",
+   "ru": "Диапазон полного привода (4WD): сигнальная цепь",
+   "en": "Four Wheel Drive (4WD) Range Signal Circuit",
+   "fam": "",
+   "node": "four wheel drive"
+  },
+  {
+   "code": "P279E",
+   "brand": "",
+   "ru": "Диапазон полного привода (4WD): сигнал вне диапазона",
+   "en": "Four Wheel Drive (4WD) Range Signal Circuit Range/Performance",
+   "fam": "",
+   "node": "four wheel drive"
+  },
+  {
+   "code": "P279F",
+   "brand": "",
+   "ru": "Диапазон полного привода (4WD): низкий уровень в сигнальной цепи",
+   "en": "Four Wheel Drive (4WD) Range Signal Circuit Low",
+   "fam": "",
+   "node": "four wheel drive"
+  },
+  {
+   "code": "P27A0",
+   "brand": "",
+   "ru": "Диапазон полного привода (4WD): высокий уровень в сигнальной цепи",
+   "en": "Four Wheel Drive (4WD) Range Signal Circuit High",
+   "fam": "",
+   "node": "four wheel drive"
+  },
+  {
+   "code": "P27A1",
+   "brand": "",
+   "ru": "Электрический доп. насос масла КПП A: постоянно включён",
+   "en": "Electric/Auxiliary Transmission Fluid Pump A Stuck On",
+   "fam": "",
+   "node": "electric auxiliary transmission fluid pump a"
+  },
+  {
+   "code": "P27A2",
+   "brand": "",
+   "ru": "Электрический доп. насос масла КПП B: обрыв цепи управления",
+   "en": "Electric/Auxiliary Transmission Fluid Pump B Control Circuit/Open",
+   "fam": "",
+   "node": "electric auxiliary transmission fluid pump b"
+  },
+  {
+   "code": "P27A3",
+   "brand": "",
+   "ru": "Электрический доп. насос масла КПП B: работа нарушена / не включается",
+   "en": "Electric/Auxiliary Transmission Fluid Pump B Performance/Stuck Off",
+   "fam": "",
+   "node": "electric auxiliary transmission fluid pump b"
+  },
+  {
+   "code": "P27A4",
+   "brand": "",
+   "ru": "Электрический доп. насос масла КПП B: низкий уровень в цепи управления",
+   "en": "Electric/Auxiliary Transmission Fluid Pump B Control Circuit Low",
+   "fam": "",
+   "node": "electric auxiliary transmission fluid pump b"
+  },
+  {
+   "code": "P27A5",
+   "brand": "",
+   "ru": "Электрический доп. насос масла КПП B: высокий уровень в цепи управления",
+   "en": "Electric/Auxiliary Transmission Fluid Pump B Control Circuit High",
+   "fam": "",
+   "node": "electric auxiliary transmission fluid pump b"
+  },
+  {
+   "code": "P27A6",
+   "brand": "",
+   "ru": "Электрический доп. насос масла КПП B: постоянно включён",
+   "en": "Electric/Auxiliary Transmission Fluid Pump B Stuck On",
+   "fam": "",
+   "node": "electric auxiliary transmission fluid pump b"
+  },
+  {
+   "code": "P27A7",
+   "brand": "",
+   "ru": "Соленоид регулирования давления АКПП A: несовместимые данные",
+   "en": "Pressure Control Solenoid A Data Incompatible",
+   "fam": "",
+   "node": "pressure control solenoid a data incompatible"
+  },
+  {
+   "code": "P27A8",
+   "brand": "",
+   "ru": "Соленоид регулирования давления АКПП B: несовместимые данные",
+   "en": "Pressure Control Solenoid B Data Incompatible",
+   "fam": "",
+   "node": "pressure control solenoid b data incompatible"
+  }
+ ]
+}

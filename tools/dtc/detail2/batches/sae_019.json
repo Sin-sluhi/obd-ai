@@ -1,0 +1,380 @@
+{
+ "name": "sae_019",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "a camshaft position",
+  "b camshaft position",
+  "fam:ckp_cmp",
+  "fam:fuel_pump",
+  "fuel system over pressure relief valve activated",
+  "fuel volume regulator control exceeded learning limit",
+  "right rear wheel speed sensor b",
+  "right rear wheel speed sensor b correlation",
+  "right rear wheel speed sensor b incorrect component installed",
+  "service park brake chamber pressure",
+  "service park brake chamber pressure too"
+ ],
+ "codes": [
+  {
+   "code": "C0666",
+   "brand": "",
+   "ru": "Датчик скорости правого заднего колеса B: обрыв цепи",
+   "en": "Right Rear Wheel Speed Sensor B Circuit/Open",
+   "fam": "",
+   "node": "right rear wheel speed sensor b"
+  },
+  {
+   "code": "C0667",
+   "brand": "",
+   "ru": "Датчик скорости правого заднего колеса B: вне допустимого диапазона",
+   "en": "Right Rear Wheel Speed Sensor B Range/Performance",
+   "fam": "",
+   "node": "right rear wheel speed sensor b"
+  },
+  {
+   "code": "C0668",
+   "brand": "",
+   "ru": "Датчик скорости правого заднего колеса B: низкий уровень сигнала в цепи",
+   "en": "Right Rear Wheel Speed Sensor B Circuit Low",
+   "fam": "",
+   "node": "right rear wheel speed sensor b"
+  },
+  {
+   "code": "C0669",
+   "brand": "",
+   "ru": "Датчик скорости правого заднего колеса B: высокий уровень сигнала в цепи",
+   "en": "Right Rear Wheel Speed Sensor B Circuit High",
+   "fam": "",
+   "node": "right rear wheel speed sensor b"
+  },
+  {
+   "code": "C066A",
+   "brand": "",
+   "ru": "Датчик скорости правого заднего колеса B: прерывистый / нестабильный сигнал",
+   "en": "Right Rear Wheel Speed Sensor B Intermittent/Erratic",
+   "fam": "",
+   "node": "right rear wheel speed sensor b"
+  },
+  {
+   "code": "C066B",
+   "brand": "",
+   "ru": "Датчик скорости правого заднего колеса B: рассогласование показаний",
+   "en": "Right Rear Wheel Speed Sensor B Correlation",
+   "fam": "",
+   "node": "right rear wheel speed sensor b correlation"
+  },
+  {
+   "code": "C066C",
+   "brand": "",
+   "ru": "Датчик скорости правого заднего колеса B: установлен не тот компонент",
+   "en": "Right Rear Wheel Speed Sensor B Incorrect Component Installed",
+   "fam": "",
+   "node": "right rear wheel speed sensor b incorrect component installed"
+  },
+  {
+   "code": "C066D",
+   "brand": "",
+   "ru": "Датчик давления тормозной камеры",
+   "en": "Service/Park Brake Chamber Pressure Sensor",
+   "fam": "",
+   "node": "service park brake chamber pressure"
+  },
+  {
+   "code": "C066E",
+   "brand": "",
+   "ru": "Тормозная камера (рабочий/стояночный тормоз): слишком высокое давление",
+   "en": "Service/Park Brake Chamber Pressure Too High",
+   "fam": "",
+   "node": "service park brake chamber pressure too"
+  },
+  {
+   "code": "C066F",
+   "brand": "",
+   "ru": "Тормозная камера (рабочий/стояночный тормоз): слишком низкое давление",
+   "en": "Service/Park Brake Chamber Pressure Too Low",
+   "fam": "",
+   "node": "service park brake chamber pressure too"
+  },
+  {
+   "code": "P0005",
+   "brand": "",
+   "ru": "Клапан отсечки топлива A: цепь / обрыв",
+   "en": "",
+   "fam": "fuel_pump",
+   "node": "fam:fuel_pump"
+  },
+  {
+   "code": "P0006",
+   "brand": "",
+   "ru": "Клапан отсечки топлива A: низкий уровень в цепи",
+   "en": "",
+   "fam": "fuel_pump",
+   "node": "fam:fuel_pump"
+  },
+  {
+   "code": "P0007",
+   "brand": "",
+   "ru": "Клапан отсечки топлива A: высокий уровень в цепи",
+   "en": "",
+   "fam": "fuel_pump",
+   "node": "fam:fuel_pump"
+  },
+  {
+   "code": "P0215",
+   "brand": "",
+   "ru": "Клапан остановки двигателя: цепь",
+   "en": "",
+   "fam": "fuel_pump",
+   "node": "fam:fuel_pump"
+  },
+  {
+   "code": "P0230",
+   "brand": "",
+   "ru": "Топливный насос: первичная цепь (реле)",
+   "en": "",
+   "fam": "fuel_pump",
+   "node": "fam:fuel_pump"
+  },
+  {
+   "code": "P0231",
+   "brand": "",
+   "ru": "Топливный насос: вторичная цепь, низкий уровень",
+   "en": "",
+   "fam": "fuel_pump",
+   "node": "fam:fuel_pump"
+  },
+  {
+   "code": "P0232",
+   "brand": "",
+   "ru": "Топливный насос: вторичная цепь, высокий уровень",
+   "en": "",
+   "fam": "fuel_pump",
+   "node": "fam:fuel_pump"
+  },
+  {
+   "code": "P0233",
+   "brand": "",
+   "ru": "Топливный насос: вторичная цепь, прерывистая",
+   "en": "",
+   "fam": "fuel_pump",
+   "node": "fam:fuel_pump"
+  },
+  {
+   "code": "P0627",
+   "brand": "",
+   "ru": "Топливный насос A: цепь управления / обрыв",
+   "en": "",
+   "fam": "fuel_pump",
+   "node": "fam:fuel_pump"
+  },
+  {
+   "code": "P0628",
+   "brand": "",
+   "ru": "Топливный насос A: цепь управления, низкий уровень",
+   "en": "",
+   "fam": "fuel_pump",
+   "node": "fam:fuel_pump"
+  },
+  {
+   "code": "P0629",
+   "brand": "",
+   "ru": "Топливный насос A: цепь управления, высокий уровень",
+   "en": "",
+   "fam": "fuel_pump",
+   "node": "fam:fuel_pump"
+  },
+  {
+   "code": "P062A",
+   "brand": "",
+   "ru": "Топливный насос A: управление не отрабатывает",
+   "en": "",
+   "fam": "fuel_pump",
+   "node": "fam:fuel_pump"
+  },
+  {
+   "code": "P064A",
+   "brand": "",
+   "ru": "Модуль управления топливным насосом",
+   "en": "",
+   "fam": "fuel_pump",
+   "node": "fam:fuel_pump"
+  },
+  {
+   "code": "P2632",
+   "brand": "",
+   "ru": "Топливный насос B: цепь управления / обрыв",
+   "en": "",
+   "fam": "fuel_pump",
+   "node": "fam:fuel_pump"
+  },
+  {
+   "code": "P2633",
+   "brand": "",
+   "ru": "Топливный насос B: низкий уровень",
+   "en": "",
+   "fam": "fuel_pump",
+   "node": "fam:fuel_pump"
+  },
+  {
+   "code": "P2634",
+   "brand": "",
+   "ru": "Топливный насос B: высокий уровень",
+   "en": "",
+   "fam": "fuel_pump",
+   "node": "fam:fuel_pump"
+  },
+  {
+   "code": "P2665",
+   "brand": "",
+   "ru": "Клапан отсечки топлива B: цепь / обрыв",
+   "en": "",
+   "fam": "fuel_pump",
+   "node": "fam:fuel_pump"
+  },
+  {
+   "code": "P2666",
+   "brand": "",
+   "ru": "Клапан отсечки топлива B: низкий уровень",
+   "en": "",
+   "fam": "fuel_pump",
+   "node": "fam:fuel_pump"
+  },
+  {
+   "code": "P2667",
+   "brand": "",
+   "ru": "Клапан отсечки топлива B: высокий уровень",
+   "en": "",
+   "fam": "fuel_pump",
+   "node": "fam:fuel_pump"
+  },
+  {
+   "code": "P0008",
+   "brand": "",
+   "ru": "Система положения двигателя: несоответствие (банк 1)",
+   "en": "",
+   "fam": "ckp_cmp",
+   "node": "fam:ckp_cmp"
+  },
+  {
+   "code": "P0009",
+   "brand": "",
+   "ru": "Система положения двигателя: несоответствие (банк 2)",
+   "en": "",
+   "fam": "ckp_cmp",
+   "node": "fam:ckp_cmp"
+  },
+  {
+   "code": "P0016",
+   "brand": "",
+   "ru": "Коленвал и впускной распредвал не согласуются (банк 1)",
+   "en": "",
+   "fam": "ckp_cmp",
+   "node": "fam:ckp_cmp"
+  },
+  {
+   "code": "P0017",
+   "brand": "",
+   "ru": "Коленвал и выпускной распредвал не согласуются (банк 1)",
+   "en": "",
+   "fam": "ckp_cmp",
+   "node": "fam:ckp_cmp"
+  },
+  {
+   "code": "P0018",
+   "brand": "",
+   "ru": "Коленвал и впускной распредвал не согласуются (банк 2)",
+   "en": "",
+   "fam": "ckp_cmp",
+   "node": "fam:ckp_cmp"
+  },
+  {
+   "code": "P0019",
+   "brand": "",
+   "ru": "Коленвал и выпускной распредвал не согласуются (банк 2)",
+   "en": "",
+   "fam": "ckp_cmp",
+   "node": "fam:ckp_cmp"
+  },
+  {
+   "code": "P000A",
+   "brand": "",
+   "ru": "Положение распредвала A: медленная реакция (банк 1)",
+   "en": "A Camshaft Position Slow Response Bank 1",
+   "fam": "",
+   "node": "a camshaft position"
+  },
+  {
+   "code": "P000C",
+   "brand": "",
+   "ru": "Положение распредвала A: медленная реакция (банк 2)",
+   "en": "A Camshaft Position Slow Response Bank 2",
+   "fam": "",
+   "node": "a camshaft position"
+  },
+  {
+   "code": "P25DD",
+   "brand": "",
+   "ru": "Распредвал A застрял в заблокированном положении (банк 1)",
+   "en": "A Camshaft Position - Stuck In Locked Position Bank 1",
+   "fam": "",
+   "node": "a camshaft position"
+  },
+  {
+   "code": "P25E0",
+   "brand": "",
+   "ru": "Распредвал A застрял в заблокированном положении (банк 2)",
+   "en": "A Camshaft Position - Stuck In Locked Position Bank 2",
+   "fam": "",
+   "node": "a camshaft position"
+  },
+  {
+   "code": "P000B",
+   "brand": "",
+   "ru": "Положение распредвала B: медленная реакция (банк 1)",
+   "en": "B Camshaft Position Slow Response Bank 1",
+   "fam": "",
+   "node": "b camshaft position"
+  },
+  {
+   "code": "P000D",
+   "brand": "",
+   "ru": "Положение распредвала B: медленная реакция (банк 2)",
+   "en": "B Camshaft Position Slow Response Bank 2",
+   "fam": "",
+   "node": "b camshaft position"
+  },
+  {
+   "code": "P25E3",
+   "brand": "",
+   "ru": "Распредвал B застрял в заблокированном положении (банк 1)",
+   "en": "B Camshaft Position - Stuck In Locked Position Bank 1",
+   "fam": "",
+   "node": "b camshaft position"
+  },
+  {
+   "code": "P25E6",
+   "brand": "",
+   "ru": "Распредвал B застрял в заблокированном положении (банк 2)",
+   "en": "B Camshaft Position - Stuck In Locked Position Bank 2",
+   "fam": "",
+   "node": "b camshaft position"
+  },
+  {
+   "code": "P000E",
+   "brand": "",
+   "ru": "Регулятор количества топлива: превышен предел адаптации",
+   "en": "Fuel Volume Regulator Control Exceeded Learning Limit",
+   "fam": "",
+   "node": "fuel volume regulator control exceeded learning limit"
+  },
+  {
+   "code": "P000F",
+   "brand": "",
+   "ru": "Сработал предохранительный клапан избыточного давления топлива",
+   "en": "Fuel System Over Pressure Relief Valve Activated",
+   "fam": "",
+   "node": "fuel system over pressure relief valve activated"
+  }
+ ]
+}

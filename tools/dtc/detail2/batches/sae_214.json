@@ -1,0 +1,375 @@
+{
+ "name": "sae_214",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "communication authentication",
+  "communication authentication key certificate missing invalid",
+  "control module a disable",
+  "control module a disable feedback",
+  "control module cooling fan",
+  "control module ground c",
+  "control module ground d",
+  "control module improper wake up",
+  "control module missing calibration",
+  "control module security certificate missing invalid",
+  "control module timer clock",
+  "ignition",
+  "ru:блокировочная цепь высоковольтной системы b",
+  "ru:блокировочная цепь высоковольтной системы c"
+ ],
+ "codes": [
+  {
+   "code": "U300A",
+   "brand": "",
+   "ru": "Замок зажигания",
+   "en": "Ignition Switch",
+   "fam": "",
+   "node": "ignition"
+  },
+  {
+   "code": "U300B",
+   "brand": "",
+   "ru": "Вход зажигания «Аксессуары/Вкл/Старт»",
+   "en": "Ignition Input Accessory/On/Start",
+   "fam": "",
+   "node": "ignition"
+  },
+  {
+   "code": "U300C",
+   "brand": "",
+   "ru": "Вход зажигания «Выкл/Вкл/Старт»",
+   "en": "Ignition Input Off/On/Start",
+   "fam": "",
+   "node": "ignition"
+  },
+  {
+   "code": "U300D",
+   "brand": "",
+   "ru": "Вход зажигания «Вкл/Старт»",
+   "en": "Ignition Input On/Start",
+   "fam": "",
+   "node": "ignition"
+  },
+  {
+   "code": "U300E",
+   "brand": "",
+   "ru": "Вход зажигания «Вкл»",
+   "en": "Ignition Input On",
+   "fam": "",
+   "node": "ignition"
+  },
+  {
+   "code": "U300F",
+   "brand": "",
+   "ru": "Вход зажигания «Аксессуары»",
+   "en": "Ignition Input Accessory",
+   "fam": "",
+   "node": "ignition"
+  },
+  {
+   "code": "U3010",
+   "brand": "",
+   "ru": "Вход зажигания «Старт»",
+   "en": "Ignition Input Start",
+   "fam": "",
+   "node": "ignition"
+  },
+  {
+   "code": "U3011",
+   "brand": "",
+   "ru": "Вход зажигания «Выкл»",
+   "en": "Ignition Input Off",
+   "fam": "",
+   "node": "ignition"
+  },
+  {
+   "code": "U3022",
+   "brand": "",
+   "ru": "Вход зажигания «Аксессуары/Выкл»",
+   "en": "Ignition Input Accessory/Off",
+   "fam": "",
+   "node": "ignition"
+  },
+  {
+   "code": "U302B",
+   "brand": "",
+   "ru": "Выход зажигания «Аксессуары/Вкл/Старт»",
+   "en": "Ignition Output Accessory/On/Start",
+   "fam": "",
+   "node": "ignition"
+  },
+  {
+   "code": "U302C",
+   "brand": "",
+   "ru": "Выход зажигания «Выкл/Вкл/Старт»",
+   "en": "Ignition Output Off/On/Start",
+   "fam": "",
+   "node": "ignition"
+  },
+  {
+   "code": "U302D",
+   "brand": "",
+   "ru": "Выход зажигания «Вкл/Старт»",
+   "en": "Ignition Output On/Start",
+   "fam": "",
+   "node": "ignition"
+  },
+  {
+   "code": "U302E",
+   "brand": "",
+   "ru": "Выход зажигания «Вкл»",
+   "en": "Ignition Output On",
+   "fam": "",
+   "node": "ignition"
+  },
+  {
+   "code": "U302F",
+   "brand": "",
+   "ru": "Выход зажигания «Аксессуары»",
+   "en": "Ignition Output Accessory",
+   "fam": "",
+   "node": "ignition"
+  },
+  {
+   "code": "U3030",
+   "brand": "",
+   "ru": "Выход зажигания «Старт»",
+   "en": "Ignition Output Start",
+   "fam": "",
+   "node": "ignition"
+  },
+  {
+   "code": "U3031",
+   "brand": "",
+   "ru": "Выход зажигания «Выкл»",
+   "en": "Ignition Output Off",
+   "fam": "",
+   "node": "ignition"
+  },
+  {
+   "code": "U3032",
+   "brand": "",
+   "ru": "Выход зажигания «Аксессуары/Выкл»",
+   "en": "Ignition Output Accessory/Off",
+   "fam": "",
+   "node": "ignition"
+  },
+  {
+   "code": "U3012",
+   "brand": "",
+   "ru": "Блок управления: некорректное пробуждение",
+   "en": "Control Module Improper Wake-up Performance",
+   "fam": "",
+   "node": "control module improper wake up"
+  },
+  {
+   "code": "U3015",
+   "brand": "",
+   "ru": "Масса блока управления C",
+   "en": "Control Module Ground C",
+   "fam": "",
+   "node": "control module ground c"
+  },
+  {
+   "code": "U3016",
+   "brand": "",
+   "ru": "Масса блока управления D",
+   "en": "Control Module Ground D",
+   "fam": "",
+   "node": "control module ground d"
+  },
+  {
+   "code": "U3017",
+   "brand": "",
+   "ru": "Таймер/часы блока управления: работа нарушена",
+   "en": "Control Module Timer/Clock Performance",
+   "fam": "",
+   "node": "control module timer clock"
+  },
+  {
+   "code": "U3025",
+   "brand": "",
+   "ru": "Отключение блока управления A: обрыв цепи",
+   "en": "Control Module A Disable Circuit/Open",
+   "fam": "",
+   "node": "control module a disable"
+  },
+  {
+   "code": "U3026",
+   "brand": "",
+   "ru": "Отключение блока управления A: низкий уровень сигнала в цепи",
+   "en": "Control Module A Disable Circuit Low",
+   "fam": "",
+   "node": "control module a disable"
+  },
+  {
+   "code": "U3027",
+   "brand": "",
+   "ru": "Отключение блока управления A: высокий уровень сигнала в цепи",
+   "en": "Control Module A Disable Circuit High",
+   "fam": "",
+   "node": "control module a disable"
+  },
+  {
+   "code": "U3028",
+   "brand": "",
+   "ru": "Обратная связь отключения блока управления A: цепь",
+   "en": "Control Module A Disable Feedback Circuit",
+   "fam": "",
+   "node": "control module a disable feedback"
+  },
+  {
+   "code": "U3029",
+   "brand": "",
+   "ru": "Обратная связь отключения блока управления A: низкий уровень сигнала в цепи",
+   "en": "Control Module A Disable Feedback Circuit Low",
+   "fam": "",
+   "node": "control module a disable feedback"
+  },
+  {
+   "code": "U302A",
+   "brand": "",
+   "ru": "Обратная связь отключения блока управления A: высокий уровень сигнала в цепи",
+   "en": "Control Module A Disable Feedback Circuit High",
+   "fam": "",
+   "node": "control module a disable feedback"
+  },
+  {
+   "code": "U3033",
+   "brand": "",
+   "ru": "Сертификат безопасности блока отсутствует или недействителен",
+   "en": "Control Module Security Certificate Missing/Invalid",
+   "fam": "",
+   "node": "control module security certificate missing invalid"
+  },
+  {
+   "code": "U3034",
+   "brand": "",
+   "ru": "Ключ/сертификат аутентификации связи отсутствует или недействителен",
+   "en": "Communication Authentication Key/Certificate Missing/Invalid",
+   "fam": "",
+   "node": "communication authentication key certificate missing invalid"
+  },
+  {
+   "code": "U3035",
+   "brand": "",
+   "ru": "Сигнал аутентификации связи: неверные данные",
+   "en": "Communication Authentication Signal Invalid Data",
+   "fam": "",
+   "node": "communication authentication"
+  },
+  {
+   "code": "U3036",
+   "brand": "",
+   "ru": "Сигнал аутентификации связи: работа нарушена",
+   "en": "Communication Authentication Signal Performance",
+   "fam": "",
+   "node": "communication authentication"
+  },
+  {
+   "code": "U350C",
+   "brand": "",
+   "ru": "Вентилятор охлаждения блока управления: обрыв цепи",
+   "en": "Control Module Cooling Fan Circuit/Open",
+   "fam": "",
+   "node": "control module cooling fan"
+  },
+  {
+   "code": "U350D",
+   "brand": "",
+   "ru": "Вентилятор охлаждения блока управления: низкий уровень сигнала в цепи",
+   "en": "Control Module Cooling Fan Circuit Low",
+   "fam": "",
+   "node": "control module cooling fan"
+  },
+  {
+   "code": "U350E",
+   "brand": "",
+   "ru": "Вентилятор охлаждения блока управления: высокий уровень сигнала в цепи",
+   "en": "Control Module Cooling Fan Circuit High",
+   "fam": "",
+   "node": "control module cooling fan"
+  },
+  {
+   "code": "U350F",
+   "brand": "",
+   "ru": "Вентилятор охлаждения блока управления: сигнал вне диапазона",
+   "en": "Control Module Cooling Fan Circuit Range/Performance",
+   "fam": "",
+   "node": "control module cooling fan"
+  },
+  {
+   "code": "U3510",
+   "brand": "",
+   "ru": "Блок управления: нет калибровки",
+   "en": "Control Module Missing Calibration",
+   "fam": "",
+   "node": "control module missing calibration"
+  },
+  {
+   "code": "U3511",
+   "brand": "",
+   "ru": "Блокировочная цепь высоковольтной системы B",
+   "en": "High Voltage System Interlock Circuit B",
+   "fam": "",
+   "node": "ru:блокировочная цепь высоковольтной системы b"
+  },
+  {
+   "code": "U3512",
+   "brand": "",
+   "ru": "Блокировочная цепь высоковольтной системы B: работа нарушена",
+   "en": "High Voltage System Interlock Circuit B Performance",
+   "fam": "",
+   "node": "ru:блокировочная цепь высоковольтной системы b"
+  },
+  {
+   "code": "U3513",
+   "brand": "",
+   "ru": "Блокировочная цепь высоковольтной системы B: низкий уровень",
+   "en": "High Voltage System Interlock Circuit B Low",
+   "fam": "",
+   "node": "ru:блокировочная цепь высоковольтной системы b"
+  },
+  {
+   "code": "U3514",
+   "brand": "",
+   "ru": "Блокировочная цепь высоковольтной системы B: высокий уровень",
+   "en": "High Voltage System Interlock Circuit B High",
+   "fam": "",
+   "node": "ru:блокировочная цепь высоковольтной системы b"
+  },
+  {
+   "code": "U3515",
+   "brand": "",
+   "ru": "Блокировочная цепь высоковольтной системы C",
+   "en": "High Voltage System Interlock Circuit C",
+   "fam": "",
+   "node": "ru:блокировочная цепь высоковольтной системы c"
+  },
+  {
+   "code": "U3516",
+   "brand": "",
+   "ru": "Блокировочная цепь высоковольтной системы C: работа нарушена",
+   "en": "High Voltage System Interlock Circuit C Performance",
+   "fam": "",
+   "node": "ru:блокировочная цепь высоковольтной системы c"
+  },
+  {
+   "code": "U3517",
+   "brand": "",
+   "ru": "Блокировочная цепь высоковольтной системы C: низкий уровень",
+   "en": "High Voltage System Interlock Circuit C Low",
+   "fam": "",
+   "node": "ru:блокировочная цепь высоковольтной системы c"
+  },
+  {
+   "code": "U3518",
+   "brand": "",
+   "ru": "Блокировочная цепь высоковольтной системы C: высокий уровень",
+   "en": "High Voltage System Interlock Circuit C High",
+   "fam": "",
+   "node": "ru:блокировочная цепь высоковольтной системы c"
+  }
+ ]
+}

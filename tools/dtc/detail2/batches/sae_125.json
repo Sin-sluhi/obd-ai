@@ -1,0 +1,360 @@
+{
+ "name": "sae_125",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "battery charge mode",
+  "battery charger a enable",
+  "battery charger control module a processor",
+  "battery charger coupler temperature a too",
+  "battery charging system precharge contactor",
+  "coolant bypass valve a",
+  "coolant bypass valve a control",
+  "coolant bypass valve b",
+  "coolant bypass valve b control",
+  "dc dc converter",
+  "dc dc converter current sensor a",
+  "dc dc converter temperature sensor c",
+  "generator torque delivered",
+  "hybrid ev battery voltage internal isolation fault",
+  "motor electronics coolant pump a"
+ ],
+ "codes": [
+  {
+   "code": "P0E4F",
+   "brand": "",
+   "ru": "Насос охлаждения электроники электромотора A: прерывистый / нестабильный сигнал управления",
+   "en": "Motor Electronics Coolant Pump A Control Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "motor electronics coolant pump a"
+  },
+  {
+   "code": "P2D00",
+   "brand": "",
+   "ru": "Насос охлаждения электроники электромотора A: заклинивание / остановка",
+   "en": "Motor Electronics Coolant Pump A Stuck/Stalled",
+   "fam": "",
+   "node": "motor electronics coolant pump a"
+  },
+  {
+   "code": "P0E51",
+   "brand": "",
+   "ru": "Датчик тока преобразователя DC/DC A: цепь",
+   "en": "DC/DC Converter Current Sensor A Circuit",
+   "fam": "",
+   "node": "dc dc converter current sensor a"
+  },
+  {
+   "code": "P0E52",
+   "brand": "",
+   "ru": "Датчик тока преобразователя DC/DC A: сигнал вне диапазона",
+   "en": "DC/DC Converter Current Sensor A Circuit Range/Performance",
+   "fam": "",
+   "node": "dc dc converter current sensor a"
+  },
+  {
+   "code": "P0E53",
+   "brand": "",
+   "ru": "Датчик тока преобразователя DC/DC A: низкий уровень сигнала в цепи",
+   "en": "DC/DC Converter Current Sensor A Circuit Low",
+   "fam": "",
+   "node": "dc dc converter current sensor a"
+  },
+  {
+   "code": "P0E54",
+   "brand": "",
+   "ru": "Датчик тока преобразователя DC/DC A: высокий уровень сигнала в цепи",
+   "en": "DC/DC Converter Current Sensor A Circuit High",
+   "fam": "",
+   "node": "dc dc converter current sensor a"
+  },
+  {
+   "code": "P0E55",
+   "brand": "",
+   "ru": "Датчик тока преобразователя DC/DC A: прерывистый / нестабильный сигнал",
+   "en": "DC/DC Converter Current Sensor A Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "dc dc converter current sensor a"
+  },
+  {
+   "code": "P0E56",
+   "brand": "",
+   "ru": "Преобразователь DC/DC: слишком низкое входное напряжение",
+   "en": "DC/DC Converter Input Voltage Too Low",
+   "fam": "",
+   "node": "dc dc converter"
+  },
+  {
+   "code": "P0E57",
+   "brand": "",
+   "ru": "Преобразователь DC/DC: слишком высокое входное напряжение",
+   "en": "DC/DC Converter Input Voltage Too High",
+   "fam": "",
+   "node": "dc dc converter"
+  },
+  {
+   "code": "P0E58",
+   "brand": "",
+   "ru": "Датчик температуры преобразователя DC/DC C: цепь",
+   "en": "DC/DC Converter Temperature Sensor C Circuit",
+   "fam": "",
+   "node": "dc dc converter temperature sensor c"
+  },
+  {
+   "code": "P0E59",
+   "brand": "",
+   "ru": "Датчик температуры преобразователя DC/DC C: сигнал вне диапазона",
+   "en": "DC/DC Converter Temperature Sensor C Circuit Range/Performance",
+   "fam": "",
+   "node": "dc dc converter temperature sensor c"
+  },
+  {
+   "code": "P0E5A",
+   "brand": "",
+   "ru": "Датчик температуры преобразователя DC/DC C: низкий уровень сигнала в цепи",
+   "en": "DC/DC Converter Temperature Sensor C Circuit Low",
+   "fam": "",
+   "node": "dc dc converter temperature sensor c"
+  },
+  {
+   "code": "P0E5B",
+   "brand": "",
+   "ru": "Датчик температуры преобразователя DC/DC C: высокий уровень сигнала в цепи",
+   "en": "DC/DC Converter Temperature Sensor C Circuit High",
+   "fam": "",
+   "node": "dc dc converter temperature sensor c"
+  },
+  {
+   "code": "P0E5C",
+   "brand": "",
+   "ru": "Датчик температуры преобразователя DC/DC C: прерывистый / нестабильный сигнал",
+   "en": "DC/DC Converter Temperature Sensor C Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "dc dc converter temperature sensor c"
+  },
+  {
+   "code": "P0E5E",
+   "brand": "",
+   "ru": "Процессор блока зарядного устройства A: работа нарушена",
+   "en": "Battery Charger Control Module A Processor Performance",
+   "fam": "",
+   "node": "battery charger control module a processor"
+  },
+  {
+   "code": "P0E5F",
+   "brand": "",
+   "ru": "Температура зарядного разъёма A: слишком высокое значение",
+   "en": "Battery Charger Coupler Temperature A Too High",
+   "fam": "",
+   "node": "battery charger coupler temperature a too"
+  },
+  {
+   "code": "P0E60",
+   "brand": "",
+   "ru": "Управление режимом зарядки: сигнал вне диапазона",
+   "en": "Battery Charge Mode Control Circuit Range/Performance",
+   "fam": "",
+   "node": "battery charge mode"
+  },
+  {
+   "code": "P0E61",
+   "brand": "",
+   "ru": "Включение зарядного устройства A: обрыв цепи",
+   "en": "Battery Charger A Enable Circuit/Open",
+   "fam": "",
+   "node": "battery charger a enable"
+  },
+  {
+   "code": "P0E62",
+   "brand": "",
+   "ru": "Включение зарядного устройства A: низкий уровень сигнала в цепи",
+   "en": "Battery Charger A Enable Circuit Low",
+   "fam": "",
+   "node": "battery charger a enable"
+  },
+  {
+   "code": "P0E63",
+   "brand": "",
+   "ru": "Включение зарядного устройства A: высокий уровень сигнала в цепи",
+   "en": "Battery Charger A Enable Circuit High",
+   "fam": "",
+   "node": "battery charger a enable"
+  },
+  {
+   "code": "P0E64",
+   "brand": "",
+   "ru": "Включение зарядного устройства A: сигнал вне диапазона",
+   "en": "Battery Charger A Enable Circuit Range/Performance",
+   "fam": "",
+   "node": "battery charger a enable"
+  },
+  {
+   "code": "P0E6A",
+   "brand": "",
+   "ru": "Контактор предзаряда системы зарядки: цепь",
+   "en": "Battery Charging System Precharge Contactor Circuit",
+   "fam": "",
+   "node": "battery charging system precharge contactor"
+  },
+  {
+   "code": "P0E6B",
+   "brand": "",
+   "ru": "Контактор предзаряда системы зарядки: залип замкнутым",
+   "en": "Battery Charging System Precharge Contactor Circuit Stuck Closed",
+   "fam": "",
+   "node": "battery charging system precharge contactor"
+  },
+  {
+   "code": "P0E6C",
+   "brand": "",
+   "ru": "Контактор предзаряда системы зарядки: не замыкается",
+   "en": "Battery Charging System Precharge Contactor Circuit Stuck Open",
+   "fam": "",
+   "node": "battery charging system precharge contactor"
+  },
+  {
+   "code": "P0E6D",
+   "brand": "",
+   "ru": "Контактор предзаряда системы зарядки: обрыв цепи управления",
+   "en": "Battery Charging System Precharge Contactor Control Circuit/Open",
+   "fam": "",
+   "node": "battery charging system precharge contactor"
+  },
+  {
+   "code": "P0E6E",
+   "brand": "",
+   "ru": "Контактор предзаряда системы зарядки: цепь управления вне диапазона",
+   "en": "Battery Charging System Precharge Contactor Control Circuit Range/Performance",
+   "fam": "",
+   "node": "battery charging system precharge contactor"
+  },
+  {
+   "code": "P0E6F",
+   "brand": "",
+   "ru": "Контактор предзаряда системы зарядки: низкий уровень в цепи управления",
+   "en": "Battery Charging System Precharge Contactor Control Circuit Low",
+   "fam": "",
+   "node": "battery charging system precharge contactor"
+  },
+  {
+   "code": "P0E70",
+   "brand": "",
+   "ru": "Контактор предзаряда системы зарядки: высокий уровень в цепи управления",
+   "en": "Battery Charging System Precharge Contactor Control Circuit High",
+   "fam": "",
+   "node": "battery charging system precharge contactor"
+  },
+  {
+   "code": "P0E71",
+   "brand": "",
+   "ru": "Генератор (гибрид): выдаваемый момент не соответствует",
+   "en": "Generator Torque Delivered Performance",
+   "fam": "",
+   "node": "generator torque delivered"
+  },
+  {
+   "code": "P0E74",
+   "brand": "",
+   "ru": "Тяговая батарея: нарушение внутренней изоляции",
+   "en": "Hybrid/EV Battery Voltage Internal Isolation Fault",
+   "fam": "",
+   "node": "hybrid ev battery voltage internal isolation fault"
+  },
+  {
+   "code": "P0E75",
+   "brand": "",
+   "ru": "Перепускной клапан охлаждающей жидкости A: обрыв цепи управления",
+   "en": "Coolant Bypass Valve A Control Circuit/Open",
+   "fam": "",
+   "node": "coolant bypass valve a"
+  },
+  {
+   "code": "P0E76",
+   "brand": "",
+   "ru": "Перепускной клапан охлаждающей жидкости A: низкий уровень в цепи управления",
+   "en": "Coolant Bypass Valve A Control Circuit Low",
+   "fam": "",
+   "node": "coolant bypass valve a"
+  },
+  {
+   "code": "P0E77",
+   "brand": "",
+   "ru": "Перепускной клапан охлаждающей жидкости A: высокий уровень в цепи управления",
+   "en": "Coolant Bypass Valve A Control Circuit High",
+   "fam": "",
+   "node": "coolant bypass valve a"
+  },
+  {
+   "code": "P0E78",
+   "brand": "",
+   "ru": "Перепускной клапан охлаждающей жидкости A: цепь управления вне диапазона",
+   "en": "Coolant Bypass Valve A Control Circuit Range/Performance",
+   "fam": "",
+   "node": "coolant bypass valve a"
+  },
+  {
+   "code": "P0E79",
+   "brand": "",
+   "ru": "Перепускной клапан охлаждающей жидкости A: заклинил открытым",
+   "en": "Coolant Bypass Valve A Control Stuck/Open",
+   "fam": "",
+   "node": "coolant bypass valve a control"
+  },
+  {
+   "code": "P0E7A",
+   "brand": "",
+   "ru": "Перепускной клапан охлаждающей жидкости A: заклинил закрытым",
+   "en": "Coolant Bypass Valve A Control Stuck Closed",
+   "fam": "",
+   "node": "coolant bypass valve a control"
+  },
+  {
+   "code": "P0E7B",
+   "brand": "",
+   "ru": "Перепускной клапан охлаждающей жидкости B: обрыв цепи управления",
+   "en": "Coolant Bypass Valve B Control Circuit/Open",
+   "fam": "",
+   "node": "coolant bypass valve b"
+  },
+  {
+   "code": "P0E7C",
+   "brand": "",
+   "ru": "Перепускной клапан охлаждающей жидкости B: низкий уровень в цепи управления",
+   "en": "Coolant Bypass Valve B Control Circuit Low",
+   "fam": "",
+   "node": "coolant bypass valve b"
+  },
+  {
+   "code": "P0E7D",
+   "brand": "",
+   "ru": "Перепускной клапан охлаждающей жидкости B: высокий уровень в цепи управления",
+   "en": "Coolant Bypass Valve B Control Circuit High",
+   "fam": "",
+   "node": "coolant bypass valve b"
+  },
+  {
+   "code": "P0E7E",
+   "brand": "",
+   "ru": "Перепускной клапан охлаждающей жидкости B: цепь управления вне диапазона",
+   "en": "Coolant Bypass Valve B Control Circuit Range/Performance",
+   "fam": "",
+   "node": "coolant bypass valve b"
+  },
+  {
+   "code": "P0E7F",
+   "brand": "",
+   "ru": "Перепускной клапан охлаждающей жидкости B: заклинил открытым",
+   "en": "Coolant Bypass Valve B Control Stuck/Open",
+   "fam": "",
+   "node": "coolant bypass valve b control"
+  },
+  {
+   "code": "P0E80",
+   "brand": "",
+   "ru": "Перепускной клапан охлаждающей жидкости B: заклинил закрытым",
+   "en": "Coolant Bypass Valve B Control Stuck Closed",
+   "fam": "",
+   "node": "coolant bypass valve b control"
+  }
+ ]
+}

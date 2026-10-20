@@ -1,0 +1,348 @@
+{
+ "name": "sae_023",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "a camshaft profile actuator a",
+  "b camshaft profile actuator a",
+  "fam:lambda_heater"
+ ],
+ "codes": [
+  {
+   "code": "P001A",
+   "brand": "",
+   "ru": "Механизм переключения профиля распредвала A (привод A): обрыв цепи управления (банк 1)",
+   "en": "A Camshaft Profile Actuator A Control Circuit/Open Bank 1",
+   "fam": "",
+   "node": "a camshaft profile actuator a"
+  },
+  {
+   "code": "P001B",
+   "brand": "",
+   "ru": "Механизм переключения профиля распредвала A (привод A): низкий уровень в цепи управления (банк 1)",
+   "en": "A Camshaft Profile Actuator A Control Circuit Low Bank 1",
+   "fam": "",
+   "node": "a camshaft profile actuator a"
+  },
+  {
+   "code": "P001C",
+   "brand": "",
+   "ru": "Механизм переключения профиля распредвала A (привод A): высокий уровень в цепи управления (банк 1)",
+   "en": "A Camshaft Profile Actuator A Control Circuit High Bank 1",
+   "fam": "",
+   "node": "a camshaft profile actuator a"
+  },
+  {
+   "code": "P001D",
+   "brand": "",
+   "ru": "Механизм переключения профиля распредвала A (привод A): обрыв цепи управления (банк 2)",
+   "en": "A Camshaft Profile Actuator A Control Circuit/Open Bank 2",
+   "fam": "",
+   "node": "a camshaft profile actuator a"
+  },
+  {
+   "code": "P001E",
+   "brand": "",
+   "ru": "Механизм переключения профиля распредвала A (привод A): низкий уровень в цепи управления (банк 2)",
+   "en": "A Camshaft Profile Actuator A Control Circuit Low Bank 2",
+   "fam": "",
+   "node": "a camshaft profile actuator a"
+  },
+  {
+   "code": "P001F",
+   "brand": "",
+   "ru": "Механизм переключения профиля распредвала A (привод A): высокий уровень в цепи управления (банк 2)",
+   "en": "A Camshaft Profile Actuator A Control Circuit High Bank 2",
+   "fam": "",
+   "node": "a camshaft profile actuator a"
+  },
+  {
+   "code": "P002A",
+   "brand": "",
+   "ru": "Механизм переключения профиля распредвала B (привод A): обрыв цепи управления (банк 1)",
+   "en": "B Camshaft Profile Actuator A Control Circuit/Open Bank 1",
+   "fam": "",
+   "node": "b camshaft profile actuator a"
+  },
+  {
+   "code": "P002B",
+   "brand": "",
+   "ru": "Механизм переключения профиля распредвала B (привод A): низкий уровень в цепи управления (банк 1)",
+   "en": "B Camshaft Profile Actuator A Control Circuit Low Bank 1",
+   "fam": "",
+   "node": "b camshaft profile actuator a"
+  },
+  {
+   "code": "P002C",
+   "brand": "",
+   "ru": "Механизм переключения профиля распредвала B (привод A): высокий уровень в цепи управления (банк 1)",
+   "en": "B Camshaft Profile Actuator A Control Circuit High Bank 1",
+   "fam": "",
+   "node": "b camshaft profile actuator a"
+  },
+  {
+   "code": "P002D",
+   "brand": "",
+   "ru": "Механизм переключения профиля распредвала B (привод A): обрыв цепи управления (банк 2)",
+   "en": "B Camshaft Profile Actuator A Control Circuit/Open Bank 2",
+   "fam": "",
+   "node": "b camshaft profile actuator a"
+  },
+  {
+   "code": "P002E",
+   "brand": "",
+   "ru": "Механизм переключения профиля распредвала B (привод A): низкий уровень в цепи управления (банк 2)",
+   "en": "B Camshaft Profile Actuator A Control Circuit Low Bank 2",
+   "fam": "",
+   "node": "b camshaft profile actuator a"
+  },
+  {
+   "code": "P002F",
+   "brand": "",
+   "ru": "Механизм переключения профиля распредвала B (привод A): высокий уровень в цепи управления (банк 2)",
+   "en": "B Camshaft Profile Actuator A Control Circuit High Bank 2",
+   "fam": "",
+   "node": "b camshaft profile actuator a"
+  },
+  {
+   "code": "P0030",
+   "brand": "",
+   "ru": "Подогрев лямбда-зонда (банк 1, датчик 1): цепь управления",
+   "en": "",
+   "fam": "lambda_heater",
+   "node": "fam:lambda_heater"
+  },
+  {
+   "code": "P0031",
+   "brand": "",
+   "ru": "Подогрев лямбда-зонда (банк 1, датчик 1): низкий уровень",
+   "en": "",
+   "fam": "lambda_heater",
+   "node": "fam:lambda_heater"
+  },
+  {
+   "code": "P0032",
+   "brand": "",
+   "ru": "Подогрев лямбда-зонда (банк 1, датчик 1): высокий уровень",
+   "en": "",
+   "fam": "lambda_heater",
+   "node": "fam:lambda_heater"
+  },
+  {
+   "code": "P0036",
+   "brand": "",
+   "ru": "Подогрев лямбда-зонда (банк 1, датчик 2): цепь управления",
+   "en": "",
+   "fam": "lambda_heater",
+   "node": "fam:lambda_heater"
+  },
+  {
+   "code": "P0037",
+   "brand": "",
+   "ru": "Подогрев лямбда-зонда (банк 1, датчик 2): низкий уровень",
+   "en": "",
+   "fam": "lambda_heater",
+   "node": "fam:lambda_heater"
+  },
+  {
+   "code": "P0038",
+   "brand": "",
+   "ru": "Подогрев лямбда-зонда (банк 1, датчик 2): высокий уровень",
+   "en": "",
+   "fam": "lambda_heater",
+   "node": "fam:lambda_heater"
+  },
+  {
+   "code": "P0042",
+   "brand": "",
+   "ru": "Подогрев лямбда-зонда (банк 1, датчик 3): цепь управления",
+   "en": "",
+   "fam": "lambda_heater",
+   "node": "fam:lambda_heater"
+  },
+  {
+   "code": "P0043",
+   "brand": "",
+   "ru": "Подогрев лямбда-зонда (банк 1, датчик 3): низкий уровень",
+   "en": "",
+   "fam": "lambda_heater",
+   "node": "fam:lambda_heater"
+  },
+  {
+   "code": "P0044",
+   "brand": "",
+   "ru": "Подогрев лямбда-зонда (банк 1, датчик 3): высокий уровень",
+   "en": "",
+   "fam": "lambda_heater",
+   "node": "fam:lambda_heater"
+  },
+  {
+   "code": "P0050",
+   "brand": "",
+   "ru": "Подогрев лямбда-зонда (банк 2, датчик 1): цепь управления",
+   "en": "",
+   "fam": "lambda_heater",
+   "node": "fam:lambda_heater"
+  },
+  {
+   "code": "P0051",
+   "brand": "",
+   "ru": "Подогрев лямбда-зонда (банк 2, датчик 1): низкий уровень",
+   "en": "",
+   "fam": "lambda_heater",
+   "node": "fam:lambda_heater"
+  },
+  {
+   "code": "P0052",
+   "brand": "",
+   "ru": "Подогрев лямбда-зонда (банк 2, датчик 1): высокий уровень",
+   "en": "",
+   "fam": "lambda_heater",
+   "node": "fam:lambda_heater"
+  },
+  {
+   "code": "P0053",
+   "brand": "",
+   "ru": "Подогрев лямбда-зонда (банк 1, датчик 1): сопротивление нагревателя вне нормы",
+   "en": "",
+   "fam": "lambda_heater",
+   "node": "fam:lambda_heater"
+  },
+  {
+   "code": "P0054",
+   "brand": "",
+   "ru": "Подогрев лямбда-зонда (банк 1, датчик 2): сопротивление нагревателя вне нормы",
+   "en": "",
+   "fam": "lambda_heater",
+   "node": "fam:lambda_heater"
+  },
+  {
+   "code": "P0055",
+   "brand": "",
+   "ru": "Подогрев лямбда-зонда (банк 1, датчик 3): сопротивление нагревателя вне нормы",
+   "en": "",
+   "fam": "lambda_heater",
+   "node": "fam:lambda_heater"
+  },
+  {
+   "code": "P0056",
+   "brand": "",
+   "ru": "Подогрев лямбда-зонда (банк 2, датчик 2): цепь управления",
+   "en": "",
+   "fam": "lambda_heater",
+   "node": "fam:lambda_heater"
+  },
+  {
+   "code": "P0057",
+   "brand": "",
+   "ru": "Подогрев лямбда-зонда (банк 2, датчик 2): низкий уровень",
+   "en": "",
+   "fam": "lambda_heater",
+   "node": "fam:lambda_heater"
+  },
+  {
+   "code": "P0058",
+   "brand": "",
+   "ru": "Подогрев лямбда-зонда (банк 2, датчик 2): высокий уровень",
+   "en": "",
+   "fam": "lambda_heater",
+   "node": "fam:lambda_heater"
+  },
+  {
+   "code": "P0059",
+   "brand": "",
+   "ru": "Подогрев лямбда-зонда (банк 2, датчик 1): сопротивление нагревателя вне нормы",
+   "en": "",
+   "fam": "lambda_heater",
+   "node": "fam:lambda_heater"
+  },
+  {
+   "code": "P0060",
+   "brand": "",
+   "ru": "Подогрев лямбда-зонда (банк 2, датчик 2): сопротивление нагревателя вне нормы",
+   "en": "",
+   "fam": "lambda_heater",
+   "node": "fam:lambda_heater"
+  },
+  {
+   "code": "P0061",
+   "brand": "",
+   "ru": "Подогрев лямбда-зонда (банк 2, датчик 3): сопротивление нагревателя вне нормы",
+   "en": "",
+   "fam": "lambda_heater",
+   "node": "fam:lambda_heater"
+  },
+  {
+   "code": "P0062",
+   "brand": "",
+   "ru": "Подогрев лямбда-зонда (банк 2, датчик 3): цепь управления",
+   "en": "",
+   "fam": "lambda_heater",
+   "node": "fam:lambda_heater"
+  },
+  {
+   "code": "P0063",
+   "brand": "",
+   "ru": "Подогрев лямбда-зонда (банк 2, датчик 3): низкий уровень",
+   "en": "",
+   "fam": "lambda_heater",
+   "node": "fam:lambda_heater"
+  },
+  {
+   "code": "P0064",
+   "brand": "",
+   "ru": "Подогрев лямбда-зонда (банк 2, датчик 3): высокий уровень",
+   "en": "",
+   "fam": "lambda_heater",
+   "node": "fam:lambda_heater"
+  },
+  {
+   "code": "P0135",
+   "brand": "",
+   "ru": "Лямбда-зонд (банк 1, датчик 1): подогрев неисправен",
+   "en": "",
+   "fam": "lambda_heater",
+   "node": "fam:lambda_heater"
+  },
+  {
+   "code": "P0141",
+   "brand": "",
+   "ru": "Лямбда-зонд (банк 1, датчик 2): подогрев неисправен",
+   "en": "",
+   "fam": "lambda_heater",
+   "node": "fam:lambda_heater"
+  },
+  {
+   "code": "P0147",
+   "brand": "",
+   "ru": "Лямбда-зонд (банк 1, датчик 3): подогрев неисправен",
+   "en": "",
+   "fam": "lambda_heater",
+   "node": "fam:lambda_heater"
+  },
+  {
+   "code": "P0155",
+   "brand": "",
+   "ru": "Лямбда-зонд (банк 2, датчик 1): подогрев неисправен",
+   "en": "",
+   "fam": "lambda_heater",
+   "node": "fam:lambda_heater"
+  },
+  {
+   "code": "P0161",
+   "brand": "",
+   "ru": "Лямбда-зонд (банк 2, датчик 2): подогрев неисправен",
+   "en": "",
+   "fam": "lambda_heater",
+   "node": "fam:lambda_heater"
+  },
+  {
+   "code": "P0167",
+   "brand": "",
+   "ru": "Лямбда-зонд (банк 2, датчик 3): подогрев неисправен",
+   "en": "",
+   "fam": "lambda_heater",
+   "node": "fam:lambda_heater"
+  }
+ ]
+}

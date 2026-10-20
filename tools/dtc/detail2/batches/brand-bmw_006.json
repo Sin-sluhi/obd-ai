@@ -1,0 +1,339 @@
+{
+ "name": "brand-bmw_006",
+ "series": "brand",
+ "brand": "bmw",
+ "nodes": [
+  "can bus monitoring",
+  "can throttle",
+  "can torque interface",
+  "can torque reduction",
+  "can version",
+  "control module self test control module defective",
+  "control module self test knock control test pulse",
+  "control module self test speed monitoring",
+  "internal control module rom ram error",
+  "map cooling",
+  "pedal position sensor potentiometer supply",
+  "pedal position sensor potentiometer supply channel 1 electrical",
+  "pedal position sensor potentiometer supply channel 2 electrical",
+  "pressure control solenoid a electrical",
+  "pressure control solenoid b electrical",
+  "pressure control solenoid c electrical",
+  "pressure control solenoid e electrical",
+  "ru:лампа неисправности",
+  "secondary pressure",
+  "secondary pressure solenoid",
+  "secondary pressure solenoid communication error",
+  "serial communicating link control",
+  "serial communicating link eml",
+  "serial communicating link transmission control",
+  "shift solenoid",
+  "throttle valve",
+  "throttle valve adaptation adaptation condition not met",
+  "throttle valve adaptation limp home position",
+  "throttle valve adaptation lower mechanical stop not adapted",
+  "throttle valve adaptation spring test failed",
+  "throttle valve position control control deviation",
+  "throttle valve position control throttle",
+  "transmission control module",
+  "transmission control module self test"
+ ],
+ "codes": [
+  {
+   "code": "P1589",
+   "brand": "bmw",
+   "ru": "Самотест блока: тестовый импульс контроля детонации (ряд 1)",
+   "en": "Control Module Self Test Knock Control Test Pulse Bank 1",
+   "fam": "",
+   "node": "control module self test knock control test pulse"
+  },
+  {
+   "code": "P1602",
+   "brand": "bmw",
+   "ru": "Самотест блока: блок неисправен",
+   "en": "Control Module Self Test Control Module Defective",
+   "fam": "",
+   "node": "control module self test control module defective"
+  },
+  {
+   "code": "P1604",
+   "brand": "bmw",
+   "ru": "Самотест блока: контроль оборотов",
+   "en": "Control Module Self Test Speed Monitoring",
+   "fam": "",
+   "node": "control module self test speed monitoring"
+  },
+  {
+   "code": "P1607",
+   "brand": "bmw",
+   "ru": "Версия CAN",
+   "en": "CAN Version",
+   "fam": "",
+   "node": "can version"
+  },
+  {
+   "code": "P1608",
+   "brand": "bmw",
+   "ru": "Последовательная связь с блоком управления",
+   "en": "Serial Communicating Link Control Module",
+   "fam": "",
+   "node": "serial communicating link control"
+  },
+  {
+   "code": "P1609",
+   "brand": "bmw",
+   "ru": "Последовательная связь с электронным газом (EML)",
+   "en": "Serial Communicating Link EML",
+   "fam": "",
+   "node": "serial communicating link eml"
+  },
+  {
+   "code": "P1611",
+   "brand": "bmw",
+   "ru": "Последовательная связь с блоком коробки",
+   "en": "Serial Communicating Link Transmission Control Module",
+   "fam": "",
+   "node": "serial communicating link transmission control"
+  },
+  {
+   "code": "P1619",
+   "brand": "bmw",
+   "ru": "Охлаждение по карте (термостат с электроподогревом): низкий сигнал",
+   "en": "MAP Cooling Control Circuit Signal Low",
+   "fam": "",
+   "node": "map cooling"
+  },
+  {
+   "code": "P1620",
+   "brand": "bmw",
+   "ru": "Охлаждение по карте (термостат с электроподогревом): высокий сигнал",
+   "en": "MAP Cooling Control Circuit Signal High",
+   "fam": "",
+   "node": "map cooling"
+  },
+  {
+   "code": "P1622",
+   "brand": "bmw",
+   "ru": "Охлаждение по карте (термостат с электроподогревом): электрическая неисправность",
+   "en": "MAP Cooling Control Circuit Electrical",
+   "fam": "",
+   "node": "map cooling"
+  },
+  {
+   "code": "P1623",
+   "brand": "bmw",
+   "ru": "Датчик педали газа: питание потенциометров",
+   "en": "Pedal Position Sensor Potentiometer Supply",
+   "fam": "",
+   "node": "pedal position sensor potentiometer supply"
+  },
+  {
+   "code": "P1624",
+   "brand": "bmw",
+   "ru": "Датчик педали газа: питание потенциометра, канал 1",
+   "en": "Pedal Position Sensor Potentiometer Supply Channel 1 Electrical",
+   "fam": "",
+   "node": "pedal position sensor potentiometer supply channel 1 electrical"
+  },
+  {
+   "code": "P1625",
+   "brand": "bmw",
+   "ru": "Датчик педали газа: питание потенциометра, канал 2",
+   "en": "Pedal Position Sensor Potentiometer Supply Channel 2 Electrical",
+   "fam": "",
+   "node": "pedal position sensor potentiometer supply channel 2 electrical"
+  },
+  {
+   "code": "P1632",
+   "brand": "bmw",
+   "ru": "Адаптация дроссельной заслонки: условия не выполнены",
+   "en": "Throttle Valve Adaptation Adaptation Condition Not Met",
+   "fam": "",
+   "node": "throttle valve adaptation adaptation condition not met"
+  },
+  {
+   "code": "P1633",
+   "brand": "bmw",
+   "ru": "Адаптация дроссельной заслонки: аварийное положение",
+   "en": "Throttle Valve Adaptation Limp Home Position",
+   "fam": "",
+   "node": "throttle valve adaptation limp home position"
+  },
+  {
+   "code": "P1634",
+   "brand": "bmw",
+   "ru": "Адаптация дроссельной заслонки: тест пружины не пройден",
+   "en": "Throttle Valve Adaptation Spring Test Failed",
+   "fam": "",
+   "node": "throttle valve adaptation spring test failed"
+  },
+  {
+   "code": "P1635",
+   "brand": "bmw",
+   "ru": "Адаптация дроссельной заслонки: нижний упор не обучен",
+   "en": "Throttle Valve Adaptation Lower Mechanical Stop Not Adapted",
+   "fam": "",
+   "node": "throttle valve adaptation lower mechanical stop not adapted"
+  },
+  {
+   "code": "P1636",
+   "brand": "bmw",
+   "ru": "Дроссельная заслонка: цепь управления",
+   "en": "Throttle Valve Control Circuit",
+   "fam": "",
+   "node": "throttle valve"
+  },
+  {
+   "code": "P1637",
+   "brand": "bmw",
+   "ru": "Регулирование положения дросселя: рассогласование",
+   "en": "Throttle Valve Position Control Control Deviation",
+   "fam": "",
+   "node": "throttle valve position control control deviation"
+  },
+  {
+   "code": "P1638",
+   "brand": "bmw",
+   "ru": "Регулирование положения дросселя: заслонка временно заклинила",
+   "en": "Throttle Valve Position Control Throttle Stuck Temporarily",
+   "fam": "",
+   "node": "throttle valve position control throttle"
+  },
+  {
+   "code": "P1639",
+   "brand": "bmw",
+   "ru": "Регулирование положения дросселя: заслонка заклинила постоянно",
+   "en": "Throttle Valve Position Control Throttle Stuck Permanently",
+   "fam": "",
+   "node": "throttle valve position control throttle"
+  },
+  {
+   "code": "P1640",
+   "brand": "bmw",
+   "ru": "Внутренняя ошибка блока: ПЗУ/ОЗУ",
+   "en": "Internal Control Module ROM RAM Error",
+   "fam": "",
+   "node": "internal control module rom ram error"
+  },
+  {
+   "code": "P1690",
+   "brand": "bmw",
+   "ru": "Лампа неисправности: электрическая неисправность",
+   "en": "Malfunction Indicator Lamp MIL Electrical",
+   "fam": "",
+   "node": "ru:лампа неисправности"
+  },
+  {
+   "code": "P1734",
+   "brand": "bmw",
+   "ru": "Клапан регулирования давления B (коробка): электрическая неисправность",
+   "en": "Pressure Control Solenoid B Electrical",
+   "fam": "",
+   "node": "pressure control solenoid b electrical"
+  },
+  {
+   "code": "P1738",
+   "brand": "bmw",
+   "ru": "Клапан регулирования давления C (коробка): электрическая неисправность",
+   "en": "Pressure Control Solenoid C Electrical",
+   "fam": "",
+   "node": "pressure control solenoid c electrical"
+  },
+  {
+   "code": "P1743",
+   "brand": "bmw",
+   "ru": "Клапан регулирования давления E (коробка): электрическая неисправность",
+   "en": "Pressure Control Solenoid E Electrical",
+   "fam": "",
+   "node": "pressure control solenoid e electrical"
+  },
+  {
+   "code": "P1744",
+   "brand": "bmw",
+   "ru": "Клапан регулирования давления A (коробка): электрическая неисправность",
+   "en": "Pressure Control Solenoid A Electrical",
+   "fam": "",
+   "node": "pressure control solenoid a electrical"
+  },
+  {
+   "code": "P1746",
+   "brand": "bmw",
+   "ru": "Блок коробки: выходной каскад",
+   "en": "Transmission Control Module Output Stage",
+   "fam": "",
+   "node": "transmission control module"
+  },
+  {
+   "code": "P1747",
+   "brand": "bmw",
+   "ru": "Контроль шины CAN",
+   "en": "CAN Bus Monitoring",
+   "fam": "",
+   "node": "can bus monitoring"
+  },
+  {
+   "code": "P1748",
+   "brand": "bmw",
+   "ru": "Блок коробки: самотест",
+   "en": "Transmission Control Module Self Test",
+   "fam": "",
+   "node": "transmission control module self test"
+  },
+  {
+   "code": "P1749",
+   "brand": "bmw",
+   "ru": "Клапан вторичного давления: ошибка связи",
+   "en": "Secondary Pressure Solenoid Communication Error",
+   "fam": "",
+   "node": "secondary pressure solenoid communication error"
+  },
+  {
+   "code": "P1750",
+   "brand": "bmw",
+   "ru": "Клапан вторичного давления: выход за диапазон",
+   "en": "Secondary Pressure Solenoid Circuit Range Performance",
+   "fam": "",
+   "node": "secondary pressure"
+  },
+  {
+   "code": "P1751",
+   "brand": "bmw",
+   "ru": "Клапан вторичного давления: обрыв",
+   "en": "Secondary Pressure Solenoid Open Circuit",
+   "fam": "",
+   "node": "secondary pressure solenoid"
+  },
+  {
+   "code": "P1761",
+   "brand": "bmw",
+   "ru": "Клапан переключения: неисправность",
+   "en": "Shift Solenoid Malfunction",
+   "fam": "",
+   "node": "shift solenoid"
+  },
+  {
+   "code": "P1765",
+   "brand": "bmw",
+   "ru": "CAN: дроссельная заслонка",
+   "en": "CAN Throttle Valve",
+   "fam": "",
+   "node": "can throttle"
+  },
+  {
+   "code": "P1770",
+   "brand": "bmw",
+   "ru": "CAN: интерфейс момента",
+   "en": "CAN Torque Interface",
+   "fam": "",
+   "node": "can torque interface"
+  },
+  {
+   "code": "P1780",
+   "brand": "bmw",
+   "ru": "CAN: снижение момента",
+   "en": "CAN Torque Reduction",
+   "fam": "",
+   "node": "can torque reduction"
+  }
+ ]
+}

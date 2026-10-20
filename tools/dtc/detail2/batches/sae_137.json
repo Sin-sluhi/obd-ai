@@ -1,0 +1,361 @@
+{
+ "name": "sae_137",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "fam:nox",
+  "fuel control system b too lean at higher load",
+  "fuel control system b too lean at idle",
+  "fuel control system b too lean off idle",
+  "fuel control system b too rich at higher load",
+  "fuel control system b too rich at idle",
+  "fuel control system b too rich off idle",
+  "nox sensor supply voltage"
+ ],
+ "codes": [
+  {
+   "code": "P21F4",
+   "brand": "",
+   "ru": "Топливная система B: слишком бедно вне холостого хода (банк 1)",
+   "en": "Fuel Control System B Too Lean Off Idle Bank 1",
+   "fam": "",
+   "node": "fuel control system b too lean off idle"
+  },
+  {
+   "code": "P21F6",
+   "brand": "",
+   "ru": "Топливная система B: слишком бедно вне холостого хода (банк 2)",
+   "en": "Fuel Control System B Too Lean Off Idle Bank 2",
+   "fam": "",
+   "node": "fuel control system b too lean off idle"
+  },
+  {
+   "code": "P21F5",
+   "brand": "",
+   "ru": "Топливная система B: слишком богато вне холостого хода (банк 1)",
+   "en": "Fuel Control System B Too Rich Off Idle Bank 1",
+   "fam": "",
+   "node": "fuel control system b too rich off idle"
+  },
+  {
+   "code": "P21F7",
+   "brand": "",
+   "ru": "Топливная система B: слишком богато вне холостого хода (банк 2)",
+   "en": "Fuel Control System B Too Rich Off Idle Bank 2",
+   "fam": "",
+   "node": "fuel control system b too rich off idle"
+  },
+  {
+   "code": "P21F8",
+   "brand": "",
+   "ru": "Топливная система B: слишком бедно на холостом ходу (банк 1)",
+   "en": "Fuel Control System B Too Lean at Idle Bank 1",
+   "fam": "",
+   "node": "fuel control system b too lean at idle"
+  },
+  {
+   "code": "P21FA",
+   "brand": "",
+   "ru": "Топливная система B: слишком бедно на холостом ходу (банк 2)",
+   "en": "Fuel Control System B Too Lean at Idle Bank 2",
+   "fam": "",
+   "node": "fuel control system b too lean at idle"
+  },
+  {
+   "code": "P21F9",
+   "brand": "",
+   "ru": "Топливная система B: слишком богато на холостом ходу (банк 1)",
+   "en": "Fuel Control System B Too Rich at Idle Bank 1",
+   "fam": "",
+   "node": "fuel control system b too rich at idle"
+  },
+  {
+   "code": "P21FB",
+   "brand": "",
+   "ru": "Топливная система B: слишком богато на холостом ходу (банк 2)",
+   "en": "Fuel Control System B Too Rich at Idle Bank 2",
+   "fam": "",
+   "node": "fuel control system b too rich at idle"
+  },
+  {
+   "code": "P21FC",
+   "brand": "",
+   "ru": "Топливная система B: слишком бедно под нагрузкой (банк 1)",
+   "en": "Fuel Control System B Too Lean at Higher Load Bank 1",
+   "fam": "",
+   "node": "fuel control system b too lean at higher load"
+  },
+  {
+   "code": "P21FE",
+   "brand": "",
+   "ru": "Топливная система B: слишком бедно под нагрузкой (банк 2)",
+   "en": "Fuel Control System B Too Lean at Higher Load Bank 2",
+   "fam": "",
+   "node": "fuel control system b too lean at higher load"
+  },
+  {
+   "code": "P21FD",
+   "brand": "",
+   "ru": "Топливная система B: слишком богато под нагрузкой (банк 1)",
+   "en": "Fuel Control System B Too Rich at Higher Load Bank 1",
+   "fam": "",
+   "node": "fuel control system b too rich at higher load"
+  },
+  {
+   "code": "P21FF",
+   "brand": "",
+   "ru": "Топливная система B: слишком богато под нагрузкой (банк 2)",
+   "en": "Fuel Control System B Too Rich at Higher Load Bank 2",
+   "fam": "",
+   "node": "fuel control system b too rich at higher load"
+  },
+  {
+   "code": "P2200",
+   "brand": "",
+   "ru": "Датчик NOx (банк 1): цепь",
+   "en": "",
+   "fam": "nox",
+   "node": "fam:nox"
+  },
+  {
+   "code": "P2201",
+   "brand": "",
+   "ru": "Датчик NOx (банк 1): показания вне диапазона",
+   "en": "",
+   "fam": "nox",
+   "node": "fam:nox"
+  },
+  {
+   "code": "P2202",
+   "brand": "",
+   "ru": "Датчик NOx (банк 1): низкий сигнал",
+   "en": "",
+   "fam": "nox",
+   "node": "fam:nox"
+  },
+  {
+   "code": "P2203",
+   "brand": "",
+   "ru": "Датчик NOx (банк 1): высокий сигнал",
+   "en": "",
+   "fam": "nox",
+   "node": "fam:nox"
+  },
+  {
+   "code": "P2204",
+   "brand": "",
+   "ru": "Датчик NOx (банк 1): прерывистый сигнал",
+   "en": "",
+   "fam": "nox",
+   "node": "fam:nox"
+  },
+  {
+   "code": "P2205",
+   "brand": "",
+   "ru": "Датчик NOx (банк 1): подогрев, цепь",
+   "en": "",
+   "fam": "nox",
+   "node": "fam:nox"
+  },
+  {
+   "code": "P2206",
+   "brand": "",
+   "ru": "Датчик NOx (банк 1): подогрев, низкий уровень",
+   "en": "",
+   "fam": "nox",
+   "node": "fam:nox"
+  },
+  {
+   "code": "P2207",
+   "brand": "",
+   "ru": "Датчик NOx (банк 1): подогрев, высокий уровень",
+   "en": "",
+   "fam": "nox",
+   "node": "fam:nox"
+  },
+  {
+   "code": "P2208",
+   "brand": "",
+   "ru": "Датчик NOx (банк 1): контроль подогрева, цепь",
+   "en": "",
+   "fam": "nox",
+   "node": "fam:nox"
+  },
+  {
+   "code": "P2209",
+   "brand": "",
+   "ru": "Датчик NOx (банк 1): контроль подогрева, вне диапазона",
+   "en": "",
+   "fam": "nox",
+   "node": "fam:nox"
+  },
+  {
+   "code": "P2210",
+   "brand": "",
+   "ru": "Датчик NOx (банк 1): контроль подогрева, низкий уровень",
+   "en": "",
+   "fam": "nox",
+   "node": "fam:nox"
+  },
+  {
+   "code": "P2211",
+   "brand": "",
+   "ru": "Датчик NOx (банк 1): контроль подогрева, высокий уровень",
+   "en": "",
+   "fam": "nox",
+   "node": "fam:nox"
+  },
+  {
+   "code": "P2212",
+   "brand": "",
+   "ru": "Датчик NOx (банк 1): контроль подогрева, прерывистый",
+   "en": "",
+   "fam": "nox",
+   "node": "fam:nox"
+  },
+  {
+   "code": "P2213",
+   "brand": "",
+   "ru": "Датчик NOx (банк 2): цепь",
+   "en": "",
+   "fam": "nox",
+   "node": "fam:nox"
+  },
+  {
+   "code": "P2214",
+   "brand": "",
+   "ru": "Датчик NOx (банк 2): показания вне диапазона",
+   "en": "",
+   "fam": "nox",
+   "node": "fam:nox"
+  },
+  {
+   "code": "P2215",
+   "brand": "",
+   "ru": "Датчик NOx (банк 2): низкий сигнал",
+   "en": "",
+   "fam": "nox",
+   "node": "fam:nox"
+  },
+  {
+   "code": "P2216",
+   "brand": "",
+   "ru": "Датчик NOx (банк 2): высокий сигнал",
+   "en": "",
+   "fam": "nox",
+   "node": "fam:nox"
+  },
+  {
+   "code": "P2217",
+   "brand": "",
+   "ru": "Датчик NOx (банк 2): прерывистый сигнал",
+   "en": "",
+   "fam": "nox",
+   "node": "fam:nox"
+  },
+  {
+   "code": "P2218",
+   "brand": "",
+   "ru": "Датчик NOx (банк 2): подогрев, цепь",
+   "en": "",
+   "fam": "nox",
+   "node": "fam:nox"
+  },
+  {
+   "code": "P2219",
+   "brand": "",
+   "ru": "Датчик NOx (банк 2): подогрев, низкий уровень",
+   "en": "",
+   "fam": "nox",
+   "node": "fam:nox"
+  },
+  {
+   "code": "P2220",
+   "brand": "",
+   "ru": "Датчик NOx (банк 2): подогрев, высокий уровень",
+   "en": "",
+   "fam": "nox",
+   "node": "fam:nox"
+  },
+  {
+   "code": "P2221",
+   "brand": "",
+   "ru": "Датчик NOx (банк 2): контроль подогрева, цепь",
+   "en": "",
+   "fam": "nox",
+   "node": "fam:nox"
+  },
+  {
+   "code": "P2222",
+   "brand": "",
+   "ru": "Датчик NOx (банк 2): контроль подогрева, вне диапазона",
+   "en": "",
+   "fam": "nox",
+   "node": "fam:nox"
+  },
+  {
+   "code": "P2223",
+   "brand": "",
+   "ru": "Датчик NOx (банк 2): контроль подогрева, низкий уровень",
+   "en": "",
+   "fam": "nox",
+   "node": "fam:nox"
+  },
+  {
+   "code": "P2224",
+   "brand": "",
+   "ru": "Датчик NOx (банк 2): контроль подогрева, высокий уровень",
+   "en": "",
+   "fam": "nox",
+   "node": "fam:nox"
+  },
+  {
+   "code": "P2225",
+   "brand": "",
+   "ru": "Датчик NOx (банк 2): контроль подогрева, прерывистый",
+   "en": "",
+   "fam": "nox",
+   "node": "fam:nox"
+  },
+  {
+   "code": "P220A",
+   "brand": "",
+   "ru": "Датчик NOx: цепь питания (банк 1, датчик 1)",
+   "en": "NOx Sensor Supply Voltage Circuit Bank 1 Sensor 1",
+   "fam": "",
+   "node": "nox sensor supply voltage"
+  },
+  {
+   "code": "P220B",
+   "brand": "",
+   "ru": "Датчик NOx: цепь питания (банк 1, датчик 2)",
+   "en": "NOx Sensor Supply Voltage Circuit Bank 1 Sensor 2",
+   "fam": "",
+   "node": "nox sensor supply voltage"
+  },
+  {
+   "code": "P220C",
+   "brand": "",
+   "ru": "Датчик NOx: цепь питания (банк 2, датчик 1)",
+   "en": "NOx Sensor Supply Voltage Circuit Bank 2 Sensor 1",
+   "fam": "",
+   "node": "nox sensor supply voltage"
+  },
+  {
+   "code": "P220D",
+   "brand": "",
+   "ru": "Датчик NOx: цепь питания (банк 2, датчик 2)",
+   "en": "NOx Sensor Supply Voltage Circuit Bank 2 Sensor 2",
+   "fam": "",
+   "node": "nox sensor supply voltage"
+  },
+  {
+   "code": "P23B6",
+   "brand": "",
+   "ru": "Датчик NOx: цепь питания (банк 1, датчик 3)",
+   "en": "NOx Sensor Supply Voltage Circuit Bank 1 Sensor 3",
+   "fam": "",
+   "node": "nox sensor supply voltage"
+  }
+ ]
+}

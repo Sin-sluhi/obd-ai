@@ -1,0 +1,322 @@
+{
+ "name": "sae_147",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "egr cooler bypass",
+  "exhaust gas temperature out of",
+  "exhaust temperature too",
+  "fam:dpf_pressure",
+  "particulate filter pressure sensor a b correlation",
+  "particulate filter pressure sensor b",
+  "reductant heater a sense",
+  "reductant heater b sense",
+  "vehicle conditions incorrect for particulate filter regeneration"
+ ],
+ "codes": [
+  {
+   "code": "P244C",
+   "brand": "",
+   "ru": "Слишком низкая температура выхлопа для регенерации сажевого фильтра (банк 1)",
+   "en": "Exhaust Temperature Too Low For Particulate Filter Regeneration Bank 1",
+   "fam": "",
+   "node": "exhaust temperature too"
+  },
+  {
+   "code": "P244D",
+   "brand": "",
+   "ru": "Слишком высокая температура выхлопа для регенерации сажевого фильтра (банк 1)",
+   "en": "Exhaust Temperature Too High For Particulate Filter Regeneration Bank 1",
+   "fam": "",
+   "node": "exhaust temperature too"
+  },
+  {
+   "code": "P244E",
+   "brand": "",
+   "ru": "Слишком низкая температура выхлопа для регенерации сажевого фильтра (банк 2)",
+   "en": "Exhaust Temperature Too Low For Particulate Filter Regeneration Bank 2",
+   "fam": "",
+   "node": "exhaust temperature too"
+  },
+  {
+   "code": "P244F",
+   "brand": "",
+   "ru": "Слишком высокая температура выхлопа для регенерации сажевого фильтра (банк 2)",
+   "en": "Exhaust Temperature Too High For Particulate Filter Regeneration Bank 2",
+   "fam": "",
+   "node": "exhaust temperature too"
+  },
+  {
+   "code": "P2452",
+   "brand": "",
+   "ru": "Датчик перепада давления на сажевом фильтре A: цепь",
+   "en": "",
+   "fam": "dpf_pressure",
+   "node": "fam:dpf_pressure"
+  },
+  {
+   "code": "P2453",
+   "brand": "",
+   "ru": "Датчик перепада давления на сажевом фильтре A: показания вне диапазона",
+   "en": "",
+   "fam": "dpf_pressure",
+   "node": "fam:dpf_pressure"
+  },
+  {
+   "code": "P2454",
+   "brand": "",
+   "ru": "Датчик перепада давления на сажевом фильтре A: низкий сигнал",
+   "en": "",
+   "fam": "dpf_pressure",
+   "node": "fam:dpf_pressure"
+  },
+  {
+   "code": "P2455",
+   "brand": "",
+   "ru": "Датчик перепада давления на сажевом фильтре A: высокий сигнал",
+   "en": "",
+   "fam": "dpf_pressure",
+   "node": "fam:dpf_pressure"
+  },
+  {
+   "code": "P2456",
+   "brand": "",
+   "ru": "Датчик перепада давления на сажевом фильтре A: прерывистый сигнал",
+   "en": "",
+   "fam": "dpf_pressure",
+   "node": "fam:dpf_pressure"
+  },
+  {
+   "code": "P245A",
+   "brand": "",
+   "ru": "Байпас радиатора EGR: обрыв цепи управления (банк 1)",
+   "en": "EGR Cooler Bypass Control Circuit/Open Bank 1",
+   "fam": "",
+   "node": "egr cooler bypass"
+  },
+  {
+   "code": "P245B",
+   "brand": "",
+   "ru": "Байпас радиатора EGR: цепь управления вне диапазона (банк 1)",
+   "en": "EGR Cooler Bypass Control Circuit Range/Performance Bank 1",
+   "fam": "",
+   "node": "egr cooler bypass"
+  },
+  {
+   "code": "P245C",
+   "brand": "",
+   "ru": "Байпас радиатора EGR: низкий уровень в цепи управления (банк 1)",
+   "en": "EGR Cooler Bypass Control Circuit Low Bank 1",
+   "fam": "",
+   "node": "egr cooler bypass"
+  },
+  {
+   "code": "P245D",
+   "brand": "",
+   "ru": "Байпас радиатора EGR: высокий уровень в цепи управления (банк 1)",
+   "en": "EGR Cooler Bypass Control Circuit High Bank 1",
+   "fam": "",
+   "node": "egr cooler bypass"
+  },
+  {
+   "code": "P248E",
+   "brand": "",
+   "ru": "Байпас радиатора EGR: обрыв цепи управления (банк 2)",
+   "en": "EGR Cooler Bypass Control Circuit/Open Bank 2",
+   "fam": "",
+   "node": "egr cooler bypass"
+  },
+  {
+   "code": "P248F",
+   "brand": "",
+   "ru": "Байпас радиатора EGR: цепь управления вне диапазона (банк 2)",
+   "en": "EGR Cooler Bypass Control Circuit Range/Performance Bank 2",
+   "fam": "",
+   "node": "egr cooler bypass"
+  },
+  {
+   "code": "P2490",
+   "brand": "",
+   "ru": "Байпас радиатора EGR: низкий уровень в цепи управления (банк 2)",
+   "en": "EGR Cooler Bypass Control Circuit Low Bank 2",
+   "fam": "",
+   "node": "egr cooler bypass"
+  },
+  {
+   "code": "P2491",
+   "brand": "",
+   "ru": "Байпас радиатора EGR: высокий уровень в цепи управления (банк 2)",
+   "en": "EGR Cooler Bypass Control Circuit High Bank 2",
+   "fam": "",
+   "node": "egr cooler bypass"
+  },
+  {
+   "code": "P2AA5",
+   "brand": "",
+   "ru": "Байпас радиатора EGR: перегрузка драйвера цепи управления по току / перегрев (банк 1)",
+   "en": "EGR Cooler Bypass Control Circuit Driver Current/Temperature Too High Bank 1",
+   "fam": "",
+   "node": "egr cooler bypass"
+  },
+  {
+   "code": "P2AA6",
+   "brand": "",
+   "ru": "Байпас радиатора EGR: перегрузка драйвера цепи управления по току / перегрев (банк 2)",
+   "en": "EGR Cooler Bypass Control Circuit Driver Current/Temperature Too High Bank 2",
+   "fam": "",
+   "node": "egr cooler bypass"
+  },
+  {
+   "code": "P245E",
+   "brand": "",
+   "ru": "Датчик давления сажевого фильтра B: цепь",
+   "en": "Particulate Filter Pressure Sensor B Circuit",
+   "fam": "",
+   "node": "particulate filter pressure sensor b"
+  },
+  {
+   "code": "P245F",
+   "brand": "",
+   "ru": "Датчик давления сажевого фильтра B: сигнал вне диапазона",
+   "en": "Particulate Filter Pressure Sensor B Circuit Range/Performance",
+   "fam": "",
+   "node": "particulate filter pressure sensor b"
+  },
+  {
+   "code": "P2460",
+   "brand": "",
+   "ru": "Датчик давления сажевого фильтра B: низкий уровень сигнала в цепи",
+   "en": "Particulate Filter Pressure Sensor B Circuit Low",
+   "fam": "",
+   "node": "particulate filter pressure sensor b"
+  },
+  {
+   "code": "P2461",
+   "brand": "",
+   "ru": "Датчик давления сажевого фильтра B: высокий уровень сигнала в цепи",
+   "en": "Particulate Filter Pressure Sensor B Circuit High",
+   "fam": "",
+   "node": "particulate filter pressure sensor b"
+  },
+  {
+   "code": "P2462",
+   "brand": "",
+   "ru": "Датчик давления сажевого фильтра B: прерывистый / нестабильный сигнал",
+   "en": "Particulate Filter Pressure Sensor B Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "particulate filter pressure sensor b"
+  },
+  {
+   "code": "P246B",
+   "brand": "",
+   "ru": "Условия движения не позволяют регенерацию сажевого фильтра",
+   "en": "Vehicle Conditions Incorrect for Particulate Filter Regeneration",
+   "fam": "",
+   "node": "vehicle conditions incorrect for particulate filter regeneration"
+  },
+  {
+   "code": "P246D",
+   "brand": "",
+   "ru": "Датчик давления сажевого фильтра: рассогласование A/B",
+   "en": "Particulate Filter Pressure Sensor A/B Correlation",
+   "fam": "",
+   "node": "particulate filter pressure sensor a b correlation"
+  },
+  {
+   "code": "P247A",
+   "brand": "",
+   "ru": "Температура отработавших газов вне диапазона (банк 1, датчик 3)",
+   "en": "Exhaust Gas Temperature Out of Range Bank 1 Sensor 3",
+   "fam": "",
+   "node": "exhaust gas temperature out of"
+  },
+  {
+   "code": "P247B",
+   "brand": "",
+   "ru": "Температура отработавших газов вне диапазона (банк 1, датчик 4)",
+   "en": "Exhaust Gas Temperature Out of Range Bank 1 Sensor 4",
+   "fam": "",
+   "node": "exhaust gas temperature out of"
+  },
+  {
+   "code": "P247C",
+   "brand": "",
+   "ru": "Температура отработавших газов вне диапазона (банк 2, датчик 1)",
+   "en": "Exhaust Gas Temperature Out of Range Bank 2 Sensor 1",
+   "fam": "",
+   "node": "exhaust gas temperature out of"
+  },
+  {
+   "code": "P247D",
+   "brand": "",
+   "ru": "Температура отработавших газов вне диапазона (банк 2, датчик 2)",
+   "en": "Exhaust Gas Temperature Out of Range Bank 2 Sensor 2",
+   "fam": "",
+   "node": "exhaust gas temperature out of"
+  },
+  {
+   "code": "P247E",
+   "brand": "",
+   "ru": "Температура отработавших газов вне диапазона (банк 2, датчик 3)",
+   "en": "Exhaust Gas Temperature Out of Range Bank 2 Sensor 3",
+   "fam": "",
+   "node": "exhaust gas temperature out of"
+  },
+  {
+   "code": "P247F",
+   "brand": "",
+   "ru": "Температура отработавших газов вне диапазона (банк 2, датчик 4)",
+   "en": "Exhaust Gas Temperature Out of Range Bank 2 Sensor 4",
+   "fam": "",
+   "node": "exhaust gas temperature out of"
+  },
+  {
+   "code": "P248A",
+   "brand": "",
+   "ru": "Подогреватель мочевины (AdBlue) A: низкий уровень в цепи обратной связи",
+   "en": "Reductant Heater A Sense Circuit Low",
+   "fam": "",
+   "node": "reductant heater a sense"
+  },
+  {
+   "code": "P248B",
+   "brand": "",
+   "ru": "Подогреватель мочевины (AdBlue) A: высокий уровень в цепи обратной связи",
+   "en": "Reductant Heater A Sense Circuit High",
+   "fam": "",
+   "node": "reductant heater a sense"
+  },
+  {
+   "code": "P24D2",
+   "brand": "",
+   "ru": "Подогреватель мочевины (AdBlue) A: цепь обратной связи",
+   "en": "Reductant Heater A Sense Circuit",
+   "fam": "",
+   "node": "reductant heater a sense"
+  },
+  {
+   "code": "P248C",
+   "brand": "",
+   "ru": "Подогреватель мочевины (AdBlue) B: низкий уровень в цепи обратной связи",
+   "en": "Reductant Heater B Sense Circuit Low",
+   "fam": "",
+   "node": "reductant heater b sense"
+  },
+  {
+   "code": "P248D",
+   "brand": "",
+   "ru": "Подогреватель мочевины (AdBlue) B: высокий уровень в цепи обратной связи",
+   "en": "Reductant Heater B Sense Circuit High",
+   "fam": "",
+   "node": "reductant heater b sense"
+  },
+  {
+   "code": "P24D3",
+   "brand": "",
+   "ru": "Подогреватель мочевины (AdBlue) B: цепь обратной связи",
+   "en": "Reductant Heater B Sense Circuit",
+   "fam": "",
+   "node": "reductant heater b sense"
+  }
+ ]
+}

@@ -1,0 +1,372 @@
+{
+ "name": "sae_142",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "air fuel ratio imbalance adjustment at limit during balance",
+  "alternative fuel injector",
+  "tcm request forced engine shutdown"
+ ],
+ "codes": [
+  {
+   "code": "P22D9",
+   "brand": "",
+   "ru": "Газовая форсунка цилиндра 1: обрыв цепи управления",
+   "en": "Cylinder 1 Alternative Fuel Injector Control Circuit/Open",
+   "fam": "",
+   "node": "alternative fuel injector"
+  },
+  {
+   "code": "P22DA",
+   "brand": "",
+   "ru": "Газовая форсунка цилиндра 1: низкий уровень в цепи управления",
+   "en": "Cylinder 1 Alternative Fuel Injector Control Circuit Low",
+   "fam": "",
+   "node": "alternative fuel injector"
+  },
+  {
+   "code": "P22DB",
+   "brand": "",
+   "ru": "Газовая форсунка цилиндра 1: высокий уровень в цепи управления",
+   "en": "Cylinder 1 Alternative Fuel Injector Control Circuit High",
+   "fam": "",
+   "node": "alternative fuel injector"
+  },
+  {
+   "code": "P22DC",
+   "brand": "",
+   "ru": "Газовая форсунка цилиндра 1: цепь управления вне диапазона",
+   "en": "Cylinder 1 Alternative Fuel Injector Control Circuit Range/Performance",
+   "fam": "",
+   "node": "alternative fuel injector"
+  },
+  {
+   "code": "P22DD",
+   "brand": "",
+   "ru": "Газовая форсунка цилиндра 2: обрыв цепи управления",
+   "en": "Cylinder 2 Alternative Fuel Injector Control Circuit/Open",
+   "fam": "",
+   "node": "alternative fuel injector"
+  },
+  {
+   "code": "P22DE",
+   "brand": "",
+   "ru": "Газовая форсунка цилиндра 2: низкий уровень в цепи управления",
+   "en": "Cylinder 2 Alternative Fuel Injector Control Circuit Low",
+   "fam": "",
+   "node": "alternative fuel injector"
+  },
+  {
+   "code": "P22DF",
+   "brand": "",
+   "ru": "Газовая форсунка цилиндра 2: высокий уровень в цепи управления",
+   "en": "Cylinder 2 Alternative Fuel Injector Control Circuit High",
+   "fam": "",
+   "node": "alternative fuel injector"
+  },
+  {
+   "code": "P22E0",
+   "brand": "",
+   "ru": "Газовая форсунка цилиндра 2: цепь управления вне диапазона",
+   "en": "Cylinder 2 Alternative Fuel Injector Control Circuit Range/Performance",
+   "fam": "",
+   "node": "alternative fuel injector"
+  },
+  {
+   "code": "P22E1",
+   "brand": "",
+   "ru": "Газовая форсунка цилиндра 3: обрыв цепи управления",
+   "en": "Cylinder 3 Alternative Fuel Injector Control Circuit/Open",
+   "fam": "",
+   "node": "alternative fuel injector"
+  },
+  {
+   "code": "P22E2",
+   "brand": "",
+   "ru": "Газовая форсунка цилиндра 3: низкий уровень в цепи управления",
+   "en": "Cylinder 3 Alternative Fuel Injector Control Circuit Low",
+   "fam": "",
+   "node": "alternative fuel injector"
+  },
+  {
+   "code": "P22E3",
+   "brand": "",
+   "ru": "Газовая форсунка цилиндра 3: высокий уровень в цепи управления",
+   "en": "Cylinder 3 Alternative Fuel Injector Control Circuit High",
+   "fam": "",
+   "node": "alternative fuel injector"
+  },
+  {
+   "code": "P22E4",
+   "brand": "",
+   "ru": "Газовая форсунка цилиндра 3: цепь управления вне диапазона",
+   "en": "Cylinder 3 Alternative Fuel Injector Control Circuit Range/Performance",
+   "fam": "",
+   "node": "alternative fuel injector"
+  },
+  {
+   "code": "P22E5",
+   "brand": "",
+   "ru": "Газовая форсунка цилиндра 4: обрыв цепи управления",
+   "en": "Cylinder 4 Alternative Fuel Injector Control Circuit/Open",
+   "fam": "",
+   "node": "alternative fuel injector"
+  },
+  {
+   "code": "P22E6",
+   "brand": "",
+   "ru": "Газовая форсунка цилиндра 4: низкий уровень в цепи управления",
+   "en": "Cylinder 4 Alternative Fuel Injector Control Circuit Low",
+   "fam": "",
+   "node": "alternative fuel injector"
+  },
+  {
+   "code": "P22E7",
+   "brand": "",
+   "ru": "Газовая форсунка цилиндра 4: высокий уровень в цепи управления",
+   "en": "Cylinder 4 Alternative Fuel Injector Control Circuit High",
+   "fam": "",
+   "node": "alternative fuel injector"
+  },
+  {
+   "code": "P22E8",
+   "brand": "",
+   "ru": "Газовая форсунка цилиндра 4: цепь управления вне диапазона",
+   "en": "Cylinder 4 Alternative Fuel Injector Control Circuit Range/Performance",
+   "fam": "",
+   "node": "alternative fuel injector"
+  },
+  {
+   "code": "P22E9",
+   "brand": "",
+   "ru": "Газовая форсунка цилиндра 5: обрыв цепи управления",
+   "en": "Cylinder 5 Alternative Fuel Injector Control Circuit/Open",
+   "fam": "",
+   "node": "alternative fuel injector"
+  },
+  {
+   "code": "P22EA",
+   "brand": "",
+   "ru": "Газовая форсунка цилиндра 5: низкий уровень в цепи управления",
+   "en": "Cylinder 5 Alternative Fuel Injector Control Circuit Low",
+   "fam": "",
+   "node": "alternative fuel injector"
+  },
+  {
+   "code": "P22EB",
+   "brand": "",
+   "ru": "Газовая форсунка цилиндра 5: высокий уровень в цепи управления",
+   "en": "Cylinder 5 Alternative Fuel Injector Control Circuit High",
+   "fam": "",
+   "node": "alternative fuel injector"
+  },
+  {
+   "code": "P22EC",
+   "brand": "",
+   "ru": "Газовая форсунка цилиндра 5: цепь управления вне диапазона",
+   "en": "Cylinder 5 Alternative Fuel Injector Control Circuit Range/Performance",
+   "fam": "",
+   "node": "alternative fuel injector"
+  },
+  {
+   "code": "P22ED",
+   "brand": "",
+   "ru": "Газовая форсунка цилиндра 6: обрыв цепи управления",
+   "en": "Cylinder 6 Alternative Fuel Injector Control Circuit/Open",
+   "fam": "",
+   "node": "alternative fuel injector"
+  },
+  {
+   "code": "P22EE",
+   "brand": "",
+   "ru": "Газовая форсунка цилиндра 6: низкий уровень в цепи управления",
+   "en": "Cylinder 6 Alternative Fuel Injector Control Circuit Low",
+   "fam": "",
+   "node": "alternative fuel injector"
+  },
+  {
+   "code": "P22EF",
+   "brand": "",
+   "ru": "Газовая форсунка цилиндра 6: высокий уровень в цепи управления",
+   "en": "Cylinder 6 Alternative Fuel Injector Control Circuit High",
+   "fam": "",
+   "node": "alternative fuel injector"
+  },
+  {
+   "code": "P22F0",
+   "brand": "",
+   "ru": "Газовая форсунка цилиндра 6: цепь управления вне диапазона",
+   "en": "Cylinder 6 Alternative Fuel Injector Control Circuit Range/Performance",
+   "fam": "",
+   "node": "alternative fuel injector"
+  },
+  {
+   "code": "P22F1",
+   "brand": "",
+   "ru": "Газовая форсунка цилиндра 7: обрыв цепи управления",
+   "en": "Cylinder 7 Alternative Fuel Injector Control Circuit/Open",
+   "fam": "",
+   "node": "alternative fuel injector"
+  },
+  {
+   "code": "P22F2",
+   "brand": "",
+   "ru": "Газовая форсунка цилиндра 7: низкий уровень в цепи управления",
+   "en": "Cylinder 7 Alternative Fuel Injector Control Circuit Low",
+   "fam": "",
+   "node": "alternative fuel injector"
+  },
+  {
+   "code": "P22F3",
+   "brand": "",
+   "ru": "Газовая форсунка цилиндра 7: высокий уровень в цепи управления",
+   "en": "Cylinder 7 Alternative Fuel Injector Control Circuit High",
+   "fam": "",
+   "node": "alternative fuel injector"
+  },
+  {
+   "code": "P22F4",
+   "brand": "",
+   "ru": "Газовая форсунка цилиндра 7: цепь управления вне диапазона",
+   "en": "Cylinder 7 Alternative Fuel Injector Control Circuit Range/Performance",
+   "fam": "",
+   "node": "alternative fuel injector"
+  },
+  {
+   "code": "P22F5",
+   "brand": "",
+   "ru": "Газовая форсунка цилиндра 8: обрыв цепи управления",
+   "en": "Cylinder 8 Alternative Fuel Injector Control Circuit/Open",
+   "fam": "",
+   "node": "alternative fuel injector"
+  },
+  {
+   "code": "P22F6",
+   "brand": "",
+   "ru": "Газовая форсунка цилиндра 8: низкий уровень в цепи управления",
+   "en": "Cylinder 8 Alternative Fuel Injector Control Circuit Low",
+   "fam": "",
+   "node": "alternative fuel injector"
+  },
+  {
+   "code": "P22F7",
+   "brand": "",
+   "ru": "Газовая форсунка цилиндра 8: высокий уровень в цепи управления",
+   "en": "Cylinder 8 Alternative Fuel Injector Control Circuit High",
+   "fam": "",
+   "node": "alternative fuel injector"
+  },
+  {
+   "code": "P22F8",
+   "brand": "",
+   "ru": "Газовая форсунка цилиндра 8: цепь управления вне диапазона",
+   "en": "Cylinder 8 Alternative Fuel Injector Control Circuit Range/Performance",
+   "fam": "",
+   "node": "alternative fuel injector"
+  },
+  {
+   "code": "P230A",
+   "brand": "",
+   "ru": "Цилиндр 1: дисбаланс смеси — коррекция на пределе при балансировке",
+   "en": "Cylinder 1 Air-Fuel Ratio Imbalance - Adjustment At Limit During Balance",
+   "fam": "",
+   "node": "air fuel ratio imbalance adjustment at limit during balance"
+  },
+  {
+   "code": "P230B",
+   "brand": "",
+   "ru": "Цилиндр 2: дисбаланс смеси — коррекция на пределе при балансировке",
+   "en": "Cylinder 2 Air-Fuel Ratio Imbalance - Adjustment At Limit During Balance",
+   "fam": "",
+   "node": "air fuel ratio imbalance adjustment at limit during balance"
+  },
+  {
+   "code": "P230C",
+   "brand": "",
+   "ru": "Цилиндр 3: дисбаланс смеси — коррекция на пределе при балансировке",
+   "en": "Cylinder 3 Air-Fuel Ratio Imbalance - Adjustment At Limit During Balance",
+   "fam": "",
+   "node": "air fuel ratio imbalance adjustment at limit during balance"
+  },
+  {
+   "code": "P230D",
+   "brand": "",
+   "ru": "Цилиндр 4: дисбаланс смеси — коррекция на пределе при балансировке",
+   "en": "Cylinder 4 Air-Fuel Ratio Imbalance - Adjustment At Limit During Balance",
+   "fam": "",
+   "node": "air fuel ratio imbalance adjustment at limit during balance"
+  },
+  {
+   "code": "P230E",
+   "brand": "",
+   "ru": "Цилиндр 5: дисбаланс смеси — коррекция на пределе при балансировке",
+   "en": "Cylinder 5 Air-Fuel Ratio Imbalance - Adjustment At Limit During Balance",
+   "fam": "",
+   "node": "air fuel ratio imbalance adjustment at limit during balance"
+  },
+  {
+   "code": "P230F",
+   "brand": "",
+   "ru": "Цилиндр 6: дисбаланс смеси — коррекция на пределе при балансировке",
+   "en": "Cylinder 6 Air-Fuel Ratio Imbalance - Adjustment At Limit During Balance",
+   "fam": "",
+   "node": "air fuel ratio imbalance adjustment at limit during balance"
+  },
+  {
+   "code": "P231A",
+   "brand": "",
+   "ru": "Цилиндр 7: дисбаланс смеси — коррекция на пределе при балансировке",
+   "en": "Cylinder 7 Air-Fuel Ratio Imbalance - Adjustment At Limit During Balance",
+   "fam": "",
+   "node": "air fuel ratio imbalance adjustment at limit during balance"
+  },
+  {
+   "code": "P231B",
+   "brand": "",
+   "ru": "Цилиндр 8: дисбаланс смеси — коррекция на пределе при балансировке",
+   "en": "Cylinder 8 Air-Fuel Ratio Imbalance - Adjustment At Limit During Balance",
+   "fam": "",
+   "node": "air fuel ratio imbalance adjustment at limit during balance"
+  },
+  {
+   "code": "P231C",
+   "brand": "",
+   "ru": "Цилиндр 9: дисбаланс смеси — коррекция на пределе при балансировке",
+   "en": "Cylinder 9 Air-Fuel Ratio Imbalance - Adjustment At Limit During Balance",
+   "fam": "",
+   "node": "air fuel ratio imbalance adjustment at limit during balance"
+  },
+  {
+   "code": "P231D",
+   "brand": "",
+   "ru": "Цилиндр 10: дисбаланс смеси — коррекция на пределе при балансировке",
+   "en": "Cylinder 10 Air-Fuel Ratio Imbalance - Adjustment At Limit During Balance",
+   "fam": "",
+   "node": "air fuel ratio imbalance adjustment at limit during balance"
+  },
+  {
+   "code": "P231E",
+   "brand": "",
+   "ru": "Цилиндр 11: дисбаланс смеси — коррекция на пределе при балансировке",
+   "en": "Cylinder 11 Air-Fuel Ratio Imbalance - Adjustment At Limit During Balance",
+   "fam": "",
+   "node": "air fuel ratio imbalance adjustment at limit during balance"
+  },
+  {
+   "code": "P231F",
+   "brand": "",
+   "ru": "Цилиндр 12: дисбаланс смеси — коррекция на пределе при балансировке",
+   "en": "Cylinder 12 Air-Fuel Ratio Imbalance - Adjustment At Limit During Balance",
+   "fam": "",
+   "node": "air fuel ratio imbalance adjustment at limit during balance"
+  },
+  {
+   "code": "P232A",
+   "brand": "",
+   "ru": "Запрос блока КПП — принудительная остановка двигателя",
+   "en": "TCM Request - Forced Engine Shutdown",
+   "fam": "",
+   "node": "tcm request forced engine shutdown"
+  }
+ ]
+}

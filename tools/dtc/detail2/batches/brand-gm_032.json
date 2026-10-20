@@ -1,0 +1,408 @@
+{
+ "name": "brand-gm_032",
+ "series": "brand",
+ "brand": "gm",
+ "nodes": [
+  "1 4 upshift solenoid",
+  "5 volt reference",
+  "cooling fans",
+  "customer snapshot data available",
+  "cylinder select",
+  "driver",
+  "driver 1 line",
+  "driver 2 line",
+  "ect pull up resistor",
+  "engine oil level",
+  "engine oil life monitor reset",
+  "engine speed",
+  "evap purge solenoid",
+  "evap solenoid",
+  "fam:immo",
+  "fan 1 relay",
+  "fc relay",
+  "fc relay 2 and",
+  "generator f terminal",
+  "generator l terminal",
+  "ignition 1 power",
+  "ignition supply power",
+  "loss of rim serial data",
+  "loss of vtd serial data",
+  "oil level lamp",
+  "pcm memory",
+  "pcm stack overrun",
+  "pcm system reset",
+  "powertrain induced chassis pitch",
+  "ru:ацп",
+  "ru:выход сигнала положения дросселя",
+  "ru:датчик низкого уровня ож",
+  "ru:лампа неисправности (mil)",
+  "service throttle soon lamp",
+  "starter enable relay",
+  "theft deterrent learn mode active",
+  "theft deterrent system cranking",
+  "theft deterrent system fuel disabled",
+  "transmission temp pull up resistor"
+ ],
+ "codes": [
+  {
+   "code": "P1614",
+   "brand": "gm",
+   "ru": "Нет данных от блока RIM",
+   "en": "Loss Of RIM Serial Data",
+   "fam": "",
+   "node": "loss of rim serial data"
+  },
+  {
+   "code": "P1615",
+   "brand": "gm",
+   "ru": "Нет данных от противоугонного блока (VTD)",
+   "en": "Loss Of VTD Serial Data",
+   "fam": "",
+   "node": "loss of vtd serial data"
+  },
+  {
+   "code": "P1617",
+   "brand": "gm",
+   "ru": "Датчик уровня масла: цепь",
+   "en": "Engine Oil Level Switch Circuit",
+   "fam": "",
+   "node": "engine oil level"
+  },
+  {
+   "code": "P1619",
+   "brand": "gm",
+   "ru": "Сброс счётчика ресурса масла: цепь",
+   "en": "Engine Oil Life Monitor Reset Circuit",
+   "fam": "",
+   "node": "engine oil life monitor reset"
+  },
+  {
+   "code": "P1620",
+   "brand": "gm",
+   "ru": "Датчик низкого уровня ОЖ: цепь",
+   "en": "Low Coolant Circuit",
+   "fam": "",
+   "node": "ru:датчик низкого уровня ож"
+  },
+  {
+   "code": "P1621",
+   "brand": "gm",
+   "ru": "Память блока двигателя: работа",
+   "en": "PCM Memory Performance",
+   "fam": "",
+   "node": "pcm memory"
+  },
+  {
+   "code": "P1622",
+   "brand": "gm",
+   "ru": "Выбор цилиндра",
+   "en": "Cylinder Select",
+   "fam": "",
+   "node": "cylinder select"
+  },
+  {
+   "code": "P1623",
+   "brand": "gm",
+   "ru": "Подтягивающий резистор датчика температуры коробки",
+   "en": "Transmission Temp Pull-Up Resistor",
+   "fam": "",
+   "node": "transmission temp pull up resistor"
+  },
+  {
+   "code": "P1624",
+   "brand": "gm",
+   "ru": "Доступен снимок данных клиента (служебный)",
+   "en": "Customer Snapshot Data Available",
+   "fam": "",
+   "node": "customer snapshot data available"
+  },
+  {
+   "code": "P1625",
+   "brand": "gm",
+   "ru": "Перезапуск блока двигателя",
+   "en": "PCM System Reset",
+   "fam": "",
+   "node": "pcm system reset"
+  },
+  {
+   "code": "P1626",
+   "brand": "gm",
+   "ru": "Иммобилайзер: сигнал разрешения топлива не получен",
+   "en": "",
+   "fam": "immo",
+   "node": "fam:immo"
+  },
+  {
+   "code": "P1631",
+   "brand": "gm",
+   "ru": "Иммобилайзер: неверный пароль",
+   "en": "",
+   "fam": "immo",
+   "node": "fam:immo"
+  },
+  {
+   "code": "P1627",
+   "brand": "gm",
+   "ru": "АЦП: работа",
+   "en": "A/D Performance",
+   "fam": "",
+   "node": "ru:ацп"
+  },
+  {
+   "code": "P1628",
+   "brand": "gm",
+   "ru": "Подтягивающий резистор датчика температуры ОЖ",
+   "en": "ECT Pull-Up Resistor",
+   "fam": "",
+   "node": "ect pull up resistor"
+  },
+  {
+   "code": "P1629",
+   "brand": "gm",
+   "ru": "Противоугонная система: сигнал прокрутки",
+   "en": "Theft Deterrent System Cranking Signal",
+   "fam": "",
+   "node": "theft deterrent system cranking"
+  },
+  {
+   "code": "P1630",
+   "brand": "gm",
+   "ru": "Противоугонная система: режим обучения активен",
+   "en": "Theft Deterrent Learn Mode Active",
+   "fam": "",
+   "node": "theft deterrent learn mode active"
+  },
+  {
+   "code": "P1632",
+   "brand": "gm",
+   "ru": "Противоугонная система: подача топлива запрещена",
+   "en": "Theft Deterrent System Fuel Disabled",
+   "fam": "",
+   "node": "theft deterrent system fuel disabled"
+  },
+  {
+   "code": "P1633",
+   "brand": "gm",
+   "ru": "Питание от зажигания: низкое напряжение",
+   "en": "Ignition Supply Power Circuit Low Voltage",
+   "fam": "",
+   "node": "ignition supply power"
+  },
+  {
+   "code": "P1634",
+   "brand": "gm",
+   "ru": "Цепь питания зажигания 1: низкое напряжение",
+   "en": "Ignition 1 Power Circuit Low Voltage",
+   "fam": "",
+   "node": "ignition 1 power"
+  },
+  {
+   "code": "P1635",
+   "brand": "gm",
+   "ru": "Опорное питание 5 В № 1: цепь",
+   "en": "5 Volt Reference 1 Circuit",
+   "fam": "",
+   "node": "5 volt reference"
+  },
+  {
+   "code": "P1639",
+   "brand": "gm",
+   "ru": "Опорное питание 5 В № 2: цепь",
+   "en": "5 Volt Reference 2 Circuit",
+   "fam": "",
+   "node": "5 volt reference"
+  },
+  {
+   "code": "P1636",
+   "brand": "gm",
+   "ru": "Блок двигателя: переполнение стека",
+   "en": "PCM Stack Overrun",
+   "fam": "",
+   "node": "pcm stack overrun"
+  },
+  {
+   "code": "P1637",
+   "brand": "gm",
+   "ru": "Генератор, клемма L: цепь",
+   "en": "Generator L-Terminal Circuit",
+   "fam": "",
+   "node": "generator l terminal"
+  },
+  {
+   "code": "P1638",
+   "brand": "gm",
+   "ru": "Генератор, клемма F: цепь",
+   "en": "Generator F-Terminal Circuit",
+   "fam": "",
+   "node": "generator f terminal"
+  },
+  {
+   "code": "P1640",
+   "brand": "gm",
+   "ru": "Драйвер 1: высокое напряжение на входе",
+   "en": "Driver 1 Input High Voltage",
+   "fam": "",
+   "node": "driver"
+  },
+  {
+   "code": "P1650",
+   "brand": "gm",
+   "ru": "Драйвер 2: высокое напряжение на входе",
+   "en": "Driver 2 Input High Voltage",
+   "fam": "",
+   "node": "driver"
+  },
+  {
+   "code": "P1670",
+   "brand": "gm",
+   "ru": "Драйвер 4",
+   "en": "Driver 4",
+   "fam": "",
+   "node": "driver"
+  },
+  {
+   "code": "P1680",
+   "brand": "gm",
+   "ru": "Драйвер 5",
+   "en": "Driver 5",
+   "fam": "",
+   "node": "driver"
+  },
+  {
+   "code": "P1641",
+   "brand": "gm",
+   "ru": "Реле вентилятора 1: цепь управления",
+   "en": "FC Relay 1 Control Circuit",
+   "fam": "",
+   "node": "fc relay"
+  },
+  {
+   "code": "P1642",
+   "brand": "gm",
+   "ru": "Реле вентиляторов 2 и 3: цепь управления",
+   "en": "FC Relay 2 And 3 Control Circuit",
+   "fam": "",
+   "node": "fc relay 2 and"
+  },
+  {
+   "code": "P1643",
+   "brand": "gm",
+   "ru": "Выход сигнала оборотов: цепь",
+   "en": "Engine Speed Output Circuit",
+   "fam": "",
+   "node": "engine speed"
+  },
+  {
+   "code": "P1644",
+   "brand": "gm",
+   "ru": "Выход сигнала положения дросселя: цепь",
+   "en": "TP Output Circuit",
+   "fam": "",
+   "node": "ru:выход сигнала положения дросселя"
+  },
+  {
+   "code": "P1645",
+   "brand": "gm",
+   "ru": "Выход клапана улавливания паров: цепь",
+   "en": "EVAP Solenoid Output Circuit",
+   "fam": "",
+   "node": "evap solenoid"
+  },
+  {
+   "code": "P1646",
+   "brand": "gm",
+   "ru": "Драйвер 1, линия 6",
+   "en": "Driver 1 Line 6",
+   "fam": "",
+   "node": "driver 1 line"
+  },
+  {
+   "code": "P1647",
+   "brand": "gm",
+   "ru": "Драйвер 1, линия 7",
+   "en": "Driver 1 Line 7",
+   "fam": "",
+   "node": "driver 1 line"
+  },
+  {
+   "code": "P1651",
+   "brand": "gm",
+   "ru": "Реле вентилятора 1: цепь управления",
+   "en": "Fan 1 Relay Control Circuit",
+   "fam": "",
+   "node": "fan 1 relay"
+  },
+  {
+   "code": "P1652",
+   "brand": "gm",
+   "ru": "Выход сигнала тангажа кузова от силового агрегата: цепь",
+   "en": "Powertrain Induced Chassis Pitch Output Circuit",
+   "fam": "",
+   "node": "powertrain induced chassis pitch"
+  },
+  {
+   "code": "P1653",
+   "brand": "gm",
+   "ru": "Лампа уровня масла: цепь управления",
+   "en": "Oil Level Lamp Control Circuit",
+   "fam": "",
+   "node": "oil level lamp"
+  },
+  {
+   "code": "P1654",
+   "brand": "gm",
+   "ru": "Лампа «скоро обслуживание дросселя»: цепь управления",
+   "en": "Service Throttle Soon Lamp Control Circuit",
+   "fam": "",
+   "node": "service throttle soon lamp"
+  },
+  {
+   "code": "P1655",
+   "brand": "gm",
+   "ru": "Клапан продувки адсорбера: цепь управления",
+   "en": "EVAP Purge Solenoid Control Circuit",
+   "fam": "",
+   "node": "evap purge solenoid"
+  },
+  {
+   "code": "P1656",
+   "brand": "gm",
+   "ru": "Драйвер 2, линия 6",
+   "en": "Driver 2 Line 6",
+   "fam": "",
+   "node": "driver 2 line"
+  },
+  {
+   "code": "P1657",
+   "brand": "gm",
+   "ru": "Клапан пропуска передачи 1→4: цепь управления",
+   "en": "1 4 Upshift Solenoid Control Circuit",
+   "fam": "",
+   "node": "1 4 upshift solenoid"
+  },
+  {
+   "code": "P1658",
+   "brand": "gm",
+   "ru": "Реле разрешения стартера: цепь управления",
+   "en": "Starter Enable Relay Control Circuit",
+   "fam": "",
+   "node": "starter enable relay"
+  },
+  {
+   "code": "P1660",
+   "brand": "gm",
+   "ru": "Вентиляторы охлаждения: цепь управления",
+   "en": "Cooling Fans Control Circuit",
+   "fam": "",
+   "node": "cooling fans"
+  },
+  {
+   "code": "P1661",
+   "brand": "gm",
+   "ru": "Лампа неисправности (MIL): цепь управления",
+   "en": "MIL Control Circuit",
+   "fam": "",
+   "node": "ru:лампа неисправности (mil)"
+  }
+ ]
+}

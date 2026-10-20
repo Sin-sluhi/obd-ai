@@ -1,0 +1,361 @@
+{
+ "name": "sae_119",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "battery charger 14 volt",
+  "battery charger control module a",
+  "battery charger hybrid ev battery",
+  "battery charger hybrid ev system discharge time too",
+  "battery charger hybrid ev system discharge time too long",
+  "hybrid ev battery pack cooling fan 2 sense",
+  "hybrid ev battery pack cooling fan enable",
+  "proximity detection"
+ ],
+ "codes": [
+  {
+   "code": "P0D42",
+   "brand": "",
+   "ru": "Датчик выходного напряжения 14 В зарядного устройства: цепь",
+   "en": "Battery Charger 14 Volt Output Voltage Sensor Circuit",
+   "fam": "",
+   "node": "battery charger 14 volt"
+  },
+  {
+   "code": "P0D43",
+   "brand": "",
+   "ru": "Датчик выходного напряжения 14 В зарядного устройства: сигнал вне диапазона",
+   "en": "Battery Charger 14 Volt Output Voltage Sensor Circuit Range/Performance",
+   "fam": "",
+   "node": "battery charger 14 volt"
+  },
+  {
+   "code": "P0D44",
+   "brand": "",
+   "ru": "Датчик выходного напряжения 14 В зарядного устройства: низкий уровень сигнала в цепи",
+   "en": "Battery Charger 14 Volt Output Voltage Sensor Circuit Low",
+   "fam": "",
+   "node": "battery charger 14 volt"
+  },
+  {
+   "code": "P0D45",
+   "brand": "",
+   "ru": "Датчик выходного напряжения 14 В зарядного устройства: высокий уровень сигнала в цепи",
+   "en": "Battery Charger 14 Volt Output Voltage Sensor Circuit High",
+   "fam": "",
+   "node": "battery charger 14 volt"
+  },
+  {
+   "code": "P0D46",
+   "brand": "",
+   "ru": "Датчик выходного напряжения 14 В зарядного устройства: прерывистый / нестабильный сигнал",
+   "en": "Battery Charger 14 Volt Output Voltage Sensor Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "battery charger 14 volt"
+  },
+  {
+   "code": "P0D47",
+   "brand": "",
+   "ru": "Выход 14 В зарядного устройства: цепь датчика тока",
+   "en": "Battery Charger 14 Volt Output Current Sensor Circuit",
+   "fam": "",
+   "node": "battery charger 14 volt"
+  },
+  {
+   "code": "P0D48",
+   "brand": "",
+   "ru": "Выход 14 В зарядного устройства: датчик тока вне диапазона",
+   "en": "Battery Charger 14 Volt Output Current Sensor Circuit Range/Performance",
+   "fam": "",
+   "node": "battery charger 14 volt"
+  },
+  {
+   "code": "P0D49",
+   "brand": "",
+   "ru": "Выход 14 В зарядного устройства: низкий уровень в цепи датчика тока",
+   "en": "Battery Charger 14 Volt Output Current Sensor Circuit Low",
+   "fam": "",
+   "node": "battery charger 14 volt"
+  },
+  {
+   "code": "P0D4A",
+   "brand": "",
+   "ru": "Выход 14 В зарядного устройства: высокий уровень в цепи датчика тока",
+   "en": "Battery Charger 14 Volt Output Current Sensor Circuit High",
+   "fam": "",
+   "node": "battery charger 14 volt"
+  },
+  {
+   "code": "P0D4B",
+   "brand": "",
+   "ru": "Датчик выходного тока 14 В зарядного устройства: прерывистый / нестабильный сигнал",
+   "en": "Battery Charger 14 Volt Output Current Sensor Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "battery charger 14 volt"
+  },
+  {
+   "code": "P0D5B",
+   "brand": "",
+   "ru": "Зарядное устройство: мощность на выходе 14 В не соответствует",
+   "en": "Battery Charger 14 Volt Output Power Performance",
+   "fam": "",
+   "node": "battery charger 14 volt"
+  },
+  {
+   "code": "P0D4C",
+   "brand": "",
+   "ru": "Датчик выходного напряжения зарядного устройства на тяговую батарею: цепь",
+   "en": "Battery Charger Hybrid/EV Battery Output Voltage Sensor Circuit",
+   "fam": "",
+   "node": "battery charger hybrid ev battery"
+  },
+  {
+   "code": "P0D4D",
+   "brand": "",
+   "ru": "Датчик выходного напряжения зарядного устройства на тяговую батарею: сигнал вне диапазона",
+   "en": "Battery Charger Hybrid/EV Battery Output Voltage Sensor Circuit Range/Performance",
+   "fam": "",
+   "node": "battery charger hybrid ev battery"
+  },
+  {
+   "code": "P0D4E",
+   "brand": "",
+   "ru": "Датчик выходного напряжения зарядного устройства на тяговую батарею: низкий уровень сигнала в цепи",
+   "en": "Battery Charger Hybrid/EV Battery Output Voltage Sensor Circuit Low",
+   "fam": "",
+   "node": "battery charger hybrid ev battery"
+  },
+  {
+   "code": "P0D4F",
+   "brand": "",
+   "ru": "Датчик выходного напряжения зарядного устройства на тяговую батарею: высокий уровень сигнала в цепи",
+   "en": "Battery Charger Hybrid/EV Battery Output Voltage Sensor Circuit High",
+   "fam": "",
+   "node": "battery charger hybrid ev battery"
+  },
+  {
+   "code": "P0D50",
+   "brand": "",
+   "ru": "Датчик выходного напряжения зарядного устройства на тяговую батарею: прерывистый / нестабильный сигнал",
+   "en": "Battery Charger Hybrid/EV Battery Output Voltage Sensor Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "battery charger hybrid ev battery"
+  },
+  {
+   "code": "P0D51",
+   "brand": "",
+   "ru": "Выход зарядного устройства на тяговую батарею: цепь датчика тока",
+   "en": "Battery Charger Hybrid/EV Battery Output Current Sensor Circuit",
+   "fam": "",
+   "node": "battery charger hybrid ev battery"
+  },
+  {
+   "code": "P0D52",
+   "brand": "",
+   "ru": "Выход зарядного устройства на тяговую батарею: датчик тока вне диапазона",
+   "en": "Battery Charger Hybrid/EV Battery Output Current Sensor Circuit Range/Performance",
+   "fam": "",
+   "node": "battery charger hybrid ev battery"
+  },
+  {
+   "code": "P0D53",
+   "brand": "",
+   "ru": "Выход зарядного устройства на тяговую батарею: низкий уровень в цепи датчика тока",
+   "en": "Battery Charger Hybrid/EV Battery Output Current Sensor Circuit Low",
+   "fam": "",
+   "node": "battery charger hybrid ev battery"
+  },
+  {
+   "code": "P0D54",
+   "brand": "",
+   "ru": "Выход зарядного устройства на тяговую батарею: высокий уровень в цепи датчика тока",
+   "en": "Battery Charger Hybrid/EV Battery Output Current Sensor Circuit High",
+   "fam": "",
+   "node": "battery charger hybrid ev battery"
+  },
+  {
+   "code": "P0D55",
+   "brand": "",
+   "ru": "Датчик тока зарядного устройства на тяговую батарею: прерывистый / нестабильный сигнал",
+   "en": "Battery Charger Hybrid/EV Battery Output Current Sensor Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "battery charger hybrid ev battery"
+  },
+  {
+   "code": "P0D5C",
+   "brand": "",
+   "ru": "Зарядное устройство: мощность на тяговую батарею не соответствует",
+   "en": "Battery Charger Hybrid/EV Battery Output Power Performance",
+   "fam": "",
+   "node": "battery charger hybrid ev battery"
+  },
+  {
+   "code": "P0D56",
+   "brand": "",
+   "ru": "Цепь обнаружения зарядного разъёма A",
+   "en": "Proximity Detection Circuit A",
+   "fam": "",
+   "node": "proximity detection"
+  },
+  {
+   "code": "P0D57",
+   "brand": "",
+   "ru": "Цепь обнаружения зарядного разъёма A: вне допустимого диапазона",
+   "en": "Proximity Detection Circuit A Range/Performance",
+   "fam": "",
+   "node": "proximity detection"
+  },
+  {
+   "code": "P0D58",
+   "brand": "",
+   "ru": "Цепь обнаружения зарядного разъёма A: низкий уровень",
+   "en": "Proximity Detection Circuit A Low",
+   "fam": "",
+   "node": "proximity detection"
+  },
+  {
+   "code": "P0D59",
+   "brand": "",
+   "ru": "Цепь обнаружения зарядного разъёма A: высокий уровень",
+   "en": "Proximity Detection Circuit A High",
+   "fam": "",
+   "node": "proximity detection"
+  },
+  {
+   "code": "P0D5A",
+   "brand": "",
+   "ru": "Цепь обнаружения зарядного разъёма A: прерывистый / нестабильный сигнал",
+   "en": "Proximity Detection Circuit A Intermittent/Erratic",
+   "fam": "",
+   "node": "proximity detection"
+  },
+  {
+   "code": "P2E87",
+   "brand": "",
+   "ru": "Цепь обнаружения зарядного разъёма B",
+   "en": "Proximity Detection Circuit B",
+   "fam": "",
+   "node": "proximity detection"
+  },
+  {
+   "code": "P2E88",
+   "brand": "",
+   "ru": "Цепь обнаружения зарядного разъёма B: вне допустимого диапазона",
+   "en": "Proximity Detection Circuit B Range/Performance",
+   "fam": "",
+   "node": "proximity detection"
+  },
+  {
+   "code": "P2E89",
+   "brand": "",
+   "ru": "Цепь обнаружения зарядного разъёма B: низкий уровень",
+   "en": "Proximity Detection Circuit B Low",
+   "fam": "",
+   "node": "proximity detection"
+  },
+  {
+   "code": "P2E8A",
+   "brand": "",
+   "ru": "Цепь обнаружения зарядного разъёма B: высокий уровень",
+   "en": "Proximity Detection Circuit B High",
+   "fam": "",
+   "node": "proximity detection"
+  },
+  {
+   "code": "P2E8B",
+   "brand": "",
+   "ru": "Цепь обнаружения зарядного разъёма B: прерывистый / нестабильный сигнал",
+   "en": "Proximity Detection Circuit B Intermittent/Erratic",
+   "fam": "",
+   "node": "proximity detection"
+  },
+  {
+   "code": "P0D5D",
+   "brand": "",
+   "ru": "Зарядное устройство: время разряда системы слишком короткое",
+   "en": "Battery Charger Hybrid/EV System Discharge Time Too Short",
+   "fam": "",
+   "node": "battery charger hybrid ev system discharge time too"
+  },
+  {
+   "code": "P0D5E",
+   "brand": "",
+   "ru": "Зарядное устройство: время разряда системы слишком долгое",
+   "en": "Battery Charger Hybrid/EV System Discharge Time Too Long",
+   "fam": "",
+   "node": "battery charger hybrid ev system discharge time too long"
+  },
+  {
+   "code": "P0D5F",
+   "brand": "",
+   "ru": "Обратная связь вентилятора тяговой батареи 2: обрыв цепи",
+   "en": "Hybrid/EV Battery Pack Cooling Fan 2 Sense Circuit/Open",
+   "fam": "",
+   "node": "hybrid ev battery pack cooling fan 2 sense"
+  },
+  {
+   "code": "P0D60",
+   "brand": "",
+   "ru": "Обратная связь вентилятора тяговой батареи 2: вне допустимого диапазона",
+   "en": "Hybrid/EV Battery Pack Cooling Fan 2 Sense Range/Performance",
+   "fam": "",
+   "node": "hybrid ev battery pack cooling fan 2 sense"
+  },
+  {
+   "code": "P0D61",
+   "brand": "",
+   "ru": "Вентилятор охлаждения тяговой батареи 2: низкий уровень в цепи обратной связи",
+   "en": "Hybrid/EV Battery Pack Cooling Fan 2 Sense Circuit Low",
+   "fam": "",
+   "node": "hybrid ev battery pack cooling fan 2 sense"
+  },
+  {
+   "code": "P0D62",
+   "brand": "",
+   "ru": "Вентилятор охлаждения тяговой батареи 2: высокий уровень в цепи обратной связи",
+   "en": "Hybrid/EV Battery Pack Cooling Fan 2 Sense Circuit High",
+   "fam": "",
+   "node": "hybrid ev battery pack cooling fan 2 sense"
+  },
+  {
+   "code": "P0D63",
+   "brand": "",
+   "ru": "Обратная связь вентилятора тяговой батареи 2: прерывистый / нестабильный сигнал",
+   "en": "Hybrid/EV Battery Pack Cooling Fan 2 Sense Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "hybrid ev battery pack cooling fan 2 sense"
+  },
+  {
+   "code": "P0D64",
+   "brand": "",
+   "ru": "Включение вентилятора тяговой батареи: обрыв цепи",
+   "en": "Hybrid/EV Battery Pack Cooling Fan Enable Circuit/Open",
+   "fam": "",
+   "node": "hybrid ev battery pack cooling fan enable"
+  },
+  {
+   "code": "P0D65",
+   "brand": "",
+   "ru": "Включение вентилятора тяговой батареи: низкий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Pack Cooling Fan Enable Circuit Low",
+   "fam": "",
+   "node": "hybrid ev battery pack cooling fan enable"
+  },
+  {
+   "code": "P0D66",
+   "brand": "",
+   "ru": "Включение вентилятора тяговой батареи: высокий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Pack Cooling Fan Enable Circuit High",
+   "fam": "",
+   "node": "hybrid ev battery pack cooling fan enable"
+  },
+  {
+   "code": "P0D67",
+   "brand": "",
+   "ru": "Блок управления зарядным устройством A: работа нарушена",
+   "en": "Battery Charger Control Module A Performance",
+   "fam": "",
+   "node": "battery charger control module a"
+  }
+ ]
+}

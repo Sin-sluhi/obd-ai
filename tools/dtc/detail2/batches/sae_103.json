@@ -1,0 +1,364 @@
+{
+ "name": "sae_103",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "14 volt power module current sensor a",
+  "14 volt power module system",
+  "14 volt power module system voltage",
+  "battery energy control module requested mil illumination",
+  "engine mount b",
+  "fam:hv_isolation",
+  "generator phase v current",
+  "generator phase w current",
+  "hybrid ev battery pack cooling fan",
+  "hybrid ev battery positive contactor",
+  "hybrid ev system"
+ ],
+ "codes": [
+  {
+   "code": "P0A72",
+   "brand": "",
+   "ru": "Генератор (гибрид), фаза V: ток",
+   "en": "Generator Phase V Current",
+   "fam": "",
+   "node": "generator phase v current"
+  },
+  {
+   "code": "P0A73",
+   "brand": "",
+   "ru": "Генератор (гибрид), фаза V: малый ток",
+   "en": "Generator Phase V Current Low",
+   "fam": "",
+   "node": "generator phase v current"
+  },
+  {
+   "code": "P0A74",
+   "brand": "",
+   "ru": "Генератор (гибрид), фаза V: большой ток",
+   "en": "Generator Phase V Current High",
+   "fam": "",
+   "node": "generator phase v current"
+  },
+  {
+   "code": "P0E04",
+   "brand": "",
+   "ru": "Генератор (гибрид), фаза V: цепь датчика тока",
+   "en": "Generator Phase V Current Sensor Circuit",
+   "fam": "",
+   "node": "generator phase v current"
+  },
+  {
+   "code": "P0E05",
+   "brand": "",
+   "ru": "Генератор (гибрид), фаза V: датчик тока вне диапазона",
+   "en": "Generator Phase V Current Sensor Circuit Range/Performance",
+   "fam": "",
+   "node": "generator phase v current"
+  },
+  {
+   "code": "P0E06",
+   "brand": "",
+   "ru": "Генератор (гибрид), фаза V: низкий уровень в цепи датчика тока",
+   "en": "Generator Phase V Current Sensor Circuit Low",
+   "fam": "",
+   "node": "generator phase v current"
+  },
+  {
+   "code": "P0E07",
+   "brand": "",
+   "ru": "Генератор (гибрид), фаза V: высокий уровень в цепи датчика тока",
+   "en": "Generator Phase V Current Sensor Circuit High",
+   "fam": "",
+   "node": "generator phase v current"
+  },
+  {
+   "code": "P0A75",
+   "brand": "",
+   "ru": "Генератор (гибрид), фаза W: ток",
+   "en": "Generator Phase W Current",
+   "fam": "",
+   "node": "generator phase w current"
+  },
+  {
+   "code": "P0A76",
+   "brand": "",
+   "ru": "Генератор (гибрид), фаза W: малый ток",
+   "en": "Generator Phase W Current Low",
+   "fam": "",
+   "node": "generator phase w current"
+  },
+  {
+   "code": "P0A77",
+   "brand": "",
+   "ru": "Генератор (гибрид), фаза W: большой ток",
+   "en": "Generator Phase W Current High",
+   "fam": "",
+   "node": "generator phase w current"
+  },
+  {
+   "code": "P0E08",
+   "brand": "",
+   "ru": "Генератор (гибрид), фаза W: цепь датчика тока",
+   "en": "Generator Phase W Current Sensor Circuit",
+   "fam": "",
+   "node": "generator phase w current"
+  },
+  {
+   "code": "P0E09",
+   "brand": "",
+   "ru": "Генератор (гибрид), фаза W: датчик тока вне диапазона",
+   "en": "Generator Phase W Current Sensor Circuit Range/Performance",
+   "fam": "",
+   "node": "generator phase w current"
+  },
+  {
+   "code": "P0E0A",
+   "brand": "",
+   "ru": "Генератор (гибрид), фаза W: низкий уровень в цепи датчика тока",
+   "en": "Generator Phase W Current Sensor Circuit Low",
+   "fam": "",
+   "node": "generator phase w current"
+  },
+  {
+   "code": "P0E0B",
+   "brand": "",
+   "ru": "Генератор (гибрид), фаза W: высокий уровень в цепи датчика тока",
+   "en": "Generator Phase W Current Sensor Circuit High",
+   "fam": "",
+   "node": "generator phase w current"
+  },
+  {
+   "code": "P0A7B",
+   "brand": "",
+   "ru": "Блок управления энергией батареи запросил включение Check Engine",
+   "en": "Battery Energy Control Module Requested MIL Illumination",
+   "fam": "",
+   "node": "battery energy control module requested mil illumination"
+  },
+  {
+   "code": "P0A86",
+   "brand": "",
+   "ru": "Датчик тока модуля питания 14 В A: цепь",
+   "en": "14 Volt Power Module Current Sensor A Circuit",
+   "fam": "",
+   "node": "14 volt power module current sensor a"
+  },
+  {
+   "code": "P0A87",
+   "brand": "",
+   "ru": "Датчик тока модуля питания 14 В A: сигнал вне диапазона",
+   "en": "14 Volt Power Module Current Sensor A Circuit Range/Performance",
+   "fam": "",
+   "node": "14 volt power module current sensor a"
+  },
+  {
+   "code": "P0A88",
+   "brand": "",
+   "ru": "Датчик тока модуля питания 14 В A: низкий уровень сигнала в цепи",
+   "en": "14 Volt Power Module Current Sensor A Circuit Low",
+   "fam": "",
+   "node": "14 volt power module current sensor a"
+  },
+  {
+   "code": "P0A89",
+   "brand": "",
+   "ru": "Датчик тока модуля питания 14 В A: высокий уровень сигнала в цепи",
+   "en": "14 Volt Power Module Current Sensor A Circuit High",
+   "fam": "",
+   "node": "14 volt power module current sensor a"
+  },
+  {
+   "code": "P0A8A",
+   "brand": "",
+   "ru": "Датчик тока модуля питания 14 В A: прерывистый сигнал в цепи",
+   "en": "14 Volt Power Module Current Sensor A Circuit Intermittent",
+   "fam": "",
+   "node": "14 volt power module current sensor a"
+  },
+  {
+   "code": "P0A8E",
+   "brand": "",
+   "ru": "Модуль питания 14 В: высокое напряжение",
+   "en": "14 Volt Power Module System Voltage High",
+   "fam": "",
+   "node": "14 volt power module system voltage"
+  },
+  {
+   "code": "P0A8F",
+   "brand": "",
+   "ru": "Модуль питания 14 В: работа нарушена",
+   "en": "14 Volt Power Module System Performance",
+   "fam": "",
+   "node": "14 volt power module system"
+  },
+  {
+   "code": "P0A96",
+   "brand": "",
+   "ru": "Вентилятор охлаждения тяговой батареи 2: обрыв цепи управления",
+   "en": "Hybrid/EV Battery Pack Cooling Fan 2 Control Circuit/Open",
+   "fam": "",
+   "node": "hybrid ev battery pack cooling fan"
+  },
+  {
+   "code": "P0A97",
+   "brand": "",
+   "ru": "Вентилятор охлаждения тяговой батареи 2: работа нарушена / не включается",
+   "en": "Hybrid/EV Battery Pack Cooling Fan 2 Performance/Stuck Off",
+   "fam": "",
+   "node": "hybrid ev battery pack cooling fan"
+  },
+  {
+   "code": "P0A98",
+   "brand": "",
+   "ru": "Вентилятор охлаждения тяговой батареи 2: постоянно включён",
+   "en": "Hybrid/EV Battery Pack Cooling Fan 2 Stuck On",
+   "fam": "",
+   "node": "hybrid ev battery pack cooling fan"
+  },
+  {
+   "code": "P0A99",
+   "brand": "",
+   "ru": "Вентилятор охлаждения тяговой батареи 2: низкий уровень в цепи управления",
+   "en": "Hybrid/EV Battery Pack Cooling Fan 2 Control Circuit Low",
+   "fam": "",
+   "node": "hybrid ev battery pack cooling fan"
+  },
+  {
+   "code": "P0A9A",
+   "brand": "",
+   "ru": "Вентилятор охлаждения тяговой батареи 2: высокий уровень в цепи управления",
+   "en": "Hybrid/EV Battery Pack Cooling Fan 2 Control Circuit High",
+   "fam": "",
+   "node": "hybrid ev battery pack cooling fan"
+  },
+  {
+   "code": "P0ACF",
+   "brand": "",
+   "ru": "Вентилятор охлаждения тяговой батареи 3: обрыв цепи управления",
+   "en": "Hybrid/EV Battery Pack Cooling Fan 3 Control Circuit/Open",
+   "fam": "",
+   "node": "hybrid ev battery pack cooling fan"
+  },
+  {
+   "code": "P0AD0",
+   "brand": "",
+   "ru": "Вентилятор охлаждения тяговой батареи 3: работа нарушена / не включается",
+   "en": "Hybrid/EV Battery Pack Cooling Fan 3 Performance/Stuck Off",
+   "fam": "",
+   "node": "hybrid ev battery pack cooling fan"
+  },
+  {
+   "code": "P0AD1",
+   "brand": "",
+   "ru": "Вентилятор охлаждения тяговой батареи 3: постоянно включён",
+   "en": "Hybrid/EV Battery Pack Cooling Fan 3 Stuck On",
+   "fam": "",
+   "node": "hybrid ev battery pack cooling fan"
+  },
+  {
+   "code": "P0AD2",
+   "brand": "",
+   "ru": "Вентилятор охлаждения тяговой батареи 3: низкий уровень в цепи управления",
+   "en": "Hybrid/EV Battery Pack Cooling Fan 3 Control Circuit Low",
+   "fam": "",
+   "node": "hybrid ev battery pack cooling fan"
+  },
+  {
+   "code": "P0AD3",
+   "brand": "",
+   "ru": "Вентилятор охлаждения тяговой батареи 3: высокий уровень в цепи управления",
+   "en": "Hybrid/EV Battery Pack Cooling Fan 3 Control Circuit High",
+   "fam": "",
+   "node": "hybrid ev battery pack cooling fan"
+  },
+  {
+   "code": "P0AA0",
+   "brand": "",
+   "ru": "Плюсовой контактор тяговой батареи: цепь",
+   "en": "Hybrid/EV Battery Positive Contactor Circuit",
+   "fam": "",
+   "node": "hybrid ev battery positive contactor"
+  },
+  {
+   "code": "P0AA6",
+   "brand": "",
+   "ru": "Утечка высокого напряжения на корпус (изоляция)",
+   "en": "",
+   "fam": "hv_isolation",
+   "node": "fam:hv_isolation"
+  },
+  {
+   "code": "P0AA7",
+   "brand": "",
+   "ru": "Датчик изоляции высоковольтной сети: цепь",
+   "en": "",
+   "fam": "hv_isolation",
+   "node": "fam:hv_isolation"
+  },
+  {
+   "code": "P0AA8",
+   "brand": "",
+   "ru": "Датчик изоляции высоковольтной сети: показания вне диапазона",
+   "en": "",
+   "fam": "hv_isolation",
+   "node": "fam:hv_isolation"
+  },
+  {
+   "code": "P0AA9",
+   "brand": "",
+   "ru": "Датчик изоляции высоковольтной сети: низкий сигнал",
+   "en": "",
+   "fam": "hv_isolation",
+   "node": "fam:hv_isolation"
+  },
+  {
+   "code": "P0AAA",
+   "brand": "",
+   "ru": "Датчик изоляции высоковольтной сети: высокий сигнал",
+   "en": "",
+   "fam": "hv_isolation",
+   "node": "fam:hv_isolation"
+  },
+  {
+   "code": "P0AAB",
+   "brand": "",
+   "ru": "Датчик изоляции высоковольтной сети: прерывистый сигнал",
+   "en": "",
+   "fam": "hv_isolation",
+   "node": "fam:hv_isolation"
+  },
+  {
+   "code": "P0AB6",
+   "brand": "",
+   "ru": "Активная опора двигателя B: обрыв цепи управления",
+   "en": "Engine Mount B Control Circuit/Open",
+   "fam": "",
+   "node": "engine mount b"
+  },
+  {
+   "code": "P0AB7",
+   "brand": "",
+   "ru": "Активная опора двигателя B: низкий уровень в цепи управления",
+   "en": "Engine Mount B Control Circuit Low",
+   "fam": "",
+   "node": "engine mount b"
+  },
+  {
+   "code": "P0AB8",
+   "brand": "",
+   "ru": "Активная опора двигателя B: высокий уровень в цепи управления",
+   "en": "Engine Mount B Control Circuit High",
+   "fam": "",
+   "node": "engine mount b"
+  },
+  {
+   "code": "P0AB9",
+   "brand": "",
+   "ru": "Гибридная система / электропривод: работа нарушена",
+   "en": "Hybrid/EV System Performance",
+   "fam": "",
+   "node": "hybrid ev system"
+  }
+ ]
+}

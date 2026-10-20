@@ -1,0 +1,399 @@
+{
+ "name": "sae_117",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "battery charger a",
+  "battery charging system a",
+  "battery charging system negative contactor a",
+  "battery charging system positive contactor a",
+  "control module date time synchronization error",
+  "hybrid ev battery pack coolant control valve b"
+ ],
+ "codes": [
+  {
+   "code": "P0D07",
+   "brand": "",
+   "ru": "Плюсовой контактор системы зарядки A: цепь",
+   "en": "Battery Charging System Positive Contactor A Circuit",
+   "fam": "",
+   "node": "battery charging system positive contactor a"
+  },
+  {
+   "code": "P0D08",
+   "brand": "",
+   "ru": "Плюсовой контактор системы зарядки A: заклинил закрытым",
+   "en": "Battery Charging System Positive Contactor A Stuck Closed",
+   "fam": "",
+   "node": "battery charging system positive contactor a"
+  },
+  {
+   "code": "P0D09",
+   "brand": "",
+   "ru": "Плюсовой контактор системы зарядки A: заклинил открытым",
+   "en": "Battery Charging System Positive Contactor A Stuck Open",
+   "fam": "",
+   "node": "battery charging system positive contactor a"
+  },
+  {
+   "code": "P0D0A",
+   "brand": "",
+   "ru": "Плюсовой контактор системы зарядки A: обрыв цепи управления",
+   "en": "Battery Charging System Positive Contactor A Control Circuit/Open",
+   "fam": "",
+   "node": "battery charging system positive contactor a"
+  },
+  {
+   "code": "P0D0B",
+   "brand": "",
+   "ru": "Плюсовой контактор системы зарядки A: цепь управления вне диапазона",
+   "en": "Battery Charging System Positive Contactor A Control Circuit Range/Performance",
+   "fam": "",
+   "node": "battery charging system positive contactor a"
+  },
+  {
+   "code": "P0D0C",
+   "brand": "",
+   "ru": "Плюсовой контактор системы зарядки A: низкий уровень в цепи управления",
+   "en": "Battery Charging System Positive Contactor A Control Circuit Low",
+   "fam": "",
+   "node": "battery charging system positive contactor a"
+  },
+  {
+   "code": "P0D0D",
+   "brand": "",
+   "ru": "Плюсовой контактор системы зарядки A: высокий уровень в цепи управления",
+   "en": "Battery Charging System Positive Contactor A Control Circuit High",
+   "fam": "",
+   "node": "battery charging system positive contactor a"
+  },
+  {
+   "code": "P0D0E",
+   "brand": "",
+   "ru": "Минусовой контактор системы зарядки A: цепь",
+   "en": "Battery Charging System Negative Contactor A Circuit",
+   "fam": "",
+   "node": "battery charging system negative contactor a"
+  },
+  {
+   "code": "P0D0F",
+   "brand": "",
+   "ru": "Минусовой контактор системы зарядки A: заклинил закрытым",
+   "en": "Battery Charging System Negative Contactor A Stuck Closed",
+   "fam": "",
+   "node": "battery charging system negative contactor a"
+  },
+  {
+   "code": "P0D10",
+   "brand": "",
+   "ru": "Минусовой контактор системы зарядки A: заклинил открытым",
+   "en": "Battery Charging System Negative Contactor A Stuck Open",
+   "fam": "",
+   "node": "battery charging system negative contactor a"
+  },
+  {
+   "code": "P0D11",
+   "brand": "",
+   "ru": "Минусовой контактор системы зарядки A: обрыв цепи управления",
+   "en": "Battery Charging System Negative Contactor A Control Circuit/Open",
+   "fam": "",
+   "node": "battery charging system negative contactor a"
+  },
+  {
+   "code": "P0D12",
+   "brand": "",
+   "ru": "Минусовой контактор системы зарядки A: цепь управления вне диапазона",
+   "en": "Battery Charging System Negative Contactor A Control Circuit Range/Performance",
+   "fam": "",
+   "node": "battery charging system negative contactor a"
+  },
+  {
+   "code": "P0D13",
+   "brand": "",
+   "ru": "Минусовой контактор системы зарядки A: низкий уровень в цепи управления",
+   "en": "Battery Charging System Negative Contactor A Control Circuit Low",
+   "fam": "",
+   "node": "battery charging system negative contactor a"
+  },
+  {
+   "code": "P0D14",
+   "brand": "",
+   "ru": "Минусовой контактор системы зарядки A: высокий уровень в цепи управления",
+   "en": "Battery Charging System Negative Contactor A Control Circuit High",
+   "fam": "",
+   "node": "battery charging system negative contactor a"
+  },
+  {
+   "code": "P0D15",
+   "brand": "",
+   "ru": "Высоковольтная блокировка системы зарядки A: обрыв цепи",
+   "en": "Battery Charging System A High Voltage Interlock Circuit/Open",
+   "fam": "",
+   "node": "battery charging system a"
+  },
+  {
+   "code": "P0D16",
+   "brand": "",
+   "ru": "Высоковольтная блокировка системы зарядки A: нарушена работа цепи",
+   "en": "Battery Charging System A High Voltage Interlock Circuit Performance",
+   "fam": "",
+   "node": "battery charging system a"
+  },
+  {
+   "code": "P0D17",
+   "brand": "",
+   "ru": "Высоковольтная блокировка системы зарядки A: низкий уровень сигнала в цепи",
+   "en": "Battery Charging System A High Voltage Interlock Circuit Low",
+   "fam": "",
+   "node": "battery charging system a"
+  },
+  {
+   "code": "P0D18",
+   "brand": "",
+   "ru": "Высоковольтная блокировка системы зарядки A: высокий уровень сигнала в цепи",
+   "en": "Battery Charging System A High Voltage Interlock Circuit High",
+   "fam": "",
+   "node": "battery charging system a"
+  },
+  {
+   "code": "P0D19",
+   "brand": "",
+   "ru": "Высоковольтная блокировка системы зарядки A: прерывистый / нестабильный сигнал",
+   "en": "Battery Charging System A High Voltage Interlock Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "battery charging system a"
+  },
+  {
+   "code": "P0D1A",
+   "brand": "",
+   "ru": "Клапан охлаждения тяговой батареи B: обрыв цепи управления",
+   "en": "Hybrid/EV Battery Pack Coolant Control Valve B Control Circuit/Open",
+   "fam": "",
+   "node": "hybrid ev battery pack coolant control valve b"
+  },
+  {
+   "code": "P0D1B",
+   "brand": "",
+   "ru": "Клапан охлаждения тяговой батареи B: работа нарушена / не включается",
+   "en": "Hybrid/EV Battery Pack Coolant Control Valve B Performance/Stuck Off",
+   "fam": "",
+   "node": "hybrid ev battery pack coolant control valve b"
+  },
+  {
+   "code": "P0D1C",
+   "brand": "",
+   "ru": "Клапан охлаждения тяговой батареи B: постоянно включён",
+   "en": "Hybrid/EV Battery Pack Coolant Control Valve B Stuck On",
+   "fam": "",
+   "node": "hybrid ev battery pack coolant control valve b"
+  },
+  {
+   "code": "P0D1D",
+   "brand": "",
+   "ru": "Клапан охлаждения тяговой батареи B: низкий уровень в цепи управления",
+   "en": "Hybrid/EV Battery Pack Coolant Control Valve B Control Circuit Low",
+   "fam": "",
+   "node": "hybrid ev battery pack coolant control valve b"
+  },
+  {
+   "code": "P0D1E",
+   "brand": "",
+   "ru": "Клапан охлаждения тяговой батареи B: высокий уровень в цепи управления",
+   "en": "Hybrid/EV Battery Pack Coolant Control Valve B Control Circuit High",
+   "fam": "",
+   "node": "hybrid ev battery pack coolant control valve b"
+  },
+  {
+   "code": "P0E21",
+   "brand": "",
+   "ru": "Клапан охлаждения тяговой батареи B: перегрузка драйвера цепи управления по току / перегрев",
+   "en": "Hybrid/EV Battery Pack Coolant Control Valve B Control Circuit Driver Current/Temperature Too High",
+   "fam": "",
+   "node": "hybrid ev battery pack coolant control valve b"
+  },
+  {
+   "code": "P0D1F",
+   "brand": "",
+   "ru": "Ошибка синхронизации даты/времени блока управления",
+   "en": "Control Module Date/Time Synchronization Error",
+   "fam": "",
+   "node": "control module date time synchronization error"
+  },
+  {
+   "code": "P0D20",
+   "brand": "",
+   "ru": "Зарядное устройство A: выходное напряжение не соответствует",
+   "en": "Battery Charger A Output Voltage Performance",
+   "fam": "",
+   "node": "battery charger a"
+  },
+  {
+   "code": "P0D21",
+   "brand": "",
+   "ru": "Зарядное устройство A: слишком низкое выходное напряжение",
+   "en": "Battery Charger A Output Voltage Too Low",
+   "fam": "",
+   "node": "battery charger a"
+  },
+  {
+   "code": "P0D22",
+   "brand": "",
+   "ru": "Зарядное устройство A: выходной ток не соответствует",
+   "en": "Battery Charger A Output Current Performance",
+   "fam": "",
+   "node": "battery charger a"
+  },
+  {
+   "code": "P0D23",
+   "brand": "",
+   "ru": "Зарядное устройство A: замыкание на выходе",
+   "en": "Battery Charger A Output Shorted",
+   "fam": "",
+   "node": "battery charger a"
+  },
+  {
+   "code": "P0D38",
+   "brand": "",
+   "ru": "Вход зарядного устройства A: цепь датчика тока",
+   "en": "Battery Charger A Input Current Sensor Circuit",
+   "fam": "",
+   "node": "battery charger a"
+  },
+  {
+   "code": "P0D39",
+   "brand": "",
+   "ru": "Вход зарядного устройства A: датчик тока вне диапазона",
+   "en": "Battery Charger A Input Current Sensor Circuit Range/Performance",
+   "fam": "",
+   "node": "battery charger a"
+  },
+  {
+   "code": "P0D3A",
+   "brand": "",
+   "ru": "Вход зарядного устройства A: низкий уровень в цепи датчика тока",
+   "en": "Battery Charger A Input Current Sensor Circuit Low",
+   "fam": "",
+   "node": "battery charger a"
+  },
+  {
+   "code": "P0D3B",
+   "brand": "",
+   "ru": "Вход зарядного устройства A: высокий уровень в цепи датчика тока",
+   "en": "Battery Charger A Input Current Sensor Circuit High",
+   "fam": "",
+   "node": "battery charger a"
+  },
+  {
+   "code": "P0D3C",
+   "brand": "",
+   "ru": "Датчик входного тока зарядного устройства A: прерывистый / нестабильный сигнал",
+   "en": "Battery Charger A Input Current Sensor Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "battery charger a"
+  },
+  {
+   "code": "P0D3D",
+   "brand": "",
+   "ru": "Датчик входного напряжения зарядного устройства A (датчик A): цепь",
+   "en": "Battery Charger A Input Voltage Sensor A Circuit",
+   "fam": "",
+   "node": "battery charger a"
+  },
+  {
+   "code": "P0D3E",
+   "brand": "",
+   "ru": "Датчик входного напряжения зарядного устройства A (датчик A): сигнал вне диапазона",
+   "en": "Battery Charger A Input Voltage Sensor A Circuit Range/Performance",
+   "fam": "",
+   "node": "battery charger a"
+  },
+  {
+   "code": "P0D3F",
+   "brand": "",
+   "ru": "Датчик входного напряжения зарядного устройства A (датчик A): низкий уровень сигнала в цепи",
+   "en": "Battery Charger A Input Voltage Sensor A Circuit Low",
+   "fam": "",
+   "node": "battery charger a"
+  },
+  {
+   "code": "P0D40",
+   "brand": "",
+   "ru": "Датчик входного напряжения зарядного устройства A (датчик A): высокий уровень сигнала в цепи",
+   "en": "Battery Charger A Input Voltage Sensor A Circuit High",
+   "fam": "",
+   "node": "battery charger a"
+  },
+  {
+   "code": "P0D41",
+   "brand": "",
+   "ru": "Датчик входного напряжения зарядного устройства A (датчик A): прерывистый / нестабильный сигнал",
+   "en": "Battery Charger A Input Voltage Sensor A Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "battery charger a"
+  },
+  {
+   "code": "P0EF7",
+   "brand": "",
+   "ru": "Датчик входного напряжения зарядного устройства A (датчик B): цепь",
+   "en": "Battery Charger A Input Voltage Sensor B Circuit",
+   "fam": "",
+   "node": "battery charger a"
+  },
+  {
+   "code": "P0EF8",
+   "brand": "",
+   "ru": "Датчик входного напряжения зарядного устройства A (датчик B): сигнал вне диапазона",
+   "en": "Battery Charger A Input Voltage Sensor B Circuit Range/Performance",
+   "fam": "",
+   "node": "battery charger a"
+  },
+  {
+   "code": "P0EF9",
+   "brand": "",
+   "ru": "Датчик входного напряжения зарядного устройства A (датчик B): низкий уровень сигнала в цепи",
+   "en": "Battery Charger A Input Voltage Sensor B Circuit Low",
+   "fam": "",
+   "node": "battery charger a"
+  },
+  {
+   "code": "P0EFA",
+   "brand": "",
+   "ru": "Датчик входного напряжения зарядного устройства A (датчик B): высокий уровень сигнала в цепи",
+   "en": "Battery Charger A Input Voltage Sensor B Circuit High",
+   "fam": "",
+   "node": "battery charger a"
+  },
+  {
+   "code": "P0EFB",
+   "brand": "",
+   "ru": "Датчик входного напряжения зарядного устройства A (датчик C): цепь",
+   "en": "Battery Charger A Input Voltage Sensor C Circuit",
+   "fam": "",
+   "node": "battery charger a"
+  },
+  {
+   "code": "P0EFC",
+   "brand": "",
+   "ru": "Датчик входного напряжения зарядного устройства A (датчик C): сигнал вне диапазона",
+   "en": "Battery Charger A Input Voltage Sensor C Circuit Range/Performance",
+   "fam": "",
+   "node": "battery charger a"
+  },
+  {
+   "code": "P0EFD",
+   "brand": "",
+   "ru": "Датчик входного напряжения зарядного устройства A (датчик C): низкий уровень сигнала в цепи",
+   "en": "Battery Charger A Input Voltage Sensor C Circuit Low",
+   "fam": "",
+   "node": "battery charger a"
+  },
+  {
+   "code": "P0EFE",
+   "brand": "",
+   "ru": "Датчик входного напряжения зарядного устройства A (датчик C): высокий уровень сигнала в цепи",
+   "en": "Battery Charger A Input Voltage Sensor C Circuit High",
+   "fam": "",
+   "node": "battery charger a"
+  }
+ ]
+}

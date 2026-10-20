@@ -1,0 +1,379 @@
+{
+ "name": "sae_188",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "battery charger a module forced shutdown voltage",
+  "battery charger a module supply voltage",
+  "battery charger b enable",
+  "battery charger b fuse",
+  "battery charger b module forced shutdown voltage",
+  "battery charger b module supply voltage",
+  "drive motor a excitation current",
+  "drive motor a excitation current sensor",
+  "drive motor a excitation current too",
+  "drive motor a phase x current",
+  "drive motor a phase x y z current sensor correlation",
+  "drive motor a phase y current",
+  "drive motor a phase z current",
+  "hybrid ev electronics coolant pump b",
+  "hybrid ev electronics coolant pump b enable",
+  "hybrid ev electronics coolant pump b overspeed",
+  "hybrid ev electronics coolant pump b overspeed dry run",
+  "hybrid ev electronics coolant pump b underspeed"
+ ],
+ "codes": [
+  {
+   "code": "P2E1B",
+   "brand": "",
+   "ru": "Тяговый электромотор A, фаза X: цепь датчика тока",
+   "en": "Drive Motor A Phase X Current Sensor Circuit",
+   "fam": "",
+   "node": "drive motor a phase x current"
+  },
+  {
+   "code": "P2E1C",
+   "brand": "",
+   "ru": "Тяговый электромотор A, фаза X: датчик тока вне диапазона",
+   "en": "Drive Motor A Phase X Current Sensor Circuit Range/Performance",
+   "fam": "",
+   "node": "drive motor a phase x current"
+  },
+  {
+   "code": "P2E1D",
+   "brand": "",
+   "ru": "Тяговый электромотор A, фаза X: низкий уровень в цепи датчика тока",
+   "en": "Drive Motor A Phase X Current Sensor Circuit Low",
+   "fam": "",
+   "node": "drive motor a phase x current"
+  },
+  {
+   "code": "P2E1E",
+   "brand": "",
+   "ru": "Тяговый электромотор A, фаза X: высокий уровень в цепи датчика тока",
+   "en": "Drive Motor A Phase X Current Sensor Circuit High",
+   "fam": "",
+   "node": "drive motor a phase x current"
+  },
+  {
+   "code": "P2E1F",
+   "brand": "",
+   "ru": "Тяговый электромотор A, фаза Y: цепь датчика тока",
+   "en": "Drive Motor A Phase Y Current Sensor Circuit",
+   "fam": "",
+   "node": "drive motor a phase y current"
+  },
+  {
+   "code": "P2E20",
+   "brand": "",
+   "ru": "Тяговый электромотор A, фаза Y: датчик тока вне диапазона",
+   "en": "Drive Motor A Phase Y Current Sensor Circuit Range/Performance",
+   "fam": "",
+   "node": "drive motor a phase y current"
+  },
+  {
+   "code": "P2E21",
+   "brand": "",
+   "ru": "Тяговый электромотор A, фаза Y: низкий уровень в цепи датчика тока",
+   "en": "Drive Motor A Phase Y Current Sensor Circuit Low",
+   "fam": "",
+   "node": "drive motor a phase y current"
+  },
+  {
+   "code": "P2E22",
+   "brand": "",
+   "ru": "Тяговый электромотор A, фаза Y: высокий уровень в цепи датчика тока",
+   "en": "Drive Motor A Phase Y Current Sensor Circuit High",
+   "fam": "",
+   "node": "drive motor a phase y current"
+  },
+  {
+   "code": "P2E23",
+   "brand": "",
+   "ru": "Тяговый электромотор A, фаза Z: цепь датчика тока",
+   "en": "Drive Motor A Phase Z Current Sensor Circuit",
+   "fam": "",
+   "node": "drive motor a phase z current"
+  },
+  {
+   "code": "P2E24",
+   "brand": "",
+   "ru": "Тяговый электромотор A, фаза Z: датчик тока вне диапазона",
+   "en": "Drive Motor A Phase Z Current Sensor Circuit Range/Performance",
+   "fam": "",
+   "node": "drive motor a phase z current"
+  },
+  {
+   "code": "P2E25",
+   "brand": "",
+   "ru": "Тяговый электромотор A, фаза Z: низкий уровень в цепи датчика тока",
+   "en": "Drive Motor A Phase Z Current Sensor Circuit Low",
+   "fam": "",
+   "node": "drive motor a phase z current"
+  },
+  {
+   "code": "P2E26",
+   "brand": "",
+   "ru": "Тяговый электромотор A, фаза Z: высокий уровень в цепи датчика тока",
+   "en": "Drive Motor A Phase Z Current Sensor Circuit High",
+   "fam": "",
+   "node": "drive motor a phase z current"
+  },
+  {
+   "code": "P2E27",
+   "brand": "",
+   "ru": "Тяговый электромотор A: рассогласование датчиков тока фаз X-Y-Z",
+   "en": "Drive Motor A Phase X-Y-Z Current Sensor Correlation",
+   "fam": "",
+   "node": "drive motor a phase x y z current sensor correlation"
+  },
+  {
+   "code": "P2E28",
+   "brand": "",
+   "ru": "Датчик тока возбуждения тягового электромотора A: работа нарушена",
+   "en": "Drive Motor A Excitation Current Sensor Performance",
+   "fam": "",
+   "node": "drive motor a excitation current sensor"
+  },
+  {
+   "code": "P2E29",
+   "brand": "",
+   "ru": "Датчик тока возбуждения тягового электромотора A: низкое напряжение в цепи",
+   "en": "Drive Motor A Excitation Current Sensor Circuit Low Voltage",
+   "fam": "",
+   "node": "drive motor a excitation current"
+  },
+  {
+   "code": "P2E2A",
+   "brand": "",
+   "ru": "Датчик тока возбуждения тягового электромотора A: высокое напряжение в цепи",
+   "en": "Drive Motor A Excitation Current Sensor Circuit High Voltage",
+   "fam": "",
+   "node": "drive motor a excitation current"
+  },
+  {
+   "code": "P2E7B",
+   "brand": "",
+   "ru": "Датчик тока возбуждения тягового электромотора A: цепь",
+   "en": "Drive Motor A Excitation Current Sensor Circuit",
+   "fam": "",
+   "node": "drive motor a excitation current"
+  },
+  {
+   "code": "P2E2B",
+   "brand": "",
+   "ru": "Тяговый электромотор A: слишком большой ток возбуждения",
+   "en": "Drive Motor A Excitation Current Too High",
+   "fam": "",
+   "node": "drive motor a excitation current too"
+  },
+  {
+   "code": "P2E2C",
+   "brand": "",
+   "ru": "Зарядное устройство A: напряжение питания модуля не соответствует",
+   "en": "Battery Charger A Module Supply Voltage Performance",
+   "fam": "",
+   "node": "battery charger a module supply voltage"
+  },
+  {
+   "code": "P2E2D",
+   "brand": "",
+   "ru": "Зарядное устройство A: низкое напряжение питания модуля",
+   "en": "Battery Charger A Module Supply Voltage Low",
+   "fam": "",
+   "node": "battery charger a module supply voltage"
+  },
+  {
+   "code": "P2E2E",
+   "brand": "",
+   "ru": "Зарядное устройство A: высокое напряжение питания модуля",
+   "en": "Battery Charger A Module Supply Voltage High",
+   "fam": "",
+   "node": "battery charger a module supply voltage"
+  },
+  {
+   "code": "P2E2F",
+   "brand": "",
+   "ru": "Зарядное устройство B: напряжение питания модуля не соответствует",
+   "en": "Battery Charger B Module Supply Voltage Performance",
+   "fam": "",
+   "node": "battery charger b module supply voltage"
+  },
+  {
+   "code": "P2E30",
+   "brand": "",
+   "ru": "Зарядное устройство B: низкое напряжение питания модуля",
+   "en": "Battery Charger B Module Supply Voltage Low",
+   "fam": "",
+   "node": "battery charger b module supply voltage"
+  },
+  {
+   "code": "P2E31",
+   "brand": "",
+   "ru": "Зарядное устройство B: высокое напряжение питания модуля",
+   "en": "Battery Charger B Module Supply Voltage High",
+   "fam": "",
+   "node": "battery charger b module supply voltage"
+  },
+  {
+   "code": "P2E32",
+   "brand": "",
+   "ru": "Зарядное устройство A: напряжение принудительного отключения не соответствует",
+   "en": "Battery Charger A Module Forced Shutdown Voltage Performance",
+   "fam": "",
+   "node": "battery charger a module forced shutdown voltage"
+  },
+  {
+   "code": "P2E33",
+   "brand": "",
+   "ru": "Зарядное устройство A: низкое напряжение принудительного отключения",
+   "en": "Battery Charger A Module Forced Shutdown Voltage Low",
+   "fam": "",
+   "node": "battery charger a module forced shutdown voltage"
+  },
+  {
+   "code": "P2E34",
+   "brand": "",
+   "ru": "Зарядное устройство A: высокое напряжение принудительного отключения",
+   "en": "Battery Charger A Module Forced Shutdown Voltage High",
+   "fam": "",
+   "node": "battery charger a module forced shutdown voltage"
+  },
+  {
+   "code": "P2E35",
+   "brand": "",
+   "ru": "Включение зарядного устройства B: обрыв цепи",
+   "en": "Battery Charger B Enable Circuit/Open",
+   "fam": "",
+   "node": "battery charger b enable"
+  },
+  {
+   "code": "P2E36",
+   "brand": "",
+   "ru": "Включение зарядного устройства B: низкий уровень сигнала в цепи",
+   "en": "Battery Charger B Enable Circuit Low",
+   "fam": "",
+   "node": "battery charger b enable"
+  },
+  {
+   "code": "P2E37",
+   "brand": "",
+   "ru": "Включение зарядного устройства B: высокий уровень сигнала в цепи",
+   "en": "Battery Charger B Enable Circuit High",
+   "fam": "",
+   "node": "battery charger b enable"
+  },
+  {
+   "code": "P2E38",
+   "brand": "",
+   "ru": "Включение зарядного устройства B: сигнал вне диапазона",
+   "en": "Battery Charger B Enable Circuit Range/Performance",
+   "fam": "",
+   "node": "battery charger b enable"
+  },
+  {
+   "code": "P2E39",
+   "brand": "",
+   "ru": "Предохранитель зарядного устройства B",
+   "en": "Battery Charger B Fuse",
+   "fam": "",
+   "node": "battery charger b fuse"
+  },
+  {
+   "code": "P2E3E",
+   "brand": "",
+   "ru": "Зарядное устройство B: напряжение принудительного отключения не соответствует",
+   "en": "Battery Charger B Module Forced Shutdown Voltage Performance",
+   "fam": "",
+   "node": "battery charger b module forced shutdown voltage"
+  },
+  {
+   "code": "P2E3F",
+   "brand": "",
+   "ru": "Зарядное устройство B: низкое напряжение принудительного отключения",
+   "en": "Battery Charger B Module Forced Shutdown Voltage Low",
+   "fam": "",
+   "node": "battery charger b module forced shutdown voltage"
+  },
+  {
+   "code": "P2E40",
+   "brand": "",
+   "ru": "Зарядное устройство B: высокое напряжение принудительного отключения",
+   "en": "Battery Charger B Module Forced Shutdown Voltage High",
+   "fam": "",
+   "node": "battery charger b module forced shutdown voltage"
+  },
+  {
+   "code": "P2E41",
+   "brand": "",
+   "ru": "Насос охлаждения электроники гибрида/электромобиля B: обрыв цепи управления",
+   "en": "Hybrid/EV Electronics Coolant Pump B Control Circuit/Open",
+   "fam": "",
+   "node": "hybrid ev electronics coolant pump b"
+  },
+  {
+   "code": "P2E42",
+   "brand": "",
+   "ru": "Насос охлаждения электроники гибрида/электромобиля B: работа нарушена",
+   "en": "Hybrid/EV Electronics Coolant Pump B Performance",
+   "fam": "",
+   "node": "hybrid ev electronics coolant pump b"
+  },
+  {
+   "code": "P2E43",
+   "brand": "",
+   "ru": "Насос охлаждения электроники гибрида/электромобиля B: низкий уровень в цепи управления",
+   "en": "Hybrid/EV Electronics Coolant Pump B Control Circuit Low",
+   "fam": "",
+   "node": "hybrid ev electronics coolant pump b"
+  },
+  {
+   "code": "P2E44",
+   "brand": "",
+   "ru": "Насос охлаждения электроники гибрида/электромобиля B: высокий уровень в цепи управления",
+   "en": "Hybrid/EV Electronics Coolant Pump B Control Circuit High",
+   "fam": "",
+   "node": "hybrid ev electronics coolant pump b"
+  },
+  {
+   "code": "P2E49",
+   "brand": "",
+   "ru": "Насос охлаждения электроники гибрида/электромобиля B: заклинивание / остановка",
+   "en": "Hybrid/EV Electronics Coolant Pump B Stuck/Stalled",
+   "fam": "",
+   "node": "hybrid ev electronics coolant pump b"
+  },
+  {
+   "code": "P2E45",
+   "brand": "",
+   "ru": "Насос охлаждения электроники гибрида/электромобиля B: цепь включения",
+   "en": "Hybrid/EV Electronics Coolant Pump B Enable Circuit",
+   "fam": "",
+   "node": "hybrid ev electronics coolant pump b enable"
+  },
+  {
+   "code": "P2E46",
+   "brand": "",
+   "ru": "Насос охлаждения электроники гибрида/электромобиля B: превышены обороты — работа всухую",
+   "en": "Hybrid/EV Electronics Coolant Pump B Overspeed - Dry Run",
+   "fam": "",
+   "node": "hybrid ev electronics coolant pump b overspeed dry run"
+  },
+  {
+   "code": "P2E47",
+   "brand": "",
+   "ru": "Насос охлаждения электроники гибрида/электромобиля B: заниженная скорость вращения",
+   "en": "Hybrid/EV Electronics Coolant Pump B Underspeed",
+   "fam": "",
+   "node": "hybrid ev electronics coolant pump b underspeed"
+  },
+  {
+   "code": "P2E48",
+   "brand": "",
+   "ru": "Насос охлаждения электроники гибрида/электромобиля B: превышена скорость вращения",
+   "en": "Hybrid/EV Electronics Coolant Pump B Overspeed",
+   "fam": "",
+   "node": "hybrid ev electronics coolant pump b overspeed"
+  }
+ ]
+}

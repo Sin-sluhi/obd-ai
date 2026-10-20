@@ -1,0 +1,384 @@
+{
+ "name": "brand-vag_076",
+ "series": "brand",
+ "brand": "vag",
+ "nodes": [
+  "clutch pressure adaptation at limit",
+  "clutch slip control",
+  "clutch torque adaptation at limit",
+  "different wheel speed signals",
+  "engine intervention readable",
+  "engine torque reduction",
+  "hydraulic pressure adaptation at limit",
+  "hydraulic pressure too",
+  "power supply",
+  "power supply voltage",
+  "ru:сигнал нагрузки",
+  "shift lock",
+  "shift up down wire",
+  "solenoid ev7 electrical",
+  "starter interlock",
+  "throttle angle",
+  "tiptronic switch down",
+  "tiptronic switch recognition",
+  "tiptronic switch up",
+  "transmission control unit incorrect coding",
+  "transmission control unit relay",
+  "transmission control unit self check",
+  "wheel speed"
+ ],
+ "codes": [
+  {
+   "code": "P1711",
+   "brand": "vag",
+   "ru": "Сигнал скорости колеса 1: выход за диапазон",
+   "en": "Wheel Speed Signal 1 Range Performance",
+   "fam": "",
+   "node": "wheel speed"
+  },
+  {
+   "code": "P1716",
+   "brand": "vag",
+   "ru": "Сигнал скорости колеса 2: выход за диапазон",
+   "en": "Wheel Speed Signal 2 Range Performance",
+   "fam": "",
+   "node": "wheel speed"
+  },
+  {
+   "code": "P1721",
+   "brand": "vag",
+   "ru": "Сигнал скорости колеса 3: выход за диапазон",
+   "en": "Wheel Speed Signal 3 Range Performance",
+   "fam": "",
+   "node": "wheel speed"
+  },
+  {
+   "code": "P1726",
+   "brand": "vag",
+   "ru": "Сигнал скорости колеса 4: выход за диапазон",
+   "en": "Wheel Speed Signal 4 Range Performance",
+   "fam": "",
+   "node": "wheel speed"
+  },
+  {
+   "code": "P1723",
+   "brand": "vag",
+   "ru": "Блокировка стартера: обрыв цепи",
+   "en": "Starter Interlock Circuit Open",
+   "fam": "",
+   "node": "starter interlock"
+  },
+  {
+   "code": "P1724",
+   "brand": "vag",
+   "ru": "Блокировка стартера: замыкание на массу",
+   "en": "Starter Interlock Circuit Short To Ground",
+   "fam": "",
+   "node": "starter interlock"
+  },
+  {
+   "code": "P1729",
+   "brand": "vag",
+   "ru": "Блокировка стартера: замыкание на плюс",
+   "en": "Starter Interlock Circuit Short To B+",
+   "fam": "",
+   "node": "starter interlock"
+  },
+  {
+   "code": "P1728",
+   "brand": "vag",
+   "ru": "Сигналы скорости колёс различаются",
+   "en": "Different Wheel Speed Signals Range Performance",
+   "fam": "",
+   "node": "different wheel speed signals"
+  },
+  {
+   "code": "P1733",
+   "brand": "vag",
+   "ru": "Tiptronic, кнопка «вниз»: замыкание на массу",
+   "en": "Tiptronic Switch Down Circuit Short To Ground",
+   "fam": "",
+   "node": "tiptronic switch down"
+  },
+  {
+   "code": "P1739",
+   "brand": "vag",
+   "ru": "Tiptronic, кнопка «вверх»: замыкание на массу",
+   "en": "Tiptronic Switch Up Circuit Short To Ground",
+   "fam": "",
+   "node": "tiptronic switch up"
+  },
+  {
+   "code": "P1741",
+   "brand": "vag",
+   "ru": "Адаптация давления муфты: достигнут предел",
+   "en": "Clutch Pressure Adaptation At Limit",
+   "fam": "",
+   "node": "clutch pressure adaptation at limit"
+  },
+  {
+   "code": "P1742",
+   "brand": "vag",
+   "ru": "Адаптация момента муфты: достигнут предел",
+   "en": "Clutch Torque Adaptation At Limit",
+   "fam": "",
+   "node": "clutch torque adaptation at limit"
+  },
+  {
+   "code": "P1743",
+   "brand": "vag",
+   "ru": "Регулирование проскальзывания муфты: сигнал слишком высокий",
+   "en": "Clutch Slip Control Signal Too High",
+   "fam": "",
+   "node": "clutch slip control"
+  },
+  {
+   "code": "P1744",
+   "brand": "vag",
+   "ru": "Tiptronic, распознавание: замыкание на массу",
+   "en": "Tiptronic Switch Recognition Circuit Short To Ground",
+   "fam": "",
+   "node": "tiptronic switch recognition"
+  },
+  {
+   "code": "P1745",
+   "brand": "vag",
+   "ru": "Реле блока коробки: замыкание на плюс",
+   "en": "Transmission Control Unit Relay Short To B+",
+   "fam": "",
+   "node": "transmission control unit relay"
+  },
+  {
+   "code": "P1746",
+   "brand": "vag",
+   "ru": "Реле блока коробки: неисправность",
+   "en": "Transmission Control Unit Relay Malfunction",
+   "fam": "",
+   "node": "transmission control unit relay"
+  },
+  {
+   "code": "P1747",
+   "brand": "vag",
+   "ru": "Реле блока коробки: обрыв или замыкание на массу",
+   "en": "Transmission Control Unit Relay Open Short To Ground",
+   "fam": "",
+   "node": "transmission control unit relay"
+  },
+  {
+   "code": "P1748",
+   "brand": "vag",
+   "ru": "Блок коробки: самопроверка",
+   "en": "Transmission Control Unit Self-Check",
+   "fam": "",
+   "node": "transmission control unit self check"
+  },
+  {
+   "code": "P1749",
+   "brand": "vag",
+   "ru": "Блок коробки закодирован неверно",
+   "en": "Transmission Control Unit Incorrect Coding",
+   "fam": "",
+   "node": "transmission control unit incorrect coding"
+  },
+  {
+   "code": "P1750",
+   "brand": "vag",
+   "ru": "Напряжение питания (коробка) низкое",
+   "en": "Power Supply Voltage Low",
+   "fam": "",
+   "node": "power supply voltage"
+  },
+  {
+   "code": "P1751",
+   "brand": "vag",
+   "ru": "Напряжение питания (коробка) высокое",
+   "en": "Power Supply Voltage High",
+   "fam": "",
+   "node": "power supply voltage"
+  },
+  {
+   "code": "P1752",
+   "brand": "vag",
+   "ru": "Питание (коробка): неисправность",
+   "en": "Power Supply Malfunction",
+   "fam": "",
+   "node": "power supply"
+  },
+  {
+   "code": "P1760",
+   "brand": "vag",
+   "ru": "Блокировка селектора: неисправность",
+   "en": "Shift Lock Malfunction",
+   "fam": "",
+   "node": "shift lock"
+  },
+  {
+   "code": "P1761",
+   "brand": "vag",
+   "ru": "Блокировка селектора: замыкание на массу",
+   "en": "Shift Lock Short To Ground",
+   "fam": "",
+   "node": "shift lock"
+  },
+  {
+   "code": "P1762",
+   "brand": "vag",
+   "ru": "Блокировка селектора: замыкание на плюс",
+   "en": "Shift Lock Short To B+",
+   "fam": "",
+   "node": "shift lock"
+  },
+  {
+   "code": "P1763",
+   "brand": "vag",
+   "ru": "Блокировка селектора: обрыв",
+   "en": "Shift Lock Open",
+   "fam": "",
+   "node": "shift lock"
+  },
+  {
+   "code": "P1765",
+   "brand": "vag",
+   "ru": "Датчик гидравлического давления 2: адаптация на пределе",
+   "en": "Hydraulic Pressure Sensor 2 Adaptation At Limit",
+   "fam": "",
+   "node": "hydraulic pressure adaptation at limit"
+  },
+  {
+   "code": "P1775",
+   "brand": "vag",
+   "ru": "Датчик гидравлического давления 1: адаптация на пределе",
+   "en": "Hydraulic Pressure Sensor 1 Adaptation At Limit",
+   "fam": "",
+   "node": "hydraulic pressure adaptation at limit"
+  },
+  {
+   "code": "P1766",
+   "brand": "vag",
+   "ru": "Сигнал угла дросселя: застыл в «выкл»",
+   "en": "Throttle Angle Signal Stuck Off",
+   "fam": "",
+   "node": "throttle angle"
+  },
+  {
+   "code": "P1767",
+   "brand": "vag",
+   "ru": "Сигнал угла дросселя: застыл во «вкл»",
+   "en": "Throttle Angle Signal Stuck On",
+   "fam": "",
+   "node": "throttle angle"
+  },
+  {
+   "code": "P1768",
+   "brand": "vag",
+   "ru": "Датчик гидравлического давления 2: слишком высокое",
+   "en": "Hydraulic Pressure Sensor 2 Too High",
+   "fam": "",
+   "node": "hydraulic pressure too"
+  },
+  {
+   "code": "P1769",
+   "brand": "vag",
+   "ru": "Датчик гидравлического давления 2: слишком низкое",
+   "en": "Hydraulic Pressure Sensor 2 Too Low",
+   "fam": "",
+   "node": "hydraulic pressure too"
+  },
+  {
+   "code": "P1773",
+   "brand": "vag",
+   "ru": "Датчик гидравлического давления 1: слишком высокое",
+   "en": "Hydraulic Pressure Sensor 1 Too High",
+   "fam": "",
+   "node": "hydraulic pressure too"
+  },
+  {
+   "code": "P1774",
+   "brand": "vag",
+   "ru": "Датчик гидравлического давления 1: слишком низкое",
+   "en": "Hydraulic Pressure Sensor 1 Too Low",
+   "fam": "",
+   "node": "hydraulic pressure too"
+  },
+  {
+   "code": "P1770",
+   "brand": "vag",
+   "ru": "Сигнал нагрузки: выход за диапазон",
+   "en": "Load Signal Range Performance",
+   "fam": "",
+   "node": "ru:сигнал нагрузки"
+  },
+  {
+   "code": "P1771",
+   "brand": "vag",
+   "ru": "Сигнал нагрузки: застыл в «выкл»",
+   "en": "Load Signal Stuck Off",
+   "fam": "",
+   "node": "ru:сигнал нагрузки"
+  },
+  {
+   "code": "P1772",
+   "brand": "vag",
+   "ru": "Сигнал нагрузки: застыл во «вкл»",
+   "en": "Load Signal Stuck On",
+   "fam": "",
+   "node": "ru:сигнал нагрузки"
+  },
+  {
+   "code": "P1857",
+   "brand": "vag",
+   "ru": "Сигнал нагрузки: сообщение об ошибке от блока двигателя",
+   "en": "Load Signal Error Message From Engine Control",
+   "fam": "",
+   "node": "ru:сигнал нагрузки"
+  },
+  {
+   "code": "P1778",
+   "brand": "vag",
+   "ru": "Электромагнитный клапан EV7 (коробка): электрическая неисправность",
+   "en": "Solenoid EV7 Electrical Malfunction",
+   "fam": "",
+   "node": "solenoid ev7 electrical"
+  },
+  {
+   "code": "P1780",
+   "brand": "vag",
+   "ru": "Вмешательство в работу двигателя (от коробки)",
+   "en": "Engine Intervention Readable",
+   "fam": "",
+   "node": "engine intervention readable"
+  },
+  {
+   "code": "P1781",
+   "brand": "vag",
+   "ru": "Снижение момента двигателя: обрыв или замыкание на массу",
+   "en": "Engine Torque Reduction Open Short To Ground",
+   "fam": "",
+   "node": "engine torque reduction"
+  },
+  {
+   "code": "P1782",
+   "brand": "vag",
+   "ru": "Снижение момента двигателя: замыкание на плюс",
+   "en": "Engine Torque Reduction Short To B+",
+   "fam": "",
+   "node": "engine torque reduction"
+  },
+  {
+   "code": "P1784",
+   "brand": "vag",
+   "ru": "Провод переключения вверх/вниз: обрыв или замыкание на массу",
+   "en": "Shift Up Down Wire Open Short To Ground",
+   "fam": "",
+   "node": "shift up down wire"
+  },
+  {
+   "code": "P1785",
+   "brand": "vag",
+   "ru": "Провод переключения вверх/вниз: замыкание на плюс",
+   "en": "Shift Up Down Wire Short To B+",
+   "fam": "",
+   "node": "shift up down wire"
+  }
+ ]
+}

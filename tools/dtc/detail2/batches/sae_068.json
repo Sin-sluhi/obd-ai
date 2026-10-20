@@ -1,0 +1,489 @@
+{
+ "name": "sae_068",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "active grille air shutter c",
+  "brake pressure sensor brake pedal position sensor correlation",
+  "exhaust aftertreatment power relay",
+  "fam:lost_comm",
+  "reductant heater control module",
+  "reductant pump supply voltage",
+  "stop start status",
+  "turbocharger supercharger boost control a temperature too"
+ ],
+ "codes": [
+  {
+   "code": "P05EE",
+   "brand": "",
+   "ru": "Насос мочевины (AdBlue): обрыв цепи питания",
+   "en": "Reductant Pump Supply Voltage Circuit/Open",
+   "fam": "",
+   "node": "reductant pump supply voltage"
+  },
+  {
+   "code": "P05EF",
+   "brand": "",
+   "ru": "Насос мочевины (AdBlue): низкое напряжение питания",
+   "en": "Reductant Pump Supply Voltage Circuit Low",
+   "fam": "",
+   "node": "reductant pump supply voltage"
+  },
+  {
+   "code": "P05F0",
+   "brand": "",
+   "ru": "Насос мочевины (AdBlue): высокое напряжение питания",
+   "en": "Reductant Pump Supply Voltage Circuit High",
+   "fam": "",
+   "node": "reductant pump supply voltage"
+  },
+  {
+   "code": "P05F1",
+   "brand": "",
+   "ru": "Питание насоса мочевины: постоянно включено",
+   "en": "Reductant Pump Supply Voltage Circuit Stuck On",
+   "fam": "",
+   "node": "reductant pump supply voltage"
+  },
+  {
+   "code": "P05F2",
+   "brand": "",
+   "ru": "Питание насоса мочевины: не включается",
+   "en": "Reductant Pump Supply Voltage Circuit Stuck Off",
+   "fam": "",
+   "node": "reductant pump supply voltage"
+  },
+  {
+   "code": "P05F3",
+   "brand": "",
+   "ru": "Реле питания системы нейтрализации: обрыв цепи управления",
+   "en": "Exhaust Aftertreatment Power Relay Control Circuit/Open",
+   "fam": "",
+   "node": "exhaust aftertreatment power relay"
+  },
+  {
+   "code": "P05F4",
+   "brand": "",
+   "ru": "Реле питания системы нейтрализации: низкий уровень в цепи управления",
+   "en": "Exhaust Aftertreatment Power Relay Control Circuit Low",
+   "fam": "",
+   "node": "exhaust aftertreatment power relay"
+  },
+  {
+   "code": "P05F5",
+   "brand": "",
+   "ru": "Реле питания системы нейтрализации: высокий уровень в цепи управления",
+   "en": "Exhaust Aftertreatment Power Relay Control Circuit High",
+   "fam": "",
+   "node": "exhaust aftertreatment power relay"
+  },
+  {
+   "code": "P05F6",
+   "brand": "",
+   "ru": "Реле питания системы нейтрализации: постоянно включено",
+   "en": "Exhaust Aftertreatment Power Relay Control Circuit Stuck On",
+   "fam": "",
+   "node": "exhaust aftertreatment power relay"
+  },
+  {
+   "code": "P05F7",
+   "brand": "",
+   "ru": "Реле питания системы нейтрализации: не включается",
+   "en": "Exhaust Aftertreatment Power Relay Control Circuit Stuck Off",
+   "fam": "",
+   "node": "exhaust aftertreatment power relay"
+  },
+  {
+   "code": "P05F8",
+   "brand": "",
+   "ru": "Блок подогрева мочевины: работа нарушена",
+   "en": "Reductant Heater Control Module Performance",
+   "fam": "",
+   "node": "reductant heater control module"
+  },
+  {
+   "code": "P05F9",
+   "brand": "",
+   "ru": "Состояние «старт-стоп»: сигнальная цепь",
+   "en": "Stop-Start Status Signal Circuit",
+   "fam": "",
+   "node": "stop start status"
+  },
+  {
+   "code": "P05FA",
+   "brand": "",
+   "ru": "Состояние «старт-стоп»: низкий уровень в сигнальной цепи",
+   "en": "Stop-Start Status Signal Circuit Low",
+   "fam": "",
+   "node": "stop start status"
+  },
+  {
+   "code": "P05FB",
+   "brand": "",
+   "ru": "Состояние «старт-стоп»: высокий уровень в сигнальной цепи",
+   "en": "Stop-Start Status Signal Circuit High",
+   "fam": "",
+   "node": "stop start status"
+  },
+  {
+   "code": "P05FD",
+   "brand": "",
+   "ru": "Регулирование давления наддува A: слишком высокая температура",
+   "en": "Turbocharger/Supercharger Boost Control A Temperature Too High",
+   "fam": "",
+   "node": "turbocharger supercharger boost control a temperature too"
+  },
+  {
+   "code": "P05FE",
+   "brand": "",
+   "ru": "Активные жалюзи радиатора C: работа нарушена / не включается",
+   "en": "Active Grille Air Shutter C Performance/Stuck Off",
+   "fam": "",
+   "node": "active grille air shutter c"
+  },
+  {
+   "code": "P2C73",
+   "brand": "",
+   "ru": "Активные жалюзи радиатора C: постоянно включён",
+   "en": "Active Grille Air Shutter C Stuck On",
+   "fam": "",
+   "node": "active grille air shutter c"
+  },
+  {
+   "code": "P2C74",
+   "brand": "",
+   "ru": "Активные жалюзи радиатора C: цепь управления вне диапазона",
+   "en": "Active Grille Air Shutter C Control Circuit Range/Performance",
+   "fam": "",
+   "node": "active grille air shutter c"
+  },
+  {
+   "code": "P05FF",
+   "brand": "",
+   "ru": "Рассогласование датчика давления тормозов и датчика педали тормоза",
+   "en": "Brake Pressure Sensor / Brake Pedal Position Sensor Correlation",
+   "fam": "",
+   "node": "brake pressure sensor brake pedal position sensor correlation"
+  },
+  {
+   "code": "P0600",
+   "brand": "",
+   "ru": "Связь между блоками: ошибка последовательной линии",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "P0860",
+   "brand": "",
+   "ru": "Связь с модулем селектора: цепь",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "P0861",
+   "brand": "",
+   "ru": "Связь с модулем селектора: низкий уровень",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "P0862",
+   "brand": "",
+   "ru": "Связь с модулем селектора: высокий уровень",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "P0863",
+   "brand": "",
+   "ru": "Связь с блоком коробки: цепь",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "P0864",
+   "brand": "",
+   "ru": "Связь с блоком коробки: вне диапазона",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "P0865",
+   "brand": "",
+   "ru": "Связь с блоком коробки: низкий уровень",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "P0866",
+   "brand": "",
+   "ru": "Связь с блоком коробки: высокий уровень",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "P2544",
+   "brand": "",
+   "ru": "Запрос управления моментом A (вход): цепь",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "P2545",
+   "brand": "",
+   "ru": "Запрос управления моментом A (вход): показания вне диапазона",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "P2546",
+   "brand": "",
+   "ru": "Запрос управления моментом A (вход): низкий сигнал",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "P2547",
+   "brand": "",
+   "ru": "Запрос управления моментом A (вход): высокий сигнал",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "P2548",
+   "brand": "",
+   "ru": "Запрос управления моментом B (вход): цепь",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "P2549",
+   "brand": "",
+   "ru": "Запрос управления моментом B (вход): показания вне диапазона",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "P2550",
+   "brand": "",
+   "ru": "Запрос управления моментом B (вход): низкий сигнал",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "P2551",
+   "brand": "",
+   "ru": "Запрос управления моментом B (вход): высокий сигнал",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "P2637",
+   "brand": "",
+   "ru": "Обратная связь управления моментом A: цепь",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "P2638",
+   "brand": "",
+   "ru": "Обратная связь управления моментом A: показания вне диапазона",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "P2639",
+   "brand": "",
+   "ru": "Обратная связь управления моментом A: низкий сигнал",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "P2640",
+   "brand": "",
+   "ru": "Обратная связь управления моментом A: высокий сигнал",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "P2641",
+   "brand": "",
+   "ru": "Обратная связь управления моментом B: цепь",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "P2642",
+   "brand": "",
+   "ru": "Обратная связь управления моментом B: показания вне диапазона",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "P2643",
+   "brand": "",
+   "ru": "Обратная связь управления моментом B: низкий сигнал",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "P2644",
+   "brand": "",
+   "ru": "Обратная связь управления моментом B: высокий сигнал",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0100",
+   "brand": "",
+   "ru": "Нет связи с блоком управления двигателем (ECM)",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0101",
+   "brand": "",
+   "ru": "Нет связи с блоком управления коробкой (TCM)",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0102",
+   "brand": "",
+   "ru": "Нет связи с блоком раздаточной коробки",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0103",
+   "brand": "",
+   "ru": "Нет связи с модулем селектора передач",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0104",
+   "brand": "",
+   "ru": "Нет связи с блоком круиз-контроля",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0105",
+   "brand": "",
+   "ru": "Нет связи с блоком управления форсунками",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0106",
+   "brand": "",
+   "ru": "Нет связи с блоком свечей накаливания",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0107",
+   "brand": "",
+   "ru": "Нет связи с блоком дроссельной заслонки",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0108",
+   "brand": "",
+   "ru": "Нет связи с блоком альтернативного топлива (ГБО)",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0109",
+   "brand": "",
+   "ru": "Нет связи с модулем топливного насоса",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0110",
+   "brand": "",
+   "ru": "Нет связи с блоком тягового электродвигателя",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0111",
+   "brand": "",
+   "ru": "Нет связи с блоком тяговой батареи A",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0112",
+   "brand": "",
+   "ru": "Нет связи с блоком тяговой батареи B",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0113",
+   "brand": "",
+   "ru": "Нет связи с блоком контроля выбросов",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0114",
+   "brand": "",
+   "ru": "Нет связи с блоком муфты полного привода",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "U0115",
+   "brand": "",
+   "ru": "Нет связи с блоком управления двигателем B",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  }
+ ]
+}

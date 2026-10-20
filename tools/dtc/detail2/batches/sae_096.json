@@ -1,0 +1,380 @@
+{
+ "name": "sae_096",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "clutch b actuator",
+  "drive motor a clutch enable",
+  "drive motor a clutch pawl position",
+  "gear shift lock solenoid actuator",
+  "gear shift position",
+  "hydraulic accumulator",
+  "shift solenoid j electrical",
+  "shift solenoid k",
+  "shift solenoid k electrical",
+  "shift solenoid l",
+  "shift solenoid l electrical"
+ ],
+ "codes": [
+  {
+   "code": "P08CF",
+   "brand": "",
+   "ru": "Соленоид переключения J: электрическая неисправность",
+   "en": "Shift Solenoid J Electrical",
+   "fam": "",
+   "node": "shift solenoid j electrical"
+  },
+  {
+   "code": "P08D5",
+   "brand": "",
+   "ru": "Соленоид переключения передач K",
+   "en": "Shift Solenoid K",
+   "fam": "",
+   "node": "shift solenoid k"
+  },
+  {
+   "code": "P08D6",
+   "brand": "",
+   "ru": "Соленоид переключения передач K: работа нарушена / не включается",
+   "en": "Shift Solenoid K Performance/Stuck Off",
+   "fam": "",
+   "node": "shift solenoid k"
+  },
+  {
+   "code": "P08D7",
+   "brand": "",
+   "ru": "Соленоид переключения передач K: постоянно включён",
+   "en": "Shift Solenoid K Stuck On",
+   "fam": "",
+   "node": "shift solenoid k"
+  },
+  {
+   "code": "P08D9",
+   "brand": "",
+   "ru": "Соленоид переключения передач K: прерывистый сигнал",
+   "en": "Shift Solenoid K Intermittent",
+   "fam": "",
+   "node": "shift solenoid k"
+  },
+  {
+   "code": "P08DA",
+   "brand": "",
+   "ru": "Соленоид переключения передач K: цепь управления вне диапазона",
+   "en": "Shift Solenoid K Control Circuit Range/Performance",
+   "fam": "",
+   "node": "shift solenoid k"
+  },
+  {
+   "code": "P08DB",
+   "brand": "",
+   "ru": "Соленоид переключения передач K: низкий уровень в цепи управления",
+   "en": "Shift Solenoid K Control Circuit Low",
+   "fam": "",
+   "node": "shift solenoid k"
+  },
+  {
+   "code": "P08DC",
+   "brand": "",
+   "ru": "Соленоид переключения передач K: высокий уровень в цепи управления",
+   "en": "Shift Solenoid K Control Circuit High",
+   "fam": "",
+   "node": "shift solenoid k"
+  },
+  {
+   "code": "P08DD",
+   "brand": "",
+   "ru": "Соленоид переключения передач K: обрыв цепи управления",
+   "en": "Shift Solenoid K Control Circuit/Open",
+   "fam": "",
+   "node": "shift solenoid k"
+  },
+  {
+   "code": "P08D8",
+   "brand": "",
+   "ru": "Соленоид переключения K: электрическая неисправность",
+   "en": "Shift Solenoid K Electrical",
+   "fam": "",
+   "node": "shift solenoid k electrical"
+  },
+  {
+   "code": "P08DE",
+   "brand": "",
+   "ru": "Соленоид переключения передач L",
+   "en": "Shift Solenoid L",
+   "fam": "",
+   "node": "shift solenoid l"
+  },
+  {
+   "code": "P08DF",
+   "brand": "",
+   "ru": "Соленоид переключения передач L: работа нарушена / не включается",
+   "en": "Shift Solenoid L Performance/Stuck Off",
+   "fam": "",
+   "node": "shift solenoid l"
+  },
+  {
+   "code": "P08E0",
+   "brand": "",
+   "ru": "Соленоид переключения передач L: постоянно включён",
+   "en": "Shift Solenoid L Stuck On",
+   "fam": "",
+   "node": "shift solenoid l"
+  },
+  {
+   "code": "P08E2",
+   "brand": "",
+   "ru": "Соленоид переключения передач L: прерывистый сигнал",
+   "en": "Shift Solenoid L Intermittent",
+   "fam": "",
+   "node": "shift solenoid l"
+  },
+  {
+   "code": "P08E3",
+   "brand": "",
+   "ru": "Соленоид переключения передач L: цепь управления вне диапазона",
+   "en": "Shift Solenoid L Control Circuit Range/Performance",
+   "fam": "",
+   "node": "shift solenoid l"
+  },
+  {
+   "code": "P08E4",
+   "brand": "",
+   "ru": "Соленоид переключения передач L: низкий уровень в цепи управления",
+   "en": "Shift Solenoid L Control Circuit Low",
+   "fam": "",
+   "node": "shift solenoid l"
+  },
+  {
+   "code": "P08E5",
+   "brand": "",
+   "ru": "Соленоид переключения передач L: высокий уровень в цепи управления",
+   "en": "Shift Solenoid L Control Circuit High",
+   "fam": "",
+   "node": "shift solenoid l"
+  },
+  {
+   "code": "P08E6",
+   "brand": "",
+   "ru": "Соленоид переключения передач L: обрыв цепи управления",
+   "en": "Shift Solenoid L Control Circuit/Open",
+   "fam": "",
+   "node": "shift solenoid l"
+  },
+  {
+   "code": "P08E1",
+   "brand": "",
+   "ru": "Соленоид переключения L: электрическая неисправность",
+   "en": "Shift Solenoid L Electrical",
+   "fam": "",
+   "node": "shift solenoid l electrical"
+  },
+  {
+   "code": "P08E7",
+   "brand": "",
+   "ru": "Включение муфты тягового электромотора A: цепь",
+   "en": "Drive Motor A Clutch Enable Circuit",
+   "fam": "",
+   "node": "drive motor a clutch enable"
+  },
+  {
+   "code": "P08E8",
+   "brand": "",
+   "ru": "Включение муфты тягового электромотора A: низкий уровень сигнала в цепи",
+   "en": "Drive Motor A Clutch Enable Circuit Low",
+   "fam": "",
+   "node": "drive motor a clutch enable"
+  },
+  {
+   "code": "P08E9",
+   "brand": "",
+   "ru": "Включение муфты тягового электромотора A: высокий уровень сигнала в цепи",
+   "en": "Drive Motor A Clutch Enable Circuit High",
+   "fam": "",
+   "node": "drive motor a clutch enable"
+  },
+  {
+   "code": "P08EA",
+   "brand": "",
+   "ru": "Положение собачки муфты тягового электромотора A: цепь",
+   "en": "Drive Motor A Clutch Pawl Position Circuit",
+   "fam": "",
+   "node": "drive motor a clutch pawl position"
+  },
+  {
+   "code": "P08EB",
+   "brand": "",
+   "ru": "Положение собачки муфты тягового электромотора A: низкий уровень сигнала в цепи",
+   "en": "Drive Motor A Clutch Pawl Position Circuit Low",
+   "fam": "",
+   "node": "drive motor a clutch pawl position"
+  },
+  {
+   "code": "P08EC",
+   "brand": "",
+   "ru": "Положение собачки муфты тягового электромотора A: высокий уровень сигнала в цепи",
+   "en": "Drive Motor A Clutch Pawl Position Circuit High",
+   "fam": "",
+   "node": "drive motor a clutch pawl position"
+  },
+  {
+   "code": "P08ED",
+   "brand": "",
+   "ru": "Положение собачки муфты тягового электромотора A: работа нарушена",
+   "en": "Drive Motor A Clutch Pawl Position Performance",
+   "fam": "",
+   "node": "drive motor a clutch pawl position"
+  },
+  {
+   "code": "P090A",
+   "brand": "",
+   "ru": "Привод сцепления B: обрыв цепи управления",
+   "en": "Clutch B Actuator Control Circuit/Open",
+   "fam": "",
+   "node": "clutch b actuator"
+  },
+  {
+   "code": "P090B",
+   "brand": "",
+   "ru": "Привод сцепления B: нарушена работа цепи управления",
+   "en": "Clutch B Actuator Control Circuit Performance",
+   "fam": "",
+   "node": "clutch b actuator"
+  },
+  {
+   "code": "P090C",
+   "brand": "",
+   "ru": "Привод сцепления B: низкий уровень в цепи управления",
+   "en": "Clutch B Actuator Control Circuit Low",
+   "fam": "",
+   "node": "clutch b actuator"
+  },
+  {
+   "code": "P090D",
+   "brand": "",
+   "ru": "Привод сцепления B: высокий уровень в цепи управления",
+   "en": "Clutch B Actuator Control Circuit High",
+   "fam": "",
+   "node": "clutch b actuator"
+  },
+  {
+   "code": "P091A",
+   "brand": "",
+   "ru": "Цепь положения переключения передач B",
+   "en": "Gear Shift Position Circuit B",
+   "fam": "",
+   "node": "gear shift position"
+  },
+  {
+   "code": "P091B",
+   "brand": "",
+   "ru": "Цепь положения переключения передач B: вне допустимого диапазона",
+   "en": "Gear Shift Position Circuit B Range/Performance",
+   "fam": "",
+   "node": "gear shift position"
+  },
+  {
+   "code": "P091C",
+   "brand": "",
+   "ru": "Цепь положения переключения передач B: низкий уровень",
+   "en": "Gear Shift Position Circuit B Low",
+   "fam": "",
+   "node": "gear shift position"
+  },
+  {
+   "code": "P091D",
+   "brand": "",
+   "ru": "Цепь положения переключения передач B: высокий уровень",
+   "en": "Gear Shift Position Circuit B High",
+   "fam": "",
+   "node": "gear shift position"
+  },
+  {
+   "code": "P095A",
+   "brand": "",
+   "ru": "Цепь положения переключения передач C",
+   "en": "Gear Shift Position Circuit C",
+   "fam": "",
+   "node": "gear shift position"
+  },
+  {
+   "code": "P095B",
+   "brand": "",
+   "ru": "Цепь положения переключения передач C: вне допустимого диапазона",
+   "en": "Gear Shift Position Circuit C Range/Performance",
+   "fam": "",
+   "node": "gear shift position"
+  },
+  {
+   "code": "P095C",
+   "brand": "",
+   "ru": "Цепь положения переключения передач C: низкий уровень",
+   "en": "Gear Shift Position Circuit C Low",
+   "fam": "",
+   "node": "gear shift position"
+  },
+  {
+   "code": "P095D",
+   "brand": "",
+   "ru": "Цепь положения переключения передач C: высокий уровень",
+   "en": "Gear Shift Position Circuit C High",
+   "fam": "",
+   "node": "gear shift position"
+  },
+  {
+   "code": "P092A",
+   "brand": "",
+   "ru": "Блокировка селектора КПП B: обрыв цепи управления",
+   "en": "Gear Shift Lock Solenoid/Actuator Control Circuit B/Open",
+   "fam": "",
+   "node": "gear shift lock solenoid actuator"
+  },
+  {
+   "code": "P092B",
+   "brand": "",
+   "ru": "Цепь управления блокировкой селектора КПП B: вне допустимого диапазона",
+   "en": "Gear Shift Lock Solenoid/Actuator Control Circuit B Range/Performance",
+   "fam": "",
+   "node": "gear shift lock solenoid actuator"
+  },
+  {
+   "code": "P092C",
+   "brand": "",
+   "ru": "Цепь управления блокировкой селектора КПП B: низкий уровень",
+   "en": "Gear Shift Lock Solenoid/Actuator Control Circuit B Low",
+   "fam": "",
+   "node": "gear shift lock solenoid actuator"
+  },
+  {
+   "code": "P092D",
+   "brand": "",
+   "ru": "Цепь управления блокировкой селектора КПП B: высокий уровень",
+   "en": "Gear Shift Lock Solenoid/Actuator Control Circuit B High",
+   "fam": "",
+   "node": "gear shift lock solenoid actuator"
+  },
+  {
+   "code": "P093A",
+   "brand": "",
+   "ru": "Соленоид гидроаккумулятора: обрыв цепи",
+   "en": "Hydraulic Accumulator Solenoid Circuit/Open",
+   "fam": "",
+   "node": "hydraulic accumulator"
+  },
+  {
+   "code": "P093B",
+   "brand": "",
+   "ru": "Соленоид гидроаккумулятора: низкий уровень сигнала в цепи",
+   "en": "Hydraulic Accumulator Solenoid Circuit Low",
+   "fam": "",
+   "node": "hydraulic accumulator"
+  },
+  {
+   "code": "P093C",
+   "brand": "",
+   "ru": "Соленоид гидроаккумулятора: высокий уровень сигнала в цепи",
+   "en": "Hydraulic Accumulator Solenoid Circuit High",
+   "fam": "",
+   "node": "hydraulic accumulator"
+  }
+ ]
+}

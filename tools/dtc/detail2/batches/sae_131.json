@@ -1,0 +1,360 @@
+{
+ "name": "sae_131",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "exhaust gas temperature",
+  "reductant injection air pressure control",
+  "reductant injection air pressure sensor a b correlation",
+  "reductant injection air pressure sensor b",
+  "reductant injection valve",
+  "reductant pump a control",
+  "reductant purge control valve a"
+ ],
+ "codes": [
+  {
+   "code": "P2082",
+   "brand": "",
+   "ru": "Датчик температуры отработавших газов: сигнал вне диапазона (банк 2, датчик 1)",
+   "en": "Exhaust Gas Temperature Sensor Circuit Range/Performance Bank 2 Sensor 1",
+   "fam": "",
+   "node": "exhaust gas temperature"
+  },
+  {
+   "code": "P2083",
+   "brand": "",
+   "ru": "Датчик температуры отработавших газов: прерывистый сигнал в цепи (банк 2, датчик 1)",
+   "en": "Exhaust Gas Temperature Sensor Circuit Intermittent Bank 2 Sensor 1",
+   "fam": "",
+   "node": "exhaust gas temperature"
+  },
+  {
+   "code": "P242A",
+   "brand": "",
+   "ru": "Датчик температуры отработавших газов: цепь (банк 1, датчик 3)",
+   "en": "Exhaust Gas Temperature Sensor Circuit Bank 1 Sensor 3",
+   "fam": "",
+   "node": "exhaust gas temperature"
+  },
+  {
+   "code": "P242B",
+   "brand": "",
+   "ru": "Датчик температуры отработавших газов: сигнал вне диапазона (банк 1, датчик 3)",
+   "en": "Exhaust Gas Temperature Sensor Circuit Range/Performance Bank 1 Sensor 3",
+   "fam": "",
+   "node": "exhaust gas temperature"
+  },
+  {
+   "code": "P242C",
+   "brand": "",
+   "ru": "Датчик температуры отработавших газов: низкий уровень сигнала в цепи (банк 1, датчик 3)",
+   "en": "Exhaust Gas Temperature Sensor Circuit Low Bank 1 Sensor 3",
+   "fam": "",
+   "node": "exhaust gas temperature"
+  },
+  {
+   "code": "P242D",
+   "brand": "",
+   "ru": "Датчик температуры отработавших газов: высокий уровень сигнала в цепи (банк 1, датчик 3)",
+   "en": "Exhaust Gas Temperature Sensor Circuit High Bank 1 Sensor 3",
+   "fam": "",
+   "node": "exhaust gas temperature"
+  },
+  {
+   "code": "P242E",
+   "brand": "",
+   "ru": "Датчик температуры отработавших газов: прерывистый / нестабильный сигнал (банк 1, датчик 3)",
+   "en": "Exhaust Gas Temperature Sensor Circuit Intermittent/Erratic Bank 1 Sensor 3",
+   "fam": "",
+   "node": "exhaust gas temperature"
+  },
+  {
+   "code": "P2466",
+   "brand": "",
+   "ru": "Датчик температуры отработавших газов: цепь (банк 2, датчик 3)",
+   "en": "Exhaust Gas Temperature Sensor Circuit Bank 2 Sensor 3",
+   "fam": "",
+   "node": "exhaust gas temperature"
+  },
+  {
+   "code": "P2467",
+   "brand": "",
+   "ru": "Датчик температуры отработавших газов: сигнал вне диапазона (банк 2, датчик 3)",
+   "en": "Exhaust Gas Temperature Sensor Circuit Range/Performance Bank 2 Sensor 3",
+   "fam": "",
+   "node": "exhaust gas temperature"
+  },
+  {
+   "code": "P2468",
+   "brand": "",
+   "ru": "Датчик температуры отработавших газов: низкий уровень сигнала в цепи (банк 2, датчик 3)",
+   "en": "Exhaust Gas Temperature Sensor Circuit Low Bank 2 Sensor 3",
+   "fam": "",
+   "node": "exhaust gas temperature"
+  },
+  {
+   "code": "P2469",
+   "brand": "",
+   "ru": "Датчик температуры отработавших газов: высокий уровень сигнала в цепи (банк 2, датчик 3)",
+   "en": "Exhaust Gas Temperature Sensor Circuit High Bank 2 Sensor 3",
+   "fam": "",
+   "node": "exhaust gas temperature"
+  },
+  {
+   "code": "P246A",
+   "brand": "",
+   "ru": "Датчик температуры отработавших газов: прерывистый / нестабильный сигнал (банк 2, датчик 3)",
+   "en": "Exhaust Gas Temperature Sensor Circuit Intermittent/Erratic Bank 2 Sensor 3",
+   "fam": "",
+   "node": "exhaust gas temperature"
+  },
+  {
+   "code": "P246E",
+   "brand": "",
+   "ru": "Датчик температуры отработавших газов: цепь (банк 1, датчик 4)",
+   "en": "Exhaust Gas Temperature Sensor Circuit Bank 1 Sensor 4",
+   "fam": "",
+   "node": "exhaust gas temperature"
+  },
+  {
+   "code": "P246F",
+   "brand": "",
+   "ru": "Датчик температуры отработавших газов: сигнал вне диапазона (банк 1, датчик 4)",
+   "en": "Exhaust Gas Temperature Sensor Circuit Range/Performance Bank 1 Sensor 4",
+   "fam": "",
+   "node": "exhaust gas temperature"
+  },
+  {
+   "code": "P2485",
+   "brand": "",
+   "ru": "Датчик температуры отработавших газов: обрыв цепи (банк 2, датчик 5)",
+   "en": "Exhaust Gas Temperature Sensor Circuit/Open Bank 2 Sensor 5",
+   "fam": "",
+   "node": "exhaust gas temperature"
+  },
+  {
+   "code": "P2486",
+   "brand": "",
+   "ru": "Датчик температуры отработавших газов: низкий уровень сигнала в цепи (банк 2, датчик 5)",
+   "en": "Exhaust Gas Temperature Sensor Circuit Low Bank 2 Sensor 5",
+   "fam": "",
+   "node": "exhaust gas temperature"
+  },
+  {
+   "code": "P2487",
+   "brand": "",
+   "ru": "Датчик температуры отработавших газов: высокий уровень сигнала в цепи (банк 2, датчик 5)",
+   "en": "Exhaust Gas Temperature Sensor Circuit High Bank 2 Sensor 5",
+   "fam": "",
+   "node": "exhaust gas temperature"
+  },
+  {
+   "code": "P2488",
+   "brand": "",
+   "ru": "Датчик температуры отработавших газов: сигнал вне диапазона (банк 2, датчик 5)",
+   "en": "Exhaust Gas Temperature Sensor Circuit Range/Performance Bank 2 Sensor 5",
+   "fam": "",
+   "node": "exhaust gas temperature"
+  },
+  {
+   "code": "P2489",
+   "brand": "",
+   "ru": "Датчик температуры отработавших газов: прерывистый / нестабильный сигнал (банк 2, датчик 5)",
+   "en": "Exhaust Gas Temperature Sensor Circuit Intermittent/Erratic Bank 2 Sensor 5",
+   "fam": "",
+   "node": "exhaust gas temperature"
+  },
+  {
+   "code": "P2EA1",
+   "brand": "",
+   "ru": "Датчик температуры отработавших газов: цепь (банк 1, датчик 6)",
+   "en": "Exhaust Gas Temperature Sensor Circuit Bank 1 Sensor 6",
+   "fam": "",
+   "node": "exhaust gas temperature"
+  },
+  {
+   "code": "P2EA2",
+   "brand": "",
+   "ru": "Датчик температуры отработавших газов: высокий уровень сигнала в цепи (банк 1, датчик 6)",
+   "en": "Exhaust Gas Temperature Sensor Circuit High Bank 1 Sensor 6",
+   "fam": "",
+   "node": "exhaust gas temperature"
+  },
+  {
+   "code": "P2EA3",
+   "brand": "",
+   "ru": "Датчик температуры отработавших газов: низкий уровень сигнала в цепи (банк 1, датчик 6)",
+   "en": "Exhaust Gas Temperature Sensor Circuit Low Bank 1 Sensor 6",
+   "fam": "",
+   "node": "exhaust gas temperature"
+  },
+  {
+   "code": "P2EA5",
+   "brand": "",
+   "ru": "Датчик температуры отработавших газов: сигнал вне диапазона (банк 1, датчик 6)",
+   "en": "Exhaust Gas Temperature Sensor Circuit Range/Performance Bank 1 Sensor 6",
+   "fam": "",
+   "node": "exhaust gas temperature"
+  },
+  {
+   "code": "P208B",
+   "brand": "",
+   "ru": "Насос мочевины A: работа нарушена / не включается",
+   "en": "Reductant Pump A Control Performance/Stuck Off",
+   "fam": "",
+   "node": "reductant pump a control"
+  },
+  {
+   "code": "P208E",
+   "brand": "",
+   "ru": "Форсунка мочевины заклинила закрытой (банк 1, узел 1)",
+   "en": "Reductant Injection Valve Stuck Closed Bank 1 Unit 1",
+   "fam": "",
+   "node": "reductant injection valve"
+  },
+  {
+   "code": "P208F",
+   "brand": "",
+   "ru": "Форсунка мочевины заклинила закрытой (банк 2, узел 1)",
+   "en": "Reductant Injection Valve Stuck Closed Bank 2 Unit 1",
+   "fam": "",
+   "node": "reductant injection valve"
+  },
+  {
+   "code": "P20F6",
+   "brand": "",
+   "ru": "Форсунка мочевины заклинила открытой (банк 1, узел 1)",
+   "en": "Reductant Injection Valve Stuck Open Bank 1 Unit 1",
+   "fam": "",
+   "node": "reductant injection valve"
+  },
+  {
+   "code": "P20F7",
+   "brand": "",
+   "ru": "Форсунка мочевины заклинила открытой (банк 2, узел 1)",
+   "en": "Reductant Injection Valve Stuck Open Bank 2 Unit 1",
+   "fam": "",
+   "node": "reductant injection valve"
+  },
+  {
+   "code": "P2EAF",
+   "brand": "",
+   "ru": "Форсунка мочевины заклинила закрытой (банк 1, узел 2)",
+   "en": "Reductant Injection Valve Stuck Closed Bank 1 Unit 2",
+   "fam": "",
+   "node": "reductant injection valve"
+  },
+  {
+   "code": "P209A",
+   "brand": "",
+   "ru": "Датчик давления воздуха впрыска мочевины B: цепь",
+   "en": "Reductant Injection Air Pressure Sensor B Circuit",
+   "fam": "",
+   "node": "reductant injection air pressure sensor b"
+  },
+  {
+   "code": "P209B",
+   "brand": "",
+   "ru": "Датчик давления воздуха впрыска мочевины B: сигнал вне диапазона",
+   "en": "Reductant Injection Air Pressure Sensor B Circuit Range/Performance",
+   "fam": "",
+   "node": "reductant injection air pressure sensor b"
+  },
+  {
+   "code": "P209C",
+   "brand": "",
+   "ru": "Датчик давления воздуха впрыска мочевины B: низкий уровень сигнала в цепи",
+   "en": "Reductant Injection Air Pressure Sensor B Circuit Low",
+   "fam": "",
+   "node": "reductant injection air pressure sensor b"
+  },
+  {
+   "code": "P209D",
+   "brand": "",
+   "ru": "Датчик давления воздуха впрыска мочевины B: высокий уровень сигнала в цепи",
+   "en": "Reductant Injection Air Pressure Sensor B Circuit High",
+   "fam": "",
+   "node": "reductant injection air pressure sensor b"
+  },
+  {
+   "code": "P209E",
+   "brand": "",
+   "ru": "Датчик давления воздуха впрыска мочевины: рассогласование A/B",
+   "en": "Reductant Injection Air Pressure Sensor A/B Correlation",
+   "fam": "",
+   "node": "reductant injection air pressure sensor a b correlation"
+  },
+  {
+   "code": "P20A0",
+   "brand": "",
+   "ru": "Клапан продувки системы мочевины A: обрыв цепи",
+   "en": "Reductant Purge Control Valve A Circuit /Open",
+   "fam": "",
+   "node": "reductant purge control valve a"
+  },
+  {
+   "code": "P20A1",
+   "brand": "",
+   "ru": "Клапан продувки системы мочевины A: работа нарушена",
+   "en": "Reductant Purge Control Valve A Performance",
+   "fam": "",
+   "node": "reductant purge control valve a"
+  },
+  {
+   "code": "P20A2",
+   "brand": "",
+   "ru": "Клапан продувки системы мочевины A: низкий уровень сигнала в цепи",
+   "en": "Reductant Purge Control Valve A Circuit Low",
+   "fam": "",
+   "node": "reductant purge control valve a"
+  },
+  {
+   "code": "P20A3",
+   "brand": "",
+   "ru": "Клапан продувки системы мочевины A: высокий уровень сигнала в цепи",
+   "en": "Reductant Purge Control Valve A Circuit High",
+   "fam": "",
+   "node": "reductant purge control valve a"
+  },
+  {
+   "code": "P20A4",
+   "brand": "",
+   "ru": "Клапан продувки системы мочевины A: заклинил открытым",
+   "en": "Reductant Purge Control Valve A Stuck Open",
+   "fam": "",
+   "node": "reductant purge control valve a"
+  },
+  {
+   "code": "P20A5",
+   "brand": "",
+   "ru": "Клапан продувки системы мочевины A: заклинил закрытым",
+   "en": "Reductant Purge Control Valve A Stuck Closed",
+   "fam": "",
+   "node": "reductant purge control valve a"
+  },
+  {
+   "code": "P20A6",
+   "brand": "",
+   "ru": "Клапан давления воздуха впрыска мочевины: обрыв цепи",
+   "en": "Reductant Injection Air Pressure Control Valve Circuit/Open",
+   "fam": "",
+   "node": "reductant injection air pressure control"
+  },
+  {
+   "code": "P20A8",
+   "brand": "",
+   "ru": "Клапан давления воздуха впрыска мочевины: низкий уровень сигнала в цепи",
+   "en": "Reductant Injection Air Pressure Control Valve Circuit Low",
+   "fam": "",
+   "node": "reductant injection air pressure control"
+  },
+  {
+   "code": "P20A9",
+   "brand": "",
+   "ru": "Клапан давления воздуха впрыска мочевины: высокий уровень сигнала в цепи",
+   "en": "Reductant Injection Air Pressure Control Valve Circuit High",
+   "fam": "",
+   "node": "reductant injection air pressure control"
+  }
+ ]
+}

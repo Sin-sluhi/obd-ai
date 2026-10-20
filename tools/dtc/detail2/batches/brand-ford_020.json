@@ -1,0 +1,396 @@
+{
+ "name": "brand-ford_020",
+ "series": "brand",
+ "brand": "ford",
+ "nodes": [
+  "a c refrigerant temperature",
+  "accs to pcm",
+  "air conditioning pressure",
+  "air conditioning pressure sensor insufficient pressure change",
+  "fam:vss",
+  "fan secondary",
+  "idle air control over speed error",
+  "idle air control system at adaptive clip",
+  "idle air control under speed error",
+  "inertia switch activated",
+  "intake air",
+  "intake manifold runner",
+  "intake manifold runner control",
+  "intake manifold runner control fault",
+  "intake manifold temperature valve vacuum actuator connection",
+  "invalid or missing vehicle speed message or brake data",
+  "invalid test accelerator pedal movement",
+  "parking brake",
+  "power steering pressure sensor out of self test",
+  "power to a c compressor clutch",
+  "power to cooling fan exceeded normal draw",
+  "programmable speedometer & odometer module vehicle speed sensor",
+  "ru:вентилятор, высокая скорость",
+  "ru:вентилятор, низкая скорость",
+  "ru:клапан егр",
+  "ru:муфта компрессора кондиционера",
+  "ru:отключение кондиционера при полном газе",
+  "ru:реле кондиционера",
+  "ru:слишком частое включение компрессора кондиционера",
+  "ru:управление впускным коллектором, ряд b",
+  "ru:цепь aai",
+  "ru:шина scp",
+  "substantial leak or blockage in evaporative emission control system",
+  "unable to pull vacuum in tank",
+  "variable load control module pin"
+ ],
+ "codes": [
+  {
+   "code": "P1455",
+   "brand": "ford",
+   "ru": "Сильная утечка или засор в системе улавливания паров",
+   "en": "Substantial Leak or Blockage in Evaporative Emission Control System",
+   "fam": "",
+   "node": "substantial leak or blockage in evaporative emission control system"
+  },
+  {
+   "code": "P1457",
+   "brand": "ford",
+   "ru": "Не удаётся создать разрежение в баке",
+   "en": "Unable To Pull Vacuum In Tank",
+   "fam": "",
+   "node": "unable to pull vacuum in tank"
+  },
+  {
+   "code": "P1460",
+   "brand": "ford",
+   "ru": "Отключение кондиционера при полном газе: неисправность цепи",
+   "en": "Wide Open Throttle Air Conditioning Cutoff Circuit Malfunction",
+   "fam": "",
+   "node": "ru:отключение кондиционера при полном газе"
+  },
+  {
+   "code": "P1461",
+   "brand": "ford",
+   "ru": "Датчик давления кондиционера: низкий сигнал",
+   "en": "Air Conditioning Pressure Sensor Circuit Low Input",
+   "fam": "",
+   "node": "air conditioning pressure"
+  },
+  {
+   "code": "P1462",
+   "brand": "ford",
+   "ru": "Датчик давления кондиционера: высокий сигнал",
+   "en": "Air Conditioning Pressure Sensor Circuit High Input",
+   "fam": "",
+   "node": "air conditioning pressure"
+  },
+  {
+   "code": "P1463",
+   "brand": "ford",
+   "ru": "Датчик давления кондиционера: давление почти не меняется",
+   "en": "Air Conditioning Pressure Sensor Insufficient Pressure Change",
+   "fam": "",
+   "node": "air conditioning pressure sensor insufficient pressure change"
+  },
+  {
+   "code": "P1464",
+   "brand": "ford",
+   "ru": "Запрос кондиционера к блоку двигателя активен во время самотеста",
+   "en": "ACCS to PCM High During Self-Test",
+   "fam": "",
+   "node": "accs to pcm"
+  },
+  {
+   "code": "P1465",
+   "brand": "ford",
+   "ru": "Реле кондиционера: неисправность цепи",
+   "en": "A/C Relay Circuit Malfunction",
+   "fam": "",
+   "node": "ru:реле кондиционера"
+  },
+  {
+   "code": "P1466",
+   "brand": "ford",
+   "ru": "Датчик температуры хладагента: неисправность цепи",
+   "en": "A/C Refrigerant Temperature Sensor Circuit Malfunction",
+   "fam": "",
+   "node": "a c refrigerant temperature"
+  },
+  {
+   "code": "P1469",
+   "brand": "ford",
+   "ru": "Слишком частое включение компрессора кондиционера",
+   "en": "Low Air Conditioning Cycling Period",
+   "fam": "",
+   "node": "ru:слишком частое включение компрессора кондиционера"
+  },
+  {
+   "code": "P1473",
+   "brand": "ford",
+   "ru": "Вентилятор: высокий сигнал вторичной цепи при выключенных вентиляторах",
+   "en": "Fan Secondary High with Fans Off",
+   "fam": "",
+   "node": "fan secondary"
+  },
+  {
+   "code": "P1480",
+   "brand": "ford",
+   "ru": "Вентилятор: низкий сигнал вторичной цепи при включённой низкой скорости",
+   "en": "Fan Secondary Low with Low Fans On",
+   "fam": "",
+   "node": "fan secondary"
+  },
+  {
+   "code": "P1481",
+   "brand": "ford",
+   "ru": "Вентилятор: низкий сигнал вторичной цепи при включённой высокой скорости",
+   "en": "Fan Secondary Low with High Fans On",
+   "fam": "",
+   "node": "fan secondary"
+  },
+  {
+   "code": "P1474",
+   "brand": "ford",
+   "ru": "Вентилятор, низкая скорость: первичная цепь",
+   "en": "Low Fan Control Primary Circuit",
+   "fam": "",
+   "node": "ru:вентилятор, низкая скорость"
+  },
+  {
+   "code": "P1479",
+   "brand": "ford",
+   "ru": "Вентилятор, высокая скорость: первичная цепь",
+   "en": "High Fan Control Primary Circuit",
+   "fam": "",
+   "node": "ru:вентилятор, высокая скорость"
+  },
+  {
+   "code": "P1482",
+   "brand": "ford",
+   "ru": "Шина SCP",
+   "en": "SCP",
+   "fam": "",
+   "node": "ru:шина scp"
+  },
+  {
+   "code": "P1483",
+   "brand": "ford",
+   "ru": "Ток вентилятора охлаждения выше нормы",
+   "en": "Power to Cooling Fan Exceeded Normal Draw",
+   "fam": "",
+   "node": "power to cooling fan exceeded normal draw"
+  },
+  {
+   "code": "P1484",
+   "brand": "ford",
+   "ru": "Модуль переменной нагрузки: обрыв контакта 1",
+   "en": "Variable Load Control Module Pin 1 Open",
+   "fam": "",
+   "node": "variable load control module pin"
+  },
+  {
+   "code": "P1485",
+   "brand": "ford",
+   "ru": "Клапан ЕГР: неисправность цепи",
+   "en": "EGRV Circuit Malfunction",
+   "fam": "",
+   "node": "ru:клапан егр"
+  },
+  {
+   "code": "P1500",
+   "brand": "ford",
+   "ru": "Датчик скорости: прерывистый сигнал",
+   "en": "",
+   "fam": "vss",
+   "node": "fam:vss"
+  },
+  {
+   "code": "P1501",
+   "brand": "ford",
+   "ru": "Модуль спидометра/одометра: прерывистый сигнал датчика скорости",
+   "en": "Programmable Speedometer & Odometer Module Vehicle Speed Sensor Intermittent Circuit Failure",
+   "fam": "",
+   "node": "programmable speedometer & odometer module vehicle speed sensor"
+  },
+  {
+   "code": "P1502",
+   "brand": "ford",
+   "ru": "Сообщение о скорости или тормозах неверное или отсутствует",
+   "en": "Invalid or Missing Vehicle Speed Message or Brake Data",
+   "fam": "",
+   "node": "invalid or missing vehicle speed message or brake data"
+  },
+  {
+   "code": "P1504",
+   "brand": "ford",
+   "ru": "Управление впускным воздухом: неисправность цепи",
+   "en": "Intake Air Control Circuit Malfunction",
+   "fam": "",
+   "node": "intake air"
+  },
+  {
+   "code": "P1505",
+   "brand": "ford",
+   "ru": "Регулятор холостого хода: адаптация на пределе",
+   "en": "Idle Air Control System at Adaptive Clip",
+   "fam": "",
+   "node": "idle air control system at adaptive clip"
+  },
+  {
+   "code": "P1506",
+   "brand": "ford",
+   "ru": "Регулятор холостого хода: обороты выше заданных",
+   "en": "Idle Air Control Over Speed Error",
+   "fam": "",
+   "node": "idle air control over speed error"
+  },
+  {
+   "code": "P1507",
+   "brand": "ford",
+   "ru": "Регулятор холостого хода: обороты ниже заданных",
+   "en": "Idle Air Control Under Speed Error",
+   "fam": "",
+   "node": "idle air control under speed error"
+  },
+  {
+   "code": "P1512",
+   "brand": "ford",
+   "ru": "Заслонки впускного коллектора заклинили закрытыми",
+   "en": "Intake Manifold Runner Control Stuck Closed",
+   "fam": "",
+   "node": "intake manifold runner control"
+  },
+  {
+   "code": "P1513",
+   "brand": "ford",
+   "ru": "Заслонки впускного коллектора заклинили закрытыми",
+   "en": "Intake Manifold Runner Control Stuck Closed",
+   "fam": "",
+   "node": "intake manifold runner control"
+  },
+  {
+   "code": "P1516",
+   "brand": "ford",
+   "ru": "Заслонки впускного коллектора: ошибка входного сигнала",
+   "en": "Intake Manifold Runner Control Input Error",
+   "fam": "",
+   "node": "intake manifold runner control"
+  },
+  {
+   "code": "P1517",
+   "brand": "ford",
+   "ru": "Заслонки впускного коллектора: ошибка входного сигнала",
+   "en": "Intake Manifold Runner Control Input Error",
+   "fam": "",
+   "node": "intake manifold runner control"
+  },
+  {
+   "code": "P1519",
+   "brand": "ford",
+   "ru": "Заслонки впускного коллектора заклинили открытыми",
+   "en": "Intake Manifold Runner Control Stuck Open",
+   "fam": "",
+   "node": "intake manifold runner control"
+  },
+  {
+   "code": "P1537",
+   "brand": "ford",
+   "ru": "Заслонки впускного коллектора заклинили открытыми",
+   "en": "Intake Manifold Runner Control Stuck Open",
+   "fam": "",
+   "node": "intake manifold runner control"
+  },
+  {
+   "code": "P1538",
+   "brand": "ford",
+   "ru": "Заслонки впускного коллектора заклинили открытыми",
+   "en": "Intake Manifold Runner Control Stuck Open",
+   "fam": "",
+   "node": "intake manifold runner control"
+  },
+  {
+   "code": "P1518",
+   "brand": "ford",
+   "ru": "Заслонки впускного коллектора заклинили открытыми",
+   "en": "Intake Manifold Runner Control Fault Stuck Open",
+   "fam": "",
+   "node": "intake manifold runner control fault"
+  },
+  {
+   "code": "P1520",
+   "brand": "ford",
+   "ru": "Заслонки впускного коллектора: неисправность цепи",
+   "en": "Intake Manifold Runner Control Circuit Fault",
+   "fam": "",
+   "node": "intake manifold runner"
+  },
+  {
+   "code": "P1530",
+   "brand": "ford",
+   "ru": "Муфта компрессора кондиционера: обрыв или замыкание цепи",
+   "en": "Open or Short to A/C Compressor Clutch Circuit",
+   "fam": "",
+   "node": "ru:муфта компрессора кондиционера"
+  },
+  {
+   "code": "P1531",
+   "brand": "ford",
+   "ru": "Самотест: неверное движение педали газа",
+   "en": "Invalid Test Accelerator Pedal Movement",
+   "fam": "",
+   "node": "invalid test accelerator pedal movement"
+  },
+  {
+   "code": "P1532",
+   "brand": "ford",
+   "ru": "Управление впускным коллектором, ряд B: неисправность цепи",
+   "en": "IMCC Circuit Malfunction Bank B",
+   "fam": "",
+   "node": "ru:управление впускным коллектором, ряд b"
+  },
+  {
+   "code": "P1533",
+   "brand": "ford",
+   "ru": "Цепь AAI: неисправность",
+   "en": "AAI Circuit Malfunction",
+   "fam": "",
+   "node": "ru:цепь aai"
+  },
+  {
+   "code": "P1534",
+   "brand": "ford",
+   "ru": "Сработал инерционный выключатель (отсечка топлива при ударе)",
+   "en": "Inertia Switch Activated",
+   "fam": "",
+   "node": "inertia switch activated"
+  },
+  {
+   "code": "P1536",
+   "brand": "ford",
+   "ru": "Выключатель стояночного тормоза: неисправность цепи",
+   "en": "Parking Brake Switch Circuit Failure",
+   "fam": "",
+   "node": "parking brake"
+  },
+  {
+   "code": "P1539",
+   "brand": "ford",
+   "ru": "Ток муфты компрессора кондиционера выше нормы",
+   "en": "Power to A/C Compressor Clutch Circuit Exceeded Normal Current Draw",
+   "fam": "",
+   "node": "power to a c compressor clutch"
+  },
+  {
+   "code": "P1549",
+   "brand": "ford",
+   "ru": "Вакуумный привод клапана температуры впуска: подключение",
+   "en": "Intake Manifold Temperature Valve Vacuum Actuator Connection",
+   "fam": "",
+   "node": "intake manifold temperature valve vacuum actuator connection"
+  },
+  {
+   "code": "P1550",
+   "brand": "ford",
+   "ru": "Датчик давления гидроусилителя: вне диапазона самотеста",
+   "en": "Power Steering Pressure Sensor Out of Self-Test Range",
+   "fam": "",
+   "node": "power steering pressure sensor out of self test"
+  }
+ ]
+}

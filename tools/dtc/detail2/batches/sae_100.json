@@ -1,0 +1,324 @@
+{
+ "name": "sae_100",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "drive motor b control module",
+  "fam:hv_motor",
+  "starter generator control"
+ ],
+ "codes": [
+  {
+   "code": "P0A18",
+   "brand": "",
+   "ru": "Датчик момента электродвигателя: цепь",
+   "en": "",
+   "fam": "hv_motor",
+   "node": "fam:hv_motor"
+  },
+  {
+   "code": "P0A2A",
+   "brand": "",
+   "ru": "Датчик температуры тягового двигателя A: цепь",
+   "en": "",
+   "fam": "hv_motor",
+   "node": "fam:hv_motor"
+  },
+  {
+   "code": "P0A2B",
+   "brand": "",
+   "ru": "Датчик температуры тягового двигателя A: показания вне диапазона",
+   "en": "",
+   "fam": "hv_motor",
+   "node": "fam:hv_motor"
+  },
+  {
+   "code": "P0A2C",
+   "brand": "",
+   "ru": "Датчик температуры тягового двигателя A: низкий сигнал",
+   "en": "",
+   "fam": "hv_motor",
+   "node": "fam:hv_motor"
+  },
+  {
+   "code": "P0A2D",
+   "brand": "",
+   "ru": "Датчик температуры тягового двигателя A: высокий сигнал",
+   "en": "",
+   "fam": "hv_motor",
+   "node": "fam:hv_motor"
+  },
+  {
+   "code": "P0A2E",
+   "brand": "",
+   "ru": "Датчик температуры тягового двигателя A: прерывистый сигнал",
+   "en": "",
+   "fam": "hv_motor",
+   "node": "fam:hv_motor"
+  },
+  {
+   "code": "P0A2F",
+   "brand": "",
+   "ru": "Тяговый двигатель A: перегрев",
+   "en": "",
+   "fam": "hv_motor",
+   "node": "fam:hv_motor"
+  },
+  {
+   "code": "P0A30",
+   "brand": "",
+   "ru": "Датчик температуры генератора (MG1): цепь",
+   "en": "",
+   "fam": "hv_motor",
+   "node": "fam:hv_motor"
+  },
+  {
+   "code": "P0A31",
+   "brand": "",
+   "ru": "Датчик температуры генератора (MG1): показания вне диапазона",
+   "en": "",
+   "fam": "hv_motor",
+   "node": "fam:hv_motor"
+  },
+  {
+   "code": "P0A32",
+   "brand": "",
+   "ru": "Датчик температуры генератора (MG1): низкий сигнал",
+   "en": "",
+   "fam": "hv_motor",
+   "node": "fam:hv_motor"
+  },
+  {
+   "code": "P0A33",
+   "brand": "",
+   "ru": "Датчик температуры генератора (MG1): высокий сигнал",
+   "en": "",
+   "fam": "hv_motor",
+   "node": "fam:hv_motor"
+  },
+  {
+   "code": "P0A34",
+   "brand": "",
+   "ru": "Датчик температуры генератора (MG1): прерывистый сигнал",
+   "en": "",
+   "fam": "hv_motor",
+   "node": "fam:hv_motor"
+  },
+  {
+   "code": "P0A35",
+   "brand": "",
+   "ru": "Генератор (MG1): перегрев",
+   "en": "",
+   "fam": "hv_motor",
+   "node": "fam:hv_motor"
+  },
+  {
+   "code": "P0A36",
+   "brand": "",
+   "ru": "Датчик температуры тягового двигателя B: цепь",
+   "en": "",
+   "fam": "hv_motor",
+   "node": "fam:hv_motor"
+  },
+  {
+   "code": "P0A37",
+   "brand": "",
+   "ru": "Датчик температуры тягового двигателя B: показания вне диапазона",
+   "en": "",
+   "fam": "hv_motor",
+   "node": "fam:hv_motor"
+  },
+  {
+   "code": "P0A38",
+   "brand": "",
+   "ru": "Датчик температуры тягового двигателя B: низкий сигнал",
+   "en": "",
+   "fam": "hv_motor",
+   "node": "fam:hv_motor"
+  },
+  {
+   "code": "P0A39",
+   "brand": "",
+   "ru": "Датчик температуры тягового двигателя B: высокий сигнал",
+   "en": "",
+   "fam": "hv_motor",
+   "node": "fam:hv_motor"
+  },
+  {
+   "code": "P0A3A",
+   "brand": "",
+   "ru": "Датчик температуры тягового двигателя B: прерывистый сигнал",
+   "en": "",
+   "fam": "hv_motor",
+   "node": "fam:hv_motor"
+  },
+  {
+   "code": "P0A3B",
+   "brand": "",
+   "ru": "Генератор: перегрев",
+   "en": "",
+   "fam": "hv_motor",
+   "node": "fam:hv_motor"
+  },
+  {
+   "code": "P0A3F",
+   "brand": "",
+   "ru": "Датчик положения ротора тягового двигателя A (резольвер): цепь / нет сигнала",
+   "en": "",
+   "fam": "hv_motor",
+   "node": "fam:hv_motor"
+  },
+  {
+   "code": "P0A40",
+   "brand": "",
+   "ru": "Датчик положения ротора тягового двигателя A (резольвер): сигнал вне диапазона",
+   "en": "",
+   "fam": "hv_motor",
+   "node": "fam:hv_motor"
+  },
+  {
+   "code": "P0A41",
+   "brand": "",
+   "ru": "Датчик положения ротора тягового двигателя A (резольвер): низкий сигнал",
+   "en": "",
+   "fam": "hv_motor",
+   "node": "fam:hv_motor"
+  },
+  {
+   "code": "P0A42",
+   "brand": "",
+   "ru": "Датчик положения ротора тягового двигателя A (резольвер): высокий сигнал",
+   "en": "",
+   "fam": "hv_motor",
+   "node": "fam:hv_motor"
+  },
+  {
+   "code": "P0A43",
+   "brand": "",
+   "ru": "Датчик положения ротора тягового двигателя A (резольвер): прерывистый сигнал",
+   "en": "",
+   "fam": "hv_motor",
+   "node": "fam:hv_motor"
+  },
+  {
+   "code": "P0A44",
+   "brand": "",
+   "ru": "Датчик положения ротора тягового двигателя B: цепь / нет сигнала",
+   "en": "",
+   "fam": "hv_motor",
+   "node": "fam:hv_motor"
+  },
+  {
+   "code": "P0A45",
+   "brand": "",
+   "ru": "Датчик положения ротора тягового двигателя B: сигнал вне диапазона",
+   "en": "",
+   "fam": "hv_motor",
+   "node": "fam:hv_motor"
+  },
+  {
+   "code": "P0A46",
+   "brand": "",
+   "ru": "Датчик положения ротора тягового двигателя B: низкий сигнал",
+   "en": "",
+   "fam": "hv_motor",
+   "node": "fam:hv_motor"
+  },
+  {
+   "code": "P0A47",
+   "brand": "",
+   "ru": "Датчик положения ротора тягового двигателя B: высокий сигнал",
+   "en": "",
+   "fam": "hv_motor",
+   "node": "fam:hv_motor"
+  },
+  {
+   "code": "P0A48",
+   "brand": "",
+   "ru": "Датчик положения ротора тягового двигателя B: прерывистый сигнал",
+   "en": "",
+   "fam": "hv_motor",
+   "node": "fam:hv_motor"
+  },
+  {
+   "code": "P0A49",
+   "brand": "",
+   "ru": "Датчик положения ротора генератора: цепь / нет сигнала",
+   "en": "",
+   "fam": "hv_motor",
+   "node": "fam:hv_motor"
+  },
+  {
+   "code": "P0A4A",
+   "brand": "",
+   "ru": "Датчик положения ротора генератора: сигнал вне диапазона",
+   "en": "",
+   "fam": "hv_motor",
+   "node": "fam:hv_motor"
+  },
+  {
+   "code": "P0A4B",
+   "brand": "",
+   "ru": "Датчик положения ротора генератора: низкий сигнал",
+   "en": "",
+   "fam": "hv_motor",
+   "node": "fam:hv_motor"
+  },
+  {
+   "code": "P0A4C",
+   "brand": "",
+   "ru": "Датчик положения ротора генератора: высокий сигнал",
+   "en": "",
+   "fam": "hv_motor",
+   "node": "fam:hv_motor"
+  },
+  {
+   "code": "P0A4D",
+   "brand": "",
+   "ru": "Датчик положения ротора генератора: прерывистый сигнал",
+   "en": "",
+   "fam": "hv_motor",
+   "node": "fam:hv_motor"
+  },
+  {
+   "code": "P0A90",
+   "brand": "",
+   "ru": "Тяговый двигатель A: нарушение работы",
+   "en": "",
+   "fam": "hv_motor",
+   "node": "fam:hv_motor"
+  },
+  {
+   "code": "P0A91",
+   "brand": "",
+   "ru": "Тяговый двигатель B: нарушение работы",
+   "en": "",
+   "fam": "hv_motor",
+   "node": "fam:hv_motor"
+  },
+  {
+   "code": "P0A92",
+   "brand": "",
+   "ru": "Генератор гибрида: нарушение работы",
+   "en": "",
+   "fam": "hv_motor",
+   "node": "fam:hv_motor"
+  },
+  {
+   "code": "P0A1C",
+   "brand": "",
+   "ru": "Блок управления тяговым электромотором B: работа нарушена",
+   "en": "Drive Motor B Control Module Performance",
+   "fam": "",
+   "node": "drive motor b control module"
+  },
+  {
+   "code": "P0A1E",
+   "brand": "",
+   "ru": "Блок управления стартер-генератором",
+   "en": "Starter/Generator Control Module",
+   "fam": "",
+   "node": "starter generator control"
+  }
+ ]
+}

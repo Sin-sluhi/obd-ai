@@ -1,0 +1,257 @@
+{
+ "name": "sae_130",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "intake manifold tuning valve position sensor",
+  "manifold absolute pressure mass air flow throttle position correlation at higher load",
+  "manifold absolute pressure mass air flow throttle position correlation at idle",
+  "reductant level sensor a",
+  "reductant level too",
+  "reductant pressure",
+  "reductant quality",
+  "reductant tank temperature sensor a"
+ ],
+ "codes": [
+  {
+   "code": "P203A",
+   "brand": "",
+   "ru": "Датчик уровня мочевины (AdBlue) A: цепь",
+   "en": "Reductant Level Sensor A Circuit",
+   "fam": "",
+   "node": "reductant level sensor a"
+  },
+  {
+   "code": "P203B",
+   "brand": "",
+   "ru": "Датчик уровня мочевины (AdBlue) A: сигнал вне диапазона",
+   "en": "Reductant Level Sensor A Circuit Range/Performance",
+   "fam": "",
+   "node": "reductant level sensor a"
+  },
+  {
+   "code": "P203C",
+   "brand": "",
+   "ru": "Датчик уровня мочевины (AdBlue) A: низкий уровень сигнала в цепи",
+   "en": "Reductant Level Sensor A Circuit Low",
+   "fam": "",
+   "node": "reductant level sensor a"
+  },
+  {
+   "code": "P203D",
+   "brand": "",
+   "ru": "Датчик уровня мочевины (AdBlue) A: высокий уровень сигнала в цепи",
+   "en": "Reductant Level Sensor A Circuit High",
+   "fam": "",
+   "node": "reductant level sensor a"
+  },
+  {
+   "code": "P203E",
+   "brand": "",
+   "ru": "Датчик уровня мочевины (AdBlue) A: прерывистый / нестабильный сигнал",
+   "en": "Reductant Level Sensor A Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "reductant level sensor a"
+  },
+  {
+   "code": "P21C5",
+   "brand": "",
+   "ru": "Датчик уровня мочевины (AdBlue) A: заклинивание",
+   "en": "Reductant Level Sensor A Stuck",
+   "fam": "",
+   "node": "reductant level sensor a"
+  },
+  {
+   "code": "P203F",
+   "brand": "",
+   "ru": "Слишком низкий уровень мочевины",
+   "en": "Reductant Level Too Low",
+   "fam": "",
+   "node": "reductant level too"
+  },
+  {
+   "code": "P204A",
+   "brand": "",
+   "ru": "Датчик давления мочевины: цепь",
+   "en": "Reductant Pressure Sensor Circuit",
+   "fam": "",
+   "node": "reductant pressure"
+  },
+  {
+   "code": "P204B",
+   "brand": "",
+   "ru": "Датчик давления мочевины: сигнал вне диапазона",
+   "en": "Reductant Pressure Sensor Circuit Range/Performance",
+   "fam": "",
+   "node": "reductant pressure"
+  },
+  {
+   "code": "P204C",
+   "brand": "",
+   "ru": "Датчик давления мочевины: низкий уровень сигнала в цепи",
+   "en": "Reductant Pressure Sensor Circuit Low",
+   "fam": "",
+   "node": "reductant pressure"
+  },
+  {
+   "code": "P204D",
+   "brand": "",
+   "ru": "Датчик давления мочевины: высокий уровень сигнала в цепи",
+   "en": "Reductant Pressure Sensor Circuit High",
+   "fam": "",
+   "node": "reductant pressure"
+  },
+  {
+   "code": "P204E",
+   "brand": "",
+   "ru": "Датчик давления мочевины: прерывистый / нестабильный сигнал",
+   "en": "Reductant Pressure Sensor Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "reductant pressure"
+  },
+  {
+   "code": "P205A",
+   "brand": "",
+   "ru": "Датчик температуры бака мочевины A: цепь",
+   "en": "Reductant Tank Temperature Sensor A Circuit",
+   "fam": "",
+   "node": "reductant tank temperature sensor a"
+  },
+  {
+   "code": "P205B",
+   "brand": "",
+   "ru": "Датчик температуры бака мочевины A: сигнал вне диапазона",
+   "en": "Reductant Tank Temperature Sensor A Circuit Range/Performance",
+   "fam": "",
+   "node": "reductant tank temperature sensor a"
+  },
+  {
+   "code": "P205C",
+   "brand": "",
+   "ru": "Датчик температуры бака мочевины A: низкий уровень сигнала в цепи",
+   "en": "Reductant Tank Temperature Sensor A Circuit Low",
+   "fam": "",
+   "node": "reductant tank temperature sensor a"
+  },
+  {
+   "code": "P205D",
+   "brand": "",
+   "ru": "Датчик температуры бака мочевины A: высокий уровень сигнала в цепи",
+   "en": "Reductant Tank Temperature Sensor A Circuit High",
+   "fam": "",
+   "node": "reductant tank temperature sensor a"
+  },
+  {
+   "code": "P205E",
+   "brand": "",
+   "ru": "Датчик температуры бака мочевины A: прерывистый / нестабильный сигнал",
+   "en": "Reductant Tank Temperature Sensor A Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "reductant tank temperature sensor a"
+  },
+  {
+   "code": "P206A",
+   "brand": "",
+   "ru": "Датчик качества мочевины: цепь",
+   "en": "Reductant Quality Sensor Circuit",
+   "fam": "",
+   "node": "reductant quality"
+  },
+  {
+   "code": "P206B",
+   "brand": "",
+   "ru": "Датчик качества мочевины: сигнал вне диапазона",
+   "en": "Reductant Quality Sensor Circuit Range/Performance",
+   "fam": "",
+   "node": "reductant quality"
+  },
+  {
+   "code": "P206C",
+   "brand": "",
+   "ru": "Датчик качества мочевины: низкий уровень сигнала в цепи",
+   "en": "Reductant Quality Sensor Circuit Low",
+   "fam": "",
+   "node": "reductant quality"
+  },
+  {
+   "code": "P206D",
+   "brand": "",
+   "ru": "Датчик качества мочевины: высокий уровень сигнала в цепи",
+   "en": "Reductant Quality Sensor Circuit High",
+   "fam": "",
+   "node": "reductant quality"
+  },
+  {
+   "code": "P207F",
+   "brand": "",
+   "ru": "Качество мочевины не соответствует",
+   "en": "Reductant Quality Performance",
+   "fam": "",
+   "node": "reductant quality"
+  },
+  {
+   "code": "P2B9A",
+   "brand": "",
+   "ru": "Датчик качества мочевины: прерывистый / нестабильный сигнал",
+   "en": "Reductant Quality Sensor Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "reductant quality"
+  },
+  {
+   "code": "P2073",
+   "brand": "",
+   "ru": "Рассогласование MAP/ДМРВ и положения дросселя на холостом ходу",
+   "en": "Manifold Absolute Pressure/Mass Air Flow - Throttle Position Correlation at Idle",
+   "fam": "",
+   "node": "manifold absolute pressure mass air flow throttle position correlation at idle"
+  },
+  {
+   "code": "P2074",
+   "brand": "",
+   "ru": "Рассогласование MAP/ДМРВ и положения дросселя под нагрузкой",
+   "en": "Manifold Absolute Pressure/Mass Air Flow - Throttle Position Correlation at Higher Load",
+   "fam": "",
+   "node": "manifold absolute pressure mass air flow throttle position correlation at higher load"
+  },
+  {
+   "code": "P207A",
+   "brand": "",
+   "ru": "Датчик положения заслонки изменения длины впуска: цепь (банк 2)",
+   "en": "Intake Manifold Tuning (IMT) Valve Position Sensor/Switch Circuit Bank 2",
+   "fam": "",
+   "node": "intake manifold tuning valve position sensor"
+  },
+  {
+   "code": "P207B",
+   "brand": "",
+   "ru": "Датчик положения заслонки изменения длины впуска: сигнал вне диапазона (банк 2)",
+   "en": "Intake Manifold Tuning (IMT) Valve Position Sensor/Switch Circuit Range/Performance Bank 2",
+   "fam": "",
+   "node": "intake manifold tuning valve position sensor"
+  },
+  {
+   "code": "P207C",
+   "brand": "",
+   "ru": "Датчик положения заслонки изменения длины впуска: низкий уровень сигнала в цепи (банк 2)",
+   "en": "Intake Manifold Tuning (IMT) Valve Position Sensor/Switch Circuit Low Bank 2",
+   "fam": "",
+   "node": "intake manifold tuning valve position sensor"
+  },
+  {
+   "code": "P207D",
+   "brand": "",
+   "ru": "Датчик положения заслонки изменения длины впуска: высокий уровень сигнала в цепи (банк 2)",
+   "en": "Intake Manifold Tuning (IMT) Valve Position Sensor/Switch Circuit High Bank 2",
+   "fam": "",
+   "node": "intake manifold tuning valve position sensor"
+  },
+  {
+   "code": "P207E",
+   "brand": "",
+   "ru": "Датчик положения заслонки изменения длины впуска: прерывистый сигнал в цепи (банк 2)",
+   "en": "Intake Manifold Tuning (IMT) Valve Position Sensor/Switch Circuit Intermittent Bank 2",
+   "fam": "",
+   "node": "intake manifold tuning valve position sensor"
+  }
+ ]
+}

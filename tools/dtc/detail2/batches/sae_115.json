@@ -1,0 +1,338 @@
+{
+ "name": "sae_115",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "14 volt power module current sensor a b correlation",
+  "charge port door a",
+  "charge port door a position",
+  "charge port door a unlock",
+  "drive motor a coolant pump",
+  "drive motor a coolant temperature",
+  "hybrid ev battery pack coolant temperature sensor b",
+  "hybrid ev battery temperature sensor o",
+  "hybrid ev battery temperature sensor p"
+ ],
+ "codes": [
+  {
+   "code": "P0CB2",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи O: цепь",
+   "en": "Hybrid/EV Battery Temperature Sensor O Circuit",
+   "fam": "",
+   "node": "hybrid ev battery temperature sensor o"
+  },
+  {
+   "code": "P0CB3",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи O: сигнал вне диапазона",
+   "en": "Hybrid/EV Battery Temperature Sensor O Circuit Range/Performance",
+   "fam": "",
+   "node": "hybrid ev battery temperature sensor o"
+  },
+  {
+   "code": "P0CB4",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи O: низкий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Temperature Sensor O Circuit Low",
+   "fam": "",
+   "node": "hybrid ev battery temperature sensor o"
+  },
+  {
+   "code": "P0CB5",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи O: высокий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Temperature Sensor O Circuit High",
+   "fam": "",
+   "node": "hybrid ev battery temperature sensor o"
+  },
+  {
+   "code": "P0CB6",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи O: прерывистый / нестабильный сигнал",
+   "en": "Hybrid/EV Battery Temperature Sensor O Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "hybrid ev battery temperature sensor o"
+  },
+  {
+   "code": "P0CB7",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи P: цепь",
+   "en": "Hybrid/EV Battery Temperature Sensor P Circuit",
+   "fam": "",
+   "node": "hybrid ev battery temperature sensor p"
+  },
+  {
+   "code": "P0CB8",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи P: сигнал вне диапазона",
+   "en": "Hybrid/EV Battery Temperature Sensor P Circuit Range/Performance",
+   "fam": "",
+   "node": "hybrid ev battery temperature sensor p"
+  },
+  {
+   "code": "P0CB9",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи P: низкий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Temperature Sensor P Circuit Low",
+   "fam": "",
+   "node": "hybrid ev battery temperature sensor p"
+  },
+  {
+   "code": "P0CBA",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи P: высокий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Temperature Sensor P Circuit High",
+   "fam": "",
+   "node": "hybrid ev battery temperature sensor p"
+  },
+  {
+   "code": "P0CBB",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи P: прерывистый / нестабильный сигнал",
+   "en": "Hybrid/EV Battery Temperature Sensor P Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "hybrid ev battery temperature sensor p"
+  },
+  {
+   "code": "P0CBC",
+   "brand": "",
+   "ru": "Датчик температуры охлаждения тягового электромотора A: цепь",
+   "en": "Drive Motor A Coolant Temperature Sensor Circuit",
+   "fam": "",
+   "node": "drive motor a coolant temperature"
+  },
+  {
+   "code": "P0CBD",
+   "brand": "",
+   "ru": "Датчик температуры охлаждения тягового электромотора A: сигнал вне диапазона",
+   "en": "Drive Motor A Coolant Temperature Sensor Circuit Range/Performance",
+   "fam": "",
+   "node": "drive motor a coolant temperature"
+  },
+  {
+   "code": "P0CBE",
+   "brand": "",
+   "ru": "Датчик температуры охлаждения тягового электромотора A: низкий уровень сигнала в цепи",
+   "en": "Drive Motor A Coolant Temperature Sensor Circuit Low",
+   "fam": "",
+   "node": "drive motor a coolant temperature"
+  },
+  {
+   "code": "P0CBF",
+   "brand": "",
+   "ru": "Датчик температуры охлаждения тягового электромотора A: высокий уровень сигнала в цепи",
+   "en": "Drive Motor A Coolant Temperature Sensor Circuit High",
+   "fam": "",
+   "node": "drive motor a coolant temperature"
+  },
+  {
+   "code": "P0CC0",
+   "brand": "",
+   "ru": "Датчик температуры охлаждения тягового электромотора A: прерывистый сигнал в цепи",
+   "en": "Drive Motor A Coolant Temperature Sensor Circuit Intermittent",
+   "fam": "",
+   "node": "drive motor a coolant temperature"
+  },
+  {
+   "code": "P0CC1",
+   "brand": "",
+   "ru": "Насос охлаждения тягового электромотора A: обрыв цепи управления",
+   "en": "Drive Motor A Coolant Pump Control Circuit/Open",
+   "fam": "",
+   "node": "drive motor a coolant pump"
+  },
+  {
+   "code": "P0CC2",
+   "brand": "",
+   "ru": "Насос охлаждения тягового электромотора A: цепь управления вне диапазона",
+   "en": "Drive Motor A Coolant Pump Control Circuit Range/Performance",
+   "fam": "",
+   "node": "drive motor a coolant pump"
+  },
+  {
+   "code": "P0CC3",
+   "brand": "",
+   "ru": "Насос охлаждения тягового электромотора A: низкий уровень в цепи управления",
+   "en": "Drive Motor A Coolant Pump Control Circuit Low",
+   "fam": "",
+   "node": "drive motor a coolant pump"
+  },
+  {
+   "code": "P0CC4",
+   "brand": "",
+   "ru": "Насос охлаждения тягового электромотора A: высокий уровень в цепи управления",
+   "en": "Drive Motor A Coolant Pump Control Circuit High",
+   "fam": "",
+   "node": "drive motor a coolant pump"
+  },
+  {
+   "code": "P0CC5",
+   "brand": "",
+   "ru": "Датчик тока модуля питания 14 В: рассогласование A/B",
+   "en": "14 Volt Power Module Current Sensor A/B Correlation",
+   "fam": "",
+   "node": "14 volt power module current sensor a b correlation"
+  },
+  {
+   "code": "P0CC6",
+   "brand": "",
+   "ru": "Кнопка лючка зарядного порта A: цепь пробуждения",
+   "en": "Charge Port Door A Open Request Switch Wake-Up Circuit",
+   "fam": "",
+   "node": "charge port door a"
+  },
+  {
+   "code": "P0CC7",
+   "brand": "",
+   "ru": "Кнопка открывания лючка зарядного порта A: цепь",
+   "en": "Charge Port Door A Open Request Switch Circuit",
+   "fam": "",
+   "node": "charge port door a"
+  },
+  {
+   "code": "P0CC8",
+   "brand": "",
+   "ru": "Кнопка открывания лючка зарядного порта A: нарушена работа цепи",
+   "en": "Charge Port Door A Open Request Switch Circuit Performance",
+   "fam": "",
+   "node": "charge port door a"
+  },
+  {
+   "code": "P0CC9",
+   "brand": "",
+   "ru": "Кнопка открывания лючка зарядного порта A: низкий уровень сигнала в цепи",
+   "en": "Charge Port Door A Open Request Switch Circuit Low",
+   "fam": "",
+   "node": "charge port door a"
+  },
+  {
+   "code": "P0CCA",
+   "brand": "",
+   "ru": "Кнопка открывания лючка зарядного порта A: высокий уровень сигнала в цепи",
+   "en": "Charge Port Door A Open Request Switch Circuit High",
+   "fam": "",
+   "node": "charge port door a"
+  },
+  {
+   "code": "P0CCB",
+   "brand": "",
+   "ru": "Кнопка открывания лючка зарядного порта A: прерывистый / нестабильный сигнал",
+   "en": "Charge Port Door A Open Request Switch Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "charge port door a"
+  },
+  {
+   "code": "P0CCC",
+   "brand": "",
+   "ru": "Датчик положения лючка зарядного порта A: цепь",
+   "en": "Charge Port Door A Position Sensor Circuit",
+   "fam": "",
+   "node": "charge port door a position"
+  },
+  {
+   "code": "P0CCD",
+   "brand": "",
+   "ru": "Датчик положения лючка зарядного порта A: нарушена работа цепи",
+   "en": "Charge Port Door A Position Sensor Circuit Performance",
+   "fam": "",
+   "node": "charge port door a position"
+  },
+  {
+   "code": "P0CCE",
+   "brand": "",
+   "ru": "Датчик положения лючка зарядного порта A: низкий уровень сигнала в цепи",
+   "en": "Charge Port Door A Position Sensor Circuit Low",
+   "fam": "",
+   "node": "charge port door a position"
+  },
+  {
+   "code": "P0CCF",
+   "brand": "",
+   "ru": "Датчик положения лючка зарядного порта A: высокий уровень сигнала в цепи",
+   "en": "Charge Port Door A Position Sensor Circuit High",
+   "fam": "",
+   "node": "charge port door a position"
+  },
+  {
+   "code": "P0CD0",
+   "brand": "",
+   "ru": "Датчик положения лючка зарядного порта A: прерывистый / нестабильный сигнал",
+   "en": "Charge Port Door A Position Sensor Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "charge port door a position"
+  },
+  {
+   "code": "P0CD1",
+   "brand": "",
+   "ru": "Разблокировка лючка зарядного порта A: цепь управления",
+   "en": "Charge Port Door A Unlock Control Circuit",
+   "fam": "",
+   "node": "charge port door a unlock"
+  },
+  {
+   "code": "P0CD2",
+   "brand": "",
+   "ru": "Разблокировка лючка зарядного порта A: нарушена работа цепи управления",
+   "en": "Charge Port Door A Unlock Control Circuit Performance",
+   "fam": "",
+   "node": "charge port door a unlock"
+  },
+  {
+   "code": "P0CD3",
+   "brand": "",
+   "ru": "Разблокировка лючка зарядного порта A: низкий уровень в цепи управления",
+   "en": "Charge Port Door A Unlock Control Circuit Low",
+   "fam": "",
+   "node": "charge port door a unlock"
+  },
+  {
+   "code": "P0CD4",
+   "brand": "",
+   "ru": "Разблокировка лючка зарядного порта A: высокий уровень в цепи управления",
+   "en": "Charge Port Door A Unlock Control Circuit High",
+   "fam": "",
+   "node": "charge port door a unlock"
+  },
+  {
+   "code": "P0CD5",
+   "brand": "",
+   "ru": "Датчик температуры охлаждающей жидкости тяговой батареи B: цепь",
+   "en": "Hybrid/EV Battery Pack Coolant Temperature Sensor B Circuit",
+   "fam": "",
+   "node": "hybrid ev battery pack coolant temperature sensor b"
+  },
+  {
+   "code": "P0CD6",
+   "brand": "",
+   "ru": "Датчик температуры охлаждающей жидкости тяговой батареи B: сигнал вне диапазона",
+   "en": "Hybrid/EV Battery Pack Coolant Temperature Sensor B Circuit Range/Performance",
+   "fam": "",
+   "node": "hybrid ev battery pack coolant temperature sensor b"
+  },
+  {
+   "code": "P0CD7",
+   "brand": "",
+   "ru": "Датчик температуры охлаждающей жидкости тяговой батареи B: низкий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Pack Coolant Temperature Sensor B Circuit Low",
+   "fam": "",
+   "node": "hybrid ev battery pack coolant temperature sensor b"
+  },
+  {
+   "code": "P0CD8",
+   "brand": "",
+   "ru": "Датчик температуры охлаждающей жидкости тяговой батареи B: высокий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Pack Coolant Temperature Sensor B Circuit High",
+   "fam": "",
+   "node": "hybrid ev battery pack coolant temperature sensor b"
+  },
+  {
+   "code": "P0CD9",
+   "brand": "",
+   "ru": "Датчик температуры охлаждающей жидкости тяговой батареи B: прерывистый / нестабильный сигнал",
+   "en": "Hybrid/EV Battery Pack Coolant Temperature Sensor B Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "hybrid ev battery pack coolant temperature sensor b"
+  }
+ ]
+}

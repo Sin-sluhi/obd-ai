@@ -1,0 +1,356 @@
+{
+ "name": "sae_170",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "intake air o2 sensor negative current",
+  "intake air o2 sensor pumping current",
+  "intake air o2 sensor pumping current trim",
+  "intake air system leak",
+  "intermediate system voltage",
+  "reductant pump motor position",
+  "reductant tank temperature sensor b",
+  "starter relay c",
+  "starter relay d",
+  "throttle pedal position sensor switch a g voltage correlation",
+  "throttle pedal position sensor switch b g voltage correlation"
+ ],
+ "codes": [
+  {
+   "code": "P2AD2",
+   "brand": "",
+   "ru": "Датчики положения дросселя/педали B/G: рассогласование напряжений",
+   "en": "Throttle/Pedal Position Sensor/Switch B/G Voltage Correlation",
+   "fam": "",
+   "node": "throttle pedal position sensor switch b g voltage correlation"
+  },
+  {
+   "code": "P2AD3",
+   "brand": "",
+   "ru": "Датчики положения дросселя/педали A/G: рассогласование напряжений",
+   "en": "Throttle/Pedal Position Sensor/Switch A/G Voltage Correlation",
+   "fam": "",
+   "node": "throttle pedal position sensor switch a g voltage correlation"
+  },
+  {
+   "code": "P2AD4",
+   "brand": "",
+   "ru": "Промежуточное напряжение системы низкое",
+   "en": "Intermediate System Voltage Low",
+   "fam": "",
+   "node": "intermediate system voltage"
+  },
+  {
+   "code": "P2AD5",
+   "brand": "",
+   "ru": "Промежуточное напряжение системы высокое",
+   "en": "Intermediate System Voltage High",
+   "fam": "",
+   "node": "intermediate system voltage"
+  },
+  {
+   "code": "P2AD6",
+   "brand": "",
+   "ru": "Датчик положения мотора насоса мочевины: цепь",
+   "en": "Reductant Pump Motor Position Sensor Circuit",
+   "fam": "",
+   "node": "reductant pump motor position"
+  },
+  {
+   "code": "P2AD7",
+   "brand": "",
+   "ru": "Датчик положения мотора насоса мочевины: сигнал вне диапазона",
+   "en": "Reductant Pump Motor Position Sensor Circuit Range/Performance",
+   "fam": "",
+   "node": "reductant pump motor position"
+  },
+  {
+   "code": "P2AD8",
+   "brand": "",
+   "ru": "Датчик положения мотора насоса мочевины: низкий уровень сигнала в цепи",
+   "en": "Reductant Pump Motor Position Sensor Circuit Low",
+   "fam": "",
+   "node": "reductant pump motor position"
+  },
+  {
+   "code": "P2AD9",
+   "brand": "",
+   "ru": "Датчик положения мотора насоса мочевины: высокий уровень сигнала в цепи",
+   "en": "Reductant Pump Motor Position Sensor Circuit High",
+   "fam": "",
+   "node": "reductant pump motor position"
+  },
+  {
+   "code": "P2ADA",
+   "brand": "",
+   "ru": "Датчик температуры бака мочевины B: сигнал вне диапазона",
+   "en": "Reductant Tank Temperature Sensor B Circuit Range/Performance",
+   "fam": "",
+   "node": "reductant tank temperature sensor b"
+  },
+  {
+   "code": "P2ADB",
+   "brand": "",
+   "ru": "Датчик температуры бака мочевины B: низкий уровень сигнала в цепи",
+   "en": "Reductant Tank Temperature Sensor B Circuit Low",
+   "fam": "",
+   "node": "reductant tank temperature sensor b"
+  },
+  {
+   "code": "P2ADC",
+   "brand": "",
+   "ru": "Датчик температуры бака мочевины B: высокий уровень сигнала в цепи",
+   "en": "Reductant Tank Temperature Sensor B Circuit High",
+   "fam": "",
+   "node": "reductant tank temperature sensor b"
+  },
+  {
+   "code": "P2ADD",
+   "brand": "",
+   "ru": "Датчик температуры бака мочевины B: прерывистый / нестабильный сигнал",
+   "en": "Reductant Tank Temperature Sensor B Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "reductant tank temperature sensor b"
+  },
+  {
+   "code": "P2ADE",
+   "brand": "",
+   "ru": "Датчик температуры бака мочевины B: цепь",
+   "en": "Reductant Tank Temperature Sensor B Circuit",
+   "fam": "",
+   "node": "reductant tank temperature sensor b"
+  },
+  {
+   "code": "P2ADF",
+   "brand": "",
+   "ru": "Подсос воздуха во впуске (банк 2)",
+   "en": "Intake Air System Leak Bank 2",
+   "fam": "",
+   "node": "intake air system leak"
+  },
+  {
+   "code": "P2AE0",
+   "brand": "",
+   "ru": "Кислородный датчик во впуске, коррекция тока накачки: обрыв цепи (банк 1)",
+   "en": "Intake Air O2 Sensor Pumping Current Trim Circuit Open Bank 1",
+   "fam": "",
+   "node": "intake air o2 sensor pumping current trim"
+  },
+  {
+   "code": "P2AE1",
+   "brand": "",
+   "ru": "Кислородный датчик во впуске, коррекция тока накачки: низкий уровень сигнала в цепи (банк 1)",
+   "en": "Intake Air O2 Sensor Pumping Current Trim Circuit Low Bank 1",
+   "fam": "",
+   "node": "intake air o2 sensor pumping current trim"
+  },
+  {
+   "code": "P2AE2",
+   "brand": "",
+   "ru": "Кислородный датчик во впуске, коррекция тока накачки: высокий уровень сигнала в цепи (банк 1)",
+   "en": "Intake Air O2 Sensor Pumping Current Trim Circuit High Bank 1",
+   "fam": "",
+   "node": "intake air o2 sensor pumping current trim"
+  },
+  {
+   "code": "P2AE9",
+   "brand": "",
+   "ru": "Кислородный датчик во впуске, коррекция тока накачки: обрыв цепи (банк 2)",
+   "en": "Intake Air O2 Sensor Pumping Current Trim Circuit Open Bank 2",
+   "fam": "",
+   "node": "intake air o2 sensor pumping current trim"
+  },
+  {
+   "code": "P2AEA",
+   "brand": "",
+   "ru": "Кислородный датчик во впуске, коррекция тока накачки: низкий уровень сигнала в цепи (банк 2)",
+   "en": "Intake Air O2 Sensor Pumping Current Trim Circuit Low Bank 2",
+   "fam": "",
+   "node": "intake air o2 sensor pumping current trim"
+  },
+  {
+   "code": "P2AEB",
+   "brand": "",
+   "ru": "Кислородный датчик во впуске, коррекция тока накачки: высокий уровень сигнала в цепи (банк 2)",
+   "en": "Intake Air O2 Sensor Pumping Current Trim Circuit High Bank 2",
+   "fam": "",
+   "node": "intake air o2 sensor pumping current trim"
+  },
+  {
+   "code": "P2AE3",
+   "brand": "",
+   "ru": "Кислородный датчик во впуске, ток накачки: обрыв цепи (банк 1)",
+   "en": "Intake Air O2 Sensor Pumping Current Circuit Open Bank 1",
+   "fam": "",
+   "node": "intake air o2 sensor pumping current"
+  },
+  {
+   "code": "P2AE4",
+   "brand": "",
+   "ru": "Кислородный датчик во впуске, ток накачки: низкий уровень сигнала в цепи (банк 1)",
+   "en": "Intake Air O2 Sensor Pumping Current Circuit Low Bank 1",
+   "fam": "",
+   "node": "intake air o2 sensor pumping current"
+  },
+  {
+   "code": "P2AE5",
+   "brand": "",
+   "ru": "Кислородный датчик во впуске, ток накачки: высокий уровень сигнала в цепи (банк 1)",
+   "en": "Intake Air O2 Sensor Pumping Current Circuit High Bank 1",
+   "fam": "",
+   "node": "intake air o2 sensor pumping current"
+  },
+  {
+   "code": "P2AEC",
+   "brand": "",
+   "ru": "Кислородный датчик во впуске, ток накачки: обрыв цепи (банк 2)",
+   "en": "Intake Air O2 Sensor Pumping Current Circuit Open Bank 2",
+   "fam": "",
+   "node": "intake air o2 sensor pumping current"
+  },
+  {
+   "code": "P2AED",
+   "brand": "",
+   "ru": "Кислородный датчик во впуске, ток накачки: низкий уровень сигнала в цепи (банк 2)",
+   "en": "Intake Air O2 Sensor Pumping Current Circuit Low Bank 2",
+   "fam": "",
+   "node": "intake air o2 sensor pumping current"
+  },
+  {
+   "code": "P2AEE",
+   "brand": "",
+   "ru": "Кислородный датчик во впуске, ток накачки: высокий уровень сигнала в цепи (банк 2)",
+   "en": "Intake Air O2 Sensor Pumping Current Circuit High Bank 2",
+   "fam": "",
+   "node": "intake air o2 sensor pumping current"
+  },
+  {
+   "code": "P2AE6",
+   "brand": "",
+   "ru": "Кислородный датчик во впуске: обрыв цепи управления отрицательным током (банк 1)",
+   "en": "Intake Air O2 Sensor Negative Current Control Circuit Open Bank 1",
+   "fam": "",
+   "node": "intake air o2 sensor negative current"
+  },
+  {
+   "code": "P2AE7",
+   "brand": "",
+   "ru": "Кислородный датчик во впуске, отрицательный ток: низкий уровень в цепи управления (банк 1)",
+   "en": "Intake Air O2 Sensor Negative Current Control Circuit Low Bank 1",
+   "fam": "",
+   "node": "intake air o2 sensor negative current"
+  },
+  {
+   "code": "P2AE8",
+   "brand": "",
+   "ru": "Кислородный датчик во впуске, отрицательный ток: высокий уровень в цепи управления (банк 1)",
+   "en": "Intake Air O2 Sensor Negative Current Control Circuit High Bank 1",
+   "fam": "",
+   "node": "intake air o2 sensor negative current"
+  },
+  {
+   "code": "P2AEF",
+   "brand": "",
+   "ru": "Кислородный датчик во впуске: обрыв цепи управления отрицательным током (банк 2)",
+   "en": "Intake Air O2 Sensor Negative Current Control Circuit Open Bank 2",
+   "fam": "",
+   "node": "intake air o2 sensor negative current"
+  },
+  {
+   "code": "P2AF0",
+   "brand": "",
+   "ru": "Кислородный датчик во впуске, отрицательный ток: низкий уровень в цепи управления (банк 2)",
+   "en": "Intake Air O2 Sensor Negative Current Control Circuit Low Bank 2",
+   "fam": "",
+   "node": "intake air o2 sensor negative current"
+  },
+  {
+   "code": "P2AF1",
+   "brand": "",
+   "ru": "Кислородный датчик во впуске, отрицательный ток: высокий уровень в цепи управления (банк 2)",
+   "en": "Intake Air O2 Sensor Negative Current Control Circuit High Bank 2",
+   "fam": "",
+   "node": "intake air o2 sensor negative current"
+  },
+  {
+   "code": "P2AF2",
+   "brand": "",
+   "ru": "Реле стартера C: обрыв цепи управления",
+   "en": "Starter Relay C Control Circuit/Open",
+   "fam": "",
+   "node": "starter relay c"
+  },
+  {
+   "code": "P2AF3",
+   "brand": "",
+   "ru": "Реле стартера C: низкий уровень в цепи управления",
+   "en": "Starter Relay C Control Circuit Low",
+   "fam": "",
+   "node": "starter relay c"
+  },
+  {
+   "code": "P2AF4",
+   "brand": "",
+   "ru": "Реле стартера C: высокий уровень в цепи управления",
+   "en": "Starter Relay C Control Circuit High",
+   "fam": "",
+   "node": "starter relay c"
+  },
+  {
+   "code": "P2AF5",
+   "brand": "",
+   "ru": "Реле стартера C: постоянно включён",
+   "en": "Starter Relay C Stuck On",
+   "fam": "",
+   "node": "starter relay c"
+  },
+  {
+   "code": "P2AF6",
+   "brand": "",
+   "ru": "Реле стартера C: не включается",
+   "en": "Starter Relay C Stuck Off",
+   "fam": "",
+   "node": "starter relay c"
+  },
+  {
+   "code": "P2AF7",
+   "brand": "",
+   "ru": "Реле стартера D: обрыв цепи управления",
+   "en": "Starter Relay D Control Circuit/Open",
+   "fam": "",
+   "node": "starter relay d"
+  },
+  {
+   "code": "P2AF8",
+   "brand": "",
+   "ru": "Реле стартера D: низкий уровень в цепи управления",
+   "en": "Starter Relay D Control Circuit Low",
+   "fam": "",
+   "node": "starter relay d"
+  },
+  {
+   "code": "P2AF9",
+   "brand": "",
+   "ru": "Реле стартера D: высокий уровень в цепи управления",
+   "en": "Starter Relay D Control Circuit High",
+   "fam": "",
+   "node": "starter relay d"
+  },
+  {
+   "code": "P2AFA",
+   "brand": "",
+   "ru": "Реле стартера D: постоянно включён",
+   "en": "Starter Relay D Stuck On",
+   "fam": "",
+   "node": "starter relay d"
+  },
+  {
+   "code": "P2AFB",
+   "brand": "",
+   "ru": "Реле стартера D: не включается",
+   "en": "Starter Relay D Stuck Off",
+   "fam": "",
+   "node": "starter relay d"
+  }
+ ]
+}

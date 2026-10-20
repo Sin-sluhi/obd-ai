@@ -1,0 +1,414 @@
+{
+ "name": "sae_201",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "software incompatibility with a c compressor control",
+  "software incompatibility with accessory protocol interface",
+  "software incompatibility with battery charger control module a",
+  "software incompatibility with battery energy control module c",
+  "software incompatibility with body control module b",
+  "software incompatibility with brake booster",
+  "software incompatibility with brake system control module a",
+  "software incompatibility with brake system control module b",
+  "software incompatibility with dc dc converter control module a",
+  "software incompatibility with engine disconnect clutch",
+  "software incompatibility with gear shift control module b",
+  "software incompatibility with hvac control",
+  "software incompatibility with hybrid ev battery interface control module a",
+  "software incompatibility with hybrid ev battery interface control module b",
+  "software incompatibility with hybrid ev battery interface control module c",
+  "software incompatibility with hybrid ev battery interface control module d",
+  "software incompatibility with hybrid ev battery interface control module e",
+  "software incompatibility with hybrid ev battery interface control module f",
+  "software incompatibility with hybrid ev battery interface control module g",
+  "software incompatibility with hybrid ev battery interface control module h",
+  "software incompatibility with hybrid ev battery interface control module i",
+  "software incompatibility with hybrid ev battery interface control module j",
+  "software incompatibility with hybrid ev battery interface control module k",
+  "software incompatibility with hybrid ev battery interface control module l",
+  "software incompatibility with hybrid ev battery interface control module m",
+  "software incompatibility with hybrid ev battery interface control module n",
+  "software incompatibility with hybrid ev battery interface control module o",
+  "software incompatibility with hybrid ev battery interface control module p",
+  "software incompatibility with hybrid ev battery pack sensor",
+  "software incompatibility with multi axis acceleration sensor module a",
+  "software incompatibility with park brake control",
+  "software incompatibility with parking assist control module a",
+  "software incompatibility with parking assist control module b",
+  "software incompatibility with power steering control",
+  "software incompatibility with radio",
+  "software incompatibility with remote function actuation",
+  "software incompatibility with restraints control",
+  "software incompatibility with steering angle sensor",
+  "software incompatibility with steering column control",
+  "software incompatibility with steering effort control",
+  "software incompatibility with suspension control module a",
+  "software incompatibility with tire pressure monitor",
+  "software incompatibility with transmission",
+  "software incompatibility with vehicle immobilizer control",
+  "software incompatibility with vehicle security control"
+ ],
+ "codes": [
+  {
+   "code": "U0317",
+   "brand": "",
+   "ru": "Несовместимость ПО: блок электростояночного тормоза",
+   "en": "Software Incompatibility With Park Brake Control Module",
+   "fam": "",
+   "node": "software incompatibility with park brake control"
+  },
+  {
+   "code": "U0318",
+   "brand": "",
+   "ru": "Несовместимость ПО: блок управления тормозной системой A",
+   "en": "Software Incompatibility With Brake System Control Module A",
+   "fam": "",
+   "node": "software incompatibility with brake system control module a"
+  },
+  {
+   "code": "U0319",
+   "brand": "",
+   "ru": "Несовместимость ПО: блок усилия на руле",
+   "en": "Software Incompatibility With Steering Effort Control Module",
+   "fam": "",
+   "node": "software incompatibility with steering effort control"
+  },
+  {
+   "code": "U031A",
+   "brand": "",
+   "ru": "Несовместимость ПО: блок управления селектором КПП",
+   "en": "Software Incompatibility With Transmission Range Control Module",
+   "fam": "",
+   "node": "software incompatibility with transmission"
+  },
+  {
+   "code": "U031B",
+   "brand": "",
+   "ru": "Несовместимость ПО: блок управления преобразователем DC/DC A",
+   "en": "Software Incompatibility With DC/DC Converter Control Module A",
+   "fam": "",
+   "node": "software incompatibility with dc dc converter control module a"
+  },
+  {
+   "code": "U031C",
+   "brand": "",
+   "ru": "Несовместимость ПО: блок управления тормозной системой B",
+   "en": "Software Incompatibility With Brake System Control Module B",
+   "fam": "",
+   "node": "software incompatibility with brake system control module b"
+  },
+  {
+   "code": "U031D",
+   "brand": "",
+   "ru": "Несовместимость ПО: блок парктроника A",
+   "en": "Software Incompatibility With Parking Assist Control Module A",
+   "fam": "",
+   "node": "software incompatibility with parking assist control module a"
+  },
+  {
+   "code": "U031E",
+   "brand": "",
+   "ru": "Несовместимость ПО: блок парктроника B",
+   "en": "Software Incompatibility With Parking Assist Control Module B",
+   "fam": "",
+   "node": "software incompatibility with parking assist control module b"
+  },
+  {
+   "code": "U031F",
+   "brand": "",
+   "ru": "Несовместимость ПО: интерфейсный блок аксессуаров",
+   "en": "Software Incompatibility With Accessory Protocol Interface Module",
+   "fam": "",
+   "node": "software incompatibility with accessory protocol interface"
+  },
+  {
+   "code": "U0320",
+   "brand": "",
+   "ru": "Несовместимость ПО: блок усилителя руля",
+   "en": "Software Incompatibility With Power Steering Control Module",
+   "fam": "",
+   "node": "software incompatibility with power steering control"
+  },
+  {
+   "code": "U0321",
+   "brand": "",
+   "ru": "Несовместимость ПО: блок управления подвеской A",
+   "en": "Software Incompatibility With Suspension Control Module A",
+   "fam": "",
+   "node": "software incompatibility with suspension control module a"
+  },
+  {
+   "code": "U0324",
+   "brand": "",
+   "ru": "Несовместимость ПО: блок климата",
+   "en": "Software Incompatibility With HVAC Control Module",
+   "fam": "",
+   "node": "software incompatibility with hvac control"
+  },
+  {
+   "code": "U0326",
+   "brand": "",
+   "ru": "Несовместимость ПО: блок иммобилайзера",
+   "en": "Software Incompatibility With Vehicle Immobilizer Control Module",
+   "fam": "",
+   "node": "software incompatibility with vehicle immobilizer control"
+  },
+  {
+   "code": "U0327",
+   "brand": "",
+   "ru": "Несовместимость ПО: блок охранной системы",
+   "en": "Software Incompatibility With Vehicle Security Control Module",
+   "fam": "",
+   "node": "software incompatibility with vehicle security control"
+  },
+  {
+   "code": "U0328",
+   "brand": "",
+   "ru": "Несовместимость ПО: блок датчика угла поворота руля",
+   "en": "Software Incompatibility With Steering Angle Sensor Module",
+   "fam": "",
+   "node": "software incompatibility with steering angle sensor"
+  },
+  {
+   "code": "U0329",
+   "brand": "",
+   "ru": "Несовместимость ПО: блок рулевой колонки",
+   "en": "Software Incompatibility With Steering Column Control Module",
+   "fam": "",
+   "node": "software incompatibility with steering column control"
+  },
+  {
+   "code": "U032A",
+   "brand": "",
+   "ru": "Несовместимость ПО: блок компрессора кондиционера",
+   "en": "Software Incompatibility With A/C Compressor Control Module",
+   "fam": "",
+   "node": "software incompatibility with a c compressor control"
+  },
+  {
+   "code": "U0330",
+   "brand": "",
+   "ru": "Несовместимость ПО: блок контроля давления в шинах",
+   "en": "Software Incompatibility With Tire Pressure Monitor Module",
+   "fam": "",
+   "node": "software incompatibility with tire pressure monitor"
+  },
+  {
+   "code": "U0332",
+   "brand": "",
+   "ru": "Несовместимость ПО: блок датчиков ускорения A",
+   "en": "Software Incompatibility With Multi-axis Acceleration Sensor Module A",
+   "fam": "",
+   "node": "software incompatibility with multi axis acceleration sensor module a"
+  },
+  {
+   "code": "U0333",
+   "brand": "",
+   "ru": "Несовместимость ПО: блок управления переключением передач B",
+   "en": "Software Incompatibility With Gear Shift Control Module B",
+   "fam": "",
+   "node": "software incompatibility with gear shift control module b"
+  },
+  {
+   "code": "U0334",
+   "brand": "",
+   "ru": "Несовместимость ПО: магнитола",
+   "en": "Software Incompatibility With Radio",
+   "fam": "",
+   "node": "software incompatibility with radio"
+  },
+  {
+   "code": "U0335",
+   "brand": "",
+   "ru": "Несовместимость ПО: блок датчиков тяговой батареи",
+   "en": "Software Incompatibility With Hybrid/EV Battery Pack Sensor Module",
+   "fam": "",
+   "node": "software incompatibility with hybrid ev battery pack sensor"
+  },
+  {
+   "code": "U0336",
+   "brand": "",
+   "ru": "Несовместимость ПО: блок подушек безопасности",
+   "en": "Software Incompatibility With Restraints Control Module",
+   "fam": "",
+   "node": "software incompatibility with restraints control"
+  },
+  {
+   "code": "U0337",
+   "brand": "",
+   "ru": "Несовместимость ПО: блок управления зарядным устройством A",
+   "en": "Software Incompatibility With Battery Charger Control Module A",
+   "fam": "",
+   "node": "software incompatibility with battery charger control module a"
+  },
+  {
+   "code": "U0338",
+   "brand": "",
+   "ru": "Несовместимость ПО: блок дистанционного управления (брелок)",
+   "en": "Software Incompatibility With Remote Function Actuation Module",
+   "fam": "",
+   "node": "software incompatibility with remote function actuation"
+  },
+  {
+   "code": "U0339",
+   "brand": "",
+   "ru": "Несовместимость ПО: блок управления кузовом (BCM) B",
+   "en": "Software Incompatibility With Body Control Module B",
+   "fam": "",
+   "node": "software incompatibility with body control module b"
+  },
+  {
+   "code": "U033A",
+   "brand": "",
+   "ru": "Несовместимость ПО: блок управления тяговой батареей A",
+   "en": "Software Incompatibility With Hybrid/EV Battery Interface Control Module A",
+   "fam": "",
+   "node": "software incompatibility with hybrid ev battery interface control module a"
+  },
+  {
+   "code": "U033B",
+   "brand": "",
+   "ru": "Несовместимость ПО: блок управления тяговой батареей B",
+   "en": "Software Incompatibility With Hybrid/EV Battery Interface Control Module B",
+   "fam": "",
+   "node": "software incompatibility with hybrid ev battery interface control module b"
+  },
+  {
+   "code": "U033C",
+   "brand": "",
+   "ru": "Несовместимость ПО: блок управления тяговой батареей C",
+   "en": "Software Incompatibility With Hybrid/EV Battery Interface Control Module C",
+   "fam": "",
+   "node": "software incompatibility with hybrid ev battery interface control module c"
+  },
+  {
+   "code": "U033D",
+   "brand": "",
+   "ru": "Несовместимость ПО: блок управления тяговой батареей D",
+   "en": "Software Incompatibility With Hybrid/EV Battery Interface Control Module D",
+   "fam": "",
+   "node": "software incompatibility with hybrid ev battery interface control module d"
+  },
+  {
+   "code": "U033E",
+   "brand": "",
+   "ru": "Несовместимость ПО: блок управления тяговой батареей E",
+   "en": "Software Incompatibility With Hybrid/EV Battery Interface Control Module E",
+   "fam": "",
+   "node": "software incompatibility with hybrid ev battery interface control module e"
+  },
+  {
+   "code": "U033F",
+   "brand": "",
+   "ru": "Несовместимость ПО: блок управления тяговой батареей F",
+   "en": "Software Incompatibility With Hybrid/EV Battery Interface Control Module F",
+   "fam": "",
+   "node": "software incompatibility with hybrid ev battery interface control module f"
+  },
+  {
+   "code": "U0340",
+   "brand": "",
+   "ru": "Несовместимость ПО: блок управления тяговой батареей G",
+   "en": "Software Incompatibility With Hybrid/EV Battery Interface Control Module G",
+   "fam": "",
+   "node": "software incompatibility with hybrid ev battery interface control module g"
+  },
+  {
+   "code": "U0341",
+   "brand": "",
+   "ru": "Несовместимость ПО: блок управления тяговой батареей H",
+   "en": "Software Incompatibility With Hybrid/EV Battery Interface Control Module H",
+   "fam": "",
+   "node": "software incompatibility with hybrid ev battery interface control module h"
+  },
+  {
+   "code": "U0342",
+   "brand": "",
+   "ru": "Несовместимость ПО: блок управления тяговой батареей I",
+   "en": "Software Incompatibility With Hybrid/EV Battery Interface Control Module I",
+   "fam": "",
+   "node": "software incompatibility with hybrid ev battery interface control module i"
+  },
+  {
+   "code": "U0343",
+   "brand": "",
+   "ru": "Несовместимость ПО: блок управления тяговой батареей J",
+   "en": "Software Incompatibility With Hybrid/EV Battery Interface Control Module J",
+   "fam": "",
+   "node": "software incompatibility with hybrid ev battery interface control module j"
+  },
+  {
+   "code": "U0344",
+   "brand": "",
+   "ru": "Несовместимость ПО: блок управления тяговой батареей K",
+   "en": "Software Incompatibility With Hybrid/EV Battery Interface Control Module K",
+   "fam": "",
+   "node": "software incompatibility with hybrid ev battery interface control module k"
+  },
+  {
+   "code": "U0345",
+   "brand": "",
+   "ru": "Несовместимость ПО: блок управления тяговой батареей L",
+   "en": "Software Incompatibility With Hybrid/EV Battery Interface Control Module L",
+   "fam": "",
+   "node": "software incompatibility with hybrid ev battery interface control module l"
+  },
+  {
+   "code": "U0346",
+   "brand": "",
+   "ru": "Несовместимость ПО: блок управления тяговой батареей M",
+   "en": "Software Incompatibility With Hybrid/EV Battery Interface Control Module M",
+   "fam": "",
+   "node": "software incompatibility with hybrid ev battery interface control module m"
+  },
+  {
+   "code": "U0347",
+   "brand": "",
+   "ru": "Несовместимость ПО: блок управления тяговой батареей N",
+   "en": "Software Incompatibility With Hybrid/EV Battery Interface Control Module N",
+   "fam": "",
+   "node": "software incompatibility with hybrid ev battery interface control module n"
+  },
+  {
+   "code": "U0348",
+   "brand": "",
+   "ru": "Несовместимость ПО: блок управления тяговой батареей O",
+   "en": "Software Incompatibility With Hybrid/EV Battery Interface Control Module O",
+   "fam": "",
+   "node": "software incompatibility with hybrid ev battery interface control module o"
+  },
+  {
+   "code": "U0349",
+   "brand": "",
+   "ru": "Несовместимость ПО: блок управления тяговой батареей P",
+   "en": "Software Incompatibility With Hybrid/EV Battery Interface Control Module P",
+   "fam": "",
+   "node": "software incompatibility with hybrid ev battery interface control module p"
+  },
+  {
+   "code": "U034A",
+   "brand": "",
+   "ru": "Несовместимость ПО: муфта отключения двигателя",
+   "en": "Software Incompatibility With Engine Disconnect Clutch",
+   "fam": "",
+   "node": "software incompatibility with engine disconnect clutch"
+  },
+  {
+   "code": "U034B",
+   "brand": "",
+   "ru": "Несовместимость ПО: усилитель тормозов: управление",
+   "en": "Software Incompatibility With Brake Booster Control",
+   "fam": "",
+   "node": "software incompatibility with brake booster"
+  },
+  {
+   "code": "U034C",
+   "brand": "",
+   "ru": "Несовместимость ПО: блок управления энергией батареи C",
+   "en": "Software Incompatibility With Battery Energy Control Module C",
+   "fam": "",
+   "node": "software incompatibility with battery energy control module c"
+  }
+ ]
+}

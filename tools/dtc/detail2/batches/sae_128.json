@@ -1,0 +1,369 @@
+{
+ "name": "sae_128",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "battery charger coupler temperature b too",
+  "battery charger coupler temperature sensor b",
+  "battery charger coupler unlock disabled",
+  "battery energy control module b",
+  "catalyst system over temperature",
+  "drive motor a control module overtemperature",
+  "drive motor c temperature",
+  "drive motor c temperature sensor",
+  "drive motor c temperature sensor over temperature",
+  "fam:dpf",
+  "hybrid ev battery system discharge",
+  "intake manifold runner",
+  "intake manifold runner control actuator internal",
+  "intake manifold runner control actuator supply voltage",
+  "particulate filter over temperature",
+  "reductant injection"
+ ],
+ "codes": [
+  {
+   "code": "P0EE7",
+   "brand": "",
+   "ru": "Датчик температуры зарядного разъёма B: цепь",
+   "en": "Battery Charger Coupler Temperature Sensor B Circuit",
+   "fam": "",
+   "node": "battery charger coupler temperature sensor b"
+  },
+  {
+   "code": "P0EE8",
+   "brand": "",
+   "ru": "Датчик температуры зарядного разъёма B: сигнал вне диапазона",
+   "en": "Battery Charger Coupler Temperature Sensor B Circuit Range/Performance",
+   "fam": "",
+   "node": "battery charger coupler temperature sensor b"
+  },
+  {
+   "code": "P0EE9",
+   "brand": "",
+   "ru": "Датчик температуры зарядного разъёма B: низкий уровень сигнала в цепи",
+   "en": "Battery Charger Coupler Temperature Sensor B Circuit Low",
+   "fam": "",
+   "node": "battery charger coupler temperature sensor b"
+  },
+  {
+   "code": "P0EEA",
+   "brand": "",
+   "ru": "Датчик температуры зарядного разъёма B: высокий уровень сигнала в цепи",
+   "en": "Battery Charger Coupler Temperature Sensor B Circuit High",
+   "fam": "",
+   "node": "battery charger coupler temperature sensor b"
+  },
+  {
+   "code": "P0EEB",
+   "brand": "",
+   "ru": "Датчик температуры зарядного разъёма B: прерывистый / нестабильный сигнал",
+   "en": "Battery Charger Coupler Temperature Sensor B Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "battery charger coupler temperature sensor b"
+  },
+  {
+   "code": "P0EEC",
+   "brand": "",
+   "ru": "Блок управления энергией батареи B: работа нарушена",
+   "en": "Battery Energy Control Module B Performance",
+   "fam": "",
+   "node": "battery energy control module b"
+  },
+  {
+   "code": "P0EED",
+   "brand": "",
+   "ru": "Цепь разряда системы тяговой батареи: работа нарушена",
+   "en": "Hybrid/EV Battery System Discharge Circuit Performance",
+   "fam": "",
+   "node": "hybrid ev battery system discharge"
+  },
+  {
+   "code": "P0EEE",
+   "brand": "",
+   "ru": "Температура зарядного разъёма B: слишком высокое значение",
+   "en": "Battery Charger Coupler Temperature B Too High",
+   "fam": "",
+   "node": "battery charger coupler temperature b too"
+  },
+  {
+   "code": "P0EEF",
+   "brand": "",
+   "ru": "Перегрев блока управления тяговым электромотором A",
+   "en": "Drive Motor A Control Module Overtemperature",
+   "fam": "",
+   "node": "drive motor a control module overtemperature"
+  },
+  {
+   "code": "P0EF0",
+   "brand": "",
+   "ru": "Разблокировка зарядного разъёма запрещена — есть высокое напряжение",
+   "en": "Battery Charger Coupler Unlock Disabled - High Voltage Present",
+   "fam": "",
+   "node": "battery charger coupler unlock disabled"
+  },
+  {
+   "code": "P0EF1",
+   "brand": "",
+   "ru": "Датчик температуры тягового электромотора C: цепь",
+   "en": "Drive Motor C Temperature Sensor Circuit",
+   "fam": "",
+   "node": "drive motor c temperature"
+  },
+  {
+   "code": "P0EF3",
+   "brand": "",
+   "ru": "Датчик температуры тягового электромотора C: низкий уровень сигнала в цепи",
+   "en": "Drive Motor C Temperature Sensor Circuit Low",
+   "fam": "",
+   "node": "drive motor c temperature"
+  },
+  {
+   "code": "P0EF4",
+   "brand": "",
+   "ru": "Датчик температуры тягового электромотора C: высокий уровень сигнала в цепи",
+   "en": "Drive Motor C Temperature Sensor Circuit High",
+   "fam": "",
+   "node": "drive motor c temperature"
+  },
+  {
+   "code": "P0EF5",
+   "brand": "",
+   "ru": "Датчик температуры тягового электромотора C: прерывистый / нестабильный сигнал",
+   "en": "Drive Motor C Temperature Sensor Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "drive motor c temperature"
+  },
+  {
+   "code": "P0EF2",
+   "brand": "",
+   "ru": "Датчик температуры тягового электромотора C: вне допустимого диапазона",
+   "en": "Drive Motor C Temperature Sensor Range/Performance",
+   "fam": "",
+   "node": "drive motor c temperature sensor"
+  },
+  {
+   "code": "P0EF6",
+   "brand": "",
+   "ru": "Датчик температуры тягового электромотора C: перегрев",
+   "en": "Drive Motor C Temperature Sensor Over Temperature",
+   "fam": "",
+   "node": "drive motor c temperature sensor over temperature"
+  },
+  {
+   "code": "P2002",
+   "brand": "",
+   "ru": "Сажевый фильтр: эффективность ниже порога (банк 1)",
+   "en": "",
+   "fam": "dpf",
+   "node": "fam:dpf"
+  },
+  {
+   "code": "P2003",
+   "brand": "",
+   "ru": "Сажевый фильтр: эффективность ниже порога (банк 2)",
+   "en": "",
+   "fam": "dpf",
+   "node": "fam:dpf"
+  },
+  {
+   "code": "P2458",
+   "brand": "",
+   "ru": "Регенерация сажевого фильтра: слишком долго",
+   "en": "",
+   "fam": "dpf",
+   "node": "fam:dpf"
+  },
+  {
+   "code": "P2459",
+   "brand": "",
+   "ru": "Регенерация сажевого фильтра: слишком часто",
+   "en": "",
+   "fam": "dpf",
+   "node": "fam:dpf"
+  },
+  {
+   "code": "P2463",
+   "brand": "",
+   "ru": "Сажевый фильтр: накопление сажи выше порога",
+   "en": "",
+   "fam": "dpf",
+   "node": "fam:dpf"
+  },
+  {
+   "code": "P200A",
+   "brand": "",
+   "ru": "Заслонки впускного коллектора: работа нарушена (банк 1)",
+   "en": "Intake Manifold Runner Performance Bank 1",
+   "fam": "",
+   "node": "intake manifold runner"
+  },
+  {
+   "code": "P200B",
+   "brand": "",
+   "ru": "Заслонки впускного коллектора: работа нарушена (банк 2)",
+   "en": "Intake Manifold Runner Performance Bank 2",
+   "fam": "",
+   "node": "intake manifold runner"
+  },
+  {
+   "code": "P20F8",
+   "brand": "",
+   "ru": "Заслонки впускного коллектора: нарушена работа цепи управления (банк 1)",
+   "en": "Intake Manifold Runner Control Circuit Performance Bank 1",
+   "fam": "",
+   "node": "intake manifold runner"
+  },
+  {
+   "code": "P20F9",
+   "brand": "",
+   "ru": "Заслонки впускного коллектора: нарушена работа цепи управления (банк 2)",
+   "en": "Intake Manifold Runner Control Circuit Performance Bank 2",
+   "fam": "",
+   "node": "intake manifold runner"
+  },
+  {
+   "code": "P200C",
+   "brand": "",
+   "ru": "Перегрев сажевого фильтра (банк 1)",
+   "en": "Particulate Filter Over Temperature Bank 1",
+   "fam": "",
+   "node": "particulate filter over temperature"
+  },
+  {
+   "code": "P200D",
+   "brand": "",
+   "ru": "Перегрев сажевого фильтра (банк 2)",
+   "en": "Particulate Filter Over Temperature Bank 2",
+   "fam": "",
+   "node": "particulate filter over temperature"
+  },
+  {
+   "code": "P200E",
+   "brand": "",
+   "ru": "Перегрев катализатора (банк 1)",
+   "en": "Catalyst System Over Temperature Bank 1",
+   "fam": "",
+   "node": "catalyst system over temperature"
+  },
+  {
+   "code": "P200F",
+   "brand": "",
+   "ru": "Перегрев катализатора (банк 2)",
+   "en": "Catalyst System Over Temperature Bank 2",
+   "fam": "",
+   "node": "catalyst system over temperature"
+  },
+  {
+   "code": "P201A",
+   "brand": "",
+   "ru": "Форсунка мочевины: сигнал вне диапазона (банк 2, узел 1)",
+   "en": "Reductant Injection Valve Circuit Range/Performance Bank 2 Unit 1",
+   "fam": "",
+   "node": "reductant injection"
+  },
+  {
+   "code": "P202E",
+   "brand": "",
+   "ru": "Форсунка мочевины: сигнал вне диапазона (банк 1, узел 1)",
+   "en": "Reductant Injection Valve Circuit Range/Performance Bank 1 Unit 1",
+   "fam": "",
+   "node": "reductant injection"
+  },
+  {
+   "code": "P2053",
+   "brand": "",
+   "ru": "Форсунка мочевины: обрыв цепи (банк 1, узел 2)",
+   "en": "Reductant Injection Valve Circuit/Open Bank 1 Unit 2",
+   "fam": "",
+   "node": "reductant injection"
+  },
+  {
+   "code": "P2054",
+   "brand": "",
+   "ru": "Форсунка мочевины: низкий уровень сигнала в цепи (банк 1, узел 2)",
+   "en": "Reductant Injection Valve Circuit Low Bank 1 Unit 2",
+   "fam": "",
+   "node": "reductant injection"
+  },
+  {
+   "code": "P2055",
+   "brand": "",
+   "ru": "Форсунка мочевины: высокий уровень сигнала в цепи (банк 1, узел 2)",
+   "en": "Reductant Injection Valve Circuit High Bank 1 Unit 2",
+   "fam": "",
+   "node": "reductant injection"
+  },
+  {
+   "code": "P2056",
+   "brand": "",
+   "ru": "Форсунка мочевины: обрыв цепи (банк 2, узел 2)",
+   "en": "Reductant Injection Valve Circuit/Open Bank 2 Unit 2",
+   "fam": "",
+   "node": "reductant injection"
+  },
+  {
+   "code": "P2057",
+   "brand": "",
+   "ru": "Форсунка мочевины: низкий уровень сигнала в цепи (банк 2, узел 2)",
+   "en": "Reductant Injection Valve Circuit Low Bank 2 Unit 2",
+   "fam": "",
+   "node": "reductant injection"
+  },
+  {
+   "code": "P2058",
+   "brand": "",
+   "ru": "Форсунка мочевины: высокий уровень сигнала в цепи (банк 2, узел 2)",
+   "en": "Reductant Injection Valve Circuit High Bank 2 Unit 2",
+   "fam": "",
+   "node": "reductant injection"
+  },
+  {
+   "code": "P2EAE",
+   "brand": "",
+   "ru": "Форсунка мочевины: сигнал вне диапазона (банк 1, узел 2)",
+   "en": "Reductant Injection Valve Circuit Range/Performance Bank 1 Unit 2",
+   "fam": "",
+   "node": "reductant injection"
+  },
+  {
+   "code": "P2EB9",
+   "brand": "",
+   "ru": "Форсунка мочевины: сигнал вне диапазона (банк 2, узел 2)",
+   "en": "Reductant Injection Valve Circuit Range/Performance Bank 2 Unit 2",
+   "fam": "",
+   "node": "reductant injection"
+  },
+  {
+   "code": "P201B",
+   "brand": "",
+   "ru": "Привод заслонок впускного коллектора: низкое напряжение питания (банк 1)",
+   "en": "Intake Manifold Runner Control Actuator Supply Voltage Low Bank 1",
+   "fam": "",
+   "node": "intake manifold runner control actuator supply voltage"
+  },
+  {
+   "code": "P201C",
+   "brand": "",
+   "ru": "Привод заслонок впускного коллектора: низкое напряжение питания (банк 2)",
+   "en": "Intake Manifold Runner Control Actuator Supply Voltage Low Bank 2",
+   "fam": "",
+   "node": "intake manifold runner control actuator supply voltage"
+  },
+  {
+   "code": "P201D",
+   "brand": "",
+   "ru": "Привод заслонок впускного коллектора: внутренняя неисправность (банк 1)",
+   "en": "Intake Manifold Runner Control Actuator Internal Performance Bank 1",
+   "fam": "",
+   "node": "intake manifold runner control actuator internal"
+  },
+  {
+   "code": "P201E",
+   "brand": "",
+   "ru": "Привод заслонок впускного коллектора: внутренняя неисправность (банк 2)",
+   "en": "Intake Manifold Runner Control Actuator Internal Performance Bank 2",
+   "fam": "",
+   "node": "intake manifold runner control actuator internal"
+  }
+ ]
+}

@@ -1,0 +1,307 @@
+{
+ "name": "sae_121",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "battery charger a cooling system",
+  "battery charger a coupler lock position",
+  "battery charger coupler lock",
+  "battery charger coupler status indicator",
+  "battery charger coupler temperature sensor a",
+  "battery charger coupler unlock",
+  "battery charging system isolation fault",
+  "drive motor b inverter voltage sensor a”",
+  "hybrid ev battery voltage drive motor a inverter voltage correlation",
+  "hybrid ev battery voltage drive motor b inverter voltage correlation"
+ ],
+ "codes": [
+  {
+   "code": "P0D86",
+   "brand": "",
+   "ru": "Индикатор зарядного разъёма A: обрыв цепи управления",
+   "en": "Battery Charger Coupler Status Indicator Control Circuit A/Open",
+   "fam": "",
+   "node": "battery charger coupler status indicator"
+  },
+  {
+   "code": "P0D87",
+   "brand": "",
+   "ru": "Цепь индикатора зарядного разъёма A: низкий уровень",
+   "en": "Battery Charger Coupler Status Indicator Control Circuit A Low",
+   "fam": "",
+   "node": "battery charger coupler status indicator"
+  },
+  {
+   "code": "P0D88",
+   "brand": "",
+   "ru": "Цепь индикатора зарядного разъёма A: высокий уровень",
+   "en": "Battery Charger Coupler Status Indicator Control Circuit A High",
+   "fam": "",
+   "node": "battery charger coupler status indicator"
+  },
+  {
+   "code": "P0D89",
+   "brand": "",
+   "ru": "Индикатор зарядного разъёма B: обрыв цепи управления",
+   "en": "Battery Charger Coupler Status Indicator Control Circuit B/Open",
+   "fam": "",
+   "node": "battery charger coupler status indicator"
+  },
+  {
+   "code": "P0D8A",
+   "brand": "",
+   "ru": "Цепь индикатора зарядного разъёма B: низкий уровень",
+   "en": "Battery Charger Coupler Status Indicator Control Circuit B Low",
+   "fam": "",
+   "node": "battery charger coupler status indicator"
+  },
+  {
+   "code": "P0D8B",
+   "brand": "",
+   "ru": "Цепь индикатора зарядного разъёма B: высокий уровень",
+   "en": "Battery Charger Coupler Status Indicator Control Circuit B High",
+   "fam": "",
+   "node": "battery charger coupler status indicator"
+  },
+  {
+   "code": "P0D8C",
+   "brand": "",
+   "ru": "Индикатор зарядного разъёма C: обрыв цепи управления",
+   "en": "Battery Charger Coupler Status Indicator Control Circuit C/Open",
+   "fam": "",
+   "node": "battery charger coupler status indicator"
+  },
+  {
+   "code": "P0D8D",
+   "brand": "",
+   "ru": "Цепь индикатора зарядного разъёма C: низкий уровень",
+   "en": "Battery Charger Coupler Status Indicator Control Circuit C Low",
+   "fam": "",
+   "node": "battery charger coupler status indicator"
+  },
+  {
+   "code": "P0D8E",
+   "brand": "",
+   "ru": "Цепь индикатора зарядного разъёма C: высокий уровень",
+   "en": "Battery Charger Coupler Status Indicator Control Circuit C High",
+   "fam": "",
+   "node": "battery charger coupler status indicator"
+  },
+  {
+   "code": "P0D8F",
+   "brand": "",
+   "ru": "Охлаждение зарядного устройства A: работа нарушена",
+   "en": "Battery Charger A Cooling System Performance",
+   "fam": "",
+   "node": "battery charger a cooling system"
+  },
+  {
+   "code": "P0D91",
+   "brand": "",
+   "ru": "Блокировка зарядного разъёма: обрыв цепи управления",
+   "en": "Battery Charger Coupler Lock Control Circuit/Open",
+   "fam": "",
+   "node": "battery charger coupler lock"
+  },
+  {
+   "code": "P0D92",
+   "brand": "",
+   "ru": "Блокировка зарядного разъёма: низкий уровень в цепи управления",
+   "en": "Battery Charger Coupler Lock Control Circuit Low",
+   "fam": "",
+   "node": "battery charger coupler lock"
+  },
+  {
+   "code": "P0D93",
+   "brand": "",
+   "ru": "Блокировка зарядного разъёма: высокий уровень в цепи управления",
+   "en": "Battery Charger Coupler Lock Control Circuit High",
+   "fam": "",
+   "node": "battery charger coupler lock"
+  },
+  {
+   "code": "P0D94",
+   "brand": "",
+   "ru": "Блокировка зарядного разъёма: нарушена работа цепи управления",
+   "en": "Battery Charger Coupler Lock Control Circuit Performance",
+   "fam": "",
+   "node": "battery charger coupler lock"
+  },
+  {
+   "code": "P0D95",
+   "brand": "",
+   "ru": "Разблокировка зарядного разъёма: обрыв цепи управления",
+   "en": "Battery Charger Coupler Unlock Control Circuit/Open",
+   "fam": "",
+   "node": "battery charger coupler unlock"
+  },
+  {
+   "code": "P0D96",
+   "brand": "",
+   "ru": "Разблокировка зарядного разъёма: низкий уровень в цепи управления",
+   "en": "Battery Charger Coupler Unlock Control Circuit Low",
+   "fam": "",
+   "node": "battery charger coupler unlock"
+  },
+  {
+   "code": "P0D97",
+   "brand": "",
+   "ru": "Разблокировка зарядного разъёма: высокий уровень в цепи управления",
+   "en": "Battery Charger Coupler Unlock Control Circuit High",
+   "fam": "",
+   "node": "battery charger coupler unlock"
+  },
+  {
+   "code": "P0D98",
+   "brand": "",
+   "ru": "Разблокировка зарядного разъёма: нарушена работа цепи управления",
+   "en": "Battery Charger Coupler Unlock Control Circuit Performance",
+   "fam": "",
+   "node": "battery charger coupler unlock"
+  },
+  {
+   "code": "P0D99",
+   "brand": "",
+   "ru": "Датчик температуры зарядного разъёма A: цепь",
+   "en": "Battery Charger Coupler Temperature Sensor A Circuit",
+   "fam": "",
+   "node": "battery charger coupler temperature sensor a"
+  },
+  {
+   "code": "P0D9A",
+   "brand": "",
+   "ru": "Датчик температуры зарядного разъёма A: сигнал вне диапазона",
+   "en": "Battery Charger Coupler Temperature Sensor A Circuit Range/Performance",
+   "fam": "",
+   "node": "battery charger coupler temperature sensor a"
+  },
+  {
+   "code": "P0D9B",
+   "brand": "",
+   "ru": "Датчик температуры зарядного разъёма A: низкий уровень сигнала в цепи",
+   "en": "Battery Charger Coupler Temperature Sensor A Circuit Low",
+   "fam": "",
+   "node": "battery charger coupler temperature sensor a"
+  },
+  {
+   "code": "P0D9C",
+   "brand": "",
+   "ru": "Датчик температуры зарядного разъёма A: высокий уровень сигнала в цепи",
+   "en": "Battery Charger Coupler Temperature Sensor A Circuit High",
+   "fam": "",
+   "node": "battery charger coupler temperature sensor a"
+  },
+  {
+   "code": "P0D9D",
+   "brand": "",
+   "ru": "Датчик температуры зарядного разъёма A: прерывистый / нестабильный сигнал",
+   "en": "Battery Charger Coupler Temperature Sensor A Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "battery charger coupler temperature sensor a"
+  },
+  {
+   "code": "P0D9E",
+   "brand": "",
+   "ru": "Датчик фиксатора зарядного разъёма A: цепь",
+   "en": "Battery Charger A Coupler Lock Position Sensor Circuit",
+   "fam": "",
+   "node": "battery charger a coupler lock position"
+  },
+  {
+   "code": "P0D9F",
+   "brand": "",
+   "ru": "Датчик фиксатора зарядного разъёма A: сигнал вне диапазона",
+   "en": "Battery Charger A Coupler Lock Position Sensor Circuit Range/Performance",
+   "fam": "",
+   "node": "battery charger a coupler lock position"
+  },
+  {
+   "code": "P0DA0",
+   "brand": "",
+   "ru": "Датчик фиксатора зарядного разъёма A: низкий уровень сигнала в цепи",
+   "en": "Battery Charger A Coupler Lock Position Sensor Circuit Low",
+   "fam": "",
+   "node": "battery charger a coupler lock position"
+  },
+  {
+   "code": "P0DA1",
+   "brand": "",
+   "ru": "Датчик фиксатора зарядного разъёма A: высокий уровень сигнала в цепи",
+   "en": "Battery Charger A Coupler Lock Position Sensor Circuit High",
+   "fam": "",
+   "node": "battery charger a coupler lock position"
+  },
+  {
+   "code": "P0DA2",
+   "brand": "",
+   "ru": "Датчик фиксатора зарядного разъёма A: прерывистый / нестабильный сигнал",
+   "en": "Battery Charger A Coupler Lock Position Sensor Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "battery charger a coupler lock position"
+  },
+  {
+   "code": "P0DA3",
+   "brand": "",
+   "ru": "Датчик напряжения инвертора тягового электромотора B (датчик A): цепь",
+   "en": "Drive Motor B Inverter Voltage Sensor A” Circuit",
+   "fam": "",
+   "node": "drive motor b inverter voltage sensor a”"
+  },
+  {
+   "code": "P0DA4",
+   "brand": "",
+   "ru": "Датчик напряжения инвертора тягового электромотора B (датчик A): сигнал вне диапазона",
+   "en": "Drive Motor B Inverter Voltage Sensor A” Circuit Range/Performance",
+   "fam": "",
+   "node": "drive motor b inverter voltage sensor a”"
+  },
+  {
+   "code": "P0DA5",
+   "brand": "",
+   "ru": "Датчик напряжения инвертора тягового электромотора B (датчик A): низкий уровень сигнала в цепи",
+   "en": "Drive Motor B Inverter Voltage Sensor A” Circuit Low",
+   "fam": "",
+   "node": "drive motor b inverter voltage sensor a”"
+  },
+  {
+   "code": "P0DA6",
+   "brand": "",
+   "ru": "Датчик напряжения инвертора тягового электромотора B (датчик A): высокий уровень сигнала в цепи",
+   "en": "Drive Motor B Inverter Voltage Sensor A” Circuit High",
+   "fam": "",
+   "node": "drive motor b inverter voltage sensor a”"
+  },
+  {
+   "code": "P0DA7",
+   "brand": "",
+   "ru": "Датчик напряжения инвертора тягового электромотора B (датчик A): прерывистый / нестабильный сигнал",
+   "en": "Drive Motor B Inverter Voltage Sensor A” Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "drive motor b inverter voltage sensor a”"
+  },
+  {
+   "code": "P0DA8",
+   "brand": "",
+   "ru": "Рассогласование напряжения тяговой батареи и инвертора электромотора A",
+   "en": "Hybrid/EV Battery Voltage/Drive Motor A Inverter Voltage Correlation",
+   "fam": "",
+   "node": "hybrid ev battery voltage drive motor a inverter voltage correlation"
+  },
+  {
+   "code": "P0DA9",
+   "brand": "",
+   "ru": "Рассогласование напряжения тяговой батареи и инвертора электромотора B",
+   "en": "Hybrid/EV Battery Voltage/Drive Motor B Inverter Voltage Correlation",
+   "fam": "",
+   "node": "hybrid ev battery voltage drive motor b inverter voltage correlation"
+  },
+  {
+   "code": "P0DAA",
+   "brand": "",
+   "ru": "Система зарядки: нарушение изоляции",
+   "en": "Battery Charging System Isolation Fault",
+   "fam": "",
+   "node": "battery charging system isolation fault"
+  }
+ ]
+}

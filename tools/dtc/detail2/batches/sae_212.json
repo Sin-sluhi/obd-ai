@@ -1,0 +1,410 @@
+{
+ "name": "sae_212",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "lost communication with",
+  "lost communication with barometric pressure sensor a",
+  "lost communication with barometric pressure sensor b",
+  "lost communication with barometric pressure sensor c",
+  "lost communication with catalyst temperature",
+  "lost communication with charge air cooler temperature sensor",
+  "lost communication with egr sensor d",
+  "lost communication with egr sensor e",
+  "lost communication with egr temperature sensor a",
+  "lost communication with engine coolant pump",
+  "lost communication with engine disconnect clutch pressure",
+  "lost communication with engine oil level",
+  "lost communication with engine oil temperature sensor a",
+  "lost communication with exhaust heat exchanger bypass valve actuator b",
+  "lost communication with exhaust pressure control valve b sensor",
+  "lost communication with fuel level sensor a",
+  "lost communication with fuel level sensor b",
+  "lost communication with fuel level sensor c",
+  "lost communication with fuel temperature sensor a",
+  "lost communication with fuel temperature sensor b",
+  "lost communication with ion sense",
+  "lost communication with left rear temperature actuator a",
+  "lost communication with left rear temperature actuator b",
+  "lost communication with ram air actuator",
+  "lost communication with rear hvac air cutoff actuator",
+  "lost communication with rear mode actuator",
+  "lost communication with reductant pressure",
+  "lost communication with right rear temperature actuator a",
+  "lost communication with right rear temperature actuator b",
+  "lost communication with throttle pedal position sensor switch d",
+  "lost communication with throttle pedal position sensor switch e",
+  "lost communication with throttle pedal position sensor switch f",
+  "lost communication with throttle position sensor switch g",
+  "lost communication with transmission fluid pressure sensor switch a",
+  "lost communication with transmission fluid pressure sensor switch b",
+  "lost communication with turbocharger supercharger b temperature",
+  "lost communication with turbocharger supercharger bypass valve b position",
+  "lost communication with turbocharger supercharger inlet pressure sensor a",
+  "lost communication with turbocharger supercharger inlet pressure sensor b",
+  "lost communication with turbocharger supercharger speed sensor a",
+  "lost communication with wastegate position sensor b"
+ ],
+ "codes": [
+  {
+   "code": "U065E",
+   "brand": "",
+   "ru": "Нет связи: привод заслонки набегающего потока",
+   "en": "Lost Communication With Ram Air Actuator",
+   "fam": "",
+   "node": "lost communication with ram air actuator"
+  },
+  {
+   "code": "U065F",
+   "brand": "",
+   "ru": "Нет связи: привод заслонки температуры сзади слева A",
+   "en": "Lost Communication With Left Rear Temperature Actuator A",
+   "fam": "",
+   "node": "lost communication with left rear temperature actuator a"
+  },
+  {
+   "code": "U0660",
+   "brand": "",
+   "ru": "Нет связи: привод заслонки температуры сзади слева B",
+   "en": "Lost Communication With Left Rear Temperature Actuator B",
+   "fam": "",
+   "node": "lost communication with left rear temperature actuator b"
+  },
+  {
+   "code": "U0661",
+   "brand": "",
+   "ru": "Нет связи: привод заслонки температуры сзади справа A",
+   "en": "Lost Communication With Right Rear Temperature Actuator A",
+   "fam": "",
+   "node": "lost communication with right rear temperature actuator a"
+  },
+  {
+   "code": "U0662",
+   "brand": "",
+   "ru": "Нет связи: привод заслонки температуры сзади справа B",
+   "en": "Lost Communication With Right Rear Temperature Actuator B",
+   "fam": "",
+   "node": "lost communication with right rear temperature actuator b"
+  },
+  {
+   "code": "U0663",
+   "brand": "",
+   "ru": "Нет связи: привод заслонки режима обдува сзади",
+   "en": "Lost Communication With Rear Mode Actuator",
+   "fam": "",
+   "node": "lost communication with rear mode actuator"
+  },
+  {
+   "code": "U0664",
+   "brand": "",
+   "ru": "Нет связи: привод отсечной заслонки заднего климата",
+   "en": "Lost Communication With Rear HVAC Air Cutoff Actuator",
+   "fam": "",
+   "node": "lost communication with rear hvac air cutoff actuator"
+  },
+  {
+   "code": "U0666",
+   "brand": "",
+   "ru": "Нет связи: датчик давления мочевины",
+   "en": "Lost Communication With Reductant Pressure Sensor",
+   "fam": "",
+   "node": "lost communication with reductant pressure"
+  },
+  {
+   "code": "U0667",
+   "brand": "",
+   "ru": "Нет связи: датчик температуры масла двигателя A",
+   "en": "Lost Communication With Engine Oil Temperature Sensor A",
+   "fam": "",
+   "node": "lost communication with engine oil temperature sensor a"
+  },
+  {
+   "code": "U0668",
+   "brand": "",
+   "ru": "Нет связи: датчик уровня масла: цепь",
+   "en": "Lost Communication With Engine Oil Level Sensor Circuit",
+   "fam": "",
+   "node": "lost communication with engine oil level"
+  },
+  {
+   "code": "U0669",
+   "brand": "",
+   "ru": "Нет связи: датчик EGR D",
+   "en": "Lost Communication With EGR Sensor D",
+   "fam": "",
+   "node": "lost communication with egr sensor d"
+  },
+  {
+   "code": "U066A",
+   "brand": "",
+   "ru": "Нет связи: датчик EGR E",
+   "en": "Lost Communication With EGR Sensor E",
+   "fam": "",
+   "node": "lost communication with egr sensor e"
+  },
+  {
+   "code": "U066B",
+   "brand": "",
+   "ru": "Нет связи: датчик положения перепускного клапана турбины B",
+   "en": "Lost Communication With Turbocharger/Supercharger Bypass Valve B Position Sensor",
+   "fam": "",
+   "node": "lost communication with turbocharger supercharger bypass valve b position"
+  },
+  {
+   "code": "U066C",
+   "brand": "",
+   "ru": "Нет связи: привод перепускного клапана теплообменника выхлопа B",
+   "en": "Lost Communication With Exhaust Heat Exchanger Bypass Valve Actuator B",
+   "fam": "",
+   "node": "lost communication with exhaust heat exchanger bypass valve actuator b"
+  },
+  {
+   "code": "U066D",
+   "brand": "",
+   "ru": "Нет связи: датчик температуры интеркулера (банк 1)",
+   "en": "Lost Communication With Charge Air Cooler Temperature Sensor Bank 1",
+   "fam": "",
+   "node": "lost communication with charge air cooler temperature sensor"
+  },
+  {
+   "code": "U066E",
+   "brand": "",
+   "ru": "Нет связи: датчик температуры интеркулера (банк 2)",
+   "en": "Lost Communication With Charge Air Cooler Temperature Sensor Bank 2",
+   "fam": "",
+   "node": "lost communication with charge air cooler temperature sensor"
+  },
+  {
+   "code": "U066F",
+   "brand": "",
+   "ru": "Нет связи: датчик контура низкого давления топлива",
+   "en": "Lost Communication With Low Pressure Fuel System Sensor",
+   "fam": "",
+   "node": "lost communication with"
+  },
+  {
+   "code": "U0670",
+   "brand": "",
+   "ru": "Нет связи: датчик температуры топлива A",
+   "en": "Lost Communication With Fuel Temperature Sensor A",
+   "fam": "",
+   "node": "lost communication with fuel temperature sensor a"
+  },
+  {
+   "code": "U0671",
+   "brand": "",
+   "ru": "Нет связи: датчик температуры топлива B",
+   "en": "Lost Communication With Fuel Temperature Sensor B",
+   "fam": "",
+   "node": "lost communication with fuel temperature sensor b"
+  },
+  {
+   "code": "U0672",
+   "brand": "",
+   "ru": "Нет связи: насос охлаждающей жидкости двигателя",
+   "en": "Lost Communication With Engine Coolant Pump",
+   "fam": "",
+   "node": "lost communication with engine coolant pump"
+  },
+  {
+   "code": "U0673",
+   "brand": "",
+   "ru": "Нет связи: блок ионного контроля зажигания",
+   "en": "Lost Communication With Ion Sense Module",
+   "fam": "",
+   "node": "lost communication with ion sense"
+  },
+  {
+   "code": "U0674",
+   "brand": "",
+   "ru": "Нет связи: датчик положения вейстгейта B",
+   "en": "Lost Communication With Wastegate Position Sensor B",
+   "fam": "",
+   "node": "lost communication with wastegate position sensor b"
+  },
+  {
+   "code": "U0675",
+   "brand": "",
+   "ru": "Нет связи: датчик оборотов турбины/нагнетателя A",
+   "en": "Lost Communication With Turbocharger/Supercharger Speed Sensor A",
+   "fam": "",
+   "node": "lost communication with turbocharger supercharger speed sensor a"
+  },
+  {
+   "code": "U0676",
+   "brand": "",
+   "ru": "Нет связи: датчик уровня топлива A",
+   "en": "Lost Communication With Fuel Level Sensor A",
+   "fam": "",
+   "node": "lost communication with fuel level sensor a"
+  },
+  {
+   "code": "U0677",
+   "brand": "",
+   "ru": "Нет связи: датчик уровня топлива B",
+   "en": "Lost Communication With Fuel Level Sensor B",
+   "fam": "",
+   "node": "lost communication with fuel level sensor b"
+  },
+  {
+   "code": "U0678",
+   "brand": "",
+   "ru": "Нет связи: датчик уровня топлива C",
+   "en": "Lost Communication With Fuel Level Sensor C",
+   "fam": "",
+   "node": "lost communication with fuel level sensor c"
+  },
+  {
+   "code": "U0679",
+   "brand": "",
+   "ru": "Нет связи: датчик давления масла КПП A",
+   "en": "Lost Communication With Transmission Fluid Pressure Sensor/Switch A",
+   "fam": "",
+   "node": "lost communication with transmission fluid pressure sensor switch a"
+  },
+  {
+   "code": "U067A",
+   "brand": "",
+   "ru": "Нет связи: датчик давления масла КПП B",
+   "en": "Lost Communication With Transmission Fluid Pressure Sensor/Switch B",
+   "fam": "",
+   "node": "lost communication with transmission fluid pressure sensor switch b"
+  },
+  {
+   "code": "U067B",
+   "brand": "",
+   "ru": "Нет связи: датчик давления муфты отключения двигателя",
+   "en": "Lost Communication With Engine Disconnect Clutch Pressure Sensor",
+   "fam": "",
+   "node": "lost communication with engine disconnect clutch pressure"
+  },
+  {
+   "code": "U067E",
+   "brand": "",
+   "ru": "Нет связи: датчик клапана давления выхлопа B",
+   "en": "Lost Communication With Exhaust Pressure Control Valve B Sensor/Switch",
+   "fam": "",
+   "node": "lost communication with exhaust pressure control valve b sensor"
+  },
+  {
+   "code": "U067F",
+   "brand": "",
+   "ru": "Нет связи: датчик атмосферного давления A",
+   "en": "Lost Communication With Barometric Pressure Sensor A",
+   "fam": "",
+   "node": "lost communication with barometric pressure sensor a"
+  },
+  {
+   "code": "U0680",
+   "brand": "",
+   "ru": "Нет связи: датчик атмосферного давления B",
+   "en": "Lost Communication With Barometric Pressure Sensor B",
+   "fam": "",
+   "node": "lost communication with barometric pressure sensor b"
+  },
+  {
+   "code": "U0681",
+   "brand": "",
+   "ru": "Нет связи: датчик положения дросселя/педали D",
+   "en": "Lost Communication With Throttle/Pedal Position Sensor/Switch D",
+   "fam": "",
+   "node": "lost communication with throttle pedal position sensor switch d"
+  },
+  {
+   "code": "U0682",
+   "brand": "",
+   "ru": "Нет связи: датчик положения дросселя/педали E",
+   "en": "Lost Communication With Throttle/Pedal Position Sensor/Switch E",
+   "fam": "",
+   "node": "lost communication with throttle pedal position sensor switch e"
+  },
+  {
+   "code": "U0683",
+   "brand": "",
+   "ru": "Нет связи: датчик положения дросселя/педали F",
+   "en": "Lost Communication With Throttle/Pedal Position Sensor/Switch F",
+   "fam": "",
+   "node": "lost communication with throttle pedal position sensor switch f"
+  },
+  {
+   "code": "U0684",
+   "brand": "",
+   "ru": "Нет связи: температура катализатора (банк 1, датчик 1)",
+   "en": "Lost Communication With Catalyst Temperature Bank 1 Sensor 1",
+   "fam": "",
+   "node": "lost communication with catalyst temperature"
+  },
+  {
+   "code": "U0685",
+   "brand": "",
+   "ru": "Нет связи: температура катализатора (банк 1, датчик 2)",
+   "en": "Lost Communication With Catalyst Temperature Bank 1 Sensor 2",
+   "fam": "",
+   "node": "lost communication with catalyst temperature"
+  },
+  {
+   "code": "U0686",
+   "brand": "",
+   "ru": "Нет связи: температура катализатора (банк 2, датчик 1)",
+   "en": "Lost Communication With Catalyst Temperature Bank 2 Sensor 1",
+   "fam": "",
+   "node": "lost communication with catalyst temperature"
+  },
+  {
+   "code": "U0687",
+   "brand": "",
+   "ru": "Нет связи: температура катализатора (банк 2, датчик 2)",
+   "en": "Lost Communication With Catalyst Temperature Bank 2 Sensor 2",
+   "fam": "",
+   "node": "lost communication with catalyst temperature"
+  },
+  {
+   "code": "U0688",
+   "brand": "",
+   "ru": "Нет связи: датчик положения дроссельной заслонки G",
+   "en": "Lost Communication With Throttle Position Sensor/Switch G",
+   "fam": "",
+   "node": "lost communication with throttle position sensor switch g"
+  },
+  {
+   "code": "U0689",
+   "brand": "",
+   "ru": "Нет связи: датчик температуры турбины/нагнетателя B",
+   "en": "Lost Communication With Turbocharger/Supercharger B Temperature Sensor",
+   "fam": "",
+   "node": "lost communication with turbocharger supercharger b temperature"
+  },
+  {
+   "code": "U068A",
+   "brand": "",
+   "ru": "Нет связи: датчик атмосферного давления C",
+   "en": "Lost Communication With Barometric Pressure Sensor C",
+   "fam": "",
+   "node": "lost communication with barometric pressure sensor c"
+  },
+  {
+   "code": "U068B",
+   "brand": "",
+   "ru": "Нет связи: датчик давления на входе турбины/нагнетателя A",
+   "en": "Lost Communication With Turbocharger/Supercharger Inlet Pressure Sensor A",
+   "fam": "",
+   "node": "lost communication with turbocharger supercharger inlet pressure sensor a"
+  },
+  {
+   "code": "U068C",
+   "brand": "",
+   "ru": "Нет связи: датчик давления на входе турбины/нагнетателя B",
+   "en": "Lost Communication With Turbocharger/Supercharger Inlet Pressure Sensor B",
+   "fam": "",
+   "node": "lost communication with turbocharger supercharger inlet pressure sensor b"
+  },
+  {
+   "code": "U068D",
+   "brand": "",
+   "ru": "Нет связи: датчик температуры EGR A",
+   "en": "Lost Communication With EGR Temperature Sensor A",
+   "fam": "",
+   "node": "lost communication with egr temperature sensor a"
+  }
+ ]
+}

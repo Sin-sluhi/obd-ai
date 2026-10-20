@@ -1,0 +1,373 @@
+{
+ "name": "sae_152",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "brake system control module a requested mil illumination",
+  "coolant temperature control module requested mil illumination",
+  "excessive time to enter closed loop turbocharger a boost",
+  "excessive time to enter closed loop turbocharger b boost",
+  "fuel level sensor a",
+  "fuel level sensor a or b",
+  "fuel level sensor b",
+  "fuel mode select",
+  "fuel mode select switch",
+  "piston cooling oil",
+  "piston cooling oil pressure too",
+  "pto enable switch",
+  "torque management request",
+  "turbocharger a boost control position at",
+  "turbocharger b boost control position at",
+  "turbocharger boost control position sensor a",
+  "turbocharger speed sensor b",
+  "turbocharger supercharger wastegate a",
+  "turbocharger supercharger wastegate b",
+  "vacuum pump"
+ ],
+ "codes": [
+  {
+   "code": "P258A",
+   "brand": "",
+   "ru": "Вакуумный насос A: обрыв цепи управления",
+   "en": "Vacuum Pump Control Circuit A/Open",
+   "fam": "",
+   "node": "vacuum pump"
+  },
+  {
+   "code": "P258B",
+   "brand": "",
+   "ru": "Цепь управления вакуумным насосом A: вне допустимого диапазона",
+   "en": "Vacuum Pump Control Circuit A Range/Performance",
+   "fam": "",
+   "node": "vacuum pump"
+  },
+  {
+   "code": "P258C",
+   "brand": "",
+   "ru": "Цепь управления вакуумным насосом A: низкий уровень",
+   "en": "Vacuum Pump Control Circuit A Low",
+   "fam": "",
+   "node": "vacuum pump"
+  },
+  {
+   "code": "P258D",
+   "brand": "",
+   "ru": "Цепь управления вакуумным насосом A: высокий уровень",
+   "en": "Vacuum Pump Control Circuit A High",
+   "fam": "",
+   "node": "vacuum pump"
+  },
+  {
+   "code": "P25EE",
+   "brand": "",
+   "ru": "Вакуумный насос B: обрыв цепи управления",
+   "en": "Vacuum Pump Control Circuit B/Open",
+   "fam": "",
+   "node": "vacuum pump"
+  },
+  {
+   "code": "P25EF",
+   "brand": "",
+   "ru": "Цепь управления вакуумным насосом B: вне допустимого диапазона",
+   "en": "Vacuum Pump Control Circuit B Range/Performance",
+   "fam": "",
+   "node": "vacuum pump"
+  },
+  {
+   "code": "P25F0",
+   "brand": "",
+   "ru": "Цепь управления вакуумным насосом B: низкий уровень",
+   "en": "Vacuum Pump Control Circuit B Low",
+   "fam": "",
+   "node": "vacuum pump"
+  },
+  {
+   "code": "P25F1",
+   "brand": "",
+   "ru": "Цепь управления вакуумным насосом B: высокий уровень",
+   "en": "Vacuum Pump Control Circuit B High",
+   "fam": "",
+   "node": "vacuum pump"
+  },
+  {
+   "code": "P258E",
+   "brand": "",
+   "ru": "Выключатель отбора мощности: работа нарушена",
+   "en": "PTO Enable Switch Performance",
+   "fam": "",
+   "node": "pto enable switch"
+  },
+  {
+   "code": "P258F",
+   "brand": "",
+   "ru": "Выходной сигнал запроса управления моментом",
+   "en": "Torque Management Request Output Signal",
+   "fam": "",
+   "node": "torque management request"
+  },
+  {
+   "code": "P2593",
+   "brand": "",
+   "ru": "Датчик оборотов турбины B: цепь",
+   "en": "Turbocharger Speed Sensor B Circuit",
+   "fam": "",
+   "node": "turbocharger speed sensor b"
+  },
+  {
+   "code": "P2594",
+   "brand": "",
+   "ru": "Датчик оборотов турбины B: сигнал вне диапазона",
+   "en": "Turbocharger Speed Sensor B Circuit Range/Performance",
+   "fam": "",
+   "node": "turbocharger speed sensor b"
+  },
+  {
+   "code": "P2595",
+   "brand": "",
+   "ru": "Датчик оборотов турбины B: низкий уровень сигнала в цепи",
+   "en": "Turbocharger Speed Sensor B Circuit Low",
+   "fam": "",
+   "node": "turbocharger speed sensor b"
+  },
+  {
+   "code": "P2596",
+   "brand": "",
+   "ru": "Датчик оборотов турбины B: высокий уровень сигнала в цепи",
+   "en": "Turbocharger Speed Sensor B Circuit High",
+   "fam": "",
+   "node": "turbocharger speed sensor b"
+  },
+  {
+   "code": "P2597",
+   "brand": "",
+   "ru": "Датчик оборотов турбины B: прерывистый сигнал в цепи",
+   "en": "Turbocharger Speed Sensor B Circuit Intermittent",
+   "fam": "",
+   "node": "turbocharger speed sensor b"
+  },
+  {
+   "code": "P2598",
+   "brand": "",
+   "ru": "Датчик положения регулятора наддува A: застыл на низком уровне",
+   "en": "Turbocharger Boost Control Position Sensor A Performance - Stuck Low",
+   "fam": "",
+   "node": "turbocharger boost control position sensor a"
+  },
+  {
+   "code": "P2599",
+   "brand": "",
+   "ru": "Датчик положения регулятора наддува A: застыл на высоком уровне",
+   "en": "Turbocharger Boost Control Position Sensor A Performance - Stuck High",
+   "fam": "",
+   "node": "turbocharger boost control position sensor a"
+  },
+  {
+   "code": "P259C",
+   "brand": "",
+   "ru": "Слишком долгий переход к замкнутому регулированию наддува турбины A",
+   "en": "Excessive Time To Enter Closed Loop Turbocharger A Boost Control",
+   "fam": "",
+   "node": "excessive time to enter closed loop turbocharger a boost"
+  },
+  {
+   "code": "P259D",
+   "brand": "",
+   "ru": "Слишком долгий переход к замкнутому регулированию наддува турбины B",
+   "en": "Excessive Time To Enter Closed Loop Turbocharger B Boost Control",
+   "fam": "",
+   "node": "excessive time to enter closed loop turbocharger b boost"
+  },
+  {
+   "code": "P259E",
+   "brand": "",
+   "ru": "Регулятор наддува турбины A на нижнем пределе",
+   "en": "Turbocharger A Boost Control Position At Low Limit",
+   "fam": "",
+   "node": "turbocharger a boost control position at"
+  },
+  {
+   "code": "P259F",
+   "brand": "",
+   "ru": "Регулятор наддува турбины A на верхнем пределе",
+   "en": "Turbocharger A Boost Control Position At High Limit",
+   "fam": "",
+   "node": "turbocharger a boost control position at"
+  },
+  {
+   "code": "P25A0",
+   "brand": "",
+   "ru": "Регулятор наддува турбины B на нижнем пределе",
+   "en": "Turbocharger B Boost Control Position At Low Limit",
+   "fam": "",
+   "node": "turbocharger b boost control position at"
+  },
+  {
+   "code": "P25A1",
+   "brand": "",
+   "ru": "Регулятор наддува турбины B на верхнем пределе",
+   "en": "Turbocharger B Boost Control Position At High Limit",
+   "fam": "",
+   "node": "turbocharger b boost control position at"
+  },
+  {
+   "code": "P25A2",
+   "brand": "",
+   "ru": "Блок тормозной системы A запросил включение Check Engine",
+   "en": "Brake System Control Module A Requested MIL Illumination",
+   "fam": "",
+   "node": "brake system control module a requested mil illumination"
+  },
+  {
+   "code": "P25A4",
+   "brand": "",
+   "ru": "Переключатель вида топлива: цепь",
+   "en": "Fuel Mode Select Switch Circuit",
+   "fam": "",
+   "node": "fuel mode select"
+  },
+  {
+   "code": "P25A6",
+   "brand": "",
+   "ru": "Переключатель вида топлива: низкий уровень сигнала в цепи",
+   "en": "Fuel Mode Select Switch Circuit Low",
+   "fam": "",
+   "node": "fuel mode select"
+  },
+  {
+   "code": "P25A7",
+   "brand": "",
+   "ru": "Переключатель вида топлива: высокий уровень сигнала в цепи",
+   "en": "Fuel Mode Select Switch Circuit High",
+   "fam": "",
+   "node": "fuel mode select"
+  },
+  {
+   "code": "P25A8",
+   "brand": "",
+   "ru": "Переключатель вида топлива: прерывистый / нестабильный сигнал",
+   "en": "Fuel Mode Select Switch Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "fuel mode select"
+  },
+  {
+   "code": "P25A5",
+   "brand": "",
+   "ru": "Переключатель вида топлива: работа нарушена",
+   "en": "Fuel Mode Select Switch Performance",
+   "fam": "",
+   "node": "fuel mode select switch"
+  },
+  {
+   "code": "P25A9",
+   "brand": "",
+   "ru": "Масляное охлаждение поршней: обрыв цепи управления",
+   "en": "Piston Cooling Oil Control Circuit/Open",
+   "fam": "",
+   "node": "piston cooling oil"
+  },
+  {
+   "code": "P25AA",
+   "brand": "",
+   "ru": "Масляное охлаждение поршней: низкий уровень в цепи управления",
+   "en": "Piston Cooling Oil Control Circuit Low",
+   "fam": "",
+   "node": "piston cooling oil"
+  },
+  {
+   "code": "P25AB",
+   "brand": "",
+   "ru": "Масляное охлаждение поршней: высокий уровень в цепи управления",
+   "en": "Piston Cooling Oil Control Circuit High",
+   "fam": "",
+   "node": "piston cooling oil"
+  },
+  {
+   "code": "P25AC",
+   "brand": "",
+   "ru": "Масляное охлаждение поршней: цепь управления: работа нарушена / не включается",
+   "en": "Piston Cooling Oil Control Circuit Performance/Stuck Off",
+   "fam": "",
+   "node": "piston cooling oil"
+  },
+  {
+   "code": "P25AD",
+   "brand": "",
+   "ru": "Масляное охлаждение поршней: постоянно включено",
+   "en": "Piston Cooling Oil Control Circuit Stuck On",
+   "fam": "",
+   "node": "piston cooling oil"
+  },
+  {
+   "code": "P25AE",
+   "brand": "",
+   "ru": "Масляное охлаждение поршней: слишком низкое давление",
+   "en": "Piston Cooling Oil Pressure Too Low",
+   "fam": "",
+   "node": "piston cooling oil pressure too"
+  },
+  {
+   "code": "P25AF",
+   "brand": "",
+   "ru": "Блок терморегулирования запросил включение Check Engine",
+   "en": "Coolant Temperature Control Module Requested MIL Illumination",
+   "fam": "",
+   "node": "coolant temperature control module requested mil illumination"
+  },
+  {
+   "code": "P25B0",
+   "brand": "",
+   "ru": "Датчик уровня топлива A: заклинивание",
+   "en": "Fuel Level Sensor A Stuck",
+   "fam": "",
+   "node": "fuel level sensor a"
+  },
+  {
+   "code": "P25B1",
+   "brand": "",
+   "ru": "Датчик уровня топлива B: заклинивание",
+   "en": "Fuel Level Sensor B Stuck",
+   "fam": "",
+   "node": "fuel level sensor b"
+  },
+  {
+   "code": "P25B2",
+   "brand": "",
+   "ru": "Датчик уровня топлива A или B: застыл",
+   "en": "Fuel Level Sensor A or B Stuck",
+   "fam": "",
+   "node": "fuel level sensor a or b"
+  },
+  {
+   "code": "P25B3",
+   "brand": "",
+   "ru": "Вейстгейт турбины/нагнетателя A: заклинил открытым",
+   "en": "Turbocharger/Supercharger Wastegate A Stuck Open",
+   "fam": "",
+   "node": "turbocharger supercharger wastegate a"
+  },
+  {
+   "code": "P25B4",
+   "brand": "",
+   "ru": "Вейстгейт турбины/нагнетателя A: заклинил закрытым",
+   "en": "Turbocharger/Supercharger Wastegate A Stuck Closed",
+   "fam": "",
+   "node": "turbocharger supercharger wastegate a"
+  },
+  {
+   "code": "P25B5",
+   "brand": "",
+   "ru": "Вейстгейт турбины/нагнетателя B: заклинил открытым",
+   "en": "Turbocharger/Supercharger Wastegate B Stuck Open",
+   "fam": "",
+   "node": "turbocharger supercharger wastegate b"
+  },
+  {
+   "code": "P25B6",
+   "brand": "",
+   "ru": "Вейстгейт турбины/нагнетателя B: заклинил закрытым",
+   "en": "Turbocharger/Supercharger Wastegate B Stuck Closed",
+   "fam": "",
+   "node": "turbocharger supercharger wastegate b"
+  }
+ ]
+}

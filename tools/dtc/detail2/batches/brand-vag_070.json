@@ -1,0 +1,372 @@
+{
+ "name": "brand-vag_070",
+ "series": "brand",
+ "brand": "vag",
+ "nodes": [
+  "control unit internal altitude",
+  "control unit internal throttle",
+  "crankshaft camshaft position sensor",
+  "engine rpm",
+  "engine speed sensor missing tooth",
+  "engine speed wheel adaptation at limit",
+  "ignition",
+  "ignition coil power",
+  "internal control module knock control error",
+  "modulation piston displacement",
+  "ru:клапан егр"
+ ],
+ "codes": [
+  {
+   "code": "P1342",
+   "brand": "vag",
+   "ru": "Выходной каскад катушки зажигания 1: замыкание на плюс",
+   "en": "Ignition Coil Power Output State 1 Short To B+",
+   "fam": "",
+   "node": "ignition coil power"
+  },
+  {
+   "code": "P1346",
+   "brand": "vag",
+   "ru": "Выходной каскад катушки зажигания 3: замыкание на плюс",
+   "en": "Ignition Coil Power Output State 3 Short To B+",
+   "fam": "",
+   "node": "ignition coil power"
+  },
+  {
+   "code": "P1348",
+   "brand": "vag",
+   "ru": "Выходной каскад катушки зажигания 1: обрыв",
+   "en": "Ignition Coil Power Output Stage 1 Open",
+   "fam": "",
+   "node": "ignition coil power"
+  },
+  {
+   "code": "P1349",
+   "brand": "vag",
+   "ru": "Выходной каскад катушки зажигания 2: обрыв",
+   "en": "Ignition Coil Power Output Stage 2 Open",
+   "fam": "",
+   "node": "ignition coil power"
+  },
+  {
+   "code": "P1350",
+   "brand": "vag",
+   "ru": "Выходной каскад катушки зажигания 3: обрыв",
+   "en": "Ignition Coil Power Output Stage 3 Open",
+   "fam": "",
+   "node": "ignition coil power"
+  },
+  {
+   "code": "P1393",
+   "brand": "vag",
+   "ru": "Выходной каскад катушки зажигания 1: неисправность",
+   "en": "Ignition Coil Power Output Stage 1 Malfunction",
+   "fam": "",
+   "node": "ignition coil power"
+  },
+  {
+   "code": "P1394",
+   "brand": "vag",
+   "ru": "Выходной каскад катушки зажигания 2: неисправность",
+   "en": "Ignition Coil Power Output Stage 2 Malfunction",
+   "fam": "",
+   "node": "ignition coil power"
+  },
+  {
+   "code": "P1395",
+   "brand": "vag",
+   "ru": "Выходной каскад катушки зажигания 3: неисправность",
+   "en": "Ignition Coil Power Output Stage 3 Malfunction",
+   "fam": "",
+   "node": "ignition coil power"
+  },
+  {
+   "code": "P1347",
+   "brand": "vag",
+   "ru": "Ряд 2: сигналы коленвала и распредвала не по порядку",
+   "en": "Bank 2 Crankshaft Camshaft Position Sensor Signal Out Of Sequence",
+   "fam": "",
+   "node": "crankshaft camshaft position sensor"
+  },
+  {
+   "code": "P1354",
+   "brand": "vag",
+   "ru": "Датчик хода модулирующего поршня: неисправность цепи",
+   "en": "Modulation Piston Displacement Sensor Circuit Malfunction",
+   "fam": "",
+   "node": "modulation piston displacement"
+  },
+  {
+   "code": "P1355",
+   "brand": "vag",
+   "ru": "Зажигание цилиндра 1: обрыв",
+   "en": "Cylinder 1 Ignition Circuit Open",
+   "fam": "",
+   "node": "ignition"
+  },
+  {
+   "code": "P1356",
+   "brand": "vag",
+   "ru": "Зажигание цилиндра 1: замыкание на плюс",
+   "en": "Cylinder 1 Ignition Circuit Short To B+",
+   "fam": "",
+   "node": "ignition"
+  },
+  {
+   "code": "P1357",
+   "brand": "vag",
+   "ru": "Зажигание цилиндра 1: замыкание на массу",
+   "en": "Cylinder 1 Ignition Circuit Short To Ground",
+   "fam": "",
+   "node": "ignition"
+  },
+  {
+   "code": "P1358",
+   "brand": "vag",
+   "ru": "Зажигание цилиндра 2: обрыв",
+   "en": "Cylinder 2 Ignition Circuit Open",
+   "fam": "",
+   "node": "ignition"
+  },
+  {
+   "code": "P1359",
+   "brand": "vag",
+   "ru": "Зажигание цилиндра 2: замыкание на плюс",
+   "en": "Cylinder 2 Ignition Circuit Short To B+",
+   "fam": "",
+   "node": "ignition"
+  },
+  {
+   "code": "P1360",
+   "brand": "vag",
+   "ru": "Зажигание цилиндра 2: замыкание на массу",
+   "en": "Cylinder 2 Ignition Circuit Short To Ground",
+   "fam": "",
+   "node": "ignition"
+  },
+  {
+   "code": "P1361",
+   "brand": "vag",
+   "ru": "Зажигание цилиндра 3: обрыв",
+   "en": "Cylinder 3 Ignition Circuit Open",
+   "fam": "",
+   "node": "ignition"
+  },
+  {
+   "code": "P1362",
+   "brand": "vag",
+   "ru": "Зажигание цилиндра 3: замыкание на плюс",
+   "en": "Cylinder 3 Ignition Circuit Short To B+",
+   "fam": "",
+   "node": "ignition"
+  },
+  {
+   "code": "P1363",
+   "brand": "vag",
+   "ru": "Зажигание цилиндра 3: замыкание на массу",
+   "en": "Cylinder 3 Ignition Circuit Short To Ground",
+   "fam": "",
+   "node": "ignition"
+  },
+  {
+   "code": "P1364",
+   "brand": "vag",
+   "ru": "Зажигание цилиндра 4: обрыв",
+   "en": "Cylinder 4 Ignition Circuit Open",
+   "fam": "",
+   "node": "ignition"
+  },
+  {
+   "code": "P1365",
+   "brand": "vag",
+   "ru": "Зажигание цилиндра 4: замыкание на плюс",
+   "en": "Cylinder 4 Ignition Circuit Short To B+",
+   "fam": "",
+   "node": "ignition"
+  },
+  {
+   "code": "P1366",
+   "brand": "vag",
+   "ru": "Зажигание цилиндра 4: замыкание на массу",
+   "en": "Cylinder 4 Ignition Circuit Short To Ground",
+   "fam": "",
+   "node": "ignition"
+  },
+  {
+   "code": "P1367",
+   "brand": "vag",
+   "ru": "Зажигание цилиндра 5: обрыв",
+   "en": "Cylinder 5 Ignition Circuit Open",
+   "fam": "",
+   "node": "ignition"
+  },
+  {
+   "code": "P1368",
+   "brand": "vag",
+   "ru": "Зажигание цилиндра 5: замыкание на плюс",
+   "en": "Cylinder 5 Ignition Circuit Short To B+",
+   "fam": "",
+   "node": "ignition"
+  },
+  {
+   "code": "P1369",
+   "brand": "vag",
+   "ru": "Зажигание цилиндра 5: замыкание на массу",
+   "en": "Cylinder 5 Ignition Circuit Short To Ground",
+   "fam": "",
+   "node": "ignition"
+  },
+  {
+   "code": "P1370",
+   "brand": "vag",
+   "ru": "Зажигание цилиндра 6: обрыв",
+   "en": "Cylinder 6 Ignition Circuit Open",
+   "fam": "",
+   "node": "ignition"
+  },
+  {
+   "code": "P1371",
+   "brand": "vag",
+   "ru": "Зажигание цилиндра 6: замыкание на плюс",
+   "en": "Cylinder 6 Ignition Circuit Short To B+",
+   "fam": "",
+   "node": "ignition"
+  },
+  {
+   "code": "P1372",
+   "brand": "vag",
+   "ru": "Зажигание цилиндра 6: замыкание на массу",
+   "en": "Cylinder 6 Ignition Circuit Short To Ground",
+   "fam": "",
+   "node": "ignition"
+  },
+  {
+   "code": "P1373",
+   "brand": "vag",
+   "ru": "Зажигание цилиндра 7: обрыв",
+   "en": "Cylinder 7 Ignition Circuit Open",
+   "fam": "",
+   "node": "ignition"
+  },
+  {
+   "code": "P1374",
+   "brand": "vag",
+   "ru": "Зажигание цилиндра 7: замыкание на плюс",
+   "en": "Cylinder 7 Ignition Circuit Short To B+",
+   "fam": "",
+   "node": "ignition"
+  },
+  {
+   "code": "P1375",
+   "brand": "vag",
+   "ru": "Зажигание цилиндра 7: замыкание на массу",
+   "en": "Cylinder 7 Ignition Circuit Short To Ground",
+   "fam": "",
+   "node": "ignition"
+  },
+  {
+   "code": "P1376",
+   "brand": "vag",
+   "ru": "Зажигание цилиндра 8: обрыв",
+   "en": "Cylinder 8 Ignition Circuit Open",
+   "fam": "",
+   "node": "ignition"
+  },
+  {
+   "code": "P1377",
+   "brand": "vag",
+   "ru": "Зажигание цилиндра 8: замыкание на плюс",
+   "en": "Cylinder 8 Ignition Circuit Short To B+",
+   "fam": "",
+   "node": "ignition"
+  },
+  {
+   "code": "P1378",
+   "brand": "vag",
+   "ru": "Зажигание цилиндра 8: замыкание на массу",
+   "en": "Cylinder 8 Ignition Circuit Short To Ground",
+   "fam": "",
+   "node": "ignition"
+  },
+  {
+   "code": "P1386",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока: контроль детонации",
+   "en": "Internal Control Module Knock Control Error",
+   "fam": "",
+   "node": "internal control module knock control error"
+  },
+  {
+   "code": "P1387",
+   "brand": "vag",
+   "ru": "Внутренний датчик высоты (атмосферного давления) блока",
+   "en": "Control Unit Internal Altitude Sensor",
+   "fam": "",
+   "node": "control unit internal altitude"
+  },
+  {
+   "code": "P1388",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока: управление дросселем",
+   "en": "Control Unit Internal Throttle Control",
+   "fam": "",
+   "node": "control unit internal throttle"
+  },
+  {
+   "code": "P1396",
+   "brand": "vag",
+   "ru": "Датчик оборотов: пропущен зуб (задающий диск)",
+   "en": "Engine Speed Sensor Missing Tooth",
+   "fam": "",
+   "node": "engine speed sensor missing tooth"
+  },
+  {
+   "code": "P1397",
+   "brand": "vag",
+   "ru": "Адаптация задающего диска оборотов: достигнут предел",
+   "en": "Engine Speed Wheel Adaptation At Limit",
+   "fam": "",
+   "node": "engine speed wheel adaptation at limit"
+  },
+  {
+   "code": "P1398",
+   "brand": "vag",
+   "ru": "Сигнал оборотов двигателя: замыкание на массу",
+   "en": "Engine RPM Signal Short To Ground",
+   "fam": "",
+   "node": "engine rpm"
+  },
+  {
+   "code": "P1399",
+   "brand": "vag",
+   "ru": "Сигнал оборотов двигателя: замыкание на плюс",
+   "en": "Engine RPM Signal Short To B+",
+   "fam": "",
+   "node": "engine rpm"
+  },
+  {
+   "code": "P1400",
+   "brand": "vag",
+   "ru": "Клапан ЕГР: электрическая неисправность цепи",
+   "en": "EGR Valve Circuit Electrical Malfunction",
+   "fam": "",
+   "node": "ru:клапан егр"
+  },
+  {
+   "code": "P1402",
+   "brand": "vag",
+   "ru": "Клапан ЕГР: замыкание на плюс",
+   "en": "EGR Valve Circuit Short To B+",
+   "fam": "",
+   "node": "ru:клапан егр"
+  },
+  {
+   "code": "P1441",
+   "brand": "vag",
+   "ru": "Клапан ЕГР: обрыв или замыкание на массу",
+   "en": "EGR Valve Circuit Open Short To Ground",
+   "fam": "",
+   "node": "ru:клапан егр"
+  }
+ ]
+}

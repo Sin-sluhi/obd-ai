@@ -1,0 +1,352 @@
+{
+ "name": "sae_018",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "brake pressure sensor j",
+  "brake pressure sensor k",
+  "brake pressure sensor l",
+  "brake pressure sensor m",
+  "brake pressure sensor n",
+  "left front wheel speed sensor b",
+  "left front wheel speed sensor b correlation",
+  "left front wheel speed sensor b incorrect component installed",
+  "left rear wheel speed sensor b",
+  "left rear wheel speed sensor b correlation",
+  "left rear wheel speed sensor b incorrect component installed",
+  "right front wheel speed sensor b",
+  "right front wheel speed sensor b correlation",
+  "right front wheel speed sensor b incorrect component installed",
+  "right front wheel speed sensor bcircuit"
+ ],
+ "codes": [
+  {
+   "code": "C063D",
+   "brand": "",
+   "ru": "Датчик давления в тормозной системе J: обрыв цепи",
+   "en": "Brake Pressure Sensor J Circuit/Open",
+   "fam": "",
+   "node": "brake pressure sensor j"
+  },
+  {
+   "code": "C063E",
+   "brand": "",
+   "ru": "Датчик давления в тормозной системе J: высокий уровень сигнала в цепи",
+   "en": "Brake Pressure Sensor J Circuit High",
+   "fam": "",
+   "node": "brake pressure sensor j"
+  },
+  {
+   "code": "C063F",
+   "brand": "",
+   "ru": "Датчик давления в тормозной системе J: низкий уровень сигнала в цепи",
+   "en": "Brake Pressure Sensor J Circuit Low",
+   "fam": "",
+   "node": "brake pressure sensor j"
+  },
+  {
+   "code": "C0640",
+   "brand": "",
+   "ru": "Датчик давления в тормозной системе J: вне допустимого диапазона",
+   "en": "Brake Pressure Sensor J Range/Performance",
+   "fam": "",
+   "node": "brake pressure sensor j"
+  },
+  {
+   "code": "C0641",
+   "brand": "",
+   "ru": "Датчик давления в тормозной системе K: обрыв цепи",
+   "en": "Brake Pressure Sensor K Circuit/Open",
+   "fam": "",
+   "node": "brake pressure sensor k"
+  },
+  {
+   "code": "C0642",
+   "brand": "",
+   "ru": "Датчик давления в тормозной системе K: высокий уровень сигнала в цепи",
+   "en": "Brake Pressure Sensor K Circuit High",
+   "fam": "",
+   "node": "brake pressure sensor k"
+  },
+  {
+   "code": "C0643",
+   "brand": "",
+   "ru": "Датчик давления в тормозной системе K: низкий уровень сигнала в цепи",
+   "en": "Brake Pressure Sensor K Circuit Low",
+   "fam": "",
+   "node": "brake pressure sensor k"
+  },
+  {
+   "code": "C0644",
+   "brand": "",
+   "ru": "Датчик давления в тормозной системе K: вне допустимого диапазона",
+   "en": "Brake Pressure Sensor K Range/Performance",
+   "fam": "",
+   "node": "brake pressure sensor k"
+  },
+  {
+   "code": "C0645",
+   "brand": "",
+   "ru": "Датчик давления в тормозной системе L: обрыв цепи",
+   "en": "Brake Pressure Sensor L Circuit/Open",
+   "fam": "",
+   "node": "brake pressure sensor l"
+  },
+  {
+   "code": "C0646",
+   "brand": "",
+   "ru": "Датчик давления в тормозной системе L: высокий уровень сигнала в цепи",
+   "en": "Brake Pressure Sensor L Circuit High",
+   "fam": "",
+   "node": "brake pressure sensor l"
+  },
+  {
+   "code": "C0647",
+   "brand": "",
+   "ru": "Датчик давления в тормозной системе L: низкий уровень сигнала в цепи",
+   "en": "Brake Pressure Sensor L Circuit Low",
+   "fam": "",
+   "node": "brake pressure sensor l"
+  },
+  {
+   "code": "C0648",
+   "brand": "",
+   "ru": "Датчик давления в тормозной системе L: вне допустимого диапазона",
+   "en": "Brake Pressure Sensor L Range/Performance",
+   "fam": "",
+   "node": "brake pressure sensor l"
+  },
+  {
+   "code": "C0649",
+   "brand": "",
+   "ru": "Датчик давления в тормозной системе M: обрыв цепи",
+   "en": "Brake Pressure Sensor M Circuit/Open",
+   "fam": "",
+   "node": "brake pressure sensor m"
+  },
+  {
+   "code": "C064A",
+   "brand": "",
+   "ru": "Датчик давления в тормозной системе M: высокий уровень сигнала в цепи",
+   "en": "Brake Pressure Sensor M Circuit High",
+   "fam": "",
+   "node": "brake pressure sensor m"
+  },
+  {
+   "code": "C064B",
+   "brand": "",
+   "ru": "Датчик давления в тормозной системе M: низкий уровень сигнала в цепи",
+   "en": "Brake Pressure Sensor M Circuit Low",
+   "fam": "",
+   "node": "brake pressure sensor m"
+  },
+  {
+   "code": "C064C",
+   "brand": "",
+   "ru": "Датчик давления в тормозной системе M: вне допустимого диапазона",
+   "en": "Brake Pressure Sensor M Range/Performance",
+   "fam": "",
+   "node": "brake pressure sensor m"
+  },
+  {
+   "code": "C064D",
+   "brand": "",
+   "ru": "Датчик давления в тормозной системе N: обрыв цепи",
+   "en": "Brake Pressure Sensor N Circuit/Open",
+   "fam": "",
+   "node": "brake pressure sensor n"
+  },
+  {
+   "code": "C064E",
+   "brand": "",
+   "ru": "Датчик давления в тормозной системе N: высокий уровень сигнала в цепи",
+   "en": "Brake Pressure Sensor N Circuit High",
+   "fam": "",
+   "node": "brake pressure sensor n"
+  },
+  {
+   "code": "C064F",
+   "brand": "",
+   "ru": "Датчик давления в тормозной системе N: низкий уровень сигнала в цепи",
+   "en": "Brake Pressure Sensor N Circuit Low",
+   "fam": "",
+   "node": "brake pressure sensor n"
+  },
+  {
+   "code": "C0650",
+   "brand": "",
+   "ru": "Датчик давления в тормозной системе N: вне допустимого диапазона",
+   "en": "Brake Pressure Sensor N Range/Performance",
+   "fam": "",
+   "node": "brake pressure sensor n"
+  },
+  {
+   "code": "C0651",
+   "brand": "",
+   "ru": "Датчик скорости левого переднего колеса B: обрыв цепи",
+   "en": "Left Front Wheel Speed Sensor B Circuit/Open",
+   "fam": "",
+   "node": "left front wheel speed sensor b"
+  },
+  {
+   "code": "C0652",
+   "brand": "",
+   "ru": "Датчик скорости левого переднего колеса B: вне допустимого диапазона",
+   "en": "Left Front Wheel Speed Sensor B Range/Performance",
+   "fam": "",
+   "node": "left front wheel speed sensor b"
+  },
+  {
+   "code": "C0653",
+   "brand": "",
+   "ru": "Датчик скорости левого переднего колеса B: низкий уровень сигнала в цепи",
+   "en": "Left Front Wheel Speed Sensor B Circuit Low",
+   "fam": "",
+   "node": "left front wheel speed sensor b"
+  },
+  {
+   "code": "C0654",
+   "brand": "",
+   "ru": "Датчик скорости левого переднего колеса B: высокий уровень сигнала в цепи",
+   "en": "Left Front Wheel Speed Sensor B Circuit High",
+   "fam": "",
+   "node": "left front wheel speed sensor b"
+  },
+  {
+   "code": "C0655",
+   "brand": "",
+   "ru": "Датчик скорости левого переднего колеса B: прерывистый / нестабильный сигнал",
+   "en": "Left Front Wheel Speed Sensor B Intermittent/Erratic",
+   "fam": "",
+   "node": "left front wheel speed sensor b"
+  },
+  {
+   "code": "C0656",
+   "brand": "",
+   "ru": "Датчик скорости левого переднего колеса B: рассогласование показаний",
+   "en": "Left Front Wheel Speed Sensor B Correlation",
+   "fam": "",
+   "node": "left front wheel speed sensor b correlation"
+  },
+  {
+   "code": "C0657",
+   "brand": "",
+   "ru": "Датчик скорости левого переднего колеса B: установлен не тот компонент",
+   "en": "Left Front Wheel Speed Sensor B Incorrect Component Installed",
+   "fam": "",
+   "node": "left front wheel speed sensor b incorrect component installed"
+  },
+  {
+   "code": "C0658",
+   "brand": "",
+   "ru": "Датчик скорости правого переднего колеса B: обрыв цепи",
+   "en": "Right Front Wheel Speed Sensor B Circuit/Open",
+   "fam": "",
+   "node": "right front wheel speed sensor b"
+  },
+  {
+   "code": "C0659",
+   "brand": "",
+   "ru": "Датчик скорости правого переднего колеса B: вне допустимого диапазона",
+   "en": "Right Front Wheel Speed Sensor B Range/Performance",
+   "fam": "",
+   "node": "right front wheel speed sensor b"
+  },
+  {
+   "code": "C065A",
+   "brand": "",
+   "ru": "Датчик скорости правого переднего колеса B: низкий уровень сигнала в цепи",
+   "en": "Right Front Wheel Speed Sensor B Circuit Low",
+   "fam": "",
+   "node": "right front wheel speed sensor b"
+  },
+  {
+   "code": "C065C",
+   "brand": "",
+   "ru": "Датчик скорости правого переднего колеса B: прерывистый / нестабильный сигнал",
+   "en": "Right Front Wheel Speed Sensor B Intermittent/Erratic",
+   "fam": "",
+   "node": "right front wheel speed sensor b"
+  },
+  {
+   "code": "C065B",
+   "brand": "",
+   "ru": "Датчик скорости правого переднего колеса B: высокий уровень сигнала в цепи",
+   "en": "Right Front Wheel Speed Sensor BCircuit High",
+   "fam": "",
+   "node": "right front wheel speed sensor bcircuit"
+  },
+  {
+   "code": "C065D",
+   "brand": "",
+   "ru": "Датчик скорости правого переднего колеса B: рассогласование показаний",
+   "en": "Right Front Wheel Speed Sensor B Correlation",
+   "fam": "",
+   "node": "right front wheel speed sensor b correlation"
+  },
+  {
+   "code": "C065E",
+   "brand": "",
+   "ru": "Датчик скорости правого переднего колеса B: установлен не тот компонент",
+   "en": "Right Front Wheel Speed Sensor B Incorrect Component Installed",
+   "fam": "",
+   "node": "right front wheel speed sensor b incorrect component installed"
+  },
+  {
+   "code": "C065F",
+   "brand": "",
+   "ru": "Датчик скорости левого заднего колеса B: обрыв цепи",
+   "en": "Left Rear Wheel Speed Sensor B Circuit/Open",
+   "fam": "",
+   "node": "left rear wheel speed sensor b"
+  },
+  {
+   "code": "C0660",
+   "brand": "",
+   "ru": "Датчик скорости левого заднего колеса B: вне допустимого диапазона",
+   "en": "Left Rear Wheel Speed Sensor B Range/Performance",
+   "fam": "",
+   "node": "left rear wheel speed sensor b"
+  },
+  {
+   "code": "C0661",
+   "brand": "",
+   "ru": "Датчик скорости левого заднего колеса B: низкий уровень сигнала в цепи",
+   "en": "Left Rear Wheel Speed Sensor B Circuit Low",
+   "fam": "",
+   "node": "left rear wheel speed sensor b"
+  },
+  {
+   "code": "C0662",
+   "brand": "",
+   "ru": "Датчик скорости левого заднего колеса B: высокий уровень сигнала в цепи",
+   "en": "Left Rear Wheel Speed Sensor B Circuit High",
+   "fam": "",
+   "node": "left rear wheel speed sensor b"
+  },
+  {
+   "code": "C0663",
+   "brand": "",
+   "ru": "Датчик скорости левого заднего колеса B: прерывистый / нестабильный сигнал",
+   "en": "Left Rear Wheel Speed Sensor B Intermittent/Erratic",
+   "fam": "",
+   "node": "left rear wheel speed sensor b"
+  },
+  {
+   "code": "C0664",
+   "brand": "",
+   "ru": "Датчик скорости левого заднего колеса B: рассогласование показаний",
+   "en": "Left Rear Wheel Speed Sensor B Correlation",
+   "fam": "",
+   "node": "left rear wheel speed sensor b correlation"
+  },
+  {
+   "code": "C0665",
+   "brand": "",
+   "ru": "Датчик скорости левого заднего колеса B: установлен не тот компонент",
+   "en": "Left Rear Wheel Speed Sensor B Incorrect Component Installed",
+   "fam": "",
+   "node": "left rear wheel speed sensor b incorrect component installed"
+  }
+ ]
+}

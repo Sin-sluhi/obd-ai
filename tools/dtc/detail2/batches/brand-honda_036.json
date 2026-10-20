@@ -1,0 +1,389 @@
+{
+ "name": "brand-honda_036",
+ "series": "brand",
+ "brand": "honda",
+ "nodes": [
+  "accelerator position",
+  "accelerator position sensors 1 & 2 improper correlation",
+  "closed throttle position insufficient",
+  "fam:afr",
+  "fam:alternator",
+  "fam:lambda_heater",
+  "fam:map",
+  "fam:vvt_perf",
+  "ho2s11",
+  "ho2s11 label",
+  "misfire",
+  "random misfire",
+  "ru:датчик атмосферного давления",
+  "spark plug voltage detection",
+  "spark plug voltage detection module reset",
+  "throttle position higher than expected",
+  "throttle position insufficient",
+  "throttle position lower than expected",
+  "throttle vent control",
+  "vtec system"
+ ],
+ "codes": [
+  {
+   "code": "P1106",
+   "brand": "honda",
+   "ru": "Датчик атмосферного давления: выход за диапазон",
+   "en": "BARO Circuit Range Performance Malfunction",
+   "fam": "",
+   "node": "ru:датчик атмосферного давления"
+  },
+  {
+   "code": "P1107",
+   "brand": "honda",
+   "ru": "Датчик атмосферного давления: низкий сигнал",
+   "en": "BARO Circuit Low Input",
+   "fam": "",
+   "node": "ru:датчик атмосферного давления"
+  },
+  {
+   "code": "P1108",
+   "brand": "honda",
+   "ru": "Датчик атмосферного давления: высокий сигнал",
+   "en": "BARO Circuit High Input",
+   "fam": "",
+   "node": "ru:датчик атмосферного давления"
+  },
+  {
+   "code": "P1121",
+   "brand": "honda",
+   "ru": "Положение дросселя ниже ожидаемого",
+   "en": "Throttle Position Lower Than Expected",
+   "fam": "",
+   "node": "throttle position lower than expected"
+  },
+  {
+   "code": "P1122",
+   "brand": "honda",
+   "ru": "Положение дросселя выше ожидаемого",
+   "en": "Throttle Position Higher Than Expected",
+   "fam": "",
+   "node": "throttle position higher than expected"
+  },
+  {
+   "code": "P1128",
+   "brand": "honda",
+   "ru": "ДАД показывает давление ниже ожидаемого",
+   "en": "",
+   "fam": "map",
+   "node": "fam:map"
+  },
+  {
+   "code": "P1129",
+   "brand": "honda",
+   "ru": "ДАД показывает давление выше ожидаемого",
+   "en": "",
+   "fam": "map",
+   "node": "fam:map"
+  },
+  {
+   "code": "P1157",
+   "brand": "honda",
+   "ru": "Широкополосный лямбда-зонд: вне диапазона",
+   "en": "",
+   "fam": "afr",
+   "node": "fam:afr"
+  },
+  {
+   "code": "P1162",
+   "brand": "honda",
+   "ru": "Лямбда-зонд 1 (ряд 1): неисправность цепи",
+   "en": "HO2S11 Circuit Fault Bank 1 Sensor 1",
+   "fam": "",
+   "node": "ho2s11"
+  },
+  {
+   "code": "P1163",
+   "brand": "honda",
+   "ru": "Лямбда-зонд 1 (ряд 1): медленный отклик",
+   "en": "HO2S11 Slow Response Bank 1 Sensor 1",
+   "fam": "",
+   "node": "ho2s11"
+  },
+  {
+   "code": "P1164",
+   "brand": "honda",
+   "ru": "Лямбда-зонд 1 (ряд 1): неисправность цепи",
+   "en": "HO2S11 Circuit Fault Bank 1 Sensor 1",
+   "fam": "",
+   "node": "ho2s11"
+  },
+  {
+   "code": "P1165",
+   "brand": "honda",
+   "ru": "Лямбда-зонд 1 (ряд 1): медленный отклик",
+   "en": "HO2S11 Slow Response Bank 1 Sensor 1",
+   "fam": "",
+   "node": "ho2s11"
+  },
+  {
+   "code": "P1166",
+   "brand": "honda",
+   "ru": "Широкополосный лямбда-зонд: подогрев, обрыв",
+   "en": "",
+   "fam": "lambda_heater",
+   "node": "fam:lambda_heater"
+  },
+  {
+   "code": "P1167",
+   "brand": "honda",
+   "ru": "Широкополосный лямбда-зонд: подогрев не работает",
+   "en": "",
+   "fam": "lambda_heater",
+   "node": "fam:lambda_heater"
+  },
+  {
+   "code": "P1168",
+   "brand": "honda",
+   "ru": "Лямбда-зонд 1 (ряд 1): низкое напряжение в цепи метки",
+   "en": "HO2S11 Label Circuit Low Voltage Fault Bank 1 Sensor 1",
+   "fam": "",
+   "node": "ho2s11 label"
+  },
+  {
+   "code": "P1169",
+   "brand": "honda",
+   "ru": "Лямбда-зонд 1 (ряд 1): высокое напряжение в цепи метки",
+   "en": "HO2S11 Label Circuit High Voltage Fault Bank 1 Sensor 1",
+   "fam": "",
+   "node": "ho2s11 label"
+  },
+  {
+   "code": "P1201",
+   "brand": "honda",
+   "ru": "Пропуски воспламенения, цилиндр 1",
+   "en": "Cylinder 1 Misfire",
+   "fam": "",
+   "node": "misfire"
+  },
+  {
+   "code": "P1202",
+   "brand": "honda",
+   "ru": "Пропуски воспламенения, цилиндр 2",
+   "en": "Cylinder 2 Misfire",
+   "fam": "",
+   "node": "misfire"
+  },
+  {
+   "code": "P1203",
+   "brand": "honda",
+   "ru": "Пропуски воспламенения, цилиндр 3",
+   "en": "Cylinder 3 Misfire",
+   "fam": "",
+   "node": "misfire"
+  },
+  {
+   "code": "P1204",
+   "brand": "honda",
+   "ru": "Пропуски воспламенения, цилиндр 4",
+   "en": "Cylinder 4 Misfire",
+   "fam": "",
+   "node": "misfire"
+  },
+  {
+   "code": "P1205",
+   "brand": "honda",
+   "ru": "Пропуски воспламенения, цилиндр 5",
+   "en": "Cylinder 5 Misfire",
+   "fam": "",
+   "node": "misfire"
+  },
+  {
+   "code": "P1206",
+   "brand": "honda",
+   "ru": "Пропуски воспламенения, цилиндр 6",
+   "en": "Cylinder 6 Misfire",
+   "fam": "",
+   "node": "misfire"
+  },
+  {
+   "code": "P1301",
+   "brand": "honda",
+   "ru": "Пропуски воспламенения, цилиндр 1",
+   "en": "Cylinder 1 Misfire",
+   "fam": "",
+   "node": "misfire"
+  },
+  {
+   "code": "P1302",
+   "brand": "honda",
+   "ru": "Пропуски воспламенения, цилиндр 2",
+   "en": "Cylinder 2 Misfire",
+   "fam": "",
+   "node": "misfire"
+  },
+  {
+   "code": "P1303",
+   "brand": "honda",
+   "ru": "Пропуски воспламенения, цилиндр 3",
+   "en": "Cylinder 3 Misfire",
+   "fam": "",
+   "node": "misfire"
+  },
+  {
+   "code": "P1304",
+   "brand": "honda",
+   "ru": "Пропуски воспламенения, цилиндр 4",
+   "en": "Cylinder 4 Misfire",
+   "fam": "",
+   "node": "misfire"
+  },
+  {
+   "code": "P1305",
+   "brand": "honda",
+   "ru": "Пропуски воспламенения, цилиндр 5",
+   "en": "Cylinder 5 Misfire",
+   "fam": "",
+   "node": "misfire"
+  },
+  {
+   "code": "P1306",
+   "brand": "honda",
+   "ru": "Пропуски воспламенения, цилиндр 6",
+   "en": "Cylinder 6 Misfire",
+   "fam": "",
+   "node": "misfire"
+  },
+  {
+   "code": "P1241",
+   "brand": "honda",
+   "ru": "Мотор управления дросселем, цепь 1: неисправность",
+   "en": "Throttle Vent Control Motor Circuit 1 Malfunction",
+   "fam": "",
+   "node": "throttle vent control"
+  },
+  {
+   "code": "P1242",
+   "brand": "honda",
+   "ru": "Мотор управления дросселем, цепь 2: неисправность",
+   "en": "Throttle Vent Control Motor Circuit 2 Malfunction",
+   "fam": "",
+   "node": "throttle vent control"
+  },
+  {
+   "code": "P1243",
+   "brand": "honda",
+   "ru": "Недостаточное открытие дросселя",
+   "en": "Throttle Position Insufficient",
+   "fam": "",
+   "node": "throttle position insufficient"
+  },
+  {
+   "code": "P1244",
+   "brand": "honda",
+   "ru": "Недостаточное закрытие дросселя",
+   "en": "Closed Throttle Position Insufficient",
+   "fam": "",
+   "node": "closed throttle position insufficient"
+  },
+  {
+   "code": "P1246",
+   "brand": "honda",
+   "ru": "Датчик педали газа 1: неисправность цепи",
+   "en": "Accelerator Position Sensor 1 Circuit Malfunction",
+   "fam": "",
+   "node": "accelerator position"
+  },
+  {
+   "code": "P1247",
+   "brand": "honda",
+   "ru": "Датчик педали газа 2: неисправность цепи",
+   "en": "Accelerator Position Sensor 2 Circuit Malfunction",
+   "fam": "",
+   "node": "accelerator position"
+  },
+  {
+   "code": "P1248",
+   "brand": "honda",
+   "ru": "Датчики педали газа 1 и 2: не согласуются",
+   "en": "Accelerator Position Sensors 1 & 2 Improper Correlation",
+   "fam": "",
+   "node": "accelerator position sensors 1 & 2 improper correlation"
+  },
+  {
+   "code": "P1253",
+   "brand": "honda",
+   "ru": "Система VTEC: неисправность цепи",
+   "en": "VTEC System Circuit Fault",
+   "fam": "",
+   "node": "vtec system"
+  },
+  {
+   "code": "P1279",
+   "brand": "honda",
+   "ru": "Система VTEC (передний ряд, ряд 2): неисправность",
+   "en": "VTEC System Malfunction Front Bank 2",
+   "fam": "",
+   "node": "vtec system"
+  },
+  {
+   "code": "P1259",
+   "brand": "honda",
+   "ru": "Система VTEC: неисправность",
+   "en": "",
+   "fam": "vvt_perf",
+   "node": "fam:vvt_perf"
+  },
+  {
+   "code": "P1297",
+   "brand": "honda",
+   "ru": "Датчик электрической нагрузки (ELD): низкий уровень",
+   "en": "",
+   "fam": "alternator",
+   "node": "fam:alternator"
+  },
+  {
+   "code": "P1298",
+   "brand": "honda",
+   "ru": "Датчик электрической нагрузки (ELD): высокий уровень",
+   "en": "",
+   "fam": "alternator",
+   "node": "fam:alternator"
+  },
+  {
+   "code": "P1300",
+   "brand": "honda",
+   "ru": "Случайные пропуски воспламенения",
+   "en": "Random Misfire",
+   "fam": "",
+   "node": "random misfire"
+  },
+  {
+   "code": "P1316",
+   "brand": "honda",
+   "ru": "Цепь контроля напряжения свечей (передний ряд): неисправность",
+   "en": "Spark Plug Voltage Detection Circuit Malfunction Front Bank",
+   "fam": "",
+   "node": "spark plug voltage detection"
+  },
+  {
+   "code": "P1317",
+   "brand": "honda",
+   "ru": "Цепь контроля напряжения свечей (задний ряд): неисправность",
+   "en": "Spark Plug Voltage Detection Circuit Malfunction Rear Bank",
+   "fam": "",
+   "node": "spark plug voltage detection"
+  },
+  {
+   "code": "P1318",
+   "brand": "honda",
+   "ru": "Сброс модуля контроля напряжения свечей (передний ряд): неисправность",
+   "en": "Spark Plug Voltage Detection Module Reset Circuit Malfunction Front Bank",
+   "fam": "",
+   "node": "spark plug voltage detection module reset"
+  },
+  {
+   "code": "P1319",
+   "brand": "honda",
+   "ru": "Сброс модуля контроля напряжения свечей (задний ряд): неисправность",
+   "en": "Spark Plug Voltage Detection Module Reset Circuit Malfunction Rear Bank",
+   "fam": "",
+   "node": "spark plug voltage detection module reset"
+  }
+ ]
+}

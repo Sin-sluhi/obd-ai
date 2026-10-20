@@ -1,0 +1,309 @@
+{
+ "name": "sae_140",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "nox sensor heater sense",
+  "o2 sensor positive current",
+  "o2 sensor reference voltage",
+  "ru:датчик nox"
+ ],
+ "codes": [
+  {
+   "code": "P229E",
+   "brand": "",
+   "ru": "Датчик NOx: цепь (банк 1, датчик 2)",
+   "en": "NOx Sensor Circuit Bank 1 Sensor 2",
+   "fam": "",
+   "node": "ru:датчик nox"
+  },
+  {
+   "code": "P229F",
+   "brand": "",
+   "ru": "Датчик NOx: сигнал вне диапазона (банк 1, датчик 2)",
+   "en": "NOx Sensor Circuit Range/Performance Bank 1 Sensor 2",
+   "fam": "",
+   "node": "ru:датчик nox"
+  },
+  {
+   "code": "P22A0",
+   "brand": "",
+   "ru": "Датчик NOx: низкий уровень сигнала в цепи (банк 1, датчик 2)",
+   "en": "NOx Sensor Circuit Low Bank 1 Sensor 2",
+   "fam": "",
+   "node": "ru:датчик nox"
+  },
+  {
+   "code": "P22A1",
+   "brand": "",
+   "ru": "Датчик NOx: высокий уровень сигнала в цепи (банк 1, датчик 2)",
+   "en": "NOx Sensor Circuit High Bank 1 Sensor 2",
+   "fam": "",
+   "node": "ru:датчик nox"
+  },
+  {
+   "code": "P22A2",
+   "brand": "",
+   "ru": "Датчик NOx: прерывистый сигнал в цепи (банк 1, датчик 2)",
+   "en": "NOx Sensor Circuit Intermittent Bank 1 Sensor 2",
+   "fam": "",
+   "node": "ru:датчик nox"
+  },
+  {
+   "code": "P23AC",
+   "brand": "",
+   "ru": "Датчик NOx: цепь (банк 1, датчик 3)",
+   "en": "NOx Sensor Circuit Bank 1 Sensor 3",
+   "fam": "",
+   "node": "ru:датчик nox"
+  },
+  {
+   "code": "P23AD",
+   "brand": "",
+   "ru": "Датчик NOx: сигнал вне диапазона (банк 1, датчик 3)",
+   "en": "NOx Sensor Circuit Range/Performance Bank 1 Sensor 3",
+   "fam": "",
+   "node": "ru:датчик nox"
+  },
+  {
+   "code": "P23AE",
+   "brand": "",
+   "ru": "Датчик NOx: низкий уровень сигнала в цепи (банк 1, датчик 3)",
+   "en": "NOx Sensor Circuit Low Bank 1 Sensor 3",
+   "fam": "",
+   "node": "ru:датчик nox"
+  },
+  {
+   "code": "P23AF",
+   "brand": "",
+   "ru": "Датчик NOx: высокий уровень сигнала в цепи (банк 1, датчик 3)",
+   "en": "NOx Sensor Circuit High Bank 1 Sensor 3",
+   "fam": "",
+   "node": "ru:датчик nox"
+  },
+  {
+   "code": "P23B0",
+   "brand": "",
+   "ru": "Датчик NOx: прерывистый сигнал в цепи (банк 1, датчик 3)",
+   "en": "NOx Sensor Circuit Intermittent Bank 1 Sensor 3",
+   "fam": "",
+   "node": "ru:датчик nox"
+  },
+  {
+   "code": "P22A6",
+   "brand": "",
+   "ru": "Подогрев датчика NOx: цепь обратной связи (банк 1, датчик 2)",
+   "en": "NOx Sensor Heater Sense Circuit Bank 1 Sensor 2",
+   "fam": "",
+   "node": "nox sensor heater sense"
+  },
+  {
+   "code": "P22A7",
+   "brand": "",
+   "ru": "Подогрев датчика NOx: цепь обратной связи вне диапазона (банк 1, датчик 2)",
+   "en": "NOx Sensor Heater Sense Circuit Range/Performance Bank 1 Sensor 2",
+   "fam": "",
+   "node": "nox sensor heater sense"
+  },
+  {
+   "code": "P22A8",
+   "brand": "",
+   "ru": "Подогрев датчика NOx: низкий уровень в цепи обратной связи (банк 1, датчик 2)",
+   "en": "NOx Sensor Heater Sense Circuit Low Bank 1 Sensor 2",
+   "fam": "",
+   "node": "nox sensor heater sense"
+  },
+  {
+   "code": "P22A9",
+   "brand": "",
+   "ru": "Подогрев датчика NOx: высокий уровень в цепи обратной связи (банк 1, датчик 2)",
+   "en": "NOx Sensor Heater Sense Circuit High Bank 1 Sensor 2",
+   "fam": "",
+   "node": "nox sensor heater sense"
+  },
+  {
+   "code": "P22AA",
+   "brand": "",
+   "ru": "Подогрев датчика NOx: прерывистый сигнал в цепи обратной связи (банк 1, датчик 2)",
+   "en": "NOx Sensor Heater Sense Circuit Intermittent Bank 1 Sensor 2",
+   "fam": "",
+   "node": "nox sensor heater sense"
+  },
+  {
+   "code": "P23B4",
+   "brand": "",
+   "ru": "Подогрев датчика NOx: цепь обратной связи (банк 1, датчик 3)",
+   "en": "NOx Sensor Heater Sense Circuit Bank 1 Sensor 3",
+   "fam": "",
+   "node": "nox sensor heater sense"
+  },
+  {
+   "code": "P23B5",
+   "brand": "",
+   "ru": "Подогрев датчика NOx: цепь обратной связи вне диапазона (банк 1, датчик 3)",
+   "en": "NOx Sensor Heater Sense Circuit Range/Performance Bank 1 Sensor 3",
+   "fam": "",
+   "node": "nox sensor heater sense"
+  },
+  {
+   "code": "P23B8",
+   "brand": "",
+   "ru": "Подогрев датчика NOx: низкий уровень в цепи обратной связи (банк 1, датчик 3)",
+   "en": "NOx Sensor Heater Sense Circuit Low Bank 1 Sensor 3",
+   "fam": "",
+   "node": "nox sensor heater sense"
+  },
+  {
+   "code": "P23B9",
+   "brand": "",
+   "ru": "Подогрев датчика NOx: высокий уровень в цепи обратной связи (банк 1, датчик 3)",
+   "en": "NOx Sensor Heater Sense Circuit High Bank 1 Sensor 3",
+   "fam": "",
+   "node": "nox sensor heater sense"
+  },
+  {
+   "code": "P23BA",
+   "brand": "",
+   "ru": "Подогрев датчика NOx: прерывистый сигнал в цепи обратной связи (банк 1, датчик 3)",
+   "en": "NOx Sensor Heater Sense Circuit Intermittent Bank 1 Sensor 3",
+   "fam": "",
+   "node": "nox sensor heater sense"
+  },
+  {
+   "code": "P22AB",
+   "brand": "",
+   "ru": "Лямбда-зонд, положительный ток: обрыв цепи управления (банк 1, датчик 2)",
+   "en": "O2 Sensor Positive Current Control Circuit/Open Bank 1 Sensor 2",
+   "fam": "",
+   "node": "o2 sensor positive current"
+  },
+  {
+   "code": "P22AC",
+   "brand": "",
+   "ru": "Лямбда-зонд, положительный ток: низкий уровень в цепи управления (банк 1, датчик 2)",
+   "en": "O2 Sensor Positive Current Control Circuit Low Bank 1 Sensor 2",
+   "fam": "",
+   "node": "o2 sensor positive current"
+  },
+  {
+   "code": "P22AD",
+   "brand": "",
+   "ru": "Лямбда-зонд, положительный ток: высокий уровень в цепи управления (банк 1, датчик 2)",
+   "en": "O2 Sensor Positive Current Control Circuit High Bank 1 Sensor 2",
+   "fam": "",
+   "node": "o2 sensor positive current"
+  },
+  {
+   "code": "P22B8",
+   "brand": "",
+   "ru": "Лямбда-зонд, положительный ток: обрыв цепи управления (банк 2, датчик 2)",
+   "en": "O2 Sensor Positive Current Control Circuit/Open Bank 2 Sensor 2",
+   "fam": "",
+   "node": "o2 sensor positive current"
+  },
+  {
+   "code": "P22B9",
+   "brand": "",
+   "ru": "Лямбда-зонд, положительный ток: низкий уровень в цепи управления (банк 2, датчик 2)",
+   "en": "O2 Sensor Positive Current Control Circuit Low Bank 2 Sensor 2",
+   "fam": "",
+   "node": "o2 sensor positive current"
+  },
+  {
+   "code": "P22BA",
+   "brand": "",
+   "ru": "Лямбда-зонд, положительный ток: высокий уровень в цепи управления (банк 2, датчик 2)",
+   "en": "O2 Sensor Positive Current Control Circuit High Bank 2 Sensor 2",
+   "fam": "",
+   "node": "o2 sensor positive current"
+  },
+  {
+   "code": "P2A38",
+   "brand": "",
+   "ru": "Лямбда-зонд, положительный ток: обрыв цепи управления (банк 1, датчик 3)",
+   "en": "O2 Sensor Positive Current Control Circuit/Open Bank 1 Sensor 3",
+   "fam": "",
+   "node": "o2 sensor positive current"
+  },
+  {
+   "code": "P2A39",
+   "brand": "",
+   "ru": "Лямбда-зонд, положительный ток: низкий уровень в цепи управления (банк 1, датчик 3)",
+   "en": "O2 Sensor Positive Current Control Circuit Low Bank 1 Sensor 3",
+   "fam": "",
+   "node": "o2 sensor positive current"
+  },
+  {
+   "code": "P2A3A",
+   "brand": "",
+   "ru": "Лямбда-зонд, положительный ток: высокий уровень в цепи управления (банк 1, датчик 3)",
+   "en": "O2 Sensor Positive Current Control Circuit High Bank 1 Sensor 3",
+   "fam": "",
+   "node": "o2 sensor positive current"
+  },
+  {
+   "code": "P22AE",
+   "brand": "",
+   "ru": "Лямбда-зонд, опорное напряжение: обрыв цепи (банк 1, датчик 2)",
+   "en": "O2 Sensor Reference Voltage Circuit/Open Bank 1 Sensor 2",
+   "fam": "",
+   "node": "o2 sensor reference voltage"
+  },
+  {
+   "code": "P22AF",
+   "brand": "",
+   "ru": "Лямбда-зонд, опорное напряжение: работа нарушена (банк 1, датчик 2)",
+   "en": "O2 Sensor Reference Voltage Performance Bank 1 Sensor 2",
+   "fam": "",
+   "node": "o2 sensor reference voltage"
+  },
+  {
+   "code": "P22B0",
+   "brand": "",
+   "ru": "Лямбда-зонд, опорное напряжение: низкий уровень сигнала в цепи (банк 1, датчик 2)",
+   "en": "O2 Sensor Reference Voltage Circuit Low Bank 1 Sensor 2",
+   "fam": "",
+   "node": "o2 sensor reference voltage"
+  },
+  {
+   "code": "P22B1",
+   "brand": "",
+   "ru": "Лямбда-зонд, опорное напряжение: высокий уровень сигнала в цепи (банк 1, датчик 2)",
+   "en": "O2 Sensor Reference Voltage Circuit High Bank 1 Sensor 2",
+   "fam": "",
+   "node": "o2 sensor reference voltage"
+  },
+  {
+   "code": "P22BB",
+   "brand": "",
+   "ru": "Лямбда-зонд, опорное напряжение: обрыв цепи (банк 2, датчик 2)",
+   "en": "O2 Sensor Reference Voltage Circuit/Open Bank 2 Sensor 2",
+   "fam": "",
+   "node": "o2 sensor reference voltage"
+  },
+  {
+   "code": "P22BC",
+   "brand": "",
+   "ru": "Лямбда-зонд, опорное напряжение: работа нарушена (банк 2, датчик 2)",
+   "en": "O2 Sensor Reference Voltage Performance Bank 2 Sensor 2",
+   "fam": "",
+   "node": "o2 sensor reference voltage"
+  },
+  {
+   "code": "P22BD",
+   "brand": "",
+   "ru": "Лямбда-зонд, опорное напряжение: низкий уровень сигнала в цепи (банк 2, датчик 2)",
+   "en": "O2 Sensor Reference Voltage Circuit Low Bank 2 Sensor 2",
+   "fam": "",
+   "node": "o2 sensor reference voltage"
+  },
+  {
+   "code": "P22BE",
+   "brand": "",
+   "ru": "Лямбда-зонд, опорное напряжение: высокий уровень сигнала в цепи (банк 2, датчик 2)",
+   "en": "O2 Sensor Reference Voltage Circuit High Bank 2 Sensor 2",
+   "fam": "",
+   "node": "o2 sensor reference voltage"
+  }
+ ]
+}

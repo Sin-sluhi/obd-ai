@@ -1,0 +1,408 @@
+{
+ "name": "brand-mazda_048",
+ "series": "brand",
+ "brand": "mazda",
+ "nodes": [
+  "air mixture",
+  "anti theft system",
+  "calibration resistor out of",
+  "camshaft position timing",
+  "control sleeve",
+  "dpfe sensor upstream hose off or plugged",
+  "ecm pcm a d converter",
+  "egr boost",
+  "egr valve position",
+  "engine rpm or vehicle speed limit reached",
+  "fuel pump",
+  "fuel pump control out",
+  "fuel shut off",
+  "ignition coil a primary",
+  "ignition coil a secondary",
+  "ignition coil b primary",
+  "ignition coil b secondary",
+  "ignition coil c primary",
+  "ignition coil c secondary",
+  "ignition coil primary",
+  "ignition coil secondary",
+  "ignition diagnostic monitor",
+  "ignition switch start",
+  "injection pump timing actuator",
+  "injection timing piston position",
+  "injector driver module failure",
+  "mileage",
+  "misfire detection monitor",
+  "no cmp or sgc",
+  "octane adjust shorting bar out or",
+  "pressure regulator control",
+  "pump speed",
+  "ru:датчик перепада давления егр (dpfe)",
+  "ru:сигнал spout (угол зажигания) потерян или вне диапазона",
+  "start injector",
+  "tp controlled",
+  "traction control",
+  "traction control system",
+  "turbo boost pressure not detected"
+ ],
+ "codes": [
+  {
+   "code": "P1182",
+   "brand": "mazda",
+   "ru": "Клапан отсечки топлива: цепь",
+   "en": "Fuel Shut Off Solenoid Circuit",
+   "fam": "",
+   "node": "fuel shut off"
+  },
+  {
+   "code": "P1189",
+   "brand": "mazda",
+   "ru": "Сигнал оборотов ТНВД",
+   "en": "Pump Speed Signal",
+   "fam": "",
+   "node": "pump speed"
+  },
+  {
+   "code": "P1190",
+   "brand": "mazda",
+   "ru": "Калибровочный резистор вне диапазона",
+   "en": "Calibration Resistor Out Of Range",
+   "fam": "",
+   "node": "calibration resistor out of"
+  },
+  {
+   "code": "P1191",
+   "brand": "mazda",
+   "ru": "Цепь управления по положению дросселя",
+   "en": "TP Controlled Circuit",
+   "fam": "",
+   "node": "tp controlled"
+  },
+  {
+   "code": "P1194",
+   "brand": "mazda",
+   "ru": "Блок двигателя: АЦП",
+   "en": "ECM PCM A D Converter",
+   "fam": "",
+   "node": "ecm pcm a d converter"
+  },
+  {
+   "code": "P1195",
+   "brand": "mazda",
+   "ru": "Датчик наддува / ЕГР: цепь",
+   "en": "EGR Boost Sensor Circuit",
+   "fam": "",
+   "node": "egr boost"
+  },
+  {
+   "code": "P1196",
+   "brand": "mazda",
+   "ru": "Замок зажигания, цепь «Пуск»",
+   "en": "Ignition Switch Start Circuit",
+   "fam": "",
+   "node": "ignition switch start"
+  },
+  {
+   "code": "P1197",
+   "brand": "mazda",
+   "ru": "Выключатель пробега: цепь",
+   "en": "Mileage Switch Circuit",
+   "fam": "",
+   "node": "mileage"
+  },
+  {
+   "code": "P1213",
+   "brand": "mazda",
+   "ru": "Пусковая форсунка: цепь",
+   "en": "Start Injector Circuit",
+   "fam": "",
+   "node": "start injector"
+  },
+  {
+   "code": "P1221",
+   "brand": "mazda",
+   "ru": "Противобуксовочная система",
+   "en": "Traction Control System",
+   "fam": "",
+   "node": "traction control system"
+  },
+  {
+   "code": "P1222",
+   "brand": "mazda",
+   "ru": "Выход противобуксовочной системы: цепь",
+   "en": "Traction Control Output Circuit",
+   "fam": "",
+   "node": "traction control"
+  },
+  {
+   "code": "P1226",
+   "brand": "mazda",
+   "ru": "Датчик регулирующей втулки ТНВД: цепь",
+   "en": "Control Sleeve Sensor Circuit",
+   "fam": "",
+   "node": "control sleeve"
+  },
+  {
+   "code": "P1279",
+   "brand": "mazda",
+   "ru": "Датчик регулирующей втулки ТНВД: выход за диапазон",
+   "en": "Control Sleeve Sensor Circuit Range Performance",
+   "fam": "",
+   "node": "control sleeve"
+  },
+  {
+   "code": "P1235",
+   "brand": "mazda",
+   "ru": "Управление топливным насосом: цепь",
+   "en": "Fuel Pump Control Circuit",
+   "fam": "",
+   "node": "fuel pump"
+  },
+  {
+   "code": "P1236",
+   "brand": "mazda",
+   "ru": "Управление топливным насосом: вне диапазона",
+   "en": "Fuel Pump Control Out Range",
+   "fam": "",
+   "node": "fuel pump control out"
+  },
+  {
+   "code": "P1248",
+   "brand": "mazda",
+   "ru": "Давление наддува не обнаружено",
+   "en": "Turbo Boost Pressure Not Detected",
+   "fam": "",
+   "node": "turbo boost pressure not detected"
+  },
+  {
+   "code": "P1250",
+   "brand": "mazda",
+   "ru": "Клапан регулятора давления: цепь",
+   "en": "Pressure Regulator Control Solenoid Circuit",
+   "fam": "",
+   "node": "pressure regulator control"
+  },
+  {
+   "code": "P1252",
+   "brand": "mazda",
+   "ru": "Клапан регулятора давления 2: неисправность цепи",
+   "en": "Pressure Regulator Control Solenoid 2 Circuit Malfunction",
+   "fam": "",
+   "node": "pressure regulator control"
+  },
+  {
+   "code": "P1251",
+   "brand": "mazda",
+   "ru": "Клапан смешивания воздуха: цепь",
+   "en": "Air Mixture Solenoid Circuit",
+   "fam": "",
+   "node": "air mixture"
+  },
+  {
+   "code": "P1260",
+   "brand": "mazda",
+   "ru": "Сработала противоугонная система — двигатель заблокирован",
+   "en": "Anti-Theft System Signal Detected Engine Disabled",
+   "fam": "",
+   "node": "anti theft system"
+  },
+  {
+   "code": "P1270",
+   "brand": "mazda",
+   "ru": "Достигнут предел оборотов или скорости",
+   "en": "Engine RPM or Vehicle Speed Limit Reached",
+   "fam": "",
+   "node": "engine rpm or vehicle speed limit reached"
+  },
+  {
+   "code": "P1298",
+   "brand": "mazda",
+   "ru": "Неисправность драйвера форсунок",
+   "en": "Injector Driver Module Failure",
+   "fam": "",
+   "node": "injector driver module failure"
+  },
+  {
+   "code": "P1309",
+   "brand": "mazda",
+   "ru": "Контроль пропусков воспламенения",
+   "en": "Misfire Detection Monitor",
+   "fam": "",
+   "node": "misfire detection monitor"
+  },
+  {
+   "code": "P1312",
+   "brand": "mazda",
+   "ru": "Привод угла впрыска ТНВД: цепь",
+   "en": "Injection Pump Timing Actuator Circuit",
+   "fam": "",
+   "node": "injection pump timing actuator"
+  },
+  {
+   "code": "P1318",
+   "brand": "mazda",
+   "ru": "Датчик положения поршня угла впрыска: цепь",
+   "en": "Injection Timing Piston Position Sensor Circuit",
+   "fam": "",
+   "node": "injection timing piston position"
+  },
+  {
+   "code": "P1319",
+   "brand": "mazda",
+   "ru": "Датчик положения поршня угла впрыска: выход за диапазон",
+   "en": "Injection Timing Piston Position Sensor Circuit Range Performance",
+   "fam": "",
+   "node": "injection timing piston position"
+  },
+  {
+   "code": "P1345",
+   "brand": "mazda",
+   "ru": "Нет сигнала датчика распредвала (SGC)",
+   "en": "No CMP or SGC Signal",
+   "fam": "",
+   "node": "no cmp or sgc"
+  },
+  {
+   "code": "P1351",
+   "brand": "mazda",
+   "ru": "Сигнал контроля зажигания потерян или вне диапазона",
+   "en": "Ignition Diagnostic Monitor Signal Lost To PCM Or Out Of Range",
+   "fam": "",
+   "node": "ignition diagnostic monitor"
+  },
+  {
+   "code": "P1358",
+   "brand": "mazda",
+   "ru": "Сигнал контроля зажигания: вне диапазона самотеста",
+   "en": "Ignition Diagnostic Monitor Signal Out Of Self Test Range",
+   "fam": "",
+   "node": "ignition diagnostic monitor"
+  },
+  {
+   "code": "P1352",
+   "brand": "mazda",
+   "ru": "Катушка зажигания A: первичная цепь",
+   "en": "Ignition Coil A Primary Circuit",
+   "fam": "",
+   "node": "ignition coil a primary"
+  },
+  {
+   "code": "P1353",
+   "brand": "mazda",
+   "ru": "Катушка зажигания B: первичная цепь",
+   "en": "Ignition Coil B Primary Circuit",
+   "fam": "",
+   "node": "ignition coil b primary"
+  },
+  {
+   "code": "P1354",
+   "brand": "mazda",
+   "ru": "Катушка зажигания C: первичная цепь",
+   "en": "Ignition Coil C Primary Circuit",
+   "fam": "",
+   "node": "ignition coil c primary"
+  },
+  {
+   "code": "P1359",
+   "brand": "mazda",
+   "ru": "Сигнал SPOUT (угол зажигания) потерян или вне диапазона",
+   "en": "SPOUT Signal Lost To Powertrain Control Module Or Out Of Range",
+   "fam": "",
+   "node": "ru:сигнал spout (угол зажигания) потерян или вне диапазона"
+  },
+  {
+   "code": "P1360",
+   "brand": "mazda",
+   "ru": "Катушка зажигания A: вторичная цепь",
+   "en": "Ignition Coil A Secondary Circuit",
+   "fam": "",
+   "node": "ignition coil a secondary"
+  },
+  {
+   "code": "P1361",
+   "brand": "mazda",
+   "ru": "Катушка зажигания B: вторичная цепь",
+   "en": "Ignition Coil B Secondary Circuit",
+   "fam": "",
+   "node": "ignition coil b secondary"
+  },
+  {
+   "code": "P1362",
+   "brand": "mazda",
+   "ru": "Катушка зажигания C: вторичная цепь",
+   "en": "Ignition Coil C Secondary Circuit",
+   "fam": "",
+   "node": "ignition coil c secondary"
+  },
+  {
+   "code": "P1364",
+   "brand": "mazda",
+   "ru": "Катушка зажигания: первичная цепь",
+   "en": "Ignition Coil Primary Circuit",
+   "fam": "",
+   "node": "ignition coil primary"
+  },
+  {
+   "code": "P1365",
+   "brand": "mazda",
+   "ru": "Катушка зажигания: вторичная цепь",
+   "en": "Ignition Coil Secondary Circuit",
+   "fam": "",
+   "node": "ignition coil secondary"
+  },
+  {
+   "code": "P1382",
+   "brand": "mazda",
+   "ru": "Клапан фаз распредвала 1: цепь",
+   "en": "Camshaft Position Timing Solenoid 1 Circuit",
+   "fam": "",
+   "node": "camshaft position timing"
+  },
+  {
+   "code": "P1387",
+   "brand": "mazda",
+   "ru": "Клапан фаз распредвала 2: цепь",
+   "en": "Camshaft Position Timing Solenoid 2 Circuit",
+   "fam": "",
+   "node": "camshaft position timing"
+  },
+  {
+   "code": "P1390",
+   "brand": "mazda",
+   "ru": "Перемычка выбора октанового числа снята или обрыв",
+   "en": "Octane Adjust Shorting Bar Out Or Circuit Open",
+   "fam": "",
+   "node": "octane adjust shorting bar out or"
+  },
+  {
+   "code": "P1400",
+   "brand": "mazda",
+   "ru": "Датчик перепада давления ЕГР (DPFE): низкий сигнал",
+   "en": "DPFE Sensor Circuit Low Input",
+   "fam": "",
+   "node": "ru:датчик перепада давления егр (dpfe)"
+  },
+  {
+   "code": "P1401",
+   "brand": "mazda",
+   "ru": "Датчик перепада давления ЕГР (DPFE): высокий сигнал",
+   "en": "DPFE Sensor Circuit High Input",
+   "fam": "",
+   "node": "ru:датчик перепада давления егр (dpfe)"
+  },
+  {
+   "code": "P1402",
+   "brand": "mazda",
+   "ru": "Датчик положения клапана ЕГР: цепь",
+   "en": "EGR Valve Position Sensor Circuit",
+   "fam": "",
+   "node": "egr valve position"
+  },
+  {
+   "code": "P1405",
+   "brand": "mazda",
+   "ru": "Датчик DPFE: верхний шланг слетел или засорён",
+   "en": "DPFE Sensor Upstream Hose Off Or Plugged",
+   "fam": "",
+   "node": "dpfe sensor upstream hose off or plugged"
+  }
+ ]
+}

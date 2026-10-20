@@ -1,0 +1,406 @@
+{
+ "name": "brand-mazda_051",
+ "series": "brand",
+ "brand": "mazda",
+ "nodes": [
+  "2 4 brake failsafe valve",
+  "barometer pressure",
+  "electronic pressure control",
+  "engine torque",
+  "first gear",
+  "gear 1 incorrect ratio",
+  "gear 2 incorrect ratio",
+  "gear 3 incorrect ratio",
+  "gear 4 incorrect ratio",
+  "line pressure",
+  "lockup",
+  "pressure control solenoid a",
+  "pressure control solenoid b",
+  "ru:аварийный клапан тормоза пониженной и задней",
+  "ru:датчик давления тормоза пониженной и задней",
+  "ru:клапан проскальзывания",
+  "second gear",
+  "shift time error",
+  "torque converter clutch",
+  "torque converter clutch control electrical fault",
+  "torque converter clutch failed on tcil is on",
+  "torque converter clutch solenoid mechanical fault",
+  "torque converter clutch solenoid shorted",
+  "torque down",
+  "tp electric",
+  "tp mechanical",
+  "transmission 3 2 timing solenoid",
+  "transmission 4x4",
+  "transmission coast clutch solenoid electrical fault",
+  "transmission control",
+  "transmission shift solenoid 3 mechanical fault",
+  "transmission shift solenoid a",
+  "transmission shift solenoid a mechanical fault",
+  "transmission shift solenoid b",
+  "transmission shift solenoid b mechanical fault",
+  "transmission ss3 ss4 od band fault",
+  "vehicle speed"
+ ],
+ "codes": [
+  {
+   "code": "P1719",
+   "brand": "mazda",
+   "ru": "Сигнал момента двигателя",
+   "en": "Engine Torque Signal",
+   "fam": "",
+   "node": "engine torque"
+  },
+  {
+   "code": "P1720",
+   "brand": "mazda",
+   "ru": "Датчик скорости 2: ошибка сигнала",
+   "en": "Vehicle Speed Sensor 2 Signal Error",
+   "fam": "",
+   "node": "vehicle speed"
+  },
+  {
+   "code": "P1721",
+   "brand": "mazda",
+   "ru": "1-я передача: неверное передаточное число",
+   "en": "Gear 1 Incorrect Ratio",
+   "fam": "",
+   "node": "gear 1 incorrect ratio"
+  },
+  {
+   "code": "P1722",
+   "brand": "mazda",
+   "ru": "2-я передача: неверное передаточное число",
+   "en": "Gear 2 Incorrect Ratio",
+   "fam": "",
+   "node": "gear 2 incorrect ratio"
+  },
+  {
+   "code": "P1723",
+   "brand": "mazda",
+   "ru": "3-я передача: неверное передаточное число",
+   "en": "Gear 3 Incorrect Ratio",
+   "fam": "",
+   "node": "gear 3 incorrect ratio"
+  },
+  {
+   "code": "P1724",
+   "brand": "mazda",
+   "ru": "4-я передача: неверное передаточное число",
+   "en": "Gear 4 Incorrect Ratio",
+   "fam": "",
+   "node": "gear 4 incorrect ratio"
+  },
+  {
+   "code": "P1729",
+   "brand": "mazda",
+   "ru": "Выключатель понижающей 4x4: ошибка",
+   "en": "Transmission 4x4 Low Switch Error",
+   "fam": "",
+   "node": "transmission 4x4"
+  },
+  {
+   "code": "P1781",
+   "brand": "mazda",
+   "ru": "Выключатель понижающей 4x4: вне диапазона",
+   "en": "Transmission 4x4 Low Switch Out Of Range Fault",
+   "fam": "",
+   "node": "transmission 4x4"
+  },
+  {
+   "code": "P1735",
+   "brand": "mazda",
+   "ru": "Выключатель 1-й передачи: неисправность цепи",
+   "en": "First Gear Switch Circuit Failure",
+   "fam": "",
+   "node": "first gear"
+  },
+  {
+   "code": "P1736",
+   "brand": "mazda",
+   "ru": "Выключатель 2-й передачи: неисправность цепи",
+   "en": "Second Gear Switch Circuit Failure",
+   "fam": "",
+   "node": "second gear"
+  },
+  {
+   "code": "P1737",
+   "brand": "mazda",
+   "ru": "Клапан блокировки ГДТ",
+   "en": "Lockup Solenoid",
+   "fam": "",
+   "node": "lockup"
+  },
+  {
+   "code": "P1738",
+   "brand": "mazda",
+   "ru": "Ошибка времени переключения",
+   "en": "Shift Time Error",
+   "fam": "",
+   "node": "shift time error"
+  },
+  {
+   "code": "P1739",
+   "brand": "mazda",
+   "ru": "Клапан проскальзывания",
+   "en": "Slip Solenoid",
+   "fam": "",
+   "node": "ru:клапан проскальзывания"
+  },
+  {
+   "code": "P1740",
+   "brand": "mazda",
+   "ru": "Клапан блокировки ГДТ: механическая неисправность",
+   "en": "Torque Converter Clutch Solenoid Mechanical Fault",
+   "fam": "",
+   "node": "torque converter clutch solenoid mechanical fault"
+  },
+  {
+   "code": "P1744",
+   "brand": "mazda",
+   "ru": "Клапан блокировки ГДТ: механическая неисправность",
+   "en": "Torque Converter Clutch Solenoid Mechanical Fault",
+   "fam": "",
+   "node": "torque converter clutch solenoid mechanical fault"
+  },
+  {
+   "code": "P1741",
+   "brand": "mazda",
+   "ru": "Управление блокировкой ГДТ: электрическая неисправность",
+   "en": "Torque Converter Clutch Control Electrical Fault",
+   "fam": "",
+   "node": "torque converter clutch control electrical fault"
+  },
+  {
+   "code": "P1742",
+   "brand": "mazda",
+   "ru": "Клапан блокировки ГДТ: замыкание",
+   "en": "Torque Converter Clutch Solenoid Shorted",
+   "fam": "",
+   "node": "torque converter clutch solenoid shorted"
+  },
+  {
+   "code": "P1743",
+   "brand": "mazda",
+   "ru": "Блокировка ГДТ включена постоянно",
+   "en": "Torque Converter Clutch Failed On TCIL Is On",
+   "fam": "",
+   "node": "torque converter clutch failed on tcil is on"
+  },
+  {
+   "code": "P1745",
+   "brand": "mazda",
+   "ru": "Клапан линейного давления",
+   "en": "Line Pressure Solenoid",
+   "fam": "",
+   "node": "line pressure"
+  },
+  {
+   "code": "P1746",
+   "brand": "mazda",
+   "ru": "Клапан электронного регулирования давления: обрыв",
+   "en": "Electronic Pressure Control Solenoid Circuit Open",
+   "fam": "",
+   "node": "electronic pressure control"
+  },
+  {
+   "code": "P1747",
+   "brand": "mazda",
+   "ru": "Клапан электронного регулирования давления: цепь",
+   "en": "Electronic Pressure Control Solenoid Circuit",
+   "fam": "",
+   "node": "electronic pressure control"
+  },
+  {
+   "code": "P1749",
+   "brand": "mazda",
+   "ru": "Клапан электронного регулирования давления: низкий сигнал",
+   "en": "Electronic Pressure Control Solenoid Circuit Low",
+   "fam": "",
+   "node": "electronic pressure control"
+  },
+  {
+   "code": "P1748",
+   "brand": "mazda",
+   "ru": "Клапан регулирования давления A",
+   "en": "Pressure Control Solenoid A",
+   "fam": "",
+   "node": "pressure control solenoid a"
+  },
+  {
+   "code": "P1751",
+   "brand": "mazda",
+   "ru": "Клапан переключения A: механическая неисправность",
+   "en": "Transmission Shift Solenoid A Mechanical Fault",
+   "fam": "",
+   "node": "transmission shift solenoid a mechanical fault"
+  },
+  {
+   "code": "P1752",
+   "brand": "mazda",
+   "ru": "Клапан переключения A: замыкание",
+   "en": "Transmission Shift Solenoid A Circuit Shorted",
+   "fam": "",
+   "node": "transmission shift solenoid a"
+  },
+  {
+   "code": "P1754",
+   "brand": "mazda",
+   "ru": "Клапан муфты наката: электрическая неисправность",
+   "en": "Transmission Coast Clutch Solenoid Electrical Fault",
+   "fam": "",
+   "node": "transmission coast clutch solenoid electrical fault"
+  },
+  {
+   "code": "P1756",
+   "brand": "mazda",
+   "ru": "Клапан переключения B: механическая неисправность",
+   "en": "Transmission Shift Solenoid B Mechanical Fault",
+   "fam": "",
+   "node": "transmission shift solenoid b mechanical fault"
+  },
+  {
+   "code": "P1757",
+   "brand": "mazda",
+   "ru": "Клапан переключения B: замыкание",
+   "en": "Transmission Shift Solenoid B Circuit Shorted",
+   "fam": "",
+   "node": "transmission shift solenoid b"
+  },
+  {
+   "code": "P1759",
+   "brand": "mazda",
+   "ru": "Аварийный клапан тормоза 2-4: неисправность",
+   "en": "2-4 Brake Failsafe Valve Malfunction",
+   "fam": "",
+   "node": "2 4 brake failsafe valve"
+  },
+  {
+   "code": "P1761",
+   "brand": "mazda",
+   "ru": "Клапан переключения 3: механическая неисправность",
+   "en": "Transmission Shift Solenoid 3 Mechanical Fault",
+   "fam": "",
+   "node": "transmission shift solenoid 3 mechanical fault"
+  },
+  {
+   "code": "P1762",
+   "brand": "mazda",
+   "ru": "Клапаны SS3/SS4 и лента повышающей передачи: неисправность",
+   "en": "Transmission SS3 SS4 OD Band Fault",
+   "fam": "",
+   "node": "transmission ss3 ss4 od band fault"
+  },
+  {
+   "code": "P1763",
+   "brand": "mazda",
+   "ru": "Датчик давления тормоза пониженной и задней: цепь",
+   "en": "Low And Reverse Brake Pressure Switch Circuit",
+   "fam": "",
+   "node": "ru:датчик давления тормоза пониженной и задней"
+  },
+  {
+   "code": "P1764",
+   "brand": "mazda",
+   "ru": "Аварийный клапан тормоза пониженной и задней: неисправность",
+   "en": "Low And Reverse Brake Failsafe Valve Malfunction",
+   "fam": "",
+   "node": "ru:аварийный клапан тормоза пониженной и задней"
+  },
+  {
+   "code": "P1765",
+   "brand": "mazda",
+   "ru": "Клапан синхронизации переключения 3-2",
+   "en": "Transmission 3-2 Timing Solenoid Valve",
+   "fam": "",
+   "node": "transmission 3 2 timing solenoid"
+  },
+  {
+   "code": "P1767",
+   "brand": "mazda",
+   "ru": "Клапан блокировки ГДТ: цепь",
+   "en": "Torque Converter Clutch Solenoid Circuit",
+   "fam": "",
+   "node": "torque converter clutch"
+  },
+  {
+   "code": "P1901",
+   "brand": "mazda",
+   "ru": "Блокировка гидротрансформатора: прерывистая неисправность цепи",
+   "en": "Torque Converter Clutch Circuit Intermittent",
+   "fam": "",
+   "node": "torque converter clutch"
+  },
+  {
+   "code": "P1775",
+   "brand": "mazda",
+   "ru": "Сигнал снижения момента 1: цепь",
+   "en": "Torque Down Signal 1 Circuit",
+   "fam": "",
+   "node": "torque down"
+  },
+  {
+   "code": "P1776",
+   "brand": "mazda",
+   "ru": "Сигнал снижения момента 2: цепь",
+   "en": "Torque Down Signal 2 Circuit",
+   "fam": "",
+   "node": "torque down"
+  },
+  {
+   "code": "P1777",
+   "brand": "mazda",
+   "ru": "Ответный сигнал снижения момента: цепь",
+   "en": "Torque Down Response Signal Circuit",
+   "fam": "",
+   "node": "torque down"
+  },
+  {
+   "code": "P1780",
+   "brand": "mazda",
+   "ru": "Кнопка OD Off не нажималась во время самотеста",
+   "en": "Transmission Control Switch Circuit, Overdrive Off Switch Not Cycled During The Self Test",
+   "fam": "",
+   "node": "transmission control"
+  },
+  {
+   "code": "P1788",
+   "brand": "mazda",
+   "ru": "Клапан регулирования давления B: обрыв",
+   "en": "Pressure Control Solenoid B Circuit Open",
+   "fam": "",
+   "node": "pressure control solenoid b"
+  },
+  {
+   "code": "P1789",
+   "brand": "mazda",
+   "ru": "Клапан регулирования давления B: замыкание",
+   "en": "Pressure Control Solenoid B Circuit Shorted",
+   "fam": "",
+   "node": "pressure control solenoid b"
+  },
+  {
+   "code": "P1790",
+   "brand": "mazda",
+   "ru": "Датчик положения дросселя: механическая цепь",
+   "en": "TP Mechanical Circuit",
+   "fam": "",
+   "node": "tp mechanical"
+  },
+  {
+   "code": "P1791",
+   "brand": "mazda",
+   "ru": "Датчик положения дросселя: электрическая цепь",
+   "en": "TP Electric Circuit",
+   "fam": "",
+   "node": "tp electric"
+  },
+  {
+   "code": "P1792",
+   "brand": "mazda",
+   "ru": "Датчик атмосферного давления: цепь",
+   "en": "Barometer Pressure Circuit",
+   "fam": "",
+   "node": "barometer pressure"
+  }
+ ]
+}

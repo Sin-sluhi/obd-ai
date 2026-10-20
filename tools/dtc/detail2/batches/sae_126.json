@@ -1,0 +1,360 @@
+{
+ "name": "sae_126",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "a c compressor motor current sensor",
+  "a c compressor motor phase u current sensor",
+  "a c compressor motor phase v current sensor",
+  "a c compressor motor phase w current sensor",
+  "a c compressor motor voltage sensor b",
+  "auxiliary cooling system",
+  "auxiliary cooling system coolant temperature sensor a",
+  "battery charger b temperature too",
+  "dc dc converter b",
+  "dc dc converter b over temperature",
+  "dc dc converter current sensor b",
+  "dc dc converter current sensor c",
+  "dc dc converter voltage sensor c",
+  "drive motor a inverter voltage sensor b”",
+  "drive motor b inverter voltage sensor b”"
+ ],
+ "codes": [
+  {
+   "code": "P0E81",
+   "brand": "",
+   "ru": "Датчик температуры жидкости доп. контура охлаждения A: цепь",
+   "en": "Auxiliary Cooling System Coolant Temperature Sensor A Circuit",
+   "fam": "",
+   "node": "auxiliary cooling system coolant temperature sensor a"
+  },
+  {
+   "code": "P0E82",
+   "brand": "",
+   "ru": "Датчик температуры жидкости доп. контура охлаждения A: сигнал вне диапазона",
+   "en": "Auxiliary Cooling System Coolant Temperature Sensor A Circuit Range/Performance",
+   "fam": "",
+   "node": "auxiliary cooling system coolant temperature sensor a"
+  },
+  {
+   "code": "P0E83",
+   "brand": "",
+   "ru": "Датчик температуры жидкости доп. контура охлаждения A: низкий уровень сигнала в цепи",
+   "en": "Auxiliary Cooling System Coolant Temperature Sensor A Circuit Low",
+   "fam": "",
+   "node": "auxiliary cooling system coolant temperature sensor a"
+  },
+  {
+   "code": "P0E84",
+   "brand": "",
+   "ru": "Датчик температуры жидкости доп. контура охлаждения A: высокий уровень сигнала в цепи",
+   "en": "Auxiliary Cooling System Coolant Temperature Sensor A Circuit High",
+   "fam": "",
+   "node": "auxiliary cooling system coolant temperature sensor a"
+  },
+  {
+   "code": "P0E85",
+   "brand": "",
+   "ru": "Зарядное устройство B: слишком высокая температура",
+   "en": "Battery Charger B Temperature Too High",
+   "fam": "",
+   "node": "battery charger b temperature too"
+  },
+  {
+   "code": "P0E8C",
+   "brand": "",
+   "ru": "Датчик напряжения инвертора тягового электромотора A (датчик B): цепь",
+   "en": "Drive Motor A Inverter Voltage Sensor B” Circuit",
+   "fam": "",
+   "node": "drive motor a inverter voltage sensor b”"
+  },
+  {
+   "code": "P0E8D",
+   "brand": "",
+   "ru": "Датчик напряжения инвертора тягового электромотора A (датчик B): сигнал вне диапазона",
+   "en": "Drive Motor A Inverter Voltage Sensor B” Circuit Range/Performance",
+   "fam": "",
+   "node": "drive motor a inverter voltage sensor b”"
+  },
+  {
+   "code": "P0E8E",
+   "brand": "",
+   "ru": "Датчик напряжения инвертора тягового электромотора A (датчик B): низкий уровень сигнала в цепи",
+   "en": "Drive Motor A Inverter Voltage Sensor B” Circuit Low",
+   "fam": "",
+   "node": "drive motor a inverter voltage sensor b”"
+  },
+  {
+   "code": "P0E8F",
+   "brand": "",
+   "ru": "Датчик напряжения инвертора тягового электромотора A (датчик B): высокий уровень сигнала в цепи",
+   "en": "Drive Motor A Inverter Voltage Sensor B” Circuit High",
+   "fam": "",
+   "node": "drive motor a inverter voltage sensor b”"
+  },
+  {
+   "code": "P0E90",
+   "brand": "",
+   "ru": "Датчик напряжения инвертора тягового электромотора A (датчик B): прерывистый / нестабильный сигнал",
+   "en": "Drive Motor A Inverter Voltage Sensor B” Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "drive motor a inverter voltage sensor b”"
+  },
+  {
+   "code": "P0E91",
+   "brand": "",
+   "ru": "Датчик напряжения инвертора тягового электромотора B (датчик B): цепь",
+   "en": "Drive Motor B Inverter Voltage Sensor B” Circuit",
+   "fam": "",
+   "node": "drive motor b inverter voltage sensor b”"
+  },
+  {
+   "code": "P0E92",
+   "brand": "",
+   "ru": "Датчик напряжения инвертора тягового электромотора B (датчик B): сигнал вне диапазона",
+   "en": "Drive Motor B Inverter Voltage Sensor B” Circuit Range/Performance",
+   "fam": "",
+   "node": "drive motor b inverter voltage sensor b”"
+  },
+  {
+   "code": "P0E93",
+   "brand": "",
+   "ru": "Датчик напряжения инвертора тягового электромотора B (датчик B): низкий уровень сигнала в цепи",
+   "en": "Drive Motor B Inverter Voltage Sensor B” Circuit Low",
+   "fam": "",
+   "node": "drive motor b inverter voltage sensor b”"
+  },
+  {
+   "code": "P0E94",
+   "brand": "",
+   "ru": "Датчик напряжения инвертора тягового электромотора B (датчик B): высокий уровень сигнала в цепи",
+   "en": "Drive Motor B Inverter Voltage Sensor B” Circuit High",
+   "fam": "",
+   "node": "drive motor b inverter voltage sensor b”"
+  },
+  {
+   "code": "P0E95",
+   "brand": "",
+   "ru": "Датчик напряжения инвертора тягового электромотора B (датчик B): прерывистый / нестабильный сигнал",
+   "en": "Drive Motor B Inverter Voltage Sensor B” Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "drive motor b inverter voltage sensor b”"
+  },
+  {
+   "code": "P0E96",
+   "brand": "",
+   "ru": "Датчик напряжения преобразователя DC/DC C: цепь",
+   "en": "DC/DC Converter Voltage Sensor C Circuit",
+   "fam": "",
+   "node": "dc dc converter voltage sensor c"
+  },
+  {
+   "code": "P0E97",
+   "brand": "",
+   "ru": "Датчик напряжения преобразователя DC/DC C: сигнал вне диапазона",
+   "en": "DC/DC Converter Voltage Sensor C Circuit Range/Performance",
+   "fam": "",
+   "node": "dc dc converter voltage sensor c"
+  },
+  {
+   "code": "P0E98",
+   "brand": "",
+   "ru": "Датчик напряжения преобразователя DC/DC C: низкий уровень сигнала в цепи",
+   "en": "DC/DC Converter Voltage Sensor C Circuit Low",
+   "fam": "",
+   "node": "dc dc converter voltage sensor c"
+  },
+  {
+   "code": "P0E99",
+   "brand": "",
+   "ru": "Датчик напряжения преобразователя DC/DC C: высокий уровень сигнала в цепи",
+   "en": "DC/DC Converter Voltage Sensor C Circuit High",
+   "fam": "",
+   "node": "dc dc converter voltage sensor c"
+  },
+  {
+   "code": "P0E9A",
+   "brand": "",
+   "ru": "Датчик напряжения преобразователя DC/DC C: прерывистый / нестабильный сигнал",
+   "en": "DC/DC Converter Voltage Sensor C Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "dc dc converter voltage sensor c"
+  },
+  {
+   "code": "P0E9B",
+   "brand": "",
+   "ru": "Датчик тока преобразователя DC/DC B: цепь",
+   "en": "DC/DC Converter Current Sensor B Circuit",
+   "fam": "",
+   "node": "dc dc converter current sensor b"
+  },
+  {
+   "code": "P0E9C",
+   "brand": "",
+   "ru": "Датчик тока преобразователя DC/DC B: сигнал вне диапазона",
+   "en": "DC/DC Converter Current Sensor B Circuit Range/Performance",
+   "fam": "",
+   "node": "dc dc converter current sensor b"
+  },
+  {
+   "code": "P0E9D",
+   "brand": "",
+   "ru": "Датчик тока преобразователя DC/DC B: низкий уровень сигнала в цепи",
+   "en": "DC/DC Converter Current Sensor B Circuit Low",
+   "fam": "",
+   "node": "dc dc converter current sensor b"
+  },
+  {
+   "code": "P0E9E",
+   "brand": "",
+   "ru": "Датчик тока преобразователя DC/DC B: высокий уровень сигнала в цепи",
+   "en": "DC/DC Converter Current Sensor B Circuit High",
+   "fam": "",
+   "node": "dc dc converter current sensor b"
+  },
+  {
+   "code": "P0E9F",
+   "brand": "",
+   "ru": "Датчик тока преобразователя DC/DC B: прерывистый / нестабильный сигнал",
+   "en": "DC/DC Converter Current Sensor B Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "dc dc converter current sensor b"
+  },
+  {
+   "code": "P0EA0",
+   "brand": "",
+   "ru": "Датчик тока преобразователя DC/DC C: цепь",
+   "en": "DC/DC Converter Current Sensor C Circuit",
+   "fam": "",
+   "node": "dc dc converter current sensor c"
+  },
+  {
+   "code": "P0EA1",
+   "brand": "",
+   "ru": "Датчик тока преобразователя DC/DC C: сигнал вне диапазона",
+   "en": "DC/DC Converter Current Sensor C Circuit Range/Performance",
+   "fam": "",
+   "node": "dc dc converter current sensor c"
+  },
+  {
+   "code": "P0EA2",
+   "brand": "",
+   "ru": "Датчик тока преобразователя DC/DC C: низкий уровень сигнала в цепи",
+   "en": "DC/DC Converter Current Sensor C Circuit Low",
+   "fam": "",
+   "node": "dc dc converter current sensor c"
+  },
+  {
+   "code": "P0EA3",
+   "brand": "",
+   "ru": "Датчик тока преобразователя DC/DC C: высокий уровень сигнала в цепи",
+   "en": "DC/DC Converter Current Sensor C Circuit High",
+   "fam": "",
+   "node": "dc dc converter current sensor c"
+  },
+  {
+   "code": "P0EA4",
+   "brand": "",
+   "ru": "Датчик тока преобразователя DC/DC C: прерывистый / нестабильный сигнал",
+   "en": "DC/DC Converter Current Sensor C Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "dc dc converter current sensor c"
+  },
+  {
+   "code": "P0EA5",
+   "brand": "",
+   "ru": "Преобразователь DC/DC B: работа нарушена",
+   "en": "DC/DC Converter B Performance",
+   "fam": "",
+   "node": "dc dc converter b"
+  },
+  {
+   "code": "P0EA6",
+   "brand": "",
+   "ru": "Преобразователь DC/DC B: перегрев",
+   "en": "DC/DC Converter B Over Temperature",
+   "fam": "",
+   "node": "dc dc converter b over temperature"
+  },
+  {
+   "code": "P0EA7",
+   "brand": "",
+   "ru": "Дополнительный контур охлаждения: работа нарушена",
+   "en": "Auxiliary Cooling System Performance",
+   "fam": "",
+   "node": "auxiliary cooling system"
+  },
+  {
+   "code": "P0EA8",
+   "brand": "",
+   "ru": "Датчик напряжения электромотора компрессора кондиционера B: цепь",
+   "en": "A/C Compressor Motor Voltage Sensor B Circuit",
+   "fam": "",
+   "node": "a c compressor motor voltage sensor b"
+  },
+  {
+   "code": "P0EA9",
+   "brand": "",
+   "ru": "Датчик напряжения электромотора компрессора кондиционера B: нарушена работа цепи",
+   "en": "A/C Compressor Motor Voltage Sensor B Circuit Performance",
+   "fam": "",
+   "node": "a c compressor motor voltage sensor b"
+  },
+  {
+   "code": "P0EAA",
+   "brand": "",
+   "ru": "Датчик напряжения электромотора компрессора кондиционера B: высокий уровень сигнала в цепи",
+   "en": "A/C Compressor Motor Voltage Sensor B Circuit High",
+   "fam": "",
+   "node": "a c compressor motor voltage sensor b"
+  },
+  {
+   "code": "P0EAB",
+   "brand": "",
+   "ru": "Датчик напряжения электромотора компрессора кондиционера B: низкий уровень сигнала в цепи",
+   "en": "A/C Compressor Motor Voltage Sensor B Circuit Low",
+   "fam": "",
+   "node": "a c compressor motor voltage sensor b"
+  },
+  {
+   "code": "P0EAC",
+   "brand": "",
+   "ru": "Датчик напряжения электромотора компрессора кондиционера B: прерывистый / нестабильный сигнал",
+   "en": "A/C Compressor Motor Voltage Sensor B Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "a c compressor motor voltage sensor b"
+  },
+  {
+   "code": "P0EAE",
+   "brand": "",
+   "ru": "Датчик тока электромотора компрессора кондиционера: вне допустимого диапазона",
+   "en": "A/C Compressor Motor Current Sensor Range/Performance",
+   "fam": "",
+   "node": "a c compressor motor current sensor"
+  },
+  {
+   "code": "P0EB4",
+   "brand": "",
+   "ru": "Датчик тока фазы U компрессора кондиционера: вне допустимого диапазона",
+   "en": "A/C Compressor Motor Phase U Current Sensor Range/Performance",
+   "fam": "",
+   "node": "a c compressor motor phase u current sensor"
+  },
+  {
+   "code": "P0EB7",
+   "brand": "",
+   "ru": "Датчик тока фазы V компрессора кондиционера: вне допустимого диапазона",
+   "en": "A/C Compressor Motor Phase V Current Sensor Range/Performance",
+   "fam": "",
+   "node": "a c compressor motor phase v current sensor"
+  },
+  {
+   "code": "P0EBA",
+   "brand": "",
+   "ru": "Датчик тока фазы W компрессора кондиционера: вне допустимого диапазона",
+   "en": "A/C Compressor Motor Phase W Current Sensor Range/Performace",
+   "fam": "",
+   "node": "a c compressor motor phase w current sensor"
+  }
+ ]
+}

@@ -1,0 +1,412 @@
+{
+ "name": "sae_203",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "invalid data received from accelerator pedal",
+  "invalid data received from active roll control",
+  "invalid data received from active vibration control",
+  "invalid data received from all terrain control",
+  "invalid data received from all wheel drive control",
+  "invalid data received from auxiliary heater control",
+  "invalid data received from battery energy control module c",
+  "invalid data received from battery isolation voltage stabilization control",
+  "invalid data received from body control module b",
+  "invalid data received from body control module c",
+  "invalid data received from body control module d",
+  "invalid data received from body control module e",
+  "invalid data received from camshaft position control",
+  "invalid data received from chassis control module a",
+  "invalid data received from chassis control module b",
+  "invalid data received from differential control module front",
+  "invalid data received from differential control module rear",
+  "invalid data received from ecm pcm b",
+  "invalid data received from emissions critical control information",
+  "invalid data received from exhaust gas sensor module a",
+  "invalid data received from front distance",
+  "invalid data received from generator a control",
+  "invalid data received from generator b control",
+  "invalid data received from hybrid ev battery inductive charging",
+  "invalid data received from mirror control module b",
+  "invalid data received from multi axis acceleration sensor module a",
+  "invalid data received from pedestrian alert control",
+  "invalid data received from rocker arm control module a",
+  "invalid data received from rocker arm control module b",
+  "invalid data received from serial data gateway module b",
+  "invalid data received from serial data gateway module c",
+  "invalid data received from serial data gateway module d",
+  "invalid data received from steering column control",
+  "invalid data received from steering effort control",
+  "invalid data received from suspension control module a",
+  "invalid data received from suspension control module b",
+  "invalid data received from throttle actuator b control",
+  "invalid data received from tire pressure monitor",
+  "invalid data received from trailer brake control",
+  "invalid data received from v2x",
+  "invalid data received from vacuum sensor a",
+  "invalid data received from vacuum sensor b",
+  "invalid data received from vehicle security control"
+ ],
+ "codes": [
+  {
+   "code": "U0419",
+   "brand": "",
+   "ru": "Неверные данные: блок усилия на руле",
+   "en": "Invalid Data Received From Steering Effort Control Module",
+   "fam": "",
+   "node": "invalid data received from steering effort control"
+  },
+  {
+   "code": "U041A",
+   "brand": "",
+   "ru": "Неверные данные: блок развязки АКБ / стабилизации напряжения",
+   "en": "Invalid Data Received From Battery Isolation/Voltage Stabilization Control Module",
+   "fam": "",
+   "node": "invalid data received from battery isolation voltage stabilization control"
+  },
+  {
+   "code": "U041B",
+   "brand": "",
+   "ru": "Неверные данные: блок датчика отработавших газов A",
+   "en": "Invalid Data Received From Exhaust Gas Sensor Module A",
+   "fam": "",
+   "node": "invalid data received from exhaust gas sensor module a"
+  },
+  {
+   "code": "U041C",
+   "brand": "",
+   "ru": "Неверные данные: блок управления коромыслами A",
+   "en": "Invalid Data Received From Rocker Arm Control Module A",
+   "fam": "",
+   "node": "invalid data received from rocker arm control module a"
+  },
+  {
+   "code": "U041D",
+   "brand": "",
+   "ru": "Неверные данные: блок управления коромыслами B",
+   "en": "Invalid Data Received From Rocker Arm Control Module B",
+   "fam": "",
+   "node": "invalid data received from rocker arm control module b"
+  },
+  {
+   "code": "U041E",
+   "brand": "",
+   "ru": "Неверные данные: блок полного привода (AWD)",
+   "en": "Invalid Data Received From All Wheel Drive Control Module",
+   "fam": "",
+   "node": "invalid data received from all wheel drive control"
+  },
+  {
+   "code": "U041F",
+   "brand": "",
+   "ru": "Неверные данные: блок привода дросселя B",
+   "en": "Invalid Data Received From Throttle Actuator B Control Module",
+   "fam": "",
+   "node": "invalid data received from throttle actuator b control"
+  },
+  {
+   "code": "U0421",
+   "brand": "",
+   "ru": "Неверные данные: блок управления подвеской A",
+   "en": "Invalid Data Received From Suspension Control Module A",
+   "fam": "",
+   "node": "invalid data received from suspension control module a"
+  },
+  {
+   "code": "U0425",
+   "brand": "",
+   "ru": "Неверные данные: блок дополнительного отопителя",
+   "en": "Invalid Data Received From Auxiliary Heater Control Module",
+   "fam": "",
+   "node": "invalid data received from auxiliary heater control"
+  },
+  {
+   "code": "U0427",
+   "brand": "",
+   "ru": "Неверные данные: блок охранной системы",
+   "en": "Invalid Data Received From Vehicle Security Control Module",
+   "fam": "",
+   "node": "invalid data received from vehicle security control"
+  },
+  {
+   "code": "U0429",
+   "brand": "",
+   "ru": "Неверные данные: блок рулевой колонки",
+   "en": "Invalid Data Received From Steering Column Control Module",
+   "fam": "",
+   "node": "invalid data received from steering column control"
+  },
+  {
+   "code": "U042A",
+   "brand": "",
+   "ru": "Неверные данные: модуль V2X",
+   "en": "Invalid Data Received From V2X Module",
+   "fam": "",
+   "node": "invalid data received from v2x"
+  },
+  {
+   "code": "U042B",
+   "brand": "",
+   "ru": "Неверные данные: блок управления шасси A",
+   "en": "Invalid Data Received From Chassis Control Module A",
+   "fam": "",
+   "node": "invalid data received from chassis control module a"
+  },
+  {
+   "code": "U042C",
+   "brand": "",
+   "ru": "Неверные данные: блок управления шасси B",
+   "en": "Invalid Data Received From Chassis Control Module B",
+   "fam": "",
+   "node": "invalid data received from chassis control module b"
+  },
+  {
+   "code": "U042D",
+   "brand": "",
+   "ru": "Неверные данные: блок активного гашения вибраций",
+   "en": "Invalid Data Received from Active Vibration Control Module",
+   "fam": "",
+   "node": "invalid data received from active vibration control"
+  },
+  {
+   "code": "U042E",
+   "brand": "",
+   "ru": "Неверные данные: блок генератора A",
+   "en": "Invalid Data Received From Generator A Control Module",
+   "fam": "",
+   "node": "invalid data received from generator a control"
+  },
+  {
+   "code": "U042F",
+   "brand": "",
+   "ru": "Неверные данные: блок управления фазами газораспределения",
+   "en": "Invalid Data Received From Camshaft Position Control Module",
+   "fam": "",
+   "node": "invalid data received from camshaft position control"
+  },
+  {
+   "code": "U0430",
+   "brand": "",
+   "ru": "Неверные данные: блок контроля давления в шинах",
+   "en": "Invalid Data Received From Tire Pressure Monitor Module",
+   "fam": "",
+   "node": "invalid data received from tire pressure monitor"
+  },
+  {
+   "code": "U0432",
+   "brand": "",
+   "ru": "Неверные данные: блок датчиков ускорения A",
+   "en": "Invalid Data Received From Multi-axis Acceleration Sensor Module A",
+   "fam": "",
+   "node": "invalid data received from multi axis acceleration sensor module a"
+  },
+  {
+   "code": "U0433",
+   "brand": "",
+   "ru": "Неверные данные: передний датчик дистанции (одиночный или центральный)",
+   "en": "Invalid Data Received From Front Distance Range Sensor - Single Sensor or Center",
+   "fam": "",
+   "node": "invalid data received from front distance"
+  },
+  {
+   "code": "U043B",
+   "brand": "",
+   "ru": "Неверные данные: передний датчик дистанции левый",
+   "en": "Invalid Data Received From Front Distance Range Sensor - Left",
+   "fam": "",
+   "node": "invalid data received from front distance"
+  },
+  {
+   "code": "U043C",
+   "brand": "",
+   "ru": "Неверные данные: передний датчик дистанции правый",
+   "en": "Invalid Data Received From Front Distance Range Sensor - Right",
+   "fam": "",
+   "node": "invalid data received from front distance"
+  },
+  {
+   "code": "U0434",
+   "brand": "",
+   "ru": "Неверные данные: блок активного стабилизатора",
+   "en": "Invalid Data Received From Active Roll Control Module",
+   "fam": "",
+   "node": "invalid data received from active roll control"
+  },
+  {
+   "code": "U0436",
+   "brand": "",
+   "ru": "Неверные данные: блок переднего дифференциала",
+   "en": "Invalid Data Received From Differential Control Module - Front",
+   "fam": "",
+   "node": "invalid data received from differential control module front"
+  },
+  {
+   "code": "U0437",
+   "brand": "",
+   "ru": "Неверные данные: блок заднего дифференциала",
+   "en": "Invalid Data Received From Differential Control Module - Rear",
+   "fam": "",
+   "node": "invalid data received from differential control module rear"
+  },
+  {
+   "code": "U0438",
+   "brand": "",
+   "ru": "Неверные данные: блок тормозов прицепа",
+   "en": "Invalid Data Received From Trailer Brake Control Module",
+   "fam": "",
+   "node": "invalid data received from trailer brake control"
+  },
+  {
+   "code": "U0439",
+   "brand": "",
+   "ru": "Неверные данные: блок режимов бездорожья",
+   "en": "Invalid Data Received From All Terrain Control Module",
+   "fam": "",
+   "node": "invalid data received from all terrain control"
+  },
+  {
+   "code": "U043A",
+   "brand": "",
+   "ru": "Неверные данные: блок управления подвеской B",
+   "en": "Invalid Data Received From Suspension Control Module B",
+   "fam": "",
+   "node": "invalid data received from suspension control module b"
+  },
+  {
+   "code": "U043D",
+   "brand": "",
+   "ru": "Неверные данные: модуль педали газа",
+   "en": "Invalid Data Received From Accelerator Pedal Module",
+   "fam": "",
+   "node": "invalid data received from accelerator pedal"
+  },
+  {
+   "code": "U043E",
+   "brand": "",
+   "ru": "Неверные данные: датчик разрежения A",
+   "en": "Invalid Data Received From Vacuum Sensor A",
+   "fam": "",
+   "node": "invalid data received from vacuum sensor a"
+  },
+  {
+   "code": "U043F",
+   "brand": "",
+   "ru": "Неверные данные: датчик разрежения B",
+   "en": "Invalid Data Received From Vacuum Sensor B",
+   "fam": "",
+   "node": "invalid data received from vacuum sensor b"
+  },
+  {
+   "code": "U0440",
+   "brand": "",
+   "ru": "Неверные данные: блок звукового оповещения пешеходов",
+   "en": "Invalid Data Received From Pedestrian Alert Control Module",
+   "fam": "",
+   "node": "invalid data received from pedestrian alert control"
+  },
+  {
+   "code": "U0441",
+   "brand": "",
+   "ru": "Неверные данные: критичная для экологии управляющая информация",
+   "en": "Invalid Data Received From Emissions Critical Control Information",
+   "fam": "",
+   "node": "invalid data received from emissions critical control information"
+  },
+  {
+   "code": "U0442",
+   "brand": "",
+   "ru": "Неверные данные: ЭБУ двигателя B",
+   "en": "Invalid Data Received From ECM/PCM B",
+   "fam": "",
+   "node": "invalid data received from ecm pcm b"
+  },
+  {
+   "code": "U0443",
+   "brand": "",
+   "ru": "Неверные данные: блок управления кузовом (BCM) B",
+   "en": "Invalid Data Received From Body Control Module B",
+   "fam": "",
+   "node": "invalid data received from body control module b"
+  },
+  {
+   "code": "U0444",
+   "brand": "",
+   "ru": "Неверные данные: блок управления кузовом (BCM) C",
+   "en": "Invalid Data Received From Body Control Module C",
+   "fam": "",
+   "node": "invalid data received from body control module c"
+  },
+  {
+   "code": "U0445",
+   "brand": "",
+   "ru": "Неверные данные: блок управления кузовом (BCM) D",
+   "en": "Invalid Data Received From Body Control Module D",
+   "fam": "",
+   "node": "invalid data received from body control module d"
+  },
+  {
+   "code": "U0446",
+   "brand": "",
+   "ru": "Неверные данные: блок управления кузовом (BCM) E",
+   "en": "Invalid Data Received From Body Control Module E",
+   "fam": "",
+   "node": "invalid data received from body control module e"
+  },
+  {
+   "code": "U0448",
+   "brand": "",
+   "ru": "Неверные данные: шлюз (Gateway) B",
+   "en": "Invalid Data Received From Serial Data Gateway Module B",
+   "fam": "",
+   "node": "invalid data received from serial data gateway module b"
+  },
+  {
+   "code": "U0449",
+   "brand": "",
+   "ru": "Неверные данные: шлюз (Gateway) C",
+   "en": "Invalid Data Received From Serial Data Gateway Module C",
+   "fam": "",
+   "node": "invalid data received from serial data gateway module c"
+  },
+  {
+   "code": "U044A",
+   "brand": "",
+   "ru": "Неверные данные: шлюз (Gateway) D",
+   "en": "Invalid Data Received From Serial Data Gateway Module D",
+   "fam": "",
+   "node": "invalid data received from serial data gateway module d"
+  },
+  {
+   "code": "U044B",
+   "brand": "",
+   "ru": "Неверные данные: блок управления энергией батареи C",
+   "en": "Invalid Data Received From Battery Energy Control Module C",
+   "fam": "",
+   "node": "invalid data received from battery energy control module c"
+  },
+  {
+   "code": "U044C",
+   "brand": "",
+   "ru": "Неверные данные: модуль индуктивной зарядки тяговой батареи",
+   "en": "Invalid Data Received From Hybrid/EV Battery Inductive Charging Module",
+   "fam": "",
+   "node": "invalid data received from hybrid ev battery inductive charging"
+  },
+  {
+   "code": "U044D",
+   "brand": "",
+   "ru": "Неверные данные: блок генератора B",
+   "en": "Invalid Data Received From Generator B Control Module",
+   "fam": "",
+   "node": "invalid data received from generator b control"
+  },
+  {
+   "code": "U044F",
+   "brand": "",
+   "ru": "Неверные данные: блок зеркал B",
+   "en": "Invalid Data Received From Mirror Control Module B",
+   "fam": "",
+   "node": "invalid data received from mirror control module b"
+  }
+ ]
+}

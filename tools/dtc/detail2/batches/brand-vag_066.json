@@ -1,0 +1,384 @@
+{
+ "name": "brand-vag_066",
+ "series": "brand",
+ "brand": "vag",
+ "nodes": [
+  "fam:lean",
+  "fam:rich",
+  "long term fuel trim add air system too lean",
+  "long term fuel trim add air system too rich",
+  "long term fuel trim add fuel system too lean",
+  "long term fuel trim system too lean",
+  "long term fuel trim system too rich",
+  "oxygen",
+  "oxygen sensor",
+  "oxygen sensor control system too lean",
+  "oxygen sensor control system too rich",
+  "oxygen sensor heater resistance too",
+  "oxygen sensor heating",
+  "oxygen sensor voltage too",
+  "resistance too"
+ ],
+ "codes": [
+  {
+   "code": "P1101",
+   "brand": "vag",
+   "ru": "Лямбда-зонд 1 (ряд 1): напряжение слишком низкое / подсос воздуха",
+   "en": "Oxygen Sensor Circuit Bank 1 Sensor 1 Voltage Too Low/Air Leak",
+   "fam": "",
+   "node": "oxygen"
+  },
+  {
+   "code": "P1106",
+   "brand": "vag",
+   "ru": "Лямбда-зонд 1 (ряд 2): напряжение слишком низкое / подсос воздуха",
+   "en": "Oxygen Sensor Circuit Bank 2 Sensor 1 Voltage Too Low/Air Leak",
+   "fam": "",
+   "node": "oxygen"
+  },
+  {
+   "code": "P1109",
+   "brand": "vag",
+   "ru": "Лямбда-зонд 2 (ряд 2): напряжение слишком низкое / подсос воздуха",
+   "en": "Oxygen Sensor Circuit Bank 2 Sensor 2 Voltage Too Low/Air Leak",
+   "fam": "",
+   "node": "oxygen"
+  },
+  {
+   "code": "P1102",
+   "brand": "vag",
+   "ru": "Подогрев лямбда-зонда 1 (ряд 1): напряжение слишком низкое",
+   "en": "Oxygen Sensor Heating Circuit Bank 1 Sensor 1 Voltage Too Low/Air Leak",
+   "fam": "",
+   "node": "oxygen sensor heating"
+  },
+  {
+   "code": "P1103",
+   "brand": "vag",
+   "ru": "Подогрев лямбда-зонда 1 (ряд 1): замыкание на плюс",
+   "en": "Oxygen Sensor Heating Circuit Bank 1 Sensor 1 Short To B+",
+   "fam": "",
+   "node": "oxygen sensor heating"
+  },
+  {
+   "code": "P1105",
+   "brand": "vag",
+   "ru": "Подогрев лямбда-зонда 2 (ряд 1): замыкание на плюс",
+   "en": "Oxygen Sensor Heating Circuit Bank 1 Sensor 2 Short To B+",
+   "fam": "",
+   "node": "oxygen sensor heating"
+  },
+  {
+   "code": "P1107",
+   "brand": "vag",
+   "ru": "Подогрев лямбда-зонда 1 (ряд 2): замыкание на плюс",
+   "en": "Oxygen Sensor Heating Circuit Bank 2 Sensor 1 Short To B+",
+   "fam": "",
+   "node": "oxygen sensor heating"
+  },
+  {
+   "code": "P1108",
+   "brand": "vag",
+   "ru": "Подогрев лямбда-зонда 1 (ряд 2): слишком малая мощность",
+   "en": "Oxygen Sensor Heating Circuit Bank 2 Sensor 1 Output Too Low",
+   "fam": "",
+   "node": "oxygen sensor heating"
+  },
+  {
+   "code": "P1110",
+   "brand": "vag",
+   "ru": "Подогрев лямбда-зонда 2 (ряд 2): замыкание на плюс",
+   "en": "Oxygen Sensor Heating Circuit Bank 2 Sensor 2 Short To B+",
+   "fam": "",
+   "node": "oxygen sensor heating"
+  },
+  {
+   "code": "P1132",
+   "brand": "vag",
+   "ru": "Подогрев лямбда-зондов 1 (ряды 1 и 2): замыкание на плюс",
+   "en": "Oxygen Sensor Heating Circuit Bank 1 + 2 Sensor 1 Short To B+",
+   "fam": "",
+   "node": "oxygen sensor heating"
+  },
+  {
+   "code": "P1133",
+   "brand": "vag",
+   "ru": "Подогрев лямбда-зондов 1 (ряды 1 и 2): электрическая неисправность",
+   "en": "Oxygen Sensor Heating Circuit Bank 1 + 2 Sensor 1 Electrical Malfunction",
+   "fam": "",
+   "node": "oxygen sensor heating"
+  },
+  {
+   "code": "P1134",
+   "brand": "vag",
+   "ru": "Подогрев лямбда-зондов 2 (ряды 1 и 2): замыкание на плюс",
+   "en": "Oxygen Sensor Heating Circuit Bank 1 + 2 Sensor 2 Short To B+",
+   "fam": "",
+   "node": "oxygen sensor heating"
+  },
+  {
+   "code": "P1135",
+   "brand": "vag",
+   "ru": "Подогрев лямбда-зондов 2 (ряды 1 и 2): электрическая неисправность",
+   "en": "Oxygen Sensor Heating Circuit Bank 1 + 2 Sensor 2 Electrical Malfunction",
+   "fam": "",
+   "node": "oxygen sensor heating"
+  },
+  {
+   "code": "P1104",
+   "brand": "vag",
+   "ru": "Лямбда-зонд 2 (ряд 1): напряжение слишком низкое / подсос воздуха",
+   "en": "Oxygen Sensor Bank 1 Sensor 2 Voltage Too Low/Air Leak",
+   "fam": "",
+   "node": "oxygen sensor voltage too"
+  },
+  {
+   "code": "P1111",
+   "brand": "vag",
+   "ru": "Лямбда-регулирование (ряд 1): смесь слишком бедная",
+   "en": "Oxygen Sensor Control Bank 1 System Too Lean",
+   "fam": "",
+   "node": "oxygen sensor control system too lean"
+  },
+  {
+   "code": "P1147",
+   "brand": "vag",
+   "ru": "Лямбда-регулирование (ряд 2): смесь слишком бедная",
+   "en": "Oxygen Sensor Control Bank 2 System Too Lean",
+   "fam": "",
+   "node": "oxygen sensor control system too lean"
+  },
+  {
+   "code": "P1112",
+   "brand": "vag",
+   "ru": "Лямбда-регулирование (ряд 1): смесь слишком богатая",
+   "en": "Oxygen Sensor Control Bank 1 System Too Rich",
+   "fam": "",
+   "node": "oxygen sensor control system too rich"
+  },
+  {
+   "code": "P1148",
+   "brand": "vag",
+   "ru": "Лямбда-регулирование (ряд 2): смесь слишком богатая",
+   "en": "Oxygen Sensor Control Bank 2 System Too Rich",
+   "fam": "",
+   "node": "oxygen sensor control system too rich"
+  },
+  {
+   "code": "P1113",
+   "brand": "vag",
+   "ru": "Подогрев лямбда-зонда 1 (ряд 1): сопротивление слишком большое",
+   "en": "Oxygen Sensor Heater Resistance Too High Bank 1 Sensor 1",
+   "fam": "",
+   "node": "oxygen sensor heater resistance too"
+  },
+  {
+   "code": "P1114",
+   "brand": "vag",
+   "ru": "Подогрев лямбда-зонда 2 (ряд 1): сопротивление слишком большое",
+   "en": "Bank 1 Sensor 2 Resistance Too High",
+   "fam": "",
+   "node": "resistance too"
+  },
+  {
+   "code": "P1131",
+   "brand": "vag",
+   "ru": "Подогрев лямбда-зонда 1 (ряд 2): сопротивление слишком большое",
+   "en": "Bank 2 Sensor 1 Resistance Too High",
+   "fam": "",
+   "node": "resistance too"
+  },
+  {
+   "code": "P1140",
+   "brand": "vag",
+   "ru": "Подогрев лямбда-зонда 2 (ряд 2): сопротивление слишком большое",
+   "en": "Bank 2 Sensor 2 Resistance Too High",
+   "fam": "",
+   "node": "resistance too"
+  },
+  {
+   "code": "P1115",
+   "brand": "vag",
+   "ru": "Подогрев лямбда-зонда 1 (ряд 1): замыкание на массу",
+   "en": "Oxygen Sensor Heater Circuit Short To Ground Bank 1 Sensor 1",
+   "fam": "",
+   "node": "oxygen sensor"
+  },
+  {
+   "code": "P1116",
+   "brand": "vag",
+   "ru": "Подогрев лямбда-зонда 1 (ряд 1): обрыв",
+   "en": "Oxygen Sensor Heater Circuit Open Bank 1 Sensor 1",
+   "fam": "",
+   "node": "oxygen sensor"
+  },
+  {
+   "code": "P1117",
+   "brand": "vag",
+   "ru": "Подогрев лямбда-зонда 2 (ряд 1): замыкание на массу",
+   "en": "Oxygen Sensor Heater Circuit Short To Ground Bank 1 Sensor 2",
+   "fam": "",
+   "node": "oxygen sensor"
+  },
+  {
+   "code": "P1118",
+   "brand": "vag",
+   "ru": "Подогрев лямбда-зонда 2 (ряд 1): обрыв",
+   "en": "Oxygen Sensor Heater Circuit Open Bank 1 Sensor 2",
+   "fam": "",
+   "node": "oxygen sensor"
+  },
+  {
+   "code": "P1119",
+   "brand": "vag",
+   "ru": "Подогрев лямбда-зонда 1 (ряд 2): замыкание на массу",
+   "en": "Oxygen Sensor Heater Circuit Bank 2 Sensor 1 Short To Ground",
+   "fam": "",
+   "node": "oxygen sensor"
+  },
+  {
+   "code": "P1120",
+   "brand": "vag",
+   "ru": "Подогрев лямбда-зонда 1 (ряд 2): обрыв",
+   "en": "Oxygen Sensor Heater Circuit Bank 2 Sensor 1 Open",
+   "fam": "",
+   "node": "oxygen sensor"
+  },
+  {
+   "code": "P1121",
+   "brand": "vag",
+   "ru": "Подогрев лямбда-зонда 2 (ряд 2): замыкание на массу",
+   "en": "Oxygen Sensor Heater Circuit Bank 2 Sensor 2 Short To Ground",
+   "fam": "",
+   "node": "oxygen sensor"
+  },
+  {
+   "code": "P1122",
+   "brand": "vag",
+   "ru": "Подогрев лямбда-зонда 2 (ряд 2): обрыв",
+   "en": "Oxygen Sensor Heater Circuit Bank 2 Sensor 2 Open",
+   "fam": "",
+   "node": "oxygen sensor"
+  },
+  {
+   "code": "P1196",
+   "brand": "vag",
+   "ru": "Подогрев лямбда-зонда 1 (ряд 1): электрическая неисправность",
+   "en": "Oxygen Sensor Heater Circuit Bank 1 Sensor 1 Electrical Malfunction",
+   "fam": "",
+   "node": "oxygen sensor"
+  },
+  {
+   "code": "P1197",
+   "brand": "vag",
+   "ru": "Подогрев лямбда-зонда 1 (ряд 2): электрическая неисправность",
+   "en": "Oxygen Sensor Heater Circuit Bank 2 Sensor 1 Electrical Malfunction",
+   "fam": "",
+   "node": "oxygen sensor"
+  },
+  {
+   "code": "P1198",
+   "brand": "vag",
+   "ru": "Подогрев лямбда-зонда 2 (ряд 1): электрическая неисправность",
+   "en": "Oxygen Sensor Heater Circuit Bank 1 Sensor 2 Electrical Malfunction",
+   "fam": "",
+   "node": "oxygen sensor"
+  },
+  {
+   "code": "P1199",
+   "brand": "vag",
+   "ru": "Подогрев лямбда-зонда 2 (ряд 2): электрическая неисправность",
+   "en": "Oxygen Sensor Heater Circuit Bank 2 Sensor 2 Electrical Malfunction",
+   "fam": "",
+   "node": "oxygen sensor"
+  },
+  {
+   "code": "P1123",
+   "brand": "vag",
+   "ru": "Аддитивная коррекция по воздуху (ряд 1): смесь слишком богатая",
+   "en": "Long Term Fuel Trim Add Air Bank 1 System Too Rich",
+   "fam": "",
+   "node": "long term fuel trim add air system too rich"
+  },
+  {
+   "code": "P1125",
+   "brand": "vag",
+   "ru": "Аддитивная коррекция по воздуху (ряд 2): смесь слишком богатая",
+   "en": "Long Term Fuel Trim Add Air Bank 2 System Too Rich",
+   "fam": "",
+   "node": "long term fuel trim add air system too rich"
+  },
+  {
+   "code": "P1124",
+   "brand": "vag",
+   "ru": "Аддитивная коррекция по воздуху (ряд 1): смесь слишком бедная",
+   "en": "Long Term Fuel Trim Add Air Bank 1 System Too Lean",
+   "fam": "",
+   "node": "long term fuel trim add air system too lean"
+  },
+  {
+   "code": "P1126",
+   "brand": "vag",
+   "ru": "Аддитивная коррекция по воздуху (ряд 2): смесь слишком бедная",
+   "en": "Long Term Fuel Trim Add Air Bank 2 System Too Lean",
+   "fam": "",
+   "node": "long term fuel trim add air system too lean"
+  },
+  {
+   "code": "P1127",
+   "brand": "vag",
+   "ru": "Мультипликативная коррекция (ряд 1): смесь слишком богатая",
+   "en": "Long Term Fuel Trim Bank 1 System Too Rich",
+   "fam": "",
+   "node": "long term fuel trim system too rich"
+  },
+  {
+   "code": "P1128",
+   "brand": "vag",
+   "ru": "Долговременная коррекция под нагрузкой: слишком бедно (банк 1)",
+   "en": "",
+   "fam": "lean",
+   "node": "fam:lean"
+  },
+  {
+   "code": "P1136",
+   "brand": "vag",
+   "ru": "Долговременная коррекция на холостом: слишком бедно (банк 1)",
+   "en": "",
+   "fam": "lean",
+   "node": "fam:lean"
+  },
+  {
+   "code": "P1129",
+   "brand": "vag",
+   "ru": "Долговременная коррекция под нагрузкой: слишком богато (банк 1)",
+   "en": "",
+   "fam": "rich",
+   "node": "fam:rich"
+  },
+  {
+   "code": "P1137",
+   "brand": "vag",
+   "ru": "Долговременная коррекция на холостом: слишком богато (банк 1)",
+   "en": "",
+   "fam": "rich",
+   "node": "fam:rich"
+  },
+  {
+   "code": "P1130",
+   "brand": "vag",
+   "ru": "Мультипликативная коррекция (ряд 2): смесь слишком бедная",
+   "en": "Long Term Fuel Trim Bank 2 System Too Lean",
+   "fam": "",
+   "node": "long term fuel trim system too lean"
+  },
+  {
+   "code": "P1138",
+   "brand": "vag",
+   "ru": "Аддитивная коррекция по топливу (ряд 2): смесь слишком бедная",
+   "en": "Long Term Fuel Trim Add Fuel Bank 2 System Too Lean",
+   "fam": "",
+   "node": "long term fuel trim add fuel system too lean"
+  }
+ ]
+}

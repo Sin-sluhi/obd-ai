@@ -1,0 +1,321 @@
+{
+ "name": "sae_191",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "a camshaft position actuator temperature",
+  "a camshaft position actuator temperature sensor",
+  "battery charging mode switch",
+  "crankcase temperature",
+  "deactivation exhaust valve",
+  "deactivation intake valve",
+  "replace 12v battery",
+  "throttle valve intake air pressure"
+ ],
+ "codes": [
+  {
+   "code": "P2EB0",
+   "brand": "",
+   "ru": "Датчик давления воздуха перед дросселем: цепь",
+   "en": "Throttle Valve Intake Air Pressure Sensor Circuit",
+   "fam": "",
+   "node": "throttle valve intake air pressure"
+  },
+  {
+   "code": "P2EB1",
+   "brand": "",
+   "ru": "Датчик давления воздуха перед дросселем: низкий уровень сигнала в цепи",
+   "en": "Throttle Valve Intake Air Pressure Sensor Circuit Low",
+   "fam": "",
+   "node": "throttle valve intake air pressure"
+  },
+  {
+   "code": "P2EB2",
+   "brand": "",
+   "ru": "Датчик давления воздуха перед дросселем: высокий уровень сигнала в цепи",
+   "en": "Throttle Valve Intake Air Pressure Sensor Circuit High",
+   "fam": "",
+   "node": "throttle valve intake air pressure"
+  },
+  {
+   "code": "P2EB3",
+   "brand": "",
+   "ru": "Датчик давления воздуха перед дросселем: сигнал вне диапазона",
+   "en": "Throttle Valve Intake Air Pressure Sensor Circuit Range/Performance",
+   "fam": "",
+   "node": "throttle valve intake air pressure"
+  },
+  {
+   "code": "P2EB7",
+   "brand": "",
+   "ru": "Замените АКБ 12 В",
+   "en": "Replace 12V Battery",
+   "fam": "",
+   "node": "replace 12v battery"
+  },
+  {
+   "code": "P2EBB",
+   "brand": "",
+   "ru": "Датчик температуры картера: цепь",
+   "en": "Crankcase Temperature Sensor Circuit",
+   "fam": "",
+   "node": "crankcase temperature"
+  },
+  {
+   "code": "P2EBC",
+   "brand": "",
+   "ru": "Датчик температуры картера: сигнал вне диапазона",
+   "en": "Crankcase Temperature Sensor Circuit Range/Performance",
+   "fam": "",
+   "node": "crankcase temperature"
+  },
+  {
+   "code": "P2EBD",
+   "brand": "",
+   "ru": "Датчик температуры картера: высокий уровень сигнала в цепи",
+   "en": "Crankcase Temperature Sensor Circuit High",
+   "fam": "",
+   "node": "crankcase temperature"
+  },
+  {
+   "code": "P2EBE",
+   "brand": "",
+   "ru": "Датчик температуры картера: низкий уровень сигнала в цепи",
+   "en": "Crankcase Temperature Sensor Circuit Low",
+   "fam": "",
+   "node": "crankcase temperature"
+  },
+  {
+   "code": "P2EBF",
+   "brand": "",
+   "ru": "Переключатель режима зарядки: заклинивание",
+   "en": "Battery Charging Mode Switch Stuck",
+   "fam": "",
+   "node": "battery charging mode switch"
+  },
+  {
+   "code": "P340A",
+   "brand": "",
+   "ru": "Отключение цилиндров / впускные клапаны: цепь управления (банк 1)",
+   "en": "Deactivation/Intake Valve Control Circuit Bank 1",
+   "fam": "",
+   "node": "deactivation intake valve"
+  },
+  {
+   "code": "P340B",
+   "brand": "",
+   "ru": "Отключение цилиндров / впускные клапаны: цепь управления (банк 2)",
+   "en": "Deactivation/Intake Valve Control Circuit Bank 2",
+   "fam": "",
+   "node": "deactivation intake valve"
+  },
+  {
+   "code": "P341A",
+   "brand": "",
+   "ru": "Отключение цилиндров / впускные клапаны: нарушена работа цепи управления (банк 1)",
+   "en": "Deactivation/Intake Valve Control Circuit Performance Bank 1",
+   "fam": "",
+   "node": "deactivation intake valve"
+  },
+  {
+   "code": "P341B",
+   "brand": "",
+   "ru": "Отключение цилиндров / впускные клапаны: нарушена работа цепи управления (банк 2)",
+   "en": "Deactivation/Intake Valve Control Circuit Performance Bank 2",
+   "fam": "",
+   "node": "deactivation intake valve"
+  },
+  {
+   "code": "P3498",
+   "brand": "",
+   "ru": "Цилиндр 1: нарушено отключение / работа впускных клапанов",
+   "en": "Cylinder 1 Deactivation/Intake Valve Performance",
+   "fam": "",
+   "node": "deactivation intake valve"
+  },
+  {
+   "code": "P3499",
+   "brand": "",
+   "ru": "Цилиндр 2: нарушено отключение / работа впускных клапанов",
+   "en": "Cylinder 2 Deactivation/Intake Valve Performance",
+   "fam": "",
+   "node": "deactivation intake valve"
+  },
+  {
+   "code": "P349A",
+   "brand": "",
+   "ru": "Цилиндр 3: нарушено отключение / работа впускных клапанов",
+   "en": "Cylinder 3 Deactivation/Intake Valve Performance",
+   "fam": "",
+   "node": "deactivation intake valve"
+  },
+  {
+   "code": "P349B",
+   "brand": "",
+   "ru": "Цилиндр 4: нарушено отключение / работа впускных клапанов",
+   "en": "Cylinder 4 Deactivation/Intake Valve Performance",
+   "fam": "",
+   "node": "deactivation intake valve"
+  },
+  {
+   "code": "P349C",
+   "brand": "",
+   "ru": "Цилиндр 5: нарушено отключение / работа впускных клапанов",
+   "en": "Cylinder 5 Deactivation/Intake Valve Performance",
+   "fam": "",
+   "node": "deactivation intake valve"
+  },
+  {
+   "code": "P349D",
+   "brand": "",
+   "ru": "Цилиндр 6: нарушено отключение / работа впускных клапанов",
+   "en": "Cylinder 6 Deactivation/Intake Valve Performance",
+   "fam": "",
+   "node": "deactivation intake valve"
+  },
+  {
+   "code": "P349E",
+   "brand": "",
+   "ru": "Цилиндр 7: нарушено отключение / работа впускных клапанов",
+   "en": "Cylinder 7 Deactivation/Intake Valve Performance",
+   "fam": "",
+   "node": "deactivation intake valve"
+  },
+  {
+   "code": "P349F",
+   "brand": "",
+   "ru": "Цилиндр 8: нарушено отключение / работа впускных клапанов",
+   "en": "Cylinder 8 Deactivation/Intake Valve Performance",
+   "fam": "",
+   "node": "deactivation intake valve"
+  },
+  {
+   "code": "P34A0",
+   "brand": "",
+   "ru": "Цилиндр 9: нарушено отключение / работа впускных клапанов",
+   "en": "Cylinder 9 Deactivation/Intake Valve Performance",
+   "fam": "",
+   "node": "deactivation intake valve"
+  },
+  {
+   "code": "P34A1",
+   "brand": "",
+   "ru": "Цилиндр 10: нарушено отключение / работа впускных клапанов",
+   "en": "Cylinder 10 Deactivation/Intake Valve Performance",
+   "fam": "",
+   "node": "deactivation intake valve"
+  },
+  {
+   "code": "P34A2",
+   "brand": "",
+   "ru": "Цилиндр 11: нарушено отключение / работа впускных клапанов",
+   "en": "Cylinder 11 Deactivation/Intake Valve Performance",
+   "fam": "",
+   "node": "deactivation intake valve"
+  },
+  {
+   "code": "P34A3",
+   "brand": "",
+   "ru": "Цилиндр 12: нарушено отключение / работа впускных клапанов",
+   "en": "Cylinder 12 Deactivation/Intake Valve Performance",
+   "fam": "",
+   "node": "deactivation intake valve"
+  },
+  {
+   "code": "P340C",
+   "brand": "",
+   "ru": "Отключение цилиндров / выпускные клапаны: цепь управления (банк 1)",
+   "en": "Deactivation/Exhaust Valve Control Circuit Bank 1",
+   "fam": "",
+   "node": "deactivation exhaust valve"
+  },
+  {
+   "code": "P340D",
+   "brand": "",
+   "ru": "Отключение цилиндров / выпускные клапаны: цепь управления (банк 2)",
+   "en": "Deactivation/Exhaust Valve Control Circuit Bank 2",
+   "fam": "",
+   "node": "deactivation exhaust valve"
+  },
+  {
+   "code": "P341C",
+   "brand": "",
+   "ru": "Отключение цилиндров / выпускные клапаны: нарушена работа цепи управления (банк 1)",
+   "en": "Deactivation/Exhaust Valve Control Circuit Performance Bank 1",
+   "fam": "",
+   "node": "deactivation exhaust valve"
+  },
+  {
+   "code": "P341D",
+   "brand": "",
+   "ru": "Отключение цилиндров / выпускные клапаны: нарушена работа цепи управления (банк 2)",
+   "en": "Deactivation/Exhaust Valve Control Circuit Performance Bank 2",
+   "fam": "",
+   "node": "deactivation exhaust valve"
+  },
+  {
+   "code": "P34A4",
+   "brand": "",
+   "ru": "Датчик температуры фазовращателя распредвала A: цепь (банк 1)",
+   "en": "A Camshaft Position Actuator Temperature Sensor Circuit Bank 1",
+   "fam": "",
+   "node": "a camshaft position actuator temperature"
+  },
+  {
+   "code": "P34A6",
+   "brand": "",
+   "ru": "Датчик температуры фазовращателя распредвала A: низкий уровень сигнала в цепи (банк 1)",
+   "en": "A Camshaft Position Actuator Temperature Sensor Circuit Low Bank 1",
+   "fam": "",
+   "node": "a camshaft position actuator temperature"
+  },
+  {
+   "code": "P34A7",
+   "brand": "",
+   "ru": "Датчик температуры фазовращателя распредвала A: высокий уровень сигнала в цепи (банк 1)",
+   "en": "A Camshaft Position Actuator Temperature Sensor Circuit High Bank 1",
+   "fam": "",
+   "node": "a camshaft position actuator temperature"
+  },
+  {
+   "code": "P34A8",
+   "brand": "",
+   "ru": "Датчик температуры фазовращателя распредвала A: цепь (банк 2)",
+   "en": "A Camshaft Position Actuator Temperature Sensor Circuit Bank 2",
+   "fam": "",
+   "node": "a camshaft position actuator temperature"
+  },
+  {
+   "code": "P34AA",
+   "brand": "",
+   "ru": "Датчик температуры фазовращателя распредвала A: низкий уровень сигнала в цепи (банк 2)",
+   "en": "A Camshaft Position Actuator Temperature Sensor Circuit Low Bank 2",
+   "fam": "",
+   "node": "a camshaft position actuator temperature"
+  },
+  {
+   "code": "P34AB",
+   "brand": "",
+   "ru": "Датчик температуры фазовращателя распредвала A: высокий уровень сигнала в цепи (банк 2)",
+   "en": "A Camshaft Position Actuator Temperature Sensor Circuit High Bank 2",
+   "fam": "",
+   "node": "a camshaft position actuator temperature"
+  },
+  {
+   "code": "P34A5",
+   "brand": "",
+   "ru": "Датчик температуры фазовращателя распредвала A: вне допустимого диапазона (банк 1)",
+   "en": "A Camshaft Position Actuator Temperature Sensor Range/Performance Bank 1",
+   "fam": "",
+   "node": "a camshaft position actuator temperature sensor"
+  },
+  {
+   "code": "P34A9",
+   "brand": "",
+   "ru": "Датчик температуры фазовращателя распредвала A: вне допустимого диапазона (банк 2)",
+   "en": "A Camshaft Position Actuator Temperature Sensor Range/Performance Bank 2",
+   "fam": "",
+   "node": "a camshaft position actuator temperature sensor"
+  }
+ ]
+}

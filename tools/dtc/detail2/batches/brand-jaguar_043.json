@@ -1,0 +1,394 @@
+{
+ "name": "brand-jaguar_043",
+ "series": "brand",
+ "brand": "jaguar",
+ "nodes": [
+  "analog ground",
+  "camshaft position sensor b",
+  "crankshaft camshaft sensor",
+  "electronic throttle",
+  "fuel pump",
+  "ignition coil early activation fault",
+  "ignition coil no activation",
+  "ignition system failure group",
+  "insufficient rpm increase during spark test",
+  "mechanical guard",
+  "misfire rate catalyst damage fault",
+  "misfire rate exceeds emissions",
+  "persistent misfire",
+  "ru:вакуумный клапан 1",
+  "ru:вакуумный клапан 2",
+  "ru:вакуумный клапан 3",
+  "ru:вакуумный клапан va/vv заклинил включённым",
+  "ru:вакуумный клапан vr заклинил включённым",
+  "ru:сигнал прокрутки",
+  "sensor power supply",
+  "theft detected vehicle immobilized",
+  "throttle position",
+  "throttle valve spring",
+  "variable valve timing solenoid a",
+  "vsv 1 2"
+ ],
+ "codes": [
+  {
+   "code": "P1226",
+   "brand": "jaguar",
+   "ru": "Механическая защита (дроссель): выход за диапазон",
+   "en": "Mechanical Guard Circuit Range Performance",
+   "fam": "",
+   "node": "mechanical guard"
+  },
+  {
+   "code": "P1227",
+   "brand": "jaguar",
+   "ru": "Механическая защита (дроссель): низкий сигнал",
+   "en": "Mechanical Guard Circuit Low Input",
+   "fam": "",
+   "node": "mechanical guard"
+  },
+  {
+   "code": "P1228",
+   "brand": "jaguar",
+   "ru": "Механическая защита (дроссель): высокий сигнал",
+   "en": "Mechanical Guard Circuit High Input",
+   "fam": "",
+   "node": "mechanical guard"
+  },
+  {
+   "code": "P1229",
+   "brand": "jaguar",
+   "ru": "Электронный дроссель: цепь",
+   "en": "Electronic Throttle Control Circuit",
+   "fam": "",
+   "node": "electronic throttle"
+  },
+  {
+   "code": "P1230",
+   "brand": "jaguar",
+   "ru": "Реле топливного насоса",
+   "en": "Fuel Pump Relay",
+   "fam": "",
+   "node": "fuel pump"
+  },
+  {
+   "code": "P1235",
+   "brand": "jaguar",
+   "ru": "Вакуумные клапаны 1/2/3: выход за диапазон",
+   "en": "VSV 1/2/3 Circuit Range Performance",
+   "fam": "",
+   "node": "vsv 1 2"
+  },
+  {
+   "code": "P1236",
+   "brand": "jaguar",
+   "ru": "Вакуумный клапан 1: цепь",
+   "en": "VSV 1 Circuit",
+   "fam": "",
+   "node": "ru:вакуумный клапан 1"
+  },
+  {
+   "code": "P1237",
+   "brand": "jaguar",
+   "ru": "Вакуумный клапан 2: цепь",
+   "en": "VSV 2 Circuit",
+   "fam": "",
+   "node": "ru:вакуумный клапан 2"
+  },
+  {
+   "code": "P1238",
+   "brand": "jaguar",
+   "ru": "Вакуумный клапан 3: цепь",
+   "en": "VSV 3 Circuit",
+   "fam": "",
+   "node": "ru:вакуумный клапан 3"
+  },
+  {
+   "code": "P1240",
+   "brand": "jaguar",
+   "ru": "Питание датчиков",
+   "en": "Sensor Power Supply",
+   "fam": "",
+   "node": "sensor power supply"
+  },
+  {
+   "code": "P1241",
+   "brand": "jaguar",
+   "ru": "Питание датчиков: низкое",
+   "en": "Sensor Power Supply Low Input",
+   "fam": "",
+   "node": "sensor power supply"
+  },
+  {
+   "code": "P1242",
+   "brand": "jaguar",
+   "ru": "Питание датчиков: высокое",
+   "en": "Sensor Power Supply High Input",
+   "fam": "",
+   "node": "sensor power supply"
+  },
+  {
+   "code": "P1243",
+   "brand": "jaguar",
+   "ru": "Аналоговая масса",
+   "en": "Analog Ground",
+   "fam": "",
+   "node": "analog ground"
+  },
+  {
+   "code": "P1245",
+   "brand": "jaguar",
+   "ru": "Сигнал прокрутки: низкий",
+   "en": "Crank Signal Low Input",
+   "fam": "",
+   "node": "ru:сигнал прокрутки"
+  },
+  {
+   "code": "P1246",
+   "brand": "jaguar",
+   "ru": "Сигнал прокрутки: высокий",
+   "en": "Crank Signal High Input",
+   "fam": "",
+   "node": "ru:сигнал прокрутки"
+  },
+  {
+   "code": "P1250",
+   "brand": "jaguar",
+   "ru": "Пружина дроссельной заслонки",
+   "en": "Throttle Valve Spring",
+   "fam": "",
+   "node": "throttle valve spring"
+  },
+  {
+   "code": "P1251",
+   "brand": "jaguar",
+   "ru": "Положение дросселя",
+   "en": "Throttle Position",
+   "fam": "",
+   "node": "throttle position"
+  },
+  {
+   "code": "P1252",
+   "brand": "jaguar",
+   "ru": "Вакуумный клапан VA/VV заклинил включённым",
+   "en": "VSV Stuck On VA/VV",
+   "fam": "",
+   "node": "ru:вакуумный клапан va/vv заклинил включённым"
+  },
+  {
+   "code": "P1253",
+   "brand": "jaguar",
+   "ru": "Вакуумный клапан VR заклинил включённым",
+   "en": "VSV Stuck On VR",
+   "fam": "",
+   "node": "ru:вакуумный клапан vr заклинил включённым"
+  },
+  {
+   "code": "P1260",
+   "brand": "jaguar",
+   "ru": "Обнаружена попытка угона — машина обездвижена",
+   "en": "Theft Detected Vehicle Immobilized",
+   "fam": "",
+   "node": "theft detected vehicle immobilized"
+  },
+  {
+   "code": "P1313",
+   "brand": "jaguar",
+   "ru": "Пропуски, опасные для катализатора (ряд 1)",
+   "en": "Misfire Rate Catalyst Damage Fault Bank 1",
+   "fam": "",
+   "node": "misfire rate catalyst damage fault"
+  },
+  {
+   "code": "P1314",
+   "brand": "jaguar",
+   "ru": "Пропуски, опасные для катализатора (ряд 2)",
+   "en": "Misfire Rate Catalyst Damage Fault Bank 2",
+   "fam": "",
+   "node": "misfire rate catalyst damage fault"
+  },
+  {
+   "code": "P1315",
+   "brand": "jaguar",
+   "ru": "Постоянные пропуски воспламенения",
+   "en": "Persistent Misfire",
+   "fam": "",
+   "node": "persistent misfire"
+  },
+  {
+   "code": "P1316",
+   "brand": "jaguar",
+   "ru": "Пропуски превышают норму токсичности",
+   "en": "Misfire Rate Exceeds Emissions",
+   "fam": "",
+   "node": "misfire rate exceeds emissions"
+  },
+  {
+   "code": "P1336",
+   "brand": "jaguar",
+   "ru": "Датчики коленвала и распредвала: выход за диапазон",
+   "en": "Crankshaft Camshaft Sensor Range Performance",
+   "fam": "",
+   "node": "crankshaft camshaft sensor"
+  },
+  {
+   "code": "P1340",
+   "brand": "jaguar",
+   "ru": "Датчик распредвала B: цепь",
+   "en": "Camshaft Position Sensor B Circuit",
+   "fam": "",
+   "node": "camshaft position sensor b"
+  },
+  {
+   "code": "P1341",
+   "brand": "jaguar",
+   "ru": "Датчик распредвала B: выход за диапазон",
+   "en": "Camshaft Position Sensor B Circuit Range Performance",
+   "fam": "",
+   "node": "camshaft position sensor b"
+  },
+  {
+   "code": "P1361",
+   "brand": "jaguar",
+   "ru": "Катушка зажигания цилиндра 1: не срабатывает",
+   "en": "Ignition Coil Cylinder 1 No Activation",
+   "fam": "",
+   "node": "ignition coil no activation"
+  },
+  {
+   "code": "P1362",
+   "brand": "jaguar",
+   "ru": "Катушка зажигания цилиндра 2: не срабатывает",
+   "en": "Ignition Coil Cylinder 2 No Activation",
+   "fam": "",
+   "node": "ignition coil no activation"
+  },
+  {
+   "code": "P1363",
+   "brand": "jaguar",
+   "ru": "Катушка зажигания цилиндра 3: не срабатывает",
+   "en": "Ignition Coil Cylinder 3 No Activation",
+   "fam": "",
+   "node": "ignition coil no activation"
+  },
+  {
+   "code": "P1364",
+   "brand": "jaguar",
+   "ru": "Катушка зажигания цилиндра 4: не срабатывает",
+   "en": "Ignition Coil Cylinder 4 No Activation",
+   "fam": "",
+   "node": "ignition coil no activation"
+  },
+  {
+   "code": "P1365",
+   "brand": "jaguar",
+   "ru": "Катушка зажигания цилиндра 5: не срабатывает",
+   "en": "Ignition Coil Cylinder 5 No Activation",
+   "fam": "",
+   "node": "ignition coil no activation"
+  },
+  {
+   "code": "P1366",
+   "brand": "jaguar",
+   "ru": "Катушка зажигания цилиндра 6: не срабатывает",
+   "en": "Ignition Coil Cylinder 6 No Activation",
+   "fam": "",
+   "node": "ignition coil no activation"
+  },
+  {
+   "code": "P1367",
+   "brand": "jaguar",
+   "ru": "Неисправность зажигания, группа 1",
+   "en": "Ignition System Failure Group 1",
+   "fam": "",
+   "node": "ignition system failure group"
+  },
+  {
+   "code": "P1368",
+   "brand": "jaguar",
+   "ru": "Неисправность зажигания, группа 2",
+   "en": "Ignition System Failure Group 2",
+   "fam": "",
+   "node": "ignition system failure group"
+  },
+  {
+   "code": "P1370",
+   "brand": "jaguar",
+   "ru": "Недостаточный рост оборотов при тесте искры",
+   "en": "Insufficient RPM Increase During Spark Test",
+   "fam": "",
+   "node": "insufficient rpm increase during spark test"
+  },
+  {
+   "code": "P1371",
+   "brand": "jaguar",
+   "ru": "Катушка зажигания цилиндра 1: раннее срабатывание",
+   "en": "Ignition Coil Cylinder 1 Early Activation Fault",
+   "fam": "",
+   "node": "ignition coil early activation fault"
+  },
+  {
+   "code": "P1372",
+   "brand": "jaguar",
+   "ru": "Катушка зажигания цилиндра 2: раннее срабатывание",
+   "en": "Ignition Coil Cylinder 2 Early Activation Fault",
+   "fam": "",
+   "node": "ignition coil early activation fault"
+  },
+  {
+   "code": "P1373",
+   "brand": "jaguar",
+   "ru": "Катушка зажигания цилиндра 3: раннее срабатывание",
+   "en": "Ignition Coil Cylinder 3 Early Activation Fault",
+   "fam": "",
+   "node": "ignition coil early activation fault"
+  },
+  {
+   "code": "P1374",
+   "brand": "jaguar",
+   "ru": "Катушка зажигания цилиндра 4: раннее срабатывание",
+   "en": "Ignition Coil Cylinder 4 Early Activation Fault",
+   "fam": "",
+   "node": "ignition coil early activation fault"
+  },
+  {
+   "code": "P1375",
+   "brand": "jaguar",
+   "ru": "Катушка зажигания цилиндра 5: раннее срабатывание",
+   "en": "Ignition Coil Cylinder 5 Early Activation Fault",
+   "fam": "",
+   "node": "ignition coil early activation fault"
+  },
+  {
+   "code": "P1376",
+   "brand": "jaguar",
+   "ru": "Катушка зажигания цилиндра 6: раннее срабатывание",
+   "en": "Ignition Coil Cylinder 6 Early Activation Fault",
+   "fam": "",
+   "node": "ignition coil early activation fault"
+  },
+  {
+   "code": "P1384",
+   "brand": "jaguar",
+   "ru": "Клапан фазовращателя A: цепь",
+   "en": "Variable Valve Timing Solenoid A Circuit",
+   "fam": "",
+   "node": "variable valve timing solenoid a"
+  },
+  {
+   "code": "P1392",
+   "brand": "jaguar",
+   "ru": "Клапан фазовращателя A: низкий сигнал",
+   "en": "Variable Valve Timing Solenoid A Circuit Low Input",
+   "fam": "",
+   "node": "variable valve timing solenoid a"
+  },
+  {
+   "code": "P1393",
+   "brand": "jaguar",
+   "ru": "Клапан фазовращателя A: высокий сигнал",
+   "en": "Variable Valve Timing Solenoid A Circuit High Input",
+   "fam": "",
+   "node": "variable valve timing solenoid a"
+  }
+ ]
+}

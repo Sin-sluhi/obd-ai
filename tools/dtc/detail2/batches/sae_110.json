@@ -1,0 +1,382 @@
+{
+ "name": "sae_110",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "drive motor a current",
+  "drive motor a inverter power supply",
+  "drive motor a phase u v w",
+  "drive motor a phase u v w current sensor correlation",
+  "drive motor b current",
+  "drive motor b inverter power supply",
+  "drive motor b phase u v w",
+  "drive motor b phase u v w current sensor correlation",
+  "drive motor inverter temperature sensor c",
+  "drive motor inverter temperature sensor d",
+  "drive motor inverter temperature sensor e",
+  "drive motor inverter temperature sensor f",
+  "generator inverter temperature sensor a"
+ ],
+ "codes": [
+  {
+   "code": "P0BCC",
+   "brand": "",
+   "ru": "Датчик температуры инвертора генератора A: цепь",
+   "en": "Generator Inverter Temperature Sensor A Circuit",
+   "fam": "",
+   "node": "generator inverter temperature sensor a"
+  },
+  {
+   "code": "P0BCD",
+   "brand": "",
+   "ru": "Датчик температуры инвертора генератора A: сигнал вне диапазона",
+   "en": "Generator Inverter Temperature Sensor A Circuit Range/Performance",
+   "fam": "",
+   "node": "generator inverter temperature sensor a"
+  },
+  {
+   "code": "P0BCE",
+   "brand": "",
+   "ru": "Датчик температуры инвертора генератора A: низкий уровень сигнала в цепи",
+   "en": "Generator Inverter Temperature Sensor A Circuit Low",
+   "fam": "",
+   "node": "generator inverter temperature sensor a"
+  },
+  {
+   "code": "P0BCF",
+   "brand": "",
+   "ru": "Датчик температуры инвертора генератора A: высокий уровень сигнала в цепи",
+   "en": "Generator Inverter Temperature Sensor A Circuit High",
+   "fam": "",
+   "node": "generator inverter temperature sensor a"
+  },
+  {
+   "code": "P0BD0",
+   "brand": "",
+   "ru": "Датчик температуры инвертора генератора A: прерывистый / нестабильный сигнал",
+   "en": "Generator Inverter Temperature Sensor A Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "generator inverter temperature sensor a"
+  },
+  {
+   "code": "P0BD1",
+   "brand": "",
+   "ru": "Датчик температуры инвертора тягового электромотора C: цепь",
+   "en": "Drive Motor Inverter Temperature Sensor C Circuit",
+   "fam": "",
+   "node": "drive motor inverter temperature sensor c"
+  },
+  {
+   "code": "P0BD2",
+   "brand": "",
+   "ru": "Датчик температуры инвертора тягового электромотора C: сигнал вне диапазона",
+   "en": "Drive Motor Inverter Temperature Sensor C Circuit Range/Performance",
+   "fam": "",
+   "node": "drive motor inverter temperature sensor c"
+  },
+  {
+   "code": "P0BD3",
+   "brand": "",
+   "ru": "Датчик температуры инвертора тягового электромотора C: низкий уровень сигнала в цепи",
+   "en": "Drive Motor Inverter Temperature Sensor C Circuit Low",
+   "fam": "",
+   "node": "drive motor inverter temperature sensor c"
+  },
+  {
+   "code": "P0BD4",
+   "brand": "",
+   "ru": "Датчик температуры инвертора тягового электромотора C: высокий уровень сигнала в цепи",
+   "en": "Drive Motor Inverter Temperature Sensor C Circuit High",
+   "fam": "",
+   "node": "drive motor inverter temperature sensor c"
+  },
+  {
+   "code": "P0BD5",
+   "brand": "",
+   "ru": "Датчик температуры инвертора тягового электромотора C: прерывистый / нестабильный сигнал",
+   "en": "Drive Motor Inverter Temperature Sensor C Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "drive motor inverter temperature sensor c"
+  },
+  {
+   "code": "P0BD6",
+   "brand": "",
+   "ru": "Датчик температуры инвертора тягового электромотора D: цепь",
+   "en": "Drive Motor Inverter Temperature Sensor D Circuit",
+   "fam": "",
+   "node": "drive motor inverter temperature sensor d"
+  },
+  {
+   "code": "P0BD7",
+   "brand": "",
+   "ru": "Датчик температуры инвертора тягового электромотора D: сигнал вне диапазона",
+   "en": "Drive Motor Inverter Temperature Sensor D Circuit Range/Performance",
+   "fam": "",
+   "node": "drive motor inverter temperature sensor d"
+  },
+  {
+   "code": "P0BD8",
+   "brand": "",
+   "ru": "Датчик температуры инвертора тягового электромотора D: низкий уровень сигнала в цепи",
+   "en": "Drive Motor Inverter Temperature Sensor D Circuit Low",
+   "fam": "",
+   "node": "drive motor inverter temperature sensor d"
+  },
+  {
+   "code": "P0BD9",
+   "brand": "",
+   "ru": "Датчик температуры инвертора тягового электромотора D: высокий уровень сигнала в цепи",
+   "en": "Drive Motor Inverter Temperature Sensor D Circuit High",
+   "fam": "",
+   "node": "drive motor inverter temperature sensor d"
+  },
+  {
+   "code": "P0BDA",
+   "brand": "",
+   "ru": "Датчик температуры инвертора тягового электромотора D: прерывистый / нестабильный сигнал",
+   "en": "Drive Motor Inverter Temperature Sensor D Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "drive motor inverter temperature sensor d"
+  },
+  {
+   "code": "P0BDB",
+   "brand": "",
+   "ru": "Датчик температуры инвертора тягового электромотора E: цепь",
+   "en": "Drive Motor Inverter Temperature Sensor E Circuit",
+   "fam": "",
+   "node": "drive motor inverter temperature sensor e"
+  },
+  {
+   "code": "P0BDC",
+   "brand": "",
+   "ru": "Датчик температуры инвертора тягового электромотора E: сигнал вне диапазона",
+   "en": "Drive Motor Inverter Temperature Sensor E Circuit Range/Performance",
+   "fam": "",
+   "node": "drive motor inverter temperature sensor e"
+  },
+  {
+   "code": "P0BDD",
+   "brand": "",
+   "ru": "Датчик температуры инвертора тягового электромотора E: низкий уровень сигнала в цепи",
+   "en": "Drive Motor Inverter Temperature Sensor E Circuit Low",
+   "fam": "",
+   "node": "drive motor inverter temperature sensor e"
+  },
+  {
+   "code": "P0BDE",
+   "brand": "",
+   "ru": "Датчик температуры инвертора тягового электромотора E: высокий уровень сигнала в цепи",
+   "en": "Drive Motor Inverter Temperature Sensor E Circuit High",
+   "fam": "",
+   "node": "drive motor inverter temperature sensor e"
+  },
+  {
+   "code": "P0BDF",
+   "brand": "",
+   "ru": "Датчик температуры инвертора тягового электромотора E: прерывистый / нестабильный сигнал",
+   "en": "Drive Motor Inverter Temperature Sensor E Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "drive motor inverter temperature sensor e"
+  },
+  {
+   "code": "P0BE0",
+   "brand": "",
+   "ru": "Датчик температуры инвертора тягового электромотора F: цепь",
+   "en": "Drive Motor Inverter Temperature Sensor F Circuit",
+   "fam": "",
+   "node": "drive motor inverter temperature sensor f"
+  },
+  {
+   "code": "P0BE1",
+   "brand": "",
+   "ru": "Датчик температуры инвертора тягового электромотора F: сигнал вне диапазона",
+   "en": "Drive Motor Inverter Temperature Sensor F Circuit Range/Performance",
+   "fam": "",
+   "node": "drive motor inverter temperature sensor f"
+  },
+  {
+   "code": "P0BE2",
+   "brand": "",
+   "ru": "Датчик температуры инвертора тягового электромотора F: низкий уровень сигнала в цепи",
+   "en": "Drive Motor Inverter Temperature Sensor F Circuit Low",
+   "fam": "",
+   "node": "drive motor inverter temperature sensor f"
+  },
+  {
+   "code": "P0BE3",
+   "brand": "",
+   "ru": "Датчик температуры инвертора тягового электромотора F: высокий уровень сигнала в цепи",
+   "en": "Drive Motor Inverter Temperature Sensor F Circuit High",
+   "fam": "",
+   "node": "drive motor inverter temperature sensor f"
+  },
+  {
+   "code": "P0BE4",
+   "brand": "",
+   "ru": "Датчик температуры инвертора тягового электромотора F: прерывистый / нестабильный сигнал",
+   "en": "Drive Motor Inverter Temperature Sensor F Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "drive motor inverter temperature sensor f"
+  },
+  {
+   "code": "P0BFD",
+   "brand": "",
+   "ru": "Тяговый электромотор A: рассогласование датчиков тока фаз U-V-W",
+   "en": "Drive Motor A Phase U-V-W Current Sensor Correlation",
+   "fam": "",
+   "node": "drive motor a phase u v w current sensor correlation"
+  },
+  {
+   "code": "P0BFE",
+   "brand": "",
+   "ru": "Тяговый электромотор B: рассогласование датчиков тока фаз U-V-W",
+   "en": "Drive Motor B Phase U-V-W Current Sensor Correlation",
+   "fam": "",
+   "node": "drive motor b phase u v w current sensor correlation"
+  },
+  {
+   "code": "P0BFF",
+   "brand": "",
+   "ru": "Тяговый электромотор A: ток",
+   "en": "Drive Motor A Current",
+   "fam": "",
+   "node": "drive motor a current"
+  },
+  {
+   "code": "P0C00",
+   "brand": "",
+   "ru": "Тяговый электромотор A: малый ток",
+   "en": "Drive Motor A Current Low",
+   "fam": "",
+   "node": "drive motor a current"
+  },
+  {
+   "code": "P0C01",
+   "brand": "",
+   "ru": "Тяговый электромотор A: большой ток",
+   "en": "Drive Motor A Current High",
+   "fam": "",
+   "node": "drive motor a current"
+  },
+  {
+   "code": "P0C02",
+   "brand": "",
+   "ru": "Тяговый электромотор B: ток",
+   "en": "Drive Motor B Current",
+   "fam": "",
+   "node": "drive motor b current"
+  },
+  {
+   "code": "P0C03",
+   "brand": "",
+   "ru": "Тяговый электромотор B: малый ток",
+   "en": "Drive Motor B Current Low",
+   "fam": "",
+   "node": "drive motor b current"
+  },
+  {
+   "code": "P0C04",
+   "brand": "",
+   "ru": "Тяговый электромотор B: большой ток",
+   "en": "Drive Motor B Current High",
+   "fam": "",
+   "node": "drive motor b current"
+  },
+  {
+   "code": "P0C05",
+   "brand": "",
+   "ru": "Тяговый электромотор A, фазы U-V-W: обрыв цепи",
+   "en": "Drive Motor A Phase U-V-W Circuit/Open",
+   "fam": "",
+   "node": "drive motor a phase u v w"
+  },
+  {
+   "code": "P0C06",
+   "brand": "",
+   "ru": "Тяговый электромотор A, фазы U-V-W: низкий уровень сигнала в цепи",
+   "en": "Drive Motor A Phase U-V-W Circuit Low",
+   "fam": "",
+   "node": "drive motor a phase u v w"
+  },
+  {
+   "code": "P0C07",
+   "brand": "",
+   "ru": "Тяговый электромотор A, фазы U-V-W: высокий уровень сигнала в цепи",
+   "en": "Drive Motor A Phase U-V-W Circuit High",
+   "fam": "",
+   "node": "drive motor a phase u v w"
+  },
+  {
+   "code": "P0C08",
+   "brand": "",
+   "ru": "Тяговый электромотор B, фазы U-V-W: обрыв цепи",
+   "en": "Drive Motor B Phase U-V-W Circuit/Open",
+   "fam": "",
+   "node": "drive motor b phase u v w"
+  },
+  {
+   "code": "P0C09",
+   "brand": "",
+   "ru": "Тяговый электромотор B, фазы U-V-W: низкий уровень сигнала в цепи",
+   "en": "Drive Motor B Phase U-V-W Circuit Low",
+   "fam": "",
+   "node": "drive motor b phase u v w"
+  },
+  {
+   "code": "P0C0A",
+   "brand": "",
+   "ru": "Тяговый электромотор B, фазы U-V-W: высокий уровень сигнала в цепи",
+   "en": "Drive Motor B Phase U-V-W Circuit High",
+   "fam": "",
+   "node": "drive motor b phase u v w"
+  },
+  {
+   "code": "P0C0B",
+   "brand": "",
+   "ru": "Инвертор тягового электромотора A, питание: обрыв цепи питания",
+   "en": "Drive Motor A Inverter Power Supply Circuit/Open",
+   "fam": "",
+   "node": "drive motor a inverter power supply"
+  },
+  {
+   "code": "P0C0C",
+   "brand": "",
+   "ru": "Инвертор тягового электромотора A, питание: низкое напряжение питания",
+   "en": "Drive Motor A Inverter Power Supply Circuit Low",
+   "fam": "",
+   "node": "drive motor a inverter power supply"
+  },
+  {
+   "code": "P0C0D",
+   "brand": "",
+   "ru": "Инвертор тягового электромотора A, питание: высокое напряжение питания",
+   "en": "Drive Motor A Inverter Power Supply Circuit High",
+   "fam": "",
+   "node": "drive motor a inverter power supply"
+  },
+  {
+   "code": "P0C0E",
+   "brand": "",
+   "ru": "Инвертор тягового электромотора B, питание: обрыв цепи питания",
+   "en": "Drive Motor B Inverter Power Supply Circuit/Open",
+   "fam": "",
+   "node": "drive motor b inverter power supply"
+  },
+  {
+   "code": "P0C0F",
+   "brand": "",
+   "ru": "Инвертор тягового электромотора B, питание: низкое напряжение питания",
+   "en": "Drive Motor B Inverter Power Supply Circuit Low",
+   "fam": "",
+   "node": "drive motor b inverter power supply"
+  },
+  {
+   "code": "P0C10",
+   "brand": "",
+   "ru": "Инвертор тягового электромотора B, питание: высокое напряжение питания",
+   "en": "Drive Motor B Inverter Power Supply Circuit High",
+   "fam": "",
+   "node": "drive motor b inverter power supply"
+  }
+ ]
+}

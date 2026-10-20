@@ -1,0 +1,374 @@
+{
+ "name": "sae_193",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "fam:can",
+  "medium speed can communication bus",
+  "medium speed can communication bus shorted to bus",
+  "ru:низкоскоростная шина can (+)",
+  "ru:низкоскоростная шина can (−)"
+ ],
+ "codes": [
+  {
+   "code": "U0001",
+   "brand": "",
+   "ru": "Шина CAN (высокоскоростная): неисправность",
+   "en": "",
+   "fam": "can",
+   "node": "fam:can"
+  },
+  {
+   "code": "U0002",
+   "brand": "",
+   "ru": "Шина CAN (высокоскоростная): нет отклика",
+   "en": "",
+   "fam": "can",
+   "node": "fam:can"
+  },
+  {
+   "code": "U0003",
+   "brand": "",
+   "ru": "Шина CAN: обрыв линии High",
+   "en": "",
+   "fam": "can",
+   "node": "fam:can"
+  },
+  {
+   "code": "U0004",
+   "brand": "",
+   "ru": "Шина CAN: линия High замкнута на массу",
+   "en": "",
+   "fam": "can",
+   "node": "fam:can"
+  },
+  {
+   "code": "U0005",
+   "brand": "",
+   "ru": "Шина CAN: линия High замкнута на плюс",
+   "en": "",
+   "fam": "can",
+   "node": "fam:can"
+  },
+  {
+   "code": "U0006",
+   "brand": "",
+   "ru": "Шина CAN: обрыв линии Low",
+   "en": "",
+   "fam": "can",
+   "node": "fam:can"
+  },
+  {
+   "code": "U0007",
+   "brand": "",
+   "ru": "Шина CAN: линия Low замкнута на массу",
+   "en": "",
+   "fam": "can",
+   "node": "fam:can"
+  },
+  {
+   "code": "U0008",
+   "brand": "",
+   "ru": "Шина CAN: линия Low замкнута на плюс",
+   "en": "",
+   "fam": "can",
+   "node": "fam:can"
+  },
+  {
+   "code": "U0009",
+   "brand": "",
+   "ru": "Шина CAN: линии High и Low замкнуты между собой",
+   "en": "",
+   "fam": "can",
+   "node": "fam:can"
+  },
+  {
+   "code": "U000A",
+   "brand": "",
+   "ru": "Шина CAN: скорость обмена не соответствует",
+   "en": "",
+   "fam": "can",
+   "node": "fam:can"
+  },
+  {
+   "code": "U0010",
+   "brand": "",
+   "ru": "Шина CAN (средней скорости): неисправность",
+   "en": "",
+   "fam": "can",
+   "node": "fam:can"
+  },
+  {
+   "code": "U0011",
+   "brand": "",
+   "ru": "Шина CAN (средней скорости): нет отклика",
+   "en": "",
+   "fam": "can",
+   "node": "fam:can"
+  },
+  {
+   "code": "U0019",
+   "brand": "",
+   "ru": "Шина CAN (низкоскоростная / комфорт): неисправность",
+   "en": "",
+   "fam": "can",
+   "node": "fam:can"
+  },
+  {
+   "code": "U0020",
+   "brand": "",
+   "ru": "Шина CAN (низкоскоростная): нет отклика",
+   "en": "",
+   "fam": "can",
+   "node": "fam:can"
+  },
+  {
+   "code": "U0028",
+   "brand": "",
+   "ru": "Шина CAN (кузовная A): неисправность",
+   "en": "",
+   "fam": "can",
+   "node": "fam:can"
+  },
+  {
+   "code": "U0029",
+   "brand": "",
+   "ru": "Шина CAN (кузовная A): нет отклика",
+   "en": "",
+   "fam": "can",
+   "node": "fam:can"
+  },
+  {
+   "code": "U0037",
+   "brand": "",
+   "ru": "Шина CAN (кузовная B): неисправность",
+   "en": "",
+   "fam": "can",
+   "node": "fam:can"
+  },
+  {
+   "code": "U0038",
+   "brand": "",
+   "ru": "Шина CAN (кузовная B): нет отклика",
+   "en": "",
+   "fam": "can",
+   "node": "fam:can"
+  },
+  {
+   "code": "U0046",
+   "brand": "",
+   "ru": "Шина CAN (кузовная C): неисправность",
+   "en": "",
+   "fam": "can",
+   "node": "fam:can"
+  },
+  {
+   "code": "U0055",
+   "brand": "",
+   "ru": "Шина CAN (кузовная D): неисправность",
+   "en": "",
+   "fam": "can",
+   "node": "fam:can"
+  },
+  {
+   "code": "U0064",
+   "brand": "",
+   "ru": "Шина CAN (кузовная E): неисправность",
+   "en": "",
+   "fam": "can",
+   "node": "fam:can"
+  },
+  {
+   "code": "U0073",
+   "brand": "",
+   "ru": "Шина CAN: блок отключился от шины (bus off)",
+   "en": "",
+   "fam": "can",
+   "node": "fam:can"
+  },
+  {
+   "code": "U0074",
+   "brand": "",
+   "ru": "Шина CAN (средней скорости): блок отключился (bus off)",
+   "en": "",
+   "fam": "can",
+   "node": "fam:can"
+  },
+  {
+   "code": "U0075",
+   "brand": "",
+   "ru": "Шина CAN (низкоскоростная): блок отключился (bus off)",
+   "en": "",
+   "fam": "can",
+   "node": "fam:can"
+  },
+  {
+   "code": "U0076",
+   "brand": "",
+   "ru": "Шина CAN (кузовная A): блок отключился (bus off)",
+   "en": "",
+   "fam": "can",
+   "node": "fam:can"
+  },
+  {
+   "code": "U0077",
+   "brand": "",
+   "ru": "Шина CAN (кузовная B): блок отключился (bus off)",
+   "en": "",
+   "fam": "can",
+   "node": "fam:can"
+  },
+  {
+   "code": "U0078",
+   "brand": "",
+   "ru": "Шина CAN (кузовная C): блок отключился (bus off)",
+   "en": "",
+   "fam": "can",
+   "node": "fam:can"
+  },
+  {
+   "code": "U0079",
+   "brand": "",
+   "ru": "Шина CAN (кузовная D): блок отключился (bus off)",
+   "en": "",
+   "fam": "can",
+   "node": "fam:can"
+  },
+  {
+   "code": "U0080",
+   "brand": "",
+   "ru": "Шина CAN (кузовная E): блок отключился (bus off)",
+   "en": "",
+   "fam": "can",
+   "node": "fam:can"
+  },
+  {
+   "code": "U0081",
+   "brand": "",
+   "ru": "Шина CAN (шасси): неисправность",
+   "en": "",
+   "fam": "can",
+   "node": "fam:can"
+  },
+  {
+   "code": "U0082",
+   "brand": "",
+   "ru": "Шина CAN (шасси): нет отклика",
+   "en": "",
+   "fam": "can",
+   "node": "fam:can"
+  },
+  {
+   "code": "U0083",
+   "brand": "",
+   "ru": "Шина CAN (шасси): блок отключился (bus off)",
+   "en": "",
+   "fam": "can",
+   "node": "fam:can"
+  },
+  {
+   "code": "U0012",
+   "brand": "",
+   "ru": "Среднескоростная шина CAN (+): обрыв",
+   "en": "Medium Speed CAN Communication Bus (+) Open",
+   "fam": "",
+   "node": "medium speed can communication bus"
+  },
+  {
+   "code": "U0013",
+   "brand": "",
+   "ru": "Среднескоростная шина CAN (+): низкий уровень",
+   "en": "Medium Speed CAN Communication Bus (+) Low",
+   "fam": "",
+   "node": "medium speed can communication bus"
+  },
+  {
+   "code": "U0014",
+   "brand": "",
+   "ru": "Среднескоростная шина CAN (+): высокий уровень",
+   "en": "Medium Speed CAN Communication Bus (+) High",
+   "fam": "",
+   "node": "medium speed can communication bus"
+  },
+  {
+   "code": "U0015",
+   "brand": "",
+   "ru": "Среднескоростная шина CAN (−): обрыв",
+   "en": "Medium Speed CAN Communication Bus (-) Open",
+   "fam": "",
+   "node": "medium speed can communication bus"
+  },
+  {
+   "code": "U0016",
+   "brand": "",
+   "ru": "Среднескоростная шина CAN (−): низкий уровень",
+   "en": "Medium Speed CAN Communication Bus (-) Low",
+   "fam": "",
+   "node": "medium speed can communication bus"
+  },
+  {
+   "code": "U0017",
+   "brand": "",
+   "ru": "Среднескоростная шина CAN (−): высокий уровень",
+   "en": "Medium Speed CAN Communication Bus (-) High",
+   "fam": "",
+   "node": "medium speed can communication bus"
+  },
+  {
+   "code": "U0018",
+   "brand": "",
+   "ru": "Среднескоростная шина CAN: замыкание (−) на (+)",
+   "en": "Medium Speed CAN Communication Bus (-) shorted to Bus (+)",
+   "fam": "",
+   "node": "medium speed can communication bus shorted to bus"
+  },
+  {
+   "code": "U0021",
+   "brand": "",
+   "ru": "Низкоскоростная шина CAN (+): обрыв",
+   "en": "Low Speed CAN Communication Bus (+) Open",
+   "fam": "",
+   "node": "ru:низкоскоростная шина can (+)"
+  },
+  {
+   "code": "U0022",
+   "brand": "",
+   "ru": "Низкоскоростная шина CAN (+): низкий уровень",
+   "en": "Low Speed CAN Communication Bus (+) Low",
+   "fam": "",
+   "node": "ru:низкоскоростная шина can (+)"
+  },
+  {
+   "code": "U0023",
+   "brand": "",
+   "ru": "Низкоскоростная шина CAN (+): высокий уровень",
+   "en": "Low Speed CAN Communication Bus (+) High",
+   "fam": "",
+   "node": "ru:низкоскоростная шина can (+)"
+  },
+  {
+   "code": "U0024",
+   "brand": "",
+   "ru": "Низкоскоростная шина CAN (−): обрыв",
+   "en": "Low Speed CAN Communication Bus (-) Open",
+   "fam": "",
+   "node": "ru:низкоскоростная шина can (−)"
+  },
+  {
+   "code": "U0025",
+   "brand": "",
+   "ru": "Низкоскоростная шина CAN (−): низкий уровень",
+   "en": "Low Speed CAN Communication Bus (-) Low",
+   "fam": "",
+   "node": "ru:низкоскоростная шина can (−)"
+  },
+  {
+   "code": "U0026",
+   "brand": "",
+   "ru": "Низкоскоростная шина CAN (−): высокий уровень",
+   "en": "Low Speed CAN Communication Bus (-) High",
+   "fam": "",
+   "node": "ru:низкоскоростная шина can (−)"
+  }
+ ]
+}

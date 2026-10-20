@@ -1,0 +1,310 @@
+{
+ "name": "sae_032",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "battery b state of charge",
+  "body control module requested mil illumination",
+  "charge air cooler temperature intake air temperature correlation",
+  "engine coolant temperature 1 ambient air temperature correlation",
+  "engine coolant temperature 2 ambient air temperature correlation",
+  "engine coolant temperature 2 correlation",
+  "engine coolant temperature intake air temperature correlation",
+  "evap system tank vapor line restricted blocked",
+  "fam:ect",
+  "humidity",
+  "mass or volume air flow sensor a b correlation",
+  "mass or volume air flow sensor b",
+  "turbocharger outlet pressure sensor a"
+ ],
+ "codes": [
+  {
+   "code": "P00F2",
+   "brand": "",
+   "ru": "Датчик влажности: обрыв цепи",
+   "en": "Humidity Sensor Circuit/Open",
+   "fam": "",
+   "node": "humidity"
+  },
+  {
+   "code": "P00F3",
+   "brand": "",
+   "ru": "Датчик влажности: сигнал вне диапазона",
+   "en": "Humidity Sensor Circuit Range/Performance",
+   "fam": "",
+   "node": "humidity"
+  },
+  {
+   "code": "P00F4",
+   "brand": "",
+   "ru": "Датчик влажности: низкий уровень сигнала в цепи",
+   "en": "Humidity Sensor Circuit Low",
+   "fam": "",
+   "node": "humidity"
+  },
+  {
+   "code": "P00F5",
+   "brand": "",
+   "ru": "Датчик влажности: высокий уровень сигнала в цепи",
+   "en": "Humidity Sensor Circuit High",
+   "fam": "",
+   "node": "humidity"
+  },
+  {
+   "code": "P00F6",
+   "brand": "",
+   "ru": "Датчик влажности: прерывистый / нестабильный сигнал",
+   "en": "Humidity Sensor Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "humidity"
+  },
+  {
+   "code": "P00F8",
+   "brand": "",
+   "ru": "Датчик давления на выходе турбины A: цепь",
+   "en": "Turbocharger Outlet Pressure Sensor A Circuit",
+   "fam": "",
+   "node": "turbocharger outlet pressure sensor a"
+  },
+  {
+   "code": "P00F9",
+   "brand": "",
+   "ru": "Датчик давления на выходе турбины A: вне допустимого диапазона",
+   "en": "Turbocharger Outlet Pressure Sensor A Range/Performance",
+   "fam": "",
+   "node": "turbocharger outlet pressure sensor a"
+  },
+  {
+   "code": "P00FA",
+   "brand": "",
+   "ru": "Датчик давления на выходе турбины A: низкий уровень сигнала в цепи",
+   "en": "Turbocharger Outlet Pressure Sensor A Circuit Low",
+   "fam": "",
+   "node": "turbocharger outlet pressure sensor a"
+  },
+  {
+   "code": "P00FB",
+   "brand": "",
+   "ru": "Датчик давления на выходе турбины A: высокий уровень сигнала в цепи",
+   "en": "Turbocharger Outlet Pressure Sensor A Circuit High",
+   "fam": "",
+   "node": "turbocharger outlet pressure sensor a"
+  },
+  {
+   "code": "P00FC",
+   "brand": "",
+   "ru": "Датчик давления на выходе турбины A: прерывистый / нестабильный сигнал",
+   "en": "Turbocharger Outlet Pressure Sensor A Intermittent/Erratic",
+   "fam": "",
+   "node": "turbocharger outlet pressure sensor a"
+  },
+  {
+   "code": "P00FD",
+   "brand": "",
+   "ru": "АКБ B: работа контроля заряда нарушена",
+   "en": "Battery B State of Charge Performance",
+   "fam": "",
+   "node": "battery b state of charge"
+  },
+  {
+   "code": "P00FE",
+   "brand": "",
+   "ru": "Система улавливания паров: засорена/перекрыта линия паров бака",
+   "en": "EVAP System Tank Vapor Line Restricted/Blocked",
+   "fam": "",
+   "node": "evap system tank vapor line restricted blocked"
+  },
+  {
+   "code": "P00FF",
+   "brand": "",
+   "ru": "Блок кузова запросил включение Check Engine",
+   "en": "Body Control Module Requested MIL Illumination",
+   "fam": "",
+   "node": "body control module requested mil illumination"
+  },
+  {
+   "code": "P010A",
+   "brand": "",
+   "ru": "Датчик расхода воздуха (ДМРВ) B: цепь",
+   "en": "Mass or Volume Air Flow Sensor B Circuit",
+   "fam": "",
+   "node": "mass or volume air flow sensor b"
+  },
+  {
+   "code": "P010B",
+   "brand": "",
+   "ru": "Датчик расхода воздуха (ДМРВ) B: сигнал вне диапазона",
+   "en": "Mass or Volume Air Flow Sensor B Circuit Range/Performance",
+   "fam": "",
+   "node": "mass or volume air flow sensor b"
+  },
+  {
+   "code": "P010C",
+   "brand": "",
+   "ru": "Датчик расхода воздуха (ДМРВ) B: низкий уровень сигнала в цепи",
+   "en": "Mass or Volume Air Flow Sensor B Circuit Low",
+   "fam": "",
+   "node": "mass or volume air flow sensor b"
+  },
+  {
+   "code": "P010D",
+   "brand": "",
+   "ru": "Датчик расхода воздуха (ДМРВ) B: высокий уровень сигнала в цепи",
+   "en": "Mass or Volume Air Flow Sensor B Circuit High",
+   "fam": "",
+   "node": "mass or volume air flow sensor b"
+  },
+  {
+   "code": "P010E",
+   "brand": "",
+   "ru": "Датчик расхода воздуха (ДМРВ) B: прерывистый / нестабильный сигнал",
+   "en": "Mass or Volume Air Flow Sensor B Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "mass or volume air flow sensor b"
+  },
+  {
+   "code": "P010F",
+   "brand": "",
+   "ru": "Датчик расхода воздуха (ДМРВ): рассогласование A/B",
+   "en": "Mass or Volume Air Flow Sensor A/B Correlation",
+   "fam": "",
+   "node": "mass or volume air flow sensor a b correlation"
+  },
+  {
+   "code": "P0115",
+   "brand": "",
+   "ru": "Датчик температуры охлаждающей жидкости: цепь",
+   "en": "",
+   "fam": "ect",
+   "node": "fam:ect"
+  },
+  {
+   "code": "P0116",
+   "brand": "",
+   "ru": "Датчик температуры охлаждающей жидкости: показания вне диапазона",
+   "en": "",
+   "fam": "ect",
+   "node": "fam:ect"
+  },
+  {
+   "code": "P0117",
+   "brand": "",
+   "ru": "Датчик температуры охлаждающей жидкости: низкий сигнал",
+   "en": "",
+   "fam": "ect",
+   "node": "fam:ect"
+  },
+  {
+   "code": "P0118",
+   "brand": "",
+   "ru": "Датчик температуры охлаждающей жидкости: высокий сигнал",
+   "en": "",
+   "fam": "ect",
+   "node": "fam:ect"
+  },
+  {
+   "code": "P0119",
+   "brand": "",
+   "ru": "Датчик температуры охлаждающей жидкости: прерывистый сигнал",
+   "en": "",
+   "fam": "ect",
+   "node": "fam:ect"
+  },
+  {
+   "code": "P060F",
+   "brand": "",
+   "ru": "Блок управления: контроль датчика температуры ОЖ",
+   "en": "",
+   "fam": "ect",
+   "node": "fam:ect"
+  },
+  {
+   "code": "P2182",
+   "brand": "",
+   "ru": "Датчик температуры охлаждающей жидкости 2: цепь",
+   "en": "",
+   "fam": "ect",
+   "node": "fam:ect"
+  },
+  {
+   "code": "P2183",
+   "brand": "",
+   "ru": "Датчик температуры охлаждающей жидкости 2: показания вне диапазона",
+   "en": "",
+   "fam": "ect",
+   "node": "fam:ect"
+  },
+  {
+   "code": "P2184",
+   "brand": "",
+   "ru": "Датчик температуры охлаждающей жидкости 2: низкий сигнал",
+   "en": "",
+   "fam": "ect",
+   "node": "fam:ect"
+  },
+  {
+   "code": "P2185",
+   "brand": "",
+   "ru": "Датчик температуры охлаждающей жидкости 2: высокий сигнал",
+   "en": "",
+   "fam": "ect",
+   "node": "fam:ect"
+  },
+  {
+   "code": "P2186",
+   "brand": "",
+   "ru": "Датчик температуры охлаждающей жидкости 2: прерывистый сигнал",
+   "en": "",
+   "fam": "ect",
+   "node": "fam:ect"
+  },
+  {
+   "code": "P011A",
+   "brand": "",
+   "ru": "Датчики температуры охлаждающей жидкости 1 и 2: рассогласование",
+   "en": "Engine Coolant Temperature Sensor 1/2 Correlation",
+   "fam": "",
+   "node": "engine coolant temperature 2 correlation"
+  },
+  {
+   "code": "P011B",
+   "brand": "",
+   "ru": "Рассогласование температуры охлаждающей жидкости и впускного воздуха",
+   "en": "Engine Coolant Temperature/Intake Air Temperature Correlation",
+   "fam": "",
+   "node": "engine coolant temperature intake air temperature correlation"
+  },
+  {
+   "code": "P011C",
+   "brand": "",
+   "ru": "Температура интеркулера / температура впускного воздуха: рассогласование показаний (банк 1)",
+   "en": "Charge Air Cooler Temperature/Intake Air Temperature Correlation Bank 1",
+   "fam": "",
+   "node": "charge air cooler temperature intake air temperature correlation"
+  },
+  {
+   "code": "P011D",
+   "brand": "",
+   "ru": "Температура интеркулера / температура впускного воздуха: рассогласование показаний (банк 2)",
+   "en": "Charge Air Cooler Temperature/Intake Air Temperature Correlation Bank 2",
+   "fam": "",
+   "node": "charge air cooler temperature intake air temperature correlation"
+  },
+  {
+   "code": "P011E",
+   "brand": "",
+   "ru": "Рассогласование температуры охлаждающей жидкости 1 и наружного воздуха",
+   "en": "Engine Coolant Temperature 1 / Ambient Air Temperature Correlation",
+   "fam": "",
+   "node": "engine coolant temperature 1 ambient air temperature correlation"
+  },
+  {
+   "code": "P011F",
+   "brand": "",
+   "ru": "Рассогласование температуры охлаждающей жидкости 2 и наружного воздуха",
+   "en": "Engine Coolant Temperature 2 / Ambient Air Temperature Correlation",
+   "fam": "",
+   "node": "engine coolant temperature 2 ambient air temperature correlation"
+  }
+ ]
+}

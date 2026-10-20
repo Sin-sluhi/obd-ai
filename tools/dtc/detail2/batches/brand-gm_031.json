@@ -1,0 +1,405 @@
+{
+ "name": "brand-gm_031",
+ "series": "brand",
+ "brand": "gm",
+ "nodes": [
+  "a c pressure sensor voltage too",
+  "asr active",
+  "charging system voltage too",
+  "cruise control brake",
+  "cruise control clutch",
+  "cruise control disabled",
+  "cruise control system active braking control active",
+  "cruise control system engine rpm too",
+  "cruise control system traction control active",
+  "cruise control system vehicle accel too",
+  "cruise direction",
+  "cruise inhibit",
+  "cruise move",
+  "cruise servo position",
+  "cruise servo stroke",
+  "cruise servo stroke greater than commanded in cruise",
+  "engine stall or near stall detected",
+  "extended travel brake",
+  "loss of cvrtd serial data",
+  "loss of dim serial data",
+  "loss of ebtcm serial data",
+  "loss of hvax serial data",
+  "loss of ipc serial data",
+  "loss of ipm serial data",
+  "loss of pzm serial data",
+  "loss of sdm serial data",
+  "loss of tcs serial data",
+  "p n to d r at",
+  "pcm battery",
+  "pcm ebtcm serial data",
+  "ru:датчик разрежения усилителя тормозов",
+  "serial communication problem with device",
+  "speed control",
+  "speed control switch always",
+  "stoplamp",
+  "tcs pwm"
+ ],
+ "codes": [
+  {
+   "code": "P1564",
+   "brand": "gm",
+   "ru": "Круиз-контроль: слишком сильное ускорение",
+   "en": "Cruise Control System Vehicle Accel Too High",
+   "fam": "",
+   "node": "cruise control system vehicle accel too"
+  },
+  {
+   "code": "P1565",
+   "brand": "gm",
+   "ru": "Датчик положения сервопривода круиз-контроля",
+   "en": "Cruise Servo Position Sensor",
+   "fam": "",
+   "node": "cruise servo position"
+  },
+  {
+   "code": "P1566",
+   "brand": "gm",
+   "ru": "Круиз-контроль: слишком высокие обороты двигателя",
+   "en": "Cruise Control System Engine RPM Too High",
+   "fam": "",
+   "node": "cruise control system engine rpm too"
+  },
+  {
+   "code": "P1567",
+   "brand": "gm",
+   "ru": "Круиз-контроль: работает система активного торможения",
+   "en": "Cruise Control System Active Braking Control Active",
+   "fam": "",
+   "node": "cruise control system active braking control active"
+  },
+  {
+   "code": "P1568",
+   "brand": "gm",
+   "ru": "Ход сервопривода круиза больше заданного",
+   "en": "Cruise Servo Stroke Greater Than Commanded In Cruise",
+   "fam": "",
+   "node": "cruise servo stroke greater than commanded in cruise"
+  },
+  {
+   "code": "P1569",
+   "brand": "gm",
+   "ru": "Большой ход сервопривода круиза вне режима круиза",
+   "en": "Cruise Servo Stroke High While Not In Cruise",
+   "fam": "",
+   "node": "cruise servo stroke"
+  },
+  {
+   "code": "P1570",
+   "brand": "gm",
+   "ru": "Круиз-контроль: работает противобуксовочная система",
+   "en": "Cruise Control System Traction Control Active",
+   "fam": "",
+   "node": "cruise control system traction control active"
+  },
+  {
+   "code": "P1571",
+   "brand": "gm",
+   "ru": "Противобуксовка: нет частоты ШИМ-сигнала",
+   "en": "TCS PWM Circuit No Frequency",
+   "fam": "",
+   "node": "tcs pwm"
+  },
+  {
+   "code": "P1572",
+   "brand": "gm",
+   "ru": "Противобуксовка (ASR): сигнал «активна» слишком долго низкий",
+   "en": "ASR Active Circuit Low Too Long",
+   "fam": "",
+   "node": "asr active"
+  },
+  {
+   "code": "P1573",
+   "brand": "gm",
+   "ru": "Линия данных блок двигателя — блок ABS/ASR",
+   "en": "PCM EBTCM Serial Data Circuit",
+   "fam": "",
+   "node": "pcm ebtcm serial data"
+  },
+  {
+   "code": "P1574",
+   "brand": "gm",
+   "ru": "Выключатель стоп-сигнала: цепь",
+   "en": "Stoplamp Switch Circuit",
+   "fam": "",
+   "node": "stoplamp"
+  },
+  {
+   "code": "P1575",
+   "brand": "gm",
+   "ru": "Выключатель тормоза с увеличенным ходом: цепь",
+   "en": "Extended Travel Brake Switch Circuit",
+   "fam": "",
+   "node": "extended travel brake"
+  },
+  {
+   "code": "P1576",
+   "brand": "gm",
+   "ru": "Датчик разрежения усилителя тормозов: высокое напряжение",
+   "en": "BBV Sensor Circuit High Voltage",
+   "fam": "",
+   "node": "ru:датчик разрежения усилителя тормозов"
+  },
+  {
+   "code": "P1577",
+   "brand": "gm",
+   "ru": "Датчик разрежения усилителя тормозов: низкое напряжение",
+   "en": "BBV Sensor Circuit Low Voltage",
+   "fam": "",
+   "node": "ru:датчик разрежения усилителя тормозов"
+  },
+  {
+   "code": "P1578",
+   "brand": "gm",
+   "ru": "Датчик разрежения усилителя тормозов: низкое разрежение",
+   "en": "BBV Sensor Circuit Low Vacuum",
+   "fam": "",
+   "node": "ru:датчик разрежения усилителя тормозов"
+  },
+  {
+   "code": "P1579",
+   "brand": "gm",
+   "ru": "Переключение P/N в D/R при большом открытии дросселя",
+   "en": "P/N To D/R At High Throttle Angle",
+   "fam": "",
+   "node": "p n to d r at"
+  },
+  {
+   "code": "P1580",
+   "brand": "gm",
+   "ru": "Круиз-контроль, цепь перемещения: низкое напряжение",
+   "en": "Cruise Move Circuit Low Voltage",
+   "fam": "",
+   "node": "cruise move"
+  },
+  {
+   "code": "P1581",
+   "brand": "gm",
+   "ru": "Круиз-контроль, цепь перемещения: высокое напряжение",
+   "en": "Cruise Move Circuit High Voltage",
+   "fam": "",
+   "node": "cruise move"
+  },
+  {
+   "code": "P1582",
+   "brand": "gm",
+   "ru": "Круиз-контроль, цепь направления: низкое напряжение",
+   "en": "Cruise Direction Circuit Low Voltage",
+   "fam": "",
+   "node": "cruise direction"
+  },
+  {
+   "code": "P1583",
+   "brand": "gm",
+   "ru": "Круиз-контроль, цепь направления: высокое напряжение",
+   "en": "Cruise Direction Circuit High Volume",
+   "fam": "",
+   "node": "cruise direction"
+  },
+  {
+   "code": "P1584",
+   "brand": "gm",
+   "ru": "Круиз-контроль отключён",
+   "en": "Cruise Control Disabled",
+   "fam": "",
+   "node": "cruise control disabled"
+  },
+  {
+   "code": "P1585",
+   "brand": "gm",
+   "ru": "Запрет круиз-контроля: цепь",
+   "en": "Cruise Inhibit Control Circuit",
+   "fam": "",
+   "node": "cruise inhibit"
+  },
+  {
+   "code": "P1586",
+   "brand": "gm",
+   "ru": "Выключатель тормоза 2 круиз-контроля: цепь",
+   "en": "Cruise Control Brake Switch 2 Circuit",
+   "fam": "",
+   "node": "cruise control brake"
+  },
+  {
+   "code": "P1587",
+   "brand": "gm",
+   "ru": "Управление сцеплением круиз-контроля: низкий сигнал",
+   "en": "Cruise Control Clutch Control Circuit Low",
+   "fam": "",
+   "node": "cruise control clutch"
+  },
+  {
+   "code": "P1588",
+   "brand": "gm",
+   "ru": "Управление сцеплением круиз-контроля: высокий сигнал",
+   "en": "Cruise Control Clutch Control Circuit High",
+   "fam": "",
+   "node": "cruise control clutch"
+  },
+  {
+   "code": "P1594",
+   "brand": "gm",
+   "ru": "Напряжение зарядки слишком высокое",
+   "en": "Charging System Voltage Too High",
+   "fam": "",
+   "node": "charging system voltage too"
+  },
+  {
+   "code": "P1595",
+   "brand": "gm",
+   "ru": "Клапан круиз-контроля: обрыв или замыкание",
+   "en": "Speed Control Solenoid Circuit Open Or Shorted",
+   "fam": "",
+   "node": "speed control"
+  },
+  {
+   "code": "P1596",
+   "brand": "gm",
+   "ru": "Переключатель круиз-контроля: всегда высокий сигнал",
+   "en": "Speed Control Switch Always High",
+   "fam": "",
+   "node": "speed control switch always"
+  },
+  {
+   "code": "P1597",
+   "brand": "gm",
+   "ru": "Переключатель круиз-контроля: всегда низкий сигнал",
+   "en": "Speed Control Switch Always Low",
+   "fam": "",
+   "node": "speed control switch always"
+  },
+  {
+   "code": "P1598",
+   "brand": "gm",
+   "ru": "Датчик давления кондиционера: напряжение слишком высокое",
+   "en": "A/C Pressure Sensor Voltage Too High",
+   "fam": "",
+   "node": "a c pressure sensor voltage too"
+  },
+  {
+   "code": "P1599",
+   "brand": "gm",
+   "ru": "Обнаружена остановка или почти остановка двигателя",
+   "en": "Engine Stall Or Near Stall Detected",
+   "fam": "",
+   "node": "engine stall or near stall detected"
+  },
+  {
+   "code": "P1600",
+   "brand": "gm",
+   "ru": "Питание блока двигателя от АКБ",
+   "en": "PCM Battery",
+   "fam": "",
+   "node": "pcm battery"
+  },
+  {
+   "code": "P1601",
+   "brand": "gm",
+   "ru": "Ошибка обмена данными с устройством 1",
+   "en": "Serial Communication Problem With Device 1",
+   "fam": "",
+   "node": "serial communication problem with device"
+  },
+  {
+   "code": "P1606",
+   "brand": "gm",
+   "ru": "Ошибка обмена данными с устройством 6",
+   "en": "Serial Communication Problem With Device 6",
+   "fam": "",
+   "node": "serial communication problem with device"
+  },
+  {
+   "code": "P1607",
+   "brand": "gm",
+   "ru": "Ошибка обмена данными с устройством 7",
+   "en": "Serial Communication Problem With Device 7",
+   "fam": "",
+   "node": "serial communication problem with device"
+  },
+  {
+   "code": "P1608",
+   "brand": "gm",
+   "ru": "Ошибка обмена данными с устройством 8",
+   "en": "Serial Communication Problem With Device 8",
+   "fam": "",
+   "node": "serial communication problem with device"
+  },
+  {
+   "code": "P1602",
+   "brand": "gm",
+   "ru": "Нет данных от блока ABS/ASR",
+   "en": "Loss Of EBTCM Serial Data",
+   "fam": "",
+   "node": "loss of ebtcm serial data"
+  },
+  {
+   "code": "P1603",
+   "brand": "gm",
+   "ru": "Нет данных от блока подушек",
+   "en": "Loss Of SDM Serial Data",
+   "fam": "",
+   "node": "loss of sdm serial data"
+  },
+  {
+   "code": "P1604",
+   "brand": "gm",
+   "ru": "Нет данных от приборной панели",
+   "en": "Loss Of IPC Serial Data",
+   "fam": "",
+   "node": "loss of ipc serial data"
+  },
+  {
+   "code": "P1605",
+   "brand": "gm",
+   "ru": "Нет данных от блока климата",
+   "en": "Loss Of HVAX Serial Data",
+   "fam": "",
+   "node": "loss of hvax serial data"
+  },
+  {
+   "code": "P1609",
+   "brand": "gm",
+   "ru": "Нет данных от противобуксовочной системы",
+   "en": "Loss Of TCS Serial Data",
+   "fam": "",
+   "node": "loss of tcs serial data"
+  },
+  {
+   "code": "P1610",
+   "brand": "gm",
+   "ru": "Нет данных от блока PZM",
+   "en": "Loss Of PZM Serial Data",
+   "fam": "",
+   "node": "loss of pzm serial data"
+  },
+  {
+   "code": "P1611",
+   "brand": "gm",
+   "ru": "Нет данных от блока CVRTD (амортизаторы)",
+   "en": "Loss Of CVRTD Serial Data",
+   "fam": "",
+   "node": "loss of cvrtd serial data"
+  },
+  {
+   "code": "P1612",
+   "brand": "gm",
+   "ru": "Нет данных от блока IPM",
+   "en": "Loss Of IPM Serial Data",
+   "fam": "",
+   "node": "loss of ipm serial data"
+  },
+  {
+   "code": "P1613",
+   "brand": "gm",
+   "ru": "Нет данных от блока DIM",
+   "en": "Loss Of DIM Serial Data",
+   "fam": "",
+   "node": "loss of dim serial data"
+  }
+ ]
+}

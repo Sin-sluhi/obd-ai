@@ -1,0 +1,407 @@
+{
+ "name": "brand-chrysler_013",
+ "series": "brand",
+ "brand": "chrysler",
+ "nodes": [
+  "a c pressure sensor voltage too",
+  "asr active",
+  "battery disconnected within last 50 starts",
+  "charging system voltage too",
+  "clutch released",
+  "cruise control brake",
+  "cruise control clutch",
+  "cruise control disabled",
+  "cruise control system active braking control active",
+  "cruise control system engine rpm too",
+  "cruise control system traction control active",
+  "cruise control system vehicle accel too",
+  "cruise direction",
+  "cruise inhibit",
+  "cruise move",
+  "cruise servo position",
+  "cruise servo stroke",
+  "cruise servo stroke greater than commanded in cruise",
+  "cruise vacuum",
+  "cruise vehicle speed set speed difference too",
+  "engine stall or near stall detected",
+  "extended travel brake",
+  "fuel injection pump ckp sensor does not agree with ecm ckp",
+  "internal fuel injection pump controller failure",
+  "no cluster bus message",
+  "no communication between ecm & injection pump",
+  "no instrument panel cluster ccd j1850 messages received",
+  "no skim bus message received",
+  "p n to d r at",
+  "pcm ebtcm serial data",
+  "pcm not programmed",
+  "ru:датчик разрежения усилителя тормозов",
+  "skim invalid key",
+  "speed control",
+  "speed control power relay or speed control 12 volt driver",
+  "speed control switch always",
+  "stoplamp",
+  "tcs pwm"
+ ],
+ "codes": [
+  {
+   "code": "P1562",
+   "brand": "chrysler",
+   "ru": "Вакуумный клапан круиз-контроля",
+   "en": "Cruise Vacuum Solenoid",
+   "fam": "",
+   "node": "cruise vacuum"
+  },
+  {
+   "code": "P1563",
+   "brand": "chrysler",
+   "ru": "Круиз-контроль: слишком большая разница скорости и уставки",
+   "en": "Cruise Vehicle Speed Set Speed Difference Too High",
+   "fam": "",
+   "node": "cruise vehicle speed set speed difference too"
+  },
+  {
+   "code": "P1564",
+   "brand": "chrysler",
+   "ru": "Круиз-контроль: слишком сильное ускорение",
+   "en": "Cruise Control System Vehicle Accel Too High",
+   "fam": "",
+   "node": "cruise control system vehicle accel too"
+  },
+  {
+   "code": "P1565",
+   "brand": "chrysler",
+   "ru": "Датчик положения сервопривода круиз-контроля",
+   "en": "Cruise Servo Position Sensor",
+   "fam": "",
+   "node": "cruise servo position"
+  },
+  {
+   "code": "P1566",
+   "brand": "chrysler",
+   "ru": "Круиз-контроль: слишком высокие обороты двигателя",
+   "en": "Cruise Control System Engine RPM Too High",
+   "fam": "",
+   "node": "cruise control system engine rpm too"
+  },
+  {
+   "code": "P1567",
+   "brand": "chrysler",
+   "ru": "Круиз-контроль: работает система активного торможения",
+   "en": "Cruise Control System Active Braking Control Active",
+   "fam": "",
+   "node": "cruise control system active braking control active"
+  },
+  {
+   "code": "P1568",
+   "brand": "chrysler",
+   "ru": "Ход сервопривода круиза больше заданного",
+   "en": "Cruise Servo Stroke Greater Than Commanded In Cruise",
+   "fam": "",
+   "node": "cruise servo stroke greater than commanded in cruise"
+  },
+  {
+   "code": "P1569",
+   "brand": "chrysler",
+   "ru": "Большой ход сервопривода круиза вне режима круиза",
+   "en": "Cruise Servo Stroke High While Not In Cruise",
+   "fam": "",
+   "node": "cruise servo stroke"
+  },
+  {
+   "code": "P1570",
+   "brand": "chrysler",
+   "ru": "Круиз-контроль: работает противобуксовочная система",
+   "en": "Cruise Control System Traction Control Active",
+   "fam": "",
+   "node": "cruise control system traction control active"
+  },
+  {
+   "code": "P1571",
+   "brand": "chrysler",
+   "ru": "Противобуксовка: нет частоты ШИМ-сигнала",
+   "en": "TCS PWM Circuit No Frequency",
+   "fam": "",
+   "node": "tcs pwm"
+  },
+  {
+   "code": "P1572",
+   "brand": "chrysler",
+   "ru": "Противобуксовка (ASR): сигнал «активна» слишком долго низкий",
+   "en": "ASR Active Circuit Low Too Long",
+   "fam": "",
+   "node": "asr active"
+  },
+  {
+   "code": "P1573",
+   "brand": "chrysler",
+   "ru": "Линия данных блок двигателя — блок ABS/ASR",
+   "en": "PCM EBTCM Serial Data Circuit",
+   "fam": "",
+   "node": "pcm ebtcm serial data"
+  },
+  {
+   "code": "P1574",
+   "brand": "chrysler",
+   "ru": "Выключатель стоп-сигнала: цепь",
+   "en": "Stoplamp Switch Circuit",
+   "fam": "",
+   "node": "stoplamp"
+  },
+  {
+   "code": "P1575",
+   "brand": "chrysler",
+   "ru": "Выключатель тормоза с увеличенным ходом: цепь",
+   "en": "Extended Travel Brake Switch Circuit",
+   "fam": "",
+   "node": "extended travel brake"
+  },
+  {
+   "code": "P1576",
+   "brand": "chrysler",
+   "ru": "Датчик разрежения усилителя тормозов: высокое напряжение",
+   "en": "BBV Sensor Circuit High Voltage",
+   "fam": "",
+   "node": "ru:датчик разрежения усилителя тормозов"
+  },
+  {
+   "code": "P1577",
+   "brand": "chrysler",
+   "ru": "Датчик разрежения усилителя тормозов: низкое напряжение",
+   "en": "BBV Sensor Circuit Low Voltage",
+   "fam": "",
+   "node": "ru:датчик разрежения усилителя тормозов"
+  },
+  {
+   "code": "P1578",
+   "brand": "chrysler",
+   "ru": "Датчик разрежения усилителя тормозов: низкое разрежение",
+   "en": "BBV Sensor Circuit Low Vacuum",
+   "fam": "",
+   "node": "ru:датчик разрежения усилителя тормозов"
+  },
+  {
+   "code": "P1579",
+   "brand": "chrysler",
+   "ru": "Переключение P/N в D/R при большом открытии дросселя",
+   "en": "P/N To D/R At High Throttle Angle",
+   "fam": "",
+   "node": "p n to d r at"
+  },
+  {
+   "code": "P1580",
+   "brand": "chrysler",
+   "ru": "Круиз-контроль, цепь перемещения: низкое напряжение",
+   "en": "Cruise Move Circuit Low Voltage",
+   "fam": "",
+   "node": "cruise move"
+  },
+  {
+   "code": "P1581",
+   "brand": "chrysler",
+   "ru": "Круиз-контроль, цепь перемещения: высокое напряжение",
+   "en": "Cruise Move Circuit High Voltage",
+   "fam": "",
+   "node": "cruise move"
+  },
+  {
+   "code": "P1582",
+   "brand": "chrysler",
+   "ru": "Круиз-контроль, цепь направления: низкое напряжение",
+   "en": "Cruise Direction Circuit Low Voltage",
+   "fam": "",
+   "node": "cruise direction"
+  },
+  {
+   "code": "P1583",
+   "brand": "chrysler",
+   "ru": "Круиз-контроль, цепь направления: высокое напряжение",
+   "en": "Cruise Direction Circuit High Volume",
+   "fam": "",
+   "node": "cruise direction"
+  },
+  {
+   "code": "P1584",
+   "brand": "chrysler",
+   "ru": "Круиз-контроль отключён",
+   "en": "Cruise Control Disabled",
+   "fam": "",
+   "node": "cruise control disabled"
+  },
+  {
+   "code": "P1585",
+   "brand": "chrysler",
+   "ru": "Запрет круиз-контроля: цепь",
+   "en": "Cruise Inhibit Control Circuit",
+   "fam": "",
+   "node": "cruise inhibit"
+  },
+  {
+   "code": "P1586",
+   "brand": "chrysler",
+   "ru": "Выключатель тормоза 2 круиз-контроля: цепь",
+   "en": "Cruise Control Brake Switch 2 Circuit",
+   "fam": "",
+   "node": "cruise control brake"
+  },
+  {
+   "code": "P1587",
+   "brand": "chrysler",
+   "ru": "Управление сцеплением круиз-контроля: низкий сигнал",
+   "en": "Cruise Control Clutch Control Circuit Low",
+   "fam": "",
+   "node": "cruise control clutch"
+  },
+  {
+   "code": "P1588",
+   "brand": "chrysler",
+   "ru": "Управление сцеплением круиз-контроля: высокий сигнал",
+   "en": "Cruise Control Clutch Control Circuit High",
+   "fam": "",
+   "node": "cruise control clutch"
+  },
+  {
+   "code": "P1594",
+   "brand": "chrysler",
+   "ru": "Напряжение зарядки слишком высокое",
+   "en": "Charging System Voltage Too High",
+   "fam": "",
+   "node": "charging system voltage too"
+  },
+  {
+   "code": "P1682",
+   "brand": "chrysler",
+   "ru": "Напряжение зарядки слишком низкое",
+   "en": "Charging System Voltage Too Low",
+   "fam": "",
+   "node": "charging system voltage too"
+  },
+  {
+   "code": "P1595",
+   "brand": "chrysler",
+   "ru": "Клапан круиз-контроля: обрыв или замыкание",
+   "en": "Speed Control Solenoid Circuit Open Or Shorted",
+   "fam": "",
+   "node": "speed control"
+  },
+  {
+   "code": "P1596",
+   "brand": "chrysler",
+   "ru": "Переключатель круиз-контроля: всегда высокий сигнал",
+   "en": "Speed Control Switch Always High",
+   "fam": "",
+   "node": "speed control switch always"
+  },
+  {
+   "code": "P1597",
+   "brand": "chrysler",
+   "ru": "Переключатель круиз-контроля: всегда низкий сигнал",
+   "en": "Speed Control Switch Always Low",
+   "fam": "",
+   "node": "speed control switch always"
+  },
+  {
+   "code": "P1598",
+   "brand": "chrysler",
+   "ru": "Датчик давления кондиционера: напряжение слишком высокое",
+   "en": "A/C Pressure Sensor Voltage Too High",
+   "fam": "",
+   "node": "a c pressure sensor voltage too"
+  },
+  {
+   "code": "P1599",
+   "brand": "chrysler",
+   "ru": "Обнаружена остановка или почти остановка двигателя",
+   "en": "Engine Stall Or Near Stall Detected",
+   "fam": "",
+   "node": "engine stall or near stall detected"
+  },
+  {
+   "code": "P1602",
+   "brand": "chrysler",
+   "ru": "Блок двигателя не запрограммирован",
+   "en": "PCM Not Programmed",
+   "fam": "",
+   "node": "pcm not programmed"
+  },
+  {
+   "code": "P1680",
+   "brand": "chrysler",
+   "ru": "Выключатель отпущенного сцепления: обрыв или замыкание",
+   "en": "Clutch Released Switch Circuit Open Or Shorted",
+   "fam": "",
+   "node": "clutch released"
+  },
+  {
+   "code": "P1681",
+   "brand": "chrysler",
+   "ru": "Нет сообщений CCD/J1850 от приборной панели",
+   "en": "No Instrument Panel Cluster CCD J1850 Messages Received",
+   "fam": "",
+   "node": "no instrument panel cluster ccd j1850 messages received"
+  },
+  {
+   "code": "P1683",
+   "brand": "chrysler",
+   "ru": "Реле питания круиз-контроля или драйвер 12 В: обрыв или замыкание",
+   "en": "Speed Control Power Relay Or Speed Control 12 Volt Driver Circuit Open Or Shorted",
+   "fam": "",
+   "node": "speed control power relay or speed control 12 volt driver"
+  },
+  {
+   "code": "P1684",
+   "brand": "chrysler",
+   "ru": "АКБ отключалась за последние 50 пусков",
+   "en": "Battery Disconnected Within Last 50 Starts",
+   "fam": "",
+   "node": "battery disconnected within last 50 starts"
+  },
+  {
+   "code": "P1685",
+   "brand": "chrysler",
+   "ru": "Иммобилайзер (SKIM): неверный ключ",
+   "en": "Skim Invalid Key",
+   "fam": "",
+   "node": "skim invalid key"
+  },
+  {
+   "code": "P1686",
+   "brand": "chrysler",
+   "ru": "Нет сообщения иммобилайзера (SKIM) по шине",
+   "en": "No SKIM Bus Message Received",
+   "fam": "",
+   "node": "no skim bus message received"
+  },
+  {
+   "code": "P1687",
+   "brand": "chrysler",
+   "ru": "Нет сообщения приборной панели по шине",
+   "en": "No Cluster Bus Message",
+   "fam": "",
+   "node": "no cluster bus message"
+  },
+  {
+   "code": "P1688",
+   "brand": "chrysler",
+   "ru": "Внутренняя неисправность контроллера ТНВД",
+   "en": "Internal Fuel Injection Pump Controller Failure",
+   "fam": "",
+   "node": "internal fuel injection pump controller failure"
+  },
+  {
+   "code": "P1689",
+   "brand": "chrysler",
+   "ru": "Нет связи между блоком двигателя и модулем ТНВД",
+   "en": "No Communication Between ECM & Injection Pump Module",
+   "fam": "",
+   "node": "no communication between ecm & injection pump"
+  },
+  {
+   "code": "P1690",
+   "brand": "chrysler",
+   "ru": "Датчик коленвала ТНВД не согласуется с датчиком блока двигателя",
+   "en": "Fuel Injection Pump CKP Sensor Does Not Agree With ECM CKP Sensor",
+   "fam": "",
+   "node": "fuel injection pump ckp sensor does not agree with ecm ckp"
+  }
+ ]
+}

@@ -1,0 +1,381 @@
+{
+ "name": "sae_135",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "air fuel ratio imbalance",
+  "closed loop nox adsorber control at limit too",
+  "excessive time to enter closed loop nox adsorber",
+  "fuel injector group e supply voltage",
+  "fuel injector group f supply voltage",
+  "fuel injector group g supply voltage",
+  "fuel injector group h supply voltage",
+  "reductant level sensor b",
+  "reductant level sensor c",
+  "reductant no flow detected",
+  "throttle actuator b control system idle position not learned",
+  "throttle fuel inhibit b"
+ ],
+ "codes": [
+  {
+   "code": "P216A",
+   "brand": "",
+   "ru": "Группа форсунок E: обрыв цепи питания",
+   "en": "Fuel Injector Group E Supply Voltage Circuit/Open",
+   "fam": "",
+   "node": "fuel injector group e supply voltage"
+  },
+  {
+   "code": "P216B",
+   "brand": "",
+   "ru": "Группа форсунок E: низкое напряжение питания",
+   "en": "Fuel Injector Group E Supply Voltage Circuit Low",
+   "fam": "",
+   "node": "fuel injector group e supply voltage"
+  },
+  {
+   "code": "P216C",
+   "brand": "",
+   "ru": "Группа форсунок E: высокое напряжение питания",
+   "en": "Fuel Injector Group E Supply Voltage Circuit High",
+   "fam": "",
+   "node": "fuel injector group e supply voltage"
+  },
+  {
+   "code": "P216D",
+   "brand": "",
+   "ru": "Группа форсунок F: обрыв цепи питания",
+   "en": "Fuel Injector Group F Supply Voltage Circuit/Open",
+   "fam": "",
+   "node": "fuel injector group f supply voltage"
+  },
+  {
+   "code": "P216E",
+   "brand": "",
+   "ru": "Группа форсунок F: низкое напряжение питания",
+   "en": "Fuel Injector Group F Supply Voltage Circuit Low",
+   "fam": "",
+   "node": "fuel injector group f supply voltage"
+  },
+  {
+   "code": "P216F",
+   "brand": "",
+   "ru": "Группа форсунок F: высокое напряжение питания",
+   "en": "Fuel Injector Group F Supply Voltage Circuit High",
+   "fam": "",
+   "node": "fuel injector group f supply voltage"
+  },
+  {
+   "code": "P217A",
+   "brand": "",
+   "ru": "Группа форсунок G: обрыв цепи питания",
+   "en": "Fuel Injector Group G Supply Voltage Circuit/Open",
+   "fam": "",
+   "node": "fuel injector group g supply voltage"
+  },
+  {
+   "code": "P217B",
+   "brand": "",
+   "ru": "Группа форсунок G: низкое напряжение питания",
+   "en": "Fuel Injector Group G Supply Voltage Circuit Low",
+   "fam": "",
+   "node": "fuel injector group g supply voltage"
+  },
+  {
+   "code": "P217C",
+   "brand": "",
+   "ru": "Группа форсунок G: высокое напряжение питания",
+   "en": "Fuel Injector Group G Supply Voltage Circuit High",
+   "fam": "",
+   "node": "fuel injector group g supply voltage"
+  },
+  {
+   "code": "P217D",
+   "brand": "",
+   "ru": "Группа форсунок H: обрыв цепи питания",
+   "en": "Fuel Injector Group H Supply Voltage Circuit/Open",
+   "fam": "",
+   "node": "fuel injector group h supply voltage"
+  },
+  {
+   "code": "P217E",
+   "brand": "",
+   "ru": "Группа форсунок H: низкое напряжение питания",
+   "en": "Fuel Injector Group H Supply Voltage Circuit Low",
+   "fam": "",
+   "node": "fuel injector group h supply voltage"
+  },
+  {
+   "code": "P217F",
+   "brand": "",
+   "ru": "Группа форсунок H: высокое напряжение питания",
+   "en": "Fuel Injector Group H Supply Voltage Circuit High",
+   "fam": "",
+   "node": "fuel injector group h supply voltage"
+  },
+  {
+   "code": "P218A",
+   "brand": "",
+   "ru": "Привод дросселя B: положение холостого хода не обучено",
+   "en": "Throttle Actuator B Control System - Idle Position Not Learned",
+   "fam": "",
+   "node": "throttle actuator b control system idle position not learned"
+  },
+  {
+   "code": "P218B",
+   "brand": "",
+   "ru": "Блокировка дросселя/подачи топлива B: цепь",
+   "en": "Throttle/Fuel Inhibit B Circuit",
+   "fam": "",
+   "node": "throttle fuel inhibit b"
+  },
+  {
+   "code": "P218C",
+   "brand": "",
+   "ru": "Блокировка дросселя/подачи топлива B: сигнал вне диапазона",
+   "en": "Throttle/Fuel Inhibit B Circuit Range/Performance",
+   "fam": "",
+   "node": "throttle fuel inhibit b"
+  },
+  {
+   "code": "P218D",
+   "brand": "",
+   "ru": "Блокировка дросселя/подачи топлива B: низкий уровень сигнала в цепи",
+   "en": "Throttle/Fuel Inhibit B Circuit Low",
+   "fam": "",
+   "node": "throttle fuel inhibit b"
+  },
+  {
+   "code": "P218E",
+   "brand": "",
+   "ru": "Блокировка дросселя/подачи топлива B: высокий уровень сигнала в цепи",
+   "en": "Throttle/Fuel Inhibit B Circuit High",
+   "fam": "",
+   "node": "throttle fuel inhibit b"
+  },
+  {
+   "code": "P218F",
+   "brand": "",
+   "ru": "Нет потока мочевины",
+   "en": "Reductant No Flow Detected",
+   "fam": "",
+   "node": "reductant no flow detected"
+  },
+  {
+   "code": "P219A",
+   "brand": "",
+   "ru": "Дисбаланс состава смеси между цилиндрами (банк 1)",
+   "en": "Bank 1 Air-Fuel Ratio Imbalance",
+   "fam": "",
+   "node": "air fuel ratio imbalance"
+  },
+  {
+   "code": "P219B",
+   "brand": "",
+   "ru": "Дисбаланс состава смеси между цилиндрами (банк 2)",
+   "en": "Bank 2 Air-Fuel Ratio Imbalance",
+   "fam": "",
+   "node": "air fuel ratio imbalance"
+  },
+  {
+   "code": "P219C",
+   "brand": "",
+   "ru": "Цилиндр 1: дисбаланс состава смеси между цилиндрами",
+   "en": "Cylinder 1 Air-Fuel Ratio Imbalance",
+   "fam": "",
+   "node": "air fuel ratio imbalance"
+  },
+  {
+   "code": "P219D",
+   "brand": "",
+   "ru": "Цилиндр 2: дисбаланс состава смеси между цилиндрами",
+   "en": "Cylinder 2 Air-Fuel Ratio Imbalance",
+   "fam": "",
+   "node": "air fuel ratio imbalance"
+  },
+  {
+   "code": "P219E",
+   "brand": "",
+   "ru": "Цилиндр 3: дисбаланс состава смеси между цилиндрами",
+   "en": "Cylinder 3 Air-Fuel Ratio Imbalance",
+   "fam": "",
+   "node": "air fuel ratio imbalance"
+  },
+  {
+   "code": "P219F",
+   "brand": "",
+   "ru": "Цилиндр 4: дисбаланс состава смеси между цилиндрами",
+   "en": "Cylinder 4 Air-Fuel Ratio Imbalance",
+   "fam": "",
+   "node": "air fuel ratio imbalance"
+  },
+  {
+   "code": "P21A0",
+   "brand": "",
+   "ru": "Цилиндр 5: дисбаланс состава смеси между цилиндрами",
+   "en": "Cylinder 5 Air-Fuel Ratio Imbalance",
+   "fam": "",
+   "node": "air fuel ratio imbalance"
+  },
+  {
+   "code": "P21A1",
+   "brand": "",
+   "ru": "Цилиндр 6: дисбаланс состава смеси между цилиндрами",
+   "en": "Cylinder 6 Air-Fuel Ratio Imbalance",
+   "fam": "",
+   "node": "air fuel ratio imbalance"
+  },
+  {
+   "code": "P21A2",
+   "brand": "",
+   "ru": "Цилиндр 7: дисбаланс состава смеси между цилиндрами",
+   "en": "Cylinder 7 Air-Fuel Ratio Imbalance",
+   "fam": "",
+   "node": "air fuel ratio imbalance"
+  },
+  {
+   "code": "P21A3",
+   "brand": "",
+   "ru": "Цилиндр 8: дисбаланс состава смеси между цилиндрами",
+   "en": "Cylinder 8 Air-Fuel Ratio Imbalance",
+   "fam": "",
+   "node": "air fuel ratio imbalance"
+  },
+  {
+   "code": "P21A4",
+   "brand": "",
+   "ru": "Цилиндр 9: дисбаланс состава смеси между цилиндрами",
+   "en": "Cylinder 9 Air-Fuel Ratio Imbalance",
+   "fam": "",
+   "node": "air fuel ratio imbalance"
+  },
+  {
+   "code": "P21A5",
+   "brand": "",
+   "ru": "Цилиндр 10: дисбаланс состава смеси между цилиндрами",
+   "en": "Cylinder 10 Air-Fuel Ratio Imbalance",
+   "fam": "",
+   "node": "air fuel ratio imbalance"
+  },
+  {
+   "code": "P21A6",
+   "brand": "",
+   "ru": "Цилиндр 11: дисбаланс состава смеси между цилиндрами",
+   "en": "Cylinder 11 Air-Fuel Ratio Imbalance",
+   "fam": "",
+   "node": "air fuel ratio imbalance"
+  },
+  {
+   "code": "P21A7",
+   "brand": "",
+   "ru": "Цилиндр 12: дисбаланс состава смеси между цилиндрами",
+   "en": "Cylinder 12 Air-Fuel Ratio Imbalance",
+   "fam": "",
+   "node": "air fuel ratio imbalance"
+  },
+  {
+   "code": "P21A8",
+   "brand": "",
+   "ru": "Датчик уровня мочевины (AdBlue) B: цепь",
+   "en": "Reductant Level Sensor B Circuit",
+   "fam": "",
+   "node": "reductant level sensor b"
+  },
+  {
+   "code": "P21A9",
+   "brand": "",
+   "ru": "Датчик уровня мочевины (AdBlue) B: сигнал вне диапазона",
+   "en": "Reductant Level Sensor B Circuit Range/Performance",
+   "fam": "",
+   "node": "reductant level sensor b"
+  },
+  {
+   "code": "P21AA",
+   "brand": "",
+   "ru": "Датчик уровня мочевины (AdBlue) B: низкий уровень сигнала в цепи",
+   "en": "Reductant Level Sensor B Circuit Low",
+   "fam": "",
+   "node": "reductant level sensor b"
+  },
+  {
+   "code": "P21AB",
+   "brand": "",
+   "ru": "Датчик уровня мочевины (AdBlue) B: высокий уровень сигнала в цепи",
+   "en": "Reductant Level Sensor B Circuit High",
+   "fam": "",
+   "node": "reductant level sensor b"
+  },
+  {
+   "code": "P21AC",
+   "brand": "",
+   "ru": "Датчик уровня мочевины (AdBlue) B: прерывистый / нестабильный сигнал",
+   "en": "Reductant Level Sensor B Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "reductant level sensor b"
+  },
+  {
+   "code": "P21C6",
+   "brand": "",
+   "ru": "Датчик уровня мочевины (AdBlue) B: заклинивание",
+   "en": "Reductant Level Sensor B Stuck",
+   "fam": "",
+   "node": "reductant level sensor b"
+  },
+  {
+   "code": "P21AD",
+   "brand": "",
+   "ru": "Датчик уровня мочевины (AdBlue) C: цепь",
+   "en": "Reductant Level Sensor C Circuit",
+   "fam": "",
+   "node": "reductant level sensor c"
+  },
+  {
+   "code": "P21AE",
+   "brand": "",
+   "ru": "Датчик уровня мочевины (AdBlue) C: сигнал вне диапазона",
+   "en": "Reductant Level Sensor C Circuit Range/Performance",
+   "fam": "",
+   "node": "reductant level sensor c"
+  },
+  {
+   "code": "P21AF",
+   "brand": "",
+   "ru": "Датчик уровня мочевины (AdBlue) C: низкий уровень сигнала в цепи",
+   "en": "Reductant Level Sensor C Circuit Low",
+   "fam": "",
+   "node": "reductant level sensor c"
+  },
+  {
+   "code": "P21B0",
+   "brand": "",
+   "ru": "Датчик уровня мочевины (AdBlue) C: высокий уровень сигнала в цепи",
+   "en": "Reductant Level Sensor C Circuit High",
+   "fam": "",
+   "node": "reductant level sensor c"
+  },
+  {
+   "code": "P21B1",
+   "brand": "",
+   "ru": "Датчик уровня мочевины (AdBlue) C: прерывистый / нестабильный сигнал",
+   "en": "Reductant Level Sensor C Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "reductant level sensor c"
+  },
+  {
+   "code": "P21B2",
+   "brand": "",
+   "ru": "Слишком долгий переход к замкнутому регулированию накопительного катализатора NOx",
+   "en": "Excessive Time To Enter Closed Loop NOx Adsorber Control",
+   "fam": "",
+   "node": "excessive time to enter closed loop nox adsorber"
+  },
+  {
+   "code": "P21B3",
+   "brand": "",
+   "ru": "Регулирование накопительного катализатора NOx на пределе: слишком высоко",
+   "en": "Closed Loop NOx Adsorber Control At Limit - Too High",
+   "fam": "",
+   "node": "closed loop nox adsorber control at limit too"
+  }
+ ]
+}

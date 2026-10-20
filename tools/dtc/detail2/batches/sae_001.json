@@ -1,0 +1,390 @@
+{
+ "name": "sae_001",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "center frontal stage 1 deployment",
+  "center frontal stage 2 deployment",
+  "center frontal stage 3 deployment",
+  "collapsible steering column deployment",
+  "driver knee bolster deployment",
+  "fam:srs_loop",
+  "left curtain deployment",
+  "passenger knee bolster deployment",
+  "right curtain deployment",
+  "second row right frontal stage 1 deployment",
+  "second row right frontal stage 2 deployment",
+  "second row right frontal stage 3 deployment",
+  "second row right side airbag deployment",
+  "third row center seat belt",
+  "third row left frontal stage 2 deployment",
+  "third row left frontal stage 3 deployment",
+  "third row right frontal stage 1 deployment",
+  "third row right frontal stage 2 deployment",
+  "third row right frontal stage 3 deployment",
+  "third row right seat belt",
+  "third row right side airbag deployment"
+ ],
+ "codes": [
+  {
+   "code": "B0001",
+   "brand": "",
+   "ru": "Подушка водителя (1-я ступень): цепь пиропатрона",
+   "en": "",
+   "fam": "srs_loop",
+   "node": "fam:srs_loop"
+  },
+  {
+   "code": "B0002",
+   "brand": "",
+   "ru": "Подушка водителя (2-я ступень): цепь пиропатрона",
+   "en": "",
+   "fam": "srs_loop",
+   "node": "fam:srs_loop"
+  },
+  {
+   "code": "B0003",
+   "brand": "",
+   "ru": "Подушка водителя (3-я ступень): цепь пиропатрона",
+   "en": "",
+   "fam": "srs_loop",
+   "node": "fam:srs_loop"
+  },
+  {
+   "code": "B0010",
+   "brand": "",
+   "ru": "Подушка пассажира (1-я ступень): цепь пиропатрона",
+   "en": "",
+   "fam": "srs_loop",
+   "node": "fam:srs_loop"
+  },
+  {
+   "code": "B0011",
+   "brand": "",
+   "ru": "Подушка пассажира (2-я ступень): цепь пиропатрона",
+   "en": "",
+   "fam": "srs_loop",
+   "node": "fam:srs_loop"
+  },
+  {
+   "code": "B0012",
+   "brand": "",
+   "ru": "Подушка пассажира (3-я ступень): цепь пиропатрона",
+   "en": "",
+   "fam": "srs_loop",
+   "node": "fam:srs_loop"
+  },
+  {
+   "code": "B0020",
+   "brand": "",
+   "ru": "Боковая подушка водителя (1-й ряд): цепь пиропатрона",
+   "en": "",
+   "fam": "srs_loop",
+   "node": "fam:srs_loop"
+  },
+  {
+   "code": "B0021",
+   "brand": "",
+   "ru": "Боковая подушка водителя (2-я ступень): цепь пиропатрона",
+   "en": "",
+   "fam": "srs_loop",
+   "node": "fam:srs_loop"
+  },
+  {
+   "code": "B0028",
+   "brand": "",
+   "ru": "Боковая подушка пассажира (1-й ряд): цепь пиропатрона",
+   "en": "",
+   "fam": "srs_loop",
+   "node": "fam:srs_loop"
+  },
+  {
+   "code": "B0029",
+   "brand": "",
+   "ru": "Боковая подушка пассажира (2-я ступень): цепь пиропатрона",
+   "en": "",
+   "fam": "srs_loop",
+   "node": "fam:srs_loop"
+  },
+  {
+   "code": "B0030",
+   "brand": "",
+   "ru": "Шторка левая: цепь пиропатрона",
+   "en": "",
+   "fam": "srs_loop",
+   "node": "fam:srs_loop"
+  },
+  {
+   "code": "B0031",
+   "brand": "",
+   "ru": "Шторка левая (2-я ступень): цепь пиропатрона",
+   "en": "",
+   "fam": "srs_loop",
+   "node": "fam:srs_loop"
+  },
+  {
+   "code": "B0032",
+   "brand": "",
+   "ru": "Шторка правая: цепь пиропатрона",
+   "en": "",
+   "fam": "srs_loop",
+   "node": "fam:srs_loop"
+  },
+  {
+   "code": "B0033",
+   "brand": "",
+   "ru": "Шторка правая (2-я ступень): цепь пиропатрона",
+   "en": "",
+   "fam": "srs_loop",
+   "node": "fam:srs_loop"
+  },
+  {
+   "code": "B0040",
+   "brand": "",
+   "ru": "Коленная подушка водителя: цепь пиропатрона",
+   "en": "",
+   "fam": "srs_loop",
+   "node": "fam:srs_loop"
+  },
+  {
+   "code": "B0041",
+   "brand": "",
+   "ru": "Коленная подушка пассажира: цепь пиропатрона",
+   "en": "",
+   "fam": "srs_loop",
+   "node": "fam:srs_loop"
+  },
+  {
+   "code": "B0050",
+   "brand": "",
+   "ru": "Преднатяжитель ремня водителя: цепь пиропатрона",
+   "en": "",
+   "fam": "srs_loop",
+   "node": "fam:srs_loop"
+  },
+  {
+   "code": "B0051",
+   "brand": "",
+   "ru": "Преднатяжитель ремня пассажира: цепь пиропатрона",
+   "en": "",
+   "fam": "srs_loop",
+   "node": "fam:srs_loop"
+  },
+  {
+   "code": "B0052",
+   "brand": "",
+   "ru": "Преднатяжитель ремня 2-го ряда слева: цепь пиропатрона",
+   "en": "",
+   "fam": "srs_loop",
+   "node": "fam:srs_loop"
+  },
+  {
+   "code": "B0053",
+   "brand": "",
+   "ru": "Преднатяжитель ремня 2-го ряда справа: цепь пиропатрона",
+   "en": "",
+   "fam": "srs_loop",
+   "node": "fam:srs_loop"
+  },
+  {
+   "code": "B0054",
+   "brand": "",
+   "ru": "Преднатяжитель ремня 2-го ряда центр: цепь пиропатрона",
+   "en": "",
+   "fam": "srs_loop",
+   "node": "fam:srs_loop"
+  },
+  {
+   "code": "B0055",
+   "brand": "",
+   "ru": "Преднатяжитель ремня 3-го ряда слева: цепь пиропатрона",
+   "en": "",
+   "fam": "srs_loop",
+   "node": "fam:srs_loop"
+  },
+  {
+   "code": "B0056",
+   "brand": "",
+   "ru": "Преднатяжитель ремня 3-го ряда справа: цепь пиропатрона",
+   "en": "",
+   "fam": "srs_loop",
+   "node": "fam:srs_loop"
+  },
+  {
+   "code": "B0060",
+   "brand": "",
+   "ru": "Боковая подушка 2-го ряда слева: цепь пиропатрона",
+   "en": "",
+   "fam": "srs_loop",
+   "node": "fam:srs_loop"
+  },
+  {
+   "code": "B0061",
+   "brand": "",
+   "ru": "Боковая подушка 2-го ряда справа: цепь пиропатрона",
+   "en": "",
+   "fam": "srs_loop",
+   "node": "fam:srs_loop"
+  },
+  {
+   "code": "B0004",
+   "brand": "",
+   "ru": "Подушка коленей водителя: управление срабатыванием",
+   "en": "Driver Knee Bolster Deployment Control",
+   "fam": "",
+   "node": "driver knee bolster deployment"
+  },
+  {
+   "code": "B0005",
+   "brand": "",
+   "ru": "Складывающаяся рулевая колонка: управление срабатыванием",
+   "en": "Collapsible Steering Column Deployment Control",
+   "fam": "",
+   "node": "collapsible steering column deployment"
+  },
+  {
+   "code": "B0013",
+   "brand": "",
+   "ru": "Подушка коленей пассажира: управление срабатыванием",
+   "en": "Passenger Knee Bolster Deployment Control",
+   "fam": "",
+   "node": "passenger knee bolster deployment"
+  },
+  {
+   "code": "B0018",
+   "brand": "",
+   "ru": "Центральная фронтальная подушка, ступень 1: управление срабатыванием",
+   "en": "Center Frontal Stage 1 Deployment Control",
+   "fam": "",
+   "node": "center frontal stage 1 deployment"
+  },
+  {
+   "code": "B0019",
+   "brand": "",
+   "ru": "Центральная фронтальная подушка, ступень 2: управление срабатыванием",
+   "en": "Center Frontal Stage 2 Deployment Control",
+   "fam": "",
+   "node": "center frontal stage 2 deployment"
+  },
+  {
+   "code": "B001A",
+   "brand": "",
+   "ru": "Центральная фронтальная подушка, ступень 3: управление срабатыванием",
+   "en": "Center Frontal Stage 3 Deployment Control",
+   "fam": "",
+   "node": "center frontal stage 3 deployment"
+  },
+  {
+   "code": "B0022",
+   "brand": "",
+   "ru": "Левая шторка безопасности: управление срабатыванием 2",
+   "en": "Left Curtain Deployment Control 2",
+   "fam": "",
+   "node": "left curtain deployment"
+  },
+  {
+   "code": "B002A",
+   "brand": "",
+   "ru": "Правая шторка безопасности: управление срабатыванием 2",
+   "en": "Right Curtain Deployment Control 2",
+   "fam": "",
+   "node": "right curtain deployment"
+  },
+  {
+   "code": "B0038",
+   "brand": "",
+   "ru": "Боковая подушка 2-го ряда справа: управление срабатыванием",
+   "en": "Second Row Right Side Airbag Deployment Control",
+   "fam": "",
+   "node": "second row right side airbag deployment"
+  },
+  {
+   "code": "B0039",
+   "brand": "",
+   "ru": "Фронтальная подушка 2-го ряда справа, ступень 1: управление срабатыванием",
+   "en": "Second Row Right Frontal Stage 1 Deployment Control",
+   "fam": "",
+   "node": "second row right frontal stage 1 deployment"
+  },
+  {
+   "code": "B003A",
+   "brand": "",
+   "ru": "Фронтальная подушка 2-го ряда справа, ступень 2: управление срабатыванием",
+   "en": "Second Row Right Frontal Stage 2 Deployment Control",
+   "fam": "",
+   "node": "second row right frontal stage 2 deployment"
+  },
+  {
+   "code": "B003B",
+   "brand": "",
+   "ru": "Фронтальная подушка 2-го ряда справа, ступень 3: управление срабатыванием",
+   "en": "Second Row Right Frontal Stage 3 Deployment Control",
+   "fam": "",
+   "node": "second row right frontal stage 3 deployment"
+  },
+  {
+   "code": "B0042",
+   "brand": "",
+   "ru": "Фронтальная подушка 3-го ряда слева, ступень 2: управление срабатыванием",
+   "en": "Third Row Left Frontal Stage 2 Deployment Control",
+   "fam": "",
+   "node": "third row left frontal stage 2 deployment"
+  },
+  {
+   "code": "B0043",
+   "brand": "",
+   "ru": "Фронтальная подушка 3-го ряда слева, ступень 3: управление срабатыванием",
+   "en": "Third Row Left Frontal Stage 3 Deployment Control",
+   "fam": "",
+   "node": "third row left frontal stage 3 deployment"
+  },
+  {
+   "code": "B0048",
+   "brand": "",
+   "ru": "Боковая подушка 3-го ряда справа: управление срабатыванием",
+   "en": "Third Row Right Side Airbag Deployment Control",
+   "fam": "",
+   "node": "third row right side airbag deployment"
+  },
+  {
+   "code": "B0049",
+   "brand": "",
+   "ru": "Фронтальная подушка 3-го ряда справа, ступень 1: управление срабатыванием",
+   "en": "Third Row Right Frontal Stage 1 Deployment Control",
+   "fam": "",
+   "node": "third row right frontal stage 1 deployment"
+  },
+  {
+   "code": "B004A",
+   "brand": "",
+   "ru": "Фронтальная подушка 3-го ряда справа, ступень 2: управление срабатыванием",
+   "en": "Third Row Right Frontal Stage 2 Deployment Control",
+   "fam": "",
+   "node": "third row right frontal stage 2 deployment"
+  },
+  {
+   "code": "B004B",
+   "brand": "",
+   "ru": "Фронтальная подушка 3-го ряда справа, ступень 3: управление срабатыванием",
+   "en": "Third Row Right Frontal Stage 3 Deployment Control",
+   "fam": "",
+   "node": "third row right frontal stage 3 deployment"
+  },
+  {
+   "code": "B0057",
+   "brand": "",
+   "ru": "Датчик ремня 3-го ряда в центре",
+   "en": "Third Row Center Seat Belt Sensor",
+   "fam": "",
+   "node": "third row center seat belt"
+  },
+  {
+   "code": "B0058",
+   "brand": "",
+   "ru": "Датчик ремня 3-го ряда справа",
+   "en": "Third Row Right Seat Belt Sensor",
+   "fam": "",
+   "node": "third row right seat belt"
+  }
+ ]
+}

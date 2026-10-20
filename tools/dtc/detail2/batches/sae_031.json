@@ -1,0 +1,387 @@
+{
+ "name": "sae_031",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "ambient air temperature",
+  "barometric pressure turbocharger supercharger boost sensor a correlation",
+  "barometric pressure turbocharger supercharger boost sensor b correlation",
+  "charge air cooler coolant temperature sensor a",
+  "exhaust heat exchanger exhaust bypass valve a",
+  "fuel pressure regulator a solenoid supply voltage",
+  "fuel rail pressure too",
+  "fuel volume regulator solenoid supply voltage",
+  "ho2s heater",
+  "ho2s sensor correlation",
+  "intake air pressure measurement system multiple sensor correlation",
+  "intake air temperature fuel temperature correlation",
+  "intake air temperature measurement system multiple sensor correlation",
+  "turbocharger supercharger b turbine overspeed",
+  "turbocharger supercharger bypass valve a temperature too",
+  "turbocharger supercharger bypass valve b",
+  "turbocharger supercharger bypass valve b mechanical",
+  "turbocharger supercharger bypass valve b temperature too"
+ ],
+ "codes": [
+  {
+   "code": "P00C0",
+   "brand": "",
+   "ru": "Перепускной клапан турбины/нагнетателя B: цепь управления",
+   "en": "Turbocharger/Supercharger Bypass Valve B Control Circuit",
+   "fam": "",
+   "node": "turbocharger supercharger bypass valve b"
+  },
+  {
+   "code": "P00C1",
+   "brand": "",
+   "ru": "Перепускной клапан турбины/нагнетателя B: низкий уровень в цепи управления",
+   "en": "Turbocharger/Supercharger Bypass Valve B Control Circuit Low",
+   "fam": "",
+   "node": "turbocharger supercharger bypass valve b"
+  },
+  {
+   "code": "P00C2",
+   "brand": "",
+   "ru": "Перепускной клапан турбины/нагнетателя B: высокий уровень в цепи управления",
+   "en": "Turbocharger/Supercharger Bypass Valve B Control Circuit High",
+   "fam": "",
+   "node": "turbocharger supercharger bypass valve b"
+  },
+  {
+   "code": "P00C3",
+   "brand": "",
+   "ru": "Перепускной клапан турбины/нагнетателя B: цепь управления вне диапазона",
+   "en": "Turbocharger/Supercharger Bypass Valve B Control Circuit Range/Performance",
+   "fam": "",
+   "node": "turbocharger supercharger bypass valve b"
+  },
+  {
+   "code": "P2C29",
+   "brand": "",
+   "ru": "Перепускной клапан турбины/нагнетателя B: заклинивание",
+   "en": "Turbocharger/Supercharger Bypass Valve B Stuck",
+   "fam": "",
+   "node": "turbocharger supercharger bypass valve b"
+  },
+  {
+   "code": "P00C4",
+   "brand": "",
+   "ru": "Перепускной клапан турбины/нагнетателя B: механическая неисправность",
+   "en": "Turbocharger/Supercharger Bypass Valve B - Mechanical",
+   "fam": "",
+   "node": "turbocharger supercharger bypass valve b mechanical"
+  },
+  {
+   "code": "P00C5",
+   "brand": "",
+   "ru": "Турбина/нагнетатель B: превышены обороты",
+   "en": "Turbocharger/Supercharger B Turbine Overspeed",
+   "fam": "",
+   "node": "turbocharger supercharger b turbine overspeed"
+  },
+  {
+   "code": "P00C6",
+   "brand": "",
+   "ru": "Слишком низкое давление в рампе при прокрутке стартером (банк 1)",
+   "en": "Fuel Rail Pressure Too Low - Engine Cranking Bank 1",
+   "fam": "",
+   "node": "fuel rail pressure too"
+  },
+  {
+   "code": "P01CA",
+   "brand": "",
+   "ru": "Слишком низкое давление в рампе при прокрутке стартером (банк 2)",
+   "en": "Fuel Rail Pressure Too Low - Engine Cranking Bank 2",
+   "fam": "",
+   "node": "fuel rail pressure too"
+  },
+  {
+   "code": "P00C7",
+   "brand": "",
+   "ru": "Система измерения давления на впуске, несколько датчиков: рассогласование показаний (банк 1)",
+   "en": "Intake Air Pressure Measurement System - Multiple Sensor Correlation Bank 1",
+   "fam": "",
+   "node": "intake air pressure measurement system multiple sensor correlation"
+  },
+  {
+   "code": "P00E6",
+   "brand": "",
+   "ru": "Система измерения давления на впуске, несколько датчиков: рассогласование показаний (банк 2)",
+   "en": "Intake Air Pressure Measurement System - Multiple Sensor Correlation Bank 2",
+   "fam": "",
+   "node": "intake air pressure measurement system multiple sensor correlation"
+  },
+  {
+   "code": "P00C8",
+   "brand": "",
+   "ru": "Питание соленоида регулятора давления топлива A: обрыв цепи управления",
+   "en": "Fuel Pressure Regulator A Solenoid Supply Voltage Control Circuit/Open",
+   "fam": "",
+   "node": "fuel pressure regulator a solenoid supply voltage"
+  },
+  {
+   "code": "P00C9",
+   "brand": "",
+   "ru": "Питание соленоида регулятора давления топлива A: низкий уровень в цепи управления",
+   "en": "Fuel Pressure Regulator A Solenoid Supply Voltage Control Circuit Low",
+   "fam": "",
+   "node": "fuel pressure regulator a solenoid supply voltage"
+  },
+  {
+   "code": "P00CA",
+   "brand": "",
+   "ru": "Питание соленоида регулятора давления топлива A: высокий уровень в цепи управления",
+   "en": "Fuel Pressure Regulator A Solenoid Supply Voltage Control Circuit High",
+   "fam": "",
+   "node": "fuel pressure regulator a solenoid supply voltage"
+  },
+  {
+   "code": "P00CB",
+   "brand": "",
+   "ru": "Питание соленоида регулятора количества топлива: обрыв цепи управления",
+   "en": "Fuel Volume Regulator Solenoid Supply Voltage Control Circuit/Open",
+   "fam": "",
+   "node": "fuel volume regulator solenoid supply voltage"
+  },
+  {
+   "code": "P00CC",
+   "brand": "",
+   "ru": "Питание соленоида регулятора количества топлива: низкий уровень в цепи управления",
+   "en": "Fuel Volume Regulator Solenoid Supply Voltage Control Circuit Low",
+   "fam": "",
+   "node": "fuel volume regulator solenoid supply voltage"
+  },
+  {
+   "code": "P00CD",
+   "brand": "",
+   "ru": "Питание соленоида регулятора количества топлива: высокий уровень в цепи управления",
+   "en": "Fuel Volume Regulator Solenoid Supply Voltage Control Circuit High",
+   "fam": "",
+   "node": "fuel volume regulator solenoid supply voltage"
+  },
+  {
+   "code": "P00CE",
+   "brand": "",
+   "ru": "Система измерения температуры на впуске, несколько датчиков: рассогласование показаний (банк 1)",
+   "en": "Intake Air Temperature Measurement System - Multiple Sensor Correlation Bank 1",
+   "fam": "",
+   "node": "intake air temperature measurement system multiple sensor correlation"
+  },
+  {
+   "code": "P00E7",
+   "brand": "",
+   "ru": "Система измерения температуры на впуске, несколько датчиков: рассогласование показаний (банк 2)",
+   "en": "Intake Air Temperature Measurement System - Multiple Sensor Correlation Bank 2",
+   "fam": "",
+   "node": "intake air temperature measurement system multiple sensor correlation"
+  },
+  {
+   "code": "P00CF",
+   "brand": "",
+   "ru": "Атмосферное давление / датчик наддува A: рассогласование показаний",
+   "en": "Barometric Pressure - Turbocharger/Supercharger Boost Sensor A Correlation",
+   "fam": "",
+   "node": "barometric pressure turbocharger supercharger boost sensor a correlation"
+  },
+  {
+   "code": "P00D0",
+   "brand": "",
+   "ru": "Атмосферное давление / датчик наддува B: рассогласование показаний",
+   "en": "Barometric Pressure - Turbocharger/Supercharger Boost Sensor B Correlation",
+   "fam": "",
+   "node": "barometric pressure turbocharger supercharger boost sensor b correlation"
+  },
+  {
+   "code": "P00D1",
+   "brand": "",
+   "ru": "Подогрев лямбда-зонда: цепь управления вне диапазона (банк 1, датчик 1)",
+   "en": "HO2S Heater Control Circuit Range/Performance Bank 1 Sensor 1",
+   "fam": "",
+   "node": "ho2s heater"
+  },
+  {
+   "code": "P00D2",
+   "brand": "",
+   "ru": "Подогрев лямбда-зонда: цепь управления вне диапазона (банк 1, датчик 2)",
+   "en": "HO2S Heater Control Circuit Range/Performance Bank 1 Sensor 2",
+   "fam": "",
+   "node": "ho2s heater"
+  },
+  {
+   "code": "P00D3",
+   "brand": "",
+   "ru": "Подогрев лямбда-зонда: цепь управления вне диапазона (банк 2, датчик 1)",
+   "en": "HO2S Heater Control Circuit Range/Performance Bank 2 Sensor 1",
+   "fam": "",
+   "node": "ho2s heater"
+  },
+  {
+   "code": "P00D4",
+   "brand": "",
+   "ru": "Подогрев лямбда-зонда: цепь управления вне диапазона (банк 2, датчик 2)",
+   "en": "HO2S Heater Control Circuit Range/Performance Bank 2 Sensor 2",
+   "fam": "",
+   "node": "ho2s heater"
+  },
+  {
+   "code": "P00D5",
+   "brand": "",
+   "ru": "Рассогласование лямбда-зондов 1 и 2 (банк 1)",
+   "en": "HO2S Sensor Correlation Bank 1 Sensor 1/Bank 1 Sensor 2",
+   "fam": "",
+   "node": "ho2s sensor correlation"
+  },
+  {
+   "code": "P00D6",
+   "brand": "",
+   "ru": "Рассогласование лямбда-зондов 1 и 2 (банк 2)",
+   "en": "HO2S Sensor Correlation Bank 2 Sensor 1/Bank 2 Sensor 2",
+   "fam": "",
+   "node": "ho2s sensor correlation"
+  },
+  {
+   "code": "P00D7",
+   "brand": "",
+   "ru": "Перепускной клапан турбины/нагнетателя A: слишком высокая температура",
+   "en": "Turbocharger/Supercharger Bypass Valve A Temperature Too High",
+   "fam": "",
+   "node": "turbocharger supercharger bypass valve a temperature too"
+  },
+  {
+   "code": "P00D8",
+   "brand": "",
+   "ru": "Перепускной клапан турбины/нагнетателя B: слишком высокая температура",
+   "en": "Turbocharger/Supercharger Bypass Valve B Temperature Too High",
+   "fam": "",
+   "node": "turbocharger supercharger bypass valve b temperature too"
+  },
+  {
+   "code": "P00D9",
+   "brand": "",
+   "ru": "Цепь датчика наружной температуры B",
+   "en": "Ambient Air Temperature Sensor Circuit B",
+   "fam": "",
+   "node": "ambient air temperature"
+  },
+  {
+   "code": "P00DA",
+   "brand": "",
+   "ru": "Цепь датчика наружной температуры B: вне допустимого диапазона",
+   "en": "Ambient Air Temperature Sensor Circuit B Range/Performance",
+   "fam": "",
+   "node": "ambient air temperature"
+  },
+  {
+   "code": "P00DB",
+   "brand": "",
+   "ru": "Цепь датчика наружной температуры B: низкий уровень",
+   "en": "Ambient Air Temperature Sensor Circuit B Low",
+   "fam": "",
+   "node": "ambient air temperature"
+  },
+  {
+   "code": "P00DC",
+   "brand": "",
+   "ru": "Цепь датчика наружной температуры B: высокий уровень",
+   "en": "Ambient Air Temperature Sensor Circuit B High",
+   "fam": "",
+   "node": "ambient air temperature"
+  },
+  {
+   "code": "P00DD",
+   "brand": "",
+   "ru": "Цепь датчика наружной температуры B: прерывистый / нестабильный сигнал",
+   "en": "Ambient Air Temperature Sensor Circuit B Intermittent/Erratic",
+   "fam": "",
+   "node": "ambient air temperature"
+  },
+  {
+   "code": "P00DE",
+   "brand": "",
+   "ru": "Датчик температуры жидкости охлаждения интеркулера A: цепь",
+   "en": "Charge Air Cooler Coolant Temperature Sensor A Circuit",
+   "fam": "",
+   "node": "charge air cooler coolant temperature sensor a"
+  },
+  {
+   "code": "P00DF",
+   "brand": "",
+   "ru": "Датчик температуры жидкости охлаждения интеркулера A: сигнал вне диапазона",
+   "en": "Charge Air Cooler Coolant Temperature Sensor A Circuit Range/Performance",
+   "fam": "",
+   "node": "charge air cooler coolant temperature sensor a"
+  },
+  {
+   "code": "P00E0",
+   "brand": "",
+   "ru": "Датчик температуры жидкости охлаждения интеркулера A: низкий уровень сигнала в цепи",
+   "en": "Charge Air Cooler Coolant Temperature Sensor A Circuit Low",
+   "fam": "",
+   "node": "charge air cooler coolant temperature sensor a"
+  },
+  {
+   "code": "P00E1",
+   "brand": "",
+   "ru": "Датчик температуры жидкости охлаждения интеркулера A: высокий уровень сигнала в цепи",
+   "en": "Charge Air Cooler Coolant Temperature Sensor A Circuit High",
+   "fam": "",
+   "node": "charge air cooler coolant temperature sensor a"
+  },
+  {
+   "code": "P00E2",
+   "brand": "",
+   "ru": "Датчик температуры жидкости охлаждения интеркулера A: прерывистый / нестабильный сигнал",
+   "en": "Charge Air Cooler Coolant Temperature Sensor A Intermittent/Erratic",
+   "fam": "",
+   "node": "charge air cooler coolant temperature sensor a"
+  },
+  {
+   "code": "P00E3",
+   "brand": "",
+   "ru": "Перепускной клапан теплообменника выхлопа A: заклинил открытым",
+   "en": "Exhaust Heat Exchanger Exhaust Bypass Valve A Stuck Open",
+   "fam": "",
+   "node": "exhaust heat exchanger exhaust bypass valve a"
+  },
+  {
+   "code": "P00E4",
+   "brand": "",
+   "ru": "Перепускной клапан теплообменника выхлопа A: заклинил закрытым",
+   "en": "Exhaust Heat Exchanger Exhaust Bypass Valve A Stuck Closed",
+   "fam": "",
+   "node": "exhaust heat exchanger exhaust bypass valve a"
+  },
+  {
+   "code": "P237C",
+   "brand": "",
+   "ru": "Перепускной клапан теплообменника выхлопа A: обрыв цепи управления",
+   "en": "Exhaust Heat Exchanger Exhaust Bypass Valve A Control Circuit/Open",
+   "fam": "",
+   "node": "exhaust heat exchanger exhaust bypass valve a"
+  },
+  {
+   "code": "P237D",
+   "brand": "",
+   "ru": "Перепускной клапан теплообменника выхлопа A: низкий уровень в цепи управления",
+   "en": "Exhaust Heat Exchanger Exhaust Bypass Valve A Control Circuit Low",
+   "fam": "",
+   "node": "exhaust heat exchanger exhaust bypass valve a"
+  },
+  {
+   "code": "P237E",
+   "brand": "",
+   "ru": "Перепускной клапан теплообменника выхлопа A: высокий уровень в цепи управления",
+   "en": "Exhaust Heat Exchanger Exhaust Bypass Valve A Control Circuit High",
+   "fam": "",
+   "node": "exhaust heat exchanger exhaust bypass valve a"
+  },
+  {
+   "code": "P00E5",
+   "brand": "",
+   "ru": "Рассогласование температуры впускного воздуха и топлива",
+   "en": "Intake Air Temperature/Fuel Temperature Correlation",
+   "fam": "",
+   "node": "intake air temperature fuel temperature correlation"
+  }
+ ]
+}

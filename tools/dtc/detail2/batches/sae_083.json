@@ -1,0 +1,366 @@
+{
+ "name": "sae_083",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "fam:trans_ratio",
+  "ru:застревание на задней передаче",
+  "ru:застревание на нейтрали",
+  "ru:застревание на передаче 1",
+  "ru:застревание на передаче 2",
+  "ru:застревание на передаче 3",
+  "ru:застревание на передаче 4",
+  "ru:застревание на передаче 5",
+  "ru:застревание на передаче 6",
+  "ru:застревание на передаче 7",
+  "unable to engage gear",
+  "unable to engage neutral",
+  "unable to engage reverse"
+ ],
+ "codes": [
+  {
+   "code": "P0729",
+   "brand": "",
+   "ru": "Неверное передаточное число 6-й передачи",
+   "en": "",
+   "fam": "trans_ratio",
+   "node": "fam:trans_ratio"
+  },
+  {
+   "code": "P0730",
+   "brand": "",
+   "ru": "Неверное передаточное число",
+   "en": "",
+   "fam": "trans_ratio",
+   "node": "fam:trans_ratio"
+  },
+  {
+   "code": "P0731",
+   "brand": "",
+   "ru": "Неверное передаточное число 1-й передачи",
+   "en": "",
+   "fam": "trans_ratio",
+   "node": "fam:trans_ratio"
+  },
+  {
+   "code": "P0732",
+   "brand": "",
+   "ru": "Неверное передаточное число 2-й передачи",
+   "en": "",
+   "fam": "trans_ratio",
+   "node": "fam:trans_ratio"
+  },
+  {
+   "code": "P0733",
+   "brand": "",
+   "ru": "Неверное передаточное число 3-й передачи",
+   "en": "",
+   "fam": "trans_ratio",
+   "node": "fam:trans_ratio"
+  },
+  {
+   "code": "P0734",
+   "brand": "",
+   "ru": "Неверное передаточное число 4-й передачи",
+   "en": "",
+   "fam": "trans_ratio",
+   "node": "fam:trans_ratio"
+  },
+  {
+   "code": "P0735",
+   "brand": "",
+   "ru": "Неверное передаточное число 5-й передачи",
+   "en": "",
+   "fam": "trans_ratio",
+   "node": "fam:trans_ratio"
+  },
+  {
+   "code": "P0736",
+   "brand": "",
+   "ru": "Неверное передаточное число задней передачи",
+   "en": "",
+   "fam": "trans_ratio",
+   "node": "fam:trans_ratio"
+  },
+  {
+   "code": "P0780",
+   "brand": "",
+   "ru": "Ошибка переключения передач",
+   "en": "",
+   "fam": "trans_ratio",
+   "node": "fam:trans_ratio"
+  },
+  {
+   "code": "P0781",
+   "brand": "",
+   "ru": "Ошибка переключения 1→2",
+   "en": "",
+   "fam": "trans_ratio",
+   "node": "fam:trans_ratio"
+  },
+  {
+   "code": "P0782",
+   "brand": "",
+   "ru": "Ошибка переключения 2→3",
+   "en": "",
+   "fam": "trans_ratio",
+   "node": "fam:trans_ratio"
+  },
+  {
+   "code": "P0783",
+   "brand": "",
+   "ru": "Ошибка переключения 3→4",
+   "en": "",
+   "fam": "trans_ratio",
+   "node": "fam:trans_ratio"
+  },
+  {
+   "code": "P0784",
+   "brand": "",
+   "ru": "Ошибка переключения 4→5",
+   "en": "",
+   "fam": "trans_ratio",
+   "node": "fam:trans_ratio"
+  },
+  {
+   "code": "P0829",
+   "brand": "",
+   "ru": "Ошибка переключения 5→6",
+   "en": "",
+   "fam": "trans_ratio",
+   "node": "fam:trans_ratio"
+  },
+  {
+   "code": "P0893",
+   "brand": "",
+   "ru": "Включено несколько передач одновременно",
+   "en": "",
+   "fam": "trans_ratio",
+   "node": "fam:trans_ratio"
+  },
+  {
+   "code": "P2700",
+   "brand": "",
+   "ru": "Фрикционный элемент коробки A: время включения вне нормы",
+   "en": "",
+   "fam": "trans_ratio",
+   "node": "fam:trans_ratio"
+  },
+  {
+   "code": "P2701",
+   "brand": "",
+   "ru": "Фрикционный элемент коробки B: время включения вне нормы",
+   "en": "",
+   "fam": "trans_ratio",
+   "node": "fam:trans_ratio"
+  },
+  {
+   "code": "P2702",
+   "brand": "",
+   "ru": "Фрикционный элемент коробки C: время включения вне нормы",
+   "en": "",
+   "fam": "trans_ratio",
+   "node": "fam:trans_ratio"
+  },
+  {
+   "code": "P2703",
+   "brand": "",
+   "ru": "Фрикционный элемент коробки D: время включения вне нормы",
+   "en": "",
+   "fam": "trans_ratio",
+   "node": "fam:trans_ratio"
+  },
+  {
+   "code": "P2704",
+   "brand": "",
+   "ru": "Фрикционный элемент коробки E: время включения вне нормы",
+   "en": "",
+   "fam": "trans_ratio",
+   "node": "fam:trans_ratio"
+  },
+  {
+   "code": "P2705",
+   "brand": "",
+   "ru": "Фрикционный элемент коробки F: время включения вне нормы",
+   "en": "",
+   "fam": "trans_ratio",
+   "node": "fam:trans_ratio"
+  },
+  {
+   "code": "P2711",
+   "brand": "",
+   "ru": "Непредвиденное выключение передачи",
+   "en": "",
+   "fam": "trans_ratio",
+   "node": "fam:trans_ratio"
+  },
+  {
+   "code": "P072A",
+   "brand": "",
+   "ru": "Застревание на нейтрали",
+   "en": "Stuck in Neutral",
+   "fam": "",
+   "node": "ru:застревание на нейтрали"
+  },
+  {
+   "code": "P072B",
+   "brand": "",
+   "ru": "Застревание на задней передаче",
+   "en": "Stuck In Reverse",
+   "fam": "",
+   "node": "ru:застревание на задней передаче"
+  },
+  {
+   "code": "P072C",
+   "brand": "",
+   "ru": "Застревание на передаче 1",
+   "en": "Stuck in Gear 1",
+   "fam": "",
+   "node": "ru:застревание на передаче 1"
+  },
+  {
+   "code": "P072D",
+   "brand": "",
+   "ru": "Застревание на передаче 2",
+   "en": "Stuck in Gear 2",
+   "fam": "",
+   "node": "ru:застревание на передаче 2"
+  },
+  {
+   "code": "P072E",
+   "brand": "",
+   "ru": "Застревание на передаче 3",
+   "en": "Stuck in Gear 3",
+   "fam": "",
+   "node": "ru:застревание на передаче 3"
+  },
+  {
+   "code": "P072F",
+   "brand": "",
+   "ru": "Застревание на передаче 4",
+   "en": "Stuck in Gear 4",
+   "fam": "",
+   "node": "ru:застревание на передаче 4"
+  },
+  {
+   "code": "P073A",
+   "brand": "",
+   "ru": "Застревание на передаче 5",
+   "en": "Stuck in Gear 5",
+   "fam": "",
+   "node": "ru:застревание на передаче 5"
+  },
+  {
+   "code": "P073B",
+   "brand": "",
+   "ru": "Застревание на передаче 6",
+   "en": "Stuck in Gear 6",
+   "fam": "",
+   "node": "ru:застревание на передаче 6"
+  },
+  {
+   "code": "P073C",
+   "brand": "",
+   "ru": "Застревание на передаче 7",
+   "en": "Stuck in Gear 7",
+   "fam": "",
+   "node": "ru:застревание на передаче 7"
+  },
+  {
+   "code": "P073D",
+   "brand": "",
+   "ru": "Не включается нейтраль",
+   "en": "Unable to Engage Neutral",
+   "fam": "",
+   "node": "unable to engage neutral"
+  },
+  {
+   "code": "P073E",
+   "brand": "",
+   "ru": "Не включается задняя передача",
+   "en": "Unable to Engage Reverse",
+   "fam": "",
+   "node": "unable to engage reverse"
+  },
+  {
+   "code": "P073F",
+   "brand": "",
+   "ru": "Не включается передача 1",
+   "en": "Unable to Engage Gear 1",
+   "fam": "",
+   "node": "unable to engage gear"
+  },
+  {
+   "code": "P074A",
+   "brand": "",
+   "ru": "Не включается передача 2",
+   "en": "Unable To Engage Gear 2",
+   "fam": "",
+   "node": "unable to engage gear"
+  },
+  {
+   "code": "P074B",
+   "brand": "",
+   "ru": "Не включается передача 3",
+   "en": "Unable To Engage Gear 3",
+   "fam": "",
+   "node": "unable to engage gear"
+  },
+  {
+   "code": "P074C",
+   "brand": "",
+   "ru": "Не включается передача 4",
+   "en": "Unable To Engage Gear 4",
+   "fam": "",
+   "node": "unable to engage gear"
+  },
+  {
+   "code": "P074D",
+   "brand": "",
+   "ru": "Не включается передача 5",
+   "en": "Unable To Engage Gear 5",
+   "fam": "",
+   "node": "unable to engage gear"
+  },
+  {
+   "code": "P074E",
+   "brand": "",
+   "ru": "Не включается передача 6",
+   "en": "Unable To Engage Gear 6",
+   "fam": "",
+   "node": "unable to engage gear"
+  },
+  {
+   "code": "P074F",
+   "brand": "",
+   "ru": "Не включается передача 7",
+   "en": "Unable To Engage Gear 7",
+   "fam": "",
+   "node": "unable to engage gear"
+  },
+  {
+   "code": "P07D8",
+   "brand": "",
+   "ru": "Не включается передача 8",
+   "en": "Unable To Engage Gear 8",
+   "fam": "",
+   "node": "unable to engage gear"
+  },
+  {
+   "code": "P07F9",
+   "brand": "",
+   "ru": "Не включается передача 9",
+   "en": "Unable to Engage Gear 9",
+   "fam": "",
+   "node": "unable to engage gear"
+  },
+  {
+   "code": "P07FC",
+   "brand": "",
+   "ru": "Не включается передача 10",
+   "en": "Unable to Engage Gear 10",
+   "fam": "",
+   "node": "unable to engage gear"
+  }
+ ]
+}

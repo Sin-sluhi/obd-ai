@@ -1,0 +1,385 @@
+{
+ "name": "sae_009",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "abs control module over temperature",
+  "brake booster motor a position sensor exceeded learning limit",
+  "brake booster pressure",
+  "brake booster travel",
+  "brake fluid level",
+  "brake fluid level sensor",
+  "brake lining wear",
+  "brake pressure sensor a b",
+  "brake pressure sensor b",
+  "brake system pressure",
+  "brake system pressure control valve actuator",
+  "fam:brake_pressure",
+  "fam:steering_angle",
+  "fam:yaw",
+  "steering wheel position sensor",
+  "yaw rate longitude sensors"
+ ],
+ "codes": [
+  {
+   "code": "C0040",
+   "brand": "",
+   "ru": "Датчик давления в тормозной системе: цепь",
+   "en": "",
+   "fam": "brake_pressure",
+   "node": "fam:brake_pressure"
+  },
+  {
+   "code": "C0041",
+   "brand": "",
+   "ru": "Датчик давления в тормозной системе: показания вне диапазона",
+   "en": "",
+   "fam": "brake_pressure",
+   "node": "fam:brake_pressure"
+  },
+  {
+   "code": "C0042",
+   "brand": "",
+   "ru": "Датчик давления в тормозной системе: низкий сигнал",
+   "en": "",
+   "fam": "brake_pressure",
+   "node": "fam:brake_pressure"
+  },
+  {
+   "code": "C0043",
+   "brand": "",
+   "ru": "Датчик давления в тормозной системе: высокий сигнал",
+   "en": "",
+   "fam": "brake_pressure",
+   "node": "fam:brake_pressure"
+  },
+  {
+   "code": "C0044",
+   "brand": "",
+   "ru": "Датчик давления в тормозной системе: прерывистый сигнал",
+   "en": "",
+   "fam": "brake_pressure",
+   "node": "fam:brake_pressure"
+  },
+  {
+   "code": "P0555",
+   "brand": "",
+   "ru": "Датчик давления/разрежения вакуумного усилителя тормозов: цепь",
+   "en": "",
+   "fam": "brake_pressure",
+   "node": "fam:brake_pressure"
+  },
+  {
+   "code": "P0556",
+   "brand": "",
+   "ru": "Датчик давления/разрежения вакуумного усилителя тормозов: показания вне диапазона",
+   "en": "",
+   "fam": "brake_pressure",
+   "node": "fam:brake_pressure"
+  },
+  {
+   "code": "P0557",
+   "brand": "",
+   "ru": "Датчик давления/разрежения вакуумного усилителя тормозов: низкий сигнал",
+   "en": "",
+   "fam": "brake_pressure",
+   "node": "fam:brake_pressure"
+  },
+  {
+   "code": "P0558",
+   "brand": "",
+   "ru": "Датчик давления/разрежения вакуумного усилителя тормозов: высокий сигнал",
+   "en": "",
+   "fam": "brake_pressure",
+   "node": "fam:brake_pressure"
+  },
+  {
+   "code": "P0559",
+   "brand": "",
+   "ru": "Датчик давления/разрежения вакуумного усилителя тормозов: прерывистый сигнал",
+   "en": "",
+   "fam": "brake_pressure",
+   "node": "fam:brake_pressure"
+  },
+  {
+   "code": "P2525",
+   "brand": "",
+   "ru": "Датчик давления вакуумного ресивера: цепь",
+   "en": "",
+   "fam": "brake_pressure",
+   "node": "fam:brake_pressure"
+  },
+  {
+   "code": "P2526",
+   "brand": "",
+   "ru": "Датчик давления вакуумного ресивера: показания вне диапазона",
+   "en": "",
+   "fam": "brake_pressure",
+   "node": "fam:brake_pressure"
+  },
+  {
+   "code": "P2527",
+   "brand": "",
+   "ru": "Датчик давления вакуумного ресивера: низкий сигнал",
+   "en": "",
+   "fam": "brake_pressure",
+   "node": "fam:brake_pressure"
+  },
+  {
+   "code": "P2528",
+   "brand": "",
+   "ru": "Датчик давления вакуумного ресивера: высокий сигнал",
+   "en": "",
+   "fam": "brake_pressure",
+   "node": "fam:brake_pressure"
+  },
+  {
+   "code": "P2529",
+   "brand": "",
+   "ru": "Датчик давления вакуумного ресивера: прерывистый сигнал",
+   "en": "",
+   "fam": "brake_pressure",
+   "node": "fam:brake_pressure"
+  },
+  {
+   "code": "C0045",
+   "brand": "",
+   "ru": "Датчик давления в тормозной системе B",
+   "en": "Brake Pressure Sensor B",
+   "fam": "",
+   "node": "brake pressure sensor b"
+  },
+  {
+   "code": "C0541",
+   "brand": "",
+   "ru": "Датчик давления в тормозной системе B: вне допустимого диапазона",
+   "en": "Brake Pressure Sensor B Range/Performance",
+   "fam": "",
+   "node": "brake pressure sensor b"
+  },
+  {
+   "code": "C0542",
+   "brand": "",
+   "ru": "Датчик давления в тормозной системе B: низкий уровень сигнала в цепи",
+   "en": "Brake Pressure Sensor B Circuit Low",
+   "fam": "",
+   "node": "brake pressure sensor b"
+  },
+  {
+   "code": "C0543",
+   "brand": "",
+   "ru": "Датчик давления в тормозной системе B: высокий уровень сигнала в цепи",
+   "en": "Brake Pressure Sensor B Circuit High",
+   "fam": "",
+   "node": "brake pressure sensor b"
+  },
+  {
+   "code": "C0544",
+   "brand": "",
+   "ru": "Датчик давления в тормозной системе B: обрыв цепи",
+   "en": "Brake Pressure Sensor B Circuit/Open",
+   "fam": "",
+   "node": "brake pressure sensor b"
+  },
+  {
+   "code": "C056C",
+   "brand": "",
+   "ru": "Датчик давления в тормозной системе B: прерывистый / нестабильный сигнал",
+   "en": "Brake Pressure Sensor B Intermittent/Erratic",
+   "fam": "",
+   "node": "brake pressure sensor b"
+  },
+  {
+   "code": "C0046",
+   "brand": "",
+   "ru": "Датчик давления в тормозной системе A/B",
+   "en": "Brake Pressure Sensor A/B",
+   "fam": "",
+   "node": "brake pressure sensor a b"
+  },
+  {
+   "code": "C0047",
+   "brand": "",
+   "ru": "Датчик давления усилителя тормозов",
+   "en": "Brake Booster Pressure Sensor",
+   "fam": "",
+   "node": "brake booster pressure"
+  },
+  {
+   "code": "C0048",
+   "brand": "",
+   "ru": "Датчик хода усилителя тормозов",
+   "en": "Brake Booster Travel Sensor",
+   "fam": "",
+   "node": "brake booster travel"
+  },
+  {
+   "code": "C056F",
+   "brand": "",
+   "ru": "Датчик хода усилителя тормозов: низкий уровень сигнала в цепи",
+   "en": "Brake Booster Travel Sensor Circuit Low",
+   "fam": "",
+   "node": "brake booster travel"
+  },
+  {
+   "code": "C0570",
+   "brand": "",
+   "ru": "Датчик хода усилителя тормозов: высокий уровень сигнала в цепи",
+   "en": "Brake Booster Travel Sensor Circuit High",
+   "fam": "",
+   "node": "brake booster travel"
+  },
+  {
+   "code": "C0049",
+   "brand": "",
+   "ru": "Уровень тормозной жидкости",
+   "en": "Brake Fluid Level",
+   "fam": "",
+   "node": "brake fluid level"
+  },
+  {
+   "code": "C004A",
+   "brand": "",
+   "ru": "Датчик износа тормозных колодок",
+   "en": "Brake Lining Wear Sensor",
+   "fam": "",
+   "node": "brake lining wear"
+  },
+  {
+   "code": "C004B",
+   "brand": "",
+   "ru": "Датчик уровня тормозной жидкости: обрыв цепи",
+   "en": "Brake Fluid Level Sensor/Switch Circuit/Open",
+   "fam": "",
+   "node": "brake fluid level sensor"
+  },
+  {
+   "code": "C004C",
+   "brand": "",
+   "ru": "Датчик положения мотора A усилителя тормозов: превышен предел адаптации",
+   "en": "Brake Booster Motor A Position Sensor Exceeded Learning Limit",
+   "fam": "",
+   "node": "brake booster motor a position sensor exceeded learning limit"
+  },
+  {
+   "code": "C004D",
+   "brand": "",
+   "ru": "Медленное нарастание давления в тормозной системе",
+   "en": "Brake System Pressure Slow Response",
+   "fam": "",
+   "node": "brake system pressure"
+  },
+  {
+   "code": "C004E",
+   "brand": "",
+   "ru": "Привод клапана регулирования давления тормозов: заклинивание",
+   "en": "Brake System Pressure Control Valve Actuator Stuck",
+   "fam": "",
+   "node": "brake system pressure control valve actuator"
+  },
+  {
+   "code": "C004F",
+   "brand": "",
+   "ru": "Блок ABS: перегрев",
+   "en": "ABS Control Module Over Temperature",
+   "fam": "",
+   "node": "abs control module over temperature"
+  },
+  {
+   "code": "C0051",
+   "brand": "",
+   "ru": "Датчик угла поворота руля: неисправность",
+   "en": "",
+   "fam": "steering_angle",
+   "node": "fam:steering_angle"
+  },
+  {
+   "code": "C0052",
+   "brand": "",
+   "ru": "Датчик угла поворота руля: не откалиброван",
+   "en": "",
+   "fam": "steering_angle",
+   "node": "fam:steering_angle"
+  },
+  {
+   "code": "C0053",
+   "brand": "",
+   "ru": "Датчик угла поворота руля: цепь",
+   "en": "",
+   "fam": "steering_angle",
+   "node": "fam:steering_angle"
+  },
+  {
+   "code": "C0054",
+   "brand": "",
+   "ru": "Сигнал датчика положения руля C",
+   "en": "Steering Wheel Position Sensor Signal C",
+   "fam": "",
+   "node": "steering wheel position sensor"
+  },
+  {
+   "code": "C0055",
+   "brand": "",
+   "ru": "Сигнал датчика положения руля D",
+   "en": "Steering Wheel Position Sensor Signal D",
+   "fam": "",
+   "node": "steering wheel position sensor"
+  },
+  {
+   "code": "C0061",
+   "brand": "",
+   "ru": "Датчик поперечного ускорения: неисправность",
+   "en": "",
+   "fam": "yaw",
+   "node": "fam:yaw"
+  },
+  {
+   "code": "C0062",
+   "brand": "",
+   "ru": "Датчик продольного ускорения: неисправность",
+   "en": "",
+   "fam": "yaw",
+   "node": "fam:yaw"
+  },
+  {
+   "code": "C0063",
+   "brand": "",
+   "ru": "Датчик поворота (yaw): неисправность",
+   "en": "",
+   "fam": "yaw",
+   "node": "fam:yaw"
+  },
+  {
+   "code": "C0064",
+   "brand": "",
+   "ru": "Датчик ESP: не откалиброван",
+   "en": "",
+   "fam": "yaw",
+   "node": "fam:yaw"
+  },
+  {
+   "code": "C0065",
+   "brand": "",
+   "ru": "Датчик ESP: цепь",
+   "en": "",
+   "fam": "yaw",
+   "node": "fam:yaw"
+  },
+  {
+   "code": "C0066",
+   "brand": "",
+   "ru": "Датчик ESP: неверные данные",
+   "en": "",
+   "fam": "yaw",
+   "node": "fam:yaw"
+  },
+  {
+   "code": "C0069",
+   "brand": "",
+   "ru": "Датчики угловой скорости (рыскания) и продольного ускорения",
+   "en": "Yaw Rate/Longitude Sensors",
+   "fam": "",
+   "node": "yaw rate longitude sensors"
+  }
+ ]
+}

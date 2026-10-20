@@ -1,0 +1,296 @@
+{
+ "name": "brand-mercedes_053",
+ "series": "brand",
+ "brand": "mercedes",
+ "nodes": [
+  "atmospheric pressure sensor in control",
+  "can communication etc or ets interrupted",
+  "check engine mil",
+  "ckp sensor ifi",
+  "control module fault or control module not coded",
+  "cruise control switch s40",
+  "drive authorization",
+  "egr lifting sender b283",
+  "electrohydraulic shut off actuator y11",
+  "epw power",
+  "fuel quantity actuator y231",
+  "fuel rack position sensor y2311",
+  "glow plug failure",
+  "ifi accelerator pedal position sensor r252",
+  "ifi control module n37",
+  "ifi control module n37 supply voltage",
+  "ifi control module n37 voltage",
+  "ifi control module n37 voltage or fuel metering actuator y231k1 or fuel rack position sensor y2311",
+  "injection",
+  "injection sensor",
+  "modulation pressure switchover valve atcc y34 or upshift delay switchover valve atcc y35",
+  "needle lift",
+  "preglow",
+  "preglow control module n142",
+  "pressure control flap vacuum transducer y312",
+  "resonance intake line switchover valve y227",
+  "resonance intake manifold switchover valve y226",
+  "ru:управление егр",
+  "starter lock out backup lamp switch s161",
+  "upshift delay switchover valve atcc y35",
+  "voltage supply missing or relay module k40"
+ ],
+ "codes": [
+  {
+   "code": "P1105",
+   "brand": "mercedes",
+   "ru": "Датчик атмосферного давления в блоке",
+   "en": "Atmospheric Pressure Sensor In Control Module",
+   "fam": "",
+   "node": "atmospheric pressure sensor in control"
+  },
+  {
+   "code": "P1220",
+   "brand": "mercedes",
+   "ru": "Привод дозирования топлива (Y231)",
+   "en": "Fuel Quantity Actuator Y231",
+   "fam": "",
+   "node": "fuel quantity actuator y231"
+  },
+  {
+   "code": "P1221",
+   "brand": "mercedes",
+   "ru": "Связь по CAN с электронным газом (ETC/ETS) прервана",
+   "en": "CAN Communication ETC Or ETS Interrupted",
+   "fam": "",
+   "node": "can communication etc or ets interrupted"
+  },
+  {
+   "code": "P1222",
+   "brand": "mercedes",
+   "ru": "Датчик положения педали газа (R252), впрыск дизеля",
+   "en": "IFI Accelerator Pedal Position Sensor R252",
+   "fam": "",
+   "node": "ifi accelerator pedal position sensor r252"
+  },
+  {
+   "code": "P1223",
+   "brand": "mercedes",
+   "ru": "Датчик положения рейки ТНВД (Y2311)",
+   "en": "Fuel Rack Position Sensor Y2311",
+   "fam": "",
+   "node": "fuel rack position sensor y2311"
+  },
+  {
+   "code": "P1335",
+   "brand": "mercedes",
+   "ru": "Датчик коленвала (впрыск дизеля)",
+   "en": "CKP Sensor IFI",
+   "fam": "",
+   "node": "ckp sensor ifi"
+  },
+  {
+   "code": "P1350",
+   "brand": "mercedes",
+   "ru": "Клапан датчика впрыска",
+   "en": "Injection Sensor Solenoid",
+   "fam": "",
+   "node": "injection sensor"
+  },
+  {
+   "code": "P1351",
+   "brand": "mercedes",
+   "ru": "Датчик впрыска: цепь",
+   "en": "Injection Sensor Circuit",
+   "fam": "",
+   "node": "injection"
+  },
+  {
+   "code": "P1352",
+   "brand": "mercedes",
+   "ru": "Датчик подъёма иглы",
+   "en": "Needle Lift Sensor",
+   "fam": "",
+   "node": "needle lift"
+  },
+  {
+   "code": "P1401",
+   "brand": "mercedes",
+   "ru": "Датчик хода клапана ЕГР (B283)",
+   "en": "EGR Lifting Sender B283",
+   "fam": "",
+   "node": "egr lifting sender b283"
+  },
+  {
+   "code": "P1404",
+   "brand": "mercedes",
+   "ru": "Управление ЕГР",
+   "en": "EGR Control",
+   "fam": "",
+   "node": "ru:управление егр"
+  },
+  {
+   "code": "P1465",
+   "brand": "mercedes",
+   "ru": "Питание электропневматического преобразователя (EPW)",
+   "en": "EPW Power",
+   "fam": "",
+   "node": "epw power"
+  },
+  {
+   "code": "P1470",
+   "brand": "mercedes",
+   "ru": "Вакуумный преобразователь заслонки регулирования давления (Y312)",
+   "en": "Pressure Control Flap Vacuum Transducer Y312",
+   "fam": "",
+   "node": "pressure control flap vacuum transducer y312"
+  },
+  {
+   "code": "P1475",
+   "brand": "mercedes",
+   "ru": "Клапан переключения резонансного впуска (Y227)",
+   "en": "Resonance Intake Line Switchover Valve Y227",
+   "fam": "",
+   "node": "resonance intake line switchover valve y227"
+  },
+  {
+   "code": "P1476",
+   "brand": "mercedes",
+   "ru": "Клапан переключения резонансного впускного коллектора (Y226)",
+   "en": "Resonance Intake Manifold Switchover Valve Y226",
+   "fam": "",
+   "node": "resonance intake manifold switchover valve y226"
+  },
+  {
+   "code": "P1480",
+   "brand": "mercedes",
+   "ru": "Управление предпусковым подогревом",
+   "en": "Preglow Control",
+   "fam": "",
+   "node": "preglow"
+  },
+  {
+   "code": "P1481",
+   "brand": "mercedes",
+   "ru": "Неисправность свечи накаливания",
+   "en": "Glow Plug Failure",
+   "fam": "",
+   "node": "glow plug failure"
+  },
+  {
+   "code": "P1482",
+   "brand": "mercedes",
+   "ru": "Блок управления свечами накаливания (N142)",
+   "en": "Preglow Control Module N142",
+   "fam": "",
+   "node": "preglow control module n142"
+  },
+  {
+   "code": "P1520",
+   "brand": "mercedes",
+   "ru": "Переключатель круиз-контроля (S40)",
+   "en": "Cruise Control Switch S40",
+   "fam": "",
+   "node": "cruise control switch s40"
+  },
+  {
+   "code": "P1610",
+   "brand": "mercedes",
+   "ru": "Нет питания или неисправно реле (K40)",
+   "en": "Voltage Supply Missing Or Relay Module K40",
+   "fam": "",
+   "node": "voltage supply missing or relay module k40"
+  },
+  {
+   "code": "P1611",
+   "brand": "mercedes",
+   "ru": "Блок впрыска дизеля (N37)",
+   "en": "IFI Control Module N37",
+   "fam": "",
+   "node": "ifi control module n37"
+  },
+  {
+   "code": "P1613",
+   "brand": "mercedes",
+   "ru": "Блок впрыска дизеля (N37)",
+   "en": "IFI Control Module N37",
+   "fam": "",
+   "node": "ifi control module n37"
+  },
+  {
+   "code": "P1612",
+   "brand": "mercedes",
+   "ru": "Блок впрыска дизеля (N37): питание клеммы 15",
+   "en": "IFI Control Module N37 Voltage Circuit 15",
+   "fam": "",
+   "node": "ifi control module n37 voltage"
+  },
+  {
+   "code": "P1614",
+   "brand": "mercedes",
+   "ru": "Блок впрыска (N37): питание, привод дозирования (Y231K1) или датчик рейки (Y2311)",
+   "en": "IFI Control Module N37 Voltage Or Fuel Metering Actuator Y231K1 Or Fuel Rack Position Sensor Y2311",
+   "fam": "",
+   "node": "ifi control module n37 voltage or fuel metering actuator y231k1 or fuel rack position sensor y2311"
+  },
+  {
+   "code": "P1615",
+   "brand": "mercedes",
+   "ru": "Блок впрыска дизеля (N37): напряжение питания",
+   "en": "IFI Control Module N37 Supply Voltage",
+   "fam": "",
+   "node": "ifi control module n37 supply voltage"
+  },
+  {
+   "code": "P1617",
+   "brand": "mercedes",
+   "ru": "Блок неисправен или не закодирован",
+   "en": "Control Module Fault Or Control Module Not Coded",
+   "fam": "",
+   "node": "control module fault or control module not coded"
+  },
+  {
+   "code": "P1622",
+   "brand": "mercedes",
+   "ru": "Электрогидравлический привод останова (Y11)",
+   "en": "Electrohydraulic Shut-Off Actuator Y11",
+   "fam": "",
+   "node": "electrohydraulic shut off actuator y11"
+  },
+  {
+   "code": "P1625",
+   "brand": "mercedes",
+   "ru": "Лампа «проверь двигатель»",
+   "en": "Check Engine MIL",
+   "fam": "",
+   "node": "check engine mil"
+  },
+  {
+   "code": "P1630",
+   "brand": "mercedes",
+   "ru": "Сигнал разрешения движения (иммобилайзер)",
+   "en": "Drive Authorization Signal",
+   "fam": "",
+   "node": "drive authorization"
+  },
+  {
+   "code": "P1705",
+   "brand": "mercedes",
+   "ru": "Блокировка стартера / выключатель фонаря заднего хода (S161)",
+   "en": "Starter Lock-Out Backup Lamp Switch S161",
+   "fam": "",
+   "node": "starter lock out backup lamp switch s161"
+  },
+  {
+   "code": "P1780",
+   "brand": "mercedes",
+   "ru": "Клапан модулирующего давления (Y34) или задержки повышающей передачи (Y35) АКПП",
+   "en": "Modulation Pressure Switchover Valve ATCC Y34 Or Upshift Delay Switchover Valve ATCC Y35",
+   "fam": "",
+   "node": "modulation pressure switchover valve atcc y34 or upshift delay switchover valve atcc y35"
+  },
+  {
+   "code": "P1781",
+   "brand": "mercedes",
+   "ru": "Клапан задержки повышающей передачи АКПП (Y35)",
+   "en": "Upshift Delay Switchover Valve ATCC Y35",
+   "fam": "",
+   "node": "upshift delay switchover valve atcc y35"
+  }
+ ]
+}

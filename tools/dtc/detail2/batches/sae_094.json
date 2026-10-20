@@ -1,0 +1,363 @@
+{
+ "name": "sae_094",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "clutch position sensor b",
+  "fam:pnp",
+  "fam:trans_pressure",
+  "gear lever position sensor system multiple sensor correlation",
+  "gear lever x position 2 correlation",
+  "gear lever y position 2 correlation",
+  "gear shift control module a",
+  "gear shift control module b",
+  "gear shift control module b communication",
+  "neutral position sensor a",
+  "neutral position sensor a not learned",
+  "park neutral switch",
+  "planetary gear set failure",
+  "reverse inhibit",
+  "transmission fluid filter deteriorated",
+  "transmission fluid filter very deteriorated",
+  "transmission fluid pressure sensor switch h",
+  "up and down shift"
+ ],
+ "codes": [
+  {
+   "code": "P2712",
+   "brand": "",
+   "ru": "Утечка в гидравлическом блоке",
+   "en": "",
+   "fam": "trans_pressure",
+   "node": "fam:trans_pressure"
+  },
+  {
+   "code": "P2796",
+   "brand": "",
+   "ru": "Дополнительный насос масла коробки: цепь / обрыв",
+   "en": "",
+   "fam": "trans_pressure",
+   "node": "fam:trans_pressure"
+  },
+  {
+   "code": "P2797",
+   "brand": "",
+   "ru": "Дополнительный насос масла коробки: не отрабатывает",
+   "en": "",
+   "fam": "trans_pressure",
+   "node": "fam:trans_pressure"
+  },
+  {
+   "code": "P2798",
+   "brand": "",
+   "ru": "Дополнительный насос масла коробки: низкий уровень",
+   "en": "",
+   "fam": "trans_pressure",
+   "node": "fam:trans_pressure"
+  },
+  {
+   "code": "P2799",
+   "brand": "",
+   "ru": "Дополнительный насос масла коробки: высокий уровень",
+   "en": "",
+   "fam": "trans_pressure",
+   "node": "fam:trans_pressure"
+  },
+  {
+   "code": "P084A",
+   "brand": "",
+   "ru": "Датчик давления масла КПП H: цепь",
+   "en": "Transmission Fluid Pressure Sensor/Switch H Circuit",
+   "fam": "",
+   "node": "transmission fluid pressure sensor switch h"
+  },
+  {
+   "code": "P084B",
+   "brand": "",
+   "ru": "Датчик давления масла КПП H: сигнал вне диапазона",
+   "en": "Transmission Fluid Pressure Sensor/Switch H Circuit Range/Performance",
+   "fam": "",
+   "node": "transmission fluid pressure sensor switch h"
+  },
+  {
+   "code": "P084C",
+   "brand": "",
+   "ru": "Датчик давления масла КПП H: низкий уровень сигнала в цепи",
+   "en": "Transmission Fluid Pressure Sensor/Switch H Circuit Low",
+   "fam": "",
+   "node": "transmission fluid pressure sensor switch h"
+  },
+  {
+   "code": "P084D",
+   "brand": "",
+   "ru": "Датчик давления масла КПП H: высокий уровень сигнала в цепи",
+   "en": "Transmission Fluid Pressure Sensor/Switch H Circuit High",
+   "fam": "",
+   "node": "transmission fluid pressure sensor switch h"
+  },
+  {
+   "code": "P084E",
+   "brand": "",
+   "ru": "Датчик давления масла КПП H: прерывистый сигнал в цепи",
+   "en": "Transmission Fluid Pressure Sensor/Switch H Circuit Intermittent",
+   "fam": "",
+   "node": "transmission fluid pressure sensor switch h"
+  },
+  {
+   "code": "P084F",
+   "brand": "",
+   "ru": "Выход выключателя «Паркинг/Нейтраль»: цепь",
+   "en": "Park/Neutral Switch Output Circuit",
+   "fam": "",
+   "node": "park neutral switch"
+  },
+  {
+   "code": "P0850",
+   "brand": "",
+   "ru": "Выключатель Park/Neutral: входная цепь",
+   "en": "",
+   "fam": "pnp",
+   "node": "fam:pnp"
+  },
+  {
+   "code": "P0851",
+   "brand": "",
+   "ru": "Выключатель Park/Neutral: низкий уровень",
+   "en": "",
+   "fam": "pnp",
+   "node": "fam:pnp"
+  },
+  {
+   "code": "P0852",
+   "brand": "",
+   "ru": "Выключатель Park/Neutral: высокий уровень",
+   "en": "",
+   "fam": "pnp",
+   "node": "fam:pnp"
+  },
+  {
+   "code": "P0853",
+   "brand": "",
+   "ru": "Выключатель Drive: входная цепь",
+   "en": "",
+   "fam": "pnp",
+   "node": "fam:pnp"
+  },
+  {
+   "code": "P0854",
+   "brand": "",
+   "ru": "Выключатель Drive: низкий уровень",
+   "en": "",
+   "fam": "pnp",
+   "node": "fam:pnp"
+  },
+  {
+   "code": "P0855",
+   "brand": "",
+   "ru": "Выключатель Drive: высокий уровень",
+   "en": "",
+   "fam": "pnp",
+   "node": "fam:pnp"
+  },
+  {
+   "code": "P085A",
+   "brand": "",
+   "ru": "Связь с блоком переключения передач B: цепь",
+   "en": "Gear Shift Control Module B Communication Circuit",
+   "fam": "",
+   "node": "gear shift control module b communication"
+  },
+  {
+   "code": "P085B",
+   "brand": "",
+   "ru": "Связь с блоком переключения передач B: низкий уровень сигнала в цепи",
+   "en": "Gear Shift Control Module B Communication Circuit Low",
+   "fam": "",
+   "node": "gear shift control module b communication"
+  },
+  {
+   "code": "P085C",
+   "brand": "",
+   "ru": "Связь с блоком переключения передач B: высокий уровень сигнала в цепи",
+   "en": "Gear Shift Control Module B Communication Circuit High",
+   "fam": "",
+   "node": "gear shift control module b communication"
+  },
+  {
+   "code": "P085D",
+   "brand": "",
+   "ru": "Блок управления переключением передач A: работа нарушена",
+   "en": "Gear Shift Control Module A Performance",
+   "fam": "",
+   "node": "gear shift control module a"
+  },
+  {
+   "code": "P085E",
+   "brand": "",
+   "ru": "Блок управления переключением передач B: работа нарушена",
+   "en": "Gear Shift Control Module B Performance",
+   "fam": "",
+   "node": "gear shift control module b"
+  },
+  {
+   "code": "P085F",
+   "brand": "",
+   "ru": "Кнопки переключения вверх/вниз: сигнал вне диапазона",
+   "en": "Up and Down Shift Switch Circuit Range/Performance",
+   "fam": "",
+   "node": "up and down shift"
+  },
+  {
+   "code": "P086A",
+   "brand": "",
+   "ru": "Датчик нейтрали A: обрыв цепи",
+   "en": "Neutral Position Sensor A Circuit/Open",
+   "fam": "",
+   "node": "neutral position sensor a"
+  },
+  {
+   "code": "P086B",
+   "brand": "",
+   "ru": "Датчик нейтрали A: вне допустимого диапазона",
+   "en": "Neutral Position Sensor A Range/Performance",
+   "fam": "",
+   "node": "neutral position sensor a"
+  },
+  {
+   "code": "P086C",
+   "brand": "",
+   "ru": "Датчик нейтрали A: низкий уровень сигнала в цепи",
+   "en": "Neutral Position Sensor A Circuit Low",
+   "fam": "",
+   "node": "neutral position sensor a"
+  },
+  {
+   "code": "P086D",
+   "brand": "",
+   "ru": "Датчик нейтрали A: высокий уровень сигнала в цепи",
+   "en": "Neutral Position Sensor A Circuit High",
+   "fam": "",
+   "node": "neutral position sensor a"
+  },
+  {
+   "code": "P086E",
+   "brand": "",
+   "ru": "Датчик нейтрали A: прерывистый / нестабильный сигнал",
+   "en": "Neutral Position Sensor A Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "neutral position sensor a"
+  },
+  {
+   "code": "P086F",
+   "brand": "",
+   "ru": "Датчик нейтрали A: адаптация не выполнена",
+   "en": "Neutral Position Sensor A Not Learned",
+   "fam": "",
+   "node": "neutral position sensor a not learned"
+  },
+  {
+   "code": "P087A",
+   "brand": "",
+   "ru": "Датчик положения сцепления B: цепь",
+   "en": "Clutch Position Sensor B Circuit",
+   "fam": "",
+   "node": "clutch position sensor b"
+  },
+  {
+   "code": "P087B",
+   "brand": "",
+   "ru": "Датчик положения сцепления B: сигнал вне диапазона",
+   "en": "Clutch Position Sensor B Circuit Range/Performance",
+   "fam": "",
+   "node": "clutch position sensor b"
+  },
+  {
+   "code": "P087C",
+   "brand": "",
+   "ru": "Датчик положения сцепления B: низкий уровень сигнала в цепи",
+   "en": "Clutch Position Sensor B Circuit Low",
+   "fam": "",
+   "node": "clutch position sensor b"
+  },
+  {
+   "code": "P087D",
+   "brand": "",
+   "ru": "Датчик положения сцепления B: высокий уровень сигнала в цепи",
+   "en": "Clutch Position Sensor B Circuit High",
+   "fam": "",
+   "node": "clutch position sensor b"
+  },
+  {
+   "code": "P087E",
+   "brand": "",
+   "ru": "Датчик положения сцепления B: прерывистый сигнал в цепи",
+   "en": "Clutch Position Sensor B Circuit Intermittent",
+   "fam": "",
+   "node": "clutch position sensor b"
+  },
+  {
+   "code": "P088A",
+   "brand": "",
+   "ru": "Фильтр масла КПП изношен",
+   "en": "Transmission Fluid Filter Deteriorated",
+   "fam": "",
+   "node": "transmission fluid filter deteriorated"
+  },
+  {
+   "code": "P088B",
+   "brand": "",
+   "ru": "Фильтр масла КПП сильно изношен",
+   "en": "Transmission Fluid Filter Very Deteriorated",
+   "fam": "",
+   "node": "transmission fluid filter very deteriorated"
+  },
+  {
+   "code": "P088C",
+   "brand": "",
+   "ru": "Блокировка задней передачи: низкий уровень в цепи управления",
+   "en": "Reverse Inhibit Control Circuit Low",
+   "fam": "",
+   "node": "reverse inhibit"
+  },
+  {
+   "code": "P088D",
+   "brand": "",
+   "ru": "Блокировка задней передачи: высокий уровень в цепи управления",
+   "en": "Reverse Inhibit Control Circuit High",
+   "fam": "",
+   "node": "reverse inhibit"
+  },
+  {
+   "code": "P088E",
+   "brand": "",
+   "ru": "Отказ планетарного ряда",
+   "en": "Planetary Gear Set Failure",
+   "fam": "",
+   "node": "planetary gear set failure"
+  },
+  {
+   "code": "P08A4",
+   "brand": "",
+   "ru": "Датчики положения рычага КПП по оси X 1/2: рассогласование",
+   "en": "Gear Lever X Position Sensor 1/2 Correlation",
+   "fam": "",
+   "node": "gear lever x position 2 correlation"
+  },
+  {
+   "code": "P08A5",
+   "brand": "",
+   "ru": "Датчики положения рычага КПП по оси Y 1/2: рассогласование",
+   "en": "Gear Lever Y Position Sensor 1/2 Correlation",
+   "fam": "",
+   "node": "gear lever y position 2 correlation"
+  },
+  {
+   "code": "P08A6",
+   "brand": "",
+   "ru": "Система датчиков положения рычага КПП: рассогласование нескольких датчиков",
+   "en": "Gear Lever Position Sensor System - Multiple Sensor Correlation",
+   "fam": "",
+   "node": "gear lever position sensor system multiple sensor correlation"
+  }
+ ]
+}

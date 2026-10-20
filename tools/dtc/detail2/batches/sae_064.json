@@ -1,0 +1,368 @@
+{
+ "name": "sae_064",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "cold start b camshaft position timing over advanced",
+  "cold start fuel pressure",
+  "crankcase pressure too",
+  "fam:ac_pressure",
+  "fam:climate",
+  "fam:intake_heater",
+  "pcv heater a"
+ ],
+ "codes": [
+  {
+   "code": "P0530",
+   "brand": "",
+   "ru": "Датчик давления хладагента кондиционера A: цепь",
+   "en": "",
+   "fam": "ac_pressure",
+   "node": "fam:ac_pressure"
+  },
+  {
+   "code": "P0531",
+   "brand": "",
+   "ru": "Датчик давления хладагента кондиционера A: показания вне диапазона",
+   "en": "",
+   "fam": "ac_pressure",
+   "node": "fam:ac_pressure"
+  },
+  {
+   "code": "P0532",
+   "brand": "",
+   "ru": "Датчик давления хладагента кондиционера A: низкий сигнал",
+   "en": "",
+   "fam": "ac_pressure",
+   "node": "fam:ac_pressure"
+  },
+  {
+   "code": "P0533",
+   "brand": "",
+   "ru": "Датчик давления хладагента кондиционера A: высокий сигнал",
+   "en": "",
+   "fam": "ac_pressure",
+   "node": "fam:ac_pressure"
+  },
+  {
+   "code": "P0534",
+   "brand": "",
+   "ru": "Кондиционер: потеря хладагента",
+   "en": "",
+   "fam": "ac_pressure",
+   "node": "fam:ac_pressure"
+  },
+  {
+   "code": "P2515",
+   "brand": "",
+   "ru": "Датчик давления хладагента кондиционера B: цепь",
+   "en": "",
+   "fam": "ac_pressure",
+   "node": "fam:ac_pressure"
+  },
+  {
+   "code": "P2516",
+   "brand": "",
+   "ru": "Датчик давления хладагента кондиционера B: показания вне диапазона",
+   "en": "",
+   "fam": "ac_pressure",
+   "node": "fam:ac_pressure"
+  },
+  {
+   "code": "P2517",
+   "brand": "",
+   "ru": "Датчик давления хладагента кондиционера B: низкий сигнал",
+   "en": "",
+   "fam": "ac_pressure",
+   "node": "fam:ac_pressure"
+  },
+  {
+   "code": "P2518",
+   "brand": "",
+   "ru": "Датчик давления хладагента кондиционера B: высокий сигнал",
+   "en": "",
+   "fam": "ac_pressure",
+   "node": "fam:ac_pressure"
+  },
+  {
+   "code": "P0535",
+   "brand": "",
+   "ru": "Датчик температуры испарителя кондиционера: цепь",
+   "en": "",
+   "fam": "climate",
+   "node": "fam:climate"
+  },
+  {
+   "code": "P0536",
+   "brand": "",
+   "ru": "Датчик температуры испарителя кондиционера: показания вне диапазона",
+   "en": "",
+   "fam": "climate",
+   "node": "fam:climate"
+  },
+  {
+   "code": "P0537",
+   "brand": "",
+   "ru": "Датчик температуры испарителя кондиционера: низкий сигнал",
+   "en": "",
+   "fam": "climate",
+   "node": "fam:climate"
+  },
+  {
+   "code": "P0538",
+   "brand": "",
+   "ru": "Датчик температуры испарителя кондиционера: высокий сигнал",
+   "en": "",
+   "fam": "climate",
+   "node": "fam:climate"
+  },
+  {
+   "code": "P0539",
+   "brand": "",
+   "ru": "Датчик температуры испарителя кондиционера: прерывистый сигнал",
+   "en": "",
+   "fam": "climate",
+   "node": "fam:climate"
+  },
+  {
+   "code": "P2519",
+   "brand": "",
+   "ru": "Запрос включения кондиционера A: цепь",
+   "en": "",
+   "fam": "climate",
+   "node": "fam:climate"
+  },
+  {
+   "code": "P2520",
+   "brand": "",
+   "ru": "Запрос включения кондиционера A: низкий уровень",
+   "en": "",
+   "fam": "climate",
+   "node": "fam:climate"
+  },
+  {
+   "code": "P2521",
+   "brand": "",
+   "ru": "Запрос включения кондиционера A: высокий уровень",
+   "en": "",
+   "fam": "climate",
+   "node": "fam:climate"
+  },
+  {
+   "code": "P2522",
+   "brand": "",
+   "ru": "Запрос включения кондиционера B: цепь",
+   "en": "",
+   "fam": "climate",
+   "node": "fam:climate"
+  },
+  {
+   "code": "P2523",
+   "brand": "",
+   "ru": "Запрос включения кондиционера B: низкий уровень",
+   "en": "",
+   "fam": "climate",
+   "node": "fam:climate"
+  },
+  {
+   "code": "P2524",
+   "brand": "",
+   "ru": "Запрос включения кондиционера B: высокий уровень",
+   "en": "",
+   "fam": "climate",
+   "node": "fam:climate"
+  },
+  {
+   "code": "P2561",
+   "brand": "",
+   "ru": "Блок климата запросил включение лампы неисправности",
+   "en": "",
+   "fam": "climate",
+   "node": "fam:climate"
+  },
+  {
+   "code": "P2611",
+   "brand": "",
+   "ru": "Клапан распределения хладагента кондиционера: цепь / обрыв",
+   "en": "",
+   "fam": "climate",
+   "node": "fam:climate"
+  },
+  {
+   "code": "P2612",
+   "brand": "",
+   "ru": "Клапан распределения хладагента: низкий уровень",
+   "en": "",
+   "fam": "climate",
+   "node": "fam:climate"
+  },
+  {
+   "code": "P2613",
+   "brand": "",
+   "ru": "Клапан распределения хладагента: высокий уровень",
+   "en": "",
+   "fam": "climate",
+   "node": "fam:climate"
+  },
+  {
+   "code": "P053A",
+   "brand": "",
+   "ru": "Подогрев клапана вентиляции картера A: обрыв цепи управления",
+   "en": "PCV Heater A Control Circuit /Open",
+   "fam": "",
+   "node": "pcv heater a"
+  },
+  {
+   "code": "P053B",
+   "brand": "",
+   "ru": "Подогрев клапана вентиляции картера A: низкий уровень в цепи управления",
+   "en": "PCV Heater A Control Circuit Low",
+   "fam": "",
+   "node": "pcv heater a"
+  },
+  {
+   "code": "P053C",
+   "brand": "",
+   "ru": "Подогрев клапана вентиляции картера A: высокий уровень в цепи управления",
+   "en": "PCV Heater A Control Circuit High",
+   "fam": "",
+   "node": "pcv heater a"
+  },
+  {
+   "code": "P053D",
+   "brand": "",
+   "ru": "Подогрев клапана вентиляции картера A: работа нарушена",
+   "en": "PCV Heater A Performance",
+   "fam": "",
+   "node": "pcv heater a"
+  },
+  {
+   "code": "P053E",
+   "brand": "",
+   "ru": "Слишком высокое давление в картере",
+   "en": "Crankcase Pressure Too High",
+   "fam": "",
+   "node": "crankcase pressure too"
+  },
+  {
+   "code": "P053F",
+   "brand": "",
+   "ru": "Давление топлива при холодном пуске: работа нарушена (банк 1)",
+   "en": "Cold Start Fuel Pressure Performance Bank 1",
+   "fam": "",
+   "node": "cold start fuel pressure"
+  },
+  {
+   "code": "P05FC",
+   "brand": "",
+   "ru": "Давление топлива при холодном пуске: работа нарушена (банк 2)",
+   "en": "Cold Start Fuel Pressure Performance Bank 2",
+   "fam": "",
+   "node": "cold start fuel pressure"
+  },
+  {
+   "code": "P0540",
+   "brand": "",
+   "ru": "Подогреватель впускного воздуха A: цепь",
+   "en": "",
+   "fam": "intake_heater",
+   "node": "fam:intake_heater"
+  },
+  {
+   "code": "P0541",
+   "brand": "",
+   "ru": "Подогреватель впускного воздуха A: низкий уровень",
+   "en": "",
+   "fam": "intake_heater",
+   "node": "fam:intake_heater"
+  },
+  {
+   "code": "P0542",
+   "brand": "",
+   "ru": "Подогреватель впускного воздуха A: высокий уровень",
+   "en": "",
+   "fam": "intake_heater",
+   "node": "fam:intake_heater"
+  },
+  {
+   "code": "P0543",
+   "brand": "",
+   "ru": "Подогреватель впускного воздуха A: обрыв",
+   "en": "",
+   "fam": "intake_heater",
+   "node": "fam:intake_heater"
+  },
+  {
+   "code": "P0640",
+   "brand": "",
+   "ru": "Подогреватель впускного воздуха: цепь управления",
+   "en": "",
+   "fam": "intake_heater",
+   "node": "fam:intake_heater"
+  },
+  {
+   "code": "P2604",
+   "brand": "",
+   "ru": "Подогреватель впускного воздуха A: не отрабатывает",
+   "en": "",
+   "fam": "intake_heater",
+   "node": "fam:intake_heater"
+  },
+  {
+   "code": "P2605",
+   "brand": "",
+   "ru": "Подогреватель впускного воздуха A: обрыв",
+   "en": "",
+   "fam": "intake_heater",
+   "node": "fam:intake_heater"
+  },
+  {
+   "code": "P2606",
+   "brand": "",
+   "ru": "Подогреватель впускного воздуха B: не отрабатывает",
+   "en": "",
+   "fam": "intake_heater",
+   "node": "fam:intake_heater"
+  },
+  {
+   "code": "P2607",
+   "brand": "",
+   "ru": "Подогреватель впускного воздуха B: низкий уровень",
+   "en": "",
+   "fam": "intake_heater",
+   "node": "fam:intake_heater"
+  },
+  {
+   "code": "P2608",
+   "brand": "",
+   "ru": "Подогреватель впускного воздуха B: высокий уровень",
+   "en": "",
+   "fam": "intake_heater",
+   "node": "fam:intake_heater"
+  },
+  {
+   "code": "P2609",
+   "brand": "",
+   "ru": "Система подогрева впускного воздуха: работа не соответствует",
+   "en": "",
+   "fam": "intake_heater",
+   "node": "fam:intake_heater"
+  },
+  {
+   "code": "P054A",
+   "brand": "",
+   "ru": "Холодный пуск: распредвал B слишком рано (банк 1)",
+   "en": "Cold Start B Camshaft Position Timing Over-Advanced Bank 1",
+   "fam": "",
+   "node": "cold start b camshaft position timing over advanced"
+  },
+  {
+   "code": "P054C",
+   "brand": "",
+   "ru": "Холодный пуск: распредвал B слишком рано (банк 2)",
+   "en": "Cold Start B Camshaft Position Timing Over-Advanced Bank 2",
+   "fam": "",
+   "node": "cold start b camshaft position timing over advanced"
+  }
+ ]
+}

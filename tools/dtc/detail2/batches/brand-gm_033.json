@@ -1,0 +1,401 @@
+{
+ "name": "brand-gm_033",
+ "series": "brand",
+ "brand": "gm",
+ "nodes": [
+  "1 4 upshift lamp",
+  "abs unit expected",
+  "coolant gage",
+  "cruise control inhibit",
+  "delivered torque",
+  "driver 3 line",
+  "driver 4 line",
+  "driver 5 line",
+  "ecm loop overrun",
+  "ecm supply voltage interrupted",
+  "engine hot lamp",
+  "evap vent solenoid",
+  "governor pressure above 3 psi when request is 0 psi",
+  "governor pressure not equal to target at 15 20 psi",
+  "governor pressure sensor offset improper voltage",
+  "governor pressure sensor voltage too",
+  "internal fuel injection pump controller failure",
+  "no ccd j1850 messages received from the climate control module ccm",
+  "no ccd messages received from pcm",
+  "oil life lamp",
+  "pcm failure sri mile not stored",
+  "remote keyless entry",
+  "remote keyless entry voltage",
+  "reverse inhibit solenoid",
+  "ru:выход сигнала p/n",
+  "ru:лампа низкого уровня масла",
+  "ru:сигнал положения дросселя от блока двигателя",
+  "skip shift",
+  "tachometer",
+  "trans 12 volt supply relay",
+  "transmission mil request",
+  "transmission torque reduction request"
+ ],
+ "codes": [
+  {
+   "code": "P1662",
+   "brand": "gm",
+   "ru": "Запрет круиз-контроля: цепь управления",
+   "en": "Cruise Control Inhibit Control Circuit",
+   "fam": "",
+   "node": "cruise control inhibit"
+  },
+  {
+   "code": "P1663",
+   "brand": "gm",
+   "ru": "Лампа ресурса масла: цепь управления",
+   "en": "Oil Life Lamp Control Circuit",
+   "fam": "",
+   "node": "oil life lamp"
+  },
+  {
+   "code": "P1664",
+   "brand": "gm",
+   "ru": "Лампа пропуска передачи 1→4: цепь управления",
+   "en": "1 4 Upshift Lamp Control Circuit",
+   "fam": "",
+   "node": "1 4 upshift lamp"
+  },
+  {
+   "code": "P1665",
+   "brand": "gm",
+   "ru": "Драйвер 3, линия 5",
+   "en": "Driver 3 Line 5",
+   "fam": "",
+   "node": "driver 3 line"
+  },
+  {
+   "code": "P1666",
+   "brand": "gm",
+   "ru": "Драйвер 3, линия 6",
+   "en": "Driver 3 Line 6",
+   "fam": "",
+   "node": "driver 3 line"
+  },
+  {
+   "code": "P1667",
+   "brand": "gm",
+   "ru": "Клапан запрета задней передачи: цепь управления",
+   "en": "Reverse Inhibit Solenoid Control Circuit",
+   "fam": "",
+   "node": "reverse inhibit solenoid"
+  },
+  {
+   "code": "P1669",
+   "brand": "gm",
+   "ru": "Ожидался блок ABS",
+   "en": "ABS Unit Expected",
+   "fam": "",
+   "node": "abs unit expected"
+  },
+  {
+   "code": "P1671",
+   "brand": "gm",
+   "ru": "Драйвер 4, линия 1",
+   "en": "Driver 4 Line 1",
+   "fam": "",
+   "node": "driver 4 line"
+  },
+  {
+   "code": "P1676",
+   "brand": "gm",
+   "ru": "Драйвер 4, линия 6",
+   "en": "Driver 4 Line 6",
+   "fam": "",
+   "node": "driver 4 line"
+  },
+  {
+   "code": "P1677",
+   "brand": "gm",
+   "ru": "Драйвер 4, линия 7",
+   "en": "Driver 4 Line 7",
+   "fam": "",
+   "node": "driver 4 line"
+  },
+  {
+   "code": "P1672",
+   "brand": "gm",
+   "ru": "Лампа низкого уровня масла: цепь управления",
+   "en": "Low Engine Oil Level Lamp Control Circuit",
+   "fam": "",
+   "node": "ru:лампа низкого уровня масла"
+  },
+  {
+   "code": "P1673",
+   "brand": "gm",
+   "ru": "Лампа перегрева двигателя: цепь управления",
+   "en": "Engine Hot Lamp Control Circuit",
+   "fam": "",
+   "node": "engine hot lamp"
+  },
+  {
+   "code": "P1674",
+   "brand": "gm",
+   "ru": "Тахометр: цепь управления",
+   "en": "Tachometer Control Circuit",
+   "fam": "",
+   "node": "tachometer"
+  },
+  {
+   "code": "P1693",
+   "brand": "gm",
+   "ru": "Тахометр: низкое напряжение",
+   "en": "Tachometer Circuit Low Voltage",
+   "fam": "",
+   "node": "tachometer"
+  },
+  {
+   "code": "P1694",
+   "brand": "gm",
+   "ru": "Тахометр: высокое напряжение",
+   "en": "Tachometer Circuit High Voltage",
+   "fam": "",
+   "node": "tachometer"
+  },
+  {
+   "code": "P1675",
+   "brand": "gm",
+   "ru": "Клапан вентиляции адсорбера: цепь управления",
+   "en": "EVAP Vent Solenoid Control Circuit",
+   "fam": "",
+   "node": "evap vent solenoid"
+  },
+  {
+   "code": "P1681",
+   "brand": "gm",
+   "ru": "Драйвер 5, линия 1",
+   "en": "Driver 5 Line 1",
+   "fam": "",
+   "node": "driver 5 line"
+  },
+  {
+   "code": "P1683",
+   "brand": "gm",
+   "ru": "Драйвер 5, линия 3",
+   "en": "Driver 5 Line 3",
+   "fam": "",
+   "node": "driver 5 line"
+  },
+  {
+   "code": "P1684",
+   "brand": "gm",
+   "ru": "Драйвер 5, линия 4",
+   "en": "Driver 5 Line 4",
+   "fam": "",
+   "node": "driver 5 line"
+  },
+  {
+   "code": "P1685",
+   "brand": "gm",
+   "ru": "Драйвер 5, линия 5",
+   "en": "Driver 5 Line 5",
+   "fam": "",
+   "node": "driver 5 line"
+  },
+  {
+   "code": "P1686",
+   "brand": "gm",
+   "ru": "Драйвер 5, линия 6",
+   "en": "Driver 5 Line 6",
+   "fam": "",
+   "node": "driver 5 line"
+  },
+  {
+   "code": "P1687",
+   "brand": "gm",
+   "ru": "Драйвер 5, линия 7",
+   "en": "Driver 5 Line 7",
+   "fam": "",
+   "node": "driver 5 line"
+  },
+  {
+   "code": "P1688",
+   "brand": "gm",
+   "ru": "Внутренняя неисправность контроллера ТНВД",
+   "en": "Internal Fuel Injection Pump Controller Failure",
+   "fam": "",
+   "node": "internal fuel injection pump controller failure"
+  },
+  {
+   "code": "P1689",
+   "brand": "gm",
+   "ru": "Цепь сигнала отдаваемого момента: неисправность",
+   "en": "Delivered Torque Circuit Fault",
+   "fam": "",
+   "node": "delivered torque"
+  },
+  {
+   "code": "P1690",
+   "brand": "gm",
+   "ru": "Блок двигателя: переполнение цикла",
+   "en": "ECM Loop Overrun",
+   "fam": "",
+   "node": "ecm loop overrun"
+  },
+  {
+   "code": "P1691",
+   "brand": "gm",
+   "ru": "Указатель температуры ОЖ: низкое напряжение",
+   "en": "Coolant Gage Circuit Low Voltage",
+   "fam": "",
+   "node": "coolant gage"
+  },
+  {
+   "code": "P1692",
+   "brand": "gm",
+   "ru": "Указатель температуры ОЖ: высокое напряжение",
+   "en": "Coolant Gage Circuit High Voltage",
+   "fam": "",
+   "node": "coolant gage"
+  },
+  {
+   "code": "P1695",
+   "brand": "gm",
+   "ru": "Дистанционный замок: низкое напряжение",
+   "en": "Remote Keyless Entry Circuit Low",
+   "fam": "",
+   "node": "remote keyless entry"
+  },
+  {
+   "code": "P1696",
+   "brand": "gm",
+   "ru": "Дистанционный замок: высокое напряжение",
+   "en": "Remote Keyless Entry Voltage High",
+   "fam": "",
+   "node": "remote keyless entry voltage"
+  },
+  {
+   "code": "P1697",
+   "brand": "gm",
+   "ru": "Неисправность блока двигателя: пробег не записан",
+   "en": "PCM Failure SRI Mile Not Stored",
+   "fam": "",
+   "node": "pcm failure sri mile not stored"
+  },
+  {
+   "code": "P1698",
+   "brand": "gm",
+   "ru": "Нет сообщений CCD от блока двигателя",
+   "en": "No CCD Messages Received From PCM",
+   "fam": "",
+   "node": "no ccd messages received from pcm"
+  },
+  {
+   "code": "P1699",
+   "brand": "gm",
+   "ru": "Нет сообщений CCD/J1850 от блока климата",
+   "en": "No CCD J1850 Messages Received From The Climate Control Module CCM",
+   "fam": "",
+   "node": "no ccd j1850 messages received from the climate control module ccm"
+  },
+  {
+   "code": "P1700",
+   "brand": "gm",
+   "ru": "Запрос лампы неисправности от коробки",
+   "en": "Transmission MIL Request",
+   "fam": "",
+   "node": "transmission mil request"
+  },
+  {
+   "code": "P1701",
+   "brand": "gm",
+   "ru": "Цепь запроса лампы от коробки",
+   "en": "Transmission MIL Request Circuit",
+   "fam": "",
+   "node": "transmission mil request"
+  },
+  {
+   "code": "P1705",
+   "brand": "gm",
+   "ru": "Выход сигнала P/N: цепь",
+   "en": "P/N Signal Output Circuit",
+   "fam": "",
+   "node": "ru:выход сигнала p/n"
+  },
+  {
+   "code": "P1719",
+   "brand": "gm",
+   "ru": "Клапан пропуска передачи: обрыв или замыкание",
+   "en": "Skip Shift Solenoid Circuit Open Or Shorted",
+   "fam": "",
+   "node": "skip shift"
+  },
+  {
+   "code": "P1740",
+   "brand": "gm",
+   "ru": "Запрос снижения момента от коробки: цепь",
+   "en": "Transmission Torque Reduction Request Circuit",
+   "fam": "",
+   "node": "transmission torque reduction request"
+  },
+  {
+   "code": "P1743",
+   "brand": "gm",
+   "ru": "Сигнал положения дросселя от блока двигателя",
+   "en": "TP Signal From ECM",
+   "fam": "",
+   "node": "ru:сигнал положения дросселя от блока двигателя"
+  },
+  {
+   "code": "P1756",
+   "brand": "gm",
+   "ru": "Давление регулятора не равно заданному при 15–20 psi",
+   "en": "Governor Pressure Not Equal To Target At 15-20 PSI",
+   "fam": "",
+   "node": "governor pressure not equal to target at 15 20 psi"
+  },
+  {
+   "code": "P1757",
+   "brand": "gm",
+   "ru": "Давление регулятора выше 3 psi при запросе 0",
+   "en": "Governor Pressure Above 3 PSI When Request Is 0 PSI",
+   "fam": "",
+   "node": "governor pressure above 3 psi when request is 0 psi"
+  },
+  {
+   "code": "P1760",
+   "brand": "gm",
+   "ru": "Прерывалось питание блока",
+   "en": "ECM Supply Voltage Interrupted",
+   "fam": "",
+   "node": "ecm supply voltage interrupted"
+  },
+  {
+   "code": "P1762",
+   "brand": "gm",
+   "ru": "Датчик давления регулятора: неверное смещение",
+   "en": "Governor Pressure Sensor Offset Improper Voltage",
+   "fam": "",
+   "node": "governor pressure sensor offset improper voltage"
+  },
+  {
+   "code": "P1763",
+   "brand": "gm",
+   "ru": "Датчик давления регулятора: напряжение слишком высокое",
+   "en": "Governor Pressure Sensor Voltage Too High",
+   "fam": "",
+   "node": "governor pressure sensor voltage too"
+  },
+  {
+   "code": "P1764",
+   "brand": "gm",
+   "ru": "Датчик давления регулятора: напряжение слишком низкое",
+   "en": "Governor Pressure Sensor Voltage Too Low",
+   "fam": "",
+   "node": "governor pressure sensor voltage too"
+  },
+  {
+   "code": "P1765",
+   "brand": "gm",
+   "ru": "Реле питания 12 В коробки: обрыв или замыкание",
+   "en": "Trans 12 Volt Supply Relay Control Circuit Open Or Shorted",
+   "fam": "",
+   "node": "trans 12 volt supply relay"
+  }
+ ]
+}

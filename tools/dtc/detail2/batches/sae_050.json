@@ -1,0 +1,235 @@
+{
+ "name": "sae_050",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "pressure",
+  "pressure too"
+ ],
+ "codes": [
+  {
+   "code": "P2367",
+   "brand": "",
+   "ru": "Датчик давления в цилиндре 12: сигнал вне диапазона",
+   "en": "Cylinder 12 Pressure Sensor Circuit Range/Performance",
+   "fam": "",
+   "node": "pressure"
+  },
+  {
+   "code": "P2368",
+   "brand": "",
+   "ru": "Датчик давления в цилиндре 12: низкий уровень сигнала в цепи",
+   "en": "Cylinder 12 Pressure Sensor Circuit Low",
+   "fam": "",
+   "node": "pressure"
+  },
+  {
+   "code": "P2369",
+   "brand": "",
+   "ru": "Датчик давления в цилиндре 12: высокий уровень сигнала в цепи",
+   "en": "Cylinder 12 Pressure Sensor Circuit High",
+   "fam": "",
+   "node": "pressure"
+  },
+  {
+   "code": "P236A",
+   "brand": "",
+   "ru": "Датчик давления в цилиндре 12: прерывистый / нестабильный сигнал",
+   "en": "Cylinder 12 Pressure Sensor Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "pressure"
+  },
+  {
+   "code": "P039A",
+   "brand": "",
+   "ru": "Цилиндр 1: слишком низкое давление",
+   "en": "Cylinder 1 Pressure Too Low",
+   "fam": "",
+   "node": "pressure too"
+  },
+  {
+   "code": "P039B",
+   "brand": "",
+   "ru": "Цилиндр 1: слишком высокое давление",
+   "en": "Cylinder 1 Pressure Too High",
+   "fam": "",
+   "node": "pressure too"
+  },
+  {
+   "code": "P03A4",
+   "brand": "",
+   "ru": "Цилиндр 2: слишком низкое давление",
+   "en": "Cylinder 2 Pressure Too Low",
+   "fam": "",
+   "node": "pressure too"
+  },
+  {
+   "code": "P03A5",
+   "brand": "",
+   "ru": "Цилиндр 2: слишком высокое давление",
+   "en": "Cylinder 2 Pressure Too High",
+   "fam": "",
+   "node": "pressure too"
+  },
+  {
+   "code": "P03AE",
+   "brand": "",
+   "ru": "Цилиндр 3: слишком низкое давление",
+   "en": "Cylinder 3 Pressure Too Low",
+   "fam": "",
+   "node": "pressure too"
+  },
+  {
+   "code": "P03AF",
+   "brand": "",
+   "ru": "Цилиндр 3: слишком высокое давление",
+   "en": "Cylinder 3 Pressure Too High",
+   "fam": "",
+   "node": "pressure too"
+  },
+  {
+   "code": "P03B8",
+   "brand": "",
+   "ru": "Цилиндр 4: слишком низкое давление",
+   "en": "Cylinder 4 Pressure Too Low",
+   "fam": "",
+   "node": "pressure too"
+  },
+  {
+   "code": "P03B9",
+   "brand": "",
+   "ru": "Цилиндр 4: слишком высокое давление",
+   "en": "Cylinder 4 Pressure Too High",
+   "fam": "",
+   "node": "pressure too"
+  },
+  {
+   "code": "P03C2",
+   "brand": "",
+   "ru": "Цилиндр 5: слишком низкое давление",
+   "en": "Cylinder 5 Pressure Too Low",
+   "fam": "",
+   "node": "pressure too"
+  },
+  {
+   "code": "P03C3",
+   "brand": "",
+   "ru": "Цилиндр 5: слишком высокое давление",
+   "en": "Cylinder 5 Pressure Too High",
+   "fam": "",
+   "node": "pressure too"
+  },
+  {
+   "code": "P03CC",
+   "brand": "",
+   "ru": "Цилиндр 6: слишком низкое давление",
+   "en": "Cylinder 6 Pressure Too Low",
+   "fam": "",
+   "node": "pressure too"
+  },
+  {
+   "code": "P03CD",
+   "brand": "",
+   "ru": "Цилиндр 6: слишком высокое давление",
+   "en": "Cylinder 6 Pressure Too High",
+   "fam": "",
+   "node": "pressure too"
+  },
+  {
+   "code": "P03D6",
+   "brand": "",
+   "ru": "Цилиндр 7: слишком низкое давление",
+   "en": "Cylinder 7 Pressure Too Low",
+   "fam": "",
+   "node": "pressure too"
+  },
+  {
+   "code": "P03D7",
+   "brand": "",
+   "ru": "Цилиндр 7: слишком высокое давление",
+   "en": "Cylinder 7 Pressure Too High",
+   "fam": "",
+   "node": "pressure too"
+  },
+  {
+   "code": "P03E0",
+   "brand": "",
+   "ru": "Цилиндр 8: слишком низкое давление",
+   "en": "Cylinder 8 Pressure Too Low",
+   "fam": "",
+   "node": "pressure too"
+  },
+  {
+   "code": "P03E1",
+   "brand": "",
+   "ru": "Цилиндр 8: слишком высокое давление",
+   "en": "Cylinder 8 Pressure Too High",
+   "fam": "",
+   "node": "pressure too"
+  },
+  {
+   "code": "P234D",
+   "brand": "",
+   "ru": "Цилиндр 9: слишком низкое давление",
+   "en": "Cylinder 9 Pressure Too Low",
+   "fam": "",
+   "node": "pressure too"
+  },
+  {
+   "code": "P234E",
+   "brand": "",
+   "ru": "Цилиндр 9: слишком высокое давление",
+   "en": "Cylinder 9 Pressure Too High",
+   "fam": "",
+   "node": "pressure too"
+  },
+  {
+   "code": "P2357",
+   "brand": "",
+   "ru": "Цилиндр 10: слишком низкое давление",
+   "en": "Cylinder 10 Pressure Too Low",
+   "fam": "",
+   "node": "pressure too"
+  },
+  {
+   "code": "P2358",
+   "brand": "",
+   "ru": "Цилиндр 10: слишком высокое давление",
+   "en": "Cylinder 10 Pressure Too High",
+   "fam": "",
+   "node": "pressure too"
+  },
+  {
+   "code": "P2361",
+   "brand": "",
+   "ru": "Цилиндр 11: слишком низкое давление",
+   "en": "Cylinder 11 Pressure Too Low",
+   "fam": "",
+   "node": "pressure too"
+  },
+  {
+   "code": "P2362",
+   "brand": "",
+   "ru": "Цилиндр 11: слишком высокое давление",
+   "en": "Cylinder 11 Pressure Too High",
+   "fam": "",
+   "node": "pressure too"
+  },
+  {
+   "code": "P236B",
+   "brand": "",
+   "ru": "Цилиндр 12: слишком низкое давление",
+   "en": "Cylinder 12 Pressure Too Low",
+   "fam": "",
+   "node": "pressure too"
+  },
+  {
+   "code": "P236C",
+   "brand": "",
+   "ru": "Цилиндр 12: слишком высокое давление",
+   "en": "Cylinder 12 Pressure Too High",
+   "fam": "",
+   "node": "pressure too"
+  }
+ ]
+}

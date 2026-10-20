@@ -1,0 +1,318 @@
+{
+ "name": "sae_138",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "alternative fuel tank shutoff valve a",
+  "barometric pressure sensor a b correlation",
+  "barometric pressure sensor b",
+  "nox 2 correlation",
+  "nox sensor calibration memory",
+  "nox sensor heater",
+  "nox sensor heater resistance",
+  "o2 sensor pumping current",
+  "o2 sensor reference resistance out of",
+  "reductant heater b current too",
+  "reductant heater c current too",
+  "reductant heater e",
+  "reductant heater f"
+ ],
+ "codes": [
+  {
+   "code": "P220E",
+   "brand": "",
+   "ru": "Подогрев датчика NOx: цепь управления вне диапазона (банк 1, датчик 1)",
+   "en": "NOx Sensor Heater Control Circuit Range/Performance Bank 1 Sensor 1",
+   "fam": "",
+   "node": "nox sensor heater"
+  },
+  {
+   "code": "P220F",
+   "brand": "",
+   "ru": "Подогрев датчика NOx: цепь управления вне диапазона (банк 1, датчик 2)",
+   "en": "NOx Sensor Heater Control Circuit Range/Performance Bank 1 Sensor 2",
+   "fam": "",
+   "node": "nox sensor heater"
+  },
+  {
+   "code": "P22A3",
+   "brand": "",
+   "ru": "Подогрев датчика NOx: обрыв цепи управления (банк 1, датчик 2)",
+   "en": "NOx Sensor Heater Control Circuit/Open Bank 1 Sensor 2",
+   "fam": "",
+   "node": "nox sensor heater"
+  },
+  {
+   "code": "P22A4",
+   "brand": "",
+   "ru": "Подогрев датчика NOx: низкий уровень в цепи управления (банк 1, датчик 2)",
+   "en": "NOx Sensor Heater Control Circuit Low Bank 1 Sensor 2",
+   "fam": "",
+   "node": "nox sensor heater"
+  },
+  {
+   "code": "P22A5",
+   "brand": "",
+   "ru": "Подогрев датчика NOx: высокий уровень в цепи управления (банк 1, датчик 2)",
+   "en": "NOx Sensor Heater Control Circuit High Bank 1 Sensor 2",
+   "fam": "",
+   "node": "nox sensor heater"
+  },
+  {
+   "code": "P23B1",
+   "brand": "",
+   "ru": "Подогрев датчика NOx: обрыв цепи управления (банк 1, датчик 3)",
+   "en": "NOx Sensor Heater Control Circuit/Open Bank 1 Sensor 3",
+   "fam": "",
+   "node": "nox sensor heater"
+  },
+  {
+   "code": "P23B2",
+   "brand": "",
+   "ru": "Подогрев датчика NOx: низкий уровень в цепи управления (банк 1, датчик 3)",
+   "en": "NOx Sensor Heater Control Circuit Low Bank 1 Sensor 3",
+   "fam": "",
+   "node": "nox sensor heater"
+  },
+  {
+   "code": "P23B3",
+   "brand": "",
+   "ru": "Подогрев датчика NOx: высокий уровень в цепи управления (банк 1, датчик 3)",
+   "en": "NOx Sensor Heater Control Circuit High Bank 1 Sensor 3",
+   "fam": "",
+   "node": "nox sensor heater"
+  },
+  {
+   "code": "P23B7",
+   "brand": "",
+   "ru": "Подогрев датчика NOx: цепь управления вне диапазона (банк 1, датчик 3)",
+   "en": "NOx Sensor Heater Control Circuit Range/Performance Bank 1 Sensor 3",
+   "fam": "",
+   "node": "nox sensor heater"
+  },
+  {
+   "code": "P221A",
+   "brand": "",
+   "ru": "Датчики NOx 1/2: рассогласование (банк 1)",
+   "en": "NOx Sensor 1/2 Correlation Bank 1",
+   "fam": "",
+   "node": "nox 2 correlation"
+  },
+  {
+   "code": "P221B",
+   "brand": "",
+   "ru": "Датчики NOx 1/2: рассогласование (банк 2)",
+   "en": "NOx Sensor 1/2 Correlation Bank 2",
+   "fam": "",
+   "node": "nox 2 correlation"
+  },
+  {
+   "code": "P221C",
+   "brand": "",
+   "ru": "Подогреватель мочевины B: слишком малый ток",
+   "en": "Reductant Heater B Current Too Low",
+   "fam": "",
+   "node": "reductant heater b current too"
+  },
+  {
+   "code": "P221D",
+   "brand": "",
+   "ru": "Подогреватель мочевины B: слишком большой ток",
+   "en": "Reductant Heater B Current Too High",
+   "fam": "",
+   "node": "reductant heater b current too"
+  },
+  {
+   "code": "P221E",
+   "brand": "",
+   "ru": "Подогреватель мочевины C: слишком малый ток",
+   "en": "Reductant Heater C Current Too Low",
+   "fam": "",
+   "node": "reductant heater c current too"
+  },
+  {
+   "code": "P221F",
+   "brand": "",
+   "ru": "Подогреватель мочевины C: слишком большой ток",
+   "en": "Reductant Heater C Current Too High",
+   "fam": "",
+   "node": "reductant heater c current too"
+  },
+  {
+   "code": "P222A",
+   "brand": "",
+   "ru": "Датчик атмосферного давления B: цепь",
+   "en": "Barometric Pressure Sensor B Circuit",
+   "fam": "",
+   "node": "barometric pressure sensor b"
+  },
+  {
+   "code": "P222B",
+   "brand": "",
+   "ru": "Датчик атмосферного давления B: сигнал вне диапазона",
+   "en": "Barometric Pressure Sensor B Circuit Range/Performance",
+   "fam": "",
+   "node": "barometric pressure sensor b"
+  },
+  {
+   "code": "P222C",
+   "brand": "",
+   "ru": "Датчик атмосферного давления B: низкий уровень сигнала в цепи",
+   "en": "Barometric Pressure Sensor B Circuit Low",
+   "fam": "",
+   "node": "barometric pressure sensor b"
+  },
+  {
+   "code": "P222D",
+   "brand": "",
+   "ru": "Датчик атмосферного давления B: высокий уровень сигнала в цепи",
+   "en": "Barometric Pressure Sensor B Circuit High",
+   "fam": "",
+   "node": "barometric pressure sensor b"
+  },
+  {
+   "code": "P222E",
+   "brand": "",
+   "ru": "Датчик атмосферного давления B: прерывистый / нестабильный сигнал",
+   "en": "Barometric Pressure Sensor B Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "barometric pressure sensor b"
+  },
+  {
+   "code": "P222F",
+   "brand": "",
+   "ru": "Датчик атмосферного давления: рассогласование A/B",
+   "en": "Barometric Pressure Sensor A/B Correlation",
+   "fam": "",
+   "node": "barometric pressure sensor a b correlation"
+  },
+  {
+   "code": "P223A",
+   "brand": "",
+   "ru": "Подогреватель мочевины (AdBlue) E: цепь управления",
+   "en": "Reductant Heater E Control Circuit",
+   "fam": "",
+   "node": "reductant heater e"
+  },
+  {
+   "code": "P223B",
+   "brand": "",
+   "ru": "Подогреватель мочевины (AdBlue) F: цепь управления",
+   "en": "Reductant Heater F Control Circuit",
+   "fam": "",
+   "node": "reductant heater f"
+  },
+  {
+   "code": "P223C",
+   "brand": "",
+   "ru": "Лямбда-зонд: ток накачки вне диапазона (банк 1)",
+   "en": "O2 Sensor Pumping Current Range/Performance Bank 1",
+   "fam": "",
+   "node": "o2 sensor pumping current"
+  },
+  {
+   "code": "P223D",
+   "brand": "",
+   "ru": "Лямбда-зонд: ток накачки вне диапазона (банк 2)",
+   "en": "O2 Sensor Pumping Current Range/Performance Bank 2",
+   "fam": "",
+   "node": "o2 sensor pumping current"
+  },
+  {
+   "code": "P223E",
+   "brand": "",
+   "ru": "Лямбда-зонд: опорное сопротивление вне диапазона (банк 1)",
+   "en": "O2 Sensor Reference Resistance Out Of Range Bank 1",
+   "fam": "",
+   "node": "o2 sensor reference resistance out of"
+  },
+  {
+   "code": "P223F",
+   "brand": "",
+   "ru": "Лямбда-зонд: опорное сопротивление вне диапазона (банк 2)",
+   "en": "O2 Sensor Reference Resistance Out Of Range Bank 2",
+   "fam": "",
+   "node": "o2 sensor reference resistance out of"
+  },
+  {
+   "code": "P224A",
+   "brand": "",
+   "ru": "Сопротивление подогрева датчика NOx (банк 1, датчик 1)",
+   "en": "NOx Sensor Heater Resistance Bank 1 Sensor 1",
+   "fam": "",
+   "node": "nox sensor heater resistance"
+  },
+  {
+   "code": "P224B",
+   "brand": "",
+   "ru": "Сопротивление подогрева датчика NOx (банк 1, датчик 2)",
+   "en": "NOx Sensor Heater Resistance Bank 1 Sensor 2",
+   "fam": "",
+   "node": "nox sensor heater resistance"
+  },
+  {
+   "code": "P23BB",
+   "brand": "",
+   "ru": "Сопротивление подогрева датчика NOx (банк 1, датчик 3)",
+   "en": "NOx Sensor Heater Resistance Bank 1 Sensor 3",
+   "fam": "",
+   "node": "nox sensor heater resistance"
+  },
+  {
+   "code": "P224C",
+   "brand": "",
+   "ru": "Запорный клапан баллона ГБО A: обрыв цепи управления",
+   "en": "Alternative Fuel Tank Shutoff Valve A Control Circuit/Open",
+   "fam": "",
+   "node": "alternative fuel tank shutoff valve a"
+  },
+  {
+   "code": "P224D",
+   "brand": "",
+   "ru": "Запорный клапан баллона ГБО A: цепь управления: работа нарушена / не включается",
+   "en": "Alternative Fuel Tank Shutoff Valve A Control Circuit Performance/Stuck Off",
+   "fam": "",
+   "node": "alternative fuel tank shutoff valve a"
+  },
+  {
+   "code": "P224E",
+   "brand": "",
+   "ru": "Запорный клапан баллона ГБО A: низкий уровень в цепи управления",
+   "en": "Alternative Fuel Tank Shutoff Valve A Control Circuit Low",
+   "fam": "",
+   "node": "alternative fuel tank shutoff valve a"
+  },
+  {
+   "code": "P224F",
+   "brand": "",
+   "ru": "Запорный клапан баллона ГБО A: высокий уровень в цепи управления",
+   "en": "Alternative Fuel Tank Shutoff Valve A Control Circuit High",
+   "fam": "",
+   "node": "alternative fuel tank shutoff valve a"
+  },
+  {
+   "code": "P225A",
+   "brand": "",
+   "ru": "Память калибровки датчика NOx (банк 1, датчик 1)",
+   "en": "NOx Sensor Calibration Memory Bank 1 Sensor 1",
+   "fam": "",
+   "node": "nox sensor calibration memory"
+  },
+  {
+   "code": "P225B",
+   "brand": "",
+   "ru": "Память калибровки датчика NOx (банк 1, датчик 2)",
+   "en": "NOx Sensor Calibration Memory Bank 1 Sensor 2",
+   "fam": "",
+   "node": "nox sensor calibration memory"
+  },
+  {
+   "code": "P23BC",
+   "brand": "",
+   "ru": "Память калибровки датчика NOx (банк 1, датчик 3)",
+   "en": "NOx Sensor Calibration Memory Bank 1 Sensor 3",
+   "fam": "",
+   "node": "nox sensor calibration memory"
+  }
+ ]
+}

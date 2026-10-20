@@ -1,0 +1,372 @@
+{
+ "name": "sae_215",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "ru:блокировочная цепь высоковольтной системы d",
+  "ru:блокировочная цепь высоковольтной системы e",
+  "ru:блокировочная цепь высоковольтной системы f",
+  "ru:блокировочная цепь высоковольтной системы g",
+  "ru:блокировочная цепь высоковольтной системы h",
+  "ru:блокировочная цепь высоковольтной системы j",
+  "ru:блокировочная цепь высоковольтной системы k",
+  "ru:блокировочная цепь высоковольтной системы l",
+  "ru:блокировочная цепь высоковольтной системы m",
+  "ru:блокировочная цепь высоковольтной системы n",
+  "ru:блокировочная цепь высоковольтной системы o"
+ ],
+ "codes": [
+  {
+   "code": "U3519",
+   "brand": "",
+   "ru": "Блокировочная цепь высоковольтной системы D",
+   "en": "High Voltage System Interlock Circuit D",
+   "fam": "",
+   "node": "ru:блокировочная цепь высоковольтной системы d"
+  },
+  {
+   "code": "U351A",
+   "brand": "",
+   "ru": "Блокировочная цепь высоковольтной системы D: работа нарушена",
+   "en": "High Voltage System Interlock Circuit D Performance",
+   "fam": "",
+   "node": "ru:блокировочная цепь высоковольтной системы d"
+  },
+  {
+   "code": "U351B",
+   "brand": "",
+   "ru": "Блокировочная цепь высоковольтной системы D: низкий уровень",
+   "en": "High Voltage System Interlock Circuit D Low",
+   "fam": "",
+   "node": "ru:блокировочная цепь высоковольтной системы d"
+  },
+  {
+   "code": "U351C",
+   "brand": "",
+   "ru": "Блокировочная цепь высоковольтной системы D: высокий уровень",
+   "en": "High Voltage System Interlock Circuit D High",
+   "fam": "",
+   "node": "ru:блокировочная цепь высоковольтной системы d"
+  },
+  {
+   "code": "U351D",
+   "brand": "",
+   "ru": "Блокировочная цепь высоковольтной системы E",
+   "en": "High Voltage System Interlock Circuit E",
+   "fam": "",
+   "node": "ru:блокировочная цепь высоковольтной системы e"
+  },
+  {
+   "code": "U351E",
+   "brand": "",
+   "ru": "Блокировочная цепь высоковольтной системы E: работа нарушена",
+   "en": "High Voltage System Interlock Circuit E Performance",
+   "fam": "",
+   "node": "ru:блокировочная цепь высоковольтной системы e"
+  },
+  {
+   "code": "U351F",
+   "brand": "",
+   "ru": "Блокировочная цепь высоковольтной системы E: низкий уровень",
+   "en": "High Voltage System Interlock Circuit E Low",
+   "fam": "",
+   "node": "ru:блокировочная цепь высоковольтной системы e"
+  },
+  {
+   "code": "U3520",
+   "brand": "",
+   "ru": "Блокировочная цепь высоковольтной системы E: высокий уровень",
+   "en": "High Voltage System Interlock Circuit E High",
+   "fam": "",
+   "node": "ru:блокировочная цепь высоковольтной системы e"
+  },
+  {
+   "code": "U3521",
+   "brand": "",
+   "ru": "Блокировочная цепь высоковольтной системы F",
+   "en": "High Voltage System Interlock Circuit F",
+   "fam": "",
+   "node": "ru:блокировочная цепь высоковольтной системы f"
+  },
+  {
+   "code": "U3522",
+   "brand": "",
+   "ru": "Блокировочная цепь высоковольтной системы F: работа нарушена",
+   "en": "High Voltage System Interlock Circuit F Performance",
+   "fam": "",
+   "node": "ru:блокировочная цепь высоковольтной системы f"
+  },
+  {
+   "code": "U3523",
+   "brand": "",
+   "ru": "Блокировочная цепь высоковольтной системы F: низкий уровень",
+   "en": "High Voltage System Interlock Circuit F Low",
+   "fam": "",
+   "node": "ru:блокировочная цепь высоковольтной системы f"
+  },
+  {
+   "code": "U3524",
+   "brand": "",
+   "ru": "Блокировочная цепь высоковольтной системы F: высокий уровень",
+   "en": "High Voltage System Interlock Circuit F High",
+   "fam": "",
+   "node": "ru:блокировочная цепь высоковольтной системы f"
+  },
+  {
+   "code": "U3525",
+   "brand": "",
+   "ru": "Блокировочная цепь высоковольтной системы G",
+   "en": "High Voltage System Interlock Circuit G",
+   "fam": "",
+   "node": "ru:блокировочная цепь высоковольтной системы g"
+  },
+  {
+   "code": "U3526",
+   "brand": "",
+   "ru": "Блокировочная цепь высоковольтной системы G: работа нарушена",
+   "en": "High Voltage System Interlock Circuit G Performance",
+   "fam": "",
+   "node": "ru:блокировочная цепь высоковольтной системы g"
+  },
+  {
+   "code": "U3527",
+   "brand": "",
+   "ru": "Блокировочная цепь высоковольтной системы G: низкий уровень",
+   "en": "High Voltage System Interlock Circuit G Low",
+   "fam": "",
+   "node": "ru:блокировочная цепь высоковольтной системы g"
+  },
+  {
+   "code": "U3528",
+   "brand": "",
+   "ru": "Блокировочная цепь высоковольтной системы G: высокий уровень",
+   "en": "High Voltage System Interlock Circuit G High",
+   "fam": "",
+   "node": "ru:блокировочная цепь высоковольтной системы g"
+  },
+  {
+   "code": "U3529",
+   "brand": "",
+   "ru": "Блокировочная цепь высоковольтной системы H",
+   "en": "High Voltage System Interlock Circuit H",
+   "fam": "",
+   "node": "ru:блокировочная цепь высоковольтной системы h"
+  },
+  {
+   "code": "U352A",
+   "brand": "",
+   "ru": "Блокировочная цепь высоковольтной системы H: работа нарушена",
+   "en": "High Voltage System Interlock Circuit H Performance",
+   "fam": "",
+   "node": "ru:блокировочная цепь высоковольтной системы h"
+  },
+  {
+   "code": "U352B",
+   "brand": "",
+   "ru": "Блокировочная цепь высоковольтной системы H: низкий уровень",
+   "en": "High Voltage System Interlock Circuit H Low",
+   "fam": "",
+   "node": "ru:блокировочная цепь высоковольтной системы h"
+  },
+  {
+   "code": "U352C",
+   "brand": "",
+   "ru": "Блокировочная цепь высоковольтной системы H: высокий уровень",
+   "en": "High Voltage System Interlock Circuit H High",
+   "fam": "",
+   "node": "ru:блокировочная цепь высоковольтной системы h"
+  },
+  {
+   "code": "U352D",
+   "brand": "",
+   "ru": "Блокировочная цепь высоковольтной системы J",
+   "en": "High Voltage System Interlock Circuit J",
+   "fam": "",
+   "node": "ru:блокировочная цепь высоковольтной системы j"
+  },
+  {
+   "code": "U352E",
+   "brand": "",
+   "ru": "Блокировочная цепь высоковольтной системы J: работа нарушена",
+   "en": "High Voltage System Interlock Circuit J Performance",
+   "fam": "",
+   "node": "ru:блокировочная цепь высоковольтной системы j"
+  },
+  {
+   "code": "U352F",
+   "brand": "",
+   "ru": "Блокировочная цепь высоковольтной системы J: низкий уровень",
+   "en": "High Voltage System Interlock Circuit J Low",
+   "fam": "",
+   "node": "ru:блокировочная цепь высоковольтной системы j"
+  },
+  {
+   "code": "U3530",
+   "brand": "",
+   "ru": "Блокировочная цепь высоковольтной системы J: высокий уровень",
+   "en": "High Voltage System Interlock Circuit J High",
+   "fam": "",
+   "node": "ru:блокировочная цепь высоковольтной системы j"
+  },
+  {
+   "code": "U3531",
+   "brand": "",
+   "ru": "Блокировочная цепь высоковольтной системы K",
+   "en": "High Voltage System Interlock Circuit K",
+   "fam": "",
+   "node": "ru:блокировочная цепь высоковольтной системы k"
+  },
+  {
+   "code": "U3532",
+   "brand": "",
+   "ru": "Блокировочная цепь высоковольтной системы K: работа нарушена",
+   "en": "High Voltage System Interlock Circuit K Performance",
+   "fam": "",
+   "node": "ru:блокировочная цепь высоковольтной системы k"
+  },
+  {
+   "code": "U3533",
+   "brand": "",
+   "ru": "Блокировочная цепь высоковольтной системы K: низкий уровень",
+   "en": "High Voltage System Interlock Circuit K Low",
+   "fam": "",
+   "node": "ru:блокировочная цепь высоковольтной системы k"
+  },
+  {
+   "code": "U3534",
+   "brand": "",
+   "ru": "Блокировочная цепь высоковольтной системы K: высокий уровень",
+   "en": "High Voltage System Interlock Circuit K High",
+   "fam": "",
+   "node": "ru:блокировочная цепь высоковольтной системы k"
+  },
+  {
+   "code": "U3535",
+   "brand": "",
+   "ru": "Блокировочная цепь высоковольтной системы L",
+   "en": "High Voltage System Interlock Circuit L",
+   "fam": "",
+   "node": "ru:блокировочная цепь высоковольтной системы l"
+  },
+  {
+   "code": "U3536",
+   "brand": "",
+   "ru": "Блокировочная цепь высоковольтной системы L: работа нарушена",
+   "en": "High Voltage System Interlock Circuit L Performance",
+   "fam": "",
+   "node": "ru:блокировочная цепь высоковольтной системы l"
+  },
+  {
+   "code": "U3537",
+   "brand": "",
+   "ru": "Блокировочная цепь высоковольтной системы L: низкий уровень",
+   "en": "High Voltage System Interlock Circuit L Low",
+   "fam": "",
+   "node": "ru:блокировочная цепь высоковольтной системы l"
+  },
+  {
+   "code": "U3538",
+   "brand": "",
+   "ru": "Блокировочная цепь высоковольтной системы L: высокий уровень",
+   "en": "High Voltage System Interlock Circuit L High",
+   "fam": "",
+   "node": "ru:блокировочная цепь высоковольтной системы l"
+  },
+  {
+   "code": "U3539",
+   "brand": "",
+   "ru": "Блокировочная цепь высоковольтной системы M",
+   "en": "High Voltage System Interlock Circuit M",
+   "fam": "",
+   "node": "ru:блокировочная цепь высоковольтной системы m"
+  },
+  {
+   "code": "U353A",
+   "brand": "",
+   "ru": "Блокировочная цепь высоковольтной системы M: работа нарушена",
+   "en": "High Voltage System Interlock Circuit M Performance",
+   "fam": "",
+   "node": "ru:блокировочная цепь высоковольтной системы m"
+  },
+  {
+   "code": "U353B",
+   "brand": "",
+   "ru": "Блокировочная цепь высоковольтной системы M: низкий уровень",
+   "en": "High Voltage System Interlock Circuit M Low",
+   "fam": "",
+   "node": "ru:блокировочная цепь высоковольтной системы m"
+  },
+  {
+   "code": "U353C",
+   "brand": "",
+   "ru": "Блокировочная цепь высоковольтной системы M: высокий уровень",
+   "en": "High Voltage System Interlock Circuit M High",
+   "fam": "",
+   "node": "ru:блокировочная цепь высоковольтной системы m"
+  },
+  {
+   "code": "U353D",
+   "brand": "",
+   "ru": "Блокировочная цепь высоковольтной системы N",
+   "en": "High Voltage System Interlock Circuit N",
+   "fam": "",
+   "node": "ru:блокировочная цепь высоковольтной системы n"
+  },
+  {
+   "code": "U353E",
+   "brand": "",
+   "ru": "Блокировочная цепь высоковольтной системы N: работа нарушена",
+   "en": "High Voltage System Interlock Circuit N Performance",
+   "fam": "",
+   "node": "ru:блокировочная цепь высоковольтной системы n"
+  },
+  {
+   "code": "U353F",
+   "brand": "",
+   "ru": "Блокировочная цепь высоковольтной системы N: низкий уровень",
+   "en": "High Voltage System Interlock Circuit N Low",
+   "fam": "",
+   "node": "ru:блокировочная цепь высоковольтной системы n"
+  },
+  {
+   "code": "U3540",
+   "brand": "",
+   "ru": "Блокировочная цепь высоковольтной системы N: высокий уровень",
+   "en": "High Voltage System Interlock Circuit N High",
+   "fam": "",
+   "node": "ru:блокировочная цепь высоковольтной системы n"
+  },
+  {
+   "code": "U3541",
+   "brand": "",
+   "ru": "Блокировочная цепь высоковольтной системы O",
+   "en": "High Voltage System Interlock Circuit O",
+   "fam": "",
+   "node": "ru:блокировочная цепь высоковольтной системы o"
+  },
+  {
+   "code": "U3542",
+   "brand": "",
+   "ru": "Блокировочная цепь высоковольтной системы O: работа нарушена",
+   "en": "High Voltage System Interlock Circuit O Performance",
+   "fam": "",
+   "node": "ru:блокировочная цепь высоковольтной системы o"
+  },
+  {
+   "code": "U3543",
+   "brand": "",
+   "ru": "Блокировочная цепь высоковольтной системы O: низкий уровень",
+   "en": "High Voltage System Interlock Circuit O Low",
+   "fam": "",
+   "node": "ru:блокировочная цепь высоковольтной системы o"
+  },
+  {
+   "code": "U3544",
+   "brand": "",
+   "ru": "Блокировочная цепь высоковольтной системы O: высокий уровень",
+   "en": "High Voltage System Interlock Circuit O High",
+   "fam": "",
+   "node": "ru:блокировочная цепь высоковольтной системы o"
+  }
+ ]
+}

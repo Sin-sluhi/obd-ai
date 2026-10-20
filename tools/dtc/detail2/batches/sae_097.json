@@ -1,0 +1,294 @@
+{
+ "name": "sae_097",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "fam:hv_cooling",
+  "gate select position",
+  "hydraulic accumulator solenoid",
+  "hydraulic pump",
+  "hydraulic pump driver",
+  "hydraulic pump over temperature",
+  "hydraulic pump supply voltage",
+  "shift solenoid a",
+  "shift solenoid b",
+  "shift solenoid c",
+  "shift solenoid d",
+  "shift solenoid e",
+  "shift solenoid f"
+ ],
+ "codes": [
+  {
+   "code": "P093D",
+   "brand": "",
+   "ru": "Соленоид гидроаккумулятора: работа нарушена",
+   "en": "Hydraulic Accumulator Solenoid Performance",
+   "fam": "",
+   "node": "hydraulic accumulator solenoid"
+  },
+  {
+   "code": "P094A",
+   "brand": "",
+   "ru": "Драйвер гидронасоса: работа нарушена",
+   "en": "Hydraulic Pump Driver Performance",
+   "fam": "",
+   "node": "hydraulic pump driver"
+  },
+  {
+   "code": "P094B",
+   "brand": "",
+   "ru": "Гидронасос: постоянно включён",
+   "en": "Hydraulic Pump Stuck On",
+   "fam": "",
+   "node": "hydraulic pump"
+  },
+  {
+   "code": "P094C",
+   "brand": "",
+   "ru": "Гидронасос: работа нарушена / не включается",
+   "en": "Hydraulic Pump Performance/Stuck Off",
+   "fam": "",
+   "node": "hydraulic pump"
+  },
+  {
+   "code": "P094D",
+   "brand": "",
+   "ru": "Гидронасос: перегрев",
+   "en": "Hydraulic Pump Over Temperature",
+   "fam": "",
+   "node": "hydraulic pump over temperature"
+  },
+  {
+   "code": "P094E",
+   "brand": "",
+   "ru": "Гидронасос: обрыв цепи питания",
+   "en": "Hydraulic Pump Supply Voltage Circuit/Open",
+   "fam": "",
+   "node": "hydraulic pump supply voltage"
+  },
+  {
+   "code": "P097A",
+   "brand": "",
+   "ru": "Соленоид переключения передач A: обрыв цепи управления",
+   "en": "Shift Solenoid A Control Circuit/Open",
+   "fam": "",
+   "node": "shift solenoid a"
+  },
+  {
+   "code": "P097B",
+   "brand": "",
+   "ru": "Соленоид переключения передач B: обрыв цепи управления",
+   "en": "Shift Solenoid B Control Circuit/Open",
+   "fam": "",
+   "node": "shift solenoid b"
+  },
+  {
+   "code": "P097C",
+   "brand": "",
+   "ru": "Соленоид переключения передач C: обрыв цепи управления",
+   "en": "Shift Solenoid C Control Circuit/Open",
+   "fam": "",
+   "node": "shift solenoid c"
+  },
+  {
+   "code": "P097D",
+   "brand": "",
+   "ru": "Соленоид переключения передач D: обрыв цепи управления",
+   "en": "Shift Solenoid D Control Circuit/Open",
+   "fam": "",
+   "node": "shift solenoid d"
+  },
+  {
+   "code": "P097E",
+   "brand": "",
+   "ru": "Соленоид переключения передач E: обрыв цепи управления",
+   "en": "Shift Solenoid E Control Circuit/Open",
+   "fam": "",
+   "node": "shift solenoid e"
+  },
+  {
+   "code": "P097F",
+   "brand": "",
+   "ru": "Соленоид переключения передач F: обрыв цепи управления",
+   "en": "Shift Solenoid F Control Circuit/Open",
+   "fam": "",
+   "node": "shift solenoid f"
+  },
+  {
+   "code": "P09A2",
+   "brand": "",
+   "ru": "Цепь положения выбора кулисы B",
+   "en": "Gate Select Position Circuit B",
+   "fam": "",
+   "node": "gate select position"
+  },
+  {
+   "code": "P09A3",
+   "brand": "",
+   "ru": "Цепь положения выбора кулисы B: вне допустимого диапазона",
+   "en": "Gate Select Position Circuit B Range/Performance",
+   "fam": "",
+   "node": "gate select position"
+  },
+  {
+   "code": "P09A4",
+   "brand": "",
+   "ru": "Цепь положения выбора кулисы B: низкий уровень",
+   "en": "Gate Select Position Circuit B Low",
+   "fam": "",
+   "node": "gate select position"
+  },
+  {
+   "code": "P09A5",
+   "brand": "",
+   "ru": "Цепь положения выбора кулисы B: высокий уровень",
+   "en": "Gate Select Position Circuit B High",
+   "fam": "",
+   "node": "gate select position"
+  },
+  {
+   "code": "P09A6",
+   "brand": "",
+   "ru": "Цепь положения выбора кулисы C",
+   "en": "Gate Select Position Circuit C",
+   "fam": "",
+   "node": "gate select position"
+  },
+  {
+   "code": "P09A7",
+   "brand": "",
+   "ru": "Цепь положения выбора кулисы C: вне допустимого диапазона",
+   "en": "Gate Select Position Circuit C Range/Performance",
+   "fam": "",
+   "node": "gate select position"
+  },
+  {
+   "code": "P09A8",
+   "brand": "",
+   "ru": "Цепь положения выбора кулисы C: низкий уровень",
+   "en": "Gate Select Position Circuit C Low",
+   "fam": "",
+   "node": "gate select position"
+  },
+  {
+   "code": "P09A9",
+   "brand": "",
+   "ru": "Цепь положения выбора кулисы C: высокий уровень",
+   "en": "Gate Select Position Circuit C High",
+   "fam": "",
+   "node": "gate select position"
+  },
+  {
+   "code": "P0A00",
+   "brand": "",
+   "ru": "Датчик температуры охлаждающей жидкости электроники гибрида: цепь",
+   "en": "",
+   "fam": "hv_cooling",
+   "node": "fam:hv_cooling"
+  },
+  {
+   "code": "P0A01",
+   "brand": "",
+   "ru": "Датчик температуры охлаждающей жидкости электроники гибрида: показания вне диапазона",
+   "en": "",
+   "fam": "hv_cooling",
+   "node": "fam:hv_cooling"
+  },
+  {
+   "code": "P0A02",
+   "brand": "",
+   "ru": "Датчик температуры охлаждающей жидкости электроники гибрида: низкий сигнал",
+   "en": "",
+   "fam": "hv_cooling",
+   "node": "fam:hv_cooling"
+  },
+  {
+   "code": "P0A03",
+   "brand": "",
+   "ru": "Датчик температуры охлаждающей жидкости электроники гибрида: высокий сигнал",
+   "en": "",
+   "fam": "hv_cooling",
+   "node": "fam:hv_cooling"
+  },
+  {
+   "code": "P0A04",
+   "brand": "",
+   "ru": "Датчик температуры охлаждающей жидкости электроники гибрида: прерывистый сигнал",
+   "en": "",
+   "fam": "hv_cooling",
+   "node": "fam:hv_cooling"
+  },
+  {
+   "code": "P0A05",
+   "brand": "",
+   "ru": "Насос охлаждения электроники гибрида: цепь",
+   "en": "",
+   "fam": "hv_cooling",
+   "node": "fam:hv_cooling"
+  },
+  {
+   "code": "P0A06",
+   "brand": "",
+   "ru": "Насос охлаждения электроники гибрида: низкий уровень",
+   "en": "",
+   "fam": "hv_cooling",
+   "node": "fam:hv_cooling"
+  },
+  {
+   "code": "P0A07",
+   "brand": "",
+   "ru": "Насос охлаждения электроники гибрида: высокий уровень",
+   "en": "",
+   "fam": "hv_cooling",
+   "node": "fam:hv_cooling"
+  },
+  {
+   "code": "P0A81",
+   "brand": "",
+   "ru": "Вентилятор тяговой батареи 1: цепь",
+   "en": "",
+   "fam": "hv_cooling",
+   "node": "fam:hv_cooling"
+  },
+  {
+   "code": "P0A82",
+   "brand": "",
+   "ru": "Вентилятор тяговой батареи 1: не работает / застрял выключенным",
+   "en": "",
+   "fam": "hv_cooling",
+   "node": "fam:hv_cooling"
+  },
+  {
+   "code": "P0A83",
+   "brand": "",
+   "ru": "Вентилятор тяговой батареи 1: застрял включённым",
+   "en": "",
+   "fam": "hv_cooling",
+   "node": "fam:hv_cooling"
+  },
+  {
+   "code": "P0A84",
+   "brand": "",
+   "ru": "Вентилятор тяговой батареи 1: электрическая",
+   "en": "",
+   "fam": "hv_cooling",
+   "node": "fam:hv_cooling"
+  },
+  {
+   "code": "P0A85",
+   "brand": "",
+   "ru": "Вентилятор тяговой батареи 1: прерывистая",
+   "en": "",
+   "fam": "hv_cooling",
+   "node": "fam:hv_cooling"
+  },
+  {
+   "code": "P0A93",
+   "brand": "",
+   "ru": "Охлаждение инвертора A: эффективность ниже нормы",
+   "en": "",
+   "fam": "hv_cooling",
+   "node": "fam:hv_cooling"
+  }
+ ]
+}

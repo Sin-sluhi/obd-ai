@@ -1,0 +1,397 @@
+{
+ "name": "brand-bmw_004",
+ "series": "brand",
+ "brand": "bmw",
+ "nodes": [
+  "carbon canister shut off valve",
+  "diagnostic module tank leakage dm tl pump",
+  "diagnostic module tank leakage dm tl pump control",
+  "diagnostic module tank leakage dm tl pump current",
+  "diagnostic module tank leakage dm tl pump too",
+  "diagnostic module tank leakage dm tl switching solenoid",
+  "heated catalyst battery disconnecting switch",
+  "heated catalyst battery temperature electrical",
+  "heated catalyst battery temperature or",
+  "heated catalyst comparison battery voltages of power switches",
+  "heated catalyst current too",
+  "heated catalyst gate voltage",
+  "heated catalyst heater power supply",
+  "heated catalyst heater power switch temperature sensor electrical",
+  "heated catalyst internal control module checksum rom error",
+  "heated catalyst power switch overtemperature condition",
+  "heated catalyst power switch temperature sensor",
+  "leakage diagnostic pump",
+  "leakage diagnostic pump control",
+  "leakage diagnostic pump reed switch did not close",
+  "purge control valve",
+  "purge control valve control",
+  "secondary air injection pump relay",
+  "secondary air injection pump with series resistor",
+  "secondary air injection system incorrect flow detected",
+  "secondary air injection system monitor",
+  "secondary air system",
+  "secondary air valve"
+ ],
+ "codes": [
+  {
+   "code": "P1401",
+   "brand": "bmw",
+   "ru": "Подогреваемый катализатор (ряд 1): слишком большой ток при прогреве",
+   "en": "Heated Catalyst Current Too High During Heating Bank 1",
+   "fam": "",
+   "node": "heated catalyst current too"
+  },
+  {
+   "code": "P1404",
+   "brand": "bmw",
+   "ru": "Подогреваемый катализатор (ряд 2): слишком большой ток при прогреве",
+   "en": "Heated Catalyst Current Too High During Heating Bank 2",
+   "fam": "",
+   "node": "heated catalyst current too"
+  },
+  {
+   "code": "P1402",
+   "brand": "bmw",
+   "ru": "Подогреваемый катализатор (ряд 1): перегрев силового ключа",
+   "en": "Heated Catalyst Power Switch Overtemperature Condition Bank 1",
+   "fam": "",
+   "node": "heated catalyst power switch overtemperature condition"
+  },
+  {
+   "code": "P1405",
+   "brand": "bmw",
+   "ru": "Подогреваемый катализатор (ряд 2): перегрев силового ключа",
+   "en": "Heated Catalyst Power Switch Overtemperature Condition Bank 2",
+   "fam": "",
+   "node": "heated catalyst power switch overtemperature condition"
+  },
+  {
+   "code": "P1403",
+   "brand": "bmw",
+   "ru": "Отсечной клапан адсорбера: электрическая неисправность цепи",
+   "en": "Carbon Canister Shut Off Valve Control Circuit Electrical",
+   "fam": "",
+   "node": "carbon canister shut off valve"
+  },
+  {
+   "code": "P1406",
+   "brand": "bmw",
+   "ru": "Подогреваемый катализатор: ошибка контрольной суммы ПЗУ блока",
+   "en": "Heated Catalyst Internal Control Module Checksum ROM Error",
+   "fam": "",
+   "node": "heated catalyst internal control module checksum rom error"
+  },
+  {
+   "code": "P1462",
+   "brand": "bmw",
+   "ru": "Подогреваемый катализатор: ошибка контрольной суммы ПЗУ блока",
+   "en": "Heated Catalyst Internal Control Module Checksum ROM Error",
+   "fam": "",
+   "node": "heated catalyst internal control module checksum rom error"
+  },
+  {
+   "code": "P1413",
+   "brand": "bmw",
+   "ru": "Реле насоса вторичного воздуха: низкий сигнал цепи управления",
+   "en": "Secondary Air Injection Pump Relay Control Circuit Signal Low",
+   "fam": "",
+   "node": "secondary air injection pump relay"
+  },
+  {
+   "code": "P1453",
+   "brand": "bmw",
+   "ru": "Реле насоса вторичного воздуха: электрическая неисправность цепи",
+   "en": "Secondary Air Injection Pump Relay Control Circuit Electrical",
+   "fam": "",
+   "node": "secondary air injection pump relay"
+  },
+  {
+   "code": "P1414",
+   "brand": "bmw",
+   "ru": "Контроль вторичного воздуха: высокий сигнал",
+   "en": "Secondary Air Injection System Monitor Circuit High",
+   "fam": "",
+   "node": "secondary air injection system monitor"
+  },
+  {
+   "code": "P1420",
+   "brand": "bmw",
+   "ru": "Клапан вторичного воздуха: электрическая неисправность цепи",
+   "en": "Secondary Air Valve Control Circuit Electrical",
+   "fam": "",
+   "node": "secondary air valve"
+  },
+  {
+   "code": "P1421",
+   "brand": "bmw",
+   "ru": "Система вторичного воздуха (ряд 1)",
+   "en": "Secondary Air System Bank 1",
+   "fam": "",
+   "node": "secondary air system"
+  },
+  {
+   "code": "P1422",
+   "brand": "bmw",
+   "ru": "Система вторичного воздуха (ряд 2)",
+   "en": "Secondary Air System Bank 2",
+   "fam": "",
+   "node": "secondary air system"
+  },
+  {
+   "code": "P1432",
+   "brand": "bmw",
+   "ru": "Вторичный воздух: неверный поток",
+   "en": "Secondary Air Injection System Incorrect Flow Detected",
+   "fam": "",
+   "node": "secondary air injection system incorrect flow detected"
+  },
+  {
+   "code": "P1438",
+   "brand": "bmw",
+   "ru": "Клапан продувки адсорбера: обрыв цепи управления",
+   "en": "Purge Control Valve Control Open Circuit",
+   "fam": "",
+   "node": "purge control valve control"
+  },
+  {
+   "code": "P1439",
+   "brand": "bmw",
+   "ru": "Клапан продувки адсорбера: низкий сигнал цепи управления",
+   "en": "Purge Control Valve Control Circuit Signal Low",
+   "fam": "",
+   "node": "purge control valve"
+  },
+  {
+   "code": "P1440",
+   "brand": "bmw",
+   "ru": "Клапан продувки адсорбера: высокий сигнал цепи управления",
+   "en": "Purge Control Valve Control Circuit Signal High",
+   "fam": "",
+   "node": "purge control valve"
+  },
+  {
+   "code": "P1441",
+   "brand": "bmw",
+   "ru": "Насос проверки утечек: обрыв цепи управления",
+   "en": "Leakage Diagnostic Pump Control Open Circuit",
+   "fam": "",
+   "node": "leakage diagnostic pump control"
+  },
+  {
+   "code": "P1442",
+   "brand": "bmw",
+   "ru": "Насос проверки утечек: низкий сигнал цепи управления",
+   "en": "Leakage Diagnostic Pump Control Circuit Signal Low",
+   "fam": "",
+   "node": "leakage diagnostic pump"
+  },
+  {
+   "code": "P1443",
+   "brand": "bmw",
+   "ru": "Насос проверки утечек: высокий сигнал цепи управления",
+   "en": "Leakage Diagnostic Pump Control Circuit Signal High",
+   "fam": "",
+   "node": "leakage diagnostic pump"
+  },
+  {
+   "code": "P1470",
+   "brand": "bmw",
+   "ru": "Насос проверки утечек: электрическая неисправность цепи",
+   "en": "Leakage Diagnostic Pump Control Circuit Electrical",
+   "fam": "",
+   "node": "leakage diagnostic pump"
+  },
+  {
+   "code": "P1444",
+   "brand": "bmw",
+   "ru": "Модуль проверки герметичности бака (DM-TL), насос: обрыв цепи",
+   "en": "Diagnostic Module Tank Leakage DM-TL Pump Control Open Circuit",
+   "fam": "",
+   "node": "diagnostic module tank leakage dm tl pump control"
+  },
+  {
+   "code": "P1445",
+   "brand": "bmw",
+   "ru": "Модуль проверки герметичности бака (DM-TL), насос: низкий сигнал",
+   "en": "Diagnostic Module Tank Leakage DM-TL Pump Control Circuit Signal Low",
+   "fam": "",
+   "node": "diagnostic module tank leakage dm tl pump"
+  },
+  {
+   "code": "P1446",
+   "brand": "bmw",
+   "ru": "Модуль проверки герметичности бака (DM-TL), насос: высокий сигнал",
+   "en": "Diagnostic Module Tank Leakage DM-TL Pump Control Circuit Signal High",
+   "fam": "",
+   "node": "diagnostic module tank leakage dm tl pump"
+  },
+  {
+   "code": "P1447",
+   "brand": "bmw",
+   "ru": "Модуль DM-TL: ток насоса слишком высокий при переключении",
+   "en": "Diagnostic Module Tank Leakage DM-TL Pump Too High During Switching",
+   "fam": "",
+   "node": "diagnostic module tank leakage dm tl pump too"
+  },
+  {
+   "code": "P1448",
+   "brand": "bmw",
+   "ru": "Модуль DM-TL: ток насоса слишком низкий при переключении",
+   "en": "Diagnostic Module Tank Leakage DM-TL Pump Too Low During Switching",
+   "fam": "",
+   "node": "diagnostic module tank leakage dm tl pump too"
+  },
+  {
+   "code": "P1449",
+   "brand": "bmw",
+   "ru": "Модуль DM-TL: ток насоса слишком высокий",
+   "en": "Diagnostic Module Tank Leakage DM-TL Pump Too High",
+   "fam": "",
+   "node": "diagnostic module tank leakage dm tl pump too"
+  },
+  {
+   "code": "P1450",
+   "brand": "bmw",
+   "ru": "Модуль DM-TL, переключающий клапан: обрыв",
+   "en": "Diagnostic Module Tank Leakage DM-TL Switching Solenoid Open Circuit",
+   "fam": "",
+   "node": "diagnostic module tank leakage dm tl switching solenoid"
+  },
+  {
+   "code": "P1451",
+   "brand": "bmw",
+   "ru": "Модуль DM-TL, переключающий клапан: низкий сигнал",
+   "en": "Diagnostic Module Tank Leakage DM-TL Switching Solenoid Control Circuit Signal Low",
+   "fam": "",
+   "node": "diagnostic module tank leakage dm tl switching solenoid"
+  },
+  {
+   "code": "P1452",
+   "brand": "bmw",
+   "ru": "Модуль DM-TL, переключающий клапан: высокий сигнал",
+   "en": "Diagnostic Module Tank Leakage DM-TL Switching Solenoid Control Circuit Signal High",
+   "fam": "",
+   "node": "diagnostic module tank leakage dm tl switching solenoid"
+  },
+  {
+   "code": "P1472",
+   "brand": "bmw",
+   "ru": "Модуль DM-TL, переключающий клапан: электрическая неисправность",
+   "en": "Diagnostic Module Tank Leakage DM-TL Switching Solenoid Control Circuit Electrical",
+   "fam": "",
+   "node": "diagnostic module tank leakage dm tl switching solenoid"
+  },
+  {
+   "code": "P1454",
+   "brand": "bmw",
+   "ru": "Насос вторичного воздуха с добавочным резистором: электрическая неисправность",
+   "en": "Secondary Air Injection Pump With Series Resistor Control Circuit Electrical",
+   "fam": "",
+   "node": "secondary air injection pump with series resistor"
+  },
+  {
+   "code": "P1456",
+   "brand": "bmw",
+   "ru": "Подогреваемый катализатор (ряд 1): обрыв питания нагревателя",
+   "en": "Heated Catalyst Heater Power Supply Open Circuit Bank 1",
+   "fam": "",
+   "node": "heated catalyst heater power supply"
+  },
+  {
+   "code": "P1459",
+   "brand": "bmw",
+   "ru": "Подогреваемый катализатор (ряд 2): обрыв питания нагревателя",
+   "en": "Heated Catalyst Heater Power Supply Open Circuit Bank 2",
+   "fam": "",
+   "node": "heated catalyst heater power supply"
+  },
+  {
+   "code": "P1457",
+   "brand": "bmw",
+   "ru": "Подогреваемый катализатор (ряд 1): датчик температуры силового ключа",
+   "en": "Heated Catalyst Heater Power Switch Temperature Sensor Electrical Bank 1",
+   "fam": "",
+   "node": "heated catalyst heater power switch temperature sensor electrical"
+  },
+  {
+   "code": "P1460",
+   "brand": "bmw",
+   "ru": "Подогреваемый катализатор (ряд 2): датчик температуры силового ключа",
+   "en": "Heated Catalyst Heater Power Switch Temperature Sensor Electrical Bank 2",
+   "fam": "",
+   "node": "heated catalyst heater power switch temperature sensor electrical"
+  },
+  {
+   "code": "P1461",
+   "brand": "bmw",
+   "ru": "Подогреваемый катализатор: низкое напряжение затвора",
+   "en": "Heated Catalyst Gate Voltage Signal Low",
+   "fam": "",
+   "node": "heated catalyst gate voltage"
+  },
+  {
+   "code": "P1463",
+   "brand": "bmw",
+   "ru": "Подогреваемый катализатор: датчик температуры АКБ 1",
+   "en": "Heated Catalyst Battery Temperature Sensor 1 Electrical",
+   "fam": "",
+   "node": "heated catalyst battery temperature electrical"
+  },
+  {
+   "code": "P1464",
+   "brand": "bmw",
+   "ru": "Подогреваемый катализатор: датчик температуры АКБ 2",
+   "en": "Heated Catalyst Battery Temperature Sensor 2 Electrical",
+   "fam": "",
+   "node": "heated catalyst battery temperature electrical"
+  },
+  {
+   "code": "P1465",
+   "brand": "bmw",
+   "ru": "Подогреваемый катализатор: достоверность датчиков температуры АКБ",
+   "en": "Heated Catalyst Battery Temperature Sensor 1 or 2 Plausibility",
+   "fam": "",
+   "node": "heated catalyst battery temperature or"
+  },
+  {
+   "code": "P1466",
+   "brand": "bmw",
+   "ru": "Подогреваемый катализатор: достоверность датчика температуры силового ключа",
+   "en": "Heated Catalyst Power Switch Temperature Sensor Plausibility",
+   "fam": "",
+   "node": "heated catalyst power switch temperature sensor"
+  },
+  {
+   "code": "P1467",
+   "brand": "bmw",
+   "ru": "Подогреваемый катализатор: достоверность напряжений силовых ключей",
+   "en": "Heated Catalyst Comparison Battery Voltages of Power Switches Plausibility",
+   "fam": "",
+   "node": "heated catalyst comparison battery voltages of power switches"
+  },
+  {
+   "code": "P1468",
+   "brand": "bmw",
+   "ru": "Подогреваемый катализатор: достоверность выключателя АКБ",
+   "en": "Heated Catalyst Battery Disconnecting Switch Plausibility",
+   "fam": "",
+   "node": "heated catalyst battery disconnecting switch"
+  },
+  {
+   "code": "P1473",
+   "brand": "bmw",
+   "ru": "Модуль DM-TL: достоверность тока насоса",
+   "en": "Diagnostic Module Tank Leakage DM-TL Pump Current Plausibility",
+   "fam": "",
+   "node": "diagnostic module tank leakage dm tl pump current"
+  },
+  {
+   "code": "P1475",
+   "brand": "bmw",
+   "ru": "Насос проверки утечек: геркон не замкнулся",
+   "en": "Leakage Diagnostic Pump Reed Switch Did Not Close",
+   "fam": "",
+   "node": "leakage diagnostic pump reed switch did not close"
+  }
+ ]
+}

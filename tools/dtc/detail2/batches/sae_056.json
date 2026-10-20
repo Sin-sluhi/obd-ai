@@ -1,0 +1,343 @@
+{
+ "name": "sae_056",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "catalyst temperature",
+  "egr a control",
+  "evap system leak detection reference orifice",
+  "fam:evap",
+  "fam:evap_leak",
+  "fam:evap_purge"
+ ],
+ "codes": [
+  {
+   "code": "P042A",
+   "brand": "",
+   "ru": "Датчик температуры катализатора: цепь (банк 1, датчик 2)",
+   "en": "Catalyst Temperature Sensor Circuit Bank 1 Sensor 2",
+   "fam": "",
+   "node": "catalyst temperature"
+  },
+  {
+   "code": "P042B",
+   "brand": "",
+   "ru": "Датчик температуры катализатора: сигнал вне диапазона (банк 1, датчик 2)",
+   "en": "Catalyst Temperature Sensor Circuit Range/Performance Bank 1 Sensor 2",
+   "fam": "",
+   "node": "catalyst temperature"
+  },
+  {
+   "code": "P042C",
+   "brand": "",
+   "ru": "Датчик температуры катализатора: низкий уровень сигнала в цепи (банк 1, датчик 2)",
+   "en": "Catalyst Temperature Sensor Circuit Low Bank 1 Sensor 2",
+   "fam": "",
+   "node": "catalyst temperature"
+  },
+  {
+   "code": "P042D",
+   "brand": "",
+   "ru": "Датчик температуры катализатора: высокий уровень сигнала в цепи (банк 1, датчик 2)",
+   "en": "Catalyst Temperature Sensor Circuit High Bank 1 Sensor 2",
+   "fam": "",
+   "node": "catalyst temperature"
+  },
+  {
+   "code": "P043A",
+   "brand": "",
+   "ru": "Датчик температуры катализатора: цепь (банк 2, датчик 2)",
+   "en": "Catalyst Temperature Sensor Circuit Bank 2 Sensor 2",
+   "fam": "",
+   "node": "catalyst temperature"
+  },
+  {
+   "code": "P043B",
+   "brand": "",
+   "ru": "Датчик температуры катализатора: сигнал вне диапазона (банк 2, датчик 2)",
+   "en": "Catalyst Temperature Sensor Circuit Range/Performance Bank 2 Sensor 2",
+   "fam": "",
+   "node": "catalyst temperature"
+  },
+  {
+   "code": "P043C",
+   "brand": "",
+   "ru": "Датчик температуры катализатора: низкий уровень сигнала в цепи (банк 2, датчик 2)",
+   "en": "Catalyst Temperature Sensor Circuit Low Bank 2 Sensor 2",
+   "fam": "",
+   "node": "catalyst temperature"
+  },
+  {
+   "code": "P043D",
+   "brand": "",
+   "ru": "Датчик температуры катализатора: высокий уровень сигнала в цепи (банк 2, датчик 2)",
+   "en": "Catalyst Temperature Sensor Circuit High Bank 2 Sensor 2",
+   "fam": "",
+   "node": "catalyst temperature"
+  },
+  {
+   "code": "P042E",
+   "brand": "",
+   "ru": "Управление EGR A: заклинил открытым",
+   "en": "EGR A Control Stuck Open",
+   "fam": "",
+   "node": "egr a control"
+  },
+  {
+   "code": "P042F",
+   "brand": "",
+   "ru": "Управление EGR A: заклинил закрытым",
+   "en": "EGR A Control Stuck Closed",
+   "fam": "",
+   "node": "egr a control"
+  },
+  {
+   "code": "P043E",
+   "brand": "",
+   "ru": "Проверка утечек EVAP: малый поток через контрольный жиклёр",
+   "en": "EVAP System Leak Detection Reference Orifice Low Flow",
+   "fam": "",
+   "node": "evap system leak detection reference orifice"
+  },
+  {
+   "code": "P043F",
+   "brand": "",
+   "ru": "Проверка утечек EVAP: большой поток через контрольный жиклёр",
+   "en": "EVAP System Leak Detection Reference Orifice High Flow",
+   "fam": "",
+   "node": "evap system leak detection reference orifice"
+  },
+  {
+   "code": "P0440",
+   "brand": "",
+   "ru": "Система улавливания паров топлива: неисправность",
+   "en": "",
+   "fam": "evap",
+   "node": "fam:evap"
+  },
+  {
+   "code": "P0624",
+   "brand": "",
+   "ru": "Лампа «крышка бака»: цепь",
+   "en": "",
+   "fam": "evap",
+   "node": "fam:evap"
+  },
+  {
+   "code": "P2024",
+   "brand": "",
+   "ru": "Датчик температуры паров топлива: цепь",
+   "en": "",
+   "fam": "evap",
+   "node": "fam:evap"
+  },
+  {
+   "code": "P2025",
+   "brand": "",
+   "ru": "Датчик температуры паров топлива: показания вне диапазона",
+   "en": "",
+   "fam": "evap",
+   "node": "fam:evap"
+  },
+  {
+   "code": "P2026",
+   "brand": "",
+   "ru": "Датчик температуры паров топлива: низкий сигнал",
+   "en": "",
+   "fam": "evap",
+   "node": "fam:evap"
+  },
+  {
+   "code": "P2027",
+   "brand": "",
+   "ru": "Датчик температуры паров топлива: высокий сигнал",
+   "en": "",
+   "fam": "evap",
+   "node": "fam:evap"
+  },
+  {
+   "code": "P2028",
+   "brand": "",
+   "ru": "Датчик температуры паров топлива: прерывистый сигнал",
+   "en": "",
+   "fam": "evap",
+   "node": "fam:evap"
+  },
+  {
+   "code": "P2408",
+   "brand": "",
+   "ru": "Датчик крышки топливного бака: цепь",
+   "en": "",
+   "fam": "evap",
+   "node": "fam:evap"
+  },
+  {
+   "code": "P2409",
+   "brand": "",
+   "ru": "Датчик крышки топливного бака: не соответствует",
+   "en": "",
+   "fam": "evap",
+   "node": "fam:evap"
+  },
+  {
+   "code": "P2410",
+   "brand": "",
+   "ru": "Датчик крышки топливного бака: низкий уровень",
+   "en": "",
+   "fam": "evap",
+   "node": "fam:evap"
+  },
+  {
+   "code": "P2411",
+   "brand": "",
+   "ru": "Датчик крышки топливного бака: высокий уровень",
+   "en": "",
+   "fam": "evap",
+   "node": "fam:evap"
+  },
+  {
+   "code": "P2412",
+   "brand": "",
+   "ru": "Датчик крышки топливного бака: прерывистый",
+   "en": "",
+   "fam": "evap",
+   "node": "fam:evap"
+  },
+  {
+   "code": "P0441",
+   "brand": "",
+   "ru": "Система паров топлива: неверный поток продувки",
+   "en": "",
+   "fam": "evap_purge",
+   "node": "fam:evap_purge"
+  },
+  {
+   "code": "P0443",
+   "brand": "",
+   "ru": "Клапан продувки адсорбера: цепь",
+   "en": "",
+   "fam": "evap_purge",
+   "node": "fam:evap_purge"
+  },
+  {
+   "code": "P0444",
+   "brand": "",
+   "ru": "Клапан продувки адсорбера: обрыв",
+   "en": "",
+   "fam": "evap_purge",
+   "node": "fam:evap_purge"
+  },
+  {
+   "code": "P0445",
+   "brand": "",
+   "ru": "Клапан продувки адсорбера: замыкание",
+   "en": "",
+   "fam": "evap_purge",
+   "node": "fam:evap_purge"
+  },
+  {
+   "code": "P0458",
+   "brand": "",
+   "ru": "Клапан продувки адсорбера: низкий уровень в цепи",
+   "en": "",
+   "fam": "evap_purge",
+   "node": "fam:evap_purge"
+  },
+  {
+   "code": "P0459",
+   "brand": "",
+   "ru": "Клапан продувки адсорбера: высокий уровень в цепи",
+   "en": "",
+   "fam": "evap_purge",
+   "node": "fam:evap_purge"
+  },
+  {
+   "code": "P0465",
+   "brand": "",
+   "ru": "Датчик потока продувки адсорбера: цепь",
+   "en": "",
+   "fam": "evap_purge",
+   "node": "fam:evap_purge"
+  },
+  {
+   "code": "P0466",
+   "brand": "",
+   "ru": "Датчик потока продувки адсорбера: показания вне диапазона",
+   "en": "",
+   "fam": "evap_purge",
+   "node": "fam:evap_purge"
+  },
+  {
+   "code": "P0467",
+   "brand": "",
+   "ru": "Датчик потока продувки адсорбера: низкий сигнал",
+   "en": "",
+   "fam": "evap_purge",
+   "node": "fam:evap_purge"
+  },
+  {
+   "code": "P0468",
+   "brand": "",
+   "ru": "Датчик потока продувки адсорбера: высокий сигнал",
+   "en": "",
+   "fam": "evap_purge",
+   "node": "fam:evap_purge"
+  },
+  {
+   "code": "P0469",
+   "brand": "",
+   "ru": "Датчик потока продувки адсорбера: прерывистый сигнал",
+   "en": "",
+   "fam": "evap_purge",
+   "node": "fam:evap_purge"
+  },
+  {
+   "code": "P0496",
+   "brand": "",
+   "ru": "Система паров топлива: поток продувки без команды",
+   "en": "",
+   "fam": "evap_purge",
+   "node": "fam:evap_purge"
+  },
+  {
+   "code": "P0497",
+   "brand": "",
+   "ru": "Система паров топлива: слабый поток продувки",
+   "en": "",
+   "fam": "evap_purge",
+   "node": "fam:evap_purge"
+  },
+  {
+   "code": "P0442",
+   "brand": "",
+   "ru": "Система паров топлива: небольшая утечка",
+   "en": "",
+   "fam": "evap_leak",
+   "node": "fam:evap_leak"
+  },
+  {
+   "code": "P0455",
+   "brand": "",
+   "ru": "Система паров топлива: крупная утечка",
+   "en": "",
+   "fam": "evap_leak",
+   "node": "fam:evap_leak"
+  },
+  {
+   "code": "P0456",
+   "brand": "",
+   "ru": "Система паров топлива: очень малая утечка",
+   "en": "",
+   "fam": "evap_leak",
+   "node": "fam:evap_leak"
+  },
+  {
+   "code": "P0457",
+   "brand": "",
+   "ru": "Система паров топлива: утечка (крышка бака не закрыта)",
+   "en": "",
+   "fam": "evap_leak",
+   "node": "fam:evap_leak"
+  }
+ ]
+}

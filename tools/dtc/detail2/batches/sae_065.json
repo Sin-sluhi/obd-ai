@@ -1,0 +1,367 @@
+{
+ "name": "sae_065",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "active grille air shutter a position",
+  "battery a state of charge",
+  "battery monitor module",
+  "battery monitor module current monitoring",
+  "battery monitor module temperature monitoring",
+  "battery monitor module temperature too",
+  "battery monitor module voltage monitoring",
+  "brake pedal position sensor a",
+  "cold start b camshaft position timing over retarded",
+  "cold start turbocharger supercharger boost control a",
+  "cold start turbocharger supercharger boost control b",
+  "cruise control cancel",
+  "cruise control decrease distance",
+  "cruise control increase distance",
+  "engine oil pressure out of",
+  "engine oil pressure sensor switch b",
+  "fam:ps_pressure",
+  "fam:system_voltage",
+  "idle control system fuel quantity higher than expected",
+  "idle control system fuel quantity lower than expected",
+  "oxygen sensor control module system voltage",
+  "reductant control module system voltage"
+ ],
+ "codes": [
+  {
+   "code": "P054B",
+   "brand": "",
+   "ru": "Холодный пуск: распредвал B слишком поздно (банк 1)",
+   "en": "Cold Start B Camshaft Position Timing Over-Retarded Bank 1",
+   "fam": "",
+   "node": "cold start b camshaft position timing over retarded"
+  },
+  {
+   "code": "P054D",
+   "brand": "",
+   "ru": "Холодный пуск: распредвал B слишком поздно (банк 2)",
+   "en": "Cold Start B Camshaft Position Timing Over-Retarded Bank 2",
+   "fam": "",
+   "node": "cold start b camshaft position timing over retarded"
+  },
+  {
+   "code": "P054E",
+   "brand": "",
+   "ru": "Регулирование холостого хода: количество топлива: ниже ожидаемого",
+   "en": "Idle Control System - Fuel Quantity Lower Than Expected",
+   "fam": "",
+   "node": "idle control system fuel quantity lower than expected"
+  },
+  {
+   "code": "P054F",
+   "brand": "",
+   "ru": "Регулирование холостого хода: количество топлива: выше ожидаемого",
+   "en": "Idle Control System - Fuel Quantity Higher Than Expected",
+   "fam": "",
+   "node": "idle control system fuel quantity higher than expected"
+  },
+  {
+   "code": "P0550",
+   "brand": "",
+   "ru": "Датчик давления гидроусилителя руля: цепь",
+   "en": "",
+   "fam": "ps_pressure",
+   "node": "fam:ps_pressure"
+  },
+  {
+   "code": "P0551",
+   "brand": "",
+   "ru": "Датчик давления гидроусилителя руля: показания вне диапазона",
+   "en": "",
+   "fam": "ps_pressure",
+   "node": "fam:ps_pressure"
+  },
+  {
+   "code": "P0552",
+   "brand": "",
+   "ru": "Датчик давления гидроусилителя руля: низкий сигнал",
+   "en": "",
+   "fam": "ps_pressure",
+   "node": "fam:ps_pressure"
+  },
+  {
+   "code": "P0553",
+   "brand": "",
+   "ru": "Датчик давления гидроусилителя руля: высокий сигнал",
+   "en": "",
+   "fam": "ps_pressure",
+   "node": "fam:ps_pressure"
+  },
+  {
+   "code": "P0554",
+   "brand": "",
+   "ru": "Датчик давления гидроусилителя руля: прерывистый сигнал",
+   "en": "",
+   "fam": "ps_pressure",
+   "node": "fam:ps_pressure"
+  },
+  {
+   "code": "P055A",
+   "brand": "",
+   "ru": "Датчик давления масла B: цепь",
+   "en": "Engine Oil Pressure Sensor/Switch B Circuit",
+   "fam": "",
+   "node": "engine oil pressure sensor switch b"
+  },
+  {
+   "code": "P055B",
+   "brand": "",
+   "ru": "Датчик давления масла B: вне допустимого диапазона",
+   "en": "Engine Oil Pressure Sensor/Switch B Range/Performance",
+   "fam": "",
+   "node": "engine oil pressure sensor switch b"
+  },
+  {
+   "code": "P055C",
+   "brand": "",
+   "ru": "Датчик давления масла B: низкий уровень",
+   "en": "Engine Oil Pressure Sensor/Switch B Low",
+   "fam": "",
+   "node": "engine oil pressure sensor switch b"
+  },
+  {
+   "code": "P055D",
+   "brand": "",
+   "ru": "Датчик давления масла B: высокий уровень",
+   "en": "Engine Oil Pressure Sensor/Switch B High",
+   "fam": "",
+   "node": "engine oil pressure sensor switch b"
+  },
+  {
+   "code": "P055E",
+   "brand": "",
+   "ru": "Блок кислородного датчика: напряжение питания",
+   "en": "Oxygen Sensor Control Module System Voltage",
+   "fam": "",
+   "node": "oxygen sensor control module system voltage"
+  },
+  {
+   "code": "P055F",
+   "brand": "",
+   "ru": "Давление масла вне допустимого диапазона",
+   "en": "Engine Oil Pressure Out of Range",
+   "fam": "",
+   "node": "engine oil pressure out of"
+  },
+  {
+   "code": "P0560",
+   "brand": "",
+   "ru": "Напряжение бортовой сети: неисправность",
+   "en": "",
+   "fam": "system_voltage",
+   "node": "fam:system_voltage"
+  },
+  {
+   "code": "P0561",
+   "brand": "",
+   "ru": "Напряжение бортовой сети: нестабильное",
+   "en": "",
+   "fam": "system_voltage",
+   "node": "fam:system_voltage"
+  },
+  {
+   "code": "P0562",
+   "brand": "",
+   "ru": "Напряжение бортовой сети: низкое",
+   "en": "",
+   "fam": "system_voltage",
+   "node": "fam:system_voltage"
+  },
+  {
+   "code": "P0563",
+   "brand": "",
+   "ru": "Напряжение бортовой сети: высокое",
+   "en": "",
+   "fam": "system_voltage",
+   "node": "fam:system_voltage"
+  },
+  {
+   "code": "P056A",
+   "brand": "",
+   "ru": "Круиз-контроль: сигнал увеличения дистанции",
+   "en": "Cruise Control Increase Distance Signal",
+   "fam": "",
+   "node": "cruise control increase distance"
+  },
+  {
+   "code": "P056B",
+   "brand": "",
+   "ru": "Круиз-контроль: сигнал уменьшения дистанции",
+   "en": "Cruise Control Decrease Distance Signal",
+   "fam": "",
+   "node": "cruise control decrease distance"
+  },
+  {
+   "code": "P056C",
+   "brand": "",
+   "ru": "Круиз-контроль: сигнал отмены",
+   "en": "Cruise Control Cancel Signal",
+   "fam": "",
+   "node": "cruise control cancel"
+  },
+  {
+   "code": "P056D",
+   "brand": "",
+   "ru": "Блок системы мочевины: напряжение питания",
+   "en": "Reductant Control Module System Voltage",
+   "fam": "",
+   "node": "reductant control module system voltage"
+  },
+  {
+   "code": "P056E",
+   "brand": "",
+   "ru": "Регулирование наддува при холодном пуске A: работа нарушена",
+   "en": "Cold Start Turbocharger/Supercharger Boost Control A Performance",
+   "fam": "",
+   "node": "cold start turbocharger supercharger boost control a"
+  },
+  {
+   "code": "P056F",
+   "brand": "",
+   "ru": "Регулирование наддува при холодном пуске B: работа нарушена",
+   "en": "Cold Start Turbocharger/Supercharger Boost Control B Performance",
+   "fam": "",
+   "node": "cold start turbocharger supercharger boost control b"
+  },
+  {
+   "code": "P057A",
+   "brand": "",
+   "ru": "Датчик положения педали тормоза A: обрыв цепи",
+   "en": "Brake Pedal Position Sensor A Circuit/Open",
+   "fam": "",
+   "node": "brake pedal position sensor a"
+  },
+  {
+   "code": "P057B",
+   "brand": "",
+   "ru": "Датчик положения педали тормоза A: сигнал вне диапазона",
+   "en": "Brake Pedal Position Sensor A Circuit Range/Performance",
+   "fam": "",
+   "node": "brake pedal position sensor a"
+  },
+  {
+   "code": "P057C",
+   "brand": "",
+   "ru": "Датчик положения педали тормоза A: низкий уровень сигнала в цепи",
+   "en": "Brake Pedal Position Sensor A Circuit Low",
+   "fam": "",
+   "node": "brake pedal position sensor a"
+  },
+  {
+   "code": "P057D",
+   "brand": "",
+   "ru": "Датчик положения педали тормоза A: высокий уровень сигнала в цепи",
+   "en": "Brake Pedal Position Sensor A Circuit High",
+   "fam": "",
+   "node": "brake pedal position sensor a"
+  },
+  {
+   "code": "P057E",
+   "brand": "",
+   "ru": "Датчик положения педали тормоза A: прерывистый / нестабильный сигнал",
+   "en": "Brake Pedal Position Sensor A Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "brake pedal position sensor a"
+  },
+  {
+   "code": "P057F",
+   "brand": "",
+   "ru": "АКБ A: работа контроля заряда нарушена",
+   "en": "Battery A State of Charge Performance",
+   "fam": "",
+   "node": "battery a state of charge"
+  },
+  {
+   "code": "P058A",
+   "brand": "",
+   "ru": "Датчик состояния АКБ: работа нарушена",
+   "en": "Battery Monitor Module Performance",
+   "fam": "",
+   "node": "battery monitor module"
+  },
+  {
+   "code": "P058B",
+   "brand": "",
+   "ru": "Датчик состояния АКБ: контроль тока нарушен",
+   "en": "Battery Monitor Module Current Monitoring Performance",
+   "fam": "",
+   "node": "battery monitor module current monitoring"
+  },
+  {
+   "code": "P058C",
+   "brand": "",
+   "ru": "Датчик состояния АКБ: контроль температуры нарушен",
+   "en": "Battery Monitor Module Temperature Monitoring Performance",
+   "fam": "",
+   "node": "battery monitor module temperature monitoring"
+  },
+  {
+   "code": "P058D",
+   "brand": "",
+   "ru": "Датчик состояния АКБ: контроль напряжения нарушен",
+   "en": "Battery Monitor Module Voltage Monitoring Performance",
+   "fam": "",
+   "node": "battery monitor module voltage monitoring"
+  },
+  {
+   "code": "P058E",
+   "brand": "",
+   "ru": "Датчик состояния АКБ: слишком высокая температура",
+   "en": "Battery Monitor Module Temperature Too High",
+   "fam": "",
+   "node": "battery monitor module temperature too"
+  },
+  {
+   "code": "P058F",
+   "brand": "",
+   "ru": "Датчик состояния АКБ: слишком низкая температура",
+   "en": "Battery Monitor Module Temperature Too Low",
+   "fam": "",
+   "node": "battery monitor module temperature too"
+  },
+  {
+   "code": "P059A",
+   "brand": "",
+   "ru": "Датчик положения жалюзи радиатора A: цепь",
+   "en": "Active Grille Air Shutter A Position Sensor Circuit",
+   "fam": "",
+   "node": "active grille air shutter a position"
+  },
+  {
+   "code": "P059B",
+   "brand": "",
+   "ru": "Датчик положения жалюзи радиатора A: сигнал вне диапазона",
+   "en": "Active Grille Air Shutter A Position Sensor Circuit Range/Performance",
+   "fam": "",
+   "node": "active grille air shutter a position"
+  },
+  {
+   "code": "P059C",
+   "brand": "",
+   "ru": "Датчик положения жалюзи радиатора A: высокий уровень сигнала в цепи",
+   "en": "Active Grille Air Shutter A Position Sensor Circuit High",
+   "fam": "",
+   "node": "active grille air shutter a position"
+  },
+  {
+   "code": "P059D",
+   "brand": "",
+   "ru": "Датчик положения жалюзи радиатора A: низкий уровень сигнала в цепи",
+   "en": "Active Grille Air Shutter A Position Sensor Circuit Low",
+   "fam": "",
+   "node": "active grille air shutter a position"
+  },
+  {
+   "code": "P059E",
+   "brand": "",
+   "ru": "Датчик положения жалюзи радиатора A: прерывистый сигнал в цепи",
+   "en": "Active Grille Air Shutter A Position Sensor Circuit Intermittent",
+   "fam": "",
+   "node": "active grille air shutter a position"
+  }
+ ]
+}

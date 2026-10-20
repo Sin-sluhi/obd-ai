@@ -1,0 +1,388 @@
+{
+ "name": "sae_133",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "exhaust aftertreatment fuel injector b",
+  "exhaust aftertreatment fuel injector b control",
+  "exhaust aftertreatment fuel pressure",
+  "exhaust aftertreatment fuel supply",
+  "exhaust aftertreatment fuel supply control",
+  "exhaust gas temperature 2 correlation",
+  "exhaust gas temperature 3 correlation",
+  "reductant consumption too",
+  "reductant control module power relay de energized",
+  "reductant injection air pressure too",
+  "reductant metering unit",
+  "reductant pressure too",
+  "reductant pump b",
+  "reductant pump b control",
+  "scr nox catalyst efficiency below threshold",
+  "scr nox catalyst efficiency below threshold catalyst",
+  "scr nox catalyst over temperature",
+  "scr nox pre catalyst efficiency below threshold",
+  "scr nox pre catalyst over temperature"
+ ],
+ "codes": [
+  {
+   "code": "P20D1",
+   "brand": "",
+   "ru": "Форсунка впрыска топлива в выпуск (регенерация) B: обрыв цепи управления",
+   "en": "Exhaust Aftertreatment Fuel Injector B Control Circuit/Open",
+   "fam": "",
+   "node": "exhaust aftertreatment fuel injector b"
+  },
+  {
+   "code": "P20D3",
+   "brand": "",
+   "ru": "Форсунка впрыска топлива в выпуск (регенерация) B: низкий уровень в цепи управления",
+   "en": "Exhaust Aftertreatment Fuel Injector B Control Circuit Low",
+   "fam": "",
+   "node": "exhaust aftertreatment fuel injector b"
+  },
+  {
+   "code": "P20D4",
+   "brand": "",
+   "ru": "Форсунка впрыска топлива в выпуск (регенерация) B: высокий уровень в цепи управления",
+   "en": "Exhaust Aftertreatment Fuel Injector B Control Circuit High",
+   "fam": "",
+   "node": "exhaust aftertreatment fuel injector b"
+  },
+  {
+   "code": "P20D5",
+   "brand": "",
+   "ru": "Форсунка впрыска топлива в выпуск (регенерация) B: заклинил открытым",
+   "en": "Exhaust Aftertreatment Fuel Injector B Stuck Open",
+   "fam": "",
+   "node": "exhaust aftertreatment fuel injector b"
+  },
+  {
+   "code": "P20D6",
+   "brand": "",
+   "ru": "Форсунка впрыска топлива в выпуск (регенерация) B: заклинил закрытым",
+   "en": "Exhaust Aftertreatment Fuel Injector B Stuck Closed",
+   "fam": "",
+   "node": "exhaust aftertreatment fuel injector b"
+  },
+  {
+   "code": "P20D2",
+   "brand": "",
+   "ru": "Форсунка впрыска топлива в выпуск (регенерация) B: нарушено управление",
+   "en": "Exhaust Aftertreatment Fuel Injector B Control Performance",
+   "fam": "",
+   "node": "exhaust aftertreatment fuel injector b control"
+  },
+  {
+   "code": "P20D7",
+   "brand": "",
+   "ru": "Подача топлива в систему регенерации: обрыв цепи управления",
+   "en": "Exhaust Aftertreatment Fuel Supply Control Circuit/Open",
+   "fam": "",
+   "node": "exhaust aftertreatment fuel supply"
+  },
+  {
+   "code": "P20D9",
+   "brand": "",
+   "ru": "Подача топлива в систему регенерации: низкий уровень в цепи управления",
+   "en": "Exhaust Aftertreatment Fuel Supply Control Circuit Low",
+   "fam": "",
+   "node": "exhaust aftertreatment fuel supply"
+  },
+  {
+   "code": "P20DA",
+   "brand": "",
+   "ru": "Подача топлива в систему регенерации: высокий уровень в цепи управления",
+   "en": "Exhaust Aftertreatment Fuel Supply Control Circuit High",
+   "fam": "",
+   "node": "exhaust aftertreatment fuel supply"
+  },
+  {
+   "code": "P20D8",
+   "brand": "",
+   "ru": "Подача топлива в систему регенерации: нарушено управление",
+   "en": "Exhaust Aftertreatment Fuel Supply Control Performance",
+   "fam": "",
+   "node": "exhaust aftertreatment fuel supply control"
+  },
+  {
+   "code": "P20DB",
+   "brand": "",
+   "ru": "Подача топлива в систему регенерации: заклинила открытой",
+   "en": "Exhaust Aftertreatment Fuel Supply Control Stuck Open",
+   "fam": "",
+   "node": "exhaust aftertreatment fuel supply control"
+  },
+  {
+   "code": "P20DC",
+   "brand": "",
+   "ru": "Подача топлива в систему регенерации: заклинила закрытой",
+   "en": "Exhaust Aftertreatment Fuel Supply Control Stuck Closed",
+   "fam": "",
+   "node": "exhaust aftertreatment fuel supply control"
+  },
+  {
+   "code": "P20DD",
+   "brand": "",
+   "ru": "Датчик давления топлива системы регенерации: цепь",
+   "en": "Exhaust Aftertreatment Fuel Pressure Sensor Circuit",
+   "fam": "",
+   "node": "exhaust aftertreatment fuel pressure"
+  },
+  {
+   "code": "P20DE",
+   "brand": "",
+   "ru": "Датчик давления топлива системы регенерации: сигнал вне диапазона",
+   "en": "Exhaust Aftertreatment Fuel Pressure Sensor Circuit Range/Performance",
+   "fam": "",
+   "node": "exhaust aftertreatment fuel pressure"
+  },
+  {
+   "code": "P20DF",
+   "brand": "",
+   "ru": "Датчик давления топлива системы регенерации: низкий уровень сигнала в цепи",
+   "en": "Exhaust Aftertreatment Fuel Pressure Sensor Circuit Low",
+   "fam": "",
+   "node": "exhaust aftertreatment fuel pressure"
+  },
+  {
+   "code": "P20E0",
+   "brand": "",
+   "ru": "Датчик давления топлива системы регенерации: высокий уровень сигнала в цепи",
+   "en": "Exhaust Aftertreatment Fuel Pressure Sensor Circuit High",
+   "fam": "",
+   "node": "exhaust aftertreatment fuel pressure"
+  },
+  {
+   "code": "P20E1",
+   "brand": "",
+   "ru": "Датчик давления топлива системы регенерации: прерывистый / нестабильный сигнал",
+   "en": "Exhaust Aftertreatment Fuel Pressure Sensor Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "exhaust aftertreatment fuel pressure"
+  },
+  {
+   "code": "P20E2",
+   "brand": "",
+   "ru": "Датчики температуры выхлопа 1/2: рассогласование (банк 1)",
+   "en": "Exhaust Gas Temperature Sensor 1/2 Correlation Bank 1",
+   "fam": "",
+   "node": "exhaust gas temperature 2 correlation"
+  },
+  {
+   "code": "P20E5",
+   "brand": "",
+   "ru": "Датчики температуры выхлопа 1/2: рассогласование (банк 2)",
+   "en": "Exhaust Gas Temperature Sensor 1/2 Correlation Bank 2",
+   "fam": "",
+   "node": "exhaust gas temperature 2 correlation"
+  },
+  {
+   "code": "P20E3",
+   "brand": "",
+   "ru": "Датчики температуры выхлопа 1/3: рассогласование (банк 1)",
+   "en": "Exhaust Gas Temperature Sensor 1/3 Correlation Bank 1",
+   "fam": "",
+   "node": "exhaust gas temperature 3 correlation"
+  },
+  {
+   "code": "P20E4",
+   "brand": "",
+   "ru": "Датчики температуры выхлопа 2/3: рассогласование (банк 1)",
+   "en": "Exhaust Gas Temperature Sensor 2/3 Correlation Bank 1",
+   "fam": "",
+   "node": "exhaust gas temperature 3 correlation"
+  },
+  {
+   "code": "P20E6",
+   "brand": "",
+   "ru": "Слишком низкое давление воздуха впрыска мочевины",
+   "en": "Reductant Injection Air Pressure Too Low",
+   "fam": "",
+   "node": "reductant injection air pressure too"
+  },
+  {
+   "code": "P20E7",
+   "brand": "",
+   "ru": "Слишком высокое давление воздуха впрыска мочевины",
+   "en": "Reductant Injection Air Pressure Too High",
+   "fam": "",
+   "node": "reductant injection air pressure too"
+  },
+  {
+   "code": "P20E8",
+   "brand": "",
+   "ru": "Система мочевины (SCR): слишком низкое давление",
+   "en": "Reductant Pressure Too Low",
+   "fam": "",
+   "node": "reductant pressure too"
+  },
+  {
+   "code": "P20E9",
+   "brand": "",
+   "ru": "Система мочевины (SCR): слишком высокое давление",
+   "en": "Reductant Pressure Too High",
+   "fam": "",
+   "node": "reductant pressure too"
+  },
+  {
+   "code": "P20EA",
+   "brand": "",
+   "ru": "Реле питания блока системы мочевины отключается слишком рано",
+   "en": "Reductant Control Module Power Relay De-Energized Performance - Too Early",
+   "fam": "",
+   "node": "reductant control module power relay de energized"
+  },
+  {
+   "code": "P20EB",
+   "brand": "",
+   "ru": "Реле питания блока системы мочевины отключается слишком поздно",
+   "en": "Reductant Control Module Power Relay De-Energized Performance - Too Late",
+   "fam": "",
+   "node": "reductant control module power relay de energized"
+  },
+  {
+   "code": "P20EC",
+   "brand": "",
+   "ru": "Катализатор SCR: перегрев (банк 1)",
+   "en": "SCR NOx Catalyst - Over Temperature Bank 1",
+   "fam": "",
+   "node": "scr nox catalyst over temperature"
+  },
+  {
+   "code": "P20F0",
+   "brand": "",
+   "ru": "Катализатор SCR: перегрев (банк 2)",
+   "en": "SCR NOx Catalyst - Over Temperature Bank 2",
+   "fam": "",
+   "node": "scr nox catalyst over temperature"
+  },
+  {
+   "code": "P20ED",
+   "brand": "",
+   "ru": "Перегрев предварительного катализатора SCR (банк 1)",
+   "en": "SCR NOx Pre-Catalyst - Over Temperature Bank 1",
+   "fam": "",
+   "node": "scr nox pre catalyst over temperature"
+  },
+  {
+   "code": "P20F1",
+   "brand": "",
+   "ru": "Перегрев предварительного катализатора SCR (банк 2)",
+   "en": "SCR NOx Pre-Catalyst - Over Temperature Bank 2",
+   "fam": "",
+   "node": "scr nox pre catalyst over temperature"
+  },
+  {
+   "code": "P20EE",
+   "brand": "",
+   "ru": "Эффективность катализатора SCR ниже порога (банк 1, катализатор 1)",
+   "en": "SCR NOx Catalyst Efficiency Below Threshold Bank 1 Catalyst 1",
+   "fam": "",
+   "node": "scr nox catalyst efficiency below threshold catalyst"
+  },
+  {
+   "code": "P2C7A",
+   "brand": "",
+   "ru": "Эффективность катализатора SCR ниже порога (банк 1, катализатор 2)",
+   "en": "SCR NOx Catalyst Efficiency Below Threshold Bank 1 Catalyst 2",
+   "fam": "",
+   "node": "scr nox catalyst efficiency below threshold catalyst"
+  },
+  {
+   "code": "P20EF",
+   "brand": "",
+   "ru": "Эффективность предварительного катализатора SCR ниже порога (банк 1)",
+   "en": "SCR NOx Pre- Catalyst Efficiency Below Threshold Bank 1",
+   "fam": "",
+   "node": "scr nox pre catalyst efficiency below threshold"
+  },
+  {
+   "code": "P20F3",
+   "brand": "",
+   "ru": "Эффективность предварительного катализатора SCR ниже порога (банк 2)",
+   "en": "SCR NOx Pre- Catalyst Efficiency Below Threshold Bank 2",
+   "fam": "",
+   "node": "scr nox pre catalyst efficiency below threshold"
+  },
+  {
+   "code": "P20F2",
+   "brand": "",
+   "ru": "Катализатор SCR: эффективность ниже порога (банк 2)",
+   "en": "SCR NOx Catalyst Efficiency Below Threshold Bank 2",
+   "fam": "",
+   "node": "scr nox catalyst efficiency below threshold"
+  },
+  {
+   "code": "P20F4",
+   "brand": "",
+   "ru": "Слишком малый расход мочевины",
+   "en": "Reductant Consumption Too Low",
+   "fam": "",
+   "node": "reductant consumption too"
+  },
+  {
+   "code": "P20F5",
+   "brand": "",
+   "ru": "Слишком большой расход мочевины",
+   "en": "Reductant Consumption Too High",
+   "fam": "",
+   "node": "reductant consumption too"
+  },
+  {
+   "code": "P20FA",
+   "brand": "",
+   "ru": "Насос мочевины (AdBlue) B: обрыв цепи управления",
+   "en": "Reductant Pump B Control Circuit/Open",
+   "fam": "",
+   "node": "reductant pump b"
+  },
+  {
+   "code": "P20FC",
+   "brand": "",
+   "ru": "Насос мочевины (AdBlue) B: низкий уровень в цепи управления",
+   "en": "Reductant Pump B Control Circuit Low",
+   "fam": "",
+   "node": "reductant pump b"
+  },
+  {
+   "code": "P20FD",
+   "brand": "",
+   "ru": "Насос мочевины (AdBlue) B: высокий уровень в цепи управления",
+   "en": "Reductant Pump B Control Circuit High",
+   "fam": "",
+   "node": "reductant pump b"
+  },
+  {
+   "code": "P215D",
+   "brand": "",
+   "ru": "Насос мочевины (AdBlue) B: постоянно включён",
+   "en": "Reductant Pump B Stuck On",
+   "fam": "",
+   "node": "reductant pump b"
+  },
+  {
+   "code": "P20FB",
+   "brand": "",
+   "ru": "Насос мочевины B: работа нарушена / не включается",
+   "en": "Reductant Pump B Control Performance/Stuck Off",
+   "fam": "",
+   "node": "reductant pump b control"
+  },
+  {
+   "code": "P20FE",
+   "brand": "",
+   "ru": "Дозатор мочевины 1: работа нарушена",
+   "en": "Reductant Metering Unit 1 Performance",
+   "fam": "",
+   "node": "reductant metering unit"
+  },
+  {
+   "code": "P2EAD",
+   "brand": "",
+   "ru": "Дозатор мочевины 2: работа нарушена",
+   "en": "Reductant Metering Unit 2 Performance",
+   "fam": "",
+   "node": "reductant metering unit"
+  }
+ ]
+}

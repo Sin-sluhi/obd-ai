@@ -1,0 +1,362 @@
+{
+ "name": "sae_116",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "control pilot",
+  "control pilot charging switch a",
+  "control pilot charging ventilation",
+  "control pilot charging ventilation switch",
+  "hybrid ev battery pack coolant control valve a",
+  "hybrid ev battery pack coolant control valve position",
+  "hybrid ev electronics coolant pump a",
+  "hybrid ev electronics coolant pump a enable",
+  "hybrid ev electronics coolant temperature sensor a"
+ ],
+ "codes": [
+  {
+   "code": "P0CDF",
+   "brand": "",
+   "ru": "Клапан охлаждения тяговой батареи A: обрыв цепи управления",
+   "en": "Hybrid/EV Battery Pack Coolant Control Valve A Control Circuit/Open",
+   "fam": "",
+   "node": "hybrid ev battery pack coolant control valve a"
+  },
+  {
+   "code": "P0CE0",
+   "brand": "",
+   "ru": "Клапан охлаждения тяговой батареи A: работа нарушена / не включается",
+   "en": "Hybrid/EV Battery Pack Coolant Control Valve A Performance/Stuck Off",
+   "fam": "",
+   "node": "hybrid ev battery pack coolant control valve a"
+  },
+  {
+   "code": "P0CE1",
+   "brand": "",
+   "ru": "Клапан охлаждения тяговой батареи A: постоянно включён",
+   "en": "Hybrid/EV Battery Pack Coolant Control Valve A Stuck On",
+   "fam": "",
+   "node": "hybrid ev battery pack coolant control valve a"
+  },
+  {
+   "code": "P0CE2",
+   "brand": "",
+   "ru": "Клапан охлаждения тяговой батареи A: низкий уровень в цепи управления",
+   "en": "Hybrid/EV Battery Pack Coolant Control Valve A Control Circuit Low",
+   "fam": "",
+   "node": "hybrid ev battery pack coolant control valve a"
+  },
+  {
+   "code": "P0CE3",
+   "brand": "",
+   "ru": "Клапан охлаждения тяговой батареи A: высокий уровень в цепи управления",
+   "en": "Hybrid/EV Battery Pack Coolant Control Valve A Control Circuit High",
+   "fam": "",
+   "node": "hybrid ev battery pack coolant control valve a"
+  },
+  {
+   "code": "P0E20",
+   "brand": "",
+   "ru": "Клапан охлаждения тяговой батареи A: перегрузка драйвера цепи управления по току / перегрев",
+   "en": "Hybrid/EV Battery Pack Coolant Control Valve A Control Circuit Driver Current/Temperature Too High",
+   "fam": "",
+   "node": "hybrid ev battery pack coolant control valve a"
+  },
+  {
+   "code": "P0CE4",
+   "brand": "",
+   "ru": "Датчик положения клапана охлаждения тяговой батареи: цепь",
+   "en": "Hybrid/EV Battery Pack Coolant Control Valve Position Sensor Circuit",
+   "fam": "",
+   "node": "hybrid ev battery pack coolant control valve position"
+  },
+  {
+   "code": "P0CE5",
+   "brand": "",
+   "ru": "Датчик положения клапана охлаждения тяговой батареи: сигнал вне диапазона",
+   "en": "Hybrid/EV Battery Pack Coolant Control Valve Position Sensor Circuit Range/Performance",
+   "fam": "",
+   "node": "hybrid ev battery pack coolant control valve position"
+  },
+  {
+   "code": "P0CE6",
+   "brand": "",
+   "ru": "Датчик положения клапана охлаждения тяговой батареи: низкий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Pack Coolant Control Valve Position Sensor Circuit Low",
+   "fam": "",
+   "node": "hybrid ev battery pack coolant control valve position"
+  },
+  {
+   "code": "P0CE7",
+   "brand": "",
+   "ru": "Датчик положения клапана охлаждения тяговой батареи: высокий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Pack Coolant Control Valve Position Sensor Circuit High",
+   "fam": "",
+   "node": "hybrid ev battery pack coolant control valve position"
+  },
+  {
+   "code": "P0CE8",
+   "brand": "",
+   "ru": "Датчик положения клапана охлаждения тяговой батареи: прерывистый / нестабильный сигнал",
+   "en": "Hybrid/EV Battery Pack Coolant Control Valve Position Sensor Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "hybrid ev battery pack coolant control valve position"
+  },
+  {
+   "code": "P0CE9",
+   "brand": "",
+   "ru": "Насос охлаждения электроники гибрида/электромобиля A: обрыв цепи управления",
+   "en": "Hybrid/EV Electronics Coolant Pump A Control Circuit/Open",
+   "fam": "",
+   "node": "hybrid ev electronics coolant pump a"
+  },
+  {
+   "code": "P0CEA",
+   "brand": "",
+   "ru": "Насос охлаждения электроники гибрида/электромобиля A: работа нарушена",
+   "en": "Hybrid/EV Electronics Coolant Pump A Performance",
+   "fam": "",
+   "node": "hybrid ev electronics coolant pump a"
+  },
+  {
+   "code": "P0CEB",
+   "brand": "",
+   "ru": "Насос охлаждения электроники гибрида/электромобиля A: низкий уровень в цепи управления",
+   "en": "Hybrid/EV Electronics Coolant Pump A Control Circuit Low",
+   "fam": "",
+   "node": "hybrid ev electronics coolant pump a"
+  },
+  {
+   "code": "P0CEC",
+   "brand": "",
+   "ru": "Насос охлаждения электроники гибрида/электромобиля A: высокий уровень в цепи управления",
+   "en": "Hybrid/EV Electronics Coolant Pump A Control Circuit High",
+   "fam": "",
+   "node": "hybrid ev electronics coolant pump a"
+  },
+  {
+   "code": "P2C68",
+   "brand": "",
+   "ru": "Насос охлаждения электроники гибрида/электромобиля A: заклинивание / остановка",
+   "en": "Hybrid/EV Electronics Coolant Pump A Stuck/Stalled",
+   "fam": "",
+   "node": "hybrid ev electronics coolant pump a"
+  },
+  {
+   "code": "P0CED",
+   "brand": "",
+   "ru": "Насос охлаждения электроники гибрида/электромобиля A: цепь включения",
+   "en": "Hybrid/EV Electronics Coolant Pump A Enable Circuit",
+   "fam": "",
+   "node": "hybrid ev electronics coolant pump a enable"
+  },
+  {
+   "code": "P0CEE",
+   "brand": "",
+   "ru": "Датчик температуры охлаждения электроники гибрида/электромобиля A: цепь",
+   "en": "Hybrid/EV Electronics Coolant Temperature Sensor A Circuit",
+   "fam": "",
+   "node": "hybrid ev electronics coolant temperature sensor a"
+  },
+  {
+   "code": "P0CEF",
+   "brand": "",
+   "ru": "Датчик температуры охлаждения электроники гибрида/электромобиля A: сигнал вне диапазона",
+   "en": "Hybrid/EV Electronics Coolant Temperature Sensor A Circuit Range/Perfomance",
+   "fam": "",
+   "node": "hybrid ev electronics coolant temperature sensor a"
+  },
+  {
+   "code": "P0CF0",
+   "brand": "",
+   "ru": "Датчик температуры охлаждения электроники гибрида/электромобиля A: низкий уровень сигнала в цепи",
+   "en": "Hybrid/EV Electronics Coolant Temperature Sensor A Circuit Low",
+   "fam": "",
+   "node": "hybrid ev electronics coolant temperature sensor a"
+  },
+  {
+   "code": "P0CF1",
+   "brand": "",
+   "ru": "Датчик температуры охлаждения электроники гибрида/электромобиля A: высокий уровень сигнала в цепи",
+   "en": "Hybrid/EV Electronics Coolant Temperature Sensor A Circuit High",
+   "fam": "",
+   "node": "hybrid ev electronics coolant temperature sensor a"
+  },
+  {
+   "code": "P0CF2",
+   "brand": "",
+   "ru": "Датчик температуры охлаждения электроники гибрида/электромобиля A: прерывистый / нестабильный сигнал",
+   "en": "Hybrid/EV Electronics Coolant Temperature Sensor A Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "hybrid ev electronics coolant temperature sensor a"
+  },
+  {
+   "code": "P0CF3",
+   "brand": "",
+   "ru": "Сигнал Control Pilot: обрыв цепи",
+   "en": "Control Pilot Circuit /Open",
+   "fam": "",
+   "node": "control pilot"
+  },
+  {
+   "code": "P0CF4",
+   "brand": "",
+   "ru": "Сигнал Control Pilot зарядной станции: сигнал вне диапазона",
+   "en": "Control Pilot Circuit Range/Performance",
+   "fam": "",
+   "node": "control pilot"
+  },
+  {
+   "code": "P0CF5",
+   "brand": "",
+   "ru": "Сигнал Control Pilot зарядной станции: низкий уровень сигнала в цепи",
+   "en": "Control Pilot Circuit Low",
+   "fam": "",
+   "node": "control pilot"
+  },
+  {
+   "code": "P0CF6",
+   "brand": "",
+   "ru": "Сигнал Control Pilot зарядной станции: высокий уровень сигнала в цепи",
+   "en": "Control Pilot Circuit High",
+   "fam": "",
+   "node": "control pilot"
+  },
+  {
+   "code": "P0CF7",
+   "brand": "",
+   "ru": "Сигнал Control Pilot зарядной станции: прерывистый / нестабильный сигнал",
+   "en": "Control Pilot Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "control pilot"
+  },
+  {
+   "code": "P0E72",
+   "brand": "",
+   "ru": "Сигнал Control Pilot: низкая частота",
+   "en": "Control Pilot Signal Low Frequency",
+   "fam": "",
+   "node": "control pilot"
+  },
+  {
+   "code": "P0E73",
+   "brand": "",
+   "ru": "Сигнал Control Pilot: высокая частота",
+   "en": "Control Pilot Signal High Frequency",
+   "fam": "",
+   "node": "control pilot"
+  },
+  {
+   "code": "P0CF8",
+   "brand": "",
+   "ru": "Сигнал Control Pilot зарядной станции A: обрыв цепи",
+   "en": "Control Pilot Charging Switch A Circuit/Open",
+   "fam": "",
+   "node": "control pilot charging switch a"
+  },
+  {
+   "code": "P0CF9",
+   "brand": "",
+   "ru": "Сигнал Control Pilot зарядной станции A: вне допустимого диапазона",
+   "en": "Control Pilot Charging Switch A Range/Performance",
+   "fam": "",
+   "node": "control pilot charging switch a"
+  },
+  {
+   "code": "P0CFA",
+   "brand": "",
+   "ru": "Сигнал Control Pilot зарядной станции A: низкий уровень сигнала в цепи",
+   "en": "Control Pilot Charging Switch A Circuit Low",
+   "fam": "",
+   "node": "control pilot charging switch a"
+  },
+  {
+   "code": "P0CFB",
+   "brand": "",
+   "ru": "Сигнал Control Pilot зарядной станции A: высокий уровень сигнала в цепи",
+   "en": "Control Pilot Charging Switch A Circuit High",
+   "fam": "",
+   "node": "control pilot charging switch a"
+  },
+  {
+   "code": "P0CFC",
+   "brand": "",
+   "ru": "Сигнал Control Pilot зарядной станции A: прерывистый / нестабильный сигнал",
+   "en": "Control Pilot Charging Switch A Intermittent/Erratic",
+   "fam": "",
+   "node": "control pilot charging switch a"
+  },
+  {
+   "code": "P0CFD",
+   "brand": "",
+   "ru": "Сигнал Control Pilot зарядной станции A: не включается",
+   "en": "Control Pilot Charging Switch A Stuck Off",
+   "fam": "",
+   "node": "control pilot charging switch a"
+  },
+  {
+   "code": "P0CFE",
+   "brand": "",
+   "ru": "Сигнал Control Pilot зарядной станции A: постоянно включён",
+   "en": "Control Pilot Charging Switch A Stuck On",
+   "fam": "",
+   "node": "control pilot charging switch a"
+  },
+  {
+   "code": "P0D00",
+   "brand": "",
+   "ru": "Сигнал вентиляции при зарядке (Control Pilot): обрыв цепи",
+   "en": "Control Pilot Charging Ventilation Switch Circuit/Open",
+   "fam": "",
+   "node": "control pilot charging ventilation"
+  },
+  {
+   "code": "P0D02",
+   "brand": "",
+   "ru": "Сигнал вентиляции при зарядке (Control Pilot): низкий уровень сигнала в цепи",
+   "en": "Control Pilot Charging Ventilation Switch Circuit Low",
+   "fam": "",
+   "node": "control pilot charging ventilation"
+  },
+  {
+   "code": "P0D03",
+   "brand": "",
+   "ru": "Сигнал вентиляции при зарядке (Control Pilot): высокий уровень сигнала в цепи",
+   "en": "Control Pilot Charging Ventilation Switch Circuit High",
+   "fam": "",
+   "node": "control pilot charging ventilation"
+  },
+  {
+   "code": "P0D01",
+   "brand": "",
+   "ru": "Сигнал вентиляции при зарядке (Control Pilot): вне допустимого диапазона",
+   "en": "Control Pilot Charging Ventilation Switch Range/Performance",
+   "fam": "",
+   "node": "control pilot charging ventilation switch"
+  },
+  {
+   "code": "P0D04",
+   "brand": "",
+   "ru": "Сигнал вентиляции при зарядке (Control Pilot): прерывистый / нестабильный сигнал",
+   "en": "Control Pilot Charging Ventilation Switch Intermittent/Erratic",
+   "fam": "",
+   "node": "control pilot charging ventilation switch"
+  },
+  {
+   "code": "P0D05",
+   "brand": "",
+   "ru": "Сигнал вентиляции при зарядке (Control Pilot): не включается",
+   "en": "Control Pilot Charging Ventilation Switch Stuck Off",
+   "fam": "",
+   "node": "control pilot charging ventilation switch"
+  },
+  {
+   "code": "P0D06",
+   "brand": "",
+   "ru": "Сигнал вентиляции при зарядке (Control Pilot): постоянно включён",
+   "en": "Control Pilot Charging Ventilation Switch Stuck On",
+   "fam": "",
+   "node": "control pilot charging ventilation switch"
+  }
+ ]
+}

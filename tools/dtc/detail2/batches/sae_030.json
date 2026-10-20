@@ -1,0 +1,359 @@
+{
+ "name": "sae_030",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "engine coolant flow",
+  "fuel injector insufficient flow forced limited power",
+  "fuel pressure relief",
+  "fuel pressure relief control",
+  "intake air temperature",
+  "map mass or volume air flow correlation",
+  "mass or volume air flow a",
+  "mass or volume air flow b",
+  "radiator coolant temperature",
+  "radiator coolant temperature engine coolant temperature correlation",
+  "ru:низкое давление топлива — принудительное ограничение мощности",
+  "ru:слишком низкое давление в контуре низкого давления топлива при низкой наружной температуре",
+  "turbocharger supercharger boost control a module",
+  "turbocharger supercharger boost control b module"
+ ],
+ "codes": [
+  {
+   "code": "P009B",
+   "brand": "",
+   "ru": "Сброс давления топлива: обрыв цепи управления",
+   "en": "Fuel Pressure Relief Control Circuit/Open",
+   "fam": "",
+   "node": "fuel pressure relief"
+  },
+  {
+   "code": "P009C",
+   "brand": "",
+   "ru": "Сброс давления топлива: низкий уровень в цепи управления",
+   "en": "Fuel Pressure Relief Control Circuit Low",
+   "fam": "",
+   "node": "fuel pressure relief"
+  },
+  {
+   "code": "P009D",
+   "brand": "",
+   "ru": "Сброс давления топлива: высокий уровень в цепи управления",
+   "en": "Fuel Pressure Relief Control Circuit High",
+   "fam": "",
+   "node": "fuel pressure relief"
+  },
+  {
+   "code": "P009E",
+   "brand": "",
+   "ru": "Управление сбросом давления топлива: работа нарушена / не включается",
+   "en": "Fuel Pressure Relief Control Performance/Stuck Off",
+   "fam": "",
+   "node": "fuel pressure relief control"
+  },
+  {
+   "code": "P009F",
+   "brand": "",
+   "ru": "Управление сбросом давления топлива: постоянно включён",
+   "en": "Fuel Pressure Relief Control Stuck On",
+   "fam": "",
+   "node": "fuel pressure relief control"
+  },
+  {
+   "code": "P00A5",
+   "brand": "",
+   "ru": "Датчик температуры впускного воздуха 2: цепь (банк 2)",
+   "en": "Intake Air Temperature Sensor 2 Circuit Bank 2",
+   "fam": "",
+   "node": "intake air temperature"
+  },
+  {
+   "code": "P00A6",
+   "brand": "",
+   "ru": "Датчик температуры впускного воздуха 2: сигнал вне диапазона (банк 2)",
+   "en": "Intake Air Temperature Sensor 2 Circuit Range/Performance Bank 2",
+   "fam": "",
+   "node": "intake air temperature"
+  },
+  {
+   "code": "P00A7",
+   "brand": "",
+   "ru": "Датчик температуры впускного воздуха 2: низкий уровень сигнала в цепи (банк 2)",
+   "en": "Intake Air Temperature Sensor 2 Circuit Low Bank 2",
+   "fam": "",
+   "node": "intake air temperature"
+  },
+  {
+   "code": "P00A8",
+   "brand": "",
+   "ru": "Датчик температуры впускного воздуха 2: высокий уровень сигнала в цепи (банк 2)",
+   "en": "Intake Air Temperature Sensor 2 Circuit High Bank 2",
+   "fam": "",
+   "node": "intake air temperature"
+  },
+  {
+   "code": "P00A9",
+   "brand": "",
+   "ru": "Датчик температуры впускного воздуха 2: прерывистый / нестабильный сигнал (банк 2)",
+   "en": "Intake Air Temperature Sensor 2 Circuit Intermittent/Erratic Bank 2",
+   "fam": "",
+   "node": "intake air temperature"
+  },
+  {
+   "code": "P00AA",
+   "brand": "",
+   "ru": "Датчик температуры впускного воздуха 1: цепь (банк 2)",
+   "en": "Intake Air Temperature Sensor 1 Circuit Bank 2",
+   "fam": "",
+   "node": "intake air temperature"
+  },
+  {
+   "code": "P00AB",
+   "brand": "",
+   "ru": "Датчик температуры впускного воздуха 1: сигнал вне диапазона (банк 2)",
+   "en": "Intake Air Temperature Sensor 1 Circuit Range/Performance Bank 2",
+   "fam": "",
+   "node": "intake air temperature"
+  },
+  {
+   "code": "P00AC",
+   "brand": "",
+   "ru": "Датчик температуры впускного воздуха 1: низкий уровень сигнала в цепи (банк 2)",
+   "en": "Intake Air Temperature Sensor 1 Circuit Low Bank 2",
+   "fam": "",
+   "node": "intake air temperature"
+  },
+  {
+   "code": "P00AD",
+   "brand": "",
+   "ru": "Датчик температуры впускного воздуха 1: высокий уровень сигнала в цепи (банк 2)",
+   "en": "Intake Air Temperature Sensor 1 Circuit High Bank 2",
+   "fam": "",
+   "node": "intake air temperature"
+  },
+  {
+   "code": "P00AE",
+   "brand": "",
+   "ru": "Датчик температуры впускного воздуха 1: прерывистый сигнал в цепи (банк 2)",
+   "en": "Intake Air Temperature Sensor 1 Circuit Intermittent Bank 2",
+   "fam": "",
+   "node": "intake air temperature"
+  },
+  {
+   "code": "P00E8",
+   "brand": "",
+   "ru": "Датчик температуры впускного воздуха 3: цепь (банк 1)",
+   "en": "Intake Air Temperature Sensor 3 Circuit Bank 1",
+   "fam": "",
+   "node": "intake air temperature"
+  },
+  {
+   "code": "P00E9",
+   "brand": "",
+   "ru": "Датчик температуры впускного воздуха 3: сигнал вне диапазона (банк 1)",
+   "en": "Intake Air Temperature Sensor 3 Circuit Range/Performance Bank 1",
+   "fam": "",
+   "node": "intake air temperature"
+  },
+  {
+   "code": "P00EA",
+   "brand": "",
+   "ru": "Датчик температуры впускного воздуха 3: низкий уровень сигнала в цепи (банк 1)",
+   "en": "Intake Air Temperature Sensor 3 Circuit Low Bank 1",
+   "fam": "",
+   "node": "intake air temperature"
+  },
+  {
+   "code": "P00EB",
+   "brand": "",
+   "ru": "Датчик температуры впускного воздуха 3: высокий уровень сигнала в цепи (банк 1)",
+   "en": "Intake Air Temperature Sensor 3 Circuit High Bank 1",
+   "fam": "",
+   "node": "intake air temperature"
+  },
+  {
+   "code": "P00EC",
+   "brand": "",
+   "ru": "Датчик температуры впускного воздуха 3: прерывистый / нестабильный сигнал (банк 1)",
+   "en": "Intake Air Temperature Sensor 3 Circuit Intermittent/Erratic Bank 1",
+   "fam": "",
+   "node": "intake air temperature"
+  },
+  {
+   "code": "P00ED",
+   "brand": "",
+   "ru": "Датчик температуры впускного воздуха 3: цепь (банк 2)",
+   "en": "Intake Air Temperature Sensor 3 Circuit Bank 2",
+   "fam": "",
+   "node": "intake air temperature"
+  },
+  {
+   "code": "P00EE",
+   "brand": "",
+   "ru": "Датчик температуры впускного воздуха 3: сигнал вне диапазона (банк 2)",
+   "en": "Intake Air Temperature Sensor 3 Circuit Range/Performance Bank 2",
+   "fam": "",
+   "node": "intake air temperature"
+  },
+  {
+   "code": "P00EF",
+   "brand": "",
+   "ru": "Датчик температуры впускного воздуха 3: низкий уровень сигнала в цепи (банк 2)",
+   "en": "Intake Air Temperature Sensor 3 Circuit Low Bank 2",
+   "fam": "",
+   "node": "intake air temperature"
+  },
+  {
+   "code": "P00F0",
+   "brand": "",
+   "ru": "Датчик температуры впускного воздуха 3: высокий уровень сигнала в цепи (банк 2)",
+   "en": "Intake Air Temperature Sensor 3 Circuit High Bank 2",
+   "fam": "",
+   "node": "intake air temperature"
+  },
+  {
+   "code": "P00F1",
+   "brand": "",
+   "ru": "Датчик температуры впускного воздуха 3: прерывистый / нестабильный сигнал (банк 2)",
+   "en": "Intake Air Temperature Sensor 3 Circuit Intermittent/Erratic Bank 2",
+   "fam": "",
+   "node": "intake air temperature"
+  },
+  {
+   "code": "P00AF",
+   "brand": "",
+   "ru": "Регулирование давления наддува A: нарушена работа блока",
+   "en": "Turbocharger/Supercharger Boost Control A Module Performance",
+   "fam": "",
+   "node": "turbocharger supercharger boost control a module"
+  },
+  {
+   "code": "P00B0",
+   "brand": "",
+   "ru": "Регулирование давления наддува B: нарушена работа блока",
+   "en": "Turbocharger/Supercharger Boost Control B Module Performance",
+   "fam": "",
+   "node": "turbocharger supercharger boost control b module"
+  },
+  {
+   "code": "P00B1",
+   "brand": "",
+   "ru": "Датчик температуры жидкости в радиаторе: цепь",
+   "en": "Radiator Coolant Temperature Sensor Circuit",
+   "fam": "",
+   "node": "radiator coolant temperature"
+  },
+  {
+   "code": "P00B2",
+   "brand": "",
+   "ru": "Датчик температуры жидкости в радиаторе: сигнал вне диапазона",
+   "en": "Radiator Coolant Temperature Sensor Circuit Range/Performance",
+   "fam": "",
+   "node": "radiator coolant temperature"
+  },
+  {
+   "code": "P00B3",
+   "brand": "",
+   "ru": "Датчик температуры жидкости в радиаторе: низкий уровень сигнала в цепи",
+   "en": "Radiator Coolant Temperature Sensor Circuit Low",
+   "fam": "",
+   "node": "radiator coolant temperature"
+  },
+  {
+   "code": "P00B4",
+   "brand": "",
+   "ru": "Датчик температуры жидкости в радиаторе: высокий уровень сигнала в цепи",
+   "en": "Radiator Coolant Temperature Sensor Circuit High",
+   "fam": "",
+   "node": "radiator coolant temperature"
+  },
+  {
+   "code": "P00B5",
+   "brand": "",
+   "ru": "Датчик температуры жидкости в радиаторе: прерывистый / нестабильный сигнал",
+   "en": "Radiator Coolant Temperature Sensor Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "radiator coolant temperature"
+  },
+  {
+   "code": "P00B6",
+   "brand": "",
+   "ru": "Рассогласование температуры жидкости в радиаторе и в двигателе",
+   "en": "Radiator Coolant Temperature/Engine Coolant Temperature Correlation",
+   "fam": "",
+   "node": "radiator coolant temperature engine coolant temperature correlation"
+  },
+  {
+   "code": "P00B7",
+   "brand": "",
+   "ru": "Слабый поток охлаждающей жидкости",
+   "en": "Engine Coolant Flow Low/Performance",
+   "fam": "",
+   "node": "engine coolant flow"
+  },
+  {
+   "code": "P00B8",
+   "brand": "",
+   "ru": "Рассогласование датчика MAP и ДМРВ (банк 2)",
+   "en": "MAP - Mass or Volume Air Flow Correlation Bank 2",
+   "fam": "",
+   "node": "map mass or volume air flow correlation"
+  },
+  {
+   "code": "P00B9",
+   "brand": "",
+   "ru": "Слишком низкое давление в контуре низкого давления топлива при низкой наружной температуре",
+   "en": "Low Pressure Fuel System Pressure - Too Low. Low Ambient Temperature",
+   "fam": "",
+   "node": "ru:слишком низкое давление в контуре низкого давления топлива при низкой наружной температуре"
+  },
+  {
+   "code": "P00BA",
+   "brand": "",
+   "ru": "Низкое давление топлива — принудительное ограничение мощности",
+   "en": "Low Fuel Pressure - Forced Limited Power",
+   "fam": "",
+   "node": "ru:низкое давление топлива — принудительное ограничение мощности"
+  },
+  {
+   "code": "P00BB",
+   "brand": "",
+   "ru": "Недостаточная производительность форсунок — принудительное ограничение мощности",
+   "en": "Fuel Injector Insufficient Flow - Forced Limited Power",
+   "fam": "",
+   "node": "fuel injector insufficient flow forced limited power"
+  },
+  {
+   "code": "P00BC",
+   "brand": "",
+   "ru": "ДМРВ A: расход воздуха слишком мал",
+   "en": "Mass or Volume Air Flow A Circuit Range/Performance - Air Flow Too Low",
+   "fam": "",
+   "node": "mass or volume air flow a"
+  },
+  {
+   "code": "P00BD",
+   "brand": "",
+   "ru": "ДМРВ A: расход воздуха слишком велик",
+   "en": "Mass or Volume Air Flow A Circuit Range/Performance - Air Flow Too High",
+   "fam": "",
+   "node": "mass or volume air flow a"
+  },
+  {
+   "code": "P00BE",
+   "brand": "",
+   "ru": "ДМРВ B: расход воздуха слишком мал",
+   "en": "Mass or Volume Air Flow B Circuit Range/Performance - Air Flow Too Low",
+   "fam": "",
+   "node": "mass or volume air flow b"
+  },
+  {
+   "code": "P00BF",
+   "brand": "",
+   "ru": "ДМРВ B: расход воздуха слишком велик",
+   "en": "Mass or Volume Air Flow B Circuit Range/Performance - Air Flow Too High",
+   "fam": "",
+   "node": "mass or volume air flow b"
+  }
+ ]
+}

@@ -1,0 +1,385 @@
+{
+ "name": "sae_006",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "a c system temperature too",
+  "active aerodynamic feature a actuator",
+  "active aerodynamic feature a actuator position sensor not learned",
+  "active aerodynamic feature a actuator temperature not plausible",
+  "active aerodynamic feature a actuator temperature too",
+  "active aerodynamic feature control module a",
+  "active aerodynamic feature control module a power mode",
+  "active aerodynamic feature control module b",
+  "active aerodynamic feature control module b power mode",
+  "active aerodynamic feature control module c",
+  "active aerodynamic feature control module c power mode",
+  "active aerodynamic feature control module d",
+  "active aerodynamic feature control module d power mode",
+  "battery charger a ground",
+  "battery charger b",
+  "battery charger b ground"
+ ],
+ "codes": [
+  {
+   "code": "B3A1C",
+   "brand": "",
+   "ru": "Кондиционер: слишком высокая температура",
+   "en": "A/C System Temperature - Too High",
+   "fam": "",
+   "node": "a c system temperature too"
+  },
+  {
+   "code": "B3A1D",
+   "brand": "",
+   "ru": "Зарядное устройство B",
+   "en": "Battery Charger B",
+   "fam": "",
+   "node": "battery charger b"
+  },
+  {
+   "code": "P0E86",
+   "brand": "",
+   "ru": "Зарядное устройство B: слишком низкое входное напряжение",
+   "en": "Battery Charger B Input Voltage Too Low",
+   "fam": "",
+   "node": "battery charger b"
+  },
+  {
+   "code": "P0E87",
+   "brand": "",
+   "ru": "Зарядное устройство B: слишком высокое входное напряжение",
+   "en": "Battery Charger B Input Voltage Too High",
+   "fam": "",
+   "node": "battery charger b"
+  },
+  {
+   "code": "P0E88",
+   "brand": "",
+   "ru": "Зарядное устройство B: слишком малый входной ток",
+   "en": "Battery Charger B Input Current Too Low",
+   "fam": "",
+   "node": "battery charger b"
+  },
+  {
+   "code": "P0E89",
+   "brand": "",
+   "ru": "Зарядное устройство B: слишком большой входной ток",
+   "en": "Battery Charger B Input Current Too High",
+   "fam": "",
+   "node": "battery charger b"
+  },
+  {
+   "code": "P0E8A",
+   "brand": "",
+   "ru": "Вход зарядного устройства B: цепь датчика тока",
+   "en": "Battery Charger B Input Current Sensor Circuit",
+   "fam": "",
+   "node": "battery charger b"
+  },
+  {
+   "code": "P0E8B",
+   "brand": "",
+   "ru": "Датчик входного напряжения зарядного устройства B: цепь",
+   "en": "Battery Charger B Input Voltage Sensor Circuit",
+   "fam": "",
+   "node": "battery charger b"
+  },
+  {
+   "code": "P2D83",
+   "brand": "",
+   "ru": "Вход зарядного устройства B: низкий уровень в цепи датчика тока",
+   "en": "Battery Charger B Input Current Sensor Circuit Low",
+   "fam": "",
+   "node": "battery charger b"
+  },
+  {
+   "code": "P2D84",
+   "brand": "",
+   "ru": "Вход зарядного устройства B: высокий уровень в цепи датчика тока",
+   "en": "Battery Charger B Input Current Sensor Circuit High",
+   "fam": "",
+   "node": "battery charger b"
+  },
+  {
+   "code": "P2D85",
+   "brand": "",
+   "ru": "Вход зарядного устройства B: датчик тока вне диапазона",
+   "en": "Battery Charger B Input Current Sensor Circuit Range/Performance",
+   "fam": "",
+   "node": "battery charger b"
+  },
+  {
+   "code": "P2E3A",
+   "brand": "",
+   "ru": "Зарядное устройство B: выходное напряжение не соответствует",
+   "en": "Battery Charger B Output Voltage Performance",
+   "fam": "",
+   "node": "battery charger b"
+  },
+  {
+   "code": "P2E3B",
+   "brand": "",
+   "ru": "Зарядное устройство B: слишком низкое выходное напряжение",
+   "en": "Battery Charger B Output Voltage Too Low",
+   "fam": "",
+   "node": "battery charger b"
+  },
+  {
+   "code": "P2E3C",
+   "brand": "",
+   "ru": "Зарядное устройство B: выходной ток не соответствует",
+   "en": "Battery Charger B Output Current Performance",
+   "fam": "",
+   "node": "battery charger b"
+  },
+  {
+   "code": "P2E3D",
+   "brand": "",
+   "ru": "Зарядное устройство B: замыкание на выходе",
+   "en": "Battery Charger B Output Shorted",
+   "fam": "",
+   "node": "battery charger b"
+  },
+  {
+   "code": "P2E84",
+   "brand": "",
+   "ru": "Датчик входного напряжения зарядного устройства B: сигнал вне диапазона",
+   "en": "Battery Charger B Input Voltage Sensor Circuit Range/Performance",
+   "fam": "",
+   "node": "battery charger b"
+  },
+  {
+   "code": "P2E85",
+   "brand": "",
+   "ru": "Датчик входного напряжения зарядного устройства B: низкий уровень сигнала в цепи",
+   "en": "Battery Charger B Input Voltage Sensor Circuit Low",
+   "fam": "",
+   "node": "battery charger b"
+  },
+  {
+   "code": "P2E86",
+   "brand": "",
+   "ru": "Датчик входного напряжения зарядного устройства B: высокий уровень сигнала в цепи",
+   "en": "Battery Charger B Input Voltage Sensor Circuit High",
+   "fam": "",
+   "node": "battery charger b"
+  },
+  {
+   "code": "B3A1E",
+   "brand": "",
+   "ru": "Зарядное устройство A: нарушена масса",
+   "en": "Battery Charger A Ground Performance",
+   "fam": "",
+   "node": "battery charger a ground"
+  },
+  {
+   "code": "B3A1F",
+   "brand": "",
+   "ru": "Зарядное устройство B: нарушена масса",
+   "en": "Battery Charger B Ground Performance",
+   "fam": "",
+   "node": "battery charger b ground"
+  },
+  {
+   "code": "B3A20",
+   "brand": "",
+   "ru": "Блок управления активной аэродинамикой A",
+   "en": "Active Aerodynamic Feature Control Module A",
+   "fam": "",
+   "node": "active aerodynamic feature control module a"
+  },
+  {
+   "code": "B3A21",
+   "brand": "",
+   "ru": "Блок управления активной аэродинамикой B",
+   "en": "Active Aerodynamic Feature Control Module B",
+   "fam": "",
+   "node": "active aerodynamic feature control module b"
+  },
+  {
+   "code": "B3A22",
+   "brand": "",
+   "ru": "Блок управления активной аэродинамикой C",
+   "en": "Active Aerodynamic Feature Control Module C",
+   "fam": "",
+   "node": "active aerodynamic feature control module c"
+  },
+  {
+   "code": "B3A23",
+   "brand": "",
+   "ru": "Блок управления активной аэродинамикой D",
+   "en": "Active Aerodynamic Feature Control Module D",
+   "fam": "",
+   "node": "active aerodynamic feature control module d"
+  },
+  {
+   "code": "B3A24",
+   "brand": "",
+   "ru": "Блок управления активной аэродинамикой A: высокое напряжение в цепи режима питания",
+   "en": "Active Aerodynamic Feature Control Module A Power Mode Circuit High Voltage",
+   "fam": "",
+   "node": "active aerodynamic feature control module a power mode"
+  },
+  {
+   "code": "B3A25",
+   "brand": "",
+   "ru": "Блок управления активной аэродинамикой A: низкое напряжение в цепи режима питания",
+   "en": "Active Aerodynamic Feature Control Module A Power Mode Circuit Low Voltage",
+   "fam": "",
+   "node": "active aerodynamic feature control module a power mode"
+  },
+  {
+   "code": "B3A26",
+   "brand": "",
+   "ru": "Блок управления активной аэродинамикой A: обрыв цепи режима питания",
+   "en": "Active Aerodynamic Feature Control Module A Power Mode Circuit/Open",
+   "fam": "",
+   "node": "active aerodynamic feature control module a power mode"
+  },
+  {
+   "code": "B3A27",
+   "brand": "",
+   "ru": "Блок управления активной аэродинамикой A: нарушена работа цепи режима питания",
+   "en": "Active Aerodynamic Feature Control Module A Power Mode Circuit Performance",
+   "fam": "",
+   "node": "active aerodynamic feature control module a power mode"
+  },
+  {
+   "code": "B3A28",
+   "brand": "",
+   "ru": "Блок управления активной аэродинамикой B: высокое напряжение в цепи режима питания",
+   "en": "Active Aerodynamic Feature Control Module B Power Mode Circuit High Voltage",
+   "fam": "",
+   "node": "active aerodynamic feature control module b power mode"
+  },
+  {
+   "code": "B3A29",
+   "brand": "",
+   "ru": "Блок управления активной аэродинамикой B: низкое напряжение в цепи режима питания",
+   "en": "Active Aerodynamic Feature Control Module B Power Mode Circuit Low Voltage",
+   "fam": "",
+   "node": "active aerodynamic feature control module b power mode"
+  },
+  {
+   "code": "B3A2A",
+   "brand": "",
+   "ru": "Блок управления активной аэродинамикой B: обрыв цепи режима питания",
+   "en": "Active Aerodynamic Feature Control Module B Power Mode Circuit/Open",
+   "fam": "",
+   "node": "active aerodynamic feature control module b power mode"
+  },
+  {
+   "code": "B3A2B",
+   "brand": "",
+   "ru": "Блок управления активной аэродинамикой B: нарушена работа цепи режима питания",
+   "en": "Active Aerodynamic Feature Control Module B Power Mode Circuit Performance",
+   "fam": "",
+   "node": "active aerodynamic feature control module b power mode"
+  },
+  {
+   "code": "B3A2C",
+   "brand": "",
+   "ru": "Блок управления активной аэродинамикой C: высокое напряжение в цепи режима питания",
+   "en": "Active Aerodynamic Feature Control Module C Power Mode Circuit High Voltage",
+   "fam": "",
+   "node": "active aerodynamic feature control module c power mode"
+  },
+  {
+   "code": "B3A2D",
+   "brand": "",
+   "ru": "Блок управления активной аэродинамикой C: низкое напряжение в цепи режима питания",
+   "en": "Active Aerodynamic Feature Control Module C Power Mode Circuit Low Voltage",
+   "fam": "",
+   "node": "active aerodynamic feature control module c power mode"
+  },
+  {
+   "code": "B3A2E",
+   "brand": "",
+   "ru": "Блок управления активной аэродинамикой C: обрыв цепи режима питания",
+   "en": "Active Aerodynamic Feature Control Module C Power Mode Circuit/Open",
+   "fam": "",
+   "node": "active aerodynamic feature control module c power mode"
+  },
+  {
+   "code": "B3A2F",
+   "brand": "",
+   "ru": "Блок управления активной аэродинамикой C: нарушена работа цепи режима питания",
+   "en": "Active Aerodynamic Feature Control Module C Power Mode Circuit Performance",
+   "fam": "",
+   "node": "active aerodynamic feature control module c power mode"
+  },
+  {
+   "code": "B3A30",
+   "brand": "",
+   "ru": "Блок управления активной аэродинамикой D: высокое напряжение в цепи режима питания",
+   "en": "Active Aerodynamic Feature Control Module D Power Mode Circuit High Voltage",
+   "fam": "",
+   "node": "active aerodynamic feature control module d power mode"
+  },
+  {
+   "code": "B3A31",
+   "brand": "",
+   "ru": "Блок управления активной аэродинамикой D: низкое напряжение в цепи режима питания",
+   "en": "Active Aerodynamic Feature Control Module D Power Mode Circuit Low Voltage",
+   "fam": "",
+   "node": "active aerodynamic feature control module d power mode"
+  },
+  {
+   "code": "B3A32",
+   "brand": "",
+   "ru": "Блок управления активной аэродинамикой D: обрыв цепи режима питания",
+   "en": "Active Aerodynamic Feature Control Module D Power Mode Circuit/Open",
+   "fam": "",
+   "node": "active aerodynamic feature control module d power mode"
+  },
+  {
+   "code": "B3A33",
+   "brand": "",
+   "ru": "Блок управления активной аэродинамикой D: нарушена работа цепи режима питания",
+   "en": "Active Aerodynamic Feature Control Module D Power Mode Circuit Performance",
+   "fam": "",
+   "node": "active aerodynamic feature control module d power mode"
+  },
+  {
+   "code": "B3A34",
+   "brand": "",
+   "ru": "Привод активной аэродинамики A: датчик положения не обучен",
+   "en": "Active Aerodynamic Feature A Actuator Position Sensor Not Learned",
+   "fam": "",
+   "node": "active aerodynamic feature a actuator position sensor not learned"
+  },
+  {
+   "code": "B3A35",
+   "brand": "",
+   "ru": "Привод активной аэродинамики A: работа нарушена",
+   "en": "Active Aerodynamic Feature A Actuator Performance",
+   "fam": "",
+   "node": "active aerodynamic feature a actuator"
+  },
+  {
+   "code": "B3A36",
+   "brand": "",
+   "ru": "Привод активной аэродинамики A: недостоверная температура",
+   "en": "Active Aerodynamic Feature A Actuator Temperature Not Plausible",
+   "fam": "",
+   "node": "active aerodynamic feature a actuator temperature not plausible"
+  },
+  {
+   "code": "B3A37",
+   "brand": "",
+   "ru": "Привод активной аэродинамики A: слишком высокая температура",
+   "en": "Active Aerodynamic Feature A Actuator Temperature Too High",
+   "fam": "",
+   "node": "active aerodynamic feature a actuator temperature too"
+  },
+  {
+   "code": "B3A38",
+   "brand": "",
+   "ru": "Привод активной аэродинамики A: слишком низкая температура",
+   "en": "Active Aerodynamic Feature A Actuator Temperature Too Low",
+   "fam": "",
+   "node": "active aerodynamic feature a actuator temperature too"
+  }
+ ]
+}

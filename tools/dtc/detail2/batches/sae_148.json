@@ -1,0 +1,383 @@
+{
+ "name": "sae_148",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "closed loop particulate filter regeneration control at limit temperature too",
+  "closed loop reductant injection control at limit flow too",
+  "egr cooler bypass control",
+  "egr cooler bypass position",
+  "egr cooler bypass position sensor",
+  "egr cooler coolant pump",
+  "egr cooler coolant pump feedback",
+  "evap system leak detection pump pressure",
+  "excessive time to enter closed loop particulate filter regeneration",
+  "excessive time to enter closed loop reductant injection",
+  "particulate filter restriction soot accumulation",
+  "particulate matter",
+  "particulate matter sensor heater",
+  "particulate matter sensor heater resistance"
+ ],
+ "codes": [
+  {
+   "code": "P2492",
+   "brand": "",
+   "ru": "Датчик положения байпаса радиатора EGR: цепь (банк 1)",
+   "en": "EGR Cooler Bypass Position Sensor Circuit Bank 1",
+   "fam": "",
+   "node": "egr cooler bypass position"
+  },
+  {
+   "code": "P2494",
+   "brand": "",
+   "ru": "Датчик положения байпаса радиатора EGR: низкий уровень сигнала в цепи (банк 1)",
+   "en": "EGR Cooler Bypass Position Sensor Circuit Low Bank 1",
+   "fam": "",
+   "node": "egr cooler bypass position"
+  },
+  {
+   "code": "P2495",
+   "brand": "",
+   "ru": "Датчик положения байпаса радиатора EGR: высокий уровень сигнала в цепи (банк 1)",
+   "en": "EGR Cooler Bypass Position Sensor Circuit High Bank 1",
+   "fam": "",
+   "node": "egr cooler bypass position"
+  },
+  {
+   "code": "P2496",
+   "brand": "",
+   "ru": "Датчик положения байпаса радиатора EGR: прерывистый / нестабильный сигнал (банк 1)",
+   "en": "EGR Cooler Bypass Position Sensor Circuit Intermittent/Erratic Bank 1",
+   "fam": "",
+   "node": "egr cooler bypass position"
+  },
+  {
+   "code": "P2497",
+   "brand": "",
+   "ru": "Датчик положения байпаса радиатора EGR: цепь (банк 2)",
+   "en": "EGR Cooler Bypass Position Sensor Circuit Bank 2",
+   "fam": "",
+   "node": "egr cooler bypass position"
+  },
+  {
+   "code": "P2499",
+   "brand": "",
+   "ru": "Датчик положения байпаса радиатора EGR: низкий уровень сигнала в цепи (банк 2)",
+   "en": "EGR Cooler Bypass Position Sensor Circuit Low Bank 2",
+   "fam": "",
+   "node": "egr cooler bypass position"
+  },
+  {
+   "code": "P249A",
+   "brand": "",
+   "ru": "Датчик положения байпаса радиатора EGR: высокий уровень сигнала в цепи (банк 2)",
+   "en": "EGR Cooler Bypass Position Sensor Circuit High Bank 2",
+   "fam": "",
+   "node": "egr cooler bypass position"
+  },
+  {
+   "code": "P249B",
+   "brand": "",
+   "ru": "Датчик положения байпаса радиатора EGR: прерывистый / нестабильный сигнал (банк 2)",
+   "en": "EGR Cooler Bypass Position Sensor Circuit Intermittent/Erratic Bank 2",
+   "fam": "",
+   "node": "egr cooler bypass position"
+  },
+  {
+   "code": "P2493",
+   "brand": "",
+   "ru": "Датчик положения байпаса радиатора EGR: вне допустимого диапазона (банк 1)",
+   "en": "EGR Cooler Bypass Position Sensor Range/Performance Bank 1",
+   "fam": "",
+   "node": "egr cooler bypass position sensor"
+  },
+  {
+   "code": "P2498",
+   "brand": "",
+   "ru": "Датчик положения байпаса радиатора EGR: вне допустимого диапазона (банк 2)",
+   "en": "EGR Cooler Bypass Position Sensor Range/Performance Bank 2",
+   "fam": "",
+   "node": "egr cooler bypass position sensor"
+  },
+  {
+   "code": "P249C",
+   "brand": "",
+   "ru": "Слишком долгий переход к замкнутому регулированию впрыска мочевины",
+   "en": "Excessive Time To Enter Closed Loop Reductant Injection Control",
+   "fam": "",
+   "node": "excessive time to enter closed loop reductant injection"
+  },
+  {
+   "code": "P249D",
+   "brand": "",
+   "ru": "Регулирование впрыска мочевины на пределе: расход слишком мал",
+   "en": "Closed Loop Reductant Injection Control At Limit - Flow Too Low",
+   "fam": "",
+   "node": "closed loop reductant injection control at limit flow too"
+  },
+  {
+   "code": "P249E",
+   "brand": "",
+   "ru": "Регулирование впрыска мочевины на пределе: расход слишком велик",
+   "en": "Closed Loop Reductant Injection Control At Limit - Flow Too High",
+   "fam": "",
+   "node": "closed loop reductant injection control at limit flow too"
+  },
+  {
+   "code": "P249F",
+   "brand": "",
+   "ru": "Слишком долгий переход к замкнутому регулированию регенерации сажевого фильтра",
+   "en": "Excessive Time To Enter Closed Loop Particulate Filter Regeneration Control",
+   "fam": "",
+   "node": "excessive time to enter closed loop particulate filter regeneration"
+  },
+  {
+   "code": "P24A0",
+   "brand": "",
+   "ru": "Регулирование регенерации сажевого фильтра на пределе: температура слишком низкая",
+   "en": "Closed Loop Particulate Filter Regeneration Control At Limit - Temperature Too Low",
+   "fam": "",
+   "node": "closed loop particulate filter regeneration control at limit temperature too"
+  },
+  {
+   "code": "P24A1",
+   "brand": "",
+   "ru": "Регулирование регенерации сажевого фильтра на пределе: температура слишком высокая",
+   "en": "Closed Loop Particulate Filter Regeneration Control At Limit - Temperature Too High",
+   "fam": "",
+   "node": "closed loop particulate filter regeneration control at limit temperature too"
+  },
+  {
+   "code": "P24A3",
+   "brand": "",
+   "ru": "Сажевый фильтр: накопление сажи (банк 2)",
+   "en": "Particulate Filter Restriction - Soot Accumulation Bank 2",
+   "fam": "",
+   "node": "particulate filter restriction soot accumulation"
+  },
+  {
+   "code": "P24A5",
+   "brand": "",
+   "ru": "Управление байпасом радиатора EGR: заклинил открытым (банк 1)",
+   "en": "EGR Cooler Bypass Control Stuck/Open Bank 1",
+   "fam": "",
+   "node": "egr cooler bypass control"
+  },
+  {
+   "code": "P24A6",
+   "brand": "",
+   "ru": "Управление байпасом радиатора EGR: заклинил открытым (банк 2)",
+   "en": "EGR Cooler Bypass Control Stuck/Open Bank 2",
+   "fam": "",
+   "node": "egr cooler bypass control"
+  },
+  {
+   "code": "P26FB",
+   "brand": "",
+   "ru": "Управление байпасом радиатора EGR: заклинил закрытым (банк 1)",
+   "en": "EGR Cooler Bypass Control Stuck Closed Bank 1",
+   "fam": "",
+   "node": "egr cooler bypass control"
+  },
+  {
+   "code": "P26FC",
+   "brand": "",
+   "ru": "Управление байпасом радиатора EGR: заклинил закрытым (банк 2)",
+   "en": "EGR Cooler Bypass Control Stuck Closed Bank 2",
+   "fam": "",
+   "node": "egr cooler bypass control"
+  },
+  {
+   "code": "P24A7",
+   "brand": "",
+   "ru": "Насос охлаждения радиатора EGR: обрыв цепи управления",
+   "en": "EGR Cooler Coolant Pump Control Circuit/Open",
+   "fam": "",
+   "node": "egr cooler coolant pump"
+  },
+  {
+   "code": "P24A8",
+   "brand": "",
+   "ru": "Насос охлаждения радиатора EGR: работа нарушена / не включается",
+   "en": "EGR Cooler Coolant Pump Performance/Stuck Off",
+   "fam": "",
+   "node": "egr cooler coolant pump"
+  },
+  {
+   "code": "P24A9",
+   "brand": "",
+   "ru": "Насос охлаждения радиатора EGR: низкий уровень в цепи управления",
+   "en": "EGR Cooler Coolant Pump Control Circuit Low",
+   "fam": "",
+   "node": "egr cooler coolant pump"
+  },
+  {
+   "code": "P24AA",
+   "brand": "",
+   "ru": "Насос охлаждения радиатора EGR: высокий уровень в цепи управления",
+   "en": "EGR Cooler Coolant Pump Control Circuit High",
+   "fam": "",
+   "node": "egr cooler coolant pump"
+  },
+  {
+   "code": "P24AB",
+   "brand": "",
+   "ru": "Насос охлаждения радиатора EGR: постоянно включён",
+   "en": "EGR Cooler Coolant Pump Stuck On",
+   "fam": "",
+   "node": "egr cooler coolant pump"
+  },
+  {
+   "code": "P24AC",
+   "brand": "",
+   "ru": "Обратная связь насоса охлаждения радиатора EGR: низкий уровень сигнала в цепи",
+   "en": "EGR Cooler Coolant Pump Feedback Circuit Low",
+   "fam": "",
+   "node": "egr cooler coolant pump feedback"
+  },
+  {
+   "code": "P24AD",
+   "brand": "",
+   "ru": "Обратная связь насоса охлаждения радиатора EGR: высокий уровень сигнала в цепи",
+   "en": "EGR Cooler Coolant Pump Feedback Circuit High",
+   "fam": "",
+   "node": "egr cooler coolant pump feedback"
+  },
+  {
+   "code": "P24D4",
+   "brand": "",
+   "ru": "Обратная связь насоса охлаждения радиатора EGR: цепь",
+   "en": "EGR Cooler Coolant Pump Feedback Circuit",
+   "fam": "",
+   "node": "egr cooler coolant pump feedback"
+  },
+  {
+   "code": "P24AE",
+   "brand": "",
+   "ru": "Датчик сажи: цепь",
+   "en": "Particulate Matter Sensor Circuit",
+   "fam": "",
+   "node": "particulate matter"
+  },
+  {
+   "code": "P24AF",
+   "brand": "",
+   "ru": "Датчик сажи: сигнал вне диапазона",
+   "en": "Particulate Matter Sensor Circuit Range/Performance",
+   "fam": "",
+   "node": "particulate matter"
+  },
+  {
+   "code": "P24B0",
+   "brand": "",
+   "ru": "Датчик сажи: низкий уровень сигнала в цепи",
+   "en": "Particulate Matter Sensor Circuit Low",
+   "fam": "",
+   "node": "particulate matter"
+  },
+  {
+   "code": "P24B1",
+   "brand": "",
+   "ru": "Датчик сажи: высокий уровень сигнала в цепи",
+   "en": "Particulate Matter Sensor Circuit High",
+   "fam": "",
+   "node": "particulate matter"
+  },
+  {
+   "code": "P24B2",
+   "brand": "",
+   "ru": "Датчик сажи: прерывистый сигнал в цепи",
+   "en": "Particulate Matter Sensor Circuit Intermittent",
+   "fam": "",
+   "node": "particulate matter"
+  },
+  {
+   "code": "P24B3",
+   "brand": "",
+   "ru": "Подогрев датчика сажи: обрыв цепи управления",
+   "en": "Particulate Matter Sensor Heater Control Circuit/Open",
+   "fam": "",
+   "node": "particulate matter sensor heater"
+  },
+  {
+   "code": "P24B4",
+   "brand": "",
+   "ru": "Подогрев датчика сажи: цепь управления вне диапазона",
+   "en": "Particulate Matter Sensor Heater Control Circuit Range/Performance",
+   "fam": "",
+   "node": "particulate matter sensor heater"
+  },
+  {
+   "code": "P24B5",
+   "brand": "",
+   "ru": "Подогрев датчика сажи: низкий уровень в цепи управления",
+   "en": "Particulate Matter Sensor Heater Control Circuit Low",
+   "fam": "",
+   "node": "particulate matter sensor heater"
+  },
+  {
+   "code": "P24B6",
+   "brand": "",
+   "ru": "Подогрев датчика сажи: высокий уровень в цепи управления",
+   "en": "Particulate Matter Sensor Heater Control Circuit High",
+   "fam": "",
+   "node": "particulate matter sensor heater"
+  },
+  {
+   "code": "P24FC",
+   "brand": "",
+   "ru": "Подогрев датчика сажи: перегрузка драйвера цепи управления по току / перегрев",
+   "en": "Particulate Matter Sensor Heater Control Circuit Driver Current/Temperature Too High",
+   "fam": "",
+   "node": "particulate matter sensor heater"
+  },
+  {
+   "code": "P24B7",
+   "brand": "",
+   "ru": "Сопротивление подогрева датчика сажи",
+   "en": "Particulate Matter Sensor Heater Resistance",
+   "fam": "",
+   "node": "particulate matter sensor heater resistance"
+  },
+  {
+   "code": "P24B8",
+   "brand": "",
+   "ru": "Датчик давления насоса проверки утечек EVAP: цепь",
+   "en": "EVAP System Leak Detection Pump Pressure Sensor Circuit",
+   "fam": "",
+   "node": "evap system leak detection pump pressure"
+  },
+  {
+   "code": "P24B9",
+   "brand": "",
+   "ru": "Датчик давления насоса проверки утечек EVAP: сигнал вне диапазона",
+   "en": "EVAP System Leak Detection Pump Pressure Sensor Circuit Range/Performance",
+   "fam": "",
+   "node": "evap system leak detection pump pressure"
+  },
+  {
+   "code": "P24BA",
+   "brand": "",
+   "ru": "Датчик давления насоса проверки утечек EVAP: низкий уровень сигнала в цепи",
+   "en": "EVAP System Leak Detection Pump Pressure Sensor Circuit Low",
+   "fam": "",
+   "node": "evap system leak detection pump pressure"
+  },
+  {
+   "code": "P24BB",
+   "brand": "",
+   "ru": "Датчик давления насоса проверки утечек EVAP: высокий уровень сигнала в цепи",
+   "en": "EVAP System Leak Detection Pump Pressure Sensor Circuit High",
+   "fam": "",
+   "node": "evap system leak detection pump pressure"
+  },
+  {
+   "code": "P24BC",
+   "brand": "",
+   "ru": "Датчик давления насоса проверки утечек EVAP: прерывистый сигнал в цепи",
+   "en": "EVAP System Leak Detection Pump Pressure Sensor Circuit Intermittent",
+   "fam": "",
+   "node": "evap system leak detection pump pressure"
+  }
+ ]
+}

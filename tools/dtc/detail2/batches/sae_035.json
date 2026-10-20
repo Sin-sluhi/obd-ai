@@ -1,0 +1,377 @@
+{
+ "name": "sae_035",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "alternative fuel tank a pressure",
+  "cylinder head temperature sensor a",
+  "evap system leak detection pump module air filter restricted",
+  "fam:fuel_rail",
+  "fam:oil_temp",
+  "fam:rich",
+  "fuel pressure sensor b",
+  "fuel system over pressure relief valve frequent activation"
+ ],
+ "codes": [
+  {
+   "code": "P0172",
+   "brand": "",
+   "ru": "Богатая смесь (банк 1)",
+   "en": "",
+   "fam": "rich",
+   "node": "fam:rich"
+  },
+  {
+   "code": "P0175",
+   "brand": "",
+   "ru": "Богатая смесь (банк 2)",
+   "en": "",
+   "fam": "rich",
+   "node": "fam:rich"
+  },
+  {
+   "code": "P2178",
+   "brand": "",
+   "ru": "Богатая смесь вне холостого хода (банк 1)",
+   "en": "",
+   "fam": "rich",
+   "node": "fam:rich"
+  },
+  {
+   "code": "P2180",
+   "brand": "",
+   "ru": "Богатая смесь вне холостого хода (банк 2)",
+   "en": "",
+   "fam": "rich",
+   "node": "fam:rich"
+  },
+  {
+   "code": "P2188",
+   "brand": "",
+   "ru": "Богатая смесь на холостом ходу (банк 1)",
+   "en": "",
+   "fam": "rich",
+   "node": "fam:rich"
+  },
+  {
+   "code": "P2190",
+   "brand": "",
+   "ru": "Богатая смесь на холостом ходу (банк 2)",
+   "en": "",
+   "fam": "rich",
+   "node": "fam:rich"
+  },
+  {
+   "code": "P2192",
+   "brand": "",
+   "ru": "Богатая смесь под высокой нагрузкой (банк 1)",
+   "en": "",
+   "fam": "rich",
+   "node": "fam:rich"
+  },
+  {
+   "code": "P2194",
+   "brand": "",
+   "ru": "Богатая смесь под высокой нагрузкой (банк 2)",
+   "en": "",
+   "fam": "rich",
+   "node": "fam:rich"
+  },
+  {
+   "code": "P017A",
+   "brand": "",
+   "ru": "Датчик температуры ГБЦ A: цепь",
+   "en": "Cylinder Head Temperature Sensor A Circuit",
+   "fam": "",
+   "node": "cylinder head temperature sensor a"
+  },
+  {
+   "code": "P017B",
+   "brand": "",
+   "ru": "Датчик температуры ГБЦ A: вне допустимого диапазона",
+   "en": "Cylinder Head Temperature Sensor A Range/Performance",
+   "fam": "",
+   "node": "cylinder head temperature sensor a"
+  },
+  {
+   "code": "P017C",
+   "brand": "",
+   "ru": "Датчик температуры ГБЦ A: низкий уровень сигнала в цепи",
+   "en": "Cylinder Head Temperature Sensor A Circuit Low",
+   "fam": "",
+   "node": "cylinder head temperature sensor a"
+  },
+  {
+   "code": "P017D",
+   "brand": "",
+   "ru": "Датчик температуры ГБЦ A: высокий уровень сигнала в цепи",
+   "en": "Cylinder Head Temperature Sensor A Circuit High",
+   "fam": "",
+   "node": "cylinder head temperature sensor a"
+  },
+  {
+   "code": "P017E",
+   "brand": "",
+   "ru": "Датчик температуры ГБЦ A: прерывистый / нестабильный сигнал",
+   "en": "Cylinder Head Temperature Sensor A Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "cylinder head temperature sensor a"
+  },
+  {
+   "code": "P017F",
+   "brand": "",
+   "ru": "Насос проверки утечек EVAP: засорён воздушный фильтр",
+   "en": "EVAP System Leak Detection Pump Module Air Filter Restricted",
+   "fam": "",
+   "node": "evap system leak detection pump module air filter restricted"
+  },
+  {
+   "code": "P018A",
+   "brand": "",
+   "ru": "Датчик давления топлива B: цепь",
+   "en": "Fuel Pressure Sensor B Circuit",
+   "fam": "",
+   "node": "fuel pressure sensor b"
+  },
+  {
+   "code": "P018B",
+   "brand": "",
+   "ru": "Датчик давления топлива B: сигнал вне диапазона",
+   "en": "Fuel Pressure Sensor B Circuit Range/Performance",
+   "fam": "",
+   "node": "fuel pressure sensor b"
+  },
+  {
+   "code": "P018C",
+   "brand": "",
+   "ru": "Датчик давления топлива B: низкий уровень сигнала в цепи",
+   "en": "Fuel Pressure Sensor B Circuit Low",
+   "fam": "",
+   "node": "fuel pressure sensor b"
+  },
+  {
+   "code": "P018D",
+   "brand": "",
+   "ru": "Датчик давления топлива B: высокий уровень сигнала в цепи",
+   "en": "Fuel Pressure Sensor B Circuit High",
+   "fam": "",
+   "node": "fuel pressure sensor b"
+  },
+  {
+   "code": "P018E",
+   "brand": "",
+   "ru": "Датчик давления топлива B: прерывистый / нестабильный сигнал",
+   "en": "Fuel Pressure Sensor B Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "fuel pressure sensor b"
+  },
+  {
+   "code": "P018F",
+   "brand": "",
+   "ru": "Предохранительный клапан избыточного давления топлива срабатывает слишком часто",
+   "en": "Fuel System Over Pressure Relief Valve Frequent Activation",
+   "fam": "",
+   "node": "fuel system over pressure relief valve frequent activation"
+  },
+  {
+   "code": "P0190",
+   "brand": "",
+   "ru": "Датчик давления топлива в рампе: цепь",
+   "en": "",
+   "fam": "fuel_rail",
+   "node": "fam:fuel_rail"
+  },
+  {
+   "code": "P0191",
+   "brand": "",
+   "ru": "Датчик давления топлива в рампе: показания вне диапазона",
+   "en": "",
+   "fam": "fuel_rail",
+   "node": "fam:fuel_rail"
+  },
+  {
+   "code": "P0192",
+   "brand": "",
+   "ru": "Датчик давления топлива в рампе: низкий сигнал",
+   "en": "",
+   "fam": "fuel_rail",
+   "node": "fam:fuel_rail"
+  },
+  {
+   "code": "P0193",
+   "brand": "",
+   "ru": "Датчик давления топлива в рампе: высокий сигнал",
+   "en": "",
+   "fam": "fuel_rail",
+   "node": "fam:fuel_rail"
+  },
+  {
+   "code": "P0194",
+   "brand": "",
+   "ru": "Датчик давления топлива в рампе: прерывистый сигнал",
+   "en": "",
+   "fam": "fuel_rail",
+   "node": "fam:fuel_rail"
+  },
+  {
+   "code": "P2283",
+   "brand": "",
+   "ru": "Датчик давления управления форсунками (HEUI, дизель): цепь",
+   "en": "",
+   "fam": "fuel_rail",
+   "node": "fam:fuel_rail"
+  },
+  {
+   "code": "P2284",
+   "brand": "",
+   "ru": "Датчик давления управления форсунками (HEUI, дизель): показания вне диапазона",
+   "en": "",
+   "fam": "fuel_rail",
+   "node": "fam:fuel_rail"
+  },
+  {
+   "code": "P2285",
+   "brand": "",
+   "ru": "Датчик давления управления форсунками (HEUI, дизель): низкий сигнал",
+   "en": "",
+   "fam": "fuel_rail",
+   "node": "fam:fuel_rail"
+  },
+  {
+   "code": "P2286",
+   "brand": "",
+   "ru": "Датчик давления управления форсунками (HEUI, дизель): высокий сигнал",
+   "en": "",
+   "fam": "fuel_rail",
+   "node": "fam:fuel_rail"
+  },
+  {
+   "code": "P2287",
+   "brand": "",
+   "ru": "Датчик давления управления форсунками (HEUI, дизель): прерывистый сигнал",
+   "en": "",
+   "fam": "fuel_rail",
+   "node": "fam:fuel_rail"
+  },
+  {
+   "code": "P2539",
+   "brand": "",
+   "ru": "Датчик давления топлива в контуре низкого давления: цепь",
+   "en": "",
+   "fam": "fuel_rail",
+   "node": "fam:fuel_rail"
+  },
+  {
+   "code": "P2540",
+   "brand": "",
+   "ru": "Датчик давления топлива в контуре низкого давления: показания вне диапазона",
+   "en": "",
+   "fam": "fuel_rail",
+   "node": "fam:fuel_rail"
+  },
+  {
+   "code": "P2541",
+   "brand": "",
+   "ru": "Датчик давления топлива в контуре низкого давления: низкий сигнал",
+   "en": "",
+   "fam": "fuel_rail",
+   "node": "fam:fuel_rail"
+  },
+  {
+   "code": "P2542",
+   "brand": "",
+   "ru": "Датчик давления топлива в контуре низкого давления: высокий сигнал",
+   "en": "",
+   "fam": "fuel_rail",
+   "node": "fam:fuel_rail"
+  },
+  {
+   "code": "P2543",
+   "brand": "",
+   "ru": "Датчик давления топлива в контуре низкого давления: прерывистый сигнал",
+   "en": "",
+   "fam": "fuel_rail",
+   "node": "fam:fuel_rail"
+  },
+  {
+   "code": "P0195",
+   "brand": "",
+   "ru": "Датчик температуры масла: цепь",
+   "en": "",
+   "fam": "oil_temp",
+   "node": "fam:oil_temp"
+  },
+  {
+   "code": "P0196",
+   "brand": "",
+   "ru": "Датчик температуры масла: показания вне диапазона",
+   "en": "",
+   "fam": "oil_temp",
+   "node": "fam:oil_temp"
+  },
+  {
+   "code": "P0197",
+   "brand": "",
+   "ru": "Датчик температуры масла: низкий сигнал",
+   "en": "",
+   "fam": "oil_temp",
+   "node": "fam:oil_temp"
+  },
+  {
+   "code": "P0198",
+   "brand": "",
+   "ru": "Датчик температуры масла: высокий сигнал",
+   "en": "",
+   "fam": "oil_temp",
+   "node": "fam:oil_temp"
+  },
+  {
+   "code": "P0199",
+   "brand": "",
+   "ru": "Датчик температуры масла: прерывистый сигнал",
+   "en": "",
+   "fam": "oil_temp",
+   "node": "fam:oil_temp"
+  },
+  {
+   "code": "P0298",
+   "brand": "",
+   "ru": "Перегрев масла двигателя",
+   "en": "",
+   "fam": "oil_temp",
+   "node": "fam:oil_temp"
+  },
+  {
+   "code": "P019E",
+   "brand": "",
+   "ru": "Датчик давления баллона ГБО A: цепь",
+   "en": "Alternative Fuel Tank A Pressure Sensor Circuit",
+   "fam": "",
+   "node": "alternative fuel tank a pressure"
+  },
+  {
+   "code": "P01A0",
+   "brand": "",
+   "ru": "Датчик давления баллона ГБО A: низкий уровень сигнала в цепи",
+   "en": "Alternative Fuel Tank A Pressure Sensor Circuit Low",
+   "fam": "",
+   "node": "alternative fuel tank a pressure"
+  },
+  {
+   "code": "P01A1",
+   "brand": "",
+   "ru": "Датчик давления баллона ГБО A: высокий уровень сигнала в цепи",
+   "en": "Alternative Fuel Tank A Pressure Sensor Circuit High",
+   "fam": "",
+   "node": "alternative fuel tank a pressure"
+  },
+  {
+   "code": "P01A2",
+   "brand": "",
+   "ru": "Датчик давления баллона ГБО A: прерывистый / нестабильный сигнал",
+   "en": "Alternative Fuel Tank A Pressure Sensor Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "alternative fuel tank a pressure"
+  }
+ ]
+}

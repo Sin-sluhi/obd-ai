@@ -1,0 +1,350 @@
+{
+ "name": "sae_033",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "engine coolant temperature engine oil temperature correlation",
+  "fam:thermostat",
+  "fam:tps",
+  "o2 sensor",
+  "turbocharger supercharger inlet pressure sensor a"
+ ],
+ "codes": [
+  {
+   "code": "P0120",
+   "brand": "",
+   "ru": "Датчик положения дросселя A: цепь",
+   "en": "",
+   "fam": "tps",
+   "node": "fam:tps"
+  },
+  {
+   "code": "P0121",
+   "brand": "",
+   "ru": "Датчик положения дросселя A: показания вне диапазона",
+   "en": "",
+   "fam": "tps",
+   "node": "fam:tps"
+  },
+  {
+   "code": "P0122",
+   "brand": "",
+   "ru": "Датчик положения дросселя A: низкий сигнал",
+   "en": "",
+   "fam": "tps",
+   "node": "fam:tps"
+  },
+  {
+   "code": "P0123",
+   "brand": "",
+   "ru": "Датчик положения дросселя A: высокий сигнал",
+   "en": "",
+   "fam": "tps",
+   "node": "fam:tps"
+  },
+  {
+   "code": "P0124",
+   "brand": "",
+   "ru": "Датчик положения дросселя A: прерывистый сигнал",
+   "en": "",
+   "fam": "tps",
+   "node": "fam:tps"
+  },
+  {
+   "code": "P0220",
+   "brand": "",
+   "ru": "Датчик положения дросселя B: цепь",
+   "en": "",
+   "fam": "tps",
+   "node": "fam:tps"
+  },
+  {
+   "code": "P0221",
+   "brand": "",
+   "ru": "Датчик положения дросселя B: показания вне диапазона",
+   "en": "",
+   "fam": "tps",
+   "node": "fam:tps"
+  },
+  {
+   "code": "P0222",
+   "brand": "",
+   "ru": "Датчик положения дросселя B: низкий сигнал",
+   "en": "",
+   "fam": "tps",
+   "node": "fam:tps"
+  },
+  {
+   "code": "P0223",
+   "brand": "",
+   "ru": "Датчик положения дросселя B: высокий сигнал",
+   "en": "",
+   "fam": "tps",
+   "node": "fam:tps"
+  },
+  {
+   "code": "P0224",
+   "brand": "",
+   "ru": "Датчик положения дросселя B: прерывистый сигнал",
+   "en": "",
+   "fam": "tps",
+   "node": "fam:tps"
+  },
+  {
+   "code": "P0225",
+   "brand": "",
+   "ru": "Датчик положения дросселя C / педали: цепь",
+   "en": "",
+   "fam": "tps",
+   "node": "fam:tps"
+  },
+  {
+   "code": "P0226",
+   "brand": "",
+   "ru": "Датчик положения дросселя C / педали: показания вне диапазона",
+   "en": "",
+   "fam": "tps",
+   "node": "fam:tps"
+  },
+  {
+   "code": "P0227",
+   "brand": "",
+   "ru": "Датчик положения дросселя C / педали: низкий сигнал",
+   "en": "",
+   "fam": "tps",
+   "node": "fam:tps"
+  },
+  {
+   "code": "P0228",
+   "brand": "",
+   "ru": "Датчик положения дросселя C / педали: высокий сигнал",
+   "en": "",
+   "fam": "tps",
+   "node": "fam:tps"
+  },
+  {
+   "code": "P0229",
+   "brand": "",
+   "ru": "Датчик положения дросселя C / педали: прерывистый сигнал",
+   "en": "",
+   "fam": "tps",
+   "node": "fam:tps"
+  },
+  {
+   "code": "P0510",
+   "brand": "",
+   "ru": "Выключатель закрытого положения дросселя: неисправность",
+   "en": "",
+   "fam": "tps",
+   "node": "fam:tps"
+  },
+  {
+   "code": "P2620",
+   "brand": "",
+   "ru": "Выход сигнала положения дросселя: цепь / обрыв",
+   "en": "",
+   "fam": "tps",
+   "node": "fam:tps"
+  },
+  {
+   "code": "P2621",
+   "brand": "",
+   "ru": "Выход сигнала положения дросселя: низкий уровень",
+   "en": "",
+   "fam": "tps",
+   "node": "fam:tps"
+  },
+  {
+   "code": "P2622",
+   "brand": "",
+   "ru": "Выход сигнала положения дросселя: высокий уровень",
+   "en": "",
+   "fam": "tps",
+   "node": "fam:tps"
+  },
+  {
+   "code": "P0125",
+   "brand": "",
+   "ru": "Двигатель не прогрелся достаточно для замкнутого контура (лямбда-регулирования)",
+   "en": "",
+   "fam": "thermostat",
+   "node": "fam:thermostat"
+  },
+  {
+   "code": "P0126",
+   "brand": "",
+   "ru": "Двигатель не прогрелся до стабильной температуры",
+   "en": "",
+   "fam": "thermostat",
+   "node": "fam:thermostat"
+  },
+  {
+   "code": "P0128",
+   "brand": "",
+   "ru": "Термостат: двигатель греется слишком медленно",
+   "en": "",
+   "fam": "thermostat",
+   "node": "fam:thermostat"
+  },
+  {
+   "code": "P0597",
+   "brand": "",
+   "ru": "Подогрев термостата: цепь / обрыв",
+   "en": "",
+   "fam": "thermostat",
+   "node": "fam:thermostat"
+  },
+  {
+   "code": "P0598",
+   "brand": "",
+   "ru": "Подогрев термостата: низкий уровень",
+   "en": "",
+   "fam": "thermostat",
+   "node": "fam:thermostat"
+  },
+  {
+   "code": "P0599",
+   "brand": "",
+   "ru": "Подогрев термостата: высокий уровень",
+   "en": "",
+   "fam": "thermostat",
+   "node": "fam:thermostat"
+  },
+  {
+   "code": "P2181",
+   "brand": "",
+   "ru": "Система охлаждения: работа не соответствует",
+   "en": "",
+   "fam": "thermostat",
+   "node": "fam:thermostat"
+  },
+  {
+   "code": "P012A",
+   "brand": "",
+   "ru": "Датчик давления на входе турбины/нагнетателя A: цепь",
+   "en": "Turbocharger/Supercharger Inlet Pressure Sensor A Circuit",
+   "fam": "",
+   "node": "turbocharger supercharger inlet pressure sensor a"
+  },
+  {
+   "code": "P012B",
+   "brand": "",
+   "ru": "Датчик давления на входе турбины/нагнетателя A: сигнал вне диапазона",
+   "en": "Turbocharger/Supercharger Inlet Pressure Sensor A Circuit Range/Performance",
+   "fam": "",
+   "node": "turbocharger supercharger inlet pressure sensor a"
+  },
+  {
+   "code": "P012C",
+   "brand": "",
+   "ru": "Датчик давления на входе турбины/нагнетателя A: низкий уровень сигнала в цепи",
+   "en": "Turbocharger/Supercharger Inlet Pressure Sensor A Circuit Low",
+   "fam": "",
+   "node": "turbocharger supercharger inlet pressure sensor a"
+  },
+  {
+   "code": "P012D",
+   "brand": "",
+   "ru": "Датчик давления на входе турбины/нагнетателя A: высокий уровень сигнала в цепи",
+   "en": "Turbocharger/Supercharger Inlet Pressure Sensor A Circuit High",
+   "fam": "",
+   "node": "turbocharger supercharger inlet pressure sensor a"
+  },
+  {
+   "code": "P012E",
+   "brand": "",
+   "ru": "Датчик давления на входе турбины/нагнетателя A: прерывистый / нестабильный сигнал",
+   "en": "Turbocharger/Supercharger Inlet Pressure Sensor A Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "turbocharger supercharger inlet pressure sensor a"
+  },
+  {
+   "code": "P012F",
+   "brand": "",
+   "ru": "Рассогласование температуры охлаждающей жидкости и масла",
+   "en": "Engine Coolant Temperature / Engine Oil Temperature Correlation",
+   "fam": "",
+   "node": "engine coolant temperature engine oil temperature correlation"
+  },
+  {
+   "code": "P013A",
+   "brand": "",
+   "ru": "Лямбда-зонд: медленное переключение «богато → бедно» (банк 1, датчик 2)",
+   "en": "O2 Sensor Slow Response - Rich to Lean Bank 1 Sensor 2",
+   "fam": "",
+   "node": "o2 sensor"
+  },
+  {
+   "code": "P013B",
+   "brand": "",
+   "ru": "Лямбда-зонд: медленное переключение «бедно → богато» (банк 1, датчик 2)",
+   "en": "O2 Sensor Slow Response - Lean to Rich Bank 1 Sensor 2",
+   "fam": "",
+   "node": "o2 sensor"
+  },
+  {
+   "code": "P013C",
+   "brand": "",
+   "ru": "Лямбда-зонд: медленное переключение «богато → бедно» (банк 2, датчик 2)",
+   "en": "O2 Sensor Slow Response - Rich to Lean Bank 2 Sensor 2",
+   "fam": "",
+   "node": "o2 sensor"
+  },
+  {
+   "code": "P013D",
+   "brand": "",
+   "ru": "Лямбда-зонд: медленное переключение «бедно → богато» (банк 2, датчик 2)",
+   "en": "O2 Sensor Slow Response - Lean to Rich Bank 2 Sensor 2",
+   "fam": "",
+   "node": "o2 sensor"
+  },
+  {
+   "code": "P014C",
+   "brand": "",
+   "ru": "Лямбда-зонд: медленное переключение «богато → бедно» (банк 1, датчик 1)",
+   "en": "O2 Sensor Slow Response - Rich to Lean Bank 1 Sensor 1",
+   "fam": "",
+   "node": "o2 sensor"
+  },
+  {
+   "code": "P014D",
+   "brand": "",
+   "ru": "Лямбда-зонд: медленное переключение «бедно → богато» (банк 1, датчик 1)",
+   "en": "O2 Sensor Slow Response - Lean to Rich Bank 1 Sensor 1",
+   "fam": "",
+   "node": "o2 sensor"
+  },
+  {
+   "code": "P014E",
+   "brand": "",
+   "ru": "Лямбда-зонд: медленное переключение «богато → бедно» (банк 2, датчик 1)",
+   "en": "O2 Sensor Slow Response - Rich to Lean Bank 2 Sensor 1",
+   "fam": "",
+   "node": "o2 sensor"
+  },
+  {
+   "code": "P014F",
+   "brand": "",
+   "ru": "Лямбда-зонд: медленное переключение «бедно → богато» (банк 2, датчик 1)",
+   "en": "O2 Sensor Slow Response - Lean to Rich Bank 2 Sensor 1",
+   "fam": "",
+   "node": "o2 sensor"
+  },
+  {
+   "code": "P01F6",
+   "brand": "",
+   "ru": "Лямбда-зонд: сигнал смещён/застыл «бедно» (банк 1, датчик 4)",
+   "en": "O2 Sensor Signal Biased/Stuck Lean Bank 1 Sensor 4",
+   "fam": "",
+   "node": "o2 sensor"
+  },
+  {
+   "code": "P01F7",
+   "brand": "",
+   "ru": "Лямбда-зонд: сигнал смещён/застыл «богато» (банк 1, датчик 4)",
+   "en": "O2 Sensor Signal Biased/Stuck Rich Bank 1 Sensor 4",
+   "fam": "",
+   "node": "o2 sensor"
+  }
+ ]
+}

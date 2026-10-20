@@ -1,0 +1,390 @@
+{
+ "name": "brand-vag_071",
+ "series": "brand",
+ "brand": "vag",
+ "nodes": [
+  "catalyst temperature",
+  "egr differential pressure sensor",
+  "egr flow adaptation not carried out",
+  "egr flow deviation",
+  "egr temperature sensor",
+  "egr valve position sensor",
+  "egr valve position sensor adaptation at limit",
+  "egr valve power stage",
+  "exhaust gas temperature",
+  "fam:evap_purge",
+  "fuel level sensor",
+  "secondary air injection",
+  "secondary air injection control module electrical",
+  "secondary air injection pump",
+  "secondary air injection system",
+  "secondary air injection system flow too",
+  "secondary air injection system flow too lean",
+  "secondary air injection system leak detected",
+  "secondary air injection valve",
+  "tank ventilation",
+  "tank ventilation valve electrical"
+ ],
+ "codes": [
+  {
+   "code": "P1401",
+   "brand": "vag",
+   "ru": "Силовой каскад клапана ЕГР: замыкание на массу",
+   "en": "EGR Valve Power Stage Short To Ground",
+   "fam": "",
+   "node": "egr valve power stage"
+  },
+  {
+   "code": "P1440",
+   "brand": "vag",
+   "ru": "Силовой каскад клапана ЕГР: обрыв",
+   "en": "EGR Valve Power Stage Open",
+   "fam": "",
+   "node": "egr valve power stage"
+  },
+  {
+   "code": "P1403",
+   "brand": "vag",
+   "ru": "Расход ЕГР: отклонение",
+   "en": "EGR Flow Deviation",
+   "fam": "",
+   "node": "egr flow deviation"
+  },
+  {
+   "code": "P1404",
+   "brand": "vag",
+   "ru": "Адаптация расхода ЕГР не выполнена",
+   "en": "EGR Flow Adaptation Not Carried Out",
+   "fam": "",
+   "node": "egr flow adaptation not carried out"
+  },
+  {
+   "code": "P1406",
+   "brand": "vag",
+   "ru": "Датчик температуры ЕГР: выход за диапазон",
+   "en": "EGR Temperature Sensor Range Performance",
+   "fam": "",
+   "node": "egr temperature sensor"
+  },
+  {
+   "code": "P1407",
+   "brand": "vag",
+   "ru": "Датчик температуры ЕГР: сигнал слишком низкий",
+   "en": "EGR Temperature Sensor Signal Too Low",
+   "fam": "",
+   "node": "egr temperature sensor"
+  },
+  {
+   "code": "P1408",
+   "brand": "vag",
+   "ru": "Датчик температуры ЕГР: сигнал слишком высокий",
+   "en": "EGR Temperature Sensor Signal Too High",
+   "fam": "",
+   "node": "egr temperature sensor"
+  },
+  {
+   "code": "P1409",
+   "brand": "vag",
+   "ru": "Клапан вентиляции бака (адсорбера): электрическая неисправность",
+   "en": "Tank Ventilation Valve Electrical Malfunction",
+   "fam": "",
+   "node": "tank ventilation valve electrical"
+  },
+  {
+   "code": "P1410",
+   "brand": "vag",
+   "ru": "Клапан вентиляции бака (адсорбера): замыкание на плюс",
+   "en": "Tank Ventilation Valve Circuit Short To B+",
+   "fam": "",
+   "node": "tank ventilation"
+  },
+  {
+   "code": "P1411",
+   "brand": "vag",
+   "ru": "Вторичный воздух (ряд 2): слишком малый поток",
+   "en": "Secondary Air Injection System Bank 2 Flow Too Lean",
+   "fam": "",
+   "node": "secondary air injection system flow too lean"
+  },
+  {
+   "code": "P1412",
+   "brand": "vag",
+   "ru": "Датчик перепада давления ЕГР: сигнал слишком низкий",
+   "en": "EGR Differential Pressure Sensor Signal Too Low",
+   "fam": "",
+   "node": "egr differential pressure sensor"
+  },
+  {
+   "code": "P1413",
+   "brand": "vag",
+   "ru": "Датчик перепада давления ЕГР: сигнал слишком высокий",
+   "en": "EGR Differential Pressure Sensor Signal Too High",
+   "fam": "",
+   "node": "egr differential pressure sensor"
+  },
+  {
+   "code": "P1414",
+   "brand": "vag",
+   "ru": "Вторичный воздух (ряд 2): обнаружена утечка",
+   "en": "Secondary Air Injection System Bank 2 Leak Detected",
+   "fam": "",
+   "node": "secondary air injection system leak detected"
+  },
+  {
+   "code": "P1424",
+   "brand": "vag",
+   "ru": "Вторичный воздух (ряд 1): обнаружена утечка",
+   "en": "Secondary Air Injection System Bank 1 Leak Detected",
+   "fam": "",
+   "node": "secondary air injection system leak detected"
+  },
+  {
+   "code": "P1417",
+   "brand": "vag",
+   "ru": "Датчик уровня топлива: сигнал слишком низкий",
+   "en": "Fuel Level Sensor Signal Too Low",
+   "fam": "",
+   "node": "fuel level sensor"
+  },
+  {
+   "code": "P1418",
+   "brand": "vag",
+   "ru": "Датчик уровня топлива: сигнал слишком высокий",
+   "en": "Fuel Level Sensor Signal Too High",
+   "fam": "",
+   "node": "fuel level sensor"
+  },
+  {
+   "code": "P1420",
+   "brand": "vag",
+   "ru": "Блок вторичного воздуха: электрическая неисправность",
+   "en": "Secondary Air Injection Control Module Electrical Malfunction",
+   "fam": "",
+   "node": "secondary air injection control module electrical"
+  },
+  {
+   "code": "P1421",
+   "brand": "vag",
+   "ru": "Клапан вторичного воздуха: замыкание на массу",
+   "en": "Secondary Air Injection Valve Circuit Short To Ground",
+   "fam": "",
+   "node": "secondary air injection"
+  },
+  {
+   "code": "P1422",
+   "brand": "vag",
+   "ru": "Клапан вторичного воздуха: замыкание на плюс",
+   "en": "Secondary Air Injection Valve Circuit Short To B+",
+   "fam": "",
+   "node": "secondary air injection"
+  },
+  {
+   "code": "P1451",
+   "brand": "vag",
+   "ru": "Система вторичного воздуха: замыкание на массу",
+   "en": "Secondary Air Injection Circuit Short To Ground",
+   "fam": "",
+   "node": "secondary air injection"
+  },
+  {
+   "code": "P1423",
+   "brand": "vag",
+   "ru": "Вторичный воздух (ряд 1): слишком малый поток",
+   "en": "Secondary Air Injection System Bank 1 Flow Too Low",
+   "fam": "",
+   "node": "secondary air injection system flow too"
+  },
+  {
+   "code": "P1425",
+   "brand": "vag",
+   "ru": "Клапан вентиляции бака: замыкание на массу",
+   "en": "",
+   "fam": "evap_purge",
+   "node": "fam:evap_purge"
+  },
+  {
+   "code": "P1426",
+   "brand": "vag",
+   "ru": "Клапан вентиляции бака: обрыв",
+   "en": "",
+   "fam": "evap_purge",
+   "node": "fam:evap_purge"
+  },
+  {
+   "code": "P1432",
+   "brand": "vag",
+   "ru": "Клапан вторичного воздуха: обрыв",
+   "en": "Secondary Air Injection Valve Open",
+   "fam": "",
+   "node": "secondary air injection valve"
+  },
+  {
+   "code": "P1433",
+   "brand": "vag",
+   "ru": "Реле насоса вторичного воздуха: обрыв цепи",
+   "en": "Secondary Air Injection Pump Relay Circuit Open",
+   "fam": "",
+   "node": "secondary air injection pump"
+  },
+  {
+   "code": "P1434",
+   "brand": "vag",
+   "ru": "Реле насоса вторичного воздуха: замыкание на плюс",
+   "en": "Secondary Air Injection Pump Relay Circuit Short To B+",
+   "fam": "",
+   "node": "secondary air injection pump"
+  },
+  {
+   "code": "P1435",
+   "brand": "vag",
+   "ru": "Реле насоса вторичного воздуха: замыкание на массу",
+   "en": "Secondary Air Injection Pump Relay Circuit Short To Ground",
+   "fam": "",
+   "node": "secondary air injection pump"
+  },
+  {
+   "code": "P1436",
+   "brand": "vag",
+   "ru": "Реле насоса вторичного воздуха: электрическая неисправность",
+   "en": "Secondary Air Injection Pump Relay Circuit Electrical Malfunction",
+   "fam": "",
+   "node": "secondary air injection pump"
+  },
+  {
+   "code": "P1439",
+   "brand": "vag",
+   "ru": "Адаптация датчика положения клапана ЕГР: достигнут предел",
+   "en": "EGR Valve Position Sensor Adaptation At Limit",
+   "fam": "",
+   "node": "egr valve position sensor adaptation at limit"
+  },
+  {
+   "code": "P1442",
+   "brand": "vag",
+   "ru": "Датчик положения клапана ЕГР: сигнал слишком высокий",
+   "en": "EGR Valve Position Sensor Signal Too High",
+   "fam": "",
+   "node": "egr valve position sensor"
+  },
+  {
+   "code": "P1443",
+   "brand": "vag",
+   "ru": "Датчик положения клапана ЕГР: сигнал слишком низкий",
+   "en": "EGR Valve Position Sensor Signal Too Low",
+   "fam": "",
+   "node": "egr valve position sensor"
+  },
+  {
+   "code": "P1444",
+   "brand": "vag",
+   "ru": "Датчик положения клапана ЕГР: выход за диапазон",
+   "en": "EGR Valve Position Sensor Range Performance",
+   "fam": "",
+   "node": "egr valve position sensor"
+  },
+  {
+   "code": "P1445",
+   "brand": "vag",
+   "ru": "Датчик температуры катализатора 2: выход за диапазон",
+   "en": "Catalyst Temperature Sensor 2 Circuit Range Performance",
+   "fam": "",
+   "node": "catalyst temperature"
+  },
+  {
+   "code": "P1446",
+   "brand": "vag",
+   "ru": "Датчик температуры катализатора: замыкание на массу",
+   "en": "Catalyst Temperature Circuit Short To Ground",
+   "fam": "",
+   "node": "catalyst temperature"
+  },
+  {
+   "code": "P1447",
+   "brand": "vag",
+   "ru": "Датчик температуры катализатора: обрыв или замыкание на плюс",
+   "en": "Catalyst Temperature Circuit Open Short To B+",
+   "fam": "",
+   "node": "catalyst temperature"
+  },
+  {
+   "code": "P1448",
+   "brand": "vag",
+   "ru": "Датчик температуры катализатора 2: замыкание на массу",
+   "en": "Catalyst Temperature Sensor 2 Circuit Short To Ground",
+   "fam": "",
+   "node": "catalyst temperature"
+  },
+  {
+   "code": "P1449",
+   "brand": "vag",
+   "ru": "Датчик температуры катализатора 2: обрыв или замыкание на плюс",
+   "en": "Catalyst Temperature Sensor 2 Circuit Open Short To B+",
+   "fam": "",
+   "node": "catalyst temperature"
+  },
+  {
+   "code": "P1450",
+   "brand": "vag",
+   "ru": "Система вторичного воздуха: замыкание на плюс",
+   "en": "Secondary Air Injection System Circuit Short To B+",
+   "fam": "",
+   "node": "secondary air injection system"
+  },
+  {
+   "code": "P1452",
+   "brand": "vag",
+   "ru": "Система вторичного воздуха: обрыв",
+   "en": "Secondary Air Injection System Circuit Open",
+   "fam": "",
+   "node": "secondary air injection system"
+  },
+  {
+   "code": "P1453",
+   "brand": "vag",
+   "ru": "Датчик температуры выхлопа 1: обрыв или замыкание на плюс",
+   "en": "Exhaust Gas Temperature Sensor 1 Open Short To B+",
+   "fam": "",
+   "node": "exhaust gas temperature"
+  },
+  {
+   "code": "P1454",
+   "brand": "vag",
+   "ru": "Датчик температуры выхлопа 1: замыкание на массу",
+   "en": "Exhaust Gas Temperature Sensor 1 Short To Ground",
+   "fam": "",
+   "node": "exhaust gas temperature"
+  },
+  {
+   "code": "P1455",
+   "brand": "vag",
+   "ru": "Датчик температуры выхлопа 1: выход за диапазон",
+   "en": "Exhaust Gas Temperature Sensor 1 Range Performance",
+   "fam": "",
+   "node": "exhaust gas temperature"
+  },
+  {
+   "code": "P1457",
+   "brand": "vag",
+   "ru": "Датчик температуры выхлопа 2: обрыв или замыкание на плюс",
+   "en": "Exhaust Gas Temperature Sensor 2 Open Short To B+",
+   "fam": "",
+   "node": "exhaust gas temperature"
+  },
+  {
+   "code": "P1458",
+   "brand": "vag",
+   "ru": "Датчик температуры выхлопа 2: замыкание на массу",
+   "en": "Exhaust Gas Temperature Sensor 2 Short To Ground",
+   "fam": "",
+   "node": "exhaust gas temperature"
+  },
+  {
+   "code": "P1459",
+   "brand": "vag",
+   "ru": "Датчик температуры выхлопа 2: выход за диапазон",
+   "en": "Exhaust Gas Temperature Sensor 2 Range Performance",
+   "fam": "",
+   "node": "exhaust gas temperature"
+  }
+ ]
+}

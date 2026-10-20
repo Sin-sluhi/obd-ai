@@ -1,0 +1,364 @@
+{
+ "name": "sae_168",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "alternative fuel hydraulic pressure",
+  "alternative fuel hydraulic pressure sensor",
+  "alternative fuel pump a",
+  "alternative fuel pump a compression stroke valve",
+  "alternative fuel pump b",
+  "alternative fuel pump b compression stroke valve",
+  "alternative fuel pump c",
+  "alternative fuel pump c compression stroke valve",
+  "alternative fuel return line insufficient flow",
+  "alternative fuel return line valve",
+  "alternative fuel tank select valve a",
+  "alternative fuel tank select valve a control",
+  "alternative fuel tank select valve b",
+  "alternative fuel tank select valve c",
+  "alternative fuel vaporizer a",
+  "alternative fuel vaporizer b",
+  "alternative fuel vaporizer c",
+  "cold start egr b flow excessive detected",
+  "cold start egr b flow insufficient detected"
+ ],
+ "codes": [
+  {
+   "code": "P2A7A",
+   "brand": "",
+   "ru": "Датчик гидравлического давления ГБО: цепь",
+   "en": "Alternative Fuel Hydraulic Pressure Sensor Circuit",
+   "fam": "",
+   "node": "alternative fuel hydraulic pressure"
+  },
+  {
+   "code": "P2A7C",
+   "brand": "",
+   "ru": "Датчик гидравлического давления ГБО: низкий уровень сигнала в цепи",
+   "en": "Alternative Fuel Hydraulic Pressure Sensor Circuit Low",
+   "fam": "",
+   "node": "alternative fuel hydraulic pressure"
+  },
+  {
+   "code": "P2A7D",
+   "brand": "",
+   "ru": "Датчик гидравлического давления ГБО: высокий уровень сигнала в цепи",
+   "en": "Alternative Fuel Hydraulic Pressure Sensor Circuit High",
+   "fam": "",
+   "node": "alternative fuel hydraulic pressure"
+  },
+  {
+   "code": "P2A7E",
+   "brand": "",
+   "ru": "Датчик гидравлического давления ГБО: прерывистый / нестабильный сигнал",
+   "en": "Alternative Fuel Hydraulic Pressure Sensor Circuit Intermitttent/Erratic",
+   "fam": "",
+   "node": "alternative fuel hydraulic pressure"
+  },
+  {
+   "code": "P2A7B",
+   "brand": "",
+   "ru": "Датчик гидравлического давления ГБО: вне допустимого диапазона",
+   "en": "Alternative Fuel Hydraulic Pressure Sensor Range/Performance",
+   "fam": "",
+   "node": "alternative fuel hydraulic pressure sensor"
+  },
+  {
+   "code": "P2A7F",
+   "brand": "",
+   "ru": "Клапан такта сжатия газового насоса A: обрыв цепи управления",
+   "en": "Alternative Fuel Pump A Compression Stroke Valve Control Circuit/Open",
+   "fam": "",
+   "node": "alternative fuel pump a compression stroke valve"
+  },
+  {
+   "code": "P2A80",
+   "brand": "",
+   "ru": "Клапан такта сжатия газового насоса A: цепь управления вне диапазона",
+   "en": "Alternative Fuel Pump A Compression Stroke Valve Control Circuit Range/Performance",
+   "fam": "",
+   "node": "alternative fuel pump a compression stroke valve"
+  },
+  {
+   "code": "P2A81",
+   "brand": "",
+   "ru": "Клапан такта сжатия газового насоса A: низкий уровень в цепи управления",
+   "en": "Alternative Fuel Pump A Compression Stroke Valve Control Circuit Low",
+   "fam": "",
+   "node": "alternative fuel pump a compression stroke valve"
+  },
+  {
+   "code": "P2A82",
+   "brand": "",
+   "ru": "Клапан такта сжатия газового насоса A: высокий уровень в цепи управления",
+   "en": "Alternative Fuel Pump A Compression Stroke Valve Control Circuit High",
+   "fam": "",
+   "node": "alternative fuel pump a compression stroke valve"
+  },
+  {
+   "code": "P2A83",
+   "brand": "",
+   "ru": "Клапан такта сжатия газового насоса B: обрыв цепи управления",
+   "en": "Alternative Fuel Pump B Compression Stroke Valve Control Circuit/Open",
+   "fam": "",
+   "node": "alternative fuel pump b compression stroke valve"
+  },
+  {
+   "code": "P2A84",
+   "brand": "",
+   "ru": "Клапан такта сжатия газового насоса B: цепь управления вне диапазона",
+   "en": "Alternative Fuel Pump B Compression Stroke Valve Control Circuit Range/Performance",
+   "fam": "",
+   "node": "alternative fuel pump b compression stroke valve"
+  },
+  {
+   "code": "P2A85",
+   "brand": "",
+   "ru": "Клапан такта сжатия газового насоса B: низкий уровень в цепи управления",
+   "en": "Alternative Fuel Pump B Compression Stroke Valve Control Circuit Low",
+   "fam": "",
+   "node": "alternative fuel pump b compression stroke valve"
+  },
+  {
+   "code": "P2A86",
+   "brand": "",
+   "ru": "Клапан такта сжатия газового насоса B: высокий уровень в цепи управления",
+   "en": "Alternative Fuel Pump B Compression Stroke Valve Control Circuit High",
+   "fam": "",
+   "node": "alternative fuel pump b compression stroke valve"
+  },
+  {
+   "code": "P2A87",
+   "brand": "",
+   "ru": "Клапан такта сжатия газового насоса C: обрыв цепи управления",
+   "en": "Alternative Fuel Pump C Compression Stroke Valve Control Circuit/Open",
+   "fam": "",
+   "node": "alternative fuel pump c compression stroke valve"
+  },
+  {
+   "code": "P2A88",
+   "brand": "",
+   "ru": "Клапан такта сжатия газового насоса C: цепь управления вне диапазона",
+   "en": "Alternative Fuel Pump C Compression Stroke Valve Control Circuit Range/Performance",
+   "fam": "",
+   "node": "alternative fuel pump c compression stroke valve"
+  },
+  {
+   "code": "P2A89",
+   "brand": "",
+   "ru": "Клапан такта сжатия газового насоса C: низкий уровень в цепи управления",
+   "en": "Alternative Fuel Pump C Compression Stroke Valve Control Circuit Low",
+   "fam": "",
+   "node": "alternative fuel pump c compression stroke valve"
+  },
+  {
+   "code": "P2A8A",
+   "brand": "",
+   "ru": "Клапан такта сжатия газового насоса C: высокий уровень в цепи управления",
+   "en": "Alternative Fuel Pump C Compression Stroke Valve Control Circuit High",
+   "fam": "",
+   "node": "alternative fuel pump c compression stroke valve"
+  },
+  {
+   "code": "P2A8B",
+   "brand": "",
+   "ru": "Редуктор-испаритель ГБО A: работа нарушена",
+   "en": "Alternative Fuel Vaporizer A Performance",
+   "fam": "",
+   "node": "alternative fuel vaporizer a"
+  },
+  {
+   "code": "P2A8C",
+   "brand": "",
+   "ru": "Редуктор-испаритель ГБО B: работа нарушена",
+   "en": "Alternative Fuel Vaporizer B Performance",
+   "fam": "",
+   "node": "alternative fuel vaporizer b"
+  },
+  {
+   "code": "P2A8D",
+   "brand": "",
+   "ru": "Редуктор-испаритель ГБО C: работа нарушена",
+   "en": "Alternative Fuel Vaporizer C Performance",
+   "fam": "",
+   "node": "alternative fuel vaporizer c"
+  },
+  {
+   "code": "P2A8E",
+   "brand": "",
+   "ru": "Насос ГБО A: работа нарушена",
+   "en": "Alternative Fuel Pump A Performance",
+   "fam": "",
+   "node": "alternative fuel pump a"
+  },
+  {
+   "code": "P2A8F",
+   "brand": "",
+   "ru": "Насос ГБО B: работа нарушена",
+   "en": "Alternative Fuel Pump B Performance",
+   "fam": "",
+   "node": "alternative fuel pump b"
+  },
+  {
+   "code": "P2A90",
+   "brand": "",
+   "ru": "Насос ГБО C: работа нарушена",
+   "en": "Alternative Fuel Pump C Performance",
+   "fam": "",
+   "node": "alternative fuel pump c"
+  },
+  {
+   "code": "P2A91",
+   "brand": "",
+   "ru": "Клапан выбора баллона ГБО A: обрыв цепи управления",
+   "en": "Alternative Fuel Tank Select Valve A Control Circuit/Open",
+   "fam": "",
+   "node": "alternative fuel tank select valve a"
+  },
+  {
+   "code": "P2A93",
+   "brand": "",
+   "ru": "Клапан выбора баллона ГБО A: низкий уровень в цепи управления",
+   "en": "Alternative Fuel Tank Select Valve A Control Circuit Low",
+   "fam": "",
+   "node": "alternative fuel tank select valve a"
+  },
+  {
+   "code": "P2A94",
+   "brand": "",
+   "ru": "Клапан выбора баллона ГБО A: высокий уровень в цепи управления",
+   "en": "Alternative Fuel Tank Select Valve A Control Circuit High",
+   "fam": "",
+   "node": "alternative fuel tank select valve a"
+  },
+  {
+   "code": "P2A92",
+   "brand": "",
+   "ru": "Клапан выбора баллона ГБО A: нарушено управление",
+   "en": "Alternative Fuel Tank Select Valve A Control Performance",
+   "fam": "",
+   "node": "alternative fuel tank select valve a control"
+  },
+  {
+   "code": "P2A95",
+   "brand": "",
+   "ru": "Клапан выбора баллона ГБО B: обрыв цепи управления",
+   "en": "Alternative Fuel Tank Select Valve B Control Circuit/Open",
+   "fam": "",
+   "node": "alternative fuel tank select valve b"
+  },
+  {
+   "code": "P2A96",
+   "brand": "",
+   "ru": "Клапан выбора баллона ГБО B: нарушена работа цепи управления",
+   "en": "Alternative Fuel Tank Select Valve B Control Circuit Performance",
+   "fam": "",
+   "node": "alternative fuel tank select valve b"
+  },
+  {
+   "code": "P2A97",
+   "brand": "",
+   "ru": "Клапан выбора баллона ГБО B: низкий уровень в цепи управления",
+   "en": "Alternative Fuel Tank Select Valve B Control Circuit Low",
+   "fam": "",
+   "node": "alternative fuel tank select valve b"
+  },
+  {
+   "code": "P2A98",
+   "brand": "",
+   "ru": "Клапан выбора баллона ГБО B: высокий уровень в цепи управления",
+   "en": "Alternative Fuel Tank Select Valve B Control Circuit High",
+   "fam": "",
+   "node": "alternative fuel tank select valve b"
+  },
+  {
+   "code": "P2A99",
+   "brand": "",
+   "ru": "Клапан выбора баллона ГБО C: обрыв цепи управления",
+   "en": "Alternative Fuel Tank Select Valve C Control Circuit/Open",
+   "fam": "",
+   "node": "alternative fuel tank select valve c"
+  },
+  {
+   "code": "P2A9A",
+   "brand": "",
+   "ru": "Клапан выбора баллона ГБО C: нарушена работа цепи управления",
+   "en": "Alternative Fuel Tank Select Valve C Control Circuit Performance",
+   "fam": "",
+   "node": "alternative fuel tank select valve c"
+  },
+  {
+   "code": "P2A9B",
+   "brand": "",
+   "ru": "Клапан выбора баллона ГБО C: низкий уровень в цепи управления",
+   "en": "Alternative Fuel Tank Select Valve C Control Circuit Low",
+   "fam": "",
+   "node": "alternative fuel tank select valve c"
+  },
+  {
+   "code": "P2A9C",
+   "brand": "",
+   "ru": "Клапан выбора баллона ГБО C: высокий уровень в цепи управления",
+   "en": "Alternative Fuel Tank Select Valve C Control Circuit High",
+   "fam": "",
+   "node": "alternative fuel tank select valve c"
+  },
+  {
+   "code": "P2A9E",
+   "brand": "",
+   "ru": "Клапан обратной линии ГБО: обрыв цепи управления",
+   "en": "Alternative Fuel Return Line Valve Control Circuit/Open",
+   "fam": "",
+   "node": "alternative fuel return line valve"
+  },
+  {
+   "code": "P2A9F",
+   "brand": "",
+   "ru": "Клапан обратной линии ГБО: цепь управления вне диапазона",
+   "en": "Alternative Fuel Return Line Valve Control Circuit Range/Performance",
+   "fam": "",
+   "node": "alternative fuel return line valve"
+  },
+  {
+   "code": "P2AA0",
+   "brand": "",
+   "ru": "Клапан обратной линии ГБО: низкий уровень в цепи управления",
+   "en": "Alternative Fuel Return Line Valve Control Circuit Low",
+   "fam": "",
+   "node": "alternative fuel return line valve"
+  },
+  {
+   "code": "P2AA1",
+   "brand": "",
+   "ru": "Клапан обратной линии ГБО: высокий уровень в цепи управления",
+   "en": "Alternative Fuel Return Line Valve Control Circuit High",
+   "fam": "",
+   "node": "alternative fuel return line valve"
+  },
+  {
+   "code": "P2AA2",
+   "brand": "",
+   "ru": "ГБО: недостаточный поток в обратной линии",
+   "en": "Alternative Fuel Return Line Insufficient Flow",
+   "fam": "",
+   "node": "alternative fuel return line insufficient flow"
+  },
+  {
+   "code": "P2AA3",
+   "brand": "",
+   "ru": "Холодный пуск: недостаточный расход EGR B",
+   "en": "Cold Start EGR B Flow Insufficient Detected",
+   "fam": "",
+   "node": "cold start egr b flow insufficient detected"
+  },
+  {
+   "code": "P2AA4",
+   "brand": "",
+   "ru": "Холодный пуск: избыточный расход EGR B",
+   "en": "Cold Start EGR B Flow Excessive Detected",
+   "fam": "",
+   "node": "cold start egr b flow excessive detected"
+  }
+ ]
+}

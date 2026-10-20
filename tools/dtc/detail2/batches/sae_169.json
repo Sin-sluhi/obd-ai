@@ -1,0 +1,383 @@
+{
+ "name": "sae_169",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "catalyst heater control module",
+  "catalyst heater control module supply voltage",
+  "charge air cooler coolant temperature sensor b",
+  "cold start intake manifold runner control",
+  "diesel fuel presence",
+  "engine coolant bypass valve b position",
+  "intake air o2 sensor reference voltage",
+  "particulate matter sensor processor",
+  "reductant temperature sensor b",
+  "throttle pedal position sensor switch c g voltage correlation",
+  "turbocharger supercharger wastegate actuator a driver current temperature too",
+  "turbocharger supercharger wastegate actuator b driver current temperature too",
+  "wastegate position sensor a",
+  "wastegate position sensor b"
+ ],
+ "codes": [
+  {
+   "code": "P2AA7",
+   "brand": "",
+   "ru": "Датчик положения перепускного клапана охлаждающей жидкости B: цепь",
+   "en": "Engine Coolant Bypass Valve B Position Sensor Circuit",
+   "fam": "",
+   "node": "engine coolant bypass valve b position"
+  },
+  {
+   "code": "P2AA8",
+   "brand": "",
+   "ru": "Датчик положения перепускного клапана охлаждающей жидкости B: сигнал вне диапазона",
+   "en": "Engine Coolant Bypass Valve B Position Sensor Circuit Range/Performance",
+   "fam": "",
+   "node": "engine coolant bypass valve b position"
+  },
+  {
+   "code": "P2AA9",
+   "brand": "",
+   "ru": "Датчик положения перепускного клапана охлаждающей жидкости B: низкий уровень сигнала в цепи",
+   "en": "Engine Coolant Bypass Valve B Position Sensor Circuit Low",
+   "fam": "",
+   "node": "engine coolant bypass valve b position"
+  },
+  {
+   "code": "P2AAA",
+   "brand": "",
+   "ru": "Датчик положения перепускного клапана охлаждающей жидкости B: высокий уровень сигнала в цепи",
+   "en": "Engine Coolant Bypass Valve B Position Sensor Circuit High",
+   "fam": "",
+   "node": "engine coolant bypass valve b position"
+  },
+  {
+   "code": "P2AAB",
+   "brand": "",
+   "ru": "Датчик положения перепускного клапана охлаждающей жидкости B: прерывистый / нестабильный сигнал",
+   "en": "Engine Coolant Bypass Valve B Position Sensor Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "engine coolant bypass valve b position"
+  },
+  {
+   "code": "P2AAC",
+   "brand": "",
+   "ru": "Датчик наличия дизельного топлива: цепь",
+   "en": "Diesel Fuel Presence Sensor Circuit",
+   "fam": "",
+   "node": "diesel fuel presence"
+  },
+  {
+   "code": "P2AAD",
+   "brand": "",
+   "ru": "Датчик наличия дизельного топлива: сигнал вне диапазона",
+   "en": "Diesel Fuel Presence Sensor Circuit Range/Performance",
+   "fam": "",
+   "node": "diesel fuel presence"
+  },
+  {
+   "code": "P2AAE",
+   "brand": "",
+   "ru": "Датчик наличия дизельного топлива: низкий уровень сигнала в цепи",
+   "en": "Diesel Fuel Presence Sensor Circuit Low",
+   "fam": "",
+   "node": "diesel fuel presence"
+  },
+  {
+   "code": "P2AAF",
+   "brand": "",
+   "ru": "Датчик наличия дизельного топлива: высокий уровень сигнала в цепи",
+   "en": "Diesel Fuel Presence Sensor Circuit High",
+   "fam": "",
+   "node": "diesel fuel presence"
+  },
+  {
+   "code": "P2AB0",
+   "brand": "",
+   "ru": "Процессор датчика сажи: работа нарушена",
+   "en": "Particulate Matter Sensor Processor Performance",
+   "fam": "",
+   "node": "particulate matter sensor processor"
+  },
+  {
+   "code": "P2AB1",
+   "brand": "",
+   "ru": "Блок подогрева катализатора: работа нарушена",
+   "en": "Catalyst Heater Control Module Performance",
+   "fam": "",
+   "node": "catalyst heater control module"
+  },
+  {
+   "code": "P2AB2",
+   "brand": "",
+   "ru": "Блок подогрева катализатора: напряжение питания",
+   "en": "Catalyst Heater Control Module Supply Voltage",
+   "fam": "",
+   "node": "catalyst heater control module supply voltage"
+  },
+  {
+   "code": "P2AB3",
+   "brand": "",
+   "ru": "Заслонки впускного коллектора при холодном пуске: заклинил открытым (банк 1)",
+   "en": "Cold Start Intake Manifold Runner Control Stuck Open Bank 1",
+   "fam": "",
+   "node": "cold start intake manifold runner control"
+  },
+  {
+   "code": "P2AB4",
+   "brand": "",
+   "ru": "Заслонки впускного коллектора при холодном пуске: заклинил открытым (банк 2)",
+   "en": "Cold Start Intake Manifold Runner Control Stuck Open Bank 2",
+   "fam": "",
+   "node": "cold start intake manifold runner control"
+  },
+  {
+   "code": "P2AB5",
+   "brand": "",
+   "ru": "Заслонки впускного коллектора при холодном пуске: заклинил закрытым (банк 1)",
+   "en": "Cold Start Intake Manifold Runner Control Stuck Closed Bank 1",
+   "fam": "",
+   "node": "cold start intake manifold runner control"
+  },
+  {
+   "code": "P2AB6",
+   "brand": "",
+   "ru": "Заслонки впускного коллектора при холодном пуске: заклинил закрытым (банк 2)",
+   "en": "Cold Start Intake Manifold Runner Control Stuck Closed Bank 2",
+   "fam": "",
+   "node": "cold start intake manifold runner control"
+  },
+  {
+   "code": "P2AB7",
+   "brand": "",
+   "ru": "Датчик положения вейстгейта A: цепь",
+   "en": "Wastegate Position Sensor A Circuit",
+   "fam": "",
+   "node": "wastegate position sensor a"
+  },
+  {
+   "code": "P2AB8",
+   "brand": "",
+   "ru": "Датчик положения вейстгейта A: низкий уровень сигнала в цепи",
+   "en": "Wastegate Position Sensor A Circuit Low",
+   "fam": "",
+   "node": "wastegate position sensor a"
+  },
+  {
+   "code": "P2AB9",
+   "brand": "",
+   "ru": "Датчик положения вейстгейта A: высокий уровень сигнала в цепи",
+   "en": "Wastegate Position Sensor A Circuit High",
+   "fam": "",
+   "node": "wastegate position sensor a"
+  },
+  {
+   "code": "P2B81",
+   "brand": "",
+   "ru": "Датчик положения вейстгейта A: нарушена работа цепи",
+   "en": "Wastegate Position Sensor A Circuit Performance",
+   "fam": "",
+   "node": "wastegate position sensor a"
+  },
+  {
+   "code": "P2ABA",
+   "brand": "",
+   "ru": "Датчик положения вейстгейта B: цепь",
+   "en": "Wastegate Position Sensor B Circuit",
+   "fam": "",
+   "node": "wastegate position sensor b"
+  },
+  {
+   "code": "P2ABB",
+   "brand": "",
+   "ru": "Датчик положения вейстгейта B: низкий уровень сигнала в цепи",
+   "en": "Wastegate Position Sensor B Circuit Low",
+   "fam": "",
+   "node": "wastegate position sensor b"
+  },
+  {
+   "code": "P2ABC",
+   "brand": "",
+   "ru": "Датчик положения вейстгейта B: высокий уровень сигнала в цепи",
+   "en": "Wastegate Position Sensor B Circuit High",
+   "fam": "",
+   "node": "wastegate position sensor b"
+  },
+  {
+   "code": "P2B82",
+   "brand": "",
+   "ru": "Датчик положения вейстгейта B: нарушена работа цепи",
+   "en": "Wastegate Position Sensor B Circuit Performance",
+   "fam": "",
+   "node": "wastegate position sensor b"
+  },
+  {
+   "code": "P2ABD",
+   "brand": "",
+   "ru": "Привод вейстгейта A: драйвер — перегрузка по току / перегрев",
+   "en": "Turbocharger/Supercharger Wastegate Actuator A Driver Current/Temperature Too High",
+   "fam": "",
+   "node": "turbocharger supercharger wastegate actuator a driver current temperature too"
+  },
+  {
+   "code": "P2ABE",
+   "brand": "",
+   "ru": "Привод вейстгейта B: драйвер — перегрузка по току / перегрев",
+   "en": "Turbocharger/Supercharger Wastegate Actuator B Driver Current/Temperature Too High",
+   "fam": "",
+   "node": "turbocharger supercharger wastegate actuator b driver current temperature too"
+  },
+  {
+   "code": "P2ABF",
+   "brand": "",
+   "ru": "Кислородный датчик во впуске, опорное напряжение: обрыв цепи (банк 1)",
+   "en": "Intake Air O2 Sensor Reference Voltage Circuit/Open Bank 1",
+   "fam": "",
+   "node": "intake air o2 sensor reference voltage"
+  },
+  {
+   "code": "P2AC0",
+   "brand": "",
+   "ru": "Кислородный датчик во впуске, опорное напряжение: сигнал вне диапазона (банк 1)",
+   "en": "Intake Air O2 Sensor Reference Voltage Circuit Range/Performance Bank 1",
+   "fam": "",
+   "node": "intake air o2 sensor reference voltage"
+  },
+  {
+   "code": "P2AC1",
+   "brand": "",
+   "ru": "Кислородный датчик во впуске, опорное напряжение: низкий уровень сигнала в цепи (банк 1)",
+   "en": "Intake Air O2 Sensor Reference Voltage Circuit Low Bank 1",
+   "fam": "",
+   "node": "intake air o2 sensor reference voltage"
+  },
+  {
+   "code": "P2AC2",
+   "brand": "",
+   "ru": "Кислородный датчик во впуске, опорное напряжение: высокий уровень сигнала в цепи (банк 1)",
+   "en": "Intake Air O2 Sensor Reference Voltage Circuit High Bank 1",
+   "fam": "",
+   "node": "intake air o2 sensor reference voltage"
+  },
+  {
+   "code": "P2AC3",
+   "brand": "",
+   "ru": "Кислородный датчик во впуске, опорное напряжение: обрыв цепи (банк 2)",
+   "en": "Intake Air O2 Sensor Reference Voltage Circuit/Open Bank 2",
+   "fam": "",
+   "node": "intake air o2 sensor reference voltage"
+  },
+  {
+   "code": "P2AC4",
+   "brand": "",
+   "ru": "Кислородный датчик во впуске, опорное напряжение: сигнал вне диапазона (банк 2)",
+   "en": "Intake Air O2 Sensor Reference Voltage Circuit Range/Performance Bank 2",
+   "fam": "",
+   "node": "intake air o2 sensor reference voltage"
+  },
+  {
+   "code": "P2AC5",
+   "brand": "",
+   "ru": "Кислородный датчик во впуске, опорное напряжение: низкий уровень сигнала в цепи (банк 2)",
+   "en": "Intake Air O2 Sensor Reference Voltage Circuit Low Bank 2",
+   "fam": "",
+   "node": "intake air o2 sensor reference voltage"
+  },
+  {
+   "code": "P2AC6",
+   "brand": "",
+   "ru": "Кислородный датчик во впуске, опорное напряжение: высокий уровень сигнала в цепи (банк 2)",
+   "en": "Intake Air O2 Sensor Reference Voltage Circuit High Bank 2",
+   "fam": "",
+   "node": "intake air o2 sensor reference voltage"
+  },
+  {
+   "code": "P2AC7",
+   "brand": "",
+   "ru": "Датчик температуры жидкости охлаждения интеркулера B: цепь",
+   "en": "Charge Air Cooler Coolant Temperature Sensor B Circuit",
+   "fam": "",
+   "node": "charge air cooler coolant temperature sensor b"
+  },
+  {
+   "code": "P2AC8",
+   "brand": "",
+   "ru": "Датчик температуры жидкости охлаждения интеркулера B: сигнал вне диапазона",
+   "en": "Charge Air Cooler Coolant Temperature Sensor B Circuit Range/Performance",
+   "fam": "",
+   "node": "charge air cooler coolant temperature sensor b"
+  },
+  {
+   "code": "P2AC9",
+   "brand": "",
+   "ru": "Датчик температуры жидкости охлаждения интеркулера B: низкий уровень сигнала в цепи",
+   "en": "Charge Air Cooler Coolant Temperature Sensor B Circuit Low",
+   "fam": "",
+   "node": "charge air cooler coolant temperature sensor b"
+  },
+  {
+   "code": "P2ACA",
+   "brand": "",
+   "ru": "Датчик температуры жидкости охлаждения интеркулера B: высокий уровень сигнала в цепи",
+   "en": "Charge Air Cooler Coolant Temperature Sensor B Circuit High",
+   "fam": "",
+   "node": "charge air cooler coolant temperature sensor b"
+  },
+  {
+   "code": "P2ACB",
+   "brand": "",
+   "ru": "Датчик температуры жидкости охлаждения интеркулера B: прерывистый / нестабильный сигнал",
+   "en": "Charge Air Cooler Coolant Temperature Sensor B Intermittent/Erratic",
+   "fam": "",
+   "node": "charge air cooler coolant temperature sensor b"
+  },
+  {
+   "code": "P2ACC",
+   "brand": "",
+   "ru": "Датчик температуры мочевины B: цепь",
+   "en": "Reductant Temperature Sensor B Circuit",
+   "fam": "",
+   "node": "reductant temperature sensor b"
+  },
+  {
+   "code": "P2ACD",
+   "brand": "",
+   "ru": "Датчик температуры мочевины B: сигнал вне диапазона",
+   "en": "Reductant Temperature Sensor B Circuit Range/Performance",
+   "fam": "",
+   "node": "reductant temperature sensor b"
+  },
+  {
+   "code": "P2ACE",
+   "brand": "",
+   "ru": "Датчик температуры мочевины B: низкий уровень сигнала в цепи",
+   "en": "Reductant Temperature Sensor B Circuit Low",
+   "fam": "",
+   "node": "reductant temperature sensor b"
+  },
+  {
+   "code": "P2ACF",
+   "brand": "",
+   "ru": "Датчик температуры мочевины B: высокий уровень сигнала в цепи",
+   "en": "Reductant Temperature Sensor B Circuit High",
+   "fam": "",
+   "node": "reductant temperature sensor b"
+  },
+  {
+   "code": "P2AD0",
+   "brand": "",
+   "ru": "Датчик температуры мочевины B: прерывистый сигнал в цепи",
+   "en": "Reductant Temperature Sensor B Circuit Intermittent",
+   "fam": "",
+   "node": "reductant temperature sensor b"
+  },
+  {
+   "code": "P2AD1",
+   "brand": "",
+   "ru": "Датчики положения дросселя/педали C/G: рассогласование напряжений",
+   "en": "Throttle/Pedal Position Sensor/Switch C/G Voltage Correlation",
+   "fam": "",
+   "node": "throttle pedal position sensor switch c g voltage correlation"
+  }
+ ]
+}

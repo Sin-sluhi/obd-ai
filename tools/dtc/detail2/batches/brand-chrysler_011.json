@@ -1,0 +1,399 @@
+{
+ "name": "brand-chrysler_011",
+ "series": "brand",
+ "brand": "chrysler",
+ "nodes": [
+  "5 volt supply",
+  "air injection",
+  "air system",
+  "auxiliary 5 volt",
+  "auxiliary 5 volt supply",
+  "barometric pressure",
+  "barometric pressure sensor",
+  "battery temp sensor voltage out of limit",
+  "battery temperature sensor voltage too",
+  "catalyst temperature",
+  "catalytic converter overheat detected",
+  "cooling fan",
+  "cooling fan control system",
+  "eatx rpm pulse generator",
+  "engine coolilng system",
+  "evap leak monitor pinched hose",
+  "evap vacuum switch",
+  "evaporative emission system flow during non purge",
+  "fuel level",
+  "fuel tank pressure system",
+  "hi speed rad fan ctrl",
+  "intake air",
+  "leak detection pump",
+  "leak detection pump switch or mechanical fault",
+  "radiator fan control",
+  "ru:клапан гидравлического вентилятора охлаждения",
+  "ru:реле высокой скорости вентилятора",
+  "ru:реле массы высокой скорости вентилятора",
+  "ru:реле низкой скорости вентилятора",
+  "secondary air injection system",
+  "secondary air injection system relay a",
+  "starter",
+  "theft deterrent system no password received",
+  "theft deterrent system password incorrect",
+  "too little secondary air",
+  "too much secondary air",
+  "transmission fan",
+  "vehicle speed"
+ ],
+ "codes": [
+  {
+   "code": "P1410",
+   "brand": "chrysler",
+   "ru": "Система давления в топливном баке",
+   "en": "Fuel Tank Pressure System",
+   "fam": "",
+   "node": "fuel tank pressure system"
+  },
+  {
+   "code": "P1415",
+   "brand": "chrysler",
+   "ru": "Система вторичного воздуха",
+   "en": "Secondary Air Injection (AIR) System",
+   "fam": "",
+   "node": "secondary air injection system"
+  },
+  {
+   "code": "P1416",
+   "brand": "chrysler",
+   "ru": "Система вторичного воздуха, ряд 1",
+   "en": "AIR System Bank 1",
+   "fam": "",
+   "node": "air system"
+  },
+  {
+   "code": "P1418",
+   "brand": "chrysler",
+   "ru": "Реле A вторичного воздуха: высокий сигнал цепи управления",
+   "en": "Secondary Air Injection System Relay A Control Circuit High",
+   "fam": "",
+   "node": "secondary air injection system relay a"
+  },
+  {
+   "code": "P1420",
+   "brand": "chrysler",
+   "ru": "Датчик низкого давления впускного воздуха: низкое напряжение",
+   "en": "Intake Air Low Pressure Switch Circuit Low Voltage",
+   "fam": "",
+   "node": "intake air"
+  },
+  {
+   "code": "P1421",
+   "brand": "chrysler",
+   "ru": "Датчик низкого давления впускного воздуха: высокое напряжение",
+   "en": "Intake Air Low Pressure Switch Circuit High Voltage",
+   "fam": "",
+   "node": "intake air"
+  },
+  {
+   "code": "P1423",
+   "brand": "chrysler",
+   "ru": "Датчик высокого давления впускного воздуха: высокое напряжение",
+   "en": "Intake Air High Pressure Switch Circuit High Voltage",
+   "fam": "",
+   "node": "intake air"
+  },
+  {
+   "code": "P1431",
+   "brand": "chrysler",
+   "ru": "Датчик уровня топлива 2: работа",
+   "en": "Fuel Level Sensor 2 Performance",
+   "fam": "",
+   "node": "fuel level"
+  },
+  {
+   "code": "P1432",
+   "brand": "chrysler",
+   "ru": "Датчик уровня топлива 2: низкое напряжение",
+   "en": "Fuel Level Sensor 2 Circuit Low Voltage",
+   "fam": "",
+   "node": "fuel level"
+  },
+  {
+   "code": "P1433",
+   "brand": "chrysler",
+   "ru": "Датчик уровня топлива 2: высокое напряжение",
+   "en": "Fuel Level Sensor 2 Circuit High Voltage",
+   "fam": "",
+   "node": "fuel level"
+  },
+  {
+   "code": "P1441",
+   "brand": "chrysler",
+   "ru": "Поток в системе улавливания паров вне режима продувки",
+   "en": "Evaporative Emission (EVAP) System Flow During Non-Purge",
+   "fam": "",
+   "node": "evaporative emission system flow during non purge"
+  },
+  {
+   "code": "P1442",
+   "brand": "chrysler",
+   "ru": "Вакуумный выключатель системы улавливания паров: высокое напряжение при включении зажигания",
+   "en": "EVAP Vacuum Switch High Voltage During Ignition On",
+   "fam": "",
+   "node": "evap vacuum switch"
+  },
+  {
+   "code": "P1450",
+   "brand": "chrysler",
+   "ru": "Датчик атмосферного давления: цепь",
+   "en": "Barometric Pressure Sensor Circuit",
+   "fam": "",
+   "node": "barometric pressure"
+  },
+  {
+   "code": "P1451",
+   "brand": "chrysler",
+   "ru": "Датчик атмосферного давления: работа",
+   "en": "Barometric Pressure Sensor Performance",
+   "fam": "",
+   "node": "barometric pressure sensor"
+  },
+  {
+   "code": "P1460",
+   "brand": "chrysler",
+   "ru": "Система управления вентилятором охлаждения",
+   "en": "Cooling Fan Control System",
+   "fam": "",
+   "node": "cooling fan control system"
+  },
+  {
+   "code": "P1475",
+   "brand": "chrysler",
+   "ru": "Вспомогательное питание 5 В слишком высокое",
+   "en": "Auxiliary 5 Volt Output Too High",
+   "fam": "",
+   "node": "auxiliary 5 volt"
+  },
+  {
+   "code": "P1476",
+   "brand": "chrysler",
+   "ru": "Слишком мало вторичного воздуха",
+   "en": "Too Little Secondary Air",
+   "fam": "",
+   "node": "too little secondary air"
+  },
+  {
+   "code": "P1477",
+   "brand": "chrysler",
+   "ru": "Слишком много вторичного воздуха",
+   "en": "Too Much Secondary Air",
+   "fam": "",
+   "node": "too much secondary air"
+  },
+  {
+   "code": "P1478",
+   "brand": "chrysler",
+   "ru": "Датчик температуры АКБ: напряжение вне пределов",
+   "en": "Battery Temp Sensor Voltage Out Of Limit",
+   "fam": "",
+   "node": "battery temp sensor voltage out of limit"
+  },
+  {
+   "code": "P1479",
+   "brand": "chrysler",
+   "ru": "Реле вентилятора коробки: обрыв или замыкание",
+   "en": "Transmission Fan Relay Circuit Open Or Shorted",
+   "fam": "",
+   "node": "transmission fan"
+  },
+  {
+   "code": "P1480",
+   "brand": "chrysler",
+   "ru": "Вентилятор охлаждения 1: высокий сигнал цепи управления",
+   "en": "Cooling Fan 1 Control Circuit High",
+   "fam": "",
+   "node": "cooling fan"
+  },
+  {
+   "code": "P1481",
+   "brand": "chrysler",
+   "ru": "Сигнал оборотов от АКПП для контроля пропусков",
+   "en": "EATX RPM Pulse Generator Signal For Misfire Detection",
+   "fam": "",
+   "node": "eatx rpm pulse generator"
+  },
+  {
+   "code": "P1482",
+   "brand": "chrysler",
+   "ru": "Датчик температуры катализатора: замыкание на массу",
+   "en": "Catalyst Temperature Sensor Circuit Shorted Low",
+   "fam": "",
+   "node": "catalyst temperature"
+  },
+  {
+   "code": "P1483",
+   "brand": "chrysler",
+   "ru": "Система охлаждения двигателя: работа",
+   "en": "Engine Coolilng System Performance",
+   "fam": "",
+   "node": "engine coolilng system"
+  },
+  {
+   "code": "P1484",
+   "brand": "chrysler",
+   "ru": "Обнаружен перегрев катализатора",
+   "en": "Catalytic Converter Overheat Detected",
+   "fam": "",
+   "node": "catalytic converter overheat detected"
+  },
+  {
+   "code": "P1485",
+   "brand": "chrysler",
+   "ru": "Клапан подачи воздуха: обрыв или замыкание",
+   "en": "Air Injection Solenoid Circuit Open Or Shorted",
+   "fam": "",
+   "node": "air injection"
+  },
+  {
+   "code": "P1486",
+   "brand": "chrysler",
+   "ru": "Контроль утечек паров топлива: пережат шланг",
+   "en": "Evap Leak Monitor Pinched Hose",
+   "fam": "",
+   "node": "evap leak monitor pinched hose"
+  },
+  {
+   "code": "P1487",
+   "brand": "chrysler",
+   "ru": "Реле высокой скорости вентилятора радиатора: обрыв или замыкание",
+   "en": "Hi Speed Rad Fan CTRL Relay Circuit Open Or Shorted",
+   "fam": "",
+   "node": "hi speed rad fan ctrl"
+  },
+  {
+   "code": "P1488",
+   "brand": "chrysler",
+   "ru": "Вспомогательное питание 5 В слишком низкое",
+   "en": "Auxiliary 5 Volt Supply Output Too Low",
+   "fam": "",
+   "node": "auxiliary 5 volt supply"
+  },
+  {
+   "code": "P1489",
+   "brand": "chrysler",
+   "ru": "Реле высокой скорости вентилятора: обрыв или замыкание",
+   "en": "High Speed Fan CTRL Relay Circuit Open Or Shorted",
+   "fam": "",
+   "node": "ru:реле высокой скорости вентилятора"
+  },
+  {
+   "code": "P1490",
+   "brand": "chrysler",
+   "ru": "Реле низкой скорости вентилятора: обрыв или замыкание",
+   "en": "Low Speed Fan CTRL Relay Circuit Open Or Shorted",
+   "fam": "",
+   "node": "ru:реле низкой скорости вентилятора"
+  },
+  {
+   "code": "P1491",
+   "brand": "chrysler",
+   "ru": "Реле вентилятора радиатора: обрыв или замыкание",
+   "en": "Radiator Fan Control Relay Circuit Open Or Shorted",
+   "fam": "",
+   "node": "radiator fan control"
+  },
+  {
+   "code": "P1492",
+   "brand": "chrysler",
+   "ru": "Датчик температуры АКБ: напряжение слишком высокое",
+   "en": "Battery Temperature Sensor Voltage Too High",
+   "fam": "",
+   "node": "battery temperature sensor voltage too"
+  },
+  {
+   "code": "P1493",
+   "brand": "chrysler",
+   "ru": "Датчик температуры АКБ: напряжение слишком низкое",
+   "en": "Battery Temperature Sensor Voltage Too Low",
+   "fam": "",
+   "node": "battery temperature sensor voltage too"
+  },
+  {
+   "code": "P1494",
+   "brand": "chrysler",
+   "ru": "Насос проверки утечек: выключатель или механическая неисправность",
+   "en": "Leak Detection Pump Switch Or Mechanical Fault",
+   "fam": "",
+   "node": "leak detection pump switch or mechanical fault"
+  },
+  {
+   "code": "P1495",
+   "brand": "chrysler",
+   "ru": "Насос проверки утечек: обрыв или замыкание клапана",
+   "en": "Leak Detection Pump Solenoid Circuit Open Or Shorted",
+   "fam": "",
+   "node": "leak detection pump"
+  },
+  {
+   "code": "P1496",
+   "brand": "chrysler",
+   "ru": "Питание 5 В слишком низкое",
+   "en": "5 Volt Supply Output Too Low",
+   "fam": "",
+   "node": "5 volt supply"
+  },
+  {
+   "code": "P1498",
+   "brand": "chrysler",
+   "ru": "Реле массы высокой скорости вентилятора: цепь",
+   "en": "High Speed Rad Fan Ground CTRL Rly Circuit",
+   "fam": "",
+   "node": "ru:реле массы высокой скорости вентилятора"
+  },
+  {
+   "code": "P1499",
+   "brand": "chrysler",
+   "ru": "Клапан гидравлического вентилятора охлаждения: обрыв или замыкание",
+   "en": "Open Or Shorted Condition Detected In The Hydraulic Cooling Fan Solenoid Control",
+   "fam": "",
+   "node": "ru:клапан гидравлического вентилятора охлаждения"
+  },
+  {
+   "code": "P1500",
+   "brand": "chrysler",
+   "ru": "Сигнал стартера: цепь",
+   "en": "Starter Signal Circuit",
+   "fam": "",
+   "node": "starter"
+  },
+  {
+   "code": "P1501",
+   "brand": "chrysler",
+   "ru": "Датчик скорости: прерывистый сигнал",
+   "en": "Vehicle Speed Sensor Circuit Intermittent",
+   "fam": "",
+   "node": "vehicle speed"
+  },
+  {
+   "code": "P1504",
+   "brand": "chrysler",
+   "ru": "Выход сигнала скорости: цепь",
+   "en": "Vehicle Speed Output Circuit",
+   "fam": "",
+   "node": "vehicle speed"
+  },
+  {
+   "code": "P1502",
+   "brand": "chrysler",
+   "ru": "Противоугонная система: пароль не получен",
+   "en": "Theft Deterrent System No Password Received",
+   "fam": "",
+   "node": "theft deterrent system no password received"
+  },
+  {
+   "code": "P1503",
+   "brand": "chrysler",
+   "ru": "Противоугонная система: неверный пароль",
+   "en": "Theft Deterrent System Password Incorrect",
+   "fam": "",
+   "node": "theft deterrent system password incorrect"
+  }
+ ]
+}

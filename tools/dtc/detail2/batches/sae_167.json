@@ -1,0 +1,362 @@
+{
+ "name": "sae_167",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "alternative fuel hydraulic fuel pump select valve",
+  "alternative fuel hydraulic fuel pump select valve control",
+  "alternative fuel hydraulic pump pressure",
+  "alternative fuel hydraulic pump pressure sensor",
+  "alternative fuel rail pressure regulator inlet pressure",
+  "alternative fuel rail pressure regulator inlet pressure sensor",
+  "alternative fuel rail pressure regulator inlet pressure too",
+  "alternative fuel tank b level",
+  "alternative fuel tank b level sensor",
+  "alternative fuel tank c level",
+  "alternative fuel tank c level sensor",
+  "alternative fuel vaporizer a outlet temperature",
+  "alternative fuel vaporizer a outlet temperature sensor",
+  "alternative fuel vaporizer b outlet temperature",
+  "alternative fuel vaporizer b outlet temperature sensor",
+  "alternative fuel vaporizer c outlet temperature",
+  "alternative fuel vaporizer c outlet temperature sensor"
+ ],
+ "codes": [
+  {
+   "code": "P2A50",
+   "brand": "",
+   "ru": "Датчик температуры на выходе редуктора-испарителя ГБО A: цепь",
+   "en": "Alternative Fuel Vaporizer A Outlet Temperature Sensor Circuit",
+   "fam": "",
+   "node": "alternative fuel vaporizer a outlet temperature"
+  },
+  {
+   "code": "P2A52",
+   "brand": "",
+   "ru": "Датчик температуры на выходе редуктора-испарителя ГБО A: низкий уровень сигнала в цепи",
+   "en": "Alternative Fuel Vaporizer A Outlet Temperature Sensor Circuit Low",
+   "fam": "",
+   "node": "alternative fuel vaporizer a outlet temperature"
+  },
+  {
+   "code": "P2A53",
+   "brand": "",
+   "ru": "Датчик температуры на выходе редуктора-испарителя ГБО A: высокий уровень сигнала в цепи",
+   "en": "Alternative Fuel Vaporizer A Outlet Temperature Sensor Circuit High",
+   "fam": "",
+   "node": "alternative fuel vaporizer a outlet temperature"
+  },
+  {
+   "code": "P2A54",
+   "brand": "",
+   "ru": "Датчик температуры на выходе редуктора-испарителя ГБО A: прерывистый / нестабильный сигнал",
+   "en": "Alternative Fuel Vaporizer A Outlet Temperature Sensor Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "alternative fuel vaporizer a outlet temperature"
+  },
+  {
+   "code": "P2A51",
+   "brand": "",
+   "ru": "Датчик температуры на выходе редуктора-испарителя ГБО A: вне допустимого диапазона",
+   "en": "Alternative Fuel Vaporizer A Outlet Temperature Sensor Range/Performance",
+   "fam": "",
+   "node": "alternative fuel vaporizer a outlet temperature sensor"
+  },
+  {
+   "code": "P2A55",
+   "brand": "",
+   "ru": "Датчик температуры на выходе редуктора-испарителя ГБО B: цепь",
+   "en": "Alternative Fuel Vaporizer B Outlet Temperature Sensor Circuit",
+   "fam": "",
+   "node": "alternative fuel vaporizer b outlet temperature"
+  },
+  {
+   "code": "P2A57",
+   "brand": "",
+   "ru": "Датчик температуры на выходе редуктора-испарителя ГБО B: низкий уровень сигнала в цепи",
+   "en": "Alternative Fuel Vaporizer B Outlet Temperature Sensor Circuit Low",
+   "fam": "",
+   "node": "alternative fuel vaporizer b outlet temperature"
+  },
+  {
+   "code": "P2A58",
+   "brand": "",
+   "ru": "Датчик температуры на выходе редуктора-испарителя ГБО B: высокий уровень сигнала в цепи",
+   "en": "Alternative Fuel Vaporizer B Outlet Temperature Sensor Circuit High",
+   "fam": "",
+   "node": "alternative fuel vaporizer b outlet temperature"
+  },
+  {
+   "code": "P2A59",
+   "brand": "",
+   "ru": "Датчик температуры на выходе редуктора-испарителя ГБО B: прерывистый / нестабильный сигнал",
+   "en": "Alternative Fuel Vaporizer B Outlet Temperature Sensor Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "alternative fuel vaporizer b outlet temperature"
+  },
+  {
+   "code": "P2A56",
+   "brand": "",
+   "ru": "Датчик температуры на выходе редуктора-испарителя ГБО B: вне допустимого диапазона",
+   "en": "Alternative Fuel Vaporizer B Outlet Temperature Sensor Range/Performance",
+   "fam": "",
+   "node": "alternative fuel vaporizer b outlet temperature sensor"
+  },
+  {
+   "code": "P2A5A",
+   "brand": "",
+   "ru": "Датчик температуры на выходе редуктора-испарителя ГБО C: цепь",
+   "en": "Alternative Fuel Vaporizer C Outlet Temperature Sensor Circuit",
+   "fam": "",
+   "node": "alternative fuel vaporizer c outlet temperature"
+  },
+  {
+   "code": "P2A5C",
+   "brand": "",
+   "ru": "Датчик температуры на выходе редуктора-испарителя ГБО C: низкий уровень сигнала в цепи",
+   "en": "Alternative Fuel Vaporizer C Outlet Temperature Sensor Circuit Low",
+   "fam": "",
+   "node": "alternative fuel vaporizer c outlet temperature"
+  },
+  {
+   "code": "P2A5D",
+   "brand": "",
+   "ru": "Датчик температуры на выходе редуктора-испарителя ГБО C: высокий уровень сигнала в цепи",
+   "en": "Alternative Fuel Vaporizer C Outlet Temperature Sensor Circuit High",
+   "fam": "",
+   "node": "alternative fuel vaporizer c outlet temperature"
+  },
+  {
+   "code": "P2A5E",
+   "brand": "",
+   "ru": "Датчик температуры на выходе редуктора-испарителя ГБО C: прерывистый / нестабильный сигнал",
+   "en": "Alternative Fuel Vaporizer C Outlet Temperature Sensor Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "alternative fuel vaporizer c outlet temperature"
+  },
+  {
+   "code": "P2A5B",
+   "brand": "",
+   "ru": "Датчик температуры на выходе редуктора-испарителя ГБО C: вне допустимого диапазона",
+   "en": "Alternative Fuel Vaporizer C Outlet Temperature Sensor Range/Performance",
+   "fam": "",
+   "node": "alternative fuel vaporizer c outlet temperature sensor"
+  },
+  {
+   "code": "P2A5F",
+   "brand": "",
+   "ru": "Датчик уровня в баллоне ГБО B: цепь",
+   "en": "Alternative Fuel Tank B Level Sensor Circuit",
+   "fam": "",
+   "node": "alternative fuel tank b level"
+  },
+  {
+   "code": "P2A61",
+   "brand": "",
+   "ru": "Датчик уровня в баллоне ГБО B: низкий уровень сигнала в цепи",
+   "en": "Alternative Fuel Tank B Level Sensor Circuit Low",
+   "fam": "",
+   "node": "alternative fuel tank b level"
+  },
+  {
+   "code": "P2A62",
+   "brand": "",
+   "ru": "Датчик уровня в баллоне ГБО B: высокий уровень сигнала в цепи",
+   "en": "Alternative Fuel Tank B Level Sensor Circuit High",
+   "fam": "",
+   "node": "alternative fuel tank b level"
+  },
+  {
+   "code": "P2A63",
+   "brand": "",
+   "ru": "Датчик уровня в баллоне ГБО B: прерывистый / нестабильный сигнал",
+   "en": "Alternative Fuel Tank B Level Sensor Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "alternative fuel tank b level"
+  },
+  {
+   "code": "P2A60",
+   "brand": "",
+   "ru": "Датчик уровня в баллоне ГБО B: вне допустимого диапазона",
+   "en": "Alternative Fuel Tank B Level Sensor Range/Performance",
+   "fam": "",
+   "node": "alternative fuel tank b level sensor"
+  },
+  {
+   "code": "P2A64",
+   "brand": "",
+   "ru": "Датчик уровня в баллоне ГБО C: цепь",
+   "en": "Alternative Fuel Tank C Level Sensor Circuit",
+   "fam": "",
+   "node": "alternative fuel tank c level"
+  },
+  {
+   "code": "P2A66",
+   "brand": "",
+   "ru": "Датчик уровня в баллоне ГБО C: низкий уровень сигнала в цепи",
+   "en": "Alternative Fuel Tank C Level Sensor Circuit Low",
+   "fam": "",
+   "node": "alternative fuel tank c level"
+  },
+  {
+   "code": "P2A67",
+   "brand": "",
+   "ru": "Датчик уровня в баллоне ГБО C: высокий уровень сигнала в цепи",
+   "en": "Alternative Fuel Tank C Level Sensor Circuit High",
+   "fam": "",
+   "node": "alternative fuel tank c level"
+  },
+  {
+   "code": "P2A68",
+   "brand": "",
+   "ru": "Датчик уровня в баллоне ГБО C: прерывистый / нестабильный сигнал",
+   "en": "Alternative Fuel Tank C Level Sensor Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "alternative fuel tank c level"
+  },
+  {
+   "code": "P2A65",
+   "brand": "",
+   "ru": "Датчик уровня в баллоне ГБО C: вне допустимого диапазона",
+   "en": "Alternative Fuel Tank C Level Sensor Range/Performance",
+   "fam": "",
+   "node": "alternative fuel tank c level sensor"
+  },
+  {
+   "code": "P2A69",
+   "brand": "",
+   "ru": "Датчик давления на входе регулятора рампы ГБО: цепь",
+   "en": "Alternative Fuel Rail Pressure Regulator Inlet Pressure Sensor Circuit",
+   "fam": "",
+   "node": "alternative fuel rail pressure regulator inlet pressure"
+  },
+  {
+   "code": "P2A6B",
+   "brand": "",
+   "ru": "Датчик давления на входе регулятора рампы ГБО: низкий уровень сигнала в цепи",
+   "en": "Alternative Fuel Rail Pressure Regulator Inlet Pressure Sensor Circuit Low",
+   "fam": "",
+   "node": "alternative fuel rail pressure regulator inlet pressure"
+  },
+  {
+   "code": "P2A6C",
+   "brand": "",
+   "ru": "Датчик давления на входе регулятора рампы ГБО: высокий уровень сигнала в цепи",
+   "en": "Alternative Fuel Rail Pressure Regulator Inlet Pressure Sensor Circuit High",
+   "fam": "",
+   "node": "alternative fuel rail pressure regulator inlet pressure"
+  },
+  {
+   "code": "P2A6D",
+   "brand": "",
+   "ru": "Датчик давления на входе регулятора рампы ГБО: прерывистый / нестабильный сигнал",
+   "en": "Alternative Fuel Rail Pressure Regulator Inlet Pressure Sensor Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "alternative fuel rail pressure regulator inlet pressure"
+  },
+  {
+   "code": "P2A6A",
+   "brand": "",
+   "ru": "Датчик давления на входе регулятора рампы ГБО: вне допустимого диапазона",
+   "en": "Alternative Fuel Rail Pressure Regulator Inlet Pressure Sensor Range/Performance",
+   "fam": "",
+   "node": "alternative fuel rail pressure regulator inlet pressure sensor"
+  },
+  {
+   "code": "P2A6E",
+   "brand": "",
+   "ru": "ГБО: слишком низкое давление на входе регулятора рампы",
+   "en": "Alternative Fuel Rail Pressure Regulator Inlet Pressure Too Low",
+   "fam": "",
+   "node": "alternative fuel rail pressure regulator inlet pressure too"
+  },
+  {
+   "code": "P2A6F",
+   "brand": "",
+   "ru": "ГБО: слишком высокое давление на входе регулятора рампы",
+   "en": "Alternative Fuel Rail Pressure Regulator Inlet Pressure Too High",
+   "fam": "",
+   "node": "alternative fuel rail pressure regulator inlet pressure too"
+  },
+  {
+   "code": "P2A70",
+   "brand": "",
+   "ru": "Клапан выбора гидронасоса ГБО: цепь управления",
+   "en": "Alternative Fuel Hydraulic Fuel Pump Select Valve Control Circuit",
+   "fam": "",
+   "node": "alternative fuel hydraulic fuel pump select valve"
+  },
+  {
+   "code": "P2A72",
+   "brand": "",
+   "ru": "Клапан выбора гидронасоса ГБО: низкий уровень в цепи управления",
+   "en": "Alternative Fuel Hydraulic Fuel Pump Select Valve Control Circuit Low",
+   "fam": "",
+   "node": "alternative fuel hydraulic fuel pump select valve"
+  },
+  {
+   "code": "P2A73",
+   "brand": "",
+   "ru": "Клапан выбора гидронасоса ГБО: высокий уровень в цепи управления",
+   "en": "Alternative Fuel Hydraulic Fuel Pump Select Valve Control Circuit High",
+   "fam": "",
+   "node": "alternative fuel hydraulic fuel pump select valve"
+  },
+  {
+   "code": "P2A74",
+   "brand": "",
+   "ru": "Клапан выбора гидронасоса ГБО: прерывистый / нестабильный сигнал управления",
+   "en": "Alternative Fuel Hydraulic Fuel Pump Select Valve Control Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "alternative fuel hydraulic fuel pump select valve"
+  },
+  {
+   "code": "P2A71",
+   "brand": "",
+   "ru": "Клапан выбора гидронасоса ГБО: управление вне диапазона",
+   "en": "Alternative Fuel Hydraulic Fuel Pump Select Valve Control Range/Performance",
+   "fam": "",
+   "node": "alternative fuel hydraulic fuel pump select valve control"
+  },
+  {
+   "code": "P2A75",
+   "brand": "",
+   "ru": "Датчик давления гидронасоса ГБО: цепь",
+   "en": "Alternative Fuel Hydraulic Pump Pressure Sensor Circuit",
+   "fam": "",
+   "node": "alternative fuel hydraulic pump pressure"
+  },
+  {
+   "code": "P2A77",
+   "brand": "",
+   "ru": "Датчик давления гидронасоса ГБО: низкий уровень сигнала в цепи",
+   "en": "Alternative Fuel Hydraulic Pump Pressure Sensor Circuit Low",
+   "fam": "",
+   "node": "alternative fuel hydraulic pump pressure"
+  },
+  {
+   "code": "P2A78",
+   "brand": "",
+   "ru": "Датчик давления гидронасоса ГБО: высокий уровень сигнала в цепи",
+   "en": "Alternative Fuel Hydraulic Pump Pressure Sensor Circuit High",
+   "fam": "",
+   "node": "alternative fuel hydraulic pump pressure"
+  },
+  {
+   "code": "P2A79",
+   "brand": "",
+   "ru": "Датчик давления гидронасоса ГБО: прерывистый / нестабильный сигнал",
+   "en": "Alternative Fuel Hydraulic Pump Pressure Sensor Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "alternative fuel hydraulic pump pressure"
+  },
+  {
+   "code": "P2A76",
+   "brand": "",
+   "ru": "Датчик давления гидронасоса ГБО: вне допустимого диапазона",
+   "en": "Alternative Fuel Hydraulic Pump Pressure Sensor Range/Performance",
+   "fam": "",
+   "node": "alternative fuel hydraulic pump pressure sensor"
+  }
+ ]
+}

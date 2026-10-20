@@ -1,0 +1,300 @@
+{
+ "name": "sae_041",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "fuel trim at max limit",
+  "fuel trim at min limit",
+  "injector restricted"
+ ],
+ "codes": [
+  {
+   "code": "P029A",
+   "brand": "",
+   "ru": "Цилиндр 1: коррекция топлива на максимуме",
+   "en": "Cylinder 1 - Fuel Trim at Max Limit",
+   "fam": "",
+   "node": "fuel trim at max limit"
+  },
+  {
+   "code": "P029E",
+   "brand": "",
+   "ru": "Цилиндр 2: коррекция топлива на максимуме",
+   "en": "Cylinder 2 - Fuel Trim at Max Limit",
+   "fam": "",
+   "node": "fuel trim at max limit"
+  },
+  {
+   "code": "P02A2",
+   "brand": "",
+   "ru": "Цилиндр 3: коррекция топлива на максимуме",
+   "en": "Cylinder 3 - Fuel Trim at Max Limit",
+   "fam": "",
+   "node": "fuel trim at max limit"
+  },
+  {
+   "code": "P02A6",
+   "brand": "",
+   "ru": "Цилиндр 4: коррекция топлива на максимуме",
+   "en": "Cylinder 4 - Fuel Trim at Max Limit",
+   "fam": "",
+   "node": "fuel trim at max limit"
+  },
+  {
+   "code": "P02AA",
+   "brand": "",
+   "ru": "Цилиндр 5: коррекция топлива на максимуме",
+   "en": "Cylinder 5 - Fuel Trim at Max Limit",
+   "fam": "",
+   "node": "fuel trim at max limit"
+  },
+  {
+   "code": "P02AE",
+   "brand": "",
+   "ru": "Цилиндр 6: коррекция топлива на максимуме",
+   "en": "Cylinder 6 - Fuel Trim at Max Limit",
+   "fam": "",
+   "node": "fuel trim at max limit"
+  },
+  {
+   "code": "P02B2",
+   "brand": "",
+   "ru": "Цилиндр 7: коррекция топлива на максимуме",
+   "en": "Cylinder 7 - Fuel Trim at Max Limit",
+   "fam": "",
+   "node": "fuel trim at max limit"
+  },
+  {
+   "code": "P02B6",
+   "brand": "",
+   "ru": "Цилиндр 8: коррекция топлива на максимуме",
+   "en": "Cylinder 8 - Fuel Trim at Max Limit",
+   "fam": "",
+   "node": "fuel trim at max limit"
+  },
+  {
+   "code": "P02BA",
+   "brand": "",
+   "ru": "Цилиндр 9: коррекция топлива на максимуме",
+   "en": "Cylinder 9 - Fuel Trim at Max Limit",
+   "fam": "",
+   "node": "fuel trim at max limit"
+  },
+  {
+   "code": "P02BE",
+   "brand": "",
+   "ru": "Цилиндр 10: коррекция топлива на максимуме",
+   "en": "Cylinder 10 - Fuel Trim at Max Limit",
+   "fam": "",
+   "node": "fuel trim at max limit"
+  },
+  {
+   "code": "P02C2",
+   "brand": "",
+   "ru": "Цилиндр 11: коррекция топлива на максимуме",
+   "en": "Cylinder 11 - Fuel Trim at Max Limit",
+   "fam": "",
+   "node": "fuel trim at max limit"
+  },
+  {
+   "code": "P02C6",
+   "brand": "",
+   "ru": "Цилиндр 12: коррекция топлива на максимуме",
+   "en": "Cylinder 12 - Fuel Trim at Max Limit",
+   "fam": "",
+   "node": "fuel trim at max limit"
+  },
+  {
+   "code": "P029B",
+   "brand": "",
+   "ru": "Цилиндр 1: коррекция топлива на минимуме",
+   "en": "Cylinder 1 - Fuel Trim at Min Limit",
+   "fam": "",
+   "node": "fuel trim at min limit"
+  },
+  {
+   "code": "P029F",
+   "brand": "",
+   "ru": "Цилиндр 2: коррекция топлива на минимуме",
+   "en": "Cylinder 2 - Fuel Trim at Min Limit",
+   "fam": "",
+   "node": "fuel trim at min limit"
+  },
+  {
+   "code": "P02A3",
+   "brand": "",
+   "ru": "Цилиндр 3: коррекция топлива на минимуме",
+   "en": "Cylinder 3 - Fuel Trim at Min Limit",
+   "fam": "",
+   "node": "fuel trim at min limit"
+  },
+  {
+   "code": "P02A7",
+   "brand": "",
+   "ru": "Цилиндр 4: коррекция топлива на минимуме",
+   "en": "Cylinder 4 - Fuel Trim at Min Limit",
+   "fam": "",
+   "node": "fuel trim at min limit"
+  },
+  {
+   "code": "P02AB",
+   "brand": "",
+   "ru": "Цилиндр 5: коррекция топлива на минимуме",
+   "en": "Cylinder 5 - Fuel Trim at Min Limit",
+   "fam": "",
+   "node": "fuel trim at min limit"
+  },
+  {
+   "code": "P02AF",
+   "brand": "",
+   "ru": "Цилиндр 6: коррекция топлива на минимуме",
+   "en": "Cylinder 6 - Fuel Trim at Min Limit",
+   "fam": "",
+   "node": "fuel trim at min limit"
+  },
+  {
+   "code": "P02B3",
+   "brand": "",
+   "ru": "Цилиндр 7: коррекция топлива на минимуме",
+   "en": "Cylinder 7 - Fuel Trim at Min Limit",
+   "fam": "",
+   "node": "fuel trim at min limit"
+  },
+  {
+   "code": "P02B7",
+   "brand": "",
+   "ru": "Цилиндр 8: коррекция топлива на минимуме",
+   "en": "Cylinder 8 - Fuel Trim at Min Limit",
+   "fam": "",
+   "node": "fuel trim at min limit"
+  },
+  {
+   "code": "P02BB",
+   "brand": "",
+   "ru": "Цилиндр 9: коррекция топлива на минимуме",
+   "en": "Cylinder 9 - Fuel Trim at Min Limit",
+   "fam": "",
+   "node": "fuel trim at min limit"
+  },
+  {
+   "code": "P02BF",
+   "brand": "",
+   "ru": "Цилиндр 10: коррекция топлива на минимуме",
+   "en": "Cylinder 10 - Fuel Trim at Min Limit",
+   "fam": "",
+   "node": "fuel trim at min limit"
+  },
+  {
+   "code": "P02C3",
+   "brand": "",
+   "ru": "Цилиндр 11: коррекция топлива на минимуме",
+   "en": "Cylinder 11 - Fuel Trim at Min Limit",
+   "fam": "",
+   "node": "fuel trim at min limit"
+  },
+  {
+   "code": "P02C7",
+   "brand": "",
+   "ru": "Цилиндр 12: коррекция топлива на минимуме",
+   "en": "Cylinder 12 - Fuel Trim at Min Limit",
+   "fam": "",
+   "node": "fuel trim at min limit"
+  },
+  {
+   "code": "P029C",
+   "brand": "",
+   "ru": "Цилиндр 1: форсунка засорена",
+   "en": "Cylinder 1 - Injector Restricted",
+   "fam": "",
+   "node": "injector restricted"
+  },
+  {
+   "code": "P02A0",
+   "brand": "",
+   "ru": "Цилиндр 2: форсунка засорена",
+   "en": "Cylinder 2 - Injector Restricted",
+   "fam": "",
+   "node": "injector restricted"
+  },
+  {
+   "code": "P02A4",
+   "brand": "",
+   "ru": "Цилиндр 3: форсунка засорена",
+   "en": "Cylinder 3 - Injector Restricted",
+   "fam": "",
+   "node": "injector restricted"
+  },
+  {
+   "code": "P02A8",
+   "brand": "",
+   "ru": "Цилиндр 4: форсунка засорена",
+   "en": "Cylinder 4 - Injector Restricted",
+   "fam": "",
+   "node": "injector restricted"
+  },
+  {
+   "code": "P02AC",
+   "brand": "",
+   "ru": "Цилиндр 5: форсунка засорена",
+   "en": "Cylinder 5 - Injector Restricted",
+   "fam": "",
+   "node": "injector restricted"
+  },
+  {
+   "code": "P02B0",
+   "brand": "",
+   "ru": "Цилиндр 6: форсунка засорена",
+   "en": "Cylinder 6 - Injector Restricted",
+   "fam": "",
+   "node": "injector restricted"
+  },
+  {
+   "code": "P02B4",
+   "brand": "",
+   "ru": "Цилиндр 7: форсунка засорена",
+   "en": "Cylinder 7 - Injector Restricted",
+   "fam": "",
+   "node": "injector restricted"
+  },
+  {
+   "code": "P02B8",
+   "brand": "",
+   "ru": "Цилиндр 8: форсунка засорена",
+   "en": "Cylinder 8 - Injector Restricted",
+   "fam": "",
+   "node": "injector restricted"
+  },
+  {
+   "code": "P02BC",
+   "brand": "",
+   "ru": "Цилиндр 9: форсунка засорена",
+   "en": "Cylinder 9 - Injector Restricted",
+   "fam": "",
+   "node": "injector restricted"
+  },
+  {
+   "code": "P02C0",
+   "brand": "",
+   "ru": "Цилиндр 10: форсунка засорена",
+   "en": "Cylinder 10 - Injector Restricted",
+   "fam": "",
+   "node": "injector restricted"
+  },
+  {
+   "code": "P02C4",
+   "brand": "",
+   "ru": "Цилиндр 11: форсунка засорена",
+   "en": "Cylinder 11 - Injector Restricted",
+   "fam": "",
+   "node": "injector restricted"
+  },
+  {
+   "code": "P02C8",
+   "brand": "",
+   "ru": "Цилиндр 12: форсунка засорена",
+   "en": "Cylinder 12 - Injector Restricted",
+   "fam": "",
+   "node": "injector restricted"
+  }
+ ]
+}

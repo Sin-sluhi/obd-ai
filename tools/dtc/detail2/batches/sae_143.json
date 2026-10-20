@@ -1,0 +1,381 @@
+{
+ "name": "sae_143",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "diesel intake air flow b",
+  "egr sensor d",
+  "egr sensor e",
+  "exhaust heat exchanger exhaust bypass valve a control",
+  "fuel pressure regulator b solenoid supply voltage",
+  "fuel pressure regulator c",
+  "fuel volume regulator b",
+  "o2 sensor exhaust sample error",
+  "o2 sensor out of",
+  "turbocharger supercharger inlet pressure sensor b",
+  "water in fuel condition sensor b",
+  "water in fuel sensor b"
+ ],
+ "codes": [
+  {
+   "code": "P232F",
+   "brand": "",
+   "ru": "Лямбда-зонд вне диапазона при торможении двигателем (банк 1, датчик 2)",
+   "en": "O2 Sensor Out of Range During Deceleration Bank 1 Sensor 2",
+   "fam": "",
+   "node": "o2 sensor out of"
+  },
+  {
+   "code": "P2379",
+   "brand": "",
+   "ru": "Лямбда-зонд вне диапазона при торможении двигателем (банк 2, датчик 2)",
+   "en": "O2 Sensor Out of Range During Deceleration Bank 2 Sensor 2",
+   "fam": "",
+   "node": "o2 sensor out of"
+  },
+  {
+   "code": "P239E",
+   "brand": "",
+   "ru": "Лямбда-зонд вне диапазона при торможении двигателем (банк 1, датчик 2)",
+   "en": "O2 Sensor Out of Range During Deceleration Bank 1 Sensor 2",
+   "fam": "",
+   "node": "o2 sensor out of"
+  },
+  {
+   "code": "P239F",
+   "brand": "",
+   "ru": "Лямбда-зонд вне диапазона при торможении двигателем (банк 2, датчик 2)",
+   "en": "O2 Sensor Out of Range During Deceleration Bank 2 Sensor 2",
+   "fam": "",
+   "node": "o2 sensor out of"
+  },
+  {
+   "code": "P2C65",
+   "brand": "",
+   "ru": "Лямбда-зонд вне диапазона при торможении двигателем (банк 1, датчик 3)",
+   "en": "O2 Sensor Out of Range During Deceleration Bank 1 Sensor 3",
+   "fam": "",
+   "node": "o2 sensor out of"
+  },
+  {
+   "code": "P233A",
+   "brand": "",
+   "ru": "Регулятор давления топлива C: обрыв цепи управления",
+   "en": "Fuel Pressure Regulator C Control Circuit/Open",
+   "fam": "",
+   "node": "fuel pressure regulator c"
+  },
+  {
+   "code": "P233B",
+   "brand": "",
+   "ru": "Регулятор давления топлива C: низкий уровень в цепи управления",
+   "en": "Fuel Pressure Regulator C Control Circuit Low",
+   "fam": "",
+   "node": "fuel pressure regulator c"
+  },
+  {
+   "code": "P233C",
+   "brand": "",
+   "ru": "Регулятор давления топлива C: высокий уровень в цепи управления",
+   "en": "Fuel Pressure Regulator C Control Circuit High",
+   "fam": "",
+   "node": "fuel pressure regulator c"
+  },
+  {
+   "code": "P2C00",
+   "brand": "",
+   "ru": "Регулятор давления топлива C: работа нарушена",
+   "en": "Fuel Pressure Regulator C Performance",
+   "fam": "",
+   "node": "fuel pressure regulator c"
+  },
+  {
+   "code": "P233D",
+   "brand": "",
+   "ru": "Питание соленоида регулятора давления топлива B: обрыв цепи управления",
+   "en": "Fuel Pressure Regulator B Solenoid Supply Voltage Control Circuit/Open",
+   "fam": "",
+   "node": "fuel pressure regulator b solenoid supply voltage"
+  },
+  {
+   "code": "P233E",
+   "brand": "",
+   "ru": "Питание соленоида регулятора давления топлива B: низкий уровень в цепи управления",
+   "en": "Fuel Pressure Regulator B Solenoid Supply Voltage Control Circuit Low",
+   "fam": "",
+   "node": "fuel pressure regulator b solenoid supply voltage"
+  },
+  {
+   "code": "P233F",
+   "brand": "",
+   "ru": "Питание соленоида регулятора давления топлива B: высокий уровень в цепи управления",
+   "en": "Fuel Pressure Regulator B Solenoid Supply Voltage Control Circuit High",
+   "fam": "",
+   "node": "fuel pressure regulator b solenoid supply voltage"
+  },
+  {
+   "code": "P2370",
+   "brand": "",
+   "ru": "Регулятор количества топлива ТНВД B: обрыв цепи управления",
+   "en": "Fuel Volume Regulator B Control Circuit/Open",
+   "fam": "",
+   "node": "fuel volume regulator b"
+  },
+  {
+   "code": "P2371",
+   "brand": "",
+   "ru": "Регулятор количества топлива ТНВД B: нарушена работа цепи управления",
+   "en": "Fuel Volume Regulator B Control Circuit Performance",
+   "fam": "",
+   "node": "fuel volume regulator b"
+  },
+  {
+   "code": "P2372",
+   "brand": "",
+   "ru": "Регулятор количества топлива ТНВД B: низкий уровень в цепи управления",
+   "en": "Fuel Volume Regulator B Control Circuit Low",
+   "fam": "",
+   "node": "fuel volume regulator b"
+  },
+  {
+   "code": "P2373",
+   "brand": "",
+   "ru": "Регулятор количества топлива ТНВД B: высокий уровень в цепи управления",
+   "en": "Fuel Volume Regulator B Control Circuit High",
+   "fam": "",
+   "node": "fuel volume regulator b"
+  },
+  {
+   "code": "P2374",
+   "brand": "",
+   "ru": "Датчик давления на входе турбины/нагнетателя B: цепь",
+   "en": "Turbocharger/Supercharger Inlet Pressure Sensor B Circuit",
+   "fam": "",
+   "node": "turbocharger supercharger inlet pressure sensor b"
+  },
+  {
+   "code": "P2375",
+   "brand": "",
+   "ru": "Датчик давления на входе турбины/нагнетателя B: сигнал вне диапазона",
+   "en": "Turbocharger/Supercharger Inlet Pressure Sensor B Circuit Range/Performance",
+   "fam": "",
+   "node": "turbocharger supercharger inlet pressure sensor b"
+  },
+  {
+   "code": "P2376",
+   "brand": "",
+   "ru": "Датчик давления на входе турбины/нагнетателя B: низкий уровень сигнала в цепи",
+   "en": "Turbocharger/Supercharger Inlet Pressure Sensor B Circuit Low",
+   "fam": "",
+   "node": "turbocharger supercharger inlet pressure sensor b"
+  },
+  {
+   "code": "P2377",
+   "brand": "",
+   "ru": "Датчик давления на входе турбины/нагнетателя B: высокий уровень сигнала в цепи",
+   "en": "Turbocharger/Supercharger Inlet Pressure Sensor B Circuit High",
+   "fam": "",
+   "node": "turbocharger supercharger inlet pressure sensor b"
+  },
+  {
+   "code": "P2378",
+   "brand": "",
+   "ru": "Датчик давления на входе турбины/нагнетателя B: прерывистый / нестабильный сигнал",
+   "en": "Turbocharger/Supercharger Inlet Pressure Sensor B Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "turbocharger supercharger inlet pressure sensor b"
+  },
+  {
+   "code": "P237A",
+   "brand": "",
+   "ru": "Лямбда-зонд: ошибка забора выхлопа (банк 1, датчик 2)",
+   "en": "O2 Sensor Exhaust Sample Error Bank 1 Sensor 2",
+   "fam": "",
+   "node": "o2 sensor exhaust sample error"
+  },
+  {
+   "code": "P237B",
+   "brand": "",
+   "ru": "Лямбда-зонд: ошибка забора выхлопа (банк 2, датчик 2)",
+   "en": "O2 Sensor Exhaust Sample Error Bank 2 Sensor 2",
+   "fam": "",
+   "node": "o2 sensor exhaust sample error"
+  },
+  {
+   "code": "P23A0",
+   "brand": "",
+   "ru": "Лямбда-зонд: ошибка забора выхлопа (банк 1, датчик 2)",
+   "en": "O2 Sensor Exhaust Sample Error Bank 1 Sensor 2",
+   "fam": "",
+   "node": "o2 sensor exhaust sample error"
+  },
+  {
+   "code": "P23A1",
+   "brand": "",
+   "ru": "Лямбда-зонд: ошибка забора выхлопа (банк 2, датчик 2)",
+   "en": "O2 Sensor Exhaust Sample Error Bank 2 Sensor 2",
+   "fam": "",
+   "node": "o2 sensor exhaust sample error"
+  },
+  {
+   "code": "P237F",
+   "brand": "",
+   "ru": "Перепускной клапан теплообменника выхлопа A: нарушено управление",
+   "en": "Exhaust Heat Exchanger Exhaust Bypass Valve A Control Performance",
+   "fam": "",
+   "node": "exhaust heat exchanger exhaust bypass valve a control"
+  },
+  {
+   "code": "P2380",
+   "brand": "",
+   "ru": "Датчик EGR D: цепь",
+   "en": "EGR Sensor D Circuit",
+   "fam": "",
+   "node": "egr sensor d"
+  },
+  {
+   "code": "P2381",
+   "brand": "",
+   "ru": "Датчик EGR D: высокий уровень сигнала в цепи",
+   "en": "EGR Sensor D Circuit High",
+   "fam": "",
+   "node": "egr sensor d"
+  },
+  {
+   "code": "P2382",
+   "brand": "",
+   "ru": "Датчик EGR D: низкий уровень сигнала в цепи",
+   "en": "EGR Sensor D Circuit Low",
+   "fam": "",
+   "node": "egr sensor d"
+  },
+  {
+   "code": "P2383",
+   "brand": "",
+   "ru": "Датчик EGR D: сигнал вне диапазона",
+   "en": "EGR Sensor D Circuit Range/Performance",
+   "fam": "",
+   "node": "egr sensor d"
+  },
+  {
+   "code": "P2384",
+   "brand": "",
+   "ru": "Датчик EGR D: прерывистый сигнал в цепи",
+   "en": "EGR Sensor D Circuit Intermittent",
+   "fam": "",
+   "node": "egr sensor d"
+  },
+  {
+   "code": "P2385",
+   "brand": "",
+   "ru": "Датчик EGR E: цепь",
+   "en": "EGR Sensor E Circuit",
+   "fam": "",
+   "node": "egr sensor e"
+  },
+  {
+   "code": "P2386",
+   "brand": "",
+   "ru": "Датчик EGR E: высокий уровень сигнала в цепи",
+   "en": "EGR Sensor E Circuit High",
+   "fam": "",
+   "node": "egr sensor e"
+  },
+  {
+   "code": "P2387",
+   "brand": "",
+   "ru": "Датчик EGR E: низкий уровень сигнала в цепи",
+   "en": "EGR Sensor E Circuit Low",
+   "fam": "",
+   "node": "egr sensor e"
+  },
+  {
+   "code": "P2388",
+   "brand": "",
+   "ru": "Датчик EGR E: сигнал вне диапазона",
+   "en": "EGR Sensor E Circuit Range/Performance",
+   "fam": "",
+   "node": "egr sensor e"
+  },
+  {
+   "code": "P2389",
+   "brand": "",
+   "ru": "Датчик EGR E: прерывистый сигнал в цепи",
+   "en": "EGR Sensor E Circuit Intermittent",
+   "fam": "",
+   "node": "egr sensor e"
+  },
+  {
+   "code": "P238A",
+   "brand": "",
+   "ru": "Датчик воды в топливе B: цепь",
+   "en": "Water in Fuel Sensor B Circuit",
+   "fam": "",
+   "node": "water in fuel sensor b"
+  },
+  {
+   "code": "P238B",
+   "brand": "",
+   "ru": "Датчик воды в топливе B: сигнал вне диапазона",
+   "en": "Water in Fuel Sensor B Circuit Range/Performance",
+   "fam": "",
+   "node": "water in fuel sensor b"
+  },
+  {
+   "code": "P238C",
+   "brand": "",
+   "ru": "Датчик воды в топливе B: низкий уровень сигнала в цепи",
+   "en": "Water in Fuel Sensor B Circuit Low",
+   "fam": "",
+   "node": "water in fuel sensor b"
+  },
+  {
+   "code": "P238D",
+   "brand": "",
+   "ru": "Датчик воды в топливе B: высокий уровень сигнала в цепи",
+   "en": "Water in Fuel Sensor B Circuit High",
+   "fam": "",
+   "node": "water in fuel sensor b"
+  },
+  {
+   "code": "P238E",
+   "brand": "",
+   "ru": "Датчик воды в топливе B: прерывистый сигнал в цепи",
+   "en": "Water in Fuel Sensor B Circuit Intermittent",
+   "fam": "",
+   "node": "water in fuel sensor b"
+  },
+  {
+   "code": "P238F",
+   "brand": "",
+   "ru": "Вода в топливе — датчик B",
+   "en": "Water in Fuel Condition - Sensor B",
+   "fam": "",
+   "node": "water in fuel condition sensor b"
+  },
+  {
+   "code": "P2390",
+   "brand": "",
+   "ru": "Заслонка впускного воздуха дизеля B: обрыв цепи управления",
+   "en": "Diesel Intake Air Flow B Control Circuit/Open",
+   "fam": "",
+   "node": "diesel intake air flow b"
+  },
+  {
+   "code": "P2392",
+   "brand": "",
+   "ru": "Заслонка впускного воздуха дизеля B: низкий уровень в цепи управления",
+   "en": "Diesel Intake Air Flow B Control Circuit Low",
+   "fam": "",
+   "node": "diesel intake air flow b"
+  },
+  {
+   "code": "P2393",
+   "brand": "",
+   "ru": "Заслонка впускного воздуха дизеля B: высокий уровень в цепи управления",
+   "en": "Diesel Intake Air Flow B Control Circuit High",
+   "fam": "",
+   "node": "diesel intake air flow b"
+  }
+ ]
+}

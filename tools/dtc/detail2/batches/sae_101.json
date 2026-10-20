@@ -1,0 +1,349 @@
+{
+ "name": "sae_101",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "drive motor a phase u current",
+  "fam:hv_battery",
+  "generator inverter over temperature",
+  "generator torque"
+ ],
+ "codes": [
+  {
+   "code": "P0A1F",
+   "brand": "",
+   "ru": "Блок управления батареей",
+   "en": "",
+   "fam": "hv_battery",
+   "node": "fam:hv_battery"
+  },
+  {
+   "code": "P0A7C",
+   "brand": "",
+   "ru": "Батарея: ток слишком высокий",
+   "en": "",
+   "fam": "hv_battery",
+   "node": "fam:hv_battery"
+  },
+  {
+   "code": "P0A7D",
+   "brand": "",
+   "ru": "Батарея: ток слишком низкий",
+   "en": "",
+   "fam": "hv_battery",
+   "node": "fam:hv_battery"
+  },
+  {
+   "code": "P0A7E",
+   "brand": "",
+   "ru": "Тяговая батарея: перегрев",
+   "en": "",
+   "fam": "hv_battery",
+   "node": "fam:hv_battery"
+  },
+  {
+   "code": "P0A7F",
+   "brand": "",
+   "ru": "Тяговая батарея: ёмкость упала (деградация)",
+   "en": "",
+   "fam": "hv_battery",
+   "node": "fam:hv_battery"
+  },
+  {
+   "code": "P0A80",
+   "brand": "",
+   "ru": "Заменить тяговую батарею",
+   "en": "",
+   "fam": "hv_battery",
+   "node": "fam:hv_battery"
+  },
+  {
+   "code": "P0A9B",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи A: цепь",
+   "en": "",
+   "fam": "hv_battery",
+   "node": "fam:hv_battery"
+  },
+  {
+   "code": "P0A9C",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи A: показания вне диапазона",
+   "en": "",
+   "fam": "hv_battery",
+   "node": "fam:hv_battery"
+  },
+  {
+   "code": "P0A9D",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи A: низкий сигнал",
+   "en": "",
+   "fam": "hv_battery",
+   "node": "fam:hv_battery"
+  },
+  {
+   "code": "P0A9E",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи A: высокий сигнал",
+   "en": "",
+   "fam": "hv_battery",
+   "node": "fam:hv_battery"
+  },
+  {
+   "code": "P0A9F",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи A: прерывистый сигнал",
+   "en": "",
+   "fam": "hv_battery",
+   "node": "fam:hv_battery"
+  },
+  {
+   "code": "P0AAC",
+   "brand": "",
+   "ru": "Датчик температуры воздуха тяговой батареи A: цепь",
+   "en": "",
+   "fam": "hv_battery",
+   "node": "fam:hv_battery"
+  },
+  {
+   "code": "P0AAD",
+   "brand": "",
+   "ru": "Датчик температуры воздуха тяговой батареи A: показания вне диапазона",
+   "en": "",
+   "fam": "hv_battery",
+   "node": "fam:hv_battery"
+  },
+  {
+   "code": "P0AAE",
+   "brand": "",
+   "ru": "Датчик температуры воздуха тяговой батареи A: низкий сигнал",
+   "en": "",
+   "fam": "hv_battery",
+   "node": "fam:hv_battery"
+  },
+  {
+   "code": "P0AAF",
+   "brand": "",
+   "ru": "Датчик температуры воздуха тяговой батареи A: высокий сигнал",
+   "en": "",
+   "fam": "hv_battery",
+   "node": "fam:hv_battery"
+  },
+  {
+   "code": "P0AB0",
+   "brand": "",
+   "ru": "Датчик температуры воздуха тяговой батареи A: прерывистый сигнал",
+   "en": "",
+   "fam": "hv_battery",
+   "node": "fam:hv_battery"
+  },
+  {
+   "code": "P0AB1",
+   "brand": "",
+   "ru": "Датчик температуры воздуха тяговой батареи B: цепь",
+   "en": "",
+   "fam": "hv_battery",
+   "node": "fam:hv_battery"
+  },
+  {
+   "code": "P0AB2",
+   "brand": "",
+   "ru": "Датчик температуры воздуха тяговой батареи B: показания вне диапазона",
+   "en": "",
+   "fam": "hv_battery",
+   "node": "fam:hv_battery"
+  },
+  {
+   "code": "P0AB3",
+   "brand": "",
+   "ru": "Датчик температуры воздуха тяговой батареи B: низкий сигнал",
+   "en": "",
+   "fam": "hv_battery",
+   "node": "fam:hv_battery"
+  },
+  {
+   "code": "P0AB4",
+   "brand": "",
+   "ru": "Датчик температуры воздуха тяговой батареи B: высокий сигнал",
+   "en": "",
+   "fam": "hv_battery",
+   "node": "fam:hv_battery"
+  },
+  {
+   "code": "P0AB5",
+   "brand": "",
+   "ru": "Датчик температуры воздуха тяговой батареи B: прерывистый сигнал",
+   "en": "",
+   "fam": "hv_battery",
+   "node": "fam:hv_battery"
+  },
+  {
+   "code": "P0AC0",
+   "brand": "",
+   "ru": "Датчик тока тяговой батареи A: цепь",
+   "en": "",
+   "fam": "hv_battery",
+   "node": "fam:hv_battery"
+  },
+  {
+   "code": "P0AC1",
+   "brand": "",
+   "ru": "Датчик тока тяговой батареи A: показания вне диапазона",
+   "en": "",
+   "fam": "hv_battery",
+   "node": "fam:hv_battery"
+  },
+  {
+   "code": "P0AC2",
+   "brand": "",
+   "ru": "Датчик тока тяговой батареи A: низкий сигнал",
+   "en": "",
+   "fam": "hv_battery",
+   "node": "fam:hv_battery"
+  },
+  {
+   "code": "P0AC3",
+   "brand": "",
+   "ru": "Датчик тока тяговой батареи A: высокий сигнал",
+   "en": "",
+   "fam": "hv_battery",
+   "node": "fam:hv_battery"
+  },
+  {
+   "code": "P0AC4",
+   "brand": "",
+   "ru": "Датчик тока тяговой батареи A: прерывистый сигнал",
+   "en": "",
+   "fam": "hv_battery",
+   "node": "fam:hv_battery"
+  },
+  {
+   "code": "P0AFA",
+   "brand": "",
+   "ru": "Напряжение тяговой батареи: низкое",
+   "en": "",
+   "fam": "hv_battery",
+   "node": "fam:hv_battery"
+  },
+  {
+   "code": "P0AFB",
+   "brand": "",
+   "ru": "Напряжение тяговой батареи: высокое",
+   "en": "",
+   "fam": "hv_battery",
+   "node": "fam:hv_battery"
+  },
+  {
+   "code": "P0AFC",
+   "brand": "",
+   "ru": "Модуль датчиков тяговой батареи",
+   "en": "",
+   "fam": "hv_battery",
+   "node": "fam:hv_battery"
+  },
+  {
+   "code": "P0A22",
+   "brand": "",
+   "ru": "Датчик крутящего момента генератора: цепь",
+   "en": "Generator Torque Sensor Circuit",
+   "fam": "",
+   "node": "generator torque"
+  },
+  {
+   "code": "P0A23",
+   "brand": "",
+   "ru": "Датчик крутящего момента генератора: сигнал вне диапазона",
+   "en": "Generator Torque Sensor Circuit Range/Performance",
+   "fam": "",
+   "node": "generator torque"
+  },
+  {
+   "code": "P0A24",
+   "brand": "",
+   "ru": "Датчик крутящего момента генератора: низкий уровень сигнала в цепи",
+   "en": "Generator Torque Sensor Circuit Low",
+   "fam": "",
+   "node": "generator torque"
+  },
+  {
+   "code": "P0A25",
+   "brand": "",
+   "ru": "Датчик крутящего момента генератора: высокий уровень сигнала в цепи",
+   "en": "Generator Torque Sensor Circuit High",
+   "fam": "",
+   "node": "generator torque"
+  },
+  {
+   "code": "P0A26",
+   "brand": "",
+   "ru": "Датчик крутящего момента генератора: прерывистый сигнал в цепи",
+   "en": "Generator Torque Sensor Circuit Intermittent",
+   "fam": "",
+   "node": "generator torque"
+  },
+  {
+   "code": "P0A3E",
+   "brand": "",
+   "ru": "Перегрев инвертора генератора",
+   "en": "Generator Inverter Over Temperature",
+   "fam": "",
+   "node": "generator inverter over temperature"
+  },
+  {
+   "code": "P0A5D",
+   "brand": "",
+   "ru": "Тяговый электромотор A, фаза U: ток",
+   "en": "Drive Motor A Phase U Current",
+   "fam": "",
+   "node": "drive motor a phase u current"
+  },
+  {
+   "code": "P0A5E",
+   "brand": "",
+   "ru": "Тяговый электромотор A, фаза U: малый ток",
+   "en": "Drive Motor A Phase U Current Low",
+   "fam": "",
+   "node": "drive motor a phase u current"
+  },
+  {
+   "code": "P0A5F",
+   "brand": "",
+   "ru": "Тяговый электромотор A, фаза U: большой ток",
+   "en": "Drive Motor A Phase U Current High",
+   "fam": "",
+   "node": "drive motor a phase u current"
+  },
+  {
+   "code": "P0BE5",
+   "brand": "",
+   "ru": "Тяговый электромотор A, фаза U: цепь датчика тока",
+   "en": "Drive Motor A Phase U Current Sensor Circuit",
+   "fam": "",
+   "node": "drive motor a phase u current"
+  },
+  {
+   "code": "P0BE6",
+   "brand": "",
+   "ru": "Тяговый электромотор A, фаза U: датчик тока вне диапазона",
+   "en": "Drive Motor A Phase U Current Sensor Circuit Range/Performance",
+   "fam": "",
+   "node": "drive motor a phase u current"
+  },
+  {
+   "code": "P0BE7",
+   "brand": "",
+   "ru": "Тяговый электромотор A, фаза U: низкий уровень в цепи датчика тока",
+   "en": "Drive Motor A Phase U Current Sensor Circuit Low",
+   "fam": "",
+   "node": "drive motor a phase u current"
+  },
+  {
+   "code": "P0BE8",
+   "brand": "",
+   "ru": "Тяговый электромотор A, фаза U: высокий уровень в цепи датчика тока",
+   "en": "Drive Motor A Phase U Current Sensor Circuit High",
+   "fam": "",
+   "node": "drive motor a phase u current"
+  }
+ ]
+}

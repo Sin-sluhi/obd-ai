@@ -1,0 +1,346 @@
+{
+ "name": "sae_052",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "a camshaft profile actuator c",
+  "a camshaft profile actuator c control",
+  "b camshaft position actuator position sensor c",
+  "b camshaft profile actuator c",
+  "b camshaft profile actuator c control",
+  "fam:egr",
+  "fam:egr_pos",
+  "ignition k control",
+  "ignition l control"
+ ],
+ "codes": [
+  {
+   "code": "P03EC",
+   "brand": "",
+   "ru": "Механизм переключения профиля распредвала A (привод C): обрыв цепи управления (банк 1)",
+   "en": "A Camshaft Profile Actuator C Control Circuit/Open Bank 1",
+   "fam": "",
+   "node": "a camshaft profile actuator c"
+  },
+  {
+   "code": "P03ED",
+   "brand": "",
+   "ru": "Механизм переключения профиля распредвала A (привод C): низкий уровень в цепи управления (банк 1)",
+   "en": "A Camshaft Profile Actuator C Control Circuit Low Bank 1",
+   "fam": "",
+   "node": "a camshaft profile actuator c"
+  },
+  {
+   "code": "P03EE",
+   "brand": "",
+   "ru": "Механизм переключения профиля распредвала A (привод C): высокий уровень в цепи управления (банк 1)",
+   "en": "A Camshaft Profile Actuator C Control Circuit High Bank 1",
+   "fam": "",
+   "node": "a camshaft profile actuator c"
+  },
+  {
+   "code": "P03EF",
+   "brand": "",
+   "ru": "Механизм профиля распредвала A, управление C: работа нарушена / не включается (банк 1)",
+   "en": "A Camshaft Profile Actuator C Control Performance/Stuck Off Bank 1",
+   "fam": "",
+   "node": "a camshaft profile actuator c control"
+  },
+  {
+   "code": "P03F0",
+   "brand": "",
+   "ru": "Механизм профиля распредвала A, управление C: постоянно включён (банк 1)",
+   "en": "A Camshaft Profile Actuator C Control Stuck On Bank 1",
+   "fam": "",
+   "node": "a camshaft profile actuator c control"
+  },
+  {
+   "code": "P03F1",
+   "brand": "",
+   "ru": "Механизм переключения профиля распредвала B (привод C): обрыв цепи управления (банк 1)",
+   "en": "B Camshaft Profile Actuator C Control Circuit/Open Bank 1",
+   "fam": "",
+   "node": "b camshaft profile actuator c"
+  },
+  {
+   "code": "P03F2",
+   "brand": "",
+   "ru": "Механизм переключения профиля распредвала B (привод C): низкий уровень в цепи управления (банк 1)",
+   "en": "B Camshaft Profile Actuator C Control Circuit Low Bank 1",
+   "fam": "",
+   "node": "b camshaft profile actuator c"
+  },
+  {
+   "code": "P03F3",
+   "brand": "",
+   "ru": "Механизм переключения профиля распредвала B (привод C): высокий уровень в цепи управления (банк 1)",
+   "en": "B Camshaft Profile Actuator C Control Circuit High Bank 1",
+   "fam": "",
+   "node": "b camshaft profile actuator c"
+  },
+  {
+   "code": "P03F4",
+   "brand": "",
+   "ru": "Механизм профиля распредвала B, управление C: работа нарушена / не включается (банк 1)",
+   "en": "B Camshaft Profile Actuator C Control Performance/Stuck Off Bank 1",
+   "fam": "",
+   "node": "b camshaft profile actuator c control"
+  },
+  {
+   "code": "P03F5",
+   "brand": "",
+   "ru": "Механизм профиля распредвала B, управление C: постоянно включён (банк 1)",
+   "en": "B Camshaft Profile Actuator C Control Stuck On Bank 1",
+   "fam": "",
+   "node": "b camshaft profile actuator c control"
+  },
+  {
+   "code": "P03F6",
+   "brand": "",
+   "ru": "Датчик положения фазовращателя распредвала B (датчик C): цепь (банк 1)",
+   "en": "B Camshaft Position Actuator Position Sensor C Circuit Bank 1",
+   "fam": "",
+   "node": "b camshaft position actuator position sensor c"
+  },
+  {
+   "code": "P03F7",
+   "brand": "",
+   "ru": "Датчик положения фазовращателя распредвала B (датчик C): вне допустимого диапазона (банк 1)",
+   "en": "B Camshaft Position Actuator Position Sensor C Range/Performance Bank 1",
+   "fam": "",
+   "node": "b camshaft position actuator position sensor c"
+  },
+  {
+   "code": "P03F8",
+   "brand": "",
+   "ru": "Датчик положения фазовращателя распредвала B (датчик C): низкий уровень сигнала в цепи (банк 1)",
+   "en": "B Camshaft Position Actuator Position Sensor C Circuit Low Bank 1",
+   "fam": "",
+   "node": "b camshaft position actuator position sensor c"
+  },
+  {
+   "code": "P03F9",
+   "brand": "",
+   "ru": "Датчик положения фазовращателя распредвала B (датчик C): высокий уровень сигнала в цепи (банк 1)",
+   "en": "B Camshaft Position Actuator Position Sensor C Circuit High Bank 1",
+   "fam": "",
+   "node": "b camshaft position actuator position sensor c"
+  },
+  {
+   "code": "P03FA",
+   "brand": "",
+   "ru": "Управление зажиганием K: обрыв сигнальной цепи",
+   "en": "Ignition K Control Signal Circuit/Open",
+   "fam": "",
+   "node": "ignition k control"
+  },
+  {
+   "code": "P03FB",
+   "brand": "",
+   "ru": "Управление зажиганием K: низкий уровень в сигнальной цепи",
+   "en": "Ignition K Control Signal Circuit Low",
+   "fam": "",
+   "node": "ignition k control"
+  },
+  {
+   "code": "P03FC",
+   "brand": "",
+   "ru": "Управление зажиганием K: высокий уровень в сигнальной цепи",
+   "en": "Ignition K Control Signal Circuit High",
+   "fam": "",
+   "node": "ignition k control"
+  },
+  {
+   "code": "P03FD",
+   "brand": "",
+   "ru": "Управление зажиганием L: обрыв сигнальной цепи",
+   "en": "Ignition L Control Signal Circuit/Open",
+   "fam": "",
+   "node": "ignition l control"
+  },
+  {
+   "code": "P03FE",
+   "brand": "",
+   "ru": "Управление зажиганием L: низкий уровень в сигнальной цепи",
+   "en": "Ignition L Control Signal Circuit Low",
+   "fam": "",
+   "node": "ignition l control"
+  },
+  {
+   "code": "P03FF",
+   "brand": "",
+   "ru": "Управление зажиганием L: высокий уровень в сигнальной цепи",
+   "en": "Ignition L Control Signal Circuit High",
+   "fam": "",
+   "node": "ignition l control"
+  },
+  {
+   "code": "P0400",
+   "brand": "",
+   "ru": "EGR: поток не соответствует",
+   "en": "",
+   "fam": "egr",
+   "node": "fam:egr"
+  },
+  {
+   "code": "P0401",
+   "brand": "",
+   "ru": "EGR: недостаточный поток",
+   "en": "",
+   "fam": "egr",
+   "node": "fam:egr"
+  },
+  {
+   "code": "P0402",
+   "brand": "",
+   "ru": "EGR: избыточный поток",
+   "en": "",
+   "fam": "egr",
+   "node": "fam:egr"
+  },
+  {
+   "code": "P2413",
+   "brand": "",
+   "ru": "EGR: система не отрабатывает",
+   "en": "",
+   "fam": "egr",
+   "node": "fam:egr"
+  },
+  {
+   "code": "P0403",
+   "brand": "",
+   "ru": "EGR: цепь управления клапаном",
+   "en": "",
+   "fam": "egr_pos",
+   "node": "fam:egr_pos"
+  },
+  {
+   "code": "P0404",
+   "brand": "",
+   "ru": "EGR: клапан не отрабатывает команду",
+   "en": "",
+   "fam": "egr_pos",
+   "node": "fam:egr_pos"
+  },
+  {
+   "code": "P0405",
+   "brand": "",
+   "ru": "EGR: датчик положения A, низкий сигнал",
+   "en": "",
+   "fam": "egr_pos",
+   "node": "fam:egr_pos"
+  },
+  {
+   "code": "P0406",
+   "brand": "",
+   "ru": "EGR: датчик положения A, высокий сигнал",
+   "en": "",
+   "fam": "egr_pos",
+   "node": "fam:egr_pos"
+  },
+  {
+   "code": "P0407",
+   "brand": "",
+   "ru": "EGR: датчик положения B, низкий сигнал",
+   "en": "",
+   "fam": "egr_pos",
+   "node": "fam:egr_pos"
+  },
+  {
+   "code": "P0408",
+   "brand": "",
+   "ru": "EGR: датчик положения B, высокий сигнал",
+   "en": "",
+   "fam": "egr_pos",
+   "node": "fam:egr_pos"
+  },
+  {
+   "code": "P0409",
+   "brand": "",
+   "ru": "EGR: датчик положения A, цепь",
+   "en": "",
+   "fam": "egr_pos",
+   "node": "fam:egr_pos"
+  },
+  {
+   "code": "P0486",
+   "brand": "",
+   "ru": "EGR: датчик положения B, цепь",
+   "en": "",
+   "fam": "egr_pos",
+   "node": "fam:egr_pos"
+  },
+  {
+   "code": "P0487",
+   "brand": "",
+   "ru": "EGR: дроссельная заслонка EGR, цепь управления",
+   "en": "",
+   "fam": "egr_pos",
+   "node": "fam:egr_pos"
+  },
+  {
+   "code": "P0488",
+   "brand": "",
+   "ru": "EGR: дроссельная заслонка EGR не отрабатывает",
+   "en": "",
+   "fam": "egr_pos",
+   "node": "fam:egr_pos"
+  },
+  {
+   "code": "P0489",
+   "brand": "",
+   "ru": "EGR: цепь управления, низкий уровень",
+   "en": "",
+   "fam": "egr_pos",
+   "node": "fam:egr_pos"
+  },
+  {
+   "code": "P0490",
+   "brand": "",
+   "ru": "EGR: цепь управления, высокий уровень",
+   "en": "",
+   "fam": "egr_pos",
+   "node": "fam:egr_pos"
+  },
+  {
+   "code": "P2141",
+   "brand": "",
+   "ru": "Дроссельная заслонка EGR: цепь, низкий уровень",
+   "en": "",
+   "fam": "egr_pos",
+   "node": "fam:egr_pos"
+  },
+  {
+   "code": "P2142",
+   "brand": "",
+   "ru": "Дроссельная заслонка EGR: цепь, высокий уровень",
+   "en": "",
+   "fam": "egr_pos",
+   "node": "fam:egr_pos"
+  },
+  {
+   "code": "P2143",
+   "brand": "",
+   "ru": "Клапан вентиляции EGR: цепь / обрыв",
+   "en": "",
+   "fam": "egr_pos",
+   "node": "fam:egr_pos"
+  },
+  {
+   "code": "P2144",
+   "brand": "",
+   "ru": "Клапан вентиляции EGR: низкий уровень",
+   "en": "",
+   "fam": "egr_pos",
+   "node": "fam:egr_pos"
+  },
+  {
+   "code": "P2145",
+   "brand": "",
+   "ru": "Клапан вентиляции EGR: высокий уровень",
+   "en": "",
+   "fam": "egr_pos",
+   "node": "fam:egr_pos"
+  }
+ ]
+}

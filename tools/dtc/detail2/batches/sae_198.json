@@ -1,0 +1,413 @@
+{
+ "name": "sae_198",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "lost communication with accessory protocol interface",
+  "lost communication with audio amplifier b",
+  "lost communication with camera module rear",
+  "lost communication with electronic brake booster control module a",
+  "lost communication with electronic brake booster control module b",
+  "lost communication with entertainment control module front",
+  "lost communication with entertainment control module rear b",
+  "lost communication with entrapment control module b",
+  "lost communication with front controls display interface",
+  "lost communication with front controls interface module a",
+  "lost communication with front controls interface module b",
+  "lost communication with front display interface",
+  "lost communication with front distance",
+  "lost communication with headlamp control module a",
+  "lost communication with headlamp control module b",
+  "lost communication with image processing sensor a",
+  "lost communication with image processing sensor b",
+  "lost communication with image processing sensor c",
+  "lost communication with image processing sensor d",
+  "lost communication with image processing sensor e",
+  "lost communication with image processing sensor f",
+  "lost communication with impact classification system",
+  "lost communication with interior lighting control module a",
+  "lost communication with lighting control module rear b",
+  "lost communication with parking assist control module b",
+  "lost communication with radio transceiver",
+  "lost communication with remote accessory",
+  "lost communication with remote start",
+  "lost communication with running board control module a",
+  "lost communication with running board control module b",
+  "lost communication with seat control module e",
+  "lost communication with seat control module f",
+  "lost communication with seat control module g",
+  "lost communication with seat control module h",
+  "lost communication with seat control module j",
+  "lost communication with seat control switch module a",
+  "lost communication with seat control switch module b",
+  "lost communication with side obstacle detection control module c",
+  "lost communication with side obstacle detection control module d",
+  "lost communication with special purpose vehicle control module a",
+  "lost communication with special purpose vehicle control module b",
+  "lost communication with special purpose vehicle control module c",
+  "lost communication with special purpose vehicle control module d",
+  "lost communication with speech recognition"
+ ],
+ "codes": [
+  {
+   "code": "U023D",
+   "brand": "",
+   "ru": "Нет связи: передний датчик дистанции левый",
+   "en": "Lost Communication With Front Distance Range Sensor - Left",
+   "fam": "",
+   "node": "lost communication with front distance"
+  },
+  {
+   "code": "U023E",
+   "brand": "",
+   "ru": "Нет связи: передний датчик дистанции правый",
+   "en": "Lost Communication With Front Distance Range Sensor - Right",
+   "fam": "",
+   "node": "lost communication with front distance"
+  },
+  {
+   "code": "U0240",
+   "brand": "",
+   "ru": "Нет связи: блок защиты от защемления B",
+   "en": "Lost Communication With Entrapment Control Module B",
+   "fam": "",
+   "node": "lost communication with entrapment control module b"
+  },
+  {
+   "code": "U0241",
+   "brand": "",
+   "ru": "Нет связи: блок управления фарами A",
+   "en": "Lost Communication With Headlamp Control Module A",
+   "fam": "",
+   "node": "lost communication with headlamp control module a"
+  },
+  {
+   "code": "U0242",
+   "brand": "",
+   "ru": "Нет связи: блок управления фарами B",
+   "en": "Lost Communication With Headlamp Control Module B",
+   "fam": "",
+   "node": "lost communication with headlamp control module b"
+  },
+  {
+   "code": "U0243",
+   "brand": "",
+   "ru": "Нет связи: блок парктроника B",
+   "en": "Lost Communication With Parking Assist Control Module B",
+   "fam": "",
+   "node": "lost communication with parking assist control module b"
+  },
+  {
+   "code": "U0244",
+   "brand": "",
+   "ru": "Нет связи: блок выдвижных подножек A",
+   "en": "Lost Communication With Running Board Control Module A",
+   "fam": "",
+   "node": "lost communication with running board control module a"
+  },
+  {
+   "code": "U0245",
+   "brand": "",
+   "ru": "Нет связи: передний блок развлечений",
+   "en": "Lost Communication With Entertainment Control Module - Front",
+   "fam": "",
+   "node": "lost communication with entertainment control module front"
+  },
+  {
+   "code": "U0246",
+   "brand": "",
+   "ru": "Нет связи: блок управления сиденьем E",
+   "en": "Lost Communication With Seat Control Module E",
+   "fam": "",
+   "node": "lost communication with seat control module e"
+  },
+  {
+   "code": "U0247",
+   "brand": "",
+   "ru": "Нет связи: блок управления сиденьем F",
+   "en": "Lost Communication With Seat Control Module F",
+   "fam": "",
+   "node": "lost communication with seat control module f"
+  },
+  {
+   "code": "U0248",
+   "brand": "",
+   "ru": "Нет связи: блок дистанционных аксессуаров",
+   "en": "Lost Communication With Remote Accessory Module",
+   "fam": "",
+   "node": "lost communication with remote accessory"
+  },
+  {
+   "code": "U0249",
+   "brand": "",
+   "ru": "Нет связи: блок развлечений для задних пассажиров B",
+   "en": "Lost Communication With Entertainment Control Module - Rear B",
+   "fam": "",
+   "node": "lost communication with entertainment control module rear b"
+  },
+  {
+   "code": "U024A",
+   "brand": "",
+   "ru": "Нет связи: блок освещения салона A",
+   "en": "Lost Communication With Interior Lighting Control Module A",
+   "fam": "",
+   "node": "lost communication with interior lighting control module a"
+  },
+  {
+   "code": "U024B",
+   "brand": "",
+   "ru": "Нет связи: блок управления сиденьем G",
+   "en": "Lost Communication With Seat Control Module G",
+   "fam": "",
+   "node": "lost communication with seat control module g"
+  },
+  {
+   "code": "U024C",
+   "brand": "",
+   "ru": "Нет связи: блок управления сиденьем H",
+   "en": "Lost Communication With Seat Control Module H",
+   "fam": "",
+   "node": "lost communication with seat control module h"
+  },
+  {
+   "code": "U024D",
+   "brand": "",
+   "ru": "Нет связи: блок управления сиденьем J",
+   "en": "Lost Communication With Seat Control Module J",
+   "fam": "",
+   "node": "lost communication with seat control module j"
+  },
+  {
+   "code": "U024E",
+   "brand": "",
+   "ru": "Нет связи: блок контроля слепых зон C",
+   "en": "Lost Communication With Side Obstacle Detection Control Module C",
+   "fam": "",
+   "node": "lost communication with side obstacle detection control module c"
+  },
+  {
+   "code": "U024F",
+   "brand": "",
+   "ru": "Нет связи: блок контроля слепых зон D",
+   "en": "Lost Communication With Side Obstacle Detection Control Module D",
+   "fam": "",
+   "node": "lost communication with side obstacle detection control module d"
+  },
+  {
+   "code": "U0250",
+   "brand": "",
+   "ru": "Нет связи: блок классификации удара",
+   "en": "Lost Communication With Impact Classification System Module",
+   "fam": "",
+   "node": "lost communication with impact classification system"
+  },
+  {
+   "code": "U0251",
+   "brand": "",
+   "ru": "Нет связи: блок выдвижных подножек B",
+   "en": "Lost Communication With Running Board Control Module B",
+   "fam": "",
+   "node": "lost communication with running board control module b"
+  },
+  {
+   "code": "U0252",
+   "brand": "",
+   "ru": "Нет связи: задний блок освещения B",
+   "en": "Lost Communication With Lighting Control Module - Rear B",
+   "fam": "",
+   "node": "lost communication with lighting control module rear b"
+  },
+  {
+   "code": "U0253",
+   "brand": "",
+   "ru": "Нет связи: интерфейсный блок аксессуаров",
+   "en": "Lost Communication With Accessory Protocol Interface Module",
+   "fam": "",
+   "node": "lost communication with accessory protocol interface"
+  },
+  {
+   "code": "U0254",
+   "brand": "",
+   "ru": "Нет связи: блок автозапуска",
+   "en": "Lost Communication With Remote Start Module",
+   "fam": "",
+   "node": "lost communication with remote start"
+  },
+  {
+   "code": "U0255",
+   "brand": "",
+   "ru": "Нет связи: интерфейсный блок переднего дисплея",
+   "en": "Lost Communication With Front Display Interface Module",
+   "fam": "",
+   "node": "lost communication with front display interface"
+  },
+  {
+   "code": "U0256",
+   "brand": "",
+   "ru": "Нет связи: блок передней панели управления A",
+   "en": "Lost Communication With Front Controls Interface Module A",
+   "fam": "",
+   "node": "lost communication with front controls interface module a"
+  },
+  {
+   "code": "U0257",
+   "brand": "",
+   "ru": "Нет связи: интерфейсный блок передних кнопок/дисплея",
+   "en": "Lost Communication With Front Controls/Display Interface Module",
+   "fam": "",
+   "node": "lost communication with front controls display interface"
+  },
+  {
+   "code": "U0258",
+   "brand": "",
+   "ru": "Нет связи: радиоприёмопередатчик",
+   "en": "Lost Communication With Radio Transceiver",
+   "fam": "",
+   "node": "lost communication with radio transceiver"
+  },
+  {
+   "code": "U0259",
+   "brand": "",
+   "ru": "Нет связи: блок спецоборудования A",
+   "en": "Lost Communication With Special Purpose Vehicle Control Module A",
+   "fam": "",
+   "node": "lost communication with special purpose vehicle control module a"
+  },
+  {
+   "code": "U025A",
+   "brand": "",
+   "ru": "Нет связи: блок спецоборудования B",
+   "en": "Lost Communication With Special Purpose Vehicle Control Module B",
+   "fam": "",
+   "node": "lost communication with special purpose vehicle control module b"
+  },
+  {
+   "code": "U025B",
+   "brand": "",
+   "ru": "Нет связи: блок спецоборудования C",
+   "en": "Lost Communication With Special Purpose Vehicle Control Module C",
+   "fam": "",
+   "node": "lost communication with special purpose vehicle control module c"
+  },
+  {
+   "code": "U025C",
+   "brand": "",
+   "ru": "Нет связи: блок спецоборудования D",
+   "en": "Lost Communication With Special Purpose Vehicle Control Module D",
+   "fam": "",
+   "node": "lost communication with special purpose vehicle control module d"
+  },
+  {
+   "code": "U025D",
+   "brand": "",
+   "ru": "Нет связи: блок передней панели управления B",
+   "en": "Lost Communication With Front Controls Interface Module B",
+   "fam": "",
+   "node": "lost communication with front controls interface module b"
+  },
+  {
+   "code": "U025E",
+   "brand": "",
+   "ru": "Нет связи: блок электронного усилителя тормозов A",
+   "en": "Lost Communication With Electronic Brake Booster Control Module A",
+   "fam": "",
+   "node": "lost communication with electronic brake booster control module a"
+  },
+  {
+   "code": "U025F",
+   "brand": "",
+   "ru": "Нет связи: блок электронного усилителя тормозов B",
+   "en": "Lost Communication With Electronic Brake Booster Control Module B",
+   "fam": "",
+   "node": "lost communication with electronic brake booster control module b"
+  },
+  {
+   "code": "U0260",
+   "brand": "",
+   "ru": "Нет связи: блок кнопок управления сиденьем A",
+   "en": "Lost Communication With Seat Control Switch Module A",
+   "fam": "",
+   "node": "lost communication with seat control switch module a"
+  },
+  {
+   "code": "U0261",
+   "brand": "",
+   "ru": "Нет связи: блок кнопок управления сиденьем B",
+   "en": "Lost Communication With Seat Control Switch Module B",
+   "fam": "",
+   "node": "lost communication with seat control switch module b"
+  },
+  {
+   "code": "U0262",
+   "brand": "",
+   "ru": "Нет связи: усилитель аудиосистемы B",
+   "en": "Lost Communication With Audio Amplifier B",
+   "fam": "",
+   "node": "lost communication with audio amplifier b"
+  },
+  {
+   "code": "U0263",
+   "brand": "",
+   "ru": "Нет связи: модуль распознавания речи",
+   "en": "Lost Communication With Speech Recognition Module",
+   "fam": "",
+   "node": "lost communication with speech recognition"
+  },
+  {
+   "code": "U0264",
+   "brand": "",
+   "ru": "Нет связи: камера заднего вида",
+   "en": "Lost Communication With Camera Module - Rear",
+   "fam": "",
+   "node": "lost communication with camera module rear"
+  },
+  {
+   "code": "U0265",
+   "brand": "",
+   "ru": "Нет связи: датчик обработки изображения (камера) A",
+   "en": "Lost Communication With Image Processing Sensor A",
+   "fam": "",
+   "node": "lost communication with image processing sensor a"
+  },
+  {
+   "code": "U0266",
+   "brand": "",
+   "ru": "Нет связи: датчик обработки изображения (камера) B",
+   "en": "Lost Communication With Image Processing Sensor B",
+   "fam": "",
+   "node": "lost communication with image processing sensor b"
+  },
+  {
+   "code": "U0267",
+   "brand": "",
+   "ru": "Нет связи: датчик обработки изображения (камера) C",
+   "en": "Lost Communication With Image Processing Sensor C",
+   "fam": "",
+   "node": "lost communication with image processing sensor c"
+  },
+  {
+   "code": "U0268",
+   "brand": "",
+   "ru": "Нет связи: датчик обработки изображения (камера) D",
+   "en": "Lost Communication With Image Processing Sensor D",
+   "fam": "",
+   "node": "lost communication with image processing sensor d"
+  },
+  {
+   "code": "U0269",
+   "brand": "",
+   "ru": "Нет связи: датчик обработки изображения (камера) E",
+   "en": "Lost Communication With Image Processing Sensor E",
+   "fam": "",
+   "node": "lost communication with image processing sensor e"
+  },
+  {
+   "code": "U026A",
+   "brand": "",
+   "ru": "Нет связи: датчик обработки изображения (камера) F",
+   "en": "Lost Communication With Image Processing Sensor F",
+   "fam": "",
+   "node": "lost communication with image processing sensor f"
+  }
+ ]
+}

@@ -1,0 +1,351 @@
+{
+ "name": "sae_102",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "drive motor a phase v current",
+  "drive motor a phase w current",
+  "drive motor b phase u current",
+  "drive motor b phase v current",
+  "drive motor b phase w current",
+  "generator phase u current"
+ ],
+ "codes": [
+  {
+   "code": "P0A60",
+   "brand": "",
+   "ru": "Тяговый электромотор A, фаза V: ток",
+   "en": "Drive Motor A Phase V Current",
+   "fam": "",
+   "node": "drive motor a phase v current"
+  },
+  {
+   "code": "P0A61",
+   "brand": "",
+   "ru": "Тяговый электромотор A, фаза V: малый ток",
+   "en": "Drive Motor A Phase V Current Low",
+   "fam": "",
+   "node": "drive motor a phase v current"
+  },
+  {
+   "code": "P0A62",
+   "brand": "",
+   "ru": "Тяговый электромотор A, фаза V: большой ток",
+   "en": "Drive Motor A Phase V Current High",
+   "fam": "",
+   "node": "drive motor a phase v current"
+  },
+  {
+   "code": "P0BE9",
+   "brand": "",
+   "ru": "Тяговый электромотор A, фаза V: цепь датчика тока",
+   "en": "Drive Motor A Phase V Current Sensor Circuit",
+   "fam": "",
+   "node": "drive motor a phase v current"
+  },
+  {
+   "code": "P0BEA",
+   "brand": "",
+   "ru": "Тяговый электромотор A, фаза V: датчик тока вне диапазона",
+   "en": "Drive Motor A Phase V Current Sensor Circuit Range/Performance",
+   "fam": "",
+   "node": "drive motor a phase v current"
+  },
+  {
+   "code": "P0BEB",
+   "brand": "",
+   "ru": "Тяговый электромотор A, фаза V: низкий уровень в цепи датчика тока",
+   "en": "Drive Motor A Phase V Current Sensor Circuit Low",
+   "fam": "",
+   "node": "drive motor a phase v current"
+  },
+  {
+   "code": "P0BEC",
+   "brand": "",
+   "ru": "Тяговый электромотор A, фаза V: высокий уровень в цепи датчика тока",
+   "en": "Drive Motor A Phase V Current Sensor Circuit High",
+   "fam": "",
+   "node": "drive motor a phase v current"
+  },
+  {
+   "code": "P0A63",
+   "brand": "",
+   "ru": "Тяговый электромотор A, фаза W: ток",
+   "en": "Drive Motor A Phase W Current",
+   "fam": "",
+   "node": "drive motor a phase w current"
+  },
+  {
+   "code": "P0A64",
+   "brand": "",
+   "ru": "Тяговый электромотор A, фаза W: малый ток",
+   "en": "Drive Motor A Phase W Current Low",
+   "fam": "",
+   "node": "drive motor a phase w current"
+  },
+  {
+   "code": "P0A65",
+   "brand": "",
+   "ru": "Тяговый электромотор A, фаза W: большой ток",
+   "en": "Drive Motor A Phase W Current High",
+   "fam": "",
+   "node": "drive motor a phase w current"
+  },
+  {
+   "code": "P0BED",
+   "brand": "",
+   "ru": "Тяговый электромотор A, фаза W: цепь датчика тока",
+   "en": "Drive Motor A Phase W Current Sensor Circuit",
+   "fam": "",
+   "node": "drive motor a phase w current"
+  },
+  {
+   "code": "P0BEE",
+   "brand": "",
+   "ru": "Тяговый электромотор A, фаза W: датчик тока вне диапазона",
+   "en": "Drive Motor A Phase W Current Sensor Circuit Range/Performance",
+   "fam": "",
+   "node": "drive motor a phase w current"
+  },
+  {
+   "code": "P0BEF",
+   "brand": "",
+   "ru": "Тяговый электромотор A, фаза W: низкий уровень в цепи датчика тока",
+   "en": "Drive Motor A Phase W Current Sensor Circuit Low",
+   "fam": "",
+   "node": "drive motor a phase w current"
+  },
+  {
+   "code": "P0BF0",
+   "brand": "",
+   "ru": "Тяговый электромотор A, фаза W: высокий уровень в цепи датчика тока",
+   "en": "Drive Motor A Phase W Current Sensor Circuit High",
+   "fam": "",
+   "node": "drive motor a phase w current"
+  },
+  {
+   "code": "P0A66",
+   "brand": "",
+   "ru": "Тяговый электромотор B, фаза U: ток",
+   "en": "Drive Motor B Phase U Current",
+   "fam": "",
+   "node": "drive motor b phase u current"
+  },
+  {
+   "code": "P0A67",
+   "brand": "",
+   "ru": "Тяговый электромотор B, фаза U: малый ток",
+   "en": "Drive Motor B Phase U Current Low",
+   "fam": "",
+   "node": "drive motor b phase u current"
+  },
+  {
+   "code": "P0A68",
+   "brand": "",
+   "ru": "Тяговый электромотор B, фаза U: большой ток",
+   "en": "Drive Motor B Phase U Current High",
+   "fam": "",
+   "node": "drive motor b phase u current"
+  },
+  {
+   "code": "P0BF1",
+   "brand": "",
+   "ru": "Тяговый электромотор B, фаза U: цепь датчика тока",
+   "en": "Drive Motor B Phase U Current Sensor Circuit",
+   "fam": "",
+   "node": "drive motor b phase u current"
+  },
+  {
+   "code": "P0BF2",
+   "brand": "",
+   "ru": "Тяговый электромотор B, фаза U: датчик тока вне диапазона",
+   "en": "Drive Motor B Phase U Current Sensor Circuit Range/Performance",
+   "fam": "",
+   "node": "drive motor b phase u current"
+  },
+  {
+   "code": "P0BF3",
+   "brand": "",
+   "ru": "Тяговый электромотор B, фаза U: низкий уровень в цепи датчика тока",
+   "en": "Drive Motor B Phase U Current Sensor Circuit Low",
+   "fam": "",
+   "node": "drive motor b phase u current"
+  },
+  {
+   "code": "P0BF4",
+   "brand": "",
+   "ru": "Тяговый электромотор B, фаза U: высокий уровень в цепи датчика тока",
+   "en": "Drive Motor B Phase U Current Sensor Circuit High",
+   "fam": "",
+   "node": "drive motor b phase u current"
+  },
+  {
+   "code": "P0A69",
+   "brand": "",
+   "ru": "Тяговый электромотор B, фаза V: ток",
+   "en": "Drive Motor B Phase V Current",
+   "fam": "",
+   "node": "drive motor b phase v current"
+  },
+  {
+   "code": "P0A6A",
+   "brand": "",
+   "ru": "Тяговый электромотор B, фаза V: малый ток",
+   "en": "Drive Motor B Phase V Current Low",
+   "fam": "",
+   "node": "drive motor b phase v current"
+  },
+  {
+   "code": "P0A6B",
+   "brand": "",
+   "ru": "Тяговый электромотор B, фаза V: большой ток",
+   "en": "Drive Motor B Phase V Current High",
+   "fam": "",
+   "node": "drive motor b phase v current"
+  },
+  {
+   "code": "P0BF5",
+   "brand": "",
+   "ru": "Тяговый электромотор B, фаза V: цепь датчика тока",
+   "en": "Drive Motor B Phase V Current Sensor Circuit",
+   "fam": "",
+   "node": "drive motor b phase v current"
+  },
+  {
+   "code": "P0BF6",
+   "brand": "",
+   "ru": "Тяговый электромотор B, фаза V: датчик тока вне диапазона",
+   "en": "Drive Motor B Phase V Current Sensor Circuit Range/Performance",
+   "fam": "",
+   "node": "drive motor b phase v current"
+  },
+  {
+   "code": "P0BF7",
+   "brand": "",
+   "ru": "Тяговый электромотор B, фаза V: низкий уровень в цепи датчика тока",
+   "en": "Drive Motor B Phase V Current Sensor Circuit Low",
+   "fam": "",
+   "node": "drive motor b phase v current"
+  },
+  {
+   "code": "P0BF8",
+   "brand": "",
+   "ru": "Тяговый электромотор B, фаза V: высокий уровень в цепи датчика тока",
+   "en": "Drive Motor B Phase V Current Sensor Circuit High",
+   "fam": "",
+   "node": "drive motor b phase v current"
+  },
+  {
+   "code": "P0A6C",
+   "brand": "",
+   "ru": "Тяговый электромотор B, фаза W: ток",
+   "en": "Drive Motor B Phase W Current",
+   "fam": "",
+   "node": "drive motor b phase w current"
+  },
+  {
+   "code": "P0A6D",
+   "brand": "",
+   "ru": "Тяговый электромотор B, фаза W: малый ток",
+   "en": "Drive Motor B Phase W Current Low",
+   "fam": "",
+   "node": "drive motor b phase w current"
+  },
+  {
+   "code": "P0A6E",
+   "brand": "",
+   "ru": "Тяговый электромотор B, фаза W: большой ток",
+   "en": "Drive Motor B Phase W Current High",
+   "fam": "",
+   "node": "drive motor b phase w current"
+  },
+  {
+   "code": "P0BF9",
+   "brand": "",
+   "ru": "Тяговый электромотор B, фаза W: цепь датчика тока",
+   "en": "Drive Motor B Phase W Current Sensor Circuit",
+   "fam": "",
+   "node": "drive motor b phase w current"
+  },
+  {
+   "code": "P0BFA",
+   "brand": "",
+   "ru": "Тяговый электромотор B, фаза W: датчик тока вне диапазона",
+   "en": "Drive Motor B Phase W Current Sensor Circuit Range/Performance",
+   "fam": "",
+   "node": "drive motor b phase w current"
+  },
+  {
+   "code": "P0BFB",
+   "brand": "",
+   "ru": "Тяговый электромотор B, фаза W: низкий уровень в цепи датчика тока",
+   "en": "Drive Motor B Phase W Current Sensor Circuit Low",
+   "fam": "",
+   "node": "drive motor b phase w current"
+  },
+  {
+   "code": "P0BFC",
+   "brand": "",
+   "ru": "Тяговый электромотор B, фаза W: высокий уровень в цепи датчика тока",
+   "en": "Drive Motor B Phase W Current Sensor Circuit High",
+   "fam": "",
+   "node": "drive motor b phase w current"
+  },
+  {
+   "code": "P0A6F",
+   "brand": "",
+   "ru": "Генератор (гибрид), фаза U: ток",
+   "en": "Generator Phase U Current",
+   "fam": "",
+   "node": "generator phase u current"
+  },
+  {
+   "code": "P0A70",
+   "brand": "",
+   "ru": "Генератор (гибрид), фаза U: малый ток",
+   "en": "Generator Phase U Current Low",
+   "fam": "",
+   "node": "generator phase u current"
+  },
+  {
+   "code": "P0A71",
+   "brand": "",
+   "ru": "Генератор (гибрид), фаза U: большой ток",
+   "en": "Generator Phase U Current High",
+   "fam": "",
+   "node": "generator phase u current"
+  },
+  {
+   "code": "P0E00",
+   "brand": "",
+   "ru": "Генератор (гибрид), фаза U: цепь датчика тока",
+   "en": "Generator Phase U Current Sensor Circuit",
+   "fam": "",
+   "node": "generator phase u current"
+  },
+  {
+   "code": "P0E01",
+   "brand": "",
+   "ru": "Генератор (гибрид), фаза U: датчик тока вне диапазона",
+   "en": "Generator Phase U Current Sensor Circuit Range/Performance",
+   "fam": "",
+   "node": "generator phase u current"
+  },
+  {
+   "code": "P0E02",
+   "brand": "",
+   "ru": "Генератор (гибрид), фаза U: низкий уровень в цепи датчика тока",
+   "en": "Generator Phase U Current Sensor Circuit Low",
+   "fam": "",
+   "node": "generator phase u current"
+  },
+  {
+   "code": "P0E03",
+   "brand": "",
+   "ru": "Генератор (гибрид), фаза U: высокий уровень в цепи датчика тока",
+   "en": "Generator Phase U Current Sensor Circuit High",
+   "fam": "",
+   "node": "generator phase u current"
+  }
+ ]
+}

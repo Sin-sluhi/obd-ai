@@ -1,0 +1,261 @@
+{
+ "name": "brand-hyundai_kia_041",
+ "series": "brand",
+ "brand": "hyundai_kia",
+ "nodes": [
+  "4wd switch",
+  "alternator b",
+  "alternator t",
+  "battery or",
+  "battery overcharge",
+  "battery voltage detection",
+  "chassis accelerator sensor",
+  "clutch pedal switch mt or p n",
+  "fam:immo",
+  "fam:lost_comm",
+  "fam:tcm",
+  "idle air control valve opening coil",
+  "mil request",
+  "power stage group a",
+  "power stage group b",
+  "ru:неисправность блока управления двигателем",
+  "tcm to pcm mil request",
+  "torque converter clutch solenoid valve",
+  "unused power stage b",
+  "vics solenoid"
+ ],
+ "codes": [
+  {
+   "code": "P1523",
+   "brand": "hyundai_kia",
+   "ru": "Клапан изменяемого впуска (VICS)",
+   "en": "VICS Solenoid Valve",
+   "fam": "",
+   "node": "vics solenoid"
+  },
+  {
+   "code": "P1529",
+   "brand": "hyundai_kia",
+   "ru": "Блок коробки запросил лампу неисправности",
+   "en": "",
+   "fam": "tcm",
+   "node": "fam:tcm"
+  },
+  {
+   "code": "P1552",
+   "brand": "hyundai_kia",
+   "ru": "Регулятор холостого хода, обмотка открытия: низкое напряжение",
+   "en": "Idle Air Control Valve Opening Coil Low Voltage",
+   "fam": "",
+   "node": "idle air control valve opening coil"
+  },
+  {
+   "code": "P1553",
+   "brand": "hyundai_kia",
+   "ru": "Регулятор холостого хода, обмотка открытия: высокое напряжение",
+   "en": "Idle Air Control Valve Opening Coil High Voltage",
+   "fam": "",
+   "node": "idle air control valve opening coil"
+  },
+  {
+   "code": "P1602",
+   "brand": "hyundai_kia",
+   "ru": "Ошибка связи между блоками (ECM–TCM)",
+   "en": "",
+   "fam": "lost_comm",
+   "node": "fam:lost_comm"
+  },
+  {
+   "code": "P1606",
+   "brand": "hyundai_kia",
+   "ru": "Датчик ускорения кузова: неисправность цепи сигнала",
+   "en": "Chassis Accelerator Sensor Signal Circuit Fault",
+   "fam": "",
+   "node": "chassis accelerator sensor"
+  },
+  {
+   "code": "P1616",
+   "brand": "hyundai_kia",
+   "ru": "Датчик ускорения кузова: низкое напряжение сигнала",
+   "en": "Chassis Accelerator Sensor Signal Low Voltage",
+   "fam": "",
+   "node": "chassis accelerator sensor"
+  },
+  {
+   "code": "P1617",
+   "brand": "hyundai_kia",
+   "ru": "Датчик ускорения кузова: высокое напряжение сигнала",
+   "en": "Chassis Accelerator Sensor Signal High Voltage",
+   "fam": "",
+   "node": "chassis accelerator sensor"
+  },
+  {
+   "code": "P1608",
+   "brand": "hyundai_kia",
+   "ru": "Неисправность блока управления двигателем",
+   "en": "PCM Malfunction",
+   "fam": "",
+   "node": "ru:неисправность блока управления двигателем"
+  },
+  {
+   "code": "P1611",
+   "brand": "hyundai_kia",
+   "ru": "Цепь запроса лампы неисправности: низкое напряжение",
+   "en": "MIL Request Circuit Voltage Low",
+   "fam": "",
+   "node": "mil request"
+  },
+  {
+   "code": "P1614",
+   "brand": "hyundai_kia",
+   "ru": "Цепь запроса лампы неисправности: высокое напряжение",
+   "en": "MIL Request Circuit Voltage High",
+   "fam": "",
+   "node": "mil request"
+  },
+  {
+   "code": "P1624",
+   "brand": "hyundai_kia",
+   "ru": "Цепь запроса лампы от блока коробки к блоку двигателя: неисправность",
+   "en": "TCM To PCM MIL Request Signal Circuit Fault",
+   "fam": "",
+   "node": "tcm to pcm mil request"
+  },
+  {
+   "code": "P1631",
+   "brand": "hyundai_kia",
+   "ru": "Генератор, клемма T: обрыв или нет отдачи (1.8)",
+   "en": "Alternator T Open Or No Power Output 1.8L",
+   "fam": "",
+   "node": "alternator t"
+  },
+  {
+   "code": "P1632",
+   "brand": "hyundai_kia",
+   "ru": "Цепь контроля напряжения АКБ для регулятора генератора (1.8)",
+   "en": "Battery Voltage Detection Circuit for Alternator Regulator 1.8L",
+   "fam": "",
+   "node": "battery voltage detection"
+  },
+  {
+   "code": "P1633",
+   "brand": "hyundai_kia",
+   "ru": "Перезаряд АКБ",
+   "en": "Battery Overcharge",
+   "fam": "",
+   "node": "battery overcharge"
+  },
+  {
+   "code": "P1634",
+   "brand": "hyundai_kia",
+   "ru": "Генератор, клемма B: обрыв (1.8)",
+   "en": "Alternator B Open 1.8L",
+   "fam": "",
+   "node": "alternator b"
+  },
+  {
+   "code": "P1655",
+   "brand": "hyundai_kia",
+   "ru": "Неиспользуемый силовой каскад «B»",
+   "en": "Unused Power Stage 'B'",
+   "fam": "",
+   "node": "unused power stage b"
+  },
+  {
+   "code": "P1660",
+   "brand": "hyundai_kia",
+   "ru": "Группа силовых каскадов «B»",
+   "en": "Power Stage Group 'B'",
+   "fam": "",
+   "node": "power stage group b"
+  },
+  {
+   "code": "P1665",
+   "brand": "hyundai_kia",
+   "ru": "Группа силовых каскадов «A»",
+   "en": "Power Stage Group 'A'",
+   "fam": "",
+   "node": "power stage group a"
+  },
+  {
+   "code": "P1690",
+   "brand": "hyundai_kia",
+   "ru": "Иммобилайзер (SMARTRA): нет ответа",
+   "en": "",
+   "fam": "immo",
+   "node": "fam:immo"
+  },
+  {
+   "code": "P1691",
+   "brand": "hyundai_kia",
+   "ru": "Иммобилайзер: ошибка антенны",
+   "en": "",
+   "fam": "immo",
+   "node": "fam:immo"
+  },
+  {
+   "code": "P1692",
+   "brand": "hyundai_kia",
+   "ru": "Иммобилайзер: лампа",
+   "en": "",
+   "fam": "immo",
+   "node": "fam:immo"
+  },
+  {
+   "code": "P1693",
+   "brand": "hyundai_kia",
+   "ru": "Иммобилайзер: транспондер не отвечает или неверный",
+   "en": "",
+   "fam": "immo",
+   "node": "fam:immo"
+  },
+  {
+   "code": "P1694",
+   "brand": "hyundai_kia",
+   "ru": "Иммобилайзер: ошибка сообщения от блока двигателя",
+   "en": "",
+   "fam": "immo",
+   "node": "fam:immo"
+  },
+  {
+   "code": "P1695",
+   "brand": "hyundai_kia",
+   "ru": "Иммобилайзер: ошибка памяти блока двигателя",
+   "en": "",
+   "fam": "immo",
+   "node": "fam:immo"
+  },
+  {
+   "code": "P1743",
+   "brand": "hyundai_kia",
+   "ru": "Клапан блокировки гидротрансформатора: обрыв или замыкание",
+   "en": "Torque Converter Clutch Solenoid Valve Open Or Short",
+   "fam": "",
+   "node": "torque converter clutch solenoid valve"
+  },
+  {
+   "code": "P1794",
+   "brand": "hyundai_kia",
+   "ru": "АКБ или её цепь: неисправность",
+   "en": "Battery Or Circuit Failure",
+   "fam": "",
+   "node": "battery or"
+  },
+  {
+   "code": "P1795",
+   "brand": "hyundai_kia",
+   "ru": "Сигнал выключателя полного привода: неисправность",
+   "en": "4WD Switch Signal Malfunction",
+   "fam": "",
+   "node": "4wd switch"
+  },
+  {
+   "code": "P1797",
+   "brand": "hyundai_kia",
+   "ru": "Выключатель педали сцепления (МКПП) или P/N: неисправность цепи",
+   "en": "Clutch Pedal Switch MT Or P/N Switch Circuit Fault",
+   "fam": "",
+   "node": "clutch pedal switch mt or p n"
+  }
+ ]
+}

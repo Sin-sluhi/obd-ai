@@ -1,0 +1,371 @@
+{
+ "name": "sae_185",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "battery charger b cooling system",
+  "battery charging system b",
+  "coolant heater a control module system voltage",
+  "coolant heater a internal control module",
+  "coolant heater a over temperature",
+  "coolant heater a supply voltage",
+  "dc ac converter control module a switch a",
+  "dc ac converter control module a switch b",
+  "drive motor a temperature sensor b",
+  "drive motor a temperature sensor c",
+  "gear shift control module b overtemperature",
+  "gear shift control module b supply voltage",
+  "ru:высоковольтная система",
+  "starter generator phase u current",
+  "starter generator phase v current",
+  "starter generator phase w current",
+  "starter generator phase y current",
+  "starter generator phase z current"
+ ],
+ "codes": [
+  {
+   "code": "P2D93",
+   "brand": "",
+   "ru": "Стартер-генератор, фаза Y: высокий уровень в цепи датчика тока",
+   "en": "Starter/Generator Phase Y Current Sensor Circuit High",
+   "fam": "",
+   "node": "starter generator phase y current"
+  },
+  {
+   "code": "P2D96",
+   "brand": "",
+   "ru": "Стартер-генератор, фаза Y: низкий уровень в цепи датчика тока",
+   "en": "Starter/Generator Phase Y Current Sensor Circuit Low",
+   "fam": "",
+   "node": "starter generator phase y current"
+  },
+  {
+   "code": "P2D99",
+   "brand": "",
+   "ru": "Стартер-генератор, фаза Y: прерывистый / нестабильный ток",
+   "en": "Starter/Generator Phase Y Current Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "starter generator phase y current"
+  },
+  {
+   "code": "P2DC3",
+   "brand": "",
+   "ru": "Стартер-генератор, фаза Y: цепь датчика тока",
+   "en": "Starter/Generator Phase Y Current Sensor Circuit",
+   "fam": "",
+   "node": "starter generator phase y current"
+  },
+  {
+   "code": "P2DC4",
+   "brand": "",
+   "ru": "Стартер-генератор, фаза Y: датчик тока вне диапазона",
+   "en": "Starter/Generator Phase Y Current Sensor Circuit Range/Performance",
+   "fam": "",
+   "node": "starter generator phase y current"
+  },
+  {
+   "code": "P2D94",
+   "brand": "",
+   "ru": "Стартер-генератор, фаза Z: высокий уровень в цепи датчика тока",
+   "en": "Starter/Generator Phase Z Current Sensor Circuit High",
+   "fam": "",
+   "node": "starter generator phase z current"
+  },
+  {
+   "code": "P2D97",
+   "brand": "",
+   "ru": "Стартер-генератор, фаза Z: низкий уровень в цепи датчика тока",
+   "en": "Starter/Generator Phase Z Current Sensor Circuit Low",
+   "fam": "",
+   "node": "starter generator phase z current"
+  },
+  {
+   "code": "P2D9A",
+   "brand": "",
+   "ru": "Стартер-генератор, фаза Z: прерывистый / нестабильный ток",
+   "en": "Starter/Generator Phase Z Current Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "starter generator phase z current"
+  },
+  {
+   "code": "P2DC5",
+   "brand": "",
+   "ru": "Стартер-генератор, фаза Z: цепь датчика тока",
+   "en": "Starter/Generator Phase Z Current Sensor Circuit",
+   "fam": "",
+   "node": "starter generator phase z current"
+  },
+  {
+   "code": "P2DC6",
+   "brand": "",
+   "ru": "Стартер-генератор, фаза Z: датчик тока вне диапазона",
+   "en": "Starter/Generator Phase Z Current Sensor Circuit Range/Performance",
+   "fam": "",
+   "node": "starter generator phase z current"
+  },
+  {
+   "code": "P2D9B",
+   "brand": "",
+   "ru": "Стартер-генератор, фаза U: прерывистый / нестабильный ток",
+   "en": "Starter/Generator Phase U Current Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "starter generator phase u current"
+  },
+  {
+   "code": "P2D9C",
+   "brand": "",
+   "ru": "Стартер-генератор, фаза V: прерывистый / нестабильный ток",
+   "en": "Starter/Generator Phase V Current Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "starter generator phase v current"
+  },
+  {
+   "code": "P2D9D",
+   "brand": "",
+   "ru": "Стартер-генератор, фаза W: прерывистый / нестабильный ток",
+   "en": "Starter/Generator Phase W Current Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "starter generator phase w current"
+  },
+  {
+   "code": "P2D9E",
+   "brand": "",
+   "ru": "Высоковольтная система: низкое напряжение бортсети",
+   "en": "High Voltage System Voltage Low",
+   "fam": "",
+   "node": "ru:высоковольтная система"
+  },
+  {
+   "code": "P2D9F",
+   "brand": "",
+   "ru": "Высоковольтная система: высокое напряжение бортсети",
+   "en": "High Voltage System Voltage High",
+   "fam": "",
+   "node": "ru:высоковольтная система"
+  },
+  {
+   "code": "P2DA0",
+   "brand": "",
+   "ru": "Высоковольтная система: нарушена работа системы",
+   "en": "High Voltage System Performance",
+   "fam": "",
+   "node": "ru:высоковольтная система"
+  },
+  {
+   "code": "P2DA1",
+   "brand": "",
+   "ru": "Блок управления переключением передач B: низкое напряжение питания",
+   "en": "Gear Shift Control Module B Supply Voltage Low",
+   "fam": "",
+   "node": "gear shift control module b supply voltage"
+  },
+  {
+   "code": "P2DA2",
+   "brand": "",
+   "ru": "Блок управления переключением передач B: высокое напряжение питания",
+   "en": "Gear Shift Control Module B Supply Voltage High",
+   "fam": "",
+   "node": "gear shift control module b supply voltage"
+  },
+  {
+   "code": "P2DA3",
+   "brand": "",
+   "ru": "Перегрев блока переключения передач B",
+   "en": "Gear Shift Control Module B Overtemperature",
+   "fam": "",
+   "node": "gear shift control module b overtemperature"
+  },
+  {
+   "code": "P2DA4",
+   "brand": "",
+   "ru": "Внутренний блок подогревателя жидкости A: работа нарушена",
+   "en": "Coolant Heater A Internal Control Module Performance",
+   "fam": "",
+   "node": "coolant heater a internal control module"
+  },
+  {
+   "code": "P2DA5",
+   "brand": "",
+   "ru": "Подогреватель охлаждающей жидкости A: цепь питания",
+   "en": "Coolant Heater A Supply Voltage Circuit",
+   "fam": "",
+   "node": "coolant heater a supply voltage"
+  },
+  {
+   "code": "P2DA6",
+   "brand": "",
+   "ru": "Подогреватель охлаждающей жидкости A: перегрев",
+   "en": "Coolant Heater A Over Temperature",
+   "fam": "",
+   "node": "coolant heater a over temperature"
+  },
+  {
+   "code": "P2DA7",
+   "brand": "",
+   "ru": "Блок подогревателя жидкости A: напряжение питания",
+   "en": "Coolant Heater A Control Module System Voltage",
+   "fam": "",
+   "node": "coolant heater a control module system voltage"
+  },
+  {
+   "code": "P2DA8",
+   "brand": "",
+   "ru": "Выключатель блока инвертора DC/AC A, A: цепь",
+   "en": "DC/AC Converter Control Module A Switch A Circuit",
+   "fam": "",
+   "node": "dc ac converter control module a switch a"
+  },
+  {
+   "code": "P2DA9",
+   "brand": "",
+   "ru": "Выключатель блока инвертора DC/AC A, A: сигнал вне диапазона",
+   "en": "DC/AC Converter Control Module A Switch A Circuit Range/Performance",
+   "fam": "",
+   "node": "dc ac converter control module a switch a"
+  },
+  {
+   "code": "P2DAA",
+   "brand": "",
+   "ru": "Выключатель блока инвертора DC/AC A, B: цепь",
+   "en": "DC/AC Converter Control Module A Switch B Circuit",
+   "fam": "",
+   "node": "dc ac converter control module a switch b"
+  },
+  {
+   "code": "P2DAB",
+   "brand": "",
+   "ru": "Выключатель блока инвертора DC/AC A, B: сигнал вне диапазона",
+   "en": "DC/AC Converter Control Module A Switch B Circuit Range/Performance",
+   "fam": "",
+   "node": "dc ac converter control module a switch b"
+  },
+  {
+   "code": "P2DAC",
+   "brand": "",
+   "ru": "Датчик температуры тягового электромотора A (датчик B): цепь",
+   "en": "Drive Motor A Temperature Sensor B Circuit",
+   "fam": "",
+   "node": "drive motor a temperature sensor b"
+  },
+  {
+   "code": "P2DAD",
+   "brand": "",
+   "ru": "Датчик температуры тягового электромотора A (датчик B): сигнал вне диапазона",
+   "en": "Drive Motor A Temperature Sensor B Circuit Range/Performance",
+   "fam": "",
+   "node": "drive motor a temperature sensor b"
+  },
+  {
+   "code": "P2DAE",
+   "brand": "",
+   "ru": "Датчик температуры тягового электромотора A (датчик B): низкий уровень сигнала в цепи",
+   "en": "Drive Motor A Temperature Sensor B Circuit Low",
+   "fam": "",
+   "node": "drive motor a temperature sensor b"
+  },
+  {
+   "code": "P2DAF",
+   "brand": "",
+   "ru": "Датчик температуры тягового электромотора A (датчик B): высокий уровень сигнала в цепи",
+   "en": "Drive Motor A Temperature Sensor B Circuit High",
+   "fam": "",
+   "node": "drive motor a temperature sensor b"
+  },
+  {
+   "code": "P2DB0",
+   "brand": "",
+   "ru": "Датчик температуры тягового электромотора A (датчик B): прерывистый сигнал в цепи",
+   "en": "Drive Motor A Temperature Sensor B Circuit Intermittent",
+   "fam": "",
+   "node": "drive motor a temperature sensor b"
+  },
+  {
+   "code": "P2DB1",
+   "brand": "",
+   "ru": "Датчик температуры тягового электромотора A (датчик C): цепь",
+   "en": "Drive Motor A Temperature Sensor C Circuit",
+   "fam": "",
+   "node": "drive motor a temperature sensor c"
+  },
+  {
+   "code": "P2DB2",
+   "brand": "",
+   "ru": "Датчик температуры тягового электромотора A (датчик C): сигнал вне диапазона",
+   "en": "Drive Motor A Temperature Sensor C Circuit Range/Performance",
+   "fam": "",
+   "node": "drive motor a temperature sensor c"
+  },
+  {
+   "code": "P2DB3",
+   "brand": "",
+   "ru": "Датчик температуры тягового электромотора A (датчик C): низкий уровень сигнала в цепи",
+   "en": "Drive Motor A Temperature Sensor C Circuit Low",
+   "fam": "",
+   "node": "drive motor a temperature sensor c"
+  },
+  {
+   "code": "P2DB4",
+   "brand": "",
+   "ru": "Датчик температуры тягового электромотора A (датчик C): высокий уровень сигнала в цепи",
+   "en": "Drive Motor A Temperature Sensor C Circuit High",
+   "fam": "",
+   "node": "drive motor a temperature sensor c"
+  },
+  {
+   "code": "P2DB5",
+   "brand": "",
+   "ru": "Датчик температуры тягового электромотора A (датчик C): прерывистый сигнал в цепи",
+   "en": "Drive Motor A Temperature Sensor C Circuit Intermittent",
+   "fam": "",
+   "node": "drive motor a temperature sensor c"
+  },
+  {
+   "code": "P2DB6",
+   "brand": "",
+   "ru": "Охлаждение зарядного устройства B: работа нарушена",
+   "en": "Battery Charger B Cooling System Performance",
+   "fam": "",
+   "node": "battery charger b cooling system"
+  },
+  {
+   "code": "P2DB7",
+   "brand": "",
+   "ru": "Высоковольтная блокировка системы зарядки B: обрыв цепи",
+   "en": "Battery Charging System B High Voltage Interlock Circuit/Open",
+   "fam": "",
+   "node": "battery charging system b"
+  },
+  {
+   "code": "P2DB8",
+   "brand": "",
+   "ru": "Высоковольтная блокировка системы зарядки B: нарушена работа цепи",
+   "en": "Battery Charging System B High Voltage Interlock Circuit Performance",
+   "fam": "",
+   "node": "battery charging system b"
+  },
+  {
+   "code": "P2DB9",
+   "brand": "",
+   "ru": "Высоковольтная блокировка системы зарядки B: низкий уровень сигнала в цепи",
+   "en": "Battery Charging System B High Voltage Interlock Circuit Low",
+   "fam": "",
+   "node": "battery charging system b"
+  },
+  {
+   "code": "P2DBA",
+   "brand": "",
+   "ru": "Высоковольтная блокировка системы зарядки B: высокий уровень сигнала в цепи",
+   "en": "Battery Charging System B High Voltage Interlock Circuit High",
+   "fam": "",
+   "node": "battery charging system b"
+  },
+  {
+   "code": "P2DBB",
+   "brand": "",
+   "ru": "Высоковольтная блокировка системы зарядки B: прерывистый / нестабильный сигнал",
+   "en": "Battery Charging System B High Voltage Interlock Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "battery charging system b"
+  }
+ ]
+}

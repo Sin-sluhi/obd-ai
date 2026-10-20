@@ -1,0 +1,377 @@
+{
+ "name": "sae_089",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "fam:trans_general",
+  "transmission friction element a",
+  "transmission friction element a slip detected",
+  "transmission friction element b",
+  "transmission friction element b slip detected",
+  "transmission friction element c",
+  "transmission friction element c slip detected",
+  "transmission friction element d",
+  "transmission friction element d slip detected",
+  "transmission friction element e",
+  "transmission friction element e slip detected",
+  "transmission friction element f",
+  "transmission friction element f slip detected",
+  "transmission friction element g",
+  "transmission friction element g slip detected",
+  "transmission friction element h slip detected"
+ ],
+ "codes": [
+  {
+   "code": "P0953",
+   "brand": "",
+   "ru": "Ручной режим коробки: цепь управления: высокий уровень",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  },
+  {
+   "code": "P0954",
+   "brand": "",
+   "ru": "Ручной режим коробки: цепь управления: прерывистый",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  },
+  {
+   "code": "P0955",
+   "brand": "",
+   "ru": "Ручной режим коробки: переключатель режима: цепь",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  },
+  {
+   "code": "P0956",
+   "brand": "",
+   "ru": "Ручной режим коробки: переключатель режима: не соответствует",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  },
+  {
+   "code": "P0957",
+   "brand": "",
+   "ru": "Ручной режим коробки: переключатель режима: низкий уровень",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  },
+  {
+   "code": "P0958",
+   "brand": "",
+   "ru": "Ручной режим коробки: переключатель режима: высокий уровень",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  },
+  {
+   "code": "P0959",
+   "brand": "",
+   "ru": "Ручной режим коробки: переключатель режима: прерывистый",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  },
+  {
+   "code": "P2775",
+   "brand": "",
+   "ru": "Кнопка повышения передачи: не соответствует",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  },
+  {
+   "code": "P2776",
+   "brand": "",
+   "ru": "Кнопка повышения передачи: низкий уровень",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  },
+  {
+   "code": "P2777",
+   "brand": "",
+   "ru": "Кнопка повышения передачи: высокий уровень",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  },
+  {
+   "code": "P2778",
+   "brand": "",
+   "ru": "Кнопка повышения передачи: прерывистый",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  },
+  {
+   "code": "P2779",
+   "brand": "",
+   "ru": "Кнопка понижения передачи: не соответствует",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  },
+  {
+   "code": "P2780",
+   "brand": "",
+   "ru": "Кнопка понижения передачи: низкий уровень",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  },
+  {
+   "code": "P2781",
+   "brand": "",
+   "ru": "Кнопка понижения передачи: высокий уровень",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  },
+  {
+   "code": "P2782",
+   "brand": "",
+   "ru": "Кнопка понижения передачи: прерывистый",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  },
+  {
+   "code": "P2786",
+   "brand": "",
+   "ru": "Актуатор переключения (робот): перегрев",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  },
+  {
+   "code": "P2790",
+   "brand": "",
+   "ru": "Направление выбора ряда (робот): цепь",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  },
+  {
+   "code": "P2791",
+   "brand": "",
+   "ru": "Направление выбора ряда (робот): низкий уровень",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  },
+  {
+   "code": "P2792",
+   "brand": "",
+   "ru": "Направление выбора ряда (робот): высокий уровень",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  },
+  {
+   "code": "P2793",
+   "brand": "",
+   "ru": "Направление переключения (робот): цепь",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  },
+  {
+   "code": "P2794",
+   "brand": "",
+   "ru": "Направление переключения (робот): низкий уровень",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  },
+  {
+   "code": "P2795",
+   "brand": "",
+   "ru": "Направление переключения (робот): высокий уровень",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  },
+  {
+   "code": "P079A",
+   "brand": "",
+   "ru": "Фрикционный элемент КПП A: обнаружено проскальзывание",
+   "en": "Transmission Friction Element A Slip Detected",
+   "fam": "",
+   "node": "transmission friction element a slip detected"
+  },
+  {
+   "code": "P079B",
+   "brand": "",
+   "ru": "Фрикционный элемент КПП B: обнаружено проскальзывание",
+   "en": "Transmission Friction Element B Slip Detected",
+   "fam": "",
+   "node": "transmission friction element b slip detected"
+  },
+  {
+   "code": "P079C",
+   "brand": "",
+   "ru": "Фрикционный элемент КПП C: обнаружено проскальзывание",
+   "en": "Transmission Friction Element C Slip Detected",
+   "fam": "",
+   "node": "transmission friction element c slip detected"
+  },
+  {
+   "code": "P079D",
+   "brand": "",
+   "ru": "Фрикционный элемент КПП D: обнаружено проскальзывание",
+   "en": "Transmission Friction Element D Slip Detected",
+   "fam": "",
+   "node": "transmission friction element d slip detected"
+  },
+  {
+   "code": "P079E",
+   "brand": "",
+   "ru": "Фрикционный элемент КПП E: обнаружено проскальзывание",
+   "en": "Transmission Friction Element E Slip Detected",
+   "fam": "",
+   "node": "transmission friction element e slip detected"
+  },
+  {
+   "code": "P079F",
+   "brand": "",
+   "ru": "Фрикционный элемент КПП F: обнаружено проскальзывание",
+   "en": "Transmission Friction Element F Slip Detected",
+   "fam": "",
+   "node": "transmission friction element f slip detected"
+  },
+  {
+   "code": "P07A0",
+   "brand": "",
+   "ru": "Фрикционный элемент КПП G: обнаружено проскальзывание",
+   "en": "Transmission Friction Element G Slip Detected",
+   "fam": "",
+   "node": "transmission friction element g slip detected"
+  },
+  {
+   "code": "P07A1",
+   "brand": "",
+   "ru": "Фрикционный элемент КПП H: обнаружено проскальзывание",
+   "en": "Transmission Friction Element H Slip Detected",
+   "fam": "",
+   "node": "transmission friction element h slip detected"
+  },
+  {
+   "code": "P07A2",
+   "brand": "",
+   "ru": "Фрикционный элемент КПП A: работа нарушена / не включается",
+   "en": "Transmission Friction Element A Performance/Stuck Off",
+   "fam": "",
+   "node": "transmission friction element a"
+  },
+  {
+   "code": "P07A3",
+   "brand": "",
+   "ru": "Фрикционный элемент КПП A: постоянно включён",
+   "en": "Transmission Friction Element A Stuck On",
+   "fam": "",
+   "node": "transmission friction element a"
+  },
+  {
+   "code": "P07A4",
+   "brand": "",
+   "ru": "Фрикционный элемент КПП B: работа нарушена / не включается",
+   "en": "Transmission Friction Element B Performance/Stuck Off",
+   "fam": "",
+   "node": "transmission friction element b"
+  },
+  {
+   "code": "P07A5",
+   "brand": "",
+   "ru": "Фрикционный элемент КПП B: постоянно включён",
+   "en": "Transmission Friction Element B Stuck On",
+   "fam": "",
+   "node": "transmission friction element b"
+  },
+  {
+   "code": "P07A6",
+   "brand": "",
+   "ru": "Фрикционный элемент КПП C: работа нарушена / не включается",
+   "en": "Transmission Friction Element C Performance/Stuck Off",
+   "fam": "",
+   "node": "transmission friction element c"
+  },
+  {
+   "code": "P07A7",
+   "brand": "",
+   "ru": "Фрикционный элемент КПП C: постоянно включён",
+   "en": "Transmission Friction Element C Stuck On",
+   "fam": "",
+   "node": "transmission friction element c"
+  },
+  {
+   "code": "P07A8",
+   "brand": "",
+   "ru": "Фрикционный элемент КПП D: работа нарушена / не включается",
+   "en": "Transmission Friction Element D Performance/Stuck Off",
+   "fam": "",
+   "node": "transmission friction element d"
+  },
+  {
+   "code": "P07A9",
+   "brand": "",
+   "ru": "Фрикционный элемент КПП D: постоянно включён",
+   "en": "Transmission Friction Element D Stuck On",
+   "fam": "",
+   "node": "transmission friction element d"
+  },
+  {
+   "code": "P07AA",
+   "brand": "",
+   "ru": "Фрикционный элемент КПП E: работа нарушена / не включается",
+   "en": "Transmission Friction Element E Performance/Stuck Off",
+   "fam": "",
+   "node": "transmission friction element e"
+  },
+  {
+   "code": "P07AB",
+   "brand": "",
+   "ru": "Фрикционный элемент КПП E: постоянно включён",
+   "en": "Transmission Friction Element E Stuck On",
+   "fam": "",
+   "node": "transmission friction element e"
+  },
+  {
+   "code": "P07AC",
+   "brand": "",
+   "ru": "Фрикционный элемент КПП F: работа нарушена / не включается",
+   "en": "Transmission Friction Element F Performance/Stuck Off",
+   "fam": "",
+   "node": "transmission friction element f"
+  },
+  {
+   "code": "P07AD",
+   "brand": "",
+   "ru": "Фрикционный элемент КПП F: постоянно включён",
+   "en": "Transmission Friction Element F Stuck On",
+   "fam": "",
+   "node": "transmission friction element f"
+  },
+  {
+   "code": "P07AE",
+   "brand": "",
+   "ru": "Фрикционный элемент КПП G: работа нарушена / не включается",
+   "en": "Transmission Friction Element G Performance/Stuck Off",
+   "fam": "",
+   "node": "transmission friction element g"
+  },
+  {
+   "code": "P07AF",
+   "brand": "",
+   "ru": "Фрикционный элемент КПП G: постоянно включён",
+   "en": "Transmission Friction Element G Stuck On",
+   "fam": "",
+   "node": "transmission friction element g"
+  }
+ ]
+}

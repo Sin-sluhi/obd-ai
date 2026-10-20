@@ -1,0 +1,368 @@
+{
+ "name": "sae_079",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "control module internal temperature b too",
+  "control module internal temperature sensor b",
+  "glow plug incorrect",
+  "internal control module ignition coil control",
+  "internal control module knock combustion vibration sensor processor",
+  "internal control module non volatile random access memory error",
+  "sensor power supply a",
+  "sensor power supply b",
+  "sensor reference voltage a",
+  "sensor reference voltage b",
+  "sensor reference voltage c",
+  "sensor reference voltage d",
+  "sensor reference voltage e",
+  "sensor reference voltage f",
+  "torque management system forced engine shutdown"
+ ],
+ "codes": [
+  {
+   "code": "P06A3",
+   "brand": "",
+   "ru": "Опорное напряжение датчиков D: обрыв цепи",
+   "en": "Sensor Reference Voltage D Circuit/Open",
+   "fam": "",
+   "node": "sensor reference voltage d"
+  },
+  {
+   "code": "P06A4",
+   "brand": "",
+   "ru": "Опорное напряжение датчиков D: низкий уровень сигнала в цепи",
+   "en": "Sensor Reference Voltage D Circuit Low",
+   "fam": "",
+   "node": "sensor reference voltage d"
+  },
+  {
+   "code": "P06A5",
+   "brand": "",
+   "ru": "Опорное напряжение датчиков D: высокий уровень сигнала в цепи",
+   "en": "Sensor Reference Voltage D Circuit High",
+   "fam": "",
+   "node": "sensor reference voltage d"
+  },
+  {
+   "code": "P06A9",
+   "brand": "",
+   "ru": "Опорное напряжение датчиков D: сигнал вне диапазона",
+   "en": "Sensor Reference Voltage D Circuit Range/Performance",
+   "fam": "",
+   "node": "sensor reference voltage d"
+  },
+  {
+   "code": "P06A6",
+   "brand": "",
+   "ru": "Опорное напряжение датчиков A: сигнал вне диапазона",
+   "en": "Sensor Reference Voltage A Circuit Range/Performance",
+   "fam": "",
+   "node": "sensor reference voltage a"
+  },
+  {
+   "code": "P06A7",
+   "brand": "",
+   "ru": "Опорное напряжение датчиков B: сигнал вне диапазона",
+   "en": "Sensor Reference Voltage B Circuit Range/Performance",
+   "fam": "",
+   "node": "sensor reference voltage b"
+  },
+  {
+   "code": "P06A8",
+   "brand": "",
+   "ru": "Опорное напряжение датчиков C: сигнал вне диапазона",
+   "en": "Sensor Reference Voltage C Circuit Range/Performance",
+   "fam": "",
+   "node": "sensor reference voltage c"
+  },
+  {
+   "code": "P06AA",
+   "brand": "",
+   "ru": "Внутренняя температура блока управления B слишком высокая",
+   "en": "Control Module Internal Temperature B Too High",
+   "fam": "",
+   "node": "control module internal temperature b too"
+  },
+  {
+   "code": "P06AB",
+   "brand": "",
+   "ru": "Внутренний датчик температуры блока управления B: цепь",
+   "en": "Control Module Internal Temperature Sensor B Circuit",
+   "fam": "",
+   "node": "control module internal temperature sensor b"
+  },
+  {
+   "code": "P06AC",
+   "brand": "",
+   "ru": "Внутренний датчик температуры блока управления B: вне допустимого диапазона",
+   "en": "Control Module Internal Temperature Sensor B Range/Performance",
+   "fam": "",
+   "node": "control module internal temperature sensor b"
+  },
+  {
+   "code": "P06AD",
+   "brand": "",
+   "ru": "Внутренний датчик температуры блока управления B: низкий уровень сигнала в цепи",
+   "en": "Control Module Internal Temperature Sensor B Circuit Low",
+   "fam": "",
+   "node": "control module internal temperature sensor b"
+  },
+  {
+   "code": "P06AE",
+   "brand": "",
+   "ru": "Внутренний датчик температуры блока управления B: высокий уровень сигнала в цепи",
+   "en": "Control Module Internal Temperature Sensor B Circuit High",
+   "fam": "",
+   "node": "control module internal temperature sensor b"
+  },
+  {
+   "code": "P06AF",
+   "brand": "",
+   "ru": "Система управления моментом: принудительная остановка двигателя",
+   "en": "Torque Management System - Forced Engine Shutdown",
+   "fam": "",
+   "node": "torque management system forced engine shutdown"
+  },
+  {
+   "code": "P06B0",
+   "brand": "",
+   "ru": "Питание датчиков A: обрыв цепи",
+   "en": "Sensor Power Supply A Circuit/Open",
+   "fam": "",
+   "node": "sensor power supply a"
+  },
+  {
+   "code": "P06B1",
+   "brand": "",
+   "ru": "Питание датчиков A: низкий уровень сигнала в цепи",
+   "en": "Sensor Power Supply A Circuit Low",
+   "fam": "",
+   "node": "sensor power supply a"
+  },
+  {
+   "code": "P06B2",
+   "brand": "",
+   "ru": "Питание датчиков A: высокий уровень сигнала в цепи",
+   "en": "Sensor Power Supply A Circuit High",
+   "fam": "",
+   "node": "sensor power supply a"
+  },
+  {
+   "code": "P06B3",
+   "brand": "",
+   "ru": "Питание датчиков B: обрыв цепи",
+   "en": "Sensor Power Supply B Circuit/Open",
+   "fam": "",
+   "node": "sensor power supply b"
+  },
+  {
+   "code": "P06B4",
+   "brand": "",
+   "ru": "Питание датчиков B: низкий уровень сигнала в цепи",
+   "en": "Sensor Power Supply B Circuit Low",
+   "fam": "",
+   "node": "sensor power supply b"
+  },
+  {
+   "code": "P06B5",
+   "brand": "",
+   "ru": "Питание датчиков B: высокий уровень сигнала в цепи",
+   "en": "Sensor Power Supply B Circuit High",
+   "fam": "",
+   "node": "sensor power supply b"
+  },
+  {
+   "code": "P06B6",
+   "brand": "",
+   "ru": "ЭБУ: процессор датчика детонации 1 работает с ошибкой",
+   "en": "Internal Control Module Knock/Combustion Vibration Sensor Processor 1 Performance",
+   "fam": "",
+   "node": "internal control module knock combustion vibration sensor processor"
+  },
+  {
+   "code": "P06B7",
+   "brand": "",
+   "ru": "ЭБУ: процессор датчика детонации 2 работает с ошибкой",
+   "en": "Internal Control Module Knock/Combustion Vibration Sensor Processor 2 Performance",
+   "fam": "",
+   "node": "internal control module knock combustion vibration sensor processor"
+  },
+  {
+   "code": "P06B8",
+   "brand": "",
+   "ru": "ЭБУ: ошибка энергонезависимой памяти (NVRAM)",
+   "en": "Internal Control Module Non-Volatile Random Access Memory (NVRAM) Error",
+   "fam": "",
+   "node": "internal control module non volatile random access memory error"
+  },
+  {
+   "code": "P06C5",
+   "brand": "",
+   "ru": "Цилиндр 1: установлена не та свеча накаливания",
+   "en": "Cylinder 1 Glow Plug Incorrect",
+   "fam": "",
+   "node": "glow plug incorrect"
+  },
+  {
+   "code": "P06C6",
+   "brand": "",
+   "ru": "Цилиндр 2: установлена не та свеча накаливания",
+   "en": "Cylinder 2 Glow Plug Incorrect",
+   "fam": "",
+   "node": "glow plug incorrect"
+  },
+  {
+   "code": "P06C7",
+   "brand": "",
+   "ru": "Цилиндр 3: установлена не та свеча накаливания",
+   "en": "Cylinder 3 Glow Plug Incorrect",
+   "fam": "",
+   "node": "glow plug incorrect"
+  },
+  {
+   "code": "P06C8",
+   "brand": "",
+   "ru": "Цилиндр 4: установлена не та свеча накаливания",
+   "en": "Cylinder 4 Glow Plug Incorrect",
+   "fam": "",
+   "node": "glow plug incorrect"
+  },
+  {
+   "code": "P06C9",
+   "brand": "",
+   "ru": "Цилиндр 5: установлена не та свеча накаливания",
+   "en": "Cylinder 5 Glow Plug Incorrect",
+   "fam": "",
+   "node": "glow plug incorrect"
+  },
+  {
+   "code": "P06CA",
+   "brand": "",
+   "ru": "Цилиндр 6: установлена не та свеча накаливания",
+   "en": "Cylinder 6 Glow Plug Incorrect",
+   "fam": "",
+   "node": "glow plug incorrect"
+  },
+  {
+   "code": "P06CB",
+   "brand": "",
+   "ru": "Цилиндр 7: установлена не та свеча накаливания",
+   "en": "Cylinder 7 Glow Plug Incorrect",
+   "fam": "",
+   "node": "glow plug incorrect"
+  },
+  {
+   "code": "P06CC",
+   "brand": "",
+   "ru": "Цилиндр 8: установлена не та свеча накаливания",
+   "en": "Cylinder 8 Glow Plug Incorrect",
+   "fam": "",
+   "node": "glow plug incorrect"
+  },
+  {
+   "code": "P06CD",
+   "brand": "",
+   "ru": "Цилиндр 9: установлена не та свеча накаливания",
+   "en": "Cylinder 9 Glow Plug Incorrect",
+   "fam": "",
+   "node": "glow plug incorrect"
+  },
+  {
+   "code": "P06CE",
+   "brand": "",
+   "ru": "Цилиндр 10: установлена не та свеча накаливания",
+   "en": "Cylinder 10 Glow Plug Incorrect",
+   "fam": "",
+   "node": "glow plug incorrect"
+  },
+  {
+   "code": "P06CF",
+   "brand": "",
+   "ru": "Цилиндр 11: установлена не та свеча накаливания",
+   "en": "Cylinder 11 Glow Plug Incorrect",
+   "fam": "",
+   "node": "glow plug incorrect"
+  },
+  {
+   "code": "P06D0",
+   "brand": "",
+   "ru": "Цилиндр 12: установлена не та свеча накаливания",
+   "en": "Cylinder 12 Glow Plug Incorrect",
+   "fam": "",
+   "node": "glow plug incorrect"
+  },
+  {
+   "code": "P06D1",
+   "brand": "",
+   "ru": "ЭБУ: ошибка управления катушками зажигания",
+   "en": "Internal Control Module Ignition Coil Control Performance",
+   "fam": "",
+   "node": "internal control module ignition coil control"
+  },
+  {
+   "code": "P06D2",
+   "brand": "",
+   "ru": "Опорное напряжение датчиков E: обрыв цепи",
+   "en": "Sensor Reference Voltage E Circuit/Open",
+   "fam": "",
+   "node": "sensor reference voltage e"
+  },
+  {
+   "code": "P06D3",
+   "brand": "",
+   "ru": "Опорное напряжение датчиков E: низкий уровень сигнала в цепи",
+   "en": "Sensor Reference Voltage E Circuit Low",
+   "fam": "",
+   "node": "sensor reference voltage e"
+  },
+  {
+   "code": "P06D4",
+   "brand": "",
+   "ru": "Опорное напряжение датчиков E: высокий уровень сигнала в цепи",
+   "en": "Sensor Reference Voltage E Circuit High",
+   "fam": "",
+   "node": "sensor reference voltage e"
+  },
+  {
+   "code": "P06D5",
+   "brand": "",
+   "ru": "Опорное напряжение датчиков E: сигнал вне диапазона",
+   "en": "Sensor Reference Voltage E Circuit Range/Performance",
+   "fam": "",
+   "node": "sensor reference voltage e"
+  },
+  {
+   "code": "P06D6",
+   "brand": "",
+   "ru": "Опорное напряжение датчиков F: обрыв цепи",
+   "en": "Sensor Reference Voltage F Circuit/Open",
+   "fam": "",
+   "node": "sensor reference voltage f"
+  },
+  {
+   "code": "P06D7",
+   "brand": "",
+   "ru": "Опорное напряжение датчиков F: низкий уровень сигнала в цепи",
+   "en": "Sensor Reference Voltage F Circuit Low",
+   "fam": "",
+   "node": "sensor reference voltage f"
+  },
+  {
+   "code": "P06D8",
+   "brand": "",
+   "ru": "Опорное напряжение датчиков F: высокий уровень сигнала в цепи",
+   "en": "Sensor Reference Voltage F Circuit High",
+   "fam": "",
+   "node": "sensor reference voltage f"
+  },
+  {
+   "code": "P06D9",
+   "brand": "",
+   "ru": "Опорное напряжение датчиков F: сигнал вне диапазона",
+   "en": "Sensor Reference Voltage F Circuit Range/Performance",
+   "fam": "",
+   "node": "sensor reference voltage f"
+  }
+ ]
+}

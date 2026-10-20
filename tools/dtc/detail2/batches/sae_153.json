@@ -1,0 +1,374 @@
+{
+ "name": "sae_153",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "a camshaft position control",
+  "a camshaft position unable to achieve locked position",
+  "alternative fuel disable",
+  "auxiliary ignition switch on start position",
+  "b camshaft position unable to achieve locked position",
+  "brake booster temperature sensor a",
+  "brake system control module b requested mil illumination",
+  "exhaust camshaft actuator park lock",
+  "exhaust heat exchanger exhaust bypass valve a position sensor stop",
+  "fuel level sensor c",
+  "intake camshaft actuator park lock",
+  "regeneration control",
+  "unmetered fuel forced engine shutdown"
+ ],
+ "codes": [
+  {
+   "code": "P25B7",
+   "brand": "",
+   "ru": "Доп. замок зажигания, положение «Вкл/Старт»: цепь",
+   "en": "Auxiliary Ignition Switch On/Start Position Circuit",
+   "fam": "",
+   "node": "auxiliary ignition switch on start position"
+  },
+  {
+   "code": "P25B8",
+   "brand": "",
+   "ru": "Доп. замок зажигания, положение «Вкл/Старт»: низкий уровень сигнала в цепи",
+   "en": "Auxiliary Ignition Switch On/Start Position Circuit Low",
+   "fam": "",
+   "node": "auxiliary ignition switch on start position"
+  },
+  {
+   "code": "P25B9",
+   "brand": "",
+   "ru": "Доп. замок зажигания, положение «Вкл/Старт»: высокий уровень сигнала в цепи",
+   "en": "Auxiliary Ignition Switch On/Start Position Circuit High",
+   "fam": "",
+   "node": "auxiliary ignition switch on start position"
+  },
+  {
+   "code": "P25BA",
+   "brand": "",
+   "ru": "Кнопка регенерации сажевого фильтра: обрыв цепи",
+   "en": "Regeneration Control Switch Circuit/Open",
+   "fam": "",
+   "node": "regeneration control"
+  },
+  {
+   "code": "P25BB",
+   "brand": "",
+   "ru": "Кнопка регенерации сажевого фильтра: низкий уровень сигнала в цепи",
+   "en": "Regeneration Control Switch Circuit Low",
+   "fam": "",
+   "node": "regeneration control"
+  },
+  {
+   "code": "P25BC",
+   "brand": "",
+   "ru": "Кнопка регенерации сажевого фильтра: высокий уровень сигнала в цепи",
+   "en": "Regeneration Control Switch Circuit High",
+   "fam": "",
+   "node": "regeneration control"
+  },
+  {
+   "code": "P25BD",
+   "brand": "",
+   "ru": "Неучтённое топливо — принудительная остановка двигателя",
+   "en": "Unmetered Fuel - Forced Engine Shutdown",
+   "fam": "",
+   "node": "unmetered fuel forced engine shutdown"
+  },
+  {
+   "code": "P25BE",
+   "brand": "",
+   "ru": "Отключение ГБО: обрыв цепи управления",
+   "en": "Alternative Fuel Disable Control Circuit/Open",
+   "fam": "",
+   "node": "alternative fuel disable"
+  },
+  {
+   "code": "P25BF",
+   "brand": "",
+   "ru": "Отключение ГБО: высокий уровень в цепи управления",
+   "en": "Alternative Fuel Disable Control Circuit High",
+   "fam": "",
+   "node": "alternative fuel disable"
+  },
+  {
+   "code": "P25C0",
+   "brand": "",
+   "ru": "Отключение ГБО: низкий уровень в цепи управления",
+   "en": "Alternative Fuel Disable Control Circuit Low",
+   "fam": "",
+   "node": "alternative fuel disable"
+  },
+  {
+   "code": "P25C1",
+   "brand": "",
+   "ru": "Отключение ГБО: сигнальная цепь",
+   "en": "Alternative Fuel Disable Signal Circuit",
+   "fam": "",
+   "node": "alternative fuel disable"
+  },
+  {
+   "code": "P25C2",
+   "brand": "",
+   "ru": "Отключение ГБО: высокий уровень в сигнальной цепи",
+   "en": "Alternative Fuel Disable Signal Circuit High",
+   "fam": "",
+   "node": "alternative fuel disable"
+  },
+  {
+   "code": "P25C3",
+   "brand": "",
+   "ru": "Отключение ГБО: низкий уровень в сигнальной цепи",
+   "en": "Alternative Fuel Disable Signal Circuit Low",
+   "fam": "",
+   "node": "alternative fuel disable"
+  },
+  {
+   "code": "P25C4",
+   "brand": "",
+   "ru": "Датчик температуры усилителя тормозов A: цепь",
+   "en": "Brake Booster Temperature Sensor A Circuit",
+   "fam": "",
+   "node": "brake booster temperature sensor a"
+  },
+  {
+   "code": "P25C5",
+   "brand": "",
+   "ru": "Датчик температуры усилителя тормозов A: сигнал вне диапазона",
+   "en": "Brake Booster Temperature Sensor A Circuit Range/Performance",
+   "fam": "",
+   "node": "brake booster temperature sensor a"
+  },
+  {
+   "code": "P25C6",
+   "brand": "",
+   "ru": "Датчик температуры усилителя тормозов A: низкий уровень сигнала в цепи",
+   "en": "Brake Booster Temperature Sensor A Circuit Low",
+   "fam": "",
+   "node": "brake booster temperature sensor a"
+  },
+  {
+   "code": "P25C7",
+   "brand": "",
+   "ru": "Датчик температуры усилителя тормозов A: высокий уровень сигнала в цепи",
+   "en": "Brake Booster Temperature Sensor A Circuit High",
+   "fam": "",
+   "node": "brake booster temperature sensor a"
+  },
+  {
+   "code": "P25C8",
+   "brand": "",
+   "ru": "Датчик температуры усилителя тормозов A: прерывистый / нестабильный сигнал",
+   "en": "Brake Booster Temperature Sensor A Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "brake booster temperature sensor a"
+  },
+  {
+   "code": "P25C9",
+   "brand": "",
+   "ru": "Блок тормозной системы B запросил включение Check Engine",
+   "en": "Brake System Control Module B Requested MIL Illumination",
+   "fam": "",
+   "node": "brake system control module b requested mil illumination"
+  },
+  {
+   "code": "P25CA",
+   "brand": "",
+   "ru": "Фиксатор фазовращателя впускного распредвала: обрыв цепи управления (банк 1)",
+   "en": "Intake Camshaft Actuator Park Lock Control Circuit/Open Bank 1",
+   "fam": "",
+   "node": "intake camshaft actuator park lock"
+  },
+  {
+   "code": "P25CB",
+   "brand": "",
+   "ru": "Фиксатор фазовращателя впускного распредвала: низкий уровень в цепи управления (банк 1)",
+   "en": "Intake Camshaft Actuator Park Lock Control Circuit Low Bank 1",
+   "fam": "",
+   "node": "intake camshaft actuator park lock"
+  },
+  {
+   "code": "P25CC",
+   "brand": "",
+   "ru": "Фиксатор фазовращателя впускного распредвала: высокий уровень в цепи управления (банк 1)",
+   "en": "Intake Camshaft Actuator Park Lock Control Circuit High Bank 1",
+   "fam": "",
+   "node": "intake camshaft actuator park lock"
+  },
+  {
+   "code": "P25CD",
+   "brand": "",
+   "ru": "Фиксатор фазовращателя впускного распредвала: обрыв цепи управления (банк 2)",
+   "en": "Intake Camshaft Actuator Park Lock Control Circuit/Open Bank 2",
+   "fam": "",
+   "node": "intake camshaft actuator park lock"
+  },
+  {
+   "code": "P25CE",
+   "brand": "",
+   "ru": "Фиксатор фазовращателя впускного распредвала: низкий уровень в цепи управления (банк 2)",
+   "en": "Intake Camshaft Actuator Park Lock Control Circuit Low Bank 2",
+   "fam": "",
+   "node": "intake camshaft actuator park lock"
+  },
+  {
+   "code": "P25CF",
+   "brand": "",
+   "ru": "Фиксатор фазовращателя впускного распредвала: высокий уровень в цепи управления (банк 2)",
+   "en": "Intake Camshaft Actuator Park Lock Control Circuit High Bank 2",
+   "fam": "",
+   "node": "intake camshaft actuator park lock"
+  },
+  {
+   "code": "P25D0",
+   "brand": "",
+   "ru": "Фиксатор фазовращателя выпускного распредвала: обрыв цепи управления (банк 1)",
+   "en": "Exhaust Camshaft Actuator Park Lock Control Circuit/Open Bank 1",
+   "fam": "",
+   "node": "exhaust camshaft actuator park lock"
+  },
+  {
+   "code": "P25D1",
+   "brand": "",
+   "ru": "Фиксатор фазовращателя выпускного распредвала: низкий уровень в цепи управления (банк 1)",
+   "en": "Exhaust Camshaft Actuator Park Lock Control Circuit Low Bank 1",
+   "fam": "",
+   "node": "exhaust camshaft actuator park lock"
+  },
+  {
+   "code": "P25D2",
+   "brand": "",
+   "ru": "Фиксатор фазовращателя выпускного распредвала: высокий уровень в цепи управления (банк 1)",
+   "en": "Exhaust Camshaft Actuator Park Lock Control Circuit High Bank 1",
+   "fam": "",
+   "node": "exhaust camshaft actuator park lock"
+  },
+  {
+   "code": "P25D3",
+   "brand": "",
+   "ru": "Фиксатор фазовращателя выпускного распредвала: обрыв цепи управления (банк 2)",
+   "en": "Exhaust Camshaft Actuator Park Lock Control Circuit/Open Bank 2",
+   "fam": "",
+   "node": "exhaust camshaft actuator park lock"
+  },
+  {
+   "code": "P25D4",
+   "brand": "",
+   "ru": "Фиксатор фазовращателя выпускного распредвала: низкий уровень в цепи управления (банк 2)",
+   "en": "Exhaust Camshaft Actuator Park Lock Control Circuit Low Bank 2",
+   "fam": "",
+   "node": "exhaust camshaft actuator park lock"
+  },
+  {
+   "code": "P25D5",
+   "brand": "",
+   "ru": "Фиксатор фазовращателя выпускного распредвала: высокий уровень в цепи управления (банк 2)",
+   "en": "Exhaust Camshaft Actuator Park Lock Control Circuit High Bank 2",
+   "fam": "",
+   "node": "exhaust camshaft actuator park lock"
+  },
+  {
+   "code": "P25D6",
+   "brand": "",
+   "ru": "Датчик положения перепускного клапана теплообменника выхлопа A: ошибка упоров",
+   "en": "Exhaust Heat Exchanger Exhaust Bypass Valve A Position Sensor Stop Performance",
+   "fam": "",
+   "node": "exhaust heat exchanger exhaust bypass valve a position sensor stop"
+  },
+  {
+   "code": "P25D7",
+   "brand": "",
+   "ru": "Датчик уровня топлива C: цепь",
+   "en": "Fuel Level Sensor C Circuit",
+   "fam": "",
+   "node": "fuel level sensor c"
+  },
+  {
+   "code": "P25D8",
+   "brand": "",
+   "ru": "Датчик уровня топлива C: работа нарушена",
+   "en": "Fuel Level Sensor C Performance",
+   "fam": "",
+   "node": "fuel level sensor c"
+  },
+  {
+   "code": "P25D9",
+   "brand": "",
+   "ru": "Датчик уровня топлива C: низкий уровень сигнала в цепи",
+   "en": "Fuel Level Sensor C Circuit Low",
+   "fam": "",
+   "node": "fuel level sensor c"
+  },
+  {
+   "code": "P25DA",
+   "brand": "",
+   "ru": "Датчик уровня топлива C: высокий уровень сигнала в цепи",
+   "en": "Fuel Level Sensor C Circuit High",
+   "fam": "",
+   "node": "fuel level sensor c"
+  },
+  {
+   "code": "P25DB",
+   "brand": "",
+   "ru": "Датчик уровня топлива C: прерывистый сигнал в цепи",
+   "en": "Fuel Level Sensor C Circuit Intermittent",
+   "fam": "",
+   "node": "fuel level sensor c"
+  },
+  {
+   "code": "P25DC",
+   "brand": "",
+   "ru": "Датчик уровня топлива C: заклинивание",
+   "en": "Fuel Level Sensor C Stuck",
+   "fam": "",
+   "node": "fuel level sensor c"
+  },
+  {
+   "code": "P25DE",
+   "brand": "",
+   "ru": "Распредвал A не встаёт в заблокированное положение (банк 1)",
+   "en": "A Camshaft Position - Unable to Achieve Locked Position Bank 1",
+   "fam": "",
+   "node": "a camshaft position unable to achieve locked position"
+  },
+  {
+   "code": "P25E1",
+   "brand": "",
+   "ru": "Распредвал A не встаёт в заблокированное положение (банк 2)",
+   "en": "A Camshaft Position - Unable to Achieve Locked Position Bank 2",
+   "fam": "",
+   "node": "a camshaft position unable to achieve locked position"
+  },
+  {
+   "code": "P25DF",
+   "brand": "",
+   "ru": "Положение распредвала A: нарушено управление (банк 1)",
+   "en": "A Camshaft Position Control Performance Bank 1",
+   "fam": "",
+   "node": "a camshaft position control"
+  },
+  {
+   "code": "P25E2",
+   "brand": "",
+   "ru": "Положение распредвала A: нарушено управление (банк 2)",
+   "en": "A Camshaft Position Control Performance Bank 2",
+   "fam": "",
+   "node": "a camshaft position control"
+  },
+  {
+   "code": "P25E4",
+   "brand": "",
+   "ru": "Распредвал B не встаёт в заблокированное положение (банк 1)",
+   "en": "B Camshaft Position - Unable to Achieve Locked Position Bank 1",
+   "fam": "",
+   "node": "b camshaft position unable to achieve locked position"
+  },
+  {
+   "code": "P25E7",
+   "brand": "",
+   "ru": "Распредвал B не встаёт в заблокированное положение (банк 2)",
+   "en": "B Camshaft Position - Unable to Achieve Locked Position Bank 2",
+   "fam": "",
+   "node": "b camshaft position unable to achieve locked position"
+  }
+ ]
+}

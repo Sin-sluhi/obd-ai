@@ -1,0 +1,414 @@
+{
+ "name": "sae_207",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "invalid data received from accessory protocol interface",
+  "invalid data received from column lock",
+  "invalid data received from convenience recall",
+  "invalid data received from digital audio control module c",
+  "invalid data received from digital audio control module d",
+  "invalid data received from electronic brake booster control module a",
+  "invalid data received from electronic brake booster control module b",
+  "invalid data received from entertainment control module front",
+  "invalid data received from entertainment control module rear b",
+  "invalid data received from entrapment control module a",
+  "invalid data received from entrapment control module b",
+  "invalid data received from front controls display interface",
+  "invalid data received from front controls interface module a",
+  "invalid data received from front controls interface module b",
+  "invalid data received from front display interface",
+  "invalid data received from headlamp control module a",
+  "invalid data received from headlamp control module b",
+  "invalid data received from image processing module a",
+  "invalid data received from image processing module b",
+  "invalid data received from image processing module c",
+  "invalid data received from impact classification system",
+  "invalid data received from interior lighting control module a",
+  "invalid data received from lateral acceleration sensor",
+  "invalid data received from lighting control module rear b",
+  "invalid data received from parking assist control module b",
+  "invalid data received from radio transceiver",
+  "invalid data received from rain sensing",
+  "invalid data received from rear gate",
+  "invalid data received from remote accessory",
+  "invalid data received from remote start",
+  "invalid data received from running board control module a",
+  "invalid data received from running board control module b",
+  "invalid data received from seat control module e",
+  "invalid data received from seat control module f",
+  "invalid data received from seat control module g",
+  "invalid data received from seat control module h",
+  "invalid data received from seat control module j",
+  "invalid data received from side obstacle detection control module a",
+  "invalid data received from side obstacle detection control module b",
+  "invalid data received from side obstacle detection control module c",
+  "invalid data received from side obstacle detection control module d",
+  "invalid data received from special purpose vehicle control module a",
+  "invalid data received from special purpose vehicle control module b",
+  "invalid data received from special purpose vehicle control module c",
+  "invalid data received from special purpose vehicle control module d"
+ ],
+ "codes": [
+  {
+   "code": "U0531",
+   "brand": "",
+   "ru": "Неверные данные: блок задней двери",
+   "en": "Invalid Data Received From Rear Gate Module",
+   "fam": "",
+   "node": "invalid data received from rear gate"
+  },
+  {
+   "code": "U0532",
+   "brand": "",
+   "ru": "Неверные данные: датчик дождя",
+   "en": "Invalid Data Received From Rain Sensing Module",
+   "fam": "",
+   "node": "invalid data received from rain sensing"
+  },
+  {
+   "code": "U0533",
+   "brand": "",
+   "ru": "Неверные данные: блок контроля слепых зон A",
+   "en": "Invalid Data Received From Side Obstacle Detection Control Module A",
+   "fam": "",
+   "node": "invalid data received from side obstacle detection control module a"
+  },
+  {
+   "code": "U0534",
+   "brand": "",
+   "ru": "Неверные данные: блок контроля слепых зон B",
+   "en": "Invalid Data Received From Side Obstacle Detection Control Module B",
+   "fam": "",
+   "node": "invalid data received from side obstacle detection control module b"
+  },
+  {
+   "code": "U0535",
+   "brand": "",
+   "ru": "Неверные данные: блок памяти настроек",
+   "en": "Invalid Data Received From Convenience Recall Module",
+   "fam": "",
+   "node": "invalid data received from convenience recall"
+  },
+  {
+   "code": "U0536",
+   "brand": "",
+   "ru": "Неверные данные: датчик поперечного ускорения",
+   "en": "Invalid Data Received From Lateral Acceleration Sensor Module",
+   "fam": "",
+   "node": "invalid data received from lateral acceleration sensor"
+  },
+  {
+   "code": "U0537",
+   "brand": "",
+   "ru": "Неверные данные: модуль блокировки рулевой колонки",
+   "en": "Invalid Data Received From Column Lock Module",
+   "fam": "",
+   "node": "invalid data received from column lock"
+  },
+  {
+   "code": "U0538",
+   "brand": "",
+   "ru": "Неверные данные: блок цифрового аудио C",
+   "en": "Invalid Data Received From Digital Audio Control Module C",
+   "fam": "",
+   "node": "invalid data received from digital audio control module c"
+  },
+  {
+   "code": "U0539",
+   "brand": "",
+   "ru": "Неверные данные: блок цифрового аудио D",
+   "en": "Invalid Data Received From Digital Audio Control Module D",
+   "fam": "",
+   "node": "invalid data received from digital audio control module d"
+  },
+  {
+   "code": "U053A",
+   "brand": "",
+   "ru": "Неверные данные: блок защиты от защемления A",
+   "en": "Invalid Data Received From Entrapment Control Module A",
+   "fam": "",
+   "node": "invalid data received from entrapment control module a"
+  },
+  {
+   "code": "U053B",
+   "brand": "",
+   "ru": "Неверные данные: блок обработки изображения A",
+   "en": "Invalid Data Received From Image Processing Module A",
+   "fam": "",
+   "node": "invalid data received from image processing module a"
+  },
+  {
+   "code": "U053C",
+   "brand": "",
+   "ru": "Неверные данные: блок обработки изображения B",
+   "en": "Invalid Data Received From Image Processing Module B",
+   "fam": "",
+   "node": "invalid data received from image processing module b"
+  },
+  {
+   "code": "U053D",
+   "brand": "",
+   "ru": "Неверные данные: блок обработки изображения C",
+   "en": "Invalid Data Received From Image Processing Module C",
+   "fam": "",
+   "node": "invalid data received from image processing module c"
+  },
+  {
+   "code": "U0541",
+   "brand": "",
+   "ru": "Неверные данные: блок защиты от защемления B",
+   "en": "Invalid Data Received From Entrapment Control Module B",
+   "fam": "",
+   "node": "invalid data received from entrapment control module b"
+  },
+  {
+   "code": "U0542",
+   "brand": "",
+   "ru": "Неверные данные: блок управления фарами A",
+   "en": "Invalid Data Received From Headlamp Control Module A",
+   "fam": "",
+   "node": "invalid data received from headlamp control module a"
+  },
+  {
+   "code": "U0543",
+   "brand": "",
+   "ru": "Неверные данные: блок управления фарами B",
+   "en": "Invalid Data Received From Headlamp Control Module B",
+   "fam": "",
+   "node": "invalid data received from headlamp control module b"
+  },
+  {
+   "code": "U0544",
+   "brand": "",
+   "ru": "Неверные данные: блок парктроника B",
+   "en": "Invalid Data Received From Parking Assist Control Module B",
+   "fam": "",
+   "node": "invalid data received from parking assist control module b"
+  },
+  {
+   "code": "U0545",
+   "brand": "",
+   "ru": "Неверные данные: блок выдвижных подножек A",
+   "en": "Invalid Data Received From Running Board Control Module A",
+   "fam": "",
+   "node": "invalid data received from running board control module a"
+  },
+  {
+   "code": "U0546",
+   "brand": "",
+   "ru": "Неверные данные: передний блок развлечений",
+   "en": "Invalid Data Received From Entertainment Control Module - Front",
+   "fam": "",
+   "node": "invalid data received from entertainment control module front"
+  },
+  {
+   "code": "U0547",
+   "brand": "",
+   "ru": "Неверные данные: блок управления сиденьем E",
+   "en": "Invalid Data Received From Seat Control Module E",
+   "fam": "",
+   "node": "invalid data received from seat control module e"
+  },
+  {
+   "code": "U0548",
+   "brand": "",
+   "ru": "Неверные данные: блок управления сиденьем F",
+   "en": "Invalid Data Received From Seat Control Module F",
+   "fam": "",
+   "node": "invalid data received from seat control module f"
+  },
+  {
+   "code": "U0549",
+   "brand": "",
+   "ru": "Неверные данные: блок дистанционных аксессуаров",
+   "en": "Invalid Data Received From Remote Accessory Module",
+   "fam": "",
+   "node": "invalid data received from remote accessory"
+  },
+  {
+   "code": "U054A",
+   "brand": "",
+   "ru": "Неверные данные: блок развлечений для задних пассажиров B",
+   "en": "Invalid Data Received From Entertainment Control Module - Rear B",
+   "fam": "",
+   "node": "invalid data received from entertainment control module rear b"
+  },
+  {
+   "code": "U054B",
+   "brand": "",
+   "ru": "Неверные данные: блок освещения салона A",
+   "en": "Invalid Data Received From Interior Lighting Control Module A",
+   "fam": "",
+   "node": "invalid data received from interior lighting control module a"
+  },
+  {
+   "code": "U054C",
+   "brand": "",
+   "ru": "Неверные данные: блок управления сиденьем G",
+   "en": "Invalid Data Received from Seat Control Module G",
+   "fam": "",
+   "node": "invalid data received from seat control module g"
+  },
+  {
+   "code": "U054D",
+   "brand": "",
+   "ru": "Неверные данные: блок управления сиденьем H",
+   "en": "Invalid Data Received from Seat Control Module H",
+   "fam": "",
+   "node": "invalid data received from seat control module h"
+  },
+  {
+   "code": "U054E",
+   "brand": "",
+   "ru": "Неверные данные: блок управления сиденьем J",
+   "en": "Invalid Data Received from Seat Control Module J",
+   "fam": "",
+   "node": "invalid data received from seat control module j"
+  },
+  {
+   "code": "U054F",
+   "brand": "",
+   "ru": "Неверные данные: блок контроля слепых зон C",
+   "en": "Invalid Data Received From Side Obstacle Detection Control Module C",
+   "fam": "",
+   "node": "invalid data received from side obstacle detection control module c"
+  },
+  {
+   "code": "U0550",
+   "brand": "",
+   "ru": "Неверные данные: блок контроля слепых зон D",
+   "en": "Invalid Data Received From Side Obstacle Detection Control Module D",
+   "fam": "",
+   "node": "invalid data received from side obstacle detection control module d"
+  },
+  {
+   "code": "U0551",
+   "brand": "",
+   "ru": "Неверные данные: блок классификации удара",
+   "en": "Invalid Data Received From Impact Classification System Module",
+   "fam": "",
+   "node": "invalid data received from impact classification system"
+  },
+  {
+   "code": "U0552",
+   "brand": "",
+   "ru": "Неверные данные: блок выдвижных подножек B",
+   "en": "Invalid Data Received From Running Board Control Module B",
+   "fam": "",
+   "node": "invalid data received from running board control module b"
+  },
+  {
+   "code": "U0553",
+   "brand": "",
+   "ru": "Неверные данные: задний блок освещения B",
+   "en": "Invalid Data Received From Lighting Control Module - Rear B",
+   "fam": "",
+   "node": "invalid data received from lighting control module rear b"
+  },
+  {
+   "code": "U0554",
+   "brand": "",
+   "ru": "Неверные данные: интерфейсный блок аксессуаров",
+   "en": "Invalid Data Received From Accessory Protocol Interface Module",
+   "fam": "",
+   "node": "invalid data received from accessory protocol interface"
+  },
+  {
+   "code": "U0555",
+   "brand": "",
+   "ru": "Неверные данные: блок автозапуска",
+   "en": "Invalid Data Received From Remote Start Module",
+   "fam": "",
+   "node": "invalid data received from remote start"
+  },
+  {
+   "code": "U0556",
+   "brand": "",
+   "ru": "Неверные данные: интерфейсный блок переднего дисплея",
+   "en": "Invalid Data Received From Front Display Interface Module",
+   "fam": "",
+   "node": "invalid data received from front display interface"
+  },
+  {
+   "code": "U0557",
+   "brand": "",
+   "ru": "Неверные данные: блок передней панели управления A",
+   "en": "Invalid Data Received From Front Controls Interface Module A",
+   "fam": "",
+   "node": "invalid data received from front controls interface module a"
+  },
+  {
+   "code": "U0558",
+   "brand": "",
+   "ru": "Неверные данные: интерфейсный блок передних кнопок/дисплея",
+   "en": "Invalid Data Received From Front Controls/Display Interface Module",
+   "fam": "",
+   "node": "invalid data received from front controls display interface"
+  },
+  {
+   "code": "U0559",
+   "brand": "",
+   "ru": "Неверные данные: радиоприёмопередатчик",
+   "en": "Invalid Data Received From Radio Transceiver",
+   "fam": "",
+   "node": "invalid data received from radio transceiver"
+  },
+  {
+   "code": "U055A",
+   "brand": "",
+   "ru": "Неверные данные: блок спецоборудования A",
+   "en": "Invalid Data Received From Special Purpose Vehicle Control Module A",
+   "fam": "",
+   "node": "invalid data received from special purpose vehicle control module a"
+  },
+  {
+   "code": "U055B",
+   "brand": "",
+   "ru": "Неверные данные: блок спецоборудования B",
+   "en": "Invalid Data Received From Special Purpose Vehicle Control Module B",
+   "fam": "",
+   "node": "invalid data received from special purpose vehicle control module b"
+  },
+  {
+   "code": "U055C",
+   "brand": "",
+   "ru": "Неверные данные: блок спецоборудования C",
+   "en": "Invalid Data Received From Special Purpose Vehicle Control Module C",
+   "fam": "",
+   "node": "invalid data received from special purpose vehicle control module c"
+  },
+  {
+   "code": "U055D",
+   "brand": "",
+   "ru": "Неверные данные: блок спецоборудования D",
+   "en": "Invalid Data Received From Special Purpose Vehicle Control Module D",
+   "fam": "",
+   "node": "invalid data received from special purpose vehicle control module d"
+  },
+  {
+   "code": "U055E",
+   "brand": "",
+   "ru": "Неверные данные: блок передней панели управления B",
+   "en": "Invalid Data Received From Front Controls Interface Module B",
+   "fam": "",
+   "node": "invalid data received from front controls interface module b"
+  },
+  {
+   "code": "U055F",
+   "brand": "",
+   "ru": "Неверные данные: блок электронного усилителя тормозов A",
+   "en": "Invalid Data Received From Electronic Brake Booster Control Module A",
+   "fam": "",
+   "node": "invalid data received from electronic brake booster control module a"
+  },
+  {
+   "code": "U0560",
+   "brand": "",
+   "ru": "Неверные данные: блок электронного усилителя тормозов B",
+   "en": "Invalid Data Received From Electronic Brake Booster Control Module B",
+   "fam": "",
+   "node": "invalid data received from electronic brake booster control module b"
+  }
+ ]
+}

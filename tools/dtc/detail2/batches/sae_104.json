@@ -1,0 +1,347 @@
+{
+ "name": "sae_104",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "drive motor inverter temperature sensor a",
+  "hybrid ev battery pack air flow system insufficient air flow",
+  "hybrid ev battery pack air flow valve a",
+  "hybrid ev battery pack current sensor a",
+  "hybrid ev battery pack voltage sense a",
+  "hybrid ev battery precharge contactor",
+  "hybrid ev battery precharge contactor a",
+  "hybrid ev battery temperature sensor b",
+  "hybrid ev battery temperature sensor c",
+  "hybrid ev battery temperature sensor d"
+ ],
+ "codes": [
+  {
+   "code": "P0ABA",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения блока A: цепь",
+   "en": "Hybrid/EV Battery Pack Voltage Sense A Circuit",
+   "fam": "",
+   "node": "hybrid ev battery pack voltage sense a"
+  },
+  {
+   "code": "P0ABB",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения блока A: сигнал вне диапазона",
+   "en": "Hybrid/EV Battery Pack Voltage Sense A Circuit Range/Performance",
+   "fam": "",
+   "node": "hybrid ev battery pack voltage sense a"
+  },
+  {
+   "code": "P0ABC",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения блока A: низкий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Pack Voltage Sense A Circuit Low",
+   "fam": "",
+   "node": "hybrid ev battery pack voltage sense a"
+  },
+  {
+   "code": "P0ABD",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения блока A: высокий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Pack Voltage Sense A Circuit High",
+   "fam": "",
+   "node": "hybrid ev battery pack voltage sense a"
+  },
+  {
+   "code": "P0ABE",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения блока A: прерывистый / нестабильный сигнал",
+   "en": "Hybrid/EV Battery Pack Voltage Sense A Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "hybrid ev battery pack voltage sense a"
+  },
+  {
+   "code": "P0ABF",
+   "brand": "",
+   "ru": "Датчик тока тяговой батареи A: цепь",
+   "en": "Hybrid/EV Battery Pack Current Sensor A Circuit",
+   "fam": "",
+   "node": "hybrid ev battery pack current sensor a"
+  },
+  {
+   "code": "P0AC5",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи B: цепь",
+   "en": "Hybrid/EV Battery Temperature Sensor B Circuit",
+   "fam": "",
+   "node": "hybrid ev battery temperature sensor b"
+  },
+  {
+   "code": "P0AC6",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи B: сигнал вне диапазона",
+   "en": "Hybrid/EV Battery Temperature Sensor B Circuit Range/Performance",
+   "fam": "",
+   "node": "hybrid ev battery temperature sensor b"
+  },
+  {
+   "code": "P0AC7",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи B: низкий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Temperature Sensor B Circuit Low",
+   "fam": "",
+   "node": "hybrid ev battery temperature sensor b"
+  },
+  {
+   "code": "P0AC8",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи B: высокий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Temperature Sensor B Circuit High",
+   "fam": "",
+   "node": "hybrid ev battery temperature sensor b"
+  },
+  {
+   "code": "P0AC9",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи B: прерывистый / нестабильный сигнал",
+   "en": "Hybrid/EV Battery Temperature Sensor B Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "hybrid ev battery temperature sensor b"
+  },
+  {
+   "code": "P0ACA",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи C: цепь",
+   "en": "Hybrid/EV Battery Temperature Sensor C Circuit",
+   "fam": "",
+   "node": "hybrid ev battery temperature sensor c"
+  },
+  {
+   "code": "P0ACB",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи C: сигнал вне диапазона",
+   "en": "Hybrid/EV Battery Temperature Sensor C Circuit Range/Performance",
+   "fam": "",
+   "node": "hybrid ev battery temperature sensor c"
+  },
+  {
+   "code": "P0ACC",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи C: низкий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Temperature Sensor C Circuit Low",
+   "fam": "",
+   "node": "hybrid ev battery temperature sensor c"
+  },
+  {
+   "code": "P0ACD",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи C: высокий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Temperature Sensor C Circuit High",
+   "fam": "",
+   "node": "hybrid ev battery temperature sensor c"
+  },
+  {
+   "code": "P0ACE",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи C: прерывистый / нестабильный сигнал",
+   "en": "Hybrid/EV Battery Temperature Sensor C Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "hybrid ev battery temperature sensor c"
+  },
+  {
+   "code": "P0AD4",
+   "brand": "",
+   "ru": "Воздушное охлаждение тяговой батареи: недостаточный поток воздуха",
+   "en": "Hybrid/EV Battery Pack Air Flow System Insufficient Air Flow",
+   "fam": "",
+   "node": "hybrid ev battery pack air flow system insufficient air flow"
+  },
+  {
+   "code": "P0AD5",
+   "brand": "",
+   "ru": "Клапан воздушного охлаждения тяговой батареи A: обрыв цепи управления",
+   "en": "Hybrid/EV Battery Pack Air Flow Valve A Control Circuit/Open",
+   "fam": "",
+   "node": "hybrid ev battery pack air flow valve a"
+  },
+  {
+   "code": "P0AD6",
+   "brand": "",
+   "ru": "Клапан воздушного охлаждения тяговой батареи A: цепь управления вне диапазона",
+   "en": "Hybrid/EV Battery Pack Air Flow Valve A Control Circuit Range/Performance",
+   "fam": "",
+   "node": "hybrid ev battery pack air flow valve a"
+  },
+  {
+   "code": "P0AD7",
+   "brand": "",
+   "ru": "Клапан воздушного охлаждения тяговой батареи A: низкий уровень в цепи управления",
+   "en": "Hybrid/EV Battery Pack Air Flow Valve A Control Circuit Low",
+   "fam": "",
+   "node": "hybrid ev battery pack air flow valve a"
+  },
+  {
+   "code": "P0AD8",
+   "brand": "",
+   "ru": "Клапан воздушного охлаждения тяговой батареи A: высокий уровень в цепи управления",
+   "en": "Hybrid/EV Battery Pack Air Flow Valve A Control Circuit High",
+   "fam": "",
+   "node": "hybrid ev battery pack air flow valve a"
+  },
+  {
+   "code": "P0AE2",
+   "brand": "",
+   "ru": "Контактор предзаряда тяговой батареи: залип замкнутым",
+   "en": "Hybrid/EV Battery Precharge Contactor Circuit Stuck Closed",
+   "fam": "",
+   "node": "hybrid ev battery precharge contactor"
+  },
+  {
+   "code": "P0AE3",
+   "brand": "",
+   "ru": "Контактор предзаряда тяговой батареи: не замыкается",
+   "en": "Hybrid/EV Battery Precharge Contactor Circuit Stuck Open",
+   "fam": "",
+   "node": "hybrid ev battery precharge contactor"
+  },
+  {
+   "code": "P2BE8",
+   "brand": "",
+   "ru": "Цепь управления контактором предзаряда тяговой батареи B: обрыв",
+   "en": "Hybrid/EV Battery Precharge Contactor Control Circuit B Open",
+   "fam": "",
+   "node": "hybrid ev battery precharge contactor"
+  },
+  {
+   "code": "P2BE9",
+   "brand": "",
+   "ru": "Цепь управления контактором предзаряда тяговой батареи B: вне допустимого диапазона",
+   "en": "Hybrid/EV Battery Precharge Contactor Control Circuit B Range/Performance",
+   "fam": "",
+   "node": "hybrid ev battery precharge contactor"
+  },
+  {
+   "code": "P2BEA",
+   "brand": "",
+   "ru": "Цепь управления контактором предзаряда тяговой батареи B: низкий уровень",
+   "en": "Hybrid/EV Battery Precharge Contactor Control Circuit B Low",
+   "fam": "",
+   "node": "hybrid ev battery precharge contactor"
+  },
+  {
+   "code": "P2BEB",
+   "brand": "",
+   "ru": "Цепь управления контактором предзаряда тяговой батареи B: высокий уровень",
+   "en": "Hybrid/EV Battery Precharge Contactor Control Circuit B High",
+   "fam": "",
+   "node": "hybrid ev battery precharge contactor"
+  },
+  {
+   "code": "P0AE4",
+   "brand": "",
+   "ru": "Контактор предзаряда тяговой батареи A: обрыв цепи управления",
+   "en": "Hybrid/EV Battery Precharge Contactor A Control Circuit/Open",
+   "fam": "",
+   "node": "hybrid ev battery precharge contactor a"
+  },
+  {
+   "code": "P0AE5",
+   "brand": "",
+   "ru": "Контактор предзаряда тяговой батареи A: цепь управления вне диапазона",
+   "en": "Hybrid/EV Battery Precharge Contactor A Control Circuit Range/Performance",
+   "fam": "",
+   "node": "hybrid ev battery precharge contactor a"
+  },
+  {
+   "code": "P0AE6",
+   "brand": "",
+   "ru": "Контактор предзаряда тяговой батареи A: низкий уровень в цепи управления",
+   "en": "Hybrid/EV Battery Precharge Contactor A Control Circuit Low",
+   "fam": "",
+   "node": "hybrid ev battery precharge contactor a"
+  },
+  {
+   "code": "P0AE7",
+   "brand": "",
+   "ru": "Контактор предзаряда тяговой батареи A: высокий уровень в цепи управления",
+   "en": "Hybrid/EV Battery Precharge Contactor A Control Circuit High",
+   "fam": "",
+   "node": "hybrid ev battery precharge contactor a"
+  },
+  {
+   "code": "P0AE8",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи D: цепь",
+   "en": "Hybrid/EV Battery Temperature Sensor D Circuit",
+   "fam": "",
+   "node": "hybrid ev battery temperature sensor d"
+  },
+  {
+   "code": "P0AE9",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи D: сигнал вне диапазона",
+   "en": "Hybrid/EV Battery Temperature Sensor D Circuit Range/Performance",
+   "fam": "",
+   "node": "hybrid ev battery temperature sensor d"
+  },
+  {
+   "code": "P0AEA",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи D: низкий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Temperature Sensor D Circuit Low",
+   "fam": "",
+   "node": "hybrid ev battery temperature sensor d"
+  },
+  {
+   "code": "P0AEB",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи D: высокий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Temperature Sensor D Circuit High",
+   "fam": "",
+   "node": "hybrid ev battery temperature sensor d"
+  },
+  {
+   "code": "P0AEC",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи D: прерывистый / нестабильный сигнал",
+   "en": "Hybrid/EV Battery Temperature Sensor D Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "hybrid ev battery temperature sensor d"
+  },
+  {
+   "code": "P0AED",
+   "brand": "",
+   "ru": "Датчик температуры инвертора тягового электромотора A: цепь",
+   "en": "Drive Motor Inverter Temperature Sensor A Circuit",
+   "fam": "",
+   "node": "drive motor inverter temperature sensor a"
+  },
+  {
+   "code": "P0AEE",
+   "brand": "",
+   "ru": "Датчик температуры инвертора тягового электромотора A: сигнал вне диапазона",
+   "en": "Drive Motor Inverter Temperature Sensor A Circuit Range/Performance",
+   "fam": "",
+   "node": "drive motor inverter temperature sensor a"
+  },
+  {
+   "code": "P0AEF",
+   "brand": "",
+   "ru": "Датчик температуры инвертора тягового электромотора A: низкий уровень сигнала в цепи",
+   "en": "Drive Motor Inverter Temperature Sensor A Circuit Low",
+   "fam": "",
+   "node": "drive motor inverter temperature sensor a"
+  },
+  {
+   "code": "P0AF0",
+   "brand": "",
+   "ru": "Датчик температуры инвертора тягового электромотора A: высокий уровень сигнала в цепи",
+   "en": "Drive Motor Inverter Temperature Sensor A Circuit High",
+   "fam": "",
+   "node": "drive motor inverter temperature sensor a"
+  },
+  {
+   "code": "P0AF1",
+   "brand": "",
+   "ru": "Датчик температуры инвертора тягового электромотора A: прерывистый / нестабильный сигнал",
+   "en": "Drive Motor Inverter Temperature Sensor A Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "drive motor inverter temperature sensor a"
+  }
+ ]
+}

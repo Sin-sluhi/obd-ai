@@ -1,0 +1,373 @@
+{
+ "name": "sae_127",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "a c compressor motor speed sensor",
+  "a c power supply relay",
+  "a c refrigerant distribution valve a",
+  "a c refrigerant distribution valve b",
+  "a c refrigerant temperature sensor a",
+  "a c refrigerant temperature sensor b",
+  "generator phase x current",
+  "generator phase y current",
+  "generator phase z current",
+  "hybrid ev battery e voltage",
+  "hybrid ev battery e voltage unstable",
+  "hybrid ev battery f voltage",
+  "hybrid ev battery f voltage unstable",
+  "hybrid ev battery pack b deterioration",
+  "hybrid ev battery pack c deterioration",
+  "hybrid ev battery pack d deterioration",
+  "hybrid ev battery pack e deterioration",
+  "hybrid ev battery pack f deterioration",
+  "hybrid ev battery temperature sensor system multiple sensor correlation",
+  "hybrid ev battery voltage sensor system multiple sensor correlation"
+ ],
+ "codes": [
+  {
+   "code": "P0EBC",
+   "brand": "",
+   "ru": "Датчик температуры хладагента A: цепь",
+   "en": "A/C Refrigerant Temperature Sensor A Circuit",
+   "fam": "",
+   "node": "a c refrigerant temperature sensor a"
+  },
+  {
+   "code": "P0EBD",
+   "brand": "",
+   "ru": "Датчик температуры хладагента A: высокий уровень сигнала в цепи",
+   "en": "A/C Refrigerant Temperature Sensor A Circuit High",
+   "fam": "",
+   "node": "a c refrigerant temperature sensor a"
+  },
+  {
+   "code": "P0EBE",
+   "brand": "",
+   "ru": "Датчик температуры хладагента A: низкий уровень сигнала в цепи",
+   "en": "A/C Refrigerant Temperature Sensor A Circuit Low",
+   "fam": "",
+   "node": "a c refrigerant temperature sensor a"
+  },
+  {
+   "code": "P0EBF",
+   "brand": "",
+   "ru": "Датчик температуры хладагента A: вне допустимого диапазона",
+   "en": "A/C Refrigerant Temperature Sensor A Range/Performance",
+   "fam": "",
+   "node": "a c refrigerant temperature sensor a"
+  },
+  {
+   "code": "P0EC1",
+   "brand": "",
+   "ru": "Датчик температуры хладагента B: цепь",
+   "en": "A/C Refrigerant Temperature Sensor B Circuit",
+   "fam": "",
+   "node": "a c refrigerant temperature sensor b"
+  },
+  {
+   "code": "P0EC2",
+   "brand": "",
+   "ru": "Датчик температуры хладагента B: высокий уровень сигнала в цепи",
+   "en": "A/C Refrigerant Temperature Sensor B Circuit High",
+   "fam": "",
+   "node": "a c refrigerant temperature sensor b"
+  },
+  {
+   "code": "P0EC3",
+   "brand": "",
+   "ru": "Датчик температуры хладагента B: низкий уровень сигнала в цепи",
+   "en": "A/C Refrigerant Temperature Sensor B Circuit Low",
+   "fam": "",
+   "node": "a c refrigerant temperature sensor b"
+  },
+  {
+   "code": "P0EC4",
+   "brand": "",
+   "ru": "Датчик температуры хладагента B: вне допустимого диапазона",
+   "en": "A/C Refrigerant Temperature Sensor B Range/Performance",
+   "fam": "",
+   "node": "a c refrigerant temperature sensor b"
+  },
+  {
+   "code": "P0EC5",
+   "brand": "",
+   "ru": "Датчик оборотов электромотора компрессора кондиционера: вне допустимого диапазона",
+   "en": "A/C Compressor Motor Speed Sensor Range/Performance",
+   "fam": "",
+   "node": "a c compressor motor speed sensor"
+  },
+  {
+   "code": "P0EC6",
+   "brand": "",
+   "ru": "Реле питания кондиционера: обрыв цепи управления",
+   "en": "A/C Power Supply Relay Control Circuit/Open",
+   "fam": "",
+   "node": "a c power supply relay"
+  },
+  {
+   "code": "P0EC7",
+   "brand": "",
+   "ru": "Реле питания кондиционера: низкий уровень в цепи управления",
+   "en": "A/C Power Supply Relay Control Circuit Low",
+   "fam": "",
+   "node": "a c power supply relay"
+  },
+  {
+   "code": "P0EC8",
+   "brand": "",
+   "ru": "Реле питания кондиционера: высокий уровень в цепи управления",
+   "en": "A/C Power Supply Relay Control Circuit High",
+   "fam": "",
+   "node": "a c power supply relay"
+  },
+  {
+   "code": "P0EC9",
+   "brand": "",
+   "ru": "Клапан распределения хладагента A: заклинил открытым",
+   "en": "A/C Refrigerant Distribution Valve A Stuck/Open",
+   "fam": "",
+   "node": "a c refrigerant distribution valve a"
+  },
+  {
+   "code": "P266F",
+   "brand": "",
+   "ru": "Клапан распределения хладагента A: перегрузка драйвера цепи управления по току / перегрев",
+   "en": "A/C Refrigerant Distribution Valve A Control Circuit Driver Current/Temperature Too High",
+   "fam": "",
+   "node": "a c refrigerant distribution valve a"
+  },
+  {
+   "code": "P0ECA",
+   "brand": "",
+   "ru": "Датчики температуры тяговой батареи: рассогласование нескольких датчиков",
+   "en": "Hybrid/EV Battery Temperature Sensor System - Multiple Sensor Correlation",
+   "fam": "",
+   "node": "hybrid ev battery temperature sensor system multiple sensor correlation"
+  },
+  {
+   "code": "P0ECB",
+   "brand": "",
+   "ru": "Датчики напряжения тяговой батареи: рассогласование нескольких датчиков",
+   "en": "Hybrid/EV Battery Voltage Sensor System - Multiple Sensor Correlation",
+   "fam": "",
+   "node": "hybrid ev battery voltage sensor system multiple sensor correlation"
+  },
+  {
+   "code": "P0ECC",
+   "brand": "",
+   "ru": "Тяговая батарея E: напряжение",
+   "en": "Hybrid/EV Battery E Voltage",
+   "fam": "",
+   "node": "hybrid ev battery e voltage"
+  },
+  {
+   "code": "P0ECE",
+   "brand": "",
+   "ru": "Тяговая батарея E: низкое напряжение",
+   "en": "Hybrid/EV Battery E Voltage Low",
+   "fam": "",
+   "node": "hybrid ev battery e voltage"
+  },
+  {
+   "code": "P0ECF",
+   "brand": "",
+   "ru": "Тяговая батарея E: высокое напряжение",
+   "en": "Hybrid/EV Battery E Voltage High",
+   "fam": "",
+   "node": "hybrid ev battery e voltage"
+  },
+  {
+   "code": "P0ECD",
+   "brand": "",
+   "ru": "Тяговая батарея E: напряжение нестабильно",
+   "en": "Hybrid/EV Battery E Voltage Unstable",
+   "fam": "",
+   "node": "hybrid ev battery e voltage unstable"
+  },
+  {
+   "code": "P0ED0",
+   "brand": "",
+   "ru": "Тяговая батарея F: напряжение",
+   "en": "Hybrid/EV Battery F Voltage",
+   "fam": "",
+   "node": "hybrid ev battery f voltage"
+  },
+  {
+   "code": "P0ED2",
+   "brand": "",
+   "ru": "Тяговая батарея F: низкое напряжение",
+   "en": "Hybrid/EV Battery F Voltage Low",
+   "fam": "",
+   "node": "hybrid ev battery f voltage"
+  },
+  {
+   "code": "P0ED3",
+   "brand": "",
+   "ru": "Тяговая батарея F: высокое напряжение",
+   "en": "Hybrid/EV Battery F Voltage High",
+   "fam": "",
+   "node": "hybrid ev battery f voltage"
+  },
+  {
+   "code": "P0ED1",
+   "brand": "",
+   "ru": "Тяговая батарея F: напряжение нестабильно",
+   "en": "Hybrid/EV Battery F Voltage Unstable",
+   "fam": "",
+   "node": "hybrid ev battery f voltage unstable"
+  },
+  {
+   "code": "P0ED4",
+   "brand": "",
+   "ru": "Генератор (гибрид), фаза X: ток",
+   "en": "Generator Phase X Current",
+   "fam": "",
+   "node": "generator phase x current"
+  },
+  {
+   "code": "P0ED5",
+   "brand": "",
+   "ru": "Генератор (гибрид), фаза X: малый ток",
+   "en": "Generator Phase X Current Low",
+   "fam": "",
+   "node": "generator phase x current"
+  },
+  {
+   "code": "P0ED6",
+   "brand": "",
+   "ru": "Генератор (гибрид), фаза X: большой ток",
+   "en": "Generator Phase X Current High",
+   "fam": "",
+   "node": "generator phase x current"
+  },
+  {
+   "code": "P0ED7",
+   "brand": "",
+   "ru": "Генератор (гибрид), фаза Y: ток",
+   "en": "Generator Phase Y Current",
+   "fam": "",
+   "node": "generator phase y current"
+  },
+  {
+   "code": "P0ED8",
+   "brand": "",
+   "ru": "Генератор (гибрид), фаза Y: малый ток",
+   "en": "Generator Phase Y Current Low",
+   "fam": "",
+   "node": "generator phase y current"
+  },
+  {
+   "code": "P0ED9",
+   "brand": "",
+   "ru": "Генератор (гибрид), фаза Y: большой ток",
+   "en": "Generator Phase Y Current High",
+   "fam": "",
+   "node": "generator phase y current"
+  },
+  {
+   "code": "P0EDA",
+   "brand": "",
+   "ru": "Генератор (гибрид), фаза Z: ток",
+   "en": "Generator Phase Z Current",
+   "fam": "",
+   "node": "generator phase z current"
+  },
+  {
+   "code": "P0EDB",
+   "brand": "",
+   "ru": "Генератор (гибрид), фаза Z: малый ток",
+   "en": "Generator Phase Z Current Low",
+   "fam": "",
+   "node": "generator phase z current"
+  },
+  {
+   "code": "P0EDC",
+   "brand": "",
+   "ru": "Генератор (гибрид), фаза Z: большой ток",
+   "en": "Generator Phase Z Current High",
+   "fam": "",
+   "node": "generator phase z current"
+  },
+  {
+   "code": "P0EDD",
+   "brand": "",
+   "ru": "Тяговая батарея B: деградация",
+   "en": "Hybrid/EV Battery Pack B Deterioration",
+   "fam": "",
+   "node": "hybrid ev battery pack b deterioration"
+  },
+  {
+   "code": "P0EDE",
+   "brand": "",
+   "ru": "Тяговая батарея C: деградация",
+   "en": "Hybrid/EV Battery Pack C Deterioration",
+   "fam": "",
+   "node": "hybrid ev battery pack c deterioration"
+  },
+  {
+   "code": "P0EDF",
+   "brand": "",
+   "ru": "Тяговая батарея D: деградация",
+   "en": "Hybrid/EV Battery Pack D Deterioration",
+   "fam": "",
+   "node": "hybrid ev battery pack d deterioration"
+  },
+  {
+   "code": "P0EE0",
+   "brand": "",
+   "ru": "Тяговая батарея E: деградация",
+   "en": "Hybrid/EV Battery Pack E Deterioration",
+   "fam": "",
+   "node": "hybrid ev battery pack e deterioration"
+  },
+  {
+   "code": "P0EE1",
+   "brand": "",
+   "ru": "Тяговая батарея F: деградация",
+   "en": "Hybrid/EV Battery Pack F Deterioration",
+   "fam": "",
+   "node": "hybrid ev battery pack f deterioration"
+  },
+  {
+   "code": "P0EE2",
+   "brand": "",
+   "ru": "Клапан распределения хладагента B: заклинил открытым",
+   "en": "A/C Refrigerant Distribution Valve B Stuck/Open",
+   "fam": "",
+   "node": "a c refrigerant distribution valve b"
+  },
+  {
+   "code": "P0EE3",
+   "brand": "",
+   "ru": "Клапан распределения хладагента B: обрыв цепи управления",
+   "en": "A/C Refrigerant Distribution Valve B Control Circuit/Open",
+   "fam": "",
+   "node": "a c refrigerant distribution valve b"
+  },
+  {
+   "code": "P0EE4",
+   "brand": "",
+   "ru": "Клапан распределения хладагента B: низкий уровень в цепи управления",
+   "en": "A/C Refrigerant Distribution Valve B Control Circuit Low",
+   "fam": "",
+   "node": "a c refrigerant distribution valve b"
+  },
+  {
+   "code": "P0EE5",
+   "brand": "",
+   "ru": "Клапан распределения хладагента B: высокий уровень в цепи управления",
+   "en": "A/C Refrigerant Distribution Valve B Control Circuit High",
+   "fam": "",
+   "node": "a c refrigerant distribution valve b"
+  },
+  {
+   "code": "P0EE6",
+   "brand": "",
+   "ru": "Клапан распределения хладагента B: перегрузка драйвера цепи управления по току / перегрев",
+   "en": "A/C Refrigerant Distribution Valve B Control Circuit Driver Current/Temperature Too High",
+   "fam": "",
+   "node": "a c refrigerant distribution valve b"
+  }
+ ]
+}

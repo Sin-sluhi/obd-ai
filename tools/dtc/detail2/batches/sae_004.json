@@ -1,0 +1,394 @@
+{
+ "name": "sae_004",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "camera washer actuator a",
+  "camera washer actuator b",
+  "camera washer actuator c",
+  "camera washer actuator d",
+  "camera washer actuator e",
+  "camera washer actuator f",
+  "camera washer actuator g",
+  "camera washer actuator h",
+  "camera washer actuator j",
+  "camera washer actuator k",
+  "camera washer actuator l",
+  "camera washer actuator m",
+  "camera washer actuator n",
+  "camera washer actuator o",
+  "camera washer actuator p",
+  "camera washer actuator q",
+  "camera washer actuator r",
+  "camera washer actuator s",
+  "driver monitoring camera",
+  "fluid reservoir level sensor a",
+  "fluid reservoir level sensor b",
+  "fluid reservoir level sensor c",
+  "fluid reservoir level sensor d",
+  "fluid reservoir level sensor e",
+  "fluid reservoir level sensor f",
+  "lidar washer actuator a",
+  "lidar washer actuator b",
+  "lidar washer actuator c",
+  "lidar washer actuator d",
+  "night vision camera",
+  "night vision control",
+  "pedestrian alert speaker a",
+  "pedestrian alert speaker b",
+  "second row right inflatable seat belt deployment",
+  "sensor cleaning air blower actuator a",
+  "sensor cleaning air blower actuator a control",
+  "sensor cleaning air blower actuator b",
+  "sensor cleaning air blower actuator b control",
+  "third row center inflatable seat belt deployment",
+  "third row left inflatable seat belt deployment",
+  "third row right inflatable seat belt deployment"
+ ],
+ "codes": [
+  {
+   "code": "B00F4",
+   "brand": "",
+   "ru": "Надувной ремень 2-го ряда справа: управление срабатыванием",
+   "en": "Second Row Right Inflatable Seat Belt Deployment Control",
+   "fam": "",
+   "node": "second row right inflatable seat belt deployment"
+  },
+  {
+   "code": "B00F5",
+   "brand": "",
+   "ru": "Надувной ремень 3-го ряда слева: управление срабатыванием",
+   "en": "Third Row Left Inflatable Seat Belt Deployment Control",
+   "fam": "",
+   "node": "third row left inflatable seat belt deployment"
+  },
+  {
+   "code": "B00F6",
+   "brand": "",
+   "ru": "Надувной ремень 3-го ряда в центре: управление срабатыванием",
+   "en": "Third Row Center Inflatable Seat Belt Deployment Control",
+   "fam": "",
+   "node": "third row center inflatable seat belt deployment"
+  },
+  {
+   "code": "B00F7",
+   "brand": "",
+   "ru": "Надувной ремень 3-го ряда справа: управление срабатыванием",
+   "en": "Third Row Right Inflatable Seat Belt Deployment Control",
+   "fam": "",
+   "node": "third row right inflatable seat belt deployment"
+  },
+  {
+   "code": "B0100",
+   "brand": "",
+   "ru": "Воздушная очистка датчиков A",
+   "en": "Sensor Cleaning Air Blower Actuator A",
+   "fam": "",
+   "node": "sensor cleaning air blower actuator a"
+  },
+  {
+   "code": "B0102",
+   "brand": "",
+   "ru": "Воздушная очистка датчиков A: управление",
+   "en": "Sensor Cleaning Air Blower Actuator A Control",
+   "fam": "",
+   "node": "sensor cleaning air blower actuator a"
+  },
+  {
+   "code": "B0101",
+   "brand": "",
+   "ru": "Воздушная очистка датчиков B",
+   "en": "Sensor Cleaning Air Blower Actuator B",
+   "fam": "",
+   "node": "sensor cleaning air blower actuator b"
+  },
+  {
+   "code": "B0103",
+   "brand": "",
+   "ru": "Воздушная очистка датчиков B: управление",
+   "en": "Sensor Cleaning Air Blower Actuator B Control",
+   "fam": "",
+   "node": "sensor cleaning air blower actuator b"
+  },
+  {
+   "code": "B0104",
+   "brand": "",
+   "ru": "Воздушная очистка датчиков A: реле управления",
+   "en": "Sensor Cleaning Air Blower Actuator A Control Relay",
+   "fam": "",
+   "node": "sensor cleaning air blower actuator a control"
+  },
+  {
+   "code": "B0105",
+   "brand": "",
+   "ru": "Воздушная очистка датчиков B: реле управления",
+   "en": "Sensor Cleaning Air Blower Actuator B Control Relay",
+   "fam": "",
+   "node": "sensor cleaning air blower actuator b control"
+  },
+  {
+   "code": "B0106",
+   "brand": "",
+   "ru": "Омыватель лидара A",
+   "en": "LIDAR Washer Actuator A",
+   "fam": "",
+   "node": "lidar washer actuator a"
+  },
+  {
+   "code": "B0107",
+   "brand": "",
+   "ru": "Омыватель лидара B",
+   "en": "LIDAR Washer Actuator B",
+   "fam": "",
+   "node": "lidar washer actuator b"
+  },
+  {
+   "code": "B0108",
+   "brand": "",
+   "ru": "Омыватель лидара C",
+   "en": "LIDAR Washer Actuator C",
+   "fam": "",
+   "node": "lidar washer actuator c"
+  },
+  {
+   "code": "B0109",
+   "brand": "",
+   "ru": "Омыватель лидара D",
+   "en": "LIDAR Washer Actuator D",
+   "fam": "",
+   "node": "lidar washer actuator d"
+  },
+  {
+   "code": "B010A",
+   "brand": "",
+   "ru": "Омыватель камеры A",
+   "en": "Camera Washer Actuator A",
+   "fam": "",
+   "node": "camera washer actuator a"
+  },
+  {
+   "code": "B010B",
+   "brand": "",
+   "ru": "Омыватель камеры B",
+   "en": "Camera Washer Actuator B",
+   "fam": "",
+   "node": "camera washer actuator b"
+  },
+  {
+   "code": "B010C",
+   "brand": "",
+   "ru": "Омыватель камеры C",
+   "en": "Camera Washer Actuator C",
+   "fam": "",
+   "node": "camera washer actuator c"
+  },
+  {
+   "code": "B010D",
+   "brand": "",
+   "ru": "Омыватель камеры D",
+   "en": "Camera Washer Actuator D",
+   "fam": "",
+   "node": "camera washer actuator d"
+  },
+  {
+   "code": "B010E",
+   "brand": "",
+   "ru": "Омыватель камеры E",
+   "en": "Camera Washer Actuator E",
+   "fam": "",
+   "node": "camera washer actuator e"
+  },
+  {
+   "code": "B010F",
+   "brand": "",
+   "ru": "Омыватель камеры F",
+   "en": "Camera Washer Actuator F",
+   "fam": "",
+   "node": "camera washer actuator f"
+  },
+  {
+   "code": "B0110",
+   "brand": "",
+   "ru": "Омыватель камеры G",
+   "en": "Camera Washer Actuator G",
+   "fam": "",
+   "node": "camera washer actuator g"
+  },
+  {
+   "code": "B0111",
+   "brand": "",
+   "ru": "Омыватель камеры H",
+   "en": "Camera Washer Actuator H",
+   "fam": "",
+   "node": "camera washer actuator h"
+  },
+  {
+   "code": "B0112",
+   "brand": "",
+   "ru": "Омыватель камеры J",
+   "en": "Camera Washer Actuator J",
+   "fam": "",
+   "node": "camera washer actuator j"
+  },
+  {
+   "code": "B0113",
+   "brand": "",
+   "ru": "Омыватель камеры K",
+   "en": "Camera Washer Actuator K",
+   "fam": "",
+   "node": "camera washer actuator k"
+  },
+  {
+   "code": "B0114",
+   "brand": "",
+   "ru": "Омыватель камеры L",
+   "en": "Camera Washer Actuator L",
+   "fam": "",
+   "node": "camera washer actuator l"
+  },
+  {
+   "code": "B0115",
+   "brand": "",
+   "ru": "Омыватель камеры M",
+   "en": "Camera Washer Actuator M",
+   "fam": "",
+   "node": "camera washer actuator m"
+  },
+  {
+   "code": "B0116",
+   "brand": "",
+   "ru": "Омыватель камеры N",
+   "en": "Camera Washer Actuator N",
+   "fam": "",
+   "node": "camera washer actuator n"
+  },
+  {
+   "code": "B0117",
+   "brand": "",
+   "ru": "Омыватель камеры O",
+   "en": "Camera Washer Actuator O",
+   "fam": "",
+   "node": "camera washer actuator o"
+  },
+  {
+   "code": "B0118",
+   "brand": "",
+   "ru": "Омыватель камеры P",
+   "en": "Camera Washer Actuator P",
+   "fam": "",
+   "node": "camera washer actuator p"
+  },
+  {
+   "code": "B0119",
+   "brand": "",
+   "ru": "Омыватель камеры Q",
+   "en": "Camera Washer Actuator Q",
+   "fam": "",
+   "node": "camera washer actuator q"
+  },
+  {
+   "code": "B011A",
+   "brand": "",
+   "ru": "Омыватель камеры R",
+   "en": "Camera Washer Actuator R",
+   "fam": "",
+   "node": "camera washer actuator r"
+  },
+  {
+   "code": "B011B",
+   "brand": "",
+   "ru": "Омыватель камеры S",
+   "en": "Camera Washer Actuator S",
+   "fam": "",
+   "node": "camera washer actuator s"
+  },
+  {
+   "code": "B011C",
+   "brand": "",
+   "ru": "Датчик уровня в бачке A",
+   "en": "Fluid Reservoir Level Sensor A",
+   "fam": "",
+   "node": "fluid reservoir level sensor a"
+  },
+  {
+   "code": "B011D",
+   "brand": "",
+   "ru": "Датчик уровня в бачке B",
+   "en": "Fluid Reservoir Level Sensor B",
+   "fam": "",
+   "node": "fluid reservoir level sensor b"
+  },
+  {
+   "code": "B011E",
+   "brand": "",
+   "ru": "Датчик уровня в бачке C",
+   "en": "Fluid Reservoir Level Sensor C",
+   "fam": "",
+   "node": "fluid reservoir level sensor c"
+  },
+  {
+   "code": "B011F",
+   "brand": "",
+   "ru": "Датчик уровня в бачке D",
+   "en": "Fluid Reservoir Level Sensor D",
+   "fam": "",
+   "node": "fluid reservoir level sensor d"
+  },
+  {
+   "code": "B0120",
+   "brand": "",
+   "ru": "Датчик уровня в бачке E",
+   "en": "Fluid Reservoir Level Sensor E",
+   "fam": "",
+   "node": "fluid reservoir level sensor e"
+  },
+  {
+   "code": "B0121",
+   "brand": "",
+   "ru": "Датчик уровня в бачке F",
+   "en": "Fluid Reservoir Level Sensor F",
+   "fam": "",
+   "node": "fluid reservoir level sensor f"
+  },
+  {
+   "code": "B0122",
+   "brand": "",
+   "ru": "Динамик оповещения пешеходов A",
+   "en": "Pedestrian Alert Speaker A",
+   "fam": "",
+   "node": "pedestrian alert speaker a"
+  },
+  {
+   "code": "B0123",
+   "brand": "",
+   "ru": "Динамик оповещения пешеходов B",
+   "en": "Pedestrian Alert Speaker B",
+   "fam": "",
+   "node": "pedestrian alert speaker b"
+  },
+  {
+   "code": "B0124",
+   "brand": "",
+   "ru": "Камера ночного видения",
+   "en": "Night Vision Camera",
+   "fam": "",
+   "node": "night vision camera"
+  },
+  {
+   "code": "B0125",
+   "brand": "",
+   "ru": "Блок ночного видения",
+   "en": "Night Vision Control Module",
+   "fam": "",
+   "node": "night vision control"
+  },
+  {
+   "code": "B0126",
+   "brand": "",
+   "ru": "Камера контроля водителя",
+   "en": "Driver Monitoring Camera",
+   "fam": "",
+   "node": "driver monitoring camera"
+  }
+ ]
+}

@@ -1,0 +1,382 @@
+{
+ "name": "sae_132",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "exhaust aftertreatment fuel injector a",
+  "exhaust aftertreatment fuel injector a control",
+  "reductant control module requested mil illumination",
+  "reductant heater a",
+  "reductant heater b",
+  "reductant heater c",
+  "reductant heater coolant control",
+  "reductant heater coolant control valve",
+  "reductant heater d",
+  "reductant injection air pressure control valve",
+  "reductant injection air pressure leakage",
+  "reductant metering unit heater",
+  "reductant metering unit temperature"
+ ],
+ "codes": [
+  {
+   "code": "P20A7",
+   "brand": "",
+   "ru": "Клапан давления воздуха впрыска мочевины: работа нарушена",
+   "en": "Reductant Injection Air Pressure Control Valve Performance",
+   "fam": "",
+   "node": "reductant injection air pressure control valve"
+  },
+  {
+   "code": "P20AA",
+   "brand": "",
+   "ru": "Клапан давления воздуха впрыска мочевины: заклинил открытым",
+   "en": "Reductant Injection Air Pressure Control Valve Stuck Open",
+   "fam": "",
+   "node": "reductant injection air pressure control valve"
+  },
+  {
+   "code": "P20AB",
+   "brand": "",
+   "ru": "Клапан давления воздуха впрыска мочевины: заклинил закрытым",
+   "en": "Reductant Injection Air Pressure Control Valve Stuck Closed",
+   "fam": "",
+   "node": "reductant injection air pressure control valve"
+  },
+  {
+   "code": "P20AC",
+   "brand": "",
+   "ru": "Датчик температуры дозатора мочевины: цепь",
+   "en": "Reductant Metering Unit Temperature Sensor Circuit",
+   "fam": "",
+   "node": "reductant metering unit temperature"
+  },
+  {
+   "code": "P20AD",
+   "brand": "",
+   "ru": "Датчик температуры дозатора мочевины: сигнал вне диапазона",
+   "en": "Reductant Metering Unit Temperature Sensor Circuit Range/Performance",
+   "fam": "",
+   "node": "reductant metering unit temperature"
+  },
+  {
+   "code": "P20AE",
+   "brand": "",
+   "ru": "Датчик температуры дозатора мочевины: низкий уровень сигнала в цепи",
+   "en": "Reductant Metering Unit Temperature Sensor Circuit Low",
+   "fam": "",
+   "node": "reductant metering unit temperature"
+  },
+  {
+   "code": "P20AF",
+   "brand": "",
+   "ru": "Датчик температуры дозатора мочевины: высокий уровень сигнала в цепи",
+   "en": "Reductant Metering Unit Temperature Sensor Circuit High",
+   "fam": "",
+   "node": "reductant metering unit temperature"
+  },
+  {
+   "code": "P20B0",
+   "brand": "",
+   "ru": "Датчик температуры дозатора мочевины: прерывистый / нестабильный сигнал",
+   "en": "Reductant Metering Unit Temperature Sensor Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "reductant metering unit temperature"
+  },
+  {
+   "code": "P20B1",
+   "brand": "",
+   "ru": "Клапан жидкостного подогрева мочевины: обрыв цепи",
+   "en": "Reductant Heater Coolant Control Valve Circuit/Open",
+   "fam": "",
+   "node": "reductant heater coolant control"
+  },
+  {
+   "code": "P20B3",
+   "brand": "",
+   "ru": "Клапан жидкостного подогрева мочевины: низкий уровень сигнала в цепи",
+   "en": "Reductant Heater Coolant Control Valve Circuit Low",
+   "fam": "",
+   "node": "reductant heater coolant control"
+  },
+  {
+   "code": "P20B4",
+   "brand": "",
+   "ru": "Клапан жидкостного подогрева мочевины: высокий уровень сигнала в цепи",
+   "en": "Reductant Heater Coolant Control Valve Circuit High",
+   "fam": "",
+   "node": "reductant heater coolant control"
+  },
+  {
+   "code": "P20B2",
+   "brand": "",
+   "ru": "Клапан жидкостного подогрева мочевины: работа нарушена / заклинил открытым",
+   "en": "Reductant Heater Coolant Control Valve Performance/Stuck Open",
+   "fam": "",
+   "node": "reductant heater coolant control valve"
+  },
+  {
+   "code": "P241E",
+   "brand": "",
+   "ru": "Клапан жидкостного подогрева мочевины: заклинил закрытым",
+   "en": "Reductant Heater Coolant Control Valve Stuck Closed",
+   "fam": "",
+   "node": "reductant heater coolant control valve"
+  },
+  {
+   "code": "P20B5",
+   "brand": "",
+   "ru": "Подогрев дозатора мочевины: обрыв цепи управления",
+   "en": "Reductant Metering Unit Heater Control Circuit/Open",
+   "fam": "",
+   "node": "reductant metering unit heater"
+  },
+  {
+   "code": "P20B6",
+   "brand": "",
+   "ru": "Подогрев дозатора мочевины: нарушена работа цепи управления",
+   "en": "Reductant Metering Unit Heater Control Circuit Performance",
+   "fam": "",
+   "node": "reductant metering unit heater"
+  },
+  {
+   "code": "P20B7",
+   "brand": "",
+   "ru": "Подогрев дозатора мочевины: низкий уровень в цепи управления",
+   "en": "Reductant Metering Unit Heater Control Circuit Low",
+   "fam": "",
+   "node": "reductant metering unit heater"
+  },
+  {
+   "code": "P20B8",
+   "brand": "",
+   "ru": "Подогрев дозатора мочевины: высокий уровень в цепи управления",
+   "en": "Reductant Metering Unit Heater Control Circuit High",
+   "fam": "",
+   "node": "reductant metering unit heater"
+  },
+  {
+   "code": "P20B9",
+   "brand": "",
+   "ru": "Подогреватель мочевины (AdBlue) A: обрыв цепи управления",
+   "en": "Reductant Heater A Control Circuit/Open",
+   "fam": "",
+   "node": "reductant heater a"
+  },
+  {
+   "code": "P20BA",
+   "brand": "",
+   "ru": "Подогреватель мочевины (AdBlue) A: нарушена работа цепи управления",
+   "en": "Reductant Heater A Control Circuit Performance",
+   "fam": "",
+   "node": "reductant heater a"
+  },
+  {
+   "code": "P20BB",
+   "brand": "",
+   "ru": "Подогреватель мочевины (AdBlue) A: низкий уровень в цепи управления",
+   "en": "Reductant Heater A Control Circuit Low",
+   "fam": "",
+   "node": "reductant heater a"
+  },
+  {
+   "code": "P20BC",
+   "brand": "",
+   "ru": "Подогреватель мочевины (AdBlue) A: высокий уровень в цепи управления",
+   "en": "Reductant Heater A Control Circuit High",
+   "fam": "",
+   "node": "reductant heater a"
+  },
+  {
+   "code": "P20BD",
+   "brand": "",
+   "ru": "Подогреватель мочевины (AdBlue) B: обрыв цепи управления",
+   "en": "Reductant Heater B Control Circuit/Open",
+   "fam": "",
+   "node": "reductant heater b"
+  },
+  {
+   "code": "P20BE",
+   "brand": "",
+   "ru": "Подогреватель мочевины (AdBlue) B: нарушена работа цепи управления",
+   "en": "Reductant Heater B Control Circuit Performance",
+   "fam": "",
+   "node": "reductant heater b"
+  },
+  {
+   "code": "P20BF",
+   "brand": "",
+   "ru": "Подогреватель мочевины (AdBlue) B: низкий уровень в цепи управления",
+   "en": "Reductant Heater B Control Circuit Low",
+   "fam": "",
+   "node": "reductant heater b"
+  },
+  {
+   "code": "P20C0",
+   "brand": "",
+   "ru": "Подогреватель мочевины (AdBlue) B: высокий уровень в цепи управления",
+   "en": "Reductant Heater B Control Circuit High",
+   "fam": "",
+   "node": "reductant heater b"
+  },
+  {
+   "code": "P20C1",
+   "brand": "",
+   "ru": "Подогреватель мочевины (AdBlue) C: обрыв цепи управления",
+   "en": "Reductant Heater C Control Circuit/Open",
+   "fam": "",
+   "node": "reductant heater c"
+  },
+  {
+   "code": "P20C2",
+   "brand": "",
+   "ru": "Подогреватель мочевины (AdBlue) C: нарушена работа цепи управления",
+   "en": "Reductant Heater C Control Circuit Performance",
+   "fam": "",
+   "node": "reductant heater c"
+  },
+  {
+   "code": "P20C3",
+   "brand": "",
+   "ru": "Подогреватель мочевины (AdBlue) C: низкий уровень в цепи управления",
+   "en": "Reductant Heater C Control Circuit Low",
+   "fam": "",
+   "node": "reductant heater c"
+  },
+  {
+   "code": "P20C4",
+   "brand": "",
+   "ru": "Подогреватель мочевины (AdBlue) C: высокий уровень в цепи управления",
+   "en": "Reductant Heater C Control Circuit High",
+   "fam": "",
+   "node": "reductant heater c"
+  },
+  {
+   "code": "P20C5",
+   "brand": "",
+   "ru": "Подогреватель мочевины (AdBlue) D: обрыв цепи управления",
+   "en": "Reductant Heater D Control Circuit/Open",
+   "fam": "",
+   "node": "reductant heater d"
+  },
+  {
+   "code": "P20C6",
+   "brand": "",
+   "ru": "Подогреватель мочевины (AdBlue) D: нарушена работа цепи управления",
+   "en": "Reductant Heater D Control Circuit Performance",
+   "fam": "",
+   "node": "reductant heater d"
+  },
+  {
+   "code": "P20C7",
+   "brand": "",
+   "ru": "Подогреватель мочевины (AdBlue) D: низкий уровень в цепи управления",
+   "en": "Reductant Heater D Control Circuit Low",
+   "fam": "",
+   "node": "reductant heater d"
+  },
+  {
+   "code": "P20C8",
+   "brand": "",
+   "ru": "Подогреватель мочевины (AdBlue) D: высокий уровень в цепи управления",
+   "en": "Reductant Heater D Control Circuit High",
+   "fam": "",
+   "node": "reductant heater d"
+  },
+  {
+   "code": "P20C9",
+   "brand": "",
+   "ru": "Блок системы мочевины запросил включение Check Engine",
+   "en": "Reductant Control Module Requested MIL Illumination",
+   "fam": "",
+   "node": "reductant control module requested mil illumination"
+  },
+  {
+   "code": "P20CA",
+   "brand": "",
+   "ru": "Утечка воздуха в системе впрыска мочевины",
+   "en": "Reductant Injection Air Pressure Leakage",
+   "fam": "",
+   "node": "reductant injection air pressure leakage"
+  },
+  {
+   "code": "P20CB",
+   "brand": "",
+   "ru": "Форсунка впрыска топлива в выпуск (регенерация) A: обрыв цепи управления",
+   "en": "Exhaust Aftertreatment Fuel Injector A Control Circuit/Open",
+   "fam": "",
+   "node": "exhaust aftertreatment fuel injector a"
+  },
+  {
+   "code": "P20CD",
+   "brand": "",
+   "ru": "Форсунка впрыска топлива в выпуск (регенерация) A: низкий уровень в цепи управления",
+   "en": "Exhaust Aftertreatment Fuel Injector A Control Circuit Low",
+   "fam": "",
+   "node": "exhaust aftertreatment fuel injector a"
+  },
+  {
+   "code": "P20CE",
+   "brand": "",
+   "ru": "Форсунка впрыска топлива в выпуск (регенерация) A: высокий уровень в цепи управления",
+   "en": "Exhaust Aftertreatment Fuel Injector A Control Circuit High",
+   "fam": "",
+   "node": "exhaust aftertreatment fuel injector a"
+  },
+  {
+   "code": "P20CF",
+   "brand": "",
+   "ru": "Форсунка впрыска топлива в выпуск (регенерация) A: заклинил открытым",
+   "en": "Exhaust Aftertreatment Fuel Injector A Stuck Open",
+   "fam": "",
+   "node": "exhaust aftertreatment fuel injector a"
+  },
+  {
+   "code": "P20D0",
+   "brand": "",
+   "ru": "Форсунка впрыска топлива в выпуск (регенерация) A: заклинил закрытым",
+   "en": "Exhaust Aftertreatment Fuel Injector A Stuck Closed",
+   "fam": "",
+   "node": "exhaust aftertreatment fuel injector a"
+  },
+  {
+   "code": "P2697",
+   "brand": "",
+   "ru": "Форсунка впрыска топлива в выпуск (регенерация) A: обрыв цепи",
+   "en": "Exhaust Aftertreatment Fuel Injector A Circuit/Open",
+   "fam": "",
+   "node": "exhaust aftertreatment fuel injector a"
+  },
+  {
+   "code": "P2698",
+   "brand": "",
+   "ru": "Форсунка впрыска топлива в выпуск (регенерация) A: работа нарушена",
+   "en": "Exhaust Aftertreatment Fuel Injector A Performance",
+   "fam": "",
+   "node": "exhaust aftertreatment fuel injector a"
+  },
+  {
+   "code": "P2699",
+   "brand": "",
+   "ru": "Форсунка впрыска топлива в выпуск (регенерация) A: низкий уровень сигнала в цепи",
+   "en": "Exhaust Aftertreatment Fuel Injector A Circuit Low",
+   "fam": "",
+   "node": "exhaust aftertreatment fuel injector a"
+  },
+  {
+   "code": "P269A",
+   "brand": "",
+   "ru": "Форсунка впрыска топлива в выпуск (регенерация) A: высокий уровень сигнала в цепи",
+   "en": "Exhaust Aftertreatment Fuel Injector A Circuit High",
+   "fam": "",
+   "node": "exhaust aftertreatment fuel injector a"
+  },
+  {
+   "code": "P20CC",
+   "brand": "",
+   "ru": "Форсунка впрыска топлива в выпуск (регенерация) A: нарушено управление",
+   "en": "Exhaust Aftertreatment Fuel Injector A Control Performance",
+   "fam": "",
+   "node": "exhaust aftertreatment fuel injector a control"
+  }
+ ]
+}

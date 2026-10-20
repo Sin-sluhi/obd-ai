@@ -1,0 +1,382 @@
+{
+ "name": "sae_149",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "egr cooler bypass position sensor exceeded learning limit",
+  "evap system leak detection pump switching valve",
+  "evap system pressure sensor switch b",
+  "exhaust gas temperature measurement system multiple sensor correlation",
+  "nh3 sensor",
+  "nh3 sensor supply voltage",
+  "particulate matter sensor exhaust sample error",
+  "particulate matter sensor regeneration incomplete",
+  "particulate matter sensor supply voltage",
+  "particulate matter sensor temperature",
+  "reductant purge control valve b",
+  "reductant tank cap",
+  "ru:датчик аммиака (nh3)"
+ ],
+ "codes": [
+  {
+   "code": "P24BD",
+   "brand": "",
+   "ru": "Переключающий клапан насоса проверки утечек EVAP: обрыв цепи управления",
+   "en": "EVAP System Leak Detection Pump Switching Valve Control Circuit/Open",
+   "fam": "",
+   "node": "evap system leak detection pump switching valve"
+  },
+  {
+   "code": "P24BE",
+   "brand": "",
+   "ru": "Переключающий клапан насоса проверки утечек EVAP: низкий уровень в цепи управления",
+   "en": "EVAP System Leak Detection Pump Switching Valve Control Circuit Low",
+   "fam": "",
+   "node": "evap system leak detection pump switching valve"
+  },
+  {
+   "code": "P24BF",
+   "brand": "",
+   "ru": "Переключающий клапан насоса проверки утечек EVAP: высокий уровень в цепи управления",
+   "en": "EVAP System Leak Detection Pump Switching Valve Control Circuit High",
+   "fam": "",
+   "node": "evap system leak detection pump switching valve"
+  },
+  {
+   "code": "P24C0",
+   "brand": "",
+   "ru": "Переключающий клапан насоса проверки утечек EVAP: постоянно включён",
+   "en": "EVAP System Leak Detection Pump Switching Valve Stuck On",
+   "fam": "",
+   "node": "evap system leak detection pump switching valve"
+  },
+  {
+   "code": "P24C1",
+   "brand": "",
+   "ru": "Переключающий клапан насоса проверки утечек EVAP: работа нарушена / не включается",
+   "en": "EVAP System Leak Detection Pump Switching Valve Performance/Stuck Off",
+   "fam": "",
+   "node": "evap system leak detection pump switching valve"
+  },
+  {
+   "code": "P24C2",
+   "brand": "",
+   "ru": "Датчики температуры выхлопа: рассогласование нескольких датчиков (банк 1)",
+   "en": "Exhaust Gas Temperature Measurement System - Multiple Sensor Correlation Bank 1",
+   "fam": "",
+   "node": "exhaust gas temperature measurement system multiple sensor correlation"
+  },
+  {
+   "code": "P24C3",
+   "brand": "",
+   "ru": "Датчики температуры выхлопа: рассогласование нескольких датчиков (банк 2)",
+   "en": "Exhaust Gas Temperature Measurement System - Multiple Sensor Correlation Bank 2",
+   "fam": "",
+   "node": "exhaust gas temperature measurement system multiple sensor correlation"
+  },
+  {
+   "code": "P24C4",
+   "brand": "",
+   "ru": "Датчик положения байпаса радиатора EGR: превышен предел адаптации (банк 1)",
+   "en": "EGR Cooler Bypass Position Sensor Exceeded Learning Limit Bank 1",
+   "fam": "",
+   "node": "egr cooler bypass position sensor exceeded learning limit"
+  },
+  {
+   "code": "P24C5",
+   "brand": "",
+   "ru": "Датчик положения байпаса радиатора EGR: превышен предел адаптации (банк 2)",
+   "en": "EGR Cooler Bypass Position Sensor Exceeded Learning Limit Bank 2",
+   "fam": "",
+   "node": "egr cooler bypass position sensor exceeded learning limit"
+  },
+  {
+   "code": "P24C6",
+   "brand": "",
+   "ru": "Температура датчика сажи: цепь",
+   "en": "Particulate Matter Sensor Temperature Circuit",
+   "fam": "",
+   "node": "particulate matter sensor temperature"
+  },
+  {
+   "code": "P24C7",
+   "brand": "",
+   "ru": "Температура датчика сажи: сигнал вне диапазона",
+   "en": "Particulate Matter Sensor Temperature Circuit Range/performance",
+   "fam": "",
+   "node": "particulate matter sensor temperature"
+  },
+  {
+   "code": "P24C8",
+   "brand": "",
+   "ru": "Температура датчика сажи: низкий уровень сигнала в цепи",
+   "en": "Particulate Matter Sensor Temperature Circuit Low",
+   "fam": "",
+   "node": "particulate matter sensor temperature"
+  },
+  {
+   "code": "P24C9",
+   "brand": "",
+   "ru": "Температура датчика сажи: высокий уровень сигнала в цепи",
+   "en": "Particulate Matter Sensor Temperature Circuit High",
+   "fam": "",
+   "node": "particulate matter sensor temperature"
+  },
+  {
+   "code": "P24CA",
+   "brand": "",
+   "ru": "Температура датчика сажи: прерывистый сигнал в цепи",
+   "en": "Particulate Matter Sensor Temperature Circuit Intermittent",
+   "fam": "",
+   "node": "particulate matter sensor temperature"
+  },
+  {
+   "code": "P24CB",
+   "brand": "",
+   "ru": "Датчик крышки бака мочевины: цепь",
+   "en": "Reductant Tank Cap Switch Circuit",
+   "fam": "",
+   "node": "reductant tank cap"
+  },
+  {
+   "code": "P24CC",
+   "brand": "",
+   "ru": "Датчик крышки бака мочевины: сигнал вне диапазона",
+   "en": "Reductant Tank Cap Switch Circuit Range/Performance",
+   "fam": "",
+   "node": "reductant tank cap"
+  },
+  {
+   "code": "P24CD",
+   "brand": "",
+   "ru": "Датчик крышки бака мочевины: низкий уровень сигнала в цепи",
+   "en": "Reductant Tank Cap Switch Circuit Low",
+   "fam": "",
+   "node": "reductant tank cap"
+  },
+  {
+   "code": "P24CE",
+   "brand": "",
+   "ru": "Датчик крышки бака мочевины: высокий уровень сигнала в цепи",
+   "en": "Reductant Tank Cap Switch Circuit High",
+   "fam": "",
+   "node": "reductant tank cap"
+  },
+  {
+   "code": "P24CF",
+   "brand": "",
+   "ru": "Датчик крышки бака мочевины: прерывистый / нестабильный сигнал",
+   "en": "Reductant Tank Cap Switch Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "reductant tank cap"
+  },
+  {
+   "code": "P24D0",
+   "brand": "",
+   "ru": "Датчик сажи: низкое напряжение питания",
+   "en": "Particulate Matter Sensor Supply Voltage Circuit Low",
+   "fam": "",
+   "node": "particulate matter sensor supply voltage"
+  },
+  {
+   "code": "P24D1",
+   "brand": "",
+   "ru": "Регенерация датчика сажи не завершена",
+   "en": "Particulate Matter Sensor Regeneration Incomplete",
+   "fam": "",
+   "node": "particulate matter sensor regeneration incomplete"
+  },
+  {
+   "code": "P24D5",
+   "brand": "",
+   "ru": "Датчик давления системы улавливания паров B: цепь",
+   "en": "EVAP System Pressure Sensor/Switch B Circuit",
+   "fam": "",
+   "node": "evap system pressure sensor switch b"
+  },
+  {
+   "code": "P24D6",
+   "brand": "",
+   "ru": "Датчик давления системы улавливания паров B: сигнал вне диапазона",
+   "en": "EVAP System Pressure Sensor/Switch B Circuit Range/Performance",
+   "fam": "",
+   "node": "evap system pressure sensor switch b"
+  },
+  {
+   "code": "P24D7",
+   "brand": "",
+   "ru": "Датчик давления системы улавливания паров B: низкий уровень сигнала в цепи",
+   "en": "EVAP System Pressure Sensor/Switch B Circuit Low",
+   "fam": "",
+   "node": "evap system pressure sensor switch b"
+  },
+  {
+   "code": "P24D8",
+   "brand": "",
+   "ru": "Датчик давления системы улавливания паров B: высокий уровень сигнала в цепи",
+   "en": "EVAP System Pressure Sensor/Switch B Circuit High",
+   "fam": "",
+   "node": "evap system pressure sensor switch b"
+  },
+  {
+   "code": "P24D9",
+   "brand": "",
+   "ru": "Датчик давления системы улавливания паров B: прерывистый сигнал в цепи",
+   "en": "EVAP System Pressure Sensor/Switch B Circuit Intermittent",
+   "fam": "",
+   "node": "evap system pressure sensor switch b"
+  },
+  {
+   "code": "P24DA",
+   "brand": "",
+   "ru": "Датчик сажи: ошибка забора выхлопа (банк 1)",
+   "en": "Particulate Matter Sensor Exhaust Sample Error Bank 1",
+   "fam": "",
+   "node": "particulate matter sensor exhaust sample error"
+  },
+  {
+   "code": "P24DB",
+   "brand": "",
+   "ru": "Клапан продувки системы мочевины B: обрыв цепи",
+   "en": "Reductant Purge Control Valve B Circuit /Open",
+   "fam": "",
+   "node": "reductant purge control valve b"
+  },
+  {
+   "code": "P24DC",
+   "brand": "",
+   "ru": "Клапан продувки системы мочевины B: работа нарушена",
+   "en": "Reductant Purge Control Valve B Performance",
+   "fam": "",
+   "node": "reductant purge control valve b"
+  },
+  {
+   "code": "P24DD",
+   "brand": "",
+   "ru": "Клапан продувки системы мочевины B: низкий уровень сигнала в цепи",
+   "en": "Reductant Purge Control Valve B Circuit Low",
+   "fam": "",
+   "node": "reductant purge control valve b"
+  },
+  {
+   "code": "P24DE",
+   "brand": "",
+   "ru": "Клапан продувки системы мочевины B: высокий уровень сигнала в цепи",
+   "en": "Reductant Purge Control Valve B Circuit High",
+   "fam": "",
+   "node": "reductant purge control valve b"
+  },
+  {
+   "code": "P24DF",
+   "brand": "",
+   "ru": "Клапан продувки системы мочевины B: заклинил открытым",
+   "en": "Reductant Purge Control Valve B Stuck Open",
+   "fam": "",
+   "node": "reductant purge control valve b"
+  },
+  {
+   "code": "P24E0",
+   "brand": "",
+   "ru": "Клапан продувки системы мочевины B: заклинил закрытым",
+   "en": "Reductant Purge Control Valve B Stuck Closed",
+   "fam": "",
+   "node": "reductant purge control valve b"
+  },
+  {
+   "code": "P24E1",
+   "brand": "",
+   "ru": "Датчик аммиака (NH3): цепь",
+   "en": "NH3 Sensor Circuit",
+   "fam": "",
+   "node": "ru:датчик аммиака (nh3)"
+  },
+  {
+   "code": "P24E2",
+   "brand": "",
+   "ru": "Датчик аммиака (NH3): сигнал вне диапазона",
+   "en": "NH3 Sensor Circuit Range/Performance",
+   "fam": "",
+   "node": "ru:датчик аммиака (nh3)"
+  },
+  {
+   "code": "P24E3",
+   "brand": "",
+   "ru": "Датчик аммиака (NH3): низкий уровень сигнала в цепи",
+   "en": "NH3 Sensor Circuit Low",
+   "fam": "",
+   "node": "ru:датчик аммиака (nh3)"
+  },
+  {
+   "code": "P24E4",
+   "brand": "",
+   "ru": "Датчик аммиака (NH3): высокий уровень сигнала в цепи",
+   "en": "NH3 Sensor Circuit High",
+   "fam": "",
+   "node": "ru:датчик аммиака (nh3)"
+  },
+  {
+   "code": "P24E5",
+   "brand": "",
+   "ru": "Датчик аммиака (NH3): прерывистый / нестабильный сигнал",
+   "en": "NH3 Sensor Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "ru:датчик аммиака (nh3)"
+  },
+  {
+   "code": "P24E6",
+   "brand": "",
+   "ru": "Подогрев датчика аммиака: обрыв цепи",
+   "en": "NH3 Sensor Heater Circuit/Open",
+   "fam": "",
+   "node": "nh3 sensor"
+  },
+  {
+   "code": "P24E7",
+   "brand": "",
+   "ru": "Подогрев датчика аммиака: низкий уровень сигнала в цепи",
+   "en": "NH3 Sensor Heater Circuit Low",
+   "fam": "",
+   "node": "nh3 sensor"
+  },
+  {
+   "code": "P24E8",
+   "brand": "",
+   "ru": "Подогрев датчика аммиака: высокий уровень сигнала в цепи",
+   "en": "NH3 Sensor Heater Circuit High",
+   "fam": "",
+   "node": "nh3 sensor"
+  },
+  {
+   "code": "P24E9",
+   "brand": "",
+   "ru": "Подогрев датчика аммиака: нарушена работа цепи",
+   "en": "NH3 Sensor Heater Circuit Performance",
+   "fam": "",
+   "node": "nh3 sensor"
+  },
+  {
+   "code": "P24EA",
+   "brand": "",
+   "ru": "Датчик аммиака (NH3): цепь питания",
+   "en": "NH3 Sensor Supply Voltage Circuit",
+   "fam": "",
+   "node": "nh3 sensor supply voltage"
+  },
+  {
+   "code": "P24EB",
+   "brand": "",
+   "ru": "Датчик аммиака (NH3): низкое напряжение питания",
+   "en": "NH3 Sensor Supply Voltage Circuit Low",
+   "fam": "",
+   "node": "nh3 sensor supply voltage"
+  },
+  {
+   "code": "P24EC",
+   "brand": "",
+   "ru": "Датчик аммиака (NH3): высокое напряжение питания",
+   "en": "NH3 Sensor Supply Voltage Circuit High",
+   "fam": "",
+   "node": "nh3 sensor supply voltage"
+  }
+ ]
+}

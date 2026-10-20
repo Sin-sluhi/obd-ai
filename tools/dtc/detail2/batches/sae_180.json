@@ -1,0 +1,396 @@
+{
+ "name": "sae_180",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "a c refrigerant pressure sensor a b correlation",
+  "alternative fuel tank a vacuum insulation deteriorated",
+  "charge air cooler coolant pump b control module overtemperature",
+  "charge air cooler coolant pump b supply voltage",
+  "charge air cooler coolant pump b underspeed",
+  "cold start deactivation intake valve control",
+  "coolant pump speed",
+  "coolant pump speed sensor",
+  "fan 2 overspeed",
+  "fan 2 underspeed",
+  "fan 3 overspeed",
+  "fan 3 underspeed",
+  "generator inverter power supply b",
+  "hybrid ev battery pack g deterioration",
+  "hybrid ev battery pack h deterioration",
+  "hybrid ev battery pack i deterioration",
+  "hybrid ev battery pack j deterioration",
+  "hybrid ev battery pack k deterioration",
+  "hybrid ev battery pack l deterioration",
+  "hybrid ev battery pack m deterioration",
+  "hybrid ev battery pack n deterioration",
+  "intake air heater c",
+  "pcv heater “b”",
+  "turbocharger supercharger b boost system",
+  "turbocharger supercharger boost pressure b not detected – mechanical",
+  "turbocharger supercharger boost pressure b too",
+  "turbocharger supercharger boost sensor d"
+ ],
+ "codes": [
+  {
+   "code": "P2CB2",
+   "brand": "",
+   "ru": "Насос охлаждения интеркулера B: заниженная скорость вращения",
+   "en": "Charge Air Cooler Coolant Pump B Underspeed",
+   "fam": "",
+   "node": "charge air cooler coolant pump b underspeed"
+  },
+  {
+   "code": "P2CB4",
+   "brand": "",
+   "ru": "Насос охлаждения интеркулера B: цепь питания",
+   "en": "Charge Air Cooler Coolant Pump B Supply Voltage Circuit",
+   "fam": "",
+   "node": "charge air cooler coolant pump b supply voltage"
+  },
+  {
+   "code": "P2CB5",
+   "brand": "",
+   "ru": "Перегрев блока насоса охлаждения интеркулера B",
+   "en": "Charge Air Cooler Coolant Pump B Control Module Overtemperature",
+   "fam": "",
+   "node": "charge air cooler coolant pump b control module overtemperature"
+  },
+  {
+   "code": "P2CB6",
+   "brand": "",
+   "ru": "Наддув турбины/нагнетателя B: работа нарушена",
+   "en": "Turbocharger/Supercharger B Boost System Performance",
+   "fam": "",
+   "node": "turbocharger supercharger b boost system"
+  },
+  {
+   "code": "P2CB7",
+   "brand": "",
+   "ru": "Нет давления наддува B (механика)",
+   "en": "Turbocharger/Supercharger Boost Pressure B Not Detected – Mechanical",
+   "fam": "",
+   "node": "turbocharger supercharger boost pressure b not detected – mechanical"
+  },
+  {
+   "code": "P2CB8",
+   "brand": "",
+   "ru": "Слишком высокое давление наддува B (механика)",
+   "en": "Turbocharger/Supercharger Boost Pressure B Too High – Mechanical",
+   "fam": "",
+   "node": "turbocharger supercharger boost pressure b too"
+  },
+  {
+   "code": "P2CB9",
+   "brand": "",
+   "ru": "Вентилятор 2: заниженная скорость вращения",
+   "en": "Fan 2 Underspeed",
+   "fam": "",
+   "node": "fan 2 underspeed"
+  },
+  {
+   "code": "P2CBA",
+   "brand": "",
+   "ru": "Вентилятор 2: превышена скорость вращения",
+   "en": "Fan 2 Overspeed",
+   "fam": "",
+   "node": "fan 2 overspeed"
+  },
+  {
+   "code": "P2CBB",
+   "brand": "",
+   "ru": "Вентилятор 3: заниженная скорость вращения",
+   "en": "Fan 3 Underspeed",
+   "fam": "",
+   "node": "fan 3 underspeed"
+  },
+  {
+   "code": "P2CBC",
+   "brand": "",
+   "ru": "Вентилятор 3: превышена скорость вращения",
+   "en": "Fan 3 Overspeed",
+   "fam": "",
+   "node": "fan 3 overspeed"
+  },
+  {
+   "code": "P2CBD",
+   "brand": "",
+   "ru": "Подогрев клапана вентиляции картера B: обрыв цепи управления",
+   "en": "PCV Heater “B” Control Circuit /Open",
+   "fam": "",
+   "node": "pcv heater “b”"
+  },
+  {
+   "code": "P2CBE",
+   "brand": "",
+   "ru": "Подогрев клапана вентиляции картера B: высокий уровень в цепи управления",
+   "en": "PCV Heater “B” Control Circuit High",
+   "fam": "",
+   "node": "pcv heater “b”"
+  },
+  {
+   "code": "P2CBF",
+   "brand": "",
+   "ru": "Подогрев клапана вентиляции картера B: низкий уровень в цепи управления",
+   "en": "PCV Heater “B” Control Circuit Low",
+   "fam": "",
+   "node": "pcv heater “b”"
+  },
+  {
+   "code": "P2CC0",
+   "brand": "",
+   "ru": "Подогрев клапана вентиляции картера B: работа нарушена",
+   "en": "PCV Heater “B” Performance",
+   "fam": "",
+   "node": "pcv heater “b”"
+  },
+  {
+   "code": "P2CC5",
+   "brand": "",
+   "ru": "Питание инвертора генератора B: обрыв цепи",
+   "en": "Generator Inverter Power Supply B Circuit/Open",
+   "fam": "",
+   "node": "generator inverter power supply b"
+  },
+  {
+   "code": "P2CC6",
+   "brand": "",
+   "ru": "Питание инвертора генератора B: низкий уровень сигнала в цепи",
+   "en": "Generator Inverter Power Supply B Circuit Low",
+   "fam": "",
+   "node": "generator inverter power supply b"
+  },
+  {
+   "code": "P2CC7",
+   "brand": "",
+   "ru": "Питание инвертора генератора B: высокий уровень сигнала в цепи",
+   "en": "Generator Inverter Power Supply B Circuit High",
+   "fam": "",
+   "node": "generator inverter power supply b"
+  },
+  {
+   "code": "P2CC8",
+   "brand": "",
+   "ru": "Датчик оборотов насоса охлаждающей жидкости: цепь",
+   "en": "Coolant Pump Speed Sensor Circuit",
+   "fam": "",
+   "node": "coolant pump speed"
+  },
+  {
+   "code": "P2CCA",
+   "brand": "",
+   "ru": "Датчик оборотов насоса охлаждающей жидкости: низкий уровень сигнала в цепи",
+   "en": "Coolant Pump Speed Sensor Circuit Low",
+   "fam": "",
+   "node": "coolant pump speed"
+  },
+  {
+   "code": "P2CCB",
+   "brand": "",
+   "ru": "Датчик оборотов насоса охлаждающей жидкости: высокий уровень сигнала в цепи",
+   "en": "Coolant Pump Speed Sensor Circuit High",
+   "fam": "",
+   "node": "coolant pump speed"
+  },
+  {
+   "code": "P2CC9",
+   "brand": "",
+   "ru": "Датчик оборотов насоса охлаждающей жидкости: вне допустимого диапазона",
+   "en": "Coolant Pump Speed Sensor Range/Performance",
+   "fam": "",
+   "node": "coolant pump speed sensor"
+  },
+  {
+   "code": "P2CCC",
+   "brand": "",
+   "ru": "Тяговая батарея G: деградация",
+   "en": "Hybrid/EV Battery Pack G Deterioration",
+   "fam": "",
+   "node": "hybrid ev battery pack g deterioration"
+  },
+  {
+   "code": "P2CCD",
+   "brand": "",
+   "ru": "Тяговая батарея H: деградация",
+   "en": "Hybrid/EV Battery Pack H Deterioration",
+   "fam": "",
+   "node": "hybrid ev battery pack h deterioration"
+  },
+  {
+   "code": "P2CCE",
+   "brand": "",
+   "ru": "Тяговая батарея I: деградация",
+   "en": "Hybrid/EV Battery Pack I Deterioration",
+   "fam": "",
+   "node": "hybrid ev battery pack i deterioration"
+  },
+  {
+   "code": "P2CCF",
+   "brand": "",
+   "ru": "Тяговая батарея J: деградация",
+   "en": "Hybrid/EV Battery Pack J Deterioration",
+   "fam": "",
+   "node": "hybrid ev battery pack j deterioration"
+  },
+  {
+   "code": "P2CD0",
+   "brand": "",
+   "ru": "Тяговая батарея K: деградация",
+   "en": "Hybrid/EV Battery Pack K Deterioration",
+   "fam": "",
+   "node": "hybrid ev battery pack k deterioration"
+  },
+  {
+   "code": "P2CD1",
+   "brand": "",
+   "ru": "Тяговая батарея L: деградация",
+   "en": "Hybrid/EV Battery Pack L Deterioration",
+   "fam": "",
+   "node": "hybrid ev battery pack l deterioration"
+  },
+  {
+   "code": "P2CD2",
+   "brand": "",
+   "ru": "Тяговая батарея M: деградация",
+   "en": "Hybrid/EV Battery Pack M Deterioration",
+   "fam": "",
+   "node": "hybrid ev battery pack m deterioration"
+  },
+  {
+   "code": "P2CD3",
+   "brand": "",
+   "ru": "Тяговая батарея N: деградация",
+   "en": "Hybrid/EV Battery Pack N Deterioration",
+   "fam": "",
+   "node": "hybrid ev battery pack n deterioration"
+  },
+  {
+   "code": "P2CD4",
+   "brand": "",
+   "ru": "Датчик давления хладагента: рассогласование A/B",
+   "en": "A/C Refrigerant Pressure Sensor A/B Correlation",
+   "fam": "",
+   "node": "a c refrigerant pressure sensor a b correlation"
+  },
+  {
+   "code": "P2CD6",
+   "brand": "",
+   "ru": "Датчик давления наддува D: цепь",
+   "en": "Turbocharger/Supercharger Boost Sensor D Circuit",
+   "fam": "",
+   "node": "turbocharger supercharger boost sensor d"
+  },
+  {
+   "code": "P2CD7",
+   "brand": "",
+   "ru": "Датчик давления наддува D: сигнал вне диапазона",
+   "en": "Turbocharger/Supercharger Boost Sensor D Circuit Range/Performance",
+   "fam": "",
+   "node": "turbocharger supercharger boost sensor d"
+  },
+  {
+   "code": "P2CD8",
+   "brand": "",
+   "ru": "Датчик давления наддува D: низкий уровень сигнала в цепи",
+   "en": "Turbocharger/Supercharger Boost Sensor D Circuit Low",
+   "fam": "",
+   "node": "turbocharger supercharger boost sensor d"
+  },
+  {
+   "code": "P2CD9",
+   "brand": "",
+   "ru": "Датчик давления наддува D: высокий уровень сигнала в цепи",
+   "en": "Turbocharger/Supercharger Boost Sensor D Circuit High",
+   "fam": "",
+   "node": "turbocharger supercharger boost sensor d"
+  },
+  {
+   "code": "P2CDA",
+   "brand": "",
+   "ru": "Баллон ГБО A: нарушена вакуумная изоляция",
+   "en": "Alternative Fuel Tank A Vacuum Insulation Deteriorated",
+   "fam": "",
+   "node": "alternative fuel tank a vacuum insulation deteriorated"
+  },
+  {
+   "code": "P2CDB",
+   "brand": "",
+   "ru": "Холодный пуск, цилиндр 1: нарушено отключение/управление впускными клапанами",
+   "en": "Cold Start Cylinder 1 Deactivation/Intake Valve Control Performance",
+   "fam": "",
+   "node": "cold start deactivation intake valve control"
+  },
+  {
+   "code": "P2CDC",
+   "brand": "",
+   "ru": "Холодный пуск, цилиндр 2: нарушено отключение/управление впускными клапанами",
+   "en": "Cold Start Cylinder 2 Deactivation/Intake Valve Control Performance",
+   "fam": "",
+   "node": "cold start deactivation intake valve control"
+  },
+  {
+   "code": "P2CDD",
+   "brand": "",
+   "ru": "Холодный пуск, цилиндр 3: нарушено отключение/управление впускными клапанами",
+   "en": "Cold Start Cylinder 3 Deactivation/Intake Valve Control Performance",
+   "fam": "",
+   "node": "cold start deactivation intake valve control"
+  },
+  {
+   "code": "P2CDE",
+   "brand": "",
+   "ru": "Холодный пуск, цилиндр 4: нарушено отключение/управление впускными клапанами",
+   "en": "Cold Start Cylinder 4 Deactivation/Intake Valve Control Performance",
+   "fam": "",
+   "node": "cold start deactivation intake valve control"
+  },
+  {
+   "code": "P2CDF",
+   "brand": "",
+   "ru": "Холодный пуск, цилиндр 5: нарушено отключение/управление впускными клапанами",
+   "en": "Cold Start Cylinder 5 Deactivation/Intake Valve Control Performance",
+   "fam": "",
+   "node": "cold start deactivation intake valve control"
+  },
+  {
+   "code": "P2CE0",
+   "brand": "",
+   "ru": "Холодный пуск, цилиндр 6: нарушено отключение/управление впускными клапанами",
+   "en": "Cold Start Cylinder 6 Deactivation/Intake Valve Control Performance",
+   "fam": "",
+   "node": "cold start deactivation intake valve control"
+  },
+  {
+   "code": "P2CE1",
+   "brand": "",
+   "ru": "Подогреватель впускного воздуха C: обрыв цепи",
+   "en": "Intake Air Heater C Circuit/Open",
+   "fam": "",
+   "node": "intake air heater c"
+  },
+  {
+   "code": "P2CE2",
+   "brand": "",
+   "ru": "Подогреватель впускного воздуха C: сигнал вне диапазона",
+   "en": "Intake Air Heater C Circuit Range/Performance",
+   "fam": "",
+   "node": "intake air heater c"
+  },
+  {
+   "code": "P2CE3",
+   "brand": "",
+   "ru": "Подогреватель впускного воздуха C: низкий уровень сигнала в цепи",
+   "en": "Intake Air Heater C Circuit Low",
+   "fam": "",
+   "node": "intake air heater c"
+  },
+  {
+   "code": "P2CE4",
+   "brand": "",
+   "ru": "Подогреватель впускного воздуха C: высокий уровень сигнала в цепи",
+   "en": "Intake Air Heater C Circuit High",
+   "fam": "",
+   "node": "intake air heater c"
+  }
+ ]
+}

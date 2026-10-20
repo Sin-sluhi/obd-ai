@@ -1,0 +1,375 @@
+{
+ "name": "brand-bmw_003",
+ "series": "brand",
+ "brand": "bmw",
+ "nodes": [
+  "a camshaft position",
+  "b camshaft position",
+  "camshaft position sensor b",
+  "control module self test knock control baseline test",
+  "crankshaft position sensor segment timing",
+  "heated catalyst battery voltage or current too",
+  "misfire during start",
+  "misfire with fuel cut off",
+  "multiple cylinder misfire during start",
+  "multiple cylinder misfire with fuel cut off",
+  "ru:датчик детонации 2 (ряд 1)",
+  "ru:датчик детонации 3",
+  "ru:датчик детонации 4",
+  "switching solenoid for air assisted injection valves"
+ ],
+ "codes": [
+  {
+   "code": "P1283",
+   "brand": "bmw",
+   "ru": "Клапан подачи воздуха к форсункам (ряд 1): электрическая неисправность цепи",
+   "en": "Switching Solenoid for Air Assisted Injection Valves Bank 1 Control Circuit Electrical",
+   "fam": "",
+   "node": "switching solenoid for air assisted injection valves"
+  },
+  {
+   "code": "P1284",
+   "brand": "bmw",
+   "ru": "Клапан подачи воздуха к форсункам (ряд 1): низкий сигнал",
+   "en": "Switching Solenoid for Air Assisted Injection Valves Bank 1 Control Circuit Signal Low",
+   "fam": "",
+   "node": "switching solenoid for air assisted injection valves"
+  },
+  {
+   "code": "P1285",
+   "brand": "bmw",
+   "ru": "Клапан подачи воздуха к форсункам (ряд 1): высокий сигнал",
+   "en": "Switching Solenoid for Air Assisted Injection Valves Bank 1 Control Circuit Signal High",
+   "fam": "",
+   "node": "switching solenoid for air assisted injection valves"
+  },
+  {
+   "code": "P1287",
+   "brand": "bmw",
+   "ru": "Клапан подачи воздуха к форсункам (ряд 2): электрическая неисправность цепи",
+   "en": "Switching Solenoid for Air Assisted Injection Valves Bank 2 Control Circuit Electrical",
+   "fam": "",
+   "node": "switching solenoid for air assisted injection valves"
+  },
+  {
+   "code": "P1288",
+   "brand": "bmw",
+   "ru": "Клапан подачи воздуха к форсункам (ряд 2): низкий сигнал",
+   "en": "Switching Solenoid for Air Assisted Injection Valves Bank 2 Control Circuit Signal Low",
+   "fam": "",
+   "node": "switching solenoid for air assisted injection valves"
+  },
+  {
+   "code": "P1289",
+   "brand": "bmw",
+   "ru": "Клапан подачи воздуха к форсункам (ряд 2): высокий сигнал",
+   "en": "Switching Solenoid for Air Assisted Injection Valves Bank 2 Control Circuit Signal High",
+   "fam": "",
+   "node": "switching solenoid for air assisted injection valves"
+  },
+  {
+   "code": "P1313",
+   "brand": "bmw",
+   "ru": "Положение распредвала A: достоверность",
+   "en": "A Camshaft Position Plausibility",
+   "fam": "",
+   "node": "a camshaft position"
+  },
+  {
+   "code": "P1317",
+   "brand": "bmw",
+   "ru": "Положение распредвала B: достоверность",
+   "en": "B Camshaft Position Plausibility",
+   "fam": "",
+   "node": "b camshaft position"
+  },
+  {
+   "code": "P1327",
+   "brand": "bmw",
+   "ru": "Датчик детонации 2 (ряд 1): низкий сигнал",
+   "en": "Knock Sensor 2 Bank 1 Low Input",
+   "fam": "",
+   "node": "ru:датчик детонации 2 (ряд 1)"
+  },
+  {
+   "code": "P1328",
+   "brand": "bmw",
+   "ru": "Датчик детонации 2 (ряд 1): высокий сигнал",
+   "en": "Knock Sensor 2 Bank 1 High Input",
+   "fam": "",
+   "node": "ru:датчик детонации 2 (ряд 1)"
+  },
+  {
+   "code": "P1332",
+   "brand": "bmw",
+   "ru": "Датчик детонации 4: низкий сигнал",
+   "en": "Knock Sensor 4 Low Input",
+   "fam": "",
+   "node": "ru:датчик детонации 4"
+  },
+  {
+   "code": "P1333",
+   "brand": "bmw",
+   "ru": "Датчик детонации 4: высокий сигнал",
+   "en": "Knock Sensor 4 High Input",
+   "fam": "",
+   "node": "ru:датчик детонации 4"
+  },
+  {
+   "code": "P1385",
+   "brand": "bmw",
+   "ru": "Датчик детонации 4: цепь",
+   "en": "Knock Sensor 4 Circuit",
+   "fam": "",
+   "node": "ru:датчик детонации 4"
+  },
+  {
+   "code": "P1340",
+   "brand": "bmw",
+   "ru": "Пропуски в нескольких цилиндрах при пуске",
+   "en": "Multiple Cylinder Misfire During Start",
+   "fam": "",
+   "node": "multiple cylinder misfire during start"
+  },
+  {
+   "code": "P1341",
+   "brand": "bmw",
+   "ru": "Пропуски в нескольких цилиндрах с отключением подачи топлива",
+   "en": "Multiple Cylinder Misfire With Fuel Cut-off",
+   "fam": "",
+   "node": "multiple cylinder misfire with fuel cut off"
+  },
+  {
+   "code": "P1342",
+   "brand": "bmw",
+   "ru": "Пропуски при пуске, цилиндр 1",
+   "en": "Misfire During Start Cylinder 1",
+   "fam": "",
+   "node": "misfire during start"
+  },
+  {
+   "code": "P1344",
+   "brand": "bmw",
+   "ru": "Пропуски при пуске, цилиндр 2",
+   "en": "Misfire During Start Cylinder 2",
+   "fam": "",
+   "node": "misfire during start"
+  },
+  {
+   "code": "P1346",
+   "brand": "bmw",
+   "ru": "Пропуски при пуске, цилиндр 3",
+   "en": "Misfire During Start Cylinder 3",
+   "fam": "",
+   "node": "misfire during start"
+  },
+  {
+   "code": "P1348",
+   "brand": "bmw",
+   "ru": "Пропуски при пуске, цилиндр 4",
+   "en": "Misfire During Start Cylinder 4",
+   "fam": "",
+   "node": "misfire during start"
+  },
+  {
+   "code": "P1350",
+   "brand": "bmw",
+   "ru": "Пропуски при пуске, цилиндр 5",
+   "en": "Misfire During Start Cylinder 5",
+   "fam": "",
+   "node": "misfire during start"
+  },
+  {
+   "code": "P1352",
+   "brand": "bmw",
+   "ru": "Пропуски при пуске, цилиндр 6",
+   "en": "Misfire During Start Cylinder 6",
+   "fam": "",
+   "node": "misfire during start"
+  },
+  {
+   "code": "P1354",
+   "brand": "bmw",
+   "ru": "Пропуски при пуске, цилиндр 7",
+   "en": "Misfire During Start Cylinder 7",
+   "fam": "",
+   "node": "misfire during start"
+  },
+  {
+   "code": "P1356",
+   "brand": "bmw",
+   "ru": "Пропуски при пуске, цилиндр 8",
+   "en": "Misfire During Start Cylinder 8",
+   "fam": "",
+   "node": "misfire during start"
+  },
+  {
+   "code": "P1358",
+   "brand": "bmw",
+   "ru": "Пропуски при пуске, цилиндр 9",
+   "en": "Misfire During Start Cylinder 9",
+   "fam": "",
+   "node": "misfire during start"
+  },
+  {
+   "code": "P1360",
+   "brand": "bmw",
+   "ru": "Пропуски при пуске, цилиндр 10",
+   "en": "Misfire During Start Cylinder 10",
+   "fam": "",
+   "node": "misfire during start"
+  },
+  {
+   "code": "P1362",
+   "brand": "bmw",
+   "ru": "Пропуски при пуске, цилиндр 11",
+   "en": "Misfire During Start Cylinder 11",
+   "fam": "",
+   "node": "misfire during start"
+  },
+  {
+   "code": "P1364",
+   "brand": "bmw",
+   "ru": "Пропуски при пуске, цилиндр 12",
+   "en": "Misfire During Start Cylinder 12",
+   "fam": "",
+   "node": "misfire during start"
+  },
+  {
+   "code": "P1343",
+   "brand": "bmw",
+   "ru": "Пропуски, цилиндр 1 (подача топлива отключена)",
+   "en": "Misfire Cylinder 1 With Fuel Cut-off",
+   "fam": "",
+   "node": "misfire with fuel cut off"
+  },
+  {
+   "code": "P1345",
+   "brand": "bmw",
+   "ru": "Пропуски, цилиндр 2 (подача топлива отключена)",
+   "en": "Misfire Cylinder 2 With Fuel Cut-off",
+   "fam": "",
+   "node": "misfire with fuel cut off"
+  },
+  {
+   "code": "P1347",
+   "brand": "bmw",
+   "ru": "Пропуски, цилиндр 3 (подача топлива отключена)",
+   "en": "Misfire Cylinder 3 With Fuel Cut-off",
+   "fam": "",
+   "node": "misfire with fuel cut off"
+  },
+  {
+   "code": "P1349",
+   "brand": "bmw",
+   "ru": "Пропуски, цилиндр 4 (подача топлива отключена)",
+   "en": "Misfire Cylinder 4 With Fuel Cut-off",
+   "fam": "",
+   "node": "misfire with fuel cut off"
+  },
+  {
+   "code": "P1351",
+   "brand": "bmw",
+   "ru": "Пропуски, цилиндр 5 (подача топлива отключена)",
+   "en": "Misfire Cylinder 5 With Fuel Cut-off",
+   "fam": "",
+   "node": "misfire with fuel cut off"
+  },
+  {
+   "code": "P1353",
+   "brand": "bmw",
+   "ru": "Пропуски, цилиндр 6 (подача топлива отключена)",
+   "en": "Misfire Cylinder 6 With Fuel Cut-off",
+   "fam": "",
+   "node": "misfire with fuel cut off"
+  },
+  {
+   "code": "P1355",
+   "brand": "bmw",
+   "ru": "Пропуски, цилиндр 7 (подача топлива отключена)",
+   "en": "Misfire Cylinder 7 With Fuel Cut-off",
+   "fam": "",
+   "node": "misfire with fuel cut off"
+  },
+  {
+   "code": "P1357",
+   "brand": "bmw",
+   "ru": "Пропуски, цилиндр 8 (подача топлива отключена)",
+   "en": "Misfire Cylinder 8 With Fuel Cut-off",
+   "fam": "",
+   "node": "misfire with fuel cut off"
+  },
+  {
+   "code": "P1359",
+   "brand": "bmw",
+   "ru": "Пропуски, цилиндр 9 (подача топлива отключена)",
+   "en": "Misfire Cylinder 9 With Fuel Cut-off",
+   "fam": "",
+   "node": "misfire with fuel cut off"
+  },
+  {
+   "code": "P1361",
+   "brand": "bmw",
+   "ru": "Пропуски, цилиндр 10 (подача топлива отключена)",
+   "en": "Misfire Cylinder 10 With Fuel Cut-off",
+   "fam": "",
+   "node": "misfire with fuel cut off"
+  },
+  {
+   "code": "P1363",
+   "brand": "bmw",
+   "ru": "Пропуски, цилиндр 11 (подача топлива отключена)",
+   "en": "Misfire Cylinder 11 With Fuel Cut-off",
+   "fam": "",
+   "node": "misfire with fuel cut off"
+  },
+  {
+   "code": "P1365",
+   "brand": "bmw",
+   "ru": "Пропуски, цилиндр 12 (подача топлива отключена)",
+   "en": "Misfire Cylinder 12 With Fuel Cut-off",
+   "fam": "",
+   "node": "misfire with fuel cut off"
+  },
+  {
+   "code": "P1384",
+   "brand": "bmw",
+   "ru": "Датчик детонации 3: цепь",
+   "en": "Knock Sensor 3 Circuit",
+   "fam": "",
+   "node": "ru:датчик детонации 3"
+  },
+  {
+   "code": "P1386",
+   "brand": "bmw",
+   "ru": "Самотест блока: базовый тест контроля детонации (ряд 1)",
+   "en": "Control Module Self-test Knock Control Baseline Test Bank 1",
+   "fam": "",
+   "node": "control module self test knock control baseline test"
+  },
+  {
+   "code": "P1396",
+   "brand": "bmw",
+   "ru": "Датчик коленвала: достоверность времени сегментов",
+   "en": "Crankshaft Position Sensor Segment Timing Plausibility",
+   "fam": "",
+   "node": "crankshaft position sensor segment timing"
+  },
+  {
+   "code": "P1397",
+   "brand": "bmw",
+   "ru": "Датчик распредвала B (ряд 1): цепь",
+   "en": "Camshaft Position Sensor B Circuit Bank 1",
+   "fam": "",
+   "node": "camshaft position sensor b"
+  },
+  {
+   "code": "P1400",
+   "brand": "bmw",
+   "ru": "Подогреваемый катализатор (ряд 1): мало напряжения или тока при прогреве",
+   "en": "Heated Catalyst Battery Voltage or Current Too Low During Heating Bank 1",
+   "fam": "",
+   "node": "heated catalyst battery voltage or current too"
+  }
+ ]
+}

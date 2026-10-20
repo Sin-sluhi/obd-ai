@@ -1,0 +1,361 @@
+{
+ "name": "sae_190",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "a c compressor control module internal temperature sensor b",
+  "a c compressor control module internaltemperature sensor b",
+  "active radiator air flow control module a",
+  "active radiator air flow control module a over temperature",
+  "battery charger a internal power supply",
+  "battery charger b charge sequence",
+  "battery charger b internal power supply",
+  "charge port door b",
+  "charge port door b position",
+  "charge port door b unlock",
+  "cold start engine coolant pump overspeed",
+  "dc ac converter a over temperature",
+  "hybrid ev battery pack coolant temperature sensor d",
+  "hybrid ev electronics coolant pump c",
+  "hybrid ev electronics coolant pump c overspeed",
+  "turbocharger compressor outlet temperature"
+ ],
+ "codes": [
+  {
+   "code": "P2E74",
+   "brand": "",
+   "ru": "Датчик температуры охлаждающей жидкости тяговой батареи D: цепь",
+   "en": "Hybrid/EV Battery Pack Coolant Temperature Sensor D Circuit",
+   "fam": "",
+   "node": "hybrid ev battery pack coolant temperature sensor d"
+  },
+  {
+   "code": "P2E75",
+   "brand": "",
+   "ru": "Датчик температуры охлаждающей жидкости тяговой батареи D: сигнал вне диапазона",
+   "en": "Hybrid/EV Battery Pack Coolant Temperature Sensor D Circuit Range/Performance",
+   "fam": "",
+   "node": "hybrid ev battery pack coolant temperature sensor d"
+  },
+  {
+   "code": "P2E76",
+   "brand": "",
+   "ru": "Датчик температуры охлаждающей жидкости тяговой батареи D: низкий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Pack Coolant Temperature Sensor D Circuit Low",
+   "fam": "",
+   "node": "hybrid ev battery pack coolant temperature sensor d"
+  },
+  {
+   "code": "P2E77",
+   "brand": "",
+   "ru": "Датчик температуры охлаждающей жидкости тяговой батареи D: высокий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Pack Coolant Temperature Sensor D Circuit High",
+   "fam": "",
+   "node": "hybrid ev battery pack coolant temperature sensor d"
+  },
+  {
+   "code": "P2E78",
+   "brand": "",
+   "ru": "Датчик температуры охлаждающей жидкости тяговой батареи D: прерывистый / нестабильный сигнал",
+   "en": "Hybrid/EV Battery Pack Coolant Temperature Sensor D Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "hybrid ev battery pack coolant temperature sensor d"
+  },
+  {
+   "code": "P2E79",
+   "brand": "",
+   "ru": "Насос охлаждения электроники гибрида/электромобиля C: работа нарушена",
+   "en": "Hybrid/EV Electronics Coolant Pump C Performance",
+   "fam": "",
+   "node": "hybrid ev electronics coolant pump c"
+  },
+  {
+   "code": "P2E7A",
+   "brand": "",
+   "ru": "Насос охлаждения электроники гибрида/электромобиля C: превышена скорость вращения",
+   "en": "Hybrid/EV Electronics Coolant Pump C Overspeed",
+   "fam": "",
+   "node": "hybrid ev electronics coolant pump c overspeed"
+  },
+  {
+   "code": "P2E7C",
+   "brand": "",
+   "ru": "Внутренний датчик температуры блока компрессора кондиционера B: цепь",
+   "en": "A/C Compressor Control Module Internal Temperature Sensor B Circuit",
+   "fam": "",
+   "node": "a c compressor control module internal temperature sensor b"
+  },
+  {
+   "code": "P2E7D",
+   "brand": "",
+   "ru": "Внутренний датчик температуры блока компрессора кондиционера B: работа нарушена",
+   "en": "A/C Compressor Control Module Internal Temperature Sensor B Performance",
+   "fam": "",
+   "node": "a c compressor control module internal temperature sensor b"
+  },
+  {
+   "code": "P2E7E",
+   "brand": "",
+   "ru": "Внутренний датчик температуры блока компрессора кондиционера B: высокий уровень сигнала в цепи",
+   "en": "A/C Compressor Control Module Internal Temperature Sensor B Circuit High",
+   "fam": "",
+   "node": "a c compressor control module internal temperature sensor b"
+  },
+  {
+   "code": "P2E7F",
+   "brand": "",
+   "ru": "Внутренний датчик температуры блока компрессора кондиционера B: низкий уровень сигнала в цепи",
+   "en": "A/C Compressor Control Module Internal Temperature Sensor B Circuit Low",
+   "fam": "",
+   "node": "a c compressor control module internal temperature sensor b"
+  },
+  {
+   "code": "P2E80",
+   "brand": "",
+   "ru": "Внутренний датчик температуры блока компрессора кондиционера B: прерывистый / нестабильный сигнал",
+   "en": "A/C Compressor Control Module InternalTemperature Sensor B Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "a c compressor control module internaltemperature sensor b"
+  },
+  {
+   "code": "P2E82",
+   "brand": "",
+   "ru": "Насос охлаждающей жидкости при холодном пуске: превышена скорость вращения",
+   "en": "Cold Start Engine Coolant Pump Overspeed",
+   "fam": "",
+   "node": "cold start engine coolant pump overspeed"
+  },
+  {
+   "code": "P2E8C",
+   "brand": "",
+   "ru": "Сигнал последовательности зарядки зарядного устройства B, 1: высокий уровень сигнала в цепи",
+   "en": "Battery Charger B Charge Sequence Signal 1 Circuit High",
+   "fam": "",
+   "node": "battery charger b charge sequence"
+  },
+  {
+   "code": "P2E8D",
+   "brand": "",
+   "ru": "Сигнал последовательности зарядки зарядного устройства B, 1: низкий уровень сигнала в цепи",
+   "en": "Battery Charger B Charge Sequence Signal 1 Circuit Low",
+   "fam": "",
+   "node": "battery charger b charge sequence"
+  },
+  {
+   "code": "P2E8E",
+   "brand": "",
+   "ru": "Сигнал последовательности зарядки зарядного устройства B, 2: высокий уровень сигнала в цепи",
+   "en": "Battery Charger B Charge Sequence Signal 2 Circuit High",
+   "fam": "",
+   "node": "battery charger b charge sequence"
+  },
+  {
+   "code": "P2E8F",
+   "brand": "",
+   "ru": "Сигнал последовательности зарядки зарядного устройства B, 2: низкий уровень сигнала в цепи",
+   "en": "Battery Charger B Charge Sequence Signal 2 Circuit Low",
+   "fam": "",
+   "node": "battery charger b charge sequence"
+  },
+  {
+   "code": "P2E90",
+   "brand": "",
+   "ru": "Внутреннее питание зарядного устройства A: работа нарушена",
+   "en": "Battery Charger A Internal Power Supply Performance",
+   "fam": "",
+   "node": "battery charger a internal power supply"
+  },
+  {
+   "code": "P2E91",
+   "brand": "",
+   "ru": "Внутреннее питание зарядного устройства B: работа нарушена",
+   "en": "Battery Charger B Internal Power Supply Performance",
+   "fam": "",
+   "node": "battery charger b internal power supply"
+  },
+  {
+   "code": "P2E92",
+   "brand": "",
+   "ru": "Кнопка лючка зарядного порта B: цепь пробуждения",
+   "en": "Charge Port Door B Open Request Switch Wake-Up Circuit",
+   "fam": "",
+   "node": "charge port door b"
+  },
+  {
+   "code": "P2E93",
+   "brand": "",
+   "ru": "Кнопка открывания лючка зарядного порта B: цепь",
+   "en": "Charge Port Door B Open Request Switch Circuit",
+   "fam": "",
+   "node": "charge port door b"
+  },
+  {
+   "code": "P2E94",
+   "brand": "",
+   "ru": "Кнопка открывания лючка зарядного порта B: нарушена работа цепи",
+   "en": "Charge Port Door B Open Request Switch Circuit Performance",
+   "fam": "",
+   "node": "charge port door b"
+  },
+  {
+   "code": "P2E95",
+   "brand": "",
+   "ru": "Кнопка открывания лючка зарядного порта B: низкий уровень сигнала в цепи",
+   "en": "Charge Port Door B Open Request Switch Circuit Low",
+   "fam": "",
+   "node": "charge port door b"
+  },
+  {
+   "code": "P2E96",
+   "brand": "",
+   "ru": "Кнопка открывания лючка зарядного порта B: высокий уровень сигнала в цепи",
+   "en": "Charge Port Door B Open Request Switch Circuit High",
+   "fam": "",
+   "node": "charge port door b"
+  },
+  {
+   "code": "P2E97",
+   "brand": "",
+   "ru": "Кнопка открывания лючка зарядного порта B: прерывистый / нестабильный сигнал",
+   "en": "Charge Port Door B Open Request Switch Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "charge port door b"
+  },
+  {
+   "code": "P2E98",
+   "brand": "",
+   "ru": "Датчик положения лючка зарядного порта B: цепь",
+   "en": "Charge Port Door B Position Sensor Circuit",
+   "fam": "",
+   "node": "charge port door b position"
+  },
+  {
+   "code": "P2E99",
+   "brand": "",
+   "ru": "Датчик положения лючка зарядного порта B: нарушена работа цепи",
+   "en": "Charge Port Door B Position Sensor Circuit Performance",
+   "fam": "",
+   "node": "charge port door b position"
+  },
+  {
+   "code": "P2E9A",
+   "brand": "",
+   "ru": "Датчик положения лючка зарядного порта B: низкий уровень сигнала в цепи",
+   "en": "Charge Port Door B Position Sensor Circuit Low",
+   "fam": "",
+   "node": "charge port door b position"
+  },
+  {
+   "code": "P2E9B",
+   "brand": "",
+   "ru": "Датчик положения лючка зарядного порта B: высокий уровень сигнала в цепи",
+   "en": "Charge Port Door B Position Sensor Circuit High",
+   "fam": "",
+   "node": "charge port door b position"
+  },
+  {
+   "code": "P2E9C",
+   "brand": "",
+   "ru": "Датчик положения лючка зарядного порта B: прерывистый / нестабильный сигнал",
+   "en": "Charge Port Door B Position Sensor Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "charge port door b position"
+  },
+  {
+   "code": "P2E9D",
+   "brand": "",
+   "ru": "Разблокировка лючка зарядного порта B: цепь управления",
+   "en": "Charge Port Door B Unlock Control Circuit",
+   "fam": "",
+   "node": "charge port door b unlock"
+  },
+  {
+   "code": "P2E9E",
+   "brand": "",
+   "ru": "Разблокировка лючка зарядного порта B: нарушена работа цепи управления",
+   "en": "Charge Port Door B Unlock Control Circuit Performance",
+   "fam": "",
+   "node": "charge port door b unlock"
+  },
+  {
+   "code": "P2E9F",
+   "brand": "",
+   "ru": "Разблокировка лючка зарядного порта B: низкий уровень в цепи управления",
+   "en": "Charge Port Door B Unlock Control Circuit Low",
+   "fam": "",
+   "node": "charge port door b unlock"
+  },
+  {
+   "code": "P2EA0",
+   "brand": "",
+   "ru": "Разблокировка лючка зарядного порта B: высокий уровень в цепи управления",
+   "en": "Charge Port Door B Unlock Control Circuit High",
+   "fam": "",
+   "node": "charge port door b unlock"
+  },
+  {
+   "code": "P2EA6",
+   "brand": "",
+   "ru": "Датчик температуры на выходе компрессора турбины: цепь",
+   "en": "Turbocharger Compressor Outlet Temperature Sensor Circuit",
+   "fam": "",
+   "node": "turbocharger compressor outlet temperature"
+  },
+  {
+   "code": "P2EC0",
+   "brand": "",
+   "ru": "Датчик температуры на выходе компрессора турбины: низкий уровень сигнала в цепи",
+   "en": "Turbocharger Compressor Outlet Temperature Sensor Circuit Low",
+   "fam": "",
+   "node": "turbocharger compressor outlet temperature"
+  },
+  {
+   "code": "P2EC1",
+   "brand": "",
+   "ru": "Датчик температуры на выходе компрессора турбины: высокий уровень сигнала в цепи",
+   "en": "Turbocharger Compressor Outlet Temperature Sensor Circuit High",
+   "fam": "",
+   "node": "turbocharger compressor outlet temperature"
+  },
+  {
+   "code": "P2EC2",
+   "brand": "",
+   "ru": "Датчик температуры на выходе компрессора турбины: сигнал вне диапазона",
+   "en": "Turbocharger Compressor Outlet Temperature Sensor Circuit Range/Perfomance",
+   "fam": "",
+   "node": "turbocharger compressor outlet temperature"
+  },
+  {
+   "code": "P2EA9",
+   "brand": "",
+   "ru": "Перегрев инвертора DC/AC A",
+   "en": "DC/AC Converter A Over Temperature",
+   "fam": "",
+   "node": "dc ac converter a over temperature"
+  },
+  {
+   "code": "P2EAA",
+   "brand": "",
+   "ru": "Блок управления потоком воздуха через радиатор A: нарушена работа цепи управления",
+   "en": "Active Radiator Air Flow Control Module A Control Circuit Performance",
+   "fam": "",
+   "node": "active radiator air flow control module a"
+  },
+  {
+   "code": "P2EAC",
+   "brand": "",
+   "ru": "Блок управления потоком воздуха через радиатор A: работа нарушена",
+   "en": "Active Radiator Air Flow Control Module A Performance",
+   "fam": "",
+   "node": "active radiator air flow control module a"
+  },
+  {
+   "code": "P2EAB",
+   "brand": "",
+   "ru": "Блок управления потоком воздуха через радиатор A: перегрев",
+   "en": "Active Radiator Air Flow Control Module A Over Temperature",
+   "fam": "",
+   "node": "active radiator air flow control module a over temperature"
+  }
+ ]
+}

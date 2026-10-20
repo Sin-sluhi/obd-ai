@@ -1,0 +1,383 @@
+{
+ "name": "sae_176",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "a camshaft profile actuator position sensor a",
+  "a camshaft profile actuator position sensor b",
+  "a camshaft profile actuator position sensor c",
+  "b camshaft profile actuator position sensor a",
+  "b camshaft profile actuator position sensor b",
+  "b camshaft profile actuator position sensor c",
+  "cold start fuel pressure regulator a",
+  "cold start fuel pressure regulator a exceeded control limits pressure too",
+  "exhaust flow control valve a position",
+  "exhaust flow control valve b",
+  "exhaust flow control valve b control",
+  "exhaust flow control valve b position",
+  "fuel control system b too rich",
+  "fuel pressure regulator d"
+ ],
+ "codes": [
+  {
+   "code": "P2BF1",
+   "brand": "",
+   "ru": "Топливная система B: слишком богато (банк 1)",
+   "en": "Fuel Control System B Too Rich Bank 1",
+   "fam": "",
+   "node": "fuel control system b too rich"
+  },
+  {
+   "code": "P2BF3",
+   "brand": "",
+   "ru": "Топливная система B: слишком богато (банк 2)",
+   "en": "Fuel Control System B Too Rich Bank 2",
+   "fam": "",
+   "node": "fuel control system b too rich"
+  },
+  {
+   "code": "P2BF4",
+   "brand": "",
+   "ru": "Положение клапана потока выхлопа A: цепь",
+   "en": "Exhaust Flow Control Valve A Position Circuit",
+   "fam": "",
+   "node": "exhaust flow control valve a position"
+  },
+  {
+   "code": "P2BF5",
+   "brand": "",
+   "ru": "Положение клапана потока выхлопа A: сигнал вне диапазона",
+   "en": "Exhaust Flow Control Valve A Position Circuit Range/Performance",
+   "fam": "",
+   "node": "exhaust flow control valve a position"
+  },
+  {
+   "code": "P2BF6",
+   "brand": "",
+   "ru": "Положение клапана потока выхлопа A: низкий уровень сигнала в цепи",
+   "en": "Exhaust Flow Control Valve A Position Circuit Low",
+   "fam": "",
+   "node": "exhaust flow control valve a position"
+  },
+  {
+   "code": "P2BF7",
+   "brand": "",
+   "ru": "Положение клапана потока выхлопа A: высокий уровень сигнала в цепи",
+   "en": "Exhaust Flow Control Valve A Position Circuit High",
+   "fam": "",
+   "node": "exhaust flow control valve a position"
+  },
+  {
+   "code": "P2BF8",
+   "brand": "",
+   "ru": "Клапан управления потоком отработавших газов B: обрыв цепи управления",
+   "en": "Exhaust Flow Control Valve B Control Circuit/Open",
+   "fam": "",
+   "node": "exhaust flow control valve b"
+  },
+  {
+   "code": "P2BF9",
+   "brand": "",
+   "ru": "Клапан управления потоком отработавших газов B: низкий уровень в цепи управления",
+   "en": "Exhaust Flow Control Valve B Control Circuit Low",
+   "fam": "",
+   "node": "exhaust flow control valve b"
+  },
+  {
+   "code": "P2BFA",
+   "brand": "",
+   "ru": "Клапан управления потоком отработавших газов B: высокий уровень в цепи управления",
+   "en": "Exhaust Flow Control Valve B Control Circuit High",
+   "fam": "",
+   "node": "exhaust flow control valve b"
+  },
+  {
+   "code": "P2BFB",
+   "brand": "",
+   "ru": "Клапан управления потоком отработавших газов B: нарушено управление",
+   "en": "Exhaust Flow Control Valve B Control Performance",
+   "fam": "",
+   "node": "exhaust flow control valve b control"
+  },
+  {
+   "code": "P2BFC",
+   "brand": "",
+   "ru": "Положение клапана потока выхлопа B: цепь",
+   "en": "Exhaust Flow Control Valve B Position Circuit",
+   "fam": "",
+   "node": "exhaust flow control valve b position"
+  },
+  {
+   "code": "P2BFD",
+   "brand": "",
+   "ru": "Положение клапана потока выхлопа B: сигнал вне диапазона",
+   "en": "Exhaust Flow Control Valve B Position Circuit Range/Performance",
+   "fam": "",
+   "node": "exhaust flow control valve b position"
+  },
+  {
+   "code": "P2BFE",
+   "brand": "",
+   "ru": "Положение клапана потока выхлопа B: низкий уровень сигнала в цепи",
+   "en": "Exhaust Flow Control Valve B Position Circuit Low",
+   "fam": "",
+   "node": "exhaust flow control valve b position"
+  },
+  {
+   "code": "P2BFF",
+   "brand": "",
+   "ru": "Положение клапана потока выхлопа B: высокий уровень сигнала в цепи",
+   "en": "Exhaust Flow Control Valve B Position Circuit High",
+   "fam": "",
+   "node": "exhaust flow control valve b position"
+  },
+  {
+   "code": "P2C01",
+   "brand": "",
+   "ru": "Регулятор давления топлива D: работа нарушена",
+   "en": "Fuel Pressure Regulator D Performance",
+   "fam": "",
+   "node": "fuel pressure regulator d"
+  },
+  {
+   "code": "P2C02",
+   "brand": "",
+   "ru": "Регулятор давления топлива D: обрыв цепи управления",
+   "en": "Fuel Pressure Regulator D Control Circuit/Open",
+   "fam": "",
+   "node": "fuel pressure regulator d"
+  },
+  {
+   "code": "P2C03",
+   "brand": "",
+   "ru": "Регулятор давления топлива D: низкий уровень в цепи управления",
+   "en": "Fuel Pressure Regulator D Control Circuit Low",
+   "fam": "",
+   "node": "fuel pressure regulator d"
+  },
+  {
+   "code": "P2C04",
+   "brand": "",
+   "ru": "Регулятор давления топлива D: высокий уровень в цепи управления",
+   "en": "Fuel Pressure Regulator D Control Circuit High",
+   "fam": "",
+   "node": "fuel pressure regulator d"
+  },
+  {
+   "code": "P2C05",
+   "brand": "",
+   "ru": "Датчик положения механизма профиля распредвала A (датчик A): цепь (банк 1)",
+   "en": "A Camshaft Profile Actuator Position Sensor A Circuit Bank 1",
+   "fam": "",
+   "node": "a camshaft profile actuator position sensor a"
+  },
+  {
+   "code": "P2C06",
+   "brand": "",
+   "ru": "Датчик положения механизма профиля распредвала A (датчик A): вне допустимого диапазона (банк 1)",
+   "en": "A Camshaft Profile Actuator Position Sensor A Range/Performance Bank 1",
+   "fam": "",
+   "node": "a camshaft profile actuator position sensor a"
+  },
+  {
+   "code": "P2C07",
+   "brand": "",
+   "ru": "Датчик положения механизма профиля распредвала A (датчик A): низкий уровень сигнала в цепи (банк 1)",
+   "en": "A Camshaft Profile Actuator Position Sensor A Circuit Low Bank 1",
+   "fam": "",
+   "node": "a camshaft profile actuator position sensor a"
+  },
+  {
+   "code": "P2C08",
+   "brand": "",
+   "ru": "Датчик положения механизма профиля распредвала A (датчик A): высокий уровень сигнала в цепи (банк 1)",
+   "en": "A Camshaft Profile Actuator Position Sensor A Circuit High Bank 1",
+   "fam": "",
+   "node": "a camshaft profile actuator position sensor a"
+  },
+  {
+   "code": "P2C09",
+   "brand": "",
+   "ru": "Датчик положения механизма профиля распредвала A (датчик B): цепь (банк 1)",
+   "en": "A Camshaft Profile Actuator Position Sensor B Circuit Bank 1",
+   "fam": "",
+   "node": "a camshaft profile actuator position sensor b"
+  },
+  {
+   "code": "P2C0A",
+   "brand": "",
+   "ru": "Датчик положения механизма профиля распредвала A (датчик B): вне допустимого диапазона (банк 1)",
+   "en": "A Camshaft Profile Actuator Position Sensor B Range/Performance Bank 1",
+   "fam": "",
+   "node": "a camshaft profile actuator position sensor b"
+  },
+  {
+   "code": "P2C0B",
+   "brand": "",
+   "ru": "Датчик положения механизма профиля распредвала A (датчик B): низкий уровень сигнала в цепи (банк 1)",
+   "en": "A Camshaft Profile Actuator Position Sensor B Circuit Low Bank 1",
+   "fam": "",
+   "node": "a camshaft profile actuator position sensor b"
+  },
+  {
+   "code": "P2C0C",
+   "brand": "",
+   "ru": "Датчик положения механизма профиля распредвала A (датчик B): высокий уровень сигнала в цепи (банк 1)",
+   "en": "A Camshaft Profile Actuator Position Sensor B Circuit High Bank 1",
+   "fam": "",
+   "node": "a camshaft profile actuator position sensor b"
+  },
+  {
+   "code": "P2C0D",
+   "brand": "",
+   "ru": "Датчик положения механизма профиля распредвала A (датчик C): цепь (банк 1)",
+   "en": "A Camshaft Profile Actuator Position Sensor C Circuit Bank 1",
+   "fam": "",
+   "node": "a camshaft profile actuator position sensor c"
+  },
+  {
+   "code": "P2C0E",
+   "brand": "",
+   "ru": "Датчик положения механизма профиля распредвала A (датчик C): вне допустимого диапазона (банк 1)",
+   "en": "A Camshaft Profile Actuator Position Sensor C Range/Performance Bank 1",
+   "fam": "",
+   "node": "a camshaft profile actuator position sensor c"
+  },
+  {
+   "code": "P2C0F",
+   "brand": "",
+   "ru": "Датчик положения механизма профиля распредвала A (датчик C): низкий уровень сигнала в цепи (банк 1)",
+   "en": "A Camshaft Profile Actuator Position Sensor C Circuit Low Bank 1",
+   "fam": "",
+   "node": "a camshaft profile actuator position sensor c"
+  },
+  {
+   "code": "P2C10",
+   "brand": "",
+   "ru": "Датчик положения механизма профиля распредвала A (датчик C): высокий уровень сигнала в цепи (банк 1)",
+   "en": "A Camshaft Profile Actuator Position Sensor C Circuit High Bank 1",
+   "fam": "",
+   "node": "a camshaft profile actuator position sensor c"
+  },
+  {
+   "code": "P2C12",
+   "brand": "",
+   "ru": "Датчик положения механизма профиля распредвала B (датчик A): цепь (банк 1)",
+   "en": "B Camshaft Profile Actuator Position Sensor A Circuit Bank 1",
+   "fam": "",
+   "node": "b camshaft profile actuator position sensor a"
+  },
+  {
+   "code": "P2C13",
+   "brand": "",
+   "ru": "Датчик положения механизма профиля распредвала B (датчик A): вне допустимого диапазона (банк 1)",
+   "en": "B Camshaft Profile Actuator Position Sensor A Range/Performance Bank 1",
+   "fam": "",
+   "node": "b camshaft profile actuator position sensor a"
+  },
+  {
+   "code": "P2C14",
+   "brand": "",
+   "ru": "Датчик положения механизма профиля распредвала B (датчик A): низкий уровень сигнала в цепи (банк 1)",
+   "en": "B Camshaft Profile Actuator Position Sensor A Circuit Low Bank 1",
+   "fam": "",
+   "node": "b camshaft profile actuator position sensor a"
+  },
+  {
+   "code": "P2C15",
+   "brand": "",
+   "ru": "Датчик положения механизма профиля распредвала B (датчик A): высокий уровень сигнала в цепи (банк 1)",
+   "en": "B Camshaft Profile Actuator Position Sensor A Circuit High Bank 1",
+   "fam": "",
+   "node": "b camshaft profile actuator position sensor a"
+  },
+  {
+   "code": "P2C16",
+   "brand": "",
+   "ru": "Датчик положения механизма профиля распредвала B (датчик B): цепь (банк 1)",
+   "en": "B Camshaft Profile Actuator Position Sensor B Circuit Bank 1",
+   "fam": "",
+   "node": "b camshaft profile actuator position sensor b"
+  },
+  {
+   "code": "P2C17",
+   "brand": "",
+   "ru": "Датчик положения механизма профиля распредвала B (датчик B): вне допустимого диапазона (банк 1)",
+   "en": "B Camshaft Profile Actuator Position Sensor B Range/Performance Bank 1",
+   "fam": "",
+   "node": "b camshaft profile actuator position sensor b"
+  },
+  {
+   "code": "P2C18",
+   "brand": "",
+   "ru": "Датчик положения механизма профиля распредвала B (датчик B): низкий уровень сигнала в цепи (банк 1)",
+   "en": "B Camshaft Profile Actuator Position Sensor B Circuit Low Bank 1",
+   "fam": "",
+   "node": "b camshaft profile actuator position sensor b"
+  },
+  {
+   "code": "P2C19",
+   "brand": "",
+   "ru": "Датчик положения механизма профиля распредвала B (датчик B): высокий уровень сигнала в цепи (банк 1)",
+   "en": "B Camshaft Profile Actuator Position Sensor B Circuit High Bank 1",
+   "fam": "",
+   "node": "b camshaft profile actuator position sensor b"
+  },
+  {
+   "code": "P2C1A",
+   "brand": "",
+   "ru": "Датчик положения механизма профиля распредвала B (датчик C): цепь (банк 1)",
+   "en": "B Camshaft Profile Actuator Position Sensor C Circuit Bank 1",
+   "fam": "",
+   "node": "b camshaft profile actuator position sensor c"
+  },
+  {
+   "code": "P2C1B",
+   "brand": "",
+   "ru": "Датчик положения механизма профиля распредвала B (датчик C): вне допустимого диапазона (банк 1)",
+   "en": "B Camshaft Profile Actuator Position Sensor C Range/Performance Bank 1",
+   "fam": "",
+   "node": "b camshaft profile actuator position sensor c"
+  },
+  {
+   "code": "P2C1C",
+   "brand": "",
+   "ru": "Датчик положения механизма профиля распредвала B (датчик C): низкий уровень сигнала в цепи (банк 1)",
+   "en": "B Camshaft Profile Actuator Position Sensor C Circuit Low Bank 1",
+   "fam": "",
+   "node": "b camshaft profile actuator position sensor c"
+  },
+  {
+   "code": "P2C1D",
+   "brand": "",
+   "ru": "Датчик положения механизма профиля распредвала B (датчик C): высокий уровень сигнала в цепи (банк 1)",
+   "en": "B Camshaft Profile Actuator Position Sensor C Circuit High Bank 1",
+   "fam": "",
+   "node": "b camshaft profile actuator position sensor c"
+  },
+  {
+   "code": "P2C1E",
+   "brand": "",
+   "ru": "Регулятор давления топлива A при холодном пуске: работа нарушена",
+   "en": "Cold Start Fuel Pressure Regulator A Performance",
+   "fam": "",
+   "node": "cold start fuel pressure regulator a"
+  },
+  {
+   "code": "P2C1F",
+   "brand": "",
+   "ru": "Регулятор давления топлива A при холодном пуске вне пределов: давление слишком низкое",
+   "en": "Cold Start Fuel Pressure Regulator A Exceeded Control Limits - Pressure Too Low",
+   "fam": "",
+   "node": "cold start fuel pressure regulator a exceeded control limits pressure too"
+  },
+  {
+   "code": "P2C20",
+   "brand": "",
+   "ru": "Регулятор давления топлива A при холодном пуске вне пределов: давление слишком высокое",
+   "en": "Cold Start Fuel Pressure Regulator A Exceeded Control Limits - Pressure Too High",
+   "fam": "",
+   "node": "cold start fuel pressure regulator a exceeded control limits pressure too"
+  }
+ ]
+}

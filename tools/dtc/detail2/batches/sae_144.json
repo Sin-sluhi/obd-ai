@@ -1,0 +1,369 @@
+{
+ "name": "sae_144",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "communication fault – forced engine shutdown",
+  "diesel intake air flow b control",
+  "diesel intake air flow b control motor current",
+  "diesel intake air flow b control system",
+  "diesel intake air flow b position",
+  "diesel intake air flow b position sensor",
+  "engine coolant bypass valve c",
+  "engine coolant bypass valve c position",
+  "exhaust heat exchanger exhaust bypass valve b",
+  "exhaust heat exchanger exhaust bypass valve b control",
+  "exhaust heat exchanger exhaust bypass valve b position sensor stop",
+  "fuel heater control module feedback",
+  "fuel heater control module power",
+  "fuel rail heater",
+  "nox sensor delayed",
+  "turbocharger supercharger bypass valve a"
+ ],
+ "codes": [
+  {
+   "code": "P2391",
+   "brand": "",
+   "ru": "Заслонка впускного воздуха дизеля B: нарушено управление",
+   "en": "Diesel Intake Air Flow B Control Performance",
+   "fam": "",
+   "node": "diesel intake air flow b control"
+  },
+  {
+   "code": "P2394",
+   "brand": "",
+   "ru": "Впускная заслонка дизеля B: заклинила открытой",
+   "en": "Diesel Intake Air Flow B Control Stuck Open",
+   "fam": "",
+   "node": "diesel intake air flow b control"
+  },
+  {
+   "code": "P2395",
+   "brand": "",
+   "ru": "Впускная заслонка дизеля B: заклинила закрытой",
+   "en": "Diesel Intake Air Flow B Control Stuck Closed",
+   "fam": "",
+   "node": "diesel intake air flow b control"
+  },
+  {
+   "code": "P2396",
+   "brand": "",
+   "ru": "Датчик положения впускной заслонки дизеля B: цепь",
+   "en": "Diesel Intake Air Flow B Position Sensor Circuit",
+   "fam": "",
+   "node": "diesel intake air flow b position"
+  },
+  {
+   "code": "P2398",
+   "brand": "",
+   "ru": "Датчик положения впускной заслонки дизеля B: низкий уровень сигнала в цепи",
+   "en": "Diesel Intake Air Flow B Position Sensor Circuit Low",
+   "fam": "",
+   "node": "diesel intake air flow b position"
+  },
+  {
+   "code": "P2399",
+   "brand": "",
+   "ru": "Датчик положения впускной заслонки дизеля B: высокий уровень сигнала в цепи",
+   "en": "Diesel Intake Air Flow B Position Sensor Circuit High",
+   "fam": "",
+   "node": "diesel intake air flow b position"
+  },
+  {
+   "code": "P239A",
+   "brand": "",
+   "ru": "Датчик положения впускной заслонки дизеля B: прерывистый / нестабильный сигнал",
+   "en": "Diesel Intake Air Flow B Position Sensor Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "diesel intake air flow b position"
+  },
+  {
+   "code": "P2397",
+   "brand": "",
+   "ru": "Датчик положения впускной заслонки дизеля B: вне допустимого диапазона",
+   "en": "Diesel Intake Air Flow B Position Sensor Range/Performance",
+   "fam": "",
+   "node": "diesel intake air flow b position sensor"
+  },
+  {
+   "code": "P239B",
+   "brand": "",
+   "ru": "Мотор впускной заслонки дизеля B: ток вне диапазона",
+   "en": "Diesel Intake Air Flow B Control Motor Current Range/Performance",
+   "fam": "",
+   "node": "diesel intake air flow b control motor current"
+  },
+  {
+   "code": "P239C",
+   "brand": "",
+   "ru": "Впускная заслонка дизеля B: обнаружен слишком большой расход воздуха",
+   "en": "Diesel Intake Air Flow B Control System - High Air Flow Detected",
+   "fam": "",
+   "node": "diesel intake air flow b control system"
+  },
+  {
+   "code": "P239D",
+   "brand": "",
+   "ru": "Впускная заслонка дизеля B: обнаружен слишком малый расход воздуха",
+   "en": "Diesel Intake Air Flow B Control System - Low Air Flow Detected",
+   "fam": "",
+   "node": "diesel intake air flow b control system"
+  },
+  {
+   "code": "P23A2",
+   "brand": "",
+   "ru": "Перепускной клапан теплообменника выхлопа B: обрыв цепи управления",
+   "en": "Exhaust Heat Exchanger Exhaust Bypass Valve B Control Circuit/Open",
+   "fam": "",
+   "node": "exhaust heat exchanger exhaust bypass valve b"
+  },
+  {
+   "code": "P23A3",
+   "brand": "",
+   "ru": "Перепускной клапан теплообменника выхлопа B: низкий уровень в цепи управления",
+   "en": "Exhaust Heat Exchanger Exhaust Bypass Valve B Control Circuit Low",
+   "fam": "",
+   "node": "exhaust heat exchanger exhaust bypass valve b"
+  },
+  {
+   "code": "P23A4",
+   "brand": "",
+   "ru": "Перепускной клапан теплообменника выхлопа B: высокий уровень в цепи управления",
+   "en": "Exhaust Heat Exchanger Exhaust Bypass Valve B Control Circuit High",
+   "fam": "",
+   "node": "exhaust heat exchanger exhaust bypass valve b"
+  },
+  {
+   "code": "P23A6",
+   "brand": "",
+   "ru": "Перепускной клапан теплообменника выхлопа B: заклинил открытым",
+   "en": "Exhaust Heat Exchanger Exhaust Bypass Valve B Stuck Open",
+   "fam": "",
+   "node": "exhaust heat exchanger exhaust bypass valve b"
+  },
+  {
+   "code": "P23A7",
+   "brand": "",
+   "ru": "Перепускной клапан теплообменника выхлопа B: заклинил закрытым",
+   "en": "Exhaust Heat Exchanger Exhaust Bypass Valve B Stuck Closed",
+   "fam": "",
+   "node": "exhaust heat exchanger exhaust bypass valve b"
+  },
+  {
+   "code": "P23A5",
+   "brand": "",
+   "ru": "Перепускной клапан теплообменника выхлопа B: нарушено управление",
+   "en": "Exhaust Heat Exchanger Exhaust Bypass Valve B Control Performance",
+   "fam": "",
+   "node": "exhaust heat exchanger exhaust bypass valve b control"
+  },
+  {
+   "code": "P23A8",
+   "brand": "",
+   "ru": "Датчик положения перепускного клапана теплообменника выхлопа B: ошибка упоров",
+   "en": "Exhaust Heat Exchanger Exhaust Bypass Valve B Position Sensor Stop Performance",
+   "fam": "",
+   "node": "exhaust heat exchanger exhaust bypass valve b position sensor stop"
+  },
+  {
+   "code": "P23A9",
+   "brand": "",
+   "ru": "Ошибка связи — принудительная остановка двигателя",
+   "en": "Communication Fault – Forced Engine Shutdown",
+   "fam": "",
+   "node": "communication fault – forced engine shutdown"
+  },
+  {
+   "code": "P23AA",
+   "brand": "",
+   "ru": "Перепускной клапан турбины/нагнетателя A: заклинивание",
+   "en": "Turbocharger/Supercharger Bypass Valve A Stuck",
+   "fam": "",
+   "node": "turbocharger supercharger bypass valve a"
+  },
+  {
+   "code": "P23C2",
+   "brand": "",
+   "ru": "Датчик NOx: запаздывание «высоко → низко» (банк 1, датчик 3)",
+   "en": "NOx Sensor Delayed Response - High to Low Bank 1 Sensor 3",
+   "fam": "",
+   "node": "nox sensor delayed"
+  },
+  {
+   "code": "P24F4",
+   "brand": "",
+   "ru": "Датчик NOx: запаздывание «высоко → низко» (банк 1, датчик 1)",
+   "en": "NOx Sensor Delayed Response - High to Low Bank 1 Sensor 1",
+   "fam": "",
+   "node": "nox sensor delayed"
+  },
+  {
+   "code": "P24F5",
+   "brand": "",
+   "ru": "Датчик NOx: запаздывание «высоко → низко» (банк 1, датчик 2)",
+   "en": "NOx Sensor Delayed Response - High to Low Bank 1 Sensor 2",
+   "fam": "",
+   "node": "nox sensor delayed"
+  },
+  {
+   "code": "P23C3",
+   "brand": "",
+   "ru": "Датчик положения перепускного клапана охлаждающей жидкости C: цепь",
+   "en": "Engine Coolant Bypass Valve C Position Sensor Circuit",
+   "fam": "",
+   "node": "engine coolant bypass valve c position"
+  },
+  {
+   "code": "P23C4",
+   "brand": "",
+   "ru": "Датчик положения перепускного клапана охлаждающей жидкости C: низкий уровень сигнала в цепи",
+   "en": "Engine Coolant Bypass Valve C Position Sensor Circuit Low",
+   "fam": "",
+   "node": "engine coolant bypass valve c position"
+  },
+  {
+   "code": "P23C5",
+   "brand": "",
+   "ru": "Датчик положения перепускного клапана охлаждающей жидкости C: высокий уровень сигнала в цепи",
+   "en": "Engine Coolant Bypass Valve C Position Sensor Circuit High",
+   "fam": "",
+   "node": "engine coolant bypass valve c position"
+  },
+  {
+   "code": "P23C6",
+   "brand": "",
+   "ru": "Перепускной клапан охлаждающей жидкости двигателя C: перегрузка драйвера цепи управления по току / перегрев",
+   "en": "Engine Coolant Bypass Valve C Control Circuit Driver Current/Temperature Too High",
+   "fam": "",
+   "node": "engine coolant bypass valve c"
+  },
+  {
+   "code": "P26B7",
+   "brand": "",
+   "ru": "Перепускной клапан охлаждающей жидкости двигателя C: обрыв цепи управления",
+   "en": "Engine Coolant Bypass Valve C Control Circuit/Open",
+   "fam": "",
+   "node": "engine coolant bypass valve c"
+  },
+  {
+   "code": "P26B8",
+   "brand": "",
+   "ru": "Перепускной клапан охлаждающей жидкости двигателя C: низкий уровень в цепи управления",
+   "en": "Engine Coolant Bypass Valve C Control Circuit Low",
+   "fam": "",
+   "node": "engine coolant bypass valve c"
+  },
+  {
+   "code": "P26B9",
+   "brand": "",
+   "ru": "Перепускной клапан охлаждающей жидкости двигателя C: высокий уровень в цепи управления",
+   "en": "Engine Coolant Bypass Valve C Control Circuit High",
+   "fam": "",
+   "node": "engine coolant bypass valve c"
+  },
+  {
+   "code": "P26BA",
+   "brand": "",
+   "ru": "Перепускной клапан охлаждающей жидкости двигателя C: заклинил открытым",
+   "en": "Engine Coolant Bypass Valve C Stuck/Open",
+   "fam": "",
+   "node": "engine coolant bypass valve c"
+  },
+  {
+   "code": "P26BB",
+   "brand": "",
+   "ru": "Перепускной клапан охлаждающей жидкости двигателя C: вне допустимого диапазона",
+   "en": "Engine Coolant Bypass Valve C Range/Performance",
+   "fam": "",
+   "node": "engine coolant bypass valve c"
+  },
+  {
+   "code": "P26BC",
+   "brand": "",
+   "ru": "Перепускной клапан охлаждающей жидкости двигателя C: заклинил закрытым",
+   "en": "Engine Coolant Bypass Valve C Stuck Closed",
+   "fam": "",
+   "node": "engine coolant bypass valve c"
+  },
+  {
+   "code": "P23C7",
+   "brand": "",
+   "ru": "Питание блока подогрева топлива: обрыв цепи управления",
+   "en": "Fuel Heater Control Module Power Control Circuit/Open",
+   "fam": "",
+   "node": "fuel heater control module power"
+  },
+  {
+   "code": "P23C8",
+   "brand": "",
+   "ru": "Питание блока подогрева топлива: низкий уровень в цепи управления",
+   "en": "Fuel Heater Control Module Power Control Circuit Low",
+   "fam": "",
+   "node": "fuel heater control module power"
+  },
+  {
+   "code": "P23C9",
+   "brand": "",
+   "ru": "Питание блока подогрева топлива: высокий уровень в цепи управления",
+   "en": "Fuel Heater Control Module Power Control Circuit High",
+   "fam": "",
+   "node": "fuel heater control module power"
+  },
+  {
+   "code": "P23CA",
+   "brand": "",
+   "ru": "Подогрев топливной рампы: обрыв цепи управления",
+   "en": "Fuel Rail Heater Control Circuit/Open",
+   "fam": "",
+   "node": "fuel rail heater"
+  },
+  {
+   "code": "P23CB",
+   "brand": "",
+   "ru": "Подогрев топливной рампы: низкий уровень в цепи управления",
+   "en": "Fuel Rail Heater Control Circuit Low",
+   "fam": "",
+   "node": "fuel rail heater"
+  },
+  {
+   "code": "P23CC",
+   "brand": "",
+   "ru": "Подогрев топливной рампы: высокий уровень в цепи управления",
+   "en": "Fuel Rail Heater Control Circuit High",
+   "fam": "",
+   "node": "fuel rail heater"
+  },
+  {
+   "code": "P23CD",
+   "brand": "",
+   "ru": "Блок подогрева топлива: обрыв сигнала обратной связи",
+   "en": "Fuel Heater Control Module Feedback Signal/Open",
+   "fam": "",
+   "node": "fuel heater control module feedback"
+  },
+  {
+   "code": "P23CE",
+   "brand": "",
+   "ru": "Блок подогрева топлива: сигнал обратной связи не соответствует",
+   "en": "Fuel Heater Control Module Feedback Signal Performance",
+   "fam": "",
+   "node": "fuel heater control module feedback"
+  },
+  {
+   "code": "P23CF",
+   "brand": "",
+   "ru": "Блок подогрева топлива: низкий уровень сигнала обратной связи",
+   "en": "Fuel Heater Control Module Feedback Signal Circuit Low",
+   "fam": "",
+   "node": "fuel heater control module feedback"
+  },
+  {
+   "code": "P23D0",
+   "brand": "",
+   "ru": "Блок подогрева топлива: высокий уровень сигнала обратной связи",
+   "en": "Fuel Heater Control Module Feedback Signal Circuit High",
+   "fam": "",
+   "node": "fuel heater control module feedback"
+  }
+ ]
+}

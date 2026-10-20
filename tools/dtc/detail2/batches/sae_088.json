@@ -1,0 +1,482 @@
+{
+ "name": "sae_088",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "fam:trans_general"
+ ],
+ "codes": [
+  {
+   "code": "P0790",
+   "brand": "",
+   "ru": "Переключатель режима коробки (спорт/зима): цепь",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  },
+  {
+   "code": "P0801",
+   "brand": "",
+   "ru": "Блокировка заднего хода: цепь",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  },
+  {
+   "code": "P0804",
+   "brand": "",
+   "ru": "Лампа принудительного переключения 1→4: цепь",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  },
+  {
+   "code": "P0805",
+   "brand": "",
+   "ru": "Датчик положения сцепления (робот): цепь",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  },
+  {
+   "code": "P0806",
+   "brand": "",
+   "ru": "Датчик положения сцепления (робот): показания вне диапазона",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  },
+  {
+   "code": "P0807",
+   "brand": "",
+   "ru": "Датчик положения сцепления (робот): низкий сигнал",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  },
+  {
+   "code": "P0808",
+   "brand": "",
+   "ru": "Датчик положения сцепления (робот): высокий сигнал",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  },
+  {
+   "code": "P0809",
+   "brand": "",
+   "ru": "Датчик положения сцепления (робот): прерывистый сигнал",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  },
+  {
+   "code": "P0812",
+   "brand": "",
+   "ru": "Сигнал заднего хода: входная цепь",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  },
+  {
+   "code": "P0813",
+   "brand": "",
+   "ru": "Сигнал заднего хода: выходная цепь",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  },
+  {
+   "code": "P0814",
+   "brand": "",
+   "ru": "Индикация положения селектора: цепь",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  },
+  {
+   "code": "P0815",
+   "brand": "",
+   "ru": "Кнопка повышения передачи: цепь",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  },
+  {
+   "code": "P0816",
+   "brand": "",
+   "ru": "Кнопка понижения передачи: цепь",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  },
+  {
+   "code": "P0818",
+   "brand": "",
+   "ru": "Выключатель отключения трансмиссии: цепь",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  },
+  {
+   "code": "P0819",
+   "brand": "",
+   "ru": "Кнопки переключения и датчик диапазона не согласуются",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  },
+  {
+   "code": "P0820",
+   "brand": "",
+   "ru": "Датчик положения рычага селектора по осям X-Y: цепь",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  },
+  {
+   "code": "P0821",
+   "brand": "",
+   "ru": "Датчик положения рычага по оси X: цепь",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  },
+  {
+   "code": "P0822",
+   "brand": "",
+   "ru": "Датчик положения рычага по оси Y: цепь",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  },
+  {
+   "code": "P0823",
+   "brand": "",
+   "ru": "Датчик положения рычага по оси X: прерывистый",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  },
+  {
+   "code": "P0824",
+   "brand": "",
+   "ru": "Датчик положения рычага по оси Y: прерывистый",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  },
+  {
+   "code": "P0825",
+   "brand": "",
+   "ru": "Селектор: выключатель «толкнуть/потянуть»",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  },
+  {
+   "code": "P0826",
+   "brand": "",
+   "ru": "Селектор: кнопки вверх/вниз, цепь",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  },
+  {
+   "code": "P0827",
+   "brand": "",
+   "ru": "Селектор: кнопки вверх/вниз, низкий уровень",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  },
+  {
+   "code": "P0828",
+   "brand": "",
+   "ru": "Селектор: кнопки вверх/вниз, высокий уровень",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  },
+  {
+   "code": "P0856",
+   "brand": "",
+   "ru": "Сигнал противобуксовочной системы (вход): цепь",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  },
+  {
+   "code": "P0857",
+   "brand": "",
+   "ru": "Сигнал противобуксовочной системы (вход): не соответствует",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  },
+  {
+   "code": "P0858",
+   "brand": "",
+   "ru": "Сигнал противобуксовочной системы (вход): низкий уровень",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  },
+  {
+   "code": "P0859",
+   "brand": "",
+   "ru": "Сигнал противобуксовочной системы (вход): высокий уровень",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  },
+  {
+   "code": "P0904",
+   "brand": "",
+   "ru": "Датчик положения выбора ряда передач (робот): цепь",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  },
+  {
+   "code": "P0905",
+   "brand": "",
+   "ru": "Датчик положения выбора ряда передач (робот): показания вне диапазона",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  },
+  {
+   "code": "P0906",
+   "brand": "",
+   "ru": "Датчик положения выбора ряда передач (робот): низкий сигнал",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  },
+  {
+   "code": "P0907",
+   "brand": "",
+   "ru": "Датчик положения выбора ряда передач (робот): высокий сигнал",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  },
+  {
+   "code": "P0908",
+   "brand": "",
+   "ru": "Датчик положения выбора ряда передач (робот): прерывистый сигнал",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  },
+  {
+   "code": "P0909",
+   "brand": "",
+   "ru": "Ошибка управления выбором ряда передач (робот)",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  },
+  {
+   "code": "P0910",
+   "brand": "",
+   "ru": "Актуатор выбора ряда передач (робот): цепь / обрыв",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  },
+  {
+   "code": "P0911",
+   "brand": "",
+   "ru": "Актуатор выбора ряда передач (робот): не отрабатывает команду",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  },
+  {
+   "code": "P0912",
+   "brand": "",
+   "ru": "Актуатор выбора ряда передач (робот): низкий уровень в цепи",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  },
+  {
+   "code": "P0913",
+   "brand": "",
+   "ru": "Актуатор выбора ряда передач (робот): высокий уровень в цепи",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  },
+  {
+   "code": "P0914",
+   "brand": "",
+   "ru": "Датчик положения включения передачи (робот): цепь",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  },
+  {
+   "code": "P0915",
+   "brand": "",
+   "ru": "Датчик положения включения передачи (робот): показания вне диапазона",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  },
+  {
+   "code": "P0916",
+   "brand": "",
+   "ru": "Датчик положения включения передачи (робот): низкий сигнал",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  },
+  {
+   "code": "P0917",
+   "brand": "",
+   "ru": "Датчик положения включения передачи (робот): высокий сигнал",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  },
+  {
+   "code": "P0918",
+   "brand": "",
+   "ru": "Датчик положения включения передачи (робот): прерывистый сигнал",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  },
+  {
+   "code": "P0919",
+   "brand": "",
+   "ru": "Ошибка управления включением передачи (робот)",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  },
+  {
+   "code": "P0920",
+   "brand": "",
+   "ru": "Актуатор включения передачи вперёд (робот): цепь / обрыв",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  },
+  {
+   "code": "P0921",
+   "brand": "",
+   "ru": "Актуатор включения передачи вперёд (робот): не отрабатывает команду",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  },
+  {
+   "code": "P0922",
+   "brand": "",
+   "ru": "Актуатор включения передачи вперёд (робот): низкий уровень в цепи",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  },
+  {
+   "code": "P0923",
+   "brand": "",
+   "ru": "Актуатор включения передачи вперёд (робот): высокий уровень в цепи",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  },
+  {
+   "code": "P0924",
+   "brand": "",
+   "ru": "Актуатор включения задней передачи (робот): цепь / обрыв",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  },
+  {
+   "code": "P0925",
+   "brand": "",
+   "ru": "Актуатор включения задней передачи (робот): не отрабатывает команду",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  },
+  {
+   "code": "P0926",
+   "brand": "",
+   "ru": "Актуатор включения задней передачи (робот): низкий уровень в цепи",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  },
+  {
+   "code": "P0927",
+   "brand": "",
+   "ru": "Актуатор включения задней передачи (робот): высокий уровень в цепи",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  },
+  {
+   "code": "P0928",
+   "brand": "",
+   "ru": "Соленоид блокировки селектора: цепь / обрыв",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  },
+  {
+   "code": "P0929",
+   "brand": "",
+   "ru": "Соленоид блокировки селектора: не отрабатывает команду",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  },
+  {
+   "code": "P0930",
+   "brand": "",
+   "ru": "Соленоид блокировки селектора: низкий уровень в цепи",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  },
+  {
+   "code": "P0931",
+   "brand": "",
+   "ru": "Соленоид блокировки селектора: высокий уровень в цепи",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  },
+  {
+   "code": "P0950",
+   "brand": "",
+   "ru": "Ручной режим коробки: цепь управления: цепь",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  },
+  {
+   "code": "P0951",
+   "brand": "",
+   "ru": "Ручной режим коробки: цепь управления: не соответствует",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  },
+  {
+   "code": "P0952",
+   "brand": "",
+   "ru": "Ручной режим коробки: цепь управления: низкий уровень",
+   "en": "",
+   "fam": "trans_general",
+   "node": "fam:trans_general"
+  }
+ ]
+}

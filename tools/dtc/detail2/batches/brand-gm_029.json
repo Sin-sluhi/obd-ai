@@ -1,0 +1,407 @@
+{
+ "name": "brand-gm_029",
+ "series": "brand",
+ "brand": "gm",
+ "nodes": [
+  "5 volt supply",
+  "air injection",
+  "air system",
+  "auxiliary 5 volt supply",
+  "back up power supply",
+  "barometric pressure",
+  "barometric pressure sensor",
+  "battery temperature sensor voltage too",
+  "catalyst temperature",
+  "catalytic converter overheat detected",
+  "cooling fan",
+  "cooling fan control system",
+  "eatx rpm pulse generator",
+  "egr air intrusion in exhaust supply to egr",
+  "egr vacuum system leak",
+  "engine coolilng system",
+  "evap leak monitor pinched hose",
+  "evap vacuum switch",
+  "fam:evap_purge",
+  "fuel level",
+  "fuel tank pressure system",
+  "hi speed rad fan ctrl",
+  "iac system",
+  "intake air",
+  "intake manifold pressure",
+  "leak detection pump",
+  "leak detection pump switch or mechanical fault",
+  "radiator fan control",
+  "ru:клапан гидравлического вентилятора охлаждения",
+  "ru:реле высокой скорости вентилятора",
+  "ru:реле массы высокой скорости вентилятора",
+  "ru:реле низкой скорости вентилятора",
+  "secondary air injection system",
+  "secondary air injection system relay a",
+  "starter",
+  "theft deterrent system no password received",
+  "theft deterrent system password incorrect",
+  "vehicle speed"
+ ],
+ "codes": [
+  {
+   "code": "P1407",
+   "brand": "gm",
+   "ru": "ЕГР: подсос воздуха в выхлопную магистраль к клапану",
+   "en": "EGR Air Intrusion In Exhaust Supply To EGR Valve",
+   "fam": "",
+   "node": "egr air intrusion in exhaust supply to egr"
+  },
+  {
+   "code": "P1408",
+   "brand": "gm",
+   "ru": "Датчик давления во впускном коллекторе: цепь",
+   "en": "Intake Manifold Pressure Sensor Circuit",
+   "fam": "",
+   "node": "intake manifold pressure"
+  },
+  {
+   "code": "P1409",
+   "brand": "gm",
+   "ru": "ЕГР: утечка в вакуумной системе",
+   "en": "EGR Vacuum System Leak",
+   "fam": "",
+   "node": "egr vacuum system leak"
+  },
+  {
+   "code": "P1410",
+   "brand": "gm",
+   "ru": "Система давления в топливном баке",
+   "en": "Fuel Tank Pressure System",
+   "fam": "",
+   "node": "fuel tank pressure system"
+  },
+  {
+   "code": "P1415",
+   "brand": "gm",
+   "ru": "Система вторичного воздуха",
+   "en": "Secondary Air Injection (AIR) System",
+   "fam": "",
+   "node": "secondary air injection system"
+  },
+  {
+   "code": "P1416",
+   "brand": "gm",
+   "ru": "Система вторичного воздуха, ряд 1",
+   "en": "AIR System Bank 1",
+   "fam": "",
+   "node": "air system"
+  },
+  {
+   "code": "P1418",
+   "brand": "gm",
+   "ru": "Реле A вторичного воздуха: высокий сигнал цепи управления",
+   "en": "Secondary Air Injection System Relay A Control Circuit High",
+   "fam": "",
+   "node": "secondary air injection system relay a"
+  },
+  {
+   "code": "P1420",
+   "brand": "gm",
+   "ru": "Датчик низкого давления впускного воздуха: низкое напряжение",
+   "en": "Intake Air Low Pressure Switch Circuit Low Voltage",
+   "fam": "",
+   "node": "intake air"
+  },
+  {
+   "code": "P1421",
+   "brand": "gm",
+   "ru": "Датчик низкого давления впускного воздуха: высокое напряжение",
+   "en": "Intake Air Low Pressure Switch Circuit High Voltage",
+   "fam": "",
+   "node": "intake air"
+  },
+  {
+   "code": "P1423",
+   "brand": "gm",
+   "ru": "Датчик высокого давления впускного воздуха: высокое напряжение",
+   "en": "Intake Air High Pressure Switch Circuit High Voltage",
+   "fam": "",
+   "node": "intake air"
+  },
+  {
+   "code": "P1431",
+   "brand": "gm",
+   "ru": "Датчик уровня топлива 2: работа",
+   "en": "Fuel Level Sensor 2 Performance",
+   "fam": "",
+   "node": "fuel level"
+  },
+  {
+   "code": "P1432",
+   "brand": "gm",
+   "ru": "Датчик уровня топлива 2: низкое напряжение",
+   "en": "Fuel Level Sensor 2 Circuit Low Voltage",
+   "fam": "",
+   "node": "fuel level"
+  },
+  {
+   "code": "P1433",
+   "brand": "gm",
+   "ru": "Датчик уровня топлива 2: высокое напряжение",
+   "en": "Fuel Level Sensor 2 Circuit High Voltage",
+   "fam": "",
+   "node": "fuel level"
+  },
+  {
+   "code": "P1441",
+   "brand": "gm",
+   "ru": "Поток через адсорбер без продувки",
+   "en": "",
+   "fam": "evap_purge",
+   "node": "fam:evap_purge"
+  },
+  {
+   "code": "P1442",
+   "brand": "gm",
+   "ru": "Вакуумный выключатель системы улавливания паров: высокое напряжение при включении зажигания",
+   "en": "EVAP Vacuum Switch High Voltage During Ignition On",
+   "fam": "",
+   "node": "evap vacuum switch"
+  },
+  {
+   "code": "P1450",
+   "brand": "gm",
+   "ru": "Датчик атмосферного давления: цепь",
+   "en": "Barometric Pressure Sensor Circuit",
+   "fam": "",
+   "node": "barometric pressure"
+  },
+  {
+   "code": "P1451",
+   "brand": "gm",
+   "ru": "Датчик атмосферного давления: работа",
+   "en": "Barometric Pressure Sensor Performance",
+   "fam": "",
+   "node": "barometric pressure sensor"
+  },
+  {
+   "code": "P1460",
+   "brand": "gm",
+   "ru": "Система управления вентилятором охлаждения",
+   "en": "Cooling Fan Control System",
+   "fam": "",
+   "node": "cooling fan control system"
+  },
+  {
+   "code": "P1480",
+   "brand": "gm",
+   "ru": "Вентилятор охлаждения 1: высокий сигнал цепи управления",
+   "en": "Cooling Fan 1 Control Circuit High",
+   "fam": "",
+   "node": "cooling fan"
+  },
+  {
+   "code": "P1481",
+   "brand": "gm",
+   "ru": "Сигнал оборотов от АКПП для контроля пропусков",
+   "en": "EATX RPM pulse generator signal for misfire detection",
+   "fam": "",
+   "node": "eatx rpm pulse generator"
+  },
+  {
+   "code": "P1482",
+   "brand": "gm",
+   "ru": "Датчик температуры катализатора: замыкание на массу",
+   "en": "Catalyst Temperature Sensor Circuit Shorted Low",
+   "fam": "",
+   "node": "catalyst temperature"
+  },
+  {
+   "code": "P1483",
+   "brand": "gm",
+   "ru": "Система охлаждения двигателя: работа",
+   "en": "Engine Coolilng System Performance",
+   "fam": "",
+   "node": "engine coolilng system"
+  },
+  {
+   "code": "P1484",
+   "brand": "gm",
+   "ru": "Обнаружен перегрев катализатора",
+   "en": "Catalytic Converter Overheat Detected",
+   "fam": "",
+   "node": "catalytic converter overheat detected"
+  },
+  {
+   "code": "P1485",
+   "brand": "gm",
+   "ru": "Клапан подачи воздуха: обрыв или замыкание",
+   "en": "Air Injection Solenoid Circuit Open Or Shorted",
+   "fam": "",
+   "node": "air injection"
+  },
+  {
+   "code": "P1486",
+   "brand": "gm",
+   "ru": "Контроль утечек паров топлива: пережат шланг",
+   "en": "Evap Leak Monitor Pinched Hose",
+   "fam": "",
+   "node": "evap leak monitor pinched hose"
+  },
+  {
+   "code": "P1487",
+   "brand": "gm",
+   "ru": "Реле высокой скорости вентилятора радиатора: обрыв или замыкание",
+   "en": "Hi Speed Rad Fan CTRL Relay Circuit Open Or Shorted",
+   "fam": "",
+   "node": "hi speed rad fan ctrl"
+  },
+  {
+   "code": "P1488",
+   "brand": "gm",
+   "ru": "Вспомогательное питание 5 В слишком низкое",
+   "en": "Auxiliary 5 Volt Supply Output Too Low",
+   "fam": "",
+   "node": "auxiliary 5 volt supply"
+  },
+  {
+   "code": "P1489",
+   "brand": "gm",
+   "ru": "Реле высокой скорости вентилятора: обрыв или замыкание",
+   "en": "High Speed Fan CTRL Relay Circuit Open Or Shorted",
+   "fam": "",
+   "node": "ru:реле высокой скорости вентилятора"
+  },
+  {
+   "code": "P1490",
+   "brand": "gm",
+   "ru": "Реле низкой скорости вентилятора: обрыв или замыкание",
+   "en": "Low Speed Fan CTRL Relay Circuit Open Or Shorted",
+   "fam": "",
+   "node": "ru:реле низкой скорости вентилятора"
+  },
+  {
+   "code": "P1491",
+   "brand": "gm",
+   "ru": "Реле вентилятора радиатора: обрыв или замыкание",
+   "en": "Radiator Fan Control Relay Circuit Open Or Shorted",
+   "fam": "",
+   "node": "radiator fan control"
+  },
+  {
+   "code": "P1492",
+   "brand": "gm",
+   "ru": "Датчик температуры АКБ: напряжение слишком высокое",
+   "en": "Battery Temperature Sensor Voltage Too High",
+   "fam": "",
+   "node": "battery temperature sensor voltage too"
+  },
+  {
+   "code": "P1493",
+   "brand": "gm",
+   "ru": "Датчик температуры АКБ: напряжение слишком низкое",
+   "en": "Battery Temperature Sensor Voltage Too Low",
+   "fam": "",
+   "node": "battery temperature sensor voltage too"
+  },
+  {
+   "code": "P1494",
+   "brand": "gm",
+   "ru": "Насос проверки утечек: выключатель или механическая неисправность",
+   "en": "Leak Detection Pump Switch Or Mechanical Fault",
+   "fam": "",
+   "node": "leak detection pump switch or mechanical fault"
+  },
+  {
+   "code": "P1495",
+   "brand": "gm",
+   "ru": "Насос проверки утечек: обрыв или замыкание клапана",
+   "en": "Leak Detection Pump Solenoid Circuit Open Or Shorted",
+   "fam": "",
+   "node": "leak detection pump"
+  },
+  {
+   "code": "P1496",
+   "brand": "gm",
+   "ru": "Питание 5 В слишком низкое",
+   "en": "5 Volt Supply Output Too Low",
+   "fam": "",
+   "node": "5 volt supply"
+  },
+  {
+   "code": "P1498",
+   "brand": "gm",
+   "ru": "Реле массы высокой скорости вентилятора: цепь",
+   "en": "High speed Rad Fan Ground CTRL Rly Circuit",
+   "fam": "",
+   "node": "ru:реле массы высокой скорости вентилятора"
+  },
+  {
+   "code": "P1499",
+   "brand": "gm",
+   "ru": "Клапан гидравлического вентилятора охлаждения: обрыв или замыкание",
+   "en": "Open Or Shorted Condition Detected In The Hydraulic Cooling Fan Solenoid Control",
+   "fam": "",
+   "node": "ru:клапан гидравлического вентилятора охлаждения"
+  },
+  {
+   "code": "P1500",
+   "brand": "gm",
+   "ru": "Сигнал стартера: цепь",
+   "en": "Starter Signal Circuit",
+   "fam": "",
+   "node": "starter"
+  },
+  {
+   "code": "P1501",
+   "brand": "gm",
+   "ru": "Датчик скорости: прерывистый сигнал",
+   "en": "Vehicle Speed Sensor Circuit Intermittent",
+   "fam": "",
+   "node": "vehicle speed"
+  },
+  {
+   "code": "P1504",
+   "brand": "gm",
+   "ru": "Выход сигнала скорости: цепь",
+   "en": "Vehicle Speed Output Circuit",
+   "fam": "",
+   "node": "vehicle speed"
+  },
+  {
+   "code": "P1502",
+   "brand": "gm",
+   "ru": "Противоугонная система: пароль не получен",
+   "en": "Theft Deterrent System No Password Received",
+   "fam": "",
+   "node": "theft deterrent system no password received"
+  },
+  {
+   "code": "P1503",
+   "brand": "gm",
+   "ru": "Противоугонная система: неверный пароль",
+   "en": "Theft Deterrent System Password Incorrect",
+   "fam": "",
+   "node": "theft deterrent system password incorrect"
+  },
+  {
+   "code": "P1508",
+   "brand": "gm",
+   "ru": "Регулятор холостого хода: обороты низкие",
+   "en": "IAC System Low RPM",
+   "fam": "",
+   "node": "iac system"
+  },
+  {
+   "code": "P1509",
+   "brand": "gm",
+   "ru": "Регулятор холостого хода: обороты высокие",
+   "en": "IAC System High RPM",
+   "fam": "",
+   "node": "iac system"
+  },
+  {
+   "code": "P1510",
+   "brand": "gm",
+   "ru": "Резервное питание",
+   "en": "Back UP Power Supply",
+   "fam": "",
+   "node": "back up power supply"
+  }
+ ]
+}

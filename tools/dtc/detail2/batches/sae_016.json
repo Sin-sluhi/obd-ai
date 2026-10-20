@@ -1,0 +1,375 @@
+{
+ "name": "sae_016",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "4wd awd",
+  "4wd awd clutch a position",
+  "4wd awd clutch a position control error",
+  "4wd awd clutch a position not learned",
+  "4wd awd clutch b",
+  "4wd awd clutch b actuator",
+  "4wd awd clutch b engagement fault",
+  "4wd awd clutch b position control error",
+  "4wd awd clutch b temperature too",
+  "active air dam",
+  "park brake",
+  "park brake switch",
+  "rear drive shaft speed",
+  "steering wheel angle"
+ ],
+ "codes": [
+  {
+   "code": "C05E0",
+   "brand": "",
+   "ru": "Датчик положения муфты полного привода A: цепь",
+   "en": "4WD/AWD Clutch A Position Sensor Circuit",
+   "fam": "",
+   "node": "4wd awd clutch a position"
+  },
+  {
+   "code": "C05E1",
+   "brand": "",
+   "ru": "Датчик положения муфты полного привода A: сигнал вне диапазона",
+   "en": "4WD/AWD Clutch A Position Sensor Circuit Range/Performance",
+   "fam": "",
+   "node": "4wd awd clutch a position"
+  },
+  {
+   "code": "C05E2",
+   "brand": "",
+   "ru": "Датчик положения муфты полного привода A: низкий уровень сигнала в цепи",
+   "en": "4WD/AWD Clutch A Position Sensor Circuit Low",
+   "fam": "",
+   "node": "4wd awd clutch a position"
+  },
+  {
+   "code": "C05E3",
+   "brand": "",
+   "ru": "Датчик положения муфты полного привода A: высокий уровень сигнала в цепи",
+   "en": "4WD/AWD Clutch A Position Sensor Circuit High",
+   "fam": "",
+   "node": "4wd awd clutch a position"
+  },
+  {
+   "code": "C05E4",
+   "brand": "",
+   "ru": "Датчик положения муфты полного привода A: прерывистый сигнал в цепи",
+   "en": "4WD/AWD Clutch A Position Sensor Circuit Intermittent",
+   "fam": "",
+   "node": "4wd awd clutch a position"
+  },
+  {
+   "code": "C05E5",
+   "brand": "",
+   "ru": "Муфта полного привода A: положение не обучено",
+   "en": "4WD/AWD Clutch A Position Not Learned",
+   "fam": "",
+   "node": "4wd awd clutch a position not learned"
+  },
+  {
+   "code": "C05E6",
+   "brand": "",
+   "ru": "Муфта полного привода A: ошибка управления положением",
+   "en": "4WD/AWD Clutch A Position Control Error",
+   "fam": "",
+   "node": "4wd awd clutch a position control error"
+  },
+  {
+   "code": "C05E7",
+   "brand": "",
+   "ru": "Привод муфты полного привода B: обрыв цепи управления",
+   "en": "4WD/AWD Clutch B Actuator Control Circuit/Open",
+   "fam": "",
+   "node": "4wd awd clutch b actuator"
+  },
+  {
+   "code": "C05E8",
+   "brand": "",
+   "ru": "Привод муфты полного привода B: нарушена работа цепи управления",
+   "en": "4WD/AWD Clutch B Actuator Control Circuit Performance",
+   "fam": "",
+   "node": "4wd awd clutch b actuator"
+  },
+  {
+   "code": "C05E9",
+   "brand": "",
+   "ru": "Привод муфты полного привода B: низкий уровень в цепи управления",
+   "en": "4WD/AWD Clutch B Actuator Control Circuit Low",
+   "fam": "",
+   "node": "4wd awd clutch b actuator"
+  },
+  {
+   "code": "C05EA",
+   "brand": "",
+   "ru": "Привод муфты полного привода B: высокий уровень в цепи управления",
+   "en": "4WD/AWD Clutch B Actuator Control Circuit High",
+   "fam": "",
+   "node": "4wd awd clutch b actuator"
+  },
+  {
+   "code": "C05EB",
+   "brand": "",
+   "ru": "Муфта полного привода B: слишком высокая температура",
+   "en": "4WD/AWD Clutch B Temperature Too High",
+   "fam": "",
+   "node": "4wd awd clutch b temperature too"
+  },
+  {
+   "code": "C05EC",
+   "brand": "",
+   "ru": "Муфта полного привода B: работа нарушена / не включается",
+   "en": "4WD/AWD Clutch B Performance/Stuck Disengaged",
+   "fam": "",
+   "node": "4wd awd clutch b"
+  },
+  {
+   "code": "C05ED",
+   "brand": "",
+   "ru": "Муфта полного привода B: не выключается",
+   "en": "4WD/AWD Clutch B Stuck Engaged",
+   "fam": "",
+   "node": "4wd awd clutch b"
+  },
+  {
+   "code": "C05EE",
+   "brand": "",
+   "ru": "Муфта полного привода B: ошибка включения",
+   "en": "4WD/AWD Clutch B Engagement Fault",
+   "fam": "",
+   "node": "4wd awd clutch b engagement fault"
+  },
+  {
+   "code": "C05EF",
+   "brand": "",
+   "ru": "Муфта полного привода B: ошибка управления положением",
+   "en": "4WD/AWD Clutch B Position Control Error",
+   "fam": "",
+   "node": "4wd awd clutch b position control error"
+  },
+  {
+   "code": "C05F0",
+   "brand": "",
+   "ru": "Датчик частоты вращения заднего карданного вала: низкий уровень сигнала в цепи",
+   "en": "Rear Drive Shaft Speed Sensor Circuit Low",
+   "fam": "",
+   "node": "rear drive shaft speed"
+  },
+  {
+   "code": "C05F1",
+   "brand": "",
+   "ru": "Датчик частоты вращения заднего карданного вала: высокий уровень сигнала в цепи",
+   "en": "Rear Drive Shaft Speed Sensor Circuit High",
+   "fam": "",
+   "node": "rear drive shaft speed"
+  },
+  {
+   "code": "C05F2",
+   "brand": "",
+   "ru": "Датчик частоты вращения заднего карданного вала: прерывистый сигнал в цепи",
+   "en": "Rear Drive Shaft Speed Sensor Circuit Intermittent",
+   "fam": "",
+   "node": "rear drive shaft speed"
+  },
+  {
+   "code": "C05F3",
+   "brand": "",
+   "ru": "Датчик частоты вращения заднего карданного вала: цепь",
+   "en": "Rear Drive Shaft Speed Sensor Circuit",
+   "fam": "",
+   "node": "rear drive shaft speed"
+  },
+  {
+   "code": "C05F4",
+   "brand": "",
+   "ru": "Датчик частоты вращения заднего карданного вала: сигнал вне диапазона",
+   "en": "Rear Drive Shaft Speed Sensor Circuit Range/Performance",
+   "fam": "",
+   "node": "rear drive shaft speed"
+  },
+  {
+   "code": "C05F5",
+   "brand": "",
+   "ru": "Привод понижающей передачи полного привода: обрыв цепи управления",
+   "en": "4WD/AWD Range Actuator Control Circuit/Open",
+   "fam": "",
+   "node": "4wd awd"
+  },
+  {
+   "code": "C05F6",
+   "brand": "",
+   "ru": "Привод понижающей передачи полного привода: нарушена работа цепи управления",
+   "en": "4WD/AWD Range Actuator Control Circuit Performance",
+   "fam": "",
+   "node": "4wd awd"
+  },
+  {
+   "code": "C05F7",
+   "brand": "",
+   "ru": "Привод понижающей передачи полного привода: низкий уровень в цепи управления",
+   "en": "4WD/AWD Range Actuator Control Circuit Low",
+   "fam": "",
+   "node": "4wd awd"
+  },
+  {
+   "code": "C05F8",
+   "brand": "",
+   "ru": "Привод понижающей передачи полного привода: высокий уровень в цепи управления",
+   "en": "4WD/AWD Range Actuator Control Circuit High",
+   "fam": "",
+   "node": "4wd awd"
+  },
+  {
+   "code": "C05F9",
+   "brand": "",
+   "ru": "Привод понижающей передачи полного привода: слишком высокая температура",
+   "en": "4WD/AWD Range Actuator Temperature Too High",
+   "fam": "",
+   "node": "4wd awd"
+  },
+  {
+   "code": "C05FA",
+   "brand": "",
+   "ru": "Привод понижающей передачи полного привода: работа нарушена / заклинивание",
+   "en": "4WD/AWD Range Actuator Performance/Stuck",
+   "fam": "",
+   "node": "4wd awd"
+  },
+  {
+   "code": "C05FB",
+   "brand": "",
+   "ru": "Датчик положения привода понижающей передачи: цепь",
+   "en": "4WD/AWD Range Actuator Position Sensor Circuit",
+   "fam": "",
+   "node": "4wd awd"
+  },
+  {
+   "code": "C05FC",
+   "brand": "",
+   "ru": "Датчик положения привода понижающей передачи: сигнал вне диапазона",
+   "en": "4WD/AWD Range Actuator Position Sensor Circuit Range/Performance",
+   "fam": "",
+   "node": "4wd awd"
+  },
+  {
+   "code": "C05FD",
+   "brand": "",
+   "ru": "Датчик положения привода понижающей передачи: низкий уровень сигнала в цепи",
+   "en": "4WD/AWD Range Actuator Position Sensor Circuit Low",
+   "fam": "",
+   "node": "4wd awd"
+  },
+  {
+   "code": "C05FE",
+   "brand": "",
+   "ru": "Датчик положения привода понижающей передачи: высокий уровень сигнала в цепи",
+   "en": "4WD/AWD Range Actuator Position Sensor Circuit High",
+   "fam": "",
+   "node": "4wd awd"
+  },
+  {
+   "code": "C05FF",
+   "brand": "",
+   "ru": "Привод понижающей передачи полного привода: положение не обучено",
+   "en": "4WD/AWD Range Actuator Position Not Learned",
+   "fam": "",
+   "node": "4wd awd"
+  },
+  {
+   "code": "C0600",
+   "brand": "",
+   "ru": "Привод понижающей передачи полного привода: ошибка управления положением",
+   "en": "4WD/AWD Range Actuator Position Control Error",
+   "fam": "",
+   "node": "4wd awd"
+  },
+  {
+   "code": "C0601",
+   "brand": "",
+   "ru": "Активный передний спойлер: обрыв цепи управления",
+   "en": "Active Air Dam Control Circuit/Open",
+   "fam": "",
+   "node": "active air dam"
+  },
+  {
+   "code": "C0602",
+   "brand": "",
+   "ru": "Активный передний спойлер: низкий уровень в цепи управления",
+   "en": "Active Air Dam Control Circuit Low",
+   "fam": "",
+   "node": "active air dam"
+  },
+  {
+   "code": "C0603",
+   "brand": "",
+   "ru": "Активный передний спойлер: высокий уровень в цепи управления",
+   "en": "Active Air Dam Control Circuit High",
+   "fam": "",
+   "node": "active air dam"
+  },
+  {
+   "code": "C0604",
+   "brand": "",
+   "ru": "Активный передний спойлер: нарушена работа цепи управления",
+   "en": "Active Air Dam Control Circuit Performance",
+   "fam": "",
+   "node": "active air dam"
+  },
+  {
+   "code": "C0630",
+   "brand": "",
+   "ru": "Активный передний спойлер: заклинивание",
+   "en": "Active Air Dam Stuck",
+   "fam": "",
+   "node": "active air dam"
+  },
+  {
+   "code": "C0605",
+   "brand": "",
+   "ru": "Датчик угла поворота руля: обрыв цепи",
+   "en": "Steering Wheel Angle Sensor Circuit/Open",
+   "fam": "",
+   "node": "steering wheel angle"
+  },
+  {
+   "code": "C0606",
+   "brand": "",
+   "ru": "Датчик угла поворота руля: низкий уровень сигнала в цепи",
+   "en": "Steering Wheel Angle Sensor Circuit Low",
+   "fam": "",
+   "node": "steering wheel angle"
+  },
+  {
+   "code": "C0607",
+   "brand": "",
+   "ru": "Датчик угла поворота руля: высокий уровень сигнала в цепи",
+   "en": "Steering Wheel Angle Sensor Circuit High",
+   "fam": "",
+   "node": "steering wheel angle"
+  },
+  {
+   "code": "C0608",
+   "brand": "",
+   "ru": "Датчик угла поворота руля: нарушена работа цепи",
+   "en": "Steering Wheel Angle Sensor Circuit Performance",
+   "fam": "",
+   "node": "steering wheel angle"
+  },
+  {
+   "code": "C0609",
+   "brand": "",
+   "ru": "Кнопка стояночного тормоза: цепь",
+   "en": "Park Brake Switch Circuit",
+   "fam": "",
+   "node": "park brake"
+  },
+  {
+   "code": "C060A",
+   "brand": "",
+   "ru": "Кнопка стояночного тормоза: заклинивание",
+   "en": "Park Brake Switch Stuck",
+   "fam": "",
+   "node": "park brake switch"
+  }
+ ]
+}

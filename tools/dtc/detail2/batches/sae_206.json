@@ -1,0 +1,412 @@
+{
+ "name": "sae_206",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "invalid data received from battery charger control module b",
+  "invalid data received from battery management control",
+  "invalid data received from brake system control module b",
+  "invalid data received from catalyst heater control",
+  "invalid data received from door control module b",
+  "invalid data received from door control module c",
+  "invalid data received from door control module d",
+  "invalid data received from door control module e",
+  "invalid data received from door control module f",
+  "invalid data received from door control module g",
+  "invalid data received from door control module h",
+  "invalid data received from door switch a",
+  "invalid data received from door switch b",
+  "invalid data received from door switch c",
+  "invalid data received from door switch d",
+  "invalid data received from door switch e",
+  "invalid data received from door switch f",
+  "invalid data received from door switch g",
+  "invalid data received from door window motor a",
+  "invalid data received from door window motor b",
+  "invalid data received from door window motor c",
+  "invalid data received from door window motor d",
+  "invalid data received from door window motor e",
+  "invalid data received from door window motor f",
+  "invalid data received from door window motor g",
+  "invalid data received from drive motor a clutch actuator",
+  "invalid data received from folding top control",
+  "invalid data received from heated steering wheel",
+  "invalid data received from mirror control module a",
+  "invalid data received from moveable roof control module a",
+  "invalid data received from moveable roof control module “b”",
+  "invalid data received from object detection maintenance control module a",
+  "invalid data received from object detection maintenance control module b",
+  "invalid data received from park lock pawl control",
+  "invalid data received from remote function actuation",
+  "invalid data received from seat control module a",
+  "invalid data received from seat control module b",
+  "invalid data received from seat control module c",
+  "invalid data received from seat control module d",
+  "invalid data received from switch",
+  "invalid data received from wireless accessory charging module a",
+  "invalid data received from wireless accessory charging module b",
+  "invalid data received from yaw rate sensor"
+ ],
+ "codes": [
+  {
+   "code": "U04B5",
+   "brand": "",
+   "ru": "Неверные данные: блок управления тормозной системой B",
+   "en": "Invalid Data Received from Brake System Control Module B",
+   "fam": "",
+   "node": "invalid data received from brake system control module b"
+  },
+  {
+   "code": "U04B6",
+   "brand": "",
+   "ru": "Неверные данные: блок подогрева катализатора",
+   "en": "Invalid Data Received From Catalyst Heater Control Module",
+   "fam": "",
+   "node": "invalid data received from catalyst heater control"
+  },
+  {
+   "code": "U04BA",
+   "brand": "",
+   "ru": "Неверные данные: блок кнопок A",
+   "en": "Invalid Data Received from Switch Input Module “A”",
+   "fam": "",
+   "node": "invalid data received from switch"
+  },
+  {
+   "code": "U04BB",
+   "brand": "",
+   "ru": "Неверные данные: блок кнопок B",
+   "en": "Invalid Data Received from Switch Input Module “B”",
+   "fam": "",
+   "node": "invalid data received from switch"
+  },
+  {
+   "code": "U04BC",
+   "brand": "",
+   "ru": "Неверные данные: блок кнопок C",
+   "en": "Invalid Data Received from Switch Input Module “C”",
+   "fam": "",
+   "node": "invalid data received from switch"
+  },
+  {
+   "code": "U04BD",
+   "brand": "",
+   "ru": "Неверные данные: блок блокировки «Паркинг»",
+   "en": "Invalid Data Received From Park Lock/Pawl Control Module",
+   "fam": "",
+   "node": "invalid data received from park lock pawl control"
+  },
+  {
+   "code": "U04BE",
+   "brand": "",
+   "ru": "Неверные данные: блок управления зарядным устройством B",
+   "en": "Invalid Data Received From Battery Charger Control Module B",
+   "fam": "",
+   "node": "invalid data received from battery charger control module b"
+  },
+  {
+   "code": "U04BF",
+   "brand": "",
+   "ru": "Неверные данные: привод муфты тягового электромотора A",
+   "en": "Invalid Data Received from Drive Motor A Clutch Actuator",
+   "fam": "",
+   "node": "invalid data received from drive motor a clutch actuator"
+  },
+  {
+   "code": "U04C0",
+   "brand": "",
+   "ru": "Неверные данные: блок управления батареей (BMS)",
+   "en": "Invalid Data Received from Battery Management Control Module",
+   "fam": "",
+   "node": "invalid data received from battery management control"
+  },
+  {
+   "code": "U0501",
+   "brand": "",
+   "ru": "Неверные данные: блок управления двери B",
+   "en": "Invalid Data Received From Door Control Module B",
+   "fam": "",
+   "node": "invalid data received from door control module b"
+  },
+  {
+   "code": "U0502",
+   "brand": "",
+   "ru": "Неверные данные: блок управления двери C",
+   "en": "Invalid Data Received From Door Control Module C",
+   "fam": "",
+   "node": "invalid data received from door control module c"
+  },
+  {
+   "code": "U0503",
+   "brand": "",
+   "ru": "Неверные данные: блок управления двери D",
+   "en": "Invalid Data Received From Door Control Module D",
+   "fam": "",
+   "node": "invalid data received from door control module d"
+  },
+  {
+   "code": "U0504",
+   "brand": "",
+   "ru": "Неверные данные: блок управления двери E",
+   "en": "Invalid Data Received From Door Control Module E",
+   "fam": "",
+   "node": "invalid data received from door control module e"
+  },
+  {
+   "code": "U0505",
+   "brand": "",
+   "ru": "Неверные данные: блок управления двери F",
+   "en": "Invalid Data Received From Door Control Module F",
+   "fam": "",
+   "node": "invalid data received from door control module f"
+  },
+  {
+   "code": "U0506",
+   "brand": "",
+   "ru": "Неверные данные: блок управления двери G",
+   "en": "Invalid Data Received From Door Control Module G",
+   "fam": "",
+   "node": "invalid data received from door control module g"
+  },
+  {
+   "code": "U0507",
+   "brand": "",
+   "ru": "Неверные данные: блок складной крыши",
+   "en": "Invalid Data Received From Folding Top Control Module",
+   "fam": "",
+   "node": "invalid data received from folding top control"
+  },
+  {
+   "code": "U0508",
+   "brand": "",
+   "ru": "Неверные данные: блок складной крыши A",
+   "en": "Invalid Data Received From Moveable Roof Control Module A",
+   "fam": "",
+   "node": "invalid data received from moveable roof control module a"
+  },
+  {
+   "code": "U0509",
+   "brand": "",
+   "ru": "Неверные данные: блок управления сиденьем A",
+   "en": "Invalid Data Received From Seat Control Module A",
+   "fam": "",
+   "node": "invalid data received from seat control module a"
+  },
+  {
+   "code": "U050A",
+   "brand": "",
+   "ru": "Неверные данные: блок управления сиденьем B",
+   "en": "Invalid Data Received From Seat Control Module B",
+   "fam": "",
+   "node": "invalid data received from seat control module b"
+  },
+  {
+   "code": "U050B",
+   "brand": "",
+   "ru": "Неверные данные: блок складной крыши B",
+   "en": "Invalid Data Received From Moveable Roof Control Module “B”",
+   "fam": "",
+   "node": "invalid data received from moveable roof control module “b”"
+  },
+  {
+   "code": "U050C",
+   "brand": "",
+   "ru": "Неверные данные: блок управления двери H",
+   "en": "Invalid Data Received From Door Control Module H",
+   "fam": "",
+   "node": "invalid data received from door control module h"
+  },
+  {
+   "code": "U050D",
+   "brand": "",
+   "ru": "Неверные данные: блок беспроводной зарядки A",
+   "en": "Invalid Data Received From Wireless Accessory Charging Module A",
+   "fam": "",
+   "node": "invalid data received from wireless accessory charging module a"
+  },
+  {
+   "code": "U050E",
+   "brand": "",
+   "ru": "Неверные данные: блок беспроводной зарядки B",
+   "en": "Invalid Data Received From Wireless Accessory Charging Module B",
+   "fam": "",
+   "node": "invalid data received from wireless accessory charging module b"
+  },
+  {
+   "code": "U0511",
+   "brand": "",
+   "ru": "Неверные данные: блок управления сиденьем C",
+   "en": "Invalid Data Received From Seat Control Module C",
+   "fam": "",
+   "node": "invalid data received from seat control module c"
+  },
+  {
+   "code": "U0512",
+   "brand": "",
+   "ru": "Неверные данные: блок управления сиденьем D",
+   "en": "Invalid Data Received From Seat Control Module D",
+   "fam": "",
+   "node": "invalid data received from seat control module d"
+  },
+  {
+   "code": "U0513",
+   "brand": "",
+   "ru": "Неверные данные: датчик угловой скорости (рыскания)",
+   "en": "Invalid Data Received From Yaw Rate Sensor Module",
+   "fam": "",
+   "node": "invalid data received from yaw rate sensor"
+  },
+  {
+   "code": "U0514",
+   "brand": "",
+   "ru": "Неверные данные: блок зеркал A",
+   "en": "Invalid Data Received From Mirror Control Module A",
+   "fam": "",
+   "node": "invalid data received from mirror control module a"
+  },
+  {
+   "code": "U0515",
+   "brand": "",
+   "ru": "Неверные данные: блок дистанционного управления (брелок)",
+   "en": "Invalid Data Received From Remote Function Actuation Module",
+   "fam": "",
+   "node": "invalid data received from remote function actuation"
+  },
+  {
+   "code": "U0516",
+   "brand": "",
+   "ru": "Неверные данные: выключатель двери A",
+   "en": "Invalid Data Received From Door Switch A",
+   "fam": "",
+   "node": "invalid data received from door switch a"
+  },
+  {
+   "code": "U0517",
+   "brand": "",
+   "ru": "Неверные данные: выключатель двери B",
+   "en": "Invalid Data Received From Door Switch B",
+   "fam": "",
+   "node": "invalid data received from door switch b"
+  },
+  {
+   "code": "U0518",
+   "brand": "",
+   "ru": "Неверные данные: выключатель двери C",
+   "en": "Invalid Data Received From Door Switch C",
+   "fam": "",
+   "node": "invalid data received from door switch c"
+  },
+  {
+   "code": "U0519",
+   "brand": "",
+   "ru": "Неверные данные: выключатель двери D",
+   "en": "Invalid Data Received From Door Switch D",
+   "fam": "",
+   "node": "invalid data received from door switch d"
+  },
+  {
+   "code": "U051A",
+   "brand": "",
+   "ru": "Неверные данные: выключатель двери E",
+   "en": "Invalid Data Received From Door Switch E",
+   "fam": "",
+   "node": "invalid data received from door switch e"
+  },
+  {
+   "code": "U0521",
+   "brand": "",
+   "ru": "Неверные данные: выключатель двери F",
+   "en": "Invalid Data Received From Door Switch F",
+   "fam": "",
+   "node": "invalid data received from door switch f"
+  },
+  {
+   "code": "U0522",
+   "brand": "",
+   "ru": "Неверные данные: выключатель двери G",
+   "en": "Invalid Data Received From Door Switch G",
+   "fam": "",
+   "node": "invalid data received from door switch g"
+  },
+  {
+   "code": "U0523",
+   "brand": "",
+   "ru": "Неверные данные: мотор стеклоподъёмника A",
+   "en": "Invalid Data Received From Door Window Motor A",
+   "fam": "",
+   "node": "invalid data received from door window motor a"
+  },
+  {
+   "code": "U0524",
+   "brand": "",
+   "ru": "Неверные данные: мотор стеклоподъёмника B",
+   "en": "Invalid Data Received From Door Window Motor B",
+   "fam": "",
+   "node": "invalid data received from door window motor b"
+  },
+  {
+   "code": "U0525",
+   "brand": "",
+   "ru": "Неверные данные: мотор стеклоподъёмника C",
+   "en": "Invalid Data Received From Door Window Motor C",
+   "fam": "",
+   "node": "invalid data received from door window motor c"
+  },
+  {
+   "code": "U0526",
+   "brand": "",
+   "ru": "Неверные данные: мотор стеклоподъёмника D",
+   "en": "Invalid Data Received From Door Window Motor D",
+   "fam": "",
+   "node": "invalid data received from door window motor d"
+  },
+  {
+   "code": "U0527",
+   "brand": "",
+   "ru": "Неверные данные: мотор стеклоподъёмника E",
+   "en": "Invalid Data Received From Door Window Motor E",
+   "fam": "",
+   "node": "invalid data received from door window motor e"
+  },
+  {
+   "code": "U0528",
+   "brand": "",
+   "ru": "Неверные данные: мотор стеклоподъёмника F",
+   "en": "Invalid Data Received From Door Window Motor F",
+   "fam": "",
+   "node": "invalid data received from door window motor f"
+  },
+  {
+   "code": "U0529",
+   "brand": "",
+   "ru": "Неверные данные: мотор стеклоподъёмника G",
+   "en": "Invalid Data Received From Door Window Motor G",
+   "fam": "",
+   "node": "invalid data received from door window motor g"
+  },
+  {
+   "code": "U052A",
+   "brand": "",
+   "ru": "Неверные данные: модуль подогрева руля",
+   "en": "Invalid Data Received From Heated Steering Wheel Module",
+   "fam": "",
+   "node": "invalid data received from heated steering wheel"
+  },
+  {
+   "code": "U052F",
+   "brand": "",
+   "ru": "Неверные данные: блок обслуживания датчиков обнаружения объектов A",
+   "en": "Invalid Data Received From Object Detection Maintenance Control Module A",
+   "fam": "",
+   "node": "invalid data received from object detection maintenance control module a"
+  },
+  {
+   "code": "U0530",
+   "brand": "",
+   "ru": "Неверные данные: блок обслуживания датчиков обнаружения объектов B",
+   "en": "Invalid Data Received From Object Detection Maintenance Control Module B",
+   "fam": "",
+   "node": "invalid data received from object detection maintenance control module b"
+  }
+ ]
+}

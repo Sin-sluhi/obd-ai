@@ -1,0 +1,384 @@
+{
+ "name": "sae_066",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "active grille air shutter a",
+  "active grille air shutter a position sensor minimum maximum stop",
+  "active grille air shutter a supply voltage",
+  "active grille air shutter b",
+  "active grille air shutter b position",
+  "active grille air shutter b position sensor minimum maximum stop",
+  "active grille air shutter b supply voltage",
+  "active grille air shutter module a over temperature",
+  "active grille air shutter module b over temperature",
+  "economy mode",
+  "engine coolant pressure",
+  "restraint deployment",
+  "restraints deployed",
+  "stop start mode",
+  "vehicle hardware incompatibility"
+ ],
+ "codes": [
+  {
+   "code": "P059F",
+   "brand": "",
+   "ru": "Активные жалюзи радиатора A: работа нарушена / не включается",
+   "en": "Active Grille Air Shutter A Performance/Stuck Off",
+   "fam": "",
+   "node": "active grille air shutter a"
+  },
+  {
+   "code": "P05A0",
+   "brand": "",
+   "ru": "Активные жалюзи радиатора A: постоянно включён",
+   "en": "Active Grille Air Shutter A Stuck On",
+   "fam": "",
+   "node": "active grille air shutter a"
+  },
+  {
+   "code": "P05A2",
+   "brand": "",
+   "ru": "Активные жалюзи радиатора A: обрыв цепи управления",
+   "en": "Active Grille Air Shutter A Control Circuit/Open",
+   "fam": "",
+   "node": "active grille air shutter a"
+  },
+  {
+   "code": "P05A3",
+   "brand": "",
+   "ru": "Активные жалюзи радиатора A: цепь управления вне диапазона",
+   "en": "Active Grille Air Shutter A Control Circuit Range/Performance",
+   "fam": "",
+   "node": "active grille air shutter a"
+  },
+  {
+   "code": "P05A4",
+   "brand": "",
+   "ru": "Активные жалюзи радиатора A: высокий уровень в цепи управления",
+   "en": "Active Grille Air Shutter A Control Circuit High",
+   "fam": "",
+   "node": "active grille air shutter a"
+  },
+  {
+   "code": "P05A5",
+   "brand": "",
+   "ru": "Активные жалюзи радиатора A: низкий уровень в цепи управления",
+   "en": "Active Grille Air Shutter A Control Circuit Low",
+   "fam": "",
+   "node": "active grille air shutter a"
+  },
+  {
+   "code": "P05A1",
+   "brand": "",
+   "ru": "Датчик положения жалюзи радиатора A: ошибка упоров мин./макс.",
+   "en": "Active Grille Air Shutter A Position Sensor Minimum/Maximum Stop Performance",
+   "fam": "",
+   "node": "active grille air shutter a position sensor minimum maximum stop"
+  },
+  {
+   "code": "P05A6",
+   "brand": "",
+   "ru": "Активные жалюзи радиатора A: обрыв цепи питания",
+   "en": "Active Grille Air Shutter A Supply Voltage Circuit/Open",
+   "fam": "",
+   "node": "active grille air shutter a supply voltage"
+  },
+  {
+   "code": "P05A7",
+   "brand": "",
+   "ru": "Активные жалюзи радиатора A: низкое напряжение питания",
+   "en": "Active Grille Air Shutter A Supply Voltage Circuit Low",
+   "fam": "",
+   "node": "active grille air shutter a supply voltage"
+  },
+  {
+   "code": "P05A8",
+   "brand": "",
+   "ru": "Активные жалюзи радиатора A: высокое напряжение питания",
+   "en": "Active Grille Air Shutter A Supply Voltage Circuit High",
+   "fam": "",
+   "node": "active grille air shutter a supply voltage"
+  },
+  {
+   "code": "P05A9",
+   "brand": "",
+   "ru": "Датчик положения жалюзи радиатора B: цепь",
+   "en": "Active Grille Air Shutter B Position Sensor Circuit",
+   "fam": "",
+   "node": "active grille air shutter b position"
+  },
+  {
+   "code": "P05AA",
+   "brand": "",
+   "ru": "Датчик положения жалюзи радиатора B: сигнал вне диапазона",
+   "en": "Active Grille Air Shutter B Position Sensor Circuit Range/Performance",
+   "fam": "",
+   "node": "active grille air shutter b position"
+  },
+  {
+   "code": "P05AB",
+   "brand": "",
+   "ru": "Датчик положения жалюзи радиатора B: высокий уровень сигнала в цепи",
+   "en": "Active Grille Air Shutter B Position Sensor Circuit High",
+   "fam": "",
+   "node": "active grille air shutter b position"
+  },
+  {
+   "code": "P05AC",
+   "brand": "",
+   "ru": "Датчик положения жалюзи радиатора B: низкий уровень сигнала в цепи",
+   "en": "Active Grille Air Shutter B Position Sensor Circuit Low",
+   "fam": "",
+   "node": "active grille air shutter b position"
+  },
+  {
+   "code": "P05AD",
+   "brand": "",
+   "ru": "Датчик положения жалюзи радиатора B: прерывистый сигнал в цепи",
+   "en": "Active Grille Air Shutter B Position Sensor Circuit Intermittent",
+   "fam": "",
+   "node": "active grille air shutter b position"
+  },
+  {
+   "code": "P05AE",
+   "brand": "",
+   "ru": "Активные жалюзи радиатора B: работа нарушена / не включается",
+   "en": "Active Grille Air Shutter B Performance/Stuck Off",
+   "fam": "",
+   "node": "active grille air shutter b"
+  },
+  {
+   "code": "P05AF",
+   "brand": "",
+   "ru": "Активные жалюзи радиатора B: постоянно включён",
+   "en": "Active Grille Air Shutter B Stuck On",
+   "fam": "",
+   "node": "active grille air shutter b"
+  },
+  {
+   "code": "P05B1",
+   "brand": "",
+   "ru": "Активные жалюзи радиатора B: обрыв цепи управления",
+   "en": "Active Grille Air Shutter B Control Circuit/Open",
+   "fam": "",
+   "node": "active grille air shutter b"
+  },
+  {
+   "code": "P05B2",
+   "brand": "",
+   "ru": "Активные жалюзи радиатора B: цепь управления вне диапазона",
+   "en": "Active Grille Air Shutter B Control Circuit Range/Performance",
+   "fam": "",
+   "node": "active grille air shutter b"
+  },
+  {
+   "code": "P05B3",
+   "brand": "",
+   "ru": "Активные жалюзи радиатора B: высокий уровень в цепи управления",
+   "en": "Active Grille Air Shutter B Control Circuit High",
+   "fam": "",
+   "node": "active grille air shutter b"
+  },
+  {
+   "code": "P05B4",
+   "brand": "",
+   "ru": "Активные жалюзи радиатора B: низкий уровень в цепи управления",
+   "en": "Active Grille Air Shutter B Control Circuit Low",
+   "fam": "",
+   "node": "active grille air shutter b"
+  },
+  {
+   "code": "P05B0",
+   "brand": "",
+   "ru": "Датчик положения жалюзи радиатора B: ошибка упоров мин./макс.",
+   "en": "Active Grille Air Shutter B Position Sensor Minimum/Maximum Stop Performance",
+   "fam": "",
+   "node": "active grille air shutter b position sensor minimum maximum stop"
+  },
+  {
+   "code": "P05B5",
+   "brand": "",
+   "ru": "Активные жалюзи радиатора B: обрыв цепи питания",
+   "en": "Active Grille Air Shutter B Supply Voltage Circuit/Open",
+   "fam": "",
+   "node": "active grille air shutter b supply voltage"
+  },
+  {
+   "code": "P05B6",
+   "brand": "",
+   "ru": "Активные жалюзи радиатора B: низкое напряжение питания",
+   "en": "Active Grille Air Shutter B Supply Voltage Circuit Low",
+   "fam": "",
+   "node": "active grille air shutter b supply voltage"
+  },
+  {
+   "code": "P05B7",
+   "brand": "",
+   "ru": "Активные жалюзи радиатора B: высокое напряжение питания",
+   "en": "Active Grille Air Shutter B Supply Voltage Circuit High",
+   "fam": "",
+   "node": "active grille air shutter b supply voltage"
+  },
+  {
+   "code": "P05B8",
+   "brand": "",
+   "ru": "Сигнал срабатывания подушек: обрыв цепи",
+   "en": "Restraint Deployment Signal Circuit/Open",
+   "fam": "",
+   "node": "restraint deployment"
+  },
+  {
+   "code": "P05B9",
+   "brand": "",
+   "ru": "Сигнал срабатывания подушек: низкий уровень в сигнальной цепи",
+   "en": "Restraint Deployment Signal Circuit Low",
+   "fam": "",
+   "node": "restraint deployment"
+  },
+  {
+   "code": "P05BA",
+   "brand": "",
+   "ru": "Сигнал срабатывания подушек: высокий уровень в сигнальной цепи",
+   "en": "Restraint Deployment Signal Circuit High",
+   "fam": "",
+   "node": "restraint deployment"
+  },
+  {
+   "code": "P05BB",
+   "brand": "",
+   "ru": "Подушки безопасности сработали",
+   "en": "Restraints Deployed",
+   "fam": "",
+   "node": "restraints deployed"
+  },
+  {
+   "code": "P05BC",
+   "brand": "",
+   "ru": "Кнопка системы «старт-стоп»: обрыв цепи",
+   "en": "Stop-Start Mode Switch Circuit/Open",
+   "fam": "",
+   "node": "stop start mode"
+  },
+  {
+   "code": "P05BD",
+   "brand": "",
+   "ru": "Кнопка системы «старт-стоп»: сигнал вне диапазона",
+   "en": "Stop-Start Mode Switch Circuit Range/Performance",
+   "fam": "",
+   "node": "stop start mode"
+  },
+  {
+   "code": "P05BE",
+   "brand": "",
+   "ru": "Кнопка системы «старт-стоп»: низкий уровень сигнала в цепи",
+   "en": "Stop-Start Mode Switch Circuit Low",
+   "fam": "",
+   "node": "stop start mode"
+  },
+  {
+   "code": "P05BF",
+   "brand": "",
+   "ru": "Кнопка системы «старт-стоп»: высокий уровень сигнала в цепи",
+   "en": "Stop-Start Mode Switch Circuit High",
+   "fam": "",
+   "node": "stop start mode"
+  },
+  {
+   "code": "P05C0",
+   "brand": "",
+   "ru": "Блок активных жалюзи радиатора A: перегрев",
+   "en": "Active Grille Air Shutter Module A Over Temperature",
+   "fam": "",
+   "node": "active grille air shutter module a over temperature"
+  },
+  {
+   "code": "P05C1",
+   "brand": "",
+   "ru": "Блок активных жалюзи радиатора B: перегрев",
+   "en": "Active Grille Air Shutter Module B Over Temperature",
+   "fam": "",
+   "node": "active grille air shutter module b over temperature"
+  },
+  {
+   "code": "P05C2",
+   "brand": "",
+   "ru": "Датчик давления охлаждающей жидкости: цепь",
+   "en": "Engine Coolant Pressure Sensor Circuit",
+   "fam": "",
+   "node": "engine coolant pressure"
+  },
+  {
+   "code": "P05C3",
+   "brand": "",
+   "ru": "Датчик давления охлаждающей жидкости: сигнал вне диапазона",
+   "en": "Engine Coolant Pressure Sensor Circuit Range/Performance",
+   "fam": "",
+   "node": "engine coolant pressure"
+  },
+  {
+   "code": "P05C4",
+   "brand": "",
+   "ru": "Датчик давления охлаждающей жидкости: низкий уровень сигнала в цепи",
+   "en": "Engine Coolant Pressure Sensor Circuit Low",
+   "fam": "",
+   "node": "engine coolant pressure"
+  },
+  {
+   "code": "P05C5",
+   "brand": "",
+   "ru": "Датчик давления охлаждающей жидкости: высокий уровень сигнала в цепи",
+   "en": "Engine Coolant Pressure Sensor Circuit High",
+   "fam": "",
+   "node": "engine coolant pressure"
+  },
+  {
+   "code": "P05C6",
+   "brand": "",
+   "ru": "Датчик давления охлаждающей жидкости: прерывистый / нестабильный сигнал",
+   "en": "Engine Coolant Pressure Sensor Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "engine coolant pressure"
+  },
+  {
+   "code": "P05C7",
+   "brand": "",
+   "ru": "Кнопка экономичного режима: обрыв цепи",
+   "en": "Economy Mode Switch Circuit/Open",
+   "fam": "",
+   "node": "economy mode"
+  },
+  {
+   "code": "P05C8",
+   "brand": "",
+   "ru": "Кнопка экономичного режима: сигнал вне диапазона",
+   "en": "Economy Mode Switch Circuit Range/Performance",
+   "fam": "",
+   "node": "economy mode"
+  },
+  {
+   "code": "P05C9",
+   "brand": "",
+   "ru": "Кнопка экономичного режима: низкий уровень сигнала в цепи",
+   "en": "Economy Mode Switch Circuit Low",
+   "fam": "",
+   "node": "economy mode"
+  },
+  {
+   "code": "P05CA",
+   "brand": "",
+   "ru": "Кнопка экономичного режима: высокий уровень сигнала в цепи",
+   "en": "Economy Mode Switch Circuit High",
+   "fam": "",
+   "node": "economy mode"
+  },
+  {
+   "code": "P05CB",
+   "brand": "",
+   "ru": "Несовместимость оборудования автомобиля",
+   "en": "Vehicle Hardware Incompatibility",
+   "fam": "",
+   "node": "vehicle hardware incompatibility"
+  }
+ ]
+}

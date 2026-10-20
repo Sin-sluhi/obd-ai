@@ -1,0 +1,414 @@
+{
+ "name": "sae_205",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "invalid data received from antenna control",
+  "invalid data received from audio amplifier a",
+  "invalid data received from battery charger control module a",
+  "invalid data received from battery monitor",
+  "invalid data received from brake blending actuator",
+  "invalid data received from digital audio control module a",
+  "invalid data received from digital audio control module b",
+  "invalid data received from digital disc player changer module a",
+  "invalid data received from digital disc player changer module b",
+  "invalid data received from digital disc player changer module c",
+  "invalid data received from digital disc player changer module d",
+  "invalid data received from direct ozone reduction catalyst temperature",
+  "invalid data received from door control module a",
+  "invalid data received from engine coolant pump control",
+  "invalid data received from entertainment control module rear a",
+  "invalid data received from headlamp leveling control module a",
+  "invalid data received from headlamp leveling control module b",
+  "invalid data received from hybrid ev battery interface control module a",
+  "invalid data received from hybrid ev battery interface control module b",
+  "invalid data received from hybrid ev battery interface control module c",
+  "invalid data received from hybrid ev battery interface control module e",
+  "invalid data received from hybrid ev battery interface control module f",
+  "invalid data received from hybrid ev battery interface control module g",
+  "invalid data received from hybrid ev battery interface control module h",
+  "invalid data received from hybrid ev battery interface control module i",
+  "invalid data received from hybrid ev battery interface control module j",
+  "invalid data received from hybrid ev battery interface control module k",
+  "invalid data received from hybrid ev battery interface control module l",
+  "invalid data received from hybrid ev battery interface control module m",
+  "invalid data received from hybrid ev battery interface control module n",
+  "invalid data received from hybrid ev battery interface control module o",
+  "invalid data received from hybrid ev battery interface control module p",
+  "invalid data received from lighting control module front",
+  "invalid data received from lighting control module rear a",
+  "invalid data received from particulate matter sensor a",
+  "invalid data received from particulate matter sensor b",
+  "invalid data received from personal computer",
+  "invalid data received from planetary gear set control",
+  "invalid data received from radio",
+  "invalid data received from subscription entertainment receiver",
+  "invalid data received from tachograph",
+  "invalid data received from telematic control",
+  "invalid data received from telephone control",
+  "invalid data received from television",
+  "invalid data received from transmission"
+ ],
+ "codes": [
+  {
+   "code": "U0482",
+   "brand": "",
+   "ru": "Неверные данные: блок корректора фар A",
+   "en": "Invalid Data Received From Headlamp Leveling Control Module A",
+   "fam": "",
+   "node": "invalid data received from headlamp leveling control module a"
+  },
+  {
+   "code": "U0483",
+   "brand": "",
+   "ru": "Неверные данные: передний блок освещения",
+   "en": "Invalid Data Received From Lighting Control Module - Front",
+   "fam": "",
+   "node": "invalid data received from lighting control module front"
+  },
+  {
+   "code": "U0484",
+   "brand": "",
+   "ru": "Неверные данные: задний блок освещения A",
+   "en": "Invalid Data Received From Lighting Control Module - Rear A",
+   "fam": "",
+   "node": "invalid data received from lighting control module rear a"
+  },
+  {
+   "code": "U0485",
+   "brand": "",
+   "ru": "Неверные данные: магнитола",
+   "en": "Invalid Data Received From Radio",
+   "fam": "",
+   "node": "invalid data received from radio"
+  },
+  {
+   "code": "U0486",
+   "brand": "",
+   "ru": "Неверные данные: блок антенны",
+   "en": "Invalid Data Received From Antenna Control Module",
+   "fam": "",
+   "node": "invalid data received from antenna control"
+  },
+  {
+   "code": "U0487",
+   "brand": "",
+   "ru": "Неверные данные: усилитель аудиосистемы A",
+   "en": "Invalid Data Received From Audio Amplifier A",
+   "fam": "",
+   "node": "invalid data received from audio amplifier a"
+  },
+  {
+   "code": "U0488",
+   "brand": "",
+   "ru": "Неверные данные: проигрыватель/чейнджер дисков A",
+   "en": "Invalid Data Received From Digital Disc Player/Changer Module A",
+   "fam": "",
+   "node": "invalid data received from digital disc player changer module a"
+  },
+  {
+   "code": "U0489",
+   "brand": "",
+   "ru": "Неверные данные: проигрыватель/чейнджер дисков B",
+   "en": "Invalid Data Received From Digital Disc Player/Changer Module B",
+   "fam": "",
+   "node": "invalid data received from digital disc player changer module b"
+  },
+  {
+   "code": "U048A",
+   "brand": "",
+   "ru": "Неверные данные: проигрыватель/чейнджер дисков C",
+   "en": "Invalid Data Received From Digital Disc Player/Changer Module C",
+   "fam": "",
+   "node": "invalid data received from digital disc player changer module c"
+  },
+  {
+   "code": "U048B",
+   "brand": "",
+   "ru": "Неверные данные: блок корректора фар B",
+   "en": "Invalid Data Received From Headlamp Leveling Control Module B",
+   "fam": "",
+   "node": "invalid data received from headlamp leveling control module b"
+  },
+  {
+   "code": "U0491",
+   "brand": "",
+   "ru": "Неверные данные: проигрыватель/чейнджер дисков D",
+   "en": "Invalid Data Received From Digital Disc Player/Changer Module D",
+   "fam": "",
+   "node": "invalid data received from digital disc player changer module d"
+  },
+  {
+   "code": "U0492",
+   "brand": "",
+   "ru": "Неверные данные: телевизор",
+   "en": "Invalid Data Received From Television",
+   "fam": "",
+   "node": "invalid data received from television"
+  },
+  {
+   "code": "U0493",
+   "brand": "",
+   "ru": "Неверные данные: бортовой компьютер (ПК)",
+   "en": "Invalid Data Received From Personal Computer",
+   "fam": "",
+   "node": "invalid data received from personal computer"
+  },
+  {
+   "code": "U0494",
+   "brand": "",
+   "ru": "Неверные данные: блок цифрового аудио A",
+   "en": "Invalid Data Received From Digital Audio Control Module A",
+   "fam": "",
+   "node": "invalid data received from digital audio control module a"
+  },
+  {
+   "code": "U0495",
+   "brand": "",
+   "ru": "Неверные данные: блок цифрового аудио B",
+   "en": "Invalid Data Received From Digital Audio Control Module B",
+   "fam": "",
+   "node": "invalid data received from digital audio control module b"
+  },
+  {
+   "code": "U0496",
+   "brand": "",
+   "ru": "Неверные данные: приёмник платных развлекательных сервисов",
+   "en": "Invalid Data Received From Subscription Entertainment Receiver Module",
+   "fam": "",
+   "node": "invalid data received from subscription entertainment receiver"
+  },
+  {
+   "code": "U0497",
+   "brand": "",
+   "ru": "Неверные данные: блок развлечений для задних пассажиров A",
+   "en": "Invalid Data Received From Entertainment Control Module - Rear A",
+   "fam": "",
+   "node": "invalid data received from entertainment control module rear a"
+  },
+  {
+   "code": "U0498",
+   "brand": "",
+   "ru": "Неверные данные: блок телефона",
+   "en": "Invalid Data Received From Telephone Control Module",
+   "fam": "",
+   "node": "invalid data received from telephone control"
+  },
+  {
+   "code": "U0499",
+   "brand": "",
+   "ru": "Неверные данные: телематический блок",
+   "en": "Invalid Data Received From Telematic Control Module",
+   "fam": "",
+   "node": "invalid data received from telematic control"
+  },
+  {
+   "code": "U049A",
+   "brand": "",
+   "ru": "Неверные данные: блок управления двери A",
+   "en": "Invalid Data Received From Door Control Module A",
+   "fam": "",
+   "node": "invalid data received from door control module a"
+  },
+  {
+   "code": "U049B",
+   "brand": "",
+   "ru": "Неверные данные: тахограф",
+   "en": "Invalid Data Received From Tachograph Module",
+   "fam": "",
+   "node": "invalid data received from tachograph"
+  },
+  {
+   "code": "U049C",
+   "brand": "",
+   "ru": "Неверные данные: блок управления зарядным устройством A",
+   "en": "Invalid Data Received From Battery Charger Control Module A",
+   "fam": "",
+   "node": "invalid data received from battery charger control module a"
+  },
+  {
+   "code": "U049E",
+   "brand": "",
+   "ru": "Неверные данные: датчик температуры катализатора озона",
+   "en": "Invalid Data Received From Direct Ozone Reduction Catalyst Temperature Sensor",
+   "fam": "",
+   "node": "invalid data received from direct ozone reduction catalyst temperature"
+  },
+  {
+   "code": "U049F",
+   "brand": "",
+   "ru": "Неверные данные: блок управления селектором КПП",
+   "en": "Invalid Data Received From Transmission Range Control Module",
+   "fam": "",
+   "node": "invalid data received from transmission"
+  },
+  {
+   "code": "U04A0",
+   "brand": "",
+   "ru": "Неверные данные: блок управления насосом охлаждающей жидкости",
+   "en": "Invalid Data Received From Engine Coolant Pump Control Module",
+   "fam": "",
+   "node": "invalid data received from engine coolant pump control"
+  },
+  {
+   "code": "U04A1",
+   "brand": "",
+   "ru": "Неверные данные: блок управления тяговой батареей A",
+   "en": "Invalid Data Received From Hybrid/EV Battery Interface Control Module A",
+   "fam": "",
+   "node": "invalid data received from hybrid ev battery interface control module a"
+  },
+  {
+   "code": "U04A2",
+   "brand": "",
+   "ru": "Неверные данные: блок управления тяговой батареей B",
+   "en": "Invalid Data Received From Hybrid/EV Battery Interface Control Module B",
+   "fam": "",
+   "node": "invalid data received from hybrid ev battery interface control module b"
+  },
+  {
+   "code": "U04A3",
+   "brand": "",
+   "ru": "Неверные данные: блок управления тяговой батареей C",
+   "en": "Invalid Data Received From Hybrid/EV Battery Interface Control Module C",
+   "fam": "",
+   "node": "invalid data received from hybrid ev battery interface control module c"
+  },
+  {
+   "code": "U04A4",
+   "brand": "",
+   "ru": "Неверные данные: датчик сажи A",
+   "en": "Invalid Data Received From Particulate Matter Sensor A",
+   "fam": "",
+   "node": "invalid data received from particulate matter sensor a"
+  },
+  {
+   "code": "U04A5",
+   "brand": "",
+   "ru": "Неверные данные: блок управления тяговой батареей E",
+   "en": "Invalid Data Received From Hybrid/EV Battery Interface Control Module E",
+   "fam": "",
+   "node": "invalid data received from hybrid ev battery interface control module e"
+  },
+  {
+   "code": "U04A6",
+   "brand": "",
+   "ru": "Неверные данные: блок управления тяговой батареей F",
+   "en": "Invalid Data Received From Hybrid/EV Battery Interface Control Module F",
+   "fam": "",
+   "node": "invalid data received from hybrid ev battery interface control module f"
+  },
+  {
+   "code": "U04A7",
+   "brand": "",
+   "ru": "Неверные данные: блок управления тяговой батареей G",
+   "en": "Invalid Data Received From Hybrid/EV Battery Interface Control Module G",
+   "fam": "",
+   "node": "invalid data received from hybrid ev battery interface control module g"
+  },
+  {
+   "code": "U04A8",
+   "brand": "",
+   "ru": "Неверные данные: блок управления тяговой батареей H",
+   "en": "Invalid Data Received From Hybrid/EV Battery Interface Control Module H",
+   "fam": "",
+   "node": "invalid data received from hybrid ev battery interface control module h"
+  },
+  {
+   "code": "U04A9",
+   "brand": "",
+   "ru": "Неверные данные: блок управления тяговой батареей I",
+   "en": "Invalid Data Received From Hybrid/EV Battery Interface Control Module I",
+   "fam": "",
+   "node": "invalid data received from hybrid ev battery interface control module i"
+  },
+  {
+   "code": "U04AA",
+   "brand": "",
+   "ru": "Неверные данные: блок управления тяговой батареей J",
+   "en": "Invalid Data Received From Hybrid/EV Battery Interface Control Module J",
+   "fam": "",
+   "node": "invalid data received from hybrid ev battery interface control module j"
+  },
+  {
+   "code": "U04AB",
+   "brand": "",
+   "ru": "Неверные данные: блок управления тяговой батареей K",
+   "en": "Invalid Data Received From Hybrid/EV Battery Interface Control Module K",
+   "fam": "",
+   "node": "invalid data received from hybrid ev battery interface control module k"
+  },
+  {
+   "code": "U04AC",
+   "brand": "",
+   "ru": "Неверные данные: блок управления тяговой батареей L",
+   "en": "Invalid Data Received From Hybrid/EV Battery Interface Control Module L",
+   "fam": "",
+   "node": "invalid data received from hybrid ev battery interface control module l"
+  },
+  {
+   "code": "U04AD",
+   "brand": "",
+   "ru": "Неверные данные: блок управления тяговой батареей M",
+   "en": "Invalid Data Received From Hybrid/EV Battery Interface Control Module M",
+   "fam": "",
+   "node": "invalid data received from hybrid ev battery interface control module m"
+  },
+  {
+   "code": "U04AE",
+   "brand": "",
+   "ru": "Неверные данные: блок управления тяговой батареей N",
+   "en": "Invalid Data Received From Hybrid/EV Battery Interface Control Module N",
+   "fam": "",
+   "node": "invalid data received from hybrid ev battery interface control module n"
+  },
+  {
+   "code": "U04AF",
+   "brand": "",
+   "ru": "Неверные данные: блок управления тяговой батареей O",
+   "en": "Invalid Data Received From Hybrid/EV Battery Interface Control Module O",
+   "fam": "",
+   "node": "invalid data received from hybrid ev battery interface control module o"
+  },
+  {
+   "code": "U04B0",
+   "brand": "",
+   "ru": "Неверные данные: блок управления тяговой батареей P",
+   "en": "Invalid Data Received From Hybrid/EV Battery Interface Control Module P",
+   "fam": "",
+   "node": "invalid data received from hybrid ev battery interface control module p"
+  },
+  {
+   "code": "U04B1",
+   "brand": "",
+   "ru": "Неверные данные: датчик состояния АКБ",
+   "en": "Invalid Data Received From Battery Monitor Module",
+   "fam": "",
+   "node": "invalid data received from battery monitor"
+  },
+  {
+   "code": "U04B2",
+   "brand": "",
+   "ru": "Неверные данные: датчик сажи B",
+   "en": "Invalid Data Received From Particulate Matter Sensor B",
+   "fam": "",
+   "node": "invalid data received from particulate matter sensor b"
+  },
+  {
+   "code": "U04B3",
+   "brand": "",
+   "ru": "Неверные данные: блок планетарного ряда",
+   "en": "Invalid Data Received From Planetary Gear Set Control Module",
+   "fam": "",
+   "node": "invalid data received from planetary gear set control"
+  },
+  {
+   "code": "U04B4",
+   "brand": "",
+   "ru": "Неверные данные: привод смешивания торможения",
+   "en": "Invalid Data Received From Brake Blending Actuator",
+   "fam": "",
+   "node": "invalid data received from brake blending actuator"
+  }
+ ]
+}

@@ -1,0 +1,414 @@
+{
+ "name": "vag5-vag_105",
+ "series": "vag5",
+ "brand": "vag",
+ "nodes": [
+  "ru:внутренняя ошибка блока коробки (1_3_actuator1_hsd_oc)",
+  "ru:внутренняя ошибка блока коробки (1_3_actuator1_hsd_sc)",
+  "ru:внутренняя ошибка блока коробки (1_3_actuator1_lsd_oc)",
+  "ru:внутренняя ошибка блока коробки (1_3_actuator1_lsd_sc)",
+  "ru:внутренняя ошибка блока коробки (1_3_actuator2_hsd_oc)",
+  "ru:внутренняя ошибка блока коробки (1_3_actuator2_hsd_sc)",
+  "ru:внутренняя ошибка блока коробки (1_3_actuator2_lsd_oc)",
+  "ru:внутренняя ошибка блока коробки (1_3_actuator2_lsd_sc)",
+  "ru:внутренняя ошибка блока коробки (4_6_actuator1_hsd_oc)",
+  "ru:внутренняя ошибка блока коробки (4_6_actuator1_hsd_sc)",
+  "ru:внутренняя ошибка блока коробки (4_6_actuator1_lsd_oc)",
+  "ru:внутренняя ошибка блока коробки (4_6_actuator1_lsd_sc)",
+  "ru:внутренняя ошибка блока коробки (4_6_actuator2_hsd_oc)",
+  "ru:внутренняя ошибка блока коробки (4_6_actuator2_hsd_sc)",
+  "ru:внутренняя ошибка блока коробки (4_6_actuator2_lsd_oc)",
+  "ru:внутренняя ошибка блока коробки (4_6_actuator2_lsd_sc)",
+  "ru:внутренняя ошибка блока коробки (5_7_actuator1_hsd_oc)",
+  "ru:внутренняя ошибка блока коробки (5_7_actuator1_hsd_sc)",
+  "ru:внутренняя ошибка блока коробки (5_7_actuator1_lsd_oc)",
+  "ru:внутренняя ошибка блока коробки (5_7_actuator1_lsd_sc)",
+  "ru:внутренняя ошибка блока коробки (5_7_actuator2_hsd_oc)",
+  "ru:внутренняя ошибка блока коробки (5_7_actuator2_hsd_sc)",
+  "ru:внутренняя ошибка блока коробки (5_7_actuator2_lsd_oc)",
+  "ru:внутренняя ошибка блока коробки (5_7_actuator2_lsd_sc)",
+  "ru:внутренняя ошибка блока коробки (clutch_cooling_1_hsd_oc)",
+  "ru:внутренняя ошибка блока коробки (clutch_cooling_1_hsd_sc)",
+  "ru:внутренняя ошибка блока коробки (clutch_line_press_hsd_oc)",
+  "ru:внутренняя ошибка блока коробки (clutch_line_press_hsd_sc)",
+  "ru:внутренняя ошибка блока коробки (clutch_line_press_lsd_oc)",
+  "ru:внутренняя ошибка блока коробки (clutch_line_press_lsd_sc)",
+  "ru:внутренняя ошибка блока коробки (differential_press_hsd_oc)",
+  "ru:внутренняя ошибка блока коробки (differential_press_hsd_sc)",
+  "ru:внутренняя ошибка блока коробки (differential_press_lsd_oc)",
+  "ru:внутренняя ошибка блока коробки (differential_press_lsd_sc)",
+  "ru:внутренняя ошибка блока коробки (line_pressure_act1_hsd_oc)",
+  "ru:внутренняя ошибка блока коробки (line_pressure_act1_hsd_sc)",
+  "ru:внутренняя ошибка блока коробки (line_pressure_act1_lsd_oc)",
+  "ru:внутренняя ошибка блока коробки (line_pressure_act1_lsd_sc)",
+  "ru:внутренняя ошибка блока коробки (line_pressure_act2_hsd_oc)",
+  "ru:внутренняя ошибка блока коробки (line_pressure_act2_hsd_sc)",
+  "ru:внутренняя ошибка блока коробки (line_pressure_act2_lsd_oc)",
+  "ru:внутренняя ошибка блока коробки (line_pressure_act2_lsd_sc)",
+  "ru:внутренняя ошибка блока коробки (r_2_actuator2_hsd_oc)",
+  "ru:внутренняя ошибка блока коробки (r_2_actuator2_lsd_oc)",
+  "ru:внутренняя ошибка блока коробки (r_2_actuator2_lsd_sc)"
+ ],
+ "codes": [
+  {
+   "code": "45336",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (R_2_ACTUATOR2_HSD_OC)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (r_2_actuator2_hsd_oc)"
+  },
+  {
+   "code": "45337",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (R_2_ACTUATOR2_LSD_SC)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (r_2_actuator2_lsd_sc)"
+  },
+  {
+   "code": "45338",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (R_2_ACTUATOR2_LSD_OC)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (r_2_actuator2_lsd_oc)"
+  },
+  {
+   "code": "45339",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (1_3_ACTUATOR1_HSD_SC)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (1_3_actuator1_hsd_sc)"
+  },
+  {
+   "code": "45340",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (1_3_ACTUATOR1_HSD_OC)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (1_3_actuator1_hsd_oc)"
+  },
+  {
+   "code": "45341",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (1_3_ACTUATOR1_LSD_SC)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (1_3_actuator1_lsd_sc)"
+  },
+  {
+   "code": "45342",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (1_3_ACTUATOR1_LSD_OC)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (1_3_actuator1_lsd_oc)"
+  },
+  {
+   "code": "45343",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (1_3_ACTUATOR2_HSD_SC)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (1_3_actuator2_hsd_sc)"
+  },
+  {
+   "code": "45344",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (1_3_ACTUATOR2_HSD_OC)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (1_3_actuator2_hsd_oc)"
+  },
+  {
+   "code": "45345",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (1_3_ACTUATOR2_LSD_SC)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (1_3_actuator2_lsd_sc)"
+  },
+  {
+   "code": "45346",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (1_3_ACTUATOR2_LSD_OC)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (1_3_actuator2_lsd_oc)"
+  },
+  {
+   "code": "45347",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (4_6_ACTUATOR1_HSD_SC)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (4_6_actuator1_hsd_sc)"
+  },
+  {
+   "code": "45348",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (4_6_ACTUATOR1_HSD_OC)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (4_6_actuator1_hsd_oc)"
+  },
+  {
+   "code": "45349",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (4_6_ACTUATOR1_LSD_SC)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (4_6_actuator1_lsd_sc)"
+  },
+  {
+   "code": "45350",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (4_6_ACTUATOR1_LSD_OC)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (4_6_actuator1_lsd_oc)"
+  },
+  {
+   "code": "45351",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (4_6_ACTUATOR2_HSD_SC)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (4_6_actuator2_hsd_sc)"
+  },
+  {
+   "code": "45352",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (4_6_ACTUATOR2_HSD_OC)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (4_6_actuator2_hsd_oc)"
+  },
+  {
+   "code": "45353",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (4_6_ACTUATOR2_LSD_SC)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (4_6_actuator2_lsd_sc)"
+  },
+  {
+   "code": "45354",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (4_6_ACTUATOR2_LSD_OC)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (4_6_actuator2_lsd_oc)"
+  },
+  {
+   "code": "45355",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (5_7_ACTUATOR1_HSD_SC)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (5_7_actuator1_hsd_sc)"
+  },
+  {
+   "code": "45356",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (5_7_ACTUATOR1_HSD_OC)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (5_7_actuator1_hsd_oc)"
+  },
+  {
+   "code": "45357",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (5_7_ACTUATOR1_LSD_SC)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (5_7_actuator1_lsd_sc)"
+  },
+  {
+   "code": "45358",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (5_7_ACTUATOR1_LSD_OC)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (5_7_actuator1_lsd_oc)"
+  },
+  {
+   "code": "45359",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (5_7_ACTUATOR2_HSD_SC)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (5_7_actuator2_hsd_sc)"
+  },
+  {
+   "code": "45360",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (5_7_ACTUATOR2_HSD_OC)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (5_7_actuator2_hsd_oc)"
+  },
+  {
+   "code": "45361",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (5_7_ACTUATOR2_LSD_SC)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (5_7_actuator2_lsd_sc)"
+  },
+  {
+   "code": "45362",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (5_7_ACTUATOR2_LSD_OC)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (5_7_actuator2_lsd_oc)"
+  },
+  {
+   "code": "45363",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (LINE_PRESSURE_ACT1_HSD_SC)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (line_pressure_act1_hsd_sc)"
+  },
+  {
+   "code": "45364",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (LINE_PRESSURE_ACT1_HSD_OC)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (line_pressure_act1_hsd_oc)"
+  },
+  {
+   "code": "45365",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (LINE_PRESSURE_ACT1_LSD_SC)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (line_pressure_act1_lsd_sc)"
+  },
+  {
+   "code": "45366",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (LINE_PRESSURE_ACT1_LSD_OC)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (line_pressure_act1_lsd_oc)"
+  },
+  {
+   "code": "45367",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (LINE_PRESSURE_ACT2_HSD_SC)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (line_pressure_act2_hsd_sc)"
+  },
+  {
+   "code": "45368",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (LINE_PRESSURE_ACT2_HSD_OC)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (line_pressure_act2_hsd_oc)"
+  },
+  {
+   "code": "45369",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (LINE_PRESSURE_ACT2_LSD_SC)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (line_pressure_act2_lsd_sc)"
+  },
+  {
+   "code": "45370",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (LINE_PRESSURE_ACT2_LSD_OC)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (line_pressure_act2_lsd_oc)"
+  },
+  {
+   "code": "45371",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (CLUTCH_LINE_PRESS_HSD_SC)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (clutch_line_press_hsd_sc)"
+  },
+  {
+   "code": "45372",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (CLUTCH_LINE_PRESS_HSD_OC)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (clutch_line_press_hsd_oc)"
+  },
+  {
+   "code": "45373",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (CLUTCH_LINE_PRESS_LSD_SC)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (clutch_line_press_lsd_sc)"
+  },
+  {
+   "code": "45374",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (CLUTCH_LINE_PRESS_LSD_OC)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (clutch_line_press_lsd_oc)"
+  },
+  {
+   "code": "45375",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (DIFFERENTIAL_PRESS_HSD_SC)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (differential_press_hsd_sc)"
+  },
+  {
+   "code": "45376",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (DIFFERENTIAL_PRESS_HSD_OC)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (differential_press_hsd_oc)"
+  },
+  {
+   "code": "45377",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (DIFFERENTIAL_PRESS_LSD_SC)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (differential_press_lsd_sc)"
+  },
+  {
+   "code": "45378",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (DIFFERENTIAL_PRESS_LSD_OC)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (differential_press_lsd_oc)"
+  },
+  {
+   "code": "45379",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (CLUTCH_COOLING_1_HSD_SC)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (clutch_cooling_1_hsd_sc)"
+  },
+  {
+   "code": "45380",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (CLUTCH_COOLING_1_HSD_OC)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (clutch_cooling_1_hsd_oc)"
+  }
+ ]
+}

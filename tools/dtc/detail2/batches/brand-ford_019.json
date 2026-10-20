@@ -1,0 +1,399 @@
+{
+ "name": "brand-ford_019",
+ "series": "brand",
+ "brand": "ford",
+ "nodes": [
+  "cam timing advance is excessive",
+  "differential pressure feedback electronic sensor hoses reversed",
+  "egr barometric pressure sensor vref voltage",
+  "egr metering orifice restricted",
+  "egr no flow detected",
+  "engine temperature light monitor failure",
+  "evaporative emission control system vacuum system purge control solenoid or purge control valve fault",
+  "fam:egr",
+  "fam:egr_pos",
+  "fam:evap_vent",
+  "glow plug",
+  "glow plug monitor fault",
+  "ignition coil a secondary",
+  "ignition coil c secondary",
+  "ignition coil d secondary",
+  "ignition coil primary",
+  "ignition coil secondary",
+  "ignition control",
+  "inability of evaporative emission control system to bleed fuel tank",
+  "misfire monitor disabled unable to learn trigger wheel profile",
+  "octane adjust out of self test",
+  "purge flow",
+  "ru:датчик температуры впуска b",
+  "secondary air injection system monitor",
+  "secondary air is not being diverted",
+  "system voltage out of self test",
+  "variable cam timing overadvanced",
+  "variable cam timing overretarded",
+  "variable cam timing solenoid b",
+  "vct solenoid"
+ ],
+ "codes": [
+  {
+   "code": "P1360",
+   "brand": "ford",
+   "ru": "Катушка зажигания A: неисправность вторичной цепи",
+   "en": "Ignition Coil A Secondary Circuit Malfunction",
+   "fam": "",
+   "node": "ignition coil a secondary"
+  },
+  {
+   "code": "P1361",
+   "brand": "ford",
+   "ru": "Цепь управления зажиганием: низкое напряжение",
+   "en": "Ignition Control (IC) Circuit Low Voltage",
+   "fam": "",
+   "node": "ignition control"
+  },
+  {
+   "code": "P1362",
+   "brand": "ford",
+   "ru": "Катушка зажигания C: неисправность вторичной цепи",
+   "en": "Ignition Coil C Secondary Circuit Malfunction",
+   "fam": "",
+   "node": "ignition coil c secondary"
+  },
+  {
+   "code": "P1363",
+   "brand": "ford",
+   "ru": "Катушка зажигания D: неисправность вторичной цепи",
+   "en": "Ignition Coil D Secondary Circuit Malfunction",
+   "fam": "",
+   "node": "ignition coil d secondary"
+  },
+  {
+   "code": "P1364",
+   "brand": "ford",
+   "ru": "Катушка зажигания: неисправность первичной цепи",
+   "en": "Ignition Coil Primary Circuit Fault",
+   "fam": "",
+   "node": "ignition coil primary"
+  },
+  {
+   "code": "P1365",
+   "brand": "ford",
+   "ru": "Катушка зажигания: неисправность вторичной цепи",
+   "en": "Ignition Coil Secondary Circuit Failure",
+   "fam": "",
+   "node": "ignition coil secondary"
+  },
+  {
+   "code": "P1369",
+   "brand": "ford",
+   "ru": "Лампа температуры двигателя: неисправность контроля",
+   "en": "Engine Temperature Light Monitor Failure",
+   "fam": "",
+   "node": "engine temperature light monitor failure"
+  },
+  {
+   "code": "P1380",
+   "brand": "ford",
+   "ru": "Клапан фазовращателя (VCT): замыкание или обрыв",
+   "en": "VCT Solenoid Valve Circuit Short or Open",
+   "fam": "",
+   "node": "vct solenoid"
+  },
+  {
+   "code": "P1381",
+   "brand": "ford",
+   "ru": "Опережение фаз распредвала чрезмерное",
+   "en": "Cam Timing Advance is Excessive",
+   "fam": "",
+   "node": "cam timing advance is excessive"
+  },
+  {
+   "code": "P1383",
+   "brand": "ford",
+   "ru": "Опережение фаз распредвала чрезмерное",
+   "en": "Cam Timing Advance is Excessive",
+   "fam": "",
+   "node": "cam timing advance is excessive"
+  },
+  {
+   "code": "P1385",
+   "brand": "ford",
+   "ru": "Клапан фазовращателя B: неисправность",
+   "en": "Variable Cam Timing Solenoid B Malfunction",
+   "fam": "",
+   "node": "variable cam timing solenoid b"
+  },
+  {
+   "code": "P1386",
+   "brand": "ford",
+   "ru": "Фазовращатель (ряд 2): слишком большое опережение",
+   "en": "Variable Cam Timing Overadvanced Bank 2",
+   "fam": "",
+   "node": "variable cam timing overadvanced"
+  },
+  {
+   "code": "P1388",
+   "brand": "ford",
+   "ru": "Фазовращатель (ряд 2): слишком большое запаздывание",
+   "en": "Variable Cam Timing Overretarded Bank 2",
+   "fam": "",
+   "node": "variable cam timing overretarded"
+  },
+  {
+   "code": "P1389",
+   "brand": "ford",
+   "ru": "Свечи накаливания, плюсовая сторона: низкий сигнал",
+   "en": "Glow Plug Circuit High Side Low Input",
+   "fam": "",
+   "node": "glow plug"
+  },
+  {
+   "code": "P1391",
+   "brand": "ford",
+   "ru": "Свечи накаливания (ряд 1): низкий сигнал",
+   "en": "Glow Plug Circuit Low Input Bank 1",
+   "fam": "",
+   "node": "glow plug"
+  },
+  {
+   "code": "P1392",
+   "brand": "ford",
+   "ru": "Свечи накаливания (ряд 1): высокий сигнал",
+   "en": "Glow Plug Circuit High Input Bank 1",
+   "fam": "",
+   "node": "glow plug"
+  },
+  {
+   "code": "P1393",
+   "brand": "ford",
+   "ru": "Свечи накаливания (ряд 2): низкий сигнал",
+   "en": "Glow Plug Circuit Low Input Bank 2",
+   "fam": "",
+   "node": "glow plug"
+  },
+  {
+   "code": "P1394",
+   "brand": "ford",
+   "ru": "Свечи накаливания (ряд 2): высокий сигнал",
+   "en": "Glow Plug Circuit High Input Bank 2",
+   "fam": "",
+   "node": "glow plug"
+  },
+  {
+   "code": "P1399",
+   "brand": "ford",
+   "ru": "Свечи накаливания, плюсовая сторона: высокий сигнал",
+   "en": "Glow Plug Circuit High Side High Input",
+   "fam": "",
+   "node": "glow plug"
+  },
+  {
+   "code": "P1390",
+   "brand": "ford",
+   "ru": "Регулировка под октановое число: вне диапазона самотеста",
+   "en": "Octane Adjust Out of Self-Test Range",
+   "fam": "",
+   "node": "octane adjust out of self test"
+  },
+  {
+   "code": "P1395",
+   "brand": "ford",
+   "ru": "Контроль свечей накаливания (ряд 1): неисправность",
+   "en": "Glow Plug Monitor Fault Bank 1",
+   "fam": "",
+   "node": "glow plug monitor fault"
+  },
+  {
+   "code": "P1396",
+   "brand": "ford",
+   "ru": "Контроль свечей накаливания (ряд 2): неисправность",
+   "en": "Glow Plug Monitor Fault Bank 2",
+   "fam": "",
+   "node": "glow plug monitor fault"
+  },
+  {
+   "code": "P1397",
+   "brand": "ford",
+   "ru": "Напряжение бортсети вне диапазона самотеста",
+   "en": "System Voltage Out Of Self Test Range",
+   "fam": "",
+   "node": "system voltage out of self test"
+  },
+  {
+   "code": "P1400",
+   "brand": "ford",
+   "ru": "Датчик перепада давления EGR (DPFE): низкий сигнал",
+   "en": "",
+   "fam": "egr_pos",
+   "node": "fam:egr_pos"
+  },
+  {
+   "code": "P1401",
+   "brand": "ford",
+   "ru": "Датчик перепада давления EGR (DPFE): высокий сигнал",
+   "en": "",
+   "fam": "egr_pos",
+   "node": "fam:egr_pos"
+  },
+  {
+   "code": "P1405",
+   "brand": "ford",
+   "ru": "DPFE: верхний шланг снят или забит",
+   "en": "",
+   "fam": "egr_pos",
+   "node": "fam:egr_pos"
+  },
+  {
+   "code": "P1406",
+   "brand": "ford",
+   "ru": "DPFE: нижний шланг снят или забит",
+   "en": "",
+   "fam": "egr_pos",
+   "node": "fam:egr_pos"
+  },
+  {
+   "code": "P1409",
+   "brand": "ford",
+   "ru": "Регулятор вакуума EGR (EVR): цепь",
+   "en": "",
+   "fam": "egr_pos",
+   "node": "fam:egr_pos"
+  },
+  {
+   "code": "P1402",
+   "brand": "ford",
+   "ru": "Калиброванное отверстие ЕГР засорено",
+   "en": "EGR Metering Orifice Restricted",
+   "fam": "",
+   "node": "egr metering orifice restricted"
+  },
+  {
+   "code": "P1403",
+   "brand": "ford",
+   "ru": "Датчик перепада давления ЕГР: шланги перепутаны",
+   "en": "Differential Pressure Feedback Electronic Sensor Hoses Reversed",
+   "fam": "",
+   "node": "differential pressure feedback electronic sensor hoses reversed"
+  },
+  {
+   "code": "P1404",
+   "brand": "ford",
+   "ru": "Датчик температуры впуска B: неисправность / ЕГР: работа в закрытом положении",
+   "en": "IAT - B Circuit Malfunction Exhaust Gas Recirculation Closed Position Performance",
+   "fam": "",
+   "node": "ru:датчик температуры впуска b"
+  },
+  {
+   "code": "P1407",
+   "brand": "ford",
+   "ru": "ЕГР: потока нет",
+   "en": "EGR No Flow Detected",
+   "fam": "",
+   "node": "egr no flow detected"
+  },
+  {
+   "code": "P1408",
+   "brand": "ford",
+   "ru": "EGR: поток вне диапазона самотеста",
+   "en": "",
+   "fam": "egr",
+   "node": "fam:egr"
+  },
+  {
+   "code": "P1410",
+   "brand": "ford",
+   "ru": "ЕГР: опорное напряжение датчика атмосферного давления",
+   "en": "EGR Barometric Pressure Sensor VREF Voltage",
+   "fam": "",
+   "node": "egr barometric pressure sensor vref voltage"
+  },
+  {
+   "code": "P1411",
+   "brand": "ford",
+   "ru": "Вторичный воздух не перенаправляется",
+   "en": "Secondary Air is Not Being Diverted",
+   "fam": "",
+   "node": "secondary air is not being diverted"
+  },
+  {
+   "code": "P1413",
+   "brand": "ford",
+   "ru": "Контроль вторичного воздуха: низкое напряжение в цепи",
+   "en": "Secondary Air Injection System Monitor Circuit Low Voltage",
+   "fam": "",
+   "node": "secondary air injection system monitor"
+  },
+  {
+   "code": "P1414",
+   "brand": "ford",
+   "ru": "Контроль вторичного воздуха: высокое напряжение в цепи",
+   "en": "Secondary Air Injection System Monitor Circuit High Voltage",
+   "fam": "",
+   "node": "secondary air injection system monitor"
+  },
+  {
+   "code": "P1442",
+   "brand": "ford",
+   "ru": "Контроль вторичного воздуха: высокое напряжение в цепи",
+   "en": "Secondary Air Injection System Monitor Circuit High Voltage",
+   "fam": "",
+   "node": "secondary air injection system monitor"
+  },
+  {
+   "code": "P1431",
+   "brand": "ford",
+   "ru": "Контроль пропусков отключён: не удалось обучить профиль задающего диска",
+   "en": "Misfire Monitor Disabled Unable to Learn Trigger Wheel Profile",
+   "fam": "",
+   "node": "misfire monitor disabled unable to learn trigger wheel profile"
+  },
+  {
+   "code": "P1443",
+   "brand": "ford",
+   "ru": "Улавливание паров топлива: неисправность клапана продувки",
+   "en": "Evaporative Emission Control System Vacuum System Purge Control Solenoid or Purge Control Valve Fault",
+   "fam": "",
+   "node": "evaporative emission control system vacuum system purge control solenoid or purge control valve fault"
+  },
+  {
+   "code": "P1444",
+   "brand": "ford",
+   "ru": "Датчик потока продувки: низкий сигнал",
+   "en": "Purge Flow Sensor Circuit Input Low",
+   "fam": "",
+   "node": "purge flow"
+  },
+  {
+   "code": "P1445",
+   "brand": "ford",
+   "ru": "Датчик потока продувки: высокий сигнал",
+   "en": "Purge Flow Sensor Circuit Input High",
+   "fam": "",
+   "node": "purge flow"
+  },
+  {
+   "code": "P1450",
+   "brand": "ford",
+   "ru": "Не удаётся сбросить разрежение в баке",
+   "en": "",
+   "fam": "evap_vent",
+   "node": "fam:evap_vent"
+  },
+  {
+   "code": "P1451",
+   "brand": "ford",
+   "ru": "Клапан вентиляции адсорбера: цепь",
+   "en": "",
+   "fam": "evap_vent",
+   "node": "fam:evap_vent"
+  },
+  {
+   "code": "P1452",
+   "brand": "ford",
+   "ru": "Система улавливания паров не может стравить давление из бака",
+   "en": "Inability of Evaporative Emission Control System to Bleed Fuel Tank",
+   "fam": "",
+   "node": "inability of evaporative emission control system to bleed fuel tank"
+  }
+ ]
+}

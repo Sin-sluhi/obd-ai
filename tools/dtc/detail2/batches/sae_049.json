@@ -1,0 +1,483 @@
+{
+ "name": "sae_049",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "ignition j control",
+  "pressure"
+ ],
+ "codes": [
+  {
+   "code": "P038D",
+   "brand": "",
+   "ru": "Управление зажиганием J: обрыв сигнальной цепи",
+   "en": "Ignition J Control Signal Circuit/Open",
+   "fam": "",
+   "node": "ignition j control"
+  },
+  {
+   "code": "P038E",
+   "brand": "",
+   "ru": "Управление зажиганием J: низкий уровень в сигнальной цепи",
+   "en": "Ignition J Control Signal Circuit Low",
+   "fam": "",
+   "node": "ignition j control"
+  },
+  {
+   "code": "P038F",
+   "brand": "",
+   "ru": "Управление зажиганием J: высокий уровень в сигнальной цепи",
+   "en": "Ignition J Control Signal Circuit High",
+   "fam": "",
+   "node": "ignition j control"
+  },
+  {
+   "code": "P0395",
+   "brand": "",
+   "ru": "Датчик давления в цилиндре 1: цепь",
+   "en": "Cylinder 1 Pressure Sensor Circuit",
+   "fam": "",
+   "node": "pressure"
+  },
+  {
+   "code": "P0396",
+   "brand": "",
+   "ru": "Датчик давления в цилиндре 1: сигнал вне диапазона",
+   "en": "Cylinder 1 Pressure Sensor Circuit Range/Performance",
+   "fam": "",
+   "node": "pressure"
+  },
+  {
+   "code": "P0397",
+   "brand": "",
+   "ru": "Датчик давления в цилиндре 1: низкий уровень сигнала в цепи",
+   "en": "Cylinder 1 Pressure Sensor Circuit Low",
+   "fam": "",
+   "node": "pressure"
+  },
+  {
+   "code": "P0398",
+   "brand": "",
+   "ru": "Датчик давления в цилиндре 1: высокий уровень сигнала в цепи",
+   "en": "Cylinder 1 Pressure Sensor Circuit High",
+   "fam": "",
+   "node": "pressure"
+  },
+  {
+   "code": "P0399",
+   "brand": "",
+   "ru": "Датчик давления в цилиндре 1: прерывистый / нестабильный сигнал",
+   "en": "Cylinder 1 Pressure Sensor Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "pressure"
+  },
+  {
+   "code": "P039F",
+   "brand": "",
+   "ru": "Датчик давления в цилиндре 2: цепь",
+   "en": "Cylinder 2 Pressure Sensor Circuit",
+   "fam": "",
+   "node": "pressure"
+  },
+  {
+   "code": "P03A0",
+   "brand": "",
+   "ru": "Датчик давления в цилиндре 2: сигнал вне диапазона",
+   "en": "Cylinder 2 Pressure Sensor Circuit Range/Performance",
+   "fam": "",
+   "node": "pressure"
+  },
+  {
+   "code": "P03A1",
+   "brand": "",
+   "ru": "Датчик давления в цилиндре 2: низкий уровень сигнала в цепи",
+   "en": "Cylinder 2 Pressure Sensor Circuit Low",
+   "fam": "",
+   "node": "pressure"
+  },
+  {
+   "code": "P03A2",
+   "brand": "",
+   "ru": "Датчик давления в цилиндре 2: высокий уровень сигнала в цепи",
+   "en": "Cylinder 2 Pressure Sensor Circuit High",
+   "fam": "",
+   "node": "pressure"
+  },
+  {
+   "code": "P03A3",
+   "brand": "",
+   "ru": "Датчик давления в цилиндре 2: прерывистый / нестабильный сигнал",
+   "en": "Cylinder 2 Pressure Sensor Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "pressure"
+  },
+  {
+   "code": "P03A9",
+   "brand": "",
+   "ru": "Датчик давления в цилиндре 3: цепь",
+   "en": "Cylinder 3 Pressure Sensor Circuit",
+   "fam": "",
+   "node": "pressure"
+  },
+  {
+   "code": "P03AA",
+   "brand": "",
+   "ru": "Датчик давления в цилиндре 3: сигнал вне диапазона",
+   "en": "Cylinder 3 Pressure Sensor Circuit Range/Performance",
+   "fam": "",
+   "node": "pressure"
+  },
+  {
+   "code": "P03AB",
+   "brand": "",
+   "ru": "Датчик давления в цилиндре 3: низкий уровень сигнала в цепи",
+   "en": "Cylinder 3 Pressure Sensor Circuit Low",
+   "fam": "",
+   "node": "pressure"
+  },
+  {
+   "code": "P03AC",
+   "brand": "",
+   "ru": "Датчик давления в цилиндре 3: высокий уровень сигнала в цепи",
+   "en": "Cylinder 3 Pressure Sensor Circuit High",
+   "fam": "",
+   "node": "pressure"
+  },
+  {
+   "code": "P03AD",
+   "brand": "",
+   "ru": "Датчик давления в цилиндре 3: прерывистый / нестабильный сигнал",
+   "en": "Cylinder 3 Pressure Sensor Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "pressure"
+  },
+  {
+   "code": "P03B3",
+   "brand": "",
+   "ru": "Датчик давления в цилиндре 4: цепь",
+   "en": "Cylinder 4 Pressure Sensor Circuit",
+   "fam": "",
+   "node": "pressure"
+  },
+  {
+   "code": "P03B4",
+   "brand": "",
+   "ru": "Датчик давления в цилиндре 4: сигнал вне диапазона",
+   "en": "Cylinder 4 Pressure Sensor Circuit Range/Performance",
+   "fam": "",
+   "node": "pressure"
+  },
+  {
+   "code": "P03B5",
+   "brand": "",
+   "ru": "Датчик давления в цилиндре 4: низкий уровень сигнала в цепи",
+   "en": "Cylinder 4 Pressure Sensor Circuit Low",
+   "fam": "",
+   "node": "pressure"
+  },
+  {
+   "code": "P03B6",
+   "brand": "",
+   "ru": "Датчик давления в цилиндре 4: высокий уровень сигнала в цепи",
+   "en": "Cylinder 4 Pressure Sensor Circuit High",
+   "fam": "",
+   "node": "pressure"
+  },
+  {
+   "code": "P03B7",
+   "brand": "",
+   "ru": "Датчик давления в цилиндре 4: прерывистый / нестабильный сигнал",
+   "en": "Cylinder 4 Pressure Sensor Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "pressure"
+  },
+  {
+   "code": "P03BD",
+   "brand": "",
+   "ru": "Датчик давления в цилиндре 5: цепь",
+   "en": "Cylinder 5 Pressure Sensor Circuit",
+   "fam": "",
+   "node": "pressure"
+  },
+  {
+   "code": "P03BE",
+   "brand": "",
+   "ru": "Датчик давления в цилиндре 5: сигнал вне диапазона",
+   "en": "Cylinder 5 Pressure Sensor Circuit Range/Performance",
+   "fam": "",
+   "node": "pressure"
+  },
+  {
+   "code": "P03BF",
+   "brand": "",
+   "ru": "Датчик давления в цилиндре 5: низкий уровень сигнала в цепи",
+   "en": "Cylinder 5 Pressure Sensor Circuit Low",
+   "fam": "",
+   "node": "pressure"
+  },
+  {
+   "code": "P03C0",
+   "brand": "",
+   "ru": "Датчик давления в цилиндре 5: высокий уровень сигнала в цепи",
+   "en": "Cylinder 5 Pressure Sensor Circuit High",
+   "fam": "",
+   "node": "pressure"
+  },
+  {
+   "code": "P03C1",
+   "brand": "",
+   "ru": "Датчик давления в цилиндре 5: прерывистый / нестабильный сигнал",
+   "en": "Cylinder 5 Pressure Sensor Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "pressure"
+  },
+  {
+   "code": "P03C7",
+   "brand": "",
+   "ru": "Датчик давления в цилиндре 6: цепь",
+   "en": "Cylinder 6 Pressure Sensor Circuit",
+   "fam": "",
+   "node": "pressure"
+  },
+  {
+   "code": "P03C8",
+   "brand": "",
+   "ru": "Датчик давления в цилиндре 6: сигнал вне диапазона",
+   "en": "Cylinder 6 Pressure Sensor Circuit Range/Performance",
+   "fam": "",
+   "node": "pressure"
+  },
+  {
+   "code": "P03C9",
+   "brand": "",
+   "ru": "Датчик давления в цилиндре 6: низкий уровень сигнала в цепи",
+   "en": "Cylinder 6 Pressure Sensor Circuit Low",
+   "fam": "",
+   "node": "pressure"
+  },
+  {
+   "code": "P03CA",
+   "brand": "",
+   "ru": "Датчик давления в цилиндре 6: высокий уровень сигнала в цепи",
+   "en": "Cylinder 6 Pressure Sensor Circuit High",
+   "fam": "",
+   "node": "pressure"
+  },
+  {
+   "code": "P03CB",
+   "brand": "",
+   "ru": "Датчик давления в цилиндре 6: прерывистый / нестабильный сигнал",
+   "en": "Cylinder 6 Pressure Sensor Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "pressure"
+  },
+  {
+   "code": "P03D1",
+   "brand": "",
+   "ru": "Датчик давления в цилиндре 7: цепь",
+   "en": "Cylinder 7 Pressure Sensor Circuit",
+   "fam": "",
+   "node": "pressure"
+  },
+  {
+   "code": "P03D2",
+   "brand": "",
+   "ru": "Датчик давления в цилиндре 7: сигнал вне диапазона",
+   "en": "Cylinder 7 Pressure Sensor Circuit Range/Performance",
+   "fam": "",
+   "node": "pressure"
+  },
+  {
+   "code": "P03D3",
+   "brand": "",
+   "ru": "Датчик давления в цилиндре 7: низкий уровень сигнала в цепи",
+   "en": "Cylinder 7 Pressure Sensor Circuit Low",
+   "fam": "",
+   "node": "pressure"
+  },
+  {
+   "code": "P03D4",
+   "brand": "",
+   "ru": "Датчик давления в цилиндре 7: высокий уровень сигнала в цепи",
+   "en": "Cylinder 7 Pressure Sensor Circuit High",
+   "fam": "",
+   "node": "pressure"
+  },
+  {
+   "code": "P03D5",
+   "brand": "",
+   "ru": "Датчик давления в цилиндре 7: прерывистый / нестабильный сигнал",
+   "en": "Cylinder 7 Pressure Sensor Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "pressure"
+  },
+  {
+   "code": "P03DB",
+   "brand": "",
+   "ru": "Датчик давления в цилиндре 8: цепь",
+   "en": "Cylinder 8 Pressure Sensor Circuit",
+   "fam": "",
+   "node": "pressure"
+  },
+  {
+   "code": "P03DC",
+   "brand": "",
+   "ru": "Датчик давления в цилиндре 8: сигнал вне диапазона",
+   "en": "Cylinder 8 Pressure Sensor Circuit Range/Performance",
+   "fam": "",
+   "node": "pressure"
+  },
+  {
+   "code": "P03DD",
+   "brand": "",
+   "ru": "Датчик давления в цилиндре 8: низкий уровень сигнала в цепи",
+   "en": "Cylinder 8 Pressure Sensor Circuit Low",
+   "fam": "",
+   "node": "pressure"
+  },
+  {
+   "code": "P03DE",
+   "brand": "",
+   "ru": "Датчик давления в цилиндре 8: высокий уровень сигнала в цепи",
+   "en": "Cylinder 8 Pressure Sensor Circuit High",
+   "fam": "",
+   "node": "pressure"
+  },
+  {
+   "code": "P03DF",
+   "brand": "",
+   "ru": "Датчик давления в цилиндре 8: прерывистый / нестабильный сигнал",
+   "en": "Cylinder 8 Pressure Sensor Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "pressure"
+  },
+  {
+   "code": "P2348",
+   "brand": "",
+   "ru": "Датчик давления в цилиндре 9: цепь",
+   "en": "Cylinder 9 Pressure Sensor Circuit",
+   "fam": "",
+   "node": "pressure"
+  },
+  {
+   "code": "P2349",
+   "brand": "",
+   "ru": "Датчик давления в цилиндре 9: сигнал вне диапазона",
+   "en": "Cylinder 9 Pressure Sensor Circuit Range/Performance",
+   "fam": "",
+   "node": "pressure"
+  },
+  {
+   "code": "P234A",
+   "brand": "",
+   "ru": "Датчик давления в цилиндре 9: низкий уровень сигнала в цепи",
+   "en": "Cylinder 9 Pressure Sensor Circuit Low",
+   "fam": "",
+   "node": "pressure"
+  },
+  {
+   "code": "P234B",
+   "brand": "",
+   "ru": "Датчик давления в цилиндре 9: высокий уровень сигнала в цепи",
+   "en": "Cylinder 9 Pressure Sensor Circuit High",
+   "fam": "",
+   "node": "pressure"
+  },
+  {
+   "code": "P234C",
+   "brand": "",
+   "ru": "Датчик давления в цилиндре 9: прерывистый / нестабильный сигнал",
+   "en": "Cylinder 9 Pressure Sensor Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "pressure"
+  },
+  {
+   "code": "P2352",
+   "brand": "",
+   "ru": "Датчик давления в цилиндре 10: цепь",
+   "en": "Cylinder 10 Pressure Sensor Circuit",
+   "fam": "",
+   "node": "pressure"
+  },
+  {
+   "code": "P2353",
+   "brand": "",
+   "ru": "Датчик давления в цилиндре 10: сигнал вне диапазона",
+   "en": "Cylinder 10 Pressure Sensor Circuit Range/Performance",
+   "fam": "",
+   "node": "pressure"
+  },
+  {
+   "code": "P2354",
+   "brand": "",
+   "ru": "Датчик давления в цилиндре 10: низкий уровень сигнала в цепи",
+   "en": "Cylinder 10 Pressure Sensor Circuit Low",
+   "fam": "",
+   "node": "pressure"
+  },
+  {
+   "code": "P2355",
+   "brand": "",
+   "ru": "Датчик давления в цилиндре 10: высокий уровень сигнала в цепи",
+   "en": "Cylinder 10 Pressure Sensor Circuit High",
+   "fam": "",
+   "node": "pressure"
+  },
+  {
+   "code": "P2356",
+   "brand": "",
+   "ru": "Датчик давления в цилиндре 10: прерывистый / нестабильный сигнал",
+   "en": "Cylinder 10 Pressure Sensor Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "pressure"
+  },
+  {
+   "code": "P235C",
+   "brand": "",
+   "ru": "Датчик давления в цилиндре 11: цепь",
+   "en": "Cylinder 11 Pressure Sensor Circuit",
+   "fam": "",
+   "node": "pressure"
+  },
+  {
+   "code": "P235D",
+   "brand": "",
+   "ru": "Датчик давления в цилиндре 11: сигнал вне диапазона",
+   "en": "Cylinder 11 Pressure Sensor Circuit Range/Performance",
+   "fam": "",
+   "node": "pressure"
+  },
+  {
+   "code": "P235E",
+   "brand": "",
+   "ru": "Датчик давления в цилиндре 11: низкий уровень сигнала в цепи",
+   "en": "Cylinder 11 Pressure Sensor Circuit Low",
+   "fam": "",
+   "node": "pressure"
+  },
+  {
+   "code": "P235F",
+   "brand": "",
+   "ru": "Датчик давления в цилиндре 11: высокий уровень сигнала в цепи",
+   "en": "Cylinder 11 Pressure Sensor Circuit High",
+   "fam": "",
+   "node": "pressure"
+  },
+  {
+   "code": "P2360",
+   "brand": "",
+   "ru": "Датчик давления в цилиндре 11: прерывистый / нестабильный сигнал",
+   "en": "Cylinder 11 Pressure Sensor Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "pressure"
+  },
+  {
+   "code": "P2366",
+   "brand": "",
+   "ru": "Датчик давления в цилиндре 12: цепь",
+   "en": "Cylinder 12 Pressure Sensor Circuit",
+   "fam": "",
+   "node": "pressure"
+  }
+ ]
+}

@@ -1,0 +1,328 @@
+{
+ "name": "sae_150",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "egr temperature charge air cooler temperature correlation",
+  "engine oil deteriorated",
+  "engine oil level",
+  "engine oil level too",
+  "engine oil quality",
+  "exhaust aftertreatment fuel air purge valve",
+  "nh3 sensor calibration memory",
+  "nh3 sensor processor",
+  "particulate filter a incorrect",
+  "pto enable",
+  "pto engine shutdown",
+  "pto sense",
+  "reductant tank temperature fuel temperature correlation",
+  "reductant temperature too",
+  "scr catalyst incorrect"
+ ],
+ "codes": [
+  {
+   "code": "P24ED",
+   "brand": "",
+   "ru": "Память калибровки датчика аммиака",
+   "en": "NH3 Sensor Calibration Memory",
+   "fam": "",
+   "node": "nh3 sensor calibration memory"
+  },
+  {
+   "code": "P24EE",
+   "brand": "",
+   "ru": "Процессор датчика аммиака: работа нарушена",
+   "en": "NH3 Sensor Processor Performance",
+   "fam": "",
+   "node": "nh3 sensor processor"
+  },
+  {
+   "code": "P24F2",
+   "brand": "",
+   "ru": "Рассогласование температуры EGR и интеркулера",
+   "en": "EGR Temperature/Charge Air Cooler Temperature Correlation",
+   "fam": "",
+   "node": "egr temperature charge air cooler temperature correlation"
+  },
+  {
+   "code": "P24F3",
+   "brand": "",
+   "ru": "Рассогласование температуры бака мочевины и топлива",
+   "en": "Reductant Tank Temperature/Fuel Temperature Correlation",
+   "fam": "",
+   "node": "reductant tank temperature fuel temperature correlation"
+  },
+  {
+   "code": "P24F6",
+   "brand": "",
+   "ru": "Клапан продувки топливной форсунки выпуска: заклинил открытым",
+   "en": "Exhaust Aftertreatment Fuel Air Purge Valve Stuck Open",
+   "fam": "",
+   "node": "exhaust aftertreatment fuel air purge valve"
+  },
+  {
+   "code": "P24F7",
+   "brand": "",
+   "ru": "Клапан продувки топливной форсунки выпуска: заклинил закрытым",
+   "en": "Exhaust Aftertreatment Fuel Air Purge Valve Stuck Closed",
+   "fam": "",
+   "node": "exhaust aftertreatment fuel air purge valve"
+  },
+  {
+   "code": "P24F8",
+   "brand": "",
+   "ru": "Клапан продувки топливной форсунки выпуска: цепь управления",
+   "en": "Exhaust Aftertreatment Fuel Air Purge Valve Control Circuit",
+   "fam": "",
+   "node": "exhaust aftertreatment fuel air purge valve"
+  },
+  {
+   "code": "P24F9",
+   "brand": "",
+   "ru": "Клапан продувки топливной форсунки выпуска: цепь управления вне диапазона",
+   "en": "Exhaust Aftertreatment Fuel Air Purge Valve Control Circuit Range/Performance",
+   "fam": "",
+   "node": "exhaust aftertreatment fuel air purge valve"
+  },
+  {
+   "code": "P24FA",
+   "brand": "",
+   "ru": "Клапан продувки топливной форсунки выпуска: низкий уровень в цепи управления",
+   "en": "Exhaust Aftertreatment Fuel Air Purge Valve Control Circuit Low",
+   "fam": "",
+   "node": "exhaust aftertreatment fuel air purge valve"
+  },
+  {
+   "code": "P24FB",
+   "brand": "",
+   "ru": "Клапан продувки топливной форсунки выпуска: высокий уровень в цепи управления",
+   "en": "Exhaust Aftertreatment Fuel Air Purge Valve Control Circuit High",
+   "fam": "",
+   "node": "exhaust aftertreatment fuel air purge valve"
+  },
+  {
+   "code": "P24FD",
+   "brand": "",
+   "ru": "Установлен не тот сажевый фильтр A",
+   "en": "Particulate Filter A Incorrect",
+   "fam": "",
+   "node": "particulate filter a incorrect"
+  },
+  {
+   "code": "P24FE",
+   "brand": "",
+   "ru": "Установлен не тот катализатор SCR",
+   "en": "SCR Catalyst Incorrect",
+   "fam": "",
+   "node": "scr catalyst incorrect"
+  },
+  {
+   "code": "P24FF",
+   "brand": "",
+   "ru": "Система мочевины (SCR): слишком высокая температура",
+   "en": "Reductant Temperature Too High",
+   "fam": "",
+   "node": "reductant temperature too"
+  },
+  {
+   "code": "P2D45",
+   "brand": "",
+   "ru": "Система мочевины (SCR): слишком низкая температура",
+   "en": "Reductant Temperature Too Low",
+   "fam": "",
+   "node": "reductant temperature too"
+  },
+  {
+   "code": "P250A",
+   "brand": "",
+   "ru": "Датчик уровня масла: цепь",
+   "en": "Engine Oil Level Sensor Circuit",
+   "fam": "",
+   "node": "engine oil level"
+  },
+  {
+   "code": "P250B",
+   "brand": "",
+   "ru": "Датчик уровня масла: сигнал вне диапазона",
+   "en": "Engine Oil Level Sensor Circuit Range/Performance",
+   "fam": "",
+   "node": "engine oil level"
+  },
+  {
+   "code": "P250C",
+   "brand": "",
+   "ru": "Датчик уровня масла: низкий уровень сигнала в цепи",
+   "en": "Engine Oil Level Sensor Circuit Low",
+   "fam": "",
+   "node": "engine oil level"
+  },
+  {
+   "code": "P250D",
+   "brand": "",
+   "ru": "Датчик уровня масла: высокий уровень сигнала в цепи",
+   "en": "Engine Oil Level Sensor Circuit High",
+   "fam": "",
+   "node": "engine oil level"
+  },
+  {
+   "code": "P250E",
+   "brand": "",
+   "ru": "Датчик уровня масла: прерывистый / нестабильный сигнал",
+   "en": "Engine Oil Level Sensor Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "engine oil level"
+  },
+  {
+   "code": "P250F",
+   "brand": "",
+   "ru": "Слишком низкий уровень масла",
+   "en": "Engine Oil Level Too Low",
+   "fam": "",
+   "node": "engine oil level too"
+  },
+  {
+   "code": "P252F",
+   "brand": "",
+   "ru": "Слишком высокий уровень масла",
+   "en": "Engine Oil Level Too High",
+   "fam": "",
+   "node": "engine oil level too"
+  },
+  {
+   "code": "P251A",
+   "brand": "",
+   "ru": "Выключатель отбора мощности: обрыв цепи",
+   "en": "PTO Enable Switch Circuit/Open",
+   "fam": "",
+   "node": "pto enable"
+  },
+  {
+   "code": "P251B",
+   "brand": "",
+   "ru": "Выключатель отбора мощности: низкий уровень сигнала в цепи",
+   "en": "PTO Enable Switch Circuit Low",
+   "fam": "",
+   "node": "pto enable"
+  },
+  {
+   "code": "P251C",
+   "brand": "",
+   "ru": "Выключатель отбора мощности: высокий уровень сигнала в цепи",
+   "en": "PTO Enable Switch Circuit High",
+   "fam": "",
+   "node": "pto enable"
+  },
+  {
+   "code": "P251D",
+   "brand": "",
+   "ru": "Остановка двигателя от отбора мощности: обрыв цепи",
+   "en": "PTO Engine Shutdown Circuit/Open",
+   "fam": "",
+   "node": "pto engine shutdown"
+  },
+  {
+   "code": "P251E",
+   "brand": "",
+   "ru": "Остановка двигателя от отбора мощности: низкий уровень сигнала в цепи",
+   "en": "PTO Engine Shutdown Circuit Low",
+   "fam": "",
+   "node": "pto engine shutdown"
+  },
+  {
+   "code": "P251F",
+   "brand": "",
+   "ru": "Остановка двигателя от отбора мощности: высокий уровень сигнала в цепи",
+   "en": "PTO Engine Shutdown Circuit High",
+   "fam": "",
+   "node": "pto engine shutdown"
+  },
+  {
+   "code": "P252A",
+   "brand": "",
+   "ru": "Датчик качества масла: цепь",
+   "en": "Engine Oil Quality Sensor Circuit",
+   "fam": "",
+   "node": "engine oil quality"
+  },
+  {
+   "code": "P252B",
+   "brand": "",
+   "ru": "Датчик качества масла: сигнал вне диапазона",
+   "en": "Engine Oil Quality Sensor Circuit Range/Performance",
+   "fam": "",
+   "node": "engine oil quality"
+  },
+  {
+   "code": "P252C",
+   "brand": "",
+   "ru": "Датчик качества масла: низкий уровень сигнала в цепи",
+   "en": "Engine Oil Quality Sensor Circuit Low",
+   "fam": "",
+   "node": "engine oil quality"
+  },
+  {
+   "code": "P252D",
+   "brand": "",
+   "ru": "Датчик качества масла: высокий уровень сигнала в цепи",
+   "en": "Engine Oil Quality Sensor Circuit High",
+   "fam": "",
+   "node": "engine oil quality"
+  },
+  {
+   "code": "P252E",
+   "brand": "",
+   "ru": "Датчик качества масла: прерывистый / нестабильный сигнал",
+   "en": "Engine Oil Quality Sensor Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "engine oil quality"
+  },
+  {
+   "code": "P253A",
+   "brand": "",
+   "ru": "Отбор мощности: обрыв цепи обратной связи",
+   "en": "PTO Sense Circuit/Open",
+   "fam": "",
+   "node": "pto sense"
+  },
+  {
+   "code": "P253B",
+   "brand": "",
+   "ru": "Отбор мощности (PTO): цепь обратной связи вне диапазона",
+   "en": "PTO Sense Circuit Range/Performance",
+   "fam": "",
+   "node": "pto sense"
+  },
+  {
+   "code": "P253C",
+   "brand": "",
+   "ru": "Отбор мощности (PTO): низкий уровень в цепи обратной связи",
+   "en": "PTO Sense Circuit Low",
+   "fam": "",
+   "node": "pto sense"
+  },
+  {
+   "code": "P253D",
+   "brand": "",
+   "ru": "Отбор мощности (PTO): высокий уровень в цепи обратной связи",
+   "en": "PTO Sense Circuit High",
+   "fam": "",
+   "node": "pto sense"
+  },
+  {
+   "code": "P253E",
+   "brand": "",
+   "ru": "Отбор мощности: прерывистый / нестабильный сигнал обратной связи",
+   "en": "PTO Sense Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "pto sense"
+  },
+  {
+   "code": "P253F",
+   "brand": "",
+   "ru": "Масло выработано (потеря свойств)",
+   "en": "Engine Oil Deteriorated",
+   "fam": "",
+   "node": "engine oil deteriorated"
+  }
+ ]
+}

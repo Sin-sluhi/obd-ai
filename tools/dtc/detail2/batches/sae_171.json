@@ -1,0 +1,369 @@
+{
+ "name": "sae_171",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "cold start injection pulse",
+  "hybrid ev battery pack coolant pump a overspeed dry run",
+  "hybrid ev electronics coolant pump a overspeed dry run",
+  "hybrid ev electronics coolant temperature sensor b",
+  "hybrid ev electronics coolant temperature sensor c",
+  "injection pulse",
+  "injection pulse offset exceeded learning limit",
+  "injection pulse offset not learned"
+ ],
+ "codes": [
+  {
+   "code": "P2B00",
+   "brand": "",
+   "ru": "Цилиндр 1: нарушена длительность импульса впрыска",
+   "en": "Cylinder 1 Injection Pulse Performance",
+   "fam": "",
+   "node": "injection pulse"
+  },
+  {
+   "code": "P2B01",
+   "brand": "",
+   "ru": "Цилиндр 2: нарушена длительность импульса впрыска",
+   "en": "Cylinder 2 Injection Pulse Performance",
+   "fam": "",
+   "node": "injection pulse"
+  },
+  {
+   "code": "P2B02",
+   "brand": "",
+   "ru": "Цилиндр 3: нарушена длительность импульса впрыска",
+   "en": "Cylinder 3 Injection Pulse Performance",
+   "fam": "",
+   "node": "injection pulse"
+  },
+  {
+   "code": "P2B03",
+   "brand": "",
+   "ru": "Цилиндр 4: нарушена длительность импульса впрыска",
+   "en": "Cylinder 4 Injection Pulse Performance",
+   "fam": "",
+   "node": "injection pulse"
+  },
+  {
+   "code": "P2B04",
+   "brand": "",
+   "ru": "Цилиндр 5: нарушена длительность импульса впрыска",
+   "en": "Cylinder 5 Injection Pulse Performance",
+   "fam": "",
+   "node": "injection pulse"
+  },
+  {
+   "code": "P2B05",
+   "brand": "",
+   "ru": "Цилиндр 6: нарушена длительность импульса впрыска",
+   "en": "Cylinder 6 Injection Pulse Performance",
+   "fam": "",
+   "node": "injection pulse"
+  },
+  {
+   "code": "P2B06",
+   "brand": "",
+   "ru": "Цилиндр 7: нарушена длительность импульса впрыска",
+   "en": "Cylinder 7 Injection Pulse Performance",
+   "fam": "",
+   "node": "injection pulse"
+  },
+  {
+   "code": "P2B07",
+   "brand": "",
+   "ru": "Цилиндр 8: нарушена длительность импульса впрыска",
+   "en": "Cylinder 8 Injection Pulse Performance",
+   "fam": "",
+   "node": "injection pulse"
+  },
+  {
+   "code": "P2B96",
+   "brand": "",
+   "ru": "Нарушена длительность импульса впрыска",
+   "en": "Injection Pulse Performance",
+   "fam": "",
+   "node": "injection pulse"
+  },
+  {
+   "code": "P2B08",
+   "brand": "",
+   "ru": "Холодный пуск, цилиндр 1: нарушена длительность импульса впрыска",
+   "en": "Cold Start Cylinder 1 Injection Pulse Performance",
+   "fam": "",
+   "node": "cold start injection pulse"
+  },
+  {
+   "code": "P2B09",
+   "brand": "",
+   "ru": "Холодный пуск, цилиндр 2: нарушена длительность импульса впрыска",
+   "en": "Cold Start Cylinder 2 Injection Pulse Performance",
+   "fam": "",
+   "node": "cold start injection pulse"
+  },
+  {
+   "code": "P2B0A",
+   "brand": "",
+   "ru": "Холодный пуск, цилиндр 3: нарушена длительность импульса впрыска",
+   "en": "Cold Start Cylinder 3 Injection Pulse Performance",
+   "fam": "",
+   "node": "cold start injection pulse"
+  },
+  {
+   "code": "P2B0B",
+   "brand": "",
+   "ru": "Холодный пуск, цилиндр 4: нарушена длительность импульса впрыска",
+   "en": "Cold Start Cylinder 4 Injection Pulse Performance",
+   "fam": "",
+   "node": "cold start injection pulse"
+  },
+  {
+   "code": "P2B0C",
+   "brand": "",
+   "ru": "Холодный пуск, цилиндр 5: нарушена длительность импульса впрыска",
+   "en": "Cold Start Cylinder 5 Injection Pulse Performance",
+   "fam": "",
+   "node": "cold start injection pulse"
+  },
+  {
+   "code": "P2B0D",
+   "brand": "",
+   "ru": "Холодный пуск, цилиндр 6: нарушена длительность импульса впрыска",
+   "en": "Cold Start Cylinder 6 Injection Pulse Performance",
+   "fam": "",
+   "node": "cold start injection pulse"
+  },
+  {
+   "code": "P2B0E",
+   "brand": "",
+   "ru": "Холодный пуск, цилиндр 7: нарушена длительность импульса впрыска",
+   "en": "Cold Start Cylinder 7 Injection Pulse Performance",
+   "fam": "",
+   "node": "cold start injection pulse"
+  },
+  {
+   "code": "P2B0F",
+   "brand": "",
+   "ru": "Холодный пуск, цилиндр 8: нарушена длительность импульса впрыска",
+   "en": "Cold Start Cylinder 8 Injection Pulse Performance",
+   "fam": "",
+   "node": "cold start injection pulse"
+  },
+  {
+   "code": "P2B95",
+   "brand": "",
+   "ru": "Холодный пуск: нарушена длительность импульса впрыска",
+   "en": "Cold Start Injection Pulse Performance",
+   "fam": "",
+   "node": "cold start injection pulse"
+  },
+  {
+   "code": "P2B10",
+   "brand": "",
+   "ru": "Цилиндр 1: смещение импульса впрыска не обучено",
+   "en": "Cylinder 1 Injection Pulse Offset Not Learned",
+   "fam": "",
+   "node": "injection pulse offset not learned"
+  },
+  {
+   "code": "P2B12",
+   "brand": "",
+   "ru": "Цилиндр 2: смещение импульса впрыска не обучено",
+   "en": "Cylinder 2 Injection Pulse Offset Not Learned",
+   "fam": "",
+   "node": "injection pulse offset not learned"
+  },
+  {
+   "code": "P2B14",
+   "brand": "",
+   "ru": "Цилиндр 3: смещение импульса впрыска не обучено",
+   "en": "Cylinder 3 Injection Pulse Offset Not Learned",
+   "fam": "",
+   "node": "injection pulse offset not learned"
+  },
+  {
+   "code": "P2B16",
+   "brand": "",
+   "ru": "Цилиндр 4: смещение импульса впрыска не обучено",
+   "en": "Cylinder 4 Injection Pulse Offset Not Learned",
+   "fam": "",
+   "node": "injection pulse offset not learned"
+  },
+  {
+   "code": "P2B18",
+   "brand": "",
+   "ru": "Цилиндр 5: смещение импульса впрыска не обучено",
+   "en": "Cylinder 5 Injection Pulse Offset Not Learned",
+   "fam": "",
+   "node": "injection pulse offset not learned"
+  },
+  {
+   "code": "P2B1A",
+   "brand": "",
+   "ru": "Цилиндр 6: смещение импульса впрыска не обучено",
+   "en": "Cylinder 6 Injection Pulse Offset Not Learned",
+   "fam": "",
+   "node": "injection pulse offset not learned"
+  },
+  {
+   "code": "P2B1C",
+   "brand": "",
+   "ru": "Цилиндр 7: смещение импульса впрыска не обучено",
+   "en": "Cylinder 7 Injection Pulse Offset Not Learned",
+   "fam": "",
+   "node": "injection pulse offset not learned"
+  },
+  {
+   "code": "P2B1E",
+   "brand": "",
+   "ru": "Цилиндр 8: смещение импульса впрыска не обучено",
+   "en": "Cylinder 8 Injection Pulse Offset Not Learned",
+   "fam": "",
+   "node": "injection pulse offset not learned"
+  },
+  {
+   "code": "P2B11",
+   "brand": "",
+   "ru": "Цилиндр 1: смещение импульса впрыска превысило предел адаптации",
+   "en": "Cylinder 1 Injection Pulse Offset Exceeded Learning Limit",
+   "fam": "",
+   "node": "injection pulse offset exceeded learning limit"
+  },
+  {
+   "code": "P2B13",
+   "brand": "",
+   "ru": "Цилиндр 2: смещение импульса впрыска превысило предел адаптации",
+   "en": "Cylinder 2 Injection Pulse Offset Exceeded Learning Limit",
+   "fam": "",
+   "node": "injection pulse offset exceeded learning limit"
+  },
+  {
+   "code": "P2B15",
+   "brand": "",
+   "ru": "Цилиндр 3: смещение импульса впрыска превысило предел адаптации",
+   "en": "Cylinder 3 Injection Pulse Offset Exceeded Learning Limit",
+   "fam": "",
+   "node": "injection pulse offset exceeded learning limit"
+  },
+  {
+   "code": "P2B17",
+   "brand": "",
+   "ru": "Цилиндр 4: смещение импульса впрыска превысило предел адаптации",
+   "en": "Cylinder 4 Injection Pulse Offset Exceeded Learning Limit",
+   "fam": "",
+   "node": "injection pulse offset exceeded learning limit"
+  },
+  {
+   "code": "P2B19",
+   "brand": "",
+   "ru": "Цилиндр 5: смещение импульса впрыска превысило предел адаптации",
+   "en": "Cylinder 5 Injection Pulse Offset Exceeded Learning Limit",
+   "fam": "",
+   "node": "injection pulse offset exceeded learning limit"
+  },
+  {
+   "code": "P2B1B",
+   "brand": "",
+   "ru": "Цилиндр 6: смещение импульса впрыска превысило предел адаптации",
+   "en": "Cylinder 6 Injection Pulse Offset Exceeded Learning Limit",
+   "fam": "",
+   "node": "injection pulse offset exceeded learning limit"
+  },
+  {
+   "code": "P2B1D",
+   "brand": "",
+   "ru": "Цилиндр 7: смещение импульса впрыска превысило предел адаптации",
+   "en": "Cylinder 7 Injection Pulse Offset Exceeded Learning Limit",
+   "fam": "",
+   "node": "injection pulse offset exceeded learning limit"
+  },
+  {
+   "code": "P2B1F",
+   "brand": "",
+   "ru": "Цилиндр 8: смещение импульса впрыска превысило предел адаптации",
+   "en": "Cylinder 8 Injection Pulse Offset Exceeded Learning Limit",
+   "fam": "",
+   "node": "injection pulse offset exceeded learning limit"
+  },
+  {
+   "code": "P2B20",
+   "brand": "",
+   "ru": "Датчик температуры охлаждения электроники гибрида/электромобиля B: цепь",
+   "en": "Hybrid/EV Electronics Coolant Temperature Sensor B Circuit",
+   "fam": "",
+   "node": "hybrid ev electronics coolant temperature sensor b"
+  },
+  {
+   "code": "P2B21",
+   "brand": "",
+   "ru": "Датчик температуры охлаждения электроники гибрида/электромобиля B: сигнал вне диапазона",
+   "en": "Hybrid/EV Electronics Coolant Temperature Sensor B Circuit Range/Perfomance",
+   "fam": "",
+   "node": "hybrid ev electronics coolant temperature sensor b"
+  },
+  {
+   "code": "P2B22",
+   "brand": "",
+   "ru": "Датчик температуры охлаждения электроники гибрида/электромобиля B: низкий уровень сигнала в цепи",
+   "en": "Hybrid/EV Electronics Coolant Temperature Sensor B Circuit Low",
+   "fam": "",
+   "node": "hybrid ev electronics coolant temperature sensor b"
+  },
+  {
+   "code": "P2B23",
+   "brand": "",
+   "ru": "Датчик температуры охлаждения электроники гибрида/электромобиля B: высокий уровень сигнала в цепи",
+   "en": "Hybrid/EV Electronics Coolant Temperature Sensor B Circuit High",
+   "fam": "",
+   "node": "hybrid ev electronics coolant temperature sensor b"
+  },
+  {
+   "code": "P2B24",
+   "brand": "",
+   "ru": "Датчик температуры охлаждения электроники гибрида/электромобиля C: цепь",
+   "en": "Hybrid/EV Electronics Coolant Temperature Sensor C Circuit",
+   "fam": "",
+   "node": "hybrid ev electronics coolant temperature sensor c"
+  },
+  {
+   "code": "P2B25",
+   "brand": "",
+   "ru": "Датчик температуры охлаждения электроники гибрида/электромобиля C: сигнал вне диапазона",
+   "en": "Hybrid/EV Electronics Coolant Temperature Sensor C Circuit Range/Perfomance",
+   "fam": "",
+   "node": "hybrid ev electronics coolant temperature sensor c"
+  },
+  {
+   "code": "P2B26",
+   "brand": "",
+   "ru": "Датчик температуры охлаждения электроники гибрида/электромобиля C: низкий уровень сигнала в цепи",
+   "en": "Hybrid/EV Electronics Coolant Temperature Sensor C Circuit Low",
+   "fam": "",
+   "node": "hybrid ev electronics coolant temperature sensor c"
+  },
+  {
+   "code": "P2B27",
+   "brand": "",
+   "ru": "Датчик температуры охлаждения электроники гибрида/электромобиля C: высокий уровень сигнала в цепи",
+   "en": "Hybrid/EV Electronics Coolant Temperature Sensor C Circuit High",
+   "fam": "",
+   "node": "hybrid ev electronics coolant temperature sensor c"
+  },
+  {
+   "code": "P2B29",
+   "brand": "",
+   "ru": "Насос охлаждения тяговой батареи A: превышены обороты — работа всухую",
+   "en": "Hybrid/EV Battery Pack Coolant Pump A Overspeed - Dry Run",
+   "fam": "",
+   "node": "hybrid ev battery pack coolant pump a overspeed dry run"
+  },
+  {
+   "code": "P2B2A",
+   "brand": "",
+   "ru": "Насос охлаждения электроники гибрида/электромобиля A: превышены обороты — работа всухую",
+   "en": "Hybrid/EV Electronics Coolant Pump A Overspeed - Dry Run",
+   "fam": "",
+   "node": "hybrid ev electronics coolant pump a overspeed dry run"
+  }
+ ]
+}

@@ -1,0 +1,366 @@
+{
+ "name": "sae_078",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "ecm pcm power relay de energized",
+  "fuel pump control module requested mil illumination",
+  "glow plug",
+  "throttle actuator control lamp",
+  "variable a c compressor"
+ ],
+ "codes": [
+  {
+   "code": "P066A",
+   "brand": "",
+   "ru": "Свеча накаливания цилиндра 1: низкий уровень в цепи управления",
+   "en": "Cylinder 1 Glow Plug Control Circuit Low",
+   "fam": "",
+   "node": "glow plug"
+  },
+  {
+   "code": "P066B",
+   "brand": "",
+   "ru": "Свеча накаливания цилиндра 1: высокий уровень в цепи управления",
+   "en": "Cylinder 1 Glow Plug Control Circuit High",
+   "fam": "",
+   "node": "glow plug"
+  },
+  {
+   "code": "P066C",
+   "brand": "",
+   "ru": "Свеча накаливания цилиндра 2: низкий уровень в цепи управления",
+   "en": "Cylinder 2 Glow Plug Control Circuit Low",
+   "fam": "",
+   "node": "glow plug"
+  },
+  {
+   "code": "P066D",
+   "brand": "",
+   "ru": "Свеча накаливания цилиндра 2: высокий уровень в цепи управления",
+   "en": "Cylinder 2 Glow Plug Control Circuit High",
+   "fam": "",
+   "node": "glow plug"
+  },
+  {
+   "code": "P066E",
+   "brand": "",
+   "ru": "Свеча накаливания цилиндра 3: низкий уровень в цепи управления",
+   "en": "Cylinder 3 Glow Plug Control Circuit Low",
+   "fam": "",
+   "node": "glow plug"
+  },
+  {
+   "code": "P066F",
+   "brand": "",
+   "ru": "Свеча накаливания цилиндра 3: высокий уровень в цепи управления",
+   "en": "Cylinder 3 Glow Plug Control Circuit High",
+   "fam": "",
+   "node": "glow plug"
+  },
+  {
+   "code": "P067A",
+   "brand": "",
+   "ru": "Свеча накаливания цилиндра 4: низкий уровень в цепи управления",
+   "en": "Cylinder 4 Glow Plug Control Circuit Low",
+   "fam": "",
+   "node": "glow plug"
+  },
+  {
+   "code": "P067B",
+   "brand": "",
+   "ru": "Свеча накаливания цилиндра 4: высокий уровень в цепи управления",
+   "en": "Cylinder 4 Glow Plug Control Circuit High",
+   "fam": "",
+   "node": "glow plug"
+  },
+  {
+   "code": "P067C",
+   "brand": "",
+   "ru": "Свеча накаливания цилиндра 5: низкий уровень в цепи управления",
+   "en": "Cylinder 5 Glow Plug Control Circuit Low",
+   "fam": "",
+   "node": "glow plug"
+  },
+  {
+   "code": "P067D",
+   "brand": "",
+   "ru": "Свеча накаливания цилиндра 5: высокий уровень в цепи управления",
+   "en": "Cylinder 5 Glow Plug Control Circuit High",
+   "fam": "",
+   "node": "glow plug"
+  },
+  {
+   "code": "P067E",
+   "brand": "",
+   "ru": "Свеча накаливания цилиндра 6: низкий уровень в цепи управления",
+   "en": "Cylinder 6 Glow Plug Control Circuit Low",
+   "fam": "",
+   "node": "glow plug"
+  },
+  {
+   "code": "P067F",
+   "brand": "",
+   "ru": "Свеча накаливания цилиндра 6: высокий уровень в цепи управления",
+   "en": "Cylinder 6 Glow Plug Control Circuit High",
+   "fam": "",
+   "node": "glow plug"
+  },
+  {
+   "code": "P068C",
+   "brand": "",
+   "ru": "Свеча накаливания цилиндра 7: низкий уровень в цепи управления",
+   "en": "Cylinder 7 Glow Plug Control Circuit Low",
+   "fam": "",
+   "node": "glow plug"
+  },
+  {
+   "code": "P068D",
+   "brand": "",
+   "ru": "Свеча накаливания цилиндра 7: высокий уровень в цепи управления",
+   "en": "Cylinder 7 Glow Plug Control Circuit High",
+   "fam": "",
+   "node": "glow plug"
+  },
+  {
+   "code": "P068E",
+   "brand": "",
+   "ru": "Свеча накаливания цилиндра 8: низкий уровень в цепи управления",
+   "en": "Cylinder 8 Glow Plug Control Circuit Low",
+   "fam": "",
+   "node": "glow plug"
+  },
+  {
+   "code": "P068F",
+   "brand": "",
+   "ru": "Свеча накаливания цилиндра 8: высокий уровень в цепи управления",
+   "en": "Cylinder 8 Glow Plug Control Circuit High",
+   "fam": "",
+   "node": "glow plug"
+  },
+  {
+   "code": "P069A",
+   "brand": "",
+   "ru": "Свеча накаливания цилиндра 9: низкий уровень в цепи управления",
+   "en": "Cylinder 9 Glow Plug Control Circuit Low",
+   "fam": "",
+   "node": "glow plug"
+  },
+  {
+   "code": "P069B",
+   "brand": "",
+   "ru": "Свеча накаливания цилиндра 9: высокий уровень в цепи управления",
+   "en": "Cylinder 9 Glow Plug Control Circuit High",
+   "fam": "",
+   "node": "glow plug"
+  },
+  {
+   "code": "P069C",
+   "brand": "",
+   "ru": "Свеча накаливания цилиндра 10: низкий уровень в цепи управления",
+   "en": "Cylinder 10 Glow Plug Control Circuit Low",
+   "fam": "",
+   "node": "glow plug"
+  },
+  {
+   "code": "P069D",
+   "brand": "",
+   "ru": "Свеча накаливания цилиндра 10: высокий уровень в цепи управления",
+   "en": "Cylinder 10 Glow Plug Control Circuit High",
+   "fam": "",
+   "node": "glow plug"
+  },
+  {
+   "code": "P06B9",
+   "brand": "",
+   "ru": "Свеча накаливания цилиндра 1: сигнал вне диапазона",
+   "en": "Cylinder 1 Glow Plug Circuit Range/Performance",
+   "fam": "",
+   "node": "glow plug"
+  },
+  {
+   "code": "P06BA",
+   "brand": "",
+   "ru": "Свеча накаливания цилиндра 2: сигнал вне диапазона",
+   "en": "Cylinder 2 Glow Plug Circuit Range/Performance",
+   "fam": "",
+   "node": "glow plug"
+  },
+  {
+   "code": "P06BB",
+   "brand": "",
+   "ru": "Свеча накаливания цилиндра 3: сигнал вне диапазона",
+   "en": "Cylinder 3 Glow Plug Circuit Range/Performance",
+   "fam": "",
+   "node": "glow plug"
+  },
+  {
+   "code": "P06BC",
+   "brand": "",
+   "ru": "Свеча накаливания цилиндра 4: сигнал вне диапазона",
+   "en": "Cylinder 4 Glow Plug Circuit Range/Performance",
+   "fam": "",
+   "node": "glow plug"
+  },
+  {
+   "code": "P06BD",
+   "brand": "",
+   "ru": "Свеча накаливания цилиндра 5: сигнал вне диапазона",
+   "en": "Cylinder 5 Glow Plug Circuit Range/Performance",
+   "fam": "",
+   "node": "glow plug"
+  },
+  {
+   "code": "P06BE",
+   "brand": "",
+   "ru": "Свеча накаливания цилиндра 6: сигнал вне диапазона",
+   "en": "Cylinder 6 Glow Plug Circuit Range/Performance",
+   "fam": "",
+   "node": "glow plug"
+  },
+  {
+   "code": "P06BF",
+   "brand": "",
+   "ru": "Свеча накаливания цилиндра 7: сигнал вне диапазона",
+   "en": "Cylinder 7 Glow Plug Circuit Range/Performance",
+   "fam": "",
+   "node": "glow plug"
+  },
+  {
+   "code": "P06C0",
+   "brand": "",
+   "ru": "Свеча накаливания цилиндра 8: сигнал вне диапазона",
+   "en": "Cylinder 8 Glow Plug Circuit Range/Performance",
+   "fam": "",
+   "node": "glow plug"
+  },
+  {
+   "code": "P06C1",
+   "brand": "",
+   "ru": "Свеча накаливания цилиндра 9: сигнал вне диапазона",
+   "en": "Cylinder 9 Glow Plug Circuit Range/Performance",
+   "fam": "",
+   "node": "glow plug"
+  },
+  {
+   "code": "P06C2",
+   "brand": "",
+   "ru": "Свеча накаливания цилиндра 10: сигнал вне диапазона",
+   "en": "Cylinder 10 Glow Plug Circuit Range/Performance",
+   "fam": "",
+   "node": "glow plug"
+  },
+  {
+   "code": "P06C3",
+   "brand": "",
+   "ru": "Свеча накаливания цилиндра 11: сигнал вне диапазона",
+   "en": "Cylinder 11 Glow Plug Circuit Range/Performance",
+   "fam": "",
+   "node": "glow plug"
+  },
+  {
+   "code": "P06C4",
+   "brand": "",
+   "ru": "Свеча накаливания цилиндра 12: сигнал вне диапазона",
+   "en": "Cylinder 12 Glow Plug Circuit Range/Performance",
+   "fam": "",
+   "node": "glow plug"
+  },
+  {
+   "code": "P06E0",
+   "brand": "",
+   "ru": "Свеча накаливания цилиндра 11: низкий уровень в цепи управления",
+   "en": "Cylinder 11 Glow Plug Control Circuit Low",
+   "fam": "",
+   "node": "glow plug"
+  },
+  {
+   "code": "P06E1",
+   "brand": "",
+   "ru": "Свеча накаливания цилиндра 11: высокий уровень в цепи управления",
+   "en": "Cylinder 11 Glow Plug Control Circuit High",
+   "fam": "",
+   "node": "glow plug"
+  },
+  {
+   "code": "P06E2",
+   "brand": "",
+   "ru": "Свеча накаливания цилиндра 12: низкий уровень в цепи управления",
+   "en": "Cylinder 12 Glow Plug Control Circuit Low",
+   "fam": "",
+   "node": "glow plug"
+  },
+  {
+   "code": "P06E3",
+   "brand": "",
+   "ru": "Свеча накаливания цилиндра 12: высокий уровень в цепи управления",
+   "en": "Cylinder 12 Glow Plug Control Circuit High",
+   "fam": "",
+   "node": "glow plug"
+  },
+  {
+   "code": "P068A",
+   "brand": "",
+   "ru": "Реле питания ЭБУ отключается слишком рано",
+   "en": "ECM/PCM Power Relay De-Energized Performance - Too Early",
+   "fam": "",
+   "node": "ecm pcm power relay de energized"
+  },
+  {
+   "code": "P068B",
+   "brand": "",
+   "ru": "Реле питания ЭБУ отключается слишком поздно",
+   "en": "ECM/PCM Power Relay De-Energized Performance - Too Late",
+   "fam": "",
+   "node": "ecm pcm power relay de energized"
+  },
+  {
+   "code": "P069E",
+   "brand": "",
+   "ru": "Блок топливного насоса запросил включение Check Engine",
+   "en": "Fuel Pump Control Module Requested MIL Illumination",
+   "fam": "",
+   "node": "fuel pump control module requested mil illumination"
+  },
+  {
+   "code": "P069F",
+   "brand": "",
+   "ru": "Лампа неисправности привода дросселя: цепь управления",
+   "en": "Throttle Actuator Control Lamp Control Circuit",
+   "fam": "",
+   "node": "throttle actuator control lamp"
+  },
+  {
+   "code": "P06A0",
+   "brand": "",
+   "ru": "Компрессор кондиционера с переменной производительностью: цепь управления",
+   "en": "Variable A/C Compressor Control Circuit",
+   "fam": "",
+   "node": "variable a c compressor"
+  },
+  {
+   "code": "P06A1",
+   "brand": "",
+   "ru": "Компрессор кондиционера с переменной производительностью: низкий уровень в цепи управления",
+   "en": "Variable A/C Compressor Control Circuit Low",
+   "fam": "",
+   "node": "variable a c compressor"
+  },
+  {
+   "code": "P06A2",
+   "brand": "",
+   "ru": "Компрессор кондиционера с переменной производительностью: высокий уровень в цепи управления",
+   "en": "Variable A/C Compressor Control Circuit High",
+   "fam": "",
+   "node": "variable a c compressor"
+  },
+  {
+   "code": "P265F",
+   "brand": "",
+   "ru": "Компрессор кондиционера с переменной производительностью: цепь управления вне диапазона",
+   "en": "Variable A/C Compressor Control Circuit Range/Performance",
+   "fam": "",
+   "node": "variable a c compressor"
+  }
+ ]
+}

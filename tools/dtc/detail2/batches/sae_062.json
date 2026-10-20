@@ -1,0 +1,235 @@
+{
+ "name": "sae_062",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "brake assist vacuum too",
+  "cold start engine coolant temperature",
+  "cold start engine exhaust temperature too",
+  "cold start rough idle",
+  "crankcase pressure sensor a",
+  "fam:battery",
+  "fam:immo",
+  "fam:oil_pressure",
+  "fam:starter",
+  "pcv filter restriction"
+ ],
+ "codes": [
+  {
+   "code": "P050C",
+   "brand": "",
+   "ru": "Температура охлаждающей жидкости при холодном пуске: работа нарушена",
+   "en": "Cold Start Engine Coolant Temperature Performance",
+   "fam": "",
+   "node": "cold start engine coolant temperature"
+  },
+  {
+   "code": "P050D",
+   "brand": "",
+   "ru": "Неровный холостой ход при холодном пуске",
+   "en": "Cold Start Rough Idle",
+   "fam": "",
+   "node": "cold start rough idle"
+  },
+  {
+   "code": "P050E",
+   "brand": "",
+   "ru": "Холодный пуск: слишком низкая температура выхлопа",
+   "en": "Cold Start Engine Exhaust Temperature Too Low",
+   "fam": "",
+   "node": "cold start engine exhaust temperature too"
+  },
+  {
+   "code": "P050F",
+   "brand": "",
+   "ru": "Слишком слабое разрежение в усилителе тормозов",
+   "en": "Brake Assist Vacuum Too Low",
+   "fam": "",
+   "node": "brake assist vacuum too"
+  },
+  {
+   "code": "P0512",
+   "brand": "",
+   "ru": "Цепь запроса стартера: неисправность",
+   "en": "",
+   "fam": "starter",
+   "node": "fam:starter"
+  },
+  {
+   "code": "P0615",
+   "brand": "",
+   "ru": "Реле стартера: цепь",
+   "en": "",
+   "fam": "starter",
+   "node": "fam:starter"
+  },
+  {
+   "code": "P0616",
+   "brand": "",
+   "ru": "Реле стартера: низкий уровень",
+   "en": "",
+   "fam": "starter",
+   "node": "fam:starter"
+  },
+  {
+   "code": "P0617",
+   "brand": "",
+   "ru": "Реле стартера: высокий уровень",
+   "en": "",
+   "fam": "starter",
+   "node": "fam:starter"
+  },
+  {
+   "code": "P0817",
+   "brand": "",
+   "ru": "Запрет стартера: цепь",
+   "en": "",
+   "fam": "starter",
+   "node": "fam:starter"
+  },
+  {
+   "code": "P0513",
+   "brand": "",
+   "ru": "Неверный ключ иммобилайзера",
+   "en": "",
+   "fam": "immo",
+   "node": "fam:immo"
+  },
+  {
+   "code": "P0633",
+   "brand": "",
+   "ru": "Ключ иммобилайзера не запрограммирован",
+   "en": "",
+   "fam": "immo",
+   "node": "fam:immo"
+  },
+  {
+   "code": "P0648",
+   "brand": "",
+   "ru": "Лампа иммобилайзера: цепь",
+   "en": "",
+   "fam": "immo",
+   "node": "fam:immo"
+  },
+  {
+   "code": "P0514",
+   "brand": "",
+   "ru": "Датчик температуры аккумулятора: вне диапазона",
+   "en": "",
+   "fam": "battery",
+   "node": "fam:battery"
+  },
+  {
+   "code": "P0515",
+   "brand": "",
+   "ru": "Датчик температуры аккумулятора: цепь",
+   "en": "",
+   "fam": "battery",
+   "node": "fam:battery"
+  },
+  {
+   "code": "P0516",
+   "brand": "",
+   "ru": "Датчик температуры аккумулятора: низкий сигнал",
+   "en": "",
+   "fam": "battery",
+   "node": "fam:battery"
+  },
+  {
+   "code": "P0517",
+   "brand": "",
+   "ru": "Датчик температуры аккумулятора: высокий сигнал",
+   "en": "",
+   "fam": "battery",
+   "node": "fam:battery"
+  },
+  {
+   "code": "P051A",
+   "brand": "",
+   "ru": "Датчик давления в картере A: цепь",
+   "en": "Crankcase Pressure Sensor A Circuit",
+   "fam": "",
+   "node": "crankcase pressure sensor a"
+  },
+  {
+   "code": "P051B",
+   "brand": "",
+   "ru": "Датчик давления в картере A: сигнал вне диапазона",
+   "en": "Crankcase Pressure Sensor A Circuit Range/Performance",
+   "fam": "",
+   "node": "crankcase pressure sensor a"
+  },
+  {
+   "code": "P051C",
+   "brand": "",
+   "ru": "Датчик давления в картере A: низкий уровень сигнала в цепи",
+   "en": "Crankcase Pressure Sensor A Circuit Low",
+   "fam": "",
+   "node": "crankcase pressure sensor a"
+  },
+  {
+   "code": "P051D",
+   "brand": "",
+   "ru": "Датчик давления в картере A: высокий уровень сигнала в цепи",
+   "en": "Crankcase Pressure Sensor A Circuit High",
+   "fam": "",
+   "node": "crankcase pressure sensor a"
+  },
+  {
+   "code": "P051E",
+   "brand": "",
+   "ru": "Датчик давления в картере A: прерывистый / нестабильный сигнал",
+   "en": "Crankcase Pressure Sensor A Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "crankcase pressure sensor a"
+  },
+  {
+   "code": "P051F",
+   "brand": "",
+   "ru": "Фильтр вентиляции картера засорён",
+   "en": "PCV Filter Restriction",
+   "fam": "",
+   "node": "pcv filter restriction"
+  },
+  {
+   "code": "P0520",
+   "brand": "",
+   "ru": "Датчик давления масла: цепь",
+   "en": "",
+   "fam": "oil_pressure",
+   "node": "fam:oil_pressure"
+  },
+  {
+   "code": "P0521",
+   "brand": "",
+   "ru": "Датчик давления масла: вне диапазона",
+   "en": "",
+   "fam": "oil_pressure",
+   "node": "fam:oil_pressure"
+  },
+  {
+   "code": "P0522",
+   "brand": "",
+   "ru": "Датчик давления масла: низкий сигнал",
+   "en": "",
+   "fam": "oil_pressure",
+   "node": "fam:oil_pressure"
+  },
+  {
+   "code": "P0523",
+   "brand": "",
+   "ru": "Датчик давления масла: высокий сигнал",
+   "en": "",
+   "fam": "oil_pressure",
+   "node": "fam:oil_pressure"
+  },
+  {
+   "code": "P0524",
+   "brand": "",
+   "ru": "Давление масла в двигателе слишком низкое",
+   "en": "",
+   "fam": "oil_pressure",
+   "node": "fam:oil_pressure"
+  }
+ ]
+}

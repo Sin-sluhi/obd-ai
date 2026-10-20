@@ -1,0 +1,414 @@
+{
+ "name": "vag5-vag_107",
+ "series": "vag5",
+ "brand": "vag",
+ "nodes": [
+  "ru:внутренняя ошибка блока коробки (atod_implausible)",
+  "ru:внутренняя ошибка блока коробки (clutch_sanity_error)",
+  "ru:внутренняя ошибка блока коробки (drive_over_i)",
+  "ru:внутренняя ошибка блока коробки (engine_speed_compare)",
+  "ru:внутренняя ошибка блока коробки (gearbox_even_master_compare)",
+  "ru:внутренняя ошибка блока коробки (gearbox_even_plausibility)",
+  "ru:внутренняя ошибка блока коробки (gearbox_odd_master_compare)",
+  "ru:внутренняя ошибка блока коробки (gearbox_odd_plausibility)",
+  "ru:внутренняя ошибка блока коробки (hsd_short_circuit)",
+  "ru:внутренняя ошибка блока коробки (i_a_3v3_sense_b_an50_implausible)",
+  "ru:внутренняя ошибка блока коробки (i_a_3v3_sense_b_an50_over_range)",
+  "ru:внутренняя ошибка блока коробки (i_a_3v3_sense_b_an50_under_range)",
+  "ru:внутренняя ошибка блока коробки (i_a_4_6_act1_b_an48_implausible)",
+  "ru:внутренняя ошибка блока коробки (i_a_4_6_act1_b_an48_under_range)",
+  "ru:внутренняя ошибка блока коробки (i_a_4_6_act2_b_an49_implausible)",
+  "ru:внутренняя ошибка блока коробки (i_a_4_6_act2_b_an49_over_range)",
+  "ru:внутренняя ошибка блока коробки (i_a_4_6_act2_b_an49_under_range)",
+  "ru:внутренняя ошибка блока коробки (i_a_clu_act2_b_an59_implausible)",
+  "ru:внутренняя ошибка блока коробки (i_a_clu_act2_b_an59_over_range)",
+  "ru:внутренняя ошибка блока коробки (i_a_clu_act2_b_an59_under_range)",
+  "ru:внутренняя ошибка блока коробки (i_a_clu_cool2_b_an57_implausible)",
+  "ru:внутренняя ошибка блока коробки (i_a_clu_cool2_b_an57_over_range)",
+  "ru:внутренняя ошибка блока коробки (i_a_clu_cool2_b_an57_under_range)",
+  "ru:внутренняя ошибка блока коробки (i_a_clu_line_b_an54_implausible)",
+  "ru:внутренняя ошибка блока коробки (i_a_clu_line_b_an54_over_range)",
+  "ru:внутренняя ошибка блока коробки (i_a_clu_line_b_an54_under_range)",
+  "ru:внутренняя ошибка блока коробки (i_a_diff_act_b_an55_implausible)",
+  "ru:внутренняя ошибка блока коробки (i_a_diff_act_b_an55_over_range)",
+  "ru:внутренняя ошибка блока коробки (i_a_diff_act_b_an55_under_range)",
+  "ru:внутренняя ошибка блока коробки (i_a_line_pres2_b_an53_implausible)",
+  "ru:внутренняя ошибка блока коробки (i_a_line_pres2_b_an53_over_range)",
+  "ru:внутренняя ошибка блока коробки (i_a_line_pres2_b_an53_under_range)",
+  "ru:внутренняя ошибка блока коробки (internal_voltage_error)",
+  "ru:внутренняя ошибка блока коробки (invalid_exception)",
+  "ru:внутренняя ошибка блока коробки (os_limp_home_mode)",
+  "ru:внутренняя ошибка блока коробки (output_shaft_speed_compare)",
+  "ru:внутренняя ошибка блока коробки (rear_left_speed_compare)",
+  "ru:внутренняя ошибка блока коробки (rear_right_speed_compare)",
+  "ru:внутренняя ошибка блока коробки (sanity_fail)",
+  "ru:внутренняя ошибка блока коробки (shaft1_speed_compare)",
+  "ru:внутренняя ошибка блока коробки (shaft2_speed_compare)",
+  "ru:внутренняя ошибка блока коробки (software_internal_error)",
+  "ru:внутренняя ошибка блока коробки (spi_message_checksum)",
+  "ru:внутренняя ошибка блока коробки (spi_message_implausible)",
+  "ru:внутренняя ошибка блока коробки (spi_message_to)"
+ ],
+ "codes": [
+  {
+   "code": "45426",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (I_A_4_6_ACT1_B_AN48_UNDER_RANGE)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (i_a_4_6_act1_b_an48_under_range)"
+  },
+  {
+   "code": "45427",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (I_A_4_6_ACT1_B_AN48_IMPLAUSIBLE)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (i_a_4_6_act1_b_an48_implausible)"
+  },
+  {
+   "code": "45428",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (I_A_4_6_ACT2_B_AN49_OVER_RANGE)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (i_a_4_6_act2_b_an49_over_range)"
+  },
+  {
+   "code": "45429",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (I_A_4_6_ACT2_B_AN49_UNDER_RANGE)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (i_a_4_6_act2_b_an49_under_range)"
+  },
+  {
+   "code": "45430",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (I_A_4_6_ACT2_B_AN49_IMPLAUSIBLE)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (i_a_4_6_act2_b_an49_implausible)"
+  },
+  {
+   "code": "45431",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (I_A_3V3_SENSE_B_AN50_OVER_RANGE)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (i_a_3v3_sense_b_an50_over_range)"
+  },
+  {
+   "code": "45432",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (I_A_3V3_SENSE_B_AN50_UNDER_RANGE)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (i_a_3v3_sense_b_an50_under_range)"
+  },
+  {
+   "code": "45433",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (I_A_3V3_SENSE_B_AN50_IMPLAUSIBLE)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (i_a_3v3_sense_b_an50_implausible)"
+  },
+  {
+   "code": "45434",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (I_A_LINE_PRES2_B_AN53_OVER_RANGE)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (i_a_line_pres2_b_an53_over_range)"
+  },
+  {
+   "code": "45435",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (I_A_LINE_PRES2_B_AN53_UNDER_RANGE)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (i_a_line_pres2_b_an53_under_range)"
+  },
+  {
+   "code": "45436",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (I_A_LINE_PRES2_B_AN53_IMPLAUSIBLE)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (i_a_line_pres2_b_an53_implausible)"
+  },
+  {
+   "code": "45437",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (I_A_CLU_LINE_B_AN54_OVER_RANGE)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (i_a_clu_line_b_an54_over_range)"
+  },
+  {
+   "code": "45438",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (I_A_CLU_LINE_B_AN54_UNDER_RANGE)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (i_a_clu_line_b_an54_under_range)"
+  },
+  {
+   "code": "45439",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (I_A_CLU_LINE_B_AN54_IMPLAUSIBLE)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (i_a_clu_line_b_an54_implausible)"
+  },
+  {
+   "code": "45440",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (I_A_DIFF_ACT_B_AN55_OVER_RANGE)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (i_a_diff_act_b_an55_over_range)"
+  },
+  {
+   "code": "45441",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (I_A_DIFF_ACT_B_AN55_UNDER_RANGE)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (i_a_diff_act_b_an55_under_range)"
+  },
+  {
+   "code": "45442",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (I_A_DIFF_ACT_B_AN55_IMPLAUSIBLE)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (i_a_diff_act_b_an55_implausible)"
+  },
+  {
+   "code": "45443",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (I_A_CLU_COOL2_B_AN57_OVER_RANGE)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (i_a_clu_cool2_b_an57_over_range)"
+  },
+  {
+   "code": "45444",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (I_A_CLU_COOL2_B_AN57_UNDER_RANGE)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (i_a_clu_cool2_b_an57_under_range)"
+  },
+  {
+   "code": "45445",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (I_A_CLU_COOL2_B_AN57_IMPLAUSIBLE)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (i_a_clu_cool2_b_an57_implausible)"
+  },
+  {
+   "code": "45446",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (I_A_CLU_ACT2_B_AN59_OVER_RANGE)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (i_a_clu_act2_b_an59_over_range)"
+  },
+  {
+   "code": "45447",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (I_A_CLU_ACT2_B_AN59_UNDER_RANGE)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (i_a_clu_act2_b_an59_under_range)"
+  },
+  {
+   "code": "45448",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (I_A_CLU_ACT2_B_AN59_IMPLAUSIBLE)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (i_a_clu_act2_b_an59_implausible)"
+  },
+  {
+   "code": "45449",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (GEARBOX_ODD_PLAUSIBILITY)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (gearbox_odd_plausibility)"
+  },
+  {
+   "code": "45450",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (GEARBOX_EVEN_PLAUSIBILITY)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (gearbox_even_plausibility)"
+  },
+  {
+   "code": "45451",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (SPI_MESSAGE_TO)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (spi_message_to)"
+  },
+  {
+   "code": "45452",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (SPI_MESSAGE_CHECKSUM)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (spi_message_checksum)"
+  },
+  {
+   "code": "45453",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (SPI_MESSAGE_IMPLAUSIBLE)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (spi_message_implausible)"
+  },
+  {
+   "code": "45454",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (ATOD_IMPLAUSIBLE)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (atod_implausible)"
+  },
+  {
+   "code": "45455",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (SOFTWARE_INTERNAL_ERROR)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (software_internal_error)"
+  },
+  {
+   "code": "45456",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (INVALID_EXCEPTION)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (invalid_exception)"
+  },
+  {
+   "code": "45457",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (HSD_SHORT_CIRCUIT)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (hsd_short_circuit)"
+  },
+  {
+   "code": "45458",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (DRIVE_OVER_I)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (drive_over_i)"
+  },
+  {
+   "code": "45459",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (SANITY_FAIL)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (sanity_fail)"
+  },
+  {
+   "code": "45460",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (GEARBOX_ODD_MASTER_COMPARE)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (gearbox_odd_master_compare)"
+  },
+  {
+   "code": "45461",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (GEARBOX_EVEN_MASTER_COMPARE)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (gearbox_even_master_compare)"
+  },
+  {
+   "code": "45462",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (ENGINE_SPEED_COMPARE)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (engine_speed_compare)"
+  },
+  {
+   "code": "45463",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (SHAFT1_SPEED_COMPARE)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (shaft1_speed_compare)"
+  },
+  {
+   "code": "45464",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (SHAFT2_SPEED_COMPARE)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (shaft2_speed_compare)"
+  },
+  {
+   "code": "45465",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (OUTPUT_SHAFT_SPEED_COMPARE)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (output_shaft_speed_compare)"
+  },
+  {
+   "code": "45466",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (REAR_LEFT_SPEED_COMPARE)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (rear_left_speed_compare)"
+  },
+  {
+   "code": "45467",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (REAR_RIGHT_SPEED_COMPARE)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (rear_right_speed_compare)"
+  },
+  {
+   "code": "45468",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (CLUTCH_SANITY_ERROR)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (clutch_sanity_error)"
+  },
+  {
+   "code": "45469",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (INTERNAL_VOLTAGE_ERROR)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (internal_voltage_error)"
+  },
+  {
+   "code": "45470",
+   "brand": "vag",
+   "ru": "Внутренняя ошибка блока коробки (OS_LIMP_HOME_MODE)",
+   "en": "",
+   "fam": "",
+   "node": "ru:внутренняя ошибка блока коробки (os_limp_home_mode)"
+  }
+ ]
+}

@@ -1,0 +1,486 @@
+{
+ "name": "sae_026",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "b camshaft profile actuator a control",
+  "fam:injector",
+  "turbocharger supercharger boost control a",
+  "turbocharger supercharger boost control b",
+  "turbocharger supercharger boost control b supply voltage"
+ ],
+ "codes": [
+  {
+   "code": "P004A",
+   "brand": "",
+   "ru": "Регулирование давления наддува B: обрыв цепи",
+   "en": "Turbocharger/Supercharger Boost Control B Circuit/Open",
+   "fam": "",
+   "node": "turbocharger supercharger boost control b"
+  },
+  {
+   "code": "P004B",
+   "brand": "",
+   "ru": "Регулирование давления наддува B: сигнал вне диапазона",
+   "en": "Turbocharger/Supercharger Boost Control B Circuit Range/Performance",
+   "fam": "",
+   "node": "turbocharger supercharger boost control b"
+  },
+  {
+   "code": "P004C",
+   "brand": "",
+   "ru": "Регулирование давления наддува B: низкий уровень сигнала в цепи",
+   "en": "Turbocharger/Supercharger Boost Control B Circuit Low",
+   "fam": "",
+   "node": "turbocharger supercharger boost control b"
+  },
+  {
+   "code": "P004D",
+   "brand": "",
+   "ru": "Регулирование давления наддува B: высокий уровень сигнала в цепи",
+   "en": "Turbocharger/Supercharger Boost Control B Circuit High",
+   "fam": "",
+   "node": "turbocharger supercharger boost control b"
+  },
+  {
+   "code": "P004F",
+   "brand": "",
+   "ru": "Регулирование давления наддува B: прерывистый / нестабильный сигнал",
+   "en": "Turbocharger/Supercharger Boost Control B Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "turbocharger supercharger boost control b"
+  },
+  {
+   "code": "P004E",
+   "brand": "",
+   "ru": "Регулирование давления наддува A: прерывистый / нестабильный сигнал",
+   "en": "Turbocharger/Supercharger Boost Control A Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "turbocharger supercharger boost control a"
+  },
+  {
+   "code": "P005A",
+   "brand": "",
+   "ru": "Механизм профиля распредвала B, управление A: работа нарушена / не включается (банк 1)",
+   "en": "B Camshaft Profile Actuator A Control Performance/Stuck Off Bank 1",
+   "fam": "",
+   "node": "b camshaft profile actuator a control"
+  },
+  {
+   "code": "P005B",
+   "brand": "",
+   "ru": "Механизм профиля распредвала B, управление A: постоянно включён (банк 1)",
+   "en": "B Camshaft Profile Actuator A Control Stuck On Bank 1",
+   "fam": "",
+   "node": "b camshaft profile actuator a control"
+  },
+  {
+   "code": "P005C",
+   "brand": "",
+   "ru": "Механизм профиля распредвала B, управление A: работа нарушена / не включается (банк 2)",
+   "en": "B Camshaft Profile Actuator A Control Performance/Stuck Off Bank 2",
+   "fam": "",
+   "node": "b camshaft profile actuator a control"
+  },
+  {
+   "code": "P005D",
+   "brand": "",
+   "ru": "Механизм профиля распредвала B, управление A: постоянно включён (банк 2)",
+   "en": "B Camshaft Profile Actuator A Control Stuck On Bank 2",
+   "fam": "",
+   "node": "b camshaft profile actuator a control"
+  },
+  {
+   "code": "P005E",
+   "brand": "",
+   "ru": "Регулирование давления наддува B: низкое напряжение питания",
+   "en": "Turbocharger/Supercharger Boost Control B Supply Voltage Circuit Low",
+   "fam": "",
+   "node": "turbocharger supercharger boost control b supply voltage"
+  },
+  {
+   "code": "P005F",
+   "brand": "",
+   "ru": "Регулирование давления наддува B: высокое напряжение питания",
+   "en": "Turbocharger/Supercharger Boost Control B Supply Voltage Circuit High",
+   "fam": "",
+   "node": "turbocharger supercharger boost control b supply voltage"
+  },
+  {
+   "code": "P0065",
+   "brand": "",
+   "ru": "Форсунка с воздушным распылом: не отрабатывает",
+   "en": "",
+   "fam": "injector",
+   "node": "fam:injector"
+  },
+  {
+   "code": "P0066",
+   "brand": "",
+   "ru": "Форсунка с воздушным распылом: низкий уровень",
+   "en": "",
+   "fam": "injector",
+   "node": "fam:injector"
+  },
+  {
+   "code": "P0067",
+   "brand": "",
+   "ru": "Форсунка с воздушным распылом: высокий уровень",
+   "en": "",
+   "fam": "injector",
+   "node": "fam:injector"
+  },
+  {
+   "code": "P0200",
+   "brand": "",
+   "ru": "Форсунки: цепь (общая)",
+   "en": "",
+   "fam": "injector",
+   "node": "fam:injector"
+  },
+  {
+   "code": "P0201",
+   "brand": "",
+   "ru": "Форсунка цилиндра 1: цепь",
+   "en": "",
+   "fam": "injector",
+   "node": "fam:injector"
+  },
+  {
+   "code": "P0202",
+   "brand": "",
+   "ru": "Форсунка цилиндра 2: цепь",
+   "en": "",
+   "fam": "injector",
+   "node": "fam:injector"
+  },
+  {
+   "code": "P0203",
+   "brand": "",
+   "ru": "Форсунка цилиндра 3: цепь",
+   "en": "",
+   "fam": "injector",
+   "node": "fam:injector"
+  },
+  {
+   "code": "P0204",
+   "brand": "",
+   "ru": "Форсунка цилиндра 4: цепь",
+   "en": "",
+   "fam": "injector",
+   "node": "fam:injector"
+  },
+  {
+   "code": "P0205",
+   "brand": "",
+   "ru": "Форсунка цилиндра 5: цепь",
+   "en": "",
+   "fam": "injector",
+   "node": "fam:injector"
+  },
+  {
+   "code": "P0206",
+   "brand": "",
+   "ru": "Форсунка цилиндра 6: цепь",
+   "en": "",
+   "fam": "injector",
+   "node": "fam:injector"
+  },
+  {
+   "code": "P0207",
+   "brand": "",
+   "ru": "Форсунка цилиндра 7: цепь",
+   "en": "",
+   "fam": "injector",
+   "node": "fam:injector"
+  },
+  {
+   "code": "P0208",
+   "brand": "",
+   "ru": "Форсунка цилиндра 8: цепь",
+   "en": "",
+   "fam": "injector",
+   "node": "fam:injector"
+  },
+  {
+   "code": "P0209",
+   "brand": "",
+   "ru": "Форсунка цилиндра 9: цепь",
+   "en": "",
+   "fam": "injector",
+   "node": "fam:injector"
+  },
+  {
+   "code": "P0210",
+   "brand": "",
+   "ru": "Форсунка цилиндра 10: цепь",
+   "en": "",
+   "fam": "injector",
+   "node": "fam:injector"
+  },
+  {
+   "code": "P0211",
+   "brand": "",
+   "ru": "Форсунка цилиндра 11: цепь",
+   "en": "",
+   "fam": "injector",
+   "node": "fam:injector"
+  },
+  {
+   "code": "P0212",
+   "brand": "",
+   "ru": "Форсунка цилиндра 12: цепь",
+   "en": "",
+   "fam": "injector",
+   "node": "fam:injector"
+  },
+  {
+   "code": "P0213",
+   "brand": "",
+   "ru": "Форсунка холодного пуска 1: цепь",
+   "en": "",
+   "fam": "injector",
+   "node": "fam:injector"
+  },
+  {
+   "code": "P0214",
+   "brand": "",
+   "ru": "Форсунка холодного пуска 2: цепь",
+   "en": "",
+   "fam": "injector",
+   "node": "fam:injector"
+  },
+  {
+   "code": "P0261",
+   "brand": "",
+   "ru": "Форсунка цилиндра 1: низкий уровень в цепи",
+   "en": "",
+   "fam": "injector",
+   "node": "fam:injector"
+  },
+  {
+   "code": "P0262",
+   "brand": "",
+   "ru": "Форсунка цилиндра 1: высокий уровень в цепи",
+   "en": "",
+   "fam": "injector",
+   "node": "fam:injector"
+  },
+  {
+   "code": "P0264",
+   "brand": "",
+   "ru": "Форсунка цилиндра 2: низкий уровень в цепи",
+   "en": "",
+   "fam": "injector",
+   "node": "fam:injector"
+  },
+  {
+   "code": "P0265",
+   "brand": "",
+   "ru": "Форсунка цилиндра 2: высокий уровень в цепи",
+   "en": "",
+   "fam": "injector",
+   "node": "fam:injector"
+  },
+  {
+   "code": "P0267",
+   "brand": "",
+   "ru": "Форсунка цилиндра 3: низкий уровень в цепи",
+   "en": "",
+   "fam": "injector",
+   "node": "fam:injector"
+  },
+  {
+   "code": "P0268",
+   "brand": "",
+   "ru": "Форсунка цилиндра 3: высокий уровень в цепи",
+   "en": "",
+   "fam": "injector",
+   "node": "fam:injector"
+  },
+  {
+   "code": "P0270",
+   "brand": "",
+   "ru": "Форсунка цилиндра 4: низкий уровень в цепи",
+   "en": "",
+   "fam": "injector",
+   "node": "fam:injector"
+  },
+  {
+   "code": "P0271",
+   "brand": "",
+   "ru": "Форсунка цилиндра 4: высокий уровень в цепи",
+   "en": "",
+   "fam": "injector",
+   "node": "fam:injector"
+  },
+  {
+   "code": "P0273",
+   "brand": "",
+   "ru": "Форсунка цилиндра 5: низкий уровень в цепи",
+   "en": "",
+   "fam": "injector",
+   "node": "fam:injector"
+  },
+  {
+   "code": "P0274",
+   "brand": "",
+   "ru": "Форсунка цилиндра 5: высокий уровень в цепи",
+   "en": "",
+   "fam": "injector",
+   "node": "fam:injector"
+  },
+  {
+   "code": "P0276",
+   "brand": "",
+   "ru": "Форсунка цилиндра 6: низкий уровень в цепи",
+   "en": "",
+   "fam": "injector",
+   "node": "fam:injector"
+  },
+  {
+   "code": "P0277",
+   "brand": "",
+   "ru": "Форсунка цилиндра 6: высокий уровень в цепи",
+   "en": "",
+   "fam": "injector",
+   "node": "fam:injector"
+  },
+  {
+   "code": "P0279",
+   "brand": "",
+   "ru": "Форсунка цилиндра 7: низкий уровень в цепи",
+   "en": "",
+   "fam": "injector",
+   "node": "fam:injector"
+  },
+  {
+   "code": "P0280",
+   "brand": "",
+   "ru": "Форсунка цилиндра 7: высокий уровень в цепи",
+   "en": "",
+   "fam": "injector",
+   "node": "fam:injector"
+  },
+  {
+   "code": "P0282",
+   "brand": "",
+   "ru": "Форсунка цилиндра 8: низкий уровень в цепи",
+   "en": "",
+   "fam": "injector",
+   "node": "fam:injector"
+  },
+  {
+   "code": "P0283",
+   "brand": "",
+   "ru": "Форсунка цилиндра 8: высокий уровень в цепи",
+   "en": "",
+   "fam": "injector",
+   "node": "fam:injector"
+  },
+  {
+   "code": "P0285",
+   "brand": "",
+   "ru": "Форсунка цилиндра 9: низкий уровень в цепи",
+   "en": "",
+   "fam": "injector",
+   "node": "fam:injector"
+  },
+  {
+   "code": "P0286",
+   "brand": "",
+   "ru": "Форсунка цилиндра 9: высокий уровень в цепи",
+   "en": "",
+   "fam": "injector",
+   "node": "fam:injector"
+  },
+  {
+   "code": "P0288",
+   "brand": "",
+   "ru": "Форсунка цилиндра 10: низкий уровень в цепи",
+   "en": "",
+   "fam": "injector",
+   "node": "fam:injector"
+  },
+  {
+   "code": "P0289",
+   "brand": "",
+   "ru": "Форсунка цилиндра 10: высокий уровень в цепи",
+   "en": "",
+   "fam": "injector",
+   "node": "fam:injector"
+  },
+  {
+   "code": "P0291",
+   "brand": "",
+   "ru": "Форсунка цилиндра 11: низкий уровень в цепи",
+   "en": "",
+   "fam": "injector",
+   "node": "fam:injector"
+  },
+  {
+   "code": "P0292",
+   "brand": "",
+   "ru": "Форсунка цилиндра 11: высокий уровень в цепи",
+   "en": "",
+   "fam": "injector",
+   "node": "fam:injector"
+  },
+  {
+   "code": "P0294",
+   "brand": "",
+   "ru": "Форсунка цилиндра 12: низкий уровень в цепи",
+   "en": "",
+   "fam": "injector",
+   "node": "fam:injector"
+  },
+  {
+   "code": "P0295",
+   "brand": "",
+   "ru": "Форсунка цилиндра 12: высокий уровень в цепи",
+   "en": "",
+   "fam": "injector",
+   "node": "fam:injector"
+  },
+  {
+   "code": "P0611",
+   "brand": "",
+   "ru": "Модуль управления форсунками: нарушение работы",
+   "en": "",
+   "fam": "injector",
+   "node": "fam:injector"
+  },
+  {
+   "code": "P0612",
+   "brand": "",
+   "ru": "Реле модуля управления форсунками: цепь",
+   "en": "",
+   "fam": "injector",
+   "node": "fam:injector"
+  },
+  {
+   "code": "P062B",
+   "brand": "",
+   "ru": "Управление форсунками: нарушение работы",
+   "en": "",
+   "fam": "injector",
+   "node": "fam:injector"
+  },
+  {
+   "code": "P062D",
+   "brand": "",
+   "ru": "Драйвер форсунок (банк 1): нарушение работы",
+   "en": "",
+   "fam": "injector",
+   "node": "fam:injector"
+  },
+  {
+   "code": "P062E",
+   "brand": "",
+   "ru": "Драйвер форсунок (банк 2): нарушение работы",
+   "en": "",
+   "fam": "injector",
+   "node": "fam:injector"
+  }
+ ]
+}

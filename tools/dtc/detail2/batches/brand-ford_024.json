@@ -1,0 +1,96 @@
+{
+ "name": "brand-ford_024",
+ "series": "brand",
+ "brand": "ford",
+ "nodes": [
+  "engine coolant level",
+  "engine coolant level lamp",
+  "kickdown",
+  "kickdown solenoid relay",
+  "ru:датчик оборотов выходного вала",
+  "transmission transfer case contact plate ground return",
+  "turbine shaft speed"
+ ],
+ "codes": [
+  {
+   "code": "P1881",
+   "brand": "ford",
+   "ru": "Датчик уровня ОЖ: неисправность цепи (блок GEM)",
+   "en": "Engine Coolant Level Switch Circuit Failure GEM",
+   "fam": "",
+   "node": "engine coolant level"
+  },
+  {
+   "code": "P1882",
+   "brand": "ford",
+   "ru": "Датчик уровня ОЖ: замыкание на массу",
+   "en": "Engine Coolant Level Switch Circuit Short to Ground",
+   "fam": "",
+   "node": "engine coolant level"
+  },
+  {
+   "code": "P1883",
+   "brand": "ford",
+   "ru": "Датчик уровня ОЖ: неисправность цепи (блок GEM)",
+   "en": "Engine Coolant Level Switch Circuit Failure GEM",
+   "fam": "",
+   "node": "engine coolant level"
+  },
+  {
+   "code": "P1884",
+   "brand": "ford",
+   "ru": "Лампа уровня ОЖ: замыкание на массу",
+   "en": "Engine Coolant Level Lamp Circuit Short to Ground",
+   "fam": "",
+   "node": "engine coolant level lamp"
+  },
+  {
+   "code": "P1891",
+   "brand": "ford",
+   "ru": "Контактная пластина раздатки: обрыв обратного провода массы",
+   "en": "Transmission Transfer Case Contact Plate Ground Return Open Circuit",
+   "fam": "",
+   "node": "transmission transfer case contact plate ground return"
+  },
+  {
+   "code": "P1900",
+   "brand": "ford",
+   "ru": "Датчик оборотов выходного вала: прерывистая неисправность цепи",
+   "en": "Output Shaft Speed (OSS) Circuit Intermittent Malfunction",
+   "fam": "",
+   "node": "ru:датчик оборотов выходного вала"
+  },
+  {
+   "code": "P1901",
+   "brand": "ford",
+   "ru": "Датчик оборотов турбины: прерывистая неисправность цепи",
+   "en": "Turbine Shaft Speed (TSS) Circuit Intermittent Malfunction",
+   "fam": "",
+   "node": "turbine shaft speed"
+  },
+  {
+   "code": "P1902",
+   "brand": "ford",
+   "ru": "Реле клапана кикдауна: цепь управления",
+   "en": "Kickdown Solenoid Relay Control Circuit",
+   "fam": "",
+   "node": "kickdown solenoid relay"
+  },
+  {
+   "code": "P1903",
+   "brand": "ford",
+   "ru": "Клапан кикдауна: низкое напряжение в цепи",
+   "en": "Kickdown Solenoid Circuit Low Voltage",
+   "fam": "",
+   "node": "kickdown"
+  },
+  {
+   "code": "P1904",
+   "brand": "ford",
+   "ru": "Клапан кикдауна: высокое напряжение в цепи",
+   "en": "Kickdown Solenoid Circuit High Voltage",
+   "fam": "",
+   "node": "kickdown"
+  }
+ ]
+}

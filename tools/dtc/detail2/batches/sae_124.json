@@ -1,0 +1,378 @@
+{
+ "name": "sae_124",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "battery charger a fuse",
+  "dc dc converter voltage sensor a",
+  "dc dc converter voltage sensor b",
+  "dc dc converter voltage sensor bcircuit",
+  "drive motor inverter temperature sensor g",
+  "drive motor inverter temperature sensor h",
+  "engine failed to crank",
+  "hybrid ev battery coolant pump overspeed",
+  "hybrid ev battery coolant pump underspeed",
+  "hybrid ev battery pack coolant pump b",
+  "hybrid ev battery pack coolant pump b control",
+  "hybrid ev battery pack voltage sense e",
+  "hybrid ev battery pack voltage sense f",
+  "hybrid ev powertrain control module b",
+  "internal control module hybrid ev battery monitor",
+  "ru:высоковольтный предохранитель b",
+  "ru:высоковольтный предохранитель c"
+ ],
+ "codes": [
+  {
+   "code": "P0E1A",
+   "brand": "",
+   "ru": "Насос охлаждения тяговой батареи B: обрыв цепи управления",
+   "en": "Hybrid/EV Battery Pack Coolant Pump B Control Circuit/Open",
+   "fam": "",
+   "node": "hybrid ev battery pack coolant pump b"
+  },
+  {
+   "code": "P0E1B",
+   "brand": "",
+   "ru": "Насос охлаждения тяговой батареи B: низкий уровень в цепи управления",
+   "en": "Hybrid/EV Battery Pack Coolant Pump B Control Circuit Low",
+   "fam": "",
+   "node": "hybrid ev battery pack coolant pump b"
+  },
+  {
+   "code": "P0E1C",
+   "brand": "",
+   "ru": "Насос охлаждения тяговой батареи B: высокий уровень в цепи управления",
+   "en": "Hybrid/EV Battery Pack Coolant Pump B Control Circuit High",
+   "fam": "",
+   "node": "hybrid ev battery pack coolant pump b"
+  },
+  {
+   "code": "P0E1E",
+   "brand": "",
+   "ru": "Насос охлаждения тяговой батареи B: перегрузка драйвера цепи управления по току / перегрев",
+   "en": "Hybrid/EV Battery Pack Coolant Pump B Control Circuit Driver Current/Temperature Too High",
+   "fam": "",
+   "node": "hybrid ev battery pack coolant pump b"
+  },
+  {
+   "code": "P2CF5",
+   "brand": "",
+   "ru": "Насос охлаждения тяговой батареи B: заклинивание / остановка",
+   "en": "Hybrid/EV Battery Pack Coolant Pump B Stuck/Stalled",
+   "fam": "",
+   "node": "hybrid ev battery pack coolant pump b"
+  },
+  {
+   "code": "P0E1D",
+   "brand": "",
+   "ru": "Насос охлаждения тяговой батареи B: нарушено управление",
+   "en": "Hybrid/EV Battery Pack Coolant Pump B Control Performance",
+   "fam": "",
+   "node": "hybrid ev battery pack coolant pump b control"
+  },
+  {
+   "code": "P0E23",
+   "brand": "",
+   "ru": "Датчик температуры инвертора тягового электромотора G: цепь",
+   "en": "Drive Motor Inverter Temperature Sensor G Circuit",
+   "fam": "",
+   "node": "drive motor inverter temperature sensor g"
+  },
+  {
+   "code": "P0E24",
+   "brand": "",
+   "ru": "Датчик температуры инвертора тягового электромотора G: сигнал вне диапазона",
+   "en": "Drive Motor Inverter Temperature Sensor G Circuit Range/Performance",
+   "fam": "",
+   "node": "drive motor inverter temperature sensor g"
+  },
+  {
+   "code": "P0E25",
+   "brand": "",
+   "ru": "Датчик температуры инвертора тягового электромотора G: низкий уровень сигнала в цепи",
+   "en": "Drive Motor Inverter Temperature Sensor G Circuit Low",
+   "fam": "",
+   "node": "drive motor inverter temperature sensor g"
+  },
+  {
+   "code": "P0E26",
+   "brand": "",
+   "ru": "Датчик температуры инвертора тягового электромотора G: высокий уровень сигнала в цепи",
+   "en": "Drive Motor Inverter Temperature Sensor G Circuit High",
+   "fam": "",
+   "node": "drive motor inverter temperature sensor g"
+  },
+  {
+   "code": "P0E27",
+   "brand": "",
+   "ru": "Датчик температуры инвертора тягового электромотора G: прерывистый / нестабильный сигнал",
+   "en": "Drive Motor Inverter Temperature Sensor G Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "drive motor inverter temperature sensor g"
+  },
+  {
+   "code": "P0E28",
+   "brand": "",
+   "ru": "Датчик температуры инвертора тягового электромотора H: цепь",
+   "en": "Drive Motor Inverter Temperature Sensor H Circuit",
+   "fam": "",
+   "node": "drive motor inverter temperature sensor h"
+  },
+  {
+   "code": "P0E29",
+   "brand": "",
+   "ru": "Датчик температуры инвертора тягового электромотора H: сигнал вне диапазона",
+   "en": "Drive Motor Inverter Temperature Sensor H Circuit Range/Performance",
+   "fam": "",
+   "node": "drive motor inverter temperature sensor h"
+  },
+  {
+   "code": "P0E2A",
+   "brand": "",
+   "ru": "Датчик температуры инвертора тягового электромотора H: низкий уровень сигнала в цепи",
+   "en": "Drive Motor Inverter Temperature Sensor H Circuit Low",
+   "fam": "",
+   "node": "drive motor inverter temperature sensor h"
+  },
+  {
+   "code": "P0E2B",
+   "brand": "",
+   "ru": "Датчик температуры инвертора тягового электромотора H: высокий уровень сигнала в цепи",
+   "en": "Drive Motor Inverter Temperature Sensor H Circuit High",
+   "fam": "",
+   "node": "drive motor inverter temperature sensor h"
+  },
+  {
+   "code": "P0E2C",
+   "brand": "",
+   "ru": "Датчик температуры инвертора тягового электромотора H: прерывистый / нестабильный сигнал",
+   "en": "Drive Motor Inverter Temperature Sensor H Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "drive motor inverter temperature sensor h"
+  },
+  {
+   "code": "P0E2D",
+   "brand": "",
+   "ru": "ЭБУ: контроль тяговой батареи работает с ошибкой",
+   "en": "Internal Control Module Hybrid/EV Battery Monitor Performance",
+   "fam": "",
+   "node": "internal control module hybrid ev battery monitor"
+  },
+  {
+   "code": "P0E2E",
+   "brand": "",
+   "ru": "Предохранитель зарядного устройства A",
+   "en": "Battery Charger A Fuse",
+   "fam": "",
+   "node": "battery charger a fuse"
+  },
+  {
+   "code": "P0E2F",
+   "brand": "",
+   "ru": "Высоковольтный предохранитель B",
+   "en": "High Voltage Fuse B",
+   "fam": "",
+   "node": "ru:высоковольтный предохранитель b"
+  },
+  {
+   "code": "P0E30",
+   "brand": "",
+   "ru": "Высоковольтный предохранитель C",
+   "en": "High Voltage Fuse C",
+   "fam": "",
+   "node": "ru:высоковольтный предохранитель c"
+  },
+  {
+   "code": "P0E31",
+   "brand": "",
+   "ru": "Датчик напряжения преобразователя DC/DC A: цепь",
+   "en": "DC/DC Converter Voltage Sensor A Circuit",
+   "fam": "",
+   "node": "dc dc converter voltage sensor a"
+  },
+  {
+   "code": "P0E32",
+   "brand": "",
+   "ru": "Датчик напряжения преобразователя DC/DC A: вне допустимого диапазона",
+   "en": "DC/DC Converter Voltage Sensor A Range/Performance",
+   "fam": "",
+   "node": "dc dc converter voltage sensor a"
+  },
+  {
+   "code": "P0E33",
+   "brand": "",
+   "ru": "Датчик напряжения преобразователя DC/DC A: низкий уровень",
+   "en": "DC/DC Converter Voltage Sensor A Low",
+   "fam": "",
+   "node": "dc dc converter voltage sensor a"
+  },
+  {
+   "code": "P0E34",
+   "brand": "",
+   "ru": "Датчик напряжения преобразователя DC/DC A: высокий уровень",
+   "en": "DC/DC Converter Voltage Sensor A High",
+   "fam": "",
+   "node": "dc dc converter voltage sensor a"
+  },
+  {
+   "code": "P0E35",
+   "brand": "",
+   "ru": "Датчик напряжения преобразователя DC/DC A: прерывистый / нестабильный сигнал",
+   "en": "DC/DC Converter Voltage Sensor A Intermittent/Erratic",
+   "fam": "",
+   "node": "dc dc converter voltage sensor a"
+  },
+  {
+   "code": "P0E36",
+   "brand": "",
+   "ru": "Датчик напряжения преобразователя DC/DC B: цепь",
+   "en": "DC/DC Converter Voltage Sensor BCircuit",
+   "fam": "",
+   "node": "dc dc converter voltage sensor bcircuit"
+  },
+  {
+   "code": "P0E37",
+   "brand": "",
+   "ru": "Датчик напряжения преобразователя DC/DC B: вне допустимого диапазона",
+   "en": "DC/DC Converter Voltage Sensor B Range/Performance",
+   "fam": "",
+   "node": "dc dc converter voltage sensor b"
+  },
+  {
+   "code": "P0E38",
+   "brand": "",
+   "ru": "Датчик напряжения преобразователя DC/DC B: низкий уровень",
+   "en": "DC/DC Converter Voltage Sensor B Low",
+   "fam": "",
+   "node": "dc dc converter voltage sensor b"
+  },
+  {
+   "code": "P0E39",
+   "brand": "",
+   "ru": "Датчик напряжения преобразователя DC/DC B: высокий уровень",
+   "en": "DC/DC Converter Voltage Sensor B High",
+   "fam": "",
+   "node": "dc dc converter voltage sensor b"
+  },
+  {
+   "code": "P0E3A",
+   "brand": "",
+   "ru": "Датчик напряжения преобразователя DC/DC B: прерывистый / нестабильный сигнал",
+   "en": "DC/DC Converter Voltage Sensor B Intermittent/Erratic",
+   "fam": "",
+   "node": "dc dc converter voltage sensor b"
+  },
+  {
+   "code": "P0E3B",
+   "brand": "",
+   "ru": "Насос охлаждения тяговой батареи: превышены обороты",
+   "en": "Hybrid/EV Battery Coolant Pump Overspeed",
+   "fam": "",
+   "node": "hybrid ev battery coolant pump overspeed"
+  },
+  {
+   "code": "P0E3C",
+   "brand": "",
+   "ru": "Насос охлаждения тяговой батареи: заниженные обороты",
+   "en": "Hybrid/EV Battery Coolant Pump Underspeed",
+   "fam": "",
+   "node": "hybrid ev battery coolant pump underspeed"
+  },
+  {
+   "code": "P0E43",
+   "brand": "",
+   "ru": "Блок управления гибридной силовой установкой B",
+   "en": "Hybrid/EV Powertrain Control Module B",
+   "fam": "",
+   "node": "hybrid ev powertrain control module b"
+  },
+  {
+   "code": "P0E44",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения блока E: цепь",
+   "en": "Hybrid/EV Battery Pack Voltage Sense E Circuit",
+   "fam": "",
+   "node": "hybrid ev battery pack voltage sense e"
+  },
+  {
+   "code": "P0E45",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения блока E: сигнал вне диапазона",
+   "en": "Hybrid/EV Battery Pack Voltage Sense E Circuit Range/Performance",
+   "fam": "",
+   "node": "hybrid ev battery pack voltage sense e"
+  },
+  {
+   "code": "P0E46",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения блока E: низкий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Pack Voltage Sense E Circuit Low",
+   "fam": "",
+   "node": "hybrid ev battery pack voltage sense e"
+  },
+  {
+   "code": "P0E47",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения блока E: высокий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Pack Voltage Sense E Circuit High",
+   "fam": "",
+   "node": "hybrid ev battery pack voltage sense e"
+  },
+  {
+   "code": "P0E48",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения блока E: прерывистый / нестабильный сигнал",
+   "en": "Hybrid/EV Battery Pack Voltage Sense E Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "hybrid ev battery pack voltage sense e"
+  },
+  {
+   "code": "P0E49",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения блока F: цепь",
+   "en": "Hybrid/EV Battery Pack Voltage Sense F Circuit",
+   "fam": "",
+   "node": "hybrid ev battery pack voltage sense f"
+  },
+  {
+   "code": "P0E4A",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения блока F: сигнал вне диапазона",
+   "en": "Hybrid/EV Battery Pack Voltage Sense F Circuit Range/Performance",
+   "fam": "",
+   "node": "hybrid ev battery pack voltage sense f"
+  },
+  {
+   "code": "P0E4B",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения блока F: низкий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Pack Voltage Sense F Circuit Low",
+   "fam": "",
+   "node": "hybrid ev battery pack voltage sense f"
+  },
+  {
+   "code": "P0E4C",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения блока F: высокий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Pack Voltage Sense F Circuit High",
+   "fam": "",
+   "node": "hybrid ev battery pack voltage sense f"
+  },
+  {
+   "code": "P0E4D",
+   "brand": "",
+   "ru": "Тяговая батарея, измерение напряжения блока F: прерывистый / нестабильный сигнал",
+   "en": "Hybrid/EV Battery Pack Voltage Sense F Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "hybrid ev battery pack voltage sense f"
+  },
+  {
+   "code": "P0E4E",
+   "brand": "",
+   "ru": "Двигатель не провернулся при пуске",
+   "en": "Engine Failed to Crank",
+   "fam": "",
+   "node": "engine failed to crank"
+  }
+ ]
+}

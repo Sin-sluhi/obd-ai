@@ -1,0 +1,386 @@
+{
+ "name": "sae_194",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "control module communication bus h off",
+  "control module communication bus i off",
+  "control module communication bus j off",
+  "control module communication bus k off",
+  "control module communication bus l off",
+  "control module communication bus m off",
+  "ru:низкоскоростная шина can",
+  "vehicle communication bus a",
+  "vehicle communication bus a shorted to bus a",
+  "vehicle communication bus b",
+  "vehicle communication bus b shorted to bus b",
+  "vehicle communication bus c",
+  "vehicle communication bus c shorted to bus c",
+  "vehicle communication bus d",
+  "vehicle communication bus d shorted to bus d",
+  "vehicle communication bus e",
+  "vehicle communication bus e shorted to bus e"
+ ],
+ "codes": [
+  {
+   "code": "U0027",
+   "brand": "",
+   "ru": "Низкоскоростная шина CAN: замыкание (−) на (+)",
+   "en": "Low Speed CAN Communication Bus (-) shorted to Bus (+)",
+   "fam": "",
+   "node": "ru:низкоскоростная шина can"
+  },
+  {
+   "code": "U0030",
+   "brand": "",
+   "ru": "Шина связи A (+): обрыв",
+   "en": "Vehicle Communication Bus A (+) Open",
+   "fam": "",
+   "node": "vehicle communication bus a"
+  },
+  {
+   "code": "U0031",
+   "brand": "",
+   "ru": "Шина связи A (+): низкий уровень",
+   "en": "Vehicle Communication Bus A (+) Low",
+   "fam": "",
+   "node": "vehicle communication bus a"
+  },
+  {
+   "code": "U0032",
+   "brand": "",
+   "ru": "Шина связи A (+): высокий уровень",
+   "en": "Vehicle Communication Bus A (+) High",
+   "fam": "",
+   "node": "vehicle communication bus a"
+  },
+  {
+   "code": "U0033",
+   "brand": "",
+   "ru": "Шина связи A (−): обрыв",
+   "en": "Vehicle Communication Bus A (-) Open",
+   "fam": "",
+   "node": "vehicle communication bus a"
+  },
+  {
+   "code": "U0034",
+   "brand": "",
+   "ru": "Шина связи A (−): низкий уровень",
+   "en": "Vehicle Communication Bus A (-) Low",
+   "fam": "",
+   "node": "vehicle communication bus a"
+  },
+  {
+   "code": "U0035",
+   "brand": "",
+   "ru": "Шина связи A (−): высокий уровень",
+   "en": "Vehicle Communication Bus A (-) High",
+   "fam": "",
+   "node": "vehicle communication bus a"
+  },
+  {
+   "code": "U0036",
+   "brand": "",
+   "ru": "Шина связи A: замыкание (−) на (+)",
+   "en": "Vehicle Communication Bus A (-) shorted to Bus A (+)",
+   "fam": "",
+   "node": "vehicle communication bus a shorted to bus a"
+  },
+  {
+   "code": "U0039",
+   "brand": "",
+   "ru": "Шина связи B (+): обрыв",
+   "en": "Vehicle Communication Bus B (+) Open",
+   "fam": "",
+   "node": "vehicle communication bus b"
+  },
+  {
+   "code": "U0040",
+   "brand": "",
+   "ru": "Шина связи B (+): низкий уровень",
+   "en": "Vehicle Communication Bus B (+) Low",
+   "fam": "",
+   "node": "vehicle communication bus b"
+  },
+  {
+   "code": "U0041",
+   "brand": "",
+   "ru": "Шина связи B (+): высокий уровень",
+   "en": "Vehicle Communication Bus B (+) High",
+   "fam": "",
+   "node": "vehicle communication bus b"
+  },
+  {
+   "code": "U0042",
+   "brand": "",
+   "ru": "Шина связи B (−): обрыв",
+   "en": "Vehicle Communication Bus B (-) Open",
+   "fam": "",
+   "node": "vehicle communication bus b"
+  },
+  {
+   "code": "U0043",
+   "brand": "",
+   "ru": "Шина связи B (−): низкий уровень",
+   "en": "Vehicle Communication Bus B (-) Low",
+   "fam": "",
+   "node": "vehicle communication bus b"
+  },
+  {
+   "code": "U0044",
+   "brand": "",
+   "ru": "Шина связи B (−): высокий уровень",
+   "en": "Vehicle Communication Bus B (-) High",
+   "fam": "",
+   "node": "vehicle communication bus b"
+  },
+  {
+   "code": "U0045",
+   "brand": "",
+   "ru": "Шина связи B: замыкание (−) на (+)",
+   "en": "Vehicle Communication Bus B (-) shorted to Bus B (+)",
+   "fam": "",
+   "node": "vehicle communication bus b shorted to bus b"
+  },
+  {
+   "code": "U0047",
+   "brand": "",
+   "ru": "Шина связи автомобиля C: работа нарушена",
+   "en": "Vehicle Communication Bus C Performance",
+   "fam": "",
+   "node": "vehicle communication bus c"
+  },
+  {
+   "code": "U0048",
+   "brand": "",
+   "ru": "Шина связи C (+): обрыв",
+   "en": "Vehicle Communication Bus C (+) Open",
+   "fam": "",
+   "node": "vehicle communication bus c"
+  },
+  {
+   "code": "U0049",
+   "brand": "",
+   "ru": "Шина связи C (+): низкий уровень",
+   "en": "Vehicle Communication Bus C (+) Low",
+   "fam": "",
+   "node": "vehicle communication bus c"
+  },
+  {
+   "code": "U0050",
+   "brand": "",
+   "ru": "Шина связи C (+): высокий уровень",
+   "en": "Vehicle Communication Bus C (+) High",
+   "fam": "",
+   "node": "vehicle communication bus c"
+  },
+  {
+   "code": "U0051",
+   "brand": "",
+   "ru": "Шина связи C (−): обрыв",
+   "en": "Vehicle Communication Bus C (-) Open",
+   "fam": "",
+   "node": "vehicle communication bus c"
+  },
+  {
+   "code": "U0052",
+   "brand": "",
+   "ru": "Шина связи C (−): низкий уровень",
+   "en": "Vehicle Communication Bus C (-) Low",
+   "fam": "",
+   "node": "vehicle communication bus c"
+  },
+  {
+   "code": "U0053",
+   "brand": "",
+   "ru": "Шина связи C (−): высокий уровень",
+   "en": "Vehicle Communication Bus C (-) High",
+   "fam": "",
+   "node": "vehicle communication bus c"
+  },
+  {
+   "code": "U0054",
+   "brand": "",
+   "ru": "Шина связи C: замыкание (−) на (+)",
+   "en": "Vehicle Communication Bus C (-) shorted to Bus C (+)",
+   "fam": "",
+   "node": "vehicle communication bus c shorted to bus c"
+  },
+  {
+   "code": "U0056",
+   "brand": "",
+   "ru": "Шина связи автомобиля D: работа нарушена",
+   "en": "Vehicle Communication Bus D Performance",
+   "fam": "",
+   "node": "vehicle communication bus d"
+  },
+  {
+   "code": "U0057",
+   "brand": "",
+   "ru": "Шина связи D (+): обрыв",
+   "en": "Vehicle Communication Bus D (+) Open",
+   "fam": "",
+   "node": "vehicle communication bus d"
+  },
+  {
+   "code": "U0058",
+   "brand": "",
+   "ru": "Шина связи D (+): низкий уровень",
+   "en": "Vehicle Communication Bus D (+) Low",
+   "fam": "",
+   "node": "vehicle communication bus d"
+  },
+  {
+   "code": "U0059",
+   "brand": "",
+   "ru": "Шина связи D (+): высокий уровень",
+   "en": "Vehicle Communication Bus D (+) High",
+   "fam": "",
+   "node": "vehicle communication bus d"
+  },
+  {
+   "code": "U0060",
+   "brand": "",
+   "ru": "Шина связи D (−): обрыв",
+   "en": "Vehicle Communication Bus D (-) Open",
+   "fam": "",
+   "node": "vehicle communication bus d"
+  },
+  {
+   "code": "U0061",
+   "brand": "",
+   "ru": "Шина связи D (−): низкий уровень",
+   "en": "Vehicle Communication Bus D (-) Low",
+   "fam": "",
+   "node": "vehicle communication bus d"
+  },
+  {
+   "code": "U0062",
+   "brand": "",
+   "ru": "Шина связи D (−): высокий уровень",
+   "en": "Vehicle Communication Bus D (-) High",
+   "fam": "",
+   "node": "vehicle communication bus d"
+  },
+  {
+   "code": "U0063",
+   "brand": "",
+   "ru": "Шина связи D: замыкание (−) на (+)",
+   "en": "Vehicle Communication Bus D (-) shorted to Bus D (+)",
+   "fam": "",
+   "node": "vehicle communication bus d shorted to bus d"
+  },
+  {
+   "code": "U0065",
+   "brand": "",
+   "ru": "Шина связи автомобиля E: работа нарушена",
+   "en": "Vehicle Communication Bus E Performance",
+   "fam": "",
+   "node": "vehicle communication bus e"
+  },
+  {
+   "code": "U0066",
+   "brand": "",
+   "ru": "Шина связи E (+): обрыв",
+   "en": "Vehicle Communication Bus E (+) Open",
+   "fam": "",
+   "node": "vehicle communication bus e"
+  },
+  {
+   "code": "U0067",
+   "brand": "",
+   "ru": "Шина связи E (+): низкий уровень",
+   "en": "Vehicle Communication Bus E (+) Low",
+   "fam": "",
+   "node": "vehicle communication bus e"
+  },
+  {
+   "code": "U0068",
+   "brand": "",
+   "ru": "Шина связи E (+): высокий уровень",
+   "en": "Vehicle Communication Bus E (+) High",
+   "fam": "",
+   "node": "vehicle communication bus e"
+  },
+  {
+   "code": "U0069",
+   "brand": "",
+   "ru": "Шина связи E (−): обрыв",
+   "en": "Vehicle Communication Bus E (-) Open",
+   "fam": "",
+   "node": "vehicle communication bus e"
+  },
+  {
+   "code": "U0070",
+   "brand": "",
+   "ru": "Шина связи E (−): низкий уровень",
+   "en": "Vehicle Communication Bus E (-) Low",
+   "fam": "",
+   "node": "vehicle communication bus e"
+  },
+  {
+   "code": "U0071",
+   "brand": "",
+   "ru": "Шина связи E (−): высокий уровень",
+   "en": "Vehicle Communication Bus E (-) High",
+   "fam": "",
+   "node": "vehicle communication bus e"
+  },
+  {
+   "code": "U0072",
+   "brand": "",
+   "ru": "Шина связи E: замыкание (−) на (+)",
+   "en": "Vehicle Communication Bus E (-) shorted to Bus E (+)",
+   "fam": "",
+   "node": "vehicle communication bus e shorted to bus e"
+  },
+  {
+   "code": "U007A",
+   "brand": "",
+   "ru": "Шина связи H отключена (Bus Off)",
+   "en": "Control Module Communication Bus H Off",
+   "fam": "",
+   "node": "control module communication bus h off"
+  },
+  {
+   "code": "U007B",
+   "brand": "",
+   "ru": "Шина связи I отключена (Bus Off)",
+   "en": "Control Module Communication Bus I Off",
+   "fam": "",
+   "node": "control module communication bus i off"
+  },
+  {
+   "code": "U007C",
+   "brand": "",
+   "ru": "Шина связи J отключена (Bus Off)",
+   "en": "Control Module Communication Bus J Off",
+   "fam": "",
+   "node": "control module communication bus j off"
+  },
+  {
+   "code": "U007D",
+   "brand": "",
+   "ru": "Шина связи K отключена (Bus Off)",
+   "en": "Control Module Communication Bus K Off",
+   "fam": "",
+   "node": "control module communication bus k off"
+  },
+  {
+   "code": "U007E",
+   "brand": "",
+   "ru": "Шина связи L отключена (Bus Off)",
+   "en": "Control Module Communication Bus L Off",
+   "fam": "",
+   "node": "control module communication bus l off"
+  },
+  {
+   "code": "U007F",
+   "brand": "",
+   "ru": "Шина связи M отключена (Bus Off)",
+   "en": "Control Module Communication Bus M Off",
+   "fam": "",
+   "node": "control module communication bus m off"
+  }
+ ]
+}

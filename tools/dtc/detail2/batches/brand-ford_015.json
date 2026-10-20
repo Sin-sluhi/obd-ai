@@ -1,0 +1,404 @@
+{
+ "name": "brand-ford_015",
+ "series": "brand",
+ "brand": "ford",
+ "nodes": [
+  "brake switch",
+  "downstream heated oxygen sensor signals reversed",
+  "dual alternator battery lamp",
+  "dual alternator lower",
+  "dual alternator lower fault manifold absolute pressure",
+  "dual alternator upper fault",
+  "engine coolant temperature",
+  "engine coolant temperature sensor",
+  "engine coolant temperature sensor is out of self test",
+  "exhaust not warm enough downstream o2 sensor not tested",
+  "fam:ecu",
+  "fam:lambda1",
+  "fam:lean",
+  "fam:rich",
+  "fam:tps",
+  "fuel control shifted lean",
+  "fuel control shifted rich",
+  "iat b sensor",
+  "intake air temperature sensor",
+  "koer test cannot be completed",
+  "lack of downstream heated oxygen sensor switch sensor indicates lean",
+  "lack of downstream heated oxygen sensor switch sensor indicates rich",
+  "manifold absolute temperature",
+  "mass air flow sensor",
+  "mass air flow sensor out of self test",
+  "pedal position sensor a",
+  "system pass",
+  "throttle position",
+  "throttle position sensor",
+  "throttle position sensor in",
+  "throttle position sensor inconsistent with mass air flow",
+  "upstream heated oxygen sensor signals reversed",
+  "vehicle speed",
+  "water in fuel condition",
+  "water in fuel indicator"
+ ],
+ "codes": [
+  {
+   "code": "P1000",
+   "brand": "ford",
+   "ru": "Самотесты OBD не завершены",
+   "en": "",
+   "fam": "ecu",
+   "node": "fam:ecu"
+  },
+  {
+   "code": "P1001",
+   "brand": "ford",
+   "ru": "Самотест на работающем двигателе (KOER) не может быть завершён",
+   "en": "KOER Test Cannot Be Completed",
+   "fam": "",
+   "node": "koer test cannot be completed"
+  },
+  {
+   "code": "P1039",
+   "brand": "ford",
+   "ru": "Сигнал скорости отсутствует или неверный",
+   "en": "Vehicle Speed Signal Missing or Improper",
+   "fam": "",
+   "node": "vehicle speed"
+  },
+  {
+   "code": "P1051",
+   "brand": "ford",
+   "ru": "Сигнал выключателя тормоза отсутствует или неверный",
+   "en": "Brake Switch Signal Missing or Improper",
+   "fam": "",
+   "node": "brake switch"
+  },
+  {
+   "code": "P1100",
+   "brand": "ford",
+   "ru": "Расходомер воздуха: прерывистый сигнал",
+   "en": "Mass Air Flow Sensor Intermittent",
+   "fam": "",
+   "node": "mass air flow sensor"
+  },
+  {
+   "code": "P1101",
+   "brand": "ford",
+   "ru": "Расходомер воздуха: вне диапазона самотеста",
+   "en": "Mass Air Flow Sensor Out of Self-Test Range",
+   "fam": "",
+   "node": "mass air flow sensor out of self test"
+  },
+  {
+   "code": "P1105",
+   "brand": "ford",
+   "ru": "Сдвоенный генератор: неисправность верхнего",
+   "en": "Dual Alternator Upper Fault",
+   "fam": "",
+   "node": "dual alternator upper fault"
+  },
+  {
+   "code": "P1106",
+   "brand": "ford",
+   "ru": "Сдвоенный генератор, нижний: неисправность / датчик давления во впуске: временами высокое напряжение",
+   "en": "Dual Alternator Lower Fault Manifold Absolute Pressure (MAP) Sensor Circuit Intermittent High Voltage",
+   "fam": "",
+   "node": "dual alternator lower fault manifold absolute pressure"
+  },
+  {
+   "code": "P1107",
+   "brand": "ford",
+   "ru": "Сдвоенный генератор, нижний: цепь / датчик давления во впуске: временами низкое напряжение",
+   "en": "Dual Alternator Lower Circuit Malfunction Manifold Absolute Pressure (MAP) Sensor Circuit Intermittent Low Voltage",
+   "fam": "",
+   "node": "dual alternator lower"
+  },
+  {
+   "code": "P1108",
+   "brand": "ford",
+   "ru": "Сдвоенный генератор: неисправность цепи лампы зарядки",
+   "en": "Dual Alternator Battery Lamp Circuit Malfunction",
+   "fam": "",
+   "node": "dual alternator battery lamp"
+  },
+  {
+   "code": "P1109",
+   "brand": "ford",
+   "ru": "Датчик температуры впуска B: прерывистый сигнал",
+   "en": "IAT - B Sensor Intermittent",
+   "fam": "",
+   "node": "iat b sensor"
+  },
+  {
+   "code": "P1111",
+   "brand": "ford",
+   "ru": "Система в порядке (служебный код)",
+   "en": "System Pass",
+   "fam": "",
+   "node": "system pass"
+  },
+  {
+   "code": "P1112",
+   "brand": "ford",
+   "ru": "Датчик температуры впускного воздуха: прерывистый сигнал",
+   "en": "Intake Air Temperature Sensor Intermittent",
+   "fam": "",
+   "node": "intake air temperature sensor"
+  },
+  {
+   "code": "P1114",
+   "brand": "ford",
+   "ru": "Датчик температуры ОЖ: временами низкое напряжение / датчик температуры впуска B: низкий сигнал",
+   "en": "Engine Coolant Temperature (ECT) Sensor Circuit Intermittent Low Voltage IAT - B Circuit Low Input",
+   "fam": "",
+   "node": "engine coolant temperature"
+  },
+  {
+   "code": "P1115",
+   "brand": "ford",
+   "ru": "Датчик температуры ОЖ: временами высокое напряжение / датчик температуры впуска B: высокий сигнал",
+   "en": "Engine Coolant Temperature (ECT) Sensor Circuit Intermittent High Voltage IAT - B Circuit High Input",
+   "fam": "",
+   "node": "engine coolant temperature"
+  },
+  {
+   "code": "P1116",
+   "brand": "ford",
+   "ru": "Датчик температуры ОЖ: вне диапазона самотеста",
+   "en": "Engine Coolant Temperature Sensor is Out of Self-Test Range",
+   "fam": "",
+   "node": "engine coolant temperature sensor is out of self test"
+  },
+  {
+   "code": "P1117",
+   "brand": "ford",
+   "ru": "Датчик температуры ОЖ: прерывистый сигнал",
+   "en": "Engine Coolant Temperature Sensor Intermittent",
+   "fam": "",
+   "node": "engine coolant temperature sensor"
+  },
+  {
+   "code": "P1118",
+   "brand": "ford",
+   "ru": "Датчик температуры во впускном коллекторе: низкий сигнал",
+   "en": "Manifold Absolute Temperature Circuit Low Input",
+   "fam": "",
+   "node": "manifold absolute temperature"
+  },
+  {
+   "code": "P1119",
+   "brand": "ford",
+   "ru": "Датчик температуры во впускном коллекторе: высокий сигнал",
+   "en": "Manifold Absolute Temperature Circuit High Input",
+   "fam": "",
+   "node": "manifold absolute temperature"
+  },
+  {
+   "code": "P1120",
+   "brand": "ford",
+   "ru": "Датчик положения дросселя: ниже диапазона",
+   "en": "",
+   "fam": "tps",
+   "node": "fam:tps"
+  },
+  {
+   "code": "P1124",
+   "brand": "ford",
+   "ru": "Датчик положения дросселя: вне диапазона самотеста",
+   "en": "",
+   "fam": "tps",
+   "node": "fam:tps"
+  },
+  {
+   "code": "P1121",
+   "brand": "ford",
+   "ru": "Датчик положения дросселя не согласуется с расходомером воздуха",
+   "en": "Throttle Position Sensor Inconsistent with Mass Air Flow Sensor",
+   "fam": "",
+   "node": "throttle position sensor inconsistent with mass air flow"
+  },
+  {
+   "code": "P1122",
+   "brand": "ford",
+   "ru": "Датчик положения дросселя: временами низкое напряжение",
+   "en": "Throttle Position (TP) Sensor Circuit Intermittent Low Voltage",
+   "fam": "",
+   "node": "throttle position"
+  },
+  {
+   "code": "P1123",
+   "brand": "ford",
+   "ru": "Датчик положения дросселя: в диапазоне, но выше ожидаемого",
+   "en": "Throttle Position Sensor In Range But Higher Than Expected",
+   "fam": "",
+   "node": "throttle position sensor in"
+  },
+  {
+   "code": "P1125",
+   "brand": "ford",
+   "ru": "Датчик положения дросселя: прерывистый сигнал",
+   "en": "Throttle Position Sensor Intermittent",
+   "fam": "",
+   "node": "throttle position sensor"
+  },
+  {
+   "code": "P1127",
+   "brand": "ford",
+   "ru": "Выхлоп недостаточно прогрет, задний лямбда-зонд не проверен",
+   "en": "Exhaust Not Warm Enough Downstream O2 Sensor Not Tested",
+   "fam": "",
+   "node": "exhaust not warm enough downstream o2 sensor not tested"
+  },
+  {
+   "code": "P1128",
+   "brand": "ford",
+   "ru": "Сигналы передних лямбда-зондов перепутаны",
+   "en": "Upstream Heated Oxygen Sensor Signals Reversed",
+   "fam": "",
+   "node": "upstream heated oxygen sensor signals reversed"
+  },
+  {
+   "code": "P1129",
+   "brand": "ford",
+   "ru": "Сигналы задних лямбда-зондов перепутаны",
+   "en": "Downstream Heated Oxygen Sensor Signals Reversed",
+   "fam": "",
+   "node": "downstream heated oxygen sensor signals reversed"
+  },
+  {
+   "code": "P1130",
+   "brand": "ford",
+   "ru": "Лямбда-зонд (банк 1): коррекция на пределе, зонд не переключается",
+   "en": "",
+   "fam": "lambda1",
+   "node": "fam:lambda1"
+  },
+  {
+   "code": "P1150",
+   "brand": "ford",
+   "ru": "Лямбда-зонд (банк 2): коррекция на пределе, зонд не переключается",
+   "en": "",
+   "fam": "lambda1",
+   "node": "fam:lambda1"
+  },
+  {
+   "code": "P1131",
+   "brand": "ford",
+   "ru": "Лямбда-зонд (банк 1): не переключается, показывает «бедно»",
+   "en": "",
+   "fam": "lean",
+   "node": "fam:lean"
+  },
+  {
+   "code": "P1151",
+   "brand": "ford",
+   "ru": "Лямбда-зонд (банк 2): не переключается, показывает «бедно»",
+   "en": "",
+   "fam": "lean",
+   "node": "fam:lean"
+  },
+  {
+   "code": "P1132",
+   "brand": "ford",
+   "ru": "Лямбда-зонд (банк 1): не переключается, показывает «богато»",
+   "en": "",
+   "fam": "rich",
+   "node": "fam:rich"
+  },
+  {
+   "code": "P1152",
+   "brand": "ford",
+   "ru": "Лямбда-зонд (банк 2): не переключается, показывает «богато»",
+   "en": "",
+   "fam": "rich",
+   "node": "fam:rich"
+  },
+  {
+   "code": "P1133",
+   "brand": "ford",
+   "ru": "Регулирование смеси (ряд 1) смещено в бедную сторону",
+   "en": "Bank 1 Fuel Control Shifted Lean",
+   "fam": "",
+   "node": "fuel control shifted lean"
+  },
+  {
+   "code": "P1153",
+   "brand": "ford",
+   "ru": "Регулирование смеси (ряд 2) смещено в бедную сторону",
+   "en": "Bank 2 Fuel Control Shifted Lean",
+   "fam": "",
+   "node": "fuel control shifted lean"
+  },
+  {
+   "code": "P1134",
+   "brand": "ford",
+   "ru": "Регулирование смеси (ряд 1) смещено в богатую сторону",
+   "en": "Bank 1 Fuel Control Shifted Rich",
+   "fam": "",
+   "node": "fuel control shifted rich"
+  },
+  {
+   "code": "P1154",
+   "brand": "ford",
+   "ru": "Регулирование смеси (ряд 2) смещено в богатую сторону",
+   "en": "Bank 2 Fuel Control Shifted Rich",
+   "fam": "",
+   "node": "fuel control shifted rich"
+  },
+  {
+   "code": "P1135",
+   "brand": "ford",
+   "ru": "Датчик педали газа A: прерывистый сигнал",
+   "en": "Pedal Position Sensor A Circuit Intermittent",
+   "fam": "",
+   "node": "pedal position sensor a"
+  },
+  {
+   "code": "P1137",
+   "brand": "ford",
+   "ru": "Задний лямбда-зонд (ряд 1) не переключается, показывает бедно",
+   "en": "Lack of Downstream Heated Oxygen Sensor Switch Sensor Indicates Lean Bank 1",
+   "fam": "",
+   "node": "lack of downstream heated oxygen sensor switch sensor indicates lean"
+  },
+  {
+   "code": "P1157",
+   "brand": "ford",
+   "ru": "Задний лямбда-зонд (ряд 2) не переключается, показывает бедно",
+   "en": "Lack of Downstream Heated Oxygen Sensor Switch Sensor Indicates Lean Bank 2",
+   "fam": "",
+   "node": "lack of downstream heated oxygen sensor switch sensor indicates lean"
+  },
+  {
+   "code": "P1138",
+   "brand": "ford",
+   "ru": "Задний лямбда-зонд (ряд 1) не переключается, показывает богато",
+   "en": "Lack of Downstream Heated Oxygen Sensor Switch Sensor Indicates Rich Bank 1",
+   "fam": "",
+   "node": "lack of downstream heated oxygen sensor switch sensor indicates rich"
+  },
+  {
+   "code": "P1158",
+   "brand": "ford",
+   "ru": "Задний лямбда-зонд (ряд 2) не переключается, показывает богато",
+   "en": "Lack of Downstream Heated Oxygen Sensor Switch Sensor Indicates Rich Bank 2",
+   "fam": "",
+   "node": "lack of downstream heated oxygen sensor switch sensor indicates rich"
+  },
+  {
+   "code": "P1139",
+   "brand": "ford",
+   "ru": "Индикатор воды в топливе: неисправность цепи",
+   "en": "Water In Fuel Indicator Circuit Malfunction",
+   "fam": "",
+   "node": "water in fuel indicator"
+  },
+  {
+   "code": "P1140",
+   "brand": "ford",
+   "ru": "Вода в топливе",
+   "en": "Water In Fuel Condition",
+   "fam": "",
+   "node": "water in fuel condition"
+  }
+ ]
+}

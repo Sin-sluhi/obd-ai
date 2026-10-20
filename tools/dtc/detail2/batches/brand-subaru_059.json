@@ -1,0 +1,374 @@
+{
+ "name": "brand-subaru_059",
+ "series": "brand",
+ "brand": "subaru",
+ "nodes": [
+  "air system diagnosis",
+  "atmospheric pressure sensor",
+  "engine torque control",
+  "engine torque control cut",
+  "front oxygen",
+  "front oxygen af",
+  "front oxygen af sensor #1",
+  "front oxygen af sensor microcomputer problem",
+  "mass air flow",
+  "neutral position",
+  "pressure sources solenoid",
+  "pressure sources switching",
+  "pressure sources switching solenoid",
+  "ru:сигнал противобуксовки",
+  "starter",
+  "starter switch",
+  "tumble generator",
+  "tumble generator valve #1 rh",
+  "tumble generator valve #1 rh position",
+  "tumble generator valve #2 lh",
+  "tumble generator valve #2 lh position"
+ ],
+ "codes": [
+  {
+   "code": "P1086",
+   "brand": "subaru",
+   "ru": "Датчик положения заслонки завихрения № 2 (левой): низкий сигнал",
+   "en": "Tumble Generator Valve #2 LH Position Sensor Circuit Low Input",
+   "fam": "",
+   "node": "tumble generator valve #2 lh position"
+  },
+  {
+   "code": "P1087",
+   "brand": "subaru",
+   "ru": "Датчик положения заслонки завихрения № 2 (левой): высокий сигнал",
+   "en": "Tumble Generator Valve #2 LH Position Sensor Circuit High Input",
+   "fam": "",
+   "node": "tumble generator valve #2 lh position"
+  },
+  {
+   "code": "P1088",
+   "brand": "subaru",
+   "ru": "Датчик положения заслонки завихрения № 1 (правой): низкий сигнал",
+   "en": "Tumble Generator Valve #1 RH Position Sensor Circuit Low Input",
+   "fam": "",
+   "node": "tumble generator valve #1 rh position"
+  },
+  {
+   "code": "P1089",
+   "brand": "subaru",
+   "ru": "Датчик положения заслонки завихрения № 1 (правой): высокий сигнал",
+   "en": "Tumble Generator Valve #1 RH Position Sensor Circuit High Input",
+   "fam": "",
+   "node": "tumble generator valve #1 rh position"
+  },
+  {
+   "code": "P1090",
+   "brand": "subaru",
+   "ru": "Заслонка завихрения № 1 (правая) заклинила открытой",
+   "en": "Tumble Generator Valve #1 RH Malfunction Stuck Open",
+   "fam": "",
+   "node": "tumble generator valve #1 rh"
+  },
+  {
+   "code": "P1091",
+   "brand": "subaru",
+   "ru": "Заслонка завихрения № 1 (правая) заклинила закрытой",
+   "en": "Tumble Generator Valve #1 RH Malfunction Stuck Close",
+   "fam": "",
+   "node": "tumble generator valve #1 rh"
+  },
+  {
+   "code": "P1092",
+   "brand": "subaru",
+   "ru": "Заслонка завихрения № 2 (левая) заклинила открытой",
+   "en": "Tumble Generator Valve #2 LH Malfunction Stuck Open",
+   "fam": "",
+   "node": "tumble generator valve #2 lh"
+  },
+  {
+   "code": "P1093",
+   "brand": "subaru",
+   "ru": "Заслонка завихрения № 2 (левая) заклинила закрытой",
+   "en": "Tumble Generator Valve #2 LH Malfunction Stuck Close",
+   "fam": "",
+   "node": "tumble generator valve #2 lh"
+  },
+  {
+   "code": "P1094",
+   "brand": "subaru",
+   "ru": "Цепь заслонки завихрения № 1: обрыв",
+   "en": "Tumble Generator Valve Circuit #1 Open Circuit",
+   "fam": "",
+   "node": "tumble generator"
+  },
+  {
+   "code": "P1095",
+   "brand": "subaru",
+   "ru": "Цепь заслонки завихрения № 1: превышение тока",
+   "en": "Tumble Generator Valve Circuit #1 Over Current",
+   "fam": "",
+   "node": "tumble generator"
+  },
+  {
+   "code": "P1096",
+   "brand": "subaru",
+   "ru": "Цепь заслонки завихрения № 2: обрыв",
+   "en": "Tumble Generator Valve Circuit #2 Open Circuit",
+   "fam": "",
+   "node": "tumble generator"
+  },
+  {
+   "code": "P1097",
+   "brand": "subaru",
+   "ru": "Цепь заслонки завихрения № 2: превышение тока",
+   "en": "Tumble Generator Valve Circuit #2 Over Current",
+   "fam": "",
+   "node": "tumble generator"
+  },
+  {
+   "code": "P1100",
+   "brand": "subaru",
+   "ru": "Выключатель стартера: неисправность цепи",
+   "en": "Starter Switch Circuit Malfunction",
+   "fam": "",
+   "node": "starter"
+  },
+  {
+   "code": "P1518",
+   "brand": "subaru",
+   "ru": "Выключатель стартера: низкий сигнал",
+   "en": "Starter Switch Circuit Low Input",
+   "fam": "",
+   "node": "starter"
+  },
+  {
+   "code": "P1101",
+   "brand": "subaru",
+   "ru": "Выключатель нейтрали (МКПП): неисправность цепи",
+   "en": "Neutral Position Switch Circuit Malfunction M/T",
+   "fam": "",
+   "node": "neutral position"
+  },
+  {
+   "code": "P1121",
+   "brand": "subaru",
+   "ru": "Выключатель нейтрали (АКПП): низкий сигнал",
+   "en": "Neutral Position Switch Circuit Low Input AT Vehicles",
+   "fam": "",
+   "node": "neutral position"
+  },
+  {
+   "code": "P1590",
+   "brand": "subaru",
+   "ru": "Выключатель нейтрали: высокий сигнал",
+   "en": "Neutral Position Switch Circuit High Input",
+   "fam": "",
+   "node": "neutral position"
+  },
+  {
+   "code": "P1591",
+   "brand": "subaru",
+   "ru": "Выключатель нейтрали: низкий сигнал",
+   "en": "Neutral Position Switch Circuit Low Input",
+   "fam": "",
+   "node": "neutral position"
+  },
+  {
+   "code": "P1592",
+   "brand": "subaru",
+   "ru": "Выключатель нейтрали (МКПП): цепь",
+   "en": "Neutral Position Switch Circuit MT Model",
+   "fam": "",
+   "node": "neutral position"
+  },
+  {
+   "code": "P1102",
+   "brand": "subaru",
+   "ru": "Клапан переключения источника давления: неисправность цепи",
+   "en": "Pressure Sources Solenoid Valve Circuit Malfunction",
+   "fam": "",
+   "node": "pressure sources solenoid"
+  },
+  {
+   "code": "P1103",
+   "brand": "subaru",
+   "ru": "Клапан переключения источника давления: цепь",
+   "en": "Pressure Sources Switching Solenoid Valve Circuit",
+   "fam": "",
+   "node": "pressure sources switching solenoid"
+  },
+  {
+   "code": "P1104",
+   "brand": "subaru",
+   "ru": "Сигнал управления моментом двигателя: неисправность цепи",
+   "en": "Engine Torque Control Signal Circuit Malfunction",
+   "fam": "",
+   "node": "engine torque control"
+  },
+  {
+   "code": "P1106",
+   "brand": "subaru",
+   "ru": "Сигнал управления моментом двигателя 2: неисправность цепи",
+   "en": "Engine Torque Control Signal 2 Circuit Malfunction",
+   "fam": "",
+   "node": "engine torque control"
+  },
+  {
+   "code": "P1711",
+   "brand": "subaru",
+   "ru": "Сигнал управления моментом двигателя 1: неисправность цепи",
+   "en": "Engine Torque Control Signal 1 Circuit Malfunction",
+   "fam": "",
+   "node": "engine torque control"
+  },
+  {
+   "code": "P1712",
+   "brand": "subaru",
+   "ru": "Сигнал управления моментом двигателя 2: неисправность цепи",
+   "en": "Engine Torque Control Signal 2 Circuit Malfunction",
+   "fam": "",
+   "node": "engine torque control"
+  },
+  {
+   "code": "P1107",
+   "brand": "subaru",
+   "ru": "Клапан диагностики вторичного воздуха: неисправность цепи",
+   "en": "AIR System Diagnosis Solenoid Circuit Fault",
+   "fam": "",
+   "node": "air system diagnosis"
+  },
+  {
+   "code": "P1110",
+   "brand": "subaru",
+   "ru": "Датчик атмосферного давления: низкий сигнал",
+   "en": "Atmospheric Pressure Sensor Low Input",
+   "fam": "",
+   "node": "atmospheric pressure sensor"
+  },
+  {
+   "code": "P1111",
+   "brand": "subaru",
+   "ru": "Датчик атмосферного давления: высокий сигнал",
+   "en": "Atmospheric Pressure Sensor High Input",
+   "fam": "",
+   "node": "atmospheric pressure sensor"
+  },
+  {
+   "code": "P1112",
+   "brand": "subaru",
+   "ru": "Датчик атмосферного давления: выход за диапазон",
+   "en": "Atmospheric Pressure Sensor Range Performance Problem",
+   "fam": "",
+   "node": "atmospheric pressure sensor"
+  },
+  {
+   "code": "P1115",
+   "brand": "subaru",
+   "ru": "Сигнал отсечки момента двигателя: высокий",
+   "en": "Engine Torque Control Cut Signal Circuit High Input",
+   "fam": "",
+   "node": "engine torque control cut"
+  },
+  {
+   "code": "P1116",
+   "brand": "subaru",
+   "ru": "Сигнал отсечки момента двигателя: низкий",
+   "en": "Engine Torque Control Cut Signal Circuit Low Input",
+   "fam": "",
+   "node": "engine torque control cut"
+  },
+  {
+   "code": "P1698",
+   "brand": "subaru",
+   "ru": "Сигнал отсечки момента двигателя: низкий",
+   "en": "Engine Torque Control Cut Signal Circuit Low Input",
+   "fam": "",
+   "node": "engine torque control cut"
+  },
+  {
+   "code": "P1699",
+   "brand": "subaru",
+   "ru": "Сигнал отсечки момента двигателя: высокий",
+   "en": "Engine Torque Control Cut Signal Circuit High Input",
+   "fam": "",
+   "node": "engine torque control cut"
+  },
+  {
+   "code": "P1120",
+   "brand": "subaru",
+   "ru": "Выключатель стартера: высокий сигнал",
+   "en": "Starter Switch High Input",
+   "fam": "",
+   "node": "starter switch"
+  },
+  {
+   "code": "P1122",
+   "brand": "subaru",
+   "ru": "Клапан переключения источника давления: высокий сигнал",
+   "en": "Pressure Sources Switching Valve Circuit High Input",
+   "fam": "",
+   "node": "pressure sources switching"
+  },
+  {
+   "code": "P1124",
+   "brand": "subaru",
+   "ru": "Сигнал противобуксовки: высокий",
+   "en": "TCS Signal Circuit High Input",
+   "fam": "",
+   "node": "ru:сигнал противобуксовки"
+  },
+  {
+   "code": "P1130",
+   "brand": "subaru",
+   "ru": "Передний лямбда-зонд: обрыв цепи",
+   "en": "Front Oxygen Sensor Circuit Malfunction Open Circuit",
+   "fam": "",
+   "node": "front oxygen"
+  },
+  {
+   "code": "P1131",
+   "brand": "subaru",
+   "ru": "Передний лямбда-зонд: замыкание цепи",
+   "en": "Front Oxygen Sensor Circuit Malfunction Short Circuit",
+   "fam": "",
+   "node": "front oxygen"
+  },
+  {
+   "code": "P1134",
+   "brand": "subaru",
+   "ru": "Передний датчик состава смеси: неисправность микроконтроллера",
+   "en": "Front Oxygen AF Sensor Microcomputer Problem",
+   "fam": "",
+   "node": "front oxygen af sensor microcomputer problem"
+  },
+  {
+   "code": "P1137",
+   "brand": "subaru",
+   "ru": "Передний датчик состава смеси: выход за диапазон",
+   "en": "Front Oxygen AF Sensor Circuit Range Performance Problem",
+   "fam": "",
+   "node": "front oxygen af"
+  },
+  {
+   "code": "P1139",
+   "brand": "subaru",
+   "ru": "Подогрев переднего датчика состава смеси № 1: выход за диапазон",
+   "en": "Front Oxygen AF Sensor #1 Heater Circuit Performance Range Problem",
+   "fam": "",
+   "node": "front oxygen af sensor #1"
+  },
+  {
+   "code": "P1141",
+   "brand": "subaru",
+   "ru": "Расходомер воздуха: высокий сигнал",
+   "en": "Mass Air Flow Sensor Circuit High Input",
+   "fam": "",
+   "node": "mass air flow"
+  },
+  {
+   "code": "P1142",
+   "brand": "subaru",
+   "ru": "Расходомер воздуха: низкий сигнал",
+   "en": "Mass Air Flow Sensor Circuit Low Input",
+   "fam": "",
+   "node": "mass air flow"
+  }
+ ]
+}

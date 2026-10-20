@@ -1,0 +1,398 @@
+{
+ "name": "brand-ford_018",
+ "series": "brand",
+ "brand": "ford",
+ "nodes": [
+  "a c clutch",
+  "aborted koer icp failure",
+  "boost calibration",
+  "boost calibration fault",
+  "camshaft position sensor b",
+  "cylinder #8",
+  "egr calibration",
+  "egr calibration fault",
+  "engine rpm or vehicle speed limiter reached",
+  "excessive injection control pressure",
+  "fam:ect",
+  "fam:overtemp",
+  "fuel pulse in",
+  "idm failure",
+  "ignition coil a primary",
+  "ignition coil b primary",
+  "ignition coil c primary",
+  "ignition coil d primary",
+  "ignition diagnostic monitor",
+  "ignition diagnostic monitor pulsewidth not defined",
+  "injection control pressure out of",
+  "injector",
+  "kickdown relay hold",
+  "kickdown relay pull in",
+  "loss of ignition diagnostic module",
+  "misfire detection monitor not enabled",
+  "multi faults with",
+  "ru:выход искры",
+  "ru:регулятор давления впрыска (ipr)"
+ ],
+ "codes": [
+  {
+   "code": "P1268",
+   "brand": "ford",
+   "ru": "Форсунка цилиндра 8: замыкание плюсовой стороны на минусовую",
+   "en": "Cylinder #8 High To Low Side Short",
+   "fam": "",
+   "node": "cylinder #8"
+  },
+  {
+   "code": "P1278",
+   "brand": "ford",
+   "ru": "Форсунка цилиндра 8: обрыв между плюсовой и минусовой стороной",
+   "en": "Cylinder #8 High To Low Side Open",
+   "fam": "",
+   "node": "cylinder #8"
+  },
+  {
+   "code": "P1270",
+   "brand": "ford",
+   "ru": "Сработал ограничитель оборотов или скорости",
+   "en": "Engine RPM or Vehicle Speed Limiter Reached",
+   "fam": "",
+   "node": "engine rpm or vehicle speed limiter reached"
+  },
+  {
+   "code": "P1280",
+   "brand": "ford",
+   "ru": "Давление управления впрыском: ниже диапазона",
+   "en": "Injection Control Pressure Out Of Range Low",
+   "fam": "",
+   "node": "injection control pressure out of"
+  },
+  {
+   "code": "P1281",
+   "brand": "ford",
+   "ru": "Давление управления впрыском: выше диапазона",
+   "en": "Injection Control Pressure Out Of Range High",
+   "fam": "",
+   "node": "injection control pressure out of"
+  },
+  {
+   "code": "P1282",
+   "brand": "ford",
+   "ru": "Давление управления впрыском чрезмерное",
+   "en": "Excessive Injection Control Pressure",
+   "fam": "",
+   "node": "excessive injection control pressure"
+  },
+  {
+   "code": "P1283",
+   "brand": "ford",
+   "ru": "Регулятор давления впрыска (IPR): неисправность цепи",
+   "en": "IPR Circuit Failure",
+   "fam": "",
+   "node": "ru:регулятор давления впрыска (ipr)"
+  },
+  {
+   "code": "P1284",
+   "brand": "ford",
+   "ru": "Самотест KOER прерван: неисправность давления впрыска",
+   "en": "Aborted KOER ICP Failure",
+   "fam": "",
+   "node": "aborted koer icp failure"
+  },
+  {
+   "code": "P1285",
+   "brand": "ford",
+   "ru": "Перегрев головки блока",
+   "en": "",
+   "fam": "overtemp",
+   "node": "fam:overtemp"
+  },
+  {
+   "code": "P1299",
+   "brand": "ford",
+   "ru": "Защита от перегрева головки активна",
+   "en": "",
+   "fam": "overtemp",
+   "node": "fam:overtemp"
+  },
+  {
+   "code": "P1286",
+   "brand": "ford",
+   "ru": "Импульс впрыска: в диапазоне, но ниже ожидаемого",
+   "en": "Fuel Pulse In Range But Lower Than Expected",
+   "fam": "",
+   "node": "fuel pulse in"
+  },
+  {
+   "code": "P1287",
+   "brand": "ford",
+   "ru": "Импульс впрыска: в диапазоне, но выше ожидаемого",
+   "en": "Fuel Pulse In Range But Higher Than Expected",
+   "fam": "",
+   "node": "fuel pulse in"
+  },
+  {
+   "code": "P1288",
+   "brand": "ford",
+   "ru": "Датчик температуры головки (CHT): вне диапазона самотеста",
+   "en": "",
+   "fam": "ect",
+   "node": "fam:ect"
+  },
+  {
+   "code": "P1289",
+   "brand": "ford",
+   "ru": "Датчик температуры головки (CHT): высокий сигнал",
+   "en": "",
+   "fam": "ect",
+   "node": "fam:ect"
+  },
+  {
+   "code": "P1290",
+   "brand": "ford",
+   "ru": "Датчик температуры головки (CHT): низкий сигнал",
+   "en": "",
+   "fam": "ect",
+   "node": "fam:ect"
+  },
+  {
+   "code": "P1291",
+   "brand": "ford",
+   "ru": "Плюсовая сторона форсунок (ряд 1): замыкание на массу или плюс",
+   "en": "Injector High Side Short To GND Or VBATT Bank 1",
+   "fam": "",
+   "node": "injector"
+  },
+  {
+   "code": "P1292",
+   "brand": "ford",
+   "ru": "Плюсовая сторона форсунок (ряд 2): замыкание на массу или плюс",
+   "en": "Injector High Side Short To GND Or VBATT Bank 2",
+   "fam": "",
+   "node": "injector"
+  },
+  {
+   "code": "P1293",
+   "brand": "ford",
+   "ru": "Плюсовая сторона форсунок (ряд 1): обрыв",
+   "en": "Injector High Side Open Bank 1",
+   "fam": "",
+   "node": "injector"
+  },
+  {
+   "code": "P1294",
+   "brand": "ford",
+   "ru": "Плюсовая сторона форсунок (ряд 2): обрыв / не достигнут заданный холостой ход",
+   "en": "Injector High Side Open Bank 2 Target Idle Not Reached",
+   "fam": "",
+   "node": "injector"
+  },
+  {
+   "code": "P1297",
+   "brand": "ford",
+   "ru": "Плюсовые стороны форсунок замкнуты между собой",
+   "en": "Injector High Sides Shorted Together",
+   "fam": "",
+   "node": "injector"
+  },
+  {
+   "code": "P1316",
+   "brand": "ford",
+   "ru": "Цепь форсунок: драйвер (IDM) зафиксировал коды",
+   "en": "Injector Circuit IDM Codes Detected",
+   "fam": "",
+   "node": "injector"
+  },
+  {
+   "code": "P1317",
+   "brand": "ford",
+   "ru": "Цепь форсунок: коды драйвера (IDM) не обновлены",
+   "en": "Injector Circuit IDM Codes Not Updated",
+   "fam": "",
+   "node": "injector"
+  },
+  {
+   "code": "P1295",
+   "brand": "ford",
+   "ru": "Несколько неисправностей (ряд 1) с замыканием минусовой стороны",
+   "en": "Multi-faults Bank 1 With Low Side Shorts",
+   "fam": "",
+   "node": "multi faults with"
+  },
+  {
+   "code": "P1296",
+   "brand": "ford",
+   "ru": "Несколько неисправностей (ряд 2) с замыканием минусовой стороны",
+   "en": "Multi-faults Bank 2 With Low Side Shorts",
+   "fam": "",
+   "node": "multi faults with"
+  },
+  {
+   "code": "P1298",
+   "brand": "ford",
+   "ru": "Неисправность драйвера форсунок (IDM)",
+   "en": "IDM Failure",
+   "fam": "",
+   "node": "idm failure"
+  },
+  {
+   "code": "P1300",
+   "brand": "ford",
+   "ru": "Калибровка наддува: неисправность",
+   "en": "Boost Calibration Fault",
+   "fam": "",
+   "node": "boost calibration fault"
+  },
+  {
+   "code": "P1301",
+   "brand": "ford",
+   "ru": "Калибровка наддува: высоко",
+   "en": "Boost Calibration High",
+   "fam": "",
+   "node": "boost calibration"
+  },
+  {
+   "code": "P1302",
+   "brand": "ford",
+   "ru": "Калибровка наддува: низко",
+   "en": "Boost Calibration Low",
+   "fam": "",
+   "node": "boost calibration"
+  },
+  {
+   "code": "P1303",
+   "brand": "ford",
+   "ru": "Калибровка ЕГР: неисправность",
+   "en": "EGR Calibration Fault",
+   "fam": "",
+   "node": "egr calibration fault"
+  },
+  {
+   "code": "P1304",
+   "brand": "ford",
+   "ru": "Калибровка ЕГР: высоко",
+   "en": "EGR Calibration High",
+   "fam": "",
+   "node": "egr calibration"
+  },
+  {
+   "code": "P1305",
+   "brand": "ford",
+   "ru": "Калибровка ЕГР: низко",
+   "en": "EGR Calibration Low",
+   "fam": "",
+   "node": "egr calibration"
+  },
+  {
+   "code": "P1306",
+   "brand": "ford",
+   "ru": "Реле кикдауна: неисправность цепи включения",
+   "en": "Kickdown Relay Pull In Circuit Fault",
+   "fam": "",
+   "node": "kickdown relay pull in"
+  },
+  {
+   "code": "P1307",
+   "brand": "ford",
+   "ru": "Реле кикдауна: неисправность цепи удержания",
+   "en": "Kickdown Relay Hold Circuit Fault",
+   "fam": "",
+   "node": "kickdown relay hold"
+  },
+  {
+   "code": "P1308",
+   "brand": "ford",
+   "ru": "Муфта кондиционера: неисправность цепи",
+   "en": "A/C Clutch Circuit Fault",
+   "fam": "",
+   "node": "a c clutch"
+  },
+  {
+   "code": "P1309",
+   "brand": "ford",
+   "ru": "Контроль пропусков воспламенения не включён",
+   "en": "Misfire Detection Monitor Not Enabled",
+   "fam": "",
+   "node": "misfire detection monitor not enabled"
+  },
+  {
+   "code": "P1340",
+   "brand": "ford",
+   "ru": "Датчик распредвала B: неисправность цепи",
+   "en": "Camshaft Position Sensor B Circuit Malfunction",
+   "fam": "",
+   "node": "camshaft position sensor b"
+  },
+  {
+   "code": "P1351",
+   "brand": "ford",
+   "ru": "Контроль зажигания (IDM): неисправность входной цепи",
+   "en": "Ignition Diagnostic Monitor Circuit Input Fault",
+   "fam": "",
+   "node": "ignition diagnostic monitor"
+  },
+  {
+   "code": "P1358",
+   "brand": "ford",
+   "ru": "Контроль зажигания: сигнал вне диапазона самотеста",
+   "en": "Ignition Diagnostic Monitor Signal Out of Self-Test Range",
+   "fam": "",
+   "node": "ignition diagnostic monitor"
+  },
+  {
+   "code": "P1352",
+   "brand": "ford",
+   "ru": "Катушка зажигания A: неисправность первичной цепи",
+   "en": "Ignition Coil A Primary Circuit Fault",
+   "fam": "",
+   "node": "ignition coil a primary"
+  },
+  {
+   "code": "P1353",
+   "brand": "ford",
+   "ru": "Катушка зажигания B: неисправность первичной цепи",
+   "en": "Ignition Coil B Primary Circuit Fault",
+   "fam": "",
+   "node": "ignition coil b primary"
+  },
+  {
+   "code": "P1354",
+   "brand": "ford",
+   "ru": "Катушка зажигания C: неисправность первичной цепи",
+   "en": "Ignition Coil C Primary Circuit Fault",
+   "fam": "",
+   "node": "ignition coil c primary"
+  },
+  {
+   "code": "P1355",
+   "brand": "ford",
+   "ru": "Катушка зажигания D: неисправность первичной цепи",
+   "en": "Ignition Coil D Primary Circuit Fault",
+   "fam": "",
+   "node": "ignition coil d primary"
+  },
+  {
+   "code": "P1356",
+   "brand": "ford",
+   "ru": "Нет сигнала от модуля контроля зажигания к блоку двигателя",
+   "en": "Loss of Ignition Diagnostic Module Input to PCM",
+   "fam": "",
+   "node": "loss of ignition diagnostic module"
+  },
+  {
+   "code": "P1357",
+   "brand": "ford",
+   "ru": "Контроль зажигания: длительность импульса не определена",
+   "en": "Ignition Diagnostic Monitor Pulsewidth Not Defined",
+   "fam": "",
+   "node": "ignition diagnostic monitor pulsewidth not defined"
+  },
+  {
+   "code": "P1359",
+   "brand": "ford",
+   "ru": "Выход искры: неисправность цепи",
+   "en": "Spark Output Circuit Fault",
+   "fam": "",
+   "node": "ru:выход искры"
+  }
+ ]
+}

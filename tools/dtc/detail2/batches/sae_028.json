@@ -1,0 +1,288 @@
+{
+ "name": "sae_028",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "barometric pressure turbocharger supercharger inlet pressure correlation",
+  "charge air cooler temperature",
+  "charge air cooler temperature sensor correlation",
+  "fam:iat",
+  "map exhaust pressure correlation",
+  "map turbocharger supercharger inlet pressure correlation",
+  "turbocharger supercharger boost control a supply voltage"
+ ],
+ "codes": [
+  {
+   "code": "P006B",
+   "brand": "",
+   "ru": "Рассогласование датчика MAP и давления выхлопа",
+   "en": "MAP - Exhaust Pressure Correlation",
+   "fam": "",
+   "node": "map exhaust pressure correlation"
+  },
+  {
+   "code": "P006C",
+   "brand": "",
+   "ru": "Рассогласование датчика MAP и давления на входе турбины",
+   "en": "MAP - Turbocharger/Supercharger Inlet Pressure Correlation",
+   "fam": "",
+   "node": "map turbocharger supercharger inlet pressure correlation"
+  },
+  {
+   "code": "P006D",
+   "brand": "",
+   "ru": "Атмосферное давление / давление на входе турбины: рассогласование показаний (банк 1)",
+   "en": "Barometric Pressure - Turbocharger/Supercharger Inlet Pressure Correlation Bank 1",
+   "fam": "",
+   "node": "barometric pressure turbocharger supercharger inlet pressure correlation"
+  },
+  {
+   "code": "P00F7",
+   "brand": "",
+   "ru": "Атмосферное давление / давление на входе турбины: рассогласование показаний (банк 2)",
+   "en": "Barometric Pressure - Turbocharger/Supercharger Inlet Pressure Correlation Bank 2",
+   "fam": "",
+   "node": "barometric pressure turbocharger supercharger inlet pressure correlation"
+  },
+  {
+   "code": "P006E",
+   "brand": "",
+   "ru": "Регулирование давления наддува A: низкое напряжение питания",
+   "en": "Turbocharger/Supercharger Boost Control A Supply Voltage Circuit Low",
+   "fam": "",
+   "node": "turbocharger supercharger boost control a supply voltage"
+  },
+  {
+   "code": "P006F",
+   "brand": "",
+   "ru": "Регулирование давления наддува A: высокое напряжение питания",
+   "en": "Turbocharger/Supercharger Boost Control A Supply Voltage Circuit High",
+   "fam": "",
+   "node": "turbocharger supercharger boost control a supply voltage"
+  },
+  {
+   "code": "P0070",
+   "brand": "",
+   "ru": "Датчик температуры наружного воздуха: цепь",
+   "en": "",
+   "fam": "iat",
+   "node": "fam:iat"
+  },
+  {
+   "code": "P0071",
+   "brand": "",
+   "ru": "Датчик температуры наружного воздуха: показания вне диапазона",
+   "en": "",
+   "fam": "iat",
+   "node": "fam:iat"
+  },
+  {
+   "code": "P0072",
+   "brand": "",
+   "ru": "Датчик температуры наружного воздуха: низкий сигнал",
+   "en": "",
+   "fam": "iat",
+   "node": "fam:iat"
+  },
+  {
+   "code": "P0073",
+   "brand": "",
+   "ru": "Датчик температуры наружного воздуха: высокий сигнал",
+   "en": "",
+   "fam": "iat",
+   "node": "fam:iat"
+  },
+  {
+   "code": "P0074",
+   "brand": "",
+   "ru": "Датчик температуры наружного воздуха: прерывистый сигнал",
+   "en": "",
+   "fam": "iat",
+   "node": "fam:iat"
+  },
+  {
+   "code": "P0095",
+   "brand": "",
+   "ru": "Датчик температуры впускного воздуха 2: цепь",
+   "en": "",
+   "fam": "iat",
+   "node": "fam:iat"
+  },
+  {
+   "code": "P0096",
+   "brand": "",
+   "ru": "Датчик температуры впускного воздуха 2: показания вне диапазона",
+   "en": "",
+   "fam": "iat",
+   "node": "fam:iat"
+  },
+  {
+   "code": "P0097",
+   "brand": "",
+   "ru": "Датчик температуры впускного воздуха 2: низкий сигнал",
+   "en": "",
+   "fam": "iat",
+   "node": "fam:iat"
+  },
+  {
+   "code": "P0098",
+   "brand": "",
+   "ru": "Датчик температуры впускного воздуха 2: высокий сигнал",
+   "en": "",
+   "fam": "iat",
+   "node": "fam:iat"
+  },
+  {
+   "code": "P0099",
+   "brand": "",
+   "ru": "Датчик температуры впускного воздуха 2: прерывистый сигнал",
+   "en": "",
+   "fam": "iat",
+   "node": "fam:iat"
+  },
+  {
+   "code": "P0110",
+   "brand": "",
+   "ru": "Датчик температуры впускного воздуха: цепь",
+   "en": "",
+   "fam": "iat",
+   "node": "fam:iat"
+  },
+  {
+   "code": "P0111",
+   "brand": "",
+   "ru": "Датчик температуры впускного воздуха: показания вне диапазона",
+   "en": "",
+   "fam": "iat",
+   "node": "fam:iat"
+  },
+  {
+   "code": "P0112",
+   "brand": "",
+   "ru": "Датчик температуры впускного воздуха: низкий сигнал",
+   "en": "",
+   "fam": "iat",
+   "node": "fam:iat"
+  },
+  {
+   "code": "P0113",
+   "brand": "",
+   "ru": "Датчик температуры впускного воздуха: высокий сигнал",
+   "en": "",
+   "fam": "iat",
+   "node": "fam:iat"
+  },
+  {
+   "code": "P0114",
+   "brand": "",
+   "ru": "Датчик температуры впускного воздуха: прерывистый сигнал",
+   "en": "",
+   "fam": "iat",
+   "node": "fam:iat"
+  },
+  {
+   "code": "P0127",
+   "brand": "",
+   "ru": "Температура воздуха на впуске слишком высокая",
+   "en": "",
+   "fam": "iat",
+   "node": "fam:iat"
+  },
+  {
+   "code": "P2199",
+   "brand": "",
+   "ru": "Датчики температуры впуска 1 и 2 не согласуются",
+   "en": "",
+   "fam": "iat",
+   "node": "fam:iat"
+  },
+  {
+   "code": "P007A",
+   "brand": "",
+   "ru": "Датчик температуры интеркулера: цепь (банк 1)",
+   "en": "Charge Air Cooler Temperature Sensor Circuit Bank 1",
+   "fam": "",
+   "node": "charge air cooler temperature"
+  },
+  {
+   "code": "P007B",
+   "brand": "",
+   "ru": "Датчик температуры интеркулера: сигнал вне диапазона (банк 1)",
+   "en": "Charge Air Cooler Temperature Sensor Circuit Range/Performance Bank 1",
+   "fam": "",
+   "node": "charge air cooler temperature"
+  },
+  {
+   "code": "P007C",
+   "brand": "",
+   "ru": "Датчик температуры интеркулера: низкий уровень сигнала в цепи (банк 1)",
+   "en": "Charge Air Cooler Temperature Sensor Circuit Low Bank 1",
+   "fam": "",
+   "node": "charge air cooler temperature"
+  },
+  {
+   "code": "P007D",
+   "brand": "",
+   "ru": "Датчик температуры интеркулера: высокий уровень сигнала в цепи (банк 1)",
+   "en": "Charge Air Cooler Temperature Sensor Circuit High Bank 1",
+   "fam": "",
+   "node": "charge air cooler temperature"
+  },
+  {
+   "code": "P007E",
+   "brand": "",
+   "ru": "Датчик температуры интеркулера: прерывистый / нестабильный сигнал (банк 1)",
+   "en": "Charge Air Cooler Temperature Sensor Circuit Intermittent/Erratic Bank 1",
+   "fam": "",
+   "node": "charge air cooler temperature"
+  },
+  {
+   "code": "P00A0",
+   "brand": "",
+   "ru": "Датчик температуры интеркулера: цепь (банк 2)",
+   "en": "Charge Air Cooler Temperature Sensor Circuit Bank 2",
+   "fam": "",
+   "node": "charge air cooler temperature"
+  },
+  {
+   "code": "P00A1",
+   "brand": "",
+   "ru": "Датчик температуры интеркулера: сигнал вне диапазона (банк 2)",
+   "en": "Charge Air Cooler Temperature Sensor Circuit Range/Performance Bank 2",
+   "fam": "",
+   "node": "charge air cooler temperature"
+  },
+  {
+   "code": "P00A2",
+   "brand": "",
+   "ru": "Датчик температуры интеркулера: низкий уровень сигнала в цепи (банк 2)",
+   "en": "Charge Air Cooler Temperature Sensor Circuit Low Bank 2",
+   "fam": "",
+   "node": "charge air cooler temperature"
+  },
+  {
+   "code": "P00A3",
+   "brand": "",
+   "ru": "Датчик температуры интеркулера: высокий уровень сигнала в цепи (банк 2)",
+   "en": "Charge Air Cooler Temperature Sensor Circuit High Bank 2",
+   "fam": "",
+   "node": "charge air cooler temperature"
+  },
+  {
+   "code": "P00A4",
+   "brand": "",
+   "ru": "Датчик температуры интеркулера: прерывистый / нестабильный сигнал (банк 2)",
+   "en": "Charge Air Cooler Temperature Sensor Circuit Intermittent/Erratic Bank 2",
+   "fam": "",
+   "node": "charge air cooler temperature"
+  },
+  {
+   "code": "P007F",
+   "brand": "",
+   "ru": "Датчики температуры интеркулера: рассогласование банков 1 и 2",
+   "en": "Charge Air Cooler Temperature Sensor Bank1/Bank2 Correlation",
+   "fam": "",
+   "node": "charge air cooler temperature sensor correlation"
+  }
+ ]
+}

@@ -1,0 +1,404 @@
+{
+ "name": "brand-ford_022",
+ "series": "brand",
+ "brand": "ford",
+ "nodes": [
+  "1 2 shift",
+  "2 3 shift",
+  "3 4 shift",
+  "brake on off switch out of self test",
+  "coast clutch solenoid inductive signature",
+  "electronic feedback",
+  "electronic pressure control solenoid a",
+  "electronic pressure control solenoid failed",
+  "gear 1 incorrect ratio",
+  "gear 2 incorrect ratio",
+  "gear 3 incorrect ratio",
+  "gear 4 incorrect ratio",
+  "insufficient engine speed decrease during self test",
+  "insufficient engine speed increase during self test",
+  "manual lever position sensor out of self test",
+  "park or neutral position switch out of self test",
+  "reverse engagement error",
+  "ru:выключатель понижающей передачи 4x4",
+  "ru:высокая скорость при селекторе в p",
+  "ru:электронное регулирование давления (epc)",
+  "ssa inductive signature",
+  "ssb inductive signature",
+  "ssc inductive signature",
+  "ssd inductive signature",
+  "tft sensor in",
+  "torque converter clutch control error",
+  "torque converter clutch solenoid faulty",
+  "torque converter clutch system",
+  "trans torque reduction request",
+  "transfer case neutral indicator hard fault present",
+  "transmission fluid temperature sensor out of self test",
+  "transmission slip error",
+  "transmission system problems",
+  "vehicle speed meter",
+  "wastegate"
+ ],
+ "codes": [
+  {
+   "code": "P1670",
+   "brand": "ford",
+   "ru": "Не обнаружен сигнал электронной обратной связи",
+   "en": "Electronic Feedback Signal Not Detected",
+   "fam": "",
+   "node": "electronic feedback"
+  },
+  {
+   "code": "P1690",
+   "brand": "ford",
+   "ru": "Клапан вестгейта: неисправность цепи",
+   "en": "Wastegate Solenoid Circuit Malfunction",
+   "fam": "",
+   "node": "wastegate"
+  },
+  {
+   "code": "P1700",
+   "brand": "ford",
+   "ru": "Неисправность коробки передач (общий код)",
+   "en": "Transmission system problems",
+   "fam": "",
+   "node": "transmission system problems"
+  },
+  {
+   "code": "P1702",
+   "brand": "ford",
+   "ru": "Неисправность коробки передач (общий код)",
+   "en": "Transmission system problems",
+   "fam": "",
+   "node": "transmission system problems"
+  },
+  {
+   "code": "P1704",
+   "brand": "ford",
+   "ru": "Неисправность коробки передач (общий код)",
+   "en": "Transmission system problems",
+   "fam": "",
+   "node": "transmission system problems"
+  },
+  {
+   "code": "P1710",
+   "brand": "ford",
+   "ru": "Неисправность коробки передач (общий код)",
+   "en": "Transmission system problems",
+   "fam": "",
+   "node": "transmission system problems"
+  },
+  {
+   "code": "P1740",
+   "brand": "ford",
+   "ru": "Неисправность коробки передач (общий код)",
+   "en": "Transmission system problems",
+   "fam": "",
+   "node": "transmission system problems"
+  },
+  {
+   "code": "P1745",
+   "brand": "ford",
+   "ru": "Неисправность коробки передач (общий код)",
+   "en": "Transmission system problems",
+   "fam": "",
+   "node": "transmission system problems"
+  },
+  {
+   "code": "P1760",
+   "brand": "ford",
+   "ru": "Неисправность коробки передач (общий код)",
+   "en": "Transmission system problems",
+   "fam": "",
+   "node": "transmission system problems"
+  },
+  {
+   "code": "P1701",
+   "brand": "ford",
+   "ru": "Ошибка включения задней передачи",
+   "en": "Reverse Engagement Error",
+   "fam": "",
+   "node": "reverse engagement error"
+  },
+  {
+   "code": "P1703",
+   "brand": "ford",
+   "ru": "Выключатель тормоза: вне диапазона самотеста",
+   "en": "Brake On Off Switch Out of Self-Test Range",
+   "fam": "",
+   "node": "brake on off switch out of self test"
+  },
+  {
+   "code": "P1705",
+   "brand": "ford",
+   "ru": "Датчик положения селектора: вне диапазона самотеста",
+   "en": "Manual Lever Position Sensor Out of Self-Test Range",
+   "fam": "",
+   "node": "manual lever position sensor out of self test"
+  },
+  {
+   "code": "P1706",
+   "brand": "ford",
+   "ru": "Высокая скорость при селекторе в P",
+   "en": "High Vehicle Speed Observed in Park",
+   "fam": "",
+   "node": "ru:высокая скорость при селекторе в p"
+  },
+  {
+   "code": "P1707",
+   "brand": "ford",
+   "ru": "Индикатор нейтрали раздатки: постоянная неисправность",
+   "en": "Transfer Case Neutral Indicator Hard Fault Present",
+   "fam": "",
+   "node": "transfer case neutral indicator hard fault present"
+  },
+  {
+   "code": "P1709",
+   "brand": "ford",
+   "ru": "Выключатель P/N: вне диапазона самотеста",
+   "en": "Park or Neutral Position Switch Out of Self-Test Range",
+   "fam": "",
+   "node": "park or neutral position switch out of self test"
+  },
+  {
+   "code": "P1711",
+   "brand": "ford",
+   "ru": "Датчик температуры масла коробки: вне диапазона самотеста",
+   "en": "Transmission Fluid Temperature Sensor Out of Self-Test Range",
+   "fam": "",
+   "node": "transmission fluid temperature sensor out of self test"
+  },
+  {
+   "code": "P1712",
+   "brand": "ford",
+   "ru": "Сигнал запроса снижения момента от коробки: неисправность",
+   "en": "Trans Torque Reduction Request Signal Malfunction",
+   "fam": "",
+   "node": "trans torque reduction request"
+  },
+  {
+   "code": "P1713",
+   "brand": "ford",
+   "ru": "Датчик температуры масла коробки: в диапазоне, но слишком низко",
+   "en": "TFT Sensor In Range Failure Low Value",
+   "fam": "",
+   "node": "tft sensor in"
+  },
+  {
+   "code": "P1718",
+   "brand": "ford",
+   "ru": "Датчик температуры масла коробки: в диапазоне, но слишком высоко",
+   "en": "TFT Sensor In Range Failure High",
+   "fam": "",
+   "node": "tft sensor in"
+  },
+  {
+   "code": "P1714",
+   "brand": "ford",
+   "ru": "Клапан переключения A: неисправность индуктивной сигнатуры",
+   "en": "SSA Inductive Signature Malfunction",
+   "fam": "",
+   "node": "ssa inductive signature"
+  },
+  {
+   "code": "P1715",
+   "brand": "ford",
+   "ru": "Клапан переключения B: неисправность индуктивной сигнатуры",
+   "en": "SSB Inductive Signature Malfunction",
+   "fam": "",
+   "node": "ssb inductive signature"
+  },
+  {
+   "code": "P1716",
+   "brand": "ford",
+   "ru": "Клапан переключения C: неисправность индуктивной сигнатуры",
+   "en": "SSC Inductive Signature Malfunction",
+   "fam": "",
+   "node": "ssc inductive signature"
+  },
+  {
+   "code": "P1717",
+   "brand": "ford",
+   "ru": "Клапан переключения D: неисправность индуктивной сигнатуры",
+   "en": "SSD Inductive Signature Malfunction",
+   "fam": "",
+   "node": "ssd inductive signature"
+  },
+  {
+   "code": "P1720",
+   "brand": "ford",
+   "ru": "Цепь спидометра: неисправность",
+   "en": "Vehicle Speed Meter Circuit Malfunction",
+   "fam": "",
+   "node": "vehicle speed meter"
+  },
+  {
+   "code": "P1721",
+   "brand": "ford",
+   "ru": "1-я передача: неверное передаточное число",
+   "en": "Gear 1 Incorrect Ratio",
+   "fam": "",
+   "node": "gear 1 incorrect ratio"
+  },
+  {
+   "code": "P1722",
+   "brand": "ford",
+   "ru": "2-я передача: неверное передаточное число",
+   "en": "Gear 2 Incorrect Ratio",
+   "fam": "",
+   "node": "gear 2 incorrect ratio"
+  },
+  {
+   "code": "P1723",
+   "brand": "ford",
+   "ru": "3-я передача: неверное передаточное число",
+   "en": "Gear 3 Incorrect Ratio",
+   "fam": "",
+   "node": "gear 3 incorrect ratio"
+  },
+  {
+   "code": "P1724",
+   "brand": "ford",
+   "ru": "4-я передача: неверное передаточное число",
+   "en": "Gear 4 Incorrect Ratio",
+   "fam": "",
+   "node": "gear 4 incorrect ratio"
+  },
+  {
+   "code": "P1725",
+   "brand": "ford",
+   "ru": "Самотест: обороты двигателя недостаточно выросли",
+   "en": "Insufficient Engine Speed Increase During Self Test",
+   "fam": "",
+   "node": "insufficient engine speed increase during self test"
+  },
+  {
+   "code": "P1726",
+   "brand": "ford",
+   "ru": "Самотест: обороты двигателя недостаточно упали",
+   "en": "Insufficient Engine Speed Decrease During Self Test",
+   "fam": "",
+   "node": "insufficient engine speed decrease during self test"
+  },
+  {
+   "code": "P1727",
+   "brand": "ford",
+   "ru": "Клапан муфты наката: неисправность индуктивной сигнатуры",
+   "en": "Coast Clutch Solenoid Inductive Signature Malfunction",
+   "fam": "",
+   "node": "coast clutch solenoid inductive signature"
+  },
+  {
+   "code": "P1728",
+   "brand": "ford",
+   "ru": "Проскальзывание в коробке",
+   "en": "Transmission Slip Error",
+   "fam": "",
+   "node": "transmission slip error"
+  },
+  {
+   "code": "P1729",
+   "brand": "ford",
+   "ru": "Выключатель понижающей передачи 4x4: ошибка",
+   "en": "4x4 Low Switch Error",
+   "fam": "",
+   "node": "ru:выключатель понижающей передачи 4x4"
+  },
+  {
+   "code": "P1781",
+   "brand": "ford",
+   "ru": "Выключатель понижающей передачи 4x4: вне диапазона самотеста",
+   "en": "4x4 Low Switch is Out of Self-Test Range",
+   "fam": "",
+   "node": "ru:выключатель понижающей передачи 4x4"
+  },
+  {
+   "code": "P1731",
+   "brand": "ford",
+   "ru": "Переключение 1-2: неисправность",
+   "en": "1-2 Shift Malfunction",
+   "fam": "",
+   "node": "1 2 shift"
+  },
+  {
+   "code": "P1732",
+   "brand": "ford",
+   "ru": "Переключение 2-3: неисправность",
+   "en": "2-3 Shift Malfunction",
+   "fam": "",
+   "node": "2 3 shift"
+  },
+  {
+   "code": "P1733",
+   "brand": "ford",
+   "ru": "Переключение 3-4: неисправность",
+   "en": "3-4 Shift Malfunction",
+   "fam": "",
+   "node": "3 4 shift"
+  },
+  {
+   "code": "P1741",
+   "brand": "ford",
+   "ru": "Управление блокировкой гидротрансформатора: ошибка",
+   "en": "Torque Converter Clutch Control Error",
+   "fam": "",
+   "node": "torque converter clutch control error"
+  },
+  {
+   "code": "P1742",
+   "brand": "ford",
+   "ru": "Клапан блокировки гидротрансформатора неисправен",
+   "en": "Torque Converter Clutch Solenoid Faulty",
+   "fam": "",
+   "node": "torque converter clutch solenoid faulty"
+  },
+  {
+   "code": "P1743",
+   "brand": "ford",
+   "ru": "Клапан блокировки гидротрансформатора неисправен",
+   "en": "Torque Converter Clutch Solenoid Faulty",
+   "fam": "",
+   "node": "torque converter clutch solenoid faulty"
+  },
+  {
+   "code": "P1744",
+   "brand": "ford",
+   "ru": "Блокировка гидротрансформатора застряла выключенной",
+   "en": "Torque Converter Clutch System Stuck in Off Position",
+   "fam": "",
+   "node": "torque converter clutch system"
+  },
+  {
+   "code": "P1746",
+   "brand": "ford",
+   "ru": "Клапан электронного регулирования давления A: обрыв",
+   "en": "Electronic Pressure Control Solenoid A Open Circuit",
+   "fam": "",
+   "node": "electronic pressure control solenoid a"
+  },
+  {
+   "code": "P1747",
+   "brand": "ford",
+   "ru": "Клапан электронного регулирования давления A: замыкание",
+   "en": "Electronic Pressure Control Solenoid A Short Circuit",
+   "fam": "",
+   "node": "electronic pressure control solenoid a"
+  },
+  {
+   "code": "P1748",
+   "brand": "ford",
+   "ru": "Электронное регулирование давления (EPC): неисправность",
+   "en": "EPC Malfunction",
+   "fam": "",
+   "node": "ru:электронное регулирование давления (epc)"
+  },
+  {
+   "code": "P1749",
+   "brand": "ford",
+   "ru": "Клапан электронного регулирования давления: низкий сигнал",
+   "en": "Electronic Pressure Control Solenoid Failed Low",
+   "fam": "",
+   "node": "electronic pressure control solenoid failed"
+  }
+ ]
+}

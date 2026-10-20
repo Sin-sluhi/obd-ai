@@ -1,0 +1,394 @@
+{
+ "name": "sae_011",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "4wd awd transfer case unit actuator",
+  "4wd awd transfer case unit actuator position sensor a",
+  "4wd awd transfer case unit actuator position sensor b",
+  "driveline control module rear differential unit b",
+  "driveline control module transfer case unit",
+  "left front wheel speed sensor a",
+  "left front wheel speed sensor a correlation",
+  "left front wheel speed sensor mechanical",
+  "left rear wheel speed sensor a",
+  "left rear wheel speed sensor a correlation",
+  "left rear wheel speed sensor mechanical",
+  "multi axis acceleration sensor module a",
+  "multi axis acceleration sensor module a correlation",
+  "multi axis acceleration sensor module a missing calibration",
+  "multi axis acceleration sensor module b",
+  "multi axis acceleration sensor module b correlation",
+  "multi axis acceleration sensor module b missing calibration",
+  "right front wheel speed sensor a",
+  "right front wheel speed sensor a correlation",
+  "right front wheel speed sensor mechanical",
+  "right rear wheel speed sensor a",
+  "right rear wheel speed sensor a correlation",
+  "right rear wheel speed sensor mechanical",
+  "steering angle sensor",
+  "steering angle sensor module mechanical"
+ ],
+ "codes": [
+  {
+   "code": "C00A4",
+   "brand": "",
+   "ru": "Блок трансмиссии полного привода: драйвер заднего дифференциала B",
+   "en": "Driveline Control Module Rear Differential Unit B Control Circuit Driver",
+   "fam": "",
+   "node": "driveline control module rear differential unit b"
+  },
+  {
+   "code": "C00A5",
+   "brand": "",
+   "ru": "Блок трансмиссии полного привода: драйвер раздаточной коробки",
+   "en": "Driveline Control Module Transfer Case Unit Control Circuit Driver",
+   "fam": "",
+   "node": "driveline control module transfer case unit"
+  },
+  {
+   "code": "C00A6",
+   "brand": "",
+   "ru": "Привод раздаточной коробки",
+   "en": "4WD/AWD Transfer Case Unit Actuator",
+   "fam": "",
+   "node": "4wd awd transfer case unit actuator"
+  },
+  {
+   "code": "C00A7",
+   "brand": "",
+   "ru": "Датчик положения привода раздаточной коробки A",
+   "en": "4WD/AWD Transfer Case Unit Actuator Position Sensor A",
+   "fam": "",
+   "node": "4wd awd transfer case unit actuator position sensor a"
+  },
+  {
+   "code": "C00A8",
+   "brand": "",
+   "ru": "Датчик положения привода раздаточной коробки B",
+   "en": "4WD/AWD Transfer Case Unit Actuator Position Sensor B",
+   "fam": "",
+   "node": "4wd awd transfer case unit actuator position sensor b"
+  },
+  {
+   "code": "C0500",
+   "brand": "",
+   "ru": "Датчик скорости левого переднего колеса A: обрыв цепи",
+   "en": "Left Front Wheel Speed Sensor A Circuit/Open",
+   "fam": "",
+   "node": "left front wheel speed sensor a"
+  },
+  {
+   "code": "C0501",
+   "brand": "",
+   "ru": "Датчик скорости левого переднего колеса A: вне допустимого диапазона",
+   "en": "Left Front Wheel Speed Sensor A Range/Performance",
+   "fam": "",
+   "node": "left front wheel speed sensor a"
+  },
+  {
+   "code": "C0502",
+   "brand": "",
+   "ru": "Датчик скорости левого переднего колеса A: низкий уровень сигнала в цепи",
+   "en": "Left Front Wheel Speed Sensor A Circuit Low",
+   "fam": "",
+   "node": "left front wheel speed sensor a"
+  },
+  {
+   "code": "C0503",
+   "brand": "",
+   "ru": "Датчик скорости левого переднего колеса A: высокий уровень сигнала в цепи",
+   "en": "Left Front Wheel Speed Sensor A Circuit High",
+   "fam": "",
+   "node": "left front wheel speed sensor a"
+  },
+  {
+   "code": "C0504",
+   "brand": "",
+   "ru": "Датчик скорости левого переднего колеса A: прерывистый / нестабильный сигнал",
+   "en": "Left Front Wheel Speed Sensor A Intermittent/Erratic",
+   "fam": "",
+   "node": "left front wheel speed sensor a"
+  },
+  {
+   "code": "C0505",
+   "brand": "",
+   "ru": "Датчик скорости левого переднего колеса A: рассогласование показаний",
+   "en": "Left Front Wheel Speed Sensor A Correlation",
+   "fam": "",
+   "node": "left front wheel speed sensor a correlation"
+  },
+  {
+   "code": "C0506",
+   "brand": "",
+   "ru": "Датчик скорости правого переднего колеса A: обрыв цепи",
+   "en": "Right Front Wheel Speed Sensor A Circuit/Open",
+   "fam": "",
+   "node": "right front wheel speed sensor a"
+  },
+  {
+   "code": "C0507",
+   "brand": "",
+   "ru": "Датчик скорости правого переднего колеса A: вне допустимого диапазона",
+   "en": "Right Front Wheel Speed Sensor A Range/Performance",
+   "fam": "",
+   "node": "right front wheel speed sensor a"
+  },
+  {
+   "code": "C0508",
+   "brand": "",
+   "ru": "Датчик скорости правого переднего колеса A: низкий уровень сигнала в цепи",
+   "en": "Right Front Wheel Speed Sensor A Circuit Low",
+   "fam": "",
+   "node": "right front wheel speed sensor a"
+  },
+  {
+   "code": "C0509",
+   "brand": "",
+   "ru": "Датчик скорости правого переднего колеса A: высокий уровень сигнала в цепи",
+   "en": "Right Front Wheel Speed Sensor A Circuit High",
+   "fam": "",
+   "node": "right front wheel speed sensor a"
+  },
+  {
+   "code": "C050A",
+   "brand": "",
+   "ru": "Датчик скорости правого переднего колеса A: прерывистый / нестабильный сигнал",
+   "en": "Right Front Wheel Speed Sensor A Intermittent/Erratic",
+   "fam": "",
+   "node": "right front wheel speed sensor a"
+  },
+  {
+   "code": "C050B",
+   "brand": "",
+   "ru": "Датчик скорости правого переднего колеса A: рассогласование показаний",
+   "en": "Right Front Wheel Speed Sensor A Correlation",
+   "fam": "",
+   "node": "right front wheel speed sensor a correlation"
+  },
+  {
+   "code": "C050C",
+   "brand": "",
+   "ru": "Датчик скорости левого заднего колеса A: обрыв цепи",
+   "en": "Left Rear Wheel Speed Sensor A Circuit/Open",
+   "fam": "",
+   "node": "left rear wheel speed sensor a"
+  },
+  {
+   "code": "C050D",
+   "brand": "",
+   "ru": "Датчик скорости левого заднего колеса A: вне допустимого диапазона",
+   "en": "Left Rear Wheel Speed Sensor A Range/Performance",
+   "fam": "",
+   "node": "left rear wheel speed sensor a"
+  },
+  {
+   "code": "C050E",
+   "brand": "",
+   "ru": "Датчик скорости левого заднего колеса A: низкий уровень сигнала в цепи",
+   "en": "Left Rear Wheel Speed Sensor A Circuit Low",
+   "fam": "",
+   "node": "left rear wheel speed sensor a"
+  },
+  {
+   "code": "C050F",
+   "brand": "",
+   "ru": "Датчик скорости левого заднего колеса A: высокий уровень сигнала в цепи",
+   "en": "Left Rear Wheel Speed Sensor A Circuit High",
+   "fam": "",
+   "node": "left rear wheel speed sensor a"
+  },
+  {
+   "code": "C0510",
+   "brand": "",
+   "ru": "Датчик скорости левого заднего колеса A: прерывистый / нестабильный сигнал",
+   "en": "Left Rear Wheel Speed Sensor A Intermittent/Erratic",
+   "fam": "",
+   "node": "left rear wheel speed sensor a"
+  },
+  {
+   "code": "C0511",
+   "brand": "",
+   "ru": "Датчик скорости левого заднего колеса A: рассогласование показаний",
+   "en": "Left Rear Wheel Speed Sensor A Correlation",
+   "fam": "",
+   "node": "left rear wheel speed sensor a correlation"
+  },
+  {
+   "code": "C0512",
+   "brand": "",
+   "ru": "Датчик скорости правого заднего колеса A: обрыв цепи",
+   "en": "Right Rear Wheel Speed Sensor A Circuit/Open",
+   "fam": "",
+   "node": "right rear wheel speed sensor a"
+  },
+  {
+   "code": "C0513",
+   "brand": "",
+   "ru": "Датчик скорости правого заднего колеса A: вне допустимого диапазона",
+   "en": "Right Rear Wheel Speed Sensor A Range/Performance",
+   "fam": "",
+   "node": "right rear wheel speed sensor a"
+  },
+  {
+   "code": "C0514",
+   "brand": "",
+   "ru": "Датчик скорости правого заднего колеса A: низкий уровень сигнала в цепи",
+   "en": "Right Rear Wheel Speed Sensor A Circuit Low",
+   "fam": "",
+   "node": "right rear wheel speed sensor a"
+  },
+  {
+   "code": "C0515",
+   "brand": "",
+   "ru": "Датчик скорости правого заднего колеса A: высокий уровень сигнала в цепи",
+   "en": "Right Rear Wheel Speed Sensor A Circuit High",
+   "fam": "",
+   "node": "right rear wheel speed sensor a"
+  },
+  {
+   "code": "C0516",
+   "brand": "",
+   "ru": "Датчик скорости правого заднего колеса A: прерывистый / нестабильный сигнал",
+   "en": "Right Rear Wheel Speed Sensor A Intermittent/Erratic",
+   "fam": "",
+   "node": "right rear wheel speed sensor a"
+  },
+  {
+   "code": "C0517",
+   "brand": "",
+   "ru": "Датчик скорости правого заднего колеса A: рассогласование показаний",
+   "en": "Right Rear Wheel Speed Sensor A Correlation",
+   "fam": "",
+   "node": "right rear wheel speed sensor a correlation"
+  },
+  {
+   "code": "C0518",
+   "brand": "",
+   "ru": "Датчик скорости левого переднего колеса: механическая неисправность",
+   "en": "Left Front Wheel Speed Sensor - Mechanical",
+   "fam": "",
+   "node": "left front wheel speed sensor mechanical"
+  },
+  {
+   "code": "C0519",
+   "brand": "",
+   "ru": "Датчик скорости правого переднего колеса: механическая неисправность",
+   "en": "Right Front Wheel Speed Sensor - Mechanical",
+   "fam": "",
+   "node": "right front wheel speed sensor mechanical"
+  },
+  {
+   "code": "C051A",
+   "brand": "",
+   "ru": "Датчик скорости левого заднего колеса: механическая неисправность",
+   "en": "Left Rear Wheel Speed Sensor - Mechanical",
+   "fam": "",
+   "node": "left rear wheel speed sensor mechanical"
+  },
+  {
+   "code": "C051B",
+   "brand": "",
+   "ru": "Датчик скорости правого заднего колеса: механическая неисправность",
+   "en": "Right Rear Wheel Speed Sensor - Mechanical",
+   "fam": "",
+   "node": "right rear wheel speed sensor mechanical"
+  },
+  {
+   "code": "C051C",
+   "brand": "",
+   "ru": "Блок датчиков ускорения A: вне допустимого диапазона",
+   "en": "Multi-axis Acceleration Sensor Module A Range/Performance",
+   "fam": "",
+   "node": "multi axis acceleration sensor module a"
+  },
+  {
+   "code": "C051E",
+   "brand": "",
+   "ru": "Блок датчиков ускорения A: прерывистый / нестабильный сигнал",
+   "en": "Multi-axis Acceleration Sensor Module A Intermittent/Erratic",
+   "fam": "",
+   "node": "multi axis acceleration sensor module a"
+  },
+  {
+   "code": "C0520",
+   "brand": "",
+   "ru": "Блок датчиков ускорения A",
+   "en": "Multi-axis Acceleration Sensor Module A",
+   "fam": "",
+   "node": "multi axis acceleration sensor module a"
+  },
+  {
+   "code": "C051D",
+   "brand": "",
+   "ru": "Блок датчиков ускорения A: нет калибровки",
+   "en": "Multi-axis Acceleration Sensor Module A Missing Calibration",
+   "fam": "",
+   "node": "multi axis acceleration sensor module a missing calibration"
+  },
+  {
+   "code": "C051F",
+   "brand": "",
+   "ru": "Блок датчиков ускорения A: рассогласование показаний",
+   "en": "Multi-axis Acceleration Sensor Module A Correlation",
+   "fam": "",
+   "node": "multi axis acceleration sensor module a correlation"
+  },
+  {
+   "code": "C0521",
+   "brand": "",
+   "ru": "Блок датчиков ускорения B: вне допустимого диапазона",
+   "en": "Multi-axis Acceleration Sensor Module B Range/Performance",
+   "fam": "",
+   "node": "multi axis acceleration sensor module b"
+  },
+  {
+   "code": "C0523",
+   "brand": "",
+   "ru": "Блок датчиков ускорения B: прерывистый / нестабильный сигнал",
+   "en": "Multi-axis Acceleration Sensor Module B Intermittent/Erratic",
+   "fam": "",
+   "node": "multi axis acceleration sensor module b"
+  },
+  {
+   "code": "C0525",
+   "brand": "",
+   "ru": "Блок датчиков ускорения B",
+   "en": "Multi-axis Acceleration Sensor Module B",
+   "fam": "",
+   "node": "multi axis acceleration sensor module b"
+  },
+  {
+   "code": "C0522",
+   "brand": "",
+   "ru": "Блок датчиков ускорения B: нет калибровки",
+   "en": "Multi-axis Acceleration Sensor Module B Missing Calibration",
+   "fam": "",
+   "node": "multi axis acceleration sensor module b missing calibration"
+  },
+  {
+   "code": "C0524",
+   "brand": "",
+   "ru": "Блок датчиков ускорения B: рассогласование показаний",
+   "en": "Multi-axis Acceleration Sensor Module B Correlation",
+   "fam": "",
+   "node": "multi axis acceleration sensor module b correlation"
+  },
+  {
+   "code": "C0526",
+   "brand": "",
+   "ru": "Блок датчика угла поворота руля",
+   "en": "Steering Angle Sensor Module",
+   "fam": "",
+   "node": "steering angle sensor"
+  },
+  {
+   "code": "C0527",
+   "brand": "",
+   "ru": "Блок датчика угла поворота руля: механическая неисправность",
+   "en": "Steering Angle Sensor Module Mechanical",
+   "fam": "",
+   "node": "steering angle sensor module mechanical"
+  }
+ ]
+}

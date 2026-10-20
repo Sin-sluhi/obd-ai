@@ -1,0 +1,357 @@
+{
+ "name": "sae_058",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "exhaust pressure control valve a",
+  "exhaust pressure sensor b",
+  "fam:exhaust_pressure",
+  "fam:fan"
+ ],
+ "codes": [
+  {
+   "code": "P0470",
+   "brand": "",
+   "ru": "Датчик давления выхлопных газов: цепь",
+   "en": "",
+   "fam": "exhaust_pressure",
+   "node": "fam:exhaust_pressure"
+  },
+  {
+   "code": "P0471",
+   "brand": "",
+   "ru": "Датчик давления выхлопных газов: показания вне диапазона",
+   "en": "",
+   "fam": "exhaust_pressure",
+   "node": "fam:exhaust_pressure"
+  },
+  {
+   "code": "P0472",
+   "brand": "",
+   "ru": "Датчик давления выхлопных газов: низкий сигнал",
+   "en": "",
+   "fam": "exhaust_pressure",
+   "node": "fam:exhaust_pressure"
+  },
+  {
+   "code": "P0473",
+   "brand": "",
+   "ru": "Датчик давления выхлопных газов: высокий сигнал",
+   "en": "",
+   "fam": "exhaust_pressure",
+   "node": "fam:exhaust_pressure"
+  },
+  {
+   "code": "P0474",
+   "brand": "",
+   "ru": "Датчик давления выхлопных газов: прерывистый сигнал",
+   "en": "",
+   "fam": "exhaust_pressure",
+   "node": "fam:exhaust_pressure"
+  },
+  {
+   "code": "P0475",
+   "brand": "",
+   "ru": "Клапан управления давлением выхлопа: цепь",
+   "en": "",
+   "fam": "exhaust_pressure",
+   "node": "fam:exhaust_pressure"
+  },
+  {
+   "code": "P0476",
+   "brand": "",
+   "ru": "Клапан управления давлением выхлопа: не отрабатывает команду",
+   "en": "",
+   "fam": "exhaust_pressure",
+   "node": "fam:exhaust_pressure"
+  },
+  {
+   "code": "P0477",
+   "brand": "",
+   "ru": "Клапан управления давлением выхлопа: низкий уровень в цепи",
+   "en": "",
+   "fam": "exhaust_pressure",
+   "node": "fam:exhaust_pressure"
+  },
+  {
+   "code": "P0478",
+   "brand": "",
+   "ru": "Клапан управления давлением выхлопа: высокий уровень в цепи",
+   "en": "",
+   "fam": "exhaust_pressure",
+   "node": "fam:exhaust_pressure"
+  },
+  {
+   "code": "P0479",
+   "brand": "",
+   "ru": "Клапан управления давлением выхлопа: прерывистая цепь",
+   "en": "",
+   "fam": "exhaust_pressure",
+   "node": "fam:exhaust_pressure"
+  },
+  {
+   "code": "P2169",
+   "brand": "",
+   "ru": "Клапан регулятора давления выхлопа: цепь / обрыв",
+   "en": "",
+   "fam": "exhaust_pressure",
+   "node": "fam:exhaust_pressure"
+  },
+  {
+   "code": "P2170",
+   "brand": "",
+   "ru": "Клапан регулятора давления выхлопа: низкий уровень",
+   "en": "",
+   "fam": "exhaust_pressure",
+   "node": "fam:exhaust_pressure"
+  },
+  {
+   "code": "P2171",
+   "brand": "",
+   "ru": "Клапан регулятора давления выхлопа: высокий уровень",
+   "en": "",
+   "fam": "exhaust_pressure",
+   "node": "fam:exhaust_pressure"
+  },
+  {
+   "code": "P047A",
+   "brand": "",
+   "ru": "Датчик давления отработавших газов B: цепь",
+   "en": "Exhaust Pressure Sensor B Circuit",
+   "fam": "",
+   "node": "exhaust pressure sensor b"
+  },
+  {
+   "code": "P047B",
+   "brand": "",
+   "ru": "Датчик давления отработавших газов B: сигнал вне диапазона",
+   "en": "Exhaust Pressure Sensor B Circuit Range/Performance",
+   "fam": "",
+   "node": "exhaust pressure sensor b"
+  },
+  {
+   "code": "P047C",
+   "brand": "",
+   "ru": "Датчик давления отработавших газов B: низкий уровень сигнала в цепи",
+   "en": "Exhaust Pressure Sensor B Circuit Low",
+   "fam": "",
+   "node": "exhaust pressure sensor b"
+  },
+  {
+   "code": "P047D",
+   "brand": "",
+   "ru": "Датчик давления отработавших газов B: высокий уровень сигнала в цепи",
+   "en": "Exhaust Pressure Sensor B Circuit High",
+   "fam": "",
+   "node": "exhaust pressure sensor b"
+  },
+  {
+   "code": "P047E",
+   "brand": "",
+   "ru": "Датчик давления отработавших газов B: прерывистый / нестабильный сигнал",
+   "en": "Exhaust Pressure Sensor B Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "exhaust pressure sensor b"
+  },
+  {
+   "code": "P047F",
+   "brand": "",
+   "ru": "Клапан регулирования давления выхлопа A: заклинил открытым",
+   "en": "Exhaust Pressure Control Valve A Stuck Open",
+   "fam": "",
+   "node": "exhaust pressure control valve a"
+  },
+  {
+   "code": "P048A",
+   "brand": "",
+   "ru": "Клапан регулирования давления выхлопа A: заклинил закрытым",
+   "en": "Exhaust Pressure Control Valve A Stuck Closed",
+   "fam": "",
+   "node": "exhaust pressure control valve a"
+  },
+  {
+   "code": "P0480",
+   "brand": "",
+   "ru": "Вентилятор охлаждения 1: цепь управления",
+   "en": "",
+   "fam": "fan",
+   "node": "fam:fan"
+  },
+  {
+   "code": "P0481",
+   "brand": "",
+   "ru": "Вентилятор охлаждения 2: цепь управления",
+   "en": "",
+   "fam": "fan",
+   "node": "fam:fan"
+  },
+  {
+   "code": "P0482",
+   "brand": "",
+   "ru": "Вентилятор охлаждения 3: цепь управления",
+   "en": "",
+   "fam": "fan",
+   "node": "fam:fan"
+  },
+  {
+   "code": "P0483",
+   "brand": "",
+   "ru": "Вентилятор охлаждения: работа не соответствует",
+   "en": "",
+   "fam": "fan",
+   "node": "fam:fan"
+  },
+  {
+   "code": "P0484",
+   "brand": "",
+   "ru": "Вентилятор охлаждения: превышение тока",
+   "en": "",
+   "fam": "fan",
+   "node": "fam:fan"
+  },
+  {
+   "code": "P0485",
+   "brand": "",
+   "ru": "Вентилятор охлаждения: питание/масса",
+   "en": "",
+   "fam": "fan",
+   "node": "fam:fan"
+  },
+  {
+   "code": "P0493",
+   "brand": "",
+   "ru": "Вентилятор охлаждения: превышение оборотов",
+   "en": "",
+   "fam": "fan",
+   "node": "fam:fan"
+  },
+  {
+   "code": "P0494",
+   "brand": "",
+   "ru": "Вентилятор охлаждения: обороты ниже нормы",
+   "en": "",
+   "fam": "fan",
+   "node": "fam:fan"
+  },
+  {
+   "code": "P0495",
+   "brand": "",
+   "ru": "Вентилятор охлаждения: обороты выше нормы",
+   "en": "",
+   "fam": "fan",
+   "node": "fam:fan"
+  },
+  {
+   "code": "P0526",
+   "brand": "",
+   "ru": "Датчик оборотов вентилятора: цепь",
+   "en": "",
+   "fam": "fan",
+   "node": "fam:fan"
+  },
+  {
+   "code": "P0527",
+   "brand": "",
+   "ru": "Датчик оборотов вентилятора: вне диапазона",
+   "en": "",
+   "fam": "fan",
+   "node": "fam:fan"
+  },
+  {
+   "code": "P0528",
+   "brand": "",
+   "ru": "Датчик оборотов вентилятора: нет сигнала",
+   "en": "",
+   "fam": "fan",
+   "node": "fam:fan"
+  },
+  {
+   "code": "P0529",
+   "brand": "",
+   "ru": "Датчик оборотов вентилятора: прерывистый",
+   "en": "",
+   "fam": "fan",
+   "node": "fam:fan"
+  },
+  {
+   "code": "P0691",
+   "brand": "",
+   "ru": "Вентилятор 1: цепь управления, низкий уровень",
+   "en": "",
+   "fam": "fan",
+   "node": "fam:fan"
+  },
+  {
+   "code": "P0692",
+   "brand": "",
+   "ru": "Вентилятор 1: цепь управления, высокий уровень",
+   "en": "",
+   "fam": "fan",
+   "node": "fam:fan"
+  },
+  {
+   "code": "P0693",
+   "brand": "",
+   "ru": "Вентилятор 2: цепь управления, низкий уровень",
+   "en": "",
+   "fam": "fan",
+   "node": "fam:fan"
+  },
+  {
+   "code": "P0694",
+   "brand": "",
+   "ru": "Вентилятор 2: цепь управления, высокий уровень",
+   "en": "",
+   "fam": "fan",
+   "node": "fam:fan"
+  },
+  {
+   "code": "P0695",
+   "brand": "",
+   "ru": "Вентилятор 3: цепь управления, низкий уровень",
+   "en": "",
+   "fam": "fan",
+   "node": "fam:fan"
+  },
+  {
+   "code": "P0696",
+   "brand": "",
+   "ru": "Вентилятор 3: цепь управления, высокий уровень",
+   "en": "",
+   "fam": "fan",
+   "node": "fam:fan"
+  },
+  {
+   "code": "P2600",
+   "brand": "",
+   "ru": "Электронасос охлаждающей жидкости: цепь / обрыв",
+   "en": "",
+   "fam": "fan",
+   "node": "fam:fan"
+  },
+  {
+   "code": "P2601",
+   "brand": "",
+   "ru": "Электронасос охлаждающей жидкости: не отрабатывает",
+   "en": "",
+   "fam": "fan",
+   "node": "fam:fan"
+  },
+  {
+   "code": "P2602",
+   "brand": "",
+   "ru": "Электронасос охлаждающей жидкости: низкий уровень",
+   "en": "",
+   "fam": "fan",
+   "node": "fam:fan"
+  },
+  {
+   "code": "P2603",
+   "brand": "",
+   "ru": "Электронасос охлаждающей жидкости: высокий уровень",
+   "en": "",
+   "fam": "fan",
+   "node": "fam:fan"
+  }
+ ]
+}

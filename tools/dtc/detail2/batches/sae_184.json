@@ -1,0 +1,369 @@
+{
+ "name": "sae_184",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "battery charger control module b",
+  "battery charger control module b processor",
+  "battery charging system negative contactor d",
+  "battery charging system positive contactor d",
+  "charging start",
+  "charging stop",
+  "engine disconnect clutch mechanical",
+  "engine oil pressure sensor switch c",
+  "fan 1 control module",
+  "fan 1 control module over temperature",
+  "fan 1 control module supply voltage",
+  "fan 2 control module",
+  "fan 2 control module over temperature",
+  "fan 2 control module supply voltage",
+  "fuel temperature sensor a b correlation",
+  "starter generator phase x current"
+ ],
+ "codes": [
+  {
+   "code": "P2D69",
+   "brand": "",
+   "ru": "Плюсовой контактор системы зарядки D: цепь",
+   "en": "Battery Charging System Positive Contactor D Circuit",
+   "fam": "",
+   "node": "battery charging system positive contactor d"
+  },
+  {
+   "code": "P2D6A",
+   "brand": "",
+   "ru": "Плюсовой контактор системы зарядки D: заклинил закрытым",
+   "en": "Battery Charging System Positive Contactor D Stuck Closed",
+   "fam": "",
+   "node": "battery charging system positive contactor d"
+  },
+  {
+   "code": "P2D6B",
+   "brand": "",
+   "ru": "Плюсовой контактор системы зарядки D: заклинил открытым",
+   "en": "Battery Charging System Positive Contactor D Stuck Open",
+   "fam": "",
+   "node": "battery charging system positive contactor d"
+  },
+  {
+   "code": "P2D6C",
+   "brand": "",
+   "ru": "Плюсовой контактор системы зарядки D: обрыв цепи управления",
+   "en": "Battery Charging System Positive Contactor D Control Circuit/Open",
+   "fam": "",
+   "node": "battery charging system positive contactor d"
+  },
+  {
+   "code": "P2D6D",
+   "brand": "",
+   "ru": "Плюсовой контактор системы зарядки D: цепь управления вне диапазона",
+   "en": "Battery Charging System Positive Contactor D Control Circuit Range/Performance",
+   "fam": "",
+   "node": "battery charging system positive contactor d"
+  },
+  {
+   "code": "P2D6E",
+   "brand": "",
+   "ru": "Плюсовой контактор системы зарядки D: низкий уровень в цепи управления",
+   "en": "Battery Charging System Positive Contactor D Control Circuit Low",
+   "fam": "",
+   "node": "battery charging system positive contactor d"
+  },
+  {
+   "code": "P2D6F",
+   "brand": "",
+   "ru": "Плюсовой контактор системы зарядки D: высокий уровень в цепи управления",
+   "en": "Battery Charging System Positive Contactor D Control Circuit High",
+   "fam": "",
+   "node": "battery charging system positive contactor d"
+  },
+  {
+   "code": "P2D70",
+   "brand": "",
+   "ru": "Минусовой контактор системы зарядки D: цепь",
+   "en": "Battery Charging System Negative Contactor D Circuit",
+   "fam": "",
+   "node": "battery charging system negative contactor d"
+  },
+  {
+   "code": "P2D71",
+   "brand": "",
+   "ru": "Минусовой контактор системы зарядки D: заклинил закрытым",
+   "en": "Battery Charging System Negative Contactor D Stuck Closed",
+   "fam": "",
+   "node": "battery charging system negative contactor d"
+  },
+  {
+   "code": "P2D72",
+   "brand": "",
+   "ru": "Минусовой контактор системы зарядки D: заклинил открытым",
+   "en": "Battery Charging System Negative Contactor D Stuck Open",
+   "fam": "",
+   "node": "battery charging system negative contactor d"
+  },
+  {
+   "code": "P2D73",
+   "brand": "",
+   "ru": "Минусовой контактор системы зарядки D: обрыв цепи управления",
+   "en": "Battery Charging System Negative Contactor D Control Circuit/Open",
+   "fam": "",
+   "node": "battery charging system negative contactor d"
+  },
+  {
+   "code": "P2D74",
+   "brand": "",
+   "ru": "Минусовой контактор системы зарядки D: цепь управления вне диапазона",
+   "en": "Battery Charging System Negative Contactor D Control Circuit Range/Performance",
+   "fam": "",
+   "node": "battery charging system negative contactor d"
+  },
+  {
+   "code": "P2D75",
+   "brand": "",
+   "ru": "Минусовой контактор системы зарядки D: низкий уровень в цепи управления",
+   "en": "Battery Charging System Negative Contactor D Control Circuit Low",
+   "fam": "",
+   "node": "battery charging system negative contactor d"
+  },
+  {
+   "code": "P2D76",
+   "brand": "",
+   "ru": "Минусовой контактор системы зарядки D: высокий уровень в цепи управления",
+   "en": "Battery Charging System Negative Contactor D Control Circuit High",
+   "fam": "",
+   "node": "battery charging system negative contactor d"
+  },
+  {
+   "code": "P2D77",
+   "brand": "",
+   "ru": "Блок управления зарядным устройством B: работа нарушена",
+   "en": "Battery Charger Control Module B Performance",
+   "fam": "",
+   "node": "battery charger control module b"
+  },
+  {
+   "code": "P2D78",
+   "brand": "",
+   "ru": "Процессор блока зарядного устройства B: работа нарушена",
+   "en": "Battery Charger Control Module B Processor Performance",
+   "fam": "",
+   "node": "battery charger control module b processor"
+  },
+  {
+   "code": "P2D79",
+   "brand": "",
+   "ru": "Кнопка остановки зарядки: цепь",
+   "en": "Charging Stop Switch Circuit",
+   "fam": "",
+   "node": "charging stop"
+  },
+  {
+   "code": "P2D7A",
+   "brand": "",
+   "ru": "Кнопка остановки зарядки: высокий уровень сигнала в цепи",
+   "en": "Charging Stop Switch Circuit High",
+   "fam": "",
+   "node": "charging stop"
+  },
+  {
+   "code": "P2D7B",
+   "brand": "",
+   "ru": "Кнопка остановки зарядки: низкий уровень сигнала в цепи",
+   "en": "Charging Stop Switch Circuit Low",
+   "fam": "",
+   "node": "charging stop"
+  },
+  {
+   "code": "P2D7C",
+   "brand": "",
+   "ru": "Кнопка остановки зарядки: нарушена работа цепи",
+   "en": "Charging Stop Switch Circuit Performance",
+   "fam": "",
+   "node": "charging stop"
+  },
+  {
+   "code": "P2D7D",
+   "brand": "",
+   "ru": "Кнопка остановки зарядки: прерывистый / нестабильный сигнал",
+   "en": "Charging Stop Switch Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "charging stop"
+  },
+  {
+   "code": "P2D7E",
+   "brand": "",
+   "ru": "Кнопка запуска зарядки: цепь",
+   "en": "Charging Start Switch Circuit",
+   "fam": "",
+   "node": "charging start"
+  },
+  {
+   "code": "P2D7F",
+   "brand": "",
+   "ru": "Кнопка запуска зарядки: высокий уровень сигнала в цепи",
+   "en": "Charging Start Switch Circuit High",
+   "fam": "",
+   "node": "charging start"
+  },
+  {
+   "code": "P2D80",
+   "brand": "",
+   "ru": "Кнопка запуска зарядки: низкий уровень сигнала в цепи",
+   "en": "Charging Start Switch Circuit Low",
+   "fam": "",
+   "node": "charging start"
+  },
+  {
+   "code": "P2D81",
+   "brand": "",
+   "ru": "Кнопка запуска зарядки: нарушена работа цепи",
+   "en": "Charging Start Switch Circuit Performance",
+   "fam": "",
+   "node": "charging start"
+  },
+  {
+   "code": "P2D82",
+   "brand": "",
+   "ru": "Кнопка запуска зарядки: прерывистый / нестабильный сигнал",
+   "en": "Charging Start Switch Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "charging start"
+  },
+  {
+   "code": "P2D86",
+   "brand": "",
+   "ru": "Датчик температуры топлива: рассогласование A/B",
+   "en": "Fuel Temperature Sensor A/B Correlation",
+   "fam": "",
+   "node": "fuel temperature sensor a b correlation"
+  },
+  {
+   "code": "P2D87",
+   "brand": "",
+   "ru": "Перегрев блока вентилятора 1",
+   "en": "Fan 1 Control Module Over Temperature",
+   "fam": "",
+   "node": "fan 1 control module over temperature"
+  },
+  {
+   "code": "P2D88",
+   "brand": "",
+   "ru": "Блок вентилятора 1: работа нарушена",
+   "en": "Fan 1 Control Module Performance",
+   "fam": "",
+   "node": "fan 1 control module"
+  },
+  {
+   "code": "P2D89",
+   "brand": "",
+   "ru": "Блок вентилятора 1: цепь питания",
+   "en": "Fan 1 Control Module Supply Voltage Circuit",
+   "fam": "",
+   "node": "fan 1 control module supply voltage"
+  },
+  {
+   "code": "P2D8A",
+   "brand": "",
+   "ru": "Перегрев блока вентилятора 2",
+   "en": "Fan 2 Control Module Over Temperature",
+   "fam": "",
+   "node": "fan 2 control module over temperature"
+  },
+  {
+   "code": "P2D8B",
+   "brand": "",
+   "ru": "Блок вентилятора 2: работа нарушена",
+   "en": "Fan 2 Control Module Performance",
+   "fam": "",
+   "node": "fan 2 control module"
+  },
+  {
+   "code": "P2D8C",
+   "brand": "",
+   "ru": "Блок вентилятора 2: цепь питания",
+   "en": "Fan 2 Control Module Supply Voltage Circuit",
+   "fam": "",
+   "node": "fan 2 control module supply voltage"
+  },
+  {
+   "code": "P2D8D",
+   "brand": "",
+   "ru": "Муфта отключения двигателя: механическая неисправность",
+   "en": "Engine Disconnect Clutch Mechanical Performance",
+   "fam": "",
+   "node": "engine disconnect clutch mechanical"
+  },
+  {
+   "code": "P2D8E",
+   "brand": "",
+   "ru": "Датчик давления масла C: цепь",
+   "en": "Engine Oil Pressure Sensor/Switch C Circuit",
+   "fam": "",
+   "node": "engine oil pressure sensor switch c"
+  },
+  {
+   "code": "P2D8F",
+   "brand": "",
+   "ru": "Датчик давления масла C: низкий уровень сигнала в цепи",
+   "en": "Engine Oil Pressure Sensor/Switch C Circuit Low",
+   "fam": "",
+   "node": "engine oil pressure sensor switch c"
+  },
+  {
+   "code": "P2D90",
+   "brand": "",
+   "ru": "Датчик давления масла C: высокий уровень сигнала в цепи",
+   "en": "Engine Oil Pressure Sensor/Switch C Circuit High",
+   "fam": "",
+   "node": "engine oil pressure sensor switch c"
+  },
+  {
+   "code": "P2D91",
+   "brand": "",
+   "ru": "Датчик давления масла C: сигнал вне диапазона",
+   "en": "Engine Oil Pressure Sensor/Switch C Circuit Range/Performance",
+   "fam": "",
+   "node": "engine oil pressure sensor switch c"
+  },
+  {
+   "code": "P2D92",
+   "brand": "",
+   "ru": "Стартер-генератор, фаза X: высокий уровень в цепи датчика тока",
+   "en": "Starter/Generator Phase X Current Sensor Circuit High",
+   "fam": "",
+   "node": "starter generator phase x current"
+  },
+  {
+   "code": "P2D95",
+   "brand": "",
+   "ru": "Стартер-генератор, фаза X: низкий уровень в цепи датчика тока",
+   "en": "Starter/Generator Phase X Current Sensor Circuit Low",
+   "fam": "",
+   "node": "starter generator phase x current"
+  },
+  {
+   "code": "P2D98",
+   "brand": "",
+   "ru": "Стартер-генератор, фаза X: прерывистый / нестабильный ток",
+   "en": "Starter/Generator Phase X Current Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "starter generator phase x current"
+  },
+  {
+   "code": "P2DC1",
+   "brand": "",
+   "ru": "Стартер-генератор, фаза X: цепь датчика тока",
+   "en": "Starter/Generator Phase X Current Sensor Circuit",
+   "fam": "",
+   "node": "starter generator phase x current"
+  },
+  {
+   "code": "P2DC2",
+   "brand": "",
+   "ru": "Стартер-генератор, фаза X: датчик тока вне диапазона",
+   "en": "Starter/Generator Phase X Current Sensor Circuit Range/Performance",
+   "fam": "",
+   "node": "starter generator phase x current"
+  }
+ ]
+}

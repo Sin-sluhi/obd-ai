@@ -1,0 +1,354 @@
+{
+ "name": "sae_112",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "dc dc converter temperature sensor a",
+  "dc dc converter temperature sensor b",
+  "drive motor a position",
+  "drive motor a position exceeded learning limit",
+  "drive motor b position exceeded learning limit",
+  "hybrid ev battery pack coolant pump a",
+  "hybrid ev battery pack coolant pump a control",
+  "hybrid ev battery pack coolant pump a supply voltage",
+  "hybrid ev battery pack coolant temperature sensor a"
+ ],
+ "codes": [
+  {
+   "code": "P0C38",
+   "brand": "",
+   "ru": "Датчик температуры преобразователя DC/DC A: цепь",
+   "en": "DC/DC Converter Temperature Sensor A Circuit",
+   "fam": "",
+   "node": "dc dc converter temperature sensor a"
+  },
+  {
+   "code": "P0C39",
+   "brand": "",
+   "ru": "Датчик температуры преобразователя DC/DC A: вне допустимого диапазона",
+   "en": "DC/DC Converter Temperature Sensor A Range/Performance",
+   "fam": "",
+   "node": "dc dc converter temperature sensor a"
+  },
+  {
+   "code": "P0C3A",
+   "brand": "",
+   "ru": "Датчик температуры преобразователя DC/DC A: низкий уровень",
+   "en": "DC/DC Converter Temperature Sensor A Low",
+   "fam": "",
+   "node": "dc dc converter temperature sensor a"
+  },
+  {
+   "code": "P0C3B",
+   "brand": "",
+   "ru": "Датчик температуры преобразователя DC/DC A: высокий уровень",
+   "en": "DC/DC Converter Temperature Sensor A High",
+   "fam": "",
+   "node": "dc dc converter temperature sensor a"
+  },
+  {
+   "code": "P0C3C",
+   "brand": "",
+   "ru": "Датчик температуры преобразователя DC/DC A: прерывистый / нестабильный сигнал",
+   "en": "DC/DC Converter Temperature Sensor A Intermittent/Erratic",
+   "fam": "",
+   "node": "dc dc converter temperature sensor a"
+  },
+  {
+   "code": "P0C3D",
+   "brand": "",
+   "ru": "Датчик температуры преобразователя DC/DC B: цепь",
+   "en": "DC/DC Converter Temperature Sensor B Circuit",
+   "fam": "",
+   "node": "dc dc converter temperature sensor b"
+  },
+  {
+   "code": "P0C3E",
+   "brand": "",
+   "ru": "Датчик температуры преобразователя DC/DC B: вне допустимого диапазона",
+   "en": "DC/DC Converter Temperature Sensor B Range/Performance",
+   "fam": "",
+   "node": "dc dc converter temperature sensor b"
+  },
+  {
+   "code": "P0C3F",
+   "brand": "",
+   "ru": "Датчик температуры преобразователя DC/DC B: низкий уровень",
+   "en": "DC/DC Converter Temperature Sensor B Low",
+   "fam": "",
+   "node": "dc dc converter temperature sensor b"
+  },
+  {
+   "code": "P0C40",
+   "brand": "",
+   "ru": "Датчик температуры преобразователя DC/DC B: высокий уровень",
+   "en": "DC/DC Converter Temperature Sensor B High",
+   "fam": "",
+   "node": "dc dc converter temperature sensor b"
+  },
+  {
+   "code": "P0C41",
+   "brand": "",
+   "ru": "Датчик температуры преобразователя DC/DC B: прерывистый / нестабильный сигнал",
+   "en": "DC/DC Converter Temperature Sensor B Intermittent/Erratic",
+   "fam": "",
+   "node": "dc dc converter temperature sensor b"
+  },
+  {
+   "code": "P0C42",
+   "brand": "",
+   "ru": "Датчик температуры охлаждающей жидкости тяговой батареи A: цепь",
+   "en": "Hybrid/EV Battery Pack Coolant Temperature Sensor A Circuit",
+   "fam": "",
+   "node": "hybrid ev battery pack coolant temperature sensor a"
+  },
+  {
+   "code": "P0C43",
+   "brand": "",
+   "ru": "Датчик температуры охлаждающей жидкости тяговой батареи A: сигнал вне диапазона",
+   "en": "Hybrid/EV Battery Pack Coolant Temperature Sensor A Circuit Range/Performance",
+   "fam": "",
+   "node": "hybrid ev battery pack coolant temperature sensor a"
+  },
+  {
+   "code": "P0C44",
+   "brand": "",
+   "ru": "Датчик температуры охлаждающей жидкости тяговой батареи A: низкий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Pack Coolant Temperature Sensor A Circuit Low",
+   "fam": "",
+   "node": "hybrid ev battery pack coolant temperature sensor a"
+  },
+  {
+   "code": "P0C45",
+   "brand": "",
+   "ru": "Датчик температуры охлаждающей жидкости тяговой батареи A: высокий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Pack Coolant Temperature Sensor A Circuit High",
+   "fam": "",
+   "node": "hybrid ev battery pack coolant temperature sensor a"
+  },
+  {
+   "code": "P0C46",
+   "brand": "",
+   "ru": "Датчик температуры охлаждающей жидкости тяговой батареи A: прерывистый / нестабильный сигнал",
+   "en": "Hybrid/EV Battery Pack Coolant Temperature Sensor A Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "hybrid ev battery pack coolant temperature sensor a"
+  },
+  {
+   "code": "P0C47",
+   "brand": "",
+   "ru": "Насос охлаждения тяговой батареи A: обрыв цепи управления",
+   "en": "Hybrid/EV Battery Pack Coolant Pump A Control Circuit/Open",
+   "fam": "",
+   "node": "hybrid ev battery pack coolant pump a"
+  },
+  {
+   "code": "P0C48",
+   "brand": "",
+   "ru": "Насос охлаждения тяговой батареи A: низкий уровень в цепи управления",
+   "en": "Hybrid/EV Battery Pack Coolant Pump A Control Circuit Low",
+   "fam": "",
+   "node": "hybrid ev battery pack coolant pump a"
+  },
+  {
+   "code": "P0C49",
+   "brand": "",
+   "ru": "Насос охлаждения тяговой батареи A: высокий уровень в цепи управления",
+   "en": "Hybrid/EV Battery Pack Coolant Pump A Control Circuit High",
+   "fam": "",
+   "node": "hybrid ev battery pack coolant pump a"
+  },
+  {
+   "code": "P0CFF",
+   "brand": "",
+   "ru": "Насос охлаждения тяговой батареи A: заклинивание / остановка",
+   "en": "Hybrid/EV Battery Pack Coolant Pump A Stuck/Stalled",
+   "fam": "",
+   "node": "hybrid ev battery pack coolant pump a"
+  },
+  {
+   "code": "P0E1F",
+   "brand": "",
+   "ru": "Насос охлаждения тяговой батареи A: перегрузка драйвера цепи управления по току / перегрев",
+   "en": "Hybrid/EV Battery Pack Coolant Pump A Control Circuit Driver Current/Temperature Too High",
+   "fam": "",
+   "node": "hybrid ev battery pack coolant pump a"
+  },
+  {
+   "code": "P2B28",
+   "brand": "",
+   "ru": "Насос охлаждения тяговой батареи A: работа нарушена",
+   "en": "Hybrid/EV Battery Pack Coolant Pump A Performance",
+   "fam": "",
+   "node": "hybrid ev battery pack coolant pump a"
+  },
+  {
+   "code": "P0C4A",
+   "brand": "",
+   "ru": "Насос охлаждения тяговой батареи A: нарушено управление",
+   "en": "Hybrid/EV Battery Pack Coolant Pump A Control Performance",
+   "fam": "",
+   "node": "hybrid ev battery pack coolant pump a control"
+  },
+  {
+   "code": "P0C4B",
+   "brand": "",
+   "ru": "Насос охлаждения тяговой батареи A: обрыв цепи питания",
+   "en": "Hybrid/EV Battery Pack Coolant Pump A Supply Voltage Circuit/Open",
+   "fam": "",
+   "node": "hybrid ev battery pack coolant pump a supply voltage"
+  },
+  {
+   "code": "P0C4C",
+   "brand": "",
+   "ru": "Насос охлаждения тяговой батареи A: низкое напряжение питания",
+   "en": "Hybrid/EV Battery Pack Coolant Pump A Supply Voltage Circuit Low",
+   "fam": "",
+   "node": "hybrid ev battery pack coolant pump a supply voltage"
+  },
+  {
+   "code": "P0C4D",
+   "brand": "",
+   "ru": "Насос охлаждения тяговой батареи A: высокое напряжение питания",
+   "en": "Hybrid/EV Battery Pack Coolant Pump A Supply Voltage Circuit High",
+   "fam": "",
+   "node": "hybrid ev battery pack coolant pump a supply voltage"
+  },
+  {
+   "code": "P0C4E",
+   "brand": "",
+   "ru": "Тяговый электромотор A: превышен предел адаптации положения",
+   "en": "Drive Motor A Position Exceeded Learning Limit",
+   "fam": "",
+   "node": "drive motor a position exceeded learning limit"
+  },
+  {
+   "code": "P0C4F",
+   "brand": "",
+   "ru": "Тяговый электромотор B: превышен предел адаптации положения",
+   "en": "Drive Motor B Position Exceeded Learning Limit",
+   "fam": "",
+   "node": "drive motor b position exceeded learning limit"
+  },
+  {
+   "code": "P0C50",
+   "brand": "",
+   "ru": "Цепь датчика положения тягового электромотора A, A",
+   "en": "Drive Motor A Position Sensor Circuit A",
+   "fam": "",
+   "node": "drive motor a position"
+  },
+  {
+   "code": "P0C51",
+   "brand": "",
+   "ru": "Цепь датчика положения тягового электромотора A, A: вне допустимого диапазона",
+   "en": "Drive Motor A Position Sensor Circuit A Range/Performance",
+   "fam": "",
+   "node": "drive motor a position"
+  },
+  {
+   "code": "P0C52",
+   "brand": "",
+   "ru": "Цепь датчика положения тягового электромотора A, A: низкий уровень",
+   "en": "Drive Motor A Position Sensor Circuit A Low",
+   "fam": "",
+   "node": "drive motor a position"
+  },
+  {
+   "code": "P0C53",
+   "brand": "",
+   "ru": "Цепь датчика положения тягового электромотора A, A: высокий уровень",
+   "en": "Drive Motor A Position Sensor Circuit A High",
+   "fam": "",
+   "node": "drive motor a position"
+  },
+  {
+   "code": "P0C54",
+   "brand": "",
+   "ru": "Цепь датчика положения тягового электромотора A, A: прерывистый / нестабильный сигнал",
+   "en": "Drive Motor A Position Sensor Circuit A Intermittent/Erratic",
+   "fam": "",
+   "node": "drive motor a position"
+  },
+  {
+   "code": "P0C5A",
+   "brand": "",
+   "ru": "Цепь датчика положения тягового электромотора A, B",
+   "en": "Drive Motor A Position Sensor Circuit B",
+   "fam": "",
+   "node": "drive motor a position"
+  },
+  {
+   "code": "P0C5B",
+   "brand": "",
+   "ru": "Цепь датчика положения тягового электромотора A, B: вне допустимого диапазона",
+   "en": "Drive Motor A Position Sensor Circuit B Range/Performance",
+   "fam": "",
+   "node": "drive motor a position"
+  },
+  {
+   "code": "P0C5C",
+   "brand": "",
+   "ru": "Цепь датчика положения тягового электромотора A, B: низкий уровень",
+   "en": "Drive Motor A Position Sensor Circuit B Low",
+   "fam": "",
+   "node": "drive motor a position"
+  },
+  {
+   "code": "P0C5D",
+   "brand": "",
+   "ru": "Цепь датчика положения тягового электромотора A, B: высокий уровень",
+   "en": "Drive Motor A Position Sensor Circuit B High",
+   "fam": "",
+   "node": "drive motor a position"
+  },
+  {
+   "code": "P0C5E",
+   "brand": "",
+   "ru": "Цепь датчика положения тягового электромотора A, B: прерывистый / нестабильный сигнал",
+   "en": "Drive Motor A Position Sensor Circuit B Intermittent/Erratic",
+   "fam": "",
+   "node": "drive motor a position"
+  },
+  {
+   "code": "P0CDA",
+   "brand": "",
+   "ru": "Цепь датчика положения тягового электромотора A, C",
+   "en": "Drive Motor A Position Sensor Circuit C",
+   "fam": "",
+   "node": "drive motor a position"
+  },
+  {
+   "code": "P0CDB",
+   "brand": "",
+   "ru": "Цепь датчика положения тягового электромотора A, C: вне допустимого диапазона",
+   "en": "Drive Motor A Position Sensor Circuit C Range/Performance",
+   "fam": "",
+   "node": "drive motor a position"
+  },
+  {
+   "code": "P0CDC",
+   "brand": "",
+   "ru": "Цепь датчика положения тягового электромотора A, C: низкий уровень",
+   "en": "Drive Motor A Position Sensor Circuit C Low",
+   "fam": "",
+   "node": "drive motor a position"
+  },
+  {
+   "code": "P0CDD",
+   "brand": "",
+   "ru": "Цепь датчика положения тягового электромотора A, C: высокий уровень",
+   "en": "Drive Motor A Position Sensor Circuit C High",
+   "fam": "",
+   "node": "drive motor a position"
+  },
+  {
+   "code": "P0CDE",
+   "brand": "",
+   "ru": "Цепь датчика положения тягового электромотора A, C: прерывистый / нестабильный сигнал",
+   "en": "Drive Motor A Position Sensor Circuit C Intermittent/Erratic",
+   "fam": "",
+   "node": "drive motor a position"
+  }
+ ]
+}

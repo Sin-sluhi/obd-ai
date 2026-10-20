@@ -1,0 +1,388 @@
+{
+ "name": "sae_177",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "battery isolation voltage stabilization",
+  "clutch actuator",
+  "clutch actuator position",
+  "clutch pedal position sensor a clutch actuator position sensor correlation",
+  "cold start engine coolant pump",
+  "crankcase pressure sensor b",
+  "cylinder head temperature sensor a b correlation",
+  "cylinder head temperature sensor b",
+  "engine oil temperature sensor a b correlation",
+  "exhaust heat exchanger exhaust bypass valve a position",
+  "exhaust heat exchanger exhaust bypass valve a position sensor",
+  "fuel injector group b supply sense",
+  "ignition coil primary",
+  "ru:вентилятор 3",
+  "ru:вентилятор 4",
+  "turbocharger supercharger bypass valve b driver current temperature too",
+  "turbocharger supercharger bypass valve b position",
+  "turbocharger supercharger bypass valve b position exceeded learning limit",
+  "turbocharger supercharger bypass valve b supply voltage"
+ ],
+ "codes": [
+  {
+   "code": "P2C21",
+   "brand": "",
+   "ru": "Датчик температуры масла двигателя: рассогласование A/B",
+   "en": "Engine Oil Temperature Sensor A/B Correlation",
+   "fam": "",
+   "node": "engine oil temperature sensor a b correlation"
+  },
+  {
+   "code": "P2C22",
+   "brand": "",
+   "ru": "Датчик положения перепускного клапана теплообменника выхлопа A: цепь",
+   "en": "Exhaust Heat Exchanger Exhaust Bypass Valve A Position Sensor Circuit",
+   "fam": "",
+   "node": "exhaust heat exchanger exhaust bypass valve a position"
+  },
+  {
+   "code": "P2C24",
+   "brand": "",
+   "ru": "Датчик положения перепускного клапана теплообменника выхлопа A: низкий уровень сигнала в цепи",
+   "en": "Exhaust Heat Exchanger Exhaust Bypass Valve A Position Sensor Circuit Low",
+   "fam": "",
+   "node": "exhaust heat exchanger exhaust bypass valve a position"
+  },
+  {
+   "code": "P2C25",
+   "brand": "",
+   "ru": "Датчик положения перепускного клапана теплообменника выхлопа A: высокий уровень сигнала в цепи",
+   "en": "Exhaust Heat Exchanger Exhaust Bypass Valve A Position Sensor Circuit High",
+   "fam": "",
+   "node": "exhaust heat exchanger exhaust bypass valve a position"
+  },
+  {
+   "code": "P2C23",
+   "brand": "",
+   "ru": "Датчик положения перепускного клапана теплообменника выхлопа A: работа нарушена",
+   "en": "Exhaust Heat Exchanger Exhaust Bypass Valve A Position Sensor Performance",
+   "fam": "",
+   "node": "exhaust heat exchanger exhaust bypass valve a position sensor"
+  },
+  {
+   "code": "P2C26",
+   "brand": "",
+   "ru": "Питание группы форсунок B: цепь обратной связи",
+   "en": "Fuel Injector Group B Supply Sense Circuit",
+   "fam": "",
+   "node": "fuel injector group b supply sense"
+  },
+  {
+   "code": "P2C27",
+   "brand": "",
+   "ru": "Питание группы форсунок B: низкий уровень в цепи обратной связи",
+   "en": "Fuel Injector Group B Supply Sense Circuit Low",
+   "fam": "",
+   "node": "fuel injector group b supply sense"
+  },
+  {
+   "code": "P2C28",
+   "brand": "",
+   "ru": "Питание группы форсунок B: высокий уровень в цепи обратной связи",
+   "en": "Fuel Injector Group B Supply Sense Circuit High",
+   "fam": "",
+   "node": "fuel injector group b supply sense"
+  },
+  {
+   "code": "P2C2A",
+   "brand": "",
+   "ru": "Датчик положения перепускного клапана турбины B: обрыв цепи",
+   "en": "Turbocharger/Supercharger Bypass Valve B Position Sensor Circuit/Open",
+   "fam": "",
+   "node": "turbocharger supercharger bypass valve b position"
+  },
+  {
+   "code": "P2C2B",
+   "brand": "",
+   "ru": "Датчик положения перепускного клапана турбины B: низкий уровень сигнала в цепи",
+   "en": "Turbocharger/Supercharger Bypass Valve B Position Sensor Circuit Low",
+   "fam": "",
+   "node": "turbocharger supercharger bypass valve b position"
+  },
+  {
+   "code": "P2C2C",
+   "brand": "",
+   "ru": "Датчик положения перепускного клапана турбины B: высокий уровень сигнала в цепи",
+   "en": "Turbocharger/Supercharger Bypass Valve B Position Sensor Circuit High",
+   "fam": "",
+   "node": "turbocharger supercharger bypass valve b position"
+  },
+  {
+   "code": "P2C2D",
+   "brand": "",
+   "ru": "Перепускной клапан турбины B: превышен предел адаптации положения",
+   "en": "Turbocharger/Supercharger Bypass Valve B Position Exceeded Learning Limit",
+   "fam": "",
+   "node": "turbocharger supercharger bypass valve b position exceeded learning limit"
+  },
+  {
+   "code": "P2C2E",
+   "brand": "",
+   "ru": "Перепускной клапан турбины/нагнетателя B: низкое напряжение питания",
+   "en": "Turbocharger/Supercharger Bypass Valve B Supply Voltage Low",
+   "fam": "",
+   "node": "turbocharger supercharger bypass valve b supply voltage"
+  },
+  {
+   "code": "P2C2F",
+   "brand": "",
+   "ru": "Перепускной клапан турбины/нагнетателя B: перегрузка драйвера по току / перегрев",
+   "en": "Turbocharger/Supercharger Bypass Valve B Driver Current/Temperature Too High",
+   "fam": "",
+   "node": "turbocharger supercharger bypass valve b driver current temperature too"
+  },
+  {
+   "code": "P2C30",
+   "brand": "",
+   "ru": "Предохранитель первичной цепи катушек зажигания A",
+   "en": "Ignition Coil Primary Circuit Fuse A",
+   "fam": "",
+   "node": "ignition coil primary"
+  },
+  {
+   "code": "P2C31",
+   "brand": "",
+   "ru": "Предохранитель первичной цепи катушек зажигания B",
+   "en": "Ignition Coil Primary Circuit Fuse B",
+   "fam": "",
+   "node": "ignition coil primary"
+  },
+  {
+   "code": "P2C32",
+   "brand": "",
+   "ru": "Датчик давления в картере B: цепь",
+   "en": "Crankcase Pressure Sensor B Circuit",
+   "fam": "",
+   "node": "crankcase pressure sensor b"
+  },
+  {
+   "code": "P2C33",
+   "brand": "",
+   "ru": "Датчик давления в картере B: сигнал вне диапазона",
+   "en": "Crankcase Pressure Sensor B Circuit Range/Performance",
+   "fam": "",
+   "node": "crankcase pressure sensor b"
+  },
+  {
+   "code": "P2C34",
+   "brand": "",
+   "ru": "Датчик давления в картере B: низкий уровень сигнала в цепи",
+   "en": "Crankcase Pressure Sensor B Circuit Low",
+   "fam": "",
+   "node": "crankcase pressure sensor b"
+  },
+  {
+   "code": "P2C35",
+   "brand": "",
+   "ru": "Датчик давления в картере B: высокий уровень сигнала в цепи",
+   "en": "Crankcase Pressure Sensor B Circuit High",
+   "fam": "",
+   "node": "crankcase pressure sensor b"
+  },
+  {
+   "code": "P2C36",
+   "brand": "",
+   "ru": "Датчик давления в картере B: прерывистый / нестабильный сигнал",
+   "en": "Crankcase Pressure Sensor B Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "crankcase pressure sensor b"
+  },
+  {
+   "code": "P2C37",
+   "brand": "",
+   "ru": "Насос охлаждающей жидкости при холодном пуске: работа нарушена",
+   "en": "Cold Start Engine Coolant Pump Performance",
+   "fam": "",
+   "node": "cold start engine coolant pump"
+  },
+  {
+   "code": "P2C38",
+   "brand": "",
+   "ru": "Датчик температуры ГБЦ B: цепь",
+   "en": "Cylinder Head Temperature Sensor B Circuit",
+   "fam": "",
+   "node": "cylinder head temperature sensor b"
+  },
+  {
+   "code": "P2C39",
+   "brand": "",
+   "ru": "Датчик температуры ГБЦ B: вне допустимого диапазона",
+   "en": "Cylinder Head Temperature Sensor B Range/Performance",
+   "fam": "",
+   "node": "cylinder head temperature sensor b"
+  },
+  {
+   "code": "P2C3A",
+   "brand": "",
+   "ru": "Датчик температуры ГБЦ B: низкий уровень сигнала в цепи",
+   "en": "Cylinder Head Temperature Sensor B Circuit Low",
+   "fam": "",
+   "node": "cylinder head temperature sensor b"
+  },
+  {
+   "code": "P2C3B",
+   "brand": "",
+   "ru": "Датчик температуры ГБЦ B: высокий уровень сигнала в цепи",
+   "en": "Cylinder Head Temperature Sensor B Circuit High",
+   "fam": "",
+   "node": "cylinder head temperature sensor b"
+  },
+  {
+   "code": "P2C3C",
+   "brand": "",
+   "ru": "Датчик температуры ГБЦ B: прерывистый / нестабильный сигнал",
+   "en": "Cylinder Head Temperature Sensor B Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "cylinder head temperature sensor b"
+  },
+  {
+   "code": "P2C3D",
+   "brand": "",
+   "ru": "Датчик температуры ГБЦ: рассогласование A/B",
+   "en": "Cylinder Head Temperature Sensor A/B Correlation",
+   "fam": "",
+   "node": "cylinder head temperature sensor a b correlation"
+  },
+  {
+   "code": "P2C3E",
+   "brand": "",
+   "ru": "Вентилятор 4: цепь управления",
+   "en": "Fan 4 Control Circuit",
+   "fam": "",
+   "node": "ru:вентилятор 4"
+  },
+  {
+   "code": "P2C3F",
+   "brand": "",
+   "ru": "Вентилятор 4: низкий уровень в цепи управления",
+   "en": "Fan 4 Control Circuit Low",
+   "fam": "",
+   "node": "ru:вентилятор 4"
+  },
+  {
+   "code": "P2C40",
+   "brand": "",
+   "ru": "Вентилятор 4: высокий уровень в цепи управления",
+   "en": "Fan 4 Control Circuit High",
+   "fam": "",
+   "node": "ru:вентилятор 4"
+  },
+  {
+   "code": "P2C42",
+   "brand": "",
+   "ru": "Вентилятор 4: работа нарушена / не включается",
+   "en": "Fan 4 Performance/Stuck Off",
+   "fam": "",
+   "node": "ru:вентилятор 4"
+  },
+  {
+   "code": "P2C41",
+   "brand": "",
+   "ru": "Вентилятор 3: работа нарушена / не включается",
+   "en": "Fan 3 Performance/Stuck Off",
+   "fam": "",
+   "node": "ru:вентилятор 3"
+  },
+  {
+   "code": "P2C43",
+   "brand": "",
+   "ru": "Развязка АКБ / стабилизация напряжения: цепь управления",
+   "en": "Battery Isolation/Voltage Stabilization Control Circuit",
+   "fam": "",
+   "node": "battery isolation voltage stabilization"
+  },
+  {
+   "code": "P2C44",
+   "brand": "",
+   "ru": "Развязка АКБ / стабилизация напряжения: нарушена работа цепи управления",
+   "en": "Battery Isolation/Voltage Stabilization Control Circuit Performance",
+   "fam": "",
+   "node": "battery isolation voltage stabilization"
+  },
+  {
+   "code": "P2C45",
+   "brand": "",
+   "ru": "Развязка АКБ / стабилизация напряжения: низкий уровень в цепи управления",
+   "en": "Battery Isolation/Voltage Stabilization Control Circuit Low",
+   "fam": "",
+   "node": "battery isolation voltage stabilization"
+  },
+  {
+   "code": "P2C46",
+   "brand": "",
+   "ru": "Развязка АКБ / стабилизация напряжения: высокий уровень в цепи управления",
+   "en": "Battery Isolation/Voltage Stabilization Control Circuit High",
+   "fam": "",
+   "node": "battery isolation voltage stabilization"
+  },
+  {
+   "code": "P2C47",
+   "brand": "",
+   "ru": "Развязка АКБ / стабилизация напряжения: прерывистый сигнал в цепи управления",
+   "en": "Battery Isolation/Voltage Stabilization Control Circuit Intermittent",
+   "fam": "",
+   "node": "battery isolation voltage stabilization"
+  },
+  {
+   "code": "P2C4A",
+   "brand": "",
+   "ru": "Датчик положения привода сцепления: цепь",
+   "en": "Clutch Actuator Position Sensor Circuit",
+   "fam": "",
+   "node": "clutch actuator position"
+  },
+  {
+   "code": "P2C4B",
+   "brand": "",
+   "ru": "Датчик положения привода сцепления: сигнал вне диапазона",
+   "en": "Clutch Actuator Position Sensor Circuit Range/Performance",
+   "fam": "",
+   "node": "clutch actuator position"
+  },
+  {
+   "code": "P2C4C",
+   "brand": "",
+   "ru": "Датчик положения привода сцепления: низкий уровень сигнала в цепи",
+   "en": "Clutch Actuator Position Sensor Circuit Low",
+   "fam": "",
+   "node": "clutch actuator position"
+  },
+  {
+   "code": "P2C4D",
+   "brand": "",
+   "ru": "Датчик положения привода сцепления: высокий уровень сигнала в цепи",
+   "en": "Clutch Actuator Position Sensor Circuit High",
+   "fam": "",
+   "node": "clutch actuator position"
+  },
+  {
+   "code": "P2C4E",
+   "brand": "",
+   "ru": "Датчик положения привода сцепления: прерывистый / нестабильный сигнал",
+   "en": "Clutch Actuator Position Sensor Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "clutch actuator position"
+  },
+  {
+   "code": "P2C4F",
+   "brand": "",
+   "ru": "Привод сцепления: работа нарушена",
+   "en": "Clutch Actuator Performance",
+   "fam": "",
+   "node": "clutch actuator"
+  },
+  {
+   "code": "P2C50",
+   "brand": "",
+   "ru": "Рассогласование датчика педали сцепления A и датчика привода сцепления",
+   "en": "Clutch Pedal Position Sensor A/Clutch Actuator Position Sensor Correlation",
+   "fam": "",
+   "node": "clutch pedal position sensor a clutch actuator position sensor correlation"
+  }
+ ]
+}

@@ -1,0 +1,370 @@
+{
+ "name": "sae_014",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "abs pump motor calibration not learned",
+  "abs pump motor supply voltage b",
+  "abs pump motor temperature too",
+  "brake blending separation valve",
+  "brake blending system",
+  "brake booster control module missing calibration",
+  "brake booster internal power driver",
+  "brake booster motor a",
+  "brake booster motor a current",
+  "brake booster motor a phase u v w current",
+  "brake booster motor b current",
+  "brake booster motor b phase u v w current",
+  "brake booster motor b position",
+  "brake booster temperature sensor c",
+  "brake pressure sensor b missing calibration",
+  "brake pressure sensor c missing calibration",
+  "brake pressure sensor d missing calibration",
+  "brake pressure sensor e",
+  "brake pressure sensor e missing calibration",
+  "brake system control module a",
+  "brake system control module b",
+  "power steering control module rear missing calibration",
+  "regeneration torque",
+  "steering wheel angle sensor",
+  "wheel speed sensors supply"
+ ],
+ "codes": [
+  {
+   "code": "C058B",
+   "brand": "",
+   "ru": "Датчик положения мотора B усилителя тормозов: обрыв цепи",
+   "en": "Brake Booster Motor B Position Sensor Circuit/Open",
+   "fam": "",
+   "node": "brake booster motor b position"
+  },
+  {
+   "code": "C058C",
+   "brand": "",
+   "ru": "Датчик положения мотора B усилителя тормозов: низкий уровень сигнала в цепи",
+   "en": "Brake Booster Motor B Position Sensor Circuit Low",
+   "fam": "",
+   "node": "brake booster motor b position"
+  },
+  {
+   "code": "C058D",
+   "brand": "",
+   "ru": "Датчик положения мотора B усилителя тормозов: высокий уровень сигнала в цепи",
+   "en": "Brake Booster Motor B Position Sensor Circuit High",
+   "fam": "",
+   "node": "brake booster motor b position"
+  },
+  {
+   "code": "C058E",
+   "brand": "",
+   "ru": "Датчик положения мотора B усилителя тормозов: сигнал вне диапазона",
+   "en": "Brake Booster Motor B Position Sensor Circuit Range/Performance",
+   "fam": "",
+   "node": "brake booster motor b position"
+  },
+  {
+   "code": "C058F",
+   "brand": "",
+   "ru": "Момент рекуперации: работа нарушена",
+   "en": "Regeneration Torque Performance",
+   "fam": "",
+   "node": "regeneration torque"
+  },
+  {
+   "code": "C0590",
+   "brand": "",
+   "ru": "Мотор A усилителя тормозов, фазы U-V-W: большой ток",
+   "en": "Brake Booster Motor A Phase U-V-W Current High",
+   "fam": "",
+   "node": "brake booster motor a phase u v w current"
+  },
+  {
+   "code": "C0591",
+   "brand": "",
+   "ru": "Мотор A усилителя тормозов, фазы U-V-W: малый ток",
+   "en": "Brake Booster Motor A Phase U-V-W Current Low",
+   "fam": "",
+   "node": "brake booster motor a phase u v w current"
+  },
+  {
+   "code": "C0592",
+   "brand": "",
+   "ru": "Мотор B усилителя тормозов, фазы U-V-W: большой ток",
+   "en": "Brake Booster Motor B Phase U-V-W Current High",
+   "fam": "",
+   "node": "brake booster motor b phase u v w current"
+  },
+  {
+   "code": "C0593",
+   "brand": "",
+   "ru": "Мотор B усилителя тормозов, фазы U-V-W: малый ток",
+   "en": "Brake Booster Motor B Phase U-V-W Current Low",
+   "fam": "",
+   "node": "brake booster motor b phase u v w current"
+  },
+  {
+   "code": "C0594",
+   "brand": "",
+   "ru": "Мотор усилителя тормозов A: работа нарушена",
+   "en": "Brake Booster Motor A Performance",
+   "fam": "",
+   "node": "brake booster motor a"
+  },
+  {
+   "code": "C0595",
+   "brand": "",
+   "ru": "Внутренний силовой драйвер усилителя тормозов: вне допустимого диапазона",
+   "en": "Brake Booster Internal Power Driver Range/Performance",
+   "fam": "",
+   "node": "brake booster internal power driver"
+  },
+  {
+   "code": "C0596",
+   "brand": "",
+   "ru": "Мотор усилителя тормозов A: датчик тока вне диапазона",
+   "en": "Brake Booster Motor A Current Sensor Circuit Range/Performance",
+   "fam": "",
+   "node": "brake booster motor a current"
+  },
+  {
+   "code": "C0597",
+   "brand": "",
+   "ru": "Блок управления тормозной системой A: работа нарушена",
+   "en": "Brake System Control Module A Performance",
+   "fam": "",
+   "node": "brake system control module a"
+  },
+  {
+   "code": "C0598",
+   "brand": "",
+   "ru": "Блок управления тормозной системой B: работа нарушена",
+   "en": "Brake System Control Module B Performance",
+   "fam": "",
+   "node": "brake system control module b"
+  },
+  {
+   "code": "C0599",
+   "brand": "",
+   "ru": "Блок усилителя тормозов: нет калибровки",
+   "en": "Brake Booster Control Module Missing Calibration",
+   "fam": "",
+   "node": "brake booster control module missing calibration"
+  },
+  {
+   "code": "C059A",
+   "brand": "",
+   "ru": "Блок подруливания задних колёс: нет калибровки",
+   "en": "Power Steering Control Module - Rear Missing Calibration",
+   "fam": "",
+   "node": "power steering control module rear missing calibration"
+  },
+  {
+   "code": "C059B",
+   "brand": "",
+   "ru": "Датчик давления в тормозной системе B: нет калибровки",
+   "en": "Brake Pressure Sensor B Missing Calibration",
+   "fam": "",
+   "node": "brake pressure sensor b missing calibration"
+  },
+  {
+   "code": "C059C",
+   "brand": "",
+   "ru": "Датчик давления в тормозной системе C: нет калибровки",
+   "en": "Brake Pressure Sensor C Missing Calibration",
+   "fam": "",
+   "node": "brake pressure sensor c missing calibration"
+  },
+  {
+   "code": "C059D",
+   "brand": "",
+   "ru": "Датчик давления в тормозной системе D: нет калибровки",
+   "en": "Brake Pressure Sensor D Missing Calibration",
+   "fam": "",
+   "node": "brake pressure sensor d missing calibration"
+  },
+  {
+   "code": "C059E",
+   "brand": "",
+   "ru": "Датчик давления в тормозной системе E: нет калибровки",
+   "en": "Brake Pressure Sensor E Missing Calibration",
+   "fam": "",
+   "node": "brake pressure sensor e missing calibration"
+  },
+  {
+   "code": "C059F",
+   "brand": "",
+   "ru": "Датчик давления в тормозной системе E: низкий уровень сигнала в цепи",
+   "en": "Brake Pressure Sensor E Circuit Low",
+   "fam": "",
+   "node": "brake pressure sensor e"
+  },
+  {
+   "code": "C05A0",
+   "brand": "",
+   "ru": "Датчик давления в тормозной системе E: высокий уровень сигнала в цепи",
+   "en": "Brake Pressure Sensor E Circuit High",
+   "fam": "",
+   "node": "brake pressure sensor e"
+  },
+  {
+   "code": "C05A1",
+   "brand": "",
+   "ru": "Датчик давления в тормозной системе E: обрыв цепи",
+   "en": "Brake Pressure Sensor E Circuit/Open",
+   "fam": "",
+   "node": "brake pressure sensor e"
+  },
+  {
+   "code": "C05A2",
+   "brand": "",
+   "ru": "Датчик давления в тормозной системе E: вне допустимого диапазона",
+   "en": "Brake Pressure Sensor E Range/Performance",
+   "fam": "",
+   "node": "brake pressure sensor e"
+  },
+  {
+   "code": "C05A3",
+   "brand": "",
+   "ru": "Датчики скорости колёс: высокое напряжение питания",
+   "en": "Wheel Speed Sensors Supply Circuit High",
+   "fam": "",
+   "node": "wheel speed sensors supply"
+  },
+  {
+   "code": "C05A4",
+   "brand": "",
+   "ru": "Датчики скорости колёс: низкое напряжение питания",
+   "en": "Wheel Speed Sensors Supply Circuit Low",
+   "fam": "",
+   "node": "wheel speed sensors supply"
+  },
+  {
+   "code": "C05A5",
+   "brand": "",
+   "ru": "Питание мотора насоса ABS B: обрыв цепи",
+   "en": "ABS Pump Motor Supply Voltage B Circuit/Open",
+   "fam": "",
+   "node": "abs pump motor supply voltage b"
+  },
+  {
+   "code": "C05A6",
+   "brand": "",
+   "ru": "Питание мотора насоса ABS B: высокий уровень сигнала в цепи",
+   "en": "ABS Pump Motor Supply Voltage B Circuit High",
+   "fam": "",
+   "node": "abs pump motor supply voltage b"
+  },
+  {
+   "code": "C05A7",
+   "brand": "",
+   "ru": "Питание мотора насоса ABS B: низкий уровень сигнала в цепи",
+   "en": "ABS Pump Motor Supply Voltage B Circuit Low",
+   "fam": "",
+   "node": "abs pump motor supply voltage b"
+  },
+  {
+   "code": "C05A8",
+   "brand": "",
+   "ru": "Питание мотора насоса ABS B: сигнал вне диапазона",
+   "en": "ABS Pump Motor Supply Voltage B Circuit Range/Performance",
+   "fam": "",
+   "node": "abs pump motor supply voltage b"
+  },
+  {
+   "code": "C05AA",
+   "brand": "",
+   "ru": "Мотор насоса ABS: слишком высокая температура",
+   "en": "ABS Pump Motor Temperature Too High",
+   "fam": "",
+   "node": "abs pump motor temperature too"
+  },
+  {
+   "code": "C05AB",
+   "brand": "",
+   "ru": "Разделительный клапан смешивания торможения: работа нарушена",
+   "en": "Brake Blending Separation Valve Performance",
+   "fam": "",
+   "node": "brake blending separation valve"
+  },
+  {
+   "code": "C05AC",
+   "brand": "",
+   "ru": "Разделительный клапан смешивания торможения: заклинил закрытым",
+   "en": "Brake Blending Separation Valve Stuck Closed",
+   "fam": "",
+   "node": "brake blending separation valve"
+  },
+  {
+   "code": "C05AD",
+   "brand": "",
+   "ru": "Система смешивания рекуперативного и гидравлического торможения: работа нарушена",
+   "en": "Brake Blending System Performance",
+   "fam": "",
+   "node": "brake blending system"
+  },
+  {
+   "code": "C05AE",
+   "brand": "",
+   "ru": "Мотор насоса ABS: калибровка не обучена",
+   "en": "ABS Pump Motor Calibration Not Learned",
+   "fam": "",
+   "node": "abs pump motor calibration not learned"
+  },
+  {
+   "code": "C05AF",
+   "brand": "",
+   "ru": "Мотор усилителя тормозов B: датчик тока вне диапазона",
+   "en": "Brake Booster Motor B Current Sensor Circuit Range/Performance",
+   "fam": "",
+   "node": "brake booster motor b current"
+  },
+  {
+   "code": "C05B2",
+   "brand": "",
+   "ru": "Рассогласование датчика угла руля и датчика рыскания",
+   "en": "Steering Wheel Angle Sensor Signal - Yaw Rate Sensor Signal Correlation",
+   "fam": "",
+   "node": "steering wheel angle sensor"
+  },
+  {
+   "code": "C05B3",
+   "brand": "",
+   "ru": "Датчик температуры усилителя тормозов C: низкий уровень сигнала в цепи",
+   "en": "Brake Booster Temperature Sensor C Circuit Low",
+   "fam": "",
+   "node": "brake booster temperature sensor c"
+  },
+  {
+   "code": "C05B4",
+   "brand": "",
+   "ru": "Датчик температуры усилителя тормозов C: высокий уровень сигнала в цепи",
+   "en": "Brake Booster Temperature Sensor C Circuit High",
+   "fam": "",
+   "node": "brake booster temperature sensor c"
+  },
+  {
+   "code": "C05B5",
+   "brand": "",
+   "ru": "Датчик температуры усилителя тормозов C: обрыв цепи",
+   "en": "Brake Booster Temperature Sensor C Circuit/Open",
+   "fam": "",
+   "node": "brake booster temperature sensor c"
+  },
+  {
+   "code": "C05B6",
+   "brand": "",
+   "ru": "Датчик температуры усилителя тормозов C: сигнал вне диапазона",
+   "en": "Brake Booster Temperature Sensor C Circuit Range/Performance",
+   "fam": "",
+   "node": "brake booster temperature sensor c"
+  },
+  {
+   "code": "C05B7",
+   "brand": "",
+   "ru": "Датчик температуры усилителя тормозов C: прерывистый / нестабильный сигнал",
+   "en": "Brake Booster Temperature Sensor C Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "brake booster temperature sensor c"
+  }
+ ]
+}

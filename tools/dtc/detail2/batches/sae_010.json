@@ -1,0 +1,405 @@
+{
+ "name": "sae_010",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "4wd awd power transfer unit actuator",
+  "4wd awd power transfer unit position sensor a",
+  "4wd awd power transfer unit position sensor b",
+  "4wd awd power transfer unit temperature",
+  "4wd awd rear differential unit actuator a",
+  "4wd awd rear differential unit actuator a data",
+  "4wd awd rear differential unit actuator a position sensor a",
+  "4wd awd rear differential unit actuator a position sensor b",
+  "4wd awd rear differential unit actuator a position sensor c",
+  "4wd awd rear differential unit actuator a position sensor correlation",
+  "4wd awd rear differential unit actuator b",
+  "4wd awd rear differential unit actuator b data",
+  "4wd awd rear differential unit actuator b position sensor a",
+  "4wd awd rear differential unit actuator b position sensor b",
+  "4wd awd rear differential unit actuator b position sensor c",
+  "4wd awd rear differential unit actuator b position sensor correlation",
+  "4wd awd rear differential unit temperature",
+  "brake system",
+  "driveline control",
+  "driveline control module power transfer unit",
+  "driveline control module rear differential unit a",
+  "fam:abs_module",
+  "multi axis acceleration",
+  "pwm for traction",
+  "ru:индикатор неисправности abs",
+  "ru:низкое давление в шинах",
+  "stability system",
+  "stability system active too long",
+  "tcs disable",
+  "tcs mode",
+  "tire diameter",
+  "tire pressure monitor",
+  "traction active indicator",
+  "traction disable indicator",
+  "variable effort steering",
+  "vehicle dynamics indicator"
+ ],
+ "codes": [
+  {
+   "code": "C006A",
+   "brand": "",
+   "ru": "Датчик ускорений по нескольким осям",
+   "en": "Multi-axis Acceleration Sensor",
+   "fam": "",
+   "node": "multi axis acceleration"
+  },
+  {
+   "code": "C006B",
+   "brand": "",
+   "ru": "Система стабилизации слишком долго активна",
+   "en": "Stability System Active Too Long",
+   "fam": "",
+   "node": "stability system active too long"
+  },
+  {
+   "code": "C006C",
+   "brand": "",
+   "ru": "Система стабилизации",
+   "en": "Stability System",
+   "fam": "",
+   "node": "stability system"
+  },
+  {
+   "code": "C0070",
+   "brand": "",
+   "ru": "Блок ABS: питание клапанов",
+   "en": "",
+   "fam": "abs_module",
+   "node": "fam:abs_module"
+  },
+  {
+   "code": "C0071",
+   "brand": "",
+   "ru": "Блок ABS: питание насоса",
+   "en": "",
+   "fam": "abs_module",
+   "node": "fam:abs_module"
+  },
+  {
+   "code": "C0072",
+   "brand": "",
+   "ru": "Блок ABS: насос не отвечает",
+   "en": "",
+   "fam": "abs_module",
+   "node": "fam:abs_module"
+  },
+  {
+   "code": "C0073",
+   "brand": "",
+   "ru": "Блок ABS: внутренняя ошибка",
+   "en": "",
+   "fam": "abs_module",
+   "node": "fam:abs_module"
+  },
+  {
+   "code": "C0074",
+   "brand": "",
+   "ru": "Блок ABS: низкое напряжение",
+   "en": "",
+   "fam": "abs_module",
+   "node": "fam:abs_module"
+  },
+  {
+   "code": "C0075",
+   "brand": "",
+   "ru": "Блок ABS: высокое напряжение",
+   "en": "",
+   "fam": "abs_module",
+   "node": "fam:abs_module"
+  },
+  {
+   "code": "C0076",
+   "brand": "",
+   "ru": "ШИМ противобуксовочной системы",
+   "en": "PWM for Traction Control",
+   "fam": "",
+   "node": "pwm for traction"
+  },
+  {
+   "code": "C0077",
+   "brand": "",
+   "ru": "Низкое давление в шинах",
+   "en": "Low Tire Pressure",
+   "fam": "",
+   "node": "ru:низкое давление в шинах"
+  },
+  {
+   "code": "C0078",
+   "brand": "",
+   "ru": "Диаметр шин",
+   "en": "Tire Diameter",
+   "fam": "",
+   "node": "tire diameter"
+  },
+  {
+   "code": "C0079",
+   "brand": "",
+   "ru": "Усилитель руля с переменным усилием",
+   "en": "Variable Effort Steering",
+   "fam": "",
+   "node": "variable effort steering"
+  },
+  {
+   "code": "C0624",
+   "brand": "",
+   "ru": "Датчик усилителя руля с переменным усилием: цепь",
+   "en": "Variable Effort Steering Sensor Circuit",
+   "fam": "",
+   "node": "variable effort steering"
+  },
+  {
+   "code": "C0625",
+   "brand": "",
+   "ru": "Датчик усилителя руля с переменным усилием: сигнал вне диапазона",
+   "en": "Variable Effort Steering Sensor Circuit Range/Performance",
+   "fam": "",
+   "node": "variable effort steering"
+  },
+  {
+   "code": "C0626",
+   "brand": "",
+   "ru": "Датчик усилителя руля с переменным усилием: низкий уровень сигнала в цепи",
+   "en": "Variable Effort Steering Sensor Circuit Low",
+   "fam": "",
+   "node": "variable effort steering"
+  },
+  {
+   "code": "C0627",
+   "brand": "",
+   "ru": "Датчик усилителя руля с переменным усилием: высокий уровень сигнала в цепи",
+   "en": "Variable Effort Steering Sensor Circuit High",
+   "fam": "",
+   "node": "variable effort steering"
+  },
+  {
+   "code": "C0081",
+   "brand": "",
+   "ru": "Индикатор неисправности ABS",
+   "en": "ABS Malfunction Indicator",
+   "fam": "",
+   "node": "ru:индикатор неисправности abs"
+  },
+  {
+   "code": "C0082",
+   "brand": "",
+   "ru": "Индикатор неисправности тормозной системы",
+   "en": "Brake System Malfunction Indicator",
+   "fam": "",
+   "node": "brake system"
+  },
+  {
+   "code": "C0083",
+   "brand": "",
+   "ru": "Индикатор неисправности контроля давления в шинах",
+   "en": "Tire Pressure Monitor Malfunction Indicator",
+   "fam": "",
+   "node": "tire pressure monitor"
+  },
+  {
+   "code": "C0084",
+   "brand": "",
+   "ru": "Индикатор работы противобуксовочной системы",
+   "en": "Traction Active Indicator",
+   "fam": "",
+   "node": "traction active indicator"
+  },
+  {
+   "code": "C0085",
+   "brand": "",
+   "ru": "Индикатор отключения противобуксовочной системы",
+   "en": "Traction Disable Indicator",
+   "fam": "",
+   "node": "traction disable indicator"
+  },
+  {
+   "code": "C0086",
+   "brand": "",
+   "ru": "Индикатор системы стабилизации",
+   "en": "Vehicle Dynamics Indicator",
+   "fam": "",
+   "node": "vehicle dynamics indicator"
+  },
+  {
+   "code": "C0089",
+   "brand": "",
+   "ru": "Кнопка отключения противобуксовочной системы",
+   "en": "TCS Disable Switch",
+   "fam": "",
+   "node": "tcs disable"
+  },
+  {
+   "code": "C008A",
+   "brand": "",
+   "ru": "Управление режимом противобуксовочной системы",
+   "en": "TCS Mode Control",
+   "fam": "",
+   "node": "tcs mode"
+  },
+  {
+   "code": "C0090",
+   "brand": "",
+   "ru": "Привод раздаточного узла полного привода",
+   "en": "4WD/AWD Power Transfer Unit Actuator",
+   "fam": "",
+   "node": "4wd awd power transfer unit actuator"
+  },
+  {
+   "code": "C0091",
+   "brand": "",
+   "ru": "Датчик положения раздаточного узла A",
+   "en": "4WD/AWD Power Transfer Unit Position Sensor A",
+   "fam": "",
+   "node": "4wd awd power transfer unit position sensor a"
+  },
+  {
+   "code": "C0092",
+   "brand": "",
+   "ru": "Датчик положения раздаточного узла B",
+   "en": "4WD/AWD Power Transfer Unit Position Sensor B",
+   "fam": "",
+   "node": "4wd awd power transfer unit position sensor b"
+  },
+  {
+   "code": "C0093",
+   "brand": "",
+   "ru": "Датчик температуры раздаточного узла полного привода",
+   "en": "4WD/AWD Power Transfer Unit Temperature Sensor",
+   "fam": "",
+   "node": "4wd awd power transfer unit temperature"
+  },
+  {
+   "code": "C0094",
+   "brand": "",
+   "ru": "Датчик температуры заднего дифференциала",
+   "en": "4WD/AWD Rear Differential Unit Temperature Sensor",
+   "fam": "",
+   "node": "4wd awd rear differential unit temperature"
+  },
+  {
+   "code": "C0095",
+   "brand": "",
+   "ru": "Привод заднего дифференциала A",
+   "en": "4WD/AWD Rear Differential Unit Actuator A",
+   "fam": "",
+   "node": "4wd awd rear differential unit actuator a"
+  },
+  {
+   "code": "C0096",
+   "brand": "",
+   "ru": "Привод A заднего дифференциала: данные",
+   "en": "4WD/AWD Rear Differential Unit Actuator A Data",
+   "fam": "",
+   "node": "4wd awd rear differential unit actuator a data"
+  },
+  {
+   "code": "C0097",
+   "brand": "",
+   "ru": "Привод заднего дифференциала B",
+   "en": "4WD/AWD Rear Differential Unit Actuator B",
+   "fam": "",
+   "node": "4wd awd rear differential unit actuator b"
+  },
+  {
+   "code": "C0098",
+   "brand": "",
+   "ru": "Привод B заднего дифференциала: данные",
+   "en": "4WD/AWD Rear Differential Unit Actuator B Data",
+   "fam": "",
+   "node": "4wd awd rear differential unit actuator b data"
+  },
+  {
+   "code": "C0099",
+   "brand": "",
+   "ru": "Датчик положения привода A заднего дифференциала A",
+   "en": "4WD/AWD Rear Differential Unit Actuator A Position Sensor A",
+   "fam": "",
+   "node": "4wd awd rear differential unit actuator a position sensor a"
+  },
+  {
+   "code": "C009A",
+   "brand": "",
+   "ru": "Датчик положения привода A заднего дифференциала B",
+   "en": "4WD/AWD Rear Differential Unit Actuator A Position Sensor B",
+   "fam": "",
+   "node": "4wd awd rear differential unit actuator a position sensor b"
+  },
+  {
+   "code": "C009B",
+   "brand": "",
+   "ru": "Датчик положения привода A заднего дифференциала C",
+   "en": "4WD/AWD Rear Differential Unit Actuator A Position Sensor C",
+   "fam": "",
+   "node": "4wd awd rear differential unit actuator a position sensor c"
+  },
+  {
+   "code": "C009C",
+   "brand": "",
+   "ru": "Датчик положения привода A заднего дифференциала: рассогласование показаний",
+   "en": "4WD/AWD Rear Differential Unit Actuator A Position Sensor Correlation",
+   "fam": "",
+   "node": "4wd awd rear differential unit actuator a position sensor correlation"
+  },
+  {
+   "code": "C009D",
+   "brand": "",
+   "ru": "Датчик положения привода B заднего дифференциала A",
+   "en": "4WD/AWD Rear Differential Unit Actuator B Position Sensor A",
+   "fam": "",
+   "node": "4wd awd rear differential unit actuator b position sensor a"
+  },
+  {
+   "code": "C009E",
+   "brand": "",
+   "ru": "Датчик положения привода B заднего дифференциала B",
+   "en": "4WD/AWD Rear Differential Unit Actuator B Position Sensor B",
+   "fam": "",
+   "node": "4wd awd rear differential unit actuator b position sensor b"
+  },
+  {
+   "code": "C009F",
+   "brand": "",
+   "ru": "Датчик положения привода B заднего дифференциала C",
+   "en": "4WD/AWD Rear Differential Unit Actuator B Position Sensor C",
+   "fam": "",
+   "node": "4wd awd rear differential unit actuator b position sensor c"
+  },
+  {
+   "code": "C00A0",
+   "brand": "",
+   "ru": "Датчик положения привода B заднего дифференциала: рассогласование показаний",
+   "en": "4WD/AWD Rear Differential Unit Actuator B Position Sensor Correlation",
+   "fam": "",
+   "node": "4wd awd rear differential unit actuator b position sensor correlation"
+  },
+  {
+   "code": "C00A1",
+   "brand": "",
+   "ru": "Блок управления трансмиссией полного привода",
+   "en": "Driveline Control Module",
+   "fam": "",
+   "node": "driveline control"
+  },
+  {
+   "code": "C00A2",
+   "brand": "",
+   "ru": "Блок трансмиссии полного привода: драйвер раздаточного узла",
+   "en": "Driveline Control Module Power Transfer Unit Control Circuit Driver",
+   "fam": "",
+   "node": "driveline control module power transfer unit"
+  },
+  {
+   "code": "C00A3",
+   "brand": "",
+   "ru": "Блок трансмиссии полного привода: драйвер заднего дифференциала A",
+   "en": "Driveline Control Module Rear Differential Unit A Control Circuit Driver",
+   "fam": "",
+   "node": "driveline control module rear differential unit a"
+  }
+ ]
+}

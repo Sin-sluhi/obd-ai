@@ -1,0 +1,253 @@
+{
+ "name": "brand-jaguar_045",
+ "series": "brand",
+ "brand": "jaguar",
+ "nodes": [
+  "battery voltage",
+  "can controller",
+  "can tcm ecm",
+  "can tcm inst",
+  "cruise control distance control",
+  "engine overspeed",
+  "gear control",
+  "ignition retard request",
+  "ignition retard request duration",
+  "ignition supply",
+  "inconsistent can level",
+  "inconsistent gear ratio",
+  "pressure regulator",
+  "pressure solenoid control system incorrect current",
+  "ru:управление нагрузкой",
+  "stall speed",
+  "transmission indeterminate failure failed to neutral",
+  "transmission reverse ip",
+  "transmission system mil fault",
+  "vehicle speed meter"
+ ],
+ "codes": [
+  {
+   "code": "P1697",
+   "brand": "jaguar",
+   "ru": "Вход дистанции круиз-контроля: цепь",
+   "en": "Cruise Control Distance Control Input Circuit",
+   "fam": "",
+   "node": "cruise control distance control"
+  },
+  {
+   "code": "P1700",
+   "brand": "jaguar",
+   "ru": "Неопределённая неисправность коробки — переход в нейтраль",
+   "en": "Transmission Indeterminate Failure Failed To Neutral",
+   "fam": "",
+   "node": "transmission indeterminate failure failed to neutral"
+  },
+  {
+   "code": "P1720",
+   "brand": "jaguar",
+   "ru": "Спидометр: цепь",
+   "en": "Vehicle Speed Meter Circuit",
+   "fam": "",
+   "node": "vehicle speed meter"
+  },
+  {
+   "code": "P1722",
+   "brand": "jaguar",
+   "ru": "Обороты стоп-теста (stall)",
+   "en": "Stall Speed",
+   "fam": "",
+   "node": "stall speed"
+  },
+  {
+   "code": "P1726",
+   "brand": "jaguar",
+   "ru": "Превышение оборотов двигателя",
+   "en": "Engine Overspeed",
+   "fam": "",
+   "node": "engine overspeed"
+  },
+  {
+   "code": "P1730",
+   "brand": "jaguar",
+   "ru": "Неисправность управления передачами 2-3-5",
+   "en": "Gear Control Malfunction 2 3 5",
+   "fam": "",
+   "node": "gear control"
+  },
+  {
+   "code": "P1734",
+   "brand": "jaguar",
+   "ru": "Неисправность управления передачами",
+   "en": "Gear Control Malfunction",
+   "fam": "",
+   "node": "gear control"
+  },
+  {
+   "code": "P1731",
+   "brand": "jaguar",
+   "ru": "Несогласованное передаточное число",
+   "en": "Inconsistent Gear Ratio",
+   "fam": "",
+   "node": "inconsistent gear ratio"
+  },
+  {
+   "code": "P1745",
+   "brand": "jaguar",
+   "ru": "Регулятор давления 1 (коробка)",
+   "en": "Pressure Regulator 1",
+   "fam": "",
+   "node": "pressure regulator"
+  },
+  {
+   "code": "P1746",
+   "brand": "jaguar",
+   "ru": "Регулятор давления 2 (коробка)",
+   "en": "Pressure Regulator 2",
+   "fam": "",
+   "node": "pressure regulator"
+  },
+  {
+   "code": "P1747",
+   "brand": "jaguar",
+   "ru": "Регулятор давления 3 (коробка)",
+   "en": "Pressure Regulator 3",
+   "fam": "",
+   "node": "pressure regulator"
+  },
+  {
+   "code": "P1748",
+   "brand": "jaguar",
+   "ru": "Регулятор давления 5 (коробка)",
+   "en": "Pressure Regulator 5",
+   "fam": "",
+   "node": "pressure regulator"
+  },
+  {
+   "code": "P1758",
+   "brand": "jaguar",
+   "ru": "Клапаны давления: неверный ток",
+   "en": "Pressure Solenoid Control System Incorrect Current",
+   "fam": "",
+   "node": "pressure solenoid control system incorrect current"
+  },
+  {
+   "code": "P1775",
+   "brand": "jaguar",
+   "ru": "Коробка: неисправность запроса лампы",
+   "en": "Transmission System MIL Fault",
+   "fam": "",
+   "node": "transmission system mil fault"
+  },
+  {
+   "code": "P1776",
+   "brand": "jaguar",
+   "ru": "Длительность запроса снижения угла зажигания",
+   "en": "Ignition Retard Request Duration",
+   "fam": "",
+   "node": "ignition retard request duration"
+  },
+  {
+   "code": "P1777",
+   "brand": "jaguar",
+   "ru": "Запрос снижения угла зажигания: цепь",
+   "en": "Ignition Retard Request Circuit",
+   "fam": "",
+   "node": "ignition retard request"
+  },
+  {
+   "code": "P1778",
+   "brand": "jaguar",
+   "ru": "Задняя передача: входная цепь",
+   "en": "Transmission Reverse IP Circuit",
+   "fam": "",
+   "node": "transmission reverse ip"
+  },
+  {
+   "code": "P1779",
+   "brand": "jaguar",
+   "ru": "Управление нагрузкой",
+   "en": "Load Control",
+   "fam": "",
+   "node": "ru:управление нагрузкой"
+  },
+  {
+   "code": "P1789",
+   "brand": "jaguar",
+   "ru": "Неисправность питания зажигания",
+   "en": "Ignition Supply Malfunction",
+   "fam": "",
+   "node": "ignition supply"
+  },
+  {
+   "code": "P1790",
+   "brand": "jaguar",
+   "ru": "Неисправность питания зажигания",
+   "en": "Ignition Supply Malfunction",
+   "fam": "",
+   "node": "ignition supply"
+  },
+  {
+   "code": "P1791",
+   "brand": "jaguar",
+   "ru": "Неисправность питания зажигания",
+   "en": "Ignition Supply Malfunction",
+   "fam": "",
+   "node": "ignition supply"
+  },
+  {
+   "code": "P1792",
+   "brand": "jaguar",
+   "ru": "Неисправность питания зажигания",
+   "en": "Ignition Supply Malfunction",
+   "fam": "",
+   "node": "ignition supply"
+  },
+  {
+   "code": "P1793",
+   "brand": "jaguar",
+   "ru": "Неисправность питания зажигания",
+   "en": "Ignition Supply Malfunction",
+   "fam": "",
+   "node": "ignition supply"
+  },
+  {
+   "code": "P1794",
+   "brand": "jaguar",
+   "ru": "Напряжение АКБ: цепь",
+   "en": "Battery Voltage Circuit",
+   "fam": "",
+   "node": "battery voltage"
+  },
+  {
+   "code": "P1795",
+   "brand": "jaguar",
+   "ru": "Несогласованный уровень CAN",
+   "en": "Inconsistent CAN Level",
+   "fam": "",
+   "node": "inconsistent can level"
+  },
+  {
+   "code": "P1796",
+   "brand": "jaguar",
+   "ru": "Контроллер CAN: шина отключена (bus off)",
+   "en": "CAN Controller Circuit Bus Off",
+   "fam": "",
+   "node": "can controller"
+  },
+  {
+   "code": "P1797",
+   "brand": "jaguar",
+   "ru": "CAN блок коробки — блок двигателя: неисправность цепи",
+   "en": "CAN TCM ECM Circuit Malfunction",
+   "fam": "",
+   "node": "can tcm ecm"
+  },
+  {
+   "code": "P1798",
+   "brand": "jaguar",
+   "ru": "CAN блок коробки — приборная панель: неисправность цепи",
+   "en": "CAN TCM INST Circuit Malfunction",
+   "fam": "",
+   "node": "can tcm inst"
+  }
+ ]
+}

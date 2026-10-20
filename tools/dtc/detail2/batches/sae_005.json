@@ -1,0 +1,394 @@
+{
+ "name": "sae_005",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "a c condenser efficiency above threshold",
+  "a c condenser efficiency below threshold",
+  "a c refrigerant distribution valve a actuator",
+  "a c refrigerant distribution valve a actuator temperature",
+  "a c refrigerant distribution valve actuator c",
+  "a c refrigerant distribution valve actuator d",
+  "a c refrigerant distribution valve b actuator",
+  "a c refrigerant distribution valve b actuator temperature",
+  "a c refrigerant distribution valve c",
+  "a c refrigerant distribution valve c actuator",
+  "a c refrigerant distribution valve c actuator temperature",
+  "a c refrigerant distribution valve d",
+  "a c refrigerant distribution valve d actuator",
+  "a c refrigerant distribution valve d actuator temperature",
+  "a c refrigerant expansion valve actuator",
+  "a c refrigerant expansion valve actuator temperature",
+  "a c system pressure too",
+  "a v sensor washer fluid a",
+  "a v sensor washer fluid b",
+  "a v sensor washer fluid c",
+  "a v sensor washer fluid d",
+  "a v sensor washer fluid e",
+  "a v sensor washer fluid f",
+  "b3000 b3999 iso sae reserved",
+  "dc ac converter a"
+ ],
+ "codes": [
+  {
+   "code": "B0127",
+   "brand": "",
+   "ru": "Розетка 220 В инвертора DC/AC A: обрыв цепи",
+   "en": "DC/AC Converter A High Voltage Power Outlet “A” Circuit/Open",
+   "fam": "",
+   "node": "dc ac converter a"
+  },
+  {
+   "code": "B0128",
+   "brand": "",
+   "ru": "Розетка 220 В инвертора DC/AC B: обрыв цепи",
+   "en": "DC/AC Converter A High Voltage Power Outlet “B” Circuit/Open",
+   "fam": "",
+   "node": "dc ac converter a"
+  },
+  {
+   "code": "B0129",
+   "brand": "",
+   "ru": "Розетка 220 В инвертора DC/AC C: обрыв цепи",
+   "en": "DC/AC Converter A High Voltage Power Outlet “C” Circuit/Open",
+   "fam": "",
+   "node": "dc ac converter a"
+  },
+  {
+   "code": "B012A",
+   "brand": "",
+   "ru": "Розетка 220 В инвертора DC/AC D: обрыв цепи",
+   "en": "DC/AC Converter A High Voltage Power Outlet “D” Circuit/Open",
+   "fam": "",
+   "node": "dc ac converter a"
+  },
+  {
+   "code": "B012B",
+   "brand": "",
+   "ru": "Розетка 220 В инвертора DC/AC E: обрыв цепи",
+   "en": "DC/AC Converter A High Voltage Power Outlet “E” Circuit/Open",
+   "fam": "",
+   "node": "dc ac converter a"
+  },
+  {
+   "code": "B012C",
+   "brand": "",
+   "ru": "Блок розетки 220 В инвертора DC/AC A",
+   "en": "DC/AC Converter A High Voltage Power Outlet Control Module “A”",
+   "fam": "",
+   "node": "dc ac converter a"
+  },
+  {
+   "code": "B012D",
+   "brand": "",
+   "ru": "Блок розетки 220 В инвертора DC/AC B",
+   "en": "DC/AC Converter A High Voltage Power Outlet Control Module “B”",
+   "fam": "",
+   "node": "dc ac converter a"
+  },
+  {
+   "code": "B012E",
+   "brand": "",
+   "ru": "Блок розетки 220 В инвертора DC/AC C",
+   "en": "DC/AC Converter A High Voltage Power Outlet Control Module “C”",
+   "fam": "",
+   "node": "dc ac converter a"
+  },
+  {
+   "code": "P2EA7",
+   "brand": "",
+   "ru": "Инвертор DC/AC A: слишком низкое входное напряжение",
+   "en": "DC/AC Converter A Input Voltage Too Low",
+   "fam": "",
+   "node": "dc ac converter a"
+  },
+  {
+   "code": "P2EA8",
+   "brand": "",
+   "ru": "Инвертор DC/AC A: слишком высокое входное напряжение",
+   "en": "DC/AC Converter A Input Voltage Too High",
+   "fam": "",
+   "node": "dc ac converter a"
+  },
+  {
+   "code": "B012F",
+   "brand": "",
+   "ru": "Омыватель датчиков автопилота A: цепь управления",
+   "en": "A/V Sensor Washer Fluid A Control Circuit",
+   "fam": "",
+   "node": "a v sensor washer fluid a"
+  },
+  {
+   "code": "B0130",
+   "brand": "",
+   "ru": "Омыватель датчиков автопилота B: цепь управления",
+   "en": "A/V Sensor Washer Fluid B Control Circuit",
+   "fam": "",
+   "node": "a v sensor washer fluid b"
+  },
+  {
+   "code": "B0131",
+   "brand": "",
+   "ru": "Омыватель датчиков автопилота C: цепь управления",
+   "en": "A/V Sensor Washer Fluid C Control Circuit",
+   "fam": "",
+   "node": "a v sensor washer fluid c"
+  },
+  {
+   "code": "B0132",
+   "brand": "",
+   "ru": "Омыватель датчиков автопилота D: цепь управления",
+   "en": "A/V Sensor Washer Fluid D Control Circuit",
+   "fam": "",
+   "node": "a v sensor washer fluid d"
+  },
+  {
+   "code": "B0133",
+   "brand": "",
+   "ru": "Омыватель датчиков автопилота E: цепь управления",
+   "en": "A/V Sensor Washer Fluid E Control Circuit",
+   "fam": "",
+   "node": "a v sensor washer fluid e"
+  },
+  {
+   "code": "B0134",
+   "brand": "",
+   "ru": "Омыватель датчиков автопилота F: цепь управления",
+   "en": "A/V Sensor Washer Fluid F Control Circuit",
+   "fam": "",
+   "node": "a v sensor washer fluid f"
+  },
+  {
+   "code": "B3000",
+   "brand": "",
+   "ru": "Резерв ISO/SAE (B3000–B3999)",
+   "en": "B3000-B3999 ISO/SAE Reserved",
+   "fam": "",
+   "node": "b3000 b3999 iso sae reserved"
+  },
+  {
+   "code": "B3A00",
+   "brand": "",
+   "ru": "Привод клапана распределения хладагента C: заклинил открытым",
+   "en": "A/C Refrigerant Distribution Valve Actuator C Stuck/Open",
+   "fam": "",
+   "node": "a c refrigerant distribution valve actuator c"
+  },
+  {
+   "code": "B3A01",
+   "brand": "",
+   "ru": "Привод клапана распределения хладагента C: обрыв цепи управления",
+   "en": "A/C Refrigerant Distribution Valve Actuator C Control Circuit/Open",
+   "fam": "",
+   "node": "a c refrigerant distribution valve actuator c"
+  },
+  {
+   "code": "B3A02",
+   "brand": "",
+   "ru": "Привод клапана распределения хладагента C: низкий уровень в цепи управления",
+   "en": "A/C Refrigerant Distribution Valve Actuator C Control Circuit Low",
+   "fam": "",
+   "node": "a c refrigerant distribution valve actuator c"
+  },
+  {
+   "code": "B3A03",
+   "brand": "",
+   "ru": "Привод клапана распределения хладагента C: высокий уровень в цепи управления",
+   "en": "A/C Refrigerant Distribution Valve Actuator C Control Circuit High",
+   "fam": "",
+   "node": "a c refrigerant distribution valve actuator c"
+  },
+  {
+   "code": "B3A04",
+   "brand": "",
+   "ru": "Клапан распределения хладагента C: перегрузка драйвера цепи управления по току / перегрев",
+   "en": "A/C Refrigerant Distribution Valve C Control Circuit Driver Current/Temperature Too High",
+   "fam": "",
+   "node": "a c refrigerant distribution valve c"
+  },
+  {
+   "code": "B3A05",
+   "brand": "",
+   "ru": "Привод клапана распределения хладагента D: заклинил открытым",
+   "en": "A/C Refrigerant Distribution Valve Actuator D Stuck/Open",
+   "fam": "",
+   "node": "a c refrigerant distribution valve actuator d"
+  },
+  {
+   "code": "B3A06",
+   "brand": "",
+   "ru": "Привод клапана распределения хладагента D: обрыв цепи управления",
+   "en": "A/C Refrigerant Distribution Valve Actuator D Control Circuit/Open",
+   "fam": "",
+   "node": "a c refrigerant distribution valve actuator d"
+  },
+  {
+   "code": "B3A07",
+   "brand": "",
+   "ru": "Привод клапана распределения хладагента D: низкий уровень в цепи управления",
+   "en": "A/C Refrigerant Distribution Valve Actuator D Control Circuit Low",
+   "fam": "",
+   "node": "a c refrigerant distribution valve actuator d"
+  },
+  {
+   "code": "B3A08",
+   "brand": "",
+   "ru": "Привод клапана распределения хладагента D: высокий уровень в цепи управления",
+   "en": "A/C Refrigerant Distribution Valve Actuator D Control Circuit High",
+   "fam": "",
+   "node": "a c refrigerant distribution valve actuator d"
+  },
+  {
+   "code": "B3A09",
+   "brand": "",
+   "ru": "Клапан распределения хладагента D: перегрузка драйвера цепи управления по току / перегрев",
+   "en": "A/C Refrigerant Distribution Valve D Control Circuit Driver Current/Temperature Too High",
+   "fam": "",
+   "node": "a c refrigerant distribution valve d"
+  },
+  {
+   "code": "B3A0A",
+   "brand": "",
+   "ru": "Привод расширительного клапана кондиционера: заклинил открытым",
+   "en": "A/C Refrigerant Expansion Valve Actuator Stuck/Open",
+   "fam": "",
+   "node": "a c refrigerant expansion valve actuator"
+  },
+  {
+   "code": "B3A0B",
+   "brand": "",
+   "ru": "Привод расширительного клапана кондиционера: обрыв цепи управления",
+   "en": "A/C Refrigerant Expansion Valve Actuator Control Circuit/Open",
+   "fam": "",
+   "node": "a c refrigerant expansion valve actuator"
+  },
+  {
+   "code": "B3A0C",
+   "brand": "",
+   "ru": "Привод расширительного клапана кондиционера: низкий уровень в цепи управления",
+   "en": "A/C Refrigerant Expansion Valve Actuator Control Circuit Low",
+   "fam": "",
+   "node": "a c refrigerant expansion valve actuator"
+  },
+  {
+   "code": "B3A0D",
+   "brand": "",
+   "ru": "Привод расширительного клапана кондиционера: высокий уровень в цепи управления",
+   "en": "A/C Refrigerant Expansion Valve Actuator Control Circuit High",
+   "fam": "",
+   "node": "a c refrigerant expansion valve actuator"
+  },
+  {
+   "code": "B3A0E",
+   "brand": "",
+   "ru": "Привод расширительного клапана кондиционера: перегрузка драйвера цепи управления по току / перегрев",
+   "en": "A/C Refrigerant Expansion Valve Actuator Control Circuit Driver Current/Temperature Too High",
+   "fam": "",
+   "node": "a c refrigerant expansion valve actuator"
+  },
+  {
+   "code": "B3A11",
+   "brand": "",
+   "ru": "Привод расширительного клапана кондиционера: нарушена работа цепи управления",
+   "en": "A/C Refrigerant Expansion Valve Actuator Control Circuit Performance",
+   "fam": "",
+   "node": "a c refrigerant expansion valve actuator"
+  },
+  {
+   "code": "B3A0F",
+   "brand": "",
+   "ru": "Конденсатор кондиционера: эффективность ниже порога",
+   "en": "A/C Condenser Efficiency Below Threshold",
+   "fam": "",
+   "node": "a c condenser efficiency below threshold"
+  },
+  {
+   "code": "B3A10",
+   "brand": "",
+   "ru": "Конденсатор кондиционера: эффективность выше порога",
+   "en": "A/C Condenser Efficiency Above Threshold",
+   "fam": "",
+   "node": "a c condenser efficiency above threshold"
+  },
+  {
+   "code": "B3A12",
+   "brand": "",
+   "ru": "Привод расширительного клапана кондиционера: температура вне диапазона",
+   "en": "A/C Refrigerant Expansion Valve Actuator Temperature Range/Performance",
+   "fam": "",
+   "node": "a c refrigerant expansion valve actuator temperature"
+  },
+  {
+   "code": "B3A13",
+   "brand": "",
+   "ru": "Привод клапана распределения хладагента A: нарушена работа цепи управления",
+   "en": "A/C Refrigerant Distribution Valve A Actuator Control Circuit Performance",
+   "fam": "",
+   "node": "a c refrigerant distribution valve a actuator"
+  },
+  {
+   "code": "B3A14",
+   "brand": "",
+   "ru": "Привод клапана распределения хладагента A: температура вне диапазона",
+   "en": "A/C Refrigerant Distribution Valve A Actuator Temperature Range/Performance",
+   "fam": "",
+   "node": "a c refrigerant distribution valve a actuator temperature"
+  },
+  {
+   "code": "B3A15",
+   "brand": "",
+   "ru": "Привод клапана распределения хладагента B: нарушена работа цепи управления",
+   "en": "A/C Refrigerant Distribution Valve B Actuator Control Circuit Performance",
+   "fam": "",
+   "node": "a c refrigerant distribution valve b actuator"
+  },
+  {
+   "code": "B3A16",
+   "brand": "",
+   "ru": "Привод клапана распределения хладагента B: температура вне диапазона",
+   "en": "A/C Refrigerant Distribution Valve B Actuator Temperature Range/Performance",
+   "fam": "",
+   "node": "a c refrigerant distribution valve b actuator temperature"
+  },
+  {
+   "code": "B3A17",
+   "brand": "",
+   "ru": "Привод клапана распределения хладагента C: нарушена работа цепи управления",
+   "en": "A/C Refrigerant Distribution Valve C Actuator Control Circuit Performance",
+   "fam": "",
+   "node": "a c refrigerant distribution valve c actuator"
+  },
+  {
+   "code": "B3A18",
+   "brand": "",
+   "ru": "Привод клапана распределения хладагента C: температура вне диапазона",
+   "en": "A/C Refrigerant Distribution Valve C Actuator Temperature Range/Performance",
+   "fam": "",
+   "node": "a c refrigerant distribution valve c actuator temperature"
+  },
+  {
+   "code": "B3A19",
+   "brand": "",
+   "ru": "Привод клапана распределения хладагента D: нарушена работа цепи управления",
+   "en": "A/C Refrigerant Distribution Valve D Actuator Control Circuit Performance",
+   "fam": "",
+   "node": "a c refrigerant distribution valve d actuator"
+  },
+  {
+   "code": "B3A1A",
+   "brand": "",
+   "ru": "Привод клапана распределения хладагента D: температура вне диапазона",
+   "en": "A/C Refrigerant Distribution Valve D Actuator Temperature Range/Performance",
+   "fam": "",
+   "node": "a c refrigerant distribution valve d actuator temperature"
+  },
+  {
+   "code": "B3A1B",
+   "brand": "",
+   "ru": "Кондиционер: слишком высокое давление",
+   "en": "A/C System Pressure - Too High",
+   "fam": "",
+   "node": "a c system pressure too"
+  }
+ ]
+}

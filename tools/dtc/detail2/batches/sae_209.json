@@ -1,0 +1,414 @@
+{
+ "name": "sae_209",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "invalid data received from active radiator air flow control module a",
+  "invalid data received from charge air cooler coolant pump",
+  "invalid data received from comfort and convenience display a",
+  "invalid data received from comfort and convenience display b",
+  "invalid data received from dc dc converter control module a",
+  "invalid data received from dc dc converter control module b",
+  "invalid data received from drive motor control module c",
+  "invalid data received from drive motor control module d",
+  "invalid data received from driver monitoring system",
+  "invalid data received from engine disconnect clutch",
+  "invalid data received from evaporative emission system leak detection control",
+  "invalid data received from front radar module a",
+  "invalid data received from front radar module b",
+  "invalid data received from hybrid ev battery pack sensor",
+  "invalid data received from interior lighting control module b",
+  "invalid data received from localization and mapping",
+  "invalid data received from nh3",
+  "invalid data received from night vision control",
+  "invalid data received from nox sensor a",
+  "invalid data received from nox sensor b",
+  "invalid data received from nox sensor c",
+  "invalid data received from rear radar module a",
+  "invalid data received from rear radar module b",
+  "invalid data received from rear radar module c",
+  "invalid data received from rear radar module d",
+  "invalid data received from reductant heater control",
+  "invalid data received from reductant quality",
+  "invalid data received from safety integration control",
+  "invalid data received from trailer backup assist control",
+  "invalid data received from vehicle thermal management control",
+  "lost communication with a c refrigerant sensor a",
+  "lost communication with engine oil pressure sensor a",
+  "lost communication with fuel pressure sensor a",
+  "lost communication with fuel pressure sensor b",
+  "lost communication with manifold absolute pressure barometric pressure",
+  "lost communication with manifold absolute pressure sensor b",
+  "lost communication with particulate filter pressure sensor a",
+  "lost communication with particulate filter pressure sensor b",
+  "lost communication with throttle pedal position sensor switch a",
+  "lost communication with throttle pedal position sensor switch b",
+  "lost communication with throttle pedal position sensor switch c",
+  "nox sensor a received invalid data from ecm pcm",
+  "nox sensor b received invalid data from ecm pcm",
+  "nox sensor c received invalid data from ecm pcm",
+  "particulate matter sensor received invalid data from ecm pcm"
+ ],
+ "codes": [
+  {
+   "code": "U0599",
+   "brand": "",
+   "ru": "Неверные данные: блок управления преобразователем DC/DC A",
+   "en": "Invalid Data Received From DC/DC Converter Control Module A",
+   "fam": "",
+   "node": "invalid data received from dc dc converter control module a"
+  },
+  {
+   "code": "U059A",
+   "brand": "",
+   "ru": "Неверные данные: блок управления преобразователем DC/DC B",
+   "en": "Invalid Data Received From DC/DC Converter Control Module B",
+   "fam": "",
+   "node": "invalid data received from dc dc converter control module b"
+  },
+  {
+   "code": "U059B",
+   "brand": "",
+   "ru": "Неверные данные: блок датчиков тяговой батареи",
+   "en": "Invalid Data Received From Hybrid/EV Battery Pack Sensor Module",
+   "fam": "",
+   "node": "invalid data received from hybrid ev battery pack sensor"
+  },
+  {
+   "code": "U059C",
+   "brand": "",
+   "ru": "Неверные данные: блок управления тяговым электромотором C",
+   "en": "Invalid Data Received From Drive Motor Control Module C",
+   "fam": "",
+   "node": "invalid data received from drive motor control module c"
+  },
+  {
+   "code": "U059D",
+   "brand": "",
+   "ru": "Неверные данные: блок управления тяговым электромотором D",
+   "en": "Invalid Data Received From Drive Motor Control Module D",
+   "fam": "",
+   "node": "invalid data received from drive motor control module d"
+  },
+  {
+   "code": "U059E",
+   "brand": "",
+   "ru": "Неверные данные: датчик NOx A",
+   "en": "Invalid Data Received From NOx Sensor A",
+   "fam": "",
+   "node": "invalid data received from nox sensor a"
+  },
+  {
+   "code": "U059F",
+   "brand": "",
+   "ru": "Неверные данные: датчик NOx B",
+   "en": "Invalid Data Received From NOx Sensor B",
+   "fam": "",
+   "node": "invalid data received from nox sensor b"
+  },
+  {
+   "code": "U05A0",
+   "brand": "",
+   "ru": "Неверные данные: блок проверки утечек системы EVAP",
+   "en": "Invalid Data Received from Evaporative Emission System Leak Detection Control Module",
+   "fam": "",
+   "node": "invalid data received from evaporative emission system leak detection control"
+  },
+  {
+   "code": "U05A1",
+   "brand": "",
+   "ru": "Датчик NOx A получил неверные данные от ЭБУ",
+   "en": "NOx Sensor A Received Invalid Data From ECM/PCM",
+   "fam": "",
+   "node": "nox sensor a received invalid data from ecm pcm"
+  },
+  {
+   "code": "U05A2",
+   "brand": "",
+   "ru": "Датчик NOx B получил неверные данные от ЭБУ",
+   "en": "NOx Sensor B Received Invalid Data From ECM/PCM",
+   "fam": "",
+   "node": "nox sensor b received invalid data from ecm pcm"
+  },
+  {
+   "code": "U05A3",
+   "brand": "",
+   "ru": "Неверные данные: модуль качества мочевины",
+   "en": "Invalid Data Received From Reductant Quality Module",
+   "fam": "",
+   "node": "invalid data received from reductant quality"
+  },
+  {
+   "code": "U05A4",
+   "brand": "",
+   "ru": "Датчик сажи получил неверные данные от ЭБУ",
+   "en": "Particulate Matter Sensor Received Invalid Data From ECM/PCM",
+   "fam": "",
+   "node": "particulate matter sensor received invalid data from ecm pcm"
+  },
+  {
+   "code": "U05A5",
+   "brand": "",
+   "ru": "Неверные данные: датчик аммиака (NH3)",
+   "en": "Invalid Data Received From NH3 Sensor",
+   "fam": "",
+   "node": "invalid data received from nh3"
+  },
+  {
+   "code": "U05A6",
+   "brand": "",
+   "ru": "Неверные данные: блок подогрева мочевины",
+   "en": "Invalid Data Received from Reductant Heater Control Module",
+   "fam": "",
+   "node": "invalid data received from reductant heater control"
+  },
+  {
+   "code": "U05A7",
+   "brand": "",
+   "ru": "Неверные данные: блок интеграции систем безопасности",
+   "en": "Invalid Data Received From Safety Integration Control Module",
+   "fam": "",
+   "node": "invalid data received from safety integration control"
+  },
+  {
+   "code": "U05A8",
+   "brand": "",
+   "ru": "Неверные данные: датчик NOx C",
+   "en": "Invalid Data Received From NOx Sensor C",
+   "fam": "",
+   "node": "invalid data received from nox sensor c"
+  },
+  {
+   "code": "U05A9",
+   "brand": "",
+   "ru": "Датчик NOx C получил неверные данные от ЭБУ",
+   "en": "NOx Sensor C Received Invalid Data From ECM/PCM",
+   "fam": "",
+   "node": "nox sensor c received invalid data from ecm pcm"
+  },
+  {
+   "code": "U05AA",
+   "brand": "",
+   "ru": "Неверные данные: насос охлаждения интеркулера",
+   "en": "Invalid Data Received From Charge Air Cooler Coolant Pump",
+   "fam": "",
+   "node": "invalid data received from charge air cooler coolant pump"
+  },
+  {
+   "code": "U05AB",
+   "brand": "",
+   "ru": "Неверные данные: муфта отключения двигателя",
+   "en": "Invalid Data Received From Engine Disconnect Clutch",
+   "fam": "",
+   "node": "invalid data received from engine disconnect clutch"
+  },
+  {
+   "code": "U05AC",
+   "brand": "",
+   "ru": "Неверные данные: блок терморегулирования автомобиля",
+   "en": "Invalid Data Received From Vehicle Thermal Management Control Module",
+   "fam": "",
+   "node": "invalid data received from vehicle thermal management control"
+  },
+  {
+   "code": "U05B2",
+   "brand": "",
+   "ru": "Неверные данные: дисплей комфорта A",
+   "en": "Invalid Data Received From Comfort and Convenience Display A",
+   "fam": "",
+   "node": "invalid data received from comfort and convenience display a"
+  },
+  {
+   "code": "U05B3",
+   "brand": "",
+   "ru": "Неверные данные: дисплей комфорта B",
+   "en": "Invalid Data Received From Comfort and Convenience Display B",
+   "fam": "",
+   "node": "invalid data received from comfort and convenience display b"
+  },
+  {
+   "code": "U05B4",
+   "brand": "",
+   "ru": "Неверные данные: система контроля водителя",
+   "en": "Invalid Data Received From Driver Monitoring System Module",
+   "fam": "",
+   "node": "invalid data received from driver monitoring system"
+  },
+  {
+   "code": "U05B5",
+   "brand": "",
+   "ru": "Неверные данные: передний радар A",
+   "en": "Invalid Data Received From Front Radar Module A",
+   "fam": "",
+   "node": "invalid data received from front radar module a"
+  },
+  {
+   "code": "U05B6",
+   "brand": "",
+   "ru": "Неверные данные: передний радар B",
+   "en": "Invalid Data Received From Front Radar Module B",
+   "fam": "",
+   "node": "invalid data received from front radar module b"
+  },
+  {
+   "code": "U05B7",
+   "brand": "",
+   "ru": "Неверные данные: задний радар A",
+   "en": "Invalid Data Received From Rear Radar Module A",
+   "fam": "",
+   "node": "invalid data received from rear radar module a"
+  },
+  {
+   "code": "U05B8",
+   "brand": "",
+   "ru": "Неверные данные: задний радар B",
+   "en": "Invalid Data Received From Rear Radar Module B",
+   "fam": "",
+   "node": "invalid data received from rear radar module b"
+  },
+  {
+   "code": "U05B9",
+   "brand": "",
+   "ru": "Неверные данные: задний радар C",
+   "en": "Invalid Data Received From Rear Radar Module C",
+   "fam": "",
+   "node": "invalid data received from rear radar module c"
+  },
+  {
+   "code": "U05BA",
+   "brand": "",
+   "ru": "Неверные данные: задний радар D",
+   "en": "Invalid Data Received From Rear Radar Module D",
+   "fam": "",
+   "node": "invalid data received from rear radar module d"
+  },
+  {
+   "code": "U05BD",
+   "brand": "",
+   "ru": "Неверные данные: модуль локализации и карт",
+   "en": "Invalid Data Received From Localization and Mapping Module",
+   "fam": "",
+   "node": "invalid data received from localization and mapping"
+  },
+  {
+   "code": "U05BE",
+   "brand": "",
+   "ru": "Неверные данные: блок ночного видения",
+   "en": "Invalid Data Received From Night Vision Control Module",
+   "fam": "",
+   "node": "invalid data received from night vision control"
+  },
+  {
+   "code": "U05BF",
+   "brand": "",
+   "ru": "Неверные данные: блок помощи при движении задним ходом с прицепом",
+   "en": "Invalid Data Received From Trailer Backup Assist Control Module",
+   "fam": "",
+   "node": "invalid data received from trailer backup assist control"
+  },
+  {
+   "code": "U05C0",
+   "brand": "",
+   "ru": "Неверные данные: блок освещения салона B",
+   "en": "Invalid Data Received From Interior Lighting Control Module B",
+   "fam": "",
+   "node": "invalid data received from interior lighting control module b"
+  },
+  {
+   "code": "U05C1",
+   "brand": "",
+   "ru": "Неверные данные: блок управления потоком воздуха через радиатор A",
+   "en": "Invalid Data Received From Active Radiator Air Flow Control Module A",
+   "fam": "",
+   "node": "invalid data received from active radiator air flow control module a"
+  },
+  {
+   "code": "U0600",
+   "brand": "",
+   "ru": "Нет связи: датчик давления масла A",
+   "en": "Lost Communication With Engine Oil Pressure Sensor A",
+   "fam": "",
+   "node": "lost communication with engine oil pressure sensor a"
+  },
+  {
+   "code": "U0601",
+   "brand": "",
+   "ru": "Нет связи: датчик давления сажевого фильтра A",
+   "en": "Lost Communication With Particulate Filter Pressure Sensor A",
+   "fam": "",
+   "node": "lost communication with particulate filter pressure sensor a"
+  },
+  {
+   "code": "U0602",
+   "brand": "",
+   "ru": "Нет связи: датчик давления сажевого фильтра B",
+   "en": "Lost Communication With Particulate Filter Pressure Sensor B",
+   "fam": "",
+   "node": "lost communication with particulate filter pressure sensor b"
+  },
+  {
+   "code": "U0603",
+   "brand": "",
+   "ru": "Нет связи: датчик давления топлива A",
+   "en": "Lost Communication With Fuel Pressure Sensor A",
+   "fam": "",
+   "node": "lost communication with fuel pressure sensor a"
+  },
+  {
+   "code": "U0604",
+   "brand": "",
+   "ru": "Нет связи: датчик давления топлива B",
+   "en": "Lost Communication With Fuel Pressure Sensor B",
+   "fam": "",
+   "node": "lost communication with fuel pressure sensor b"
+  },
+  {
+   "code": "U0605",
+   "brand": "",
+   "ru": "Нет связи: датчик хладагента A",
+   "en": "Lost communication With A/C Refrigerant Sensor A",
+   "fam": "",
+   "node": "lost communication with a c refrigerant sensor a"
+  },
+  {
+   "code": "U0606",
+   "brand": "",
+   "ru": "Нет связи: датчик положения дросселя/педали A",
+   "en": "Lost Communication With Throttle/Pedal Position Sensor/Switch A",
+   "fam": "",
+   "node": "lost communication with throttle pedal position sensor switch a"
+  },
+  {
+   "code": "U0607",
+   "brand": "",
+   "ru": "Нет связи: датчик положения дросселя/педали B",
+   "en": "Lost Communication With Throttle/Pedal Position Sensor/Switch B",
+   "fam": "",
+   "node": "lost communication with throttle pedal position sensor switch b"
+  },
+  {
+   "code": "U0608",
+   "brand": "",
+   "ru": "Нет связи: датчик положения дросселя/педали C",
+   "en": "Lost Communication With Throttle/Pedal Position Sensor/Switch C",
+   "fam": "",
+   "node": "lost communication with throttle pedal position sensor switch c"
+  },
+  {
+   "code": "U0609",
+   "brand": "",
+   "ru": "Нет связи: датчик абсолютного/атмосферного давления",
+   "en": "Lost Communication With Manifold Absolute Pressure/Barometric Pressure Sensor",
+   "fam": "",
+   "node": "lost communication with manifold absolute pressure barometric pressure"
+  },
+  {
+   "code": "U060A",
+   "brand": "",
+   "ru": "Нет связи: датчик абсолютного давления во впуске (MAP) B",
+   "en": "Lost Communication With Manifold Absolute Pressure Sensor B",
+   "fam": "",
+   "node": "lost communication with manifold absolute pressure sensor b"
+  }
+ ]
+}

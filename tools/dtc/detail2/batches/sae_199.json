@@ -1,0 +1,414 @@
+{
+ "name": "sae_199",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "invalid data received from hybrid ev battery interface control module d",
+  "lost communication with active aerodynamic feature control module a",
+  "lost communication with active aerodynamic feature control module b",
+  "lost communication with active aerodynamic feature control module c",
+  "lost communication with active aerodynamic feature control module d",
+  "lost communication with active grille air shutter module a",
+  "lost communication with active grille air shutter module b",
+  "lost communication with active grille air shutter module c",
+  "lost communication with active grille air shutter module d",
+  "lost communication with battery charger control module c",
+  "lost communication with battery charger control module d",
+  "lost communication with dc ac converter control module a",
+  "lost communication with dc ac converter control module b",
+  "lost communication with dc dc converter control module b",
+  "lost communication with drive motor control module b",
+  "lost communication with drive motor control module c",
+  "lost communication with drive motor control module d",
+  "lost communication with evaporative emission system leak detection control",
+  "lost communication with gear shift control module b",
+  "lost communication with haptic control",
+  "lost communication with hybrid ev battery pack sensor",
+  "lost communication with image processing sensor g",
+  "lost communication with image processing sensor h",
+  "lost communication with image processing sensor i",
+  "lost communication with image processing sensor j",
+  "lost communication with image processing sensor k",
+  "lost communication with image processing sensor l",
+  "lost communication with lighting driver control module “a”",
+  "lost communication with lighting driver control module “b”",
+  "lost communication with lighting driver control module “c”",
+  "lost communication with lighting driver control module “d”",
+  "lost communication with nh3",
+  "lost communication with nox sensor a",
+  "lost communication with nox sensor b",
+  "lost communication with nox sensor c",
+  "lost communication with off board charger control",
+  "lost communication with particulate matter",
+  "lost communication with radiator anti tamper device",
+  "lost communication with reductant quality",
+  "lost communication with seat control module k",
+  "lost communication with seat control module l",
+  "lost communication with seat control switch module c",
+  "lost communication with seat control switch module d",
+  "lost communication with transmission fluid pump module a",
+  "lost communication with transmission fluid pump module b"
+ ],
+ "codes": [
+  {
+   "code": "U026B",
+   "brand": "",
+   "ru": "Нет связи: датчик обработки изображения (камера) G",
+   "en": "Lost Communication With Image Processing Sensor G",
+   "fam": "",
+   "node": "lost communication with image processing sensor g"
+  },
+  {
+   "code": "U026C",
+   "brand": "",
+   "ru": "Нет связи: датчик обработки изображения (камера) H",
+   "en": "Lost Communication With Image Processing Sensor H",
+   "fam": "",
+   "node": "lost communication with image processing sensor h"
+  },
+  {
+   "code": "U026D",
+   "brand": "",
+   "ru": "Нет связи: датчик обработки изображения (камера) I",
+   "en": "Lost Communication With Image Processing Sensor I",
+   "fam": "",
+   "node": "lost communication with image processing sensor i"
+  },
+  {
+   "code": "U026E",
+   "brand": "",
+   "ru": "Нет связи: датчик обработки изображения (камера) J",
+   "en": "Lost Communication With Image Processing Sensor J",
+   "fam": "",
+   "node": "lost communication with image processing sensor j"
+  },
+  {
+   "code": "U026F",
+   "brand": "",
+   "ru": "Нет связи: датчик обработки изображения (камера) K",
+   "en": "Lost Communication With Image Processing Sensor K",
+   "fam": "",
+   "node": "lost communication with image processing sensor k"
+  },
+  {
+   "code": "U0270",
+   "brand": "",
+   "ru": "Нет связи: датчик обработки изображения (камера) L",
+   "en": "Lost Communication With Image Processing Sensor L",
+   "fam": "",
+   "node": "lost communication with image processing sensor l"
+  },
+  {
+   "code": "U0271",
+   "brand": "",
+   "ru": "Нет связи: блок кнопок управления сиденьем C",
+   "en": "Lost Communication With Seat Control Switch Module C",
+   "fam": "",
+   "node": "lost communication with seat control switch module c"
+  },
+  {
+   "code": "U0272",
+   "brand": "",
+   "ru": "Нет связи: блок кнопок управления сиденьем D",
+   "en": "Lost Communication With Seat Control Switch Module D",
+   "fam": "",
+   "node": "lost communication with seat control switch module d"
+  },
+  {
+   "code": "U0273",
+   "brand": "",
+   "ru": "Нет связи: блок драйвера освещения A",
+   "en": "Lost Communication With Lighting Driver Control Module “A”",
+   "fam": "",
+   "node": "lost communication with lighting driver control module “a”"
+  },
+  {
+   "code": "U0274",
+   "brand": "",
+   "ru": "Нет связи: блок драйвера освещения B",
+   "en": "Lost Communication With Lighting Driver Control Module “B”",
+   "fam": "",
+   "node": "lost communication with lighting driver control module “b”"
+  },
+  {
+   "code": "U0275",
+   "brand": "",
+   "ru": "Нет связи: блок драйвера освещения C",
+   "en": "Lost Communication With Lighting Driver Control Module “C”",
+   "fam": "",
+   "node": "lost communication with lighting driver control module “c”"
+  },
+  {
+   "code": "U0276",
+   "brand": "",
+   "ru": "Нет связи: блок драйвера освещения D",
+   "en": "Lost Communication With Lighting Driver Control Module “D”",
+   "fam": "",
+   "node": "lost communication with lighting driver control module “d”"
+  },
+  {
+   "code": "U0277",
+   "brand": "",
+   "ru": "Нет связи: блок управления сиденьем K",
+   "en": "Lost Communication With Seat Control Module K",
+   "fam": "",
+   "node": "lost communication with seat control module k"
+  },
+  {
+   "code": "U0278",
+   "brand": "",
+   "ru": "Нет связи: блок управления сиденьем L",
+   "en": "Lost Communication With Seat Control Module L",
+   "fam": "",
+   "node": "lost communication with seat control module l"
+  },
+  {
+   "code": "U0279",
+   "brand": "",
+   "ru": "Нет связи: блок тактильной обратной связи",
+   "en": "Lost Communication with Haptic Control Module",
+   "fam": "",
+   "node": "lost communication with haptic control"
+  },
+  {
+   "code": "U027A",
+   "brand": "",
+   "ru": "Нет связи: блок управления зарядным устройством C",
+   "en": "Lost Communication With Battery Charger Control Module C",
+   "fam": "",
+   "node": "lost communication with battery charger control module c"
+  },
+  {
+   "code": "U027B",
+   "brand": "",
+   "ru": "Нет связи: блок управления зарядным устройством D",
+   "en": "Lost Communication with Battery Charger Control Module D",
+   "fam": "",
+   "node": "lost communication with battery charger control module d"
+  },
+  {
+   "code": "U027C",
+   "brand": "",
+   "ru": "Нет связи: блок внешнего зарядного устройства",
+   "en": "Lost Communication With Off-Board Charger Control Module",
+   "fam": "",
+   "node": "lost communication with off board charger control"
+  },
+  {
+   "code": "U0284",
+   "brand": "",
+   "ru": "Нет связи: блок активных жалюзи радиатора A",
+   "en": "Lost Communication With Active Grille Air Shutter Module A",
+   "fam": "",
+   "node": "lost communication with active grille air shutter module a"
+  },
+  {
+   "code": "U0285",
+   "brand": "",
+   "ru": "Нет связи: блок активных жалюзи радиатора B",
+   "en": "Lost Communication With Active Grille Air Shutter Module B",
+   "fam": "",
+   "node": "lost communication with active grille air shutter module b"
+  },
+  {
+   "code": "U0286",
+   "brand": "",
+   "ru": "Нет связи: защита радиатора от вскрытия",
+   "en": "Lost Communication With Radiator Anti Tamper Device",
+   "fam": "",
+   "node": "lost communication with radiator anti tamper device"
+  },
+  {
+   "code": "U0287",
+   "brand": "",
+   "ru": "Нет связи: модуль насоса масла КПП A",
+   "en": "Lost Communication With Transmission Fluid Pump Module A",
+   "fam": "",
+   "node": "lost communication with transmission fluid pump module a"
+  },
+  {
+   "code": "U0288",
+   "brand": "",
+   "ru": "Нет связи: блок управления инвертором DC/AC A",
+   "en": "Lost Communication With DC/AC Converter Control Module A",
+   "fam": "",
+   "node": "lost communication with dc ac converter control module a"
+  },
+  {
+   "code": "U0289",
+   "brand": "",
+   "ru": "Нет связи: блок управления инвертором DC/AC B",
+   "en": "Lost Communication With DC/AC Converter Control Module B",
+   "fam": "",
+   "node": "lost communication with dc ac converter control module b"
+  },
+  {
+   "code": "U028A",
+   "brand": "",
+   "ru": "Нет связи: модуль насоса масла КПП B",
+   "en": "Lost Communication With Transmission Fluid Pump Module B",
+   "fam": "",
+   "node": "lost communication with transmission fluid pump module b"
+  },
+  {
+   "code": "U028B",
+   "brand": "",
+   "ru": "Нет связи: блок активных жалюзи радиатора C",
+   "en": "Lost Communication With Active Grille Air Shutter Module C",
+   "fam": "",
+   "node": "lost communication with active grille air shutter module c"
+  },
+  {
+   "code": "U028C",
+   "brand": "",
+   "ru": "Нет связи: блок активных жалюзи радиатора D",
+   "en": "Lost Communication With Active Grille Air Shutter Module D",
+   "fam": "",
+   "node": "lost communication with active grille air shutter module d"
+  },
+  {
+   "code": "U028D",
+   "brand": "",
+   "ru": "Нет связи: блок управления активной аэродинамикой A",
+   "en": "Lost Communication with Active Aerodynamic Feature Control Module A",
+   "fam": "",
+   "node": "lost communication with active aerodynamic feature control module a"
+  },
+  {
+   "code": "U028E",
+   "brand": "",
+   "ru": "Нет связи: блок управления активной аэродинамикой B",
+   "en": "Lost Communication with Active Aerodynamic Feature Control Module B",
+   "fam": "",
+   "node": "lost communication with active aerodynamic feature control module b"
+  },
+  {
+   "code": "U028F",
+   "brand": "",
+   "ru": "Нет связи: блок управления активной аэродинамикой C",
+   "en": "Lost Communication with Active Aerodynamic Feature Control Module C",
+   "fam": "",
+   "node": "lost communication with active aerodynamic feature control module c"
+  },
+  {
+   "code": "U0290",
+   "brand": "",
+   "ru": "Нет связи: блок управления активной аэродинамикой D",
+   "en": "Lost Communication with Active Aerodynamic Feature Control Module D",
+   "fam": "",
+   "node": "lost communication with active aerodynamic feature control module d"
+  },
+  {
+   "code": "U0291",
+   "brand": "",
+   "ru": "Нет связи: блок управления переключением передач B",
+   "en": "Lost Communication With Gear Shift Control Module B",
+   "fam": "",
+   "node": "lost communication with gear shift control module b"
+  },
+  {
+   "code": "U0292",
+   "brand": "",
+   "ru": "Нет связи: блок управления тяговым электромотором B",
+   "en": "Lost Communication With Drive Motor Control Module B",
+   "fam": "",
+   "node": "lost communication with drive motor control module b"
+  },
+  {
+   "code": "U0299",
+   "brand": "",
+   "ru": "Нет связи: блок управления преобразователем DC/DC B",
+   "en": "Lost Communication With DC/DC Converter Control Module B",
+   "fam": "",
+   "node": "lost communication with dc dc converter control module b"
+  },
+  {
+   "code": "U029A",
+   "brand": "",
+   "ru": "Нет связи: блок датчиков тяговой батареи",
+   "en": "Lost Communication With Hybrid/EV Battery Pack Sensor Module",
+   "fam": "",
+   "node": "lost communication with hybrid ev battery pack sensor"
+  },
+  {
+   "code": "U029B",
+   "brand": "",
+   "ru": "Нет связи: блок управления тяговым электромотором C",
+   "en": "Lost Communication With Drive Motor Control Module C",
+   "fam": "",
+   "node": "lost communication with drive motor control module c"
+  },
+  {
+   "code": "U029C",
+   "brand": "",
+   "ru": "Нет связи: блок управления тяговым электромотором D",
+   "en": "Lost Communication With Drive Motor Control Module D",
+   "fam": "",
+   "node": "lost communication with drive motor control module d"
+  },
+  {
+   "code": "U029D",
+   "brand": "",
+   "ru": "Нет связи: датчик NOx A",
+   "en": "Lost Communication With NOx Sensor A",
+   "fam": "",
+   "node": "lost communication with nox sensor a"
+  },
+  {
+   "code": "U029E",
+   "brand": "",
+   "ru": "Нет связи: датчик NOx B",
+   "en": "Lost Communication With NOx Sensor B",
+   "fam": "",
+   "node": "lost communication with nox sensor b"
+  },
+  {
+   "code": "U029F",
+   "brand": "",
+   "ru": "Нет связи: блок проверки утечек системы EVAP",
+   "en": "Lost Communication With Evaporative Emission System Leak Detection Control Module",
+   "fam": "",
+   "node": "lost communication with evaporative emission system leak detection control"
+  },
+  {
+   "code": "U02A0",
+   "brand": "",
+   "ru": "Неверные данные: блок управления тяговой батареей D",
+   "en": "Invalid Data Received From Hybrid/EV Battery Interface Control Module D",
+   "fam": "",
+   "node": "invalid data received from hybrid ev battery interface control module d"
+  },
+  {
+   "code": "U02A1",
+   "brand": "",
+   "ru": "Нет связи: датчик NOx C",
+   "en": "Lost Communication With NOx Sensor C",
+   "fam": "",
+   "node": "lost communication with nox sensor c"
+  },
+  {
+   "code": "U02A2",
+   "brand": "",
+   "ru": "Нет связи: модуль качества мочевины",
+   "en": "Lost Communication With Reductant Quality Module",
+   "fam": "",
+   "node": "lost communication with reductant quality"
+  },
+  {
+   "code": "U02A3",
+   "brand": "",
+   "ru": "Нет связи: датчик сажи",
+   "en": "Lost Communication With Particulate Matter Sensor",
+   "fam": "",
+   "node": "lost communication with particulate matter"
+  },
+  {
+   "code": "U02A4",
+   "brand": "",
+   "ru": "Нет связи: датчик аммиака (NH3)",
+   "en": "Lost Communication With NH3 Sensor",
+   "fam": "",
+   "node": "lost communication with nh3"
+  }
+ ]
+}

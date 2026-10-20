@@ -1,0 +1,358 @@
+{
+ "name": "sae_044",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "fam:ckp",
+  "ignition a control",
+  "ignition b control",
+  "ignition c control",
+  "ignition d control"
+ ],
+ "codes": [
+  {
+   "code": "P030A",
+   "brand": "",
+   "ru": "Управление зажиганием A: обрыв сигнальной цепи",
+   "en": "Ignition A Control Signal Circuit/Open",
+   "fam": "",
+   "node": "ignition a control"
+  },
+  {
+   "code": "P030B",
+   "brand": "",
+   "ru": "Управление зажиганием A: низкий уровень в сигнальной цепи",
+   "en": "Ignition A Control Signal Circuit Low",
+   "fam": "",
+   "node": "ignition a control"
+  },
+  {
+   "code": "P030C",
+   "brand": "",
+   "ru": "Управление зажиганием A: высокий уровень в сигнальной цепи",
+   "en": "Ignition A Control Signal Circuit High",
+   "fam": "",
+   "node": "ignition a control"
+  },
+  {
+   "code": "P030D",
+   "brand": "",
+   "ru": "Управление зажиганием B: обрыв сигнальной цепи",
+   "en": "Ignition B Control Signal Circuit/Open",
+   "fam": "",
+   "node": "ignition b control"
+  },
+  {
+   "code": "P030E",
+   "brand": "",
+   "ru": "Управление зажиганием B: низкий уровень в сигнальной цепи",
+   "en": "Ignition B Control Signal Circuit Low",
+   "fam": "",
+   "node": "ignition b control"
+  },
+  {
+   "code": "P030F",
+   "brand": "",
+   "ru": "Управление зажиганием B: высокий уровень в сигнальной цепи",
+   "en": "Ignition B Control Signal Circuit High",
+   "fam": "",
+   "node": "ignition b control"
+  },
+  {
+   "code": "P0315",
+   "brand": "",
+   "ru": "Вариация сигнала коленвала не обучена",
+   "en": "",
+   "fam": "ckp",
+   "node": "fam:ckp"
+  },
+  {
+   "code": "P0317",
+   "brand": "",
+   "ru": "Датчик неровной дороги отсутствует",
+   "en": "",
+   "fam": "ckp",
+   "node": "fam:ckp"
+  },
+  {
+   "code": "P0318",
+   "brand": "",
+   "ru": "Датчик неровной дороги A: цепь",
+   "en": "",
+   "fam": "ckp",
+   "node": "fam:ckp"
+  },
+  {
+   "code": "P0319",
+   "brand": "",
+   "ru": "Датчик неровной дороги B: цепь",
+   "en": "",
+   "fam": "ckp",
+   "node": "fam:ckp"
+  },
+  {
+   "code": "P0320",
+   "brand": "",
+   "ru": "Сигнал оборотов от системы зажигания/распределителя: цепь",
+   "en": "",
+   "fam": "ckp",
+   "node": "fam:ckp"
+  },
+  {
+   "code": "P0321",
+   "brand": "",
+   "ru": "Сигнал оборотов от системы зажигания: вне диапазона",
+   "en": "",
+   "fam": "ckp",
+   "node": "fam:ckp"
+  },
+  {
+   "code": "P0322",
+   "brand": "",
+   "ru": "Сигнал оборотов от системы зажигания: нет сигнала",
+   "en": "",
+   "fam": "ckp",
+   "node": "fam:ckp"
+  },
+  {
+   "code": "P0323",
+   "brand": "",
+   "ru": "Сигнал оборотов от системы зажигания: прерывистый",
+   "en": "",
+   "fam": "ckp",
+   "node": "fam:ckp"
+  },
+  {
+   "code": "P0335",
+   "brand": "",
+   "ru": "Датчик положения коленвала A: цепь / нет сигнала",
+   "en": "",
+   "fam": "ckp",
+   "node": "fam:ckp"
+  },
+  {
+   "code": "P0336",
+   "brand": "",
+   "ru": "Датчик положения коленвала A: сигнал вне диапазона",
+   "en": "",
+   "fam": "ckp",
+   "node": "fam:ckp"
+  },
+  {
+   "code": "P0337",
+   "brand": "",
+   "ru": "Датчик положения коленвала A: низкий сигнал",
+   "en": "",
+   "fam": "ckp",
+   "node": "fam:ckp"
+  },
+  {
+   "code": "P0338",
+   "brand": "",
+   "ru": "Датчик положения коленвала A: высокий сигнал",
+   "en": "",
+   "fam": "ckp",
+   "node": "fam:ckp"
+  },
+  {
+   "code": "P0339",
+   "brand": "",
+   "ru": "Датчик положения коленвала A: прерывистый сигнал",
+   "en": "",
+   "fam": "ckp",
+   "node": "fam:ckp"
+  },
+  {
+   "code": "P0370",
+   "brand": "",
+   "ru": "Опорный сигнал ГРМ высокого разрешения A: неисправность",
+   "en": "",
+   "fam": "ckp",
+   "node": "fam:ckp"
+  },
+  {
+   "code": "P0371",
+   "brand": "",
+   "ru": "Опорный сигнал A: слишком много импульсов",
+   "en": "",
+   "fam": "ckp",
+   "node": "fam:ckp"
+  },
+  {
+   "code": "P0372",
+   "brand": "",
+   "ru": "Опорный сигнал A: слишком мало импульсов",
+   "en": "",
+   "fam": "ckp",
+   "node": "fam:ckp"
+  },
+  {
+   "code": "P0373",
+   "brand": "",
+   "ru": "Опорный сигнал A: прерывистый",
+   "en": "",
+   "fam": "ckp",
+   "node": "fam:ckp"
+  },
+  {
+   "code": "P0374",
+   "brand": "",
+   "ru": "Опорный сигнал A: нет импульсов",
+   "en": "",
+   "fam": "ckp",
+   "node": "fam:ckp"
+  },
+  {
+   "code": "P0375",
+   "brand": "",
+   "ru": "Опорный сигнал ГРМ высокого разрешения B: неисправность",
+   "en": "",
+   "fam": "ckp",
+   "node": "fam:ckp"
+  },
+  {
+   "code": "P0376",
+   "brand": "",
+   "ru": "Опорный сигнал B: слишком много импульсов",
+   "en": "",
+   "fam": "ckp",
+   "node": "fam:ckp"
+  },
+  {
+   "code": "P0377",
+   "brand": "",
+   "ru": "Опорный сигнал B: слишком мало импульсов",
+   "en": "",
+   "fam": "ckp",
+   "node": "fam:ckp"
+  },
+  {
+   "code": "P0378",
+   "brand": "",
+   "ru": "Опорный сигнал B: прерывистый",
+   "en": "",
+   "fam": "ckp",
+   "node": "fam:ckp"
+  },
+  {
+   "code": "P0379",
+   "brand": "",
+   "ru": "Опорный сигнал B: нет импульсов",
+   "en": "",
+   "fam": "ckp",
+   "node": "fam:ckp"
+  },
+  {
+   "code": "P0385",
+   "brand": "",
+   "ru": "Датчик положения коленвала B: цепь / нет сигнала",
+   "en": "",
+   "fam": "ckp",
+   "node": "fam:ckp"
+  },
+  {
+   "code": "P0386",
+   "brand": "",
+   "ru": "Датчик положения коленвала B: сигнал вне диапазона",
+   "en": "",
+   "fam": "ckp",
+   "node": "fam:ckp"
+  },
+  {
+   "code": "P0387",
+   "brand": "",
+   "ru": "Датчик положения коленвала B: низкий сигнал",
+   "en": "",
+   "fam": "ckp",
+   "node": "fam:ckp"
+  },
+  {
+   "code": "P0388",
+   "brand": "",
+   "ru": "Датчик положения коленвала B: высокий сигнал",
+   "en": "",
+   "fam": "ckp",
+   "node": "fam:ckp"
+  },
+  {
+   "code": "P0389",
+   "brand": "",
+   "ru": "Датчик положения коленвала B: прерывистый сигнал",
+   "en": "",
+   "fam": "ckp",
+   "node": "fam:ckp"
+  },
+  {
+   "code": "P2617",
+   "brand": "",
+   "ru": "Выход сигнала коленвала: цепь / обрыв",
+   "en": "",
+   "fam": "ckp",
+   "node": "fam:ckp"
+  },
+  {
+   "code": "P2618",
+   "brand": "",
+   "ru": "Выход сигнала коленвала: низкий уровень",
+   "en": "",
+   "fam": "ckp",
+   "node": "fam:ckp"
+  },
+  {
+   "code": "P2619",
+   "brand": "",
+   "ru": "Выход сигнала коленвала: высокий уровень",
+   "en": "",
+   "fam": "ckp",
+   "node": "fam:ckp"
+  },
+  {
+   "code": "P031A",
+   "brand": "",
+   "ru": "Управление зажиганием C: обрыв сигнальной цепи",
+   "en": "Ignition C Control Signal Circuit/Open",
+   "fam": "",
+   "node": "ignition c control"
+  },
+  {
+   "code": "P031B",
+   "brand": "",
+   "ru": "Управление зажиганием C: низкий уровень в сигнальной цепи",
+   "en": "Ignition C Control Signal Circuit Low",
+   "fam": "",
+   "node": "ignition c control"
+  },
+  {
+   "code": "P031C",
+   "brand": "",
+   "ru": "Управление зажиганием C: высокий уровень в сигнальной цепи",
+   "en": "Ignition C Control Signal Circuit High",
+   "fam": "",
+   "node": "ignition c control"
+  },
+  {
+   "code": "P031D",
+   "brand": "",
+   "ru": "Управление зажиганием D: обрыв сигнальной цепи",
+   "en": "Ignition D Control Signal Circuit/Open",
+   "fam": "",
+   "node": "ignition d control"
+  },
+  {
+   "code": "P031E",
+   "brand": "",
+   "ru": "Управление зажиганием D: низкий уровень в сигнальной цепи",
+   "en": "Ignition D Control Signal Circuit Low",
+   "fam": "",
+   "node": "ignition d control"
+  },
+  {
+   "code": "P031F",
+   "brand": "",
+   "ru": "Управление зажиганием D: высокий уровень в сигнальной цепи",
+   "en": "Ignition D Control Signal Circuit High",
+   "fam": "",
+   "node": "ignition d control"
+  }
+ ]
+}

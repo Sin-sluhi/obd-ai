@@ -1,0 +1,393 @@
+{
+ "name": "sae_178",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "active grille air shutter d",
+  "active grille air shutter module c over temperature",
+  "active grille air shutter module d over temperature",
+  "air system pump overspeed",
+  "air system pump overtemperature",
+  "air system pump supply voltage",
+  "cold start shift time too",
+  "cold start shift time too long",
+  "drive motor “a” phase x current",
+  "drive motor “a” phase y current",
+  "drive motor “a” phase z current",
+  "fuel injector b offset learning at max limit",
+  "fuel injector b offset learning at min limit",
+  "fuel level sensor a b correlation",
+  "hybrid ev battery voltage external isolation fault",
+  "hybrid ev electronics coolant pump a overspeed",
+  "hybrid ev electronics coolant pump a underspeed",
+  "hybrid ev electronics cooling system",
+  "nox adsorber sulfur limit exceeded",
+  "turbocharger turbine inlet valve control",
+  "turbocharger turbine inlet valve motor driver",
+  "turbocharger turbine inlet valve motor driver overtemperature",
+  "turbocharger turbine inlet valve position sensor exceeded learning limit",
+  "turbocharger turbine inlet valve supply"
+ ],
+ "codes": [
+  {
+   "code": "P2C51",
+   "brand": "",
+   "ru": "Датчик уровня топлива: рассогласование A/B",
+   "en": "Fuel Level Sensor A/B Correlation",
+   "fam": "",
+   "node": "fuel level sensor a b correlation"
+  },
+  {
+   "code": "P2C52",
+   "brand": "",
+   "ru": "Смещение форсунки B цилиндра 1: адаптация на минимальном пределе",
+   "en": "Cylinder 1 Fuel Injector B Offset Learning At Min Limit",
+   "fam": "",
+   "node": "fuel injector b offset learning at min limit"
+  },
+  {
+   "code": "P2C54",
+   "brand": "",
+   "ru": "Смещение форсунки B цилиндра 2: адаптация на минимальном пределе",
+   "en": "Cylinder 2 Fuel Injector B Offset Learning At Min Limit",
+   "fam": "",
+   "node": "fuel injector b offset learning at min limit"
+  },
+  {
+   "code": "P2C56",
+   "brand": "",
+   "ru": "Смещение форсунки B цилиндра 3: адаптация на минимальном пределе",
+   "en": "Cylinder 3 Fuel Injector B Offset Learning At Min Limit",
+   "fam": "",
+   "node": "fuel injector b offset learning at min limit"
+  },
+  {
+   "code": "P2C58",
+   "brand": "",
+   "ru": "Смещение форсунки B цилиндра 4: адаптация на минимальном пределе",
+   "en": "Cylinder 4 Fuel Injector B Offset Learning At Min Limit",
+   "fam": "",
+   "node": "fuel injector b offset learning at min limit"
+  },
+  {
+   "code": "P2C5A",
+   "brand": "",
+   "ru": "Смещение форсунки B цилиндра 5: адаптация на минимальном пределе",
+   "en": "Cylinder 5 Fuel Injector B Offset Learning At Min Limit",
+   "fam": "",
+   "node": "fuel injector b offset learning at min limit"
+  },
+  {
+   "code": "P2C5C",
+   "brand": "",
+   "ru": "Смещение форсунки B цилиндра 6: адаптация на минимальном пределе",
+   "en": "Cylinder 6 Fuel Injector B Offset Learning At Min Limit",
+   "fam": "",
+   "node": "fuel injector b offset learning at min limit"
+  },
+  {
+   "code": "P2C5E",
+   "brand": "",
+   "ru": "Смещение форсунки B цилиндра 7: адаптация на минимальном пределе",
+   "en": "Cylinder 7 Fuel Injector B Offset Learning At Min Limit",
+   "fam": "",
+   "node": "fuel injector b offset learning at min limit"
+  },
+  {
+   "code": "P2C60",
+   "brand": "",
+   "ru": "Смещение форсунки B цилиндра 8: адаптация на минимальном пределе",
+   "en": "Cylinder 8 Fuel Injector B Offset Learning At Min Limit",
+   "fam": "",
+   "node": "fuel injector b offset learning at min limit"
+  },
+  {
+   "code": "P2C53",
+   "brand": "",
+   "ru": "Смещение форсунки B цилиндра 1: адаптация на максимальном пределе",
+   "en": "Cylinder 1 Fuel Injector B Offset Learning At Max Limit",
+   "fam": "",
+   "node": "fuel injector b offset learning at max limit"
+  },
+  {
+   "code": "P2C55",
+   "brand": "",
+   "ru": "Смещение форсунки B цилиндра 2: адаптация на максимальном пределе",
+   "en": "Cylinder 2 Fuel Injector B Offset Learning At Max Limit",
+   "fam": "",
+   "node": "fuel injector b offset learning at max limit"
+  },
+  {
+   "code": "P2C57",
+   "brand": "",
+   "ru": "Смещение форсунки B цилиндра 3: адаптация на максимальном пределе",
+   "en": "Cylinder 3 Fuel Injector B Offset Learning At Max Limit",
+   "fam": "",
+   "node": "fuel injector b offset learning at max limit"
+  },
+  {
+   "code": "P2C59",
+   "brand": "",
+   "ru": "Смещение форсунки B цилиндра 4: адаптация на максимальном пределе",
+   "en": "Cylinder 4 Fuel Injector B Offset Learning At Max Limit",
+   "fam": "",
+   "node": "fuel injector b offset learning at max limit"
+  },
+  {
+   "code": "P2C5B",
+   "brand": "",
+   "ru": "Смещение форсунки B цилиндра 5: адаптация на максимальном пределе",
+   "en": "Cylinder 5 Fuel Injector B Offset Learning At Max Limit",
+   "fam": "",
+   "node": "fuel injector b offset learning at max limit"
+  },
+  {
+   "code": "P2C5D",
+   "brand": "",
+   "ru": "Смещение форсунки B цилиндра 6: адаптация на максимальном пределе",
+   "en": "Cylinder 6 Fuel Injector B Offset Learning At Max Limit",
+   "fam": "",
+   "node": "fuel injector b offset learning at max limit"
+  },
+  {
+   "code": "P2C5F",
+   "brand": "",
+   "ru": "Смещение форсунки B цилиндра 7: адаптация на максимальном пределе",
+   "en": "Cylinder 7 Fuel Injector B Offset Learning At Max Limit",
+   "fam": "",
+   "node": "fuel injector b offset learning at max limit"
+  },
+  {
+   "code": "P2C61",
+   "brand": "",
+   "ru": "Смещение форсунки B цилиндра 8: адаптация на максимальном пределе",
+   "en": "Cylinder 8 Fuel Injector B Offset Learning At Max Limit",
+   "fam": "",
+   "node": "fuel injector b offset learning at max limit"
+  },
+  {
+   "code": "P2C66",
+   "brand": "",
+   "ru": "Насос охлаждения электроники гибрида/электромобиля A: заниженная скорость вращения",
+   "en": "Hybrid/EV Electronics Coolant Pump A Underspeed",
+   "fam": "",
+   "node": "hybrid ev electronics coolant pump a underspeed"
+  },
+  {
+   "code": "P2C67",
+   "brand": "",
+   "ru": "Насос охлаждения электроники гибрида/электромобиля A: превышена скорость вращения",
+   "en": "Hybrid/EV Electronics Coolant Pump A Overspeed",
+   "fam": "",
+   "node": "hybrid ev electronics coolant pump a overspeed"
+  },
+  {
+   "code": "P2C69",
+   "brand": "",
+   "ru": "Тяговый электромотор A, фаза X: ток",
+   "en": "Drive Motor “A” Phase X Current",
+   "fam": "",
+   "node": "drive motor “a” phase x current"
+  },
+  {
+   "code": "P2C6A",
+   "brand": "",
+   "ru": "Тяговый электромотор A, фаза X: малый ток",
+   "en": "Drive Motor “A” Phase X Current Low",
+   "fam": "",
+   "node": "drive motor “a” phase x current"
+  },
+  {
+   "code": "P2C6B",
+   "brand": "",
+   "ru": "Тяговый электромотор A, фаза X: большой ток",
+   "en": "Drive Motor “A” Phase X Current High",
+   "fam": "",
+   "node": "drive motor “a” phase x current"
+  },
+  {
+   "code": "P2C6C",
+   "brand": "",
+   "ru": "Тяговый электромотор A, фаза Y: ток",
+   "en": "Drive Motor “A” Phase Y Current",
+   "fam": "",
+   "node": "drive motor “a” phase y current"
+  },
+  {
+   "code": "P2C6D",
+   "brand": "",
+   "ru": "Тяговый электромотор A, фаза Y: малый ток",
+   "en": "Drive Motor “A” Phase Y Current Low",
+   "fam": "",
+   "node": "drive motor “a” phase y current"
+  },
+  {
+   "code": "P2C6E",
+   "brand": "",
+   "ru": "Тяговый электромотор A, фаза Y: большой ток",
+   "en": "Drive Motor “A” Phase Y Current High",
+   "fam": "",
+   "node": "drive motor “a” phase y current"
+  },
+  {
+   "code": "P2C6F",
+   "brand": "",
+   "ru": "Тяговый электромотор A, фаза Z: ток",
+   "en": "Drive Motor “A” Phase Z Current",
+   "fam": "",
+   "node": "drive motor “a” phase z current"
+  },
+  {
+   "code": "P2C70",
+   "brand": "",
+   "ru": "Тяговый электромотор A, фаза Z: малый ток",
+   "en": "Drive Motor “A” Phase Z Current Low",
+   "fam": "",
+   "node": "drive motor “a” phase z current"
+  },
+  {
+   "code": "P2C71",
+   "brand": "",
+   "ru": "Тяговый электромотор A, фаза Z: большой ток",
+   "en": "Drive Motor “A” Phase Z Current High",
+   "fam": "",
+   "node": "drive motor “a” phase z current"
+  },
+  {
+   "code": "P2C72",
+   "brand": "",
+   "ru": "Охлаждение электроники гибрида/электромобиля: работа нарушена",
+   "en": "Hybrid/EV Electronics Cooling System Performance",
+   "fam": "",
+   "node": "hybrid ev electronics cooling system"
+  },
+  {
+   "code": "P2C75",
+   "brand": "",
+   "ru": "Блок активных жалюзи радиатора C: перегрев",
+   "en": "Active Grille Air Shutter Module C Over Temperature",
+   "fam": "",
+   "node": "active grille air shutter module c over temperature"
+  },
+  {
+   "code": "P2C76",
+   "brand": "",
+   "ru": "Активные жалюзи радиатора D: постоянно включён",
+   "en": "Active Grille Air Shutter D Stuck On",
+   "fam": "",
+   "node": "active grille air shutter d"
+  },
+  {
+   "code": "P2C77",
+   "brand": "",
+   "ru": "Активные жалюзи радиатора D: цепь управления вне диапазона",
+   "en": "Active Grille Air Shutter D Control Circuit Range/Performance",
+   "fam": "",
+   "node": "active grille air shutter d"
+  },
+  {
+   "code": "P2C78",
+   "brand": "",
+   "ru": "Блок активных жалюзи радиатора D: перегрев",
+   "en": "Active Grille Air Shutter Module D Over Temperature",
+   "fam": "",
+   "node": "active grille air shutter module d over temperature"
+  },
+  {
+   "code": "P2C79",
+   "brand": "",
+   "ru": "Накопительный катализатор NOx: превышен предел серы",
+   "en": "NOx Adsorber - Sulfur Limit Exceeded",
+   "fam": "",
+   "node": "nox adsorber sulfur limit exceeded"
+  },
+  {
+   "code": "P2C7B",
+   "brand": "",
+   "ru": "Клапан на входе турбины: нарушено управление",
+   "en": "Turbocharger Turbine Inlet Valve Control Performance",
+   "fam": "",
+   "node": "turbocharger turbine inlet valve control"
+  },
+  {
+   "code": "P2C7C",
+   "brand": "",
+   "ru": "Клапан на входе турбины: низкое напряжение питания",
+   "en": "Turbocharger Turbine Inlet Valve Supply Circuit Low",
+   "fam": "",
+   "node": "turbocharger turbine inlet valve supply"
+  },
+  {
+   "code": "P2C7D",
+   "brand": "",
+   "ru": "Мотор клапана на входе турбины: большой ток драйвера",
+   "en": "Turbocharger Turbine Inlet Valve Motor Driver High Current",
+   "fam": "",
+   "node": "turbocharger turbine inlet valve motor driver"
+  },
+  {
+   "code": "P2C7E",
+   "brand": "",
+   "ru": "Мотор клапана на входе турбины: перегрев драйвера",
+   "en": "Turbocharger Turbine Inlet Valve Motor Driver Overtemperature",
+   "fam": "",
+   "node": "turbocharger turbine inlet valve motor driver overtemperature"
+  },
+  {
+   "code": "P2C7F",
+   "brand": "",
+   "ru": "Датчик положения клапана на входе турбины: превышен предел адаптации",
+   "en": "Turbocharger Turbine Inlet Valve Position Sensor Exceeded Learning Limit",
+   "fam": "",
+   "node": "turbocharger turbine inlet valve position sensor exceeded learning limit"
+  },
+  {
+   "code": "P2C80",
+   "brand": "",
+   "ru": "Насос вторичного воздуха: превышены обороты (банк 1)",
+   "en": "AIR System Pump Overspeed Bank 1",
+   "fam": "",
+   "node": "air system pump overspeed"
+  },
+  {
+   "code": "P2C81",
+   "brand": "",
+   "ru": "Насос вторичного воздуха: перегрев (банк 1)",
+   "en": "AIR System Pump Overtemperature Bank 1",
+   "fam": "",
+   "node": "air system pump overtemperature"
+  },
+  {
+   "code": "P2C82",
+   "brand": "",
+   "ru": "Насос вторичного воздуха: цепь питания (банк 1)",
+   "en": "AIR System Pump Supply Voltage Circuit Bank 1",
+   "fam": "",
+   "node": "air system pump supply voltage"
+  },
+  {
+   "code": "P2C83",
+   "brand": "",
+   "ru": "Холодный пуск: время переключения слишком короткое",
+   "en": "Cold Start Shift Time Too Short",
+   "fam": "",
+   "node": "cold start shift time too"
+  },
+  {
+   "code": "P2C84",
+   "brand": "",
+   "ru": "Холодный пуск: время переключения слишком долгое",
+   "en": "Cold Start Shift Time Too Long",
+   "fam": "",
+   "node": "cold start shift time too long"
+  },
+  {
+   "code": "P2C85",
+   "brand": "",
+   "ru": "Тяговая батарея: нарушение внешней изоляции",
+   "en": "Hybrid/EV Battery Voltage External Isolation Fault",
+   "fam": "",
+   "node": "hybrid ev battery voltage external isolation fault"
+  }
+ ]
+}

@@ -1,0 +1,368 @@
+{
+ "name": "sae_114",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "14 volt power module current sensor b",
+  "dc dc converter step down voltage",
+  "dc dc converter step up voltage",
+  "drive motor control module requested mil illumination",
+  "hybrid ev battery charging current",
+  "hybrid ev battery charging voltage",
+  "hybrid ev battery discharging current",
+  "hybrid ev battery discharging voltage",
+  "hybrid ev battery temperature sensor g h correlation",
+  "hybrid ev battery temperature sensor i",
+  "hybrid ev battery temperature sensor j",
+  "hybrid ev battery temperature sensor k",
+  "hybrid ev battery temperature sensor l",
+  "hybrid ev battery temperature sensor m",
+  "hybrid ev battery temperature sensor n"
+ ],
+ "codes": [
+  {
+   "code": "P0C87",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи G/H: рассогласование показаний",
+   "en": "Hybrid/EV Battery Temperature Sensor G/H Correlation",
+   "fam": "",
+   "node": "hybrid ev battery temperature sensor g h correlation"
+  },
+  {
+   "code": "P0C88",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи I: цепь",
+   "en": "Hybrid/EV Battery Temperature Sensor I Circuit",
+   "fam": "",
+   "node": "hybrid ev battery temperature sensor i"
+  },
+  {
+   "code": "P0C89",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи I: вне допустимого диапазона",
+   "en": "Hybrid/EV Battery Temperature Sensor I Range/Performance",
+   "fam": "",
+   "node": "hybrid ev battery temperature sensor i"
+  },
+  {
+   "code": "P0C8A",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи I: низкий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Temperature Sensor I Circuit Low",
+   "fam": "",
+   "node": "hybrid ev battery temperature sensor i"
+  },
+  {
+   "code": "P0C8B",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи I: высокий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Temperature Sensor I Circuit High",
+   "fam": "",
+   "node": "hybrid ev battery temperature sensor i"
+  },
+  {
+   "code": "P0C8C",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи I: прерывистый / нестабильный сигнал",
+   "en": "Hybrid/EV Battery Temperature Sensor I Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "hybrid ev battery temperature sensor i"
+  },
+  {
+   "code": "P0C8D",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи J: цепь",
+   "en": "Hybrid/EV Battery Temperature Sensor J Circuit",
+   "fam": "",
+   "node": "hybrid ev battery temperature sensor j"
+  },
+  {
+   "code": "P0C8E",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи J: вне допустимого диапазона",
+   "en": "Hybrid/EV Battery Temperature Sensor J Range/Performance",
+   "fam": "",
+   "node": "hybrid ev battery temperature sensor j"
+  },
+  {
+   "code": "P0C8F",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи J: низкий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Temperature Sensor J Circuit Low",
+   "fam": "",
+   "node": "hybrid ev battery temperature sensor j"
+  },
+  {
+   "code": "P0C90",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи J: высокий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Temperature Sensor J Circuit High",
+   "fam": "",
+   "node": "hybrid ev battery temperature sensor j"
+  },
+  {
+   "code": "P0C91",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи J: прерывистый / нестабильный сигнал",
+   "en": "Hybrid/EV Battery Temperature Sensor J Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "hybrid ev battery temperature sensor j"
+  },
+  {
+   "code": "P0C92",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи K: цепь",
+   "en": "Hybrid/EV Battery Temperature Sensor K Circuit",
+   "fam": "",
+   "node": "hybrid ev battery temperature sensor k"
+  },
+  {
+   "code": "P0C93",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи K: вне допустимого диапазона",
+   "en": "Hybrid/EV Battery Temperature Sensor K Range/Performance",
+   "fam": "",
+   "node": "hybrid ev battery temperature sensor k"
+  },
+  {
+   "code": "P0C94",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи K: низкий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Temperature Sensor K Circuit Low",
+   "fam": "",
+   "node": "hybrid ev battery temperature sensor k"
+  },
+  {
+   "code": "P0C95",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи K: высокий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Temperature Sensor K Circuit High",
+   "fam": "",
+   "node": "hybrid ev battery temperature sensor k"
+  },
+  {
+   "code": "P0C96",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи K: прерывистый / нестабильный сигнал",
+   "en": "Hybrid/EV Battery Temperature Sensor K Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "hybrid ev battery temperature sensor k"
+  },
+  {
+   "code": "P0C97",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи L: цепь",
+   "en": "Hybrid/EV Battery Temperature Sensor L Circuit",
+   "fam": "",
+   "node": "hybrid ev battery temperature sensor l"
+  },
+  {
+   "code": "P0C98",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи L: вне допустимого диапазона",
+   "en": "Hybrid/EV Battery Temperature Sensor L Range/Performance",
+   "fam": "",
+   "node": "hybrid ev battery temperature sensor l"
+  },
+  {
+   "code": "P0C99",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи L: низкий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Temperature Sensor L Circuit Low",
+   "fam": "",
+   "node": "hybrid ev battery temperature sensor l"
+  },
+  {
+   "code": "P0C9A",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи L: высокий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Temperature Sensor L Circuit High",
+   "fam": "",
+   "node": "hybrid ev battery temperature sensor l"
+  },
+  {
+   "code": "P0C9B",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи L: прерывистый / нестабильный сигнал",
+   "en": "Hybrid/EV Battery Temperature Sensor L Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "hybrid ev battery temperature sensor l"
+  },
+  {
+   "code": "P0C9C",
+   "brand": "",
+   "ru": "Датчик тока модуля питания 14 В B: цепь",
+   "en": "14 Volt Power Module Current Sensor B Circuit",
+   "fam": "",
+   "node": "14 volt power module current sensor b"
+  },
+  {
+   "code": "P0C9D",
+   "brand": "",
+   "ru": "Датчик тока модуля питания 14 В B: сигнал вне диапазона",
+   "en": "14 Volt Power Module Current Sensor B Circuit Range/Performance",
+   "fam": "",
+   "node": "14 volt power module current sensor b"
+  },
+  {
+   "code": "P0C9E",
+   "brand": "",
+   "ru": "Датчик тока модуля питания 14 В B: низкий уровень сигнала в цепи",
+   "en": "14 Volt Power Module Current Sensor B Circuit Low",
+   "fam": "",
+   "node": "14 volt power module current sensor b"
+  },
+  {
+   "code": "P0C9F",
+   "brand": "",
+   "ru": "Датчик тока модуля питания 14 В B: высокий уровень сигнала в цепи",
+   "en": "14 Volt Power Module Current Sensor B Circuit High",
+   "fam": "",
+   "node": "14 volt power module current sensor b"
+  },
+  {
+   "code": "P0CA0",
+   "brand": "",
+   "ru": "Датчик тока модуля питания 14 В B: прерывистый сигнал в цепи",
+   "en": "14 Volt Power Module Current Sensor B Circuit Intermittent",
+   "fam": "",
+   "node": "14 volt power module current sensor b"
+  },
+  {
+   "code": "P0CA1",
+   "brand": "",
+   "ru": "Блок тягового электромотора запросил включение Check Engine",
+   "en": "Drive Motor Control Module Requested MIL Illumination",
+   "fam": "",
+   "node": "drive motor control module requested mil illumination"
+  },
+  {
+   "code": "P0CA2",
+   "brand": "",
+   "ru": "Преобразователь DC/DC: нарушено понижающее преобразование",
+   "en": "DC/DC Converter Step Down Voltage Performance",
+   "fam": "",
+   "node": "dc dc converter step down voltage"
+  },
+  {
+   "code": "P0CA3",
+   "brand": "",
+   "ru": "Преобразователь DC/DC: нарушено повышающее преобразование",
+   "en": "DC/DC Converter Step Up Voltage Performance",
+   "fam": "",
+   "node": "dc dc converter step up voltage"
+  },
+  {
+   "code": "P0CA4",
+   "brand": "",
+   "ru": "Тяговая батарея: высокое напряжение заряда",
+   "en": "Hybrid/EV Battery Charging Voltage High",
+   "fam": "",
+   "node": "hybrid ev battery charging voltage"
+  },
+  {
+   "code": "P0CA5",
+   "brand": "",
+   "ru": "Тяговая батарея: высокое напряжение разряда",
+   "en": "Hybrid/EV Battery Discharging Voltage High",
+   "fam": "",
+   "node": "hybrid ev battery discharging voltage"
+  },
+  {
+   "code": "P0CA6",
+   "brand": "",
+   "ru": "Тяговая батарея: большой ток заряда",
+   "en": "Hybrid/EV Battery Charging Current High",
+   "fam": "",
+   "node": "hybrid ev battery charging current"
+  },
+  {
+   "code": "P0CA7",
+   "brand": "",
+   "ru": "Тяговая батарея: большой ток разряда",
+   "en": "Hybrid/EV Battery Discharging Current High",
+   "fam": "",
+   "node": "hybrid ev battery discharging current"
+  },
+  {
+   "code": "P0CA8",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи M: цепь",
+   "en": "Hybrid/EV Battery Temperature Sensor M Circuit",
+   "fam": "",
+   "node": "hybrid ev battery temperature sensor m"
+  },
+  {
+   "code": "P0CA9",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи M: сигнал вне диапазона",
+   "en": "Hybrid/EV Battery Temperature Sensor M Circuit Range/Performance",
+   "fam": "",
+   "node": "hybrid ev battery temperature sensor m"
+  },
+  {
+   "code": "P0CAA",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи M: низкий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Temperature Sensor M Circuit Low",
+   "fam": "",
+   "node": "hybrid ev battery temperature sensor m"
+  },
+  {
+   "code": "P0CAB",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи M: высокий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Temperature Sensor M Circuit High",
+   "fam": "",
+   "node": "hybrid ev battery temperature sensor m"
+  },
+  {
+   "code": "P0CAC",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи M: прерывистый / нестабильный сигнал",
+   "en": "Hybrid/EV Battery Temperature Sensor M Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "hybrid ev battery temperature sensor m"
+  },
+  {
+   "code": "P0CAD",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи N: цепь",
+   "en": "Hybrid/EV Battery Temperature Sensor N Circuit",
+   "fam": "",
+   "node": "hybrid ev battery temperature sensor n"
+  },
+  {
+   "code": "P0CAE",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи N: сигнал вне диапазона",
+   "en": "Hybrid/EV Battery Temperature Sensor N Circuit Range/Performance",
+   "fam": "",
+   "node": "hybrid ev battery temperature sensor n"
+  },
+  {
+   "code": "P0CAF",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи N: низкий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Temperature Sensor N Circuit Low",
+   "fam": "",
+   "node": "hybrid ev battery temperature sensor n"
+  },
+  {
+   "code": "P0CB0",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи N: высокий уровень сигнала в цепи",
+   "en": "Hybrid/EV Battery Temperature Sensor N Circuit High",
+   "fam": "",
+   "node": "hybrid ev battery temperature sensor n"
+  },
+  {
+   "code": "P0CB1",
+   "brand": "",
+   "ru": "Датчик температуры тяговой батареи N: прерывистый / нестабильный сигнал",
+   "en": "Hybrid/EV Battery Temperature Sensor N Circuit Intermittent/Erratic",
+   "fam": "",
+   "node": "hybrid ev battery temperature sensor n"
+  }
+ ]
+}

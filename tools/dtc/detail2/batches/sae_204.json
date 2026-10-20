@@ -1,0 +1,414 @@
+{
+ "name": "sae_204",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "invalid data received from a c compressor control",
+  "invalid data received from anti lock brake system control module b",
+  "invalid data received from audible alert control",
+  "invalid data received from automated driving system control module a",
+  "invalid data received from automated driving system control module b",
+  "invalid data received from automated driving system interface module “a”",
+  "invalid data received from automated driving system interface module “b”",
+  "invalid data received from automatic lighting control",
+  "invalid data received from compass",
+  "invalid data received from coolant temperature control",
+  "invalid data received from exhaust gas sensor module b",
+  "invalid data received from fuel additive control",
+  "invalid data received from fuel cell control",
+  "invalid data received from fuel pump control module b",
+  "invalid data received from global positioning system",
+  "invalid data received from head up display",
+  "invalid data received from hvac control module rear",
+  "invalid data received from information center a",
+  "invalid data received from information center b",
+  "invalid data received from navigation control",
+  "invalid data received from navigation display",
+  "invalid data received from parking assist control module a",
+  "invalid data received from power steering control module “b”",
+  "invalid data received from pto control",
+  "invalid data received from restraints system sensor a",
+  "invalid data received from restraints system sensor b",
+  "invalid data received from restraints system sensor c",
+  "invalid data received from restraints system sensor d",
+  "invalid data received from restraints system sensor e",
+  "invalid data received from restraints system sensor f",
+  "invalid data received from restraints system sensor g",
+  "invalid data received from restraints system sensor h",
+  "invalid data received from restraints system sensor i",
+  "invalid data received from restraints system sensor j",
+  "invalid data received from restraints system sensor k",
+  "invalid data received from restraints system sensor l",
+  "invalid data received from restraints system sensor m",
+  "invalid data received from restraints system sensor n",
+  "invalid data received from seat belt pretensioner module a",
+  "invalid data received from seat belt pretensioner module b",
+  "invalid data received from serial data gateway module e",
+  "invalid data received from side restraints control module left",
+  "invalid data received from side restraints control module right",
+  "invalid data received from starter generator control",
+  "invalid data received from sunroof control"
+ ],
+ "codes": [
+  {
+   "code": "U0451",
+   "brand": "",
+   "ru": "Неверные данные: шлюз (Gateway) E",
+   "en": "Invalid Data Received From Serial Data Gateway Module E",
+   "fam": "",
+   "node": "invalid data received from serial data gateway module e"
+  },
+  {
+   "code": "U0453",
+   "brand": "",
+   "ru": "Неверные данные: левый блок боковых подушек",
+   "en": "Invalid Data Received From Side Restraints Control Module - Left",
+   "fam": "",
+   "node": "invalid data received from side restraints control module left"
+  },
+  {
+   "code": "U0454",
+   "brand": "",
+   "ru": "Неверные данные: правый блок боковых подушек",
+   "en": "Invalid Data Received From Side Restraints Control Module - Right",
+   "fam": "",
+   "node": "invalid data received from side restraints control module right"
+  },
+  {
+   "code": "U0456",
+   "brand": "",
+   "ru": "Неверные данные: блок терморегулирования",
+   "en": "Invalid Data Received From Coolant Temperature Control Module",
+   "fam": "",
+   "node": "invalid data received from coolant temperature control"
+  },
+  {
+   "code": "U0457",
+   "brand": "",
+   "ru": "Неверные данные: информационный центр A",
+   "en": "Invalid Data Received From Information Center A",
+   "fam": "",
+   "node": "invalid data received from information center a"
+  },
+  {
+   "code": "U0458",
+   "brand": "",
+   "ru": "Неверные данные: информационный центр B",
+   "en": "Invalid Data Received From Information Center B",
+   "fam": "",
+   "node": "invalid data received from information center b"
+  },
+  {
+   "code": "U0459",
+   "brand": "",
+   "ru": "Неверные данные: проекционный дисплей",
+   "en": "Invalid Data Received From Head Up Display",
+   "fam": "",
+   "node": "invalid data received from head up display"
+  },
+  {
+   "code": "U045A",
+   "brand": "",
+   "ru": "Неверные данные: блок парктроника A",
+   "en": "Invalid Data Received From Parking Assist Control Module A",
+   "fam": "",
+   "node": "invalid data received from parking assist control module a"
+  },
+  {
+   "code": "U045B",
+   "brand": "",
+   "ru": "Неверные данные: блок ABS B",
+   "en": "Invalid Data Received From Anti-Lock Brake System (ABS) Control Module B",
+   "fam": "",
+   "node": "invalid data received from anti lock brake system control module b"
+  },
+  {
+   "code": "U045C",
+   "brand": "",
+   "ru": "Неверные данные: блок усилителя руля B",
+   "en": "Invalid Data Received From Power Steering Control Module “B”",
+   "fam": "",
+   "node": "invalid data received from power steering control module “b”"
+  },
+  {
+   "code": "U045D",
+   "brand": "",
+   "ru": "Неверные данные: блок системы автоматизированного вождения A",
+   "en": "Invalid Data Received From Automated Driving System Control Module A",
+   "fam": "",
+   "node": "invalid data received from automated driving system control module a"
+  },
+  {
+   "code": "U045E",
+   "brand": "",
+   "ru": "Неверные данные: блок системы автоматизированного вождения B",
+   "en": "Invalid Data Received From Automated Driving System Control Module B",
+   "fam": "",
+   "node": "invalid data received from automated driving system control module b"
+  },
+  {
+   "code": "U045F",
+   "brand": "",
+   "ru": "Неверные данные: интерфейсный блок системы автоматизированного вождения A",
+   "en": "Invalid Data Received From Automated Driving System Interface Module “A”",
+   "fam": "",
+   "node": "invalid data received from automated driving system interface module “a”"
+  },
+  {
+   "code": "U0460",
+   "brand": "",
+   "ru": "Неверные данные: интерфейсный блок системы автоматизированного вождения B",
+   "en": "Invalid Data Received From Automated Driving System Interface Module “B”",
+   "fam": "",
+   "node": "invalid data received from automated driving system interface module “b”"
+  },
+  {
+   "code": "U0461",
+   "brand": "",
+   "ru": "Неверные данные: блок звуковых сигналов",
+   "en": "Invalid Data Received From Audible Alert Control Module",
+   "fam": "",
+   "node": "invalid data received from audible alert control"
+  },
+  {
+   "code": "U0462",
+   "brand": "",
+   "ru": "Неверные данные: модуль компаса",
+   "en": "Invalid Data Received From Compass Module",
+   "fam": "",
+   "node": "invalid data received from compass"
+  },
+  {
+   "code": "U0463",
+   "brand": "",
+   "ru": "Неверные данные: дисплей навигации",
+   "en": "Invalid Data Received From Navigation Display Module",
+   "fam": "",
+   "node": "invalid data received from navigation display"
+  },
+  {
+   "code": "U0464",
+   "brand": "",
+   "ru": "Неверные данные: блок навигации",
+   "en": "Invalid Data Received From Navigation Control Module",
+   "fam": "",
+   "node": "invalid data received from navigation control"
+  },
+  {
+   "code": "U0465",
+   "brand": "",
+   "ru": "Неверные данные: блок отбора мощности",
+   "en": "Invalid Data Received From PTO Control Module",
+   "fam": "",
+   "node": "invalid data received from pto control"
+  },
+  {
+   "code": "U0466",
+   "brand": "",
+   "ru": "Неверные данные: задний блок климата",
+   "en": "Invalid Data Received From HVAC Control Module - Rear",
+   "fam": "",
+   "node": "invalid data received from hvac control module rear"
+  },
+  {
+   "code": "U0467",
+   "brand": "",
+   "ru": "Неверные данные: блок присадки к топливу",
+   "en": "Invalid Data Received From Fuel Additive Control Module",
+   "fam": "",
+   "node": "invalid data received from fuel additive control"
+  },
+  {
+   "code": "U0468",
+   "brand": "",
+   "ru": "Неверные данные: блок топливного элемента",
+   "en": "Invalid Data Received From Fuel Cell Control Module",
+   "fam": "",
+   "node": "invalid data received from fuel cell control"
+  },
+  {
+   "code": "U0469",
+   "brand": "",
+   "ru": "Неверные данные: блок стартер-генератора",
+   "en": "Invalid Data Received From Starter / Generator Control Module",
+   "fam": "",
+   "node": "invalid data received from starter generator control"
+  },
+  {
+   "code": "U046A",
+   "brand": "",
+   "ru": "Неверные данные: блок люка",
+   "en": "Invalid Data Received From Sunroof Control Module",
+   "fam": "",
+   "node": "invalid data received from sunroof control"
+  },
+  {
+   "code": "U046B",
+   "brand": "",
+   "ru": "Неверные данные: модуль GPS",
+   "en": "Invalid Data Received From Global Positioning System Module",
+   "fam": "",
+   "node": "invalid data received from global positioning system"
+  },
+  {
+   "code": "U046C",
+   "brand": "",
+   "ru": "Неверные данные: блок компрессора кондиционера",
+   "en": "Invalid Data Received From A/C Compressor Control Module",
+   "fam": "",
+   "node": "invalid data received from a c compressor control"
+  },
+  {
+   "code": "U046D",
+   "brand": "",
+   "ru": "Неверные данные: блок управления топливным насосом B",
+   "en": "Invalid Data Received from Fuel Pump Control Module B",
+   "fam": "",
+   "node": "invalid data received from fuel pump control module b"
+  },
+  {
+   "code": "U046E",
+   "brand": "",
+   "ru": "Неверные данные: блок датчика отработавших газов B",
+   "en": "Invalid Data Received From Exhaust Gas Sensor Module B",
+   "fam": "",
+   "node": "invalid data received from exhaust gas sensor module b"
+  },
+  {
+   "code": "U0471",
+   "brand": "",
+   "ru": "Неверные данные: датчик системы пассивной безопасности A",
+   "en": "Invalid Data Received From Restraints System Sensor A",
+   "fam": "",
+   "node": "invalid data received from restraints system sensor a"
+  },
+  {
+   "code": "U0472",
+   "brand": "",
+   "ru": "Неверные данные: датчик системы пассивной безопасности B",
+   "en": "Invalid Data Received From Restraints System Sensor B",
+   "fam": "",
+   "node": "invalid data received from restraints system sensor b"
+  },
+  {
+   "code": "U0473",
+   "brand": "",
+   "ru": "Неверные данные: датчик системы пассивной безопасности C",
+   "en": "Invalid Data Received From Restraints System Sensor C",
+   "fam": "",
+   "node": "invalid data received from restraints system sensor c"
+  },
+  {
+   "code": "U0474",
+   "brand": "",
+   "ru": "Неверные данные: датчик системы пассивной безопасности D",
+   "en": "Invalid Data Received From Restraints System Sensor D",
+   "fam": "",
+   "node": "invalid data received from restraints system sensor d"
+  },
+  {
+   "code": "U0475",
+   "brand": "",
+   "ru": "Неверные данные: датчик системы пассивной безопасности E",
+   "en": "Invalid Data Received From Restraints System Sensor E",
+   "fam": "",
+   "node": "invalid data received from restraints system sensor e"
+  },
+  {
+   "code": "U0476",
+   "brand": "",
+   "ru": "Неверные данные: датчик системы пассивной безопасности F",
+   "en": "Invalid Data Received From Restraints System Sensor F",
+   "fam": "",
+   "node": "invalid data received from restraints system sensor f"
+  },
+  {
+   "code": "U0477",
+   "brand": "",
+   "ru": "Неверные данные: датчик системы пассивной безопасности G",
+   "en": "Invalid Data Received From Restraints System Sensor G",
+   "fam": "",
+   "node": "invalid data received from restraints system sensor g"
+  },
+  {
+   "code": "U0478",
+   "brand": "",
+   "ru": "Неверные данные: датчик системы пассивной безопасности H",
+   "en": "Invalid Data Received From Restraints System Sensor H",
+   "fam": "",
+   "node": "invalid data received from restraints system sensor h"
+  },
+  {
+   "code": "U0479",
+   "brand": "",
+   "ru": "Неверные данные: датчик системы пассивной безопасности I",
+   "en": "Invalid Data Received From Restraints System Sensor I",
+   "fam": "",
+   "node": "invalid data received from restraints system sensor i"
+  },
+  {
+   "code": "U047A",
+   "brand": "",
+   "ru": "Неверные данные: датчик системы пассивной безопасности J",
+   "en": "Invalid Data Received From Restraints System Sensor J",
+   "fam": "",
+   "node": "invalid data received from restraints system sensor j"
+  },
+  {
+   "code": "U047B",
+   "brand": "",
+   "ru": "Неверные данные: датчик системы пассивной безопасности K",
+   "en": "Invalid Data Received From Restraints System Sensor K",
+   "fam": "",
+   "node": "invalid data received from restraints system sensor k"
+  },
+  {
+   "code": "U047C",
+   "brand": "",
+   "ru": "Неверные данные: датчик системы пассивной безопасности L",
+   "en": "Invalid Data Received From Restraints System Sensor L",
+   "fam": "",
+   "node": "invalid data received from restraints system sensor l"
+  },
+  {
+   "code": "U047D",
+   "brand": "",
+   "ru": "Неверные данные: датчик системы пассивной безопасности M",
+   "en": "Invalid Data Received From Restraints System Sensor M",
+   "fam": "",
+   "node": "invalid data received from restraints system sensor m"
+  },
+  {
+   "code": "U047E",
+   "brand": "",
+   "ru": "Неверные данные: датчик системы пассивной безопасности N",
+   "en": "Invalid Data Received From Restraints System Sensor N",
+   "fam": "",
+   "node": "invalid data received from restraints system sensor n"
+  },
+  {
+   "code": "U047F",
+   "brand": "",
+   "ru": "Неверные данные: блок преднатяжителей ремней A",
+   "en": "Invalid Data Received From Seat Belt Pretensioner Module A",
+   "fam": "",
+   "node": "invalid data received from seat belt pretensioner module a"
+  },
+  {
+   "code": "U0480",
+   "brand": "",
+   "ru": "Неверные данные: блок преднатяжителей ремней B",
+   "en": "Invalid Data Received From Seat Belt Pretensioner Module B",
+   "fam": "",
+   "node": "invalid data received from seat belt pretensioner module b"
+  },
+  {
+   "code": "U0481",
+   "brand": "",
+   "ru": "Неверные данные: блок автоматического света",
+   "en": "Invalid Data Received From Automatic Lighting Control Module",
+   "fam": "",
+   "node": "invalid data received from automatic lighting control"
+  }
+ ]
+}

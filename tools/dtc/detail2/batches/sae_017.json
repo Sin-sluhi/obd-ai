@@ -1,0 +1,389 @@
+{
+ "name": "sae_017",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "abs valves",
+  "active air dam supply voltage",
+  "brake booster motor “b”",
+  "brake pedal position sensor “a” offset exceeded learning limit",
+  "brake pedal position sensor “b” offset exceeded learning limit",
+  "brake pressure sensor a b correlation",
+  "brake pressure sensor g",
+  "brake pressure sensor h",
+  "ecm request forced traction control disable",
+  "front axle disconnect",
+  "front axle disconnect actuator",
+  "front half shaft speed",
+  "left park brake actuator",
+  "park brake control module",
+  "right park brake actuator",
+  "variable effort steering actuator",
+  "variable effort steering control module incorrect component installed",
+  "variable effort steering lock safety actuator",
+  "variable effort steering module",
+  "variable effort steering module temperature too"
+ ],
+ "codes": [
+  {
+   "code": "C060B",
+   "brand": "",
+   "ru": "Привод левого стояночного тормоза: обрыв цепи управления",
+   "en": "Left Park Brake Actuator Control Circuit/Open",
+   "fam": "",
+   "node": "left park brake actuator"
+  },
+  {
+   "code": "C060C",
+   "brand": "",
+   "ru": "Привод левого стояночного тормоза: низкий уровень в цепи управления",
+   "en": "Left Park Brake Actuator Control Circuit Low",
+   "fam": "",
+   "node": "left park brake actuator"
+  },
+  {
+   "code": "C060D",
+   "brand": "",
+   "ru": "Привод левого стояночного тормоза: высокий уровень в цепи управления",
+   "en": "Left Park Brake Actuator Control Circuit High",
+   "fam": "",
+   "node": "left park brake actuator"
+  },
+  {
+   "code": "C060E",
+   "brand": "",
+   "ru": "Привод левого стояночного тормоза: работа нарушена / не включается",
+   "en": "Left Park Brake Actuator Performance/Stuck Off",
+   "fam": "",
+   "node": "left park brake actuator"
+  },
+  {
+   "code": "C060F",
+   "brand": "",
+   "ru": "Привод левого стояночного тормоза: постоянно включён",
+   "en": "Left Park Brake Actuator Stuck On",
+   "fam": "",
+   "node": "left park brake actuator"
+  },
+  {
+   "code": "C0610",
+   "brand": "",
+   "ru": "Привод правого стояночного тормоза: обрыв цепи управления",
+   "en": "Right Park Brake Actuator Control Circuit/Open",
+   "fam": "",
+   "node": "right park brake actuator"
+  },
+  {
+   "code": "C0611",
+   "brand": "",
+   "ru": "Привод правого стояночного тормоза: низкий уровень в цепи управления",
+   "en": "Right Park Brake Actuator Control Circuit Low",
+   "fam": "",
+   "node": "right park brake actuator"
+  },
+  {
+   "code": "C0612",
+   "brand": "",
+   "ru": "Привод правого стояночного тормоза: высокий уровень в цепи управления",
+   "en": "Right Park Brake Actuator Control Circuit High",
+   "fam": "",
+   "node": "right park brake actuator"
+  },
+  {
+   "code": "C0613",
+   "brand": "",
+   "ru": "Привод правого стояночного тормоза: работа нарушена / не включается",
+   "en": "Right Park Brake Actuator Performance/Stuck Off",
+   "fam": "",
+   "node": "right park brake actuator"
+  },
+  {
+   "code": "C0614",
+   "brand": "",
+   "ru": "Привод правого стояночного тормоза: постоянно включён",
+   "en": "Right Park Brake Actuator Stuck On",
+   "fam": "",
+   "node": "right park brake actuator"
+  },
+  {
+   "code": "C0615",
+   "brand": "",
+   "ru": "Блок электростояночного тормоза: обрыв цепи управления",
+   "en": "Park Brake Control Module Control Circuit/Open",
+   "fam": "",
+   "node": "park brake control module"
+  },
+  {
+   "code": "C0616",
+   "brand": "",
+   "ru": "Блок электростояночного тормоза: нарушена работа цепи управления",
+   "en": "Park Brake Control Module Control Circuit Performance",
+   "fam": "",
+   "node": "park brake control module"
+  },
+  {
+   "code": "C0617",
+   "brand": "",
+   "ru": "Блок электростояночного тормоза: низкий уровень в цепи управления",
+   "en": "Park Brake Control Module Control Circuit Low",
+   "fam": "",
+   "node": "park brake control module"
+  },
+  {
+   "code": "C0618",
+   "brand": "",
+   "ru": "Блок электростояночного тормоза: высокий уровень в цепи управления",
+   "en": "Park Brake Control Module Control Circuit High",
+   "fam": "",
+   "node": "park brake control module"
+  },
+  {
+   "code": "C0619",
+   "brand": "",
+   "ru": "Датчик положения педали тормоза A: смещение превысило предел адаптации",
+   "en": "Brake Pedal Position Sensor “A” Offset Exceeded Learning Limit",
+   "fam": "",
+   "node": "brake pedal position sensor “a” offset exceeded learning limit"
+  },
+  {
+   "code": "C061A",
+   "brand": "",
+   "ru": "Датчик положения педали тормоза B: смещение превысило предел адаптации",
+   "en": "Brake Pedal Position Sensor “B” Offset Exceeded Learning Limit",
+   "fam": "",
+   "node": "brake pedal position sensor “b” offset exceeded learning limit"
+  },
+  {
+   "code": "C061B",
+   "brand": "",
+   "ru": "Запрос ЭБУ двигателя: принудительное отключение противобуксовочной системы",
+   "en": "ECM Request - Forced Traction Control Disable",
+   "fam": "",
+   "node": "ecm request forced traction control disable"
+  },
+  {
+   "code": "C061C",
+   "brand": "",
+   "ru": "Привод усилителя руля с переменным усилием: обрыв цепи управления",
+   "en": "Variable Effort Steering Actuator Control Circuit/Open",
+   "fam": "",
+   "node": "variable effort steering actuator"
+  },
+  {
+   "code": "C061D",
+   "brand": "",
+   "ru": "Привод усилителя руля с переменным усилием: низкий уровень в цепи управления",
+   "en": "Variable Effort Steering Actuator Control Circuit Low",
+   "fam": "",
+   "node": "variable effort steering actuator"
+  },
+  {
+   "code": "C061E",
+   "brand": "",
+   "ru": "Привод усилителя руля с переменным усилием: высокий уровень в цепи управления",
+   "en": "Variable Effort Steering Actuator Control Circuit High",
+   "fam": "",
+   "node": "variable effort steering actuator"
+  },
+  {
+   "code": "C061F",
+   "brand": "",
+   "ru": "Привод усилителя руля с переменным усилием: нарушена работа цепи управления",
+   "en": "Variable Effort Steering Actuator Control Circuit Performance",
+   "fam": "",
+   "node": "variable effort steering actuator"
+  },
+  {
+   "code": "C0620",
+   "brand": "",
+   "ru": "Предохранительный привод усилителя руля с переменным усилием: обрыв цепи управления",
+   "en": "Variable Effort Steering Lock/Safety Actuator Control Circuit/Open",
+   "fam": "",
+   "node": "variable effort steering lock safety actuator"
+  },
+  {
+   "code": "C0621",
+   "brand": "",
+   "ru": "Предохранительный привод усилителя руля с переменным усилием: низкий уровень в цепи управления",
+   "en": "Variable Effort Steering Lock/Safety Actuator Control Circuit Low",
+   "fam": "",
+   "node": "variable effort steering lock safety actuator"
+  },
+  {
+   "code": "C0622",
+   "brand": "",
+   "ru": "Предохранительный привод усилителя руля с переменным усилием: высокий уровень в цепи управления",
+   "en": "Variable Effort Steering Lock/Safety Actuator Control Circuit High",
+   "fam": "",
+   "node": "variable effort steering lock safety actuator"
+  },
+  {
+   "code": "C0623",
+   "brand": "",
+   "ru": "Предохранительный привод усилителя руля с переменным усилием: нарушена работа цепи управления",
+   "en": "Variable Effort Steering Lock/Safety Actuator Control Circuit Performance",
+   "fam": "",
+   "node": "variable effort steering lock safety actuator"
+  },
+  {
+   "code": "C0628",
+   "brand": "",
+   "ru": "Усилитель руля с переменным усилием: нарушена работа блока",
+   "en": "Variable Effort Steering Module Performance",
+   "fam": "",
+   "node": "variable effort steering module"
+  },
+  {
+   "code": "C0629",
+   "brand": "",
+   "ru": "Блок усилителя руля с переменным усилием: установлен не тот компонент",
+   "en": "Variable Effort Steering Control Module Incorrect Component Installed",
+   "fam": "",
+   "node": "variable effort steering control module incorrect component installed"
+  },
+  {
+   "code": "C062A",
+   "brand": "",
+   "ru": "Блок усилителя руля с переменным усилием: слишком высокая температура",
+   "en": "Variable Effort Steering Module Temperature Too High",
+   "fam": "",
+   "node": "variable effort steering module temperature too"
+  },
+  {
+   "code": "C062B",
+   "brand": "",
+   "ru": "Блок усилителя руля с переменным усилием: слишком низкая температура",
+   "en": "Variable Effort Steering Module Temperature Too Low",
+   "fam": "",
+   "node": "variable effort steering module temperature too"
+  },
+  {
+   "code": "C062C",
+   "brand": "",
+   "ru": "Мотор усилителя тормозов B: работа нарушена",
+   "en": "Brake Booster Motor “B” Performance",
+   "fam": "",
+   "node": "brake booster motor “b”"
+  },
+  {
+   "code": "C062D",
+   "brand": "",
+   "ru": "Клапаны ABS: вне допустимого диапазона",
+   "en": "ABS Valves Range/Performance",
+   "fam": "",
+   "node": "abs valves"
+  },
+  {
+   "code": "C062E",
+   "brand": "",
+   "ru": "Активный передний спойлер: низкое напряжение питания",
+   "en": "Active Air Dam Supply Voltage Circuit Low",
+   "fam": "",
+   "node": "active air dam supply voltage"
+  },
+  {
+   "code": "C062F",
+   "brand": "",
+   "ru": "Активный передний спойлер: высокое напряжение питания",
+   "en": "Active Air Dam Supply Voltage Circuit High",
+   "fam": "",
+   "node": "active air dam supply voltage"
+  },
+  {
+   "code": "C0631",
+   "brand": "",
+   "ru": "Привод отключения передней оси",
+   "en": "Front Axle Disconnect Actuator",
+   "fam": "",
+   "node": "front axle disconnect actuator"
+  },
+  {
+   "code": "C0632",
+   "brand": "",
+   "ru": "Цепь управления отключением передней оси",
+   "en": "Front Axle Disconnect Control Circuit",
+   "fam": "",
+   "node": "front axle disconnect"
+  },
+  {
+   "code": "C0633",
+   "brand": "",
+   "ru": "Датчик скорости передней полуоси",
+   "en": "Front Half Shaft Speed Sensor",
+   "fam": "",
+   "node": "front half shaft speed"
+  },
+  {
+   "code": "C0634",
+   "brand": "",
+   "ru": "Датчик давления в тормозной системе: рассогласование A/B",
+   "en": "Brake Pressure Sensor A/B Correlation",
+   "fam": "",
+   "node": "brake pressure sensor a b correlation"
+  },
+  {
+   "code": "C0635",
+   "brand": "",
+   "ru": "Датчик давления в тормозной системе G: обрыв цепи",
+   "en": "Brake Pressure Sensor G Circuit/Open",
+   "fam": "",
+   "node": "brake pressure sensor g"
+  },
+  {
+   "code": "C0636",
+   "brand": "",
+   "ru": "Датчик давления в тормозной системе G: высокий уровень сигнала в цепи",
+   "en": "Brake Pressure Sensor G Circuit High",
+   "fam": "",
+   "node": "brake pressure sensor g"
+  },
+  {
+   "code": "C0637",
+   "brand": "",
+   "ru": "Датчик давления в тормозной системе G: низкий уровень сигнала в цепи",
+   "en": "Brake Pressure Sensor G Circuit Low",
+   "fam": "",
+   "node": "brake pressure sensor g"
+  },
+  {
+   "code": "C0638",
+   "brand": "",
+   "ru": "Датчик давления в тормозной системе G: вне допустимого диапазона",
+   "en": "Brake Pressure Sensor G Range/Performance",
+   "fam": "",
+   "node": "brake pressure sensor g"
+  },
+  {
+   "code": "C0639",
+   "brand": "",
+   "ru": "Датчик давления в тормозной системе H: обрыв цепи",
+   "en": "Brake Pressure Sensor H Circuit/Open",
+   "fam": "",
+   "node": "brake pressure sensor h"
+  },
+  {
+   "code": "C063A",
+   "brand": "",
+   "ru": "Датчик давления в тормозной системе H: высокий уровень сигнала в цепи",
+   "en": "Brake Pressure Sensor H Circuit High",
+   "fam": "",
+   "node": "brake pressure sensor h"
+  },
+  {
+   "code": "C063B",
+   "brand": "",
+   "ru": "Датчик давления в тормозной системе H: низкий уровень сигнала в цепи",
+   "en": "Brake Pressure Sensor H Circuit Low",
+   "fam": "",
+   "node": "brake pressure sensor h"
+  },
+  {
+   "code": "C063C",
+   "brand": "",
+   "ru": "Датчик давления в тормозной системе H: вне допустимого диапазона",
+   "en": "Brake Pressure Sensor H Range/Performance",
+   "fam": "",
+   "node": "brake pressure sensor h"
+  }
+ ]
+}

@@ -1,0 +1,403 @@
+{
+ "name": "brand-nissan_058",
+ "series": "brand",
+ "brand": "nissan",
+ "nodes": [
+  "a t fi",
+  "a t fi data line failure",
+  "a t fi data line no",
+  "automatic transmission system",
+  "barometer pressure",
+  "coolant temperature",
+  "fam:tcc",
+  "fam:trans_iss",
+  "fam:trans_sol",
+  "fuel trim",
+  "intake air volume",
+  "kick down",
+  "overrun clutch solenoid",
+  "p n switch",
+  "park neutral position pnp",
+  "powertrain control module battery direct power",
+  "pressure control solenoid b",
+  "ru:выключатель холостого хода",
+  "ru:кнопка удержания передачи (hold)",
+  "ru:сигнальная линия fptdr",
+  "tcm a t lockup solenoid valve a fault",
+  "tcm a t lockup solenoid valve b fault",
+  "throttle position",
+  "torque converter clutch",
+  "tp electric",
+  "tp mechanical",
+  "traction control fuel cut",
+  "traction control system fi data line failure",
+  "traction control system fi data line no",
+  "traction control system stb line failure",
+  "transmission 4x4",
+  "transmission control",
+  "transmission fluid temperature",
+  "turbine speed"
+ ],
+ "codes": [
+  {
+   "code": "P1656",
+   "brand": "nissan",
+   "ru": "Неисправность системы АКПП",
+   "en": "Automatic Transmission System Malfunction",
+   "fam": "",
+   "node": "automatic transmission system"
+  },
+  {
+   "code": "P1709",
+   "brand": "nissan",
+   "ru": "Неисправность системы АКПП",
+   "en": "Automatic Transmission System Malfunction",
+   "fam": "",
+   "node": "automatic transmission system"
+  },
+  {
+   "code": "P1738",
+   "brand": "nissan",
+   "ru": "Неисправность системы АКПП",
+   "en": "Automatic Transmission System Malfunction",
+   "fam": "",
+   "node": "automatic transmission system"
+  },
+  {
+   "code": "P1739",
+   "brand": "nissan",
+   "ru": "Неисправность системы АКПП",
+   "en": "Automatic Transmission System Malfunction",
+   "fam": "",
+   "node": "automatic transmission system"
+  },
+  {
+   "code": "P1768",
+   "brand": "nissan",
+   "ru": "Неисправность системы АКПП",
+   "en": "Automatic Transmission System Malfunction",
+   "fam": "",
+   "node": "automatic transmission system"
+  },
+  {
+   "code": "P1773",
+   "brand": "nissan",
+   "ru": "Неисправность системы АКПП",
+   "en": "Automatic Transmission System Malfunction",
+   "fam": "",
+   "node": "automatic transmission system"
+  },
+  {
+   "code": "P1660",
+   "brand": "nissan",
+   "ru": "Линия данных АКПП — двигатель: неисправность",
+   "en": "A/T FI Data Line Failure",
+   "fam": "",
+   "node": "a t fi data line failure"
+  },
+  {
+   "code": "P1672",
+   "brand": "nissan",
+   "ru": "Линия данных АКПП — двигатель: неисправность",
+   "en": "A/T FI Data Line Failure",
+   "fam": "",
+   "node": "a t fi data line failure"
+  },
+  {
+   "code": "P1671",
+   "brand": "nissan",
+   "ru": "Линия данных АКПП — двигатель: нет сигнала",
+   "en": "A/T FI Data Line No Signal",
+   "fam": "",
+   "node": "a t fi data line no"
+  },
+  {
+   "code": "P1676",
+   "brand": "nissan",
+   "ru": "Линия данных противобуксовки — двигатель: нет сигнала",
+   "en": "Traction Control System FI Data Line No Signal",
+   "fam": "",
+   "node": "traction control system fi data line no"
+  },
+  {
+   "code": "P1677",
+   "brand": "nissan",
+   "ru": "Линия данных противобуксовки — двигатель: неисправность",
+   "en": "Traction Control System FI Data Line Failure",
+   "fam": "",
+   "node": "traction control system fi data line failure"
+  },
+  {
+   "code": "P1678",
+   "brand": "nissan",
+   "ru": "Сигнальная линия FPTDR: неисправность",
+   "en": "FPTDR Signal Line Failure",
+   "fam": "",
+   "node": "ru:сигнальная линия fptdr"
+  },
+  {
+   "code": "P1681",
+   "brand": "nissan",
+   "ru": "Сигнал A АКПП — двигатель: низкий",
+   "en": "A/T FI Signal A Low Input",
+   "fam": "",
+   "node": "a t fi"
+  },
+  {
+   "code": "P1682",
+   "brand": "nissan",
+   "ru": "Сигнал A АКПП — двигатель: высокий",
+   "en": "A/T FI Signal A High Input",
+   "fam": "",
+   "node": "a t fi"
+  },
+  {
+   "code": "P1686",
+   "brand": "nissan",
+   "ru": "Сигнал B АКПП — двигатель: низкий",
+   "en": "A/T FI Signal B Low Input",
+   "fam": "",
+   "node": "a t fi"
+  },
+  {
+   "code": "P1687",
+   "brand": "nissan",
+   "ru": "Сигнал B АКПП — двигатель: высокий",
+   "en": "A/T FI Signal B High Input",
+   "fam": "",
+   "node": "a t fi"
+  },
+  {
+   "code": "P1690",
+   "brand": "nissan",
+   "ru": "Линия STB противобуксовки: неисправность",
+   "en": "Traction Control System STB Line Failure",
+   "fam": "",
+   "node": "traction control system stb line failure"
+  },
+  {
+   "code": "P1696",
+   "brand": "nissan",
+   "ru": "Сигнал отсечки топлива от противобуксовки: низкий",
+   "en": "Traction Control Fuel Cut Signal Low Input",
+   "fam": "",
+   "node": "traction control fuel cut"
+  },
+  {
+   "code": "P1697",
+   "brand": "nissan",
+   "ru": "Сигнал отсечки топлива от противобуксовки: высокий",
+   "en": "Traction Control Fuel Cut Signal High Input",
+   "fam": "",
+   "node": "traction control fuel cut"
+  },
+  {
+   "code": "P1701",
+   "brand": "nissan",
+   "ru": "Коррекция смеси",
+   "en": "Fuel Trim",
+   "fam": "",
+   "node": "fuel trim"
+  },
+  {
+   "code": "P1705",
+   "brand": "nissan",
+   "ru": "Датчик положения дросселя для АКПП: цепь",
+   "en": "Throttle Position Sensor Circuit AT",
+   "fam": "",
+   "node": "throttle position"
+  },
+  {
+   "code": "P1706",
+   "brand": "nissan",
+   "ru": "Выключатель P/N",
+   "en": "Park Neutral Position PNP Switch",
+   "fam": "",
+   "node": "park neutral position pnp"
+  },
+  {
+   "code": "P1715",
+   "brand": "nissan",
+   "ru": "Вариатор: датчик оборотов входного вала",
+   "en": "",
+   "fam": "trans_iss",
+   "node": "fam:trans_iss"
+  },
+  {
+   "code": "P1740",
+   "brand": "nissan",
+   "ru": "Соленоид выбора блокировки гидротрансформатора: цепь",
+   "en": "",
+   "fam": "tcc",
+   "node": "fam:tcc"
+  },
+  {
+   "code": "P1753",
+   "brand": "nissan",
+   "ru": "Клапан блокировки ГДТ «A»: неисправность",
+   "en": "TCM A/T Lockup Solenoid Valve \"A\" Fault",
+   "fam": "",
+   "node": "tcm a t lockup solenoid valve a fault"
+  },
+  {
+   "code": "P1758",
+   "brand": "nissan",
+   "ru": "Клапан блокировки ГДТ «B»: неисправность",
+   "en": "TCM A/T Lockup Solenoid Valve \"B\" Fault",
+   "fam": "",
+   "node": "tcm a t lockup solenoid valve b fault"
+  },
+  {
+   "code": "P1760",
+   "brand": "nissan",
+   "ru": "Клапан муфты свободного хода: цепь",
+   "en": "Overrun Clutch Solenoid Valve Circuit",
+   "fam": "",
+   "node": "overrun clutch solenoid"
+  },
+  {
+   "code": "P1777",
+   "brand": "nissan",
+   "ru": "Вариатор: шаговый мотор, цепь",
+   "en": "",
+   "fam": "trans_sol",
+   "node": "fam:trans_sol"
+  },
+  {
+   "code": "P1780",
+   "brand": "nissan",
+   "ru": "Кнопка OD Off не нажималась во время самотеста",
+   "en": "Transmission Control Switch Circuit Overdrive Off Switch Not Cycled During The Self Test",
+   "fam": "",
+   "node": "transmission control"
+  },
+  {
+   "code": "P1781",
+   "brand": "nissan",
+   "ru": "Выключатель понижающей 4x4: вне диапазона",
+   "en": "Transmission 4x4 Low Switch Out Of Range Fault",
+   "fam": "",
+   "node": "transmission 4x4"
+  },
+  {
+   "code": "P1783",
+   "brand": "nissan",
+   "ru": "Температура масла коробки: высокий сигнал",
+   "en": "Transmission Fluid Temperature High Input",
+   "fam": "",
+   "node": "transmission fluid temperature"
+  },
+  {
+   "code": "P1788",
+   "brand": "nissan",
+   "ru": "Клапан регулирования давления B: обрыв",
+   "en": "Pressure Control Solenoid B Circuit Open",
+   "fam": "",
+   "node": "pressure control solenoid b"
+  },
+  {
+   "code": "P1789",
+   "brand": "nissan",
+   "ru": "Клапан регулирования давления B: замыкание",
+   "en": "Pressure Control Solenoid B Circuit Shorted",
+   "fam": "",
+   "node": "pressure control solenoid b"
+  },
+  {
+   "code": "P1790",
+   "brand": "nissan",
+   "ru": "Датчик положения дросселя: механическая цепь",
+   "en": "TP Mechanical Circuit",
+   "fam": "",
+   "node": "tp mechanical"
+  },
+  {
+   "code": "P1791",
+   "brand": "nissan",
+   "ru": "Датчик положения дросселя: электрическая цепь",
+   "en": "TP Electric Circuit",
+   "fam": "",
+   "node": "tp electric"
+  },
+  {
+   "code": "P1792",
+   "brand": "nissan",
+   "ru": "Датчик атмосферного давления: цепь",
+   "en": "Barometer Pressure Circuit",
+   "fam": "",
+   "node": "barometer pressure"
+  },
+  {
+   "code": "P1793",
+   "brand": "nissan",
+   "ru": "Сигнал объёма впускного воздуха: цепь",
+   "en": "Intake Air Volume Circuit",
+   "fam": "",
+   "node": "intake air volume"
+  },
+  {
+   "code": "P1794",
+   "brand": "nissan",
+   "ru": "Прямое питание блока двигателя от АКБ: цепь",
+   "en": "Powertrain Control Module Battery Direct Power Circuit",
+   "fam": "",
+   "node": "powertrain control module battery direct power"
+  },
+  {
+   "code": "P1795",
+   "brand": "nissan",
+   "ru": "Выключатель холостого хода: цепь",
+   "en": "Idle Switch Circuit",
+   "fam": "",
+   "node": "ru:выключатель холостого хода"
+  },
+  {
+   "code": "P1796",
+   "brand": "nissan",
+   "ru": "Выключатель кикдауна: цепь",
+   "en": "Kick Down Switch Circuit",
+   "fam": "",
+   "node": "kick down"
+  },
+  {
+   "code": "P1797",
+   "brand": "nissan",
+   "ru": "Выключатель P/N: обрыв или замыкание",
+   "en": "P/N Switch Open Or Short Circuit",
+   "fam": "",
+   "node": "p n switch"
+  },
+  {
+   "code": "P1798",
+   "brand": "nissan",
+   "ru": "Сигнал температуры ОЖ: цепь",
+   "en": "Coolant Temperature Circuit",
+   "fam": "",
+   "node": "coolant temperature"
+  },
+  {
+   "code": "P1799",
+   "brand": "nissan",
+   "ru": "Кнопка удержания передачи (HOLD): цепь",
+   "en": "Hold Switch Circuit",
+   "fam": "",
+   "node": "ru:кнопка удержания передачи (hold)"
+  },
+  {
+   "code": "P1900",
+   "brand": "nissan",
+   "ru": "Датчик оборотов турбины: прерывистый сигнал",
+   "en": "Turbine Speed Sensor Circuit Intermittent",
+   "fam": "",
+   "node": "turbine speed"
+  },
+  {
+   "code": "P1901",
+   "brand": "nissan",
+   "ru": "Блокировка гидротрансформатора: прерывистая неисправность цепи",
+   "en": "Torque Converter Clutch Circuit Intermittent",
+   "fam": "",
+   "node": "torque converter clutch"
+  }
+ ]
+}

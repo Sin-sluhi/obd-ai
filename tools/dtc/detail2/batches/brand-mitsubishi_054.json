@@ -1,0 +1,306 @@
+{
+ "name": "brand-mitsubishi_054",
+ "series": "brand",
+ "brand": "mitsubishi",
+ "nodes": [
+  "5 volt supply",
+  "a t control",
+  "alternator fr terminal",
+  "battery temperature sensor",
+  "evap leak monitor pinched hose detected",
+  "evap purge control",
+  "evap ventilation",
+  "evap ventilation switch or mechanical fault",
+  "fuel pressure",
+  "ignition timing adjustment",
+  "induction control motor position sensor fault",
+  "manifold differential pressure",
+  "no 5 volt supply to map",
+  "no 5 volt supply to tp",
+  "no ccd messages from tcm",
+  "no charge in map from start to run",
+  "p n position transaxle",
+  "pcm ect level",
+  "pcm failure eeprom write denied",
+  "pulse generator assembly",
+  "ru:временами пропадает сигнал датчика распредвала или коленвала",
+  "ru:реле высокой скорости вентилятора конденсатора",
+  "ru:реле высокой скорости вентилятора радиатора",
+  "ru:реле низкой скорости вентилятора",
+  "serial communication link",
+  "solenoid assembly",
+  "target idle speed not reached",
+  "throttle position",
+  "timing belt skipped one tooth or more",
+  "traction control vacuum",
+  "traction control ventilation",
+  "turbocharger wastegate",
+  "turbocharger wastegate actuator"
+ ],
+ "codes": [
+  {
+   "code": "P1100",
+   "brand": "mitsubishi",
+   "ru": "Датчик положения мотора управления впуском: неисправность",
+   "en": "Induction Control Motor Position Sensor Fault",
+   "fam": "",
+   "node": "induction control motor position sensor fault"
+  },
+  {
+   "code": "P1101",
+   "brand": "mitsubishi",
+   "ru": "Вакуумный клапан противобуксовки: неисправность цепи",
+   "en": "Traction Control Vacuum Solenoid Circuit Fault",
+   "fam": "",
+   "node": "traction control vacuum"
+  },
+  {
+   "code": "P1102",
+   "brand": "mitsubishi",
+   "ru": "Клапан вентиляции противобуксовки: неисправность цепи",
+   "en": "Traction Control Ventilation Solenoid Circuit Fault",
+   "fam": "",
+   "node": "traction control ventilation"
+  },
+  {
+   "code": "P1103",
+   "brand": "mitsubishi",
+   "ru": "Привод вестгейта турбины",
+   "en": "Turbocharger Wastegate Actuator",
+   "fam": "",
+   "node": "turbocharger wastegate actuator"
+  },
+  {
+   "code": "P1104",
+   "brand": "mitsubishi",
+   "ru": "Клапан вестгейта турбины",
+   "en": "Turbocharger Wastegate Solenoid",
+   "fam": "",
+   "node": "turbocharger wastegate"
+  },
+  {
+   "code": "P1105",
+   "brand": "mitsubishi",
+   "ru": "Клапан давления топлива",
+   "en": "Fuel Pressure Solenoid",
+   "fam": "",
+   "node": "fuel pressure"
+  },
+  {
+   "code": "P1294",
+   "brand": "mitsubishi",
+   "ru": "Заданные обороты холостого хода не достигнуты",
+   "en": "Target Idle Speed Not Reached",
+   "fam": "",
+   "node": "target idle speed not reached"
+  },
+  {
+   "code": "P1295",
+   "brand": "mitsubishi",
+   "ru": "Нет питания 5 В на датчике положения дросселя",
+   "en": "No 5 Volt Supply To TP Sensor",
+   "fam": "",
+   "node": "no 5 volt supply to tp"
+  },
+  {
+   "code": "P1296",
+   "brand": "mitsubishi",
+   "ru": "Нет питания 5 В на датчике давления во впуске",
+   "en": "No 5 Volt Supply To MAP Sensor",
+   "fam": "",
+   "node": "no 5 volt supply to map"
+  },
+  {
+   "code": "P1297",
+   "brand": "mitsubishi",
+   "ru": "Давление во впуске не меняется после пуска",
+   "en": "No Charge In MAP From Start To Run",
+   "fam": "",
+   "node": "no charge in map from start to run"
+  },
+  {
+   "code": "P1300",
+   "brand": "mitsubishi",
+   "ru": "Регулировка угла зажигания: цепь",
+   "en": "Ignition Timing Adjustment Circuit",
+   "fam": "",
+   "node": "ignition timing adjustment"
+  },
+  {
+   "code": "P1390",
+   "brand": "mitsubishi",
+   "ru": "Ремень ГРМ перескочил на зуб или больше",
+   "en": "Timing Belt Skipped One Tooth Or More",
+   "fam": "",
+   "node": "timing belt skipped one tooth or more"
+  },
+  {
+   "code": "P1391",
+   "brand": "mitsubishi",
+   "ru": "Временами пропадает сигнал датчика распредвала или коленвала",
+   "en": "Intermittent Loss Of CMP Or CKP Sensor Signals",
+   "fam": "",
+   "node": "ru:временами пропадает сигнал датчика распредвала или коленвала"
+  },
+  {
+   "code": "P1400",
+   "brand": "mitsubishi",
+   "ru": "Датчик перепада давления во впуске: цепь",
+   "en": "Manifold Differential Pressure Sensor Circuit",
+   "fam": "",
+   "node": "manifold differential pressure"
+  },
+  {
+   "code": "P1443",
+   "brand": "mitsubishi",
+   "ru": "Клапан продувки адсорбера 2: неисправность цепи",
+   "en": "EVAP Purge Control Solenoid 2 Circuit Fault",
+   "fam": "",
+   "node": "evap purge control"
+  },
+  {
+   "code": "P1486",
+   "brand": "mitsubishi",
+   "ru": "Контроль утечек паров топлива: пережат шланг",
+   "en": "EVAP Leak Monitor Pinched Hose Detected",
+   "fam": "",
+   "node": "evap leak monitor pinched hose detected"
+  },
+  {
+   "code": "P1487",
+   "brand": "mitsubishi",
+   "ru": "Реле высокой скорости вентилятора радиатора: неисправность цепи",
+   "en": "High Speed Radiator Fan Control Relay Circuit Fault",
+   "fam": "",
+   "node": "ru:реле высокой скорости вентилятора радиатора"
+  },
+  {
+   "code": "P1489",
+   "brand": "mitsubishi",
+   "ru": "Реле высокой скорости вентилятора конденсатора: неисправность",
+   "en": "High Speed Condenser Fan Control Relay Fault",
+   "fam": "",
+   "node": "ru:реле высокой скорости вентилятора конденсатора"
+  },
+  {
+   "code": "P1490",
+   "brand": "mitsubishi",
+   "ru": "Реле низкой скорости вентилятора: неисправность",
+   "en": "Low Speed Fan Control Relay Fault",
+   "fam": "",
+   "node": "ru:реле низкой скорости вентилятора"
+  },
+  {
+   "code": "P1492",
+   "brand": "mitsubishi",
+   "ru": "Датчик температуры АКБ: высокое напряжение",
+   "en": "Battery Temperature Sensor High Voltage",
+   "fam": "",
+   "node": "battery temperature sensor"
+  },
+  {
+   "code": "P1494",
+   "brand": "mitsubishi",
+   "ru": "Вентиляция системы улавливания паров: выключатель или механическая неисправность",
+   "en": "EVAP Ventilation Switch Or Mechanical Fault",
+   "fam": "",
+   "node": "evap ventilation switch or mechanical fault"
+  },
+  {
+   "code": "P1495",
+   "brand": "mitsubishi",
+   "ru": "Клапан вентиляции системы улавливания паров: неисправность цепи",
+   "en": "EVAP Ventilation Solenoid Circuit Fault",
+   "fam": "",
+   "node": "evap ventilation"
+  },
+  {
+   "code": "P1496",
+   "brand": "mitsubishi",
+   "ru": "Питание 5 В слишком низкое",
+   "en": "5 Volt Supply Output Too Low",
+   "fam": "",
+   "node": "5 volt supply"
+  },
+  {
+   "code": "P1500",
+   "brand": "mitsubishi",
+   "ru": "Генератор, клемма FR: цепь",
+   "en": "Alternator FR Terminal Circuit",
+   "fam": "",
+   "node": "alternator fr terminal"
+  },
+  {
+   "code": "P1600",
+   "brand": "mitsubishi",
+   "ru": "Последовательная линия связи",
+   "en": "Serial Communication Link",
+   "fam": "",
+   "node": "serial communication link"
+  },
+  {
+   "code": "P1696",
+   "brand": "mitsubishi",
+   "ru": "Блок двигателя: запись в EEPROM запрещена",
+   "en": "PCM Failure EEPROM Write Denied",
+   "fam": "",
+   "node": "pcm failure eeprom write denied"
+  },
+  {
+   "code": "P1698",
+   "brand": "mitsubishi",
+   "ru": "Нет сообщений CCD от блока коробки",
+   "en": "No CCD Messages From TCM",
+   "fam": "",
+   "node": "no ccd messages from tcm"
+  },
+  {
+   "code": "P1715",
+   "brand": "mitsubishi",
+   "ru": "Датчики оборотов (импульсные генераторы) коробки",
+   "en": "Pulse Generator Assembly",
+   "fam": "",
+   "node": "pulse generator assembly"
+  },
+  {
+   "code": "P1750",
+   "brand": "mitsubishi",
+   "ru": "Блок клапанов коробки",
+   "en": "Solenoid Assembly",
+   "fam": "",
+   "node": "solenoid assembly"
+  },
+  {
+   "code": "P1751",
+   "brand": "mitsubishi",
+   "ru": "Реле управления АКПП",
+   "en": "A/T Control Relay",
+   "fam": "",
+   "node": "a t control"
+  },
+  {
+   "code": "P1791",
+   "brand": "mitsubishi",
+   "ru": "Сигнал температуры ОЖ от блока двигателя к блоку коробки: неисправность",
+   "en": "PCM ECT Level Signal To TCM Circuit Fault",
+   "fam": "",
+   "node": "pcm ect level"
+  },
+  {
+   "code": "P1795",
+   "brand": "mitsubishi",
+   "ru": "Сигнал положения дросселя к блоку коробки: цепь",
+   "en": "Throttle Position Input Circuit To TCM",
+   "fam": "",
+   "node": "throttle position"
+  },
+  {
+   "code": "P1899",
+   "brand": "mitsubishi",
+   "ru": "Выключатель P/N (диапазон коробки): неисправность цепи",
+   "en": "P/N Position Transaxle Range Switch Circuit Fault",
+   "fam": "",
+   "node": "p n position transaxle"
+  }
+ ]
+}

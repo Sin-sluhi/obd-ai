@@ -1,0 +1,386 @@
+{
+ "name": "sae_164",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "clutch a motor driver current temperature too",
+  "clutch a motor overspeed",
+  "clutch a motor phase u v w",
+  "clutch a motor position",
+  "clutch a motor underspeed",
+  "clutch a pressure",
+  "clutch a pump motor",
+  "clutch b motor driver current temperature too",
+  "clutch b motor overspeed",
+  "clutch b motor phase u v w",
+  "clutch b motor position",
+  "clutch b motor underspeed",
+  "clutch b pressure",
+  "clutch b pump motor",
+  "ion current sense",
+  "ion sense module supply voltage",
+  "shift motor phase u v w"
+ ],
+ "codes": [
+  {
+   "code": "P28B6",
+   "brand": "",
+   "ru": "Ионный ток цилиндра 10: низкий уровень в цепи обратной связи",
+   "en": "Cylinder 10 Ion Current Sense Circuit Low",
+   "fam": "",
+   "node": "ion current sense"
+  },
+  {
+   "code": "P28B7",
+   "brand": "",
+   "ru": "Ионный ток цилиндра 10: высокий уровень в цепи обратной связи",
+   "en": "Cylinder 10 Ion Current Sense Circuit High",
+   "fam": "",
+   "node": "ion current sense"
+  },
+  {
+   "code": "P28B8",
+   "brand": "",
+   "ru": "Ионный ток цилиндра 11: цепь обратной связи",
+   "en": "Cylinder 11 Ion Current Sense Circuit",
+   "fam": "",
+   "node": "ion current sense"
+  },
+  {
+   "code": "P28B9",
+   "brand": "",
+   "ru": "Ионный ток цилиндра 11: цепь обратной связи вне диапазона",
+   "en": "Cylinder 11 Ion Current Sense Circuit Range/Performance",
+   "fam": "",
+   "node": "ion current sense"
+  },
+  {
+   "code": "P28BA",
+   "brand": "",
+   "ru": "Ионный ток цилиндра 11: низкий уровень в цепи обратной связи",
+   "en": "Cylinder 11 Ion Current Sense Circuit Low",
+   "fam": "",
+   "node": "ion current sense"
+  },
+  {
+   "code": "P28BB",
+   "brand": "",
+   "ru": "Ионный ток цилиндра 11: высокий уровень в цепи обратной связи",
+   "en": "Cylinder 11 Ion Current Sense Circuit High",
+   "fam": "",
+   "node": "ion current sense"
+  },
+  {
+   "code": "P28BC",
+   "brand": "",
+   "ru": "Ионный ток цилиндра 12: цепь обратной связи",
+   "en": "Cylinder 12 Ion Current Sense Circuit",
+   "fam": "",
+   "node": "ion current sense"
+  },
+  {
+   "code": "P28BD",
+   "brand": "",
+   "ru": "Ионный ток цилиндра 12: цепь обратной связи вне диапазона",
+   "en": "Cylinder 12 Ion Current Sense Circuit Range/Performance",
+   "fam": "",
+   "node": "ion current sense"
+  },
+  {
+   "code": "P28BE",
+   "brand": "",
+   "ru": "Ионный ток цилиндра 12: низкий уровень в цепи обратной связи",
+   "en": "Cylinder 12 Ion Current Sense Circuit Low",
+   "fam": "",
+   "node": "ion current sense"
+  },
+  {
+   "code": "P28BF",
+   "brand": "",
+   "ru": "Ионный ток цилиндра 12: высокий уровень в цепи обратной связи",
+   "en": "Cylinder 12 Ion Current Sense Circuit High",
+   "fam": "",
+   "node": "ion current sense"
+  },
+  {
+   "code": "P28C0",
+   "brand": "",
+   "ru": "Блок ионного контроля зажигания: цепь питания",
+   "en": "Ion Sense Module Supply Voltage Circuit",
+   "fam": "",
+   "node": "ion sense module supply voltage"
+  },
+  {
+   "code": "P28C1",
+   "brand": "",
+   "ru": "Блок ионного контроля зажигания: низкое напряжение питания",
+   "en": "Ion Sense Module Supply Voltage Low",
+   "fam": "",
+   "node": "ion sense module supply voltage"
+  },
+  {
+   "code": "P28C2",
+   "brand": "",
+   "ru": "Блок ионного контроля зажигания: высокое напряжение питания",
+   "en": "Ion Sense Module Supply Voltage High",
+   "fam": "",
+   "node": "ion sense module supply voltage"
+  },
+  {
+   "code": "P28C4",
+   "brand": "",
+   "ru": "Мотор сцепления A, фазы U-V-W: низкий уровень сигнала в цепи",
+   "en": "Clutch A Motor Phase U-V-W Circuit Low",
+   "fam": "",
+   "node": "clutch a motor phase u v w"
+  },
+  {
+   "code": "P28C5",
+   "brand": "",
+   "ru": "Мотор сцепления A, фазы U-V-W: высокий уровень сигнала в цепи",
+   "en": "Clutch A Motor Phase U-V-W Circuit High",
+   "fam": "",
+   "node": "clutch a motor phase u v w"
+  },
+  {
+   "code": "P28C6",
+   "brand": "",
+   "ru": "Мотор сцепления A, фазы U-V-W: обрыв цепи",
+   "en": "Clutch A Motor Phase U-V-W Circuit/Open",
+   "fam": "",
+   "node": "clutch a motor phase u v w"
+  },
+  {
+   "code": "P28C7",
+   "brand": "",
+   "ru": "Мотор сцепления A, фазы U-V-W: работа нарушена",
+   "en": "Clutch A Motor Phase U-V-W Performance",
+   "fam": "",
+   "node": "clutch a motor phase u v w"
+  },
+  {
+   "code": "P28C8",
+   "brand": "",
+   "ru": "Мотор насоса сцепления A: работа нарушена",
+   "en": "Clutch A Pump Motor Performance",
+   "fam": "",
+   "node": "clutch a pump motor"
+  },
+  {
+   "code": "P28C9",
+   "brand": "",
+   "ru": "Мотор сцепления A: превышена скорость вращения",
+   "en": "Clutch A Motor Overspeed",
+   "fam": "",
+   "node": "clutch a motor overspeed"
+  },
+  {
+   "code": "P28CA",
+   "brand": "",
+   "ru": "Мотор сцепления A: заниженная скорость вращения",
+   "en": "Clutch A Motor Underspeed",
+   "fam": "",
+   "node": "clutch a motor underspeed"
+  },
+  {
+   "code": "P28CB",
+   "brand": "",
+   "ru": "Датчик положения мотора сцепления A: обрыв цепи",
+   "en": "Clutch A Motor Position Sensor Circuit/Open",
+   "fam": "",
+   "node": "clutch a motor position"
+  },
+  {
+   "code": "P28CC",
+   "brand": "",
+   "ru": "Датчик положения мотора сцепления A: сигнал вне диапазона",
+   "en": "Clutch A Motor Position Sensor Circuit Range/Performance",
+   "fam": "",
+   "node": "clutch a motor position"
+  },
+  {
+   "code": "P28CD",
+   "brand": "",
+   "ru": "Датчик давления сцепления A: обрыв цепи",
+   "en": "Clutch A Pressure Sensor Circuit/Open",
+   "fam": "",
+   "node": "clutch a pressure"
+  },
+  {
+   "code": "P28CE",
+   "brand": "",
+   "ru": "Датчик давления сцепления A: низкий уровень сигнала в цепи",
+   "en": "Clutch A Pressure Sensor Circuit Low",
+   "fam": "",
+   "node": "clutch a pressure"
+  },
+  {
+   "code": "P28CF",
+   "brand": "",
+   "ru": "Датчик давления сцепления A: высокий уровень сигнала в цепи",
+   "en": "Clutch A Pressure Sensor Circuit High",
+   "fam": "",
+   "node": "clutch a pressure"
+  },
+  {
+   "code": "P28D0",
+   "brand": "",
+   "ru": "Датчик давления сцепления A: сигнал вне диапазона",
+   "en": "Clutch A Pressure Sensor Circuit Range/Performance",
+   "fam": "",
+   "node": "clutch a pressure"
+  },
+  {
+   "code": "P28D1",
+   "brand": "",
+   "ru": "Мотор сцепления A: перегрузка драйвера по току / перегрев",
+   "en": "Clutch A Motor Driver Current/Temperature Too High",
+   "fam": "",
+   "node": "clutch a motor driver current temperature too"
+  },
+  {
+   "code": "P28D2",
+   "brand": "",
+   "ru": "Мотор сцепления B, фазы U-V-W: низкий уровень сигнала в цепи",
+   "en": "Clutch B Motor Phase U-V-W Circuit Low",
+   "fam": "",
+   "node": "clutch b motor phase u v w"
+  },
+  {
+   "code": "P28D3",
+   "brand": "",
+   "ru": "Мотор сцепления B, фазы U-V-W: высокий уровень сигнала в цепи",
+   "en": "Clutch B Motor Phase U-V-W Circuit High",
+   "fam": "",
+   "node": "clutch b motor phase u v w"
+  },
+  {
+   "code": "P28D4",
+   "brand": "",
+   "ru": "Мотор сцепления B, фазы U-V-W: обрыв цепи",
+   "en": "Clutch B Motor Phase U-V-W Circuit/Open",
+   "fam": "",
+   "node": "clutch b motor phase u v w"
+  },
+  {
+   "code": "P28D5",
+   "brand": "",
+   "ru": "Мотор сцепления B, фазы U-V-W: работа нарушена",
+   "en": "Clutch B Motor Phase U-V-W Performance",
+   "fam": "",
+   "node": "clutch b motor phase u v w"
+  },
+  {
+   "code": "P28D6",
+   "brand": "",
+   "ru": "Мотор сцепления B: перегрузка драйвера по току / перегрев",
+   "en": "Clutch B Motor Driver Current/Temperature Too High",
+   "fam": "",
+   "node": "clutch b motor driver current temperature too"
+  },
+  {
+   "code": "P28D7",
+   "brand": "",
+   "ru": "Мотор насоса сцепления B: работа нарушена",
+   "en": "Clutch B Pump Motor Performance",
+   "fam": "",
+   "node": "clutch b pump motor"
+  },
+  {
+   "code": "P28D8",
+   "brand": "",
+   "ru": "Мотор сцепления B: превышена скорость вращения",
+   "en": "Clutch B Motor Overspeed",
+   "fam": "",
+   "node": "clutch b motor overspeed"
+  },
+  {
+   "code": "P28D9",
+   "brand": "",
+   "ru": "Мотор сцепления B: заниженная скорость вращения",
+   "en": "Clutch B Motor Underspeed",
+   "fam": "",
+   "node": "clutch b motor underspeed"
+  },
+  {
+   "code": "P28DA",
+   "brand": "",
+   "ru": "Датчик положения мотора сцепления B: обрыв цепи",
+   "en": "Clutch B Motor Position Sensor Circuit/Open",
+   "fam": "",
+   "node": "clutch b motor position"
+  },
+  {
+   "code": "P28DB",
+   "brand": "",
+   "ru": "Датчик положения мотора сцепления B: сигнал вне диапазона",
+   "en": "Clutch B Motor Position Sensor Circuit Range/Performance",
+   "fam": "",
+   "node": "clutch b motor position"
+  },
+  {
+   "code": "P28DC",
+   "brand": "",
+   "ru": "Датчик давления сцепления B: обрыв цепи",
+   "en": "Clutch B Pressure Sensor Circuit/Open",
+   "fam": "",
+   "node": "clutch b pressure"
+  },
+  {
+   "code": "P28DD",
+   "brand": "",
+   "ru": "Датчик давления сцепления B: низкий уровень сигнала в цепи",
+   "en": "Clutch B Pressure Sensor Circuit Low",
+   "fam": "",
+   "node": "clutch b pressure"
+  },
+  {
+   "code": "P28DE",
+   "brand": "",
+   "ru": "Датчик давления сцепления B: высокий уровень сигнала в цепи",
+   "en": "Clutch B Pressure Sensor Circuit High",
+   "fam": "",
+   "node": "clutch b pressure"
+  },
+  {
+   "code": "P28DF",
+   "brand": "",
+   "ru": "Датчик давления сцепления B: сигнал вне диапазона",
+   "en": "Clutch B Pressure Sensor Circuit Range/Performance",
+   "fam": "",
+   "node": "clutch b pressure"
+  },
+  {
+   "code": "P28E0",
+   "brand": "",
+   "ru": "Мотор переключения передач, фазы U-V-W: низкий уровень сигнала в цепи",
+   "en": "Shift Motor Phase U-V-W Circuit Low",
+   "fam": "",
+   "node": "shift motor phase u v w"
+  },
+  {
+   "code": "P28E1",
+   "brand": "",
+   "ru": "Мотор переключения передач, фазы U-V-W: высокий уровень сигнала в цепи",
+   "en": "Shift Motor Phase U-V-W Circuit High",
+   "fam": "",
+   "node": "shift motor phase u v w"
+  },
+  {
+   "code": "P28E2",
+   "brand": "",
+   "ru": "Мотор переключения передач, фазы U-V-W: обрыв цепи",
+   "en": "Shift Motor Phase U-V-W Circuit/Open",
+   "fam": "",
+   "node": "shift motor phase u v w"
+  },
+  {
+   "code": "P28E3",
+   "brand": "",
+   "ru": "Мотор переключения передач, фазы U-V-W: работа нарушена",
+   "en": "Shift Motor Phase U-V-W Performance",
+   "fam": "",
+   "node": "shift motor phase u v w"
+  }
+ ]
+}

@@ -1,0 +1,294 @@
+{
+ "name": "sae_045",
+ "series": "sae",
+ "brand": "",
+ "nodes": [
+  "combustion engine producing insufficent torque",
+  "crankshaft camshaft loss of synchronization",
+  "fam:knock",
+  "knock combustion vibration sensor c",
+  "knock combustion vibration sensor d"
+ ],
+ "codes": [
+  {
+   "code": "P0324",
+   "brand": "",
+   "ru": "Система управления детонацией: ошибка",
+   "en": "",
+   "fam": "knock",
+   "node": "fam:knock"
+  },
+  {
+   "code": "P0325",
+   "brand": "",
+   "ru": "Датчик детонации 1 (банк 1): цепь",
+   "en": "",
+   "fam": "knock",
+   "node": "fam:knock"
+  },
+  {
+   "code": "P0326",
+   "brand": "",
+   "ru": "Датчик детонации 1 (банк 1): показания вне диапазона",
+   "en": "",
+   "fam": "knock",
+   "node": "fam:knock"
+  },
+  {
+   "code": "P0327",
+   "brand": "",
+   "ru": "Датчик детонации 1 (банк 1): низкий сигнал",
+   "en": "",
+   "fam": "knock",
+   "node": "fam:knock"
+  },
+  {
+   "code": "P0328",
+   "brand": "",
+   "ru": "Датчик детонации 1 (банк 1): высокий сигнал",
+   "en": "",
+   "fam": "knock",
+   "node": "fam:knock"
+  },
+  {
+   "code": "P0329",
+   "brand": "",
+   "ru": "Датчик детонации 1 (банк 1): прерывистый сигнал",
+   "en": "",
+   "fam": "knock",
+   "node": "fam:knock"
+  },
+  {
+   "code": "P0330",
+   "brand": "",
+   "ru": "Датчик детонации 2 (банк 2): цепь",
+   "en": "",
+   "fam": "knock",
+   "node": "fam:knock"
+  },
+  {
+   "code": "P0331",
+   "brand": "",
+   "ru": "Датчик детонации 2 (банк 2): показания вне диапазона",
+   "en": "",
+   "fam": "knock",
+   "node": "fam:knock"
+  },
+  {
+   "code": "P0332",
+   "brand": "",
+   "ru": "Датчик детонации 2 (банк 2): низкий сигнал",
+   "en": "",
+   "fam": "knock",
+   "node": "fam:knock"
+  },
+  {
+   "code": "P0333",
+   "brand": "",
+   "ru": "Датчик детонации 2 (банк 2): высокий сигнал",
+   "en": "",
+   "fam": "knock",
+   "node": "fam:knock"
+  },
+  {
+   "code": "P0334",
+   "brand": "",
+   "ru": "Датчик детонации 2 (банк 2): прерывистый сигнал",
+   "en": "",
+   "fam": "knock",
+   "node": "fam:knock"
+  },
+  {
+   "code": "P2336",
+   "brand": "",
+   "ru": "Детонация в цилиндре 1 выше порога",
+   "en": "",
+   "fam": "knock",
+   "node": "fam:knock"
+  },
+  {
+   "code": "P2337",
+   "brand": "",
+   "ru": "Детонация в цилиндре 2 выше порога",
+   "en": "",
+   "fam": "knock",
+   "node": "fam:knock"
+  },
+  {
+   "code": "P2338",
+   "brand": "",
+   "ru": "Детонация в цилиндре 3 выше порога",
+   "en": "",
+   "fam": "knock",
+   "node": "fam:knock"
+  },
+  {
+   "code": "P2339",
+   "brand": "",
+   "ru": "Детонация в цилиндре 4 выше порога",
+   "en": "",
+   "fam": "knock",
+   "node": "fam:knock"
+  },
+  {
+   "code": "P2340",
+   "brand": "",
+   "ru": "Детонация в цилиндре 5 выше порога",
+   "en": "",
+   "fam": "knock",
+   "node": "fam:knock"
+  },
+  {
+   "code": "P2341",
+   "brand": "",
+   "ru": "Детонация в цилиндре 6 выше порога",
+   "en": "",
+   "fam": "knock",
+   "node": "fam:knock"
+  },
+  {
+   "code": "P2342",
+   "brand": "",
+   "ru": "Детонация в цилиндре 7 выше порога",
+   "en": "",
+   "fam": "knock",
+   "node": "fam:knock"
+  },
+  {
+   "code": "P2343",
+   "brand": "",
+   "ru": "Детонация в цилиндре 8 выше порога",
+   "en": "",
+   "fam": "knock",
+   "node": "fam:knock"
+  },
+  {
+   "code": "P2344",
+   "brand": "",
+   "ru": "Детонация в цилиндре 9 выше порога",
+   "en": "",
+   "fam": "knock",
+   "node": "fam:knock"
+  },
+  {
+   "code": "P2345",
+   "brand": "",
+   "ru": "Детонация в цилиндре 10 выше порога",
+   "en": "",
+   "fam": "knock",
+   "node": "fam:knock"
+  },
+  {
+   "code": "P2346",
+   "brand": "",
+   "ru": "Детонация в цилиндре 11 выше порога",
+   "en": "",
+   "fam": "knock",
+   "node": "fam:knock"
+  },
+  {
+   "code": "P2347",
+   "brand": "",
+   "ru": "Детонация в цилиндре 12 выше порога",
+   "en": "",
+   "fam": "knock",
+   "node": "fam:knock"
+  },
+  {
+   "code": "P032A",
+   "brand": "",
+   "ru": "Датчик детонации C: цепь",
+   "en": "Knock/Combustion Vibration Sensor C Circuit",
+   "fam": "",
+   "node": "knock combustion vibration sensor c"
+  },
+  {
+   "code": "P032B",
+   "brand": "",
+   "ru": "Датчик детонации C: сигнал вне диапазона",
+   "en": "Knock/Combustion Vibration Sensor C Circuit Range/Performance",
+   "fam": "",
+   "node": "knock combustion vibration sensor c"
+  },
+  {
+   "code": "P032C",
+   "brand": "",
+   "ru": "Датчик детонации C: низкий уровень сигнала в цепи",
+   "en": "Knock/Combustion Vibration Sensor C Circuit Low",
+   "fam": "",
+   "node": "knock combustion vibration sensor c"
+  },
+  {
+   "code": "P032D",
+   "brand": "",
+   "ru": "Датчик детонации C: высокий уровень сигнала в цепи",
+   "en": "Knock/Combustion Vibration Sensor C Circuit High",
+   "fam": "",
+   "node": "knock combustion vibration sensor c"
+  },
+  {
+   "code": "P032E",
+   "brand": "",
+   "ru": "Датчик детонации C: прерывистый сигнал в цепи",
+   "en": "Knock/Combustion Vibration Sensor C Circuit Intermittent",
+   "fam": "",
+   "node": "knock combustion vibration sensor c"
+  },
+  {
+   "code": "P032F",
+   "brand": "",
+   "ru": "ДВС выдаёт недостаточный крутящий момент",
+   "en": "Combustion Engine Producing Insufficent Torque",
+   "fam": "",
+   "node": "combustion engine producing insufficent torque"
+  },
+  {
+   "code": "P033A",
+   "brand": "",
+   "ru": "Датчик детонации D: цепь",
+   "en": "Knock/Combustion Vibration Sensor D Circuit",
+   "fam": "",
+   "node": "knock combustion vibration sensor d"
+  },
+  {
+   "code": "P033B",
+   "brand": "",
+   "ru": "Датчик детонации D: сигнал вне диапазона",
+   "en": "Knock/Combustion Vibration Sensor D Circuit Range/Performance",
+   "fam": "",
+   "node": "knock combustion vibration sensor d"
+  },
+  {
+   "code": "P033C",
+   "brand": "",
+   "ru": "Датчик детонации D: низкий уровень сигнала в цепи",
+   "en": "Knock/Combustion Vibration Sensor D Circuit Low",
+   "fam": "",
+   "node": "knock combustion vibration sensor d"
+  },
+  {
+   "code": "P033D",
+   "brand": "",
+   "ru": "Датчик детонации D: высокий уровень сигнала в цепи",
+   "en": "Knock/Combustion Vibration Sensor D Circuit High",
+   "fam": "",
+   "node": "knock combustion vibration sensor d"
+  },
+  {
+   "code": "P033E",
+   "brand": "",
+   "ru": "Датчик детонации D: прерывистый сигнал в цепи",
+   "en": "Knock/Combustion Vibration Sensor D Circuit Intermittent",
+   "fam": "",
+   "node": "knock combustion vibration sensor d"
+  },
+  {
+   "code": "P033F",
+   "brand": "",
+   "ru": "Потеря синхронизации коленвала и распредвала",
+   "en": "Crankshaft/Camshaft Loss Of Synchronization",
+   "fam": "",
+   "node": "crankshaft camshaft loss of synchronization"
+  }
+ ]
+}
