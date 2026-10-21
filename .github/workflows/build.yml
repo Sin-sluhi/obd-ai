@@ -66,7 +66,7 @@ jobs:
           mkdir -p gated
           if [ -z "$APK_PASS" ]; then echo "APK_PASS не задан — артефакт для сервера пропущен"; exit 0; fi
           APK=app/build/outputs/apk/debug/app-debug.apk
-          grep -oP 'versionName = "\K[^"]+' app/build.gradle.kts > gated/version.txt
+          echo "1.2.${{ github.run_number }}" > gated/version.txt
           # 1) для сервера целиком (админ «Скачать себе», приложение)
           openssl enc -aes-256-cbc -pbkdf2 -iter 200000 -salt -in $APK -out gated/app.apk.enc -pass env:APK_PASS
           # 2) для сайта: APK под случайным паролем этой сборки лежит открыто на Pages (быстро, без туннеля),
