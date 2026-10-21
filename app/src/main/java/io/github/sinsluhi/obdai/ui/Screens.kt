@@ -1303,7 +1303,7 @@ fun SettingsScreen(
         }
 
         Text(
-            "OBD AI 1.2.2",
+            "OBD AI " + io.github.sinsluhi.obdai.BuildConfig.VERSION_NAME, // i18n-ignore
             style = Type.body(12, Palette.muted),
             textAlign = TextAlign.Center,
             modifier = Modifier

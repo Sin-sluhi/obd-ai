@@ -15,7 +15,7 @@ android {
         fun env(name: String) = System.getenv(name)?.trim().orEmpty()
         // Номер версии растёт с каждой сборкой CI (Google Play не принимает повторный номер); локально — 14
         versionCode = env("GITHUB_RUN_NUMBER").toIntOrNull()?.let { 100 + it } ?: 14
-        versionName = "1.2.2"
+        versionName = "1.2." + env("GITHUB_RUN_NUMBER").ifEmpty { "2" }
         // Сборка для магазина (release, AAB): по правилам Google Play о сборе данных показывается окно про журнал
         buildConfigField("boolean", "STORE", "false")
         // Провайдер и ключ ИИ из секретов GitHub (AI_PROVIDER, AI_API_KEY, AI_MODEL); пусто, если не заданы
