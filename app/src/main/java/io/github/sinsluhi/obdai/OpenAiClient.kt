@@ -97,7 +97,14 @@ object OpenAiClient {
         val relay = relayBase.trimEnd('/').takeIf { base == GROQ && it.startsWith("http") }
         if (relay != null && System.currentTimeMillis() < directDeadUntil) return send(cfg, "$relay/api/ai/groq", body, readTimeoutMs)
         return try {
-            send(cfg, base, body, readTimeoutMs)
+            val raw = send(cfg, base, body, readTimeoutMs)
+            // 403 без ответа API (лог Kia Rio 21.10.2026: «Forbidden» на обе модели) — Groq не пускает с адреса
+            // телефона; ключ при этом рабочий: тот же запрос через сервер проходит
+            if (raw.status == 403 && relay != null) {
+                directDeadUntil = System.currentTimeMillis() + 10 * 60_000
+                Trace.note("нейронка: напрямую 403, иду через сервер") // i18n-ignore: лог
+                send(cfg, "$relay/api/ai/groq", body, readTimeoutMs)
+            } else raw
         } catch (e: IOException) {
             if (relay == null || e is ApiException) throw e
             // модель долго думает (вышел таймаут чтения) — это не блокировка, через сервер будет так же
