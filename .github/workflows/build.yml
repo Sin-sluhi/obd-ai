@@ -41,6 +41,7 @@ jobs:
           echo "SIGNING_KEYSTORE_FILE=$RUNNER_TEMP/obdai-release.jks" >> "$GITHUB_ENV"
       # Стенд: разбор кадров и поиск блоков на записанных обменах. Красные тесты — красная сборка.
       - run: gradle testDebugUnitTest
+      - run: gradle lintDebug
       - run: gradle assembleDebug
         env:
           AI_PROVIDER: ${{ vars.AI_PROVIDER }}

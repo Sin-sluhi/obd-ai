@@ -5,7 +5,6 @@ import java.io.ByteArrayOutputStream
 import java.io.File
 import java.net.HttpURLConnection
 import java.net.URL
-import java.util.Base64
 import java.util.zip.GZIPOutputStream
 
 /**
@@ -66,7 +65,7 @@ object LogShare {
                 .put("modules", meta.modules).put("codes", meta.codes).put("busOnly", meta.busOnly)
                 .put("durationMs", meta.durationMs)
                 .put("ecus", org.json.JSONArray().also { a -> meta.ecus.forEach { a.put(it.toJson()) } }))
-            .put("gz", Base64.getEncoder().encodeToString(gz))
+            .put("gz", B64.encode(gz))
     }
 
     private fun gzip(s: String): ByteArray {

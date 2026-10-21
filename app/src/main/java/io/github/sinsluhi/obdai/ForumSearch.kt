@@ -4,7 +4,6 @@ import java.net.HttpURLConnection
 import java.net.URL
 import java.net.URLDecoder
 import java.net.URLEncoder
-import java.util.Base64
 
 /**
  * Свой поиск опыта владельцев для провайдеров без встроенного веб-поиска:
@@ -114,7 +113,7 @@ object ForumSearch {
             var href = m.groupValues[1].replace("&amp;", "&")
             if (href.contains("bing.com/ck/a")) {
                 val u = Regex("[?&]u=a1([^&]+)").find(href)?.groupValues?.get(1)
-                if (u != null) href = runCatching { String(Base64.getUrlDecoder().decode(u.padEnd((u.length + 3) / 4 * 4, '='))) }.getOrDefault("")
+                if (u != null) href = runCatching { String(B64.decode(u)) }.getOrDefault("")
             }
             if (href.startsWith("http")) out.add(href)
         }

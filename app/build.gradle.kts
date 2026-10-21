@@ -5,12 +5,18 @@ plugins {
 }
 
 android {
+    lint {
+        // минимальная версия — Android 7.0: вызов API новее без проверки версии = красная сборка
+        checkOnly += setOf("NewApi", "InlinedApi")
+        abortOnError = true
+        checkReleaseBuilds = false
+    }
     namespace = "io.github.sinsluhi.obdai"
     compileSdk = 35
 
     defaultConfig {
         applicationId = "io.github.sinsluhi.obdai"
-        minSdk = 26
+        minSdk = 24
         targetSdk = 35
         fun env(name: String) = System.getenv(name)?.trim().orEmpty()
         // Номер версии растёт с каждой сборкой CI (Google Play не принимает повторный номер); локально — 14
