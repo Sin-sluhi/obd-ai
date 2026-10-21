@@ -123,9 +123,13 @@ object Fonts {
         weights.map { w -> Font(res, FontWeight(w), variationSettings = FontVariation.Settings(FontVariation.weight(w))) }
     )
 
-    val display = variable(R.font.unbounded, 500, 600, 700, 800)
-    val body = variable(R.font.manrope, 400, 500, 600, 700, 800)
-    val mono = variable(R.font.jetbrains_mono, 400, 500, 600, 700)
+    // Переменные шрифты из ресурсов Android 7 (API 24–25) не загружает: Compose падает при первой отрисовке
+    // текста (стенд android7.yml). Там — системные шрифты, с Android 8 — свои.
+    private val modern = android.os.Build.VERSION.SDK_INT >= 26
+
+    val display = if (modern) variable(R.font.unbounded, 500, 600, 700, 800) else FontFamily.SansSerif
+    val body = if (modern) variable(R.font.manrope, 400, 500, 600, 700, 800) else FontFamily.SansSerif
+    val mono = if (modern) variable(R.font.jetbrains_mono, 400, 500, 600, 700) else FontFamily.Monospace
 }
 
 /** Стили текста. */
