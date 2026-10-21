@@ -9,8 +9,6 @@
   "engine coolant temperature",
   "engine torque adaptation at limit",
   "engine torque monitoring 2 control limit exceeded",
-  "fam:thermostat",
-  "fam:turbo_under",
   "fuel injection air control",
   "ignition coil",
   "knock control limit attained",
@@ -149,30 +147,6 @@
    "en": "Turbocharge Bypass Valve Short To Ground",
    "fam": "",
    "node": "turbocharge bypass valve"
-  },
-  {
-   "code": "P1296",
-   "brand": "vag",
-   "ru": "Система охлаждения: неисправность (термостат)",
-   "en": "",
-   "fam": "thermostat",
-   "node": "fam:thermostat"
-  },
-  {
-   "code": "P1297",
-   "brand": "vag",
-   "ru": "Падение давления между турбиной и дросселем",
-   "en": "",
-   "fam": "turbo_under",
-   "node": "fam:turbo_under"
-  },
-  {
-   "code": "P1556",
-   "brand": "vag",
-   "ru": "Регулирование наддува: отрицательное отклонение (недодув)",
-   "en": "",
-   "fam": "turbo_under",
-   "node": "fam:turbo_under"
   },
   {
    "code": "P1300",

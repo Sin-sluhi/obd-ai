@@ -10,13 +10,6 @@
   "egr valve position",
   "electric throttle control system",
   "etcs actuator power source",
-  "fam:abs_module",
-  "fam:brake_switch",
-  "fam:cmp",
-  "fam:coil",
-  "fam:steering_angle",
-  "fam:wss",
-  "fam:yaw",
   "fuel pump",
   "igniter",
   "magnetic clutch",
@@ -35,78 +28,6 @@
   "vvt system"
  ],
  "codes": [
-  {
-   "code": "C0200",
-   "brand": "toyota",
-   "ru": "Датчик ABS правого переднего колеса: неисправность",
-   "en": "",
-   "fam": "wss",
-   "node": "fam:wss"
-  },
-  {
-   "code": "C0205",
-   "brand": "toyota",
-   "ru": "Датчик ABS левого переднего колеса: неисправность",
-   "en": "",
-   "fam": "wss",
-   "node": "fam:wss"
-  },
-  {
-   "code": "C0210",
-   "brand": "toyota",
-   "ru": "Датчик ABS правого заднего колеса: неисправность",
-   "en": "",
-   "fam": "wss",
-   "node": "fam:wss"
-  },
-  {
-   "code": "C0215",
-   "brand": "toyota",
-   "ru": "Датчик ABS левого заднего колеса: неисправность",
-   "en": "",
-   "fam": "wss",
-   "node": "fam:wss"
-  },
-  {
-   "code": "C1210",
-   "brand": "toyota",
-   "ru": "Датчик поворота (yaw): нулевая точка не откалибрована",
-   "en": "",
-   "fam": "yaw",
-   "node": "fam:yaw"
-  },
-  {
-   "code": "C1336",
-   "brand": "toyota",
-   "ru": "Датчик ускорения/поворота: нулевая точка не откалибрована",
-   "en": "",
-   "fam": "yaw",
-   "node": "fam:yaw"
-  },
-  {
-   "code": "C1231",
-   "brand": "toyota",
-   "ru": "Датчик угла поворота руля: неисправность",
-   "en": "",
-   "fam": "steering_angle",
-   "node": "fam:steering_angle"
-  },
-  {
-   "code": "C1241",
-   "brand": "toyota",
-   "ru": "Блок ABS: напряжение питания вне нормы",
-   "en": "",
-   "fam": "abs_module",
-   "node": "fam:abs_module"
-  },
-  {
-   "code": "C1249",
-   "brand": "toyota",
-   "ru": "Выключатель стоп-сигналов: обрыв",
-   "en": "",
-   "fam": "brake_switch",
-   "node": "fam:brake_switch"
-  },
   {
    "code": "P1100",
    "brand": "toyota",
@@ -228,54 +149,6 @@
    "node": "fuel pump"
   },
   {
-   "code": "P1300",
-   "brand": "toyota",
-   "ru": "Катушка/коммутатор зажигания цилиндра 1: цепь (IGF)",
-   "en": "",
-   "fam": "coil",
-   "node": "fam:coil"
-  },
-  {
-   "code": "P1305",
-   "brand": "toyota",
-   "ru": "Катушка/коммутатор зажигания цилиндра 2: цепь (IGF)",
-   "en": "",
-   "fam": "coil",
-   "node": "fam:coil"
-  },
-  {
-   "code": "P1310",
-   "brand": "toyota",
-   "ru": "Катушка/коммутатор зажигания цилиндра 3: цепь (IGF)",
-   "en": "",
-   "fam": "coil",
-   "node": "fam:coil"
-  },
-  {
-   "code": "P1315",
-   "brand": "toyota",
-   "ru": "Катушка/коммутатор зажигания цилиндра 4: цепь (IGF)",
-   "en": "",
-   "fam": "coil",
-   "node": "fam:coil"
-  },
-  {
-   "code": "P1320",
-   "brand": "toyota",
-   "ru": "Катушка/коммутатор зажигания цилиндра 5: цепь (IGF)",
-   "en": "",
-   "fam": "coil",
-   "node": "fam:coil"
-  },
-  {
-   "code": "P1325",
-   "brand": "toyota",
-   "ru": "Катушка/коммутатор зажигания цилиндра 6: цепь (IGF)",
-   "en": "",
-   "fam": "coil",
-   "node": "fam:coil"
-  },
-  {
    "code": "P1330",
    "brand": "toyota",
    "ru": "Коммутатор зажигания № 7: неисправность цепи",
@@ -306,14 +179,6 @@
    "en": "VVT Sensor Circuit Malfunction Bank 1",
    "fam": "",
    "node": "ru:датчик фаз vvt (ряд 1)"
-  },
-  {
-   "code": "P1346",
-   "brand": "toyota",
-   "ru": "Датчик положения распредвала VVT (банк 1): сигнал вне диапазона",
-   "en": "",
-   "fam": "cmp",
-   "node": "fam:cmp"
   },
   {
    "code": "P1350",

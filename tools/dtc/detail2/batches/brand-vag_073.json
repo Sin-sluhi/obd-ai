@@ -11,8 +11,6 @@
   "clutch pedal switch",
   "control unit locked",
   "engine shutoff solenoid",
-  "fam:etc",
-  "fam:turbo_over",
   "idle speed control throttle position",
   "idle speed control throttle position adaptation",
   "idle speed control throttle position lower limit not obtained",
@@ -152,22 +150,6 @@
    "node": "vehicle speed sensor"
   },
   {
-   "code": "P1545",
-   "brand": "vag",
-   "ru": "Управление положением дросселя: неисправность",
-   "en": "",
-   "fam": "etc",
-   "node": "fam:etc"
-  },
-  {
-   "code": "P1580",
-   "brand": "vag",
-   "ru": "Привод дроссельной заслонки (банк 1): неисправность",
-   "en": "",
-   "fam": "etc",
-   "node": "fam:etc"
-  },
-  {
    "code": "P1546",
    "brand": "vag",
    "ru": "Клапан регулирования давления наддува: замыкание на плюс",
@@ -246,14 +228,6 @@
    "en": "Charge Pressure Upper Limit Exceeded",
    "fam": "",
    "node": "charge pressure upper limit exceeded"
-  },
-  {
-   "code": "P1557",
-   "brand": "vag",
-   "ru": "Регулирование наддува: положительное отклонение (передув)",
-   "en": "",
-   "fam": "turbo_over",
-   "node": "fam:turbo_over"
   },
   {
    "code": "P1558",

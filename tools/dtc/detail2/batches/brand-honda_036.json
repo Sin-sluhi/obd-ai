@@ -6,11 +6,6 @@
   "accelerator position",
   "accelerator position sensors 1 & 2 improper correlation",
   "closed throttle position insufficient",
-  "fam:afr",
-  "fam:alternator",
-  "fam:lambda_heater",
-  "fam:map",
-  "fam:vvt_perf",
   "ho2s11",
   "ho2s11 label",
   "misfire",
@@ -66,30 +61,6 @@
    "node": "throttle position higher than expected"
   },
   {
-   "code": "P1128",
-   "brand": "honda",
-   "ru": "ДАД показывает давление ниже ожидаемого",
-   "en": "",
-   "fam": "map",
-   "node": "fam:map"
-  },
-  {
-   "code": "P1129",
-   "brand": "honda",
-   "ru": "ДАД показывает давление выше ожидаемого",
-   "en": "",
-   "fam": "map",
-   "node": "fam:map"
-  },
-  {
-   "code": "P1157",
-   "brand": "honda",
-   "ru": "Широкополосный лямбда-зонд: вне диапазона",
-   "en": "",
-   "fam": "afr",
-   "node": "fam:afr"
-  },
-  {
    "code": "P1162",
    "brand": "honda",
    "ru": "Лямбда-зонд 1 (ряд 1): неисправность цепи",
@@ -120,22 +91,6 @@
    "en": "HO2S11 Slow Response Bank 1 Sensor 1",
    "fam": "",
    "node": "ho2s11"
-  },
-  {
-   "code": "P1166",
-   "brand": "honda",
-   "ru": "Широкополосный лямбда-зонд: подогрев, обрыв",
-   "en": "",
-   "fam": "lambda_heater",
-   "node": "fam:lambda_heater"
-  },
-  {
-   "code": "P1167",
-   "brand": "honda",
-   "ru": "Широкополосный лямбда-зонд: подогрев не работает",
-   "en": "",
-   "fam": "lambda_heater",
-   "node": "fam:lambda_heater"
   },
   {
    "code": "P1168",
@@ -320,30 +275,6 @@
    "en": "VTEC System Malfunction Front Bank 2",
    "fam": "",
    "node": "vtec system"
-  },
-  {
-   "code": "P1259",
-   "brand": "honda",
-   "ru": "Система VTEC: неисправность",
-   "en": "",
-   "fam": "vvt_perf",
-   "node": "fam:vvt_perf"
-  },
-  {
-   "code": "P1297",
-   "brand": "honda",
-   "ru": "Датчик электрической нагрузки (ELD): низкий уровень",
-   "en": "",
-   "fam": "alternator",
-   "node": "fam:alternator"
-  },
-  {
-   "code": "P1298",
-   "brand": "honda",
-   "ru": "Датчик электрической нагрузки (ELD): высокий уровень",
-   "en": "",
-   "fam": "alternator",
-   "node": "fam:alternator"
   },
   {
    "code": "P1300",

@@ -17,7 +17,6 @@
   "engine speed",
   "evap purge solenoid",
   "evap solenoid",
-  "fam:immo",
   "fan 1 relay",
   "fc relay",
   "fc relay 2 and",
@@ -123,22 +122,6 @@
    "en": "PCM System Reset",
    "fam": "",
    "node": "pcm system reset"
-  },
-  {
-   "code": "P1626",
-   "brand": "gm",
-   "ru": "Иммобилайзер: сигнал разрешения топлива не получен",
-   "en": "",
-   "fam": "immo",
-   "node": "fam:immo"
-  },
-  {
-   "code": "P1631",
-   "brand": "gm",
-   "ru": "Иммобилайзер: неверный пароль",
-   "en": "",
-   "fam": "immo",
-   "node": "fam:immo"
   },
   {
    "code": "P1627",

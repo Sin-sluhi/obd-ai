@@ -20,7 +20,6 @@
   "engine oil pressure out of",
   "engine oil pressure sensor switch b",
   "fam:ps_pressure",
-  "fam:system_voltage",
   "idle control system fuel quantity higher than expected",
   "idle control system fuel quantity lower than expected",
   "oxygen sensor control module system voltage",
@@ -58,30 +57,6 @@
    "en": "Idle Control System - Fuel Quantity Higher Than Expected",
    "fam": "",
    "node": "idle control system fuel quantity higher than expected"
-  },
-  {
-   "code": "P0550",
-   "brand": "",
-   "ru": "Датчик давления гидроусилителя руля: цепь",
-   "en": "",
-   "fam": "ps_pressure",
-   "node": "fam:ps_pressure"
-  },
-  {
-   "code": "P0551",
-   "brand": "",
-   "ru": "Датчик давления гидроусилителя руля: показания вне диапазона",
-   "en": "",
-   "fam": "ps_pressure",
-   "node": "fam:ps_pressure"
-  },
-  {
-   "code": "P0552",
-   "brand": "",
-   "ru": "Датчик давления гидроусилителя руля: низкий сигнал",
-   "en": "",
-   "fam": "ps_pressure",
-   "node": "fam:ps_pressure"
   },
   {
    "code": "P0553",
@@ -146,38 +121,6 @@
    "en": "Engine Oil Pressure Out of Range",
    "fam": "",
    "node": "engine oil pressure out of"
-  },
-  {
-   "code": "P0560",
-   "brand": "",
-   "ru": "Напряжение бортовой сети: неисправность",
-   "en": "",
-   "fam": "system_voltage",
-   "node": "fam:system_voltage"
-  },
-  {
-   "code": "P0561",
-   "brand": "",
-   "ru": "Напряжение бортовой сети: нестабильное",
-   "en": "",
-   "fam": "system_voltage",
-   "node": "fam:system_voltage"
-  },
-  {
-   "code": "P0562",
-   "brand": "",
-   "ru": "Напряжение бортовой сети: низкое",
-   "en": "",
-   "fam": "system_voltage",
-   "node": "fam:system_voltage"
-  },
-  {
-   "code": "P0563",
-   "brand": "",
-   "ru": "Напряжение бортовой сети: высокое",
-   "en": "",
-   "fam": "system_voltage",
-   "node": "fam:system_voltage"
   },
   {
    "code": "P056A",

@@ -47,30 +47,6 @@
    "node": "exhaust temperature too"
   },
   {
-   "code": "P2452",
-   "brand": "",
-   "ru": "Датчик перепада давления на сажевом фильтре A: цепь",
-   "en": "",
-   "fam": "dpf_pressure",
-   "node": "fam:dpf_pressure"
-  },
-  {
-   "code": "P2453",
-   "brand": "",
-   "ru": "Датчик перепада давления на сажевом фильтре A: показания вне диапазона",
-   "en": "",
-   "fam": "dpf_pressure",
-   "node": "fam:dpf_pressure"
-  },
-  {
-   "code": "P2454",
-   "brand": "",
-   "ru": "Датчик перепада давления на сажевом фильтре A: низкий сигнал",
-   "en": "",
-   "fam": "dpf_pressure",
-   "node": "fam:dpf_pressure"
-  },
-  {
    "code": "P2455",
    "brand": "",
    "ru": "Датчик перепада давления на сажевом фильтре A: высокий сигнал",

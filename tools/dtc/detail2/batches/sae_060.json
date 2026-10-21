@@ -17,7 +17,6 @@
   "evap system very small leak detected fuel tank side",
   "excessive time to enter closed loop egr",
   "exhaust brake",
-  "fam:crankcase_vent",
   "fuel fill door lock",
   "fuel fill door lock control",
   "fuel fill door lock position sensor",
@@ -232,14 +231,6 @@
    "en": "Closed Loop EGR Control At Limit - Flow Too High",
    "fam": "",
    "node": "closed loop egr control at limit flow too"
-  },
-  {
-   "code": "P04DB",
-   "brand": "",
-   "ru": "Вентиляция картера: система отсоединена",
-   "en": "",
-   "fam": "crankcase_vent",
-   "node": "fam:crankcase_vent"
   },
   {
    "code": "P04DD",

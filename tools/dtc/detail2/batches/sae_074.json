@@ -4,7 +4,6 @@
  "brand": "",
  "nodes": [
   "fam:alternator",
-  "fam:eps",
   "fam:tcm",
   "internal control module brake",
   "internal control module engine air mass",
@@ -15,70 +14,6 @@
   "internal control module vehicle speed"
  ],
  "codes": [
-  {
-   "code": "P0613",
-   "brand": "",
-   "ru": "Блок управления коробкой: процессор",
-   "en": "",
-   "fam": "tcm",
-   "node": "fam:tcm"
-  },
-  {
-   "code": "P0700",
-   "brand": "",
-   "ru": "Блок управления коробкой сообщил об ошибке",
-   "en": "",
-   "fam": "tcm",
-   "node": "fam:tcm"
-  },
-  {
-   "code": "P0701",
-   "brand": "",
-   "ru": "Система управления коробкой: вне диапазона",
-   "en": "",
-   "fam": "tcm",
-   "node": "fam:tcm"
-  },
-  {
-   "code": "P0702",
-   "brand": "",
-   "ru": "Система управления коробкой: электрическая",
-   "en": "",
-   "fam": "tcm",
-   "node": "fam:tcm"
-  },
-  {
-   "code": "P0802",
-   "brand": "",
-   "ru": "Запрос лампы от блока коробки: обрыв",
-   "en": "",
-   "fam": "tcm",
-   "node": "fam:tcm"
-  },
-  {
-   "code": "P0880",
-   "brand": "",
-   "ru": "Питание блока коробки (сигнал): цепь",
-   "en": "",
-   "fam": "tcm",
-   "node": "fam:tcm"
-  },
-  {
-   "code": "P0881",
-   "brand": "",
-   "ru": "Питание блока коробки (сигнал): показания вне диапазона",
-   "en": "",
-   "fam": "tcm",
-   "node": "fam:tcm"
-  },
-  {
-   "code": "P0882",
-   "brand": "",
-   "ru": "Питание блока коробки (сигнал): низкий сигнал",
-   "en": "",
-   "fam": "tcm",
-   "node": "fam:tcm"
-  },
   {
    "code": "P0883",
    "brand": "",
@@ -224,78 +159,6 @@
    "node": "internal control module throttle actuator controller"
   },
   {
-   "code": "P0620",
-   "brand": "",
-   "ru": "Генератор: цепь управления",
-   "en": "",
-   "fam": "alternator",
-   "node": "fam:alternator"
-  },
-  {
-   "code": "P0621",
-   "brand": "",
-   "ru": "Генератор: цепь лампы зарядки (L)",
-   "en": "",
-   "fam": "alternator",
-   "node": "fam:alternator"
-  },
-  {
-   "code": "P0622",
-   "brand": "",
-   "ru": "Генератор: цепь обмотки возбуждения (F)",
-   "en": "",
-   "fam": "alternator",
-   "node": "fam:alternator"
-  },
-  {
-   "code": "P0623",
-   "brand": "",
-   "ru": "Лампа зарядки: цепь управления",
-   "en": "",
-   "fam": "alternator",
-   "node": "fam:alternator"
-  },
-  {
-   "code": "P0625",
-   "brand": "",
-   "ru": "Генератор: обмотка возбуждения, низкий уровень",
-   "en": "",
-   "fam": "alternator",
-   "node": "fam:alternator"
-  },
-  {
-   "code": "P0626",
-   "brand": "",
-   "ru": "Генератор: обмотка возбуждения, высокий уровень",
-   "en": "",
-   "fam": "alternator",
-   "node": "fam:alternator"
-  },
-  {
-   "code": "P063A",
-   "brand": "",
-   "ru": "Генератор: датчик напряжения",
-   "en": "",
-   "fam": "alternator",
-   "node": "fam:alternator"
-  },
-  {
-   "code": "P065A",
-   "brand": "",
-   "ru": "Генератор: работа не соответствует",
-   "en": "",
-   "fam": "alternator",
-   "node": "fam:alternator"
-  },
-  {
-   "code": "P065B",
-   "brand": "",
-   "ru": "Генератор: управление вне диапазона",
-   "en": "",
-   "fam": "alternator",
-   "node": "fam:alternator"
-  },
-  {
    "code": "P2500",
    "brand": "",
    "ru": "Генератор: цепь лампы (L), низкий уровень",
@@ -342,30 +205,6 @@
    "en": "Internal Control Module Vehicle Speed Performance",
    "fam": "",
    "node": "internal control module vehicle speed"
-  },
-  {
-   "code": "P0635",
-   "brand": "",
-   "ru": "Усилитель руля: цепь управления",
-   "en": "",
-   "fam": "eps",
-   "node": "fam:eps"
-  },
-  {
-   "code": "P0636",
-   "brand": "",
-   "ru": "Усилитель руля: цепь управления, низкий уровень",
-   "en": "",
-   "fam": "eps",
-   "node": "fam:eps"
-  },
-  {
-   "code": "P0637",
-   "brand": "",
-   "ru": "Усилитель руля: цепь управления, высокий уровень",
-   "en": "",
-   "fam": "eps",
-   "node": "fam:eps"
   }
  ]
 }

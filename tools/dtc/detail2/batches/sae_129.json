@@ -44,38 +44,6 @@
    "node": "reductant pump a"
   },
   {
-   "code": "P2029",
-   "brand": "",
-   "ru": "Топливный отопитель отключён",
-   "en": "",
-   "fam": "body_generic",
-   "node": "fam:body_generic"
-  },
-  {
-   "code": "P2030",
-   "brand": "",
-   "ru": "Топливный отопитель: работа не соответствует",
-   "en": "",
-   "fam": "body_generic",
-   "node": "fam:body_generic"
-  },
-  {
-   "code": "P2530",
-   "brand": "",
-   "ru": "Замок зажигания: положение «зажигание», цепь",
-   "en": "",
-   "fam": "body_generic",
-   "node": "fam:body_generic"
-  },
-  {
-   "code": "P2531",
-   "brand": "",
-   "ru": "Замок зажигания: положение «зажигание», низкий уровень",
-   "en": "",
-   "fam": "body_generic",
-   "node": "fam:body_generic"
-  },
-  {
    "code": "P2532",
    "brand": "",
    "ru": "Замок зажигания: положение «зажигание», высокий уровень",

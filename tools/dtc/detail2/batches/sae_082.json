@@ -11,54 +11,6 @@
  ],
  "codes": [
   {
-   "code": "P0715",
-   "brand": "",
-   "ru": "Датчик оборотов входного вала коробки A: цепь / нет сигнала",
-   "en": "",
-   "fam": "trans_iss",
-   "node": "fam:trans_iss"
-  },
-  {
-   "code": "P0716",
-   "brand": "",
-   "ru": "Датчик оборотов входного вала коробки A: сигнал вне диапазона",
-   "en": "",
-   "fam": "trans_iss",
-   "node": "fam:trans_iss"
-  },
-  {
-   "code": "P0717",
-   "brand": "",
-   "ru": "Датчик оборотов входного вала коробки A: низкий сигнал",
-   "en": "",
-   "fam": "trans_iss",
-   "node": "fam:trans_iss"
-  },
-  {
-   "code": "P0718",
-   "brand": "",
-   "ru": "Датчик оборотов входного вала коробки A: высокий сигнал",
-   "en": "",
-   "fam": "trans_iss",
-   "node": "fam:trans_iss"
-  },
-  {
-   "code": "P0719",
-   "brand": "",
-   "ru": "Датчик оборотов входного вала коробки A: прерывистый сигнал",
-   "en": "",
-   "fam": "trans_iss",
-   "node": "fam:trans_iss"
-  },
-  {
-   "code": "P0791",
-   "brand": "",
-   "ru": "Датчик оборотов промежуточного вала A: цепь",
-   "en": "",
-   "fam": "trans_iss",
-   "node": "fam:trans_iss"
-  },
-  {
    "code": "P0792",
    "brand": "",
    "ru": "Датчик оборотов промежуточного вала A: вне диапазона",
@@ -235,30 +187,6 @@
    "node": "transmission mode switch b"
   },
   {
-   "code": "P0720",
-   "brand": "",
-   "ru": "Датчик оборотов выходного вала коробки: цепь / нет сигнала",
-   "en": "",
-   "fam": "trans_oss",
-   "node": "fam:trans_oss"
-  },
-  {
-   "code": "P0721",
-   "brand": "",
-   "ru": "Датчик оборотов выходного вала коробки: сигнал вне диапазона",
-   "en": "",
-   "fam": "trans_oss",
-   "node": "fam:trans_oss"
-  },
-  {
-   "code": "P0722",
-   "brand": "",
-   "ru": "Датчик оборотов выходного вала коробки: низкий сигнал",
-   "en": "",
-   "fam": "trans_oss",
-   "node": "fam:trans_oss"
-  },
-  {
    "code": "P0723",
    "brand": "",
    "ru": "Датчик оборотов выходного вала коробки: высокий сигнал",
@@ -273,30 +201,6 @@
    "en": "",
    "fam": "trans_oss",
    "node": "fam:trans_oss"
-  },
-  {
-   "code": "P0725",
-   "brand": "",
-   "ru": "Сигнал оборотов двигателя для коробки: цепь",
-   "en": "",
-   "fam": "trans_engine_speed",
-   "node": "fam:trans_engine_speed"
-  },
-  {
-   "code": "P0726",
-   "brand": "",
-   "ru": "Сигнал оборотов двигателя для коробки: вне диапазона",
-   "en": "",
-   "fam": "trans_engine_speed",
-   "node": "fam:trans_engine_speed"
-  },
-  {
-   "code": "P0727",
-   "brand": "",
-   "ru": "Сигнал оборотов двигателя для коробки: нет сигнала",
-   "en": "",
-   "fam": "trans_engine_speed",
-   "node": "fam:trans_engine_speed"
   },
   {
    "code": "P0728",

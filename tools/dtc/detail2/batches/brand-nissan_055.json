@@ -131,14 +131,6 @@
    "node": "fam:abs_module"
   },
   {
-   "code": "P1211",
-   "brand": "nissan",
-   "ru": "Блок ABS/TCS: неисправность",
-   "en": "",
-   "fam": "abs_module",
-   "node": "fam:abs_module"
-  },
-  {
    "code": "C1116",
    "brand": "nissan",
    "ru": "Выключатель стоп-сигнала (для ABS)",
@@ -147,25 +139,9 @@
    "node": "fam:brake_switch"
   },
   {
-   "code": "P1572",
-   "brand": "nissan",
-   "ru": "Выключатель тормоза для круиза: неисправность",
-   "en": "",
-   "fam": "brake_switch",
-   "node": "fam:brake_switch"
-  },
-  {
    "code": "C1130",
    "brand": "nissan",
    "ru": "Блок ABS: нет сигнала от блока двигателя",
-   "en": "",
-   "fam": "lost_comm",
-   "node": "fam:lost_comm"
-  },
-  {
-   "code": "P1212",
-   "brand": "nissan",
-   "ru": "Линия связи ABS/TCS",
    "en": "",
    "fam": "lost_comm",
    "node": "fam:lost_comm"

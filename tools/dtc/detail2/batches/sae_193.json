@@ -11,102 +11,6 @@
  ],
  "codes": [
   {
-   "code": "U0001",
-   "brand": "",
-   "ru": "Шина CAN (высокоскоростная): неисправность",
-   "en": "",
-   "fam": "can",
-   "node": "fam:can"
-  },
-  {
-   "code": "U0002",
-   "brand": "",
-   "ru": "Шина CAN (высокоскоростная): нет отклика",
-   "en": "",
-   "fam": "can",
-   "node": "fam:can"
-  },
-  {
-   "code": "U0003",
-   "brand": "",
-   "ru": "Шина CAN: обрыв линии High",
-   "en": "",
-   "fam": "can",
-   "node": "fam:can"
-  },
-  {
-   "code": "U0004",
-   "brand": "",
-   "ru": "Шина CAN: линия High замкнута на массу",
-   "en": "",
-   "fam": "can",
-   "node": "fam:can"
-  },
-  {
-   "code": "U0005",
-   "brand": "",
-   "ru": "Шина CAN: линия High замкнута на плюс",
-   "en": "",
-   "fam": "can",
-   "node": "fam:can"
-  },
-  {
-   "code": "U0006",
-   "brand": "",
-   "ru": "Шина CAN: обрыв линии Low",
-   "en": "",
-   "fam": "can",
-   "node": "fam:can"
-  },
-  {
-   "code": "U0007",
-   "brand": "",
-   "ru": "Шина CAN: линия Low замкнута на массу",
-   "en": "",
-   "fam": "can",
-   "node": "fam:can"
-  },
-  {
-   "code": "U0008",
-   "brand": "",
-   "ru": "Шина CAN: линия Low замкнута на плюс",
-   "en": "",
-   "fam": "can",
-   "node": "fam:can"
-  },
-  {
-   "code": "U0009",
-   "brand": "",
-   "ru": "Шина CAN: линии High и Low замкнуты между собой",
-   "en": "",
-   "fam": "can",
-   "node": "fam:can"
-  },
-  {
-   "code": "U000A",
-   "brand": "",
-   "ru": "Шина CAN: скорость обмена не соответствует",
-   "en": "",
-   "fam": "can",
-   "node": "fam:can"
-  },
-  {
-   "code": "U0010",
-   "brand": "",
-   "ru": "Шина CAN (средней скорости): неисправность",
-   "en": "",
-   "fam": "can",
-   "node": "fam:can"
-  },
-  {
-   "code": "U0011",
-   "brand": "",
-   "ru": "Шина CAN (средней скорости): нет отклика",
-   "en": "",
-   "fam": "can",
-   "node": "fam:can"
-  },
-  {
    "code": "U0019",
    "brand": "",
    "ru": "Шина CAN (низкоскоростная / комфорт): неисправность",
@@ -174,14 +78,6 @@
    "code": "U0064",
    "brand": "",
    "ru": "Шина CAN (кузовная E): неисправность",
-   "en": "",
-   "fam": "can",
-   "node": "fam:can"
-  },
-  {
-   "code": "U0073",
-   "brand": "",
-   "ru": "Шина CAN: блок отключился от шины (bus off)",
    "en": "",
    "fam": "can",
    "node": "fam:can"

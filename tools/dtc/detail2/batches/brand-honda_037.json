@@ -14,10 +14,6 @@
   "ecm internal",
   "egr valve lift sensor",
   "evap purge flow switch",
-  "fam:cmp",
-  "fam:ecu",
-  "fam:egr",
-  "fam:evap_leak",
   "knock sensor power source",
   "ru:регулятор холостого хода",
   "ru:сигнальная линия fptdr",
@@ -63,38 +59,6 @@
    "node": "ckp tdc"
   },
   {
-   "code": "P1361",
-   "brand": "honda",
-   "ru": "Датчик ВМТ (TDC): прерывистый сигнал",
-   "en": "",
-   "fam": "cmp",
-   "node": "fam:cmp"
-  },
-  {
-   "code": "P1362",
-   "brand": "honda",
-   "ru": "Датчик ВМТ (TDC): нет сигнала",
-   "en": "",
-   "fam": "cmp",
-   "node": "fam:cmp"
-  },
-  {
-   "code": "P1381",
-   "brand": "honda",
-   "ru": "Датчик положения цилиндра (CYP): прерывистый сигнал",
-   "en": "",
-   "fam": "cmp",
-   "node": "fam:cmp"
-  },
-  {
-   "code": "P1382",
-   "brand": "honda",
-   "ru": "Датчик положения цилиндра (CYP): нет сигнала",
-   "en": "",
-   "fam": "cmp",
-   "node": "fam:cmp"
-  },
-  {
    "code": "P1366",
    "brand": "honda",
    "ru": "Датчик ВМТ 2: прерывистый сигнал",
@@ -127,36 +91,12 @@
    "node": "cyp sensor b no"
   },
   {
-   "code": "P1456",
-   "brand": "honda",
-   "ru": "Утечка в системе паров: со стороны бака",
-   "en": "",
-   "fam": "evap_leak",
-   "node": "fam:evap_leak"
-  },
-  {
-   "code": "P1457",
-   "brand": "honda",
-   "ru": "Утечка в системе паров: со стороны адсорбера",
-   "en": "",
-   "fam": "evap_leak",
-   "node": "fam:evap_leak"
-  },
-  {
    "code": "P1459",
    "brand": "honda",
    "ru": "Выключатель потока продувки: неисправность",
    "en": "EVAP Purge Flow Switch Malfunction",
    "fam": "",
    "node": "evap purge flow switch"
-  },
-  {
-   "code": "P1491",
-   "brand": "honda",
-   "ru": "EGR: недостаточный подъём клапана",
-   "en": "",
-   "fam": "egr",
-   "node": "fam:egr"
   },
   {
    "code": "P1498",
@@ -181,14 +121,6 @@
    "en": "IAC Valve Circuit Failure",
    "fam": "",
    "node": "ru:регулятор холостого хода"
-  },
-  {
-   "code": "P1607",
-   "brand": "honda",
-   "ru": "Блок управления: внутренняя ошибка A",
-   "en": "",
-   "fam": "ecu",
-   "node": "fam:ecu"
   },
   {
    "code": "P1608",

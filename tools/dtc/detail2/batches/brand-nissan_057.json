@@ -28,10 +28,6 @@
   "evap purge flow switch",
   "evaporative emission control system leak detected control canister system",
   "evaporative emission control system leak detected fuel tank system",
-  "fam:alternator",
-  "fam:cruise",
-  "fam:immo",
-  "fam:vss",
   "fuel level",
   "ru:регулятор холостого хода",
   "tdc sensor",
@@ -307,30 +303,6 @@
    "node": "ru:регулятор холостого хода"
   },
   {
-   "code": "P1550",
-   "brand": "nissan",
-   "ru": "Датчик тока аккумулятора: неисправность",
-   "en": "",
-   "fam": "alternator",
-   "node": "fam:alternator"
-  },
-  {
-   "code": "P1564",
-   "brand": "nissan",
-   "ru": "Кнопки круиза на руле: неисправность",
-   "en": "",
-   "fam": "cruise",
-   "node": "fam:cruise"
-  },
-  {
-   "code": "P1574",
-   "brand": "nissan",
-   "ru": "Датчик скорости для круиза: неисправность",
-   "en": "",
-   "fam": "vss",
-   "node": "fam:vss"
-  },
-  {
    "code": "P1605",
    "brand": "nissan",
    "ru": "Линия диагностической связи с АКПП",
@@ -353,46 +325,6 @@
    "en": "ECM Internal Circuit Failure B",
    "fam": "",
    "node": "ecm internal"
-  },
-  {
-   "code": "P1610",
-   "brand": "nissan",
-   "ru": "Иммобилайзер (NATS): режим блокировки",
-   "en": "",
-   "fam": "immo",
-   "node": "fam:immo"
-  },
-  {
-   "code": "P1611",
-   "brand": "nissan",
-   "ru": "Иммобилайзер: несовпадение кодов блока и иммобилайзера",
-   "en": "",
-   "fam": "immo",
-   "node": "fam:immo"
-  },
-  {
-   "code": "P1612",
-   "brand": "nissan",
-   "ru": "Иммобилайзер: нет связи блока двигателя с иммобилайзером",
-   "en": "",
-   "fam": "immo",
-   "node": "fam:immo"
-  },
-  {
-   "code": "P1614",
-   "brand": "nissan",
-   "ru": "Иммобилайзер: нет связи с ключом",
-   "en": "",
-   "fam": "immo",
-   "node": "fam:immo"
-  },
-  {
-   "code": "P1615",
-   "brand": "nissan",
-   "ru": "Иммобилайзер: ключ не совпадает",
-   "en": "",
-   "fam": "immo",
-   "node": "fam:immo"
   },
   {
    "code": "P1655",

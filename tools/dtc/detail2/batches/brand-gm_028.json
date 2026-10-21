@@ -8,10 +8,6 @@
   "crankshaft position",
   "egr valve pintle position",
   "exhaust gas recirculation system",
-  "fam:ckp_cmp",
-  "fam:egr",
-  "fam:ignition_module",
-  "fam:misfire_random",
   "ic module 4x reference",
   "ic module cam pulse to 4x reference pulse comparison",
   "ic not toggling after enable",
@@ -33,14 +29,6 @@
   "wheel speed g"
  ],
  "codes": [
-  {
-   "code": "P1345",
-   "brand": "gm",
-   "ru": "Коленвал и распредвал не согласуются",
-   "en": "",
-   "fam": "ckp_cmp",
-   "node": "fam:ckp_cmp"
-  },
   {
    "code": "P1346",
    "brand": "gm",
@@ -64,14 +52,6 @@
    "en": "Ignition Control System",
    "fam": "",
    "node": "ignition control system"
-  },
-  {
-   "code": "P1351",
-   "brand": "gm",
-   "ru": "Управление зажиганием: высокий уровень",
-   "en": "",
-   "fam": "ignition_module",
-   "node": "fam:ignition_module"
   },
   {
    "code": "P1352",
@@ -258,14 +238,6 @@
    "node": "ic module cam pulse to 4x reference pulse comparison"
   },
   {
-   "code": "P1381",
-   "brand": "gm",
-   "ru": "Пропуски зажигания при отсутствии связи с ABS",
-   "en": "",
-   "fam": "misfire_random",
-   "node": "fam:misfire_random"
-  },
-  {
    "code": "P1388",
    "brand": "gm",
    "ru": "Реле автоотключения (ASD): обрыв или замыкание цепи управления",
@@ -376,14 +348,6 @@
    "en": "Exhaust Gas Recirculation System Valve 3",
    "fam": "",
    "node": "exhaust gas recirculation system"
-  },
-  {
-   "code": "P1404",
-   "brand": "gm",
-   "ru": "EGR: клапан не закрывается полностью",
-   "en": "",
-   "fam": "egr",
-   "node": "fam:egr"
   },
   {
    "code": "P1406",

@@ -5,8 +5,6 @@
  "nodes": [
   "auto configuration engine coolant temperature",
   "auto configuration throttle",
-  "fam:ac_clutch",
-  "fam:cluster",
   "fam:sensor_ref",
   "generator voltage sense",
   "pto control"
@@ -93,78 +91,6 @@
    "node": "auto configuration engine coolant temperature"
   },
   {
-   "code": "P0641",
-   "brand": "",
-   "ru": "Опорное напряжение датчиков A: цепь / обрыв",
-   "en": "",
-   "fam": "sensor_ref",
-   "node": "fam:sensor_ref"
-  },
-  {
-   "code": "P0642",
-   "brand": "",
-   "ru": "Опорное напряжение датчиков A: низкое",
-   "en": "",
-   "fam": "sensor_ref",
-   "node": "fam:sensor_ref"
-  },
-  {
-   "code": "P0643",
-   "brand": "",
-   "ru": "Опорное напряжение датчиков A: высокое",
-   "en": "",
-   "fam": "sensor_ref",
-   "node": "fam:sensor_ref"
-  },
-  {
-   "code": "P0651",
-   "brand": "",
-   "ru": "Опорное напряжение датчиков B: цепь / обрыв",
-   "en": "",
-   "fam": "sensor_ref",
-   "node": "fam:sensor_ref"
-  },
-  {
-   "code": "P0652",
-   "brand": "",
-   "ru": "Опорное напряжение датчиков B: низкое",
-   "en": "",
-   "fam": "sensor_ref",
-   "node": "fam:sensor_ref"
-  },
-  {
-   "code": "P0653",
-   "brand": "",
-   "ru": "Опорное напряжение датчиков B: высокое",
-   "en": "",
-   "fam": "sensor_ref",
-   "node": "fam:sensor_ref"
-  },
-  {
-   "code": "P0657",
-   "brand": "",
-   "ru": "Напряжение питания исполнительных механизмов A: обрыв",
-   "en": "",
-   "fam": "sensor_ref",
-   "node": "fam:sensor_ref"
-  },
-  {
-   "code": "P0658",
-   "brand": "",
-   "ru": "Напряжение питания исполнительных механизмов A: низкое",
-   "en": "",
-   "fam": "sensor_ref",
-   "node": "fam:sensor_ref"
-  },
-  {
-   "code": "P0659",
-   "brand": "",
-   "ru": "Напряжение питания исполнительных механизмов A: высокое",
-   "en": "",
-   "fam": "sensor_ref",
-   "node": "fam:sensor_ref"
-  },
-  {
    "code": "P0697",
    "brand": "",
    "ru": "Опорное напряжение датчиков C: цепь / обрыв",
@@ -211,54 +137,6 @@
    "en": "",
    "fam": "sensor_ref",
    "node": "fam:sensor_ref"
-  },
-  {
-   "code": "P0644",
-   "brand": "",
-   "ru": "Дисплей водителя: линия связи",
-   "en": "",
-   "fam": "cluster",
-   "node": "fam:cluster"
-  },
-  {
-   "code": "P0654",
-   "brand": "",
-   "ru": "Выход сигнала оборотов двигателя: цепь",
-   "en": "",
-   "fam": "cluster",
-   "node": "fam:cluster"
-  },
-  {
-   "code": "P0655",
-   "brand": "",
-   "ru": "Лампа перегрева двигателя: цепь",
-   "en": "",
-   "fam": "cluster",
-   "node": "fam:cluster"
-  },
-  {
-   "code": "P0645",
-   "brand": "",
-   "ru": "Реле муфты кондиционера: цепь",
-   "en": "",
-   "fam": "ac_clutch",
-   "node": "fam:ac_clutch"
-  },
-  {
-   "code": "P0646",
-   "brand": "",
-   "ru": "Реле муфты кондиционера: низкий уровень",
-   "en": "",
-   "fam": "ac_clutch",
-   "node": "fam:ac_clutch"
-  },
-  {
-   "code": "P0647",
-   "brand": "",
-   "ru": "Реле муфты кондиционера: высокий уровень",
-   "en": "",
-   "fam": "ac_clutch",
-   "node": "fam:ac_clutch"
   },
   {
    "code": "P064B",

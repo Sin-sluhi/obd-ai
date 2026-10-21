@@ -9,9 +9,6 @@
   "automatic transmission system",
   "barometer pressure",
   "coolant temperature",
-  "fam:tcc",
-  "fam:trans_iss",
-  "fam:trans_sol",
   "fuel trim",
   "intake air volume",
   "kick down",
@@ -216,22 +213,6 @@
    "node": "park neutral position pnp"
   },
   {
-   "code": "P1715",
-   "brand": "nissan",
-   "ru": "Вариатор: датчик оборотов входного вала",
-   "en": "",
-   "fam": "trans_iss",
-   "node": "fam:trans_iss"
-  },
-  {
-   "code": "P1740",
-   "brand": "nissan",
-   "ru": "Соленоид выбора блокировки гидротрансформатора: цепь",
-   "en": "",
-   "fam": "tcc",
-   "node": "fam:tcc"
-  },
-  {
    "code": "P1753",
    "brand": "nissan",
    "ru": "Клапан блокировки ГДТ «A»: неисправность",
@@ -254,14 +235,6 @@
    "en": "Overrun Clutch Solenoid Valve Circuit",
    "fam": "",
    "node": "overrun clutch solenoid"
-  },
-  {
-   "code": "P1777",
-   "brand": "nissan",
-   "ru": "Вариатор: шаговый мотор, цепь",
-   "en": "",
-   "fam": "trans_sol",
-   "node": "fam:trans_sol"
   },
   {
    "code": "P1780",

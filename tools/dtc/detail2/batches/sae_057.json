@@ -15,46 +15,6 @@
  ],
  "codes": [
   {
-   "code": "P0446",
-   "brand": "",
-   "ru": "Клапан вентиляции адсорбера: цепь / не закрывается",
-   "en": "",
-   "fam": "evap_vent",
-   "node": "fam:evap_vent"
-  },
-  {
-   "code": "P0447",
-   "brand": "",
-   "ru": "Клапан вентиляции адсорбера: обрыв",
-   "en": "",
-   "fam": "evap_vent",
-   "node": "fam:evap_vent"
-  },
-  {
-   "code": "P0448",
-   "brand": "",
-   "ru": "Клапан вентиляции адсорбера: замыкание",
-   "en": "",
-   "fam": "evap_vent",
-   "node": "fam:evap_vent"
-  },
-  {
-   "code": "P0449",
-   "brand": "",
-   "ru": "Клапан вентиляции адсорбера: цепь управления",
-   "en": "",
-   "fam": "evap_vent",
-   "node": "fam:evap_vent"
-  },
-  {
-   "code": "P0498",
-   "brand": "",
-   "ru": "Клапан вентиляции адсорбера: низкий уровень в цепи",
-   "en": "",
-   "fam": "evap_vent",
-   "node": "fam:evap_vent"
-  },
-  {
    "code": "P0499",
    "brand": "",
    "ru": "Клапан вентиляции адсорбера: высокий уровень в цепи",
@@ -119,38 +79,6 @@
    "node": "egr sensor c"
   },
   {
-   "code": "P0450",
-   "brand": "",
-   "ru": "Датчик давления в системе паров топлива: цепь",
-   "en": "",
-   "fam": "evap_pressure",
-   "node": "fam:evap_pressure"
-  },
-  {
-   "code": "P0451",
-   "brand": "",
-   "ru": "Датчик давления в системе паров топлива: показания вне диапазона",
-   "en": "",
-   "fam": "evap_pressure",
-   "node": "fam:evap_pressure"
-  },
-  {
-   "code": "P0452",
-   "brand": "",
-   "ru": "Датчик давления в системе паров топлива: низкий сигнал",
-   "en": "",
-   "fam": "evap_pressure",
-   "node": "fam:evap_pressure"
-  },
-  {
-   "code": "P0453",
-   "brand": "",
-   "ru": "Датчик давления в системе паров топлива: высокий сигнал",
-   "en": "",
-   "fam": "evap_pressure",
-   "node": "fam:evap_pressure"
-  },
-  {
    "code": "P0454",
    "brand": "",
    "ru": "Датчик давления в системе паров топлива: прерывистый сигнал",
@@ -205,62 +133,6 @@
    "en": "EGR B Control Stuck Closed",
    "fam": "",
    "node": "egr b control"
-  },
-  {
-   "code": "P0460",
-   "brand": "",
-   "ru": "Датчик уровня топлива: цепь",
-   "en": "",
-   "fam": "fuel_level",
-   "node": "fam:fuel_level"
-  },
-  {
-   "code": "P0461",
-   "brand": "",
-   "ru": "Датчик уровня топлива: показания вне диапазона",
-   "en": "",
-   "fam": "fuel_level",
-   "node": "fam:fuel_level"
-  },
-  {
-   "code": "P0462",
-   "brand": "",
-   "ru": "Датчик уровня топлива: низкий сигнал",
-   "en": "",
-   "fam": "fuel_level",
-   "node": "fam:fuel_level"
-  },
-  {
-   "code": "P0463",
-   "brand": "",
-   "ru": "Датчик уровня топлива: высокий сигнал",
-   "en": "",
-   "fam": "fuel_level",
-   "node": "fam:fuel_level"
-  },
-  {
-   "code": "P0464",
-   "brand": "",
-   "ru": "Датчик уровня топлива: прерывистый сигнал",
-   "en": "",
-   "fam": "fuel_level",
-   "node": "fam:fuel_level"
-  },
-  {
-   "code": "P0656",
-   "brand": "",
-   "ru": "Выход сигнала уровня топлива: цепь",
-   "en": "",
-   "fam": "fuel_level",
-   "node": "fam:fuel_level"
-  },
-  {
-   "code": "P2065",
-   "brand": "",
-   "ru": "Датчик уровня топлива B: цепь",
-   "en": "",
-   "fam": "fuel_level",
-   "node": "fam:fuel_level"
   },
   {
    "code": "P2066",

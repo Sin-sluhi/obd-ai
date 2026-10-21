@@ -59,30 +59,6 @@
    "node": "cold start transmission"
   },
   {
-   "code": "P0800",
-   "brand": "",
-   "ru": "Раздаточная коробка: система управления",
-   "en": "",
-   "fam": "awd",
-   "node": "fam:awd"
-  },
-  {
-   "code": "P0836",
-   "brand": "",
-   "ru": "Переключатель полного привода: цепь",
-   "en": "",
-   "fam": "awd",
-   "node": "fam:awd"
-  },
-  {
-   "code": "P0837",
-   "brand": "",
-   "ru": "Переключатель полного привода: не соответствует",
-   "en": "",
-   "fam": "awd",
-   "node": "fam:awd"
-  },
-  {
    "code": "P0838",
    "brand": "",
    "ru": "Переключатель полного привода: низкий уровень",
@@ -129,46 +105,6 @@
    "en": "",
    "fam": "awd",
    "node": "fam:awd"
-  },
-  {
-   "code": "P080A",
-   "brand": "",
-   "ru": "Положение сцепления не обучено (робот)",
-   "en": "",
-   "fam": "trans_slip",
-   "node": "fam:trans_slip"
-  },
-  {
-   "code": "P0810",
-   "brand": "",
-   "ru": "Ошибка управления положением сцепления (робот)",
-   "en": "",
-   "fam": "trans_slip",
-   "node": "fam:trans_slip"
-  },
-  {
-   "code": "P0811",
-   "brand": "",
-   "ru": "Чрезмерная пробуксовка сцепления (робот)",
-   "en": "",
-   "fam": "trans_slip",
-   "node": "fam:trans_slip"
-  },
-  {
-   "code": "P0894",
-   "brand": "",
-   "ru": "Пробуксовка элемента коробки",
-   "en": "",
-   "fam": "trans_slip",
-   "node": "fam:trans_slip"
-  },
-  {
-   "code": "P0900",
-   "brand": "",
-   "ru": "Актуатор сцепления (робот): цепь / обрыв",
-   "en": "",
-   "fam": "trans_slip",
-   "node": "fam:trans_slip"
   },
   {
    "code": "P0901",

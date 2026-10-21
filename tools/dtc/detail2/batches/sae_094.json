@@ -112,38 +112,6 @@
    "node": "park neutral switch"
   },
   {
-   "code": "P0850",
-   "brand": "",
-   "ru": "Выключатель Park/Neutral: входная цепь",
-   "en": "",
-   "fam": "pnp",
-   "node": "fam:pnp"
-  },
-  {
-   "code": "P0851",
-   "brand": "",
-   "ru": "Выключатель Park/Neutral: низкий уровень",
-   "en": "",
-   "fam": "pnp",
-   "node": "fam:pnp"
-  },
-  {
-   "code": "P0852",
-   "brand": "",
-   "ru": "Выключатель Park/Neutral: высокий уровень",
-   "en": "",
-   "fam": "pnp",
-   "node": "fam:pnp"
-  },
-  {
-   "code": "P0853",
-   "brand": "",
-   "ru": "Выключатель Drive: входная цепь",
-   "en": "",
-   "fam": "pnp",
-   "node": "fam:pnp"
-  },
-  {
    "code": "P0854",
    "brand": "",
    "ru": "Выключатель Drive: низкий уровень",

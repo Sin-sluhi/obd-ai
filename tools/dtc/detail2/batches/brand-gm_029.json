@@ -21,7 +21,6 @@
   "engine coolilng system",
   "evap leak monitor pinched hose",
   "evap vacuum switch",
-  "fam:evap_purge",
   "fuel level",
   "fuel tank pressure system",
   "hi speed rad fan ctrl",
@@ -146,14 +145,6 @@
    "en": "Fuel Level Sensor 2 Circuit High Voltage",
    "fam": "",
    "node": "fuel level"
-  },
-  {
-   "code": "P1441",
-   "brand": "gm",
-   "ru": "Поток через адсорбер без продувки",
-   "en": "",
-   "fam": "evap_purge",
-   "node": "fam:evap_purge"
   },
   {
    "code": "P1442",

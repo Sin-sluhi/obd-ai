@@ -10,9 +10,6 @@
   "egr no flow detected",
   "engine temperature light monitor failure",
   "evaporative emission control system vacuum system purge control solenoid or purge control valve fault",
-  "fam:egr",
-  "fam:egr_pos",
-  "fam:evap_vent",
   "glow plug",
   "glow plug monitor fault",
   "ignition coil a secondary",
@@ -220,46 +217,6 @@
    "node": "system voltage out of self test"
   },
   {
-   "code": "P1400",
-   "brand": "ford",
-   "ru": "Датчик перепада давления EGR (DPFE): низкий сигнал",
-   "en": "",
-   "fam": "egr_pos",
-   "node": "fam:egr_pos"
-  },
-  {
-   "code": "P1401",
-   "brand": "ford",
-   "ru": "Датчик перепада давления EGR (DPFE): высокий сигнал",
-   "en": "",
-   "fam": "egr_pos",
-   "node": "fam:egr_pos"
-  },
-  {
-   "code": "P1405",
-   "brand": "ford",
-   "ru": "DPFE: верхний шланг снят или забит",
-   "en": "",
-   "fam": "egr_pos",
-   "node": "fam:egr_pos"
-  },
-  {
-   "code": "P1406",
-   "brand": "ford",
-   "ru": "DPFE: нижний шланг снят или забит",
-   "en": "",
-   "fam": "egr_pos",
-   "node": "fam:egr_pos"
-  },
-  {
-   "code": "P1409",
-   "brand": "ford",
-   "ru": "Регулятор вакуума EGR (EVR): цепь",
-   "en": "",
-   "fam": "egr_pos",
-   "node": "fam:egr_pos"
-  },
-  {
    "code": "P1402",
    "brand": "ford",
    "ru": "Калиброванное отверстие ЕГР засорено",
@@ -290,14 +247,6 @@
    "en": "EGR No Flow Detected",
    "fam": "",
    "node": "egr no flow detected"
-  },
-  {
-   "code": "P1408",
-   "brand": "ford",
-   "ru": "EGR: поток вне диапазона самотеста",
-   "en": "",
-   "fam": "egr",
-   "node": "fam:egr"
   },
   {
    "code": "P1410",
@@ -370,22 +319,6 @@
    "en": "Purge Flow Sensor Circuit Input High",
    "fam": "",
    "node": "purge flow"
-  },
-  {
-   "code": "P1450",
-   "brand": "ford",
-   "ru": "Не удаётся сбросить разрежение в баке",
-   "en": "",
-   "fam": "evap_vent",
-   "node": "fam:evap_vent"
-  },
-  {
-   "code": "P1451",
-   "brand": "ford",
-   "ru": "Клапан вентиляции адсорбера: цепь",
-   "en": "",
-   "fam": "evap_vent",
-   "node": "fam:evap_vent"
   },
   {
    "code": "P1452",

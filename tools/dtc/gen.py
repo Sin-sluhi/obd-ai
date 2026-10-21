@@ -109,11 +109,14 @@ def merge_detail2():
     for (series, brand, code), d in sorted(DETAIL2.items()):
         miss = [k for k in REQUIRED if d.get(k) in (None, "", [])]
         assert not miss, "%s/%s: не заполнено %s" % (brand or series, code, miss)
+        # ручная запись из detail/ главнее: вторая волна только для кодов, где её нет
         if series == "sae" and code in CODES:
-            CODES[code].update(d); n_in += 1
+            if not CODES[code].get("ck"):
+                CODES[code].update(d); n_in += 1
             continue
         if series == "brand" and code in BRANDS.get(brand, {}):
-            BRANDS[brand][code].update(d); n_in += 1
+            if not BRANDS[brand][code].get("ck"):
+                BRANDS[brand][code].update(d); n_in += 1
             continue
         if series == "sae":
             t = op["g"].get(code, [""])[0]; fam = "open_sae"

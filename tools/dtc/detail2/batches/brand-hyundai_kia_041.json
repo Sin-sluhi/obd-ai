@@ -11,9 +11,6 @@
   "battery voltage detection",
   "chassis accelerator sensor",
   "clutch pedal switch mt or p n",
-  "fam:immo",
-  "fam:lost_comm",
-  "fam:tcm",
   "idle air control valve opening coil",
   "mil request",
   "power stage group a",
@@ -34,14 +31,6 @@
    "node": "vics solenoid"
   },
   {
-   "code": "P1529",
-   "brand": "hyundai_kia",
-   "ru": "Блок коробки запросил лампу неисправности",
-   "en": "",
-   "fam": "tcm",
-   "node": "fam:tcm"
-  },
-  {
    "code": "P1552",
    "brand": "hyundai_kia",
    "ru": "Регулятор холостого хода, обмотка открытия: низкое напряжение",
@@ -56,14 +45,6 @@
    "en": "Idle Air Control Valve Opening Coil High Voltage",
    "fam": "",
    "node": "idle air control valve opening coil"
-  },
-  {
-   "code": "P1602",
-   "brand": "hyundai_kia",
-   "ru": "Ошибка связи между блоками (ECM–TCM)",
-   "en": "",
-   "fam": "lost_comm",
-   "node": "fam:lost_comm"
   },
   {
    "code": "P1606",
@@ -176,54 +157,6 @@
    "en": "Power Stage Group 'A'",
    "fam": "",
    "node": "power stage group a"
-  },
-  {
-   "code": "P1690",
-   "brand": "hyundai_kia",
-   "ru": "Иммобилайзер (SMARTRA): нет ответа",
-   "en": "",
-   "fam": "immo",
-   "node": "fam:immo"
-  },
-  {
-   "code": "P1691",
-   "brand": "hyundai_kia",
-   "ru": "Иммобилайзер: ошибка антенны",
-   "en": "",
-   "fam": "immo",
-   "node": "fam:immo"
-  },
-  {
-   "code": "P1692",
-   "brand": "hyundai_kia",
-   "ru": "Иммобилайзер: лампа",
-   "en": "",
-   "fam": "immo",
-   "node": "fam:immo"
-  },
-  {
-   "code": "P1693",
-   "brand": "hyundai_kia",
-   "ru": "Иммобилайзер: транспондер не отвечает или неверный",
-   "en": "",
-   "fam": "immo",
-   "node": "fam:immo"
-  },
-  {
-   "code": "P1694",
-   "brand": "hyundai_kia",
-   "ru": "Иммобилайзер: ошибка сообщения от блока двигателя",
-   "en": "",
-   "fam": "immo",
-   "node": "fam:immo"
-  },
-  {
-   "code": "P1695",
-   "brand": "hyundai_kia",
-   "ru": "Иммобилайзер: ошибка памяти блока двигателя",
-   "en": "",
-   "fam": "immo",
-   "node": "fam:immo"
   },
   {
    "code": "P1743",

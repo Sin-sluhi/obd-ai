@@ -39,38 +39,6 @@
    "node": "system b air fuel ratio imbalance"
   },
   {
-   "code": "P2400",
-   "brand": "",
-   "ru": "Насос проверки утечек системы паров топлива: цепь / обрыв",
-   "en": "",
-   "fam": "evap_pump",
-   "node": "fam:evap_pump"
-  },
-  {
-   "code": "P2401",
-   "brand": "",
-   "ru": "Насос проверки утечек системы паров топлива: низкий уровень",
-   "en": "",
-   "fam": "evap_pump",
-   "node": "fam:evap_pump"
-  },
-  {
-   "code": "P2402",
-   "brand": "",
-   "ru": "Насос проверки утечек системы паров топлива: высокий уровень",
-   "en": "",
-   "fam": "evap_pump",
-   "node": "fam:evap_pump"
-  },
-  {
-   "code": "P2403",
-   "brand": "",
-   "ru": "Насос проверки утечек: цепь контроля: цепь",
-   "en": "",
-   "fam": "evap_pump",
-   "node": "fam:evap_pump"
-  },
-  {
    "code": "P2404",
    "brand": "",
    "ru": "Насос проверки утечек: цепь контроля: показания вне диапазона",
@@ -98,22 +66,6 @@
    "code": "P2407",
    "brand": "",
    "ru": "Насос проверки утечек: цепь контроля: прерывистый сигнал",
-   "en": "",
-   "fam": "evap_pump",
-   "node": "fam:evap_pump"
-  },
-  {
-   "code": "P2418",
-   "brand": "",
-   "ru": "Переключающий клапан системы паров топлива: цепь / обрыв",
-   "en": "",
-   "fam": "evap_pump",
-   "node": "fam:evap_pump"
-  },
-  {
-   "code": "P2419",
-   "brand": "",
-   "ru": "Переключающий клапан системы паров топлива: низкий уровень",
    "en": "",
    "fam": "evap_pump",
    "node": "fam:evap_pump"
@@ -237,30 +189,6 @@
    "en": "EGR Cooler B Efficiency Below Threshold",
    "fam": "",
    "node": "egr cooler b efficiency below threshold"
-  },
-  {
-   "code": "P2425",
-   "brand": "",
-   "ru": "Клапан охлаждения EGR: цепь / обрыв",
-   "en": "",
-   "fam": "egr_cooler",
-   "node": "fam:egr_cooler"
-  },
-  {
-   "code": "P2426",
-   "brand": "",
-   "ru": "Клапан охлаждения EGR: низкий уровень",
-   "en": "",
-   "fam": "egr_cooler",
-   "node": "fam:egr_cooler"
-  },
-  {
-   "code": "P2427",
-   "brand": "",
-   "ru": "Клапан охлаждения EGR: высокий уровень",
-   "en": "",
-   "fam": "egr_cooler",
-   "node": "fam:egr_cooler"
   },
   {
    "code": "P2457",

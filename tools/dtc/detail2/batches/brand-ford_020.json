@@ -7,7 +7,6 @@
   "accs to pcm",
   "air conditioning pressure",
   "air conditioning pressure sensor insufficient pressure change",
-  "fam:vss",
   "fan secondary",
   "idle air control over speed error",
   "idle air control system at adaptive clip",
@@ -191,14 +190,6 @@
    "en": "EGRV Circuit Malfunction",
    "fam": "",
    "node": "ru:клапан егр"
-  },
-  {
-   "code": "P1500",
-   "brand": "ford",
-   "ru": "Датчик скорости: прерывистый сигнал",
-   "en": "",
-   "fam": "vss",
-   "node": "fam:vss"
   },
   {
    "code": "P1501",

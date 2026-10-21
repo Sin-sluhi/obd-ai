@@ -12,7 +12,6 @@
   "egr valve position sensor adaptation at limit",
   "egr valve power stage",
   "exhaust gas temperature",
-  "fam:evap_purge",
   "fuel level sensor",
   "secondary air injection",
   "secondary air injection control module electrical",
@@ -193,22 +192,6 @@
    "en": "Secondary Air Injection System Bank 1 Flow Too Low",
    "fam": "",
    "node": "secondary air injection system flow too"
-  },
-  {
-   "code": "P1425",
-   "brand": "vag",
-   "ru": "Клапан вентиляции бака: замыкание на массу",
-   "en": "",
-   "fam": "evap_purge",
-   "node": "fam:evap_purge"
-  },
-  {
-   "code": "P1426",
-   "brand": "vag",
-   "ru": "Клапан вентиляции бака: обрыв",
-   "en": "",
-   "fam": "evap_purge",
-   "node": "fam:evap_purge"
   },
   {
    "code": "P1432",

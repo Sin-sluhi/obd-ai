@@ -11,8 +11,6 @@
   "cylinder #5",
   "cylinder #6",
   "cylinder #7",
-  "fam:fuel_pump",
-  "fam:immo",
   "fuel pump control out of",
   "fuel pump driver module off line",
   "fuel pump secondary",
@@ -100,30 +98,6 @@
    "en": "Low Speed Fuel Pump Primary Circuit Failure",
    "fam": "",
    "node": "ru:топливный насос, низкая скорость"
-  },
-  {
-   "code": "P1233",
-   "brand": "ford",
-   "ru": "Модуль управления топливным насосом не отвечает",
-   "en": "",
-   "fam": "fuel_pump",
-   "node": "fam:fuel_pump"
-  },
-  {
-   "code": "P1235",
-   "brand": "ford",
-   "ru": "Управление топливным насосом: вне диапазона",
-   "en": "",
-   "fam": "fuel_pump",
-   "node": "fam:fuel_pump"
-  },
-  {
-   "code": "P1237",
-   "brand": "ford",
-   "ru": "Топливный насос: вторичная цепь",
-   "en": "",
-   "fam": "fuel_pump",
-   "node": "fam:fuel_pump"
   },
   {
    "code": "P1234",
@@ -276,14 +250,6 @@
    "en": "Pedal Correlation PDS1 and PDS2",
    "fam": "",
    "node": "pedal correlation pds1 and pds2"
-  },
-  {
-   "code": "P1260",
-   "brand": "ford",
-   "ru": "Обнаружена попытка угона: двигатель заблокирован (PATS)",
-   "en": "",
-   "fam": "immo",
-   "node": "fam:immo"
   },
   {
    "code": "P1261",

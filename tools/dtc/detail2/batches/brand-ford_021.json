@@ -12,7 +12,6 @@
   "electronic throttle monitor pcm override",
   "etc in power limiting mode",
   "etc power less than demand",
-  "fam:ps_pressure",
   "fuel demand command",
   "fuel pump monitor",
   "fuel pump primary",
@@ -326,14 +325,6 @@
    "en": "Fuel Pump Speed Control Circuit Malfunction",
    "fam": "",
    "node": "fuel pump speed"
-  },
-  {
-   "code": "P1650",
-   "brand": "ford",
-   "ru": "Датчик давления гидроусилителя: вне диапазона",
-   "en": "",
-   "fam": "ps_pressure",
-   "node": "fam:ps_pressure"
   },
   {
    "code": "P1651",

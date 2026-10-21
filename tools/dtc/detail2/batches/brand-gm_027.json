@@ -12,7 +12,6 @@
   "ei system or ignition control missing",
   "electronic ignition system fault line",
   "engine coolant overtemperature protection mode active",
-  "fam:ckp",
   "fuel injection pump battery voltage out of",
   "ic module 4x ref",
   "ignition coil 2 primary feedback",
@@ -377,22 +376,6 @@
    "en": "CKP Circuit",
    "fam": "",
    "node": "ru:датчик коленвала"
-  },
-  {
-   "code": "P1336",
-   "brand": "gm",
-   "ru": "Вариация задающего диска коленвала не обучена",
-   "en": "",
-   "fam": "ckp",
-   "node": "fam:ckp"
-  },
-  {
-   "code": "P1380",
-   "brand": "gm",
-   "ru": "Данные о неровной дороге от ABS недоступны",
-   "en": "",
-   "fam": "ckp",
-   "node": "fam:ckp"
   }
  ]
 }

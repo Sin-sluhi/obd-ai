@@ -8,10 +8,6 @@
   "closed throttle position insufficient",
   "crankshaft position sensor ref",
   "electrical load detector",
-  "fam:etc",
-  "fam:ignition_module",
-  "fam:overtemp",
-  "fam:sensor_ref",
   "fuel pump control",
   "ho2s11",
   "ho2s11 label",
@@ -189,44 +185,12 @@
    "node": "traction control system"
   },
   {
-   "code": "P1217",
-   "brand": "nissan",
-   "ru": "Перегрев двигателя",
-   "en": "",
-   "fam": "overtemp",
-   "node": "fam:overtemp"
-  },
-  {
    "code": "P1220",
    "brand": "nissan",
    "ru": "Сигнал управления топливным насосом: неисправность",
    "en": "Fuel Pump Control Signal Fault",
    "fam": "",
    "node": "fuel pump control"
-  },
-  {
-   "code": "P1225",
-   "brand": "nissan",
-   "ru": "Обучение закрытого положения дросселя: не выполняется",
-   "en": "",
-   "fam": "etc",
-   "node": "fam:etc"
-  },
-  {
-   "code": "P1226",
-   "brand": "nissan",
-   "ru": "Обучение закрытого положения дросселя: не выполнено",
-   "en": "",
-   "fam": "etc",
-   "node": "fam:etc"
-  },
-  {
-   "code": "P1229",
-   "brand": "nissan",
-   "ru": "Питание датчиков",
-   "en": "",
-   "fam": "sensor_ref",
-   "node": "fam:sensor_ref"
   },
   {
    "code": "P1241",
@@ -363,14 +327,6 @@
    "en": "Spark Plug Voltage Detection Module Reset Circuit Malfunction Rear Bank",
    "fam": "",
    "node": "spark plug voltage detection module reset"
-  },
-  {
-   "code": "P1320",
-   "brand": "nissan",
-   "ru": "Сигнал зажигания (первичная цепь)",
-   "en": "",
-   "fam": "ignition_module",
-   "node": "fam:ignition_module"
   },
   {
    "code": "P1324",

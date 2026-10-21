@@ -12,7 +12,6 @@
   "engine control module incorrect coding",
   "engine mount solenoid valves",
   "engine oil temperature",
-  "fam:system_voltage",
   "glow plug heater",
   "glow plug heater indicator",
   "idle adaptation at limit",
@@ -143,14 +142,6 @@
    "en": "Power Supply Terminal No 15 Low Voltage",
    "fam": "",
    "node": "power supply terminal no"
-  },
-  {
-   "code": "P1602",
-   "brand": "vag",
-   "ru": "Напряжение питания (клемма 30) слишком низкое",
-   "en": "",
-   "fam": "system_voltage",
-   "node": "fam:system_voltage"
   },
   {
    "code": "P1603",

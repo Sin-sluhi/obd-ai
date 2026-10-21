@@ -181,38 +181,6 @@
    "node": "throttle pedal position sensor switch f g voltage correlation"
   },
   {
-   "code": "P2135",
-   "brand": "",
-   "ru": "Датчики дросселя A и B не согласуются",
-   "en": "",
-   "fam": "tps_corr",
-   "node": "fam:tps_corr"
-  },
-  {
-   "code": "P2136",
-   "brand": "",
-   "ru": "Датчики дросселя A и C не согласуются",
-   "en": "",
-   "fam": "tps_corr",
-   "node": "fam:tps_corr"
-  },
-  {
-   "code": "P2137",
-   "brand": "",
-   "ru": "Датчики дросселя B и C не согласуются",
-   "en": "",
-   "fam": "tps_corr",
-   "node": "fam:tps_corr"
-  },
-  {
-   "code": "P2138",
-   "brand": "",
-   "ru": "Датчики педали газа D и E не согласуются",
-   "en": "",
-   "fam": "tps_corr",
-   "node": "fam:tps_corr"
-  },
-  {
    "code": "P2139",
    "brand": "",
    "ru": "Датчики педали газа D и F не согласуются",

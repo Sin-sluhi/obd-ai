@@ -13,8 +13,6 @@
   "egr calibration fault",
   "engine rpm or vehicle speed limiter reached",
   "excessive injection control pressure",
-  "fam:ect",
-  "fam:overtemp",
   "fuel pulse in",
   "idm failure",
   "ignition coil a primary",
@@ -99,22 +97,6 @@
    "node": "aborted koer icp failure"
   },
   {
-   "code": "P1285",
-   "brand": "ford",
-   "ru": "Перегрев головки блока",
-   "en": "",
-   "fam": "overtemp",
-   "node": "fam:overtemp"
-  },
-  {
-   "code": "P1299",
-   "brand": "ford",
-   "ru": "Защита от перегрева головки активна",
-   "en": "",
-   "fam": "overtemp",
-   "node": "fam:overtemp"
-  },
-  {
    "code": "P1286",
    "brand": "ford",
    "ru": "Импульс впрыска: в диапазоне, но ниже ожидаемого",
@@ -129,30 +111,6 @@
    "en": "Fuel Pulse In Range But Higher Than Expected",
    "fam": "",
    "node": "fuel pulse in"
-  },
-  {
-   "code": "P1288",
-   "brand": "ford",
-   "ru": "Датчик температуры головки (CHT): вне диапазона самотеста",
-   "en": "",
-   "fam": "ect",
-   "node": "fam:ect"
-  },
-  {
-   "code": "P1289",
-   "brand": "ford",
-   "ru": "Датчик температуры головки (CHT): высокий сигнал",
-   "en": "",
-   "fam": "ect",
-   "node": "fam:ect"
-  },
-  {
-   "code": "P1290",
-   "brand": "ford",
-   "ru": "Датчик температуры головки (CHT): низкий сигнал",
-   "en": "",
-   "fam": "ect",
-   "node": "fam:ect"
   },
   {
    "code": "P1291",

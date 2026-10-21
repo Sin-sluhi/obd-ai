@@ -122,78 +122,6 @@
    "node": "clutch pedal switch a b correlation"
   },
   {
-   "code": "P0840",
-   "brand": "",
-   "ru": "Датчик давления масла коробки A: цепь",
-   "en": "",
-   "fam": "trans_pressure",
-   "node": "fam:trans_pressure"
-  },
-  {
-   "code": "P0841",
-   "brand": "",
-   "ru": "Датчик давления масла коробки A: показания вне диапазона",
-   "en": "",
-   "fam": "trans_pressure",
-   "node": "fam:trans_pressure"
-  },
-  {
-   "code": "P0842",
-   "brand": "",
-   "ru": "Датчик давления масла коробки A: низкий сигнал",
-   "en": "",
-   "fam": "trans_pressure",
-   "node": "fam:trans_pressure"
-  },
-  {
-   "code": "P0843",
-   "brand": "",
-   "ru": "Датчик давления масла коробки A: высокий сигнал",
-   "en": "",
-   "fam": "trans_pressure",
-   "node": "fam:trans_pressure"
-  },
-  {
-   "code": "P0844",
-   "brand": "",
-   "ru": "Датчик давления масла коробки A: прерывистый сигнал",
-   "en": "",
-   "fam": "trans_pressure",
-   "node": "fam:trans_pressure"
-  },
-  {
-   "code": "P0845",
-   "brand": "",
-   "ru": "Датчик давления масла коробки B: цепь",
-   "en": "",
-   "fam": "trans_pressure",
-   "node": "fam:trans_pressure"
-  },
-  {
-   "code": "P0846",
-   "brand": "",
-   "ru": "Датчик давления масла коробки B: показания вне диапазона",
-   "en": "",
-   "fam": "trans_pressure",
-   "node": "fam:trans_pressure"
-  },
-  {
-   "code": "P0847",
-   "brand": "",
-   "ru": "Датчик давления масла коробки B: низкий сигнал",
-   "en": "",
-   "fam": "trans_pressure",
-   "node": "fam:trans_pressure"
-  },
-  {
-   "code": "P0848",
-   "brand": "",
-   "ru": "Датчик давления масла коробки B: высокий сигнал",
-   "en": "",
-   "fam": "trans_pressure",
-   "node": "fam:trans_pressure"
-  },
-  {
    "code": "P0849",
    "brand": "",
    "ru": "Датчик давления масла коробки B: прерывистый сигнал",
@@ -210,14 +138,6 @@
    "node": "fam:trans_pressure"
   },
   {
-   "code": "P0868",
-   "brand": "",
-   "ru": "Давление масла в коробке: низкое",
-   "en": "",
-   "fam": "trans_pressure",
-   "node": "fam:trans_pressure"
-  },
-  {
    "code": "P0869",
    "brand": "",
    "ru": "Давление масла в коробке: высокое",
@@ -229,14 +149,6 @@
    "code": "P0870",
    "brand": "",
    "ru": "Датчик давления масла коробки C: цепь",
-   "en": "",
-   "fam": "trans_pressure",
-   "node": "fam:trans_pressure"
-  },
-  {
-   "code": "P0871",
-   "brand": "",
-   "ru": "Датчик давления масла коробки C: показания вне диапазона",
    "en": "",
    "fam": "trans_pressure",
    "node": "fam:trans_pressure"

@@ -8,7 +8,6 @@
   "b camshaft position actuator position sensor c",
   "b camshaft profile actuator c",
   "b camshaft profile actuator c control",
-  "fam:egr",
   "fam:egr_pos",
   "ignition k control",
   "ignition l control"
@@ -173,102 +172,6 @@
    "en": "Ignition L Control Signal Circuit High",
    "fam": "",
    "node": "ignition l control"
-  },
-  {
-   "code": "P0400",
-   "brand": "",
-   "ru": "EGR: поток не соответствует",
-   "en": "",
-   "fam": "egr",
-   "node": "fam:egr"
-  },
-  {
-   "code": "P0401",
-   "brand": "",
-   "ru": "EGR: недостаточный поток",
-   "en": "",
-   "fam": "egr",
-   "node": "fam:egr"
-  },
-  {
-   "code": "P0402",
-   "brand": "",
-   "ru": "EGR: избыточный поток",
-   "en": "",
-   "fam": "egr",
-   "node": "fam:egr"
-  },
-  {
-   "code": "P2413",
-   "brand": "",
-   "ru": "EGR: система не отрабатывает",
-   "en": "",
-   "fam": "egr",
-   "node": "fam:egr"
-  },
-  {
-   "code": "P0403",
-   "brand": "",
-   "ru": "EGR: цепь управления клапаном",
-   "en": "",
-   "fam": "egr_pos",
-   "node": "fam:egr_pos"
-  },
-  {
-   "code": "P0404",
-   "brand": "",
-   "ru": "EGR: клапан не отрабатывает команду",
-   "en": "",
-   "fam": "egr_pos",
-   "node": "fam:egr_pos"
-  },
-  {
-   "code": "P0405",
-   "brand": "",
-   "ru": "EGR: датчик положения A, низкий сигнал",
-   "en": "",
-   "fam": "egr_pos",
-   "node": "fam:egr_pos"
-  },
-  {
-   "code": "P0406",
-   "brand": "",
-   "ru": "EGR: датчик положения A, высокий сигнал",
-   "en": "",
-   "fam": "egr_pos",
-   "node": "fam:egr_pos"
-  },
-  {
-   "code": "P0407",
-   "brand": "",
-   "ru": "EGR: датчик положения B, низкий сигнал",
-   "en": "",
-   "fam": "egr_pos",
-   "node": "fam:egr_pos"
-  },
-  {
-   "code": "P0408",
-   "brand": "",
-   "ru": "EGR: датчик положения B, высокий сигнал",
-   "en": "",
-   "fam": "egr_pos",
-   "node": "fam:egr_pos"
-  },
-  {
-   "code": "P0409",
-   "brand": "",
-   "ru": "EGR: датчик положения A, цепь",
-   "en": "",
-   "fam": "egr_pos",
-   "node": "fam:egr_pos"
-  },
-  {
-   "code": "P0486",
-   "brand": "",
-   "ru": "EGR: датчик положения B, цепь",
-   "en": "",
-   "fam": "egr_pos",
-   "node": "fam:egr_pos"
   },
   {
    "code": "P0487",

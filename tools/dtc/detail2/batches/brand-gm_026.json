@@ -9,8 +9,6 @@
   "engine oil pressure",
   "engine oil temperature",
   "engine vacuum leak",
-  "fam:injector_balance",
-  "fam:lean",
   "fuel solenoid",
   "ground fault detection indicated",
   "ho2s cross counts",
@@ -85,30 +83,6 @@
    "en": "Bank To Bank Fuel Trim Offset",
    "fam": "",
    "node": "bank to bank fuel trim offset"
-  },
-  {
-   "code": "P1171",
-   "brand": "gm",
-   "ru": "Бедная смесь при разгоне",
-   "en": "",
-   "fam": "lean",
-   "node": "fam:lean"
-  },
-  {
-   "code": "P1174",
-   "brand": "gm",
-   "ru": "Баланс топлива по цилиндрам (банк 1)",
-   "en": "",
-   "fam": "injector_balance",
-   "node": "fam:injector_balance"
-  },
-  {
-   "code": "P1175",
-   "brand": "gm",
-   "ru": "Баланс топлива по цилиндрам (банк 2)",
-   "en": "",
-   "fam": "injector_balance",
-   "node": "fam:injector_balance"
   },
   {
    "code": "P1185",

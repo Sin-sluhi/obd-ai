@@ -7,7 +7,6 @@
   "baro to map",
   "engine coolant temp",
   "engine coolant temperature",
-  "fam:lambda1",
   "ho2s average voltage level",
   "ho2s heater current monitor",
   "ho2s heater warm up",
@@ -245,38 +244,6 @@
    "en": "O2 Sensor 2/1 (Bank 2 Sensor 1) Slow During Catalyst Monitor",
    "fam": "",
    "node": "ru:лямбда- (ряд 2)"
-  },
-  {
-   "code": "P1133",
-   "brand": "gm",
-   "ru": "Лямбда-зонд (банк 1, датчик 1): мало переключений",
-   "en": "",
-   "fam": "lambda1",
-   "node": "fam:lambda1"
-  },
-  {
-   "code": "P1134",
-   "brand": "gm",
-   "ru": "Лямбда-зонд (банк 1, датчик 1): соотношение времени переходов",
-   "en": "",
-   "fam": "lambda1",
-   "node": "fam:lambda1"
-  },
-  {
-   "code": "P1153",
-   "brand": "gm",
-   "ru": "Лямбда-зонд (банк 2, датчик 1): мало переключений",
-   "en": "",
-   "fam": "lambda1",
-   "node": "fam:lambda1"
-  },
-  {
-   "code": "P1154",
-   "brand": "gm",
-   "ru": "Лямбда-зонд (банк 2, датчик 1): соотношение времени переходов",
-   "en": "",
-   "fam": "lambda1",
-   "node": "fam:lambda1"
   },
   {
    "code": "P1135",

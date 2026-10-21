@@ -8,8 +8,6 @@
   "cold start engine exhaust temperature too",
   "cold start rough idle",
   "crankcase pressure sensor a",
-  "fam:battery",
-  "fam:immo",
   "fam:oil_pressure",
   "fam:starter",
   "pcv filter restriction"
@@ -48,30 +46,6 @@
    "node": "brake assist vacuum too"
   },
   {
-   "code": "P0512",
-   "brand": "",
-   "ru": "Цепь запроса стартера: неисправность",
-   "en": "",
-   "fam": "starter",
-   "node": "fam:starter"
-  },
-  {
-   "code": "P0615",
-   "brand": "",
-   "ru": "Реле стартера: цепь",
-   "en": "",
-   "fam": "starter",
-   "node": "fam:starter"
-  },
-  {
-   "code": "P0616",
-   "brand": "",
-   "ru": "Реле стартера: низкий уровень",
-   "en": "",
-   "fam": "starter",
-   "node": "fam:starter"
-  },
-  {
    "code": "P0617",
    "brand": "",
    "ru": "Реле стартера: высокий уровень",
@@ -86,62 +60,6 @@
    "en": "",
    "fam": "starter",
    "node": "fam:starter"
-  },
-  {
-   "code": "P0513",
-   "brand": "",
-   "ru": "Неверный ключ иммобилайзера",
-   "en": "",
-   "fam": "immo",
-   "node": "fam:immo"
-  },
-  {
-   "code": "P0633",
-   "brand": "",
-   "ru": "Ключ иммобилайзера не запрограммирован",
-   "en": "",
-   "fam": "immo",
-   "node": "fam:immo"
-  },
-  {
-   "code": "P0648",
-   "brand": "",
-   "ru": "Лампа иммобилайзера: цепь",
-   "en": "",
-   "fam": "immo",
-   "node": "fam:immo"
-  },
-  {
-   "code": "P0514",
-   "brand": "",
-   "ru": "Датчик температуры аккумулятора: вне диапазона",
-   "en": "",
-   "fam": "battery",
-   "node": "fam:battery"
-  },
-  {
-   "code": "P0515",
-   "brand": "",
-   "ru": "Датчик температуры аккумулятора: цепь",
-   "en": "",
-   "fam": "battery",
-   "node": "fam:battery"
-  },
-  {
-   "code": "P0516",
-   "brand": "",
-   "ru": "Датчик температуры аккумулятора: низкий сигнал",
-   "en": "",
-   "fam": "battery",
-   "node": "fam:battery"
-  },
-  {
-   "code": "P0517",
-   "brand": "",
-   "ru": "Датчик температуры аккумулятора: высокий сигнал",
-   "en": "",
-   "fam": "battery",
-   "node": "fam:battery"
   },
   {
    "code": "P051A",
@@ -190,38 +108,6 @@
    "en": "PCV Filter Restriction",
    "fam": "",
    "node": "pcv filter restriction"
-  },
-  {
-   "code": "P0520",
-   "brand": "",
-   "ru": "Датчик давления масла: цепь",
-   "en": "",
-   "fam": "oil_pressure",
-   "node": "fam:oil_pressure"
-  },
-  {
-   "code": "P0521",
-   "brand": "",
-   "ru": "Датчик давления масла: вне диапазона",
-   "en": "",
-   "fam": "oil_pressure",
-   "node": "fam:oil_pressure"
-  },
-  {
-   "code": "P0522",
-   "brand": "",
-   "ru": "Датчик давления масла: низкий сигнал",
-   "en": "",
-   "fam": "oil_pressure",
-   "node": "fam:oil_pressure"
-  },
-  {
-   "code": "P0523",
-   "brand": "",
-   "ru": "Датчик давления масла: высокий сигнал",
-   "en": "",
-   "fam": "oil_pressure",
-   "node": "fam:oil_pressure"
   },
   {
    "code": "P0524",

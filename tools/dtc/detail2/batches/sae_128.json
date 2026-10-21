@@ -12,7 +12,6 @@
   "drive motor c temperature",
   "drive motor c temperature sensor",
   "drive motor c temperature sensor over temperature",
-  "fam:dpf",
   "hybrid ev battery system discharge",
   "intake manifold runner",
   "intake manifold runner control actuator internal",
@@ -148,46 +147,6 @@
    "en": "Drive Motor C Temperature Sensor Over Temperature",
    "fam": "",
    "node": "drive motor c temperature sensor over temperature"
-  },
-  {
-   "code": "P2002",
-   "brand": "",
-   "ru": "Сажевый фильтр: эффективность ниже порога (банк 1)",
-   "en": "",
-   "fam": "dpf",
-   "node": "fam:dpf"
-  },
-  {
-   "code": "P2003",
-   "brand": "",
-   "ru": "Сажевый фильтр: эффективность ниже порога (банк 2)",
-   "en": "",
-   "fam": "dpf",
-   "node": "fam:dpf"
-  },
-  {
-   "code": "P2458",
-   "brand": "",
-   "ru": "Регенерация сажевого фильтра: слишком долго",
-   "en": "",
-   "fam": "dpf",
-   "node": "fam:dpf"
-  },
-  {
-   "code": "P2459",
-   "brand": "",
-   "ru": "Регенерация сажевого фильтра: слишком часто",
-   "en": "",
-   "fam": "dpf",
-   "node": "fam:dpf"
-  },
-  {
-   "code": "P2463",
-   "brand": "",
-   "ru": "Сажевый фильтр: накопление сажи выше порога",
-   "en": "",
-   "fam": "dpf",
-   "node": "fam:dpf"
   },
   {
    "code": "P200A",

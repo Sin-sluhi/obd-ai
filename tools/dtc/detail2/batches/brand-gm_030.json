@@ -22,7 +22,6 @@
   "electronic throttle control throttle return",
   "electronic throttle module",
   "electronic variable orifice",
-  "fam:etc",
   "gear indicator system",
   "governor",
   "heated windshield request problem",
@@ -65,14 +64,6 @@
    "en": "Control Module Throttle Actuator Position Performance",
    "fam": "",
    "node": "control module throttle actuator position"
-  },
-  {
-   "code": "P1516",
-   "brand": "gm",
-   "ru": "Дроссельный узел: положение не соответствует команде",
-   "en": "",
-   "fam": "etc",
-   "node": "fam:etc"
   },
   {
    "code": "P1517",

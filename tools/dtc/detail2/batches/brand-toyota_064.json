@@ -8,13 +8,6 @@
   "cruise control main",
   "direct clutch speed",
   "egr bypass valve",
-  "fam:ecu",
-  "fam:etc",
-  "fam:hv_battery",
-  "fam:hv_contactor",
-  "fam:hv_isolation",
-  "fam:pnp",
-  "fam:vvt_sol",
   "idle air control valve",
   "linear shift",
   "ru:клапан управления маслом vvt (ocv, ряд 2)",
@@ -75,36 +68,12 @@
    "node": "cruise control main"
   },
   {
-   "code": "P1600",
-   "brand": "toyota",
-   "ru": "Блок управления: потеря постоянного питания (BATT)",
-   "en": "",
-   "fam": "ecu",
-   "node": "fam:ecu"
-  },
-  {
-   "code": "P1605",
-   "brand": "toyota",
-   "ru": "Блок управления: процессор контроля детонации",
-   "en": "",
-   "fam": "ecu",
-   "node": "fam:ecu"
-  },
-  {
    "code": "P1630",
    "brand": "toyota",
    "ru": "Противобуксовочная система",
    "en": "Traction Control System",
    "fam": "",
    "node": "traction control system"
-  },
-  {
-   "code": "P1633",
-   "brand": "toyota",
-   "ru": "Блок управления: неисправность (цепь электронного дросселя)",
-   "en": "",
-   "fam": "etc",
-   "node": "fam:etc"
   },
   {
    "code": "P1645",
@@ -121,14 +90,6 @@
    "en": "Idle Air Control Valve Control Circuit",
    "fam": "",
    "node": "idle air control valve"
-  },
-  {
-   "code": "P1656",
-   "brand": "toyota",
-   "ru": "Клапан OCV системы VVT-i (банк 1): цепь",
-   "en": "",
-   "fam": "vvt_sol",
-   "node": "fam:vvt_sol"
   },
   {
    "code": "P1658",
@@ -187,204 +148,12 @@
    "node": "linear shift"
   },
   {
-   "code": "P1780",
-   "brand": "toyota",
-   "ru": "Выключатель Park/Neutral: неисправность",
-   "en": "",
-   "fam": "pnp",
-   "node": "fam:pnp"
-  },
-  {
    "code": "P1895",
    "brand": "toyota",
    "ru": "Цепь снижения момента (блок коробки → блок двигателя): неисправность",
    "en": "TCM To ECM Torque Reduction Circuit Malfunction",
    "fam": "",
    "node": "tcm to ecm torque reduction"
-  },
-  {
-   "code": "P3000",
-   "brand": "toyota",
-   "ru": "Система управления тяговой батареей: неисправность",
-   "en": "",
-   "fam": "hv_battery",
-   "node": "fam:hv_battery"
-  },
-  {
-   "code": "P3011",
-   "brand": "toyota",
-   "ru": "Тяговая батарея: блок ячеек 1 ослаб",
-   "en": "",
-   "fam": "hv_battery",
-   "node": "fam:hv_battery"
-  },
-  {
-   "code": "P3012",
-   "brand": "toyota",
-   "ru": "Тяговая батарея: блок ячеек 2 ослаб",
-   "en": "",
-   "fam": "hv_battery",
-   "node": "fam:hv_battery"
-  },
-  {
-   "code": "P3013",
-   "brand": "toyota",
-   "ru": "Тяговая батарея: блок ячеек 3 ослаб",
-   "en": "",
-   "fam": "hv_battery",
-   "node": "fam:hv_battery"
-  },
-  {
-   "code": "P3014",
-   "brand": "toyota",
-   "ru": "Тяговая батарея: блок ячеек 4 ослаб",
-   "en": "",
-   "fam": "hv_battery",
-   "node": "fam:hv_battery"
-  },
-  {
-   "code": "P3015",
-   "brand": "toyota",
-   "ru": "Тяговая батарея: блок ячеек 5 ослаб",
-   "en": "",
-   "fam": "hv_battery",
-   "node": "fam:hv_battery"
-  },
-  {
-   "code": "P3016",
-   "brand": "toyota",
-   "ru": "Тяговая батарея: блок ячеек 6 ослаб",
-   "en": "",
-   "fam": "hv_battery",
-   "node": "fam:hv_battery"
-  },
-  {
-   "code": "P3017",
-   "brand": "toyota",
-   "ru": "Тяговая батарея: блок ячеек 7 ослаб",
-   "en": "",
-   "fam": "hv_battery",
-   "node": "fam:hv_battery"
-  },
-  {
-   "code": "P3018",
-   "brand": "toyota",
-   "ru": "Тяговая батарея: блок ячеек 8 ослаб",
-   "en": "",
-   "fam": "hv_battery",
-   "node": "fam:hv_battery"
-  },
-  {
-   "code": "P3019",
-   "brand": "toyota",
-   "ru": "Тяговая батарея: блок ячеек 9 ослаб",
-   "en": "",
-   "fam": "hv_battery",
-   "node": "fam:hv_battery"
-  },
-  {
-   "code": "P3020",
-   "brand": "toyota",
-   "ru": "Тяговая батарея: блок ячеек 10 ослаб",
-   "en": "",
-   "fam": "hv_battery",
-   "node": "fam:hv_battery"
-  },
-  {
-   "code": "P3021",
-   "brand": "toyota",
-   "ru": "Тяговая батарея: блок ячеек 11 ослаб",
-   "en": "",
-   "fam": "hv_battery",
-   "node": "fam:hv_battery"
-  },
-  {
-   "code": "P3022",
-   "brand": "toyota",
-   "ru": "Тяговая батарея: блок ячеек 12 ослаб",
-   "en": "",
-   "fam": "hv_battery",
-   "node": "fam:hv_battery"
-  },
-  {
-   "code": "P3023",
-   "brand": "toyota",
-   "ru": "Тяговая батарея: блок ячеек 13 ослаб",
-   "en": "",
-   "fam": "hv_battery",
-   "node": "fam:hv_battery"
-  },
-  {
-   "code": "P3024",
-   "brand": "toyota",
-   "ru": "Тяговая батарея: блок ячеек 14 ослаб",
-   "en": "",
-   "fam": "hv_battery",
-   "node": "fam:hv_battery"
-  },
-  {
-   "code": "P3025",
-   "brand": "toyota",
-   "ru": "Тяговая батарея: блок ячеек 15 ослаб",
-   "en": "",
-   "fam": "hv_battery",
-   "node": "fam:hv_battery"
-  },
-  {
-   "code": "P3026",
-   "brand": "toyota",
-   "ru": "Тяговая батарея: блок ячеек 16 ослаб",
-   "en": "",
-   "fam": "hv_battery",
-   "node": "fam:hv_battery"
-  },
-  {
-   "code": "P3027",
-   "brand": "toyota",
-   "ru": "Тяговая батарея: блок ячеек 17 ослаб",
-   "en": "",
-   "fam": "hv_battery",
-   "node": "fam:hv_battery"
-  },
-  {
-   "code": "P3028",
-   "brand": "toyota",
-   "ru": "Тяговая батарея: блок ячеек 18 ослаб",
-   "en": "",
-   "fam": "hv_battery",
-   "node": "fam:hv_battery"
-  },
-  {
-   "code": "P3029",
-   "brand": "toyota",
-   "ru": "Тяговая батарея: блок ячеек 19 ослаб",
-   "en": "",
-   "fam": "hv_battery",
-   "node": "fam:hv_battery"
-  },
-  {
-   "code": "P3030",
-   "brand": "toyota",
-   "ru": "Тяговая батарея: обрыв измерительного провода",
-   "en": "",
-   "fam": "hv_battery",
-   "node": "fam:hv_battery"
-  },
-  {
-   "code": "P3004",
-   "brand": "toyota",
-   "ru": "Силовой кабель высокого напряжения: неисправность",
-   "en": "",
-   "fam": "hv_contactor",
-   "node": "fam:hv_contactor"
-  },
-  {
-   "code": "P3009",
-   "brand": "toyota",
-   "ru": "Утечка высокого напряжения (изоляция)",
-   "en": "",
-   "fam": "hv_isolation",
-   "node": "fam:hv_isolation"
   }
  ]
 }

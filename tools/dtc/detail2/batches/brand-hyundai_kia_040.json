@@ -16,8 +16,6 @@
   "egr vent control",
   "evap purge control",
   "excessive vacuum leak",
-  "fam:iac",
-  "fam:ps_pressure",
   "fuel injector",
   "fuel tank sending unit",
   "idle air control valve closing coil",
@@ -319,38 +317,6 @@
    "node": "no vehicle speed"
   },
   {
-   "code": "P1505",
-   "brand": "hyundai_kia",
-   "ru": "Регулятор холостого хода: обмотка 1, низкий уровень",
-   "en": "",
-   "fam": "iac",
-   "node": "fam:iac"
-  },
-  {
-   "code": "P1506",
-   "brand": "hyundai_kia",
-   "ru": "Регулятор холостого хода: обмотка 1, высокий уровень",
-   "en": "",
-   "fam": "iac",
-   "node": "fam:iac"
-  },
-  {
-   "code": "P1507",
-   "brand": "hyundai_kia",
-   "ru": "Регулятор холостого хода: обмотка 2, низкий уровень",
-   "en": "",
-   "fam": "iac",
-   "node": "fam:iac"
-  },
-  {
-   "code": "P1508",
-   "brand": "hyundai_kia",
-   "ru": "Регулятор холостого хода: обмотка 2, высокий уровень",
-   "en": "",
-   "fam": "iac",
-   "node": "fam:iac"
-  },
-  {
    "code": "P1510",
    "brand": "hyundai_kia",
    "ru": "Регулятор холостого хода, обмотка закрытия: высокое напряжение",
@@ -381,14 +347,6 @@
    "en": "A/T To M/T Codification",
    "fam": "",
    "node": "a t to m t codification"
-  },
-  {
-   "code": "P1521",
-   "brand": "hyundai_kia",
-   "ru": "Датчик давления гидроусилителя: цепь",
-   "en": "",
-   "fam": "ps_pressure",
-   "node": "fam:ps_pressure"
   }
  ]
 }

@@ -3,8 +3,6 @@
  "series": "brand",
  "brand": "vag",
  "nodes": [
-  "fam:lean",
-  "fam:rich",
   "long term fuel trim add air system too lean",
   "long term fuel trim add air system too rich",
   "long term fuel trim add fuel system too lean",
@@ -331,38 +329,6 @@
    "en": "Long Term Fuel Trim Bank 1 System Too Rich",
    "fam": "",
    "node": "long term fuel trim system too rich"
-  },
-  {
-   "code": "P1128",
-   "brand": "vag",
-   "ru": "Долговременная коррекция под нагрузкой: слишком бедно (банк 1)",
-   "en": "",
-   "fam": "lean",
-   "node": "fam:lean"
-  },
-  {
-   "code": "P1136",
-   "brand": "vag",
-   "ru": "Долговременная коррекция на холостом: слишком бедно (банк 1)",
-   "en": "",
-   "fam": "lean",
-   "node": "fam:lean"
-  },
-  {
-   "code": "P1129",
-   "brand": "vag",
-   "ru": "Долговременная коррекция под нагрузкой: слишком богато (банк 1)",
-   "en": "",
-   "fam": "rich",
-   "node": "fam:rich"
-  },
-  {
-   "code": "P1137",
-   "brand": "vag",
-   "ru": "Долговременная коррекция на холостом: слишком богато (банк 1)",
-   "en": "",
-   "fam": "rich",
-   "node": "fam:rich"
   },
   {
    "code": "P1130",
