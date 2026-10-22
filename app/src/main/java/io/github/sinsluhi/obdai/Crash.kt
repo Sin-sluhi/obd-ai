@@ -56,8 +56,7 @@ object Crash {
      * как отчёт о падении. Хранится только последний — серия одинаковых сбоев не забивает память.
      */
     fun nonFatal(dir: File, e: Throwable) {
-        runCatching { File(dir, FILE).writeText("ПОЙМАНО (приложение не упало)
-" + report(Thread.currentThread(), e)) } // i18n-ignore: лог
+        runCatching { File(dir, FILE).writeText("ПОЙМАНО (приложение не упало)\n" + report(Thread.currentThread(), e)) } // i18n-ignore: лог
     }
 
     /** Отчёт о прошлом падении, если он есть: забрать и удалить файл. */
