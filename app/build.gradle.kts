@@ -23,10 +23,15 @@ android {
         versionCode = env("GITHUB_RUN_NUMBER").toIntOrNull()?.let { 100 + it } ?: 14
         versionName = "1.2." + env("GITHUB_RUN_NUMBER").ifEmpty { "2" }
         // Сборка для магазина (release, AAB): по правилам Google Play о сборе данных показывается окно про журнал
-        buildConfigField("boolean", "STORE", "false")
+        buildConfigField("boolean", "STORE", (env("STORE_BUILD") == "true").toString())
         // Провайдер и ключ ИИ из секретов GitHub (AI_PROVIDER, AI_API_KEY, AI_MODEL); пусто, если не заданы
         buildConfigField("String", "AI_PROVIDER", "\"" + env("AI_PROVIDER").ifBlank { "groq" } + "\"")
-        buildConfigField("String", "AI_API_KEY", "\"" + env("AI_API_KEY").ifBlank { env("ANTHROPIC_API_KEY") } + "\"")
+        // ключи не открытым текстом: ключ XOR маска (та же маска в Secrets.kt), чтобы «gsk_…» не находился поиском по APK
+        val mask = intArrayOf(0x5A, 0x13, 0xC7, 0x2E, 0x91, 0x6B, 0xF4, 0x08, 0x3D, 0xA6, 0x77, 0xE2, 0x19, 0xB5, 0x4C, 0x80)
+        fun xorHex(v: String) = v.mapIndexed { i, c -> "%02x".format(c.code xor mask[i % mask.size]) }.joinToString("")
+        buildConfigField("String", "AI_API_KEY_X", "\"" + xorHex(env("AI_API_KEY").ifBlank { env("ANTHROPIC_API_KEY") }) + "\"")
+        buildConfigField("String", "SIGN_SHA256", "\"1d9ad0322dc001c53afa1d4b04e9eecd092a884f969510709a46ec86450b9147\"")
+        buildConfigField("String", "OPENROUTER_KEY_X", "\"" + xorHex(env("OPENROUTER_KEY")) + "\"")
         buildConfigField("String", "AI_MODEL", "\"" + env("AI_MODEL") + "\"")
         // Адрес сервера форума (server/forum), переменная репозитория FORUM_URL; пусто = чат выключен
         buildConfigField("String", "FORUM_URL", "\"" + env("FORUM_URL") + "\"")
@@ -59,13 +64,13 @@ android {
         getByName("debug") {
             signingConfigs.findByName("stable")?.let { signingConfig = it }
         }
-        // Google Play: AAB тем же постоянным ключом — в Play загружаем его как ключ подписи приложения, тогда версия
-        // из магазина встаёт поверх APK, поставленного с сайта, и наоборот. Без сжатия R8: разбор JSON и рефлексия Compose
-        // не проверены под ним на машине, размер и так ~14 МБ.
+        // Клиентская сборка (сайт, Авито) и Google Play — релиз тем же постоянным ключом: R8 запутывает и ужимает код,
+        // отладчик не подключить. Без ключа (форки, android7.yml) — отладочный ключ, чтобы APK ставился на эмулятор.
         getByName("release") {
-            signingConfigs.findByName("stable")?.let { signingConfig = it }
-            isMinifyEnabled = false
-            buildConfigField("boolean", "STORE", "true")
+            signingConfig = signingConfigs.findByName("stable") ?: signingConfigs.getByName("debug")
+            isMinifyEnabled = true
+            isShrinkResources = true
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
     buildFeatures {

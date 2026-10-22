@@ -65,6 +65,15 @@ class AppState private constructor(context: Context) {
             ForumTree.load(appContext)
             runCatching { ForumLocator.best(prefs) }
             OpenAiClient.relayBase = forumUrl   // запасной путь до нейронки через сервер владельца
+            // прошлый запуск упал: отчёт уходит обычным логом (kind = crash), в админке — флаг «приложение упало»
+            runCatching {
+                val crash = Crash.takePending(appContext.filesDir)
+                if (crash != null && prefs.logShare) {
+                    val meta = LogShare.Meta(kind = "crash", ok = false, error = crash.lineSequence().first().take(300))
+                    LogShare.enqueue(appContext.filesDir, LogShare.payload(prefs.logInstall, BuildConfig.VERSION_NAME, meta,
+                        crash.lines(), emptyList()))
+                }
+            }
             runCatching { if (prefs.logShare) LogShare.flush(appContext.filesDir, forumUrl) }   // логи, не ушедшие без сети
             checkDevReplies()
             runCatching { if (Kb.refresh(appContext, prefs)) addLog(tr("state_kb_updated", Kb.size)) }
@@ -200,19 +209,19 @@ class AppState private constructor(context: Context) {
     @Volatile private var knownCodes: Set<String> = emptySet()
 
     /** Ключ, встроенный в сборку через секрет GitHub (пустой, если секрета нет или он для другого провайдера). */
-    val builtInKey: Boolean get() = BuildConfig.AI_API_KEY.isNotBlank() && provider.id == BuildConfig.AI_PROVIDER
+    val builtInKey: Boolean get() = Secrets.groqKey.isNotBlank() && provider.id == BuildConfig.AI_PROVIDER
     val hasAiKey: Boolean get() = aiConfig().ready
 
     fun aiConfig(): AiConfig {
         val p = provider
-        val key = prefs.apiKey(p).ifBlank { if (p.id == BuildConfig.AI_PROVIDER) BuildConfig.AI_API_KEY else "" }
+        val key = prefs.apiKey(p).ifBlank { if (p.id == BuildConfig.AI_PROVIDER) Secrets.groqKey else "" }
         val base = if (p == Provider.CUSTOM) prefs.customBaseUrl else p.baseUrl
         val cfg = AiConfig(p, key, prefs.model(p), base, prefs.folder)
-        if (cfg.ready || BuildConfig.AI_API_KEY.isBlank()) return cfg
+        if (cfg.ready || Secrets.groqKey.isBlank()) return cfg
         // выбран провайдер без ключа (настройка осталась от версии разработчика на том же телефоне) — встроенный,
         // иначе покупатель видит «Разбор не настроен» (телефон владельца, 17.10.2026: Getz и BMW без разбора)
         val bp = Provider.byId(BuildConfig.AI_PROVIDER)
-        return AiConfig(bp, BuildConfig.AI_API_KEY, prefs.model(bp), bp.baseUrl, prefs.folder)
+        return AiConfig(bp, Secrets.groqKey, prefs.model(bp), bp.baseUrl, prefs.folder)
     }
 
     init {

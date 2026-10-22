@@ -81,6 +81,20 @@ next_steps, for_service, typical_issues) — только по-русски, к�
     /** Запасные модели Groq по порядку, если основная не ответила или вернула не JSON. */
     private val groqFallbacks = listOf("openai/gpt-oss-120b", "qwen/qwen3.8-27b")
 
+    /**
+     * Запасной провайдер (22.10.2026): бесплатные модели OpenRouter, когда у Groq кончился лимит, он лежит или не пускает.
+     * Список бесплатных моделей OpenRouter меняется — сверять с https://openrouter.ai/api/v1/models (id с «:free»).
+     * Лимит у OpenRouter общий на ключ (50 запросов в день без пополнения), поэтому он только запасной.
+     */
+    private val openRouterText = listOf("nvidia/nemotron-3-ultra-550b-a55b:free", "google/gemma-4-31b-it:free", "nvidia/nemotron-3-super-120b-a12b:free")
+    private val openRouterVision = listOf("google/gemma-4-31b-it:free", "nvidia/nemotron-3.5-super-vl:free")
+
+    private fun openRouterChain(models: List<String>): List<AiConfig> {
+        val key = Secrets.openRouterKey
+        if (key.isBlank()) return emptyList()
+        return models.map { AiConfig(Provider.OPENROUTER, key, it, Provider.OPENROUTER.baseUrl, "") }
+    }
+
     /** Бесплатный тариф Groq: 8 тыс. токенов в минуту на запрос вместе с max_tokens — выдержки и ответ держим короткими. */
     private const val NOTES_BUDGET = 4500
     private const val NOTES_BUDGET_TIGHT = 1800
@@ -159,11 +173,14 @@ next_steps, for_service, typical_issues) — только по-русски, к�
         }
         progress(tr("ai_stage_verdict"))
         val system = ROLE + langRule() + "\n\n" + SCHEMA_TEXT
-        // Groq: основная модель, при неудаче следующая; у остальных провайдеров модель одна
-        val models = if (cfg.provider == Provider.GROQ) (listOf(cfg.model) + groqFallbacks).distinct() else listOf(cfg.model)
+        // Groq: основная модель, при неудаче следующая, потом бесплатные модели OpenRouter (если его ключ вшит в сборку);
+        // у остальных провайдеров модель одна
+        val chain: List<AiConfig> = if (cfg.provider == Provider.GROQ)
+            (listOf(cfg.model) + groqFallbacks).distinct().map { cfg.copy(model = it) } + openRouterChain(openRouterText)
+        else listOf(cfg)
         var last: IOException? = null
-        for ((i, model) in models.withIndex()) {
-            val c = cfg.copy(model = model)
+        for ((i, c) in chain.withIndex()) {
+            if (i > 0 && c.provider != chain[i - 1].provider) log("Groq не ответил — пробую запасного провайдера")
             try {
                 // gpt-oss иногда отвечает по-английски, несмотря на правило: один повтор с жёстким напоминанием
                 var sys = system
@@ -182,7 +199,7 @@ next_steps, for_service, typical_issues) — только по-русски, к�
                 return verifySources(ok, userReport(snap, notes), log)
             } catch (e: IOException) {
                 last = e
-                if (i < models.lastIndex) {
+                if (i < chain.lastIndex) {
                     log("Модель не ответила: ${e.message}. Пробую следующую")
                     progress(tr("ai_stage_prep"))
                 }
@@ -605,11 +622,14 @@ next_steps, for_service, typical_issues) — только по-русски, к�
 
     fun dashboard(cfg: AiConfig, jpegBase64: String, log: (String) -> Unit): DashReport {
         if (cfg.provider == Provider.ANTHROPIC) return dashboardAnthropic(cfg, jpegBase64)
-        val models = if (cfg.provider == Provider.GROQ) groqVision else listOf(cfg.wireModel)
+        val chain: List<AiConfig> = if (cfg.provider == Provider.GROQ)
+            groqVision.map { cfg.copy(model = it) } + openRouterChain(openRouterVision)
+        else listOf(cfg)
         var last: Exception? = null
-        for (m in models) {
+        for (c in chain) {
+            val m = c.wireModel
             try {
-                val reply = OpenAiClient.chat(cfg, DASH_ROLE, "Что горит на приборке?", imageJpegBase64 = jpegBase64, modelOverride = m, maxTokens = 3000)
+                val reply = OpenAiClient.chat(c, DASH_ROLE, "Что горит на приборке?", imageJpegBase64 = jpegBase64, maxTokens = 3000)
                 val json = extractJson(reply.content) ?: throw IOException("Модель вернула не JSON")
                 return DashReport.fromJson(json)
             } catch (e: Exception) {

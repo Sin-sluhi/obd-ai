@@ -144,6 +144,8 @@ def analyze(text, meta):
 
     flags = []
     err = (meta.get("error") or "").strip()
+    if meta.get("kind") == "crash":
+        return ["приложение упало: " + (err or "без текста")], c
     if meta.get("kind") == "connect":
         flags.append("не подключился: " + (err or "без текста ошибки"))
         tried = ["%s ×%d" % (n, c[k]) for k, n in (("unable", "UNABLE TO CONNECT"), ("bus_init_err", "BUS INIT ERROR"),

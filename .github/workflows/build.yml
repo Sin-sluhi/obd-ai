@@ -42,10 +42,12 @@ jobs:
       # Стенд: разбор кадров и поиск блоков на записанных обменах. Красные тесты — красная сборка.
       - run: gradle testDebugUnitTest
       - run: gradle lintDebug
-      - run: gradle assembleDebug
+      # Клиентская сборка — релиз (R8: код запутан, отладчик не подключить); версия разработчика ниже остаётся debug
+      - run: gradle assembleRelease
         env:
           AI_PROVIDER: ${{ vars.AI_PROVIDER }}
           AI_API_KEY: ${{ secrets.AI_API_KEY }}
+          OPENROUTER_KEY: ${{ secrets.OPENROUTER_KEY }}
           AI_MODEL: ${{ vars.AI_MODEL }}
           FORUM_URL: ${{ vars.FORUM_URL }}
           SIGNING_STORE_PASSWORD: ${{ secrets.SIGNING_STORE_PASSWORD }}
@@ -56,7 +58,7 @@ jobs:
       - name: Signature fingerprint
         run: |
           BT=$(ls -d "$ANDROID_HOME"/build-tools/* | sort -V | tail -1)
-          "$BT/apksigner" verify --print-certs app/build/outputs/apk/debug/app-debug.apk | grep -i "SHA-256" || true
+          "$BT/apksigner" verify --print-certs app/build/outputs/apk/release/app-release.apk | grep -i "SHA-256" || true
       # APK для выдачи по заявкам: сервер (forum.ps1) забирает его через gh run download и расшифровывает.
       # Артефакт публичного репозитория может скачать любой вошедший на GitHub, поэтому APK внутри зашифрован
       # (секрет APK_PASS, тот же пароль лежит у сервера в apk.pass). Без секрета артефакт не выкладывается.
@@ -66,7 +68,7 @@ jobs:
         run: |
           mkdir -p gated
           if [ -z "$APK_PASS" ]; then echo "APK_PASS не задан — артефакт для сервера пропущен"; exit 0; fi
-          APK=app/build/outputs/apk/debug/app-debug.apk
+          APK=app/build/outputs/apk/release/app-release.apk
           echo "1.2.${{ github.run_number }}" > gated/version.txt
           # 1) для сервера целиком (админ «Скачать себе», приложение)
           openssl enc -aes-256-cbc -pbkdf2 -iter 200000 -salt -in $APK -out gated/app.apk.enc -pass env:APK_PASS
@@ -78,8 +80,10 @@ jobs:
           printf '{"run":"%s","version":"%s","size":%s,"sha256":"%s"}' "${{ github.run_id }}" "$(cat gated/version.txt)" \
             "$(stat -c%s $APK)" "$(sha256sum $APK | cut -d' ' -f1)" > gated/meta.json
           cat gated/meta.json
+          # карта R8 — чтобы расшифровать стек падения из админки (Crash.kt); без неё имена классов — a.b.c
+          openssl enc -aes-256-cbc -pbkdf2 -iter 200000 -salt -in app/build/outputs/mapping/release/mapping.txt             -out gated/mapping.txt.enc -pass env:APK_PASS
       # Пользовательский APK откладываем: следующий шаг пересобирает в ту же папку версию разработчика
-      - run: mkdir -p out && cp app/build/outputs/apk/debug/app-debug.apk out/app-debug.apk
+      - run: mkdir -p out && cp app/build/outputs/apk/release/app-release.apk out/app-debug.apk
       # Версия разработчика (с режимом разработчика) — только для владельца: кнопка «Версия разработчика» в админке.
       # Тот же ключ подписи, поэтому ставится поверх пользовательской и обратно.
       - name: Developer build
@@ -90,6 +94,7 @@ jobs:
           OWNER_AI_URL: ${{ vars.OWNER_AI_URL }}
           AI_PROVIDER: ${{ vars.AI_PROVIDER }}
           AI_API_KEY: ${{ secrets.AI_API_KEY }}
+          OPENROUTER_KEY: ${{ secrets.OPENROUTER_KEY }}
           AI_MODEL: ${{ vars.AI_MODEL }}
           FORUM_URL: ${{ vars.FORUM_URL }}
           SIGNING_STORE_PASSWORD: ${{ secrets.SIGNING_STORE_PASSWORD }}
@@ -106,8 +111,10 @@ jobs:
       - name: Play bundle
         env:
           DEV_TOOLS: "false"
+          STORE_BUILD: "true"
           AI_PROVIDER: ${{ vars.AI_PROVIDER }}
           AI_API_KEY: ${{ secrets.AI_API_KEY }}
+          OPENROUTER_KEY: ${{ secrets.OPENROUTER_KEY }}
           AI_MODEL: ${{ vars.AI_MODEL }}
           FORUM_URL: ${{ vars.FORUM_URL }}
           SIGNING_STORE_PASSWORD: ${{ secrets.SIGNING_STORE_PASSWORD }}
