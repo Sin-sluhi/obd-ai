@@ -1,4 +1,4 @@
-# Дымовой тест на старом Android: ставит свежий debug-APK на эмулятор Android 7.0 (API 24), запускает,
+# Дымовой тест: ставит клиентскую (релизную, R8) сборку на эмуляторы Android 7.0 (API 24) и Android 14 (API 34), запускает,
 # открывает демо-машину и проверяет, что процесс жив и в logcat нет падений. Запуск вручную:
 #   gh workflow run android7.yml
 name: android7
@@ -8,6 +8,10 @@ on:
 
 jobs:
   smoke:
+    strategy:
+      fail-fast: false
+      matrix:
+        api: [24, 34]          # Android 7.0 (самый старый поддерживаемый) и Android 14
     runs-on: ubuntu-latest
     timeout-minutes: 45
     steps:
@@ -25,10 +29,10 @@ jobs:
           sudo udevadm control --reload-rules
           sudo udevadm trigger --name-match=kvm
       - run: gradle assembleRelease
-      - name: Run on Android 7.0
+      - name: Run on emulator
         uses: reactivecircus/android-emulator-runner@v2
         with:
-          api-level: 24
+          api-level: ${{ matrix.api }}
           arch: x86_64
           target: default
           disable-animations: true
@@ -49,7 +53,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: android7-smoke
+          name: smoke-api${{ matrix.api }}
           path: |
             s1.png
             s2.png

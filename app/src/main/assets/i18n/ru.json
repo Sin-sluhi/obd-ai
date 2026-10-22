@@ -1106,6 +1106,7 @@
  "scr_yandex_folder": "ID каталога Yandex Cloud",
  "scr_your_car": "Ваша машина",
  "state_ai_unavailable": "Подробный разбор временно недоступен",
+ "state_internal_error": "Что-то пошло не так. Мы уже получили отчёт и исправим. Попробуйте ещё раз.",
  "state_channel_desc": "Новая ошибка в пути, прогрев, запуск утром",
  "state_channel_name": "Предупреждения о машине",
  "state_cloud_downloaded": "Машина загружена из облака",

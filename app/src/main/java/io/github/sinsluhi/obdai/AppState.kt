@@ -51,8 +51,33 @@ class AppState private constructor(context: Context) {
     /** Фоновая работа для экранов (отправка сообщений форума и т. п.). */
     fun runBackground(block: () -> Unit) { worker.execute(block) }
 
-    private val worker = Executors.newSingleThreadExecutor()
-    private val poller = Executors.newSingleThreadExecutor()
+    // Исключение в задаче фонового потока на Android роняет всё приложение. Задачи обёрнуты: сбой пишется в отчёт
+    // (уходит на сервер при следующем запуске, Crash.nonFatal), экран снимается с «идёт проверка», приложение живёт.
+    private val worker = Executors.newSingleThreadExecutor { r -> Thread(r, "obd-worker") }.guarded()
+    private val poller = Executors.newSingleThreadExecutor { r -> Thread(r, "obd-poller") }.guarded()
+
+    private fun java.util.concurrent.ExecutorService.guarded(): java.util.concurrent.ExecutorService {
+        val base = this
+        return object : java.util.concurrent.AbstractExecutorService() {
+            override fun execute(command: Runnable) = base.execute {
+                try {
+                    command.run()
+                } catch (e: InterruptedException) {
+                    Thread.currentThread().interrupt()
+                } catch (e: Throwable) {
+                    if (e is OutOfMemoryError) throw e
+                    Crash.nonFatal(appContext.filesDir, e)
+                    addLog(tr("state_internal_error"))
+                    ui { busy = null; toast = tr("state_internal_error") }
+                }
+            }
+            override fun shutdown() = base.shutdown()
+            override fun shutdownNow(): MutableList<Runnable> = base.shutdownNow()
+            override fun isShutdown() = base.isShutdown
+            override fun isTerminated() = base.isTerminated
+            override fun awaitTermination(timeout: Long, unit: java.util.concurrent.TimeUnit) = base.awaitTermination(timeout, unit)
+        }
+    }
     private val main = Handler(Looper.getMainLooper())
 
     init {

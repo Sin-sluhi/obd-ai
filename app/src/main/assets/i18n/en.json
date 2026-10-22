@@ -950,6 +950,7 @@
  "scr_yandex_folder": "Yandex Cloud folder ID",
  "scr_your_car": "Your car",
  "state_ai_unavailable": "Detailed analysis temporarily unavailable",
+ "state_internal_error": "Something went wrong. We have received a report and will fix it. Please try again.",
  "state_channel_desc": "New fault code on the road, warm-up, morning start",
  "state_channel_name": "Car alerts",
  "state_cloud_downloaded": "Car downloaded from the cloud",

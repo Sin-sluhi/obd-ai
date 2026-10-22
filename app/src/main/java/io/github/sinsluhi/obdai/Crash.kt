@@ -51,6 +51,15 @@ object Crash {
         }
     }
 
+    /**
+     * Сбой в фоновой задаче, пойманный до падения (AppState.guarded): приложение живёт, а отчёт уходит на сервер так же,
+     * как отчёт о падении. Хранится только последний — серия одинаковых сбоев не забивает память.
+     */
+    fun nonFatal(dir: File, e: Throwable) {
+        runCatching { File(dir, FILE).writeText("ПОЙМАНО (приложение не упало)
+" + report(Thread.currentThread(), e)) } // i18n-ignore: лог
+    }
+
     /** Отчёт о прошлом падении, если он есть: забрать и удалить файл. */
     fun takePending(dir: File): String? {
         val f = File(dir, FILE)
