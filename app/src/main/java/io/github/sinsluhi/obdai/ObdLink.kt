@@ -24,6 +24,16 @@ interface ObdLink {
     fun readSensors(live: Boolean = true, keys: Set<String>? = null): List<SensorReading>
     fun readVoltage(): String
     fun clearCodes(): Boolean
+    /**
+     * Стереть коды везде, где их нашла проверка: двигатель стандартным режимом 04 и каждый блок из [modules] с кодами — своим
+     * протоколом; после стирания всё перечитывается. [engineCodes] — коды двигателя по OBD до стирания (из проверки).
+     */
+    fun clearAll(engineCodes: List<String>, modules: List<ModuleScan>, brand: String?,
+                 progress: (Int, Int, String) -> Unit): List<ClearResult> {
+        progress(1, 1, tr("scr_engine"))
+        val ok = clearCodes()
+        return listOf(ClearResult(tr("scr_engine"), if (ok) "cleared" else "silent", engineCodes, if (ok) emptyList() else engineCodes))
+    }
     fun send(cmd: String, timeoutMs: Long = 3000): String
     /** Мониторы готовности: с момента сброса (PID 01) и в этой поездке (PID 41). */
     fun readReadiness(): Pair<Readiness?, Readiness?>
@@ -137,6 +147,22 @@ class DemoLink : ObdLink {
 
     override fun clearCodes(): Boolean { cleared = true; return true }
 
+    /** Демо показывает все исходы: двигатель и ABS стёрты, активная B1602 кузовного блока сразу вернулась. */
+    override fun clearAll(engineCodes: List<String>, modules: List<ModuleScan>, brand: String?,
+                          progress: (Int, Int, String) -> Unit): List<ClearResult> {
+        val targets = modules.filter { it.codes.isNotEmpty() }
+        val total = targets.size + 1
+        progress(1, total, tr("scr_engine")); Thread.sleep(700)
+        val out = mutableListOf(ClearResult(tr("scr_engine"), "cleared", engineCodes))
+        targets.forEachIndexed { i, m ->
+            progress(i + 2, total, m.name); Thread.sleep(600)
+            val active = m.codes.filter { it.contains("(активная)") } // i18n-ignore: пометка статуса как в ObdDecoder
+            out += ClearResult(m.name, if (active.isEmpty()) "cleared" else "returned", m.codes, active)
+        }
+        cleared = true
+        return out
+    }
+
     override fun readReadiness(): Pair<Readiness?, Readiness?> {
         val since = Readiness(true, false, listOf(
             Readiness.Monitor(tr("demo_mon_misfire"), true), Readiness.Monitor(tr("demo_mon_fuel"), true), Readiness.Monitor(tr("demo_mon_components"), true),
@@ -201,7 +227,7 @@ class DemoLink : ObdLink {
             ModuleScan("ABS / ESC", 0x7D1, if (cleared) emptyList() else listOf("C1259 (история)"), "UDS", if (cleared) emptyList() else listOf(0x28), vin, "58910-4L500"), // i18n-ignore: пометка статуса как в ObdDecoder, по ней сравнивают Models/Purchase
             ModuleScan(tr("demo_module_airbag"), 0x7D2, emptyList(), "UDS", emptyList(), vin, "95910-4L000"),
             ModuleScan(tr("demo_module_cluster"), 0x7C6, emptyList(), "UDS", emptyList(), vin, null),
-            ModuleScan(tr("demo_module_bcm"), 0x7A0, if (cleared) emptyList() else listOf("B1602 (активная)"), "UDS", if (cleared) emptyList() else listOf(0x09), null, null) // i18n-ignore: пометка статуса как в ObdDecoder
+            ModuleScan(tr("demo_module_bcm"), 0x7A0, listOf("B1602 (активная)"), "UDS", listOf(0x09), null, null) // i18n-ignore: пометка статуса как в ObdDecoder
         )
         for (i in 1..4) { progress(i, 4); Thread.sleep(300) }
         return list

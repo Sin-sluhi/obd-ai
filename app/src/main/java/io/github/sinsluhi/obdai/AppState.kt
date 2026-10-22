@@ -890,20 +890,48 @@ class AppState private constructor(context: Context) {
         }
     }
 
-    fun clearCodes(onDone: (Boolean) -> Unit) {
+    /**
+     * Стереть коды везде, где их нашла проверка (двигатель и каждый блок своим протоколом), и сразу перечитать.
+     * [onDone] получает итог по блокам: стёрто / вернулось сразу / блок отказал / не ответил.
+     */
+    fun clearCodes(onDone: (List<ClearResult>) -> Unit) {
         runTask(tr("state_task_clear")) {
-            val codes = lastSnapshot?.allCodes.orEmpty()
+            val snap = lastSnapshot
+            val codes = snap?.allCodes.orEmpty()
+            val engineCodes = (snap?.stored.orEmpty() + snap?.pending.orEmpty()).distinct()
+            val modules = snap?.modules.orEmpty()
+            val brand = snap?.carInfo()?.brand
+            val l = link ?: throw IOException(tr("state_no_link"))
+            val rec = CheckRec("clear", Trace.mark(), System.currentTimeMillis()).apply { demo = l is DemoLink; vin = this@AppState.vin }
             pausePolling()
-            val ok = try { link?.clearCodes() ?: false } finally { resumePolling() }
-            addLog(if (ok) tr("state_log_cleared") else tr("state_log_clear_failed"))
+            val results = try {
+                l.clearAll(engineCodes, modules, brand) { i, n, name -> ui { busy = tr("state_clear_progress", name, i, n) } }
+            } finally {
+                resumePolling()
+            }
+            val ok = results.any { it.done }
+            results.forEach { r ->
+                addLog(when (r.state) {
+                    "cleared" -> tr("state_log_clear_module_ok", r.name)
+                    "returned" -> tr("state_log_clear_module_back", r.name, r.after.joinToString { it.substringBefore(' ') })
+                    "refused" -> tr("state_log_clear_module_refused", r.name, r.reason.orEmpty())
+                    "unsupported" -> tr("state_log_clear_module_refused", r.name, r.reason.orEmpty())
+                    else -> tr("state_log_clear_module_silent", r.name)
+                })
+            }
+            rec.modules = results.size
+            rec.codes = results.sumOf { it.after.size }
+            if (!ok) rec.error = "clear: " + results.joinToString { "${it.name}=${it.state}" } // i18n-ignore: лог
+            shareLog(rec)
             if (ok) {
                 prefs.lastClear = ClearEvent(System.currentTimeMillis(), vin, codes)
                 knownCodes = emptySet()
                 dtcBaseline = null
             }
+            val engineClean = results.firstOrNull()?.state == "cleared"
             ui {
-                if (ok) { milOn = false; dtcCount = 0 }
-                onDone(ok)
+                if (engineClean) { milOn = false; dtcCount = 0 }
+                onDone(results)
             }
         }
     }

@@ -87,7 +87,8 @@ data class EcuCache(val ecus: List<EcuAddr>, val at: Long) {
  */
 class ModuleScanner(private val s: ElmSession, private val pause: (Long) -> Unit = { Thread.sleep(it) }) {
 
-    data class Result(val modules: List<ModuleScan>, val ecus: List<EcuAddr>, val fullSweep: Boolean)
+    /** [tp20] — блоки VAG за TP2.0: номер VCDS → логический адрес канала (для стирания тем же путём). */
+    data class Result(val modules: List<ModuleScan>, val ecus: List<EcuAddr>, val fullSweep: Boolean, val tp20: Map<Int, Int> = emptyMap())
 
     private var rangeFilter = true     // адаптер понял ATCF/ATCM
     private var manualFc = true        // адаптер умеет ATFCSH/SD/SM
@@ -192,7 +193,7 @@ class ModuleScanner(private val s: ElmSession, private val pause: (Long) -> Unit
             runCatching { leave() }
         }
         s.log(tr("elm_scan_found", found.size))
-        return Result(found.values.toList(), addrs.values.toList(), full)
+        return Result(found.values.toList(), addrs.values.toList(), full, tpMap.toMap())
     }
 
     /**
@@ -501,6 +502,9 @@ class ModuleScanner(private val s: ElmSession, private val pause: (Long) -> Unit
     /** Ответ по каналу: [data] — сообщение KWP целиком; [lost] — канал порвался (A8/A4 от блока, пропал кадр, тишина). */
     private class TpGot(val data: List<Int>?, val lost: Boolean = false)
 
+    /** Найденные блоки за TP2.0: номер VCDS → логический адрес. */
+    private val tpMap = linkedMapOf<Int, Int>()
+
     /** Как адаптер шлёт кадры TP2.0: «V1» — своей длиной, «PB» — своей длиной через протокол B, «pad» — добивает до 8. */
     private var tpDlc = ""
     private var tpSh = -1
@@ -724,7 +728,7 @@ class ModuleScanner(private val s: ElmSession, private val pause: (Long) -> Unit
             s.stage(true, ModuleMap.vagTp20Name(0x19))
             val gw = tp20Session(0x19, 0x1F, listOf(listOf(0x1A, 0x9F)) + read)
             val listed = gw?.firstOrNull()?.let { ModuleDecoder.vagGatewayList(it) }
-            if (gw != null && !viaIso(0x19)) { hits++; found[0x10000 + 0x19] = tpModule(0x19, gw[3], gw[2]) }
+            if (gw != null && !viaIso(0x19)) { hits++; tpMap[0x19] = 0x1F; found[0x10000 + 0x19] = tpModule(0x19, gw[3], gw[2]) }
             if (listed != null) s.log(tr("elm_tp20_gateway_list", listed.size))
             else if (gw != null) s.log(tr("elm_tp20_gateway_no_list"))
             val targets = (listed ?: ModuleMap.vagModules.map { it.vcds to it.tp }).filter { (vcds, tp) -> tp != 0x1F && !viaIso(vcds) }
@@ -739,6 +743,7 @@ class ModuleScanner(private val s: ElmSession, private val pause: (Long) -> Unit
                     continue
                 }
                 hits++
+                tpMap[vcds] = tp
                 found[0x10000 + vcds] = tpModule(vcds, r[2], r[1])
             }
         } finally {
@@ -758,6 +763,122 @@ class ModuleScanner(private val s: ElmSession, private val pause: (Long) -> Unit
         } finally {
             tpLeave()
         }
+    }
+
+    // ---------- стирание кодов ----------
+    //
+    // До 22.10.2026 «Стереть ошибки» слал один режим 04 на общий адрес двигателя: коды ABS, подушек, кузова, коробки и
+    // заводская память самого двигателя (Hyundai/Kia — UDS 19 02 на 7E0) оставались, следующая проверка показывала их
+    // снова — «стирание не работает». Теперь каждый блок, в котором проверка нашла коды, стирается своим протоколом и
+    // сразу перечитывается: человек видит, где стёрлось, где код вернулся (неисправность есть сейчас), где блок отказал.
+    // Только стандартная команда очистки памяти ошибок (сервис 14) — кодировки и адаптации не трогаем.
+
+    /**
+     * Стереть коды в блоках [targets] (блок из проверки и его адрес; у блоков TP2.0 адреса нет — логический в [tp20]).
+     * [progress] — «какой по счёту, из скольких, кто сейчас».
+     */
+    fun clear(targets: List<Pair<ModuleScan, EcuAddr?>>, brand: String?, tp20: Map<Int, Int>,
+              progress: (Int, Int, String) -> Unit): List<ClearResult> {
+        val out = mutableListOf<ClearResult>()
+        if (targets.isEmpty()) return out
+        if (!s.isCan) {
+            // K-line: каждому блоку нужен свой init и своя сессия — стирание по блокам там пока не сделано
+            targets.forEach { (m, _) -> out += ClearResult(m.name, "unsupported", m.codes, m.codes, tr("clr_reason_kline")) }
+            return out
+        }
+        manualFc = listOf("ATFCSH", "ATFCSD", "ATFCSM").none { it in s.adapter.missing }
+        val (tp, iso) = targets.partition { it.first.via == "TP20" }
+        var step = 0
+        try {
+            enter()
+            for ((m, a) in iso) {
+                progress(++step, targets.size, m.name)
+                out += if (a == null) ClearResult(m.name, "silent", m.codes, m.codes) else clearEcu(m, a, brand)
+            }
+            if (tp.isNotEmpty()) {
+                tpEnter()
+                try {
+                    for ((m, _) in tp) {
+                        progress(++step, targets.size, m.name)
+                        val logical = tp20[m.addr] ?: ModuleMap.vagByVcds(m.addr)?.tp
+                        out += if (logical == null) ClearResult(m.name, "silent", m.codes, m.codes) else clearTp(m, logical)
+                    }
+                } finally {
+                    tpLeave()
+                }
+            }
+        } finally {
+            runCatching { leave() }
+        }
+        return out
+    }
+
+    /** Отказ блока (`7F 14 xx`) словами для человека. */
+    private fun clearReason(code: Int): String = when (code) {
+        0x22 -> tr("clr_reason_conditions")
+        0x33, 0x35 -> tr("clr_reason_security")
+        0x11, 0x12, 0x31 -> tr("clr_reason_unsupported")
+        0x72 -> tr("clr_reason_memory")
+        else -> tr("clr_reason_other", "%02X".format(code))
+    }
+
+    /**
+     * Блок по ISO-TP (UDS или KWP по CAN, BMW за шлюзом). UDS: `14 FF FF FF` — все группы; блок не понял (`7F 14 11/12/31`) —
+     * KWP-вид `14 FF 00`; «условия не те» в обычной сессии — ещё раз в расширенной (`10 03`); «подожди» (`7F 14 78`) —
+     * слушаем окнами, как при чтении. Стёрлось — перечитываем память тем же способом, что при проверке.
+     */
+    private fun clearEcu(m: ModuleScan, a: EcuAddr, brand: String?): ClearResult {
+        current = m.name
+        val kinds = if (a.via == "KWP") listOf(listOf(0x14, 0xFF, 0x00)) else listOf(listOf(0x14, 0xFF, 0xFF, 0xFF), listOf(0x14, 0xFF, 0x00))
+        var reason: String? = null
+        var answered = false
+        var ok = false
+        var session = false
+        setup(a)
+        s.send("ATST 64")
+        try {
+            attempts@ for (attempt in 0..1) {
+                for (r in kinds) {
+                    val raw = req(a, r, 4000)
+                    var msgs = Frames.messages(Frames.parse(raw, a.bits29, a.rx).filter { it.id == a.resp })
+                    if (nrc(msgs, 0x14) == 0x78) awaitPending(a, 0x14)?.let { msgs = Frames.messages(it.second) }
+                    if (msgs.isNotEmpty()) answered = true
+                    if (msgs.any { it.firstOrNull() == 0x54 }) { ok = true; break@attempts }
+                    val code = nrc(msgs, 0x14) ?: continue
+                    reason = clearReason(code)
+                    if (code == 0x33 || code == 0x35) break@attempts   // защита: сессией не обойти, и не пытаемся
+                    if (code == 0x22 || code == 0x7E || code == 0x7F) break   // попробуем в расширенной сессии
+                }
+                if (attempt == 0 && a.via != "KWP") {
+                    val sr = req(a, listOf(0x10, 0x03), 2000)
+                    session = Frames.parse(sr, a.bits29, a.rx).any { it.id == a.resp && it.data.firstOrNull() == 0x50 }
+                    if (!session) break
+                }
+            }
+        } finally {
+            if (session) runCatching { req(a, listOf(0x10, 0x01), 1500) }
+        }
+        s.log("${m.name} (${hex(a)}): " + when { // i18n-ignore: журнал
+            ok -> tr("elm_clear_ok"); reason != null -> reason!!; else -> tr("elm_clear_silent") })
+        if (!ok) return ClearResult(m.name, if (answered && reason != null) "refused" else "silent", m.codes, m.codes, reason)
+        val after = readEcu(a, brand)?.first?.codes.orEmpty()
+        return ClearResult(m.name, if (after.isEmpty()) "cleared" else "returned", m.codes, after)
+    }
+
+    /** Блок VAG за TP2.0: по каналу `10 89`, `14 FF 00`, сразу `18 02 FF 00` — что осталось. */
+    private fun clearTp(m: ModuleScan, logical: Int): ClearResult {
+        current = m.name
+        val r = tp20Session(m.addr, logical, listOf(listOf(0x10, 0x89), listOf(0x14, 0xFF, 0x00), listOf(0x18, 0x02, 0xFF, 0x00)))
+            ?: return ClearResult(m.name, "silent", m.codes, m.codes)
+        val c = r[1]
+        if (c?.firstOrNull() == 0x54) {
+            val after = r[2]?.let { ModuleDecoder.parseKwpVag(listOf(it)) }.orEmpty().map { it.first + VagKwpStatus.suffix(it.second) }
+            s.log("${m.name} (TP2.0 %02X): %s".format(logical, tr("elm_clear_ok"))) // i18n-ignore: журнал
+            return ClearResult(m.name, if (after.isEmpty()) "cleared" else "returned", m.codes, after)
+        }
+        val code = c?.takeIf { it.size >= 3 && it[0] == 0x7F }?.get(2)
+        s.log("${m.name} (TP2.0 %02X): %s".format(logical, code?.let { clearReason(it) } ?: tr("elm_clear_silent"))) // i18n-ignore: журнал
+        return ClearResult(m.name, if (code != null) "refused" else "silent", m.codes, m.codes, code?.let { clearReason(it) })
     }
 
     // ---------- чтение одного блока ----------

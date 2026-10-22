@@ -621,5 +621,15 @@ data class Coverage(val items: List<Item>) {
     }
 }
 
+/**
+ * Итог стирания кодов в одном блоке. [state]: cleared — кодов не осталось; returned — стёрто, но код сразу вернулся
+ * (неисправность есть прямо сейчас); refused — блок отказал ([reason] словами); silent — блок не ответил;
+ * unsupported — так стирать пока не умеем. [before]/[after] — коды до и после (после — перечитаны сразу).
+ */
+data class ClearResult(val name: String, val state: String, val before: List<String>, val after: List<String> = emptyList(),
+                       val reason: String? = null) {
+    val done: Boolean get() = state == "cleared" || state == "returned"
+}
+
 /** org.json на Android для JSON-значения null возвращает строку "null" — а нейронка такое присылает; берём пустую строку. */
 internal fun JSONObject.str(key: String, def: String = ""): String = if (isNull(key)) def else optString(key, def)

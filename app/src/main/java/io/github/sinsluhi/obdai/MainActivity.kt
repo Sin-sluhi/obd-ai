@@ -34,6 +34,7 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
@@ -164,7 +165,7 @@ class MainActivity : ComponentActivity() {
         // пересоздают Activity — экран не должен сбрасываться на главный
         var page by rememberSaveable { mutableStateOf(Page.Home) }
         var confirmClear by rememberSaveable { mutableStateOf(false) }
-        var cleared by rememberSaveable { mutableStateOf<List<String>?>(null) }   // стёртые коды → экран «Ошибки стёрты»
+        var cleared by remember { mutableStateOf<List<io.github.sinsluhi.obdai.ClearResult>?>(null) }   // итог стирания по блокам → экран «Стирание»
         // «Мастерская»: что открыто и куда вернуться (задача и схема открываются и из хаба, и из мастера по коду)
         var taskId by rememberSaveable { mutableStateOf("leak") }
         var wizardCode by rememberSaveable { mutableStateOf("") }
@@ -400,16 +401,15 @@ class MainActivity : ComponentActivity() {
                     confirm = tr("main_clear_confirm"),
                     onConfirm = {
                         confirmClear = false
-                        // коды запоминаем до сброса: после него снимок пуст, а на экране «стёрто» их нужно показать
-                        val codes = state.lastSnapshot?.allCodes?.ifEmpty { null } ?: state.diagnosis?.codes?.map { it.code }.orEmpty()
-                        state.clearCodes { ok ->
-                            if (ok) cleared = codes else state.toast = tr("main_clear_not_confirmed")
+                        // итог по блокам: что стёрлось, что вернулось сразу, кто отказал — экран показывает всё честно
+                        state.clearCodes { results ->
+                            if (results.isNotEmpty()) cleared = results else state.toast = tr("main_clear_not_confirmed")
                         }
                     },
                     onDismiss = { confirmClear = false }
                 )
-                cleared?.let { codes ->
-                    ClearedOverlay(codes) {
+                cleared?.let { results ->
+                    ClearedOverlay(results) {
                         cleared = null
                         state.clearResult()
                         page = Page.Home

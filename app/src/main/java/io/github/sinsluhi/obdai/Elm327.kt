@@ -309,6 +309,45 @@ class Elm327(private val logger: (String) -> Unit) : ObdLink, ElmSession {
 
     override fun clearCodes(): Boolean = send("04", 8000).replace(" ", "").contains("44")
 
+    /** Блоки за VW TP2.0 из последнего поиска: номер VCDS → логический адрес канала. */
+    private var tp20Found: Map<Int, Int> = emptyMap()
+
+    /**
+     * Стирание везде, где проверка нашла коды: двигатель — режим 04 (все OBD-блоки сразу) с перечитыванием режимов 03/07;
+     * блоки — своим протоколом через [ModuleScanner.clear]. Заводская память двигателя (UDS на 7E0) стирается вместе с
+     * блоками и складывается в одну строку «Двигатель».
+     */
+    override fun clearAll(engineCodes: List<String>, modules: List<ModuleScan>, brand: String?,
+                          progress: (Int, Int, String) -> Unit): List<ClearResult> {
+        val targets = modules.filter { it.codes.isNotEmpty() }
+        val total = targets.size + 1
+        val engine = tr("scr_engine")
+        progress(1, total, engine)
+        restoreObdHeader()
+        val raw = send("04", 8000).uppercase().replace(" ", "")
+        val ok = raw.contains("44")
+        val refusal = Regex("7F04([0-9A-F]{2})").find(raw)?.groupValues?.get(1)?.toInt(16)
+        val engineAfter = if (ok) (readCodes(3) + readCodes(7)).distinct() else engineCodes
+        log(if (ok) tr("state_log_cleared") else tr("state_log_clear_failed"))
+        val iso = targets.filter { it.via != "TP20" }.map { m ->
+            m to foundEcus.firstOrNull { it.display == m.addr && it.via != "TP20" }
+        }
+        val tp = targets.filter { it.via == "TP20" }.map { it to null }
+        val mods = ModuleScanner(this).clear(iso + tp, brand, tp20Found) { i, _, name -> progress(i + 1, total, name) }
+        // заводская память двигателя (UDS 7E0) — одной строкой с OBD-кодами двигателя
+        val engineMod = mods.firstOrNull { r -> targets.any { it.addr == 0x7E0 && it.name == r.name } }
+        val before = (engineCodes + (engineMod?.before ?: emptyList())).distinct()
+        val after = (engineAfter + (engineMod?.after ?: emptyList())).distinct()
+        val engineState = when {
+            !ok && engineMod?.done != true -> if (refusal != null) "refused" else "silent"
+            after.isEmpty() -> "cleared"
+            else -> "returned"
+        }
+        val reason = if (refusal == 0x22) tr("clr_reason_conditions") else refusal?.let { tr("clr_reason_other", "%02X".format(it)) }
+        return listOf(ClearResult(engine, engineState, before, after, if (engineState == "refused") reason else null)) +
+            mods.filter { it !== engineMod }
+    }
+
     override fun readVoltage(): String = send("ATRV")
 
     private fun pid(p: Int): List<Int>? = if (supported(p)) ObdDecoder.pidData(send("01%02X".format(p)), p) else null
@@ -410,6 +449,7 @@ class Elm327(private val logger: (String) -> Unit) : ObdLink, ElmSession {
     override fun scanModules(brand: String?, known: List<EcuAddr>, hints: List<EcuAddr>, progress: (Int, Int) -> Unit): List<ModuleScan> {
         val r = ModuleScanner(this).scan(brand, known, hints, progress)
         foundEcus = r.ecus
+        tp20Found = r.tp20
         lastScanFull = r.fullSweep
         return r.modules
     }
