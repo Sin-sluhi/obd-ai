@@ -81,16 +81,52 @@ object LogShare {
         q.listFiles()?.sortedBy { it.name }?.dropLast(MAX_QUEUE)?.forEach { it.delete() }
     }
 
+    /**
+     * Чем закончилась последняя попытка отправить очередь. Попадает в ручной лог («Отправить лог разработчику») и в обмен
+     * (Trace): 22.10.2026 у Audi Q5 три лога не дошли, а по присланному файлу было не понять почему — ни адреса, ни ошибки.
+     */
+    @Volatile var lastResult: String = ""
+        private set
+    @Volatile private var lastAt = 0L
+
+    private fun result(text: String) {
+        lastResult = text
+        lastAt = System.currentTimeMillis()
+        Trace.note("лог на сервер: $text") // i18n-ignore: лог
+    }
+
+    fun queued(dir: File): Int = File(dir, "logq").listFiles()?.size ?: 0
+
+    /** Строка для шапки ручного лога: включена ли отправка, сколько ждёт в очереди, чем кончилась последняя попытка. */
+    fun status(dir: File, enabled: Boolean): String {
+        if (!enabled) return "выключена в настройках" // i18n-ignore: лог
+        val q = queued(dir)
+        val last = if (lastAt == 0L) "попыток в этом запуске не было" // i18n-ignore: лог
+            else java.text.SimpleDateFormat("HH:mm:ss", java.util.Locale.US).format(java.util.Date(lastAt)) + " — " + lastResult
+        return "в очереди $q · $last" // i18n-ignore: лог
+    }
+
     /** Отправить очередь. Возвращает, сколько ушло; на первой сетевой ошибке останавливается (сети нет — нет смысла). */
-    fun flush(dir: File, baseUrl: String): Int {
-        if (!baseUrl.startsWith("http")) return 0
+    fun flush(dir: File, baseUrl: String?): Int {
         val files = File(dir, "logq").listFiles()?.sortedBy { it.name }.orEmpty()
+        if (files.isEmpty()) return 0
+        if (baseUrl == null || !baseUrl.startsWith("http")) {
+            result("адрес сервера не найден${ForumLocator.lastCheck.let { if (it.isBlank()) "" else " ($it)" }}") // i18n-ignore: лог
+            return 0
+        }
+        val host = runCatching { URL(baseUrl).host }.getOrDefault(baseUrl)
         var sent = 0
         for (f in files) {
-            val code = runCatching { post("${baseUrl.trimEnd('/')}/api/logs/put", f.readBytes()) }.getOrElse { return sent }
+            val code = runCatching { post("${baseUrl.trimEnd('/')}/api/logs/put", f.readBytes()) }.getOrElse { e ->
+                result("$host не ответил: ${e.javaClass.simpleName}: ${e.message.orEmpty().take(160)}; отправлено $sent, ждут ${files.size - sent}" + // i18n-ignore: лог
+                    ForumLocator.lastCheck.let { if (it.isBlank()) "" else " ($it)" })
+                return sent
+            }
             // 2xx — принят; 4xx — сервер его не возьмёт никогда (битый, лимит), держать незачем; 5xx — попробуем позже
-            if (code in 200..499) { f.delete(); if (code < 300) sent++ } else return sent
+            if (code in 200..499) { f.delete(); if (code < 300) sent++ else result("$host отклонил лог: HTTP $code") } // i18n-ignore: лог
+            else { result("$host ответил HTTP $code; отправлено $sent, ждут ${files.size - sent}"); return sent } // i18n-ignore: лог
         }
+        if (sent > 0) result("$host: отправлено $sent") // i18n-ignore: лог
         return sent
     }
 

@@ -92,17 +92,33 @@ object ForumLocator {
         val remote = refresh(prefs)
         val candidates = listOf(prefs.forumUrl, remote, BuildConfig.FORUM_URL, PUBLIC)
             .filter { !it.isNullOrBlank() && it.startsWith("http") }.map { it!!.trimEnd('/') }.distinct()
-        val alive = candidates.firstOrNull { alive(it) } ?: return remote
+        val tried = mutableListOf<String>()
+        val alive = candidates.firstOrNull { base ->
+            val why = alive(base)
+            tried.add("${runCatching { URL(base).host }.getOrDefault(base)}: ${why ?: "ок"}") // i18n-ignore: лог
+            why == null
+        }
+        // что ответил каждый адрес — в ручной лог, если отправка не дойдёт (у провайдера бывает закрыт адрес *.ts.net)
+        lastCheck = (if (remote == null) listOf("файл адреса не скачался") else emptyList<String>()).plus(tried).joinToString("; ") // i18n-ignore: лог
+        if (alive == null) return remote
         prefs.forumUrlRemote = alive
         return alive
     }
 
-    private fun alive(base: String): Boolean {
+    /** Итог последней проверки адресов: «sh01…ts.net: SocketTimeoutException; …». */
+    @Volatile var lastCheck: String = ""
+        private set
+
+    /** null — сервер живой; иначе — почему нет (код ответа или ошибка сети). */
+    private fun alive(base: String): String? {
         val conn = (URL("$base/api/health").openConnection() as HttpURLConnection).apply { connectTimeout = 5_000; readTimeout = 6_000 }
         return try {
-            conn.responseCode in 200..299 && conn.inputStream.bufferedReader(Charsets.UTF_8).use { it.readText() }.contains("\"ok\": true")
+            val code = conn.responseCode
+            if (code !in 200..299) "HTTP $code" // i18n-ignore: лог
+            else if (conn.inputStream.bufferedReader(Charsets.UTF_8).use { it.readText() }.contains("\"ok\": true")) null
+            else "не тот ответ" // i18n-ignore: лог
         } catch (e: Exception) {
-            false
+            "${e.javaClass.simpleName}: ${e.message.orEmpty().take(80)}"
         } finally {
             conn.disconnect()
         }

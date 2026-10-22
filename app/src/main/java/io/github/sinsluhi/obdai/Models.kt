@@ -265,11 +265,24 @@ data class Diagnosis(
                 // Ответили только двигатель (и коробка): заводская память других блоков и расширенная память двигателя
                 // (BMW, Mercedes, старые VAG) не прочитаны — уверенное «ошибок не найдено» тут вводит в заблуждение
                 val onlyEngine = snap.modules.none { it.addr != 0x7E0 && it.addr != 0x7E1 }
+                // «Ошибок не найдено» — только когда прочитано всё, что ответило, и ключевые системы среди прочитанных
+                val cov = Coverage.of(snap)
+                val title = when {
+                    onlyEngine -> tr("model_no_codes_title_obd")
+                    cov.partial -> tr("model_no_codes_title_partial")
+                    else -> tr("model_no_codes_title")
+                }
+                val text = when {
+                    onlyEngine -> tr("model_no_codes_text", milNote) + " " + tr("model_no_codes_limited")
+                    cov.partial -> tr("model_no_codes_partial_text", cov.read.size,
+                        (cov.missing + cov.unread).joinToString { it.name }) + milNote
+                    else -> tr("model_no_codes_full_text", cov.read.size) + milNote
+                }
                 return Diagnosis(
                     car = carName,
                     level = if (snap.checks.any { it.level == "warning" || it.level == "danger" }) "warning" else "ok",
-                    title = if (onlyEngine) tr("model_no_codes_title_obd") else tr("model_no_codes_title"),
-                    text = tr("model_no_codes_text", milNote) + if (onlyEngine) " " + tr("model_no_codes_limited") else "",
+                    title = title,
+                    text = text,
                     canDrive = "yes",
                     codes = emptyList(),
                     summary = measuredText,
@@ -551,9 +564,12 @@ data class ModuleScan(
     val statuses: List<Int> = emptyList(),   // сырой байт статуса UDS на каждый код (если UDS)
     val vin: String? = null,                 // VIN, записанный в блоке (22 F190)
     val part: String? = null,                // заводской номер блока (22 F187)
-    val truncated: Boolean = false           // полный список не влез в адаптер: активные дочитаны, история может быть неполной
+    val truncated: Boolean = false,          // полный список не влез в адаптер: активные дочитаны, история может быть неполной
+    val kind: String? = ModuleMap.kindOf(name)   // ключевая система (abs, airbag…) — считается при создании, пока язык тот же
 ) {
     val addrHex: String get() = "%03X".format(addr)
+    /** Блок ответил, а память ошибок отдать не смог («?»): его чистота не проверена. */
+    val unread: Boolean get() = via == "?"
 
     /** Подробности по коду: полный статус UDS словами. */
     fun statusOf(code: String): List<String> {
@@ -564,6 +580,43 @@ data class ModuleScan(
             // KWP других марок: у байта статуса свой смысл, по битам UDS его читать нельзя, а проверенной раскладки нет
             "KWP" -> emptyList()
             else -> UdsStatus.describe(statuses[i])
+        }
+    }
+}
+
+/**
+ * Что проверка на самом деле прочитала. До 22.10.2026 «Ошибок не найдено» писалось про всю машину, если ответил хоть
+ * один блок кроме двигателя: у Audi Q5 2009 прочитаны двигатель, коробка и подушки, а ABS, приборка, кузов, шлюз
+ * молчали — человек получил «машина чистая». Теперь итог и экран говорят, какие блоки прочитаны, какие ответили, но
+ * память не отдали, и до каких ключевых систем проверка не достала.
+ */
+data class Coverage(val items: List<Item>) {
+    /** [state]: clean — прочитан, кодов нет; codes — есть коды; unread — ответил, память не отдал; missing — не проверен. */
+    data class Item(val name: String, val state: String, val codes: Int = 0, val kind: String? = null)
+
+    val read: List<Item> get() = items.filter { it.state == "clean" || it.state == "codes" }
+    val unread: List<Item> get() = items.filter { it.state == "unread" }
+    val missing: List<Item> get() = items.filter { it.state == "missing" }
+    /** Проверено не всё: есть непрочитанные блоки или ключевые системы, до которых не дошли. */
+    val partial: Boolean get() = unread.isNotEmpty() || missing.isNotEmpty()
+
+    companion object {
+        /** Системы, которые есть почти у любой машины с 2000-х: если их нет среди прочитанных — проверка до них не достала. */
+        val CORE = listOf("abs" to "obd_module_abs_esp", "airbag" to "obd_module_airbags", "cluster" to "obd_module_cluster", "body" to "obd_module_body")
+
+        fun of(snap: CarSnapshot): Coverage {
+            val engineBlock = snap.modules.firstOrNull { it.addr == 0x7E0 }
+            // двигатель прочитан всегда: стандартный OBD (режимы 03/07) идёт до поиска блоков
+            val engineCodes = (snap.stored + snap.pending + engineBlock?.codes.orEmpty()).distinct().size
+            val items = mutableListOf(Item(tr("scr_engine"), if (engineCodes > 0) "codes" else "clean", engineCodes, "engine"))
+            for (m in snap.modules) {
+                if (m.addr == 0x7E0 && !m.unread) continue
+                if (m.kind == "engine" && !m.unread) continue
+                items += Item(m.name, when { m.unread -> "unread"; m.codes.isNotEmpty() -> "codes"; else -> "clean" }, m.codes.size, m.kind)
+            }
+            val present = snap.modules.mapNotNull { it.kind }.toSet()
+            for ((kind, key) in CORE) if (kind !in present) items += Item(tr(key), "missing", 0, kind)
+            return Coverage(items)
         }
     }
 }

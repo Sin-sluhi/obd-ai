@@ -553,6 +553,23 @@ object ModuleMap {
         0x6D to "obd_module_trunk", 0x72 to "obd_module_door_rear_right", 0x75 to "obd_module_telematics",
         0x77 to "obd_module_phone"
     )
+    /**
+     * Ключевая система по имени блока: engine, gearbox, abs, airbag, cluster, body — или null. Имя сверяется с переводом
+     * тех же ключей, которыми его назвал сканер; зовётся при создании [ModuleScan], пока язык тот же.
+     */
+    fun kindOf(name: String): String? {
+        fun any(vararg keys: String) = keys.any { tr(it) == name }
+        return when {
+            any("obd_module_engine", "obd_module_dme") -> "engine"
+            any("obd_module_gearbox") -> "gearbox"
+            any("obd_module_abs_esp", "obd_module_abs_esc", "obd_module_abs_vsc") || name.startsWith("ABS") -> "abs" // i18n-ignore: имя демо-блока
+            any("obd_module_airbags", "demo_module_airbag") -> "airbag"
+            any("obd_module_cluster", "demo_module_cluster") -> "cluster"
+            any("obd_module_bcm", "obd_module_body", "demo_module_bcm") -> "body"
+            else -> null
+        }
+    }
+
     /** Имя блока VAG по номеру VCDS: «Приборная панель», неизвестный — «Блок 17» (номер как в VCDS). */
     fun vagTp20Name(vcds: Int): String = vagTp20Names[vcds]?.let { tr(it) } ?: tr("obd_module_block", "%02X".format(vcds))
 

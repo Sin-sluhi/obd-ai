@@ -1340,5 +1340,20 @@
  "obd_module_trunk": "Tailgate",
  "obd_module_door_rear_right": "Rear right door",
  "obd_module_telematics": "Telematics",
- "obd_module_phone": "Telephone"
+ "obd_module_phone": "Telephone",
+ "model_no_codes_title_partial": "No faults in the modules that were read",
+ "model_no_codes_partial_text": "Modules read: {0}, no fault codes in them. Not checked: {1} — faults there are possible.",
+ "model_no_codes_full_text": "Modules read: {0} — none of them stores fault codes.",
+ "scr_cov_title": "What was checked",
+ "scr_cov_partial": "not everything checked",
+ "scr_cov_full": "everything that answered",
+ "scr_cov_read.one": "module read",
+ "scr_cov_read.other": "modules read",
+ "scr_cov_clean": "Clean",
+ "scr_cov_codes": "With faults",
+ "scr_cov_unread": "Memory not given",
+ "scr_cov_missing": "Not checked",
+ "scr_cov_chip_missing": "{0} — not checked",
+ "scr_cov_missing_text": "The check did not reach these systems: {0}. Faults there are possible — “no faults” does not apply to them.",
+ "scr_cov_unread_text": "They answered but did not give their fault memory: {0}. Not verified as clean."
 }

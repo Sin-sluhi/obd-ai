@@ -627,8 +627,21 @@ class AppState private constructor(context: Context) {
     @Volatile private var logStart: Long? = null
 
     /** Положить лог в очередь и отправить (в своём потоке: сеть не должна держать очередь задач адаптера). */
+    /** Для шапки ручного лога: как дела с автоотправкой (выключена / сколько ждёт / чем кончилась последняя попытка). */
+    fun logUploadStatus(): String = LogShare.status(appContext.filesDir, prefs.logShare)
+
+    /** Ручной лог: заодно дослать очередь — итог попытки ляжет в обмен и в следующий лог. */
+    fun retryLogUpload() {
+        if (!prefs.logShare) return
+        Thread {
+            val url = runCatching { ForumLocator.best(prefs) }.getOrNull() ?: forumUrl
+            runCatching { LogShare.flush(appContext.filesDir, url) }
+        }.start()
+    }
+
     private fun shareLog(rec: CheckRec) {
-        if (!prefs.logShare || rec.demo) return
+        if (rec.demo) return
+        if (!prefs.logShare) { Trace.note("лог на сервер не отправлен: автоотправка выключена в настройках"); return } // i18n-ignore: лог
         runCatching {
             val (trace, journal) = Trace.since(rec.mark)
             val info = VinDecoder.decode(rec.vin)

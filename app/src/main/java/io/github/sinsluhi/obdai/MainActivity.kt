@@ -563,6 +563,7 @@ class MainActivity : ComponentActivity() {
         val text = buildString {
             appendLine("OBD AI — журнал и обмен с адаптером") // i18n-ignore: заголовок файла лога
             appendLine("Адаптер: ${state.adapterName} · протокол: ${state.protocol} · VIN: ${state.vin ?: "—"}") // i18n-ignore: лог
+            appendLine("Версия: ${BuildConfig.VERSION_NAME} · отправка логов на сервер: ${state.logUploadStatus()}") // i18n-ignore: лог
             appendLine()
             appendLine("===== Журнал =====") // i18n-ignore: лог
             state.log.forEach { appendLine(it) }
@@ -587,6 +588,7 @@ class MainActivity : ComponentActivity() {
             clipboard.setPrimaryClip(ClipData.newPlainText(tr("main_clip_log"), text))
             state.toast = tr("main_log_copied")
         }
+        state.retryLogUpload()   // логи, не ушедшие сами, — ещё попытка; её итог будет в следующем логе
     }
 
     private fun copyReport(): Boolean {

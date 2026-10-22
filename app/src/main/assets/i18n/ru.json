@@ -1669,5 +1669,22 @@
  "obd_module_trunk": "Крышка багажника",
  "obd_module_door_rear_right": "Задняя правая дверь",
  "obd_module_telematics": "Телематика",
- "obd_module_phone": "Телефон"
+ "obd_module_phone": "Телефон",
+ "model_no_codes_title_partial": "В прочитанных блоках ошибок нет",
+ "model_no_codes_partial_text": "Прочитано блоков: {0}, кодов неисправностей в них нет. Не проверены: {1} — ошибки там возможны.",
+ "model_no_codes_full_text": "Прочитано блоков: {0} — ни в одном нет кодов неисправностей.",
+ "scr_cov_title": "Что проверено",
+ "scr_cov_partial": "проверено не всё",
+ "scr_cov_full": "всё, что ответило",
+ "scr_cov_read.one": "блок прочитан",
+ "scr_cov_read.few": "блока прочитано",
+ "scr_cov_read.many": "блоков прочитано",
+ "scr_cov_read.other": "блока прочитано",
+ "scr_cov_clean": "Чисто",
+ "scr_cov_codes": "С ошибками",
+ "scr_cov_unread": "Память не отдали",
+ "scr_cov_missing": "Не проверены",
+ "scr_cov_chip_missing": "{0} — не проверен",
+ "scr_cov_missing_text": "До этих систем проверка не достала: {0}. Ошибки в них возможны — «ошибок нет» к ним не относится.",
+ "scr_cov_unread_text": "Ответили, но память ошибок не отдали: {0}. Их чистота не проверена."
 }

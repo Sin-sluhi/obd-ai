@@ -515,7 +515,8 @@ next_steps, for_service, typical_issues) — только по-русски, к�
             snap.modules.forEach { m ->
                 // история (неактивные записи прошлых лет) — только счётом: на Grandeur её было ~130 кодов у одного двигателя
                 val (old, live) = m.codes.partition { it.contains("(история)") }
-                val head = live.take(15).joinToString().ifEmpty { if (old.isEmpty()) "ошибок нет" else "текущих ошибок нет" }
+                val head = if (m.unread) "ответил, но память ошибок не отдал — не проверен" // i18n-ignore: промпт
+                    else live.take(15).joinToString().ifEmpty { if (old.isEmpty()) "ошибок нет" else "текущих ошибок нет" }
                 val tail = if (live.size > 15) " и ещё ${live.size - 15}" else ""
                 val hist = if (old.isEmpty()) "" else "; в истории ${old.size} старых кодов (первые: ${old.take(8).joinToString { it.substringBefore(' ') }})"
                 appendLine("- ${m.name} [${m.addrHex}]: $head$tail$hist")
@@ -524,6 +525,10 @@ next_steps, for_service, typical_issues) — только по-русски, к�
                     if (st.isNotEmpty()) appendLine("    ${c.substringBefore(' ')}: статус${if (m.via == "TP20") " (KWP2000 VAG)" else " по UDS"} — ${st.joinToString()}")
                 }
             }
+        }
+        Coverage.of(snap).missing.takeIf { it.isNotEmpty() }?.let { miss ->
+            appendLine("Ключевые блоки, до которых проверка не достала: ${miss.joinToString { it.name }}. Про них не пиши, что они " +
+                "исправны: ошибки там могут быть.") // i18n-ignore: промпт
         }
         // справка, болячки и опыт владельцев — только по главным кодам, иначе запрос не влезает в лимит модели
         val allCodes = snap.focusCodes(focus)
