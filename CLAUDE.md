@@ -477,3 +477,22 @@ Hyundai Tucson 2019 (VIN KMHJ381ADKU…), ELM327 v1.5, ISO 15765-4 CAN 11/500. �
   из `docs/kb.json`. Связи семейств для частых пар — `tools/dtc/links_extra.py` (146 направлений): на 30 типичных сочетаниях
   база закрывает 29. Не хватает: B1602 из демо (кода нет в справочнике, демо уходит в нейронку). На телефоне правило
   «сначала база» ещё не проверено.
+
+## Защита и стабильность перед Google Play (22.10.2026)
+
+- **Клиентская сборка — релиз с R8** (`isMinifyEnabled`, `isShrinkResources`, `app/proguard-rules.pro`): имена классов запутаны,
+  отладчик не подключить. `build.yml`: клиентам `assembleRelease` (артефакт сервера и сайта — `app/build/outputs/apk/release`), версия
+  разработчика по-прежнему debug, Google Play — `bundleRelease` с `STORE_BUILD=true` (флаг `BuildConfig.STORE` теперь из окружения).
+  Карта R8 — `gated/mapping.txt.enc` (APK_PASS), чтобы расшифровать стек падения.
+- **Ключи** (решение владельца — остаются в APK): `BuildConfig.AI_API_KEY_X` / `OPENROUTER_KEY_X` — ключ XOR маска (маска в
+  `build.gradle.kts` и `Secrets.kt`, менять вместе), строки `gsk_`/`sk-or-` поиском по APK не находятся. `Secrets.init` сверяет
+  подпись APK с `BuildConfig.SIGN_SHA256` (наш ключ 1d9ad032…): перепакованная сборка ключей не получает. **Google Play: при выпуске
+  выбрать свой ключ подписи (PEPK), иначе Play переподпишет своим, и в версии из магазина нейронка выключится** — либо добавить
+  отпечаток ключа Play в проверку.
+- **OpenRouter — запасной провайдер** (`AiClient.openRouterText/openRouterVision`): после цепочки Groq — nemotron-3-ultra, gemma-4-31b,
+  nemotron-3-super (фото — gemma-4-31b, nemotron-3.5-super-vl). Ключ — секрет репозитория `OPENROUTER_KEY`; пока он не задан, цепочка пустая.
+- **Падения**: `App` (Application) + `Crash.install` — необработанное исключение в `filesDir/crash.txt`, при следующем запуске уходит
+  логом `kind = crash` (сервер: флаг «приложение упало»). Фоновые задачи `worker`/`poller` в `AppState` обёрнуты (`guarded`): сбой не
+  роняет приложение — `Crash.nonFatal`, «Что-то пошло не так» пользователю, `busy` снимается.
+- **Дымовой тест** `android7.yml` (вручную `gh workflow run android7.yml`): релизная сборка на эмуляторах Android 7.0 и 14 —
+  запуск, 200 случайных нажатий, падения в logcat. Перед выдачей клиентам — зелёный.
