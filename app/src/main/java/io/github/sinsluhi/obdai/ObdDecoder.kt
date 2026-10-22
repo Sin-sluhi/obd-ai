@@ -325,6 +325,30 @@ object ModuleDecoder {
     fun parseKwpVag(msgs: List<List<Int>>): List<Pair<String, Int>>? =
         parseKwpDetailed(msgs, oemHex = true)?.map { (hex, st) -> vagCode(hex.toInt(16)) to st }
 
+    /**
+     * Список блоков из шлюза VAG: KWP `1A 9F` к шлюзу по TP2.0 → `5A 9F`, дальше части, у каждой первый байт — её длина
+     * вместе с ним самим, `FF` — конец. Первая часть — записи по 4 байта: номер блока в VCDS, логический адрес TP2.0, байт
+     * без известного смысла, состояние (бит 0 — блок закодирован в шлюзе). Логический 13 отдают несуществующие 00 и 04.
+     * Формат — по vag-blocks (jazdw, читает этот список на живых машинах). Возвращает пары (номер VCDS, адрес TP2.0)
+     * закодированных блоков; null — ответ не такой.
+     */
+    fun vagGatewayList(msg: List<Int>?): List<Pair<Int, Int>>? {
+        if (msg == null || msg.size < 3 || msg[0] != 0x5A || msg[1] != 0x9F) return null
+        val parts = mutableListOf<List<Int>>()
+        var i = 2
+        while (i < msg.size && msg[i] != 0xFF) {
+            val n = msg[i]
+            if (n < 1 || i + n > msg.size) break
+            parts.add(msg.subList(i + 1, i + n))
+            i += n
+        }
+        val records = parts.firstOrNull()?.takeIf { it.isNotEmpty() && it.size % 4 == 0 } ?: return null
+        return records.chunked(4)
+            .filter { r -> r[3] and 0x01 == 1 && r[1] in 0x01..0x7F && r[1] != 0x13 }
+            .map { r -> r[0] to r[1] }
+            .distinctBy { it.second }
+    }
+
     fun vagCode(n: Int): String = when (n) {
         in 16384..17383 -> "P%04d".format(n - 16384)
         in 17408..18407 -> "P1%03d".format(n - 17408)
@@ -480,11 +504,39 @@ object ModuleMap {
     }
 
     /**
-     * Логические адреса блоков VAG для открытия канала TP2.0 — те же, что адреса в VCDS (01 двигатель, 03 ABS, 17 приборка…).
-     * Подписаны только общеизвестные; остальные идут как «Блок 0x..».
+     * Блок VAG: номер в VCDS [vcds] (так его знают владельцы и сервисы: 17 — приборка, 19 — шлюз), логический адрес для
+     * канала VW TP2.0 [tp] и ID запроса/ответа того же блока по ISO-TP [iso]/[isoResp] (null — на 11-битном ISO-TP его нет).
+     *
+     * Номер VCDS и адрес TP2.0 — РАЗНЫЕ числа: шлюз 19 → 1F, приборка 17 → 07, подушки 15 → 05, кузовной 09 → 20.
+     * До 22.10.2026 канал открывался по номеру VCDS — из 32 адресов совпадали только 01, 02, 03 (Audi Q5 2009: ни один блок).
+     * Таблица — адреса EdiabasLib (`UdsFileReader/VehicleInfoVag.cs`), сверенные с независимыми источниками: двигатель 01
+     * (jazdw.net/tp20), ABS 03 у ESP8 Audi 8R (стенд oscarmcnulty/vag-ecu-re: `0x203: 00 D0 00 03 A3 04 01`), приборка 07
+     * и шлюз 1F (nefmoto, разбор сниффера VCDS/VAG-UDS). Главный источник на машине — список шлюза ([ModuleDecoder.vagGatewayList]),
+     * таблица нужна, когда шлюз списка не дал. Логические адреса, общие у двух номеров (0D и 62 → 24), взяты по частому.
      */
-    val vagTp20Addresses: List<Int> = listOf(0x01, 0x02, 0x03, 0x05, 0x06, 0x08, 0x09, 0x13, 0x15, 0x16, 0x17, 0x19, 0x1E,
-        0x22, 0x25, 0x34, 0x36, 0x3C, 0x42, 0x44, 0x46, 0x52, 0x53, 0x55, 0x56, 0x5F, 0x61, 0x62, 0x65, 0x69, 0x6C, 0x72, 0x76, 0x77)
+    class VagModule(val vcds: Int, val tp: Int, val iso: Int? = null, val isoResp: Int? = null)
+
+    val vagModules: List<VagModule> = listOf(
+        VagModule(0x01, 0x01, 0x7E0, 0x7E8), VagModule(0x02, 0x02, 0x7E1, 0x7E9), VagModule(0x03, 0x03, 0x713, 0x77D),
+        VagModule(0x05, 0x31, 0x732, 0x79C), VagModule(0x06, 0x35, 0x74D, 0x7B7), VagModule(0x08, 0x2C, 0x746, 0x7B0),
+        VagModule(0x09, 0x20, 0x70E, 0x778), VagModule(0x0E, 0x58, 0x770, 0x7DA), VagModule(0x10, 0x1D, 0x70A, 0x774),
+        VagModule(0x11, 0x15, 0x7E2, 0x7EA), VagModule(0x13, 0x0B, 0x757, 0x7C1), VagModule(0x14, 0x0C, 0x772, 0x7DC),
+        VagModule(0x15, 0x05, 0x715, 0x77F), VagModule(0x16, 0x2A, 0x70C, 0x776), VagModule(0x17, 0x07, 0x714, 0x77E),
+        VagModule(0x18, 0x2F, 0x76A, 0x7D4), VagModule(0x19, 0x1F, 0x710, 0x77A), VagModule(0x1B, 0x1E, 0x716, 0x780),
+        VagModule(0x22, 0x0A, 0x71D, 0x787), VagModule(0x25, 0x14, 0x711, 0x77B), VagModule(0x26, 0x30, 0x72D, 0x797),
+        VagModule(0x34, 0x04, 0x755, 0x7BF), VagModule(0x36, 0x26, 0x74C, 0x7B6), VagModule(0x37, 0x5B, 0x76C, 0x7D6),
+        VagModule(0x3C, 0x1C, 0x74E, 0x7B8), VagModule(0x3D, 0x3A, 0x72C, 0x796), VagModule(0x42, 0x22, 0x74A, 0x7B4),
+        VagModule(0x44, 0x09, 0x712, 0x77C), VagModule(0x46, 0x21), VagModule(0x47, 0x53, 0x76F, 0x7D9),
+        VagModule(0x52, 0x23, 0x74B, 0x7B5), VagModule(0x53, 0x19, 0x752, 0x7BC), VagModule(0x55, 0x06, 0x754, 0x7BE),
+        VagModule(0x56, 0x52), VagModule(0x57, 0x57, 0x76D, 0x7D7), VagModule(0x5F, 0x4D, 0x773, 0x7DD),
+        VagModule(0x61, 0x33), VagModule(0x62, 0x24), VagModule(0x65, 0x29, 0x70B, 0x775), VagModule(0x69, 0x43, 0x747, 0x7B1),
+        VagModule(0x6C, 0x49, 0x769, 0x7D3), VagModule(0x6D, 0x34, 0x723, 0x78D), VagModule(0x72, 0x25),
+        VagModule(0x75, 0x55, 0x767, 0x7D1), VagModule(0x76, 0x2D, 0x70A, 0x774), VagModule(0x77, 0x5A, 0x76B, 0x7D5)
+    )
+    fun vagByTp(tp: Int): VagModule? = vagModules.firstOrNull { it.tp == tp }
+    fun vagByVcds(vcds: Int): VagModule? = vagModules.firstOrNull { it.vcds == vcds }
+
+    /** Имена по номеру VCDS (не по адресу TP2.0). */
     private val vagTp20Names = mapOf(
         0x01 to "obd_module_engine", 0x02 to "obd_module_gearbox", 0x03 to "obd_module_abs_esp", 0x05 to "obd_module_smart_key",
         0x06 to "obd_module_seat_passenger", 0x1E to "obd_module_media2", 0x34 to "obd_module_level_control",
@@ -492,9 +544,17 @@ object ModuleMap {
         0x17 to "obd_module_cluster", 0x19 to "obd_module_can_gateway", 0x22 to "obd_module_awd", 0x25 to "obd_module_immobilizer",
         0x36 to "obd_module_seats", 0x3C to "obd_module_blind_spot", 0x44 to "obd_module_eps", 0x46 to "obd_module_body",
         0x53 to "obd_module_parking_brake", 0x56 to "obd_module_avn", 0x5F to "obd_module_avn", 0x65 to "obd_module_tpms",
-        0x6C to "obd_module_rear_camera", 0x76 to "obd_module_parktronic"
+        0x6C to "obd_module_rear_camera", 0x76 to "obd_module_parktronic", 0x10 to "obd_module_parktronic",
+        0x11 to "obd_module_engine_extra", 0x0E to "obd_module_media", 0x14 to "obd_module_suspension",
+        0x16 to "obd_module_steering_column", 0x18 to "obd_module_aux_heater", 0x1B to "obd_module_active_steering",
+        0x26 to "obd_module_sunroof_windows", 0x37 to "obd_module_navigation", 0x3D to "obd_module_special",
+        0x42 to "obd_module_door_driver", 0x47 to "obd_module_sound", 0x52 to "obd_module_door_passenger",
+        0x57 to "obd_module_tv", 0x62 to "obd_module_door_rear_left", 0x69 to "obd_module_trailer",
+        0x6D to "obd_module_trunk", 0x72 to "obd_module_door_rear_right", 0x75 to "obd_module_telematics",
+        0x77 to "obd_module_phone"
     )
-    fun vagTp20Name(addr: Int): String = vagTp20Names[addr]?.let { tr(it) } ?: tr("obd_module_block", "0x%02X".format(addr))
+    /** Имя блока VAG по номеру VCDS: «Приборная панель», неизвестный — «Блок 17» (номер как в VCDS). */
+    fun vagTp20Name(vcds: Int): String = vagTp20Names[vcds]?.let { tr(it) } ?: tr("obd_module_block", "%02X".format(vcds))
 
     /**
      * Марка по набору найденных блоков — когда машина не отдала VIN (Nissan 20.10.2026: ABS 740→760, руль 742→762,

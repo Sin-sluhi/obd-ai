@@ -180,7 +180,7 @@ class ModuleScanner(private val s: ElmSession, private val pause: (Long) -> Unit
             // пуст: один кадр открытия канала к двигателю 01 на 0x200 отличает VAG. Только при почти пустом переборе —
             // 0x200 у других марок обычный рабочий ID, лишний кадр туда слать незачем.
             val vag = ModuleMap.isVag(brand) || (brand == null && !s.is29Bit && found.size <= 3 && tp20Probe())
-            if (!s.is29Bit && vag) sweepTp20(progress, found, readEngine = brand == null)
+            if (!s.is29Bit && vag) sweepTp20(progress, found)
             // второй круг — блоки «отвечает, память не отдаёт» дочитываем в этой же проверке (до 4 штук, медленно)
             val unread = found.entries.filter { it.value.via == "?" }.mapNotNull { e -> addrs[e.key]?.let { e.key to it } }.take(4)
             unread.forEachIndexed { i, (key, a) ->
@@ -474,134 +474,290 @@ class ModuleScanner(private val s: ElmSession, private val pause: (Long) -> Unit
         ObdDecoder.messages(s.send("0100", 12000)).any { it.size >= 2 && it[0] == 0x41 && it[1] == 0x00 }
 
     // ---------- VW TP2.0 ----------
-
-    /** Открытый канал TP2.0: на какой ID шлёт тестер, с какого отвечает блок, номера пакетов в обе стороны. */
-    private class Tp20(val addr: Int, val tx: Int, val rx: Int) {
-        var txSeq = 0
-        var lastRx = -1
-    }
+    //
+    // VAG 2004–2013 (PQ35/46, MLB раннего выпуска, D3): по ISO-TP отвечают двигатель, коробка и на MLB ещё подушки, остальные
+    // блоки — только по VW TP2.0 с KWP2000 внутри. Описание протокола — jazdw.net/tp20 (официального нет, стандарт SAE J2819
+    // закрыт); сверено с трассой VCDS (nefmoto, тема 9182) и программами, которые работают через ELM327: vag-blocks (jazdw).
+    //
+    // Что было не так до 22.10.2026 (Audi Q5 2009: 32 адреса — ни одного ответа, лог в traces/):
+    //  1. ELM327 при ATCAF0 добивает кадр до 8 байт, а у TP2.0 длина — часть протокола (открытие канала — 7 байт,
+    //     параметры — 6, подтверждение — 1). Теперь ATV1 / протокол B с переменной длиной (как vag-blocks).
+    //  2. Канал открывался по номеру блока из VCDS, а у TP2.0 свой логический адрес (шлюз 19 → 1F, приборка 17 → 07).
+    //     Теперь список блоков берётся у шлюза (1A 9F), без него — из таблицы [ModuleMap.vagModules].
+    //  3. «Если параметры не приняты — ID наоборот»: расположение ID в ответе одно во всех источниках, перестановка
+    //     только слала кадр A0 на ID, с которого говорит сам блок.
+    //  4. Подтверждение опаздывало: таймаут адаптера 60 мс плюс Bluetooth против 100 мс, которые блок ждёт. Теперь таймаут —
+    //     половина T1 из ответа блока, повтор кадра блоком подтверждается снова, порванный канал открывается ещё раз.
 
     /**
-     * VW TP2.0 поверх CAN 500 (VAG 2004–2013). Канал к блоку: кадр на 0x200 `[адрес C0 00 10 00 03 01]`, ответ с 0x200+адрес
-     * `[00 D0 rxLo rxHi txLo txHi 01]` — ID для дальнейшего разговора (обычно тестер → 0x740, блок → 0x300). Затем параметры
-     * канала A0/A1, внутри KWP2000 (`10 89`, `18 02 FF 00`) нумерованными пакетами: старший полубайт — тип (0/1 — ждёт
-     * подтверждения, 1/3 — последний), младший — номер; подтверждение `B<следующий номер>`; закрытие A8.
-     * ELM327 TP2.0 не знает: кадры пишем и подтверждаем сами при ATCAF0, ответы — сырыми строками при ATH1.
-     * Источник — открытые описания протокола; **на машине не проверено**.
+     * Открытый канал TP2.0. [vcds] — номер блока (имя, ключ в результатах), [tp] — логический адрес, [tx]/[rx] — ID
+     * тестера и блока из ответа на открытие, [st] — таймаут адаптера на обмене (ATST, шаг 4 мс).
      */
-    private fun sweepTp20(progress: (Int, Int) -> Unit, found: MutableMap<Int, ModuleScan>, readEngine: Boolean = false) {
-        val list = ModuleMap.vagTp20Addresses.filter { a ->
-            // двигатель и коробку уже прочитали по ISO-TP (7E8/7E9) — это те же блоки
-            readEngine || !(a == 0x01 && 0x7E8 in found) && !(a == 0x02 && 0x7E9 in found)
-        }
-        s.log(tr("elm_scan_tp20", list.size))
+    private class Tp20(val vcds: Int, val tp: Int, val tx: Int, val rx: Int, var st: Int) {
+        var txSeq = 0
+        var rxSeq = 0
+    }
+
+    /** Ответ по каналу: [data] — сообщение KWP целиком; [lost] — канал порвался (A8/A4 от блока, пропал кадр, тишина). */
+    private class TpGot(val data: List<Int>?, val lost: Boolean = false)
+
+    /** Как адаптер шлёт кадры TP2.0: «V1» — своей длиной, «PB» — своей длиной через протокол B, «pad» — добивает до 8. */
+    private var tpDlc = ""
+    private var tpSh = -1
+    private var tpCra = -1
+    private var tpSt = -1
+
+    /**
+     * Сырой режим для TP2.0. Главное — длина кадра. Даташит ELM327 про ATCAF0: адаптер не добавляет PCI, «but it will add
+     * some trailing padding bytes to ensure that the required eight data bytes are sent». VCDS шлёт кадры своей длины
+     * (`200 7 01 C0 00 10 00 03 01`, `740 1 B1`), vag-blocks ставит протокол B с переменной длиной (`ATPB C0 01`, `ATSP B`).
+     * ATV1 (ELM v1.3+) включает переменную длину прямо на текущем протоколе; не понял — протокол B (PB — v1.4+, 500 кбит/с,
+     * 11 бит, без форматирования); не понял и его — пробуем с добивкой и честно пишем об этом в журнал.
+     */
+    private fun tpEnter() {
         if (ceaUsed) { s.send("ATCEA"); ceaUsed = false }
         exitRaw()
         s.send("ATCAF0"); s.send("ATCFC0")
-        var hits = 0
-        try {
-            for ((i, a) in list.withIndex()) {
-                progress(i + 1, list.size)
-                val ch = tp20Open(a) ?: continue
-                hits++
-                try {
-                    tp20Request(ch, listOf(0x10, 0x89))   // сессия диагностики VAG; отказ не мешает читать коды
-                    val r = tp20Request(ch, listOf(0x18, 0x02, 0xFF, 0x00))
-                    val codes = r?.let { ModuleDecoder.parseKwpVag(listOf(it)) }
-                    val name = ModuleMap.vagTp20Name(a)
-                    val m = ModuleScan(name, a, codes.orEmpty().map { it.first + VagKwpStatus.suffix(it.second) },
-                        if (codes != null) "TP20" else "?", codes.orEmpty().map { it.second })
-                    found[0x10000 + a] = m
-                    s.log("$name (TP2.0 %02X): %s".format(a, // i18n-ignore: журнал
-                        if (codes == null) tr("elm_module_unread") else if (codes.isEmpty()) tr("elm_no_codes") else codes.joinToString { it.first }))
-                } finally {
-                    s.send("A8", 500)   // закрыть канал: блок держит его, пока не истечёт таймаут
+        tpSh = -1; tpCra = -1; tpSt = -1
+        tpDlc = when {
+            !s.send("ATV1").contains("?") -> "V1"
+            !s.send("ATPB C0 01").contains("?") && !s.send("ATSP B").contains("?") -> "PB"
+            else -> "pad"
+        }
+        s.log(tr(if (tpDlc == "pad") "elm_tp20_padded" else "elm_tp20_exact"))
+    }
+
+    private fun tpLeave() {
+        when (tpDlc) {
+            "V1" -> s.send("ATV0")
+            "PB" -> s.send("ATSP %X".format(s.protocolNo))
+        }
+        tpDlc = ""
+        s.send("ATCAF1"); s.send("ATCFC1"); s.send("ATAR"); s.send("ATST 32")
+    }
+
+    /** Заголовок, фильтр приёма и таймаут — только то, что поменялось: каждая AT-команда по Bluetooth — 30–100 мс. */
+    private fun tpSet(sh: Int, cra: Int, st: Int) {
+        if (tpSt != st) { s.send("ATST %02X".format(st)); tpSt = st }
+        if (tpSh != sh) { s.send("ATSH %03X".format(sh)); tpSh = sh }
+        if (tpCra != cra) { s.send("ATCRA %03X".format(cra)); tpCra = cra }
+    }
+
+    private fun tpFrames(raw: String, id: Int): List<List<Int>> = Frames.raw(raw, false).filter { it.id == id }.map { it.data }
+
+    private fun List<Int>.hexStr(): String = joinToString("") { "%02X".format(it) }
+
+    /** Время в параметрах канала: биты 7–6 — единица (0,1 / 1 / 10 / 100 мс), 5–0 — сколько единиц. */
+    private fun tpMs(b: Int): Double = (b and 0x3F) * when (b shr 6) { 0 -> 0.1; 1 -> 1.0; 2 -> 10.0; else -> 100.0 }
+
+    /**
+     * Открыть канал к блоку с логическим адресом [tp]. Кадр на 0x200 `[tp C0 00 10 00 03 01]`: «шли мне с 0x300, а куда
+     * слать тебе — выбери сам». Ответ с 0x200+tp `[00 D0 a b c d 01]`: a b — ID, с которого шлёт блок (0x300), c d — ID, на
+     * который шлём мы (0x740, 0x7A8…); старший полубайт b и d — признак «ID не годен». Цифра 1 в конце команды: блок
+     * повторяет ответ на открытие, пока не придут параметры, и ELM без неё сидит до таймаута (jazdw-software, MK6 GLI).
+     * Параметры — как у VCDS: `A0 0F 8A FF 32 FF` (до 16 кадров без подтверждения, ждём подтверждение 100 мс, между
+     * кадрами 5 мс); блок отвечает своими `A1 …`, из них берём T1 — сколько он ждёт нашего подтверждения.
+     */
+    private fun tp20Open(vcds: Int, tp: Int): Tp20? {
+        tpSet(0x200, 0x200 + tp, 0x19)   // 100 мс: на открытие блок отвечает за единицы миллисекунд
+        val d = tpFrames(s.send("%02XC00010000301 1".format(tp), 1500), 0x200 + tp)
+            .firstOrNull { it.size >= 7 && it[1] in 0xD0..0xDF } ?: return null
+        if (d[1] != 0xD0 || d[3] shr 4 != 0 || d[5] shr 4 != 0) {
+            s.log("TP2.0 %02X: канал не дан (%s)".format(tp, d.hexStr()))   // i18n-ignore: журнал
+            return null
+        }
+        val rx = ((d[3] and 0x07) shl 8) or d[2]
+        val tx = ((d[5] and 0x07) shl 8) or d[4]
+        tpSet(tx, rx, 0x19)
+        val p = tpFrames(s.send("A00F8AFF32FF 1", 1500), rx).firstOrNull { it.size >= 6 && it[0] == 0xA1 }
+        if (p == null) {
+            s.send("A8 1", 800)
+            s.log("TP2.0 %02X: канал %03X/%03X, параметры не приняты".format(tp, tx, rx))   // i18n-ignore: журнал
+            return null
+        }
+        // Таймаут адаптера — половина T1 блока: адаптер вернёт «>» через ST после последнего кадра, плюс Bluetooth туда и
+        // обратно, и подтверждение должно успеть за T1. Не меньше 24 мс и не меньше двух пауз T3 между кадрами блока —
+        // иначе «>» придёт посреди серии, а пока ELM ждёт команду, шину он не слушает.
+        val t1 = tpMs(p[2]).takeIf { it > 0 } ?: 100.0
+        val st = maxOf((t1 / 2 / 4).toInt(), (tpMs(p[4]) * 2 / 4).toInt() + 1).coerceIn(6, 15)
+        return Tp20(vcds, tp, tx, rx, st)
+    }
+
+    private fun tp20Close(ch: Tp20) {
+        tpSet(ch.tx, ch.rx, ch.st)
+        s.send("A8 1", 800)   // блок отвечает своим A8; на шлюзе VW открыт только один канал за раз
+    }
+
+    /**
+     * Сообщение KWP по каналу и ответ на него. Наш кадр — `1<n> <длина 2 байта> <KWP>` (последний, жду подтверждения),
+     * длинное сообщение — кадрами по 7 байт (`2<n>` без подтверждения). Блок подтверждает (`B<n+1>`) и отвечает кадрами:
+     * старший полубайт 0 — «конец серии, жду подтверждения», 1 — «последний, жду подтверждения», 2/3 — то же без
+     * подтверждения; номер — младший полубайт по кругу. Подтверждаем `B<номер последнего + 1>` сразу: в окне ответа на
+     * подтверждение адаптер слышит следующую серию. Ничего не пришло — проверка канала `A3`: блок ответит `A1`, а адаптер
+     * в это время услышит его данные. Повтор уже принятого кадра — наше подтверждение опоздало, подтверждаем снова.
+     * `7F xx 78` — блок просит подождать: слушаем окнами по ~1 с (ATST FF), как лестница ISO-TP.
+     */
+    private fun tp20Request(ch: Tp20, payload: List<Int>): TpGot {
+        tpSet(ch.tx, ch.rx, ch.st)
+        val chunks = (listOf(payload.size shr 8, payload.size and 0xFF) + payload).chunked(7)
+        var raw = ""
+        for ((i, c) in chunks.withIndex()) {
+            val op = if (i == chunks.lastIndex) 0x10 else 0x20
+            raw += s.send((listOf(op or ch.txSeq) + c).hexStr(), 2000) + "\r"
+            ch.txSeq = (ch.txSeq + 1) and 0x0F
+        }
+        val msg = mutableListOf<Int>()
+        var expect = -1
+        var quiet = 0
+        var pending = 0
+        while (true) {
+            var ack: Int? = null
+            var progress = false
+            var done: List<Int>? = null
+            for (f in tpFrames(raw, ch.rx)) {
+                if (f.isEmpty() || done != null) continue
+                val b = f[0]
+                val op = b shr 4
+                when {
+                    b == 0xA8 || b == 0xA4 -> return TpGot(null, lost = true)   // блок закрыл канал / прервал передачу
+                    op == 0xB || op == 0x9 -> progress = true                    // блок подтвердил наш кадр
+                    op == 0xA -> Unit                                            // A1 на нашу проверку канала
+                    op in 0..3 -> {
+                        val seq = b and 0x0F
+                        val wantsAck = op <= 1
+                        if (seq != ch.rxSeq) {
+                            if (seq == ((ch.rxSeq - 1) and 0x0F)) { if (wantsAck) ack = ch.rxSeq; continue }
+                            return TpGot(null, lost = true)   // пропал кадр: номер перескочил
+                        }
+                        ch.rxSeq = (ch.rxSeq + 1) and 0x0F
+                        progress = true
+                        val body = f.drop(1)
+                        if (expect < 0) {
+                            if (body.size < 2) return TpGot(null, lost = true)
+                            expect = ((body[0] and 0x7F) shl 8) or body[1]   // старший бит длины некоторые блоки ставят зря
+                            msg.addAll(body.drop(2))
+                        } else msg.addAll(body)
+                        if (wantsAck) ack = ch.rxSeq
+                        if (op == 1 || op == 3) {
+                            val m = msg.take(expect)
+                            msg.clear(); expect = -1
+                            if (m.size >= 3 && m[0] == 0x7F && m[2] == 0x78) pending++ else done = m
+                        }
+                    }
                 }
             }
+            if (done != null) {
+                if (ack != null) s.send("%02X".format(0xB0 or ack), 1500)
+                return TpGot(done)
+            }
+            if (progress) quiet = 0 else quiet++
+            if (quiet > (if (pending > 0) PENDING_WINDOWS else 3)) return TpGot(null, lost = true)
+            raw = when {
+                ack != null -> s.send("%02X".format(0xB0 or ack), 1500)
+                pending > 0 -> {
+                    tpSet(ch.tx, ch.rx, 0xFF)
+                    s.send("A3", 3000).also { tpSet(ch.tx, ch.rx, ch.st) }
+                }
+                else -> s.send("A3", 1500)
+            }
+        }
+    }
+
+    /**
+     * Канал к блоку, запросы по очереди, закрытие. Канал порвался — открываем ещё раз с окнами по 100 мс: подтверждение
+     * выйдет позже T1, но блок повторит кадр, и повтор подтвердится. null — канал не открылся вовсе (блока нет).
+     */
+    private fun tp20Session(vcds: Int, tp: Int, requests: List<List<Int>>): List<List<Int>?>? {
+        var best: List<List<Int>?>? = null
+        for (attempt in 0..1) {
+            val ch = tp20Open(vcds, tp) ?: return best
+            if (attempt == 1) ch.st = 0x19
+            val out = mutableListOf<List<Int>?>()
+            var lost = false
+            try {
+                for (r in requests) {
+                    val g = tp20Request(ch, r)
+                    if (g.lost) { lost = true; break }
+                    out.add(g.data)
+                }
+            } finally {
+                tp20Close(ch)
+            }
+            best = out + List(requests.size - out.size) { null }
+            if (!lost) return best
+            s.log("TP2.0 %02X: канал порвался на запросе %d из %d%s".format(tp, out.size + 1, requests.size, // i18n-ignore: журнал
+                if (attempt == 0) ", открываю ещё раз медленнее" else ""))   // i18n-ignore: журнал
+        }
+        return best
+    }
+
+    /** Блок VAG по ответам канала: коды из `58 …` (18 02 FF 00), номер детали из `5A 9B` (как его пишет VCDS). */
+    private fun tpModule(vcds: Int, codesResp: List<Int>?, idResp: List<Int>?): ModuleScan {
+        val name = ModuleMap.vagTp20Name(vcds)
+        val codes = codesResp?.let { ModuleDecoder.parseKwpVag(listOf(it)) }
+        val part = idResp?.takeIf { it.size > 2 && it[0] == 0x5A && it[1] == 0x9B }?.drop(2)?.take(12)
+            ?.filter { it in 0x20..0x7E }?.map { it.toChar() }?.joinToString("")?.trim()?.takeIf { it.length >= 8 }
+        val m = ModuleScan(name, vcds, codes.orEmpty().map { it.first + VagKwpStatus.suffix(it.second) },
+            if (codes != null) "TP20" else "?", codes.orEmpty().map { it.second }, part = part)
+        when {
+            codes == null -> s.event("warn", tr("live_module_unread", name))
+            codes.isEmpty() -> s.event("ok", tr("live_module_ok", name))
+            else -> s.event("warn", tr("live_module_codes", name, codes.size))
+        }
+        s.log("$name (VCDS %02X, TP2.0 %02X): %s".format(vcds, ModuleMap.vagByVcds(vcds)?.tp ?: vcds, // i18n-ignore: журнал
+            if (codes == null) tr("elm_module_unread") else if (codes.isEmpty()) tr("elm_no_codes") else codes.joinToString { it.first }) +
+            (part?.let { " · $it" } ?: ""))
+        return m
+    }
+
+    /**
+     * Блоки VAG за TP2.0. Сначала шлюз (логический 1F, в VCDS — 19): у него список закодированных блоков (`1A 9F`) с их
+     * логическими адресами — опрашиваются ровно они. Шлюз молчит или списка не дал — таблица [ModuleMap.vagModules].
+     * Блок, уже прочитанный по ISO-TP (на MLB двигатель, коробка, подушки — UDS), второй раз не спрашивается.
+     */
+    private fun sweepTp20(progress: (Int, Int) -> Unit, found: MutableMap<Int, ModuleScan>) {
+        val read = listOf(listOf(0x10, 0x89), listOf(0x1A, 0x9B), listOf(0x18, 0x02, 0xFF, 0x00))
+        fun viaIso(vcds: Int) = ModuleMap.vagByVcds(vcds)?.isoResp?.let { it in found } == true
+        var hits = 0
+        tpEnter()
+        try {
+            s.stage(true, ModuleMap.vagTp20Name(0x19))
+            val gw = tp20Session(0x19, 0x1F, listOf(listOf(0x1A, 0x9F)) + read)
+            val listed = gw?.firstOrNull()?.let { ModuleDecoder.vagGatewayList(it) }
+            if (gw != null && !viaIso(0x19)) { hits++; found[0x10000 + 0x19] = tpModule(0x19, gw[3], gw[2]) }
+            if (listed != null) s.log(tr("elm_tp20_gateway_list", listed.size))
+            else if (gw != null) s.log(tr("elm_tp20_gateway_no_list"))
+            val targets = (listed ?: ModuleMap.vagModules.map { it.vcds to it.tp }).filter { (vcds, tp) -> tp != 0x1F && !viaIso(vcds) }
+            s.log(tr("elm_scan_tp20", targets.size))
+            s.stage(false, null)
+            for ((i, t) in targets.withIndex()) {
+                val (vcds, tp) = t
+                progress(i + 1, targets.size)
+                val r = tp20Session(vcds, tp, read)
+                if (r == null) {
+                    if (listed != null) s.log(tr("elm_tp20_listed_silent", ModuleMap.vagTp20Name(vcds), "%02X".format(vcds)))
+                    continue
+                }
+                hits++
+                found[0x10000 + vcds] = tpModule(vcds, r[2], r[1])
+            }
         } finally {
-            s.send("ATCAF1"); s.send("ATCFC1"); s.send("ATAR"); s.send("ATST 32")
+            tpLeave()
         }
         s.log(tr("elm_scan_tp20_found", hits))
     }
 
     /** Отвечает ли двигатель VAG по TP2.0 (адрес 01): так узнаём марку, когда VIN прочитать не удалось. */
     private fun tp20Probe(): Boolean {
-        if (ceaUsed) { s.send("ATCEA"); ceaUsed = false }
-        exitRaw()
-        s.send("ATCAF0"); s.send("ATCFC0")
+        tpEnter()
         return try {
-            val ch = tp20Open(0x01)
-            if (ch != null) s.send("A8", 500)
+            val ch = tp20Open(0x01, 0x01)
+            if (ch != null) tp20Close(ch)
             s.log(tr(if (ch != null) "elm_scan_tp20_probe_yes" else "elm_scan_tp20_probe_no"))
             ch != null
         } finally {
-            s.send("ATCAF1"); s.send("ATCFC1"); s.send("ATAR"); s.send("ATST 32")
+            tpLeave()
         }
-    }
-
-    /** Открыть канал к блоку с логическим адресом [a]. null — блок не ответил или не принял параметры. */
-    private fun tp20Open(a: Int): Tp20? {
-        s.send("ATST 19")   // 100 мс: на открытие канала блок отвечает за единицы миллисекунд
-        s.send("ATSH 200"); s.send("ATCRA %03X".format(0x200 + a))
-        // цифра в конце — ждём один кадр: ответивший блок не стоит таймаута
-        val resp = Frames.raw(s.send("%02XC00010000301 1".format(a), 1500), false)
-            .firstOrNull { it.id == 0x200 + a && it.data.size >= 6 && it.data[1] == 0xD0 } ?: return null
-        val d = resp.data
-        val first = ((d[3] and 0x07) shl 8) or d[2]    // на этом ID блок шлёт тестеру (обычно 0x300)
-        val second = ((d[5] and 0x07) shl 8) or d[4]   // на этот ID тестер шлёт блоку (обычно 0x740)
-        // поля в описаниях называют по-разному: если параметры не приняты — пробуем ID наоборот
-        for ((tx, rx) in listOf(second to first, first to second)) {
-            s.send("ATSH %03X".format(tx)); s.send("ATCRA %03X".format(rx))
-            s.send("ATST 0F")   // 60 мс: подтверждение блоку нужно успеть отправить за его T1 (~100 мс)
-            val p = Frames.raw(s.send("A00F8AFF32FF", 1500), false)
-            if (p.any { it.id == rx && it.data.firstOrNull() == 0xA1 }) return Tp20(a, tx, rx)
-        }
-        s.send("A8", 500)
-        return null
-    }
-
-    /**
-     * Сообщение KWP через открытый канал: один пакет туда (запросы короткие), ответ — сколько придёт пакетов, с нашим
-     * подтверждением после пакета «жду подтверждения». Ответ может не уложиться в окно запроса или быть «7F xx 78»
-     * (подожди): тогда слушаем дальше — проверкой канала A3 или окном нашего же подтверждения.
-     */
-    private fun tp20Request(ch: Tp20, payload: List<Int>): List<Int>? {
-        val frame = listOf(0x10 or (ch.txSeq and 0x0F), payload.size shr 8, payload.size and 0xFF) + payload
-        ch.txSeq = (ch.txSeq + 1) and 0x0F
-        var raw = s.send(frame.joinToString("") { "%02X".format(it) }, 1500)
-        val msg = mutableListOf<Int>()
-        var expect = -1
-        for (round in 0 until 8) {
-            var ack: Int? = null
-            for (f in Frames.raw(raw, false)) {
-                if (f.id != ch.rx || f.data.isEmpty()) continue
-                val op = f.data[0] shr 4
-                val seq = f.data[0] and 0x0F
-                if (op !in 0..3) continue             // B_/9_ — подтверждения, A_ — служебные
-                if (seq == ch.lastRx) continue          // блок повторил пакет, не дождавшись подтверждения
-                ch.lastRx = seq
-                val body = f.data.drop(1)
-                if (expect < 0) {
-                    if (body.size < 2) continue
-                    expect = ((body[0] and 0x7F) shl 8) or body[1]
-                    msg.addAll(body.drop(2))
-                } else msg.addAll(body)
-                if (op == 0 || op == 1) ack = (seq + 1) and 0x0F
-            }
-            val done = expect >= 0 && msg.size >= expect
-            // подтверждение отправляем сразу, а в его окне ловим, что блок пришлёт следом
-            raw = if (ack != null) s.send("%02X".format(0xB0 or ack), 1500) else if (!done) s.send("A3", 1500) else ""
-            if (done) {
-                val m = msg.take(expect)
-                if (m.size >= 3 && m[0] == 0x7F && m[2] == 0x78) {   // «подожди» — настоящий ответ следом
-                    msg.clear(); expect = -1
-                    if (raw.isBlank() || Frames.raw(raw, false).none { it.id == ch.rx }) raw = s.send("A3", 1500)
-                    continue
-                }
-                return m
-            }
-        }
-        return null
     }
 
     // ---------- чтение одного блока ----------
