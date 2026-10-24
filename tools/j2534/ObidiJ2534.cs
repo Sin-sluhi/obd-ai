@@ -191,18 +191,22 @@ namespace Obidi
 
         static int Run(string[] args)
         {
-            Log.W("OBIDI J2534 Probe 1.0 — " + (Environment.Is64BitProcess ? "x64" : "x86") + ", Windows " + Environment.OSVersion.Version);
+            Log.W("OBIDI J2534 Probe 1.1 — " + (Environment.Is64BitProcess ? "x64" : "x86"));
             Log.W("Только чтение. Двигатель заглушен, зажигание включено, программа Сканматик закрыта.");
             Log.W("");
 
             var all = FindDevices();
             if (all.Count == 0) { Log.W("Не найдено ни одного адаптера J2534 в реестре (PassThruSupport.04.04). Установите программу Сканматик."); return 2; }
             for (int i = 0; i < all.Count; i++) Log.W(string.Format("[{0}] {1} — {2} ({3}): {4}", i + 1, all[i].Name, all[i].Vendor, all[i].View, all[i].Library));
+            // У Сканматика в J2534 несколько подключений: «SM2 USB», «SM3 USB» и беспроводные, созданные в
+            // «SM2 J2534-RP1210 Configurator» (руководство Scanmatik J2534: настройки J2534 и программы Сканматик не связаны).
+            // Подключение по Bluetooth через «SM2 USB» не пойдёт — поэтому при нескольких вариантах спрашиваем.
             Device d = null;
-            foreach (var x in all) if ((x.Name + x.Vendor + x.Library).IndexOf("scanmatik", StringComparison.OrdinalIgnoreCase) >= 0) { d = x; break; }
-            if (d == null && all.Count == 1) d = all[0];
+            if (all.Count == 1) d = all[0];
             if (d == null)
             {
+                Log.W("Адаптер по кабелю USB — выберите «SM2 USB». По Bluetooth — сначала добавьте беспроводное подключение");
+                Log.W("в «SM2 J2534-RP1210 Configurator» (меню Пуск → Scanmatik), затем выберите его здесь.");
                 Console.Write("Номер адаптера: ");
                 int k; if (!int.TryParse(Console.ReadLine(), out k) || k < 1 || k > all.Count) { Log.W("Не выбран адаптер."); return 2; }
                 d = all[k - 1];
