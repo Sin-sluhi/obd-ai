@@ -71,7 +71,10 @@ namespace Obidi
 
     static class Native
     {
-        [DllImport("kernel32", SetLastError = true, CharSet = CharSet.Unicode)] public static extern IntPtr LoadLibrary(string path);
+        [DllImport("kernel32", SetLastError = true, CharSet = CharSet.Unicode)] public static extern IntPtr LoadLibraryEx(string path, IntPtr reserved, uint flags);
+        /// <summary>LOAD_WITH_ALTERED_SEARCH_PATH: зависимые DLL ищутся в папке загружаемой DLL (документация LoadLibraryEx, Microsoft).
+        /// Драйвер Bluetooth Сканматика сам подгружает smj2534.dll — без этого флага Windows ищет её в папке нашего exe.</summary>
+        public const uint LOAD_WITH_ALTERED_SEARCH_PATH = 0x00000008;
         [DllImport("kernel32", SetLastError = true, CharSet = CharSet.Ansi)] public static extern IntPtr GetProcAddress(IntPtr h, string name);
     }
 
@@ -129,7 +132,7 @@ namespace Obidi
 
         public static Pt Load(string path)
         {
-            IntPtr h = Native.LoadLibrary(path);
+            IntPtr h = Native.LoadLibraryEx(path, IntPtr.Zero, Native.LOAD_WITH_ALTERED_SEARCH_PATH);
             if (h == IntPtr.Zero) throw new Exception("не загрузилась DLL " + path + " (код Windows " + Marshal.GetLastWin32Error() + ")");
             var p = new Pt();
             p.Open = F<PtOpen>(h, "PassThruOpen"); p.Close = F<PtClose>(h, "PassThruClose");
@@ -191,7 +194,7 @@ namespace Obidi
 
         static int Run(string[] args)
         {
-            Log.W("OBIDI J2534 Probe 1.3 — " + (Environment.Is64BitProcess ? "x64" : "x86"));
+            Log.W("OBIDI J2534 Probe 1.4 — " + (Environment.Is64BitProcess ? "x64" : "x86"));
             Log.W("Только чтение. Двигатель заглушен, зажигание включено, программа Сканматик закрыта.");
             Log.W("");
 
@@ -229,7 +232,7 @@ namespace Obidi
             Log.W("PassThruOpen: " + pt.Why(r));
             if (r != J.STATUS_NOERROR)
             {
-                if (r == J.ERR_DEVICE_IN_USE) Log.W("Адаптер занят — закройте программу Сканматик и запустите снова.");
+                if (r == J.ERR_DEVICE_IN_USE || r == 8) Log.W("Адаптер не открылся. Закройте программу Сканматик полностью (и значок у часов), проверьте, что адаптер в колодке и светится, и запустите снова.");
                 return 4;
             }
             try
