@@ -191,7 +191,7 @@ namespace Obidi
 
         static int Run(string[] args)
         {
-            Log.W("OBIDI J2534 Probe 1.2 — " + (Environment.Is64BitProcess ? "x64" : "x86"));
+            Log.W("OBIDI J2534 Probe 1.3 — " + (Environment.Is64BitProcess ? "x64" : "x86"));
             Log.W("Только чтение. Двигатель заглушен, зажигание включено, программа Сканматик закрыта.");
             Log.W("");
 
@@ -658,17 +658,36 @@ namespace Obidi
                             anyFast = true;
                             Log.W(string.Format("  адрес {0:X2}: ответил ({1})", a, Hex(output.Data, 0)));
                             string codes = null;
-                            foreach (var q in new[] { new byte[] { 0x18, 0x00, 0xFF, 0x00 }, new byte[] { 0x18, 0x02, 0xFF, 0x00 } })
+                            bool refused22 = false;
+                            // Elantra HD 2009, ABS на контакте 8 (лог 1.2): на 18 xx FF 00 — 7F 18 22 (conditionsNotCorrect, ISO 14230-3).
+                            // Проверяем гипотезу «нужна сессия»: после отказа 22 — StartDiagnosticSession 10 81 (стандартная) и повтор.
+                            for (int pass = 0; pass < 2 && codes == null; pass++)
                             {
-                                var msg = Cat(new byte[] { (byte)(0x80 | q.Length), (byte)a, 0xF1 }, q);
-                                pt.Ioctl(ch, J.CLEAR_RX_BUFFER, IntPtr.Zero, IntPtr.Zero);
-                                Send(ch, J.ISO14230_PS, 0, msg);
-                                foreach (var d in Receive(ch, 300, 2000))
+                                if (pass == 1)
                                 {
-                                    int k = Array.IndexOf(d, (byte)0x58);
-                                    if (k >= 0 && k + 1 < d.Length) { codes = KwpCodesAt(d, k); break; }
+                                    if (!refused22) break;
+                                    pt.Ioctl(ch, J.CLEAR_RX_BUFFER, IntPtr.Zero, IntPtr.Zero);
+                                    Send(ch, J.ISO14230_PS, 0, new byte[] { 0x82, (byte)a, 0xF1, 0x10, 0x81 });
+                                    foreach (var d in Receive(ch, 300, 1500)) Log.W("    10 81 → " + Hex(d, 3));
                                 }
-                                if (codes != null) break;
+                                foreach (var q in new[] { new byte[] { 0x18, 0x00, 0xFF, 0x00 }, new byte[] { 0x18, 0x02, 0xFF, 0x00 } })
+                                {
+                                    var msg = Cat(new byte[] { (byte)(0x80 | q.Length), (byte)a, 0xF1 }, q);
+                                    pt.Ioctl(ch, J.CLEAR_RX_BUFFER, IntPtr.Zero, IntPtr.Zero);
+                                    Send(ch, J.ISO14230_PS, 0, msg);
+                                    foreach (var d in Receive(ch, 300, 2000))
+                                    {
+                                        int k = Array.IndexOf(d, (byte)0x58);
+                                        if (k >= 0 && k + 1 < d.Length) { codes = KwpCodesAt(d, k); break; }
+                                        int n = Array.IndexOf(d, (byte)0x7F);
+                                        if (n >= 0 && n + 2 < d.Length)
+                                        {
+                                            Log.W(string.Format("    {0:X2} {1:X2} … → отказ {2:X2}{3}", q[0], q[1], d[n + 2], d[n + 2] == 0x22 ? " (условия не те)" : ""));
+                                            if (d[n + 2] == 0x22) refused22 = true;
+                                        }
+                                    }
+                                    if (codes != null) break;
+                                }
                             }
                             Log.W("    ошибки: " + (codes ?? "память не прочитана"));
                             Summary.Add(string.Format("K-line контакт {0}, адрес {1:X2}: {2}", pin, a, codes ?? "отвечает, память не прочитана"));
