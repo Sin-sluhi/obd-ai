@@ -542,13 +542,18 @@ namespace Obidi
                     // 7F xx 78 — «подожди»: дослушиваем до 5 с
                     foreach (var d in got.ToArray())
                         if (d.Length >= 7 && d[4] == 0x7F && d[6] == 0x78) got.AddRange(Receive(ch, 1000, 5000));
+                    // каждый вариант запроса — в журнал отдельно: на Elantra HD 2009 блок 7D4 на 18 02 FF 00 отдал 1 код,
+                    // а Сканматик в ABS/ESP показал 4 — сравниваем ответы на разные группы статуса, а не берём первый
                     foreach (var d in got)
                     {
                         if (d.Length < 5) continue;
-                        if (d[4] == 0x59) { codes = UdsCodes(d); break; }
-                        if (d[4] == 0x58) { codes = KwpCodes(d); break; }
+                        string c = null;
+                        if (d[4] == 0x59) c = UdsCodes(d);
+                        if (d[4] == 0x58) c = KwpCodes(d);
+                        if (c == null) continue;
+                        Log.W(string.Format("  {0}: {1}", Hex(q, 0), c));
+                        if (codes == null || c.Length > codes.Length) codes = c;
                     }
-                    if (codes != null) break;
                 }
                 Log.W("  ошибки: " + (codes ?? "память не прочитана"));
                 foreach (var did in new[] { new byte[] { 0x22, 0xF1, 0x90 }, new byte[] { 0x22, 0xF1, 0x87 } })
