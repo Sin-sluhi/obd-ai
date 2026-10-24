@@ -191,7 +191,7 @@ namespace Obidi
 
         static int Run(string[] args)
         {
-            Log.W("OBIDI J2534 Probe 1.1 — " + (Environment.Is64BitProcess ? "x64" : "x86"));
+            Log.W("OBIDI J2534 Probe 1.2 — " + (Environment.Is64BitProcess ? "x64" : "x86"));
             Log.W("Только чтение. Двигатель заглушен, зажигание включено, программа Сканматик закрыта.");
             Log.W("");
 
@@ -640,6 +640,10 @@ namespace Obidi
                 {
                     int r = SetConfig(ch, J.J1962_PINS, (uint)(pin << 8));
                     if (r != J.STATUS_NOERROR) { Log.W("  J1962_PINS: " + pt.Why(r)); continue; }
+                    // без фильтра PASS адаптер отбрасывает все принятые сообщения (J2534-1; так и в открытой реализации
+                    // panda J2534Connection.cpp). Ответ на FAST_INIT идёт через выход ioctl и приходит и без фильтра,
+                    // поэтому в версии 1.1 ABS на контакте 8 «ответил», а его коды не дошли. Маска 00 — пропускать всё.
+                    Filter(ch, J.PASS_FILTER, new byte[] { 0x00 }, new byte[] { 0x00 }, null, J.ISO14230_PS, 0);
                     foreach (int a in KlineAddrs)
                     {
                         using (var input = new Msg()) using (var output = new Msg())
