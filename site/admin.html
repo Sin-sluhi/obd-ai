@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Заявки — OBD AI</title>
+<meta name="theme-color" content="#07080a">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400..900&family=Manrope:wght@400..800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=7">
+<style>
+  body { min-height: 100svh; }
+  .adm { max-width: 1100px; margin: 0 auto; padding: 40px var(--pad) 80px; }
+  .adm-top { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-bottom: 34px; }
+  .adm-top h1 { margin: 0; font: 800 clamp(30px, 4vw, 52px)/1 var(--display); letter-spacing: -.045em; }
+  .adm-top .nav-logo svg { width: 38px; height: 38px; }
+  .adm-top .sp { flex: 1; }
+  .login { max-width: 460px; margin: 12vh auto 0; }
+  .login h1 { font: 800 40px/1 var(--display); letter-spacing: -.045em; margin: 0 0 22px; }
+  .login .gate { min-height: 0; }
+  .apkbar { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; padding: 18px 22px; border-radius: 22px; background: var(--surface); border: 1px solid var(--line); margin-bottom: 26px; }
+  .apkbar b { font: 700 16px var(--display); }
+  .apkbar span { color: var(--muted); font-size: 13px; }
+  .apkbar .sp { flex: 1; }
+  .tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 18px; }
+  .tab { padding: 9px 16px; border-radius: 99px; border: 1px solid var(--line2); background: transparent; cursor: pointer; font-weight: 700; font-size: 14px; color: var(--text2); transition: .3s; }
+  .tab em { font-style: normal; font-family: var(--mono); margin-left: 6px; color: var(--muted); }
+  .tab.on { background: var(--lime); color: var(--ink); border-color: var(--lime); }
+  .tab.on em { color: var(--ink); opacity: .6; }
+  .list { display: grid; gap: 10px; }
+  .req { display: grid; grid-template-columns: 1fr auto; gap: 14px 20px; align-items: center; padding: 18px 20px; border-radius: 22px; background: linear-gradient(180deg, #171a20, #111317); border: 1px solid var(--line); animation: paneIn .6s var(--ease-out) both; }
+  .req.pending { border-color: rgba(245,165,36,.35); }
+  .req h3 { margin: 0 0 4px; font: 700 19px/1.2 var(--display); letter-spacing: -.02em; }
+  .req .meta { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 14px; color: var(--text2); }
+  .req .meta .mono { font-size: 12px; color: var(--muted); }
+  .req .acts { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+  .pill { font: 600 11px var(--mono); letter-spacing: .08em; text-transform: uppercase; padding: 4px 9px; border-radius: 99px; }
+  .pill.pending { background: rgba(245,165,36,.15); color: var(--warn); }
+  .pill.approved { background: rgba(184,241,90,.15); color: var(--lime); }
+  .pill.used { background: rgba(90,209,241,.13); color: var(--sky); }
+  .pill.rejected { background: rgba(255,107,107,.13); color: var(--danger); }
+  .btn-no { background: transparent; color: var(--danger); box-shadow: inset 0 0 0 1px rgba(255,107,107,.4); }
+  .btn-no::before { background: var(--danger); }
+  .btn-no:hover { color: var(--ink); }
+  .empty { padding: 60px 20px; text-align: center; color: var(--muted); border: 1px dashed var(--line2); border-radius: 22px; }
+  .toast { position: fixed; left: 50%; bottom: 24px; transform: translate(-50%, 200%); visibility: hidden; padding: 12px 18px; border-radius: 14px; background: var(--lime); color: var(--ink); font-weight: 700; transition: transform .5s var(--ease); z-index: 99; }
+  .toast.on { transform: translate(-50%, 0); visibility: visible; }
+  .logs-top { margin: 56px 0 10px; }
+  .logs-top h2 { margin: 0; font: 800 clamp(24px, 3vw, 36px)/1 var(--display); letter-spacing: -.04em; }
+  .lg-bad { font-size: 12px; color: var(--text2); display: flex; gap: 8px; align-items: center; cursor: pointer; }
+  .lg-note { color: var(--muted); font-size: 14px; max-width: 760px; margin: 0 0 18px; }
+  .req ul.flags { margin: 8px 0 0; padding-left: 18px; color: var(--warn); font-size: 14px; }
+  .req ul.flags li.info { color: var(--muted); }
+  .req.clean { opacity: .75; }
+  .dv { display: grid; gap: 14px; grid-template-columns: 1fr; }
+  .dv.open { grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); }
+  .dv-thread { border-radius: 22px; border: 1px solid rgba(184,241,90,.35); background: linear-gradient(180deg, #171a20, #111317); padding: 16px; display: flex; flex-direction: column; gap: 12px; max-height: 70vh; }
+  .dv-head { display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+  .dv-head .sp { flex: 1; }
+  .dv-head .mono { font-size: 12px; color: var(--muted); }
+  .dv-msgs { overflow: auto; display: flex; flex-direction: column; gap: 8px; flex: 1; min-height: 120px; }
+  .dv-m { max-width: 85%; padding: 9px 12px; border-radius: 14px; background: var(--surface); border: 1px solid var(--line); white-space: pre-wrap; font-size: 15px; }
+  .dv-m.me { align-self: flex-end; background: rgba(184,241,90,.12); border-color: rgba(184,241,90,.35); }
+  .dv-m small { display: block; color: var(--muted); font: 11px var(--mono); margin-top: 4px; }
+  .dv-reply { display: flex; gap: 10px; align-items: flex-end; }
+  .dv-reply textarea { flex: 1; resize: vertical; border-radius: 14px; border: 1px solid var(--line2); background: var(--bg); color: var(--text); padding: 10px 12px; font: 15px var(--body); }
+  .req .unread { background: var(--lime); color: var(--ink); font: 700 11px var(--mono); padding: 2px 8px; border-radius: 99px; margin-left: 6px; }
+  .ac-card { background: #12151a; border: 1px solid #2b303a; border-radius: 18px; padding: 18px 20px; margin: 10px 0 18px; }
+  .ac-card h3 { margin: 0 0 10px; }
+  .ac-card table { width: 100%; border-collapse: collapse; font-size: 14px; margin: 6px 0 14px; }
+  .ac-card td, .ac-card th { text-align: left; padding: 6px 8px; border-bottom: 1px solid #22262d; vertical-align: top; }
+  .ac-card th { color: var(--muted); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: .04em; }
+  .ac-new { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 14px; }
+  .ac-new input, .ac-new select { background: #12151a; color: inherit; border: 1px solid #2b303a; border-radius: 12px; padding: 9px 12px; font: inherit; min-width: 0; flex: 1 1 160px; }
+  @media (max-width: 860px) { .dv.open { grid-template-columns: 1fr; } }
+  @media (max-width: 680px) { .req { grid-template-columns: 1fr; } .req .acts { justify-content: flex-start; } }
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<section class="login adm" id="login" hidden>
+  <h1>Вход для администратора</h1>
+  <form class="gate" id="loginForm" data-state="form">
+    <div class="gate-pane pane-form">
+      <p class="gate-k mono"><span class="live"></span>Ключ из admin.key на сервере</p>
+      <label class="fld"><input name="key" type="password" required placeholder=" " autocomplete="current-password"><span>Ключ администратора</span></label>
+      <button class="btn btn-lime btn-lg btn-wide" type="submit"><span>Войти</span></button>
+      <p class="gate-err" role="alert"></p>
+    </div>
+  </form>
+</section>
+
+<section class="adm" id="panel" hidden>
+  <div class="adm-top">
+    <a class="nav-logo" href="./"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#obidi-mini"/></svg></a>
+    <h1>Заявки на APK</h1>
+    <span class="sp"></span>
+    <span class="mono" id="srv" style="font-size:12px;color:var(--muted)"></span>
+    <button class="link-btn" id="logout" type="button">Выйти</button>
+  </div>
+  <div class="apkbar">
+    <div><b>APK на сервере</b><br><span id="apkInfo">—</span></div>
+    <span class="sp"></span>
+    <button class="btn btn-ghost btn-sm" id="selfDl" type="button"><span>Скачать себе</span></button>
+    <button class="btn btn-ghost btn-sm" id="devDl" type="button" title="С режимом разработчика: провайдер, модель, ключи, демо-машина"><span>Версия разработчика</span></button>
+  </div>
+  <div class="tabs" id="tabs">
+    <button class="tab on" data-f="pending">Ждут<em>0</em></button>
+    <button class="tab" data-f="approved">Одобрены<em>0</em></button>
+    <button class="tab" data-f="used">Скачали<em>0</em></button>
+    <button class="tab" data-f="rejected">Отклонены<em>0</em></button>
+    <button class="tab" data-f="all">Все<em>0</em></button>
+  </div>
+  <div class="list" id="list"></div>
+
+  <div class="adm-top logs-top">
+    <h2>Оплаты</h2>
+    <span class="sp"></span>
+    <button class="btn btn-ghost btn-sm" id="payRefresh" type="button"><span>Обновить</span></button>
+  </div>
+  <p class="lg-note">Человек выбрал тариф, перевёл по СБП на Альфу и нажал «Я оплатил(а)» — доступ у него уже открыт на 3 дня. Найдите перевод в Альфе по сумме и коду из комментария (OBD-NNNN) и подтвердите: срок подписки начнётся с подтверждения. «Отклонить» снимает временный доступ.</p>
+  <div class="tabs" id="payTabs">
+    <button class="tab on" data-v="pending">Ждут проверки<em>0</em></button>
+    <button class="tab" data-v="confirmed">Подтверждены<em>0</em></button>
+    <button class="tab" data-v="rejected">Отклонены<em>0</em></button>
+  </div>
+  <div class="list" id="payList"></div>
+
+  <div class="adm-top logs-top">
+    <h2>Аккаунты</h2>
+    <span class="sp"></span>
+    <button class="btn btn-ghost btn-sm" id="acRefresh" type="button"><span>Обновить</span></button>
+  </div>
+  <p class="lg-note">Пользоваться приложением может только аккаунт с доступом. Человек регистрируется сам — вам приходит сообщение в Telegram, доступ выдаёте здесь. Тестировщику можно сразу создать аккаунт и отправить ему логин и пароль. На один аккаунт — до 3 телефонов.</p>
+  <form class="ac-new" id="acForm">
+    <input name="login" placeholder="логин (email, телефон или ник)" required>
+    <input name="name" placeholder="имя (для себя)">
+    <select name="days"><option value="30">30 дней</option><option value="90">90 дней</option><option value="365">год</option><option value="0" selected>бессрочно</option></select>
+    <button class="btn btn-lime btn-sm" type="submit"><span>Создать аккаунт</span></button>
+  </form>
+  <div class="tabs" id="acTabs">
+    <button class="tab on" data-v="wait">Без доступа<em>0</em></button>
+    <button class="tab" data-v="on">С доступом<em>0</em></button>
+    <button class="tab" data-v="all">Все<em>0</em></button>
+  </div>
+  <div class="list" id="acList"></div>
+  <div class="ac-card" id="acCard" hidden></div>
+
+  <div class="adm-top logs-top">
+    <h2>Сообщения от пользователей</h2>
+    <span class="sp"></span>
+    <button class="btn btn-ghost btn-sm" id="dvRefresh" type="button"><span>Обновить</span></button>
+  </div>
+  <p class="lg-note">Кнопка с Обиди справа от нижней панели приложения. Новое сообщение приходит и в Telegram; ответ отсюда человек увидит в приложении — у Обиди появится значок.</p>
+  <div class="dv" id="dv">
+    <div class="list dv-threads" id="dvList"></div>
+    <div class="dv-thread" id="dvThread" hidden>
+      <div class="dv-head"><b id="dvWho"></b><span class="mono" id="dvMeta"></span><span class="sp"></span><button class="link-btn" id="dvClose" type="button">закрыть</button></div>
+      <div class="dv-msgs" id="dvMsgs"></div>
+      <form class="dv-reply" id="dvForm"><textarea name="t" rows="3" placeholder="Ответ — придёт в приложение"></textarea><button class="btn btn-lime btn-sm" type="submit"><span>Ответить</span></button></form>
+    </div>
+  </div>
+
+  <div class="adm-top logs-top">
+    <h2>Логи с машин</h2>
+    <span class="sp"></span>
+    <label class="mono lg-bad"><input type="checkbox" id="lgBad" checked> только где споткнулся</label>
+    <button class="btn btn-ghost btn-sm" id="lgRefresh" type="button"><span>Обновить</span></button>
+  </div>
+  <p class="lg-note">Приложение само присылает обмен с адаптером после каждой проверки (серийный номер VIN вырезан). Флаг — итог, а не шаг перебора: «коды не прочитаны» значит, что блок ответил, но ни одного ответа с кодами от него так и не было.</p>
+  <div class="tabs" id="lgTabs">
+    <button class="tab on" data-v="models">По моделям<em>0</em></button>
+    <button class="tab" data-v="logs">Последние<em>0</em></button>
+  </div>
+  <div class="list" id="lgList"></div>
+</section>
+
+<div class="toast" id="toast"></div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="obidi-mini" viewBox="0 0 64 64">
+    <rect x="4" y="4" width="56" height="56" rx="16" fill="#23272f"/>
+    <rect x="11" y="15" width="42" height="34" rx="10" fill="#07080a"/>
+    <rect x="21" y="27" width="6" height="11" rx="3" fill="#b8f15a"/>
+    <rect x="37" y="27" width="6" height="11" rx="3" fill="#b8f15a"/>
+  </symbol>
+</svg>
+<script src="api.js?v=7"></script>
+<script src="admin.js?v=11"></script>
+</body>
+</html>

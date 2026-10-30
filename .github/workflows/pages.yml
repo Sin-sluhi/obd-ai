@@ -1,0 +1,44 @@
+name: Site
+# Сайт OBD AI на GitHub Pages. Заявки на APK обслуживает сервер владельца, адрес сервера сайт берёт из docs/forum_url.txt.
+# Раз в 30 минут сайт пересобирается со свежим снимком новостей (site/news.json) — лента не зависит от туннеля.
+# Две последние сборки APK (под паролем сборки) лежат в ветке dl — её обновляет сборка приложения.
+on:
+  push:
+    branches: [main, dl]
+  schedule:
+    - cron: "7,37 * * * *"
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: true
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: News snapshot
+        continue-on-error: true
+        run: python tools/news/build.py site/news.json
+      - name: Gated APK
+        continue-on-error: true
+        run: |
+          git fetch --depth 1 origin dl:refs/remotes/origin/dl && mkdir -p site/dl && git --work-tree=site/dl checkout origin/dl -- . && git reset -q
+          ls -la site/dl
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - id: deploy
+        uses: actions/deploy-pages@v4
