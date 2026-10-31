@@ -217,47 +217,8 @@
     e.target.reset(); acView = "on"; loadAcc();
   });
 
-  // ---- оплаты подписок (server/forum/subs.py) ----
   const PLAN = { m1: "1 месяц", m3: "3 месяца", m6: "6 месяцев", m12: "12 месяцев" };
   const PAYST = { pending: "ждёт проверки", confirmed: "подтверждена", rejected: "отклонена", new: "не оплачена" };
-  let payView = "pending", payRows = [];
-  async function loadPay() {
-    try {
-      const r = await ObdApi.json("/api/admin/payments", { headers: hdr() });
-      if (r.status !== 200) throw new Error(r.status);
-      const fresh = r.data.payments || [];
-      const p = fresh.filter(x => x.status === "pending").length;
-      if (payRows.length && p > payRows.filter(x => x.status === "pending").length) toast("Новая оплата на проверку");
-      payRows = fresh; renderPay();
-    } catch (e) {
-      $("#payList").innerHTML = `<div class="empty">Оплаты не загрузились — сервер старой версии или недоступен</div>`;
-    }
-  }
-  function renderPay() {
-    document.querySelectorAll("#payTabs .tab").forEach(t => { t.classList.toggle("on", t.dataset.v === payView); t.querySelector("em").textContent = payRows.filter(x => x.status === t.dataset.v).length; });
-    const list = payRows.filter(x => x.status === payView);
-    if (!list.length) { $("#payList").innerHTML = `<div class="empty">Здесь пусто</div>`; return; }
-    $("#payList").innerHTML = list.map(x => `<article class="req ${x.status === "pending" ? "pending" : x.status === "confirmed" ? "approved" : "rejected"}">
-        <div>
-          <h3><span class="mono">${esc(x.code)}</span> · ${x.amount.toLocaleString("ru-RU")} ₽ · ${PLAN[x.plan] || esc(x.plan)} <span class="pill ${x.status === "confirmed" ? "approved" : x.status}">${PAYST[x.status] || x.status}</span></h3>
-          <div class="meta"><span>${esc(x.login)}${x.name ? " · " + esc(x.name) : ""}</span>
-            <span class="mono">заказ ${when(x.created)}${x.paid_at ? " · «оплатил» " + when(x.paid_at) : ""}${x.decided_at ? " · решено " + when(x.decided_at) : ""}</span></div>
-        </div>
-        <div class="acts">${x.status === "pending" ? `<button class="btn btn-lime btn-sm" data-pay="confirm" data-id="${x.id}"><span>Подтвердить</span></button>
-          <button class="btn btn-no btn-sm" data-pay="reject" data-id="${x.id}"><span>Отклонить</span></button>` : ""}
-          <button class="link-btn" data-acc="${x.account}">аккаунт</button></div>
-      </article>`).join("");
-  }
-  $("#payList").addEventListener("click", async e => {
-    const acc = e.target.closest("[data-acc]"); if (acc) { openAcc(+acc.dataset.acc); return; }
-    const b = e.target.closest("[data-pay]"); if (!b) return;
-    if (b.dataset.pay === "reject" && !confirm("Отклонить оплату? Временный доступ у человека закроется.")) return;
-    const r = await ObdApi.json("/api/admin/payments/" + b.dataset.pay, { method: "POST", headers: hdr(), body: JSON.stringify({ id: +b.dataset.id }) });
-    toast(r.status === 200 ? (b.dataset.pay === "confirm" ? "Оплата подтверждена, срок продлён" : "Оплата отклонена") : "Не получилось");
-    loadPay(); loadAcc();
-  });
-  $("#payTabs").addEventListener("click", e => { const t = e.target.closest(".tab"); if (t) { payView = t.dataset.v; renderPay(); } });
-  $("#payRefresh").addEventListener("click", loadPay);
 
   // ---- карточка пользователя: всё, что о нём известно ----
   async function openAcc(id) {
@@ -363,11 +324,11 @@
     e.preventDefault();
     key = e.target.elements.key.value.trim();
     if (!key) return;
-    store.set(key); show(true); load(); loadLogs(); loadDev(); loadAcc(); loadPay();
+    store.set(key); show(true); load(); loadLogs(); loadDev(); loadAcc();
   });
-  document.addEventListener("visibilitychange", () => { if (!document.hidden && key) { load(); loadLogs(); loadDev(); loadAcc(); loadPay(); } });
+  document.addEventListener("visibilitychange", () => { if (!document.hidden && key) { load(); loadLogs(); loadDev(); loadAcc(); } });
 
   key = store.get();
   show(!!key);
-  if (key) { load(); loadLogs(); loadDev(); loadAcc(); loadPay(); setInterval(() => { if (!document.hidden) { loadDev(); loadPay(); } }, 30000); }
+  if (key) { load(); loadLogs(); loadDev(); loadAcc(); setInterval(() => { if (!document.hidden) loadDev(); }, 30000); }
 })();
