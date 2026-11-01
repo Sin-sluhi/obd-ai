@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@200..900&family=Manrope:wght@400..800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=9">
+<link rel="stylesheet" href="style.css?v=12">
 </head>
 <body class="is-booting">
 
@@ -149,6 +149,15 @@
   </div>
 </div>
 
+<!-- 1½. Разъём: настоящая фотография (Wikimedia Commons, CC BY-SA 4.0, кредит в подвале) -->
+<section id="port" class="port">
+  <img class="port-img" src="img/obd-port.webp" width="1600" height="1200" alt="Разъём OBD-II на 16 контактов под рулевой колонкой, рядом с обивкой" loading="lazy">
+  <div class="port-in">
+    <h2 class="h2">Разъём уже есть <br>в&nbsp;вашей машине.</h2>
+    <p class="lead">Шестнадцать контактов под рулём, обычно слева у колен водителя. В бензиновых машинах — с&nbsp;2001&nbsp;года, в&nbsp;дизельных — с&nbsp;2004-го. Адаптер вставляется в него без инструментов.</p>
+  </div>
+</section>
+
 <!-- 2. Как работает: три шага, телефон закреплён -->
 <section id="how" class="how">
   <div class="how-pin">
@@ -180,43 +189,10 @@
       <div class="phone phone-how">
         <div class="phone-body">
           <div class="phone-screen screens">
-            <!-- экран 1: подключение -->
-            <div class="scr scr-1 is-on">
-              <div class="ui-status mono"><span>9:41</span><span class="ui-rx"><i></i>RX</span></div>
-              <p class="scr-title">Адаптер</p>
-              <div class="dev on"><span class="bt"></span><div><b>OBDII</b><small>Bluetooth · спарен</small></div><em class="mono">OK</em></div>
-              <div class="dev"><span class="ble"></span><div><b>IOS-Vlink</b><small>BLE · рядом</small></div></div>
-              <div class="dev"><span class="wifi"></span><div><b>WiFi_OBDII</b><small>192.168.0.10:35000</small></div></div>
-              <div class="term mono">
-                <p>&gt; ATZ</p><p class="ok">ELM327 v1.5</p><p>&gt; ATSP0</p><p class="ok">OK</p><p>&gt; 0100</p><p class="ok">41 00 BE 3F A8 13</p>
-              </div>
-            </div>
-            <!-- экран 2: проверка -->
-            <div class="scr scr-2">
-              <div class="ui-status mono"><span>9:41</span><span class="ui-rx busy"><i></i>RX</span></div>
-              <p class="scr-title">Проверка</p>
-              <div class="radar"><i></i><b></b><span class="blip b1"></span><span class="blip b2"></span><span class="blip b3"></span></div>
-              <ul class="mods mono">
-                <li><span>7E0</span>Двигатель<em>✓</em></li>
-                <li><span>7E1</span>Коробка<em>✓</em></li>
-                <li><span>7D1</span>ABS / ESC<em>✓</em></li>
-                <li><span>7D2</span>Подушки<em>✓</em></li>
-                <li class="wait"><span>7C6</span>Приборка<em>…</em></li>
-              </ul>
-            </div>
-            <!-- экран 3: вердикт -->
-            <div class="scr scr-3">
-              <div class="ui-status mono"><span>9:42</span><span class="ui-rx"><i></i>RX</span></div>
-              <div class="verdict">
-                <small class="mono">ВЕРДИКТ</small>
-                <b>Ехать можно, но не тянуть</b>
-                <p>Пропуски зажигания — первопричина. Катализатор страдает из-за них.</p>
-              </div>
-              <div class="code"><span class="sev warn"></span><b class="mono">P0300</b><p>Случайные пропуски зажигания</p></div>
-              <div class="code"><span class="sev warn"></span><b class="mono">P0420</b><p>Катализатор неэффективен</p></div>
-              <div class="code"><span class="sev ok"></span><b class="mono">P0011</b><p>Фазы впускного вала</p></div>
-              <div class="src mono">drive2.ru ↗ · drom.ru ↗</div>
-            </div>
+            <!-- настоящие экраны приложения (демо-машина, сборка 1.2.176): подключение → итог проверки → карточки ошибок -->
+            <div class="scr scr-1 is-on"><img class="scr-shot" src="img/app-home.webp" width="720" height="1552" alt="Главный экран: адаптер подключён, паспорт адаптера 9 из 9" loading="lazy"></div>
+            <div class="scr scr-2"><img class="scr-shot" src="img/app-result.webp" width="720" height="1552" alt="Итог проверки: 5 блоков прочитано, активных ошибок 1" loading="lazy"></div>
+            <div class="scr scr-3"><img class="scr-shot" src="img/app-codes.webp" width="720" height="1552" alt="Карточки ошибок с объяснением, что проверить" loading="lazy"></div>
           </div>
         </div>
       </div>
@@ -515,6 +491,7 @@
 <footer class="foot">
   <div class="foot-row">
     <p class="mono">OBD AI · только чтение, никаких записей в блоки</p>
+    <p class="foot-credit">Фото разъёма: <a href="https://commons.wikimedia.org/wiki/File:ODB-II_Connector_-_connecteur_ODB2_-_Van_den_Hende_Licence_CC4_0_-S4369.jpg" rel="noopener">Alain Van den Hende</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="noopener">CC BY-SA 4.0</a>, Wikimedia Commons.</p>
     <a href="#hero" data-go class="mono">наверх ↑</a>
   </div>
   <div class="wordmark" aria-hidden="true"><span>O</span><span>B</span><span>D</span><span class="sp"></span><span class="lime">A</span><span class="lime">I</span></div>
