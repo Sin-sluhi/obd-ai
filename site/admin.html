@@ -68,6 +68,19 @@
   .dv-reply { display: flex; gap: 10px; align-items: flex-end; }
   .dv-reply textarea { flex: 1; resize: vertical; border-radius: 14px; border: 1px solid var(--line2); background: var(--bg); color: var(--text); padding: 10px 12px; font: 15px var(--body); }
   .req .unread { background: var(--lime); color: var(--ink); font: 700 11px var(--mono); padding: 2px 8px; border-radius: 99px; margin-left: 6px; }
+  .rm-con { border-radius: 22px; border: 1px solid rgba(184,241,90,.35); background: linear-gradient(180deg, #171a20, #111317); padding: 16px; display: flex; flex-direction: column; gap: 12px; margin: 10px 0 18px; }
+  .rm-log { font: 13px/1.5 var(--mono); max-height: 55vh; overflow: auto; display: flex; flex-direction: column; gap: 6px; }
+  .rm-log .tx { color: var(--lime); }
+  .rm-log .rx { color: var(--text2); white-space: pre-wrap; margin: 0 0 4px 14px; }
+  .rm-log .no { color: var(--warn); margin-left: 14px; }
+  .rm-form { display: flex; gap: 10px; flex-wrap: wrap; }
+  .rm-form input { flex: 1; min-width: 180px; font: 15px var(--mono); }
+  .rm-quick { display: flex; gap: 6px; flex-wrap: wrap; }
+  .rm-quick button { font: 12px var(--mono); }
+  .sc-form { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); margin: 0 0 12px; }
+  .sc-form textarea { grid-column: 1 / -1; min-height: 150px; resize: vertical; border-radius: 14px; border: 1px solid var(--line2); background: var(--bg); color: var(--text); padding: 10px 12px; font: 13px/1.45 var(--mono); }
+  .sc-form .row { grid-column: 1 / -1; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+  .sc-steps { font: 12px var(--mono); color: var(--muted); margin-top: 6px; }
   .ac-card { background: #12151a; border: 1px solid #2b303a; border-radius: 18px; padding: 18px 20px; margin: 10px 0 18px; }
   .ac-card h3 { margin: 0 0 10px; }
   .ac-card table { width: 100%; border-collapse: collapse; font-size: 14px; margin: 6px 0 14px; }
@@ -171,6 +184,44 @@
   </div>
 
   <div class="adm-top logs-top">
+    <h2>Удалённая проверка</h2>
+    <span class="sp"></span>
+    <button class="btn btn-ghost btn-sm" id="rmRefresh" type="button"><span>Обновить</span></button>
+  </div>
+  <p class="lg-note">Человек сам нажимает в «Связи с разработчиком» «Разрешить разработчику проверить машину» — сессия на 30 минут, вам приходит сообщение в Telegram. Команды уходят в его адаптер, ответы приходят сюда. Только чтение: запись, стирание, управление и программирование блоков отклоняет и сервер, и телефон.</p>
+  <div class="list" id="rmList"></div>
+  <div class="rm-con" id="rmCon" hidden>
+    <div class="dv-head"><b id="rmWho"></b><span class="mono" id="rmMeta"></span><span class="sp"></span><button class="link-btn" id="rmClose" type="button">закончить сессию</button></div>
+    <div class="rm-quick" id="rmQuick">
+      <button class="btn btn-ghost btn-sm" data-q="ATRV">ATRV</button><button class="btn btn-ghost btn-sm" data-q="ATDP">ATDP</button>
+      <button class="btn btn-ghost btn-sm" data-q="0100">0100</button><button class="btn btn-ghost btn-sm" data-q="0101">0101</button>
+      <button class="btn btn-ghost btn-sm" data-q="03">03</button><button class="btn btn-ghost btn-sm" data-q="07">07</button>
+      <button class="btn btn-ghost btn-sm" data-q="0902">0902</button><button class="btn btn-ghost btn-sm" data-q="ATH1">ATH1</button>
+      <button class="btn btn-ghost btn-sm" data-q="ATSH 7E0">ATSH 7E0</button><button class="btn btn-ghost btn-sm" data-q="19 02 FF">19 02 FF</button>
+      <button class="btn btn-ghost btn-sm" data-q="22 F1 90">22 F1 90</button><button class="btn btn-ghost btn-sm" data-q="ATAR">ATAR</button>
+    </div>
+    <div class="rm-log" id="rmLog"></div>
+    <form class="rm-form" id="rmForm"><input name="cmd" placeholder="команда: 22 F1 90, ATSH 7E1…" autocomplete="off"><button class="btn btn-lime btn-sm" type="submit"><span>Отправить</span></button></form>
+  </div>
+
+  <div class="adm-top logs-top">
+    <h2>Скрипты опроса</h2>
+    <span class="sp"></span>
+    <button class="btn btn-ghost btn-sm" id="scRefresh" type="button"><span>Обновить</span></button>
+  </div>
+  <p class="lg-note">Команды чтения, которые приложение выполнит после проверки подходящей машины — ответы придут в «Логи с машин». Так новые параметры (пробег, марочные данные) изучаются на живых машинах без выпуска приложения. Пустая марка — для всех; модель — часть названия. Шаг: {"cmd": "22 F1 90", "tx": "7E0", "rx": "7E8", "label": "что это"}; tx/rx можно не писать — тогда общий запрос 7DF. Только чтение.</p>
+  <form class="sc-form" id="scForm">
+    <input name="brand" placeholder="марка (Hyundai) или пусто"><input name="model" placeholder="модель (Tucson) или пусто">
+    <input name="year_from" type="number" placeholder="год от"><input name="year_to" type="number" placeholder="год до">
+    <input name="note" placeholder="пометка">
+    <textarea name="steps" spellcheck="false" placeholder='[{"cmd": "22 F1 90", "tx": "7E0", "rx": "7E8", "label": "VIN двигателя"}]'></textarea>
+    <div class="row"><label class="mono lg-bad"><input type="checkbox" name="enabled" checked> включён</label><span class="sp"></span>
+      <button class="link-btn" type="reset" id="scNew">новый</button><button class="btn btn-lime btn-sm" type="submit"><span>Сохранить скрипт</span></button></div>
+    <input type="hidden" name="id">
+  </form>
+  <div class="list" id="scList"></div>
+
+  <div class="adm-top logs-top">
     <h2>Логи с машин</h2>
     <span class="sp"></span>
     <label class="mono lg-bad"><input type="checkbox" id="lgBad" checked> только где споткнулся</label>
@@ -195,6 +246,6 @@
   </symbol>
 </svg>
 <script src="api.js?v=7"></script>
-<script src="admin.js?v=13"></script>
+<script src="admin.js?v=14"></script>
 </body>
 </html>

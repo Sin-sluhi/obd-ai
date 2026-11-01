@@ -274,6 +274,120 @@
     inView = "free"; loadInv();
   });
 
+  // ---- удалённая проверка (remote.py): консоль к адаптеру человека, только чтение ----
+  let rmRows = [], rmOpen = "", rmTimer = 0;
+  async function loadRemote() {
+    try {
+      const r = await ObdApi.json("/api/admin/remote", { headers: hdr() });
+      if (r.status !== 200) throw new Error(r.status);
+      rmRows = r.data.sessions || [];
+      renderRemote();
+    } catch (e) {
+      $("#rmList").innerHTML = `<div class="empty">Сессии не загрузились — сервер старой версии или недоступен</div>`;
+    }
+  }
+  function renderRemote() {
+    if (!rmRows.length) { $("#rmList").innerHTML = `<div class="empty">Ещё никто не открывал</div>`; return; }
+    $("#rmList").innerHTML = rmRows.slice(0, 8).map(s => `<article class="req ${s.open ? "approved" : "rejected"}">
+        <div>
+          <h3>${esc(s.car || "машина")} <span class="pill ${s.open ? "approved" : "rejected"}">${s.open ? (s.online ? "на связи" : "открыта, телефон молчит") : "закрыта"}</span></h3>
+          <div class="meta"><span class="mono">${esc(s.device)} · ${esc(s.app)}</span><span class="mono">открыта ${when(s.opened)}</span><span>команд: ${s.cmds}</span></div>
+        </div>
+        <div class="acts"><button class="btn ${s.open ? "btn-lime" : "btn-ghost"} btn-sm" data-rm="${esc(s.id)}"><span>${s.open ? "Консоль" : "Журнал"}</span></button></div>
+      </article>`).join("");
+  }
+  async function rmLoadLog() {
+    if (!rmOpen) return;
+    const r = await ObdApi.json("/api/admin/remote/log?session=" + encodeURIComponent(rmOpen), { headers: hdr() });
+    if (r.status !== 200) return;
+    const box = $("#rmLog"), stick = box.scrollTop + box.clientHeight >= box.scrollHeight - 30;
+    box.innerHTML = (r.data.cmds || []).map(c => `<div class="tx">&gt; ${esc(c.cmd)}</div>` +
+      (c.refused ? `<div class="no">отклонено телефоном: ${esc(c.refused)}</div>` :
+       c.done ? `<div class="rx">${esc(c.out || "(пусто)")} <span class="lg-bad">${c.ms} мс</span></div>` :
+       `<div class="no">${c.sent ? "выполняется…" : "ждёт телефон…"}</div>`)).join("") || `<div class="no">Команд ещё не было</div>`;
+    if (stick) box.scrollTop = box.scrollHeight;
+  }
+  function rmShow(id) {
+    rmOpen = id;
+    const s = rmRows.find(x => x.id === id) || {};
+    $("#rmCon").hidden = false;
+    $("#rmWho").textContent = s.car || "машина";
+    $("#rmMeta").textContent = (s.device || "") + " · до " + (s.expires ? new Date(s.expires * 1000).toLocaleTimeString("ru-RU", { hour: "2-digit", minute: "2-digit" }) : "");
+    $("#rmForm").hidden = !s.open; $("#rmQuick").hidden = !s.open; $("#rmClose").hidden = !s.open;
+    clearInterval(rmTimer); rmLoadLog();
+    if (s.open) rmTimer = setInterval(() => { if (!document.hidden) rmLoadLog(); }, 1500);
+    $("#rmCon").scrollIntoView({ behavior: "smooth", block: "nearest" });
+  }
+  async function rmSend(cmd) {
+    if (!rmOpen || !cmd.trim()) return;
+    const r = await ObdApi.json("/api/admin/remote/send", { method: "POST", headers: hdr(), body: JSON.stringify({ session: rmOpen, cmd }) });
+    if (r.status === 400) { toast("Не отправлено: " + (r.data && r.data.error || "команда не для чтения")); return; }
+    if (r.status === 410) { toast("Сессия уже закрыта"); loadRemote(); return; }
+    if (r.status !== 200) { toast("Не получилось"); return; }
+    rmLoadLog();
+  }
+  $("#rmList").addEventListener("click", e => { const b = e.target.closest("[data-rm]"); if (b) rmShow(b.dataset.rm); });
+  $("#rmQuick").addEventListener("click", e => { const b = e.target.closest("[data-q]"); if (b) rmSend(b.dataset.q); });
+  $("#rmForm").addEventListener("submit", e => { e.preventDefault(); const f = e.target.elements.cmd; rmSend(f.value); f.value = ""; f.focus(); });
+  $("#rmClose").addEventListener("click", async () => {
+    if (!confirm("Закончить сессию? Телефон перестанет принимать команды.")) return;
+    await ObdApi.json("/api/admin/remote/close", { method: "POST", headers: hdr(), body: JSON.stringify({ session: rmOpen }) });
+    clearInterval(rmTimer); loadRemote(); setTimeout(() => rmShow(rmOpen), 400);
+  });
+  $("#rmRefresh").addEventListener("click", loadRemote);
+
+  // ---- скрипты опроса (remote.py): команды чтения после проверки подходящей машины ----
+  let scRows = [];
+  async function loadScripts() {
+    try {
+      const r = await ObdApi.json("/api/admin/scripts", { headers: hdr() });
+      if (r.status !== 200) throw new Error(r.status);
+      scRows = r.data.scripts || [];
+      renderScripts();
+    } catch (e) {
+      $("#scList").innerHTML = `<div class="empty">Скрипты не загрузились — сервер старой версии или недоступен</div>`;
+    }
+  }
+  function renderScripts() {
+    if (!scRows.length) { $("#scList").innerHTML = `<div class="empty">Скриптов нет</div>`; return; }
+    const years = s => s.year_from || s.year_to ? ` · ${s.year_from || "…"}–${s.year_to || "…"}` : "";
+    $("#scList").innerHTML = scRows.map(s => `<article class="req ${s.enabled ? "approved" : "rejected"}">
+        <div>
+          <h3>${esc(s.brand || "все марки")}${s.model ? " " + esc(s.model) : ""}${years(s)} <span class="pill ${s.enabled ? "approved" : "rejected"}">${s.enabled ? "включён" : "выключен"}</span></h3>
+          <div class="meta">${s.note ? `<span>${esc(s.note)}</span>` : ""}<span>шагов: ${s.steps.length}</span><span class="mono">изменён ${when(s.updated)}</span></div>
+          <div class="sc-steps">${s.steps.slice(0, 6).map(x => esc((x.tx ? x.tx + " → " : "") + x.cmd + (x.label ? " (" + x.label + ")" : ""))).join("<br>")}${s.steps.length > 6 ? "<br>…" : ""}</div>
+        </div>
+        <div class="acts"><button class="btn btn-ghost btn-sm" data-sc-edit="${s.id}"><span>Править</span></button><button class="link-btn" data-sc-del="${s.id}">удалить</button></div>
+      </article>`).join("");
+  }
+  $("#scList").addEventListener("click", async e => {
+    const ed = e.target.closest("[data-sc-edit]");
+    if (ed) {
+      const s = scRows.find(x => x.id === +ed.dataset.scEdit); if (!s) return;
+      const f = $("#scForm").elements;
+      f.id.value = s.id; f.brand.value = s.brand; f.model.value = s.model; f.year_from.value = s.year_from || ""; f.year_to.value = s.year_to || "";
+      f.note.value = s.note; f.enabled.checked = s.enabled; f.steps.value = JSON.stringify(s.steps, null, 1);
+      $("#scForm").scrollIntoView({ behavior: "smooth", block: "nearest" });
+      return;
+    }
+    const d = e.target.closest("[data-sc-del]"); if (!d || !confirm("Удалить скрипт?")) return;
+    await ObdApi.json("/api/admin/scripts/delete", { method: "POST", headers: hdr(), body: JSON.stringify({ id: +d.dataset.scDel }) });
+    loadScripts();
+  });
+  $("#scForm").addEventListener("submit", async e => {
+    e.preventDefault();
+    const f = e.target.elements;
+    let steps;
+    try { steps = JSON.parse(f.steps.value); } catch (err) { toast("Шаги — не JSON: " + err.message); return; }
+    const r = await ObdApi.json("/api/admin/scripts/save", { method: "POST", headers: hdr(), body: JSON.stringify({
+      id: +f.id.value || 0, brand: f.brand.value.trim(), model: f.model.value.trim(), year_from: +f.year_from.value || 0,
+      year_to: +f.year_to.value || 0, note: f.note.value.trim(), enabled: f.enabled.checked, steps }) });
+    if (r.status !== 200) { toast(r.data && r.data.error || "Не сохранилось"); return; }
+    toast("Скрипт сохранён"); e.target.reset(); f.id.value = ""; loadScripts();
+  });
+  $("#scForm").addEventListener("reset", () => { setTimeout(() => { $("#scForm").elements.id.value = ""; }, 0); });
+  $("#scRefresh").addEventListener("click", loadScripts);
+
   const PLAN = { m1: "1 месяц", m3: "3 месяца", m6: "6 месяцев", m12: "12 месяцев" };
   const PAYST = { pending: "ждёт проверки", confirmed: "подтверждена", rejected: "отклонена", new: "не оплачена" };
 
@@ -381,11 +495,11 @@
     e.preventDefault();
     key = e.target.elements.key.value.trim();
     if (!key) return;
-    store.set(key); show(true); load(); loadLogs(); loadDev(); loadAcc(); loadInv();
+    store.set(key); show(true); load(); loadLogs(); loadDev(); loadAcc(); loadInv(); loadRemote(); loadScripts();
   });
-  document.addEventListener("visibilitychange", () => { if (!document.hidden && key) { load(); loadLogs(); loadDev(); loadAcc(); loadInv(); } });
+  document.addEventListener("visibilitychange", () => { if (!document.hidden && key) { load(); loadLogs(); loadDev(); loadAcc(); loadInv(); loadRemote(); loadScripts(); } });
 
   key = store.get();
   show(!!key);
-  if (key) { load(); loadLogs(); loadDev(); loadAcc(); loadInv(); setInterval(() => { if (!document.hidden) loadDev(); }, 30000); }
+  if (key) { load(); loadLogs(); loadDev(); loadAcc(); loadInv(); loadRemote(); loadScripts(); setInterval(() => { if (!document.hidden) loadDev(); }, 30000); }
 })();
