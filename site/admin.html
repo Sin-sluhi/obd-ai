@@ -138,6 +138,24 @@
   <div class="ac-card" id="acCard" hidden></div>
 
   <div class="adm-top logs-top">
+    <h2>Приглашения</h2>
+    <span class="sp"></span>
+    <button class="btn btn-ghost btn-sm" id="inRefresh" type="button"><span>Обновить</span></button>
+  </div>
+  <p class="lg-note">Для беты: создайте пачку кодов и раздайте по одному на человека. Код вводят при регистрации в приложении — доступ открывается сразу, без вашего одобрения. Каждый код срабатывает один раз.</p>
+  <form class="ac-new" id="inForm">
+    <input name="count" type="number" min="1" max="100" value="10" aria-label="сколько кодов">
+    <select name="days"><option value="30">30 дней</option><option value="60" selected>60 дней</option><option value="90">90 дней</option><option value="0">бессрочно</option></select>
+    <input name="note" placeholder="пометка (например, «бета, ноябрь»)">
+    <button class="btn btn-lime btn-sm" type="submit"><span>Создать коды</span></button>
+  </form>
+  <div class="tabs" id="inTabs">
+    <button class="tab on" data-v="free">Свободные<em>0</em></button>
+    <button class="tab" data-v="used">Использованы<em>0</em></button>
+  </div>
+  <div class="list" id="inList"></div>
+
+  <div class="adm-top logs-top">
     <h2>Сообщения от пользователей</h2>
     <span class="sp"></span>
     <button class="btn btn-ghost btn-sm" id="dvRefresh" type="button"><span>Обновить</span></button>
@@ -177,6 +195,6 @@
   </symbol>
 </svg>
 <script src="api.js?v=7"></script>
-<script src="admin.js?v=12"></script>
+<script src="admin.js?v=13"></script>
 </body>
 </html>

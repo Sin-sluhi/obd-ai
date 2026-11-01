@@ -217,6 +217,63 @@
     e.target.reset(); acView = "on"; loadAcc();
   });
 
+  // ---- приглашения (accounts.py, бета): код при регистрации сразу открывает доступ ----
+  let inView = "free", inRows = [];
+  async function loadInv() {
+    try {
+      const r = await ObdApi.json("/api/admin/accounts/invites", { headers: hdr() });
+      if (r.status !== 200) throw new Error(r.status);
+      inRows = r.data.invites || [];
+      renderInv();
+    } catch (e) {
+      $("#inList").innerHTML = `<div class="empty">Приглашения не загрузились — сервер старой версии или недоступен</div>`;
+    }
+  }
+  function renderInv() {
+    const pick = v => inRows.filter(i => v === "used" ? i.used_by : !i.used_by);
+    document.querySelectorAll("#inTabs .tab").forEach(t => { t.classList.toggle("on", t.dataset.v === inView); t.querySelector("em").textContent = pick(t.dataset.v).length; });
+    const list = pick(inView);
+    if (!list.length) { $("#inList").innerHTML = `<div class="empty">Здесь пусто</div>`; return; }
+    const term = i => i.days > 0 ? i.days + " дн." : "бессрочно";
+    $("#inList").innerHTML = (inView === "free" ? `<div class="acts" style="margin:0 0 10px"><button class="btn btn-ghost btn-sm" data-in-copy="all"><span>Скопировать все свободные</span></button></div>` : "") +
+      list.map(i => `<article class="req ${i.used_by ? "approved" : "pending"}">
+        <div>
+          <h3 class="mono">${esc(i.code)} <span class="pill ${i.used_by ? "approved" : "pending"}">${term(i)}</span></h3>
+          <div class="meta">${i.note ? `<span>${esc(i.note)}</span>` : ""}<span class="mono">создан ${when(i.created)}</span>
+            ${i.used_by ? `<span>взял ${esc(i.login || "#" + i.used_by)} · ${when(i.used_at)}</span>` : ""}</div>
+        </div>
+        <div class="acts">${i.used_by ? "" : `<button class="btn btn-ghost btn-sm" data-in-copy="${esc(i.code)}"><span>Скопировать</span></button>
+          <button class="link-btn" data-in-del="${esc(i.code)}">удалить</button>`}</div>
+      </article>`).join("");
+  }
+  async function copy(text, done) {
+    try { await navigator.clipboard.writeText(text); toast(done); } catch (e) { prompt("Скопируйте:", text); }
+  }
+  $("#inList").addEventListener("click", async e => {
+    const c = e.target.closest("[data-in-copy]");
+    if (c) {
+      const v = c.dataset.inCopy;
+      if (v === "all") copy(inRows.filter(i => !i.used_by).map(i => i.code).join(String.fromCharCode(10)), "Скопированы все свободные коды");
+      else copy(v, "Код скопирован");
+      return;
+    }
+    const d = e.target.closest("[data-in-del]"); if (!d || !confirm("Удалить код? Им больше нельзя будет зарегистрироваться.")) return;
+    const r = await ObdApi.json("/api/admin/accounts/invites/delete", { method: "POST", headers: hdr(), body: JSON.stringify({ code: d.dataset.inDel }) });
+    if (r.status !== 200) { toast("Не получилось"); return; }
+    loadInv();
+  });
+  $("#inTabs").addEventListener("click", e => { const t = e.target.closest(".tab"); if (t) { inView = t.dataset.v; renderInv(); } });
+  $("#inRefresh").addEventListener("click", loadInv);
+  $("#inForm").addEventListener("submit", async e => {
+    e.preventDefault();
+    const f = e.target.elements;
+    const r = await ObdApi.json("/api/admin/accounts/invites/create", { method: "POST", headers: hdr(),
+      body: JSON.stringify({ count: +f.count.value || 1, days: +f.days.value, note: f.note.value.trim() }) });
+    if (r.status !== 200) { toast("Не получилось — сервер старой версии?"); return; }
+    copy(r.data.codes.join(String.fromCharCode(10)), "Создано кодов: " + r.data.codes.length + " — скопированы");
+    inView = "free"; loadInv();
+  });
+
   const PLAN = { m1: "1 месяц", m3: "3 месяца", m6: "6 месяцев", m12: "12 месяцев" };
   const PAYST = { pending: "ждёт проверки", confirmed: "подтверждена", rejected: "отклонена", new: "не оплачена" };
 
@@ -324,11 +381,11 @@
     e.preventDefault();
     key = e.target.elements.key.value.trim();
     if (!key) return;
-    store.set(key); show(true); load(); loadLogs(); loadDev(); loadAcc();
+    store.set(key); show(true); load(); loadLogs(); loadDev(); loadAcc(); loadInv();
   });
-  document.addEventListener("visibilitychange", () => { if (!document.hidden && key) { load(); loadLogs(); loadDev(); loadAcc(); } });
+  document.addEventListener("visibilitychange", () => { if (!document.hidden && key) { load(); loadLogs(); loadDev(); loadAcc(); loadInv(); } });
 
   key = store.get();
   show(!!key);
-  if (key) { load(); loadLogs(); loadDev(); loadAcc(); setInterval(() => { if (!document.hidden) loadDev(); }, 30000); }
+  if (key) { load(); loadLogs(); loadDev(); loadAcc(); loadInv(); setInterval(() => { if (!document.hidden) loadDev(); }, 30000); }
 })();
