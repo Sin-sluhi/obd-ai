@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updated": "2026-11-16",
+ "updated": "2026-11-17",
  "entries": [
   {
    "car": "Audi A4",
@@ -4748,10 +4748,10 @@
   "Skoda Octavia|P2002": "2026-11-15",
   "Volkswagen Tiguan|P2002": "2026-11-16",
   "Volkswagen Passat|P0016": "2026-11-16",
-  "Volkswagen Passat|P0299": "2026-10-16",
-  "Volkswagen Passat|P0300": "2026-10-16",
-  "Volkswagen Golf|ISSUES": "2026-10-16",
-  "Volkswagen Golf|P0016": "2026-10-16",
+  "Volkswagen Passat|P0299": "2026-11-17",
+  "Volkswagen Passat|P0300": "2026-11-17",
+  "Volkswagen Golf|ISSUES": "2026-11-17",
+  "Volkswagen Golf|P0016": "2026-11-17",
   "Volkswagen Golf|P17BF": "2026-10-16",
   "Skoda Yeti|ISSUES": "2026-10-16",
   "Skoda Yeti|P17BF": "2026-10-17",
