@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updated": "2026-11-18",
+ "updated": "2026-11-19",
  "entries": [
   {
    "car": "Audi A4",
@@ -4802,10 +4802,10 @@
   "Skoda Yeti|ISSUES": "2026-11-18",
   "Skoda Yeti|P0300": "2026-11-18",
   "Skoda Yeti|P2002": "2026-11-18",
-  "Audi A4|P0011": "2026-10-17",
-  "Audi A4|P0300": "2026-10-17",
-  "Ford Focus|ISSUES": "2026-10-18",
-  "Ford Focus|P2135": "2026-10-18",
+  "Audi A4|P0011": "2026-11-19",
+  "Audi A4|P0300": "2026-11-19",
+  "Ford Focus|ISSUES": "2026-11-19",
+  "Ford Focus|P2135": "2026-11-19",
   "Ford Focus|P0128": "2026-10-19",
   "Ford Focus|P0507": "2026-10-19",
   "Ford Focus|P0011": "2026-10-19",
