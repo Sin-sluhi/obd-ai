@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updated": "2026-11-19",
+ "updated": "2026-11-20",
  "entries": [
   {
    "car": "Audi A4",
@@ -739,6 +739,27 @@
     "https://www.drive2.ru/l/684962484951471413/"
    ],
    "updated": "2026-10-22"
+  },
+  {
+   "car": "Ford Focus",
+   "brand": "Ford",
+   "model": "Focus",
+   "code": "P0011",
+   "summary": "У владельца Ford Focus 2014 года причиной кода P0011 оказался неисправный датчик/клапан VVT‑i, проверка и правильная установка клапана решили проблему; ничего лишнего не меняли.",
+   "causes": [
+    "неисправный клапан VVT‑i (датчик фаз)"
+   ],
+   "fixes": [
+    "проверка работоспособности клапана VVT‑i и его правильная установка/регулировка меток"
+   ],
+   "wasted": [],
+   "price_from": 0,
+   "price_to": 0,
+   "mileage": "",
+   "sources": [
+    "https://www.drive2.ru/l/479932978307268727/"
+   ],
+   "updated": "2026-11-20"
   },
   {
    "car": "Ford Focus",
@@ -4806,11 +4827,10 @@
   "Audi A4|P0300": "2026-11-19",
   "Ford Focus|ISSUES": "2026-11-19",
   "Ford Focus|P2135": "2026-11-19",
-  "Ford Focus|P0128": "2026-10-19",
-  "Ford Focus|P0507": "2026-10-19",
-  "Ford Focus|P0011": "2026-10-19",
-  "Ford Mondeo|ISSUES": "2026-10-20",
-  "Ford Mondeo|P0171": "2026-10-20",
+  "Ford Focus|P0128": "2026-11-20",
+  "Ford Focus|P0507": "2026-11-20",
+  "Ford Mondeo|ISSUES": "2026-11-20",
+  "Ford Mondeo|P0171": "2026-11-20",
   "Ford Mondeo|P0128": "2026-10-21",
   "Ford Mondeo|P0299": "2026-10-21",
   "Ford Mondeo|P2002": "2026-10-21",
