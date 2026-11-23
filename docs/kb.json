@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updated": "2026-11-22",
+ "updated": "2026-11-23",
  "entries": [
   {
    "car": "Audi A4",
@@ -3573,6 +3573,31 @@
    "updated": "2026-10-10"
   },
   {
+   "car": "Nissan Almera",
+   "brand": "Nissan",
+   "model": "Almera",
+   "code": "P0335",
+   "summary": "У владельцев Nissan Almera причина кода P0335 часто оказалась в растянутой цепи привода ГРМ, а исправлением стало её заменение вместе с натяжителем и датчиками; покупка дешевых заменителей датчиков оказалась бесполезной.",
+   "causes": [
+    "растянутая цепь привода ГРМ"
+   ],
+   "fixes": [
+    "замена цепи и натяжителя, замена датчиков коленвала"
+   ],
+   "wasted": [
+    "покупка дешевых аналогов датчиков коленвала"
+   ],
+   "price_from": 25000,
+   "price_to": 25000,
+   "mileage": "",
+   "sources": [
+    "https://www.drive2.ru/l/720931083708812271/",
+    "https://www.drive2.ru/l/585328864411005757/",
+    "https://www.drive2.ru/l/563004105442722929/"
+   ],
+   "updated": "2026-11-23"
+  },
+  {
    "car": "Nissan Qashqai",
    "brand": "Nissan",
    "model": "Qashqai",
@@ -3729,6 +3754,29 @@
     "https://www.drive2.ru/l/3742978/"
    ],
    "updated": "2026-10-24"
+  },
+  {
+   "car": "Opel Astra",
+   "brand": "Opel",
+   "model": "Astra",
+   "code": "P0011",
+   "summary": "У владельцев Opel Astra J 1.6 л 2012 г. ошибка P0011 возникала из‑за загрязнения маслом VVT‑клапана и разрушения его фильтрующей сеточки; заменив VVT‑клапан на аналог Startvolt (≈2000 р) или UXCLENT (≈1500 р) проблему устраняли.",
+   "causes": [
+    "масляное загрязнение VVT‑клапана и разрушение его фильтрующей сеточки"
+   ],
+   "fixes": [
+    "замена VVT‑клапана на Startvolt SVC0518 или UXCLENT 50A919DC15"
+   ],
+   "wasted": [
+    "покупка некачественного аналога без пружин, который не подошёл"
+   ],
+   "price_from": 1500,
+   "price_to": 5000,
+   "mileage": "",
+   "sources": [
+    "https://www.drive2.ru/l/663113539640102593/"
+   ],
+   "updated": "2026-11-23"
   },
   {
    "car": "Opel Astra",
@@ -4951,9 +4999,8 @@
   "Ford Kuga|P0403": "2026-11-22",
   "Ford Kuga|P0128": "2026-11-22",
   "Chevrolet Cruze|P0011": "2026-11-22",
-  "Chevrolet Cruze|P0507": "2026-10-24",
-  "Chevrolet Cruze|P0420": "2026-10-24",
-  "Opel Astra|P0011": "2026-10-24",
+  "Chevrolet Cruze|P0507": "2026-11-23",
+  "Chevrolet Cruze|P0420": "2026-11-23",
   "Opel Astra|P0128": "2026-10-25",
   "Opel Astra|P0300": "2026-10-25",
   "Chevrolet Aveo|ISSUES": "2026-10-26",
@@ -4980,6 +5027,8 @@
   "Nissan X-Trail|P0300": "2026-11-06",
   "Nissan X-Trail|P1777": "2026-11-07",
   "Nissan Almera|ISSUES": "2026-11-08",
-  "Nissan Almera|P0011": "2026-11-08"
+  "Nissan Almera|P0011": "2026-11-08",
+  "Nissan Almera|P0300": "2026-11-23",
+  "Nissan Almera|P0171": "2026-11-23"
  }
 }
